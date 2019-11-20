@@ -1,0 +1,25 @@
+{
+  "name": "@alicloud/fecs-csrf-token-error-interceptor",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src --out-dir lib --root-mode upward",
+    "prepare": "npm run compile"
+  },
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@alicloud/search-params-interceptor": "^0.1.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "axios": "0.18.0"
+  },
+  "peerDependencies": {
+    "@alicloud/search-params-interceptor": "^0.1.0",
+    "axios": "0.18.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.5.5"
+  }
+}

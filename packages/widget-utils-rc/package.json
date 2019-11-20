@@ -1,0 +1,52 @@
+{
+  "name": "@alicloud/widget-utils-rc",
+  "version": "0.1.0",
+  "description": "React tool components for widget.",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "compile": "babel src --out-dir lib",
+    "prepare": "npm run compile"
+  },
+  "keywords": [
+    "widget",
+    "utils",
+    "component",
+    "react"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@alicloud/widget-context": "^0.1.0",
+    "@alicloud/widget-hooks": "^0.1.0",
+    "@alicloud/widget-utils-console": "^0.1.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.8.18",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "dependencies": {
+    "@alicloud/widget-error-boundary": "^0.1.0",
+    "@babel/runtime": "^7.3.4",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
+    "recompose": "^0.30.0"
+  },
+  "peerDependencies": {
+    "@alicloud/widget-context": "^0.1.0",
+    "@alicloud/widget-hooks": "^0.1.0",
+    "@alicloud/widget-utils-console": "^0.1.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "gitHead": "849e4a23b7103c6cd68dd5ea62b71445b3ddfbdb"
+}
