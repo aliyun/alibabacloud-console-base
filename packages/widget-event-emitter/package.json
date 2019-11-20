@@ -1,0 +1,26 @@
+{
+  "name": "@alicloud/widget-event-emitter",
+  "version": "0.1.0",
+  "description": "An event emitter for widget.",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "compile": "babel src --out-dir lib --root-mode upward",
+    "prepare": "npm run compile"
+  },
+  "keywords": [],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.5.4",
+    "wolfy87-eventemitter": "^5.2.6"
+  }
+}

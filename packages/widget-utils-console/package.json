@@ -1,0 +1,26 @@
+{
+  "name": "@alicloud/widget-utils-console",
+  "version": "0.1.0",
+  "description": "控制台相关的工具函数",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src --out-dir lib",
+    "prepublishOnly": "npm run compile"
+  },
+  "keywords": [
+    "widget",
+    "utils",
+    "console"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3"
+  },
+  "dependencies": {
+    "@alicloud/one-console-utils": "^1.1.0"
+  },
+  "gitHead": "849e4a23b7103c6cd68dd5ea62b71445b3ddfbdb"
+}

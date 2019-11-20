@@ -1,0 +1,19 @@
+{
+  "name": "@alicloud/widget-request",
+  "version": "0.1.0",
+  "description": "A convenient request tool for widgets.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "widget",
+    "request",
+    "fetch"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "dependencies": {
+    "axios": "0.18.0"
+  },
+  "gitHead": "849e4a23b7103c6cd68dd5ea62b71445b3ddfbdb"
+}
