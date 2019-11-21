@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { useConsoleConfig } from '@alicloud/widget-hooks'
-import { getStylePrefixForWindComponent } from '@alicloud/widget-utils-console'
+import {
+  getStylePrefixForWindComponent,
+  getChannelLink
+} from '@alicloud/widget-utils-console'
 
 
 const ChannelLink = ({
@@ -18,41 +20,20 @@ const ChannelLink = ({
   url,
   extra,
 }) => {
-  const links = useConsoleConfig('links')
-
-  // links data not loaded yet
-  if (links === null) {
-    return null
-  }
-  
   let link // 渠道链接地址，如果传递 url 则不使用它
 
   if (!url) {
-    if (typeof id === 'undefined') {
-      throw new Error(
-        '[ChannelLink] id is required'
-      )
-    }
-    if (!links[id]) {
-      throw new Error(`[ChannelLink: ${id}] Can not find links with id: ${id}`)
+    link = getChannelLink(id, values)
+
+    // If the value that we retrieve is none, then we render nothing
+    if (link === 'none') {
+      return null
     }
 
-    link = links[id].replace(/{@?([^}]+)}/g, (match, key) => {
-      if (typeof values[key] === 'undefined') {
-        throw new Error(`[ChannelLink: ${id}] Need ${key} in values for replacement.`)
-      }
-      return values[key]
-    })
     if (extra) {
       link += extra
     }
   }
-
-  // If the value that we retrieve is none, then we render nothing
-  if (link === 'none') {
-    return null
-  }
-
 
   // Here relies on the build tool, commonly is webpack, to change
   // the env variable `STYLE_PREFIX` to a string value.
