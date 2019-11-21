@@ -1,6 +1,11 @@
 import useConsoleConfig from './useConsoleConfig'
 
 function useFeature(id, activeRegionId, determinator) {
+  console && console.warn( // eslint-disable-line
+    `[useFeature] This hook is deprecated, please use the corresponding static method "getChannelFeature" instead: 
+    "import { getChannelFeature } from '@alicloud/widget-utils-console'"
+    `
+  )
   if (typeof id !== 'string') {
     throw new TypeError(
       `[useFeature] Invalid type for "id" parameter, expect a string, but got ${typeof id}.`
