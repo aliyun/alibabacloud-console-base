@@ -147,7 +147,7 @@ async function load(url, passedInDependencies = DEFAULT_RUNTIME_DEPENDENCIES) {
     return function(module, exports, require) {
       ${sourceCode}
     };
-  `)()(module, module.exports, require)
+    //# sourceURL=${info.id}@${info.version}`)()(module, module.exports, require)
   } catch (err) {
     /* eslint-disable no-console */
     console.error(`[Widget Loader]运行 ${info.id} 出错：`, info)
