@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fecs-csrf-token-error-interceptor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel src --out-dir lib --root-mode upward",
