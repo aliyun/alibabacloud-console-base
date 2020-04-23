@@ -76,7 +76,9 @@ async function handleDoubleConfirm(response) {
 
     try {
       // 拿出上一次请求的参数
-      const { config: { data: reqDataString, url: reqUrl } } = response
+      const {
+        config: { data: reqDataString, url: reqUrl },
+      } = response
       const reqData = new URLSearchParams(reqDataString)
       // 添加我们的风控参数
       reqData.append('verifyType', verifyType)

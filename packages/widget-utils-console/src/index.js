@@ -29,7 +29,6 @@ import getWidgetI18nMessages from './getWidgetI18nMessages'
 import getWidgetInfo from './getWidgetInfo'
 import getStylePrefixForWindComponent from './getStylePrefixForWindComponent'
 
-
 const basicUtils = {
   getParentUid,
   getCurrentUid,
@@ -55,13 +54,12 @@ const universalUtils = {
   channelFeatureFactory,
   useCORS,
   getCollina,
-  isWidgetPreEnv
+  isWidgetPreEnv,
 }
 
 function getUniversalUtils() {
   return universalUtils
 }
-
 
 // All this methods below are used in develop environment.
 // `getBasicUtils` & `getUniversalUtils` are used in production.
@@ -91,5 +89,5 @@ export {
   getStylePrefixForWindComponent,
   getWidgetInfo,
   getBasicUtils,
-  getUniversalUtils
+  getUniversalUtils,
 }

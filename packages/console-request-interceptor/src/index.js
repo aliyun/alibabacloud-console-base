@@ -1,7 +1,7 @@
 import {
   getSecToken,
   getUmid,
-  getCollina
+  getCollina,
 } from '@alicloud/widget-utils-console'
 import getActiveRegionId from './utils/getActiveRegionId'
 
@@ -11,24 +11,15 @@ const CORS_BASE_URL = 'https://fecs.console.aliyun.com'
 const BASE_URL = '/'
 // One-console 各类接口 url 映射表
 const API_URL = {
-  open: [
-    'data/api.json',
-    'data/multiApi.json'
-  ],
-  inner: [
-    'data/innerApi.json',
-    'data/multiInnerApi.json'
-  ],
-  app: [
-    'data/call.json',
-    'data/multiCall.json'
-  ]
+  open: ['data/api.json', 'data/multiApi.json'],
+  inner: ['data/innerApi.json', 'data/multiInnerApi.json'],
+  app: ['data/call.json', 'data/multiCall.json'],
 }
 
 /**
  * Axios intercetor
  * One-console request pre-processor
- * @param {*} config 
+ * @param {*} config
  */
 function consoleRequestInterceptor(config) {
   // 如果传入了 url，且不在我们检查的 url 范围内，提前返回不作处理
@@ -45,7 +36,7 @@ function consoleRequestInterceptor(config) {
     'sec_token',
     'collina',
     'umid',
-    'region'
+    'region',
   ])
 
   // 返回新的 config 对象
@@ -89,13 +80,13 @@ function getURL(apiType = 'open', multi) {
 function getRegion(data) {
   const multi = isMulti(data)
   if (!multi) {
-    const { params: { RegionId } = {}} = data
+    const { params: { RegionId } = {} } = data
     if (RegionId) {
       return RegionId
     }
   } else {
     const { actions } = data
-    for(const action of actions) {
+    for (const action of actions) {
       const { params: { RegionId } = {} } = action
       if (RegionId) {
         return RegionId
@@ -110,11 +101,11 @@ const utilsMap = {
   sec_token: getSecToken,
   collina: getCollina,
   umid: getUmid,
-  region: getRegion
+  region: getRegion,
 }
 function processData(data, keys = []) {
   const nextData = { ...data }
-  keys.forEach(key => {
+  keys.forEach((key) => {
     if (typeof nextData[key] === 'undefined') {
       // 只有 getRegion 需要参数
       // 其它方法会忽略参数 data
@@ -143,9 +134,7 @@ function checkArguments(data, multi) {
 // 检查单接口入参
 function checkArgumentsForApi({ product, action }) {
   if (!product) {
-    throw new Error(
-      'You must specify which product\'s api you want to call'
-    )
+    throw new Error("You must specify which product's api you want to call")
   }
   if (!action) {
     throw new Error('You must specify which api you want to call')
@@ -155,9 +144,7 @@ function checkArgumentsForApi({ product, action }) {
 // 检查多接口入参
 function checkArgumentsForMultiApi({ product, actions }) {
   if (!product) {
-    throw new Error(
-      'You must specify which product\'s api you want to call'
-    )
+    throw new Error("You must specify which product's api you want to call")
   }
   if (!Array.isArray(actions)) {
     throw new TypeError('Actions must be an array')

@@ -2,14 +2,13 @@ import axios from 'axios'
 import {
   getParentUid,
   getCurrentUid,
-  isWidgetPreEnv
+  isWidgetPreEnv,
 } from '@alicloud/widget-utils-console'
 import isDevEnv from './utils/isDevEnv'
 import getOrigin from './utils/getOrigin'
 
 // Reexport `getOrigin`
 export { getOrigin }
-
 
 const request = axios.create()
 
@@ -24,7 +23,7 @@ class WidgetLogger {
       parent_uid: getParentUid(),
       loc: `${getOrigin()}${window.location.pathname}`,
       ua: navigator.userAgent,
-      ...props
+      ...props,
     }
   }
 
@@ -39,14 +38,14 @@ class WidgetLogger {
       console.group('Widget Track')
       console.log({
         ...this.state,
-        __url__: this.getURL()
+        __url__: this.getURL(),
       })
       console.groupEnd('Widget Track')
       /* eslint-enable no-console */
     }
 
     // If we are in dev env, do not send the log state
-    if(isDevEnv() || isWidgetPreEnv()) {
+    if (isDevEnv() || isWidgetPreEnv()) {
       return false
     }
 

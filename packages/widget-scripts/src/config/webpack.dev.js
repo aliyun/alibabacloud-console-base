@@ -9,7 +9,6 @@ const isTypescript = require('../utils/isTypescript')
 const babelPresets = require('./babelPresets')
 const babelPlugins = require('./babelPlugins')
 
-
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -38,41 +37,41 @@ module.exports = merge(common, {
       {
         test: /\.m?jsx?$/,
         include: /node_modules/,
-        use: ['react-hot-loader/webpack']
+        use: ['react-hot-loader/webpack'],
       },
       isTypescript()
-        ? { // tsc
-          test: /\.tsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'awesome-typescript-loader'
+        ? {
+            // tsc
+            test: /\.tsx?$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'awesome-typescript-loader',
+            },
           }
-        }
-        : { // babel
-          test: /\.m?jsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: babelPresets,
-              plugins: [
-                ...babelPlugins,
-                [
-                  require.resolve('react-hot-loader/babel')
-                ]
-              ]
-            }
+        : {
+            // babel
+            test: /\.m?jsx?$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: babelPresets,
+                plugins: [
+                  ...babelPlugins,
+                  [require.resolve('react-hot-loader/babel')],
+                ],
+              },
+            },
           },
-        }
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../assets/tpl.html'),
       templateParameters: {
         aliyun_console_config: JSON.stringify(aliyun_console_config),
-        i18n_messages: JSON.stringify(i18n_messages)
-      }
+        i18n_messages: JSON.stringify(i18n_messages),
+      },
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

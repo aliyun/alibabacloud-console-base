@@ -11,7 +11,7 @@ module.exports = (args) => {
   const mergedConfig = merge_webpack_config(
     defaultConfig,
     {
-      mode: defaultConfig.mode
+      mode: defaultConfig.mode,
     },
     merge
   )
@@ -26,16 +26,16 @@ module.exports = (args) => {
       entry: [
         `webpack-dev-server/client?http://0.0.0.0:${port}`,
         'webpack/hot/only-dev-server',
-        path.join(cwd, './demo')
-      ]
+        path.join(cwd, './demo'),
+      ],
     },
     mergedConfig,
     {
       // Cmd argument first
       devServer: {
         port,
-        host
-      }
+        host,
+      },
     }
   )
 
@@ -43,9 +43,7 @@ module.exports = (args) => {
   const server = new webpackDevServer(compiler, config.devServer)
 
   server.listen(port, host, () => {
-    console.log(
-      chalk.cyan(`Starting the development server...\n`)
-    )
+    console.log(chalk.cyan(`Starting the development server...\n`))
     // Open browser after server had been started
     openBrowser(`http://${host}:${port}`)
   })

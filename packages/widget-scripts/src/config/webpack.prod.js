@@ -14,22 +14,17 @@ const getId = require('../utils/getId')
 
 // Get build options from abc.json
 const {
-  assets: {
-    builder: {
-      options: buildOptions = {}
-    } = {}
-  } = {},
-  library
+  assets: { builder: { options: buildOptions = {} } = {} } = {},
+  library,
 } = getAbc()
-
 
 module.exports = () => {
   const plugins = [
     new webpack.DefinePlugin({
       'window.__IN_WIDGET_DEV_ENV__': false,
       'process.env.WIDGET_ID': JSON.stringify(getId()),
-      'process.env.WIDGET_VER': JSON.stringify(getVersion())
-    })
+      'process.env.WIDGET_VER': JSON.stringify(getVersion()),
+    }),
   ]
   // Add Bundle Analyzer to analyse the bundle
   if (buildOptions.analyse && build_env !== 'cloud') {
@@ -50,29 +45,31 @@ module.exports = () => {
     module: {
       rules: [
         isTypescript()
-        ? { // tsc
-          test: /\.tsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'awesome-typescript-loader'
-          }
-        }
-        : { // babel
-          test: /\.m?jsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: babelPresets,
-              plugins: babelPlugins
+          ? {
+              // tsc
+              test: /\.tsx?$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'awesome-typescript-loader',
+              },
             }
-          },
-        }
-      ]
+          : {
+              // babel
+              test: /\.m?jsx?$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: babelPresets,
+                  plugins: babelPlugins,
+                },
+              },
+            },
+      ],
     },
     plugins,
     optimization: {
-      minimize: true
+      minimize: true,
     },
     // devtool: 'source-map',
     // https://github.com/webpack-contrib/babel-minify-webpack-plugin/issues/68
@@ -82,14 +79,14 @@ module.exports = () => {
       // Regexp to exclude all the cherry-picked wind sub-modules
       /^@ali\/wind\/lib\/.+$/,
       // Regexp to exclude all the cherry-picked widget console utils
-      /^@ali\/widget-utils-console\/lib\/.+$/
+      /^@ali\/widget-utils-console\/lib\/.+$/,
     ],
   })
 
   const mergedConfig = merge_webpack_config(
     defaultConfig,
     {
-      mode: defaultConfig.mode
+      mode: defaultConfig.mode,
     },
     merge
   )

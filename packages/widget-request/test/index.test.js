@@ -1,6 +1,5 @@
 import request, { axios } from '../src'
 
-
 test('Should have axios exported', () => {
   expect(axios).toBeDefined
 })

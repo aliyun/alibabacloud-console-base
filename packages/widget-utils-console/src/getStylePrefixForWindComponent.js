@@ -13,7 +13,8 @@
  */
 
 function getStylePrefixForWindComponent() {
-  const windRuntimeVersion = window['WidgetWindRuntime'] && window['WidgetWindRuntime']['version']
+  const windRuntimeVersion =
+    window['WidgetWindRuntime'] && window['WidgetWindRuntime']['version']
   if (windRuntimeVersion) {
     return `v-${windRuntimeVersion.replace(/\./g, '-')}-`
   }

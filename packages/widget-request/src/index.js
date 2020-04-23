@@ -4,9 +4,7 @@ import axios from 'axios'
 const instance = axios.create()
 
 // Re-export axios
-export {
-  axios
-}
+export { axios }
 
 // Exports the instance
 export default instance
