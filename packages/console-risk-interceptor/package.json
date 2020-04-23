@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-risk-interceptor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Response interceptor of axios used for risk-control interception",
   "main": "lib/index.js",
   "directories": {
@@ -17,8 +17,8 @@
     "risk-control"
   ],
   "dependencies": {
-    "@alicloud/search-params-interceptor": "^0.1.1",
-    "@alicloud/widget-utils-console": "^0.1.1",
+    "@alicloud/search-params-interceptor": "^0.1.3",
+    "@alicloud/widget-utils-console": "^0.1.3",
     "@babel/runtime": "^7.1.5",
     "axios": "^0.18.0"
   },
