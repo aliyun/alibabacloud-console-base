@@ -1,7 +1,7 @@
 {
-  "name": "@alicloud/widget-request",
+  "name": "@alicloud/console-request",
   "version": "0.1.6",
-  "description": "Request SDK for Widget & OneConsole",
+  "description": "Request SDK for OneConsole",
   "main": "src/index.js",
   "scripts": {
     "compile": "babel src --out-dir lib --root-mode upward",
