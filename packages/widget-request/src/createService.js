@@ -28,7 +28,7 @@ const defaultServiceOptions = {
   apiType: 'open',
   cors: false,
   catch: false,
-  description: 'widget-request',
+  description: 'api-request',
 }
 
 function serviceFactory(options = {}, requestInstance = request) {
@@ -44,7 +44,7 @@ function serviceFactory(options = {}, requestInstance = request) {
       apiType = serviceOptions.apiType,
       cors = serviceOptions.cors,
       catch: catchError = serviceOptions.catch,
-      description = serviceOptions.description,
+      description,
     } = {}
   ) {
     if (!action) {
@@ -57,7 +57,7 @@ function serviceFactory(options = {}, requestInstance = request) {
           apiType, // one-console 对应的接口类型
           useCors: cors, // 是否使用 fecs 提供的跨域接口
           ignoreError: !catchError, // 是否忽略 api 异常
-          description, // 当前请求的描述
+          description: description || serviceOptions.description, // 当前请求的描述
         })
     }
     return (params, content) =>
