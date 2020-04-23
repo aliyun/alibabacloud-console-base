@@ -1,6 +1,5 @@
 {
   "name": "root",
-  "private": true,
   "scripts": {
     "start": "jest --watch packages/*/test",
     "boot": "lerna bootstrap",
