@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "compile": "babel src --out-dir lib",
-    "preapre": "npm run compile"
+    "prepare": "npm run compile"
   },
   "keywords": [
     "widget",
