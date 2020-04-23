@@ -22,7 +22,6 @@ module.exports = () => {
   const plugins = [
     new webpack.DefinePlugin({
       'window.__IN_WIDGET_DEV_ENV__': false,
-      'process.env.WIDGET_ID': JSON.stringify(getId()),
       'process.env.WIDGET_VER': JSON.stringify(getVersion()),
     }),
   ]
@@ -87,6 +86,9 @@ module.exports = () => {
     defaultConfig,
     {
       mode: defaultConfig.mode,
+      id: getId(),
+      version: getVersion(),
+      build_env,
     },
     merge
   )

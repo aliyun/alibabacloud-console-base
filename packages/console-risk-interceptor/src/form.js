@@ -120,7 +120,7 @@ class VerifyForm extends Component {
     const { isCountdownStarted, countdown } = this.state
 
     return (
-      <Form style={{ width: '400px' }}>
+      <Form style={{ width: '500px' }} labelTextAlign="right">
         <Form.Item label={verifyMessages.detailDescription} {...ItemLayout}>
           <div className="next-form-text-align">
             <span>{verifyDetail} </span>

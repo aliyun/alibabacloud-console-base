@@ -71,6 +71,13 @@ async function handleDoubleConfirm(response) {
       lastRequestId = requestId
     } catch (e) {
       console.error('[getVerifyInformation] failed: ', e.message)
+      if (e.message === 'Verification has been canceled!') {
+        // 如果风控验证被取消，那触发风控的请求则默认失败
+        // 因为风控验证本身就已经是该请求失败的一个显现了
+        // 我们把 responseInterceptor 关注的 ignoreError 置为 true
+        // 它就不会再提示这个错误，这个 response 会返回到业务层，处理或不被处理
+        response.config.ignoreError = true
+      }
       return response
     }
 

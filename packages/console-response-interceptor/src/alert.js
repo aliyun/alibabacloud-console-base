@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import PropTypes from 'prop-types'
 import { Dialog, Slider, Icon } from '@alicloud/console-components'
+import CopyToClipboard from 'react-copy-to-clipboard'
 import {
   getLocale,
   getStylePrefixForWindComponent,
@@ -20,8 +21,8 @@ const style_prefix = (() => {
   try {
     return getStylePrefixForWindComponent()
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.error(
-      // eslint-disable-line no-console
       `"getStylePrefixForWindComponent" is not found, "STYLE_PREFIX" for wind component will fallback to "${process.env.STYLE_PREFIX}", please upgrade "@alicloud/widget-loader" by execute the cmd "npm install @alicloud/widget-loader@latest --save" in your terminal.
       If you are seeing this error message in widget dev environment, then upgrade the "@alicloud/widget-utils-console" to the latest instead.`
     )
@@ -29,7 +30,28 @@ const style_prefix = (() => {
   }
 })()
 
+const copyStyle = {
+  color: '#848484',
+  cursor: 'pointer',
+  marginLeft: '10px',
+}
+const copyHoverStyle = {
+  color: '#4192d8',
+  cursor: 'pointer',
+  marginLeft: '10px',
+}
+
 function Content({ code, message, requestId, ...restProps }) {
+  const [isHover, setIsHover] = useState(false)
+
+  function handleMouseEnter() {
+    setIsHover(true)
+  }
+
+  function handleMouseLeave() {
+    setIsHover(false)
+  }
+
   return (
     <div {...restProps}>
       <p style={infoStyle}>
@@ -43,6 +65,15 @@ function Content({ code, message, requestId, ...restProps }) {
       <p style={infoStyle}>
         <strong>Request ID : </strong>
         {requestId}
+        <CopyToClipboard text={requestId}>
+          <Icon
+            type="copy"
+            size="small"
+            style={isHover ? copyHoverStyle : copyStyle}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
+        </CopyToClipboard>
       </p>
       <br />
     </div>

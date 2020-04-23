@@ -1,4 +1,5 @@
 import axios from 'axios'
+import UAParser from 'ua-parser-js'
 import {
   getParentUid,
   getCurrentUid,
@@ -6,9 +7,21 @@ import {
 } from '@alicloud/widget-utils-console'
 import isDevEnv from './utils/isDevEnv'
 import getOrigin from './utils/getOrigin'
+import isCNSite from './utils/isCNSite'
 
 // Reexport `getOrigin`
 export { getOrigin }
+
+function getBrowser() {
+  try {
+    const parser = new UAParser()
+    const browser = parser.getBrowser()
+
+    return `${browser.name}/${browser.major}`
+  } catch (e) {
+    return undefined
+  }
+}
 
 const request = axios.create()
 
@@ -22,7 +35,7 @@ class WidgetLogger {
       uid: getCurrentUid(),
       parent_uid: getParentUid(),
       loc: `${getOrigin()}${window.location.pathname}`,
-      ua: navigator.userAgent,
+      bs: getBrowser(),
       ...props,
     }
   }
@@ -46,6 +59,11 @@ class WidgetLogger {
 
     // If we are in dev env, do not send the log state
     if (isDevEnv() || isWidgetPreEnv()) {
+      return false
+    }
+
+    // Only send in CN site
+    if (!isCNSite()) {
       return false
     }
 

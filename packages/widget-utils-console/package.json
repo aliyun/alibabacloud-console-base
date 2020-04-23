@@ -21,6 +21,5 @@
   },
   "dependencies": {
     "@alicloud/one-console-utils": "^1.1.0"
-  },
-  "gitHead": "849e4a23b7103c6cd68dd5ea62b71445b3ddfbdb"
+  }
 }

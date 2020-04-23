@@ -4,6 +4,8 @@ import {
   getCollina,
 } from '@alicloud/widget-utils-console'
 import getActiveRegionId from './utils/getActiveRegionId'
+import getFecsXsrfToken from './utils/getFecsXsrfToken'
+import getFecsUmid from './utils/getFecsUmid'
 
 // FECS 支持跨域的 CORS 请求
 const CORS_BASE_URL = 'https://fecs.console.aliyun.com'
@@ -30,14 +32,12 @@ function consoleRequestInterceptor(config) {
   const multi = isMulti(config.data)
   // 检查参数格式是否正确
   checkArguments(config.data, multi)
+
+  let nextData
   // 补全缺省必填参数并修正参数格式
+  nextData = fillExtraParams(config.data, config.useCors)
   // params 与 actions 需要 JSON.stringify
-  const nextData = processData(config.data, [
-    'sec_token',
-    'collina',
-    'umid',
-    'region',
-  ])
+  nextData = formatData(nextData)
 
   // 返回新的 config 对象
   return {
@@ -69,10 +69,12 @@ function isMulti(data) {
   return false
 }
 
-// fecs 暂时不支持 url 后面跟 "?action" 标示，暂时去掉，如果后面支持再加回来
-function getURL(apiType = 'open', multi) {
+function getURL(apiType = 'open', multi, description) {
   const urls = API_URL[apiType]
   // 添加一个 url 参数方便调试
+  if (description) {
+    return `${multi ? urls[1] : urls[0]}?__action=${description}`
+  }
   return `${multi ? urls[1] : urls[0]}`
 }
 
@@ -97,24 +99,24 @@ function getRegion(data) {
 }
 
 // 必填缺省参数补全并格式化部分参数
-const utilsMap = {
-  sec_token: getSecToken,
-  collina: getCollina,
-  umid: getUmid,
-  region: getRegion,
+function fillExtraParams(data, useCors) {
+  return {
+    ...data,
+    sec_token: useCors ? getFecsXsrfToken() : getSecToken(),
+    umid: useCors ? getFecsUmid() : getUmid(),
+    collina: getCollina(),
+    region: getRegion(data),
+  }
 }
-function processData(data, keys = []) {
+
+function formatData(data) {
   const nextData = { ...data }
-  keys.forEach((key) => {
-    if (typeof nextData[key] === 'undefined') {
-      // 只有 getRegion 需要参数
-      // 其它方法会忽略参数 data
-      nextData[key] = utilsMap[key] && utilsMap[key](data)
-    }
-  })
-  // stringify `params` 与 `actions`
+  // stringify `params`，`content` 与 `actions`
   if (nextData.params) {
     nextData.params = JSON.stringify(nextData.params)
+  }
+  if (nextData.content) {
+    nextData.content = JSON.stringify(nextData.content)
   }
   if (nextData.actions) {
     nextData.actions = JSON.stringify(nextData.actions)
