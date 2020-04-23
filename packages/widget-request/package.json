@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/widget-request",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Request SDK for Widget & OneConsole",
   "main": "src/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@alicloud/console-mock-interceptor": "^0.1.5",
-    "@alicloud/console-request-interceptor": "^0.1.5",
+    "@alicloud/console-request-interceptor": "^0.1.6",
     "@alicloud/console-response-interceptor": "^0.1.5",
     "@alicloud/console-risk-interceptor": "^0.1.5",
     "@alicloud/fecs-csrf-token-error-interceptor": "^0.1.5",

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-request-interceptor",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "axios request interceptor for one-console",
   "main": "lib/index.js",
   "scripts": {
