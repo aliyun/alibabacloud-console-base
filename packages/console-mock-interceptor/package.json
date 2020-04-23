@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-mock-interceptor",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Redirect requests to mock server when the interceptor is being used.",
   "main": "lib/index.js",
   "scripts": {
@@ -22,5 +22,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
