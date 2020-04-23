@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/widget-utils-console",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "控制台相关的工具函数",
   "main": "lib/index.js",
   "scripts": {
@@ -20,6 +20,6 @@
     "@babel/preset-env": "^7.4.3"
   },
   "dependencies": {
-    "@alicloud/one-console-utils": "^0.1.0"
+    "@alicloud/one-console-utils": "^0.1.1"
   }
 }

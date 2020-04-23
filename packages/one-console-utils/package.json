@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/one-console-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "控制台相关的工具函数",
   "main": "lib/index.js",
   "scripts": {
