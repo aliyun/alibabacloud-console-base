@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel src --out-dir lib",
-    "prepublishOnly": "npm run compile"
+    "prepare": "npm run compile"
   },
   "keywords": [
     "widget",
