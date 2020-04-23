@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fecs-csrf-token-error-interceptor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel src --out-dir lib --root-mode upward",
@@ -14,8 +14,8 @@
     "@babel/preset-env": "^7.5.5"
   },
   "dependencies": {
+    "@alicloud/search-params-interceptor": "^0.1.1",
     "@babel/runtime": "^7.5.5",
-    "@alicloud/search-params-interceptor": "^0.1.0",
     "axios": "0.18.0"
   }
 }

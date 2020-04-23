@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-response-interceptor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Get request data from the response.",
   "main": "lib/index.js",
   "directories": {
@@ -26,11 +26,11 @@
     "@babel/preset-react": "^7.0.0"
   },
   "dependencies": {
+    "@alicloud/search-params-interceptor": "^0.1.1",
+    "@alicloud/widget-logger": "^0.1.1",
+    "@alicloud/widget-utils-console": "^0.1.1",
     "@babel/runtime": "^7.4.3",
-    "react-copy-to-clipboard": "^5.0.2",
-    "@alicloud/search-params-interceptor": "^0.1.0",
-    "@alicloud/widget-logger": "^0.1.0",
-    "@alicloud/widget-utils-console": "^0.1.0"
+    "react-copy-to-clipboard": "^5.0.2"
   },
   "peerDependencies": {
     "@alicloud/console-components": "^1.x",
