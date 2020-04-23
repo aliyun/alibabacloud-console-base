@@ -15,12 +15,12 @@
   "author": "woota<wutayunfan@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@alicloud/console-mock-interceptor": "^2.1.2",
-    "@alicloud/console-request-interceptor": "^2.3.3",
-    "@alicloud/console-response-interceptor": "^2.6.3",
-    "@alicloud/console-risk-interceptor": "^1.5.1",
-    "@alicloud/fecs-csrf-token-error-interceptor": "^0.2.4",
-    "@alicloud/search-params-interceptor": "^1.3.2",
+    "@alicloud/console-mock-interceptor": "^0.1.0",
+    "@alicloud/console-request-interceptor": "^0.1.0",
+    "@alicloud/console-response-interceptor": "^0.1.0",
+    "@alicloud/console-risk-interceptor": "^0.1.0",
+    "@alicloud/fecs-csrf-token-error-interceptor": "^0.1.0",
+    "@alicloud/search-params-interceptor": "^0.1.0",
     "@babel/runtime": "^7.9.2",
     "axios": "0.18.0"
   },
