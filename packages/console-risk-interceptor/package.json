@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-risk-interceptor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Response interceptor of axios used for risk-control interception",
   "main": "lib/index.js",
   "directories": {
