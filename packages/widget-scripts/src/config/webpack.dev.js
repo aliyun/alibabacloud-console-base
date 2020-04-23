@@ -4,7 +4,12 @@ const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const common = require('./webpack.common')
 const getAbc = require('../utils/getAbc')
-const { cwd, aliyun_console_config, i18n_messages } = require('../cons')
+const {
+  cwd,
+  tpl_path,
+  aliyun_console_config,
+  i18n_messages,
+} = require('../cons')
 const isTypescript = require('../utils/isTypescript')
 const babelPresets = require('./babelPresets')
 const babelPlugins = require('./babelPlugins')
@@ -67,7 +72,8 @@ module.exports = merge(common, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../assets/tpl.html'),
+      template: tpl_path,
+      // @ deprecate
       templateParameters: {
         aliyun_console_config: JSON.stringify(aliyun_console_config),
         i18n_messages: JSON.stringify(i18n_messages),

@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 
 /**
  * Current working directory
@@ -56,6 +57,7 @@ exports.build_argv = (function () {
  */
 exports.debug_mode = process.env.BUILD_DEBUG
 
+// @ deprecate
 /**
  * Console configuration in dev mode
  */
@@ -68,6 +70,7 @@ exports.aliyun_console_config = (function () {
   }
 })()
 
+// @ deprecate
 /**
  * I18n messages in dev mode
  */
@@ -89,4 +92,14 @@ exports.merge_webpack_config = (function () {
   } catch (err) {
     return (config) => config
   }
+})()
+
+exports.tpl_path = (function () {
+  let tpl_path = path.resolve(__dirname, './assets/tpl.html')
+
+  if (fs.existsSync(path.join(exports.cwd, './demo/index.html'))) {
+    tpl_path = path.join(exports.cwd, './demo/index.html')
+  }
+
+  return tpl_path
 })()

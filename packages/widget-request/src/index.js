@@ -1,10 +1,20 @@
 import axios from 'axios'
+import request, { requestFactory } from './request'
+import service, {
+  serviceFactory,
+  corsService,
+  catchService,
+  catchCorsService,
+} from './createService'
 
-// Let's create an axios instance
-const instance = axios.create()
+export {
+  axios,
+  request,
+  requestFactory,
+  serviceFactory,
+  corsService,
+  catchService,
+  catchCorsService,
+}
 
-// Re-export axios
-export { axios }
-
-// Exports the instance
-export default instance
+export default service

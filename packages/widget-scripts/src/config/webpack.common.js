@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const kebabCase = require('lodash.kebabcase')
 const getAbc = require('../utils/getAbc')
+const getId = require('../utils/getId')
 
 // Prefix for generated local class names
 const classNamePrefix = getAbc().library || 'WIDGET'
@@ -72,6 +73,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.STYLE_PREFIX': JSON.stringify('aliyun-widget-'),
+      'process.env.WIDGET_ID': JSON.stringify(getId()),
     }),
   ],
 }

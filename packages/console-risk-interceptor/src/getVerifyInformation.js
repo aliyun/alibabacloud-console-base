@@ -41,8 +41,8 @@ function getVerifyInformation(options) {
               vCode: verifyCode,
             })
           } else {
+            // eslint-disable-next-line no-console
             console.warn(
-              // eslint-disable-line no-console
               '[getVerifyInformation] failed: ',
               requestId,
               verifyCode

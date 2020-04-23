@@ -6,12 +6,16 @@ const chalk = require('chalk')
 const openBrowser = require('../utils/openBrowser')
 const defaultConfig = require('../config/webpack.dev')
 const { cwd, merge_webpack_config } = require('../cons')
+const getVersion = require('../utils/getVersion')
+const getId = require('../utils/getId')
 
 module.exports = (args) => {
   const mergedConfig = merge_webpack_config(
     defaultConfig,
     {
       mode: defaultConfig.mode,
+      id: getId(),
+      version: getVersion(),
     },
     merge
   )
@@ -45,6 +49,10 @@ module.exports = (args) => {
   server.listen(port, host, () => {
     console.log(chalk.cyan(`Starting the development server...\n`))
     // Open browser after server had been started
-    openBrowser(`http://${host}:${port}`)
+    if (config.devServer.https) {
+      openBrowser(`https://${host}:${port}`)
+    } else {
+      openBrowser(`http://${host}:${port}`)
+    }
   })
 }

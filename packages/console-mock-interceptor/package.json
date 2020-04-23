@@ -22,6 +22,5 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5"
-  },
-  "gitHead": "849e4a23b7103c6cd68dd5ea62b71445b3ddfbdb"
+  }
 }

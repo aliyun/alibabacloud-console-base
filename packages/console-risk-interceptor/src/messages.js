@@ -103,10 +103,10 @@ const messages = {
       doneTip: '请在新窗口中完成验证方式的设置',
       doneSet: '完成设置',
       gotProblem: '遇到问题',
-      settingLabel: '校验码',
+      settingLabel: '验证码',
       codeInvalid: '校验码错误,请重新输入',
       reSend: '{s} 秒后重发',
-      sendCode: '点击获取',
+      sendCode: '获取验证码',
     },
   },
 
