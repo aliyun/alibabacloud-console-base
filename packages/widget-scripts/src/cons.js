@@ -1,6 +1,5 @@
 const path = require('path')
 
-
 /**
  * Current working directory
  */
@@ -14,9 +13,7 @@ exports.build_dir_name = process.env.BUILD_DEST || 'build'
 /**
  * DEF build destination directory, full path
  */
-exports.build_dir = path.join(
-  exports.cwd, exports.build_dir_name
-)
+exports.build_dir = path.join(exports.cwd, exports.build_dir_name)
 
 /**
  * DEF builder directory
@@ -43,7 +40,7 @@ exports.def_log_level = process.env.DEF_LOG_LEVEL
 /**
  * DEF build arguments
  */
-exports.build_argv = (function() {
+exports.build_argv = (function () {
   try {
     return JSON.parse(process.env.BUILD_ARGV)
   } catch (err) {
@@ -59,11 +56,10 @@ exports.build_argv = (function() {
  */
 exports.debug_mode = process.env.BUILD_DEBUG
 
-
 /**
  * Console configuration in dev mode
  */
-exports.aliyun_console_config = (function() {
+exports.aliyun_console_config = (function () {
   try {
     return require(path.join(exports.cwd, './demo/consoleConfig.js'))
   } catch (err) {
@@ -72,11 +68,10 @@ exports.aliyun_console_config = (function() {
   }
 })()
 
-
 /**
  * I18n messages in dev mode
  */
-exports.i18n_messages = (function() {
+exports.i18n_messages = (function () {
   try {
     return require(path.join(exports.cwd, './demo/i18nMessages.js'))
   } catch (err) {
@@ -85,15 +80,13 @@ exports.i18n_messages = (function() {
   }
 })()
 
-
 /**
  * User customized webpack.config.js
  */
-exports.merge_webpack_config = (function() {
+exports.merge_webpack_config = (function () {
   try {
     return require(path.join(exports.cwd, './webpack.config.js'))
   } catch (err) {
-    return config => config
+    return (config) => config
   }
 })()
-

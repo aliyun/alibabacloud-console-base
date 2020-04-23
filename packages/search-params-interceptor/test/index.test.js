@@ -9,15 +9,15 @@ test('Transform data right', () => {
   const config = {
     params: {
       time: '01:00',
-      late: true
+      late: true,
     },
     data: {
       name: 'tom',
       age: 26,
       gf: 'lucy',
       id: undefined,
-      house: null
-    }
+      house: null,
+    },
   }
 
   const next = searchParamsInterceptor(config)

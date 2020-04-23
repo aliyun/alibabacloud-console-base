@@ -24,20 +24,23 @@ import { URLSearchParams } from '@alicloud/search-params-interceptor'
 const {
   id = process.env.WIDGET_ID,
   version = process.env.WIDGET_VER,
-  loader
+  loader,
 } = getWidgetInfo()
 
 class WidgetAPILogger extends WidgetLogger {
   constructor(props, opts) {
-    super({
-      id,
-      version,
-      loader,
-      ...props,
-    }, {
-      storeType: 'api',
-      ...opts,
-    })
+    super(
+      {
+        id,
+        version,
+        loader,
+        ...props,
+      },
+      {
+        storeType: 'api',
+        ...opts,
+      }
+    )
   }
 
   log({ config, data, headers, status }) {
@@ -79,12 +82,16 @@ class WidgetAPILogger extends WidgetLogger {
         for (const key of Object.keys(actionSet)) {
           apiIdentifier += `${key},`
         }
-        this.state.api = `${targetUrl}?product=${requestData.get('product')}&action=${apiIdentifier}`
+        this.state.api = `${targetUrl}?product=${requestData.get(
+          'product'
+        )}&action=${apiIdentifier}`
       } catch (err) {
         this.state.api = targetUrl
       }
     } else {
-      this.state.api = `${targetUrl}?product=${requestData.get('product')}&action=${requestData.get('action')}`
+      this.state.api = `${targetUrl}?product=${requestData.get(
+        'product'
+      )}&action=${requestData.get('action')}`
     }
 
     this.send()

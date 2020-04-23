@@ -6,7 +6,7 @@ beforeAll(() => {
 
 test('Transformation done right', () => {
   const config = {
-    url: '/data/api.json'
+    url: '/data/api.json',
   }
   const nextConfig = consoleMockInterceptor()(config)
   expect(nextConfig.url).toBe('data/api.json')
@@ -20,8 +20,8 @@ test('Change the product name properly', () => {
     data: {
       product: 'vpc',
       action: 'DescribeVpcs',
-      params: { RegionId: 'cn-hangzhou' }
-    }
+      params: { RegionId: 'cn-hangzhou' },
+    },
   }
 
   const alias = { vpc: 'vpc_next' }
@@ -33,8 +33,8 @@ test('Change the product name properly for multi-api call', () => {
   const config = {
     data: {
       product: 'ram',
-      actions: []
-    }
+      actions: [],
+    },
   }
 
   const alias = { ram: 'ram_next' }

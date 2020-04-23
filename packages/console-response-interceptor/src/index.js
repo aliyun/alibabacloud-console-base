@@ -7,7 +7,9 @@ function consoleResponseInterceptor(response) {
   logger.log(response)
 
   const { data: apiResponseData } = response
-  const { config: { ignoreError } } = response
+  const {
+    config: { ignoreError },
+  } = response
   if (
     // Single api succeeded -> code 200, withFailedRequest undefined
     // Multi api succeeded  -> code 200, withFailedRequest false

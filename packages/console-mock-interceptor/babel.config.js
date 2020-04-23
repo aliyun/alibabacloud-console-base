@@ -3,16 +3,16 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        modules: false
-      }
-    ]
+        modules: false,
+      },
+    ],
   ],
   plugins: [
     [
       '@babel/plugin-transform-runtime',
       {
-        useESModules: true
-      }
-    ]
-  ]
+        useESModules: true,
+      },
+    ],
+  ],
 }

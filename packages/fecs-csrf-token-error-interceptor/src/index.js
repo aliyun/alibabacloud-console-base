@@ -3,18 +3,16 @@ import { URLSearchParams } from '@alicloud/search-params-interceptor'
 
 const axiosInstance = axios.create()
 
-
 async function getNewCsrfToken() {
   const response = await axiosInstance({
     url: '/data/refreshToken',
     baseURL: 'https://fecs.console.aliyun.com/',
     timeout: 5000,
-    withCredentials: true
+    withCredentials: true,
   })
 
   return response && response.data && response.data.data
 }
-
 
 async function csrfTokenErrorInterceptor(response) {
   const { data: responseData, config } = response
@@ -27,11 +25,7 @@ async function csrfTokenErrorInterceptor(response) {
     let newResponse = null
     // 拿出请求参数
     const {
-      config: {
-        data: reqDataString,
-        url: reqUrl,
-        method: reqMethod,
-      },
+      config: { data: reqDataString, url: reqUrl, method: reqMethod },
     } = response
     const reqData = new URLSearchParams(reqDataString)
     // 使用新的 token
@@ -43,7 +37,7 @@ async function csrfTokenErrorInterceptor(response) {
         method: reqMethod,
         url: reqUrl,
         data: reqData,
-        withCredentials: true
+        withCredentials: true,
       })
     } catch (err) {
       // 如果此次出错，停止处理，直接返回上一次的请求结果

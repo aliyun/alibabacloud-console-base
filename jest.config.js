@@ -1,5 +1,3 @@
 module.exports = {
-  'transformIgnorePatterns': [
-    '<rootDir>/node_modules/(?!@alicloud)'
-  ]
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!@alicloud)'],
 }
