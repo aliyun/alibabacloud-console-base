@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "jest --watch packages/*/test",
-    "boot": "lerna bootstrap -- --registry=http://registry.npm.alibaba-inc.com",
+    "boot": "lerna bootstrap",
     "lint": "eslint packages/",
     "lint-fix": "eslint --fix packages/",
     "test": "jest packages/",
