@@ -3,10 +3,11 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const common = require('./webpack.common')
-const { cwd, build_dir, merge_webpack_config, build_env } = require('../cons')
+const { cwd, build_dir, build_env } = require('../cons')
 const webpackExternals = require('./webpackExternals')
 const getAbc = require('../utils/getAbc')
 const isTypescript = require('../utils/isTypescript')
+const getWebpackConfig = require('../utils/getWebpackConfig')
 const babelPresets = require('./babelPresets')
 const babelPlugins = require('./babelPlugins')
 const getVersion = require('../utils/getVersion')
@@ -82,7 +83,7 @@ module.exports = () => {
     ],
   })
 
-  const mergedConfig = merge_webpack_config(
+  const mergedConfig = getWebpackConfig()(
     defaultConfig,
     {
       mode: defaultConfig.mode,
