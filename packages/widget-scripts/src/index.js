@@ -17,6 +17,7 @@ module.exports = () => {
       require('./cmds/build')(args)
       break
     default:
+      // eslint-disable-next-line no-console
       console.error(`"${cmd}" is not a valid command!`)
       break
   }
