@@ -71,12 +71,16 @@ class WidgetAPILogger extends WidgetLogger {
     let targetUrl, targetApiType
     try {
       const match = /\/data\/(.+)\.json/.exec(url)
-      targetUrl = match && match[0]
-      targetApiType = match && match[1]
+      if (!match) {
+        throw new Error()
+      }
+      targetUrl = match[0]
+      targetApiType = match[1]
     } catch (e) {
       targetUrl = url
       targetApiType = 'api'
     }
+
     if (targetApiType.indexOf('multi') !== -1) {
       try {
         const actions = JSON.parse(requestData.get('actions'))
