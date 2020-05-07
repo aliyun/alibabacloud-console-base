@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-response-interceptor",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Get request data from the response.",
   "main": "lib/index.js",
   "directories": {
