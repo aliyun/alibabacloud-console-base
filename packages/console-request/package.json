@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-request",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Request SDK for OneConsole",
   "main": "src/index.js",
   "scripts": {
