@@ -1,5 +1,5 @@
 import axios from 'axios'
-import request, { requestFactory } from './request'
+import requestFactory from './request'
 import service, {
   serviceFactory,
   corsService,
@@ -9,7 +9,6 @@ import service, {
 
 export {
   axios,
-  request,
   requestFactory,
   serviceFactory,
   corsService,
