@@ -22,7 +22,7 @@
  * ----------------------------------------------------------
  *
  */
-import { requestFactory } from './request'
+import requestFactory from './request'
 
 const defaultServiceOptions = {
   apiType: 'open',
