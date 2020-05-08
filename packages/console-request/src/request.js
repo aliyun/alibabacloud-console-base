@@ -1,5 +1,6 @@
 import axios from 'axios'
 import consoleMockInterceptor from '@alicloud/console-mock-interceptor'
+import consoleMockJsonFileInterceptor from '@alicloud/console-mock-json-file-interceptor'
 import consoleRequestInterceptor from '@alicloud/console-request-interceptor'
 import csrfTokenErrorInterceptor from '@alicloud/fecs-csrf-token-error-interceptor'
 import searchParamsInterceptor from '@alicloud/search-params-interceptor'
@@ -7,16 +8,15 @@ import consoleResponseInterceptor from '@alicloud/console-response-interceptor'
 import consoleRiskInterceptor from '@alicloud/console-risk-interceptor'
 
 function requestFactory({
-  /* eslint-disable no-unused-vars */
   interceptors: {
     searchParams,
     consoleMock,
+    consoleMockJsonFile,
     consoleRequest,
     consoleResponse,
     consoleRisk,
     fecsCsrfTokenError,
   } = {},
-  /* eslint-enable no-unused-vars */
 } = {}) {
   // Let's create an axios instance
   const request = axios.create()
@@ -27,6 +27,8 @@ function requestFactory({
     request.interceptors.request.use(searchParamsInterceptor)
   consoleMock !== false &&
     request.interceptors.request.use(consoleMockInterceptor(consoleMock))
+  consoleMockJsonFile !== false &&
+    request.interceptors.request.use(consoleMockJsonFileInterceptor)
   consoleRequest !== false &&
     request.interceptors.request.use(consoleRequestInterceptor)
 
@@ -41,8 +43,4 @@ function requestFactory({
   return request
 }
 
-const defaultRequest = requestFactory()
-
-export { requestFactory }
-
-export default defaultRequest
+export default requestFactory

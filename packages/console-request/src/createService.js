@@ -22,19 +22,47 @@
  * ----------------------------------------------------------
  *
  */
-import request from './request'
+import { requestFactory } from './request'
 
 const defaultServiceOptions = {
   apiType: 'open',
   cors: false,
   catch: false,
   description: 'api-request',
+  apiMockType: 'mocks',
 }
+const useMocks = ['localhost', '127.0.0.1'].includes(location.hostname)
 
-function serviceFactory(options = {}, requestInstance = request) {
+function serviceFactory(options = {}, requestInstance) {
   const serviceOptions = {
     ...defaultServiceOptions,
     ...options,
+  }
+
+  if (typeof requestInstance === 'undefined') {
+    // only use mocks in local dev development
+    if (!useMocks) {
+      requestInstance = requestFactory({
+        interceptors: {
+          consoleMock: false,
+          consoleMockJsonFile: false,
+        },
+      })
+    } else {
+      if (serviceOptions.apiMockType === 'mocks') {
+        requestInstance = requestFactory({
+          interceptors: {
+            consoleMockJsonFile: false,
+          },
+        })
+      } else if (serviceOptions.apiMockType === 'json-files') {
+        requestInstance = requestFactory({
+          interceptors: {
+            consoleMock: false,
+          },
+        })
+      }
+    }
   }
 
   return function createService(
