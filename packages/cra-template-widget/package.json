@@ -1,0 +1,22 @@
+{
+  "name": "@alicloud/cra-template-widget",
+  "version": "0.2.0",
+  "main": "template.json",
+  "description": "A cra template for widget.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cra",
+    "widget"
+  ],
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
