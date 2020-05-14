@@ -55,7 +55,7 @@ function serviceFactory(options = {}, requestInstance) {
             consoleMockJsonFile: false,
           },
         })
-      } else if (serviceOptions.apiMockType === 'json-files') {
+      } else if (serviceOptions.apiMockType === 'json-file') {
         requestInstance = requestFactory({
           interceptors: {
             consoleMock: false,
