@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/cra-template-widget",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "template.json",
   "description": "A cra template for widget.",
   "scripts": {

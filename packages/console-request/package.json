@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-request",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "Request SDK for OneConsole",
   "main": "src/index.js",
   "scripts": {
@@ -16,9 +16,9 @@
   "license": "MIT",
   "dependencies": {
     "@alicloud/console-mock-interceptor": "^0.1.5",
-    "@alicloud/console-mock-json-file-interceptor": "^0.1.0",
+    "@alicloud/console-mock-json-file-interceptor": "^0.2.0",
     "@alicloud/console-request-interceptor": "^0.1.6",
-    "@alicloud/console-response-interceptor": "^0.1.5",
+    "@alicloud/console-response-interceptor": "^0.2.0",
     "@alicloud/console-risk-interceptor": "^0.1.5",
     "@alicloud/fecs-csrf-token-error-interceptor": "^0.1.5",
     "@alicloud/search-params-interceptor": "^0.1.5",
