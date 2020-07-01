@@ -23,7 +23,7 @@ class WidgetBuildWebpackPlugin {
                 const targetFile =
                   file === compilation.outputOptions.filename ||
                   compilation.outputOptions.filename.replace(
-                    /\[[^\]]*\]/,
+                    /\[[^\]]*\]/, // replace the [name] part with the real name
                     chunk.name
                   )
 
