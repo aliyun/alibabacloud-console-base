@@ -20,7 +20,12 @@ class WidgetBuildWebpackPlugin {
               }
 
               for (const file of chunk.files) {
-                const targetFile = file === 'index.js'
+                const targetFile =
+                  file === compilation.outputOptions.filename ||
+                  compilation.outputOptions.filename.replace(
+                    /\[[^\]]*\]/,
+                    chunk.name
+                  )
 
                 if (targetFile) {
                   compilation.updateAsset(
