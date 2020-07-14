@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const WidgetBuildWebpackPlugin = require('@alicloud/widget-build-webpack-plugin')
 const common = require('./webpack.common')
 const { cwd, build_dir, build_env } = require('../cons')
 const webpackExternals = require('./webpackExternals')
@@ -24,6 +25,12 @@ module.exports = () => {
     new webpack.DefinePlugin({
       'window.__IN_WIDGET_DEV_ENV__': false,
       'process.env.WIDGET_VER': JSON.stringify(getVersion()),
+    }),
+    new WidgetBuildWebpackPlugin({
+      env: {
+        id: getId(),
+        version: getVersion(),
+      },
     }),
   ]
   // Add Bundle Analyzer to analyse the bundle
