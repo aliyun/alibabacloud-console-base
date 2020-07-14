@@ -84,9 +84,9 @@ module.exports = () => {
       // Object
       webpackExternals,
       // Regexp to exclude all the cherry-picked wind sub-modules
-      /^@ali\/wind\/lib\/.+$/,
+      /^@alicloud\/console-components\/lib\/.+$/,
       // Regexp to exclude all the cherry-picked widget console utils
-      /^@ali\/widget-utils-console\/lib\/.+$/,
+      /^@alicloud\/widget-utils-console\/lib\/.+$/,
     ],
   })
 
