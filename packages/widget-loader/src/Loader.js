@@ -93,7 +93,7 @@ class Loader {
 
   executeUmd({ code, dependencies, name }) {
     try {
-      executeUmd({
+      return executeUmd({
         code,
         dependencies,
         name,
