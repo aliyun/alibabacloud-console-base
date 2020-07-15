@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import hoistNonReactStatic from 'hoist-non-react-statics'
-import Skeleton from '@ali/widget-skeleton'
+import Skeleton from 'react-loading-skeleton'
 import getDisplayName from './getDisplayName'
 
 const withSuspense = (options = {}, lazyToLoad) => (WrappedComponent) => {
