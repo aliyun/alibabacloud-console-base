@@ -38,7 +38,7 @@ class WidgetBuildWebpackPlugin {
                           this.env.id
                         )}, ${JSON.stringify(
                           this.env.version
-                        )}, function widgetFactory(module, exports, require, window, document, location, history) {`,
+                        )}, function widgetFactory(module, exports, require, { window, self, document, location, history }) {`,
                         old,
                         '}])'
                       )
