@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "compile": "babel src -d lib --root-mode upward",
+    "compile": "babel src -d lib",
     "prepare": "npm run compile"
   },
   "author": "woota<wutayunfan@gmail.com>",
