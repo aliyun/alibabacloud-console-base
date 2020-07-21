@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@alicloud/search-params-interceptor": "^0.1.5",
-    "@alicloud/widget-logger": "^0.1.5",
+    "@alicloud/widget-logger": "^0.2.0",
     "@alicloud/widget-utils-console": "^0.1.5",
     "@babel/runtime": "^7.4.3",
     "react-copy-to-clipboard": "^5.0.2"
