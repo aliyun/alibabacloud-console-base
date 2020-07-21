@@ -8,4 +8,8 @@ function getOrigin() {
   }`
 }
 
-export default getOrigin
+function getLocation() {
+  return `${getOrigin()}${window.location.pathname}`
+}
+
+export default getLocation
