@@ -1,11 +1,13 @@
 import { lazy } from 'react'
 import { createContext } from '@alicloud/browsing-context'
+import Logger from '@alicloud/widget-logger'
 import { mergeWithDefaultConfig, mergeConfig } from './defaultConfig'
 import HookManager from './hookManager'
 import loadScript from './utils/loadScript'
 import getFactory from './utils/getFactory'
 import executeScript from './utils/executeScript'
 import executeUmd from './utils/executeUmd'
+import generateError from './utils/generateError'
 import compose from './hoc/compose'
 import withErrorBoundary from './hoc/withErrorBoundary'
 import withLocalRender from './hoc/withLocalRender'
@@ -14,6 +16,7 @@ import withSuspense from './hoc/withSuspense'
 
 class Loader {
   constructor(config) {
+    // browsing context
     this.browsingContext =
       config.browsingContext &&
       createContext({
@@ -26,6 +29,12 @@ class Loader {
       beforeRequest: new HookManager(),
       beforeExecute: new HookManager(),
       beforeResolve: new HookManager(),
+    }
+
+    // loggers
+    this.loggers = {
+      loader: new Logger(config.logEndpoints && config.logEndpoints.loader),
+      error: new Logger(config.logEndpoints && config.logEndpoints.error),
     }
 
     // _baseConfig may change over time
@@ -69,6 +78,13 @@ class Loader {
           this._baseConfig = nextBaseConfig || this._baseConfig
         } else {
           // log to sls
+          this.loggers.error.send({
+            e_phrase: 'prepare',
+            e_msg: err.message,
+            e_stack: err.stack,
+          })
+
+          throw generateError('prepare', err)
         }
       }
     })()
@@ -88,6 +104,13 @@ class Loader {
       })
     } catch (err) {
       // log to sls
+      this.loggers.error.send({
+        e_phrase: 'execute_script',
+        e_msg: err.message,
+        e_stack: err.stack,
+      })
+
+      throw generateError('execute_script', err)
     }
   }
 
@@ -101,6 +124,13 @@ class Loader {
       })
     } catch (err) {
       // log to sls
+      this.loggers.error.send({
+        e_phrase: 'execute_umd',
+        e_msg: err.message,
+        e_stack: err.stack,
+      })
+
+      throw generateError('execute_umd', err)
     }
   }
 
@@ -138,23 +168,33 @@ class Loader {
   }
 
   async request(config) {
+    this.loggers.loader.timeStart('t_request')
+
     const { url, requestCompanion } = config
     const [, ...responseCompanion] = await Promise.all([
       loadScript(url), // load the widget itself
       ...requestCompanion, // load the request companion
     ])
 
+    this.loggers.loader.timeEnd('t_request')
+
     return mergeConfig(config, { responseCompanion })
   }
 
   async execute(config) {
+    this.loggers.loader.timeStart('t_execute')
+
     const { widgetInfo, dependencies } = config
     const module = this.getModule(widgetInfo, dependencies)
+
+    this.loggers.loader.timeEnd('t_execute')
 
     return mergeConfig(config, { resolveTarget: module })
   }
 
   async resolve(config) {
+    this.loggers.loader.timeStart('t_resolve')
+
     const { resolveTarget, dependencies, hoc } = config
     const {
       errorBoundary: errorBoundaryOptions,
@@ -178,6 +218,8 @@ class Loader {
 
     const target = enhance(resolveTarget.default)
 
+    this.loggers.loader.timeEnd('t_resolve')
+
     return mergeConfig(
       config,
       // React.lazy expect the shape
@@ -193,8 +235,11 @@ class Loader {
   load(config) {
     const startToLoad = () =>
       new Promise(async (resolve) => {
-        // wait for the prepare work
-        await this._prepareWork
+        this.loggers.loader.timeStart('t_total')
+
+        this.loggers.loader.timeStart('t_wait')
+        await this._prepareWork // wait for the prepare work
+        this.loggers.loader.timeEnd('t_wait')
 
         const chain = []
 
@@ -237,7 +282,17 @@ class Loader {
           module = resolveTarget
         } catch (err) {
           // log to sls
+          this.loggers.error.send({
+            e_phrase: 'load',
+            e_msg: err.message,
+            e_stack: err.stack,
+          })
+
+          throw generateError('load', err)
         }
+
+        this.loggers.loader.timeEnd('t_total')
+        this.loggers.loader.send()
 
         resolve(module)
       })
