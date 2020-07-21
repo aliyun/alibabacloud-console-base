@@ -204,7 +204,11 @@ class Loader {
 
     // wrap with hocs
     const enhance = compose(
-      withErrorBoundary(errorBoundaryOptions, config.namespace),
+      withErrorBoundary(
+        errorBoundaryOptions,
+        config.namespace,
+        this.loggers.error
+      ),
       withLocalRender(localRenderOptions, dependencies['react-dom']),
       withContainer(
         containerOptions === false
