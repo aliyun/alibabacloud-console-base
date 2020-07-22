@@ -47,6 +47,15 @@ class Loader {
 
     // the initial prepare work in an already resolved promise
     this._prepareWork = Promise.resolve()
+
+    // bindings
+    this.prepare = this.prepare.bind(this)
+    this.clearPrepareWork = this.clearPrepareWork.bind(this)
+    this.executeScript = this.executeScript.bind(this)
+    this.executeUmd = this.executeUmd.bind(this)
+    this.loadScript = this.loadScript.bind(this)
+    this.getModule = this.getModule.bind(this)
+    this.load = this.load.bind(this)
   }
 
   prepare(work, errorHandler) {
