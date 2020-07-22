@@ -15,13 +15,17 @@ import withContainer from './hoc/withContainer'
 import withSuspense from './hoc/withSuspense'
 
 class Loader {
-  constructor(config) {
+  constructor(config = {}) {
+    // _baseConfig may change over time
+    // because of the prepare works
+    this._baseConfig = mergeWithDefaultConfig(config)
+
     // browsing context
     this.browsingContext =
-      config.browsingContext &&
+      this._baseConfig.browsingContext &&
       createContext({
-        rootClassName: config.namespace,
-        ...config.browsingContext,
+        rootClassName: this._baseConfig.namespace,
+        ...this._baseConfig.browsingContext,
       })
 
     // define hooks that custom logics can plug in
@@ -33,13 +37,13 @@ class Loader {
 
     // loggers
     this.loggers = {
-      loader: new Logger(config.logEndpoints && config.logEndpoints.loader),
-      error: new Logger(config.logEndpoints && config.logEndpoints.error),
+      loader: new Logger(
+        this._baseConfig.logEndpoints && this._baseConfig.logEndpoints.loader
+      ),
+      error: new Logger(
+        this._baseConfig.logEndpoints && this._baseConfig.logEndpoints.error
+      ),
     }
-
-    // _baseConfig may change over time
-    // because of the prepare works
-    this._baseConfig = mergeWithDefaultConfig(config)
 
     // the initial prepare work in an already resolved promise
     this._prepareWork = Promise.resolve()
