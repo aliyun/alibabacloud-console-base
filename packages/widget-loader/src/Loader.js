@@ -151,12 +151,12 @@ class Loader {
     return loadScript(url)
   }
 
-  getModule(widgetInfo, dependencies = {}) {
-    if (!widgetInfo) {
+  getModule(info, dependencies = {}) {
+    if (!info) {
       return null
     }
 
-    const { widgetJsonpIdentifier } = this._baseConfig
+    const { jsonpIdentifier } = this._baseConfig
 
     const module = {
       exports: {},
@@ -164,9 +164,9 @@ class Loader {
     const require = (moduleIdentifier) => dependencies[moduleIdentifier]
 
     const widgetFactory = getFactory(
-      window[widgetJsonpIdentifier],
-      widgetInfo.id,
-      widgetInfo.version
+      window[jsonpIdentifier],
+      info.id,
+      info.version
     )
 
     widgetFactory(module, module.exports, require, {
@@ -197,8 +197,8 @@ class Loader {
   async execute(config) {
     this.loggers.loader.timeStart('t_execute')
 
-    const { widgetInfo, dependencies } = config
-    const module = this.getModule(widgetInfo, dependencies)
+    const { info, dependencies } = config
+    const module = this.getModule(info, dependencies)
 
     this.loggers.loader.timeEnd('t_execute')
 
