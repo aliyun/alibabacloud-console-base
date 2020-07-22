@@ -202,7 +202,7 @@ class Loader {
 
     this.loggers.loader.timeEnd('t_execute')
 
-    return mergeConfig(config, { resolveTarget: module })
+    return mergeConfig(config, { resolveTarget: module.exports.default })
   }
 
   async resolve(config) {
@@ -233,7 +233,7 @@ class Loader {
       )
     )
 
-    const target = enhance(resolveTarget.default)
+    const target = enhance(resolveTarget)
 
     this.loggers.loader.timeEnd('t_resolve')
 
