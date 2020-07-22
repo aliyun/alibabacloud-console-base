@@ -17,7 +17,7 @@ class Logger {
       autoUid = true,
       autoLocation = true,
       autoBrowser = true,
-    }
+    } = {}
   ) {
     this._endpoint = endpoint
     this._debug = debug
