@@ -1,10 +1,10 @@
 {
   "namespace": "",
-  "widgetInfo": {
+  "info": {
     "id": "",
     "version": ""
   },
-  "widgetJsonpIdentifier": "widgetJsonp",
+  "jsonpIdentifier": "widgetJsonp",
   "url": "https://g.alicdn.com/widget/test-logo/0.3.0/index.js",
   "dependencies": {},
   "requestCompanion": [],

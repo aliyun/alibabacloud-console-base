@@ -5,6 +5,7 @@ export const defaultConfig = {
   lazy: true,
   prepareTimeout: 60000,
   browsingContext: null,
+  jsonpIdentifier: 'widgetJsonp',
 }
 
 export const mergeConfig = (...configs) =>
