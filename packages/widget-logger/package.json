@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/widget-logger",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A log library for widget.",
   "main": "lib/index.js",
   "directories": {
