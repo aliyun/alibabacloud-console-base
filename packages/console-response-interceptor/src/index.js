@@ -1,5 +1,5 @@
-import alert from './alert'
-import APILogger from './Logger'
+// import alert from './alert'
+import APILogger from './logger'
 
 function consoleResponseInterceptor(response) {
   // Init a logger and send api log to sls server.
@@ -25,7 +25,7 @@ function consoleResponseInterceptor(response) {
     const error = new Error('Multi OpenAPI calls with failed request.')
     error.response = response
     if (!ignoreError) {
-      alert(apiResponseData)
+      // alert(apiResponseData)
       throw error
     }
     return apiResponseData
@@ -34,7 +34,7 @@ function consoleResponseInterceptor(response) {
     const error = new Error(apiResponseData.message)
     error.response = response
     if (!ignoreError) {
-      alert(apiResponseData)
+      // alert(apiResponseData)
       throw error
     }
     return apiResponseData
@@ -43,10 +43,10 @@ function consoleResponseInterceptor(response) {
     const error = new Error('OpenAPI failed without a message.')
     error.response = response
     if (!ignoreError) {
-      alert({
-        ...apiResponseData,
-        message: error.message,
-      })
+      // alert({
+      //   ...apiResponseData,
+      //   message: error.message,
+      // })
       throw error
     }
     return apiResponseData
