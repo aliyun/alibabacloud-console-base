@@ -17,7 +17,7 @@
     "risk-control"
   ],
   "dependencies": {
-    "@alicloud/widget-utils-console": "^0.1.5",
+    "@alicloud/one-console-utils": "^0.1.5",
     "@babel/runtime": "^7.1.5",
     "axios": "^0.18.0"
   },
