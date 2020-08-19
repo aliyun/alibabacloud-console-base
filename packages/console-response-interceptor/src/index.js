@@ -1,9 +1,9 @@
 import alert from './alert'
-import WidgetAPILogger from './logger'
+import APILogger from './Logger'
 
 function consoleResponseInterceptor(response) {
   // Init a logger and send api log to sls server.
-  const logger = new WidgetAPILogger()
+  const logger = new APILogger()
   logger.log(response)
 
   const { data: apiResponseData } = response
