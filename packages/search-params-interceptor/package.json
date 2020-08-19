@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/search-params-interceptor",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Transform request data to URLSearchParams",
   "main": "lib/index.js",
   "scripts": {
