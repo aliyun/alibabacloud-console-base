@@ -3,10 +3,8 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import PropTypes from 'prop-types'
 import { Dialog, Slider, Icon } from '@alicloud/console-components'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import {
-  getLocale,
-  getStylePrefixForWindComponent,
-} from '@alicloud/widget-utils-console'
+import { getLocale } from '@alicloud/one-console-utils'
+import { getStylePrefixForWindComponent } from '@alicloud/widget-utils-console'
 import getMessages from './locales/messages'
 
 const style = {
