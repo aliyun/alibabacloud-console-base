@@ -25,6 +25,10 @@ import getStaticApiResult from './getStaticApiResult'
 import getOpenStatusList from './getOpenStatusList'
 import getOpenStatus from './getOpenStatus'
 import getWindMessages from './getWindMessages'
+import getCookieItem from './getCookieItem'
+import getFecsToken from './getFecsToken'
+import getFecsUmid from './getFecsUmid'
+import getCurrentRegionId from './getCurrentRegionId'
 
 export {
   getGlobalVariable,
@@ -54,4 +58,8 @@ export {
   getOpenStatusList,
   getOpenStatus,
   getWindMessages,
+  getCookieItem,
+  getFecsToken,
+  getFecsUmid,
+  getCurrentRegionId,
 }
