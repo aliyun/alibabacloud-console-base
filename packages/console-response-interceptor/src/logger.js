@@ -1,6 +1,5 @@
 import Logger from '@alicloud/widget-logger'
 import { getWidgetInfo } from '@alicloud/widget-utils-console'
-import { URLSearchParams } from '@alicloud/search-params-interceptor'
 
 /**
  * MODEL

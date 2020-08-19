@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { URLSearchParams } from '@alicloud/search-params-interceptor'
 import defaultOptions from './defaultOptions'
 import getVerifyInformation from './getVerifyInformation'
 import {
