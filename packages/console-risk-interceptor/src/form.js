@@ -6,7 +6,9 @@ import {
   getSecToken,
   getUmid,
   getCollina,
-} from '@alicloud/widget-utils-console'
+  getFecsToken,
+  getFecsUmid,
+} from '@alicloud/one-console-utils'
 import searchParamsInterceptor from '@alicloud/search-params-interceptor'
 import messages from './messages'
 import defaultOptions from './defaultOptions'
@@ -50,14 +52,14 @@ class VerifyForm extends Component {
     this.startCountdownTimer()
 
     const {
-      options: { codeType, verifyType },
+      options: { codeType, verifyType, useCors },
       setRequestId,
     } = this.props
     const reqData = {
       codeType,
       verifyType,
-      sec_token: getSecToken(),
-      umid: getUmid(),
+      sec_token: useCors ? getFecsToken() : getSecToken(),
+      umid: useCors ? getFecsUmid() : getUmid(),
       collina: getCollina(),
     }
 
@@ -172,6 +174,7 @@ VerifyForm.propTypes = {
     verifyType: PropTypes.string,
     verifyDetail: PropTypes.string,
     isVerifyCodeValid: PropTypes.bool,
+    useCors: PropTypes.bool,
   }),
   setRequestId: PropTypes.func,
   setVerifyCode: PropTypes.func,
