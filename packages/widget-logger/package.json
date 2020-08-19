@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/widget-logger",
-  "version": "0.1.5",
+  "version": "0.2.1",
   "description": "A log library for widget.",
   "main": "lib/index.js",
   "directories": {
@@ -24,7 +24,6 @@
     "@babel/preset-env": "^7.4.5"
   },
   "dependencies": {
-    "@alicloud/widget-utils-console": "^0.1.5",
     "@babel/runtime": "^7.4.5",
     "axios": "^0.18.0",
     "ua-parser-js": "^0.7.21"
