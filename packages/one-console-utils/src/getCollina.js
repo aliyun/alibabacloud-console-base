@@ -20,7 +20,7 @@ function getDefaultCollina() {
     UA_Opt.Flag = 97422
   }
 
-  let tmp_ua = UA_Opt.LogVal
+  let tmp_ua = window[UA_Opt.LogVal] || UA_Opt.LogVal
   UA_Opt.Token = new Date().getTime() + ':' + Math.random()
   UA_Opt.reload && UA_Opt.reload()
 
