@@ -1,7 +1,4 @@
-import URLSearchParams from 'url-search-params'
 import forIn from 'lodash.forin'
-
-export { URLSearchParams }
 
 // This is an axios request interceptor
 // By using this interceptor, user can transform normal JavaScript data object

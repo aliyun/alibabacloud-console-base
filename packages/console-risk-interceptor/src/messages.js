@@ -1,6 +1,6 @@
-import { getLocale } from '@alicloud/widget-utils-console'
+import { getLocale } from '@alicloud/one-console-utils'
 
-const locale = getLocale() || 'en-US'
+const locale = getLocale()
 /* eslint-disable max-len */
 const messages = {
   // 英文文案

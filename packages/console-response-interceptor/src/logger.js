@@ -1,16 +1,14 @@
 import Logger from '@alicloud/widget-logger'
-import { getWidgetInfo } from '@alicloud/widget-utils-console'
-import { URLSearchParams } from '@alicloud/search-params-interceptor'
+// TODO
+// unify api log data structure and report endpoint
 
 /**
  * MODEL
  * loc: http://127.0.0.1:12306
  * ua: xxx
  * uid: xxx
- * parent_uid: xxx
  * id: widget-test
  * version: 1.6.1
- * loader: 3.3.0
  *
  * start_time: 1561965371356
  * end_time: 1561965371356
@@ -21,11 +19,14 @@ import { URLSearchParams } from '@alicloud/search-params-interceptor'
  * api: /data/api.json?action=DescribeVpcs
  * success: 1
  */
-const {
-  id = process.env.WIDGET_ID,
-  version = process.env.WIDGET_VER,
-  loader,
-} = getWidgetInfo()
+
+let id, version
+try {
+  id = process.env.WIDGET_ID
+  version = process.env.WIDGET_VER
+} catch (e) {
+  // do nothing
+}
 
 class APILogger extends Logger {
   constructor(opts) {
@@ -116,11 +117,12 @@ class APILogger extends Logger {
     }
 
     // Loader Info
-    this._superLog({
-      id,
-      version,
-      loader,
-    })
+    id &&
+      version &&
+      this._superLog({
+        id,
+        version,
+      })
 
     this.send()
   }
