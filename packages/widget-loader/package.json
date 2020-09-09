@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/widget-loader",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "",
   "main": "lib/index.js",
   "directories": {
@@ -22,8 +22,8 @@
     "react": "^16.13.1"
   },
   "dependencies": {
-    "@alicloud/browsing-context": "^0.1.0",
-    "@alicloud/widget-logger": "^0.2.0",
+    "@alicloud/browsing-context": "^0.1.1",
+    "@alicloud/widget-logger": "^0.3.0",
     "@babel/runtime": "^7.10.4",
     "hoist-non-react-statics": "^3.3.2",
     "react-loading-skeleton": "^2.1.1"

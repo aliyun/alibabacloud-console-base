@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { URLSearchParams } from '@alicloud/search-params-interceptor'
 
 const axiosInstance = axios.create()
 

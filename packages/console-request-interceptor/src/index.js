@@ -2,10 +2,10 @@ import {
   getSecToken,
   getUmid,
   getCollina,
-} from '@alicloud/widget-utils-console'
-import getActiveRegionId from './utils/getActiveRegionId'
-import getFecsXsrfToken from './utils/getFecsXsrfToken'
-import getFecsUmid from './utils/getFecsUmid'
+  getFecsToken,
+  getFecsUmid,
+  getCurrentRegionId,
+} from '@alicloud/one-console-utils'
 
 // FECS 支持跨域的 CORS 请求
 const CORS_BASE_URL = 'https://fecs.console.aliyun.com'
@@ -95,14 +95,14 @@ function getRegion(data) {
       }
     }
   }
-  return getActiveRegionId()
+  return getCurrentRegionId()
 }
 
 // 必填缺省参数补全并格式化部分参数
 function fillExtraParams(data, useCors) {
   return {
     ...data,
-    sec_token: useCors ? getFecsXsrfToken() : getSecToken(),
+    sec_token: useCors ? getFecsToken() : getSecToken(),
     umid: useCors ? getFecsUmid() : getUmid(),
     collina: getCollina(),
     region: getRegion(data),

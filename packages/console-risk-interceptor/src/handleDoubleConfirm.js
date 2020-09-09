@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { URLSearchParams } from '@alicloud/search-params-interceptor'
 import defaultOptions from './defaultOptions'
 import getVerifyInformation from './getVerifyInformation'
 import {
@@ -61,6 +60,7 @@ async function handleDoubleConfirm(response) {
       verifyDetail,
       codeType,
       lastRequestId, // 上一次 requestId，如果未曾发送过验证码则为 undefined
+      useCors: response.config.useCors,
     }
     try {
       // 获取风控的验证信息
