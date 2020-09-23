@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-request-interceptor",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "axios request interceptor for one-console",
   "main": "lib/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "woota<wutayunfan@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@alicloud/one-console-utils": "^0.1.5",
+    "@alicloud/one-console-utils": "^0.1.6",
     "@babel/runtime": "^7.9.2"
   },
   "devDependencies": {
