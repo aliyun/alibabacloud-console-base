@@ -4,11 +4,13 @@ const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const common = require('./webpack.common')
 const getAbc = require('../utils/getAbc')
-const { cwd, aliyun_console_config, i18n_messages } = require('../cons')
+const { cwd } = require('../cons')
+const getConsoleConfig = require('../utils/getConsoleConfig')
+const getI18nMessages = require('../utils/getI18nMessages')
+const getHtmlTplPath = require('../utils/getHtmlTplPath')
 const isTypescript = require('../utils/isTypescript')
 const babelPresets = require('./babelPresets')
 const babelPlugins = require('./babelPlugins')
-
 
 module.exports = merge(common, {
   mode: 'development',
@@ -38,41 +40,42 @@ module.exports = merge(common, {
       {
         test: /\.m?jsx?$/,
         include: /node_modules/,
-        use: ['react-hot-loader/webpack']
+        use: ['react-hot-loader/webpack'],
       },
       isTypescript()
-        ? { // tsc
-          test: /\.tsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'awesome-typescript-loader'
+        ? {
+            // tsc
+            test: /\.tsx?$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'awesome-typescript-loader',
+            },
           }
-        }
-        : { // babel
-          test: /\.m?jsx?$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: babelPresets,
-              plugins: [
-                ...babelPlugins,
-                [
-                  require.resolve('react-hot-loader/babel')
-                ]
-              ]
-            }
+        : {
+            // babel
+            test: /\.m?jsx?$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: babelPresets,
+                plugins: [
+                  ...babelPlugins,
+                  [require.resolve('react-hot-loader/babel')],
+                ],
+              },
+            },
           },
-        }
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../assets/tpl.html'),
+      template: getHtmlTplPath(),
+      // @ deprecate
       templateParameters: {
-        aliyun_console_config: JSON.stringify(aliyun_console_config),
-        i18n_messages: JSON.stringify(i18n_messages)
-      }
+        aliyun_console_config: JSON.stringify(getConsoleConfig()),
+        i18n_messages: JSON.stringify(getI18nMessages()),
+      },
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

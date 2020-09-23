@@ -1,0 +1,37 @@
+{
+  "name": "@alicloud/console-request",
+  "version": "0.3.0",
+  "description": "Request SDK for OneConsole",
+  "main": "src/index.js",
+  "scripts": {
+    "compile": "babel src --out-dir lib --root-mode upward",
+    "prepare": "npm run compile"
+  },
+  "keywords": [
+    "widget",
+    "request",
+    "fetch"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/console-mock-interceptor": "^0.1.5",
+    "@alicloud/console-mock-json-file-interceptor": "^0.2.0",
+    "@alicloud/console-request-interceptor": "^0.1.6",
+    "@alicloud/console-response-interceptor": "^0.3.0",
+    "@alicloud/console-risk-interceptor": "^0.2.0",
+    "@alicloud/fecs-csrf-token-error-interceptor": "^0.2.0",
+    "@alicloud/search-params-interceptor": "^0.2.0",
+    "@babel/runtime": "^7.9.2",
+    "axios": "0.18.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

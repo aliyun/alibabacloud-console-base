@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { URLSearchParams } from '@alicloud/search-params-interceptor'
 import defaultOptions from './defaultOptions'
 import getVerifyInformation from './getVerifyInformation'
 import {
@@ -61,6 +60,7 @@ async function handleDoubleConfirm(response) {
       verifyDetail,
       codeType,
       lastRequestId, // 上一次 requestId，如果未曾发送过验证码则为 undefined
+      useCors: response.config.useCors,
     }
     try {
       // 获取风控的验证信息
@@ -71,12 +71,21 @@ async function handleDoubleConfirm(response) {
       lastRequestId = requestId
     } catch (e) {
       console.error('[getVerifyInformation] failed: ', e.message)
+      if (e.message === 'Verification has been canceled!') {
+        // 如果风控验证被取消，那触发风控的请求则默认失败
+        // 因为风控验证本身就已经是该请求失败的一个显现了
+        // 我们把 responseInterceptor 关注的 ignoreError 置为 true
+        // 它就不会再提示这个错误，这个 response 会返回到业务层，处理或不被处理
+        response.config.ignoreError = true
+      }
       return response
     }
 
     try {
       // 拿出上一次请求的参数
-      const { config: { data: reqDataString, url: reqUrl } } = response
+      const {
+        config: { data: reqDataString, url: reqUrl },
+      } = response
       const reqData = new URLSearchParams(reqDataString)
       // 添加我们的风控参数
       reqData.append('verifyType', verifyType)

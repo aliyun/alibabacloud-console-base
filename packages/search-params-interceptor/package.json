@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/search-params-interceptor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Transform request data to URLSearchParams",
   "main": "lib/index.js",
   "scripts": {
@@ -16,13 +16,15 @@
   "author": "woota<wutayunfan@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "lodash.forin": "^4.4.0",
-    "url-search-params": "^1.1.0"
+    "lodash.forin": "^4.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "gitHead": "849e4a23b7103c6cd68dd5ea62b71445b3ddfbdb"
 }

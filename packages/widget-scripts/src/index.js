@@ -1,15 +1,12 @@
 const minimist = require('minimist')
 
 module.exports = () => {
-  const args = minimist(
-    process.argv.slice(2),
-    {
-      alias: {
-        'P': 'port', // Capital "P" for port
-        'H': 'host', // Capital "H" for host
-      }
-    }
-  )
+  const args = minimist(process.argv.slice(2), {
+    alias: {
+      P: 'port', // Capital "P" for port
+      H: 'host', // Capital "H" for host
+    },
+  })
   const cmd = args._[0]
 
   switch (cmd) {
@@ -20,6 +17,7 @@ module.exports = () => {
       require('./cmds/build')(args)
       break
     default:
+      // eslint-disable-next-line no-console
       console.error(`"${cmd}" is not a valid command!`)
       break
   }

@@ -1,3 +1,6 @@
-import createLoader from './createLoader'
+import Logger from '@alicloud/widget-logger'
+import Loader from './Loader'
 
-export default createLoader
+export { Logger }
+
+export default Loader

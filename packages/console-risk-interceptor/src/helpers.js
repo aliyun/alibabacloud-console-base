@@ -3,13 +3,11 @@ import { Dialog } from '@alicloud/console-components'
 import messages from './messages'
 import defaultOptions from './defaultOptions'
 
-
 const { url: verifyUrl } = defaultOptions
 
 function gotoSetVerificationMethod() {
   window.open(verifyUrl.bindMobileHelp, '_blank')
 }
-
 
 function confirmSettingFinish(verifyMessages) {
   Dialog.confirm({

@@ -1,0 +1,15 @@
+// A fix for window.location.origin in Internet Explorer
+function getOrigin() {
+  if (window.location.origin) {
+    return window.location.origin
+  }
+  return `${window.location.protocol}//${window.location.hostname}${
+    window.location.port ? ':' + window.location.port : ''
+  }`
+}
+
+function getLocation() {
+  return `${getOrigin()}${window.location.pathname}`
+}
+
+export default getLocation

@@ -1,36 +1,27 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "jest": true,
-        "node": true
+  env: {
+    browser: true,
+    es6: true,
+    jest: true,
+    node: true,
+  },
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier'],
+  plugins: ['react-hooks', 'prettier'],
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
     },
-    "extends": "eslint:recommended",
-    "plugins": [
-        "react-hooks"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+  },
+  settings: {
+    react: {
+      version: '16.x',
     },
-    "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
-        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-        "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
-    }
-};
+  },
+  rules: {
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
+    'prettier/prettier': 'error',
+  },
+}

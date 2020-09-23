@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/widget-logger",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A log library for widget.",
   "main": "lib/index.js",
   "directories": {
@@ -18,18 +18,17 @@
   "author": "woota<wutayunfan@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@alicloud/widget-utils-console": "^0.1.0",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/plugin-transform-runtime": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "axios": "^0.18.0"
+    "@babel/preset-env": "^7.4.5"
   },
   "dependencies": {
-    "@babel/runtime": "^7.4.5"
+    "@babel/runtime": "^7.4.5",
+    "axios": "^0.18.0",
+    "ua-parser-js": "^0.7.21"
   },
-  "peerDependencies": {
-    "@alicloud/widget-utils-console": "^0.1.0",
-    "axios": "^0.18.0"
+  "publishConfig": {
+    "access": "public"
   }
 }

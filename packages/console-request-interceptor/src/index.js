@@ -1,9 +1,11 @@
 import {
   getSecToken,
   getUmid,
-  getCollina
-} from '@alicloud/widget-utils-console'
-import getActiveRegionId from './utils/getActiveRegionId'
+  getCollina,
+  getFecsToken,
+  getFecsUmid,
+  getCurrentRegionId,
+} from '@alicloud/one-console-utils'
 
 // FECS 支持跨域的 CORS 请求
 const CORS_BASE_URL = 'https://fecs.console.aliyun.com'
@@ -11,24 +13,15 @@ const CORS_BASE_URL = 'https://fecs.console.aliyun.com'
 const BASE_URL = '/'
 // One-console 各类接口 url 映射表
 const API_URL = {
-  open: [
-    'data/api.json',
-    'data/multiApi.json'
-  ],
-  inner: [
-    'data/innerApi.json',
-    'data/multiInnerApi.json'
-  ],
-  app: [
-    'data/call.json',
-    'data/multiCall.json'
-  ]
+  open: ['data/api.json', 'data/multiApi.json'],
+  inner: ['data/innerApi.json', 'data/multiInnerApi.json'],
+  app: ['data/call.json', 'data/multiCall.json'],
 }
 
 /**
  * Axios intercetor
  * One-console request pre-processor
- * @param {*} config 
+ * @param {*} config
  */
 function consoleRequestInterceptor(config) {
   // 如果传入了 url，且不在我们检查的 url 范围内，提前返回不作处理
@@ -39,14 +32,12 @@ function consoleRequestInterceptor(config) {
   const multi = isMulti(config.data)
   // 检查参数格式是否正确
   checkArguments(config.data, multi)
+
+  let nextData
   // 补全缺省必填参数并修正参数格式
+  nextData = fillExtraParams(config.data, config.useCors)
   // params 与 actions 需要 JSON.stringify
-  const nextData = processData(config.data, [
-    'sec_token',
-    'collina',
-    'umid',
-    'region'
-  ])
+  nextData = formatData(nextData)
 
   // 返回新的 config 对象
   return {
@@ -78,10 +69,12 @@ function isMulti(data) {
   return false
 }
 
-// fecs 暂时不支持 url 后面跟 "?action" 标示，暂时去掉，如果后面支持再加回来
-function getURL(apiType = 'open', multi) {
+function getURL(apiType = 'open', multi, description) {
   const urls = API_URL[apiType]
   // 添加一个 url 参数方便调试
+  if (description) {
+    return `${multi ? urls[1] : urls[0]}?__action=${description}`
+  }
   return `${multi ? urls[1] : urls[0]}`
 }
 
@@ -89,41 +82,41 @@ function getURL(apiType = 'open', multi) {
 function getRegion(data) {
   const multi = isMulti(data)
   if (!multi) {
-    const { params: { RegionId } = {}} = data
+    const { params: { RegionId } = {} } = data
     if (RegionId) {
       return RegionId
     }
   } else {
     const { actions } = data
-    for(const action of actions) {
+    for (const action of actions) {
       const { params: { RegionId } = {} } = action
       if (RegionId) {
         return RegionId
       }
     }
   }
-  return getActiveRegionId()
+  return getCurrentRegionId()
 }
 
 // 必填缺省参数补全并格式化部分参数
-const utilsMap = {
-  sec_token: getSecToken,
-  collina: getCollina,
-  umid: getUmid,
-  region: getRegion
+function fillExtraParams(data, useCors) {
+  return {
+    ...data,
+    sec_token: useCors ? getFecsToken() : getSecToken(),
+    umid: useCors ? getFecsUmid() : getUmid(),
+    collina: getCollina(),
+    region: getRegion(data),
+  }
 }
-function processData(data, keys = []) {
+
+function formatData(data) {
   const nextData = { ...data }
-  keys.forEach(key => {
-    if (typeof nextData[key] === 'undefined') {
-      // 只有 getRegion 需要参数
-      // 其它方法会忽略参数 data
-      nextData[key] = utilsMap[key] && utilsMap[key](data)
-    }
-  })
-  // stringify `params` 与 `actions`
+  // stringify `params`，`content` 与 `actions`
   if (nextData.params) {
     nextData.params = JSON.stringify(nextData.params)
+  }
+  if (nextData.content) {
+    nextData.content = JSON.stringify(nextData.content)
   }
   if (nextData.actions) {
     nextData.actions = JSON.stringify(nextData.actions)
@@ -143,9 +136,7 @@ function checkArguments(data, multi) {
 // 检查单接口入参
 function checkArgumentsForApi({ product, action }) {
   if (!product) {
-    throw new Error(
-      'You must specify which product\'s api you want to call'
-    )
+    throw new Error("You must specify which product's api you want to call")
   }
   if (!action) {
     throw new Error('You must specify which api you want to call')
@@ -155,9 +146,7 @@ function checkArgumentsForApi({ product, action }) {
 // 检查多接口入参
 function checkArgumentsForMultiApi({ product, actions }) {
   if (!product) {
-    throw new Error(
-      'You must specify which product\'s api you want to call'
-    )
+    throw new Error("You must specify which product's api you want to call")
   }
   if (!Array.isArray(actions)) {
     throw new TypeError('Actions must be an array')

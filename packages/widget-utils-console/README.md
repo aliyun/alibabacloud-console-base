@@ -1,5 +1,6 @@
 # @alicloud/widget-utils-console
-提供给 Widget 用以获取其执行环境相关信息的工具🔧包。
+
+提供给 Widget 用以获取其执行环境相关信息的工具 🔧 包。
 
 Utils
 名称|说明|返回值
@@ -27,6 +28,3 @@ getWidgetI18nMessages|获取 widget 自身的多语言文案，widget loader 提
 getChannelLinkList|获取 widget 的渠道链接数据，widget loader 提供|object
 getChannelFeatureList|获取 widget 的功能开关数据，widget loader 提供|object
 getWidgetInfo|获取 widget 自身运行时的信息，widget loader 提供|object
-
-
-

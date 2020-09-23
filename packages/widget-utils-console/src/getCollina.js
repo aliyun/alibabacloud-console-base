@@ -2,7 +2,7 @@ function getCollina() {
   let UA_Opt = window.UA_Opt
 
   // Fallback
-  if(!UA_Opt){
+  if (!UA_Opt) {
     UA_Opt = {}
     UA_Opt.SendMethod = 8
     UA_Opt.LogVal = 'aliyunbuy_uadata'

@@ -5,13 +5,18 @@ const webpackDevServer = require('webpack-dev-server')
 const chalk = require('chalk')
 const openBrowser = require('../utils/openBrowser')
 const defaultConfig = require('../config/webpack.dev')
-const { cwd, merge_webpack_config } = require('../cons')
+const { cwd } = require('../cons')
+const getWebpackConfig = require('../utils/getWebpackConfig')
+const getVersion = require('../utils/getVersion')
+const getId = require('../utils/getId')
 
 module.exports = (args) => {
-  const mergedConfig = merge_webpack_config(
+  const mergedConfig = getWebpackConfig()(
     defaultConfig,
     {
-      mode: defaultConfig.mode
+      mode: defaultConfig.mode,
+      id: getId(),
+      version: getVersion(),
     },
     merge
   )
@@ -26,16 +31,16 @@ module.exports = (args) => {
       entry: [
         `webpack-dev-server/client?http://0.0.0.0:${port}`,
         'webpack/hot/only-dev-server',
-        path.join(cwd, './demo')
-      ]
+        path.join(cwd, './demo'),
+      ],
     },
     mergedConfig,
     {
       // Cmd argument first
       devServer: {
         port,
-        host
-      }
+        host,
+      },
     }
   )
 
@@ -43,10 +48,13 @@ module.exports = (args) => {
   const server = new webpackDevServer(compiler, config.devServer)
 
   server.listen(port, host, () => {
-    console.log(
-      chalk.cyan(`Starting the development server...\n`)
-    )
+    // eslint-disable-next-line no-console
+    console.log(chalk.cyan(`Starting the development server...\n`))
     // Open browser after server had been started
-    openBrowser(`http://${host}:${port}`)
+    if (config.devServer.https) {
+      openBrowser(`https://${host}:${port}`)
+    } else {
+      openBrowser(`http://${host}:${port}`)
+    }
   })
 }
