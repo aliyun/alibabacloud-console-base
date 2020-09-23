@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-response-interceptor",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Get request data from the response.",
   "main": "lib/index.js",
   "directories": {
@@ -26,7 +26,7 @@
     "@babel/preset-react": "^7.0.0"
   },
   "dependencies": {
-    "@alicloud/one-console-utils": "^0.1.5",
+    "@alicloud/one-console-utils": "^0.1.6",
     "@alicloud/widget-logger": "^0.3.0",
     "@babel/runtime": "^7.4.3",
     "react-copy-to-clipboard": "^5.0.2"
