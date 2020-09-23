@@ -1,11 +1,11 @@
 {
   "name": "@alicloud/widget-utils-console",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "控制台相关的工具函数",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel src --out-dir lib",
-    "prepublishOnly": "npm run compile"
+    "prepare": "npm run compile"
   },
   "keywords": [
     "widget",
@@ -20,7 +20,9 @@
     "@babel/preset-env": "^7.4.3"
   },
   "dependencies": {
-    "@alicloud/one-console-utils": "^1.1.0"
+    "@alicloud/one-console-utils": "^0.1.5"
   },
-  "gitHead": "849e4a23b7103c6cd68dd5ea62b71445b3ddfbdb"
+  "publishConfig": {
+    "access": "public"
+  }
 }

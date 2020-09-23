@@ -20,7 +20,8 @@ function getVerifyInformation(options) {
     const { title } = messages[verifyType]
 
     try {
-      Dialog.confirm({ // 弹出对话框
+      Dialog.confirm({
+        // 弹出对话框
         title,
         content: (
           <Form
@@ -40,8 +41,11 @@ function getVerifyInformation(options) {
               vCode: verifyCode,
             })
           } else {
-            console.warn( // eslint-disable-line no-console
-              '[getVerifyInformation] failed: ', requestId, verifyCode
+            // eslint-disable-next-line no-console
+            console.warn(
+              '[getVerifyInformation] failed: ',
+              requestId,
+              verifyCode
             )
           }
           return false

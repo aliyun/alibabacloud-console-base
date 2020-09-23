@@ -3,9 +3,7 @@
  */
 const getAbc = require('../utils/getAbc')
 // Get build options from abc.json
-const {
-  library
-} = getAbc()
+const { library } = getAbc()
 
 module.exports = {
   /**
@@ -42,13 +40,21 @@ module.exports = {
     amd: '@alicloud/console-components',
   },
   '@alicloud/console-components-intl/lib/Provider': {
-    root: ['WidgetWindRuntime', 'default', '@alicloud/console-components-intl/lib/Provider'],
+    root: [
+      'WidgetWindRuntime',
+      'default',
+      '@alicloud/console-components-intl/lib/Provider',
+    ],
     commonjs2: '@alicloud/console-components-intl/lib/Provider',
     commonjs: '@alicloud/console-components-intl/lib/Provider',
     amd: '@alicloud/console-components-intl/lib/Provider',
   },
   '@alicloud/console-components-intl/lib/withRcIntl': {
-    root: ['WidgetWindRuntime', 'default', '@alicloud/console-components-intl/lib/withRcIntl'],
+    root: [
+      'WidgetWindRuntime',
+      'default',
+      '@alicloud/console-components-intl/lib/withRcIntl',
+    ],
     commonjs2: '@alicloud/console-components-intl/lib/withRcIntl',
     commonjs: '@alicloud/console-components-intl/lib/withRcIntl',
     amd: '@alicloud/console-components-intl/lib/withRcIntl',
@@ -85,10 +91,10 @@ module.exports = {
    * Widget itself should not have its own loader, if it need the loader to
    * load another widget, it should use the loader that comes above.
    */
-  '@alicloud/widget-loader': {
-    root: 'AliyunWidgetLoader',
-    commonjs2: '@alicloud/widget-loader',
-    commonjs: '@alicloud/widget-loader',
-    amd: '@alicloud/widget-loader'
-  }
+  '@alicloud/widget-import-console': {
+    root: 'AliyunWidgetImportConsole',
+    commonjs2: '@alicloud/widget-import-console',
+    commonjs: '@alicloud/widget-import-console',
+    amd: '@alicloud/widget-import-console',
+  },
 }

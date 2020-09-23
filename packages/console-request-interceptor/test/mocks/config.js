@@ -2,8 +2,8 @@ export const config = {
   method: 'get',
   url: '/data/config.json',
   data: {
-    key: 'value'
-  }
+    key: 'value',
+  },
 }
 
 export const correctApi = {
@@ -11,9 +11,9 @@ export const correctApi = {
     product: 'vpc',
     action: 'DescribeVpcs',
     params: {
-      RegionId: 'es-us-1'
-    }
-  }
+      RegionId: 'es-us-1',
+    },
+  },
 }
 
 export const incorrectApi = {
@@ -23,9 +23,9 @@ export const incorrectApi = {
     product: 'vpc',
     action: 'DescribeVpcs',
     params: {
-      RegionId: 'we-us-1'
-    }
-  }
+      RegionId: 'we-us-1',
+    },
+  },
 }
 
 export const correctMultiApi = {
@@ -34,16 +34,15 @@ export const correctMultiApi = {
     actions: [
       {
         action: 'a',
-        params: {}
+        params: {},
       },
       {
         action: 'b',
-        params: {}
-      }
-    ]
-  }
+        params: {},
+      },
+    ],
+  },
 }
-
 
 /**
  * Below are edge cases
@@ -59,10 +58,10 @@ export const edgeCase1 = {
     actions: [
       {
         action: 'a',
-        params: {}
-      }
-    ]
-  }
+        params: {},
+      },
+    ],
+  },
 }
 
 export const edgeCase2 = {
@@ -70,39 +69,39 @@ export const edgeCase2 = {
   data: {
     product: 'vpc',
     action: 'a',
-    params: {}
-  }
+    params: {},
+  },
 }
 
 // Check data
 export const apiWithoutProduct = {
   data: {
-    action: 'a'
-  }
+    action: 'a',
+  },
 }
 export const apiWithoutAction = {
   data: {
-    product: 'vpc'
-  }
+    product: 'vpc',
+  },
 }
 export const multiApiWithoutProduct = {
   data: {
-    actions: []
-  }
+    actions: [],
+  },
 }
 export const multiApiWrongAction = {
   data: {
     product: 'vpc',
-    actions: 'a'
-  }
+    actions: 'a',
+  },
 }
 export const multiApiWithoutActionInActions = {
   data: {
     product: 'vpc',
     actions: [
       {
-        params: {}
-      }
-    ]
-  }
+        params: {},
+      },
+    ],
+  },
 }

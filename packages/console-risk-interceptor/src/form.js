@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Input, Grid, Form } from '@alicloud/console-components'
 import axios from 'axios'
-import { getSecToken, getUmid, getCollina } from '@alicloud/widget-utils-console'
+import {
+  getSecToken,
+  getUmid,
+  getCollina,
+  getFecsToken,
+  getFecsUmid,
+} from '@alicloud/one-console-utils'
 import searchParamsInterceptor from '@alicloud/search-params-interceptor'
 import messages from './messages'
 import defaultOptions from './defaultOptions'
@@ -17,7 +23,6 @@ const axiosInstance = axios.create()
 axiosInstance.interceptors.request.use(searchParamsInterceptor)
 
 const { url: verifyUrl } = defaultOptions
-
 
 class VerifyForm extends Component {
   constructor(props) {
@@ -46,12 +51,15 @@ class VerifyForm extends Component {
   async onGenerateVerifyCode() {
     this.startCountdownTimer()
 
-    const { options: { codeType, verifyType }, setRequestId } = this.props
+    const {
+      options: { codeType, verifyType, useCors },
+      setRequestId,
+    } = this.props
     const reqData = {
       codeType,
       verifyType,
-      sec_token: getSecToken(),
-      umid: getUmid(),
+      sec_token: useCors ? getFecsToken() : getSecToken(),
+      umid: useCors ? getFecsUmid() : getUmid(),
       collina: getCollina(),
     }
 
@@ -63,7 +71,9 @@ class VerifyForm extends Component {
         timeout: 15000,
       })
 
-      const { data: { data: resData } } = res
+      const {
+        data: { data: resData },
+      } = res
       if (!resData) {
         throw new Error('[generateVerifyCode] failed')
       }
@@ -109,14 +119,10 @@ class VerifyForm extends Component {
       ...messages.others,
     }
 
-    const {
-      isCountdownStarted,
-      countdown,
-    } = this.state
-
+    const { isCountdownStarted, countdown } = this.state
 
     return (
-      <Form style={{ width: '400px' }}>
+      <Form style={{ width: '500px' }} labelTextAlign="right">
         <Form.Item label={verifyMessages.detailDescription} {...ItemLayout}>
           <div className="next-form-text-align">
             <span>{verifyDetail} </span>
@@ -141,19 +147,19 @@ class VerifyForm extends Component {
             </Col>
             {
               // sms or email时，才需要发送行为
-              verifyType !== 'ga' ?
+              verifyType !== 'ga' ? (
                 <Col>
-                  {
-                    isCountdownStarted ?
-                      <Button disabled>
-                        {`${verifyMessages.reSend.replace('{s}', countdown)}`}
-                      </Button> :
-                      <Button onClick={this.onGenerateVerifyCode}>
-                        {verifyMessages.sendCode}
-                      </Button>
-                  }
-                </Col> :
-                null
+                  {isCountdownStarted ? (
+                    <Button disabled>
+                      {`${verifyMessages.reSend.replace('{s}', countdown)}`}
+                    </Button>
+                  ) : (
+                    <Button onClick={this.onGenerateVerifyCode}>
+                      {verifyMessages.sendCode}
+                    </Button>
+                  )}
+                </Col>
+              ) : null
             }
           </Row>
         </Form.Item>
@@ -168,6 +174,7 @@ VerifyForm.propTypes = {
     verifyType: PropTypes.string,
     verifyDetail: PropTypes.string,
     isVerifyCodeValid: PropTypes.bool,
+    useCors: PropTypes.bool,
   }),
   setRequestId: PropTypes.func,
   setVerifyCode: PropTypes.func,

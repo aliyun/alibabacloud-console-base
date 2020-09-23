@@ -1,19 +1,26 @@
 # @alicloud/search-params-interceptor
+
 `axios`<sup>1</sup> 请求拦截器（request.interceptor<sup>2</sup>），用于把请求的参数对象转化为 URLSearchParams<sup>3</sup> 对象，然后再发送给 **server** 端。
 
 ## 用法
+
 先使用 **npm** 进行安装
+
 ```
 npm install --save @alicloud/search-params-interceptor
 ```
-然后 `import` 进来传递给 `axios`
+
+然后  `import` 进来传递给 `axios`
+
 ```js
 import axios from 'axios'
 import searchParamsInterceptor from '@alicloud/search-params-interceptor'
 
 axios.interceptors.request.use(searchParamsInterceptor)
 ```
+
 或传递给 `axios` 的一个实例
+
 ```js
 import axios from 'axios'
 import searchParamsInterceptor from '@alicloud/search-params-interceptor'
@@ -22,7 +29,8 @@ const instance = axios.create()
 instance.interceptors.request.use(searchParamsInterceptor)
 ```
 
-## 项目结构
+## 项目结构 
+
 ```
 lib/                    # babel 转义后的代码
 node_modules/
@@ -37,6 +45,7 @@ README.md               # 项目说明
 ```
 
 ## 注释
+
 1. [axios 文档](https://github.com/axios/axios)
 2. [axios 拦截器（interceptor）](https://github.com/axios/axios#interceptors)
 3. [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)

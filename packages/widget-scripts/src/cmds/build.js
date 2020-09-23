@@ -7,7 +7,7 @@ module.exports = () => {
   execSync(
     `webpack --config ${configPath} --progress --bail --display-error-details`,
     {
-      stdio: 'inherit'
+      stdio: 'inherit',
     }
   )
 }

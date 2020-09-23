@@ -1,7 +1,6 @@
 const useMocks = ['localhost', '127.0.0.1'].includes(location.hostname)
 
 function consoleMockInterceptor(alias) {
-
   // If user set alias, then replace the corresponding `product` in data
   // If not, return the origin data
   function getNextData(data) {
@@ -11,7 +10,7 @@ function consoleMockInterceptor(alias) {
       if (useMocks && alias && product && alias[product]) {
         return {
           ...data,
-          product: alias[product]
+          product: alias[product],
         }
       }
       return data
@@ -30,8 +29,8 @@ function consoleMockInterceptor(alias) {
     if (!oneConsoleApiPattern.test(url)) {
       return url
     }
-    const [ , target ] = /^data\/(.+)\.json/.exec(url)
-    
+    const [, target] = /^data\/(.+)\.json/.exec(url)
+
     // multi
     if (target.indexOf('multi') !== -1) {
       return url.replace(target, 'multiApi')
@@ -39,7 +38,7 @@ function consoleMockInterceptor(alias) {
     return url.replace(target, 'api')
   }
 
-  return function ({ url, baseURL = '/', data, ...restConfig}) {
+  return function ({ url, baseURL = '/', data, ...restConfig }) {
     if (url) {
       // Strip "/" out of url
       // eg: "/data/api.json" -> "data/api.json"
@@ -52,7 +51,7 @@ function consoleMockInterceptor(alias) {
       baseURL: useMocks
         ? 'https://mocks.alibaba-inc.com/mock/oneconsole'
         : baseURL,
-      data: getNextData(data)
+      data: getNextData(data),
     }
   }
 }

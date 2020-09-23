@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use strict'
 
 var chalk = require('chalk')
@@ -38,7 +39,7 @@ function executeNodeScript(scriptPath, url) {
   const child = spawn('node', [scriptPath, ...extraArgs, url], {
     stdio: 'inherit',
   })
-  child.on('close', code => {
+  child.on('close', (code) => {
     if (code !== 0) {
       console.log()
       console.log(
