@@ -1,0 +1,21 @@
+{
+  "name": "@alicloud/console-base",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "npm-check-updates": "^10.2.2"
+  },
+  "scripts": {
+    "boot": "npm run clean && npm i && npm run lerna:clean && npm run lerna:boot && npm run clean:lock",
+    "clean": "rm -rf node_modules",
+    "clean:lock": "rm -f packages/**/package-lock.json",
+    "lint": "eslint src/ --ext js,ts,tsx",
+    "lint:packages": "eslint packages/**/src/ --ext js,ts,tsx",
+    "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
+    "lerna:clean": "lerna clean --yes",
+    "lerna:boot": "lerna bootstrap --registry http://registry.npm.alibaba-inc.com --hoist",
+    "lerna:build:local": "lerna clean --yes && webpack --bail --progress --profile",
+    "lerna:publish": "lerna publish --registry http://registry.npm.alibaba-inc.com --no-verify-access --no-verify-registry",
+    "ncu:packages": "find packages -type f -name 'package.json' -not -path '*/node_modules/*' -execdir ncu \\;"
+  }
+}

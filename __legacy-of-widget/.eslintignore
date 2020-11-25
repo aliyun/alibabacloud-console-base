@@ -1,0 +1,11 @@
+# common
+
+.*/
+
+# generated
+
+**/archive/*
+**/dist/*
+**/es/*
+**/build/*
+**/coverage/*
