@@ -12,20 +12,20 @@ import {
 } from './rc/h1234';
 import P from './rc/p';
 import Pre from './rc/pre';
-import List from './rc/list';
 import Hr from './rc/hr';
 import Button from './rc/button';
 import {
   InputText,
   InputTextarea
 } from './rc/input';
+import List from './rc/list';
 import {
   CheckboxGroup,
   RadioGroup
 } from './rc/choice-group';
+import CleanJson from './rc/clean-json';
 import LongArticle from './rc/long-article';
 import Flex100HBF from './rc/flex-100hbf';
-import CleanJson from './rc/clean-json';
 
 export {
   H1,
@@ -34,16 +34,16 @@ export {
   H4,
   P,
   Pre,
-  List,
   Hr,
   Button,
   InputText,
   InputTextarea,
+  List,
   CheckboxGroup,
   RadioGroup,
+  CleanJson,
   LongArticle,
-  Flex100HBF,
-  CleanJson
+  Flex100HBF
 };
 
 export type {

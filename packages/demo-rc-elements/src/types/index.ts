@@ -4,8 +4,6 @@ import {
 
 export interface IPropsList extends HTMLAttributes<HTMLOListElement> {
   ordered?: boolean;
-  // @deprecated use children
-  items?: (string | JSX.Element)[];
 }
 
 export interface IChoiceItem<T> {

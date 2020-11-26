@@ -13,7 +13,7 @@
     "react-dom": "^16.14.0"
   },
   "scripts": {
-    "boot": "yarn clean && yarn install && rm yarn.lock",
+    "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
     "boot000": "yarn clean && yarn install && yarn lerna:clean && yarn lerna:boot && yarn clean:lock",
     "clean": "rm -rf node_modules",
     "clean:lock": "rm -f packages/**/package-lock.json",

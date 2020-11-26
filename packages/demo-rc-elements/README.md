@@ -6,18 +6,23 @@
 写 demo 时专用的一些基础元素，带简单的样式，为了写 demo 好看和方便：
 
 * 样式 Only
-    - `<H1>`
-    - `<H2>`
-    - `<H3>`
-    - `<P>`
-    - `<Pre>`
-    - `<Hr>`
-    - `<Button>`
-    - `<InputText>`
-    - `<InputTextarea>`
+    - `H1`
+    - `H2`
+    - `H3`
+    - `H4`
+    - `P`
+    - `Pre`
+    - `Hr`
+    - `Button`
+    - `InputText`
+    - `InputTextarea`
 * 样式 +
-    - `<CleanJson>`
-    - `<List>`
+    - `List`
+    - `CheckboxGroup`
+    - `RadioGroup`
+    - `CleanJson`
+    - `Flex100HBF`
+    - `LongArticle`
 
 # 安装
 

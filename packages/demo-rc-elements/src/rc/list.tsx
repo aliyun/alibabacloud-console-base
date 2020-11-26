@@ -37,14 +37,12 @@ const ScLi = styled.li`
 
 function List({
   ordered,
-  items = [],
   children,
   ...props
 }: IPropsList, ref: Ref<HTMLOListElement & HTMLUListElement>): JSX.Element {
   const ListComponent = ordered ? ScOl : ScUl;
   
   return <ListComponent ref={ref} {...props}>
-    {items.map((v, i) => <ScLi key={i}>{v}</ScLi>)}
     {Children.map(children, (v: ReactChild, i): JSX.Element | null => <ScLi key={i}>{v}</ScLi>)}
   </ListComponent>;
 }

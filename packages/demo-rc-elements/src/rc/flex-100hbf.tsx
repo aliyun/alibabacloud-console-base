@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+interface IProps {
+  header?: string | JSX.Element;
+  body?: string | JSX.Element;
+  footer?: string | JSX.Element;
+}
+
 const ScFlexHBF = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,12 +41,16 @@ const ScFooter = styled.div`
 /**
  * Flex 100% 高度，上中下三部分
  */
-export default function Flex100HBF(): JSX.Element {
+export default function Flex100HBF({
+  header,
+  body,
+  footer
+}: IProps): JSX.Element {
   return <ScFlexHBF>
-    <ScHeader>header</ScHeader>
+    <ScHeader>{header || 'header'}</ScHeader>
     <ScBody>
-      <video src="//cloud.video.taobao.com/play/u/2228430214/p/1/e/6/t/1/228097371190.mp4" controls />
+      {body || <video src="//cloud.video.taobao.com/play/u/2228430214/p/1/e/6/t/1/228097371190.mp4" controls />}
     </ScBody>
-    <ScFooter>footer</ScFooter>
+    <ScFooter>{footer || 'footer'}</ScFooter>
   </ScFlexHBF>;
 }

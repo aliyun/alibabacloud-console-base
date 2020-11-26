@@ -8,7 +8,17 @@ interface IProps {
 
 function formatJson(o: unknown): string {
   try {
-    return JSON.stringify(o, null, 2).replace(/"([$\w]+)":/g, '$1:');
+    return JSON.stringify(o, function replacer(k: string, val: unknown) {
+      if (typeof val === 'function') {
+        return val.toString();
+      }
+      
+      if (React.isValidElement(val)) {
+        return '# JSX #';
+      }
+      
+      return val;
+    }, 2).replace(/"([$\w]+)":/g, '$1:');
   } catch (err) {
     return `[ERROR] ${err.message}`;
   }

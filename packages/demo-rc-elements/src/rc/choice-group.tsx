@@ -32,19 +32,12 @@ const ScChoice = styled.label`
   transition: color 0.3s ease-in-out;
   
   &:hover {
-    color: #555;
-  }
-  
-  input[type=checkbox],
-  input[type=radio] {
-    margin-right: 8px;
-    vertical-align: middle;
+    color: #333;
   }
 `;
 
 const ScChoiceLabel = styled.span`
-  display: inline-block;
-  vertical-align: middle;
+  margin-left: 0.25em;
 `;
 
 interface IPropsForChoiceGroup<T, V> extends Omit<IPropsChoiceGroup<T, V>, 'defaultValue'> {
