@@ -1,19 +1,16 @@
 {
   "lerna": "3.22.1",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
   "packages": [
     "packages/*"
   ],
   "command": {
-    "boot": {
-      "npmClientArgs": ["--no-package-lock"]
-    },
     "publish": {
       "allowBranch": [
         "lerna/pub"
-      ],
-      "npmClient": "yarn"
+      ]
     }
   },
-  "npmClient": "yarn",
   "version": "independent"
 }

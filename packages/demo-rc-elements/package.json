@@ -6,13 +6,14 @@
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/demo-rc-elements",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:aliyun/console-base.git"
   },
   "keywords": [
     "react",
@@ -20,8 +21,8 @@
     "demo-only"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.0.0",
-    "@alicloud/console-toolkit-preset-wind-component": "^1.0.0",
+    "@alicloud/console-toolkit-cli": "^1.1.8",
+    "@alicloud/console-toolkit-preset-wind-component": "^1.0.6",
     "@storybook/react": "^6.1.6",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.165",
@@ -41,13 +42,13 @@
   "scripts": {
     "start": "breezr start-storybook",
     "test": "breezr test:unit",
-    "clean": "rm -rf build",
-    "build": "npm run build:esm && npm run build:cjs && npm run build:bundle && npm run build:typings",
     "build:esm": "breezr build --engine babel --es-module",
     "build:cjs": "breezr build --engine babel",
     "build:bundle": "breezr build --engine webpack",
     "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
-    "prepublishOnly": "npm run clean && npm run build"
+    "build": "yarn build:esm && yarn build:cjs && yarn build:bundle && yarn build:typings",
+    "clean": "rm -rf build",
+    "prepublishOnly": "yarn clean && yarn build"
   },
   "gitHead": "5251cfa50c8561eb09dff2116d16742372e15d66"
 }

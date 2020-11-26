@@ -22,8 +22,8 @@
     "promise"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.0.0",
-    "@alicloud/console-toolkit-preset-wind-component": "^1.0.0",
+    "@alicloud/console-toolkit-cli": "^1.1.8",
+    "@alicloud/console-toolkit-preset-wind-component": "^1.0.6",
     "@alicloud/demo-rc-elements": "^0.6.21",
     "@storybook/react": "^6.1.6",
     "@types/jest": "^26.0.15",

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "esnext",
+      "dom",
+      "scripthost",
+      "dom.iterable"
+    ],
+    "allowJs": false,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "outDir": "dist"
+  },
+  "include": [
+    "packages/**/src",
+    "packages/**/stories",
+    "packages/**/*.config.js"
+  ]
+}

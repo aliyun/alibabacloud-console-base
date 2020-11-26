@@ -1,21 +1,29 @@
 {
   "name": "@alicloud/console-base",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
     "lerna": "^3.22.1",
-    "npm-check-updates": "^10.2.2"
+    "npm-check-updates": "^10.2.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "scripts": {
-    "boot": "npm run clean && npm i && npm run lerna:clean && npm run lerna:boot && npm run clean:lock",
+    "boot": "yarn clean && yarn install && rm yarn.lock",
+    "boot000": "yarn clean && yarn install && yarn lerna:clean && yarn lerna:boot && yarn clean:lock",
     "clean": "rm -rf node_modules",
     "clean:lock": "rm -f packages/**/package-lock.json",
     "lint": "eslint src/ --ext js,ts,tsx",
     "lint:packages": "eslint packages/**/src/ --ext js,ts,tsx",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
     "lerna:clean": "lerna clean --yes",
-    "lerna:boot": "lerna bootstrap --registry http://registry.npm.alibaba-inc.com --hoist",
+    "lerna:boot": "lerna bootstrap --hoist",
     "lerna:build:local": "lerna clean --yes && webpack --bail --progress --profile",
-    "lerna:publish": "lerna publish --registry http://registry.npm.alibaba-inc.com --no-verify-access --no-verify-registry",
+    "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
     "ncu:packages": "find packages -type f -name 'package.json' -not -path '*/node_modules/*' -execdir ncu \\;"
   }
 }
