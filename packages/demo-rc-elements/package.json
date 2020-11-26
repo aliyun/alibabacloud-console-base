@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
