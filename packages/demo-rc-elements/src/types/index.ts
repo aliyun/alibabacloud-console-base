@@ -2,6 +2,14 @@ import {
   HTMLAttributes
 } from 'react';
 
+export interface IPropsPre extends HTMLAttributes<HTMLPreElement> {
+  caption?: string;
+}
+
+export interface IPropsCleanJson extends Omit<IPropsPre, 'children'> {
+  o?: unknown;
+}
+
 export interface IPropsList extends HTMLAttributes<HTMLOListElement> {
   ordered?: boolean;
 }
@@ -17,6 +25,12 @@ export interface IPropsChoiceGroup<T, V = T> {
   value?: V;
   defaultValue?: V;
   onChange?(value: V): void;
+}
+
+export interface IPropsFlex100HBF {
+  header?: string | JSX.Element;
+  body?: string | JSX.Element;
+  footer?: string | JSX.Element;
 }
 
 export type TPropsCheckboxGroup<T> = IPropsChoiceGroup<T, T[]>;

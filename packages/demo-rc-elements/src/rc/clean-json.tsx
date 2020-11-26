@@ -1,24 +1,26 @@
 import React from 'react';
 
+import {
+  IPropsCleanJson
+} from '../types';
+
 import Pre from './pre';
 
-interface IProps {
-  o: unknown;
+function replacer(k: string, val: unknown): unknown {
+  if (typeof val === 'function') {
+    return val.toString();
+  }
+  
+  if (React.isValidElement(val)) {
+    return '# JSX #';
+  }
+  
+  return val;
 }
 
 function formatJson(o: unknown): string {
   try {
-    return JSON.stringify(o, function replacer(k: string, val: unknown) {
-      if (typeof val === 'function') {
-        return val.toString();
-      }
-      
-      if (React.isValidElement(val)) {
-        return '# JSX #';
-      }
-      
-      return val;
-    }, 2).replace(/"([$\w]+)":/g, '$1:');
+    return JSON.stringify(o, replacer, 2).replace(/"([$\w]+)":/g, '$1:');
   } catch (err) {
     return `[ERROR] ${err.message}`;
   }
@@ -28,7 +30,8 @@ function formatJson(o: unknown): string {
  * 展示简化的 JSON
  */
 export default function CleanJson({
-  o
-}: IProps): JSX.Element {
-  return <Pre>{formatJson(o)}</Pre>;
+  o,
+  ...props
+}: IPropsCleanJson): JSX.Element {
+  return <Pre {...props}>{formatJson(o)}</Pre>;
 }

@@ -1,8 +1,11 @@
 import {
+  IPropsPre as PreProps,
+  IPropsCleanJson as CleanJsonProps,
   IPropsList as ListProps,
   IChoiceItem as ChoiceItem,
   TPropsCheckboxGroup as CheckboxGroupProps,
-  TPropsRadioGroup as RadioGroupProps
+  TPropsRadioGroup as RadioGroupProps,
+  IPropsFlex100HBF as Flex100HBFProps
 } from './types';
 import {
   H1,
@@ -47,8 +50,11 @@ export {
 };
 
 export type {
+  PreProps,
+  CleanJsonProps,
   ListProps,
   ChoiceItem,
   CheckboxGroupProps,
-  RadioGroupProps
+  RadioGroupProps,
+  Flex100HBFProps
 };

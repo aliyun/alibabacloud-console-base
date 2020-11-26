@@ -1,6 +1,8 @@
 /* global describe, it, expect */
 
-describe('@alicloud/fetcher', () => {
+import pkgInfo from '../package.json';
+
+describe(pkgInfo.name, () => {
   it('exports in correct type', () => {
     expect(typeof 'TODO').toBe('function');
   });

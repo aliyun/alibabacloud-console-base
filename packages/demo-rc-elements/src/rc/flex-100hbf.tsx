@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface IProps {
-  header?: string | JSX.Element;
-  body?: string | JSX.Element;
-  footer?: string | JSX.Element;
-}
+import {
+  IPropsFlex100HBF
+} from '../types';
 
 const ScFlexHBF = styled.div`
   display: flex;
@@ -45,7 +43,7 @@ export default function Flex100HBF({
   header,
   body,
   footer
-}: IProps): JSX.Element {
+}: IPropsFlex100HBF): JSX.Element {
   return <ScFlexHBF>
     <ScHeader>{header || 'header'}</ScHeader>
     <ScBody>

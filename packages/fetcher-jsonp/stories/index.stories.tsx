@@ -6,8 +6,10 @@ import {
   withKnobs
 } from '@storybook/addon-knobs';
 
+import pkgInfo from '../package.json';
+
 import DemoDefault from './demo-default';
 
-storiesOf('@alicloud/fetcher-jsonp', module)
+storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
     .add('default', () => <DemoDefault />);
