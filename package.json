@@ -5,25 +5,28 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@alicloud/eslint-config": "^0.0.1",
+    "@alicloud/stylelint-config": "^0.0.1",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
+    "eslint": "^7.14.0",
     "lerna": "^3.22.1",
     "npm-check-updates": "^10.2.2",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "stylelint": "^13.8.0"
   },
   "scripts": {
     "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
-    "boot000": "yarn clean && yarn install && yarn lerna:clean && yarn lerna:boot && yarn clean:lock",
     "clean": "rm -rf node_modules",
     "clean:lock": "rm -f packages/**/package-lock.json",
     "lint": "eslint src/ --ext js,ts,tsx",
     "lint:packages": "eslint packages/**/src/ --ext js,ts,tsx",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
-    "lerna:clean": "lerna clean --yes",
     "lerna:boot": "lerna bootstrap --hoist",
-    "lerna:build:local": "lerna clean --yes && webpack --bail --progress --profile",
+    "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
+    "lerna:build:local": "lerna run prepublishOnly",
     "ncu:packages": "find packages -type f -name 'package.json' -not -path '*/node_modules/*' -execdir ncu \\;"
   }
 }
