@@ -1,6 +1,6 @@
 .*
 
-*config.json
+*config.ts
 
 stories/
 tests/

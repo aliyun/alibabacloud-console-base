@@ -7,16 +7,16 @@
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
   "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/demo-rc-elements",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "author": {
-    "name": "Jianchun Wang",
-    "email": "justnewbee@gmail.com"
   },
   "keywords": [
     "react",
