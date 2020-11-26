@@ -12,10 +12,6 @@
 # generated
 
 **/*.lock
-**/dist/
 **/build/
-**/es/
-**/lib/
 **/coverage/
-**/packages/*/lib/
 **/*-lock.json
