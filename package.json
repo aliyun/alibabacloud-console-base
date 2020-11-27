@@ -18,6 +18,7 @@
   },
   "scripts": {
     "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
+    "boot2": "yarn install && rm yarn.lock && lerna link",
     "clean": "rm -rf node_modules",
     "clean:lock": "rm -f packages/**/package-lock.json",
     "lint": "eslint src/ --ext js,ts,tsx",
@@ -26,7 +27,7 @@
     "lerna:boot": "lerna bootstrap --hoist",
     "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
-    "lerna:build:local": "lerna run prepublishOnly",
+    "lerna:build": "lerna run prepublishOnly",
     "ncu:packages": "find packages -type f -name 'package.json' -not -path '*/node_modules/*' -execdir ncu \\;"
   }
 }
