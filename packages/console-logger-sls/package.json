@@ -1,7 +1,7 @@
 {
-  "name": "@alicloud/console-base-log-sls",
+  "name": "@alicloud/console-logger-sls",
   "version": "0.0.0",
-  "description": "ConsoleBase Log SLS",
+  "description": "SLS logger factory for console",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
@@ -18,8 +18,8 @@
     "access": "public"
   },
   "keywords": [
-    "console-base",
-    "log",
+    "console",
+    "logger",
     "sls"
   ],
   "devDependencies": {
@@ -35,8 +35,10 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-product-id": "^0.0.0",
-    "@alicloud/console-logger-sls": "^0.0.0"
+    "@alicloud/console-base-conf-account": "^0.0.0",
+    "@alicloud/console-base-conf-env": "^0.0.0",
+    "@alicloud/console-base-conf-locale": "^0.0.0",
+    "@alicloud/logger-sls": "^0.0.0"
   },
   "scripts": {
     "start": "breezr start-storybook",
