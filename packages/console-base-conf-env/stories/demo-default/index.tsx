@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {
-  CleanJson
+  PreJson
 } from '@alicloud/demo-rc-elements';
 
 import CONF_ENV from '../../src';
 
 export default function DemoDefault(): JSX.Element {
-  return <CleanJson {...{
+  return <PreJson {...{
     caption: 'CONF_ENV',
     o: CONF_ENV
   }} />;

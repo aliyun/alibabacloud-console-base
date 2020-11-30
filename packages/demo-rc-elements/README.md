@@ -20,7 +20,7 @@
     - `List`
     - `CheckboxGroup`
     - `RadioGroup`
-    - `CleanJson`
+    - `PreJson`
     - `Flex100HBF`
     - `LongArticle`
 

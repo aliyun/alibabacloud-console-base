@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  IPropsCleanJson
+  IPropsPreJson
 } from '../types';
 
 import Pre from './pre';
@@ -29,9 +29,9 @@ function formatJson(o: unknown): string {
 /**
  * 展示简化的 JSON
  */
-export default function CleanJson({
+export default function PreJson({
   o,
   ...props
-}: IPropsCleanJson): JSX.Element {
+}: IPropsPreJson): JSX.Element {
   return <Pre {...props}>{formatJson(o)}</Pre>;
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {
-  CleanJson
+  PreJson
 } from '@alicloud/demo-rc-elements';
 
 import CONF_ACCOUNT from '../../src';
 
 export default function DemoDefault(): JSX.Element {
-  return <CleanJson {...{
+  return <PreJson {...{
     caption: 'CONF_ACCOUNT',
     o: CONF_ACCOUNT
   }} />;

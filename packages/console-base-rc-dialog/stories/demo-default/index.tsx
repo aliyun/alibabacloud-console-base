@@ -6,7 +6,7 @@ import React, {
 import {
   H1,
   Button,
-  CleanJson
+  PreJson
 } from '@alicloud/demo-rc-elements';
 
 import Dialog, {
@@ -56,7 +56,7 @@ export default function DemoDefault(): JSX.Element {
     <Button {...{
       onClick: () => prompt(stateProps as unknown as DialogPropsPrompt<any>).then(console.info)
     }}>prompt</Button>
-    <CleanJson o={stateProps} />
+    <PreJson o={stateProps} />
     {stateYes ? <Dialog {...{
       ...stateProps,
       onClose() {

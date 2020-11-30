@@ -6,7 +6,7 @@ import React, {
 import {
   H1,
   Button,
-  CleanJson
+  PreJson
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -40,10 +40,9 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <H1>全部 Cookie</H1>
-    <Button onClick={handleSetCookie}>setCookie</Button>
-    <Button onClick={handleDeleteCookie}>deleteCookie</Button>
-    <span>getCookie({TEST_COOKIE}) → {stateOneCookie}</span>
-    <CleanJson {...{
+    <Button onClick={handleDeleteCookie}>{`deleteCookie('${TEST_COOKIE}')`}</Button>
+    <Button onClick={handleSetCookie}>{`setCookie('${TEST_COOKIE}') → getCookie('${TEST_COOKIE}') → ${stateOneCookie}`}</Button>
+    <PreJson {...{
       caption: 'cookies',
       o: stateCookies
     }} />

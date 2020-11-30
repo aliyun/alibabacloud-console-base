@@ -5,7 +5,7 @@ import React, {
 
 import {
   H3,
-  CleanJson
+  PreJson
 } from '@alicloud/demo-rc-elements';
 import {
   forApp,
@@ -19,6 +19,6 @@ export default function OnChange(): JSX.Element {
   
   return <>
     <H3>forApp.onRegionChange() → stateValue</H3>
-    <CleanJson o={stateValue} />
+    <PreJson o={stateValue} />
   </>;
 }

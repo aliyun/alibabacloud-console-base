@@ -6,8 +6,12 @@ export interface IPropsPre extends HTMLAttributes<HTMLPreElement> {
   caption?: string;
 }
 
-export interface IPropsCleanJson extends Omit<IPropsPre, 'children'> {
+export interface IPropsPreJson extends Omit<IPropsPre, 'children'> {
   o?: unknown;
+}
+
+export interface IPropsPrePromise extends Omit<IPropsPre, 'children'> {
+  promise?: Promise<unknown> | null;
 }
 
 export interface IPropsList extends HTMLAttributes<HTMLOListElement> {
