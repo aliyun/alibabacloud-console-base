@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {
+  useState,
+  useCallback
+} from 'react';
 
 import {
-  Button
+  Button,
+  PrePromise
 } from '@alicloud/demo-rc-elements';
 import {
   DemoTipOfFecs
@@ -20,19 +24,8 @@ const {
 const FAKE_PRODUCT = 'BOSHIT';
 const FAKE_ACTION = 'FuckMe';
 
-function testCallOpenApi(): void {
-  callOpenApi('slb', 'DescribeRegions', {
-    p1: 'param1',
-    p2: 2
-  }, {
-    body: {
-      region: 'cn-hangzhou-wuchang'
-    }
-  }).catch(console.info);
-}
-
-function testCallInnerApi(): void {
-  callInnerApi(FAKE_PRODUCT, FAKE_ACTION, {
+function testCallOpenApi(): Promise<unknown> {
+  return callOpenApi('slb', 'DescribeRegions', {
     p1: 'param1',
     p2: 2
   }, {
@@ -42,22 +35,39 @@ function testCallInnerApi(): void {
   });
 }
 
-function testCallContainerApi(): void {
-  callContainerApi(FAKE_PRODUCT, FAKE_ACTION, {
+function testCallInnerApi(): Promise<unknown> {
+  return callInnerApi(FAKE_PRODUCT, FAKE_ACTION, {
     p1: 'param1',
     p2: 2
   }, {
     body: {
       region: 'cn-hangzhou-wuchang'
     }
-  }).catch(console.info);
+  });
+}
+
+function testCallContainerApi(): Promise<unknown> {
+  return callContainerApi(FAKE_PRODUCT, FAKE_ACTION, {
+    p1: 'param1',
+    p2: 2
+  }, {
+    body: {
+      region: 'cn-hangzhou-wuchang'
+    }
+  });
 }
 
 export default function ConsoleApiTest(): JSX.Element {
+  const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);
+  const handleCallOpenApi = useCallback(() => setStatePromise(testCallOpenApi()), []);
+  const handleCallInnerApi = useCallback(() => setStatePromise(testCallInnerApi()), []);
+  const handleCallContainerApi = useCallback(() => setStatePromise(testCallContainerApi()), []);
+  
   return <>
     <DemoTipOfFecs />
-    <Button onClick={testCallOpenApi}>callOpenApi</Button>
-    <Button onClick={testCallInnerApi}>callInnerApi</Button>
-    <Button onClick={testCallContainerApi}>callContainerApi</Button>
+    <Button onClick={handleCallOpenApi}>callOpenApi</Button>
+    <Button onClick={handleCallInnerApi}>callInnerApi</Button>
+    <Button onClick={handleCallContainerApi}>callContainerApi</Button>
+    <PrePromise promise={statePromise} />
   </>;
 }
