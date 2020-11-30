@@ -3,11 +3,11 @@
 
 阿里云控制台（接入 viper）功能开关检查（工厂方法）
 
-> 💥 OneConsole 控制台可以使用 [@alicloud/console-one-conf]，它整合了 OneConsole 下
+> 💥 OneConsole 控制台可以使用 `@alicloud/console-one-conf`，它整合了 OneConsole 下
 > * `window.ALIYUN_CONSOLE_CONFIG` 这个全局对象的类型定义和纠正
 > * `confFeature()` 利用 `@alicloud/viper-feature-gen` 标准化了功能开关加灰度的使用
 > * `confLinkGen()` 标准化了渠道链接的使用方式，在 TS 下可以对传入的 key 做类型约束（需要传入默认的所有链接兜底），避免漏写和写错
-> 墙裂推荐 OneConsole 的控制台直接使用 [@alicloud/console-one-conf] 而不是这个 `@alicloud/viper-feature-gen`
+> 墙裂推荐 OneConsole 的控制台直接使用 `@alicloud/console-one-conf` 而不是这个 `@alicloud/viper-feature-gen`
 
 # WHY
 
@@ -121,5 +121,3 @@ interface IFnFeatureCheck {
 
 * `true` 支持功能（viper 上没有对应的配置也表示支持功能）
 * `false` 不支持功能
-
-[@alicloud/console-one-conf]: https://npm.alibaba-inc.com/package/@alicloud/console-one-conf

@@ -14,7 +14,7 @@
 1. 不是所有的控制台都需要风控
 2. 风控以 react 实现，不是所有的控制台都有 react，ng 下可以自主实现风控
 
-有风控需求，且应用是 react 的请使用 [@alicloud/console-fetcher](https://npm.alibaba-inc.com/package/@alicloud/console-fetcher)。
+有风控需求，且应用是 react 的请使用 `@alicloud/console-fetcher`。
 
 # 输出
 

@@ -3,7 +3,7 @@
 
 TODO see in action
 
-> [@alicloud/error-prompt](https://npm.alibaba-inc.com/package/@alicloud/error-prompt) 的进化版，不再依赖 wind 和 fusion，也不需要手动引样式和指定语言，更不再是一个工厂。
+> `@alicloud/error-prompt` 的进化版，不再依赖 wind 和 fusion，也不需要手动引样式和指定语言，更不再是一个工厂。
 
 # 使用
 

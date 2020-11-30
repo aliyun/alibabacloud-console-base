@@ -7,21 +7,21 @@
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
   "author": {
-    "name": "驳是",
-    "email": "jianchun.wjc@alibaba-inc.com"
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:aliyun/console-base.git"
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "console-base",
     "rc",
     "flex"
   ],
-  "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
-  },
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.1.10",
     "@alicloud/console-toolkit-preset-component": "^1.1.10",

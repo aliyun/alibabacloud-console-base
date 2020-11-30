@@ -1,7 +1,7 @@
 @alicloud/console-fetcher
 ===
 
-一个专门为控制台量身定制的请求包，在 [@alicloud/console-fetcher-basic](https://npm.alibaba-inc.com/package/@alicloud/console-fetcher-basic) 的基础上添加以下拦截器：
+一个专门为控制台量身定制的请求包，在 `@alicloud/console-fetcher-basic` 的基础上添加以下拦截器：
 
 * `@alicloud/console-fetcher-interceptor-res-risk` 特殊的业务错误类型 - 风控 - 需要对其进行提示或二次验证
 * `@alicloud/console-fetcher-interceptor-res-sls` 对错误进行 SLS 上报，必须传入配置参数

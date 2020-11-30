@@ -1,9 +1,9 @@
 @alicloud/console-base-intl-factory
 ===
 
-在 [@alicloud/console-base-intl-factory-basic] 上的扩展，标准化带 HTML 及换行的输出样式。
+`@alicloud/console-base-intl-factory-basic` 上的扩展，标准化带 HTML 及换行的输出样式。
 
-> 这个包会额外要求引入 React，如果只是需要纯文本的国际化，请使用 [@alicloud/console-base-intl-factory-basic]。
+这个包会额外要求引入 React，如果只是需要纯文本的国际化，请使用 `@alicloud/console-base-intl-factory-basic`。
 
 # INSTALL
 
@@ -65,5 +65,3 @@ intl('xxx_{id,name}!html', { // 将渲染成 HTML
 });
 intl('xxx!html!lines'); // 将渲染成 HTML，且内部的换行均有意义（会转成 p、ul、ol 等）
 ```
-
-[@alicloud/console-base-intl-factory-basic]: https://npm.alibaba-inc.com/package/@alicloud/console-base-intl-factory-basic

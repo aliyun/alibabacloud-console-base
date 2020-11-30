@@ -6,16 +6,16 @@
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:aliyun/console-base.git"
-  },
-  "author": {
-    "name": "jianchun.wjc",
-    "email": "jianchun.wjc@alibaba-inc.com"
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
   },
   "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
+    "access": "public"
   },
   "keywords": [
     "dom",
