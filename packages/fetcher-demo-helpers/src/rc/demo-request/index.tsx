@@ -3,10 +3,13 @@ import React, {
 } from 'react';
 
 import {
+  PreJson
+} from '@alicloud/demo-rc-elements';
+
+import {
   IDemoConfig,
   IDemoFnFetchRequest
 } from '../../types';
-import DisplayJson from '../display-json';
 import RequestWithConfig from '../request-with-config';
 import Knobs from '../knobs';
 
@@ -26,9 +29,9 @@ export default function FetcherDemoRcRequest({
       defaults: defaultConfig,
       onChange: setStateConfig
     }} />
-    <DisplayJson {...{
-      what: 'config',
-      data: stateConfig
+    <PreJson {...{
+      headnote: 'config',
+      o: stateConfig
     }} />
     <RequestWithConfig {...{
       config: stateConfig,

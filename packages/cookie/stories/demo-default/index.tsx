@@ -43,7 +43,7 @@ export default function DemoDefault(): JSX.Element {
     <Button onClick={handleDeleteCookie}>{`deleteCookie('${TEST_COOKIE}')`}</Button>
     <Button onClick={handleSetCookie}>{`setCookie('${TEST_COOKIE}') → getCookie('${TEST_COOKIE}') → ${stateOneCookie}`}</Button>
     <PreJson {...{
-      caption: 'cookies',
+      headnote: 'cookies',
       o: stateCookies
     }} />
   </>;

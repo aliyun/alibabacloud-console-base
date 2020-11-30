@@ -2,7 +2,8 @@ import React from 'react';
 
 import {
   H2,
-  Button
+  Button,
+  P
 } from '@alicloud/demo-rc-elements';
 
 import errorPrompt, {
@@ -70,6 +71,7 @@ function errorPromptErrorWithDetails(): void {
 export default function SpecialCases(): JSX.Element {
   return <>
     <H2>特殊场景</H2>
+    <P><code>undefined / null</code> 不会有提示，JSX 不可能被代理，因为无法通过 <code>pose-message</code> 传递，所以会 fallback 到本地的 error-prompt。</P>
     <Button onClick={errorPromptUndefined}>errorPrompt(undefined)</Button>
     <Button onClick={errorPromptNull}>errorPrompt(null)</Button>
     <Button onClick={errorPromptString}>errorPrompt(string)</Button>

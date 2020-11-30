@@ -19,24 +19,34 @@ const ScPre = styled.pre`
   color: #999;
 `;
 
-const ScCaption = styled.span`
+const ScNote = styled.span`
   display: block;
   position: absolute;
-  top: 0;
   right: 0;
-  padding: 6px;
+  padding: 2px 8px;
+  line-height: 1.15;
+  font-size: 0.9em;
   background-color: rgba(0, 0, 0, 0.05);
   color: #333;
-  font-variant: small-caps;
+`;
+
+const ScHeadnote = styled(ScNote)`
+  top: 0;
+`;
+
+const ScFootnote = styled(ScNote)`
+  bottom: 0;
 `;
 
 export default function Pre({
-  caption,
+  headnote,
+  footnote,
   children,
   ...props
 }: IPropsPre): JSX.Element {
   return <ScPre {...props}>
-    {caption ? <ScCaption>{caption}</ScCaption> : null}
+    {headnote ? <ScHeadnote>{headnote}</ScHeadnote> : null}
     {children}
+    {footnote ? <ScFootnote>{footnote}</ScFootnote> : null}
   </ScPre>;
 }

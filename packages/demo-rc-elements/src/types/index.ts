@@ -3,7 +3,8 @@ import {
 } from 'react';
 
 export interface IPropsPre extends HTMLAttributes<HTMLPreElement> {
-  caption?: string;
+  headnote?: string | JSX.Element;
+  footnote?: string | JSX.Element;
 }
 
 export interface IPropsPreJson extends Omit<IPropsPre, 'children'> {

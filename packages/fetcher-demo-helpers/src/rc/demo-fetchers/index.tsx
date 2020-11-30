@@ -5,14 +5,14 @@ import styled from 'styled-components';
 
 import {
   H2,
-  H3
+  H3,
+  PreJson
 } from '@alicloud/demo-rc-elements';
 
 import {
   IDemoConfig,
   IDemoHelperFetcher
 } from '../../types';
-import DisplayJson from '../display-json';
 import Knobs from '../knobs';
 import RequestWithConfig from '../request-with-config';
 
@@ -22,6 +22,8 @@ interface IProps {
   defaultConfig?: IDemoConfig;
   fetcher0: IDemoHelperFetcher;
   fetcher1: IDemoHelperFetcher;
+  fetcher0Title?: string | JSX.Element;
+  fetcher1Title?: string | JSX.Element;
 }
 
 const ScTwoFetchers = styled.div`
@@ -38,7 +40,9 @@ export default function FetcherDemoRcFetchers({
   urls,
   defaultConfig = {},
   fetcher0,
-  fetcher1
+  fetcher1,
+  fetcher0Title = '无拦截器',
+  fetcher1Title = '有拦截器'
 }: IProps): JSX.Element {
   const [stateConfig, setStateConfig] = useState<IDemoConfig>(defaultConfig);
   
@@ -49,20 +53,20 @@ export default function FetcherDemoRcFetchers({
       defaults: defaultConfig,
       onChange: setStateConfig
     }} />
-    <DisplayJson {...{
-      what: 'config',
-      data: stateConfig
+    <PreJson {...{
+      headnote: 'config',
+      o: stateConfig
     }} />
     <ScTwoFetchers>
       <ScOneFetcher>
-        <H3>无拦截器</H3>
+        <H3>{fetcher0Title}</H3>
         <RequestWithConfig {...{
           config: stateConfig,
           request: fetcher0.request
         }} />
       </ScOneFetcher>
       <ScOneFetcher>
-        <H3>有拦截器</H3>
+        <H3>{fetcher1Title}</H3>
         <RequestWithConfig {...{
           config: stateConfig,
           request: fetcher1.request

@@ -3,9 +3,6 @@ import React from 'react';
 import {
   FetcherDemoRcFetchers
 } from '@alicloud/fetcher-demo-helpers';
-import {
-  H1
-} from '@alicloud/demo-rc-elements';
 
 import {
   fetcher0,
@@ -13,11 +10,8 @@ import {
 } from '../fetcher';
 
 export default function DemoDefault(): JSX.Element {
-  return <>
-    <H1>TODO add one api test</H1>
-    <FetcherDemoRcFetchers {...{
-      fetcher0,
-      fetcher1
-    }} />
-  </>;
+  return <FetcherDemoRcFetchers {...{
+    fetcher0,
+    fetcher1
+  }} />;
 }

@@ -8,7 +8,7 @@ import CONF_LOCALE from '../../src';
 
 export default function DemoDefault(): JSX.Element {
   return <PreJson {...{
-    caption: 'CONF_LOCALE',
+    headnote: 'CONF_LOCALE',
     o: CONF_LOCALE
   }} />;
 }

@@ -20,6 +20,7 @@ enum ELoading {
 interface IPromiseResult {
   loading: ELoading;
   result: unknown;
+  duration?: number;
 }
 
 const BD: Record<ELoading, string> = {
@@ -86,12 +87,16 @@ export default function PrePromise({
       result: null
     });
     
+    const start = Date.now();
+    
     promise.then(result => setStateResult({
       loading: ELoading.RESOLVED,
-      result
+      result,
+      duration: Date.now() - start
     })).catch(err => setStateResult({
       loading: ELoading.REJECTED,
-      result: err
+      result: err,
+      duration: Date.now() - start
     }));
   }, [promise]);
   
@@ -100,9 +105,11 @@ export default function PrePromise({
       return <Pre {...preProps}>Idle</Pre>;
     case ELoading.LOADING:
       return <Pre {...preProps}>Loading...</Pre>;
-    case ELoading.REJECTED:
-      return <PreJson {...preProps} o={normalizeError(stateResult.result as Error)} />;
-    default:
-      return <PreJson {...preProps} o={stateResult.result} />;
+    default: // RESOLVED + REJECTED
+      return <PreJson {...{
+        ...preProps,
+        o: stateResult.loading === ELoading.REJECTED ? normalizeError(stateResult.result as Error) : stateResult.result,
+        footnote: `耗时：${stateResult.duration}ms`
+      }} />;
   }
 }

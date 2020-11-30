@@ -8,7 +8,7 @@ import CONF_ENV from '../../src';
 
 export default function DemoDefault(): JSX.Element {
   return <PreJson {...{
-    caption: 'CONF_ENV',
+    headnote: 'CONF_ENV',
     o: CONF_ENV
   }} />;
 }
