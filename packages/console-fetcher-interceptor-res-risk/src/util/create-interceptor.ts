@@ -20,12 +20,12 @@ import intl from '../intl';
 import riskForbidden from './risk/forbidden';
 import riskInvalid from './risk/invalid';
 import riskVerify from './risk/verify';
+import convertRiskInfo from './convert-risk-info';
 import {
   convertToRiskErrorForbidden,
   convertToRiskErrorInvalid,
   convertToRiskErrorCancelled
 } from './error';
-import convertRiskInfo from './convert-risk-info';
 
 /**
  * 根据业务错误 code 为基础的 fetcher 添加风控流程

@@ -17,9 +17,7 @@ describe(pkgInfo.name, () => {
   const strangeChineseEncoded = '5by+';
   const strangeChineseEncodedSafe = '5by-';
   
-  import pkgInfo from '../package.json';
-
-describe(pkgInfo.name, () => {
+  describe('encode non-unicode', () => {
     it('should encode right', () => {
       expect(encode(helloWorld)).toEqual(helloWorldEncoded);
     });
@@ -29,9 +27,7 @@ describe(pkgInfo.name, () => {
     });
   });
   
-  import pkgInfo from '../package.json';
-
-describe(pkgInfo.name, () => {
+  describe('encode unicode (should NOT throw as window.btoa does)', () => {
     it('should encode right', () => {
       expect(encode(helloWorldChinese)).toEqual(helloWorldChineseEncoded);
     });
@@ -49,9 +45,7 @@ describe(pkgInfo.name, () => {
     });
   });
   
-  import pkgInfo from '../package.json';
-
-describe(pkgInfo.name, () => {
+  describe('decode', () => {
     it('should decode back to original, whether safe or not', () => {
       expect(decode(helloWorldEncoded)).toEqual(helloWorld);
       expect(decode(helloWorldEncodedSafe)).toEqual(helloWorld);

@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 import {
   REG_BTOU
 } from '../const';
@@ -9,7 +10,7 @@ const {
 /**
  * unicode 版编码
  */
-export default function btou(b): string {
+export default function btou(b: string): string {
   return b.replace(REG_BTOU, cccc => {
     switch (cccc.length) {
       case 4: {

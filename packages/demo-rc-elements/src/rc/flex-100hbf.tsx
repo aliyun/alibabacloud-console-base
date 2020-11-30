@@ -36,6 +36,15 @@ const ScFooter = styled.div`
   color: #fff;
 `;
 
+const VIDEO_SRC = '//cloud.video.taobao.com/play/u/2228430214/p/1/e/6/t/1/228097371190.mp4';
+
+function DefaultBody(): JSX.Element {
+  return <video src={VIDEO_SRC} controls>
+    <track kind="captions" srcLang="en" label={VIDEO_SRC} />
+    Your Browser does NOT support video.
+  </video>;
+}
+
 /**
  * Flex 100% 高度，上中下三部分
  */
@@ -47,7 +56,7 @@ export default function Flex100HBF({
   return <ScFlexHBF>
     <ScHeader>{header || 'header'}</ScHeader>
     <ScBody>
-      {body || <video src="//cloud.video.taobao.com/play/u/2228430214/p/1/e/6/t/1/228097371190.mp4" controls />}
+      {body || <DefaultBody />}
     </ScBody>
     <ScFooter>{footer || 'footer'}</ScFooter>
   </ScFlexHBF>;

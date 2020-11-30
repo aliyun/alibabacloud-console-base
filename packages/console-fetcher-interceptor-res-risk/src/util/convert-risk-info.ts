@@ -7,7 +7,7 @@ import {
 
 import convertVerifyType from './convert-veriy-type';
 
-export default function convertRiskInfo(responseData: any, riskConfig: IRiskConfig): IRiskInfo {
+export default function convertRiskInfo(responseData: unknown, riskConfig: IRiskConfig): IRiskInfo {
   const type0: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_TYPE, '') as string;
   const detail: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_DETAIL, '') as string;
   const codeType: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_CODE_TYPE, '') as string;

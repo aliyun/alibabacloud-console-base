@@ -15,6 +15,30 @@ import getNextElementToFocus from './get-next-element-to-focus';
 const STACK = createStack<IDialogStackItem>();
 
 /**
+ * 找到「最顶」的 dialog，这里的最顶不一定是 id 最大的，它是指 z-index 最大的当中 id 最大的那个
+ */
+function findTopmost(): IDialogStackItem | undefined {
+  let topmostZIndex = -1;
+  let topmostNumId = -1;
+  
+  STACK.each((v, k) => {
+    const {
+      zIndex
+    } = v;
+    const num = Number(k);
+    
+    if (zIndex > topmostZIndex) {
+      topmostZIndex = zIndex;
+      topmostNumId = num;
+    } else if (zIndex === topmostZIndex && num > topmostNumId) {
+      topmostNumId = num;
+    }
+  });
+  
+  return STACK.get(topmostNumId);
+}
+
+/**
  * 判断鼠标点击事件是否发生在 dialog 内部
  */
 function inDialog(e: MouseEvent, domDialog: HTMLDivElement): boolean {
@@ -101,30 +125,6 @@ function handleMouseDownTrapTab(e: KeyboardEvent): void {
   trapFocus(topmost.domDialog, topmost.domDialogContent, e.shiftKey ? EDialogFocusHow.PREV : EDialogFocusHow.NEXT);
   
   e.preventDefault();
-}
-
-/**
- * 找到「最顶」的 dialog，这里的最顶不一定是 id 最大的，它是指 z-index 最大的当中 id 最大的那个
- */
-function findTopmost(): IDialogStackItem | undefined {
-  let topmostZIndex = -1;
-  let topmostNumId = -1;
-  
-  STACK.each((v, k) => {
-    const {
-      zIndex
-    } = v;
-    const num = Number(k);
-    
-    if (zIndex > topmostZIndex) {
-      topmostZIndex = zIndex;
-      topmostNumId = num;
-    } else if (zIndex === topmostZIndex && num > topmostNumId) {
-      topmostNumId = num;
-    }
-  });
-  
-  return STACK.get(topmostNumId);
 }
 
 /**

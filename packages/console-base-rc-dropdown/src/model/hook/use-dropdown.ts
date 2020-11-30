@@ -15,8 +15,8 @@ import useDispatchToggleVisible from './use-dispatch-toggle-visible';
 export default function useDropdown(): IContextForContent {
   const visible = useVisible();
   const dispatchToggleVisible = useDispatchToggleVisible();
-  const showDrop = useCallback(() => dispatchToggleVisible(true), []);
-  const hideDrop = useCallback(() => dispatchToggleVisible(false), []);
+  const showDrop = useCallback(() => dispatchToggleVisible(true), [dispatchToggleVisible]);
+  const hideDrop = useCallback(() => dispatchToggleVisible(false), [dispatchToggleVisible]);
   
   return useMemo(():IContextForContent => ({
     visible,

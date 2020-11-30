@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise, no-nested-ternary */
 import {
   REG_UTOB
 } from '../const';
@@ -9,12 +10,11 @@ const {
 /**
  * unicode 版解码
  */
-export default function utob(u): string {
+export default function utob(u: string): string {
   return u.replace(REG_UTOB, c => {
     if (c.length < 2) {
       const cc = c.charCodeAt(0);
       
-      // eslint-disable-next-line no-nested-ternary
       return cc < 0x80 ? c : cc < 0x800 ? fromCharCode(0xc0 | (cc >>> 6)) + fromCharCode(0x80 | (cc & 0x3f)) : fromCharCode(0xe0 | ((cc >>> 12) & 0x0f)) + fromCharCode(0x80 | ((cc >>> 6) & 0x3f)) + fromCharCode(0x80 | (cc & 0x3f)); // eslint-disable-line max-len
     }
     

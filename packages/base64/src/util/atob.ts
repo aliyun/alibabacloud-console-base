@@ -1,7 +1,12 @@
+/* eslint-disable no-bitwise */
 import {
   REG_ATOB,
   B64TAB
 } from '../const';
+
+const {
+  fromCharCode
+} = String;
 
 /**
  * window 自带的 atob 和 btoa https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding
@@ -26,7 +31,6 @@ function atobPolyfill(a: string): string {
     const len = cccc.length;
     const padLen = len % 4;
     const n = (len > 0 ? B64TAB[cccc.charAt(0)] << 18 : 0) | (len > 1 ? B64TAB[cccc.charAt(1)] << 12 : 0) | (len > 2 ? B64TAB[cccc.charAt(2)] << 6 : 0) | (len > 3 ? B64TAB[cccc.charAt(3)] : 0);
-    
     const chars = [
       fromCharCode(n >>> 16),
       fromCharCode((n >>> 8) & 0xff),
