@@ -38,8 +38,10 @@ export default function FetcherDemoRcMockSecurity(): JSX.Element {
     const win = window as IWin;
     
     if (!win.UA_Opt) {
+      const LOG_VAL = 'collina_fucking_by_boshit';
+      
       win.UA_Opt = {
-        LogVal: 'collina_fucking_by_boshit',
+        LogVal: LOG_VAL,
         Token: `${Date.now()}:${Math.random()}`,
         MaxMCLog: 10,
         MaxKSLog: 20,
@@ -51,6 +53,8 @@ export default function FetcherDemoRcMockSecurity(): JSX.Element {
         Flag: 97422,
         isSendError: 1
       };
+      
+      win[LOG_VAL] = '';
     }
     
     injectScript('//acjs.aliyun.com/js/uab.js');

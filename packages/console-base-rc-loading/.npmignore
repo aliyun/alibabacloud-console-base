@@ -1,0 +1,13 @@
+# common
+
+.*
+
+# config
+
+*config.json
+
+# test & demo
+
+test/
+coverage/
+stories/
