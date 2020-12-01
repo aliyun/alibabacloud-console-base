@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-sls",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "SLS logger interceptor for @alicloud/console-fetcher",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -25,8 +25,8 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.1.10",
     "@alicloud/console-toolkit-preset-component": "^1.1.10",
-    "@alicloud/demo-rc-elements": "^0.0.2",
-    "@alicloud/fetcher-demo-helpers": "^0.0.0",
+    "@alicloud/demo-rc-elements": "^0.0.3",
+    "@alicloud/fetcher-demo-helpers": "^0.0.1",
     "@types/jest": "^26.0.15",
     "@types/react": "^16.14.2",
     "jest": "^26.6.3",
@@ -36,8 +36,8 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@alicloud/console-logger-sls": "^0.0.0",
-    "@alicloud/fetcher": "^0.0.0"
+    "@alicloud/console-logger-sls": "^0.0.1",
+    "@alicloud/fetcher": "^0.0.1"
   },
   "scripts": {
     "start": "breezr start-storybook",
