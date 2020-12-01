@@ -3,6 +3,7 @@ import React, {
   useEffect
 } from 'react';
 
+import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 import {
   ELoading,
   DataWithLoading
@@ -17,6 +18,7 @@ export default function WithPromise<T>({
   promise,
   ...props
 }: IPropsWithPromise<T>): JSX.Element {
+  const isUnmounted = useIsUnmounted();
   const [stateDwl, setStateDwl] = useState<DataWithLoading<T>>(null);
   
   useEffect(() => {
@@ -31,18 +33,30 @@ export default function WithPromise<T>({
       data: null
     });
     
-    promise.then(result => setStateDwl({
-      loading: ELoading.SUCCESS,
-      data: result
-    })).catch(err => setStateDwl({
-      loading: ELoading.ERROR,
-      data: null,
-      error: err
-    }));
-  }, [promise]);
+    promise.then(result => {
+      if (isUnmounted()) {
+        return;
+      }
+      
+      setStateDwl({
+        loading: ELoading.SUCCESS,
+        data: result
+      });
+    }).catch(err => {
+      if (isUnmounted()) {
+        return;
+      }
+      
+      setStateDwl({
+        loading: ELoading.ERROR,
+        data: null,
+        error: err
+      });
+    });
+  }, [isUnmounted, promise, setStateDwl]);
   
-  return <WithLoading<T> {...{
+  return promise ? <WithLoading<T> {...{
     ...stateDwl,
     ...props
-  }} />;
+  }} /> : null;
 }
