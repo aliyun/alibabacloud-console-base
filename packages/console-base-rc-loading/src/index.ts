@@ -1,19 +1,23 @@
 import {
   IPropsLoading as LoadingProps,
-  IPropsWithLoading as WithLoadingProps
+  IPropsWithLoading as WithLoadingProps,
+  IPropsWithPromise as WithPromiseProps
 } from './types';
 import WithLoading from './rc/with-loading';
+import WithPromise from './rc/with-promise';
 
 export {
   default
 } from './rc/loading';
 
 export {
-  WithLoading
+  WithLoading,
+  WithPromise
 };
 
 export type {
   LoadingProps,
-  WithLoadingProps
+  WithLoadingProps,
+  WithPromiseProps
 };
 
