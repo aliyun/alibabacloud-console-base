@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-common-typings": "^1.0.0",
+    "@alicloud/console-base-log-sls": "^1.0.0",
     "@alicloud/post-message": "^1.0.0"
   },
   "scripts": {
