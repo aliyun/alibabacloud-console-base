@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-common-typings",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ConsoleBase common types",
   "license": "MIT",
   "main": "build/cjs/index.js",
