@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-intl",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "ConsoleBase 组件 - 带样式的国际化文案展示",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -39,7 +39,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-styled-mixin": "^0.0.1"
+    "@alicloud/console-base-styled-mixin": "^0.0.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

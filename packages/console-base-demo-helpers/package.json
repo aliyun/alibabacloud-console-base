@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-demo-helpers",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "ConsoleBase demo 助手",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -39,8 +39,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger": "^0.0.1",
-    "@alicloud/demo-rc-elements": "^0.0.3"
+    "@alicloud/console-base-messenger": "^0.0.0",
+    "@alicloud/demo-rc-elements": "^0.0.2"
   },
   "scripts": {
     "start": "breezr start-storybook",

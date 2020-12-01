@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-styled-mixin",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "控制台专用的 styled mixin",
   "license": "MIT",
   "main": "build/cjs/index.js",
