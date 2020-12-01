@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-key-value",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "ConsoleBase 组件 - key-value 对的展示",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -40,7 +40,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-styled-mixin": "^0.0.2",
+    "@alicloud/console-base-styled-mixin": "^1.0.0",
     "lodash": "^4.17.20"
   },
   "scripts": {

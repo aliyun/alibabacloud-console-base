@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/viper-feature-gen",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "阿里云控制台（接入 viper）功能开关检查（工厂方法）",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -34,7 +34,7 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@alicloud/mixed-black-whitelist-checker": "^0.0.2",
+    "@alicloud/mixed-black-whitelist-checker": "^1.0.0",
     "lodash": "^4.17.20"
   },
   "scripts": {
