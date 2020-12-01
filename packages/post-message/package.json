@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/post-message",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "postMessage 封装，可以用成 Promise",
   "license": "MIT",
   "main": "build/cjs/index.js",

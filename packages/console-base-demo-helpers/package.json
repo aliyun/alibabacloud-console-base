@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-demo-helpers",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "ConsoleBase demo 助手",
   "license": "MIT",
   "main": "build/cjs/index.js",
