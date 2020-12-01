@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-jsonp",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "fetcher 的底层 jsonp 实现，可独立使用",
   "license": "MIT",
   "main": "build/cjs/index.js",

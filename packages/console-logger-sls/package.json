@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-logger-sls",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "SLS logger factory for console",
   "license": "MIT",
   "main": "build/cjs/index.js",

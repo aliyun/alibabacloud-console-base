@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-sls",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "SLS logger interceptor for @alicloud/console-fetcher",
   "license": "MIT",
   "main": "build/cjs/index.js",
