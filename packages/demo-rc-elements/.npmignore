@@ -1,6 +1,14 @@
+# common
+
 .*
 
+# config
+
+*config.js
 *config.ts
 
-stories/
+# test & demo
+
 tests/
+coverage/
+stories/
