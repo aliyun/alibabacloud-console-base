@@ -1,4 +1,4 @@
-@ali/logger-gl
+@alicloud/logger-gl
 ===
 
 封装黄金令箭，简化黄金令箭的使用。
@@ -8,7 +8,7 @@
 # INSTALL
 
 ```
-tnpm i @ali/logger-gl -S
+tnpm i @alicloud/logger-gl -S
 ```
 
 # API
@@ -21,7 +21,7 @@ tnpm i @ali/logger-gl -S
 import {
   EGlMode,
   log
-} from '@ali/logger-gl';
+} from '@alicloud/logger-gl';
 
 log('/....');
 log('/....', EGlMode.CLICK);
@@ -77,7 +77,7 @@ interface IOptions {
 创建一个针对业务场景的黄金令箭方法，调用者只关心传入什么样的参数（如果不需要额外的参数，创建时不传入泛型即可）。
 
 ```typescript
-import createLogger from '@ali/logger-gl';
+import createLogger from '@alicloud/logger-gl';
 
 interface IParams {
   p1: string;
