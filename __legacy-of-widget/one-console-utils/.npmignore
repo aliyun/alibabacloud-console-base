@@ -1,0 +1,7 @@
+.*
+!.*ignore
+node_modules/
+src/
+test/
+babel.config.js
+*lock.json

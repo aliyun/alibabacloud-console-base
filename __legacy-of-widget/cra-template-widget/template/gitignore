@@ -1,0 +1,34 @@
+# Widget git ignore patterns
+
+# Common
+.*
+!.*ignore
+!.*rc
+!.*rc.js
+
+
+# Generated
+lib/
+dist/
+build/
+
+
+# Development
+node_modules/
+*.log
+
+
+# Misc
+.vscode/
+*.swp
+*.tmp
+*.bak
+*.bk
+tmp
+temp
+coverage
+__mockdef
+
+
+# Others
+stats.json

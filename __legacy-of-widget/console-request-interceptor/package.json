@@ -1,0 +1,32 @@
+{
+  "name": "@alicloud/console-request-interceptor",
+  "version": "0.1.7",
+  "description": "axios request interceptor for one-console",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "compile": "babel src --out-dir lib",
+    "prepare": "npm run compile"
+  },
+  "keywords": [
+    "widget",
+    "fetch",
+    "interceptor",
+    "one-console"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@alicloud/one-console-utils": "^0.1.6",
+    "@babel/runtime": "^7.9.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

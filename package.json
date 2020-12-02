@@ -1,0 +1,33 @@
+{
+  "name": "@alicloud/console-base",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@alicloud/eslint-config": "^1.0.0",
+    "@alicloud/stylelint-config": "^1.0.0",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "eslint": "^7.14.0",
+    "lerna": "^3.22.1",
+    "npm-check-updates": "^10.2.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "stylelint": "^13.8.0"
+  },
+  "scripts": {
+    "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
+    "boot2": "yarn install && rm yarn.lock && lerna link",
+    "clean": "rm -rf node_modules",
+    "clean:lock": "rm -f packages/**/package-lock.json",
+    "lint": "eslint src/ --ext js,ts,tsx",
+    "lint:packages": "eslint packages/**/src/ --ext js,ts,tsx",
+    "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
+    "lerna:boot": "lerna bootstrap --hoist",
+    "lerna:clean": "lerna clean --yes",
+    "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
+    "lerna:build": "lerna run prepublishOnly",
+    "ncu:packages": "find packages -type f -name 'package.json' -not -path '*/node_modules/*' -execdir ncu \\;"
+  }
+}

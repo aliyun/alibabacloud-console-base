@@ -1,0 +1,43 @@
+{
+  "name": "@alicloud/console-response-interceptor",
+  "version": "0.3.1",
+  "description": "Get request data from the response.",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "compile": "babel src -d lib",
+    "prepare": "npm run compile"
+  },
+  "keywords": [
+    "widget",
+    "request",
+    "interceptor"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "dependencies": {
+    "@alicloud/one-console-utils": "^0.1.6",
+    "@alicloud/widget-logger": "^0.3.0",
+    "@babel/runtime": "^7.4.3",
+    "react-copy-to-clipboard": "^5.0.2"
+  },
+  "peerDependencies": {
+    "@alicloud/console-components": "^1.x",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

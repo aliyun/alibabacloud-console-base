@@ -1,0 +1,28 @@
+{
+  "name": "@alicloud/one-console-utils",
+  "version": "0.1.6",
+  "description": "控制台相关的工具函数",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src --out-dir lib",
+    "prepare": "npm run compile"
+  },
+  "keywords": [
+    "utils",
+    "console"
+  ],
+  "author": "woota<wutayunfan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.4.3"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

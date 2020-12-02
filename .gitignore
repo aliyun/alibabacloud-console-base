@@ -1,0 +1,17 @@
+# common
+.*
+!.*ignore
+!.*rc
+!.*rc.*
+*.log*
+
+# dev
+
+**/node_modules
+
+# generated
+
+**/*.lock
+**/build/
+**/coverage/
+**/*-lock.json

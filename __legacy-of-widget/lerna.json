@@ -1,0 +1,11 @@
+{
+  "packages": ["packages/*"],
+  "command": {
+    "publish": {
+      "message": "chore: Publish"
+    }
+  },
+  "ignoreChanges": ["packages/**/*.md"],
+  "version": "independent",
+  "lerna": "2.11.0"
+}
