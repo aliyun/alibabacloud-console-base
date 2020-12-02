@@ -14,7 +14,7 @@ import composeToolkitType from '../../util/compose-toolkit-type';
 /**
  * console-base 响应动态添加或修改某工具
  * 
- * 原 @alicloud/console-base-sdk-toolkit messenger.subscribePutTool
+ * 原 @ali/console-base-sdk-toolkit messenger.subscribePutTool
  */
 export default function onToolkitPut(fn: (tool: SettingsToolkitItem) => void): () => void {
   return subscribeByConsoleBase<IPayloadPutTool>(composeToolkitType(EToolkitTypeShort.ADD), payload => {

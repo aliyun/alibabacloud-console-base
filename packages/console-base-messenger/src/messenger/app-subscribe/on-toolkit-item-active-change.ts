@@ -9,7 +9,7 @@ import {
 /**
  * 某工具的「激活」时的回调
  * 
- * 原 @alicloud/console-base-sdk-toolkit messenger.subscribeActivated + subscribeDeactivated
+ * 原 @ali/console-base-sdk-toolkit messenger.subscribeActivated + subscribeDeactivated
  */
 export default function onToolkitItemActiveChange(id: string, fn: (active: boolean) => void): () => void {
   return subscribeByApp(composeToolkitTypeWithId(EToolkitTypeShort.TOOL_ACTIVATED, id), fn);
