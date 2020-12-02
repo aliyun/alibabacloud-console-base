@@ -29,9 +29,9 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
   const fetcher = createFetcher<C>(config);
   
   interceptSecurity(fetcher);
-  interceptFecs(fetcher);
-  interceptErrorMessage(fetcher);
   interceptBiz(fetcher);
+  interceptErrorMessage(fetcher);
+  interceptFecs(fetcher);
   interceptArms(fetcher, armsConfig);
   
   if (slsConfig) {
