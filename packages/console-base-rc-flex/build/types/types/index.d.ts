@@ -1,7 +1,0 @@
-import { HTMLAttributes } from 'react';
-export interface IProps extends HTMLAttributes<HTMLDivElement> {
-    vertical?: boolean;
-    wrapping?: boolean;
-    align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
-    justify?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
-}
