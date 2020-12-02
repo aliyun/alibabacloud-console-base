@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-intl-factory",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ConsoleBase Intl Factory",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -38,8 +38,8 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.0.1",
-    "@alicloud/console-base-rc-intl": "^1.0.1"
+    "@alicloud/console-base-intl-factory-basic": "^1.0.2",
+    "@alicloud/console-base-rc-intl": "^1.0.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
