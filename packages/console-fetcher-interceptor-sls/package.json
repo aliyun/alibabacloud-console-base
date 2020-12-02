@@ -6,6 +6,7 @@
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-fetcher-interceptor-sls",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
