@@ -19,8 +19,8 @@
   },
   "keywords": [
     "logger",
-    "sls",
-    "factory"
+    "factory",
+    "sls"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",

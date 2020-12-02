@@ -4,11 +4,10 @@
 
 # config
 
-*config.js
-*config.ts
+breezr.config.ts
+tsconfig.json
 
 # test & demo
 
-test/
-coverage/
+tests/
 stories/

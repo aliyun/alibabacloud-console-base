@@ -1,14 +1,13 @@
 # common
 
-.npmignore
+.*
 
 # config
 
-*config.js
-*config.ts
+breezr.config.ts
+tsconfig.json
 
 # test & demo
 
 tests/
-coverage/
 stories/
