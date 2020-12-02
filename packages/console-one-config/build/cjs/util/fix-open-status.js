@@ -1,0 +1,35 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = fixOpenStatus;
+
+/**
+ * 修复布尔值、数值，其他仍旧为字符串
+ */
+function fixOneOpenStatus(shity) {
+  var o = {};
+  Object.keys(shity).forEach(function (v) {
+    var value = shity[v];
+
+    if (value === 'true') {
+      o[v] = true;
+    } else if (value === 'false') {
+      o[v] = false;
+    } else if (/^\d+$/.test(value)) {
+      o[v] = Number(value);
+    } else {
+      o[v] = value;
+    }
+  });
+  return o;
+}
+
+function fixOpenStatus() {
+  var o = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return Object.keys(o || {}).reduce(function (result, v) {
+    result[v] = fixOneOpenStatus(o[v]);
+    return result;
+  }, {});
+}

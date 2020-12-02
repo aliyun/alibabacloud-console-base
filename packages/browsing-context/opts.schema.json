@@ -1,8 +1,0 @@
-{
-  "id": "id for the iframe element",
-  "dangerouslyPermittedAccess": [],
-  "rootClassName": "class name for the root element",
-  "rootId": "id for the dom root element",
-  "body": "root element",
-  "logLevel": "none or verbose"
-}

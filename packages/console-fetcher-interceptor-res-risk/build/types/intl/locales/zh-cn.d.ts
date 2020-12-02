@@ -1,0 +1,28 @@
+declare const _default: {
+    'attr:phone': string;
+    'attr:email': string;
+    'attr:mfa': string;
+    'attr:code': string;
+    'op:confirm': string;
+    'op:cancel': string;
+    'op:risk_forbidden': string;
+    'op:risk_invalid_go': string;
+    'op:risk_invalid': string;
+    'op:verify_by_phone': string;
+    'op:verify_by_email': string;
+    'op:verify_by_mfa': string;
+    'op:send_code': string;
+    'op:change_phone': string;
+    'op:change_email': string;
+    'op:change_mfa': string;
+    'op:resend_after_{n}s': string;
+    'message:invalid_unknown!lines': string;
+    'message:invalid_unsupported_{method}!html!lines': string;
+    'message:forbidden': string;
+    'message:code_required': string;
+    'message:code_send_error': string;
+    'message:code_incorrect': string;
+    'message:verify_cancelled': string;
+    'message:no_get_code_url': string;
+};
+export default _default;
