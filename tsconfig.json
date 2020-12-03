@@ -24,6 +24,7 @@
   "include": [
     "packages/**/src",
     "packages/**/stories",
+    "packages/**/tests",
     "packages/**/breezr.config.ts"
   ]
 }
