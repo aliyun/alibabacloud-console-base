@@ -4,6 +4,7 @@
 !.*rc
 !.*rc.*
 *.log*
+.npmrc
 
 # dev
 
