@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@alicloud/stylelint-config/sc"
+  ],
+  "rules": {
+    "value-keyword-case": ["lower", {
+      "ignoreKeywords": ["dummyValue"]
+    }]
+  }
+}
