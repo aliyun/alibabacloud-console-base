@@ -1,0 +1,63 @@
+{
+  "name": "@ali/console-base-rc-top-nav",
+  "version": "1.0.4",
+  "description": "ConsoleBase 组件 - 吊顶",
+  "license": "MIT",
+  "main": "build/cjs/index.js",
+  "module": "build/es/index.js",
+  "types": "build/types/index.d.ts",
+  "homepage": "https://gitlab.alibaba-inc.com/aliyun/console-base/tree/master/packages/console-base-rc-top-nav",
+  "author": {
+    "name": "驳是",
+    "email": "jianchun.wjc@alibaba-inc.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:aliyun/console-base.git"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  },
+  "keywords": [
+    "console-base",
+    "rc",
+    "top-nav"
+  ],
+  "devDependencies": {
+    "@alicloud/console-toolkit-cli": "^1.2.0",
+    "@alicloud/console-toolkit-preset-component": "^1.2.0",
+    "@storybook/react": "^6.1.9",
+    "@types/jest": "^26.0.16",
+    "@types/lodash": "^4.14.165",
+    "@types/styled-components": "^5.1.4",
+    "jest": "^26.6.3",
+    "react": "^16.14.0",
+    "styled-components": "^5.2.1",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "styled-components": ">=5"
+  },
+  "dependencies": {
+    "@ali/console-base-util-dom": "^1.0.3",
+    "@alicloud/console-base-rc-button": "^1.0.5",
+    "@alicloud/console-base-rc-dropdown": "^1.0.3",
+    "@alicloud/console-base-rc-icon": "^1.0.5",
+    "@alicloud/console-base-styled-mixin": "^1.0.3",
+    "lodash": "^4.17.20"
+  },
+  "scripts": {
+    "start": "breezr start-storybook",
+    "test": "breezr test:unit",
+    "clean": "rm -rf build",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:bundle && npm run build:typings",
+    "build:esm": "breezr build --engine babel --es-module",
+    "build:cjs": "breezr build --engine babel",
+    "build:bundle": "breezr build --engine webpack",
+    "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "gitHead": "b632824e28ae7be97a4a7c5c4aca229ada0199f5"
+}
