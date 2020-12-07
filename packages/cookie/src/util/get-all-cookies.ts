@@ -8,7 +8,11 @@ export default function getAllCookies(): Record<string, string> {
     // 原来的实现有问题，set 的时候用的是 `escape`，get 的时候用的是 `decodeURIComponent`，这在大多数情况下
     // 没有问题，但，当 set 了一个中文的，就会抛错「URIError: malformed URI sequence」
     // 这里做一下兼容，因为大部分情况下 `decodeURIComponent(escape(value)) === value`
-    result[cookieName] = decodeURIComponent(cookieValue);
+    try {
+      result[cookieName] = decodeURIComponent(cookieValue);
+    } catch (e) {
+      result[cookieName] = unescape(cookieValue);
+    }
     
     return result;
   }, {}) : {};
