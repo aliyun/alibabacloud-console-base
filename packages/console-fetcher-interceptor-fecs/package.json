@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-fecs",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "@alicloud/console-fetcher 请求 + 响应拦截 - FECS",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -25,7 +25,7 @@
     "fecs"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helpers": "^1.0.6",
+    "@alicloud/console-base-demo-helpers": "^1.0.7",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.0",
     "@alicloud/demo-rc-elements": "^1.0.1",
@@ -38,9 +38,9 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-env": "^1.0.3",
+    "@alicloud/console-base-conf-env": "^1.0.4",
     "@alicloud/console-one-config": "^1.0.3",
-    "@alicloud/cookie": "^1.0.3",
+    "@alicloud/cookie": "^1.0.4",
     "@alicloud/fetcher": "^1.0.4",
     "@alicloud/fetcher-fetch": "^1.0.4"
   },

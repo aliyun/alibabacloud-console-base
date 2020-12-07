@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-log-sls",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ConsoleBase Log SLS",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-conf-product-id": "^1.0.3",
-    "@alicloud/console-logger-sls": "^1.0.4"
+    "@alicloud/console-logger-sls": "^1.0.5"
   },
   "scripts": {
     "start": "breezr start-storybook",
