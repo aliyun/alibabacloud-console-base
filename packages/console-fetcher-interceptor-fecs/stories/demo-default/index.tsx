@@ -12,8 +12,8 @@ import {
   Button
 } from '@alicloud/demo-rc-elements';
 import {
-  DemoTipOfFecs
-} from '@alicloud/console-base-demo-helpers';
+  FetcherDemoRcFecsTip
+} from '@alicloud/fetcher-demo-helpers';
 
 import cookieGetToken from '../../src/util/cookie-get-token';
 import cookieSetToken from '../../src/util/cookie-set-token';
@@ -64,7 +64,7 @@ export default function DemoDefault(): JSX.Element {
   }), [handleRefreshTokenLocally]);
   
   return <>
-    <DemoTipOfFecs />
+    <FetcherDemoRcFecsTip />
     <H1>如何测试</H1>
     <List>
       <>如果没有 token，POST 请求会否自行 refreshToken，后会否重新请求</>
