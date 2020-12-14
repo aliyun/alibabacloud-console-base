@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-demo-helpers",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "fetcher 测试专用包，避免代码冗余",
   "license": "MIT",
   "main": "build/cjs/index.js",
