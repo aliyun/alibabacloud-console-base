@@ -28,6 +28,7 @@
     "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
     "lerna:build": "lerna run prepublishOnly",
+    "lerna:sync": "lerna exec tnpm sync",
     "ncu:packages": "find packages -type f -name 'package.json' -not -path '*/node_modules/*' -execdir ncu \\;"
   }
 }
