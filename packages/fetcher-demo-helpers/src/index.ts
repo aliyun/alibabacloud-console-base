@@ -4,6 +4,7 @@ import {
 import {
   SLS_CONFIG
 } from './const';
+import FetcherDemoRcFecsTip from './rc/demo-fecs-tip';
 import FetcherDemoRcMockArms from './rc/demo-mock-arms';
 import FetcherDemoRcMockSecurity from './rc/demo-mock-security';
 import FetcherDemoRcFetchers from './rc/demo-fetchers';
@@ -13,6 +14,7 @@ import fetcherDemoInterceptorMockVerifyCodeUrl from './demo-interceptor/mock-ver
 
 export {
   SLS_CONFIG,
+  FetcherDemoRcFecsTip,
   FetcherDemoRcMockArms,
   FetcherDemoRcMockSecurity,
   FetcherDemoRcFetchers,

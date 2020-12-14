@@ -24,7 +24,6 @@
     "basic"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helpers": "^1.0.8",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.0",
     "@alicloud/demo-rc-elements": "^1.0.2",

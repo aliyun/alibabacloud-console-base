@@ -8,8 +8,8 @@ import {
   PrePromise
 } from '@alicloud/demo-rc-elements';
 import {
-  DemoTipOfFecs
-} from '@alicloud/console-base-demo-helpers';
+  FetcherDemoRcFecsTip
+} from '@alicloud/fetcher-demo-helpers';
 
 import {
   fetcher1
@@ -64,7 +64,7 @@ export default function ConsoleApiTest(): JSX.Element {
   const handleCallContainerApi = useCallback(() => setStatePromise(testCallContainerApi()), []);
   
   return <>
-    <DemoTipOfFecs />
+    <FetcherDemoRcFecsTip />
     <Button onClick={handleCallOpenApi}>callOpenApi</Button>
     <Button onClick={handleCallInnerApi}>callInnerApi</Button>
     <Button onClick={handleCallContainerApi}>callContainerApi</Button>

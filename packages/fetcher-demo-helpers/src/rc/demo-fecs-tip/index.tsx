@@ -6,7 +6,7 @@ import {
   List
 } from '@alicloud/demo-rc-elements';
 
-export default function TipOfFecs(): JSX.Element {
+export default function FetcherDemoRcFecsTip(): JSX.Element {
   return <>
     <H1>关于 FECS 本地开发</H1>
     <P>这里用到了 FECS 提供的接口，如果 <strong>接口调不通或报错</strong>，你需要：</P>
