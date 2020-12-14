@@ -7,7 +7,7 @@ import {
 
 import Ui from './ui';
 
-export default function TabsWithProvider(props: IPropsTabs): JSX.Element {
+export default function WithProvider(props: IPropsTabs): JSX.Element {
   return <Provider props={props}>
     <Ui />
   </Provider>;
