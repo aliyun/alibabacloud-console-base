@@ -35,10 +35,12 @@
 * 命名偏好
     - 语义和色值都有
     - namespace 前缀 - 无
-    - 功能前缀 - 有（`--color`）
+    - 功能前缀 - 有（`--color-scale`、`--color-auto`、`--color-text`、`--color-border`、`--color-icon`、`--color-bg`、`--color-fade-bg`、`--color-state`、`--color-shadow`）
 * 色值偏好
     - 多 `rgb`
+    - 对每种色值做了 0-9 的 10 个变种
 * 其他
+    - 变量之间无引用，所以代码上来看，重复比较多
     - 因为有 `auto`，所以用了 media-query，这会要求多写一些代码
 
 ## JetBrains Product Documentation

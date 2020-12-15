@@ -2,6 +2,10 @@
 ===
 
 * [关于 CSS Variable 的实践研究](doc/reserch.md)
+* [设计标注 - Fusion](https://fusion.alibaba-inc.com/pc/component/tokens)
+* [设计标注 - XConsole](https://fusion.alibaba-inc.com/79480/component/tokens)
+* [XConsole Design Themes](https://fusion.alibaba-inc.com/79480/setting/theme)
+* [XConsole CSS Variables](https://github.com/aliyun/cloud-design/blob/master/base-components/fusion-theme/xconsole/variables.css)
 
 控制台主题
 
@@ -14,11 +18,6 @@ import {
   typo
 } from '@alicloud/console-base-theme';
 ```
-
-[设计标注 - Fusion](https://fusion.alibaba-inc.com/pc/component/tokens)
-[设计标注 - XConsole](https://fusion.alibaba-inc.com/79480/component/tokens)
-[XConsole Design Themes](https://fusion.alibaba-inc.com/79480/setting/theme)
-[XConsole CSS Variables](https://github.com/aliyun/cloud-design/blob/master/base-components/fusion-theme/xconsole/variables.css)
 
 # Theme-Aware Properties
 

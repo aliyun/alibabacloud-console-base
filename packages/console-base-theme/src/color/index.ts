@@ -1,3 +1,5 @@
+// TODO 我觉得颜色的 LIGHTER → LIGHT → NORMAL → DARK → DARKER 的演变是可以通过 polished 这样的工具来做的，没有必要硬写...
+
 // very common brand colors
 export const COLOR_BRAND_ALIYUN = '#ff6a00';
 
@@ -12,26 +14,38 @@ export const COLOR_GRAY = '#666';
 export const COLOR_GRAY_DARK = '#333';
 export const COLOR_GRAY_DARKER = '#1a1a1a';
 
-export const COLOR_RED_LIGHTER = '#f8efef';
-export const COLOR_RED_LIGHT = '#d77a7a';
-export const COLOR_RED = '#c80000';
-export const COLOR_RED_DARK = '#780000';
-export const COLOR_RED_DARKER = '#500000';
 
-export const COLOR_GREEN_LIGHTER = '#d8f5d8';
-export const COLOR_GREEN_LIGHT = '#32c832';
-export const COLOR_GREEN = '#00a700';
-export const COLOR_GREEN_DARK = '#006401';
-export const COLOR_GREEN_DARKER = '#004301';
 
-export const COLOR_BLUE_LIGHTER = '#eff3f8';
-export const COLOR_BLUE_LIGHT = '#7aa9d7';
-export const COLOR_BLUE = '#0064c8';
-export const COLOR_BLUE_DARK = '#003c78';
-export const COLOR_BLUE_DARKER = '#003c78';
+FILL_LIGHTER: '#fafafa',
+  FILL_LIGHT: '#f7f7f7',
+  FILL: '#f5f5f5',
+  FILL_DARK: '#ebebeb',
+  FILL_DARKER: '#dedede',
+// 中立色 - 
 
-export const COLOR_ORANGE_LIGHTER = '#fff7d1';
-export const COLOR_ORANGE_LIGHT = '#ffde5c';
-export const COLOR_ORANGE = '#fac800';
-export const COLOR_ORANGE_DARK = '#a77e00';
-export const COLOR_ORANGE_DARKER = '#7d5c00';
+
+// 辅助功能色 - 成功 success、失败（错误）error、信息 info、警告 warning
+
+export const COLOR_SUCCESS_LIGHTER = '#d8f5d8';
+export const COLOR_SUCCESS_LIGHT = '#32c832';
+export const COLOR_SUCCESS = '#00a700';
+export const COLOR_SUCCESS_DARK = '#006401';
+export const COLOR_SUCCESS_DARKER = '#004301';
+
+export const COLOR_ERROR_LIGHTER = '#f8efef';
+export const COLOR_ERROR_LIGHT = '#d77a7a';
+export const COLOR_ERROR = '#c80000';
+export const COLOR_ERROR_DARK = '#780000';
+export const COLOR_ERROR_DARKER = '#500000';
+
+export const COLOR_INFO_LIGHTER = '#eff3f8';
+export const COLOR_INFO_LIGHT = '#7aa9d7';
+export const COLOR_INFO = '#0064c8';
+export const COLOR_INFO_DARK = '#003c78';
+export const COLOR_INFO_DARKER = '#003c78';
+
+export const COLOR_WARNING_LIGHTER = '#fff7d1';
+export const COLOR_WARNING_LIGHT = '#ffde5c';
+export const COLOR_WARNING = '#fac800';
+export const COLOR_WARNING_DARK = '#a77e00';
+export const COLOR_WARNING_DARKER = '#7d5c00';
