@@ -1,6 +1,8 @@
 @alicloud/console-base-theme
 ===
 
+* [关于 CSS Variable 的实践研究](doc/reserch.md)
+
 控制台主题
 
 # Usage
