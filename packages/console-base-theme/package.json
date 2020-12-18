@@ -33,6 +33,9 @@
   "peerDependencies": {
     "styled-components": ">=5"
   },
+  "dependencies": {
+    "polished": "^4.0.5"
+  },
   "scripts": {
     "start": "breezr start-storybook",
     "test": "breezr test:unit",
@@ -43,8 +46,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:bundle && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "dependencies": {
-    "polished": "^4.0.5"
   }
 }
