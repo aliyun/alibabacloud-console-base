@@ -1,0 +1,253 @@
+:root {
+  /**
+   * 色板，从 https://github.com/aliyun/cloud-design/blob/master/base-components/fusion-theme/xconsole/variables.css 提取
+   */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: transparent;
+  --color-link: #0064c8;
+  
+  // 规律的满 10 级色阶
+  
+  --color-brand1-1: #f7f9fa;
+  --color-brand1-2: #eff3f8;
+  --color-brand1-3: #fbfcfd;
+  --color-brand1-4: #bfd2e6;
+  --color-brand1-5: #7aa9d7;
+  --color-brand1-6: #0064c8;
+  --color-brand1-7: #0050a0;
+  --color-brand1-8: #003c78;
+  --color-brand1-9: #002850;
+  --color-brand1-10: #001428;
+  
+  --color-brand2-1: #f8f8f9;
+  --color-brand2-2: #e3e4e6;
+  --color-brand2-3: #d1d5d9;
+  --color-brand2-4: #c0c6cc;
+  --color-brand2-5: #92a3b3;
+  --color-brand2-6: #577899;
+  --color-brand2-7: #004080;
+  --color-brand2-8: #003366;
+  --color-brand2-9: #00264d;
+  --color-brand2-10: #001a33;
+  
+  --color-gray-1: #e6e6e6;
+  --color-gray-2: #d9d9d9;
+  --color-gray-3: #ccc;
+  --color-gray-4: #b3b3b3;
+  --color-gray-5: #999;
+  --color-gray-6: #808080;
+  --color-gray-7: #666;
+  --color-gray-8: #4d4d4d;
+  --color-gray-9: #333;
+  --color-gray-10: #1a1a1a;
+  
+  --color-success-1: #ebfaeb;
+  --color-success-2: #d8f5d8;
+  --color-success-3: #c1f0c2;
+  --color-success-4: #abebac;
+  --color-success-5: #7bda7b;
+  --color-success-6: #32c832;
+  --color-success-7: #00a700;
+  --color-success-8: #008501;
+  --color-success-9: #006401;
+  --color-success-10: #004301;
+
+  --color-warning-1: #fffae8;
+  --color-warning-2: #fff7d1;
+  --color-warning-3: #fff3b4;
+  --color-warning-4: #fff097;
+  --color-warning-5: #ffde5c;
+  --color-warning-6: #fac800;
+  --color-warning-7: #dda200;
+  --color-warning-8: #a77e00;
+  --color-warning-9: #7d5c00;
+  --color-warning-10: #533b00;
+  
+  --color-error-1: #fdfbfb;
+  --color-error-2: #faf7f7;
+  --color-error-3: #f8efef;
+  --color-error-4: #f5e6e6;
+  --color-error-5: #e6bfbf;
+  --color-error-6: #d77a7a;
+  --color-error-7: #c80000;
+  --color-error-8: #a00000;
+  --color-error-9: #780000;
+  --color-error-10: #500000;
+  
+  // 规律的不满 10 级的色阶
+  --color-notice-1: #e5f3ff;
+  --color-notice-2: #a0cded;
+  --color-notice-3: #0070cc;
+  --color-notice-4: #005aa5;
+  
+  --color-help-1: #f5f5f5;
+  --color-help-2: #c9c9c9;
+  --color-help-3: #888;
+  --color-help-4: #333;
+  
+  // 不规律的色阶
+  --color-text-1: #c1c1c1;
+  --color-text-2: #888;
+  --color-text-3: #555555;
+  --color-text-4: #111;
+  --color-text-5: #ccc;
+  --color-text-6: #808080;
+  --color-text-7: #666;
+  --color-text-8: #4d4d4d;
+  --color-text-9: #333;
+  --color-text-10: #1a1a1a;
+  
+  --color-fill-1: #f8f8f9;
+  --color-fill-2: #f7f9fa;
+  --color-fill-3: #eff3f8;
+  --color-fill-4: #004080;
+  --color-fill-5: #0064c8;
+  --color-fill-6: #0050a0;
+  --color-fill-7: #003c78;
+  --color-fill-8: #d1d5d9;
+  --color-fill-9: #1c1c1c;
+  
+  --color-data-1: #00dccd;
+  --color-data-2: #506fed;
+  --color-data-3: #ae66fc;
+  --color-data-4: #ff445f;
+  --color-data-5: #ff934d;
+  --color-data-6: #ffd74d;
+  --color-data-7: #4dde6d;
+  --color-data-8: #18b1f7;
+  
+  --color-line-1: #e3e4e6;
+  --color-line-2: #c0c6cc;
+  --color-line-3: #577899;
+  --color-line-4: #d1d5d9;
+  --color-line-5: #ebebeb;
+  
+  --font-family-base: -apple-system, blinkmacsystemfont, 'segoe ui', 'pingfang sc', 'hiragino sans gb', 'microsoft yahei', 'helvetica neue', helvetica, arial, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-lineheight-1: 1;
+  --font-lineheight-2: 1.5;
+  --font-lineheight-3: 1.6;
+  --font-lineheight-4: 1.8;
+  --font-lineheight-5: 2;
+  --font-size-display-1: 24px;
+  --font-size-display-2: 36px;
+  --font-size-display-3: 48px;
+  --font-size-headline: 20px;
+  --font-size-title: 16px;
+  --font-size-subhead: 14px;
+  --font-size-body-1: 12px;
+  --font-size-body-2: 14px;
+  --font-size-caption: 12px;
+  --font-weight-1: lighter;
+  --font-weight-2: normal;
+  --font-weight-3: bold;
+  --font-weight-thin: 200;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-extra-bold: 800;
+  --font-weight-ultra-bold: 900;
+  
+  --corner-0: 0;
+  --corner-1: 2px;
+  --corner-2: 4px;
+  --corner-3: 12px;
+  --corner-4: 14px;
+  --corner-circle: 50%;
+  
+  --typography-text-color: var(--color-text-9, #333);
+  --typography-text-strong-font-weight: var(--font-weight-semi-bold, 600);
+  --typography-text-code-corner: var(--corner-1, 2px);
+  --typography-text-mark-color: var(--color-text-9, #333);
+  --typography-text-mark-background: var(--color-warning-6, #fac800);
+  --typography-text-code-color: var(--color-text-9, #333);
+  --typography-text-code-background: var(--color-fill-3, #eff3f8);
+  --typography-text-code-border-color: var(--color-line-2, #c0c6cc);
+  --typography-paragraph-font-size: var(--font-size-body-1, 12px);
+  --typography-paragraph-line-height: var(--font-lineheight-2, 1.5);
+  --typography-title-h1-font-size: var(--font-size-display-3, 48px);
+  --typography-title-h2-font-size: var(--font-size-display-2, 36px);
+  --typography-title-h3-font-size: var(--font-size-display-1, 24px);
+  --typography-title-h4-font-size: var(--font-size-headline, 20px);
+  --typography-title-h5-font-size: var(--font-size-title, 16px);
+  --typography-title-h6-font-size: var(--font-size-subhead, 14px);
+  --typography-title-font-weight: var(--font-weight-semi-bold, 600);
+  
+  --shadow-0: none;
+  --shadow-1: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  --shadow-1-up: 0 -2px 4px 0 rgba(0, 0, 0, 0.16);
+  --shadow-1-right: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  --shadow-1-down: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  --shadow-1-left: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  --shadow-2: 0 4px 8px 0 rgba(0, 0, 0, 0.16);
+  --shadow-2-up: 0 -4px 8px 0 rgba(0, 0, 0, 0.16);
+  --shadow-2-right: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+  --shadow-2-down: 0 4px 8px 0 rgba(0, 0, 0, 0.16);
+  --shadow-2-left: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+  --shadow-3: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  --shadow-3-up: 0 -8px 16px 0 rgba(0, 0, 0, 0.2);
+  --shadow-3-right: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+  --shadow-3-down: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  --shadow-3-left: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+  
+  --spacing-0: 0;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-10: 40px;
+  --spacing-11: 44px;
+  --spacing-12: 48px;
+  --spacing-13: 52px;
+  --spacing-14: 56px;
+  --spacing-15: 60px;
+  --spacing-16: 64px;
+  --spacing-17: 68px;
+  --spacing-18: 72px;
+  --spacing-19: 76px;
+  --spacing-20: 80px;
+  --spacing-21: 84px;
+  --spacing-22: 88px;
+  --spacing-23: 92px;
+  --spacing-24: 96px;
+  --spacing-25: 100px;
+  --spacing-26: 104px;
+  --spacing-27: 108px;
+  --spacing-28: 112px;
+  --spacing-29: 116px;
+  --spacing-30: 120px;
+  --spacing-31: 124px;
+  --spacing-32: 128px;
+  --spacing-33: 132px;
+  --spacing-34: 136px;
+  --spacing-35: 140px;
+  --spacing-36: 144px;
+  --spacing-37: 148px;
+  --spacing-38: 152px;
+  --spacing-39: 156px;
+  --spacing-40: 160px;
+  --spacing-41: 164px;
+  --spacing-42: 168px;
+  --spacing-43: 172px;
+  --spacing-44: 176px;
+  --spacing-45: 180px;
+  --spacing-46: 184px;
+  --spacing-47: 188px;
+  --spacing-48: 192px;
+  --spacing-49: 196px;
+  --spacing-50: 200px;
+  
+  --line-0: 0;
+  --line-1: 1px;
+  --line-2: 2px;
+  --line-3: 3px;
+  --line-solid: solid;
+  --line-dashed: dashed;
+  --line-dotted: dotted;
+}
