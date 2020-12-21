@@ -5,11 +5,15 @@ import React, {
 import {
   parseToHsl,
   hsl,
+  transparentize,
   readableColor
 } from 'polished';
-import styled from 'styled-components';
+import styled, {
+  createGlobalStyle
+} from 'styled-components';
 
 import {
+  ChoiceItem,
   H1,
   P,
   List,
@@ -22,6 +26,16 @@ interface IMatrixItem {
   value: string;
 }
 
+const COLOR_CORE = '#0064c8';
+const COLOR_CORE_HSL = parseToHsl(COLOR_CORE);
+
+const GlobalStyleDarkBg = createGlobalStyle`
+  body {
+    background: #000;
+    color: #fff;
+  }
+`;
+
 const ScColorGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(36, 1fr);
@@ -29,7 +43,7 @@ const ScColorGrid = styled.div`
 `;
 
 const ScColorBlock = styled.div`
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 2px;
   height: 32px;
   line-height: 32px;
@@ -37,39 +51,49 @@ const ScColorBlock = styled.div`
   text-align: center;
 `;
 
-const HUE_LEVELS: number[] = [];
-const SATURATION_LEVELS: number[] = [];
-const LIGHTNESS_LEVELS: number[] = [];
-
-for (let i = 10; i <= 360; i += 10) { // 色相每 10º 为一个节点，基础色相共 36 阶
-  HUE_LEVELS.push(i);
-}
-
-for (let i = 0; i <= 100; i += 10) { // 饱和度范围 0%-100%，每 10% 递增，共 11 阶
-  SATURATION_LEVELS.push(i);
-}
-
-for (let i = 19; i <= 89; i += 10) { // 明度起始为 19%，以 10% 递增，最高明度 89%，共 8 阶
-  LIGHTNESS_LEVELS.push(i);
-}
-
-HUE_LEVELS.sort((v1, v2) => v1 - v2);
-SATURATION_LEVELS.sort((v1, v2) => v2 - v1); // 倒序
-LIGHTNESS_LEVELS.sort((v1, v2) => v2 - v1); // 倒序
-
-function getFloatString(n: number): string {
-  const p = Math.round(n * 100);
+const THEMES: ChoiceItem<boolean>[] = [{
+  label: '是',
+  value: true
+}, {
+  label: '否',
+  value: false
+}];
+const HUE_LEVELS: number[] = ((): number[] => {
+  const levels: number[] = [];
   
-  if (p === 100) {
-    return '1';
+  for (let i = 10; i <= 360; i += 10) { // 色相每 10º 为一个节点，基础色相共 36 阶
+    levels.push((i + COLOR_CORE_HSL.hue) % 360);
   }
   
-  if (p === 0) {
-    return '0';
+  levels.sort((v1, v2) => v1 - v2);
+  
+  return levels;
+})();
+const SATURATION_LEVELS: number[] = ((): number[] => {
+  const levels: number[] = [];
+  
+  for (let i = 0; i <= 100; i += 10) { // 饱和度范围 0%-100%，每 10% 递增，共 11 阶
+    levels.push(i);
   }
   
-  return `${p}%`;
-}
+  levels.sort((v1, v2) => v2 - v1); // 倒序
+  
+  return levels;
+})();
+const LIGHTNESS_LEVELS: number[] = ((): number[] => {
+  const levels: number[] = [];
+  
+  for (let i = 0; i < 100; i += 10) { // 明度起始为 19%，以 10% 递增，最高明度 89%，共 8 阶
+    levels.push((i + COLOR_CORE_HSL.lightness * 100) % 100);
+  }
+  
+  levels.sort((v1, v2) => v2 - v1); // 倒序
+  
+  levels.splice(0, 1); // 去掉最小值（白色背景下几乎看不到）
+  levels.splice(levels.length - 1, 1); // 去掉最大值（黑色背景下几乎看不到）
+  
+  return levels;
+})();
 
 function CurrentSelectedColor({
   color
@@ -85,7 +109,7 @@ function CurrentSelectedColor({
       lightness
     } = parseToHsl(color);
     
-    colorDisplay = `RGB = ${color} - hsl(${Math.round(hue)}, ${getFloatString(saturation)}, ${getFloatString(lightness)})`;
+    colorDisplay = `RGB = ${color} - hsl(${Math.round(hue)}, ${saturation}, ${lightness})`;
   } else {
     colorDisplay = 'n/a';
   }
@@ -107,11 +131,12 @@ function CurrentSelectedColor({
  * 控制台核心色：
  * - HEX = #0064c8
  * - RGB = 0/100/200
- * - HSL = 210º/100%/39%
- * - HSV = 210º/100º/78º
+ * - HSL = ~210º/100%/~39%
+ * - HSV = ~210º/100º/~78º
  * - CMYK = 1.00/0.50/0.00/0.22
  */
 export default function DemoColorScale(): JSX.Element {
+  const [stateThemeDark, setStateThemeDark] = useState<boolean>(false);
   const [stateSaturation, setStateSaturation] = useState<number>(100);
   const [stateSelectedColor, setStateSelectedColor] = useState<string>('');
   const colorMatrix: IMatrixItem[] = useMemo((): IMatrixItem[] => {
@@ -129,6 +154,7 @@ export default function DemoColorScale(): JSX.Element {
   }, [stateSaturation]);
 
   return <>
+    {stateThemeDark ? <GlobalStyleDarkBg /> : null}
     <H1>控制台色盘（有偏差...）</H1>
     <P>参考：<a href="https://done.alibaba-inc.com/file/npMfevdSB70K/nraBotmHA4yO7cyO/preview?categoryId=bqTzhdSLVELC">XConsole 色盘设计</a>。控制台色阶基于 HSL 色彩模型 - 色相 Hue / 饱和度 Saturation / 明度 Lightness：</P>
     <List>
@@ -145,6 +171,12 @@ export default function DemoColorScale(): JSX.Element {
       })),
       onChange: setStateSaturation
     }} />
+    <RadioGroup<boolean> {...{
+      label: '黑色背景',
+      value: stateThemeDark,
+      items: THEMES,
+      onChange: setStateThemeDark
+    }} />
     <CurrentSelectedColor color={stateSelectedColor} />
     <ScColorGrid>
       {colorMatrix.map(({
@@ -156,10 +188,11 @@ export default function DemoColorScale(): JSX.Element {
         title: `${value} - (${i}, ${j})`,
         style: {
           color: readableColor(value),
+          borderColor: stateSelectedColor === value ? transparentize(0.9, readableColor(value)) : undefined,
           backgroundColor: value
         },
         onClick: () => setStateSelectedColor(value)
-      }}>{stateSelectedColor === value ? '★' : null}</ScColorBlock>)}
+      }}>{COLOR_CORE === value ? '★' : null}</ScColorBlock>)}
     </ScColorGrid>
   </>;
 }
