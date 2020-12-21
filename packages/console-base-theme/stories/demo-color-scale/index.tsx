@@ -5,8 +5,7 @@ import React, {
 import {
   parseToHsl,
   hsl,
-  invert,
-  grayscale
+  readableColor
 } from 'polished';
 import styled from 'styled-components';
 
@@ -46,7 +45,7 @@ for (let i = 10; i <= 360; i += 10) { // 色相每 10º 为一个节点，基础
   HUE_LEVELS.push(i);
 }
 
-for (let i = 0; i <= 100; i += 20) { // 饱和度范围 0%-100%，每 20% 递增，共 6 阶
+for (let i = 0; i <= 100; i += 10) { // 饱和度范围 0%-100%，每 10% 递增，共 11 阶
   SATURATION_LEVELS.push(i);
 }
 
@@ -58,8 +57,18 @@ HUE_LEVELS.sort((v1, v2) => v1 - v2);
 SATURATION_LEVELS.sort((v1, v2) => v2 - v1); // 倒序
 LIGHTNESS_LEVELS.sort((v1, v2) => v2 - v1); // 倒序
 
-function getGrayscaleInvert(color: string) {
-  return grayscale(invert(color));
+function getFloatString(n: number): string {
+  const p = Math.round(n * 100);
+  
+  if (p === 100) {
+    return '1';
+  }
+  
+  if (p === 0) {
+    return '0';
+  }
+  
+  return `${p}%`;
 }
 
 function CurrentSelectedColor({
@@ -76,13 +85,13 @@ function CurrentSelectedColor({
       lightness
     } = parseToHsl(color);
     
-    colorDisplay = `${color} - hsl(${hue}, ${saturation}, ${lightness})`;
+    colorDisplay = `RGB = ${color} - hsl(${Math.round(hue)}, ${getFloatString(saturation)}, ${getFloatString(lightness)})`;
   } else {
     colorDisplay = 'n/a';
   }
   
   return <P>当前选中：<strong style={{
-    color: color ? getGrayscaleInvert(color) : '#ccc',
+    color: color ? readableColor(color) : '#ccc',
     backgroundColor: color || undefined
   }}>{colorDisplay}</strong></P>;
 }
@@ -146,7 +155,7 @@ export default function DemoColorScale(): JSX.Element {
         key: `${i}-${j}-${stateSaturation}`,
         title: `${value} - (${i}, ${j})`,
         style: {
-          color: getGrayscaleInvert(value),
+          color: readableColor(value),
           backgroundColor: value
         },
         onClick: () => setStateSelectedColor(value)
