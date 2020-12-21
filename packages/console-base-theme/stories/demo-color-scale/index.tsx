@@ -1,11 +1,13 @@
 import React, {
   useState,
-  useMemo
+  useMemo,
+  useCallback,
+  useEffect
 } from 'react';
 import {
   parseToHsl,
+  parseToRgb,
   hsl,
-  transparentize,
   readableColor
 } from 'polished';
 import styled, {
@@ -30,6 +32,10 @@ const COLOR_CORE = '#0064c8';
 const COLOR_CORE_HSL = parseToHsl(COLOR_CORE);
 
 const GlobalStyleDarkBg = createGlobalStyle`
+  :root {
+    --shadow-color-block: 0 0 2px rgba(255, 255, 255, 0.4);
+  }
+  
   body {
     background: #000;
     color: #fff;
@@ -39,16 +45,21 @@ const GlobalStyleDarkBg = createGlobalStyle`
 const ScColorGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(36, 1fr);
-  gap: 4px;
+  gap: 6px;
 `;
 
-const ScColorBlock = styled.div`
+const ScColorBlock = styled.div<{
+  selected: boolean;
+}>`
   border: 2px solid transparent;
   border-radius: 2px;
+  box-shadow: ${props => (props.selected ? 'var(--shadow-color-block, 0 0 2px rgba(0, 0, 0, 0.4))' : 'none')};
   height: 32px;
   line-height: 32px;
   cursor: default;
   text-align: center;
+  transform: scale(${props => (props.selected ? 1.1 : 1)});
+  transition: all ease 0.2s;
 `;
 
 const THEMES: ChoiceItem<boolean>[] = [{
@@ -108,8 +119,13 @@ function CurrentSelectedColor({
       saturation,
       lightness
     } = parseToHsl(color);
+    const {
+      red,
+      green,
+      blue
+    } = parseToRgb(color);
     
-    colorDisplay = `RGB = ${color} - hsl(${Math.round(hue)}, ${saturation}, ${lightness})`;
+    colorDisplay = `${color} - rgb(${red}, ${green}, ${blue}) - hsl(${Math.round(hue)}, ${saturation}, ${lightness})`;
   } else {
     colorDisplay = 'n/a';
   }
@@ -118,6 +134,18 @@ function CurrentSelectedColor({
     color: color ? readableColor(color) : '#ccc',
     backgroundColor: color || undefined
   }}>{colorDisplay}</strong></P>;
+}
+
+function limitIndex(index: number, max: number): number {
+  if (index > max) {
+    return max;
+  }
+  
+  if (index < 0) {
+    return 0;
+  }
+  
+  return index;
 }
 
 /**
@@ -138,20 +166,75 @@ function CurrentSelectedColor({
 export default function DemoColorScale(): JSX.Element {
   const [stateThemeDark, setStateThemeDark] = useState<boolean>(false);
   const [stateSaturation, setStateSaturation] = useState<number>(100);
-  const [stateSelectedColor, setStateSelectedColor] = useState<string>('');
+  const [[stateI, stateJ], setStateIJ] = useState<[number, number]>([-1, -1]);
+  const handleKeydown = useCallback((e: KeyboardEvent): void => {
+    if (stateI < 0 || stateJ < 0) {
+      return;
+    }
+    
+    let nextI = stateI;
+    let nextJ = stateJ;
+    
+    switch (e.key) {
+      case 'ArrowUp':
+        nextI -= 1;
+        
+        break;
+      case 'ArrowDown':
+        nextI += 1;
+        
+        break;
+      case 'ArrowLeft':
+        nextJ -= 1;
+        
+        break;
+      case 'ArrowRight':
+        nextJ += 1;
+        
+        break;
+      default:
+        return;
+    }
+    
+    nextI = limitIndex(nextI, LIGHTNESS_LEVELS.length - 1);
+    nextJ = limitIndex(nextJ, HUE_LEVELS.length - 1);
+    
+    setStateIJ([nextI, nextJ]);
+  }, [stateI, stateJ]);
   const colorMatrix: IMatrixItem[] = useMemo((): IMatrixItem[] => {
     const arr: IMatrixItem[] = [];
     
     LIGHTNESS_LEVELS.forEach((l, i) => {
       arr.push(...HUE_LEVELS.map((h, j) => ({
-        i: i + 1,
-        j: j + 1,
+        i,
+        j,
         value: hsl(h, stateSaturation * 0.01, l * 0.01)
       })));
     });
     
     return arr;
   }, [stateSaturation]);
+  let selectedColor = '';
+  
+  colorMatrix.some(({
+    i,
+    j,
+    value
+  }) => {
+    const found = stateI === i && stateJ === j;
+    
+    if (found) {
+      selectedColor = value;
+    }
+    
+    return found;
+  });
+  
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeydown);
+    
+    return () => document.removeEventListener('keydown', handleKeydown);
+  }, [handleKeydown]);
 
   return <>
     {stateThemeDark ? <GlobalStyleDarkBg /> : null}
@@ -177,7 +260,7 @@ export default function DemoColorScale(): JSX.Element {
       items: THEMES,
       onChange: setStateThemeDark
     }} />
-    <CurrentSelectedColor color={stateSelectedColor} />
+    <CurrentSelectedColor color={selectedColor} />
     <ScColorGrid>
       {colorMatrix.map(({
         i,
@@ -185,13 +268,12 @@ export default function DemoColorScale(): JSX.Element {
         value
       }) => <ScColorBlock {...{
         key: `${i}-${j}-${stateSaturation}`,
-        title: `${value} - (${i}, ${j})`,
+        selected: stateI === i && stateJ === j,
         style: {
           color: readableColor(value),
-          borderColor: stateSelectedColor === value ? transparentize(0.9, readableColor(value)) : undefined,
           backgroundColor: value
         },
-        onClick: () => setStateSelectedColor(value)
+        onClick: () => setStateIJ([i, j])
       }}>{COLOR_CORE === value ? '★' : null}</ScColorBlock>)}
     </ScColorGrid>
   </>;
