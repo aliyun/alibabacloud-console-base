@@ -13,58 +13,15 @@
 # Usage
 
 ```js
-import {
+import ThemeGlobalStyle, {
   COLOR,
+  TYPO,
+  SIZE,
+  Z_INDEX,
+  typo,
   button,
-  typo
+  glyph
 } from '@alicloud/console-base-theme';
+
+<ThemeGlobalStyle />
 ```
-
-# Theme-Aware Properties
-
-Property | Theme Key
-:-- | :--
-`fontFamily` | `fonts`
-`fontSize` | `fontSizes`
-`fontWeight` | `fontWeights`
-`lineHeight` | `lineHeights`
-`letterSpacing` | `letterSpacings`
-`color` | `colors`
-`backgroundColor`, `bg` | `colors`
-`margin`, `m` | `space`
-`marginTop`, `mt` | `space`
-`marginRight`, `mr` | `space`
-`marginBottom`, `mb` | `space`
-`marginLeft`, `ml` | `space`
-`marginX`, `mx` | `space`
-`marginY`, `my` | `space`
-`padding`, `p` | `space`
-`paddingTop`, `pt` | `space`
-`paddingRight`, `pr` | `space`
-`paddingBottom`, `pb` | `space`
-`paddingLeft`, `pl` | `space`
-`paddingX`, `px` | `space`
-`paddingY`, `py` | `space`
-`top` | `space`
-`bottom` | `space`
-`left` | `space`
-`right` | `space`
-`border` | `borders`
-`borderTop` | `borders`
-`borderRight` | `borders`
-`borderBottom` | `borders`
-`borderLeft` | `borders`
-`borderColor` | `colors`
-`borderWidth` | `borderWidths`
-`borderStyle` | `borderStyles`
-`borderRadius` | `radii`
-`boxShadow` | `shadows`
-`textShadow` | `shadows`
-`zIndex` | `zIndices`
-`width` | `sizes`
-`minWidth` | `sizes`
-`maxWidth` | `sizes`
-`height` | `sizes`
-`minHeight` | `sizes`
-`maxHeight` | `sizes`
-`size` | `sizes`
