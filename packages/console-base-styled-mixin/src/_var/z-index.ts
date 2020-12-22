@@ -1,5 +1,3 @@
-/* -- 表单控件（按钮、输入框）设置 -- */
-
 export const TOP_BAR = 999;
 
 export const TOOLKIT = 99;

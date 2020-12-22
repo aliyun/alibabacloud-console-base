@@ -10,8 +10,10 @@ import pkgInfo from '../package.json';
 
 import DemoDefault from './demo-default';
 import DemoColorScale from './demo-color-scale';
+import DemoColorConversion from './demo-color-conversion';
 
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
     .add('default', () => <DemoDefault />)
-    .add('color-scale', () => <DemoColorScale />);
+    .add('color-scale', () => <DemoColorScale />)
+    .add('color-conversion', () => <DemoColorConversion />);

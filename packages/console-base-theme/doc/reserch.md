@@ -1,6 +1,9 @@
 关于 CSS Variable 的实践研究
 ===
 
+* [ConsoleBase CSS Var](css/console-base-light.less)
+* [XConsole CSS Var Light](css/xconsole-color-light.less)
+
 # 兼容性
 
 根据 [MDN CSS var()](https://developer.mozilla.org/en-US/docs/Web/CSS/var()) 以及 [CanIUse](https://caniuse.com/css-variables) 的统计，除了 IE 之外，其余的浏览器兼容良好。
@@ -18,7 +21,7 @@
 
 ### 文件
 
-* [CSS Variables 快照](css-github.css)
+* [CSS Variables 快照](css/github.less)
 * [源的 CSS 文件](https://github.githubassets.com/assets/frameworks-240616ff945e6555bfb782d029c5a2c4.css)
 
 ### 切主题
@@ -47,7 +50,7 @@
 
 ### 文件
 
-* [CSS Variables 快照](css-jb.css)
+* [CSS Variables 快照](css/jb.less)
 * [源的 CSS 文件](https://resources.jetbrains.com/storage/help-app/v3/app.css)
 
 ### 切主题
@@ -75,7 +78,7 @@
 
 ### 文件
 
-* [CSS Variables 快照](css-macwk.css)
+* [CSS Variables 快照](css/macwk.less)
 * [源的 CSS 文件](https://cdn.macwk.com/client/app.f82db30.css)
 
 ### 切主题
@@ -101,7 +104,7 @@
 
 ### 文件
 
-* [CSS Variables 快照](css-jwc.css)
+* [CSS Variables 快照](css/jwc.less)
 * [源的 CSS 文件](https://www.joshwcomeau.com/_next/static/css/e0f181e590633b6e485d.css)
 
 ### 切主题
@@ -126,7 +129,7 @@
 
 ### 文件
 
-* [CSS Variables 快照](css-jwc.css)
+* [CSS Variables 快照](css/jwc.less)
 * [源的 CSS 文件 - light](https://caniuse.com/css/theme-light.css)
 * [源的 CSS 文件 - dark](https://caniuse.com/css/theme-dark.css)
 
@@ -175,7 +178,7 @@ theme-dark
 
 ### 文件
 
-* [CSS Variables 快照](css-themeui.css)
+* [CSS Variables 快照](css/themeui.less)
 
 ### 切主题
 

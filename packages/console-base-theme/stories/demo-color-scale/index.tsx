@@ -54,8 +54,8 @@ const ScColorBlock = styled.div<{
   border: 2px solid transparent;
   border-radius: 2px;
   box-shadow: ${props => (props.selected ? 'var(--shadow-color-block, 0 0 2px rgba(0, 0, 0, 0.4))' : 'none')};
-  height: 32px;
-  line-height: 32px;
+  height: 30px;
+  line-height: 30px;
   cursor: default;
   text-align: center;
   transform: scale(${props => (props.selected ? 1.1 : 1)});
@@ -238,8 +238,8 @@ export default function DemoColorScale(): JSX.Element {
 
   return <>
     {stateThemeDark ? <GlobalStyleDarkBg /> : null}
-    <H1>控制台色盘（有偏差...）</H1>
-    <P>参考：<a href="https://done.alibaba-inc.com/file/npMfevdSB70K/nraBotmHA4yO7cyO/preview?categoryId=bqTzhdSLVELC">XConsole 色盘设计</a>。控制台色阶基于 HSL 色彩模型 - 色相 Hue / 饱和度 Saturation / 明度 Lightness：</P>
+    <H1>控制台色盘（但并非所用的颜色都出自这里...）</H1>
+    <P>参考：<a href="https://done.alibaba-inc.com/file/npMfevdSB70K/nraBotmHA4yO7cyO/preview?categoryId=bqTzhdSLVELC" target="_blank" rel="noopener noreferrer">XConsole 色盘设计</a>。控制台色阶基于 HSL 色彩模型 - 色相 Hue / 饱和度 Saturation / 明度 Lightness：</P>
     <List>
       <><em>Hue</em>（以下横轴）360º 色相，默认每 10º 为一个节点，基础色相共 36 阶</>
       <><em>Lightness</em>（以下纵轴）明度参数 0%-100%，起始为 19%，以 10% 递增，最高明度 89%，共 8 阶</>
