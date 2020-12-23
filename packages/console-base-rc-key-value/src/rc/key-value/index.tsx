@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR,
+  COLOR
+} from '@alicloud/console-base-theme';
+import {
   typo
 } from '@alicloud/console-base-styled-mixin';
 
@@ -21,10 +23,12 @@ const ScItem = styled.div`
   display: flex;
   margin: 4px 0;
   color: ${COLOR.TEXT_PRIMARY};
+  color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
 `;
 const ScItemK = styled.div`
   margin-right: 1em;
   color: ${COLOR.TEXT_CAPTION};
+  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
 `;
 const ScItemV = styled.div<IPropsScItemV>`
   flex: 1;
