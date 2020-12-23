@@ -12,7 +12,9 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR,
+  COLOR
+} from '@alicloud/console-base-theme';
+import {
   typo
 } from '@alicloud/console-base-styled-mixin';
 import Button, {
@@ -60,7 +62,8 @@ const ScErrorDetails = styled.ul<IPropsScDetails>`
 const ScKV = styled.li`
   display: flex;
   padding: 4px 0;
-  border-bottom: 1px solid ${COLOR.LINE_LIGHT};
+  border-bottom: 1px solid ${COLOR.LINE_DIVIDER};
+  border-bottom: 1px solid var(--cb-color-line-divider, ${COLOR.LINE_DIVIDER});
 `;
 
 const ScK = styled.div`
@@ -73,6 +76,7 @@ const ScV = styled.div`
   flex: 1;
   text-align: right;
   color: ${COLOR.TEXT_CAPTION};
+  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
   ${typo.lineWrap};
 `;
 

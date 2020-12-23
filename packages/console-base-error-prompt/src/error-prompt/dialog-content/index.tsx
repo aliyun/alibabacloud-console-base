@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import {
   COLOR
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 import Pagination from '@alicloud/console-base-rc-pagination';
 import {
   useDialog
@@ -31,12 +31,14 @@ const ScMessage = styled.div`
   em {
     font-style: normal;
     color: ${COLOR.TEXT_EMPHASIS};
+    color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
   }
   
   code {
     padding: 0 4px;
     border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${COLOR.FILL_LIGHT_FADED};
+    background-color: var(--cb-color-fill-light-faded, ${COLOR.FILL_LIGHT_FADED});
     color: #f25c7f;
   }
 `;

@@ -47,6 +47,8 @@
     "@alicloud/console-base-rc-button": "^1.0.6",
     "@alicloud/console-base-rc-dialog": "^1.0.9",
     "@alicloud/console-base-rc-pagination": "^1.0.9",
+    "@alicloud/console-base-styled-mixin": "^1.0.4",
+    "@alicloud/console-base-theme": "^0.0.0",
     "lodash": "^4.17.20",
     "qs": "^6.9.4"
   },
