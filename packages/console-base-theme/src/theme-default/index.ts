@@ -12,6 +12,7 @@ import SHADOW from './_var/shadow';
 export default createGlobalStyle`
   :root {
     --cb-color-brand-aliyun: ${COLOR.BRAND_ALIYUN};
+    --cb-color-text-accent: ${COLOR.TEXT_ACCENT};
     --cb-color-text-error: ${COLOR.TEXT_ERROR};
     --cb-color-text-warn: ${COLOR.TEXT_WARN};
     --cb-color-text-success: ${COLOR.TEXT_SUCCESS};

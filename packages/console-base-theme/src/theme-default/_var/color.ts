@@ -10,6 +10,7 @@ export default {
   // --------------------------------------------------------------- //
   
   // 彩色文本
+  TEXT_ACCENT: ACCENT,
   TEXT_ERROR: ERROR, // 错误
   TEXT_WARN: '#ffc440', // 警告
   TEXT_SUCCESS: '#1e8e3e', // 积极和正面引导的文本，如「验证通过」、「已支付」等 TODO TEXT_POSITIVE
