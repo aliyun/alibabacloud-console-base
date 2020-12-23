@@ -2,21 +2,25 @@ import styled from 'styled-components';
 
 import {
   COLOR
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 export default styled.article`
   a:link {
     text-decoration: none;
-    color: ${COLOR.LINK};
+    color: ${COLOR.LINK_PRIMARY};
+    color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
     
     &:hover {
       text-decoration: underline;
+      color: ${COLOR.LINK_PRIMARY};
+      color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
     }
   }
   
   a:visited,
   a:visited:hover {
-    color: ${COLOR.LINK};
+    color: ${COLOR.LINK_PRIMARY};
+    color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
   }
   
   ul,
@@ -69,19 +73,23 @@ export default styled.article`
   
   blockquote {
     padding: 0 1.2em;
-    border-left: 4px solid ${COLOR.LINE};
+    border-left: 4px solid ${COLOR.LINE_BORDER};
+    border-left: 4px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
     color: ${COLOR.TEXT_CAPTION};
+    color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
   }
   
   em {
     font-style: normal;
     color: ${COLOR.TEXT_EMPHASIS};
+    color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
   }
   
   code {
     padding: 2px;
     border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${COLOR.FILL_LIGHT_FADED};
+    background-color: var(--cb-color-fill-light-faded, ${COLOR.FILL_LIGHT_FADED});
     font-size: 0.9em;
     
     &.clean {
@@ -97,18 +105,22 @@ export default styled.article`
   strong {
     font-weight: 600;
     color: ${COLOR.TEXT_PRIMARY};
+    color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
   }
   
   kbd {
     display: inline-block;
     padding: 3px 5px;
-    border: 1px solid ${COLOR.LINE};
+    border: 1px solid ${COLOR.LINE_BORDER};
+    border: 1px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
     border-radius: 3px;
     box-shadow: inset 0 -1px 0 #bbb;
     background-color: ${COLOR.FILL_LIGHT};
+    background-color: var(--cb-color-fill-light, ${COLOR.FILL_LIGHT});
     line-height: 10px;
     font-size: 11px;
     color: ${COLOR.TEXT_SECONDARY};
+    color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
   }
   
   br {
@@ -122,6 +134,7 @@ export default styled.article`
   h4 {
     font-weight: 600;
     color: ${COLOR.TEXT_PRIMARY};
+    color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
   }
   
   h1 {
@@ -143,7 +156,8 @@ export default styled.article`
   hr {
     margin: 16px 0;
     border: 0;
-    border-bottom: 1px solid ${COLOR.LINE};
+    border-bottom: 1px solid ${COLOR.LINE_BORDER};
+    border-bottom: 1px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
     height: 0;
   }
   
@@ -225,7 +239,8 @@ export default styled.article`
     
     thead {
       tr {
-        background-color: ${COLOR.FILL};
+        background-color: ${COLOR.FILL_TABLE_TH};
+        background-color: var(--cb-color-fill-table-th, ${COLOR.FILL_TABLE_TH});
       }
     }
     
@@ -236,7 +251,8 @@ export default styled.article`
     th,
     td {
       padding: 8px 12px;
-      border: 1px solid ${COLOR.LINE};
+      border: 1px solid ${COLOR.LINE_BORDER};
+      border: 1px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
       font-size: 0.9em;
       text-align: left;
       color: inherit;
