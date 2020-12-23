@@ -27,9 +27,9 @@ export default {
   LINK_PRIMARY_VISITED: '#0070cc',
   LINK_PRIMARY_DISABLED: '#c1c1c1',
   LINK_SECONDARY: '#333', // 次要链接 TODO LINK_GRAY
-  LINK_SECONDARY_HOVERED: '#111',
-  LINK_SECONDARY_ACTIVE: '#111',
-  LINK_SECONDARY_VISITED: '#111',
+  LINK_SECONDARY_HOVERED: '#0070cc',
+  LINK_SECONDARY_ACTIVE: '#0070cc',
+  LINK_SECONDARY_VISITED: '#333',
   LINK_SECONDARY_DISABLED: '#c1c1c1',
   
   // --------------------------------------------------------------- //

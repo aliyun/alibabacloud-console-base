@@ -3,24 +3,13 @@ import styled from 'styled-components';
 import {
   COLOR
 } from '@alicloud/console-base-theme';
+import {
+  typo
+} from '@alicloud/console-base-styled-mixin';
 
 export default styled.article`
-  a:link {
-    text-decoration: none;
-    color: ${COLOR.LINK_PRIMARY};
-    color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
-    
-    &:hover {
-      text-decoration: underline;
-      color: ${COLOR.LINK_PRIMARY};
-      color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
-    }
-  }
-  
-  a:visited,
-  a:visited:hover {
-    color: ${COLOR.LINK_PRIMARY};
-    color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
+  a {
+    ${typo.linkPrimary};
   }
   
   ul,
