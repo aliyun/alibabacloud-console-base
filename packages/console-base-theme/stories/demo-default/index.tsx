@@ -8,18 +8,25 @@ import {
 
 import {
   COLOR,
+  SHADOW,
   TYPO
 } from '../../src';
 
 const [theCode, theCode2] = (() => {
-  const code: string[] = [':root {'];
-  const code2: string[] = [':root {'];
+  const code: string[] = [`import {
+  createGlobalStyle
+} from 'styled-components';
+
+export default createGlobalStyle\`
+  :root {`];
+  const code2: string[] = [`// 由 demo-default 生成拷贝而来，做参考，且放在仓库里 IDE 可以有提示
+:root {`];
   
   function pushToCode(what: string, o: Record<string, unknown>): void {
     Object.keys(o).forEach(v => {
       const varName = `--cb-${what}-${v}`.replace(/_/g, '-').toLowerCase();
       
-      code.push(`  ${varName}: \${${what}.${v}};`);
+      code.push(`    ${varName}: \${${what}.${v}};`);
       code2.push(`  ${varName}: ${o[v]};`);
     });
   }
@@ -32,10 +39,12 @@ const [theCode, theCode2] = (() => {
   
   generateCode({
     COLOR,
+    SHADOW,
     TYPO
   });
   
-  code.push('}');
+  code.push(`  }
+\`;`);
   code2.push('}');
   
   return [code.join('\n'), code2.join('\n')];

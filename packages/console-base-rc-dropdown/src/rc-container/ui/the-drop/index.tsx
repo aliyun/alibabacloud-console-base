@@ -12,8 +12,9 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  COLOR,
+  SHADOW
+} from '@alicloud/console-base-theme';
 
 import {
   TBodyPadding
@@ -37,13 +38,17 @@ const ScTheDrop = styled.div<IPropsScTheDrop>`
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid ${COLOR.LINE_BORDER_FADED};
+  border: 1px solid var(--cb-color-line-border-faded, ${COLOR.LINE_BORDER_FADED});
+  box-shadow: ${SHADOW.M};
+  box-shadow: var(--cb-shadow-m, ${SHADOW.M});
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: ${COLOR.FILL_DROPDOWN});
+  background-color: var(--cb-color-fill-dropdown, ${COLOR.FILL_DROPDOWN});
   min-width: 120px;
   font-size: 12px;
   color: ${COLOR.TEXT_PRIMARY};
+  color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
   transition: all 360ms ease;
   
   ${props => {
@@ -78,7 +83,8 @@ const ScTheDropBody = styled.div<IPropsScDropBody>`
 `;
 
 const ScTheDropFooter = styled.footer`
-  border-top: 1px solid ${COLOR.LINE_LIGHT};
+  border-top: 1px solid ${COLOR.LINE_DIVIDER};
+  border-top: 1px solid var(--cb-color-line-divider, ${COLOR.LINE_DIVIDER});
 `;
 
 export default function TheDrop(): JSX.Element | ReactPortal {

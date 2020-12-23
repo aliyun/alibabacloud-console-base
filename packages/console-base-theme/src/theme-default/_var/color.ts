@@ -45,16 +45,6 @@ export default {
   // --------------------------------------------------------------- //
   // 填充色
   // --------------------------------------------------------------- //
-  FILL_MAIN: '#fafafa', // 主填充色，用于整个 body TODO FILL_LIGHTER
-  FILL_NAV_LEVEL1: '#fff', // 一级导航（顶栏）
-  FILL_NAV_LEVEL2: '#f5f5f5', // 二级导航（应用侧边栏）TODO FILL
-  FILL_TABLE_TH: '#f5f5f5',
-  FILL_TABLE_TD: '#fff',
-  FILL_DIALOG: '#fff',
-  FILL_DIALOG_HEADER: '#fff',
-  FILL_DIALOG_FOOTER: '#fff',
-  FILL_DIALOG_BACKDROP_FADED: 'rgba(0, 0, 0, 0.2)',
-  
   FILL_LIGHT: '#f7f9fa', // 白底 hover
   FILL_LIGHT_FADED: 'rgba(0,64,96,0.03137)',
   FILL_DARK: '#ebebeb', // TODO FILL_DARK
@@ -70,5 +60,16 @@ export default {
   FILL_INFO: '#ebf4fb', // TODO INFO_LIGHT
   FILL_INFO_FADED: 'rgba(0,115,204,0.0784)',
   FILL_HELP: '#f7f7f7', // TODO HELP_LIGHT
-  FILL_HELP_FADED: 'rgba(0,0,0,0.0314)'
+  FILL_HELP_FADED: 'rgba(0,0,0,0.0314)',
+  
+  FILL_MAIN: '#fafafa', // 主填充色，用于整个 body TODO FILL_LIGHTER
+  FILL_NAV_LEVEL1: '#fff', // 一级导航（顶栏）
+  FILL_NAV_LEVEL2: '#f5f5f5', // 二级导航（应用侧边栏）TODO FILL
+  FILL_TABLE_TH: '#f5f5f5',
+  FILL_TABLE_TD: '#fff',
+  FILL_DIALOG: '#fff',
+  FILL_DIALOG_HEADER: '#fff',
+  FILL_DIALOG_FOOTER: '#fff',
+  FILL_DIALOG_BACKDROP_FADED: 'rgba(0, 0, 0, 0.2)',
+  FILL_DROPDOWN: '#fff'
 };

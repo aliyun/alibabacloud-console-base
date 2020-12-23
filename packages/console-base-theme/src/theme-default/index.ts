@@ -3,6 +3,7 @@ import {
 } from 'styled-components';
 
 import COLOR from './_var/color';
+import SHADOW from './_var/shadow';
 import TYPO from './_var/typo';
 import SIZE from './_var/size';
 import Z_INDEX from './_var/z-index';
@@ -36,15 +37,6 @@ export default createGlobalStyle`
     --cb-color-line-border-faded: ${COLOR.LINE_BORDER_FADED};
     --cb-color-line-border-hovered: ${COLOR.LINE_BORDER_HOVERED};
     --cb-color-line-border-hovered-faded: ${COLOR.LINE_BORDER_HOVERED_FADED};
-    --cb-color-fill-main: ${COLOR.FILL_MAIN};
-    --cb-color-fill-nav-level1: ${COLOR.FILL_NAV_LEVEL1};
-    --cb-color-fill-nav-level2: ${COLOR.FILL_NAV_LEVEL2};
-    --cb-color-fill-table-th: ${COLOR.FILL_TABLE_TH};
-    --cb-color-fill-table-td: ${COLOR.FILL_TABLE_TD};
-    --cb-color-fill-dialog: ${COLOR.FILL_DIALOG};
-    --cb-color-fill-dialog-header: ${COLOR.FILL_DIALOG_HEADER};
-    --cb-color-fill-dialog-footer: ${COLOR.FILL_DIALOG_FOOTER};
-    --cb-color-fill-dialog-backdrop-faded: ${COLOR.FILL_DIALOG_BACKDROP_FADED};
     --cb-color-fill-light: ${COLOR.FILL_LIGHT};
     --cb-color-fill-light-faded: ${COLOR.FILL_LIGHT_FADED};
     --cb-color-fill-dark: ${COLOR.FILL_DARK};
@@ -61,6 +53,31 @@ export default createGlobalStyle`
     --cb-color-fill-info-faded: ${COLOR.FILL_INFO_FADED};
     --cb-color-fill-help: ${COLOR.FILL_HELP};
     --cb-color-fill-help-faded: ${COLOR.FILL_HELP_FADED};
+    --cb-color-fill-main: ${COLOR.FILL_MAIN};
+    --cb-color-fill-nav-level1: ${COLOR.FILL_NAV_LEVEL1};
+    --cb-color-fill-nav-level2: ${COLOR.FILL_NAV_LEVEL2};
+    --cb-color-fill-table-th: ${COLOR.FILL_TABLE_TH};
+    --cb-color-fill-table-td: ${COLOR.FILL_TABLE_TD};
+    --cb-color-fill-dialog: ${COLOR.FILL_DIALOG};
+    --cb-color-fill-dialog-header: ${COLOR.FILL_DIALOG_HEADER};
+    --cb-color-fill-dialog-footer: ${COLOR.FILL_DIALOG_FOOTER};
+    --cb-color-fill-dialog-backdrop-faded: ${COLOR.FILL_DIALOG_BACKDROP_FADED};
+    --cb-color-fill-dropdown: ${COLOR.FILL_DROPDOWN};
+    --cb-shadow-m: ${SHADOW.M};
+    --cb-shadow-m-up: ${SHADOW.M_UP};
+    --cb-shadow-m-right: ${SHADOW.M_RIGHT};
+    --cb-shadow-m-down: ${SHADOW.M_DOWN};
+    --cb-shadow-m-left: ${SHADOW.M_LEFT};
+    --cb-shadow-l: ${SHADOW.L};
+    --cb-shadow-l-up: ${SHADOW.L_UP};
+    --cb-shadow-l-right: ${SHADOW.L_RIGHT};
+    --cb-shadow-l-down: ${SHADOW.L_DOWN};
+    --cb-shadow-l-left: ${SHADOW.L_LEFT};
+    --cb-shadow-xl: ${SHADOW.XL};
+    --cb-shadow-xl-up: ${SHADOW.XL_UP};
+    --cb-shadow-xl-right: ${SHADOW.XL_RIGHT};
+    --cb-shadow-xl-down: ${SHADOW.XL_DOWN};
+    --cb-shadow-xl-left: ${SHADOW.XL_LEFT};
     --cb-typo-font-family-base: ${TYPO.FONT_FAMILY_BASE};
     --cb-typo-font-family-monospace: ${TYPO.FONT_FAMILY_MONOSPACE};
   }
@@ -68,6 +85,7 @@ export default createGlobalStyle`
 
 export {
   COLOR,
+  SHADOW,
   TYPO,
   SIZE,
   Z_INDEX
