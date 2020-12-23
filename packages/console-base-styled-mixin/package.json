@@ -33,6 +33,9 @@
   "peerDependencies": {
     "styled-components": ">=5"
   },
+  "dependencies": {
+    "@alicloud/console-base-theme": "^0.0.0"
+  },
   "scripts": {
     "start": "breezr start-storybook",
     "test": "breezr test:unit",

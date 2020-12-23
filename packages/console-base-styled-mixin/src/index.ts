@@ -1,8 +1,8 @@
-import * as COLOR from './_var/color';
-import * as Z_INDEX from './_var/z-index';
-import * as LAYOUT from './_var/layout';
-import * as FORM_CONTROL from './_var/form-control';
-import * as DIALOG from './_var/dialog';
+import COLOR from './_deprecated/color';
+import Z_INDEX from './_deprecated/z-index';
+import LAYOUT from './_deprecated/layout';
+import FORM_CONTROL from './_deprecated/form-control';
+import DIALOG from './_deprecated/dialog';
 import * as typo from './_mixin/typo';
 import * as button from './_mixin/button';
 import * as glyph from './_mixin/glyph';
@@ -12,7 +12,10 @@ export {
   Z_INDEX,
   LAYOUT,
   FORM_CONTROL,
-  DIALOG,
+  DIALOG
+};
+
+export {
   typo,
   button,
   glyph

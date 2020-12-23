@@ -1,8 +1,8 @@
 关于 CSS Variable 的实践研究
 ===
 
-* [ConsoleBase CSS Var](css/console-base-light.less)
-* [XConsole CSS Var Light](css/xconsole-color-light.less)
+* [ConsoleBase](css/console-base.less)
+* [XConsole](css/xconsole.less)
 
 # 兼容性
 

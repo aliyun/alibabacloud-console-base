@@ -2,10 +2,11 @@ import {
   css
 } from 'styled-components';
 
-/** ------
- * 排版相关
- * ------ */
-export interface IPropsEllipsisLines {
+import {
+  TYPO
+} from '@alicloud/console-base-theme';
+
+interface IPropsEllipsisLines {
   lines: number;
   lineHeight: number;
 }
@@ -13,7 +14,7 @@ export interface IPropsEllipsisLines {
 // 基础字体
 export const baseFont = css`
   line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', Helvetica, Arial, sans-serif;
+  font-family: var(--cb-typo-font-family-base, ${TYPO.FONT_FAMILY_BASE});
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 `;

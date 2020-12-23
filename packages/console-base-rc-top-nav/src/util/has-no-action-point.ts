@@ -1,0 +1,15 @@
+import _some from 'lodash/some';
+import _isFunction from 'lodash/isFunction';
+
+import {
+  ButtonProps
+} from '@alicloud/console-base-rc-button';
+
+const REG_ON_XX = /^on[A-Z]/;
+
+/**
+ * buttonProps 是否「不」含有行动点（href 和 onXx）
+ */
+export default function hasNoActionPoint(buttonProps?: Partial<ButtonProps>): boolean {
+  return !buttonProps?.href && !_some(buttonProps, (v, k) => REG_ON_XX.test(k) && _isFunction(v));
+}

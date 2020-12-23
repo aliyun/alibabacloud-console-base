@@ -8,6 +8,12 @@ interface IGlobalFontFace {
   dataUrl?: string; // 如果传入，它将被用于 woff2，否则 woff2 还会是一个 url
 }
 
+interface IIE8Style {
+  styleSheet: {
+    cssText: string;
+  }
+}
+
 /**
  * 在 header 上注入 font face 全局样式，并返回 font-family 名字
  * IOS4 not supported
@@ -41,8 +47,8 @@ export function injectGlobalFontFace({
   style.id = fontFamily;
   head.appendChild(style);
   
-  if ((style as any).styleSheet) { // This is required for IE8 and below
-    (style as any).styleSheet.cssText = fontFace;
+  if ((style as unknown as IIE8Style).styleSheet) { // This is required for IE8 and below
+    (style as unknown as IIE8Style).styleSheet.cssText = fontFace;
   } else {
     style.appendChild(document.createTextNode(fontFace));
   }

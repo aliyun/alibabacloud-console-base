@@ -6,11 +6,7 @@ import COLOR from './_var/color';
 import TYPO from './_var/typo';
 import SIZE from './_var/size';
 import Z_INDEX from './_var/z-index';
-import * as typo from './_mixin/typo';
-import * as button from './_mixin/button';
-import * as glyph from './_mixin/glyph';
 
-// TODO 暂时仅对颜色进行输出，应该还需要输出其他的变量
 export default createGlobalStyle`
   :root {
     --cb-color-brand-aliyun: ${COLOR.BRAND_ALIYUN};
@@ -61,6 +57,8 @@ export default createGlobalStyle`
     --cb-color-fill-info-faded: ${COLOR.FILL_INFO_FADED};
     --cb-color-fill-help: ${COLOR.FILL_HELP};
     --cb-color-fill-help-faded: ${COLOR.FILL_HELP_FADED};
+    --cb-typo-font-family-base: ${TYPO.FONT_FAMILY_BASE};
+    --cb-typo-font-family-monospace: ${TYPO.FONT_FAMILY_MONOSPACE};
   }
 `;
 
@@ -68,8 +66,5 @@ export {
   COLOR,
   TYPO,
   SIZE,
-  Z_INDEX,
-  typo,
-  button,
-  glyph
+  Z_INDEX
 };

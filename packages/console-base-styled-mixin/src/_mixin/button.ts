@@ -3,8 +3,8 @@ import {
 } from 'styled-components';
 
 import {
-  TEXT_DISABLED
-} from '../_var/color';
+  COLOR
+} from '@alicloud/console-base-theme';
 
 /**
  * 对按钮样式进行重置：
@@ -36,7 +36,7 @@ export const reset = css`
     
     &,
     &:hover {
-      color: ${TEXT_DISABLED} !important;
+      color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED}) !important;
     }
   }
 `;
