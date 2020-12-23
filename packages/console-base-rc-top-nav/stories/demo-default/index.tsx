@@ -7,6 +7,7 @@ import {
   H1,
   Button
 } from '@alicloud/demo-rc-elements';
+import ConsoleBaseTheme from '@alicloud/console-base-theme';
 
 import TopNav, {
   TopNavProps,
@@ -14,7 +15,7 @@ import TopNav, {
 } from '../../src';
 
 const topNavProps: TopNavProps = {
-  id: 'fuck',
+  id: 'gave-the-top-nav-an-id-by-boshit',
   dock: {
     onClick() {
       console.info('只有含 onXx 或 href 才可以展示');
@@ -117,6 +118,7 @@ export default function Demo(): JSX.Element {
   }, [stateRemoved, setStateRemoved]);
   
   return <>
+    <ConsoleBaseTheme />
     {stateRemoved ? null : <TopNav {...topNavProps} />}
     <H1>吊顶</H1>
     <Button onClick={handleToggleRemoved}>移除 / 加入</Button>

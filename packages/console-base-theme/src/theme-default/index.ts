@@ -23,10 +23,12 @@ export default createGlobalStyle`
     --cb-color-link-primary: ${COLOR.LINK_PRIMARY};
     --cb-color-link-primary-hovered: ${COLOR.LINK_PRIMARY_HOVERED};
     --cb-color-link-primary-active: ${COLOR.LINK_PRIMARY_ACTIVE};
+    --cb-color-link-primary-visited: ${COLOR.LINK_PRIMARY_VISITED};
     --cb-color-link-primary-disabled: ${COLOR.LINK_PRIMARY_DISABLED};
     --cb-color-link-secondary: ${COLOR.LINK_SECONDARY};
     --cb-color-link-secondary-hovered: ${COLOR.LINK_SECONDARY_HOVERED};
     --cb-color-link-secondary-active: ${COLOR.LINK_SECONDARY_ACTIVE};
+    --cb-color-link-secondary-visited: ${COLOR.LINK_SECONDARY_VISITED};
     --cb-color-link-secondary-disabled: ${COLOR.LINK_SECONDARY_DISABLED};
     --cb-color-line-divider: ${COLOR.LINE_DIVIDER};
     --cb-color-line-divider-faded: ${COLOR.LINE_DIVIDER_FADED};
@@ -37,6 +39,8 @@ export default createGlobalStyle`
     --cb-color-fill-main: ${COLOR.FILL_MAIN};
     --cb-color-fill-nav-level1: ${COLOR.FILL_NAV_LEVEL1};
     --cb-color-fill-nav-level2: ${COLOR.FILL_NAV_LEVEL2};
+    --cb-color-fill-table-th: ${COLOR.FILL_TABLE_TH};
+    --cb-color-fill-table-td: ${COLOR.FILL_TABLE_TD};
     --cb-color-fill-dialog: ${COLOR.FILL_DIALOG};
     --cb-color-fill-dialog-header: ${COLOR.FILL_DIALOG_HEADER};
     --cb-color-fill-dialog-footer: ${COLOR.FILL_DIALOG_FOOTER};

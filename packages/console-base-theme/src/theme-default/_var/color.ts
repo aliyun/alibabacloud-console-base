@@ -24,10 +24,12 @@ export default {
   LINK_PRIMARY: '#0070cc', // TODO LINK
   LINK_PRIMARY_HOVERED: '#0070cc',
   LINK_PRIMARY_ACTIVE: '#0070cc',
+  LINK_PRIMARY_VISITED: '#0070cc',
   LINK_PRIMARY_DISABLED: '#c1c1c1',
   LINK_SECONDARY: '#333', // 次要链接 TODO LINK_GRAY
   LINK_SECONDARY_HOVERED: '#111',
   LINK_SECONDARY_ACTIVE: '#111',
+  LINK_SECONDARY_VISITED: '#111',
   LINK_SECONDARY_DISABLED: '#c1c1c1',
   
   // --------------------------------------------------------------- //
@@ -46,12 +48,14 @@ export default {
   FILL_MAIN: '#fafafa', // 主填充色，用于整个 body TODO FILL_LIGHTER
   FILL_NAV_LEVEL1: '#fff', // 一级导航（顶栏）
   FILL_NAV_LEVEL2: '#f5f5f5', // 二级导航（应用侧边栏）TODO FILL
+  FILL_TABLE_TH: '#f5f5f5',
+  FILL_TABLE_TD: '#fff',
   FILL_DIALOG: '#fff',
   FILL_DIALOG_HEADER: '#fff',
   FILL_DIALOG_FOOTER: '#fff',
   FILL_DIALOG_BACKDROP_FADED: 'rgba(0, 0, 0, 0.2)',
   
-  FILL_LIGHT: '#f7f9fa', // 白底 hover TODO FILL_LIGHT
+  FILL_LIGHT: '#f7f9fa', // 白底 hover
   FILL_LIGHT_FADED: 'rgba(0,64,96,0.03137)',
   FILL_DARK: '#ebebeb', // TODO FILL_DARK
   FILL_DARK_FADED: 'rgba(0,0,0,0.07843)',

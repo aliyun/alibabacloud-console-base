@@ -16,7 +16,7 @@ export default function WithProvider({
   account,
   customLeft,
   customRight,
-  ...domProps
+  ...props
 }: IPropsTopNav): JSX.Element {
   return <Provider props={{
     bodyClass,
@@ -28,6 +28,6 @@ export default function WithProvider({
     customLeft,
     customRight
   }}>
-    <Ui {...domProps} />
+    <Ui {...props} />
   </Provider>;
 }

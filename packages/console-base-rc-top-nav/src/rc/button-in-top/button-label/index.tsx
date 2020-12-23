@@ -23,6 +23,7 @@ const ScIndicatorDot = styled.span`
   top: 12px;
   right: 8px;
   border-radius: 2px;
+  background: ${COLOR.TEXT_EMPHASIS};
   background: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
   width: 4px;
   height: 4px;
@@ -35,6 +36,7 @@ const ScIndicatorNumber = styled.strong`
   line-height: 1.5;
   font-size: 12px;
   font-weight: 600;
+  color: ${COLOR.TEXT_EMPHASIS};
   color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
   transform: scale(0.8);
 `;

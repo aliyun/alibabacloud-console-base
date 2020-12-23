@@ -11,7 +11,7 @@ import {
 import {
   addClass,
   removeClass
-} from '@ali/console-base-util-dom';
+} from '@alicloud/mere-dom';
 
 import {
   useProps
