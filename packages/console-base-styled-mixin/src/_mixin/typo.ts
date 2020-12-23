@@ -4,7 +4,8 @@ import {
 
 import {
   COLOR,
-  TYPO
+  TYPO,
+  BORDER
 } from '@alicloud/console-base-theme';
 
 interface IPropsEllipsisLines {
@@ -74,6 +75,49 @@ export const linkSecondary = css`
     color: ${COLOR.LINK_SECONDARY_VISITED};
     color: var(--cb-color-link-secondary-visited, ${COLOR.LINK_SECONDARY_VISITED});
   }
+`;
+
+export const tagStrong = css`
+  font-weight: 600;
+  color: ${COLOR.TEXT_PRIMARY};
+  color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
+`;
+
+export const tagEm = css`
+  font-style: normal;
+  color: ${COLOR.TEXT_EMPHASIS};
+  color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
+`;
+
+export const tagCode = css`
+  padding: 0 4px;
+  border-radius: 2px;
+  background-color: ${COLOR.FILL_LIGHT_FADED};
+  background-color: var(--cb-color-fill-light-faded, ${COLOR.FILL_LIGHT_FADED});
+  color: ${COLOR.TEXT_CODE};
+  color: var(--cb-color-text-code, ${COLOR.TEXT_CODE});
+`;
+
+export const tagKbd = css`
+  display: inline-block;
+  padding: 3px 5px;
+  border: ${BORDER.NORMAL_FADE};
+  border: var(--cb-border-normal-fade, ${BORDER.NORMAL_FADE});
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+  background-color: ${COLOR.FILL_LIGHT};
+  background-color: var(--cb-color-fill-light, ${COLOR.FILL_LIGHT});
+  line-height: 1.2;
+  color: ${COLOR.TEXT_SECONDARY};
+  color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
+`;
+
+export const tagBlockquote = css`
+  padding: 0 1.2em;
+  border-left: 4px solid ${COLOR.LINE_BORDER};
+  border-left: 4px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
+  color: ${COLOR.TEXT_CAPTION};
+  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
 `;
 
 // 你需要为之设定一个宽度

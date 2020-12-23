@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 import {
-  COLOR
+  COLOR,
+  TYPO
 } from '@alicloud/console-base-theme';
 import {
   typo
@@ -61,25 +62,15 @@ export default styled.article`
   }
   
   blockquote {
-    padding: 0 1.2em;
-    border-left: 4px solid ${COLOR.LINE_BORDER};
-    border-left: 4px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
-    color: ${COLOR.TEXT_CAPTION};
-    color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
+    ${typo.tagBlockquote};
   }
   
   em {
-    font-style: normal;
-    color: ${COLOR.TEXT_EMPHASIS};
-    color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
+    ${typo.tagEm};
   }
   
   code {
-    padding: 2px;
-    border-radius: 3px;
-    background-color: ${COLOR.FILL_LIGHT_FADED};
-    background-color: var(--cb-color-fill-light-faded, ${COLOR.FILL_LIGHT_FADED});
-    font-size: 0.9em;
+    ${typo.tagCode};
     
     &.clean {
       background-color: transparent;
@@ -88,28 +79,16 @@ export default styled.article`
   
   pre,
   code {
-    font-family: 'Operator Mono A', Menlo, Consolas, Monaco, monospace;
+    font-family: ${TYPO.FONT_FAMILY_MONOSPACE};
+    font-family: var(--cb-typo-font-family-monospace, ${TYPO.FONT_FAMILY_MONOSPACE});
   }
   
   strong {
-    font-weight: 600;
-    color: ${COLOR.TEXT_PRIMARY};
-    color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
+    ${typo.tagStrong};
   }
   
   kbd {
-    display: inline-block;
-    padding: 3px 5px;
-    border: 1px solid ${COLOR.LINE_BORDER};
-    border: 1px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #bbb;
-    background-color: ${COLOR.FILL_LIGHT};
-    background-color: var(--cb-color-fill-light, ${COLOR.FILL_LIGHT});
-    line-height: 10px;
-    font-size: 11px;
-    color: ${COLOR.TEXT_SECONDARY};
-    color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
+    ${typo.tagKbd};
   }
   
   br {

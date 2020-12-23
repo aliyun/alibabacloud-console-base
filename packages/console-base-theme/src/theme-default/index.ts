@@ -17,6 +17,7 @@ export default createGlobalStyle`
     --cb-color-text-success: ${COLOR.TEXT_SUCCESS};
     --cb-color-text-info: ${COLOR.TEXT_INFO};
     --cb-color-text-emphasis: ${COLOR.TEXT_EMPHASIS};
+    --cb-color-text-code: ${COLOR.TEXT_CODE};
     --cb-color-text-title: ${COLOR.TEXT_TITLE};
     --cb-color-text-primary: ${COLOR.TEXT_PRIMARY};
     --cb-color-text-secondary: ${COLOR.TEXT_SECONDARY};
@@ -70,6 +71,8 @@ export default createGlobalStyle`
     --cb-color-fill-dropdown: ${COLOR.FILL_DROPDOWN};
     --cb-typo-font-family-base: ${TYPO.FONT_FAMILY_BASE};
     --cb-typo-font-family-monospace: ${TYPO.FONT_FAMILY_MONOSPACE};
+    --cb-border-normal: ${BORDER.NORMAL};
+    --cb-border-normal-fade: ${BORDER.NORMAL_FADE};
     --cb-border-input-normal: ${BORDER.INPUT_NORMAL};
     --cb-border-input-hover: ${BORDER.INPUT_HOVER};
     --cb-border-input-focus: ${BORDER.INPUT_FOCUS};

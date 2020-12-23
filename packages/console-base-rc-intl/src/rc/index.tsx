@@ -4,8 +4,11 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR
+  typo
 } from '@alicloud/console-base-styled-mixin';
+import {
+  BORDER
+} from '@alicloud/console-base-theme';
 
 import {
   IPropsIntl
@@ -17,32 +20,20 @@ import Lines from './lines';
 
 // inline 元素样式
 const cssInlineElements = css`
+  strong {
+    ${typo.tagStrong};
+  }
+  
   em {
-    font-style: normal;
-    color: ${COLOR.TEXT_EMPHASIS};
+    ${typo.tagEm};
   }
   
   code {
-    padding: 0 4px;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.04);
-    color: #f25c7f;
-  }
-  
-  strong {
-    font-weight: 600;
+    ${typo.tagCode};
   }
   
   kbd {
-    display: inline-block;
-    padding: 3px 5px;
-    border: 1px solid ${COLOR.LINE};
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #bbb;
-    background-color: ${COLOR.FILL_LIGHT};
-    line-height: 10px;
-    font-size: 11px;
-    color: ${COLOR.TEXT_SECONDARY};
+    ${typo.tagKbd};
   }
 `;
 
@@ -51,7 +42,8 @@ const cssBlockElements = css`
   hr {
     margin: 16px 0;
     border: 0;
-    border-bottom: 1px solid ${COLOR.LINE};
+    border-bottom: ${BORDER.NORMAL};
+    border-bottom: var(--cb-border-normal, ${BORDER.NORMAL});
     height: 0;
   }
   

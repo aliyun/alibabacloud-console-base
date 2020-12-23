@@ -5,7 +5,7 @@ import styled, {
 
 import {
   COLOR
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {

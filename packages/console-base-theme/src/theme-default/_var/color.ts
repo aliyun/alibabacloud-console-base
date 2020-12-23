@@ -14,7 +14,8 @@ export default {
   TEXT_WARN: '#ffc440', // 警告
   TEXT_SUCCESS: '#1e8e3e', // 积极和正面引导的文本，如「验证通过」、「已支付」等 TODO TEXT_POSITIVE
   TEXT_INFO: ACCENT, // 重要提示
-  TEXT_EMPHASIS: '#ff6a00', // 突出说明，如「金额」、「最重要链接」等
+  TEXT_EMPHASIS: '#ff6a00', // 突出说明，如「金额」、「最重要链接」等，主要用于 em 元素
+  TEXT_CODE: '#f25c7f', // 用于 code 元素
   
   // 无色文本
   TEXT_TITLE: '#111', // 标题
