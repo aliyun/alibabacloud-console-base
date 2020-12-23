@@ -22,6 +22,7 @@ export default function Knobs({
   const disabled = boolean('props.disabled', false);
   const block = boolean('props.block', false);
   const round = boolean('props.round', false);
+  const weakFocusStyle = boolean('props.weakFocusStyle', false);
   const borderless = boolean('props.borderless', false);
   const innerLeft = text('props.innerLeft', '');
   const innerRight = text('props.innerRight', '');
@@ -31,6 +32,7 @@ export default function Knobs({
     disabled,
     block,
     round,
+    weakFocusStyle,
     borderless,
     innerLeft,
     innerRight
@@ -39,6 +41,7 @@ export default function Knobs({
     disabled,
     block,
     round,
+    weakFocusStyle,
     borderless,
     innerLeft,
     innerRight

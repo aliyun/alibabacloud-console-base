@@ -1,6 +1,6 @@
 import React, {
-  ChangeEvent,
   FocusEvent,
+  ChangeEvent,
   useState,
   useCallback
 } from 'react';
@@ -10,8 +10,10 @@ import styled, {
 
 import {
   COLOR,
-  FORM_CONTROL
-} from '@alicloud/console-base-styled-mixin';
+  SIZE,
+  BORDER,
+  SHADOW
+} from '@alicloud/console-base-theme';
 
 import {
   TInner,
@@ -22,9 +24,11 @@ import {
 
 interface IPropsScInput extends IPropsLook {
   disabled?: boolean;
+  hovered: boolean;
+  focused: boolean;
 }
 
-function renderInner(inner: TInner | TFnInner, focused: boolean): TInner | null {
+function renderInner(inner: TInner | TFnInner, focused: boolean, hovered: boolean): TInner | null {
   if (!inner) {
     return null;
   }
@@ -34,59 +38,49 @@ function renderInner(inner: TInner | TFnInner, focused: boolean): TInner | null 
   }
   
   if (typeof inner === 'function') {
-    return inner(focused);
+    return inner(focused, hovered);
   }
   
   return null;
 }
 
-// input 有个诡异的宽度，需要一个容器限制一下（然后在 input 上设一个 width: 100%）
-const ScInputWrap = styled.span`
-  display: block;
-  flex: 1;
-`;
-
-const ScInnerInput = styled.input`
-  padding: 0 ${FORM_CONTROL.PADDING.M - 4}px;
-  border: 0;
-  box-sizing: border-box;
-  outline: none;
-  background: transparent;
-  width: 100%;
-  color: ${COLOR.TEXT_PRIMARY};
-  
-  &::placeholder {
-    color: ${COLOR.TEXT_DISABLED};
-  }
-  
-  &::-ms-clear {
-    display: none;
-  }
-`;
-
-const ScInnerLeft = styled.span`
-  padding-left: ${FORM_CONTROL.PADDING.M - 2}px;
-  color: ${COLOR.TEXT_CAPTION};
-`;
-
-const ScInnerRight = styled.span`
-  padding-right: ${FORM_CONTROL.PADDING.M - 2}px;
-  color: ${COLOR.TEXT_CAPTION};
-`;
+const INNER_HEIGHT_PX = `${SIZE.HEIGHT_FORM_CONTROL_M - 2}px`;
 
 const ScInput = styled.div<IPropsScInput>`
   display: ${props => (props.block ? 'flex' : 'inline-flex')};
   align-items: center;
   position: relative;
-  border: 1px solid ${COLOR.LINE};
-  height: ${FORM_CONTROL.HEIGHT.M - 2}px;
-  line-height: ${FORM_CONTROL.HEIGHT.M - 2}px;
-  font-size: ${FORM_CONTROL.FONT_SIZE.M}px;
+  border: ${BORDER.INPUT_NORMAL};
+  border: var(--cb-border-input-normal, ${BORDER.INPUT_NORMAL});
+  border-radius: ${props => (props.round ? `${SIZE.HEIGHT_FORM_CONTROL_M / 2}px` : 'none')};
+  background: ${COLOR.FILL_INPUT};
+  background: var(--cb-color-fill-input, ${COLOR.FILL_INPUT});
+  height: ${INNER_HEIGHT_PX};
+  line-height: ${INNER_HEIGHT_PX};
+  font-size: ${SIZE.FONT_SIZE_BODY}px;
   transition: all 0.3s ease-out;
+  
   ${props => {
     if (props.disabled) {
       return css`
-        background-color: ${COLOR.FILL_LIGHTER};
+        background: ${COLOR.FILL_INPUT_DISABLED};
+        background: var(--cb-color-fill-input, ${COLOR.FILL_INPUT_DISABLED});
+      `;
+    }
+    
+    if (props.focused && !props.weakFocusStyle) {
+      return css`
+        border: ${BORDER.INPUT_FOCUS};
+        border: var(--cb-border-input-focus, ${BORDER.INPUT_FOCUS});
+        box-shadow: ${SHADOW.M_DOWN};
+      `;
+    }
+    
+    if (props.hovered) {
+      return css`
+        border: ${BORDER.INPUT_HOVER};
+        border: var(--cb-border-input-hover, ${BORDER.INPUT_HOVER});
+        box-shadow: ${SHADOW.M_DOWN};
       `;
     }
   }};
@@ -96,30 +90,50 @@ const ScInput = styled.div<IPropsScInput>`
         border-color: transparent;
       `;
     }
-    
-    if (props.disabled) {
-      return css`
-        border-color: ${COLOR.LINE_LIGHT};
-      `;
-    }
-    
-    return css`
-      &:hover,
-      &:focus {
-        border-color: ${COLOR.LINE_DARK};
-      }
-    `;
   }};
-  ${props => (props.round ? css`
-    border-radius: ${FORM_CONTROL.HEIGHT.M / 2}px;
-  ` : null)};
+`;
+
+// input 有个诡异的宽度，需要一个容器限制一下（然后在 input 上设一个 width: 100%）
+const ScInputWrap = styled.span`
+  display: block;
+  flex: 1;
+`;
+
+const ScInputReal = styled.input`
+  padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  height: ${INNER_HEIGHT_PX};
+  line-height: ${INNER_HEIGHT_PX};
+  color: ${COLOR.TEXT_SECONDARY};
+  color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
   
-  ${ScInnerInput},
-  ${ScInnerLeft},
-  ${ScInnerRight} {
-    height: ${FORM_CONTROL.HEIGHT.M - 2}px;
-    line-height: ${FORM_CONTROL.HEIGHT.M - 2}px;
+  &::placeholder {
+    color: ${COLOR.TEXT_DISABLED};
+    color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED});
   }
+  
+  &::-ms-clear {
+    display: none;
+  }
+`;
+
+const ScInnerExtra = styled.span`
+  height: ${INNER_HEIGHT_PX};
+  line-height: ${INNER_HEIGHT_PX};
+  color: ${COLOR.TEXT_CAPTION};
+  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
+`;
+
+const ScInnerLeft = styled(ScInnerExtra)`
+  padding-left: ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
+`;
+
+const ScInnerRight = styled(ScInnerExtra)`
+  padding-right: ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
 `;
 
 export default function Input({
@@ -129,15 +143,33 @@ export default function Input({
   disabled,
   innerLeft,
   innerRight,
+  weakFocusStyle,
   className,
+  style,
+  onMouseEnter,
+  onMouseLeave,
   onFocus,
   onBlur,
   onChange,
-  style,
   ...props
 }: IProps): JSX.Element {
-  const [focused, setStateFocused] = useState<boolean>(false);
+  const [stateHovered, setStateHovered] = useState<boolean>(false);
+  const [stateFocused, setStateFocused] = useState<boolean>(false);
   
+  const handleMouseEnter = useCallback(() => {
+    setStateHovered(true);
+    
+    if (onMouseEnter) {
+      onMouseEnter();
+    }
+  }, [onMouseEnter, setStateHovered]);
+  const handleMouseLeave = useCallback(() => {
+    setStateHovered(false);
+    
+    if (onMouseLeave) {
+      onMouseLeave();
+    }
+  }, [onMouseLeave, setStateHovered]);
   const handleFocus = useCallback((e: FocusEvent<HTMLInputElement>) => {
     setStateFocused(true);
     
@@ -160,20 +192,25 @@ export default function Input({
     }
   }, [onChange]);
   
-  const jsxInnerL = renderInner(innerLeft, focused);
-  const jsxInnerR = renderInner(innerRight, focused);
+  const jsxInnerL = renderInner(innerLeft, stateFocused, stateHovered);
+  const jsxInnerR = renderInner(innerRight, stateFocused, stateHovered);
   
   return <ScInput {...{
     className,
+    style,
     block,
     round,
+    weakFocusStyle,
     borderless,
     disabled,
-    style
+    hovered: stateHovered,
+    focused: stateFocused,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave
   }}>
     {jsxInnerL ? <ScInnerLeft>{jsxInnerL}</ScInnerLeft> : null}
     <ScInputWrap>
-      <ScInnerInput {...{
+      <ScInputReal {...{
         type: 'text',
         'aria-autocomplete': 'none',
         autocomplete: 'off',

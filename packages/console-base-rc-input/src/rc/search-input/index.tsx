@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import {
   COLOR
@@ -17,16 +19,23 @@ interface IPropsScIcon {
 
 const ScIcon = styled(Icon)<IPropsScIcon>`
   font-size: 16px;
-  color: ${props => (props.highlighted ? COLOR.TEXT_EMPHASIS : COLOR.TEXT_DISABLED)};
+  ${props => (props.highlighted ? css`
+    color: ${COLOR.TEXT_EMPHASIS};
+    color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
+  ` : css`
+    color: ${COLOR.TEXT_DISABLED};
+    color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED});
+  `)};
 `;
 
-function renderIcon(focused: boolean): JSX.Element {
-  return <ScIcon type="search" highlighted={focused} />;
+function renderIcon(focused: boolean, hovered: boolean): JSX.Element {
+  return <ScIcon type="search" highlighted={focused || hovered} />;
 }
 
 export default function SearchInput(props: IProps): JSX.Element {
   return <Input {...{
     round: true,
+    weakFocusStyle: true,
     ...props,
     innerLeft: renderIcon
   }} />;

@@ -3,10 +3,11 @@ import {
 } from 'styled-components';
 
 import COLOR from './_var/color';
-import SHADOW from './_var/shadow';
 import TYPO from './_var/typo';
 import SIZE from './_var/size';
 import Z_INDEX from './_var/z-index';
+import BORDER from './_var/border';
+import SHADOW from './_var/shadow';
 
 export default createGlobalStyle`
   :root {
@@ -22,21 +23,23 @@ export default createGlobalStyle`
     --cb-color-text-caption: ${COLOR.TEXT_CAPTION};
     --cb-color-text-disabled: ${COLOR.TEXT_DISABLED};
     --cb-color-link-primary: ${COLOR.LINK_PRIMARY};
-    --cb-color-link-primary-hovered: ${COLOR.LINK_PRIMARY_HOVERED};
+    --cb-color-link-primary-hover: ${COLOR.LINK_PRIMARY_HOVER};
     --cb-color-link-primary-active: ${COLOR.LINK_PRIMARY_ACTIVE};
     --cb-color-link-primary-visited: ${COLOR.LINK_PRIMARY_VISITED};
     --cb-color-link-primary-disabled: ${COLOR.LINK_PRIMARY_DISABLED};
     --cb-color-link-secondary: ${COLOR.LINK_SECONDARY};
-    --cb-color-link-secondary-hovered: ${COLOR.LINK_SECONDARY_HOVERED};
+    --cb-color-link-secondary-hover: ${COLOR.LINK_SECONDARY_HOVER};
     --cb-color-link-secondary-active: ${COLOR.LINK_SECONDARY_ACTIVE};
     --cb-color-link-secondary-visited: ${COLOR.LINK_SECONDARY_VISITED};
     --cb-color-link-secondary-disabled: ${COLOR.LINK_SECONDARY_DISABLED};
+    --cb-color-line-accent: ${COLOR.LINE_ACCENT};
+    --cb-color-line-error: ${COLOR.LINE_ERROR};
     --cb-color-line-divider: ${COLOR.LINE_DIVIDER};
     --cb-color-line-divider-faded: ${COLOR.LINE_DIVIDER_FADED};
     --cb-color-line-border: ${COLOR.LINE_BORDER};
     --cb-color-line-border-faded: ${COLOR.LINE_BORDER_FADED};
-    --cb-color-line-border-hovered: ${COLOR.LINE_BORDER_HOVERED};
-    --cb-color-line-border-hovered-faded: ${COLOR.LINE_BORDER_HOVERED_FADED};
+    --cb-color-line-border-hover: ${COLOR.LINE_BORDER_HOVER};
+    --cb-color-line-border-hover-faded: ${COLOR.LINE_BORDER_HOVER_FADED};
     --cb-color-fill-light: ${COLOR.FILL_LIGHT};
     --cb-color-fill-light-faded: ${COLOR.FILL_LIGHT_FADED};
     --cb-color-fill-dark: ${COLOR.FILL_DARK};
@@ -62,7 +65,16 @@ export default createGlobalStyle`
     --cb-color-fill-dialog-header: ${COLOR.FILL_DIALOG_HEADER};
     --cb-color-fill-dialog-footer: ${COLOR.FILL_DIALOG_FOOTER};
     --cb-color-fill-dialog-backdrop-faded: ${COLOR.FILL_DIALOG_BACKDROP_FADED};
+    --cb-color-fill-input: ${COLOR.FILL_INPUT};
+    --cb-color-fill-input-disabled: ${COLOR.FILL_INPUT_DISABLED};
     --cb-color-fill-dropdown: ${COLOR.FILL_DROPDOWN};
+    --cb-typo-font-family-base: ${TYPO.FONT_FAMILY_BASE};
+    --cb-typo-font-family-monospace: ${TYPO.FONT_FAMILY_MONOSPACE};
+    --cb-border-input-normal: ${BORDER.INPUT_NORMAL};
+    --cb-border-input-hover: ${BORDER.INPUT_HOVER};
+    --cb-border-input-focus: ${BORDER.INPUT_FOCUS};
+    --cb-border-input-error: ${BORDER.INPUT_ERROR};
+    --cb-border-input-disabled: ${BORDER.INPUT_DISABLED};
     --cb-shadow-m: ${SHADOW.M};
     --cb-shadow-m-up: ${SHADOW.M_UP};
     --cb-shadow-m-right: ${SHADOW.M_RIGHT};
@@ -78,15 +90,14 @@ export default createGlobalStyle`
     --cb-shadow-xl-right: ${SHADOW.XL_RIGHT};
     --cb-shadow-xl-down: ${SHADOW.XL_DOWN};
     --cb-shadow-xl-left: ${SHADOW.XL_LEFT};
-    --cb-typo-font-family-base: ${TYPO.FONT_FAMILY_BASE};
-    --cb-typo-font-family-monospace: ${TYPO.FONT_FAMILY_MONOSPACE};
   }
 `;
 
 export {
   COLOR,
-  SHADOW,
   TYPO,
   SIZE,
-  Z_INDEX
+  Z_INDEX,
+  BORDER,
+  SHADOW
 };

@@ -33,8 +33,8 @@ export const linkPrimary = css`
   
   &:hover {
     text-decoration: underline;
-    color: ${COLOR.LINK_PRIMARY_HOVERED};
-    color: var(--cb-color-link-primary-hovered, ${COLOR.LINK_PRIMARY_HOVERED});
+    color: ${COLOR.LINK_PRIMARY_HOVER};
+    color: var(--cb-color-link-primary-hover, ${COLOR.LINK_PRIMARY_HOVER});
   }
   
   &:active {
@@ -61,8 +61,8 @@ export const linkSecondary = css`
   
   &:hover {
     text-decoration: underline;
-    color: ${COLOR.LINK_SECONDARY_HOVERED};
-    color: var(--cb-color-link-secondary-hovered, ${COLOR.LINK_SECONDARY_HOVERED});
+    color: ${COLOR.LINK_SECONDARY_HOVER};
+    color: var(--cb-color-link-secondary-hover, ${COLOR.LINK_SECONDARY_HOVER});
   }
   
   &:active {

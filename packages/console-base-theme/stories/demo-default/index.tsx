@@ -8,8 +8,9 @@ import {
 
 import {
   COLOR,
-  SHADOW,
-  TYPO
+  TYPO,
+  BORDER,
+  SHADOW
 } from '../../src';
 
 const [theCode, theCode2] = (() => {
@@ -39,8 +40,9 @@ export default createGlobalStyle\`
   
   generateCode({
     COLOR,
-    SHADOW,
-    TYPO
+    TYPO,
+    BORDER,
+    SHADOW
   });
   
   code.push(`  }

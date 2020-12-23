@@ -1,3 +1,6 @@
+const ACCENT = '#0064c8';
+const ERROR = '#d93026';
+
 export default {
   // 品牌色
   BRAND_ALIYUN: '#ff6a00',
@@ -7,10 +10,10 @@ export default {
   // --------------------------------------------------------------- //
   
   // 彩色文本
-  TEXT_ERROR: '#d93026', // 错误
+  TEXT_ERROR: ERROR, // 错误
   TEXT_WARN: '#ffc440', // 警告
   TEXT_SUCCESS: '#1e8e3e', // 积极和正面引导的文本，如「验证通过」、「已支付」等 TODO TEXT_POSITIVE
-  TEXT_INFO: '#0064c8', // 重要提示
+  TEXT_INFO: ACCENT, // 重要提示
   TEXT_EMPHASIS: '#ff6a00', // 突出说明，如「金额」、「最重要链接」等
   
   // 无色文本
@@ -21,26 +24,28 @@ export default {
   TEXT_DISABLED: '#c1c1c1', // Disabled 状态文字
   
   // 链接
-  LINK_PRIMARY: '#0070cc', // TODO LINK
-  LINK_PRIMARY_HOVERED: '#0070cc',
-  LINK_PRIMARY_ACTIVE: '#0070cc',
-  LINK_PRIMARY_VISITED: '#0070cc',
+  LINK_PRIMARY: ACCENT, // TODO LINK
+  LINK_PRIMARY_HOVER: ACCENT,
+  LINK_PRIMARY_ACTIVE: ACCENT,
+  LINK_PRIMARY_VISITED: ACCENT,
   LINK_PRIMARY_DISABLED: '#c1c1c1',
   LINK_SECONDARY: '#333', // 次要链接 TODO LINK_GRAY
-  LINK_SECONDARY_HOVERED: '#0070cc',
-  LINK_SECONDARY_ACTIVE: '#0070cc',
+  LINK_SECONDARY_HOVER: ACCENT,
+  LINK_SECONDARY_ACTIVE: ACCENT,
   LINK_SECONDARY_VISITED: '#333',
   LINK_SECONDARY_DISABLED: '#c1c1c1',
   
   // --------------------------------------------------------------- //
   // 线条色
   // --------------------------------------------------------------- //
+  LINE_ACCENT: ACCENT,
+  LINE_ERROR: ERROR,
   LINE_DIVIDER: '#efefef', // 浅色分割线 TODO LINE_LIGHT
   LINE_DIVIDER_FADED: 'rgba(0,0,0,0.0627)',
   LINE_BORDER: '#dedede', // 组件边框 TODO LINE
   LINE_BORDER_FADED: 'rgba(0,0,0,0.1294)',
-  LINE_BORDER_HOVERED: '#c0c6cc', // 深色分割线、组件边框 Hover 效果 TODO LINE_DARK
-  LINE_BORDER_HOVERED_FADED: 'rgba(0,24,49,0.2471)',
+  LINE_BORDER_HOVER: '#c0c6cc', // 深色分割线、组件边框 Hover 效果 TODO LINE_DARK
+  LINE_BORDER_HOVER_FADED: 'rgba(0,24,49,0.2471)',
   
   // --------------------------------------------------------------- //
   // 填充色
@@ -71,5 +76,7 @@ export default {
   FILL_DIALOG_HEADER: '#fff',
   FILL_DIALOG_FOOTER: '#fff',
   FILL_DIALOG_BACKDROP_FADED: 'rgba(0, 0, 0, 0.2)',
+  FILL_INPUT: '#fff',
+  FILL_INPUT_DISABLED: '#f7f9fa',
   FILL_DROPDOWN: '#fff'
 };
