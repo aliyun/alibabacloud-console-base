@@ -22,6 +22,8 @@ export const baseFont = css`
 
 // 主链接
 export const linkPrimary = css`
+  transition: all linear 0.25s;
+  
   &,
   &:link {
     text-decoration: none;
@@ -48,6 +50,8 @@ export const linkPrimary = css`
 
 // 次链接
 export const linkSecondary = css`
+  transition: all linear 0.25s;
+  
   &,
   &:link {
     text-decoration: none;

@@ -4,10 +4,6 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
-
-import {
   IProps
 } from '../types';
 
@@ -18,7 +14,6 @@ const ScBreadcrumb = styled.div`
   line-height: 1.5;
   overflow: hidden;
   white-space: nowrap;
-  color: ${COLOR.TEXT_SECONDARY};
 `;
 
 /**
