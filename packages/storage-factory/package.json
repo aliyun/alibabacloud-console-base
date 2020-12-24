@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/storage-factory",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Storage factory - use storage with types",
   "license": "MIT",
   "main": "build/cjs/index.js",
