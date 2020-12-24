@@ -40,9 +40,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.0.7",
-    "@alicloud/console-base-rc-button": "^1.0.6",
-    "@alicloud/console-base-rc-icon": "^1.0.6",
+    "@alicloud/console-base-intl-factory-basic": "^1.0.9",
+    "@alicloud/console-base-rc-button": "^1.0.8",
+    "@alicloud/console-base-rc-icon": "^1.0.8",
     "@alicloud/console-base-theme": "^0.0.0"
   },
   "scripts": {
