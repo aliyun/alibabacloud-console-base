@@ -213,7 +213,8 @@ export default styled.article`
     }
     
     tr {
-      background-color: #fff;
+      background-color: ${COLOR.FILL_TABLE_TD};
+      background-color: var(--cb-color-fill-table-td, ${COLOR.FILL_TABLE_TD});
     }
     
     th,
