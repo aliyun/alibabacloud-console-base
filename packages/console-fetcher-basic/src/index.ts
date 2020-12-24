@@ -6,6 +6,7 @@ import {
   IConsoleFetcherConfig as FetcherConfig,
   IConsoleFetcher as Fetcher,
   IConsoleFetcherInterceptorOptions as FetcherInterceptorOptions,
+  IConsoleApiOptions as FetcherConsoleApiOptions,
   IFnConsoleApi as FetcherFnOpenApi,
   IFnConsoleApi as FetcherFnInnerApi,
   IFnConsoleApi as FetcherFnContainerApi,
@@ -32,6 +33,7 @@ export type {
   FetcherConfig,
   // 新增类型
   FetcherInterceptorOptions,
+  FetcherConsoleApiOptions,
   FetcherFnOpenApi,
   FetcherFnInnerApi,
   FetcherFnContainerApi,

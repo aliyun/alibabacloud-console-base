@@ -22,12 +22,13 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
-  IErrorInQueue
-} from '../../../types';
-import intl from '../../../intl';
+  IErrorInQueue,
+  IErrorQueueItem
+} from '../../types';
+import intl from '../../intl';
 
 interface IProps {
-  details: IErrorInQueue;
+  queueItem: IErrorQueueItem;
 }
 
 interface IPropsScDetails {
@@ -132,11 +133,13 @@ function convertDetails({
 }
 
 export default function ErrorDetails({
-  details
+  queueItem: {
+    error
+  }
 }: IProps): JSX.Element | null {
   const [stateFolded, setStateFolded] = useState<boolean>(true);
   
-  const kvList: IDetailKV[] = convertDetails(details);
+  const kvList: IDetailKV[] = convertDetails(error);
   
   if (!kvList.length) {
     return null;
@@ -147,9 +150,9 @@ export default function ErrorDetails({
       spm: 'detail-toggle',
       text: true,
       iconRight: 'angle-down',
-      label: details.code ? intl('alert_error:op:toggle_details_{code}', {
-        code: details.code
-      }) : intl('alert_error:op:toggle_details'),
+      label: error.code ? intl('op:toggle_details_{code}', {
+        code: error.code
+      }) : intl('op:toggle_details'),
       preset: EButtonPreset.TEXT,
       onClick: () => setStateFolded(!stateFolded)
     }} />

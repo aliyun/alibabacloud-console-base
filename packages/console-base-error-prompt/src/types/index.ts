@@ -14,7 +14,7 @@ export interface IErrorDetails {
   method?: string;
   params?: string | Record<string, unknown> | null;
   body?: string | Record<string, unknown> | null;
-  [k: string]: unknown;
+  [k: string]: any;
 }
 
 /**
@@ -40,11 +40,20 @@ export interface IErrorDialogData {
 export type TErrorPromptArg = string | ReactElement | IErrorWithDetails | IErrorDetailedInfo;
 
 /**
- * errorPrompt 第二个参数，用于自定义 title 和 button
+ * errorPrompt 第二个参数（对象形式），用于自定义 title 和 button
  */
-export interface IErrorPromptArgExtra {
+export interface IErrorPromptExtra {
   title?: string;
+  message?: string | ReactElement;
   button?: string | DialogButtonProps<void, IErrorDialogData>;
+  buttonCancel?: string | DialogButtonProps<void, IErrorDialogData>;
+}
+
+/**
+ * errorPrompt 第二个参数（函数形式），用于自定义 title 和 button
+ */
+export interface IFnErrorPromptExtra {
+  <T extends IErrorDetailedInfo>(errInQueue: T): IErrorPromptExtra | void;
 }
 
 export interface IErrorInQueue extends Omit<IErrorDetailedInfo, 'body' | 'params'> {
@@ -52,7 +61,7 @@ export interface IErrorInQueue extends Omit<IErrorDetailedInfo, 'body' | 'params
   body?: Record<string, unknown> | null;
 }
 
-export interface IErrorQueueItem extends IErrorPromptArgExtra {
+export interface IErrorQueueItem extends Required<IErrorPromptExtra> {
   error: IErrorInQueue;
   resolve(): void;
 }

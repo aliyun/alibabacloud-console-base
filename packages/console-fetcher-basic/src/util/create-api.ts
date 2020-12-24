@@ -1,6 +1,5 @@
 import {
-  FetcherFnPost,
-  FetcherOptionsForQuickPost
+  FetcherFnPost
 } from '@alicloud/fetcher';
 
 import {
@@ -9,7 +8,8 @@ import {
 import {
   IConsoleFetcherConfig,
   IFnConsoleApi,
-  IApiBody
+  IApiBody,
+  IConsoleApiOptions
 } from '../types';
 
 import composeApiUrl from './compose-api-url';
@@ -30,14 +30,28 @@ function getApiUrl(type: ETypeApi): string {
 export default function createApi(fetcherPost: FetcherFnPost<IConsoleFetcherConfig>, type: ETypeApi): IFnConsoleApi {
   const url = getApiUrl(type);
   
-  return <T = void, P = void>(
-    product: string,
-    action: string,
-    params?: P,
-    options: FetcherOptionsForQuickPost<IConsoleFetcherConfig> = {}
-  ): Promise<T> => fetcherPost<T, IApiBody>(options, composeApiUrl(url, product, action), {
-    product,
-    action,
-    params: params ? JSON.stringify(params) : undefined
-  });
+  return function<T = void, P = void, R = void>(product: string, action: string, params?: P, {
+    region,
+    roa,
+    ...options
+  }: IConsoleApiOptions<R> = {}): Promise<T> {
+    const body: IApiBody = {
+      product,
+      action
+    };
+    
+    if (params) {
+      body.params = JSON.stringify(params);
+    }
+    
+    if (region) {
+      body.region = region;
+    }
+    
+    if (roa) {
+      body.content = JSON.stringify(roa); // ROA 形式的接口要在 body 中透传参数，参数名是 content...
+    }
+    
+    return fetcherPost<T, IApiBody>(options, composeApiUrl(url, product, action), body);
+  };
 }

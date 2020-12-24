@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-key-value",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "ConsoleBase 组件 - key-value 对的展示",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -27,7 +27,7 @@
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.2",
     "@types/jest": "^26.0.19",
-    "@types/lodash": "^4.14.165",
+    "@types/lodash": "^4.14.166",
     "@types/react": "^16.14.2",
     "@types/styled-components": "^5.1.7",
     "jest": "^26.6.3",
@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-styled-mixin": "^1.0.4",
+    "@alicloud/console-base-styled-mixin": "^1.0.6",
     "@alicloud/console-base-theme": "^0.0.0",
     "lodash": "^4.17.20"
   },
@@ -56,5 +56,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "1fe9625e6f1d5c64e9327f005312ccba063ac977"
+  "gitHead": "d2c434d5d8d88216ef4551d6b1cc91b4eb5cbe94"
 }

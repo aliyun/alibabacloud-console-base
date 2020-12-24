@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-marks",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "ConsoleBase 组件 - NEW、ALPHA、BETA 等小标签",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -54,5 +54,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "1fe9625e6f1d5c64e9327f005312ccba063ac977"
+  "gitHead": "d2c434d5d8d88216ef4551d6b1cc91b4eb5cbe94"
 }

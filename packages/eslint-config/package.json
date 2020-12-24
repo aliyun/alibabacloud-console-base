@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/eslint-config",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "eslint config based on eslint-config-ali",
   "license": "MIT",
   "main": "index.js",
@@ -39,5 +39,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "gitHead": "d2c434d5d8d88216ef4551d6b1cc91b4eb5cbe94"
 }

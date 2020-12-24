@@ -6,12 +6,10 @@ import {
   P
 } from '@alicloud/demo-rc-elements';
 
-import errorPrompt, {
-  ErrorWithDetails
-} from '../../../src';
 import {
-  ERROR_MIX
-} from '../_const';
+  alertError,
+  createErrorWithDetails
+} from '../_common';
 
 const errorObj = {
   message: '请登录',
@@ -36,48 +34,44 @@ const errorObj = {
   }
 };
 
-function errorPromptUndefined(): void {
-  errorPrompt();
+function alertErrorUndefined(): void {
+  alertError();
 }
 
-function errorPromptNull(): void {
-  errorPrompt(null as never);
+function alertErrorNull(): void {
+  alertError(null as never);
 }
 
-function errorPromptString(): void {
-  errorPrompt('zheshi yige zifuchuan niky zhemeyong meiwenti');
+function alertErrorString(): void {
+  alertError('zheshi yige zifuchuan niky zhemeyong meiwenti');
 }
 
-function errorPromptObject(): void {
-  errorPrompt(errorObj);
+function alertErrorObject(): void {
+  alertError(errorObj);
 }
 
-function errorPromptJsx(): void {
-  errorPrompt(<H2>laozi shi yiduan JSX dan ni buyao jingchang zheme yong</H2>);
+function alertErrorJsx(): void {
+  alertError(<H2>laozi shi yiduan JSX dan ni buyao jingchang zheme yong</H2>);
 }
 
-function errorPromptError(): void {
-  errorPrompt(new Error('laozi shi yige chun error'));
+function alertErrorError(): void {
+  alertError(new Error('laozi shi yige chun error'));
 }
 
-function errorPromptErrorWithDetails(): void {
-  const error: ErrorWithDetails = new Error('zhege ErrorInstance duixiang libian youge details shuxing');
-  
-  error.details = ERROR_MIX;
-  
-  errorPrompt(error);
+function alertErrorErrorWithDetails(): void {
+  alertError(createErrorWithDetails());
 }
 
 export default function SpecialCases(): JSX.Element {
   return <>
     <H2>特殊场景</H2>
     <P><code>undefined / null</code> 不会有提示，JSX 不可能被代理，因为无法通过 <code>pose-message</code> 传递，所以会 fallback 到本地的 error-prompt。</P>
-    <Button onClick={errorPromptUndefined}>errorPrompt(undefined)</Button>
-    <Button onClick={errorPromptNull}>errorPrompt(null)</Button>
-    <Button onClick={errorPromptString}>errorPrompt(string)</Button>
-    <Button onClick={errorPromptObject}>errorPrompt(object)</Button>
-    <Button onClick={errorPromptJsx}>errorPrompt(JSX)</Button>
-    <Button onClick={errorPromptError}>errorPrompt(Error)</Button>
-    <Button onClick={errorPromptErrorWithDetails}>errorPrompt(ErrorWithDetails)</Button>
+    <Button onClick={alertErrorUndefined}>alertError(undefined)</Button>
+    <Button onClick={alertErrorNull}>alertError(null)</Button>
+    <Button onClick={alertErrorString}>alertError(string)</Button>
+    <Button onClick={alertErrorObject}>alertError(object)</Button>
+    <Button onClick={alertErrorJsx}>alertError(JSX)</Button>
+    <Button onClick={alertErrorError}>alertError(Error)</Button>
+    <Button onClick={alertErrorErrorWithDetails}>alertError(ErrorWithDetails)</Button>
   </>;
 }

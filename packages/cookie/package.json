@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/cookie",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "ConsoleBase Cookie",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.2",
-    "@alicloud/demo-rc-elements": "^1.0.2",
+    "@alicloud/demo-rc-elements": "^1.0.4",
     "@types/jest": "^26.0.19",
     "@types/react": "^16.14.2",
     "jest": "^26.6.3",
@@ -44,5 +44,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "1fe9625e6f1d5c64e9327f005312ccba063ac977"
+  "gitHead": "d2c434d5d8d88216ef4551d6b1cc91b4eb5cbe94"
 }

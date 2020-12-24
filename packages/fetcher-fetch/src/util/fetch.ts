@@ -46,7 +46,7 @@ export default function(url: string, {
   });
   
   return timeout > 0 ? new Promise<Response>((resolve, reject) => {
-    const theTimer = setTimeout(() => {
+    const theTimer = window.setTimeout(() => {
       reject(createError(EFetchError.TIMEOUT, `fetch('${url}') timeout after ${timeout}ms`));
     }, timeout);
     

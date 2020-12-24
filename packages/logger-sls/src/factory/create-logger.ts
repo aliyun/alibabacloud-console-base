@@ -40,7 +40,7 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
   let suppressedLogUrls: string[] | null = [];
   
   // 压制时间之后，上报积压的日志，并把 suppressedLogUrls 设置为 null 取消压制
-  setTimeout(() => {
+  window.setTimeout(() => {
     if (suppressedLogUrls) {
       suppressedLogUrls.forEach(doLog);
       suppressedLogUrls = null;
