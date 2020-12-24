@@ -1,6 +1,6 @@
 import {
-  DIALOG
-} from '@alicloud/console-base-styled-mixin';
+  SIZE
+} from '@alicloud/console-base-theme';
 
 import {
   EDialogMode,
@@ -27,20 +27,20 @@ export default function useDialogWidth(): number | string {
   
   switch (size) {
     case EDialogSize.XS:
-      return modeIsSlide ? DIALOG.WIDTH_SLIDE.XS : DIALOG.WIDTH_NORMAL.XS;
+      return modeIsSlide ? SIZE.WIDTH_DIALOG_NORMAL_XS : SIZE.WIDTH_DIALOG_NORMAL_XS;
     case EDialogSize.S:
-      return modeIsSlide ? DIALOG.WIDTH_SLIDE.S : DIALOG.WIDTH_NORMAL.S;
+      return modeIsSlide ? SIZE.WIDTH_DIALOG_SLIDE_S : SIZE.WIDTH_DIALOG_NORMAL_S;
     case EDialogSize.L:
-      return modeIsSlide ? DIALOG.WIDTH_SLIDE.L : DIALOG.WIDTH_NORMAL.L;
+      return modeIsSlide ? SIZE.WIDTH_DIALOG_SLIDE_L : SIZE.WIDTH_DIALOG_NORMAL_L;
     case EDialogSize.XL:
-      return modeIsSlide ? DIALOG.WIDTH_SLIDE.XL : DIALOG.WIDTH_NORMAL.XL;
+      return modeIsSlide ? SIZE.WIDTH_DIALOG_SLIDE_XL : SIZE.WIDTH_DIALOG_NORMAL_XL;
     case EDialogSize.XXL:
-      return modeIsSlide ? DIALOG.WIDTH_SLIDE.XXL : DIALOG.WIDTH_NORMAL.XXL;
+      return modeIsSlide ? SIZE.WIDTH_DIALOG_SLIDE_XXL : SIZE.WIDTH_DIALOG_NORMAL_XXL;
     case EDialogSize.AUTO:
       return 'auto';
     case EDialogSize.ALMOST_FULL:
       return '95%';
     default:
-      return modeIsSlide ? DIALOG.WIDTH_SLIDE.M : DIALOG.WIDTH_NORMAL.M;
+      return modeIsSlide ? SIZE.WIDTH_DIALOG_SLIDE_M : SIZE.WIDTH_DIALOG_NORMAL_M;
   }
 }

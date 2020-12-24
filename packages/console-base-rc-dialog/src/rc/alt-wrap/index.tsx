@@ -1,10 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import Icon from '@alicloud/console-base-rc-icon';
 import {
   COLOR
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   TStringOrJSX
@@ -31,6 +33,13 @@ const ScIcon = styled(Icon)`
   top: 4px;
   left: 0;
   font-size: ${ICON_SIZE}px;
+  ${props => (props.type === 'question-fill' ? css`
+    color: ${COLOR.TEXT_CAPTION};
+    color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
+  ` : css`
+    color: ${COLOR.TEXT_WARN};
+    color: var(--cb-color-text-warn, ${COLOR.TEXT_WARN});
+  `)}
   
   &:before {
     display: block;
@@ -64,12 +73,7 @@ export default function AltWrap({
   content
 }: IProps): JSX.Element {
   return <ScWrap>
-    <ScIcon {...{
-      type: type === 'confirm' ? 'question-fill' : 'alert-fill',
-      style: {
-        color: type === 'confirm' ? COLOR.TEXT_CAPTION : COLOR.WARN
-      }
-    }} />
+    <ScIcon type={type === 'confirm' ? 'question-fill' : 'alert-fill'} />
     <ScMessage>
       {title ? <ScTitle>{title}</ScTitle> : null}
       <ScContent>{content}</ScContent>

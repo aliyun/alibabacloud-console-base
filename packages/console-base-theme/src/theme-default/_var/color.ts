@@ -43,31 +43,31 @@ export default {
   LINE_ACCENT: ACCENT,
   LINE_ERROR: ERROR,
   LINE_DIVIDER: '#efefef', // 浅色分割线 TODO LINE_LIGHT
-  LINE_DIVIDER_FADED: 'rgba(0,0,0,0.0627)',
+  LINE_DIVIDER_FADE: 'rgba(0,0,0,0.0627)',
   LINE_BORDER: '#dedede', // 组件边框 TODO LINE
-  LINE_BORDER_FADED: 'rgba(0,0,0,0.1294)',
+  LINE_BORDER_FADE: 'rgba(0,0,0,0.1294)',
   LINE_BORDER_HOVER: '#c0c6cc', // 深色分割线、组件边框 Hover 效果 TODO LINE_DARK
-  LINE_BORDER_HOVER_FADED: 'rgba(0,24,49,0.2471)',
+  LINE_BORDER_HOVER_FADE: 'rgba(0,24,49,0.2471)',
   
   // --------------------------------------------------------------- //
   // 填充色
   // --------------------------------------------------------------- //
   FILL_LIGHT: '#f7f9fa', // 白底 hover
-  FILL_LIGHT_FADED: 'rgba(0,64,96,0.03137)',
+  FILL_LIGHT_FADE: 'rgba(0,64,96,0.03137)',
   FILL_DARK: '#ebebeb', // TODO FILL_DARK
-  FILL_DARK_FADED: 'rgba(0,0,0,0.07843)',
+  FILL_DARK_FADE: 'rgba(0,0,0,0.07843)',
   FILL_DARKER: '#dedede', // TODO FILL_DARKER
-  FILL_DARKER_FADED: 'rgba(0,0,0,0.1294)',
+  FILL_DARKER_FADE: 'rgba(0,0,0,0.1294)',
   FILL_SUCCESS: '#edfcf1', // TODO SUCCESS_LIGHT
-  FILL_SUCCESS_FADED: 'rgba(0,212,57,0.0706)',
+  FILL_SUCCESS_FADE: 'rgba(0,212,57,0.0706)',
   FILL_WARN: '#fff7db', // TODO WARN_LIGHT
-  FILL_WARN_FADED: 'rgba(255,198,0,0.1412)',
+  FILL_WARN_FADE: 'rgba(255,198,0,0.1412)',
   FILL_ERROR: '#fcefee', // TODO ERROR_LIGHT
-  FILL_ERROR_FADED: 'rgba(210,15,0,0.0667)',
+  FILL_ERROR_FADE: 'rgba(210,15,0,0.0667)',
   FILL_INFO: '#ebf4fb', // TODO INFO_LIGHT
-  FILL_INFO_FADED: 'rgba(0,115,204,0.0784)',
+  FILL_INFO_FADE: 'rgba(0,115,204,0.0784)',
   FILL_HELP: '#f7f7f7', // TODO HELP_LIGHT
-  FILL_HELP_FADED: 'rgba(0,0,0,0.0314)',
+  FILL_HELP_FADE: 'rgba(0,0,0,0.0314)',
   
   FILL_MAIN: '#fafafa', // 主填充色，用于整个 body TODO FILL_LIGHTER
   FILL_NAV_LEVEL1: '#fff', // 一级导航（顶栏）
@@ -77,7 +77,7 @@ export default {
   FILL_DIALOG: '#fff',
   FILL_DIALOG_HEADER: '#fff',
   FILL_DIALOG_FOOTER: '#fff',
-  FILL_DIALOG_BACKDROP_FADED: 'rgba(0, 0, 0, 0.2)',
+  FILL_DIALOG_BACKDROP_FADE: 'rgba(0, 0, 0, 0.2)',
   FILL_INPUT: '#fff',
   FILL_INPUT_DISABLED: '#f7f9fa',
   FILL_DROPDOWN: '#fff'

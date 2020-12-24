@@ -4,9 +4,10 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  Z_INDEX,
+  COLOR,
+  SHADOW,
   SIZE,
-  COLOR
+  Z_INDEX
 } from '@alicloud/console-base-theme';
 import {
   typo
@@ -25,7 +26,8 @@ const ScTopNaV = styled(Flex)`
   right: 0;
   left: 0;
   z-index: ${Z_INDEX.TOP_NAV};
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: ${SHADOW.M_DOWN};
+  box-shadow: var(--cb-shadow-m-down, ${SHADOW.M_DOWN});
   background-color: ${COLOR.FILL_NAV_LEVEL1};
   background-color: var(--cb-color-fill-nav-level1, ${COLOR.FILL_NAV_LEVEL1});
   height: ${SIZE.HEIGHT_TOP_NAV}px;

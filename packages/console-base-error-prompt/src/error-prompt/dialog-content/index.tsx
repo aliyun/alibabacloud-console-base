@@ -37,8 +37,8 @@ const ScMessage = styled.div`
   code {
     padding: 0 4px;
     border-radius: 2px;
-    background-color: ${COLOR.FILL_LIGHT_FADED};
-    background-color: var(--cb-color-fill-light-faded, ${COLOR.FILL_LIGHT_FADED});
+    background-color: ${COLOR.FILL_LIGHT_FADE};
+    background-color: var(--cb-color-fill-light-fade, ${COLOR.FILL_LIGHT_FADE});
     color: #f25c7f;
   }
 `;

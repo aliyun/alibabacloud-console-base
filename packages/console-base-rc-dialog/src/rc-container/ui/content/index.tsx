@@ -6,8 +6,8 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  DIALOG
-} from '@alicloud/console-base-styled-mixin';
+  SIZE
+} from '@alicloud/console-base-theme';
 
 import {
   IDialogProps
@@ -24,7 +24,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {}
 const ScContent = styled.div<Partial<IDialogProps>>`
   flex: 1;
   position: relative;
-  padding: ${DIALOG.PADDING * 2 / 3}px ${DIALOG.PADDING}px;
+  padding: ${SIZE.PADDING_X_DIALOG * 2 / 3}px ${SIZE.PADDING_X_DIALOG}px;
   overflow: auto;
 `;
 

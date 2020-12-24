@@ -38,8 +38,8 @@ const ScTheDrop = styled.div<IPropsScTheDrop>`
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  border: 1px solid ${COLOR.LINE_BORDER_FADED};
-  border: 1px solid var(--cb-color-line-border-faded, ${COLOR.LINE_BORDER_FADED});
+  border: 1px solid ${COLOR.LINE_BORDER_FADE};
+  border: 1px solid var(--cb-color-line-border-fade, ${COLOR.LINE_BORDER_FADE});
   box-shadow: ${SHADOW.M};
   box-shadow: var(--cb-shadow-m, ${SHADOW.M});
   box-sizing: border-box;

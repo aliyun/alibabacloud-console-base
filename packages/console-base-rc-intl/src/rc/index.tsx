@@ -42,8 +42,8 @@ const cssBlockElements = css`
   hr {
     margin: 16px 0;
     border: 0;
-    border-bottom: ${BORDER.NORMAL};
-    border-bottom: var(--cb-border-normal, ${BORDER.NORMAL});
+    border-bottom: ${BORDER.DIVIDER};
+    border-bottom: var(--cb-border-divider, ${BORDER.DIVIDER});
     height: 0;
   }
   

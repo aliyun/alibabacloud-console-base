@@ -9,8 +9,8 @@ import {
 import styled from 'styled-components';
 
 import {
-  DIALOG
-} from '@alicloud/console-base-styled-mixin';
+  COLOR
+} from '@alicloud/console-base-theme';
 
 interface IProps {
   zIndex: number;
@@ -22,7 +22,7 @@ const ScBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: ${DIALOG.BACKDROP_BGC};
+  background-color: ${COLOR.FILL_DIALOG_BACKDROP_FADE};
   width: 100%;
   height: 100%;
 `;

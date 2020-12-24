@@ -5,6 +5,7 @@ import removeClass from './util/remove-class';
 import remove from './util/remove';
 import scrollIntoView from './util/scroll-into-view';
 import scrollTo from './util/scroll-to';
+import selectText from './util/select-text';
 
 export {
   find,
@@ -13,5 +14,6 @@ export {
   removeClass,
   remove,
   scrollIntoView,
-  scrollTo
+  scrollTo,
+  selectText
 };

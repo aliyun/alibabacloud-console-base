@@ -92,8 +92,8 @@ export const tagEm = css`
 export const tagCode = css`
   padding: 0 4px;
   border-radius: 2px;
-  background-color: ${COLOR.FILL_LIGHT_FADED};
-  background-color: var(--cb-color-fill-light-faded, ${COLOR.FILL_LIGHT_FADED});
+  background-color: ${COLOR.FILL_LIGHT_FADE};
+  background-color: var(--cb-color-fill-light-fade, ${COLOR.FILL_LIGHT_FADE});
   color: ${COLOR.TEXT_CODE};
   color: var(--cb-color-text-code, ${COLOR.TEXT_CODE});
 `;
@@ -101,8 +101,8 @@ export const tagCode = css`
 export const tagKbd = css`
   display: inline-block;
   padding: 3px 5px;
-  border: ${BORDER.NORMAL_FADE};
-  border: var(--cb-border-normal-fade, ${BORDER.NORMAL_FADE});
+  border: ${BORDER.DIVIDER_FADE};
+  border: var(--cb-border-divider-fade, ${BORDER.DIVIDER_FADE});
   border-radius: 3px;
   box-shadow: inset 0 -1px 0 #bbb;
   background-color: ${COLOR.FILL_LIGHT};

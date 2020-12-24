@@ -5,7 +5,10 @@ import styled, {
 
 import {
   COLOR,
-  DIALOG,
+  BORDER,
+  SIZE
+} from '@alicloud/console-base-theme';
+import {
   typo
 } from '@alicloud/console-base-styled-mixin';
 
@@ -25,19 +28,21 @@ const cssCommon = css`
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 ${DIALOG.PADDING * 2 + DIALOG.SIZE_X}px 0  ${DIALOG.PADDING}px;
+  padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   box-sizing: border-box;
   color: ${COLOR.TEXT_TITLE};
+  color: var(--cb-color-text-title, ${COLOR.TEXT_TITLE});
 `;
 
 const cssNormal = css`
-  padding-top: ${DIALOG.PADDING * 2 / 3}px;
+  padding-top: ${SIZE.PADDING_X_DIALOG * 2 / 3}px;
 `;
 
 // slide 和 slide-up 共用
 const cssSlide = css`
-  border-bottom: 1px solid ${COLOR.LINE_LIGHT};
-  height: ${DIALOG.SLIDE_HEADER_HEIGHT}px;
+  border-bottom: ${BORDER.DIVIDER_FADE};
+  border-bottom: var(--cb-border-divider-fade, ${BORDER.DIVIDER_FADE});
+  height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;
 `;
 
 const ScHeader = styled.header<IScProps>`

@@ -1,8 +1,8 @@
 import COLOR from './color';
 
 export default {
-  NORMAL: `1px solid ${COLOR.LINE_DIVIDER}`,
-  NORMAL_FADE: `1px solid ${COLOR.LINE_DIVIDER_FADED}`,
+  DIVIDER: `1px solid ${COLOR.LINE_DIVIDER}`,
+  DIVIDER_FADE: `1px solid ${COLOR.LINE_DIVIDER_FADE}`,
   INPUT_NORMAL: `1px solid ${COLOR.LINE_BORDER}`,
   INPUT_HOVER: `1px solid ${COLOR.LINE_BORDER}`,
   INPUT_FOCUS: `1px solid ${COLOR.LINE_ACCENT}`,

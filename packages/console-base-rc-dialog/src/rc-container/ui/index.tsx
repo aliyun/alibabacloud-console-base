@@ -4,8 +4,11 @@ import styled, {
 } from 'styled-components';
 
 import {
-  LAYOUT
-} from '@alicloud/console-base-styled-mixin';
+  COLOR,
+  BORDER,
+  SHADOW,
+  SIZE
+} from '@alicloud/console-base-theme';
 
 import {
   EDialogMode
@@ -47,7 +50,7 @@ const cssSlide = css<IScDialogProps>`
   transform: translateX(${props => (props.active ? '0' : '100%')});
   
   .hasTopbar & {
-    top: ${LAYOUT.TOP_BAR_HEIGHT}px;
+    top: ${SIZE.HEIGHT_TOP_NAV}px;
   }
 `;
 
@@ -55,7 +58,8 @@ const cssSlideUp = css<IScDialogProps>`
   right: 0;
   bottom: 0;
   left: 0;
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: ${SHADOW.L_UP};
+  box-shadow: var(--cb-shadow-l-up, ${SHADOW.L_UP});
   transform: translateY(${props => (props.active ? '0' : '100%')});
 `;
 
@@ -63,10 +67,13 @@ const cssSlideUp = css<IScDialogProps>`
 const ScDialog = styled.div<IScDialogProps>`
   position: fixed;
   opacity: ${props => (props.active ? 1 : 0.66)};
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 3px 4px 2px rgba(0, 0, 0, 0.1);
+  border: ${BORDER.DIVIDER_FADE};
+  border: var(--cb-border-divider-fade, ${BORDER.DIVIDER_FADE});
+  box-shadow: ${SHADOW.L};
+  box-shadow: var(--cb-shadow-l, ${SHADOW.L});
   outline: none;
-  background-color: #fff;
+  background-color: ${COLOR.FILL_DIALOG};
+  background-color: var(--cb-color-fill-dialog, ${COLOR.FILL_DIALOG});
   min-width: 320px;
   max-width: 100%;
   font-size: 12px;
