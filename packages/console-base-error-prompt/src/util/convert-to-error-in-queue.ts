@@ -14,7 +14,11 @@ import convertToErrorDetailedInfo from './convert-to-error-detailed-info';
 /**
  * 把错误 `o?: TErrorPromptArg` 转化成 IErrorInQueue
  */
-export default function convertToErrorInQueue(o: TErrorPromptArg): IErrorInQueue {
+export default function convertToErrorInQueue(o?: TErrorPromptArg): IErrorInQueue | null {
+  if (!o) {
+    return null;
+  }
+  
   const info: IErrorDetailedInfo = convertToErrorDetailedInfo(o);
   
   if (_isString(info.method)) {

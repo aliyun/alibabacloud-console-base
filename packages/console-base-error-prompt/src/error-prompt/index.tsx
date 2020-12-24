@@ -10,10 +10,10 @@ import {
   IErrorPromptSolo,
   IErrorDialogData,
   TErrorPromptArg,
-  IErrorPromptArgExtra
+  IErrorPromptExtra,
+  IFnErrorPromptExtra
 } from '../types';
-import intl from '../intl';
-import convertToErrorQueueItem from '../util/convert-to-error-queue-item';
+import convertToQueueItem from '../util/convert-to-queue-item';
 
 import DialogContent from './dialog-content';
 
@@ -22,9 +22,6 @@ const SOLO: IErrorPromptSolo = {
   queue: []
 };
 
-const defaultTitle = intl('alert_error:title');
-const defaultButton = intl('alert_error:op:ok');
-
 /**
  * 错误弹窗
  * 
@@ -32,12 +29,12 @@ const defaultButton = intl('alert_error:op:ok');
  *    1. 字符串、JSX 会被当作 message
  *    2. Error 实例，里边可以有 details 对象包含要展示的信息
  *    3. plain object
- * `extra` 用于自定义 title、button
+ * `extra` 用于自定义
  */
-export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPromptArgExtra): Promise<void> {
-  const queueItem: IErrorQueueItem = convertToErrorQueueItem(o, extra);
+export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra): Promise<void> {
+  const queueItem = convertToQueueItem(o, extra);
   
-  if (!queueItem?.error) {
+  if (!queueItem) {
     return;
   }
   
@@ -67,12 +64,8 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPro
   
   const dialogIndirect = openIndirect<void, IErrorDialogData>({
     content: dialogContent,
-    title(data: IErrorDialogData) {
-      return queue[data.page - 1].title || defaultTitle;
-    },
-    buttons(data: IErrorDialogData) {
-      return [queue[data.page - 1].button || defaultButton];
-    },
+    title: (data: IErrorDialogData) => queue[data.page - 1].title,
+    buttons: (data: IErrorDialogData) => [queue[data.page - 1].button, queue[data.page - 1].buttonCancel],
     undefinedAsReject: false,
     data: {
       page: 1

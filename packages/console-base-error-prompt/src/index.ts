@@ -1,6 +1,7 @@
 import {
   TErrorPromptArg as ErrorPromptArg,
-  IErrorPromptArgExtra as ErrorPromptArgExtra,
+  IErrorPromptExtra as ErrorPromptExtra,
+  IFnErrorPromptExtra as ErrorPromptExtraFn,
   IErrorDetailedInfo as ErrorDetailedInfo,
   IErrorWithDetails as ErrorWithDetails
 } from './types';
@@ -15,7 +16,8 @@ export {
 
 export type {
   ErrorPromptArg,
-  ErrorPromptArgExtra,
+  ErrorPromptExtra,
+  ErrorPromptExtraFn,
   ErrorDetailedInfo,
   ErrorWithDetails
 };

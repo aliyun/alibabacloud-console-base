@@ -13,7 +13,7 @@ import {
 } from '@alicloud/console-base-messenger';
 import errorPrompt, {
   ErrorDetailedInfo,
-  ErrorPromptArgExtra
+  ErrorPromptExtra
 } from '@alicloud/console-base-error-prompt';
 import {
   H2,
@@ -22,7 +22,7 @@ import {
 
 interface IMessengerPayload {
   error: ErrorDetailedInfo;
-  extra?: ErrorPromptArgExtra;
+  extra?: ErrorPromptExtra;
 }
 
 setGlobalVar();
@@ -41,7 +41,7 @@ export default function ProxyMock(): JSX.Element {
     }
     
     errorPrompt(o.error, {
-      title: '错误提示被接管啦！！',
+      title: '错误提示被接管啦！！', // 会导致 extra 中默认逻辑的 title 出不来....但不要紧，因为，实际上接管的时候不会有这个覆盖
       ...o.extra
     });
   }), []);

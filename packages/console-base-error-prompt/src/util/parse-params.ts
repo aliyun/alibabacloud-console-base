@@ -10,7 +10,7 @@ const DEFAULT_IGNORED_KEYS = [
 ];
 
 /**
- * 获取去干扰的 body 参数
+ * 获取去干扰的 params 参数
  */
 export default function parseParams(params?: string | Record<string, unknown>): Record<string, unknown> | null {
   if (!params) {
