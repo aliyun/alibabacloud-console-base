@@ -18,11 +18,23 @@ import {
 
 export type TApiMultiResult = Record<string, unknown>;
 
+export interface IConsoleFetcherConfig extends FetcherConfig, FetcherConfigExtraSecurity, FetcherConfigExtraBiz {}
+
+export interface IConsoleFetcherInterceptorOptions {
+  armsConfig?: ConsoleFetcherInterceptorArmsConfig;
+  slsConfig?: ConsoleFetcherInterceptorSlsConfig;
+}
+
+export interface IConsoleApiOptions<R = unknown> extends FetcherOptionsForQuickPost<IConsoleFetcherConfig> {
+  region?: string;
+  roa?: R; // ROA 形式的接口需要
+}
+
 /**
  * call(Open/Inner/Container)API 的共同类型
  */
 export interface IFnConsoleApi {
-  <T = void, P = void>(product: string, action: string, param?: P, options?: FetcherOptionsForQuickPost<IConsoleFetcherConfig>): Promise<T>;
+  <T = void, P = void, R = void>(product: string, action: string, param?: P, options?: IConsoleApiOptions<R>): Promise<T>;
 }
 
 export interface IFnConsoleApiMulti {
@@ -39,6 +51,8 @@ export interface IApiBody {
   product: string;
   action: string;
   params?: string;
+  region?: string;
+  content?: string;
 }
 
 export interface IApiBodyMulti {
@@ -53,11 +67,4 @@ export interface IConsoleApis {
   callMultiOpenApi: IFnConsoleApiMulti;
 }
 
-export interface IConsoleFetcherConfig extends FetcherConfig, FetcherConfigExtraSecurity, FetcherConfigExtraBiz {}
-
 export interface IConsoleFetcher<C extends IConsoleFetcherConfig = IConsoleFetcherConfig> extends Fetcher<C>, IConsoleApis {}
-
-export interface IConsoleFetcherInterceptorOptions {
-  armsConfig?: ConsoleFetcherInterceptorArmsConfig;
-  slsConfig?: ConsoleFetcherInterceptorSlsConfig;
-}

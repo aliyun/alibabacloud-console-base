@@ -27,6 +27,7 @@
     * `callMultiOpenApi`
 2. 扩展了 `FetcherConfig`
 3. 新增 API 类型输出
+    * `FetcherConsoleApiOptions`
     * `FetcherFnOpenApi`
     * `FetcherFnInnerApi`
     * `FetcherFnContainerApi`
