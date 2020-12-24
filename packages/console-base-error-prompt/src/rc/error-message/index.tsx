@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR
+  typo
 } from '@alicloud/console-base-styled-mixin';
 
 import {
@@ -19,15 +19,11 @@ const ScErrorMessage = styled.div`
   font-size: 14px;
   
   em {
-    font-style: normal;
-    color: ${COLOR.TEXT_EMPHASIS};
+    ${typo.tagEm};
   }
   
   code {
-    padding: 0 4px;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.04);
-    color: #f25c7f;
+    ${typo.tagCode};
   }
 `;
 
