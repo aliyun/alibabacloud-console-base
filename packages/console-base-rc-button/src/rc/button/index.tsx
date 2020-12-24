@@ -7,7 +7,9 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR,
+  COLOR
+} from '@alicloud/console-base-theme';
+import {
   button,
   typo
 } from '@alicloud/console-base-styled-mixin';
@@ -38,6 +40,7 @@ const cssCommon = css<IButtonAppearanceAndTheme>`
   vertical-align: middle;
   text-align: ${props => props.textAlign || 'center'};
   color: ${COLOR.TEXT_SECONDARY};
+  color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
 `;
 
 const cssBlock = css`

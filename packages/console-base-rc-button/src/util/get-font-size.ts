@@ -1,27 +1,23 @@
 import {
-  FORM_CONTROL
-} from '@alicloud/console-base-styled-mixin';
+  SIZE
+} from '@alicloud/console-base-theme';
 
 import {
   EButtonFontSize
 } from '../const';
 
-const {
-  FONT_SIZE
-} = FORM_CONTROL;
-
 export default function getFontSize(value: EButtonFontSize): number {
   switch (value) {
     case EButtonFontSize.M:
-      return FONT_SIZE.M;
+      return SIZE.FONT_SIZE_FORM_CONTROL_M;
     case EButtonFontSize.S:
-      return FONT_SIZE.S;
+      return SIZE.FONT_SIZE_FORM_CONTROL_S;
     case EButtonFontSize.XS:
-      return FONT_SIZE.XS;
+      return SIZE.FONT_SIZE_FORM_CONTROL_XS;
     case EButtonFontSize.L:
-      return FONT_SIZE.L;
+      return SIZE.FONT_SIZE_FORM_CONTROL_L;
     case EButtonFontSize.XL:
-      return FONT_SIZE.XL;
+      return SIZE.FONT_SIZE_FORM_CONTROL_XL;
     default:
       return 0;
   }

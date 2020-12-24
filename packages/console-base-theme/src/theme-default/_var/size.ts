@@ -15,6 +15,11 @@ export default {
   FONT_SIZE_BODY: 12, // 正文
   FONT_SIZE_CAPTION: 12, // 备注
   FONT_SIZE_BADGE: 12, // 徽标
+  FONT_SIZE_FORM_CONTROL_XL: 16,
+  FONT_SIZE_FORM_CONTROL_L: 14,
+  FONT_SIZE_FORM_CONTROL_M: 12,
+  FONT_SIZE_FORM_CONTROL_S: 10,
+  FONT_SIZE_FORM_CONTROL_XS: 8,
   
   /* *************************
    * ---------- 宽度 ----------
