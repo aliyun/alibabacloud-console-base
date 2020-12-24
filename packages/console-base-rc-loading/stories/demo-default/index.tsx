@@ -18,7 +18,7 @@ function randomPromise(): Promise<number[]> {
   return new Promise((resolve, reject) => {
     const ram = Math.ceil(Math.random() * 2000);
     
-    setTimeout(() => {
+    window.setTimeout(() => {
       if (ram % 2) {
         resolve([1, 2, 3]);
       } else {

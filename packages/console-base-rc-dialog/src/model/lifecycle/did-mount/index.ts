@@ -23,7 +23,7 @@ export default function DidMount(): null {
     if (!stateDidMount) {
       setStateDidMount(true);
       
-      setTimeout(() => { // 触发 CSS 动画
+      window.setTimeout(() => { // 触发 CSS 动画
         if (isUnmounted()) {
           return;
         }

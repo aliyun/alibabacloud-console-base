@@ -50,7 +50,7 @@ export default function DemoDefault(): JSX.Element {
   }), []);
   useEffect(() => subscribePromise<void, void>(TOPIC.TEST_PROMISE_ERROR, (): Promise<void> => {
     return new Promise((_resolve, reject) => {
-      setTimeout(() => {
+      window.setTimeout(() => {
         const err = new Error('fuck me');
         
         err.name = 'FuckMe';

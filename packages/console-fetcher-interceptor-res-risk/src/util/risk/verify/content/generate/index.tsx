@@ -78,7 +78,7 @@ export default function Generate(): JSX.Element {
     let timer: number | undefined;
     
     if (stateCooling > 0) {
-      timer = setTimeout(() => setStateCooling(stateCooling - 1), 1000);
+      timer = window.setTimeout(() => setStateCooling(stateCooling - 1), 1000);
     }
     
     return () => (timer && clearTimeout(timer));
