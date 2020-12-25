@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-product-id",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "ConsoleBase CONF product id",
   "license": "MIT",
   "main": "build/cjs/index.js",
