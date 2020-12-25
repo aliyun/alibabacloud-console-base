@@ -5,7 +5,7 @@ import styled, {
 
 import {
   COLOR
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 import Button, {
   EButtonSize,
   EButtonThemeColor,
@@ -40,10 +40,12 @@ const ScButton = styled(Button)<IProps>`
   ` : css`
     border-radius: 2px;
     color: ${COLOR.TEXT_SECONDARY};
+    color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
     
     &:hover {
       background: rgba(0, 0, 0, 0.1);
       color: ${COLOR.TEXT_SECONDARY};
+      color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
     }
   `)};
   
