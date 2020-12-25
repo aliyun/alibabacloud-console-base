@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-icon",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "ConsoleBase 组件 - 图标",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^0.0.4"
+    "@alicloud/console-base-theme": "^0.0.5"
   },
   "scripts": {
     "start": "breezr start-storybook",
