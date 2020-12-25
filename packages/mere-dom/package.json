@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/mere-dom",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Very little DOM utils",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.2",
-    "@alicloud/demo-rc-elements": "^1.0.4",
+    "@alicloud/demo-rc-elements": "^1.0.5",
     "@types/jest": "^26.0.19",
     "@types/lodash": "^4.14.166",
     "@types/react": "^16.14.2",
