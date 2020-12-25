@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-logger-sls",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "SLS logger factory for console",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -37,8 +37,8 @@
   },
   "dependencies": {
     "@alicloud/console-base-conf-account": "^1.0.9",
-    "@alicloud/console-base-conf-env": "^1.0.9",
-    "@alicloud/console-base-conf-locale": "^1.0.11",
+    "@alicloud/console-base-conf-env": "^1.1.0",
+    "@alicloud/console-base-conf-locale": "^1.1.0",
     "@alicloud/logger-sls": "^1.0.10"
   },
   "scripts": {
