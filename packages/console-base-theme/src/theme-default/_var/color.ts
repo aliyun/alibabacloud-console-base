@@ -52,6 +52,7 @@ export default {
   // --------------------------------------------------------------- //
   // 填充色
   // --------------------------------------------------------------- //
+  FILL_ACCENT: ACCENT,
   FILL_LIGHT: '#f7f9fa', // 白底 hover
   FILL_LIGHT_FADE: 'rgba(0,64,96,0.03137)',
   FILL_DARK: '#ebebeb', // TODO FILL_DARK

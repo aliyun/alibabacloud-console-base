@@ -42,6 +42,7 @@ export default createGlobalStyle`
     --cb-color-line-border-fade: ${COLOR.LINE_BORDER_FADE};
     --cb-color-line-border-hover: ${COLOR.LINE_BORDER_HOVER};
     --cb-color-line-border-hover-fade: ${COLOR.LINE_BORDER_HOVER_FADE};
+    --cb-color-fill-accent: ${COLOR.FILL_ACCENT};
     --cb-color-fill-light: ${COLOR.FILL_LIGHT};
     --cb-color-fill-light-fade: ${COLOR.FILL_LIGHT_FADE};
     --cb-color-fill-dark: ${COLOR.FILL_DARK};

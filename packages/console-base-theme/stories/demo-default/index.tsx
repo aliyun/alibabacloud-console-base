@@ -14,11 +14,7 @@ import {
 } from '../../src';
 
 const [theCode, theCode2] = (() => {
-  const code: string[] = [`import {
-  createGlobalStyle
-} from 'styled-components';
-
-export default createGlobalStyle\`
+  const code: string[] = [`export default createGlobalStyle\`
   :root {`];
   const code2: string[] = [`// 由 demo-default 生成拷贝而来，做参考，且放在仓库里 IDE 可以有提示
 :root {`];

@@ -34,5 +34,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "gitHead": "30c42c56d2af7338d3750516705eb7435e245de2"
 }
