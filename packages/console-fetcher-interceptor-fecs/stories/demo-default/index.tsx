@@ -9,7 +9,8 @@ import {
   H2,
   P,
   List,
-  Button
+  Button,
+  PrePromise
 } from '@alicloud/demo-rc-elements';
 import {
   FetcherDemoRcFecsTip
@@ -21,16 +22,6 @@ import refreshToken from '../../src/util/refresh-token';
 import fetcher, {
   fetcherNoFecs
 } from '../fetcher';
-
-function testGet(): void {
-  fetcher.get('/api/console-base/config');
-}
-
-function testPost(): void {
-  fetcher.post('/api/console-base/product/recent/add', {
-    productIds: ['oss']
-  });
-}
 
 function manyRefreshes(): void {
   refreshToken().then(() => console.info(1));
@@ -49,6 +40,8 @@ function openApiWillUseFecs(): void {
 
 export default function DemoDefault(): JSX.Element {
   const [stateToken, setStateToken] = useState<string>(cookieGetToken());
+  const [statePromisePost, setStatePromisePost] = useState<Promise<unknown> | null>(null);
+  const [statePromiseGet, setStatePromiseGet] = useState<Promise<unknown> | null>(null);
   
   const handleClearToken = useCallback(() => {
     cookieSetToken('');
@@ -62,6 +55,11 @@ export default function DemoDefault(): JSX.Element {
   const handleRefreshTokenRemotely = useCallback(() => refreshToken().then(() => {
     handleRefreshTokenLocally();
   }), [handleRefreshTokenLocally]);
+  
+  const handleTestPost = useCallback(() => setStatePromisePost(fetcher.post('/api/console-base/product/recent/add', {
+    productIds: ['oss']
+  })), []);
+  const handleTestGet = useCallback(() => setStatePromiseGet(fetcher.get('/api/console-base/config')), []);
   
   return <>
     <FetcherDemoRcFecsTip />
@@ -78,9 +76,11 @@ export default function DemoDefault(): JSX.Element {
       <Button onClick={handleRefreshTokenRemotely}>refresh token remotely</Button>
     </div>
     <H2>POST 请求</H2>
-    <Button onClick={testPost}>测试 POST</Button>
+    <Button onClick={handleTestPost}>测试 POST</Button>
+    <PrePromise promise={statePromisePost} />
     <H2>GET 不会受影响</H2>
-    <Button onClick={testGet}>测试 GET</Button>
+    <Button onClick={handleTestGet}>测试 GET</Button>
+    <PrePromise promise={statePromiseGet} />
     <H2>并发刷新</H2>
     <P>同时很多个 refreshToken 仅会发送一个请求</P>
     <Button onClick={manyRefreshes}>一次性触发多次仅发一个请求</Button>

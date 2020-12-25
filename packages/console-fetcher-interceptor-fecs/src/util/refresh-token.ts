@@ -19,7 +19,7 @@ const REFRESH_QUEUE: IRefreshTokenQueueItem[] = [];
  * 真正执行请求刷新 FECS 的 token
  */
 function refresh(): Promise<void> {
-  return fetch(`//${CONF_ENV.FECS_HOST}/data/heartbeat`, {
+  return fetch(`${CONF_ENV.FECS_URL_BASE}/data/heartbeat`, {
     credentials: 'include' // 必需，否则刷新出来的 token 无效
   }).then(response => response.json()).then((result: IRefreshTokenResult) => {
     const newToken = result.data;
