@@ -4,13 +4,10 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR,
   BORDER,
-  SIZE
-} from '@alicloud/console-base-theme';
-import {
+  SIZE,
   typo
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   EDialogMode
@@ -30,8 +27,7 @@ const cssCommon = css`
   position: relative;
   padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   box-sizing: border-box;
-  color: ${COLOR.TEXT_TITLE};
-  color: var(--cb-color-text-title, ${COLOR.TEXT_TITLE});
+  ${typo.textTitle};
 `;
 
 const cssNormal = css`

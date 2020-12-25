@@ -7,12 +7,9 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-theme';
-import {
   button,
   typo
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 import Icon, {
   IconType
 } from '@alicloud/console-base-rc-icon';
@@ -39,8 +36,7 @@ const cssCommon = css<IButtonAppearanceAndTheme>`
   overflow: hidden;
   vertical-align: middle;
   text-align: ${props => props.textAlign || 'center'};
-  color: ${COLOR.TEXT_SECONDARY};
-  color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
+  ${typo.textSecondary};
 `;
 
 const cssBlock = css`

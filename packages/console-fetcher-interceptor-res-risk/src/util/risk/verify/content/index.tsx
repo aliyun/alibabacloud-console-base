@@ -4,8 +4,8 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  typo
+} from '@alicloud/console-base-theme';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
@@ -42,7 +42,7 @@ const ScInput = styled(Input)`
 
 const ScError = styled.div`
   margin-top: 8px;
-  color: ${COLOR.ERROR};
+  ${typo.textError};
 `;
 
 export default function Content(): JSX.Element {

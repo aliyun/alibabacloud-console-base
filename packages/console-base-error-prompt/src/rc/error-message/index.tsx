@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import {
   typo
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   IErrorQueueItem

@@ -4,7 +4,7 @@ import {
 
 import {
   COLOR
-} from '@alicloud/console-base-theme';
+} from '../theme-default';
 
 /**
  * 对按钮样式进行重置：

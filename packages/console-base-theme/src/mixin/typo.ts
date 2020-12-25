@@ -6,7 +6,7 @@ import {
   COLOR,
   TYPO,
   BORDER
-} from '@alicloud/console-base-theme';
+} from '../theme-default';
 
 interface IPropsEllipsisLines {
   lines: number;
@@ -16,9 +16,60 @@ interface IPropsEllipsisLines {
 // 基础字体
 export const baseFont = css`
   line-height: 1.5;
+  font-family: ${TYPO.FONT_FAMILY_BASE};
   font-family: var(--cb-typo-font-family-base, ${TYPO.FONT_FAMILY_BASE});
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+`;
+
+export const fontFamilyMono = css`
+  font-family: ${TYPO.FONT_FAMILY_MONOSPACE};
+  font-family: var(--cb-typo-font-family-monospace, ${TYPO.FONT_FAMILY_MONOSPACE});
+`;
+
+export const textAccent = css`
+  color: ${COLOR.TEXT_ACCENT};
+  color: var(--cb-color-text-accent, ${COLOR.TEXT_ACCENT});
+`;
+
+export const textTitle = css`
+  color: ${COLOR.TEXT_TITLE};
+  color: var(--cb-color-text-title, ${COLOR.TEXT_TITLE});
+`;
+
+export const textPrimary = css`
+  color: ${COLOR.TEXT_PRIMARY};
+  color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
+`;
+
+export const textSecondary = css`
+  color: ${COLOR.TEXT_SECONDARY};
+  color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
+`;
+
+export const textCaption = css`
+  color: ${COLOR.TEXT_CAPTION};
+  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
+`;
+
+export const textInfo = css`
+  color: ${COLOR.TEXT_INFO};
+  color: var(--cb-color-text-info, ${COLOR.TEXT_INFO});
+`;
+
+export const textWarn = css`
+  color: ${COLOR.TEXT_WARN};
+  color: var(--cb-color-text-warn, ${COLOR.TEXT_WARN});
+`;
+
+export const textSuccess = css`
+  color: ${COLOR.TEXT_SUCCESS};
+  color: var(--cb-color-text-success, ${COLOR.TEXT_SUCCESS});
+`;
+
+export const textError = css`
+  color: ${COLOR.TEXT_ERROR};
+  color: var(--cb-color-text-error, ${COLOR.TEXT_ERROR});
 `;
 
 // 主链接

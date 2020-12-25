@@ -45,7 +45,7 @@
     "@alicloud/console-base-common-typings": "^1.0.8",
     "@alicloud/console-base-intl-factory-basic": "^1.0.12",
     "@alicloud/console-base-rc-icon": "^1.0.10",
-    "@alicloud/console-base-theme": "^0.0.0",
+    "@alicloud/console-base-theme": "^0.0.4",
     "@alicloud/react-hook-is-unmounted": "^1.0.8",
     "lodash": "^4.17.20"
   },

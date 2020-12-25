@@ -2,11 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-theme';
-import {
   typo
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   IPropsItem
@@ -22,8 +19,7 @@ const ScItemLink = styled.a`
 const ScItemPlain = styled.span`
   display: inline-block;
   vertical-align: middle;
-  color: ${COLOR.TEXT_CAPTION};
-  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
+  ${typo.textCaption};
 `;
 
 export default function BreadcrumbItem({

@@ -7,11 +7,9 @@ import {
   COLOR,
   SHADOW,
   SIZE,
-  Z_INDEX
-} from '@alicloud/console-base-theme';
-import {
+  Z_INDEX,
   typo
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import Flex from '../../rc/flex';
 

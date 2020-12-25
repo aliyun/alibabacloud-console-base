@@ -2,11 +2,9 @@ import styled from 'styled-components';
 
 import {
   COLOR,
-  TYPO
-} from '@alicloud/console-base-theme';
-import {
+  BORDER,
   typo
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 export default styled.article`
   a {
@@ -79,8 +77,7 @@ export default styled.article`
   
   pre,
   code {
-    font-family: ${TYPO.FONT_FAMILY_MONOSPACE};
-    font-family: var(--cb-typo-font-family-monospace, ${TYPO.FONT_FAMILY_MONOSPACE});
+    ${typo.fontFamilyMono};
   }
   
   strong {
@@ -101,8 +98,7 @@ export default styled.article`
   h3,
   h4 {
     font-weight: 600;
-    color: ${COLOR.TEXT_PRIMARY};
-    color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
+    ${typo.textTitle};
   }
   
   h1 {
@@ -124,8 +120,8 @@ export default styled.article`
   hr {
     margin: 16px 0;
     border: 0;
-    border-bottom: 1px solid ${COLOR.LINE_BORDER};
-    border-bottom: 1px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
+    border-bottom: ${BORDER.DIVIDER};
+    border-bottom: var(--cb-border-divider, ${BORDER.DIVIDER});
     height: 0;
   }
   

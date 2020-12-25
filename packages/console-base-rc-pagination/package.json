@@ -43,7 +43,7 @@
     "@alicloud/console-base-intl-factory-basic": "^1.0.12",
     "@alicloud/console-base-rc-button": "^1.0.10",
     "@alicloud/console-base-rc-icon": "^1.0.10",
-    "@alicloud/console-base-theme": "^0.0.0"
+    "@alicloud/console-base-theme": "^0.0.4"
   },
   "scripts": {
     "start": "breezr start-storybook",

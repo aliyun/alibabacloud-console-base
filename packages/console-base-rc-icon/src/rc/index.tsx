@@ -7,7 +7,7 @@ import styled, {
 
 import {
   glyph
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   IPropsIcon

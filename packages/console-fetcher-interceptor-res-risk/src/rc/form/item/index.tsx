@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR,
-  FORM_CONTROL
-} from '@alicloud/console-base-styled-mixin';
+  SIZE,
+  typo
+} from '@alicloud/console-base-theme';
 
 import {
   IFormItem
@@ -13,7 +13,7 @@ import {
 const ScItem = styled.div`
   display: flex;
   margin-bottom: 12px;
-  line-height: ${FORM_CONTROL.HEIGHT.M}px;
+  line-height: ${SIZE.HEIGHT_FORM_CONTROL_M}px;
   font-size: 12px;
   
   &:last-child {
@@ -27,7 +27,7 @@ const ScLabel = styled.div`
   box-sizing: border-box;
   width: 160px;
   text-align: right;
-  color: ${COLOR.TEXT_SECONDARY};
+  ${typo.textSecondary}
 `;
 
 const ScContent = styled.div`

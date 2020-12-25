@@ -4,10 +4,8 @@ import styled, {
 } from 'styled-components';
 
 import {
+  BORDER,
   typo
-} from '@alicloud/console-base-styled-mixin';
-import {
-  BORDER
 } from '@alicloud/console-base-theme';
 
 import {

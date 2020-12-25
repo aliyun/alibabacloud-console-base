@@ -12,11 +12,9 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-theme';
-import {
+  COLOR,
   typo
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 import Button, {
   EButtonPreset
 } from '@alicloud/console-base-rc-button';
