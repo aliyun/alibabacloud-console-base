@@ -1,16 +1,24 @@
+const BRAND = '#ff6a00';
 const ACCENT = '#0064c8';
 const ERROR = '#d93026';
+const TEXT_DISABLED = '#c1c1c1';
 
 export default {
   // 品牌色
-  BRAND_ALIYUN: '#ff6a00',
+  BRAND_ALIYUN: BRAND, // TODO 杀
   
   // --------------------------------------------------------------- //
   // 文本色（包括链接）
   // --------------------------------------------------------------- //
   
-  // 彩色文本
+  // 文本
+  TEXT_BRAND: BRAND,
   TEXT_ACCENT: ACCENT,
+  TEXT_TITLE: '#111', // 标题
+  TEXT_PRIMARY: '#333', // 主要文字
+  TEXT_SECONDARY: '#555', // 次要文字
+  TEXT_CAPTION: '#888', // 说明文字
+  TEXT_DISABLED, // disabled 状态文字
   TEXT_ERROR: ERROR, // 错误
   TEXT_WARN: '#ffc440', // 警告
   TEXT_SUCCESS: '#1e8e3e', // 积极和正面引导的文本，如「验证通过」、「已支付」等 TODO TEXT_POSITIVE
@@ -18,28 +26,27 @@ export default {
   TEXT_EMPHASIS: '#ff6a00', // 突出说明，如「金额」、「最重要链接」等，主要用于 em 元素
   TEXT_CODE: '#f25c7f', // 用于 code 元素
   
-  // 无色文本
-  TEXT_TITLE: '#111', // 标题
-  TEXT_PRIMARY: '#333', // 主要文字
-  TEXT_SECONDARY: '#555', // 次要文字
-  TEXT_CAPTION: '#888', // 说明文字
-  TEXT_DISABLED: '#c1c1c1', // Disabled 状态文字
-  
   // 链接
+  LINK_BRAND: BRAND,
+  LINK_BRAND_HOVER: BRAND,
+  LINK_BRAND_ACTIVE: BRAND,
+  LINK_BRAND_VISITED: BRAND,
+  LINK_BRAND_DISABLED: TEXT_DISABLED,
   LINK_PRIMARY: ACCENT, // TODO LINK
   LINK_PRIMARY_HOVER: ACCENT,
   LINK_PRIMARY_ACTIVE: ACCENT,
   LINK_PRIMARY_VISITED: ACCENT,
-  LINK_PRIMARY_DISABLED: '#c1c1c1',
+  LINK_PRIMARY_DISABLED: TEXT_DISABLED,
   LINK_SECONDARY: '#333', // 次要链接 TODO LINK_GRAY
   LINK_SECONDARY_HOVER: ACCENT,
   LINK_SECONDARY_ACTIVE: ACCENT,
   LINK_SECONDARY_VISITED: '#333',
-  LINK_SECONDARY_DISABLED: '#c1c1c1',
+  LINK_SECONDARY_DISABLED: TEXT_DISABLED,
   
   // --------------------------------------------------------------- //
   // 线条色
   // --------------------------------------------------------------- //
+  LINE_BRAND: BRAND,
   LINE_ACCENT: ACCENT,
   LINE_ERROR: ERROR,
   LINE_DIVIDER: '#efefef', // 浅色分割线 TODO LINE_LIGHT
@@ -52,12 +59,13 @@ export default {
   // --------------------------------------------------------------- //
   // 填充色
   // --------------------------------------------------------------- //
+  FILL_BRAND: BRAND,
   FILL_ACCENT: ACCENT,
   FILL_LIGHT: '#f7f9fa', // 白底 hover
   FILL_LIGHT_FADE: 'rgba(0,64,96,0.03137)',
-  FILL_DARK: '#ebebeb', // TODO FILL_DARK
+  FILL_DARK: '#ebebeb',
   FILL_DARK_FADE: 'rgba(0,0,0,0.07843)',
-  FILL_DARKER: '#dedede', // TODO FILL_DARKER
+  FILL_DARKER: '#dedede',
   FILL_DARKER_FADE: 'rgba(0,0,0,0.1294)',
   FILL_SUCCESS: '#edfcf1', // TODO SUCCESS_LIGHT
   FILL_SUCCESS_FADE: 'rgba(0,212,57,0.0706)',

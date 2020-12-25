@@ -20,13 +20,13 @@ import {
   IPropsForSc
 } from '../../types';
 import {
-  EButtonSize
+  EButtonSize,
+  FG_MAP,
+  BG_MAP,
+  BD_MAP
 } from '../../const';
 import getSizes from '../../util/get-sizes';
 import getFontSize from '../../util/get-font-size';
-import getColor from '../../util/get-color';
-import getColorBg from '../../util/get-color-bg';
-import getColorBd from '../../util/get-color-bd';
 import getPreset from '../../util/get-preset';
 
 // 按钮通用样式，没有 Size 的时候不设边框
@@ -80,13 +80,7 @@ const cssFontSize = css<IButtonAppearanceAndTheme>`
 `;
 
 const cssColorBd = css<IButtonAppearanceAndTheme>`
-  ${props => {
-    const value = getColorBd(props.themeColorBd);
-    
-    return value ? css`
-      border-color: ${value};
-    ` : null;
-  }};
+  ${props => BD_MAP[props.themeColorBd]};
 `;
 
 const cssColorBdHover = css<IButtonAppearanceAndTheme>`
@@ -98,11 +92,11 @@ const cssColorBdHover = css<IButtonAppearanceAndTheme>`
       return;
     }
     
-    const value = getColorBd(themeColorBdHover);
+    const value = BD_MAP[themeColorBdHover];
     
     return value ? css`
       &:hover {
-        border-color: ${value};
+        ${value};
       }
     ` : null;
   }};
@@ -110,7 +104,7 @@ const cssColorBdHover = css<IButtonAppearanceAndTheme>`
 
 const cssColorBg = css<IButtonAppearanceAndTheme>`
   ${props => {
-    const value = getColorBg(props.themeColorBg);
+    const value = BG_MAP[props.themeColorBg];
     
     return value ? css`
       background-color: ${value};
@@ -127,7 +121,7 @@ const cssColorBgHover = css<IButtonAppearanceAndTheme>`
       return;
     }
     
-    const value = getColorBg(themeColorBgHover);
+    const value = BG_MAP[themeColorBgHover];
     
     return value ? css`
       &:hover {
@@ -146,14 +140,14 @@ const cssColor = css<IButtonAppearanceAndTheme>`
       return;
     }
     
-    const value = getColor(themeColor);
+    const value = FG_MAP[themeColor];
     
     return value ? css`
       &,
       &:link,
       &:visited,
       &:hover {
-        color: ${value};
+        ${value}
       }
     ` : null;
   }};
@@ -165,13 +159,13 @@ const cssColorHover = css<IButtonAppearanceAndTheme>`
       return;
     }
     
-    const value = getColor(props.themeColorHover);
+    const value = FG_MAP[props.themeColorHover];
     
     return value ? css`
       &:hover,
       &:link:hover,
       &:visited:hover {
-        color: ${value};
+        ${value};
       }
     ` : null;
   }};

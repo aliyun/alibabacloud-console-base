@@ -12,18 +12,24 @@ import SHADOW from './_var/shadow';
 export default createGlobalStyle`
   :root {
     --cb-color-brand-aliyun: ${COLOR.BRAND_ALIYUN};
+    --cb-color-text-brand: ${COLOR.TEXT_BRAND};
     --cb-color-text-accent: ${COLOR.TEXT_ACCENT};
+    --cb-color-text-title: ${COLOR.TEXT_TITLE};
+    --cb-color-text-primary: ${COLOR.TEXT_PRIMARY};
+    --cb-color-text-secondary: ${COLOR.TEXT_SECONDARY};
+    --cb-color-text-caption: ${COLOR.TEXT_CAPTION};
+    --cb-color-text-disabled: ${COLOR.TEXT_DISABLED};
     --cb-color-text-error: ${COLOR.TEXT_ERROR};
     --cb-color-text-warn: ${COLOR.TEXT_WARN};
     --cb-color-text-success: ${COLOR.TEXT_SUCCESS};
     --cb-color-text-info: ${COLOR.TEXT_INFO};
     --cb-color-text-emphasis: ${COLOR.TEXT_EMPHASIS};
     --cb-color-text-code: ${COLOR.TEXT_CODE};
-    --cb-color-text-title: ${COLOR.TEXT_TITLE};
-    --cb-color-text-primary: ${COLOR.TEXT_PRIMARY};
-    --cb-color-text-secondary: ${COLOR.TEXT_SECONDARY};
-    --cb-color-text-caption: ${COLOR.TEXT_CAPTION};
-    --cb-color-text-disabled: ${COLOR.TEXT_DISABLED};
+    --cb-color-link-brand: ${COLOR.LINK_BRAND};
+    --cb-color-link-brand-hover: ${COLOR.LINK_BRAND_HOVER};
+    --cb-color-link-brand-active: ${COLOR.LINK_BRAND_ACTIVE};
+    --cb-color-link-brand-visited: ${COLOR.LINK_BRAND_VISITED};
+    --cb-color-link-brand-disabled: ${COLOR.LINK_BRAND_DISABLED};
     --cb-color-link-primary: ${COLOR.LINK_PRIMARY};
     --cb-color-link-primary-hover: ${COLOR.LINK_PRIMARY_HOVER};
     --cb-color-link-primary-active: ${COLOR.LINK_PRIMARY_ACTIVE};
@@ -34,6 +40,7 @@ export default createGlobalStyle`
     --cb-color-link-secondary-active: ${COLOR.LINK_SECONDARY_ACTIVE};
     --cb-color-link-secondary-visited: ${COLOR.LINK_SECONDARY_VISITED};
     --cb-color-link-secondary-disabled: ${COLOR.LINK_SECONDARY_DISABLED};
+    --cb-color-line-brand: ${COLOR.LINE_BRAND};
     --cb-color-line-accent: ${COLOR.LINE_ACCENT};
     --cb-color-line-error: ${COLOR.LINE_ERROR};
     --cb-color-line-divider: ${COLOR.LINE_DIVIDER};
@@ -42,6 +49,7 @@ export default createGlobalStyle`
     --cb-color-line-border-fade: ${COLOR.LINE_BORDER_FADE};
     --cb-color-line-border-hover: ${COLOR.LINE_BORDER_HOVER};
     --cb-color-line-border-hover-fade: ${COLOR.LINE_BORDER_HOVER_FADE};
+    --cb-color-fill-brand: ${COLOR.FILL_BRAND};
     --cb-color-fill-accent: ${COLOR.FILL_ACCENT};
     --cb-color-fill-light: ${COLOR.FILL_LIGHT};
     --cb-color-fill-light-fade: ${COLOR.FILL_LIGHT_FADE};
