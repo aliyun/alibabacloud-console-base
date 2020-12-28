@@ -4,9 +4,10 @@ import styled, {
 } from 'styled-components';
 
 import {
-  BORDER,
   SIZE,
-  typo
+  mixinTextTitle,
+  typo,
+  mixinBorderPrimaryBottom
 } from '@alicloud/console-base-theme';
 
 import {
@@ -27,7 +28,7 @@ const cssCommon = css`
   position: relative;
   padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   box-sizing: border-box;
-  ${typo.textTitle};
+  ${mixinTextTitle};
 `;
 
 const cssNormal = css`
@@ -36,9 +37,8 @@ const cssNormal = css`
 
 // slide 和 slide-up 共用
 const cssSlide = css`
-  border-bottom: ${BORDER.DIVIDER_FADE};
-  border-bottom: var(--cb-border-divider-fade, ${BORDER.DIVIDER_FADE});
   height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;
+  ${mixinBorderPrimaryBottom};
 `;
 
 const ScHeader = styled.header<IScProps>`

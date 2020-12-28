@@ -4,7 +4,8 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR
+  mixinTextAccent,
+  mixinTextTertiary
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonProps,
@@ -43,12 +44,10 @@ const ScPagination = styled.div<IPropsScPagination>`
 
 const ScPaginationDisplay = styled.div`
   margin: 0 12px;
-  color: ${COLOR.TEXT_CAPTION};
-  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
+  ${mixinTextTertiary};
   
   strong {
-    color: ${COLOR.TEXT_ACCENT};
-    color: var(--cb-color-text-accent, ${COLOR.TEXT_ACCENT});
+    ${mixinTextAccent};
   }
 `;
 

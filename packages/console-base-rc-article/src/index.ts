@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 
 import {
-  COLOR,
-  BORDER,
+  mixinBorderSecondaryBottom,
+  mixinTextTitle,
+  mixinLinkPrimary,
+  mixinBorderPrimary,
+  mixinBgPrimary,
+  mixinBgSecondary,
   typo
 } from '@alicloud/console-base-theme';
 
 export default styled.article`
   a {
-    ${typo.linkPrimary};
+    ${mixinLinkPrimary};
   }
   
   ul,
@@ -98,7 +102,7 @@ export default styled.article`
   h3,
   h4 {
     font-weight: 600;
-    ${typo.textTitle};
+    ${mixinTextTitle};
   }
   
   h1 {
@@ -120,9 +124,8 @@ export default styled.article`
   hr {
     margin: 16px 0;
     border: 0;
-    border-bottom: ${BORDER.DIVIDER};
-    border-bottom: var(--cb-border-divider, ${BORDER.DIVIDER});
     height: 0;
+    ${mixinBorderSecondaryBottom};
   }
   
   section {
@@ -203,24 +206,21 @@ export default styled.article`
     
     thead {
       tr {
-        background-color: ${COLOR.FILL_TABLE_TH};
-        background-color: var(--cb-color-fill-table-th, ${COLOR.FILL_TABLE_TH});
+        ${mixinBgSecondary};
       }
     }
     
     tr {
-      background-color: ${COLOR.FILL_TABLE_TD};
-      background-color: var(--cb-color-fill-table-td, ${COLOR.FILL_TABLE_TD});
+      ${mixinBgPrimary};
     }
     
     th,
     td {
       padding: 8px 12px;
-      border: 1px solid ${COLOR.LINE_BORDER};
-      border: 1px solid var(--cb-color-line-border, ${COLOR.LINE_BORDER});
       font-size: 0.9em;
       text-align: left;
       color: inherit;
+      ${mixinBorderPrimary};
       
       &:first-child {
         border-left: none;

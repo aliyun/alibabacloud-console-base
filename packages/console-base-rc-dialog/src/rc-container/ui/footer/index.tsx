@@ -4,8 +4,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  BORDER,
-  SIZE
+  SIZE,
+  mixinBorderPrimaryTop
 } from '@alicloud/console-base-theme';
 
 import {
@@ -42,9 +42,8 @@ const cssNormal = css`
 
 const cssSlide = css`
   justify-content: flex-start;
-  border-top: ${BORDER.DIVIDER_FADE};
-  border-top: var(--cb-border-divider-fade, ${BORDER.DIVIDER_FADE});
   height: ${SIZE.HEIGHT_DIALOG_SLIDE_FOOTER}px;
+  ${mixinBorderPrimaryTop};
 `;
 
 const ScFooter = styled.footer<IScProps>`

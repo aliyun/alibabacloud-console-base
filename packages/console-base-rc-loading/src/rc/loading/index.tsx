@@ -4,7 +4,7 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR
+  mixinTextDisabled
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -31,8 +31,7 @@ function getJustifyContent(align?: TAlign): string {
 
 const cssLoading = css`
   font-size: 12px;
-  color: ${COLOR.TEXT_DISABLED};
-  color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED});
+  ${mixinTextDisabled};
 `;
 
 const ScLoading = styled.div<IScPropsLoading>`

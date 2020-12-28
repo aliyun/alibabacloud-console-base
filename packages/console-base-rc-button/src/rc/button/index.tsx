@@ -7,6 +7,7 @@ import styled, {
 } from 'styled-components';
 
 import {
+  mixinTextSecondary,
   button,
   typo
 } from '@alicloud/console-base-theme';
@@ -36,7 +37,7 @@ const cssCommon = css<IButtonAppearanceAndTheme>`
   overflow: hidden;
   vertical-align: middle;
   text-align: ${props => props.textAlign || 'center'};
-  ${typo.textSecondary};
+  ${mixinTextSecondary};
 `;
 
 const cssBlock = css`

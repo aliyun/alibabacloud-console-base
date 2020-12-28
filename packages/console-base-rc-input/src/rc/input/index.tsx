@@ -12,7 +12,10 @@ import {
   COLOR,
   SIZE,
   BORDER,
-  SHADOW
+  mixinTextSecondary,
+  mixinTextTertiary,
+  mixinTextDisabled,
+  mixinShadowMDown
 } from '@alicloud/console-base-theme';
 
 import {
@@ -72,7 +75,7 @@ const ScInput = styled.div<IPropsScInput>`
       return css`
         border: ${BORDER.INPUT_FOCUS};
         border: var(--cb-border-input-focus, ${BORDER.INPUT_FOCUS});
-        box-shadow: ${SHADOW.M_DOWN};
+        ${mixinShadowMDown};
       `;
     }
     
@@ -80,7 +83,7 @@ const ScInput = styled.div<IPropsScInput>`
       return css`
         border: ${BORDER.INPUT_HOVER};
         border: var(--cb-border-input-hover, ${BORDER.INPUT_HOVER});
-        box-shadow: ${SHADOW.M_DOWN};
+        ${mixinShadowMDown};
       `;
     }
   }};
@@ -108,12 +111,10 @@ const ScInputReal = styled.input`
   width: 100%;
   height: ${INNER_HEIGHT_PX};
   line-height: ${INNER_HEIGHT_PX};
-  color: ${COLOR.TEXT_SECONDARY};
-  color: var(--cb-color-text-secondary, ${COLOR.TEXT_SECONDARY});
+  ${mixinTextSecondary};
   
   &::placeholder {
-    color: ${COLOR.TEXT_DISABLED};
-    color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED});
+    ${mixinTextDisabled};
   }
   
   &::-ms-clear {
@@ -124,8 +125,7 @@ const ScInputReal = styled.input`
 const ScInnerExtra = styled.span`
   height: ${INNER_HEIGHT_PX};
   line-height: ${INNER_HEIGHT_PX};
-  color: ${COLOR.TEXT_CAPTION};
-  color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
+  ${mixinTextTertiary};
 `;
 
 const ScInnerLeft = styled(ScInnerExtra)`

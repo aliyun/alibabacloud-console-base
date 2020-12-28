@@ -4,10 +4,11 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR,
-  BORDER,
-  SHADOW,
-  SIZE
+  SIZE,
+  mixinShadowL,
+  mixinShadowLUp,
+  mixinBorderPrimary,
+  mixinBgPrimary
 } from '@alicloud/console-base-theme';
 
 import {
@@ -58,26 +59,22 @@ const cssSlideUp = css<IScDialogProps>`
   right: 0;
   bottom: 0;
   left: 0;
-  box-shadow: ${SHADOW.L_UP};
-  box-shadow: var(--cb-shadow-l-up, ${SHADOW.L_UP});
   transform: translateY(${props => (props.active ? '0' : '100%')});
+  ${mixinShadowLUp};
 `;
 
 // 其实 HTML 有 dialog 元素，但浏览器支持不佳，目前只好用 div
 const ScDialog = styled.div<IScDialogProps>`
   position: fixed;
   opacity: ${props => (props.active ? 1 : 0.66)};
-  border: ${BORDER.DIVIDER_FADE};
-  border: var(--cb-border-divider-fade, ${BORDER.DIVIDER_FADE});
-  box-shadow: ${SHADOW.L};
-  box-shadow: var(--cb-shadow-l, ${SHADOW.L});
   outline: none;
-  background-color: ${COLOR.FILL_DIALOG};
-  background-color: var(--cb-color-fill-dialog, ${COLOR.FILL_DIALOG});
   min-width: 320px;
   max-width: 100%;
   font-size: 12px;
   transition: all ease-in 200ms;
+  ${mixinBgPrimary};
+  ${mixinBorderPrimary};
+  ${mixinShadowL};
   ${props => {
     switch (props.mode) {
       case EDialogMode.SLIDE:

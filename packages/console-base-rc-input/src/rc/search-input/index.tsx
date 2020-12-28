@@ -4,7 +4,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR
+  mixinTextEmphasis,
+  mixinTextTertiary
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -19,13 +20,7 @@ interface IPropsScIcon {
 
 const ScIcon = styled(Icon)<IPropsScIcon>`
   font-size: 16px;
-  ${props => (props.highlighted ? css`
-    color: ${COLOR.TEXT_EMPHASIS};
-    color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
-  ` : css`
-    color: ${COLOR.TEXT_DISABLED};
-    color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED});
-  `)};
+  ${props => (props.highlighted ? mixinTextEmphasis : mixinTextTertiary)};
 `;
 
 function renderIcon(focused: boolean, hovered: boolean): JSX.Element {

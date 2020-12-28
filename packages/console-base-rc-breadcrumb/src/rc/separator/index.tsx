@@ -2,15 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR
+  mixinTextTertiary
 } from '@alicloud/console-base-theme';
 
 const ScSeparator = styled.span`
   display: inline-block;
   margin: 0 8px;
   vertical-align: middle;
-  color: ${COLOR.LINE_BORDER};
-  color: var(--cb-color-line-border, ${COLOR.LINE_BORDER});
+  ${mixinTextTertiary};
   
   &:before {
     content: '/';

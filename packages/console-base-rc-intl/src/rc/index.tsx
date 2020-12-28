@@ -4,8 +4,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  BORDER,
-  typo
+  typo,
+  mixinBorderSecondaryBottom
 } from '@alicloud/console-base-theme';
 
 import {
@@ -40,9 +40,8 @@ const cssBlockElements = css`
   hr {
     margin: 16px 0;
     border: 0;
-    border-bottom: ${BORDER.DIVIDER};
-    border-bottom: var(--cb-border-divider, ${BORDER.DIVIDER});
     height: 0;
+    ${mixinBorderSecondaryBottom};
   }
   
   p,

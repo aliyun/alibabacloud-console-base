@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, {
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
 import Icon from '@alicloud/console-base-rc-icon';
 import {
-  COLOR
+  mixinTextTitle,
+  mixinTextTertiary,
+  mixinTextWarning
 } from '@alicloud/console-base-theme';
 
 import {
@@ -33,13 +33,7 @@ const ScIcon = styled(Icon)`
   top: 4px;
   left: 0;
   font-size: ${ICON_SIZE}px;
-  ${props => (props.type === 'question-fill' ? css`
-    color: ${COLOR.TEXT_CAPTION};
-    color: var(--cb-color-text-caption, ${COLOR.TEXT_CAPTION});
-  ` : css`
-    color: ${COLOR.TEXT_WARN};
-    color: var(--cb-color-text-warn, ${COLOR.TEXT_WARN});
-  `)}
+  ${props => (props.type === 'question-fill' ? mixinTextTertiary : mixinTextWarning)}
   
   &:before {
     display: block;
@@ -57,7 +51,7 @@ const ScTitle = styled.h5`
   margin: 0 0 8px 0;
   padding: 0;
   font-size: 16px;
-  color: ${COLOR.TEXT_TITLE};
+  ${mixinTextTitle};
 `;
 
 const ScContent = styled.div`

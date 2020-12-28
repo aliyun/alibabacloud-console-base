@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
   SIZE,
-  typo
+  mixinTextSecondary
 } from '@alicloud/console-base-theme';
 
 import {
@@ -27,7 +27,7 @@ const ScLabel = styled.div`
   box-sizing: border-box;
   width: 160px;
   text-align: right;
-  ${typo.textSecondary}
+  ${mixinTextSecondary}
 `;
 
 const ScContent = styled.div`

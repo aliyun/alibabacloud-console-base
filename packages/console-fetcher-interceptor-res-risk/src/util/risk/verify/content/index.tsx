@@ -4,7 +4,7 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  typo
+  mixinTextError
 } from '@alicloud/console-base-theme';
 import {
   useDialog
@@ -42,7 +42,7 @@ const ScInput = styled(Input)`
 
 const ScError = styled.div`
   margin-top: 8px;
-  ${typo.textError};
+  ${mixinTextError};
 `;
 
 export default function Content(): JSX.Element {

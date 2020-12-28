@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  typo
+  typo,
+  mixinTextPrimary,
+  mixinTextTertiary
 } from '@alicloud/console-base-theme';
 
 import {
@@ -19,11 +21,11 @@ const ScKeyValue = styled.div``;
 const ScItem = styled.div`
   display: flex;
   margin: 4px 0;
-  ${typo.textPrimary};
+  ${mixinTextPrimary};
 `;
 const ScItemK = styled.div`
   margin-right: 1em;
-  ${typo.textCaption};
+  ${mixinTextTertiary};
 `;
 const ScItemV = styled.div<IPropsScItemV>`
   flex: 1;

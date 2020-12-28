@@ -4,10 +4,10 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR,
-  SHADOW,
   SIZE,
   Z_INDEX,
+  mixinBgPrimary,
+  mixinShadowMDown,
   typo
 } from '@alicloud/console-base-theme';
 
@@ -24,13 +24,11 @@ const ScTopNaV = styled(Flex)`
   right: 0;
   left: 0;
   z-index: ${Z_INDEX.TOP_NAV};
-  box-shadow: ${SHADOW.M_DOWN};
-  box-shadow: var(--cb-shadow-m-down, ${SHADOW.M_DOWN});
-  background-color: ${COLOR.FILL_NAV_LEVEL1};
-  background-color: var(--cb-color-fill-nav-level1, ${COLOR.FILL_NAV_LEVEL1});
   height: ${SIZE.HEIGHT_TOP_NAV}px;
   font-size: 12px;
   ${typo.baseFont};
+  ${mixinBgPrimary};
+  ${mixinShadowMDown};
 `;
 
 export default function TopNavUi(props: HTMLAttributes<HTMLDivElement>): JSX.Element {

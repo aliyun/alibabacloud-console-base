@@ -12,8 +12,11 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR,
-  SHADOW
+  mixinTextPrimary,
+  mixinBorderPrimary,
+  mixinBgPrimary,
+  mixinShadowLDown,
+  mixinBorderPrimaryTop
 } from '@alicloud/console-base-theme';
 
 import {
@@ -38,18 +41,14 @@ const ScTheDrop = styled.div<IPropsScTheDrop>`
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  border: 1px solid ${COLOR.LINE_BORDER_FADE};
-  border: 1px solid var(--cb-color-line-border-fade, ${COLOR.LINE_BORDER_FADE});
-  box-shadow: ${SHADOW.M};
-  box-shadow: var(--cb-shadow-m, ${SHADOW.M});
   box-sizing: border-box;
-  background-color: ${COLOR.FILL_DROPDOWN});
-  background-color: var(--cb-color-fill-dropdown, ${COLOR.FILL_DROPDOWN});
   min-width: 120px;
   font-size: 12px;
-  color: ${COLOR.TEXT_PRIMARY};
-  color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
   transition: all 360ms ease;
+  ${mixinTextPrimary};
+  ${mixinBorderPrimary};
+  ${mixinBgPrimary};
+  ${mixinShadowLDown};
   
   ${props => {
     if (props.visible) {
@@ -83,8 +82,7 @@ const ScTheDropBody = styled.div<IPropsScDropBody>`
 `;
 
 const ScTheDropFooter = styled.footer`
-  border-top: 1px solid ${COLOR.LINE_DIVIDER};
-  border-top: 1px solid var(--cb-color-line-divider, ${COLOR.LINE_DIVIDER});
+  ${mixinBorderPrimaryTop};
 `;
 
 export default function TheDrop(): JSX.Element | ReactPortal {

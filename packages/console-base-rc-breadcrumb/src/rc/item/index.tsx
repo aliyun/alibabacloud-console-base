@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  typo
+  mixinTextTertiary,
+  mixinLinkSecondary
 } from '@alicloud/console-base-theme';
 
 import {
@@ -13,13 +14,13 @@ const ScItemLink = styled.a`
   display: inline-block;
   cursor: pointer;
   vertical-align: middle;
-  ${typo.linkSecondary};
+  ${mixinLinkSecondary};
 `;
 
 const ScItemPlain = styled.span`
   display: inline-block;
   vertical-align: middle;
-  ${typo.textCaption};
+  ${mixinTextTertiary};
 `;
 
 export default function BreadcrumbItem({

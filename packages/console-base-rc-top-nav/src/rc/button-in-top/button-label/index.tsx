@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR
+  COLOR,
+  mixinTextEmphasis
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -36,9 +37,8 @@ const ScIndicatorNumber = styled.strong`
   line-height: 1.5;
   font-size: 12px;
   font-weight: 600;
-  color: ${COLOR.TEXT_EMPHASIS};
-  color: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
   transform: scale(0.8);
+  ${mixinTextEmphasis};
 `;
 
 /**
