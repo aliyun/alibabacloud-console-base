@@ -17,7 +17,8 @@ import {
   mixinBgSuccess,
   mixinBgWarning,
   mixinBgError,
-  mixinBgDanger
+  mixinBgDanger,
+  mixinBgBackdrop
 } from '../../../src';
 
 const ScBricks = styled.div`
@@ -68,6 +69,9 @@ const ScMixinBgError = styled(ScBrick)`
 const ScMixinBgDanger = styled(ScBrick)`
   ${mixinBgDanger}
 `;
+const ScMixinBgBackdrop = styled(ScBrick)`
+  ${mixinBgBackdrop}
+`;
 
 export default function MixinBg(): JSX.Element {
   return <>
@@ -85,6 +89,7 @@ export default function MixinBg(): JSX.Element {
       <ScMixinBgWarning>mixinBgWarning</ScMixinBgWarning>
       <ScMixinBgError>mixinBgError</ScMixinBgError>
       <ScMixinBgDanger>mixinBgDanger</ScMixinBgDanger>
+      <ScMixinBgBackdrop>mixinBgBackdrop</ScMixinBgBackdrop>
     </ScBricks>
   </>;
 }

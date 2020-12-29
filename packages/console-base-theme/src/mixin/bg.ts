@@ -54,3 +54,7 @@ export const mixinBgDanger = css`
   background-color: ${COLOR.BG_DANGER};
   background-color: var(--cb-color-bg-danger, ${COLOR.BG_DANGER});
 `;
+export const mixinBgBackdrop = css`
+  background-color: ${COLOR.BG_BACKDROP};
+  background-color: var(--cb-color-bg-backdrop, ${COLOR.BG_BACKDROP});
+`;

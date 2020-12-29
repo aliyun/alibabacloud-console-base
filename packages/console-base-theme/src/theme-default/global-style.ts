@@ -48,6 +48,7 @@ export default createGlobalStyle`
     --cb-color-bg-warning: ${COLOR.BG_WARNING};
     --cb-color-bg-error: ${COLOR.BG_ERROR};
     --cb-color-bg-danger: ${COLOR.BG_DANGER};
+    --cb-color-bg-backdrop: ${COLOR.BG_BACKDROP};
     --cb-color-link-disabled: ${COLOR.LINK_DISABLED};
     --cb-color-link-primary: ${COLOR.LINK_PRIMARY};
     --cb-color-link-primary-visited: ${COLOR.LINK_PRIMARY_VISITED};

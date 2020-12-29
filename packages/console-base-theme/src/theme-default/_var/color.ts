@@ -154,6 +154,7 @@ export default {
   BG_WARNING,
   BG_ERROR,
   BG_DANGER,
+  BG_BACKDROP: 'rgba(0, 0, 0, 0.2)',
   
   // --------------------------------------------------------------- //
   // 组件 - 链接

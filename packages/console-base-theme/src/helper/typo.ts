@@ -7,14 +7,14 @@ import {
   TYPO
 } from '../theme-default';
 import {
-  mixinTextCode,
-  mixinBorderPrimary,
-  mixinTextSecondary,
-  mixinBgSecondary,
-  mixinBorderSecondary,
-  mixinTextEmphasis,
   mixinTextPrimary,
-  mixinTextTertiary
+  mixinTextSecondary,
+  mixinTextTertiary,
+  mixinTextCode,
+  mixinTextEmphasis,
+  mixinBgSecondary,
+  mixinBorderPrimary,
+  mixinBorderSecondary
 } from '../mixin';
 
 interface IPropsEllipsisLines {
