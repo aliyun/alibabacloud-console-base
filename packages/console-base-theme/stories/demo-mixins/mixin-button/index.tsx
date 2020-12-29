@@ -12,6 +12,9 @@ import {
   mixinButtonPrimary,
   mixinButtonSecondary,
   mixinButtonTertiary,
+  mixinButtonBrandPrimary,
+  mixinButtonBrandSecondary,
+  mixinButtonBrandTertiary,
   mixinButtonTextPrimary,
   mixinButtonTextSecondary,
   mixinButtonTextTertiary
@@ -32,6 +35,15 @@ const ScMixinButtonSecondary = styled(ScButtonBase)`
 const ScMixinButtonTertiary = styled(ScButtonBase)`
   ${mixinButtonTertiary}
 `;
+const ScMixinButtonBrandPrimary = styled(ScButtonBase)`
+  ${mixinButtonBrandPrimary}
+`;
+const ScMixinButtonBrandSecondary = styled(ScButtonBase)`
+  ${mixinButtonBrandSecondary}
+`;
+const ScMixinButtonBrandTertiary = styled(ScButtonBase)`
+  ${mixinButtonBrandTertiary}
+`;
 const ScMixinButtonDanger = styled(ScButtonBase)`
   ${mixinButtonDanger}
 `;
@@ -49,22 +61,28 @@ export default function MixinButton(): JSX.Element {
   return <>
     <H2>mixins for button</H2>
     <div>
-      <ScMixinButtonDanger>mixinButtonDanger</ScMixinButtonDanger>
-      <ScMixinButtonPrimary>mixinButtonPrimary</ScMixinButtonPrimary>
-      <ScMixinButtonSecondary>mixinButtonSecondary</ScMixinButtonSecondary>
-      <ScMixinButtonTertiary>mixinButtonTertiary</ScMixinButtonTertiary>
-      <ScMixinButtonTextPrimary>mixinButtonTextPrimary</ScMixinButtonTextPrimary>
-      <ScMixinButtonTextSecondary>mixinButtonTextSecondary</ScMixinButtonTextSecondary>
-      <ScMixinButtonTextTertiary>mixinButtonTextTertiary</ScMixinButtonTextTertiary>
+      <ScMixinButtonDanger>danger</ScMixinButtonDanger>
+      <ScMixinButtonPrimary>primary</ScMixinButtonPrimary>
+      <ScMixinButtonSecondary>secondary</ScMixinButtonSecondary>
+      <ScMixinButtonTertiary>tertiary</ScMixinButtonTertiary>
+      <ScMixinButtonBrandPrimary>brand-primary</ScMixinButtonBrandPrimary>
+      <ScMixinButtonBrandSecondary>brand-secondary</ScMixinButtonBrandSecondary>
+      <ScMixinButtonBrandTertiary>brand-tertiary</ScMixinButtonBrandTertiary>
+      <ScMixinButtonTextPrimary>text-primary</ScMixinButtonTextPrimary>
+      <ScMixinButtonTextSecondary>text-secondary</ScMixinButtonTextSecondary>
+      <ScMixinButtonTextTertiary>text-tertiary</ScMixinButtonTextTertiary>
     </div>
     <div>
-      <ScMixinButtonDanger disabled>mixinButtonDanger + disabled</ScMixinButtonDanger>
-      <ScMixinButtonPrimary disabled>mixinButtonPrimary + disabled</ScMixinButtonPrimary>
-      <ScMixinButtonSecondary disabled>mixinButtonSecondary + disabled</ScMixinButtonSecondary>
-      <ScMixinButtonTertiary disabled>mixinButtonTertiary + disabled</ScMixinButtonTertiary>
-      <ScMixinButtonTextPrimary disabled>mixinButtonTextPrimary</ScMixinButtonTextPrimary>
-      <ScMixinButtonTextSecondary disabled>mixinButtonTextSecondary</ScMixinButtonTextSecondary>
-      <ScMixinButtonTextTertiary disabled>mixinButtonTextTertiary</ScMixinButtonTextTertiary>
+      <ScMixinButtonDanger disabled>danger</ScMixinButtonDanger>
+      <ScMixinButtonPrimary disabled>primary</ScMixinButtonPrimary>
+      <ScMixinButtonSecondary disabled>secondary</ScMixinButtonSecondary>
+      <ScMixinButtonTertiary disabled>tertiary</ScMixinButtonTertiary>
+      <ScMixinButtonBrandPrimary disabled>brand-primary</ScMixinButtonBrandPrimary>
+      <ScMixinButtonBrandSecondary disabled>brand-secondary</ScMixinButtonBrandSecondary>
+      <ScMixinButtonBrandTertiary disabled>brand-tertiary</ScMixinButtonBrandTertiary>
+      <ScMixinButtonTextPrimary disabled>text-primary</ScMixinButtonTextPrimary>
+      <ScMixinButtonTextSecondary disabled>text-secondary</ScMixinButtonTextSecondary>
+      <ScMixinButtonTextTertiary disabled>text-tertiary</ScMixinButtonTextTertiary>
     </div>
     <P>让底部可见...</P>
   </>;

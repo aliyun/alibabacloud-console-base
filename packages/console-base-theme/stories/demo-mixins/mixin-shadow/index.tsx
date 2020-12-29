@@ -85,21 +85,21 @@ export default function MixinShadow(): JSX.Element {
   return <>
     <H2>mixins for shadow</H2>
     <ScBricks>
-      <ScMixinShadowM>mixinShadowM</ScMixinShadowM>
-      <ScMixinShadowMUp>mixinShadowMUp</ScMixinShadowMUp>
-      <ScMixinShadowMRight>mixinShadowMRight</ScMixinShadowMRight>
-      <ScMixinShadowMDown>mixinShadowMDown</ScMixinShadowMDown>
-      <ScMixinShadowMLeft>mixinShadowMLeft</ScMixinShadowMLeft>
-      <ScMixinShadowL>mixinShadowL</ScMixinShadowL>
-      <ScMixinShadowLUp>mixinShadowLUp</ScMixinShadowLUp>
-      <ScMixinShadowLRight>mixinShadowLRight</ScMixinShadowLRight>
-      <ScMixinShadowLDown>mixinShadowLDown</ScMixinShadowLDown>
-      <ScMixinShadowLLeft>mixinShadowLLeft</ScMixinShadowLLeft>
-      <ScMixinShadowXl>mixinShadowXl</ScMixinShadowXl>
-      <ScMixinShadowXlUp>mixinShadowXlUp</ScMixinShadowXlUp>
-      <ScMixinShadowXlRight>mixinShadowXlRight</ScMixinShadowXlRight>
-      <ScMixinShadowXlDown>mixinShadowXlDown</ScMixinShadowXlDown>
-      <ScMixinShadowXlLeft>mixinShadowXlLeft</ScMixinShadowXlLeft>
+      <ScMixinShadowM>shadow-m</ScMixinShadowM>
+      <ScMixinShadowMUp>shadow-m-up</ScMixinShadowMUp>
+      <ScMixinShadowMRight>shadow-m-right</ScMixinShadowMRight>
+      <ScMixinShadowMDown>shadow-m-down</ScMixinShadowMDown>
+      <ScMixinShadowMLeft>shadow-m-left</ScMixinShadowMLeft>
+      <ScMixinShadowL>shadow-l</ScMixinShadowL>
+      <ScMixinShadowLUp>shadow-l-up</ScMixinShadowLUp>
+      <ScMixinShadowLRight>shadow-l-right</ScMixinShadowLRight>
+      <ScMixinShadowLDown>shadow-l-down</ScMixinShadowLDown>
+      <ScMixinShadowLLeft>shadow-l-left</ScMixinShadowLLeft>
+      <ScMixinShadowXl>shadow-xl</ScMixinShadowXl>
+      <ScMixinShadowXlUp>shadow-xl-up</ScMixinShadowXlUp>
+      <ScMixinShadowXlRight>shadow-xl-right</ScMixinShadowXlRight>
+      <ScMixinShadowXlDown>shadow-xl-down</ScMixinShadowXlDown>
+      <ScMixinShadowXlLeft>shadow-xl-left</ScMixinShadowXlLeft>
     </ScBricks>
   </>;
 }

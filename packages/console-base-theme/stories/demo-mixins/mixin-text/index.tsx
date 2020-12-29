@@ -70,20 +70,20 @@ export default function MixinText(): JSX.Element {
   return <>
     <H2>mixins for text</H2>
     <List>
-      <ScMixinTextBrand>mixinTextBrand</ScMixinTextBrand>
-      <ScMixinTextAccent>mixinTextAccent</ScMixinTextAccent>
-      <ScMixinTextPrimary>mixinTextPrimary</ScMixinTextPrimary>
-      <ScMixinTextSecondary>mixinTextSecondary</ScMixinTextSecondary>
-      <ScMixinTextTertiary>mixinTextTertiary</ScMixinTextTertiary>
-      <ScMixinTextDisabled>mixinTextDisabled</ScMixinTextDisabled>
-      <ScMixinTextInfo>mixinTextInfo</ScMixinTextInfo>
-      <ScMixinTextSuccess>mixinTextSuccess</ScMixinTextSuccess>
-      <ScMixinTextWarning>mixinTextWarning</ScMixinTextWarning>
-      <ScMixinTextError>mixinTextError</ScMixinTextError>
-      <ScMixinTextDanger>mixinTextDanger</ScMixinTextDanger>
-      <ScMixinTextTitle>mixinTextTitle</ScMixinTextTitle>
-      <ScMixinTextEmphasis>mixinTextEmphasis</ScMixinTextEmphasis>
-      <ScMixinTextCode>mixinTextCode</ScMixinTextCode>
+      <ScMixinTextBrand>brand</ScMixinTextBrand>
+      <ScMixinTextAccent>accent</ScMixinTextAccent>
+      <ScMixinTextPrimary>primary</ScMixinTextPrimary>
+      <ScMixinTextSecondary>secondary</ScMixinTextSecondary>
+      <ScMixinTextTertiary>tertiary</ScMixinTextTertiary>
+      <ScMixinTextDisabled>disabled</ScMixinTextDisabled>
+      <ScMixinTextInfo>info</ScMixinTextInfo>
+      <ScMixinTextSuccess>success</ScMixinTextSuccess>
+      <ScMixinTextWarning>warning</ScMixinTextWarning>
+      <ScMixinTextError>error</ScMixinTextError>
+      <ScMixinTextDanger>danger</ScMixinTextDanger>
+      <ScMixinTextTitle>title</ScMixinTextTitle>
+      <ScMixinTextEmphasis>emphasis</ScMixinTextEmphasis>
+      <ScMixinTextCode>code</ScMixinTextCode>
     </List>
   </>;
 }

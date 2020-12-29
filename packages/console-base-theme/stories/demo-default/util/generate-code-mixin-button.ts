@@ -10,9 +10,21 @@ import buildExportedMixinVarName from './build-exported-mixin-var-name';
 import buildCssCode from './build-css-code';
 import toCode from './to-code';
 
-const THEMES = ['BUTTON_DANGER', 'BUTTON_PRIMARY', 'BUTTON_SECONDARY', 'BUTTON_TERTIARY', 'BUTTON_TEXT_PRIMARY', 'BUTTON_TEXT_SECONDARY', 'BUTTON_TEXT_TERTIARY'];
+const THEMES = [
+  'BUTTON_DANGER',
+  'BUTTON_PRIMARY', 'BUTTON_SECONDARY', 'BUTTON_TERTIARY',
+  'BUTTON_BRAND_PRIMARY', 'BUTTON_BRAND_SECONDARY', 'BUTTON_BRAND_TERTIARY',
+  'BUTTON_TEXT_PRIMARY', 'BUTTON_TEXT_SECONDARY', 'BUTTON_TEXT_TERTIARY'
+];
 const STATES = ['hover', 'active', 'disabled'];
-const SHADOW_INTERPOLATION = '${mixinButtonShadow}\n  '; // eslint-disable-line no-template-curly-in-string
+
+function insertShadowMixin(theme: string): string {
+  if (/^BUTTON_TEXT_/.test(theme) || /TERTIARY/.test(theme)) { // 文字和三级按钮没有阴影
+    return '';
+  }
+  
+  return '${mixinButtonShadow}\n  '; // eslint-disable-line no-template-curly-in-string
+}
 
 function buildButtonStyle(theme: string, state: string): string {
   const indent = state ? 2 : 1;
@@ -52,7 +64,7 @@ ${buildButtonStyle(v, state)}
     
     pushCode(generator, `export const ${buildExportedMixinVarName(v)} = css\`
 ${buildButtonStyle(v, '')}
-  ${/^BUTTON_TEXT_/.test(v) ? '' : SHADOW_INTERPOLATION}
+  ${insertShadowMixin(v)}
   ${STATES.map(buildStatus).join('\n  \n  ')}
 \`;`);
   });

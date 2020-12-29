@@ -77,19 +77,19 @@ export default function MixinBg(): JSX.Element {
   return <>
     <H2>mixins for bg</H2>
     <ScBricks>
-      <ScMixinBgBrand>mixinBgBrand</ScMixinBgBrand>
-      <ScMixinBgAccent>mixinBgAccent</ScMixinBgAccent>
-      <ScMixinBgPrimary>mixinBgPrimary</ScMixinBgPrimary>
-      <ScMixinBgSecondary>mixinBgSecondary</ScMixinBgSecondary>
-      <ScMixinBgTertiary>mixinBgTertiary</ScMixinBgTertiary>
-      <ScMixinBgDisabled>mixinBgDisabled</ScMixinBgDisabled>
-      <ScMixinBgHelp>mixinBgHelp</ScMixinBgHelp>
-      <ScMixinBgInfo>mixinBgInfo</ScMixinBgInfo>
-      <ScMixinBgSuccess>mixinBgSuccess</ScMixinBgSuccess>
-      <ScMixinBgWarning>mixinBgWarning</ScMixinBgWarning>
-      <ScMixinBgError>mixinBgError</ScMixinBgError>
-      <ScMixinBgDanger>mixinBgDanger</ScMixinBgDanger>
-      <ScMixinBgBackdrop>mixinBgBackdrop</ScMixinBgBackdrop>
+      <ScMixinBgBrand>brand</ScMixinBgBrand>
+      <ScMixinBgAccent>accent</ScMixinBgAccent>
+      <ScMixinBgPrimary>primary</ScMixinBgPrimary>
+      <ScMixinBgSecondary>secondary</ScMixinBgSecondary>
+      <ScMixinBgTertiary>tertiary</ScMixinBgTertiary>
+      <ScMixinBgDisabled>disabled</ScMixinBgDisabled>
+      <ScMixinBgHelp>help</ScMixinBgHelp>
+      <ScMixinBgInfo>info</ScMixinBgInfo>
+      <ScMixinBgSuccess>success</ScMixinBgSuccess>
+      <ScMixinBgWarning>warning</ScMixinBgWarning>
+      <ScMixinBgError>error</ScMixinBgError>
+      <ScMixinBgDanger>danger</ScMixinBgDanger>
+      <ScMixinBgBackdrop>backdrop</ScMixinBgBackdrop>
     </ScBricks>
   </>;
 }

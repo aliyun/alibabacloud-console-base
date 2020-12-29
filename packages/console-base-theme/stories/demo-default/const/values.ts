@@ -83,7 +83,7 @@ export const mixinButtonReset = css\`
   text-align: center;
   text-decoration: none;
   color: inherit;
-  transition: all ease-out 0.3s;
+  transition: all ease-out 0.2s;
   
   &:hover {
     text-decoration: none;
@@ -96,11 +96,11 @@ export const mixinButtonReset = css\`
 
 export const mixinButtonShadow = css\`
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     \${mixinShadowLDown}
   }
   
+  &:active,
   &:disabled {
     box-shadow: none;
   }

@@ -30,7 +30,7 @@ export const mixinButtonReset = css`
   text-align: center;
   text-decoration: none;
   color: inherit;
-  transition: all ease-out 0.3s;
+  transition: all ease-out 0.2s;
   
   &:hover {
     text-decoration: none;
@@ -43,11 +43,11 @@ export const mixinButtonReset = css`
 
 export const mixinButtonShadow = css`
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     ${mixinShadowLDown}
   }
   
+  &:active,
   &:disabled {
     box-shadow: none;
   }
@@ -171,7 +171,6 @@ export const mixinButtonTertiary = css`
   background-color: var(--cb-color-button-tertiary-bg, ${COLOR.BUTTON_TERTIARY_BG});
   color: ${COLOR.BUTTON_TERTIARY_TEXT};
   color: var(--cb-color-button-tertiary-text, ${COLOR.BUTTON_TERTIARY_TEXT});
-  ${mixinButtonShadow}
   
   &:hover,
   &:focus {
@@ -199,6 +198,116 @@ export const mixinButtonTertiary = css`
     background-color: var(--cb-color-button-tertiary-bg-disabled, ${COLOR.BUTTON_TERTIARY_BG_DISABLED});
     color: ${COLOR.BUTTON_TERTIARY_TEXT_DISABLED};
     color: var(--cb-color-button-tertiary-text-disabled, ${COLOR.BUTTON_TERTIARY_TEXT_DISABLED});
+  }
+`;
+export const mixinButtonBrandPrimary = css`
+  border-color: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER};
+  border-color: var(--cb-color-button-brand-primary-border, ${COLOR.BUTTON_BRAND_PRIMARY_BORDER});
+  background-color: ${COLOR.BUTTON_BRAND_PRIMARY_BG};
+  background-color: var(--cb-color-button-brand-primary-bg, ${COLOR.BUTTON_BRAND_PRIMARY_BG});
+  color: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT};
+  color: var(--cb-color-button-brand-primary-text, ${COLOR.BUTTON_BRAND_PRIMARY_TEXT});
+  ${mixinButtonShadow}
+  
+  &:hover,
+  &:focus {
+    border-color: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_HOVER};
+    border-color: var(--cb-color-button-brand-primary-border-hover, ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_HOVER});
+    background-color: ${COLOR.BUTTON_BRAND_PRIMARY_BG_HOVER};
+    background-color: var(--cb-color-button-brand-primary-bg-hover, ${COLOR.BUTTON_BRAND_PRIMARY_BG_HOVER});
+    color: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_HOVER};
+    color: var(--cb-color-button-brand-primary-text-hover, ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_HOVER});
+  }
+  
+  &:active {
+    border-color: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_ACTIVE};
+    border-color: var(--cb-color-button-brand-primary-border-active, ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_ACTIVE});
+    background-color: ${COLOR.BUTTON_BRAND_PRIMARY_BG_ACTIVE};
+    background-color: var(--cb-color-button-brand-primary-bg-active, ${COLOR.BUTTON_BRAND_PRIMARY_BG_ACTIVE});
+    color: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_ACTIVE};
+    color: var(--cb-color-button-brand-primary-text-active, ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_ACTIVE});
+  }
+  
+  &:disabled {
+    border-color: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_DISABLED};
+    border-color: var(--cb-color-button-brand-primary-border-disabled, ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_DISABLED});
+    background-color: ${COLOR.BUTTON_BRAND_PRIMARY_BG_DISABLED};
+    background-color: var(--cb-color-button-brand-primary-bg-disabled, ${COLOR.BUTTON_BRAND_PRIMARY_BG_DISABLED});
+    color: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_DISABLED};
+    color: var(--cb-color-button-brand-primary-text-disabled, ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_DISABLED});
+  }
+`;
+export const mixinButtonBrandSecondary = css`
+  border-color: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER};
+  border-color: var(--cb-color-button-brand-secondary-border, ${COLOR.BUTTON_BRAND_SECONDARY_BORDER});
+  background-color: ${COLOR.BUTTON_BRAND_SECONDARY_BG};
+  background-color: var(--cb-color-button-brand-secondary-bg, ${COLOR.BUTTON_BRAND_SECONDARY_BG});
+  color: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT};
+  color: var(--cb-color-button-brand-secondary-text, ${COLOR.BUTTON_BRAND_SECONDARY_TEXT});
+  ${mixinButtonShadow}
+  
+  &:hover,
+  &:focus {
+    border-color: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_HOVER};
+    border-color: var(--cb-color-button-brand-secondary-border-hover, ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_HOVER});
+    background-color: ${COLOR.BUTTON_BRAND_SECONDARY_BG_HOVER};
+    background-color: var(--cb-color-button-brand-secondary-bg-hover, ${COLOR.BUTTON_BRAND_SECONDARY_BG_HOVER});
+    color: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_HOVER};
+    color: var(--cb-color-button-brand-secondary-text-hover, ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_HOVER});
+  }
+  
+  &:active {
+    border-color: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_ACTIVE};
+    border-color: var(--cb-color-button-brand-secondary-border-active, ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_ACTIVE});
+    background-color: ${COLOR.BUTTON_BRAND_SECONDARY_BG_ACTIVE};
+    background-color: var(--cb-color-button-brand-secondary-bg-active, ${COLOR.BUTTON_BRAND_SECONDARY_BG_ACTIVE});
+    color: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_ACTIVE};
+    color: var(--cb-color-button-brand-secondary-text-active, ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_ACTIVE});
+  }
+  
+  &:disabled {
+    border-color: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_DISABLED};
+    border-color: var(--cb-color-button-brand-secondary-border-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_DISABLED});
+    background-color: ${COLOR.BUTTON_BRAND_SECONDARY_BG_DISABLED};
+    background-color: var(--cb-color-button-brand-secondary-bg-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_BG_DISABLED});
+    color: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_DISABLED};
+    color: var(--cb-color-button-brand-secondary-text-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_DISABLED});
+  }
+`;
+export const mixinButtonBrandTertiary = css`
+  border-color: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER};
+  border-color: var(--cb-color-button-brand-tertiary-border, ${COLOR.BUTTON_BRAND_TERTIARY_BORDER});
+  background-color: ${COLOR.BUTTON_BRAND_TERTIARY_BG};
+  background-color: var(--cb-color-button-brand-tertiary-bg, ${COLOR.BUTTON_BRAND_TERTIARY_BG});
+  color: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT};
+  color: var(--cb-color-button-brand-tertiary-text, ${COLOR.BUTTON_BRAND_TERTIARY_TEXT});
+  
+  &:hover,
+  &:focus {
+    border-color: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_HOVER};
+    border-color: var(--cb-color-button-brand-tertiary-border-hover, ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_HOVER});
+    background-color: ${COLOR.BUTTON_BRAND_TERTIARY_BG_HOVER};
+    background-color: var(--cb-color-button-brand-tertiary-bg-hover, ${COLOR.BUTTON_BRAND_TERTIARY_BG_HOVER});
+    color: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_HOVER};
+    color: var(--cb-color-button-brand-tertiary-text-hover, ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_HOVER});
+  }
+  
+  &:active {
+    border-color: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_ACTIVE};
+    border-color: var(--cb-color-button-brand-tertiary-border-active, ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_ACTIVE});
+    background-color: ${COLOR.BUTTON_BRAND_TERTIARY_BG_ACTIVE};
+    background-color: var(--cb-color-button-brand-tertiary-bg-active, ${COLOR.BUTTON_BRAND_TERTIARY_BG_ACTIVE});
+    color: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_ACTIVE};
+    color: var(--cb-color-button-brand-tertiary-text-active, ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_ACTIVE});
+  }
+  
+  &:disabled {
+    border-color: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_DISABLED};
+    border-color: var(--cb-color-button-brand-tertiary-border-disabled, ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_DISABLED});
+    background-color: ${COLOR.BUTTON_BRAND_TERTIARY_BG_DISABLED};
+    background-color: var(--cb-color-button-brand-tertiary-bg-disabled, ${COLOR.BUTTON_BRAND_TERTIARY_BG_DISABLED});
+    color: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_DISABLED};
+    color: var(--cb-color-button-brand-tertiary-text-disabled, ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_DISABLED});
   }
 `;
 export const mixinButtonTextPrimary = css`
