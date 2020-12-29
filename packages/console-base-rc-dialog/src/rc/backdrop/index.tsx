@@ -9,7 +9,7 @@ import {
 import styled from 'styled-components';
 
 import {
-  COLOR
+  mixinBgBackdrop
 } from '@alicloud/console-base-theme';
 
 interface IProps {
@@ -22,9 +22,9 @@ const ScBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: ${COLOR.FILL_DIALOG_BACKDROP_FADE};
   width: 100%;
   height: 100%;
+  ${mixinBgBackdrop};
 `;
 
 function createBackdropGateway(): HTMLElement {
