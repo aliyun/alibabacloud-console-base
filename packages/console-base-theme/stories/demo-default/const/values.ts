@@ -1,18 +1,16 @@
 import buildCssCode from '../util/build-css-code';
 
-const CODE_BEGIN_TS_COMMON = `import {
+const CODE_FRAGMENT_IMPORT_CSS = `import {
   css
 } from 'styled-components';
-
+`;
+const CODE_FRAGMENT_IMPORT_CSS_AND_COLOR = `${CODE_FRAGMENT_IMPORT_CSS}
 import {
   COLOR
 } from '../theme-default';
 `;
 
-export const CODE_BEGIN_GLOBAL_STYLE = `import {
-  createGlobalStyle
-} from 'styled-components';
-
+export const CODE_BEGIN_GLOBAL_STYLE = `${CODE_FRAGMENT_IMPORT_CSS}
 import {
   COLOR,
   TYPO,
@@ -24,18 +22,15 @@ export default createGlobalStyle\`
 export const CODE_END_GLOBAL_STYLE = `  }
 \`;`;
 export const CODE_INDENT_GLOBAL_STYLE = 2;
-export const CODE_BEGIN_TS_TEXT = CODE_BEGIN_TS_COMMON;
-export const CODE_BEGIN_TS_BG = CODE_BEGIN_TS_COMMON;
-export const CODE_BEGIN_TS_BORDER = CODE_BEGIN_TS_COMMON;
-export const CODE_BEGIN_SHADOW = `import {
-  css
-} from 'styled-components';
-
+export const CODE_BEGIN_TS_TEXT = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
+export const CODE_BEGIN_TS_BG = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
+export const CODE_BEGIN_TS_BORDER = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
+export const CODE_BEGIN_SHADOW = `${CODE_FRAGMENT_IMPORT_CSS}
 import {
   SHADOW
 } from '../theme-default';
 `;
-export const CODE_BEGIN_TS_LINK = `${CODE_BEGIN_TS_COMMON}
+export const CODE_BEGIN_TS_LINK = `${CODE_FRAGMENT_IMPORT_CSS_AND_COLOR}
 const linkCommon = css\`
   transition: all ease-in-out 0.3s;
   
@@ -49,7 +44,7 @@ const linkCommon = css\`
 \`;
 `;
 
-export const CODE_BEGIN_INPUT = `${CODE_BEGIN_TS_COMMON}
+export const CODE_BEGIN_INPUT = `${CODE_FRAGMENT_IMPORT_CSS_AND_COLOR}
 export const mixinInputReset = css\`
   border: 1px solid transparent;
   outline: none;
@@ -65,7 +60,12 @@ ${buildCssCode({
   }
 \`;`;
 
-export const CODE_BEGIN_TS_BUTTON = `${CODE_BEGIN_TS_COMMON}
+export const CODE_BEGIN_TS_BUTTON = `${CODE_FRAGMENT_IMPORT_CSS}
+import {
+  COLOR,
+  SIZE
+} from '../theme-default';
+
 import {
   mixinShadowLDown
 } from './shadow';

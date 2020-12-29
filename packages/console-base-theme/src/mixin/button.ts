@@ -3,7 +3,8 @@ import {
 } from 'styled-components';
 
 import {
-  COLOR
+  COLOR,
+  SIZE
 } from '../theme-default';
 
 import {
@@ -12,11 +13,9 @@ import {
 
 /**
  * 对按钮样式进行重置：
- * 1. 去掉 padding、background
- * 2. border 设为 1px solid transparent
- * 3. 定义 outline 以防止丑陋的 Chrome focus outline 样式
- * 4. 设置字体（family、颜色、大小、行间距等）继承
- * 5. 定义 disabled 的基础样式
+ * 1. 去掉 padding、background、border，定义 outline 以防止丑陋的 Chrome focus outline 样式
+ * 2. 设置字体（family、颜色、大小、行间距等）继承
+ * 3. 定义 disabled 的基础样式
  */
 export const mixinButtonReset = css`
   padding: 0;
@@ -55,6 +54,31 @@ export const mixinButtonShadow = css`
   }
 `;
 
+export const mixinButtonSizeXS = css`
+  padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_XS}px;
+  height: ${SIZE.HEIGHT_FORM_CONTROL_XS}px;
+  line-height: ${SIZE.HEIGHT_FORM_CONTROL_XS - 2}px;
+`;
+export const mixinButtonSizeS = css`
+  padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_S}px;
+  height: ${SIZE.HEIGHT_FORM_CONTROL_S}px;
+  line-height: ${SIZE.HEIGHT_FORM_CONTROL_S - 2}px;
+`;
+export const mixinButtonSizeM = css`
+  padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_M}px;
+  height: ${SIZE.HEIGHT_FORM_CONTROL_M}px;
+  line-height: ${SIZE.HEIGHT_FORM_CONTROL_M - 2}px;
+`;
+export const mixinButtonSizeL = css`
+  padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_L}px;
+  height: ${SIZE.HEIGHT_FORM_CONTROL_L}px;
+  line-height: ${SIZE.HEIGHT_FORM_CONTROL_L - 2}px;
+`;
+export const mixinButtonSizeXL = css`
+  padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_XL}px;
+  height: ${SIZE.HEIGHT_FORM_CONTROL_XL}px;
+  line-height: ${SIZE.HEIGHT_FORM_CONTROL_XL - 2}px;
+`;
 export const mixinButtonDanger = css`
   border-color: ${COLOR.BUTTON_DANGER_BORDER};
   border-color: var(--cb-color-button-danger-border, ${COLOR.BUTTON_DANGER_BORDER});

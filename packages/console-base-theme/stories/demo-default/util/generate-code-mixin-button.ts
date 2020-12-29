@@ -10,6 +10,7 @@ import buildExportedMixinVarName from './build-exported-mixin-var-name';
 import buildCssCode from './build-css-code';
 import toCode from './to-code';
 
+const SIZES = ['XS', 'S', 'M', 'L', 'XL'];
 const THEMES = [
   'BUTTON_DANGER',
   'BUTTON_PRIMARY', 'BUTTON_SECONDARY', 'BUTTON_TERTIARY',
@@ -54,6 +55,14 @@ export default function generateCodeMixinButton(): string {
   const generator: ICodeGenerator = {
     begin: CODE_BEGIN_TS_BUTTON
   };
+  
+  SIZES.forEach(v => {
+    pushCode(generator, `export const mixinButtonSize${v} = css\`
+  padding: 0 \${SIZE.PADDING_X_FORM_CONTROL_${v}}px;
+  height: \${SIZE.HEIGHT_FORM_CONTROL_${v}}px;
+  line-height: \${SIZE.HEIGHT_FORM_CONTROL_${v} - 2}px;
+\`;`);
+  });
   
   THEMES.forEach(v => {
     function buildStatus(state: string): string {

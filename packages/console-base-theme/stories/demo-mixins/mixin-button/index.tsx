@@ -7,6 +7,11 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
+  mixinButtonSizeXS,
+  mixinButtonSizeS,
+  mixinButtonSizeM,
+  mixinButtonSizeL,
+  mixinButtonSizeXL,
   mixinButtonReset,
   mixinButtonDanger,
   mixinButtonPrimary,
@@ -26,6 +31,26 @@ const ScButtonBase = styled.button`
   padding: 6px 8px;
 `;
 
+const ScMixinButtonSizeXS = styled(ScButtonBase)`
+  ${mixinButtonSizeXS}
+  ${mixinButtonDanger}
+`;
+const ScMixinButtonSizeS = styled(ScButtonBase)`
+  ${mixinButtonSizeS}
+  ${mixinButtonPrimary}
+`;
+const ScMixinButtonSizeM = styled(ScButtonBase)`
+  ${mixinButtonSizeM}
+  ${mixinButtonSecondary}
+`;
+const ScMixinButtonSizeL = styled(ScButtonBase)`
+  ${mixinButtonSizeL}
+  ${mixinButtonBrandPrimary}
+`;
+const ScMixinButtonSizeXL = styled(ScButtonBase)`
+  ${mixinButtonSizeXL}
+  ${mixinButtonBrandSecondary}
+`;
 const ScMixinButtonPrimary = styled(ScButtonBase)`
   ${mixinButtonPrimary}
 `;
@@ -60,6 +85,13 @@ const ScMixinButtonTextTertiary = styled(ScButtonBase)`
 export default function MixinButton(): JSX.Element {
   return <>
     <H2>mixins for button</H2>
+    <div>
+      <ScMixinButtonSizeXS>size-xs</ScMixinButtonSizeXS>
+      <ScMixinButtonSizeS>size-s</ScMixinButtonSizeS>
+      <ScMixinButtonSizeM>size-m</ScMixinButtonSizeM>
+      <ScMixinButtonSizeL>size-l</ScMixinButtonSizeL>
+      <ScMixinButtonSizeXL>size-xl</ScMixinButtonSizeXL>
+    </div>
     <div>
       <ScMixinButtonDanger>danger</ScMixinButtonDanger>
       <ScMixinButtonPrimary>primary</ScMixinButtonPrimary>
