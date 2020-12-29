@@ -3,6 +3,7 @@ import React from 'react';
 import {
   H1,
   H2,
+  P,
   Pre
 } from '@alicloud/demo-rc-elements';
 
@@ -19,16 +20,17 @@ import generateCodeMixinButton from './util/generate-code-mixin-button';
 export default function DemoDefault(): JSX.Element {
   return <>
     <H1>生成 COLOR</H1>
+    <P>这不仅仅是一个 demo！还是代码生成器 <span role="img" aria-label="factory">🏭</span>。</P>
     <H2>src/theme-default/global-style.ts</H2>
     <Pre>{generateCodeGlobalStyle()}</Pre>
     <H2>doc/css/console-base.less</H2>
     <Pre>{generateCodeCssVars()}</Pre>
     <H2>src/mixin/text.ts</H2>
     <Pre>{generateCodeMixinText()}</Pre>
-    <H2>src/mixin/border.ts</H2>
-    <Pre>{generateCodeMixinBorder()}</Pre>
     <H2>src/mixin/bg.ts</H2>
     <Pre>{generateCodeMixinBg()}</Pre>
+    <H2>src/mixin/border.ts</H2>
+    <Pre>{generateCodeMixinBorder()}</Pre>
     <H2>src/mixin/shadow.ts</H2>
     <Pre>{generateCodeMixinShadow()}</Pre>
     <H2>src/mixin/link.ts</H2>

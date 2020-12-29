@@ -6,7 +6,11 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
+  mixinShadowLDown,
   mixinInputReset,
+  mixinInputTextDisabled,
+  mixinInputBgDisabled,
+  mixinInputBorderDisabled,
   mixinInputText,
   mixinInputBg,
   mixinInputBorder,
@@ -16,11 +20,7 @@ import {
   mixinInputTextFocus,
   mixinInputBgFocus,
   mixinInputBorderFocus,
-  mixinInputBorderFocusBrand,
-  mixinInputTextDisabled,
-  mixinInputBgDisabled,
-  mixinInputBorderDisabled,
-  mixinShadowLDown
+  mixinInputBorderFocusBrand
 } from '../../../src';
 
 const ScInputBase = styled.input`

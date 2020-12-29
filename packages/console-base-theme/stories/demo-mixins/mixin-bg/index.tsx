@@ -6,12 +6,16 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
+  mixinBgDisabled,
   mixinBgBrand,
+  mixinBgBrandHover,
+  mixinBgBrandActive,
   mixinBgAccent,
+  mixinBgAccentHover,
+  mixinBgAccentActive,
   mixinBgPrimary,
   mixinBgSecondary,
   mixinBgTertiary,
-  mixinBgDisabled,
   mixinBgHelp,
   mixinBgInfo,
   mixinBgSuccess,
@@ -36,8 +40,20 @@ const ScBrick = styled.div`
 const ScMixinBgBrand = styled(ScBrick)`
   ${mixinBgBrand}
 `;
+const ScMixinBgBrandHover = styled(ScBrick)`
+  ${mixinBgBrandHover}
+`;
+const ScMixinBgBrandActive = styled(ScBrick)`
+  ${mixinBgBrandActive}
+`;
 const ScMixinBgAccent = styled(ScBrick)`
   ${mixinBgAccent}
+`;
+const ScMixinBgAccentHover = styled(ScBrick)`
+  ${mixinBgAccentHover}
+`;
+const ScMixinBgAccentActive = styled(ScBrick)`
+  ${mixinBgAccentActive}
 `;
 const ScMixinBgPrimary = styled(ScBrick)`
   ${mixinBgPrimary}
@@ -78,7 +94,11 @@ export default function MixinBg(): JSX.Element {
     <H2>mixins for bg</H2>
     <ScBricks>
       <ScMixinBgBrand>brand</ScMixinBgBrand>
+      <ScMixinBgBrandHover>brand-hover</ScMixinBgBrandHover>
+      <ScMixinBgBrandActive>brand-active</ScMixinBgBrandActive>
       <ScMixinBgAccent>accent</ScMixinBgAccent>
+      <ScMixinBgAccentHover>accent-hover</ScMixinBgAccentHover>
+      <ScMixinBgAccentActive>accent-active</ScMixinBgAccentActive>
       <ScMixinBgPrimary>primary</ScMixinBgPrimary>
       <ScMixinBgSecondary>secondary</ScMixinBgSecondary>
       <ScMixinBgTertiary>tertiary</ScMixinBgTertiary>

@@ -7,12 +7,18 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
+  mixinTextDisabled,
   mixinTextBrand,
+  mixinTextBrandHover,
+  mixinTextBrandActive,
   mixinTextAccent,
+  mixinTextAccentHover,
+  mixinTextAccentActive,
   mixinTextPrimary,
   mixinTextSecondary,
   mixinTextTertiary,
-  mixinTextDisabled,
+  mixinTextInverse,
+  mixinTextHelp,
   mixinTextInfo,
   mixinTextSuccess,
   mixinTextWarning,
@@ -23,11 +29,26 @@ import {
   mixinTextCode
 } from '../../../src';
 
+const ScMixinTextDisabled = styled.span`
+  ${mixinTextDisabled}
+`;
 const ScMixinTextBrand = styled.span`
   ${mixinTextBrand}
 `;
+const ScMixinTextBrandHover = styled.span`
+  ${mixinTextBrandHover}
+`;
+const ScMixinTextBrandActive = styled.span`
+  ${mixinTextBrandActive}
+`;
 const ScMixinTextAccent = styled.span`
   ${mixinTextAccent}
+`;
+const ScMixinTextAccentHover = styled.span`
+  ${mixinTextAccentHover}
+`;
+const ScMixinTextAccentActive = styled.span`
+  ${mixinTextAccentActive}
 `;
 const ScMixinTextPrimary = styled.span`
   ${mixinTextPrimary}
@@ -38,8 +59,11 @@ const ScMixinTextSecondary = styled.span`
 const ScMixinTextTertiary = styled.span`
   ${mixinTextTertiary}
 `;
-const ScMixinTextDisabled = styled.span`
-  ${mixinTextDisabled}
+const ScMixinTextInverse = styled.span`
+  ${mixinTextInverse}
+`;
+const ScMixinTextHelp = styled.span`
+  ${mixinTextHelp}
 `;
 const ScMixinTextInfo = styled.span`
   ${mixinTextInfo}
@@ -70,12 +94,18 @@ export default function MixinText(): JSX.Element {
   return <>
     <H2>mixins for text</H2>
     <List>
+      <ScMixinTextDisabled>disabled</ScMixinTextDisabled>
       <ScMixinTextBrand>brand</ScMixinTextBrand>
+      <ScMixinTextBrandHover>brand-hover</ScMixinTextBrandHover>
+      <ScMixinTextBrandActive>brand-active</ScMixinTextBrandActive>
       <ScMixinTextAccent>accent</ScMixinTextAccent>
+      <ScMixinTextAccentHover>accent-hover</ScMixinTextAccentHover>
+      <ScMixinTextAccentActive>accent-active</ScMixinTextAccentActive>
       <ScMixinTextPrimary>primary</ScMixinTextPrimary>
       <ScMixinTextSecondary>secondary</ScMixinTextSecondary>
       <ScMixinTextTertiary>tertiary</ScMixinTextTertiary>
-      <ScMixinTextDisabled>disabled</ScMixinTextDisabled>
+      <ScMixinTextInverse>inverse</ScMixinTextInverse>
+      <ScMixinTextHelp>help</ScMixinTextHelp>
       <ScMixinTextInfo>info</ScMixinTextInfo>
       <ScMixinTextSuccess>success</ScMixinTextSuccess>
       <ScMixinTextWarning>warning</ScMixinTextWarning>

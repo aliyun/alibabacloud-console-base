@@ -6,13 +6,33 @@ import {
   COLOR
 } from '../theme-default';
 
+export const mixinBgDisabled = css`
+  background-color: ${COLOR.BG_DISABLED};
+  background-color: var(--cb-color-bg-disabled, ${COLOR.BG_DISABLED});
+`;
 export const mixinBgBrand = css`
   background-color: ${COLOR.BG_BRAND};
   background-color: var(--cb-color-bg-brand, ${COLOR.BG_BRAND});
 `;
+export const mixinBgBrandHover = css`
+  background-color: ${COLOR.BG_BRAND_HOVER};
+  background-color: var(--cb-color-bg-brand-hover, ${COLOR.BG_BRAND_HOVER});
+`;
+export const mixinBgBrandActive = css`
+  background-color: ${COLOR.BG_BRAND_ACTIVE};
+  background-color: var(--cb-color-bg-brand-active, ${COLOR.BG_BRAND_ACTIVE});
+`;
 export const mixinBgAccent = css`
   background-color: ${COLOR.BG_ACCENT};
   background-color: var(--cb-color-bg-accent, ${COLOR.BG_ACCENT});
+`;
+export const mixinBgAccentHover = css`
+  background-color: ${COLOR.BG_ACCENT_HOVER};
+  background-color: var(--cb-color-bg-accent-hover, ${COLOR.BG_ACCENT_HOVER});
+`;
+export const mixinBgAccentActive = css`
+  background-color: ${COLOR.BG_ACCENT_ACTIVE};
+  background-color: var(--cb-color-bg-accent-active, ${COLOR.BG_ACCENT_ACTIVE});
 `;
 export const mixinBgPrimary = css`
   background-color: ${COLOR.BG_PRIMARY};
@@ -25,10 +45,6 @@ export const mixinBgSecondary = css`
 export const mixinBgTertiary = css`
   background-color: ${COLOR.BG_TERTIARY};
   background-color: var(--cb-color-bg-tertiary, ${COLOR.BG_TERTIARY});
-`;
-export const mixinBgDisabled = css`
-  background-color: ${COLOR.BG_DISABLED};
-  background-color: var(--cb-color-bg-disabled, ${COLOR.BG_DISABLED});
 `;
 export const mixinBgHelp = css`
   background-color: ${COLOR.BG_HELP};

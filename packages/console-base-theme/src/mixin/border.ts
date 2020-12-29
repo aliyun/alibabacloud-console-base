@@ -6,6 +6,30 @@ import {
   COLOR
 } from '../theme-default';
 
+export const mixinBorderDisabledColor = css`
+  border-color: ${COLOR.BORDER_DISABLED};
+  border-color: var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
+`;
+export const mixinBorderDisabled = css`
+  border: 1px solid ${COLOR.BORDER_DISABLED};
+  border: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
+`;
+export const mixinBorderDisabledTop = css`
+  border-top: 1px solid ${COLOR.BORDER_DISABLED};
+  border-top: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
+`;
+export const mixinBorderDisabledRight = css`
+  border-right: 1px solid ${COLOR.BORDER_DISABLED};
+  border-right: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
+`;
+export const mixinBorderDisabledBottom = css`
+  border-bottom: 1px solid ${COLOR.BORDER_DISABLED};
+  border-bottom: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
+`;
+export const mixinBorderDisabledLeft = css`
+  border-left: 1px solid ${COLOR.BORDER_DISABLED};
+  border-left: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
+`;
 export const mixinBorderBrandColor = css`
   border-color: ${COLOR.BORDER_BRAND};
   border-color: var(--cb-color-border-brand, ${COLOR.BORDER_BRAND});
@@ -30,6 +54,54 @@ export const mixinBorderBrandLeft = css`
   border-left: 1px solid ${COLOR.BORDER_BRAND};
   border-left: 1px solid var(--cb-color-border-brand, ${COLOR.BORDER_BRAND});
 `;
+export const mixinBorderBrandHoverColor = css`
+  border-color: ${COLOR.BORDER_BRAND_HOVER};
+  border-color: var(--cb-color-border-brand-hover, ${COLOR.BORDER_BRAND_HOVER});
+`;
+export const mixinBorderBrandHover = css`
+  border: 1px solid ${COLOR.BORDER_BRAND_HOVER};
+  border: 1px solid var(--cb-color-border-brand-hover, ${COLOR.BORDER_BRAND_HOVER});
+`;
+export const mixinBorderBrandHoverTop = css`
+  border-top: 1px solid ${COLOR.BORDER_BRAND_HOVER};
+  border-top: 1px solid var(--cb-color-border-brand-hover, ${COLOR.BORDER_BRAND_HOVER});
+`;
+export const mixinBorderBrandHoverRight = css`
+  border-right: 1px solid ${COLOR.BORDER_BRAND_HOVER};
+  border-right: 1px solid var(--cb-color-border-brand-hover, ${COLOR.BORDER_BRAND_HOVER});
+`;
+export const mixinBorderBrandHoverBottom = css`
+  border-bottom: 1px solid ${COLOR.BORDER_BRAND_HOVER};
+  border-bottom: 1px solid var(--cb-color-border-brand-hover, ${COLOR.BORDER_BRAND_HOVER});
+`;
+export const mixinBorderBrandHoverLeft = css`
+  border-left: 1px solid ${COLOR.BORDER_BRAND_HOVER};
+  border-left: 1px solid var(--cb-color-border-brand-hover, ${COLOR.BORDER_BRAND_HOVER});
+`;
+export const mixinBorderBrandActiveColor = css`
+  border-color: ${COLOR.BORDER_BRAND_ACTIVE};
+  border-color: var(--cb-color-border-brand-active, ${COLOR.BORDER_BRAND_ACTIVE});
+`;
+export const mixinBorderBrandActive = css`
+  border: 1px solid ${COLOR.BORDER_BRAND_ACTIVE};
+  border: 1px solid var(--cb-color-border-brand-active, ${COLOR.BORDER_BRAND_ACTIVE});
+`;
+export const mixinBorderBrandActiveTop = css`
+  border-top: 1px solid ${COLOR.BORDER_BRAND_ACTIVE};
+  border-top: 1px solid var(--cb-color-border-brand-active, ${COLOR.BORDER_BRAND_ACTIVE});
+`;
+export const mixinBorderBrandActiveRight = css`
+  border-right: 1px solid ${COLOR.BORDER_BRAND_ACTIVE};
+  border-right: 1px solid var(--cb-color-border-brand-active, ${COLOR.BORDER_BRAND_ACTIVE});
+`;
+export const mixinBorderBrandActiveBottom = css`
+  border-bottom: 1px solid ${COLOR.BORDER_BRAND_ACTIVE};
+  border-bottom: 1px solid var(--cb-color-border-brand-active, ${COLOR.BORDER_BRAND_ACTIVE});
+`;
+export const mixinBorderBrandActiveLeft = css`
+  border-left: 1px solid ${COLOR.BORDER_BRAND_ACTIVE};
+  border-left: 1px solid var(--cb-color-border-brand-active, ${COLOR.BORDER_BRAND_ACTIVE});
+`;
 export const mixinBorderAccentColor = css`
   border-color: ${COLOR.BORDER_ACCENT};
   border-color: var(--cb-color-border-accent, ${COLOR.BORDER_ACCENT});
@@ -53,6 +125,54 @@ export const mixinBorderAccentBottom = css`
 export const mixinBorderAccentLeft = css`
   border-left: 1px solid ${COLOR.BORDER_ACCENT};
   border-left: 1px solid var(--cb-color-border-accent, ${COLOR.BORDER_ACCENT});
+`;
+export const mixinBorderAccentHoverColor = css`
+  border-color: ${COLOR.BORDER_ACCENT_HOVER};
+  border-color: var(--cb-color-border-accent-hover, ${COLOR.BORDER_ACCENT_HOVER});
+`;
+export const mixinBorderAccentHover = css`
+  border: 1px solid ${COLOR.BORDER_ACCENT_HOVER};
+  border: 1px solid var(--cb-color-border-accent-hover, ${COLOR.BORDER_ACCENT_HOVER});
+`;
+export const mixinBorderAccentHoverTop = css`
+  border-top: 1px solid ${COLOR.BORDER_ACCENT_HOVER};
+  border-top: 1px solid var(--cb-color-border-accent-hover, ${COLOR.BORDER_ACCENT_HOVER});
+`;
+export const mixinBorderAccentHoverRight = css`
+  border-right: 1px solid ${COLOR.BORDER_ACCENT_HOVER};
+  border-right: 1px solid var(--cb-color-border-accent-hover, ${COLOR.BORDER_ACCENT_HOVER});
+`;
+export const mixinBorderAccentHoverBottom = css`
+  border-bottom: 1px solid ${COLOR.BORDER_ACCENT_HOVER};
+  border-bottom: 1px solid var(--cb-color-border-accent-hover, ${COLOR.BORDER_ACCENT_HOVER});
+`;
+export const mixinBorderAccentHoverLeft = css`
+  border-left: 1px solid ${COLOR.BORDER_ACCENT_HOVER};
+  border-left: 1px solid var(--cb-color-border-accent-hover, ${COLOR.BORDER_ACCENT_HOVER});
+`;
+export const mixinBorderAccentActiveColor = css`
+  border-color: ${COLOR.BORDER_ACCENT_ACTIVE};
+  border-color: var(--cb-color-border-accent-active, ${COLOR.BORDER_ACCENT_ACTIVE});
+`;
+export const mixinBorderAccentActive = css`
+  border: 1px solid ${COLOR.BORDER_ACCENT_ACTIVE};
+  border: 1px solid var(--cb-color-border-accent-active, ${COLOR.BORDER_ACCENT_ACTIVE});
+`;
+export const mixinBorderAccentActiveTop = css`
+  border-top: 1px solid ${COLOR.BORDER_ACCENT_ACTIVE};
+  border-top: 1px solid var(--cb-color-border-accent-active, ${COLOR.BORDER_ACCENT_ACTIVE});
+`;
+export const mixinBorderAccentActiveRight = css`
+  border-right: 1px solid ${COLOR.BORDER_ACCENT_ACTIVE};
+  border-right: 1px solid var(--cb-color-border-accent-active, ${COLOR.BORDER_ACCENT_ACTIVE});
+`;
+export const mixinBorderAccentActiveBottom = css`
+  border-bottom: 1px solid ${COLOR.BORDER_ACCENT_ACTIVE};
+  border-bottom: 1px solid var(--cb-color-border-accent-active, ${COLOR.BORDER_ACCENT_ACTIVE});
+`;
+export const mixinBorderAccentActiveLeft = css`
+  border-left: 1px solid ${COLOR.BORDER_ACCENT_ACTIVE};
+  border-left: 1px solid var(--cb-color-border-accent-active, ${COLOR.BORDER_ACCENT_ACTIVE});
 `;
 export const mixinBorderPrimaryColor = css`
   border-color: ${COLOR.BORDER_PRIMARY};
@@ -125,30 +245,6 @@ export const mixinBorderTertiaryBottom = css`
 export const mixinBorderTertiaryLeft = css`
   border-left: 1px solid ${COLOR.BORDER_TERTIARY};
   border-left: 1px solid var(--cb-color-border-tertiary, ${COLOR.BORDER_TERTIARY});
-`;
-export const mixinBorderDisabledColor = css`
-  border-color: ${COLOR.BORDER_DISABLED};
-  border-color: var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
-`;
-export const mixinBorderDisabled = css`
-  border: 1px solid ${COLOR.BORDER_DISABLED};
-  border: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
-`;
-export const mixinBorderDisabledTop = css`
-  border-top: 1px solid ${COLOR.BORDER_DISABLED};
-  border-top: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
-`;
-export const mixinBorderDisabledRight = css`
-  border-right: 1px solid ${COLOR.BORDER_DISABLED};
-  border-right: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
-`;
-export const mixinBorderDisabledBottom = css`
-  border-bottom: 1px solid ${COLOR.BORDER_DISABLED};
-  border-bottom: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
-`;
-export const mixinBorderDisabledLeft = css`
-  border-left: 1px solid ${COLOR.BORDER_DISABLED};
-  border-left: 1px solid var(--cb-color-border-disabled, ${COLOR.BORDER_DISABLED});
 `;
 export const mixinBorderHelpColor = css`
   border-color: ${COLOR.BORDER_HELP};

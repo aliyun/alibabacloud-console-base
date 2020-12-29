@@ -6,18 +6,48 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
+  mixinBorderDisabledColor,
+  mixinBorderDisabled,
+  mixinBorderDisabledTop,
+  mixinBorderDisabledRight,
+  mixinBorderDisabledBottom,
+  mixinBorderDisabledLeft,
   mixinBorderBrandColor,
   mixinBorderBrand,
   mixinBorderBrandTop,
   mixinBorderBrandRight,
   mixinBorderBrandBottom,
   mixinBorderBrandLeft,
+  mixinBorderBrandHoverColor,
+  mixinBorderBrandHover,
+  mixinBorderBrandHoverTop,
+  mixinBorderBrandHoverRight,
+  mixinBorderBrandHoverBottom,
+  mixinBorderBrandHoverLeft,
+  mixinBorderBrandActiveColor,
+  mixinBorderBrandActive,
+  mixinBorderBrandActiveTop,
+  mixinBorderBrandActiveRight,
+  mixinBorderBrandActiveBottom,
+  mixinBorderBrandActiveLeft,
   mixinBorderAccentColor,
   mixinBorderAccent,
   mixinBorderAccentTop,
   mixinBorderAccentRight,
   mixinBorderAccentBottom,
   mixinBorderAccentLeft,
+  mixinBorderAccentHoverColor,
+  mixinBorderAccentHover,
+  mixinBorderAccentHoverTop,
+  mixinBorderAccentHoverRight,
+  mixinBorderAccentHoverBottom,
+  mixinBorderAccentHoverLeft,
+  mixinBorderAccentActiveColor,
+  mixinBorderAccentActive,
+  mixinBorderAccentActiveTop,
+  mixinBorderAccentActiveRight,
+  mixinBorderAccentActiveBottom,
+  mixinBorderAccentActiveLeft,
   mixinBorderPrimaryColor,
   mixinBorderPrimary,
   mixinBorderPrimaryTop,
@@ -36,12 +66,6 @@ import {
   mixinBorderTertiaryRight,
   mixinBorderTertiaryBottom,
   mixinBorderTertiaryLeft,
-  mixinBorderDisabledColor,
-  mixinBorderDisabled,
-  mixinBorderDisabledTop,
-  mixinBorderDisabledRight,
-  mixinBorderDisabledBottom,
-  mixinBorderDisabledLeft,
   mixinBorderHelpColor,
   mixinBorderHelp,
   mixinBorderHelpTop,
@@ -88,10 +112,28 @@ const ScBricks = styled.div`
 
 const ScBrick = styled.div`
   padding: 8px;
+  border: 3px dashed transparent;
   background-color: rgba(0, 0, 0, 0.01);
   color: #666;
 `;
-
+const ScMixinBorderDisabledColor = styled(ScBrick)`
+  ${mixinBorderDisabledColor}
+`;
+const ScMixinBorderDisabled = styled(ScBrick)`
+  ${mixinBorderDisabled}
+`;
+const ScMixinBorderDisabledTop = styled(ScBrick)`
+  ${mixinBorderDisabledTop}
+`;
+const ScMixinBorderDisabledRight = styled(ScBrick)`
+  ${mixinBorderDisabledRight}
+`;
+const ScMixinBorderDisabledBottom = styled(ScBrick)`
+  ${mixinBorderDisabledBottom}
+`;
+const ScMixinBorderDisabledLeft = styled(ScBrick)`
+  ${mixinBorderDisabledLeft}
+`;
 const ScMixinBorderBrandColor = styled(ScBrick)`
   ${mixinBorderBrandColor}
 `;
@@ -110,6 +152,42 @@ const ScMixinBorderBrandBottom = styled(ScBrick)`
 const ScMixinBorderBrandLeft = styled(ScBrick)`
   ${mixinBorderBrandLeft}
 `;
+const ScMixinBorderBrandHoverColor = styled(ScBrick)`
+  ${mixinBorderBrandHoverColor}
+`;
+const ScMixinBorderBrandHover = styled(ScBrick)`
+  ${mixinBorderBrandHover}
+`;
+const ScMixinBorderBrandHoverTop = styled(ScBrick)`
+  ${mixinBorderBrandHoverTop}
+`;
+const ScMixinBorderBrandHoverRight = styled(ScBrick)`
+  ${mixinBorderBrandHoverRight}
+`;
+const ScMixinBorderBrandHoverBottom = styled(ScBrick)`
+  ${mixinBorderBrandHoverBottom}
+`;
+const ScMixinBorderBrandHoverLeft = styled(ScBrick)`
+  ${mixinBorderBrandHoverLeft}
+`;
+const ScMixinBorderBrandActiveColor = styled(ScBrick)`
+  ${mixinBorderBrandActiveColor}
+`;
+const ScMixinBorderBrandActive = styled(ScBrick)`
+  ${mixinBorderBrandActive}
+`;
+const ScMixinBorderBrandActiveTop = styled(ScBrick)`
+  ${mixinBorderBrandActiveTop}
+`;
+const ScMixinBorderBrandActiveRight = styled(ScBrick)`
+  ${mixinBorderBrandActiveRight}
+`;
+const ScMixinBorderBrandActiveBottom = styled(ScBrick)`
+  ${mixinBorderBrandActiveBottom}
+`;
+const ScMixinBorderBrandActiveLeft = styled(ScBrick)`
+  ${mixinBorderBrandActiveLeft}
+`;
 const ScMixinBorderAccentColor = styled(ScBrick)`
   ${mixinBorderAccentColor}
 `;
@@ -127,6 +205,42 @@ const ScMixinBorderAccentBottom = styled(ScBrick)`
 `;
 const ScMixinBorderAccentLeft = styled(ScBrick)`
   ${mixinBorderAccentLeft}
+`;
+const ScMixinBorderAccentHoverColor = styled(ScBrick)`
+  ${mixinBorderAccentHoverColor}
+`;
+const ScMixinBorderAccentHover = styled(ScBrick)`
+  ${mixinBorderAccentHover}
+`;
+const ScMixinBorderAccentHoverTop = styled(ScBrick)`
+  ${mixinBorderAccentHoverTop}
+`;
+const ScMixinBorderAccentHoverRight = styled(ScBrick)`
+  ${mixinBorderAccentHoverRight}
+`;
+const ScMixinBorderAccentHoverBottom = styled(ScBrick)`
+  ${mixinBorderAccentHoverBottom}
+`;
+const ScMixinBorderAccentHoverLeft = styled(ScBrick)`
+  ${mixinBorderAccentHoverLeft}
+`;
+const ScMixinBorderAccentActiveColor = styled(ScBrick)`
+  ${mixinBorderAccentActiveColor}
+`;
+const ScMixinBorderAccentActive = styled(ScBrick)`
+  ${mixinBorderAccentActive}
+`;
+const ScMixinBorderAccentActiveTop = styled(ScBrick)`
+  ${mixinBorderAccentActiveTop}
+`;
+const ScMixinBorderAccentActiveRight = styled(ScBrick)`
+  ${mixinBorderAccentActiveRight}
+`;
+const ScMixinBorderAccentActiveBottom = styled(ScBrick)`
+  ${mixinBorderAccentActiveBottom}
+`;
+const ScMixinBorderAccentActiveLeft = styled(ScBrick)`
+  ${mixinBorderAccentActiveLeft}
 `;
 const ScMixinBorderPrimaryColor = styled(ScBrick)`
   ${mixinBorderPrimaryColor}
@@ -181,24 +295,6 @@ const ScMixinBorderTertiaryBottom = styled(ScBrick)`
 `;
 const ScMixinBorderTertiaryLeft = styled(ScBrick)`
   ${mixinBorderTertiaryLeft}
-`;
-const ScMixinBorderDisabledColor = styled(ScBrick)`
-  ${mixinBorderDisabledColor}
-`;
-const ScMixinBorderDisabled = styled(ScBrick)`
-  ${mixinBorderDisabled}
-`;
-const ScMixinBorderDisabledTop = styled(ScBrick)`
-  ${mixinBorderDisabledTop}
-`;
-const ScMixinBorderDisabledRight = styled(ScBrick)`
-  ${mixinBorderDisabledRight}
-`;
-const ScMixinBorderDisabledBottom = styled(ScBrick)`
-  ${mixinBorderDisabledBottom}
-`;
-const ScMixinBorderDisabledLeft = styled(ScBrick)`
-  ${mixinBorderDisabledLeft}
 `;
 const ScMixinBorderHelpColor = styled(ScBrick)`
   ${mixinBorderHelpColor}
@@ -313,78 +409,102 @@ export default function MixinBorder(): JSX.Element {
   return <>
     <H2>mixins for border</H2>
     <ScBricks>
-      <ScMixinBorderBrandColor>brand-color</ScMixinBorderBrandColor>
-      <ScMixinBorderBrand>brand</ScMixinBorderBrand>
-      <ScMixinBorderBrandTop>brand-top</ScMixinBorderBrandTop>
-      <ScMixinBorderBrandRight>brand-right</ScMixinBorderBrandRight>
-      <ScMixinBorderBrandBottom>brand-bottom</ScMixinBorderBrandBottom>
-      <ScMixinBorderBrandLeft>brandLeft</ScMixinBorderBrandLeft>
-      <ScMixinBorderAccentColor>accent-color</ScMixinBorderAccentColor>
-      <ScMixinBorderAccent>accent</ScMixinBorderAccent>
-      <ScMixinBorderAccentTop>accent-top</ScMixinBorderAccentTop>
-      <ScMixinBorderAccentRight>accent-right</ScMixinBorderAccentRight>
-      <ScMixinBorderAccentBottom>accent-bottom</ScMixinBorderAccentBottom>
-      <ScMixinBorderAccentLeft>accentLeft</ScMixinBorderAccentLeft>
-      <ScMixinBorderPrimaryColor>primary-color</ScMixinBorderPrimaryColor>
-      <ScMixinBorderPrimary>primary</ScMixinBorderPrimary>
-      <ScMixinBorderPrimaryTop>primary-top</ScMixinBorderPrimaryTop>
-      <ScMixinBorderPrimaryRight>primary-right</ScMixinBorderPrimaryRight>
-      <ScMixinBorderPrimaryBottom>primary-bottom</ScMixinBorderPrimaryBottom>
-      <ScMixinBorderPrimaryLeft>primaryLeft</ScMixinBorderPrimaryLeft>
-      <ScMixinBorderSecondaryColor>secondary-color</ScMixinBorderSecondaryColor>
-      <ScMixinBorderSecondary>secondary</ScMixinBorderSecondary>
-      <ScMixinBorderSecondaryTop>secondary-top</ScMixinBorderSecondaryTop>
-      <ScMixinBorderSecondaryRight>secondary-right</ScMixinBorderSecondaryRight>
-      <ScMixinBorderSecondaryBottom>secondary-bottom</ScMixinBorderSecondaryBottom>
-      <ScMixinBorderSecondaryLeft>secondaryLeft</ScMixinBorderSecondaryLeft>
-      <ScMixinBorderTertiaryColor>tertiary-color</ScMixinBorderTertiaryColor>
-      <ScMixinBorderTertiary>tertiary</ScMixinBorderTertiary>
-      <ScMixinBorderTertiaryTop>tertiary-top</ScMixinBorderTertiaryTop>
-      <ScMixinBorderTertiaryRight>tertiary-right</ScMixinBorderTertiaryRight>
-      <ScMixinBorderTertiaryBottom>tertiary-bottom</ScMixinBorderTertiaryBottom>
-      <ScMixinBorderTertiaryLeft>tertiaryLeft</ScMixinBorderTertiaryLeft>
       <ScMixinBorderDisabledColor>disabled-color</ScMixinBorderDisabledColor>
       <ScMixinBorderDisabled>disabled</ScMixinBorderDisabled>
       <ScMixinBorderDisabledTop>disabled-top</ScMixinBorderDisabledTop>
       <ScMixinBorderDisabledRight>disabled-right</ScMixinBorderDisabledRight>
       <ScMixinBorderDisabledBottom>disabled-bottom</ScMixinBorderDisabledBottom>
-      <ScMixinBorderDisabledLeft>disabledLeft</ScMixinBorderDisabledLeft>
+      <ScMixinBorderDisabledLeft>disabled-left</ScMixinBorderDisabledLeft>
+      <ScMixinBorderBrandColor>brand-color</ScMixinBorderBrandColor>
+      <ScMixinBorderBrand>brand</ScMixinBorderBrand>
+      <ScMixinBorderBrandTop>brand-top</ScMixinBorderBrandTop>
+      <ScMixinBorderBrandRight>brand-right</ScMixinBorderBrandRight>
+      <ScMixinBorderBrandBottom>brand-bottom</ScMixinBorderBrandBottom>
+      <ScMixinBorderBrandLeft>brand-left</ScMixinBorderBrandLeft>
+      <ScMixinBorderBrandHoverColor>brandHover-color</ScMixinBorderBrandHoverColor>
+      <ScMixinBorderBrandHover>brandHover</ScMixinBorderBrandHover>
+      <ScMixinBorderBrandHoverTop>brandHover-top</ScMixinBorderBrandHoverTop>
+      <ScMixinBorderBrandHoverRight>brandHover-right</ScMixinBorderBrandHoverRight>
+      <ScMixinBorderBrandHoverBottom>brandHover-bottom</ScMixinBorderBrandHoverBottom>
+      <ScMixinBorderBrandHoverLeft>brandHover-left</ScMixinBorderBrandHoverLeft>
+      <ScMixinBorderBrandActiveColor>brandActive-color</ScMixinBorderBrandActiveColor>
+      <ScMixinBorderBrandActive>brandActive</ScMixinBorderBrandActive>
+      <ScMixinBorderBrandActiveTop>brandActive-top</ScMixinBorderBrandActiveTop>
+      <ScMixinBorderBrandActiveRight>brandActive-right</ScMixinBorderBrandActiveRight>
+      <ScMixinBorderBrandActiveBottom>brandActive-bottom</ScMixinBorderBrandActiveBottom>
+      <ScMixinBorderBrandActiveLeft>brandActive-left</ScMixinBorderBrandActiveLeft>
+      <ScMixinBorderAccentColor>accent-color</ScMixinBorderAccentColor>
+      <ScMixinBorderAccent>accent</ScMixinBorderAccent>
+      <ScMixinBorderAccentTop>accent-top</ScMixinBorderAccentTop>
+      <ScMixinBorderAccentRight>accent-right</ScMixinBorderAccentRight>
+      <ScMixinBorderAccentBottom>accent-bottom</ScMixinBorderAccentBottom>
+      <ScMixinBorderAccentLeft>accent-left</ScMixinBorderAccentLeft>
+      <ScMixinBorderAccentHoverColor>accentHover-color</ScMixinBorderAccentHoverColor>
+      <ScMixinBorderAccentHover>accentHover</ScMixinBorderAccentHover>
+      <ScMixinBorderAccentHoverTop>accentHover-top</ScMixinBorderAccentHoverTop>
+      <ScMixinBorderAccentHoverRight>accentHover-right</ScMixinBorderAccentHoverRight>
+      <ScMixinBorderAccentHoverBottom>accentHover-bottom</ScMixinBorderAccentHoverBottom>
+      <ScMixinBorderAccentHoverLeft>accentHover-left</ScMixinBorderAccentHoverLeft>
+      <ScMixinBorderAccentActiveColor>accentActive-color</ScMixinBorderAccentActiveColor>
+      <ScMixinBorderAccentActive>accentActive</ScMixinBorderAccentActive>
+      <ScMixinBorderAccentActiveTop>accentActive-top</ScMixinBorderAccentActiveTop>
+      <ScMixinBorderAccentActiveRight>accentActive-right</ScMixinBorderAccentActiveRight>
+      <ScMixinBorderAccentActiveBottom>accentActive-bottom</ScMixinBorderAccentActiveBottom>
+      <ScMixinBorderAccentActiveLeft>accentActive-left</ScMixinBorderAccentActiveLeft>
+      <ScMixinBorderPrimaryColor>primary-color</ScMixinBorderPrimaryColor>
+      <ScMixinBorderPrimary>primary</ScMixinBorderPrimary>
+      <ScMixinBorderPrimaryTop>primary-top</ScMixinBorderPrimaryTop>
+      <ScMixinBorderPrimaryRight>primary-right</ScMixinBorderPrimaryRight>
+      <ScMixinBorderPrimaryBottom>primary-bottom</ScMixinBorderPrimaryBottom>
+      <ScMixinBorderPrimaryLeft>primary-left</ScMixinBorderPrimaryLeft>
+      <ScMixinBorderSecondaryColor>secondary-color</ScMixinBorderSecondaryColor>
+      <ScMixinBorderSecondary>secondary</ScMixinBorderSecondary>
+      <ScMixinBorderSecondaryTop>secondary-top</ScMixinBorderSecondaryTop>
+      <ScMixinBorderSecondaryRight>secondary-right</ScMixinBorderSecondaryRight>
+      <ScMixinBorderSecondaryBottom>secondary-bottom</ScMixinBorderSecondaryBottom>
+      <ScMixinBorderSecondaryLeft>secondary-left</ScMixinBorderSecondaryLeft>
+      <ScMixinBorderTertiaryColor>tertiary-color</ScMixinBorderTertiaryColor>
+      <ScMixinBorderTertiary>tertiary</ScMixinBorderTertiary>
+      <ScMixinBorderTertiaryTop>tertiary-top</ScMixinBorderTertiaryTop>
+      <ScMixinBorderTertiaryRight>tertiary-right</ScMixinBorderTertiaryRight>
+      <ScMixinBorderTertiaryBottom>tertiary-bottom</ScMixinBorderTertiaryBottom>
+      <ScMixinBorderTertiaryLeft>tertiary-left</ScMixinBorderTertiaryLeft>
       <ScMixinBorderHelpColor>help-color</ScMixinBorderHelpColor>
       <ScMixinBorderHelp>help</ScMixinBorderHelp>
       <ScMixinBorderHelpTop>help-top</ScMixinBorderHelpTop>
       <ScMixinBorderHelpRight>help-right</ScMixinBorderHelpRight>
       <ScMixinBorderHelpBottom>help-bottom</ScMixinBorderHelpBottom>
-      <ScMixinBorderHelpLeft>helpLeft</ScMixinBorderHelpLeft>
+      <ScMixinBorderHelpLeft>help-left</ScMixinBorderHelpLeft>
       <ScMixinBorderInfoColor>info-color</ScMixinBorderInfoColor>
       <ScMixinBorderInfo>info</ScMixinBorderInfo>
       <ScMixinBorderInfoTop>info-top</ScMixinBorderInfoTop>
       <ScMixinBorderInfoRight>info-right</ScMixinBorderInfoRight>
       <ScMixinBorderInfoBottom>info-bottom</ScMixinBorderInfoBottom>
-      <ScMixinBorderInfoLeft>infoLeft</ScMixinBorderInfoLeft>
+      <ScMixinBorderInfoLeft>info-left</ScMixinBorderInfoLeft>
       <ScMixinBorderSuccessColor>success-color</ScMixinBorderSuccessColor>
       <ScMixinBorderSuccess>success</ScMixinBorderSuccess>
       <ScMixinBorderSuccessTop>success-top</ScMixinBorderSuccessTop>
       <ScMixinBorderSuccessRight>success-right</ScMixinBorderSuccessRight>
       <ScMixinBorderSuccessBottom>success-bottom</ScMixinBorderSuccessBottom>
-      <ScMixinBorderSuccessLeft>successLeft</ScMixinBorderSuccessLeft>
+      <ScMixinBorderSuccessLeft>success-left</ScMixinBorderSuccessLeft>
       <ScMixinBorderWarningColor>warning-color</ScMixinBorderWarningColor>
       <ScMixinBorderWarning>warning</ScMixinBorderWarning>
       <ScMixinBorderWarningTop>warning-top</ScMixinBorderWarningTop>
       <ScMixinBorderWarningRight>warning-right</ScMixinBorderWarningRight>
       <ScMixinBorderWarningBottom>warning-bottom</ScMixinBorderWarningBottom>
-      <ScMixinBorderWarningLeft>warningLeft</ScMixinBorderWarningLeft>
+      <ScMixinBorderWarningLeft>warning-left</ScMixinBorderWarningLeft>
       <ScMixinBorderErrorColor>error-color</ScMixinBorderErrorColor>
       <ScMixinBorderError>error</ScMixinBorderError>
       <ScMixinBorderErrorTop>error-top</ScMixinBorderErrorTop>
       <ScMixinBorderErrorRight>error-right</ScMixinBorderErrorRight>
       <ScMixinBorderErrorBottom>error-bottom</ScMixinBorderErrorBottom>
-      <ScMixinBorderErrorLeft>errorLeft</ScMixinBorderErrorLeft>
+      <ScMixinBorderErrorLeft>error-left</ScMixinBorderErrorLeft>
       <ScMixinBorderDangerColor>danger-color</ScMixinBorderDangerColor>
       <ScMixinBorderDanger>danger</ScMixinBorderDanger>
       <ScMixinBorderDangerTop>danger-top</ScMixinBorderDangerTop>
       <ScMixinBorderDangerRight>danger-right</ScMixinBorderDangerRight>
       <ScMixinBorderDangerBottom>danger-bottom</ScMixinBorderDangerBottom>
-      <ScMixinBorderDangerLeft>dangerLeft</ScMixinBorderDangerLeft>
+      <ScMixinBorderDangerLeft>danger-left</ScMixinBorderDangerLeft>
     </ScBricks>
   </>;
 }

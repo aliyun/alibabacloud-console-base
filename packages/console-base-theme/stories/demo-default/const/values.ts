@@ -27,7 +27,14 @@ export const CODE_INDENT_GLOBAL_STYLE = 2;
 export const CODE_BEGIN_TS_TEXT = CODE_BEGIN_TS_COMMON;
 export const CODE_BEGIN_TS_BG = CODE_BEGIN_TS_COMMON;
 export const CODE_BEGIN_TS_BORDER = CODE_BEGIN_TS_COMMON;
-export const CODE_BEGIN_SHADOW = CODE_BEGIN_TS_COMMON;
+export const CODE_BEGIN_SHADOW = `import {
+  css
+} from 'styled-components';
+
+import {
+  SHADOW
+} from '../theme-default';
+`;
 export const CODE_BEGIN_TS_LINK = `${CODE_BEGIN_TS_COMMON}
 const linkCommon = css\`
   transition: all ease-in-out 0.3s;

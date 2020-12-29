@@ -10,6 +10,7 @@ import {
 
 export default createGlobalStyle`
   :root {
+    --cb-color-text-disabled: ${COLOR.TEXT_DISABLED};
     --cb-color-text-brand: ${COLOR.TEXT_BRAND};
     --cb-color-text-brand-hover: ${COLOR.TEXT_BRAND_HOVER};
     --cb-color-text-brand-active: ${COLOR.TEXT_BRAND_ACTIVE};
@@ -19,7 +20,6 @@ export default createGlobalStyle`
     --cb-color-text-primary: ${COLOR.TEXT_PRIMARY};
     --cb-color-text-secondary: ${COLOR.TEXT_SECONDARY};
     --cb-color-text-tertiary: ${COLOR.TEXT_TERTIARY};
-    --cb-color-text-disabled: ${COLOR.TEXT_DISABLED};
     --cb-color-text-inverse: ${COLOR.TEXT_INVERSE};
     --cb-color-text-help: ${COLOR.TEXT_HELP};
     --cb-color-text-info: ${COLOR.TEXT_INFO};
@@ -30,6 +30,7 @@ export default createGlobalStyle`
     --cb-color-text-title: ${COLOR.TEXT_TITLE};
     --cb-color-text-emphasis: ${COLOR.TEXT_EMPHASIS};
     --cb-color-text-code: ${COLOR.TEXT_CODE};
+    --cb-color-bg-disabled: ${COLOR.BG_DISABLED};
     --cb-color-bg-brand: ${COLOR.BG_BRAND};
     --cb-color-bg-brand-hover: ${COLOR.BG_BRAND_HOVER};
     --cb-color-bg-brand-active: ${COLOR.BG_BRAND_ACTIVE};
@@ -39,7 +40,6 @@ export default createGlobalStyle`
     --cb-color-bg-primary: ${COLOR.BG_PRIMARY};
     --cb-color-bg-secondary: ${COLOR.BG_SECONDARY};
     --cb-color-bg-tertiary: ${COLOR.BG_TERTIARY};
-    --cb-color-bg-disabled: ${COLOR.BG_DISABLED};
     --cb-color-bg-help: ${COLOR.BG_HELP};
     --cb-color-bg-info: ${COLOR.BG_INFO};
     --cb-color-bg-success: ${COLOR.BG_SUCCESS};
@@ -47,6 +47,7 @@ export default createGlobalStyle`
     --cb-color-bg-error: ${COLOR.BG_ERROR};
     --cb-color-bg-danger: ${COLOR.BG_DANGER};
     --cb-color-bg-backdrop: ${COLOR.BG_BACKDROP};
+    --cb-color-border-disabled: ${COLOR.BORDER_DISABLED};
     --cb-color-border-brand: ${COLOR.BORDER_BRAND};
     --cb-color-border-brand-hover: ${COLOR.BORDER_BRAND_HOVER};
     --cb-color-border-brand-active: ${COLOR.BORDER_BRAND_ACTIVE};
@@ -56,13 +57,15 @@ export default createGlobalStyle`
     --cb-color-border-primary: ${COLOR.BORDER_PRIMARY};
     --cb-color-border-secondary: ${COLOR.BORDER_SECONDARY};
     --cb-color-border-tertiary: ${COLOR.BORDER_TERTIARY};
-    --cb-color-border-disabled: ${COLOR.BORDER_DISABLED};
     --cb-color-border-help: ${COLOR.BORDER_HELP};
     --cb-color-border-info: ${COLOR.BORDER_INFO};
     --cb-color-border-success: ${COLOR.BORDER_SUCCESS};
     --cb-color-border-warning: ${COLOR.BORDER_WARNING};
     --cb-color-border-error: ${COLOR.BORDER_ERROR};
     --cb-color-border-danger: ${COLOR.BORDER_DANGER};
+    --cb-color-input-text-disabled: ${COLOR.INPUT_TEXT_DISABLED};
+    --cb-color-input-bg-disabled: ${COLOR.INPUT_BG_DISABLED};
+    --cb-color-input-border-disabled: ${COLOR.INPUT_BORDER_DISABLED};
     --cb-color-input-placeholder: ${COLOR.INPUT_PLACEHOLDER};
     --cb-color-input-text: ${COLOR.INPUT_TEXT};
     --cb-color-input-bg: ${COLOR.INPUT_BG};
@@ -74,9 +77,6 @@ export default createGlobalStyle`
     --cb-color-input-bg-focus: ${COLOR.INPUT_BG_FOCUS};
     --cb-color-input-border-focus: ${COLOR.INPUT_BORDER_FOCUS};
     --cb-color-input-border-focus-brand: ${COLOR.INPUT_BORDER_FOCUS_BRAND};
-    --cb-color-input-text-disabled: ${COLOR.INPUT_TEXT_DISABLED};
-    --cb-color-input-bg-disabled: ${COLOR.INPUT_BG_DISABLED};
-    --cb-color-input-border-disabled: ${COLOR.INPUT_BORDER_DISABLED};
     --cb-color-link-disabled: ${COLOR.LINK_DISABLED};
     --cb-color-link-primary: ${COLOR.LINK_PRIMARY};
     --cb-color-link-primary-visited: ${COLOR.LINK_PRIMARY_VISITED};
@@ -146,6 +146,42 @@ export default createGlobalStyle`
     --cb-color-button-tertiary-text-disabled: ${COLOR.BUTTON_TERTIARY_TEXT_DISABLED};
     --cb-color-button-tertiary-bg-disabled: ${COLOR.BUTTON_TERTIARY_BG_DISABLED};
     --cb-color-button-tertiary-border-disabled: ${COLOR.BUTTON_TERTIARY_BORDER_DISABLED};
+    --cb-color-button-brand-primary-text: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT};
+    --cb-color-button-brand-primary-bg: ${COLOR.BUTTON_BRAND_PRIMARY_BG};
+    --cb-color-button-brand-primary-border: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER};
+    --cb-color-button-brand-primary-text-hover: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_HOVER};
+    --cb-color-button-brand-primary-bg-hover: ${COLOR.BUTTON_BRAND_PRIMARY_BG_HOVER};
+    --cb-color-button-brand-primary-border-hover: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_HOVER};
+    --cb-color-button-brand-primary-text-active: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_ACTIVE};
+    --cb-color-button-brand-primary-bg-active: ${COLOR.BUTTON_BRAND_PRIMARY_BG_ACTIVE};
+    --cb-color-button-brand-primary-border-active: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_ACTIVE};
+    --cb-color-button-brand-primary-text-disabled: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_DISABLED};
+    --cb-color-button-brand-primary-bg-disabled: ${COLOR.BUTTON_BRAND_PRIMARY_BG_DISABLED};
+    --cb-color-button-brand-primary-border-disabled: ${COLOR.BUTTON_BRAND_PRIMARY_BORDER_DISABLED};
+    --cb-color-button-brand-secondary-text: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT};
+    --cb-color-button-brand-secondary-bg: ${COLOR.BUTTON_BRAND_SECONDARY_BG};
+    --cb-color-button-brand-secondary-border: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER};
+    --cb-color-button-brand-secondary-text-hover: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_HOVER};
+    --cb-color-button-brand-secondary-bg-hover: ${COLOR.BUTTON_BRAND_SECONDARY_BG_HOVER};
+    --cb-color-button-brand-secondary-border-hover: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_HOVER};
+    --cb-color-button-brand-secondary-text-active: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_ACTIVE};
+    --cb-color-button-brand-secondary-bg-active: ${COLOR.BUTTON_BRAND_SECONDARY_BG_ACTIVE};
+    --cb-color-button-brand-secondary-border-active: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_ACTIVE};
+    --cb-color-button-brand-secondary-text-disabled: ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_DISABLED};
+    --cb-color-button-brand-secondary-bg-disabled: ${COLOR.BUTTON_BRAND_SECONDARY_BG_DISABLED};
+    --cb-color-button-brand-secondary-border-disabled: ${COLOR.BUTTON_BRAND_SECONDARY_BORDER_DISABLED};
+    --cb-color-button-brand-tertiary-text: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT};
+    --cb-color-button-brand-tertiary-bg: ${COLOR.BUTTON_BRAND_TERTIARY_BG};
+    --cb-color-button-brand-tertiary-border: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER};
+    --cb-color-button-brand-tertiary-text-hover: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_HOVER};
+    --cb-color-button-brand-tertiary-bg-hover: ${COLOR.BUTTON_BRAND_TERTIARY_BG_HOVER};
+    --cb-color-button-brand-tertiary-border-hover: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_HOVER};
+    --cb-color-button-brand-tertiary-text-active: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_ACTIVE};
+    --cb-color-button-brand-tertiary-bg-active: ${COLOR.BUTTON_BRAND_TERTIARY_BG_ACTIVE};
+    --cb-color-button-brand-tertiary-border-active: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_ACTIVE};
+    --cb-color-button-brand-tertiary-text-disabled: ${COLOR.BUTTON_BRAND_TERTIARY_TEXT_DISABLED};
+    --cb-color-button-brand-tertiary-bg-disabled: ${COLOR.BUTTON_BRAND_TERTIARY_BG_DISABLED};
+    --cb-color-button-brand-tertiary-border-disabled: ${COLOR.BUTTON_BRAND_TERTIARY_BORDER_DISABLED};
     --cb-color-button-text-primary-text: ${COLOR.BUTTON_TEXT_PRIMARY_TEXT};
     --cb-color-button-text-primary-bg: ${COLOR.BUTTON_TEXT_PRIMARY_BG};
     --cb-color-button-text-primary-border: ${COLOR.BUTTON_TEXT_PRIMARY_BORDER};
