@@ -9,13 +9,14 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR,
   SIZE,
   BORDER,
   mixinTextSecondary,
   mixinTextTertiary,
   mixinTextDisabled,
-  mixinShadowMDown
+  mixinShadowMDown,
+  mixinInput,
+  mixinInputDisabled
 } from '@alicloud/console-base-theme';
 
 import {
@@ -53,21 +54,17 @@ const ScInput = styled.div<IPropsScInput>`
   display: ${props => (props.block ? 'flex' : 'inline-flex')};
   align-items: center;
   position: relative;
-  border: ${BORDER.INPUT_NORMAL};
-  border: var(--cb-border-input-normal, ${BORDER.INPUT_NORMAL});
   border-radius: ${props => (props.round ? `${SIZE.HEIGHT_FORM_CONTROL_M / 2}px` : 'none')};
-  background: ${COLOR.FILL_INPUT};
-  background: var(--cb-color-fill-input, ${COLOR.FILL_INPUT});
   height: ${INNER_HEIGHT_PX};
   line-height: ${INNER_HEIGHT_PX};
   font-size: ${SIZE.FONT_SIZE_BODY}px;
   transition: all 0.3s ease-out;
+  ${mixinInput};
   
   ${props => {
     if (props.disabled) {
       return css`
-        background: ${COLOR.FILL_INPUT_DISABLED};
-        background: var(--cb-color-fill-input, ${COLOR.FILL_INPUT_DISABLED});
+        ${mixinInputDisabled};
       `;
     }
     
