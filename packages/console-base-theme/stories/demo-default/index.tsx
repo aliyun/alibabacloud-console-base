@@ -14,6 +14,7 @@ import generateCodeMixinBg from './util/generate-code-mixin-bg';
 import generateCodeMixinShadow from './util/generate-code-mixin-shadow';
 import generateCodeMixinInput from './util/generate-code-mixin-input';
 import generateCodeMixinLink from './util/generate-code-mixin-link';
+import generateCodeMixinButton from './util/generate-code-mixin-button';
 
 export default function DemoDefault(): JSX.Element {
   return <>
@@ -34,5 +35,7 @@ export default function DemoDefault(): JSX.Element {
     <Pre>{generateCodeMixinLink()}</Pre>
     <H2>src/mixin/input.ts</H2>
     <Pre>{generateCodeMixinInput()}</Pre>
+    <H2>src/mixin/button.ts</H2>
+    <Pre>{generateCodeMixinButton()}</Pre>
   </>;
 }

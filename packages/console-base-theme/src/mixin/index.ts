@@ -3,8 +3,9 @@
  * 其每个输出变量的命名格式为 `mixinXx...` 其中 Xx 是文件名
  */
 export * from './text';
-export * from './border';
 export * from './bg';
+export * from './border';
 export * from './shadow';
-export * from './link';
 export * from './input';
+export * from './link';
+export * from './button';

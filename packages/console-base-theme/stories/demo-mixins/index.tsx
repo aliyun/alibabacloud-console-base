@@ -12,6 +12,7 @@ import MixinBorder from './mixin-border';
 import MixinShadow from './mixin-shadow';
 import MixinLink from './mixin-link';
 import MixinInput from './mixin-input';
+import MixinButton from './mixin-button';
 
 export default function DemoMixins(): JSX.Element {
   return <>
@@ -23,5 +24,6 @@ export default function DemoMixins(): JSX.Element {
     <MixinShadow />
     <MixinLink />
     <MixinInput />
+    <MixinButton />
   </>;
 }

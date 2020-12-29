@@ -1,10 +1,14 @@
 import _forEach from 'lodash/forEach';
+
 import {
   COLOR
 } from '../../../src';
 import {
   ICodeGenerator
 } from '../types';
+import {
+  CODE_BEGIN_INPUT
+} from '../const';
 
 import pushCode from './push-code';
 import toCode from './to-code';
@@ -30,28 +34,7 @@ function getAttr(varName: string): string {
 // 生成 mixin/input.ts
 export default function generateCodeMixinInput(): string {
   const generator: ICodeGenerator = {
-    begin: `import {
-  css
-} from 'styled-components';
-
-import {
-  COLOR
-} from '../theme-default';
-
-export const mixinInputReset = css\`
-  border: 1px solid transparent;
-  outline: none;
-  background-color: transparent;
-  transition: all ease-in-out 0.3s;
-  
-  &::placeholder {
-${buildCssCode({
-    attr: 'color',
-    keys: ['COLOR', 'INPUT_PLACEHOLDER'],
-    indent: 2
-  })}
-  }
-\`;`
+    begin: CODE_BEGIN_INPUT
   };
   
   _forEach(COLOR, (_v, k) => {

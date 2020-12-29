@@ -8,6 +8,11 @@ import {
 import {
   ICodeGenerator
 } from '../types';
+import {
+  CODE_BEGIN_GLOBAL_STYLE,
+  CODE_END_GLOBAL_STYLE,
+  CODE_INDENT_GLOBAL_STYLE
+} from '../const';
 
 import pushCode from './push-code';
 import buildCssVarName from './build-css-var-name';
@@ -19,21 +24,9 @@ import buildInterpolation from './build-interpolation';
  */
 export default function generateCodeGlobalStyle(): string {
   const generator: ICodeGenerator = {
-    begin: `import {
-  createGlobalStyle
-} from 'styled-components';
-
-import {
-  COLOR,
-  TYPO,
-  SHADOW
-} from './_var';
-
-export default createGlobalStyle\`
-  :root {`,
-    end: `  }
-\`;`,
-    indent: 2
+    begin: CODE_BEGIN_GLOBAL_STYLE,
+    end: CODE_END_GLOBAL_STYLE,
+    indent: CODE_INDENT_GLOBAL_STYLE,
   };
   
   _forEach({

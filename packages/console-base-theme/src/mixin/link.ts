@@ -31,7 +31,6 @@ export const mixinLinkDisabled = css`
     color: var(--cb-color-link-disabled, ${COLOR.LINK_DISABLED});
   }
 `;
-
 export const mixinLinkPrimary = css`
   color: ${COLOR.LINK_PRIMARY};
   color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
