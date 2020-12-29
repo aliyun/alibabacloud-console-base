@@ -8,9 +8,9 @@ import {
 } from '../types';
 
 import pushCode from './push-code';
-import buildCode from './build-code';
+import toCode from './to-code';
 import buildExportedMixinVarName from './build-exported-mixin-var-name';
-import buildStylesWithFallback from './build-styles-with-fallback';
+import buildCssCode from './build-css-code';
 
 // 生成 mixin/border.ts 的代码
 export default function generateCodeMixinBorder(): string {
@@ -27,16 +27,27 @@ import {
   
   _forEach(COLOR, (_v: string, variableKey: string): void => {
     if (/^BORDER_/.test(variableKey)) {
+      const cssCode = buildCssCode({
+        attr: 'border-color',
+        keys: ['COLOR', variableKey]
+      });
+      
       pushCode(generator, `export const ${buildExportedMixinVarName(variableKey, 'Color')} = css\`
-${buildStylesWithFallback('  border-color', 'COLOR', variableKey)}
+${cssCode}
 \`;`);
       ['', '-top', '-right', '-bottom', '-left'].forEach(borderAlt => {
+        const cssCode2 = buildCssCode({
+          attr: `border${borderAlt}`,
+          keys: ['COLOR', variableKey],
+          before: '1px solid '
+        });
+        
         pushCode(generator, `export const ${buildExportedMixinVarName(variableKey, borderAlt)} = css\`
-${buildStylesWithFallback(`  border${borderAlt}`, 'COLOR', variableKey, '1px solid ')}
+${cssCode2}
 \`;`);
       });
     }
   });
   
-  return buildCode(generator);
+  return toCode(generator);
 }

@@ -10,13 +10,15 @@ import styled, {
 
 import {
   SIZE,
-  BORDER,
   mixinTextSecondary,
   mixinTextTertiary,
   mixinTextDisabled,
   mixinShadowMDown,
   mixinInput,
-  mixinInputDisabled
+  mixinInputDisabled,
+  mixinInputTextHover,
+  mixinInputBorderFocus,
+  mixinInputBgFocus
 } from '@alicloud/console-base-theme';
 
 import {
@@ -70,16 +72,18 @@ const ScInput = styled.div<IPropsScInput>`
     
     if (props.focused && !props.weakFocusStyle) {
       return css`
-        border: ${BORDER.INPUT_FOCUS};
-        border: var(--cb-border-input-focus, ${BORDER.INPUT_FOCUS});
+        ${mixinInputTextFocus};
+        ${mixinInputBorderFocus};
+        ${mixinInputBgFocus};
         ${mixinShadowMDown};
       `;
     }
     
     if (props.hovered) {
       return css`
-        border: ${BORDER.INPUT_HOVER};
-        border: var(--cb-border-input-hover, ${BORDER.INPUT_HOVER});
+        ${mixinInputTextHover};
+        ${mixinInputBorderHover};
+        ${mixinInputBgHover};
         ${mixinShadowMDown};
       `;
     }

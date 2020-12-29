@@ -1,17 +1,18 @@
 import _forEach from 'lodash/forEach';
 
 import {
-  COLOR
+  SHADOW
 } from '../../../src';
 import {
   ICodeGenerator
 } from '../types';
 
 import pushCode from './push-code';
-import buildCode from './build-code';
+import toCode from './to-code';
 import buildExportedMixinVarName from './build-exported-mixin-var-name';
-import buildStylesWithFallback from './build-styles-with-fallback';
+import buildCssCode from './build-css-code';
 
+// 生成 mixin/shadow.ts 的代码
 export default function generateCodeMixinShadow(): string {
   const generator: ICodeGenerator = {
     begin: `import {
@@ -24,14 +25,16 @@ import {
 `
   };
   
-  _forEach(COLOR, (_v: string, variableKey: string): void => {
-    // 生成 mixin/shadow.ts 的代码
-    if (/^SHADOW_/.test(variableKey)) {
-      pushCode(generator, `export const ${buildExportedMixinVarName('shadow', variableKey)} = css\`
-${buildStylesWithFallback('  box-shadow', 'COLOR', variableKey)};
+  _forEach(SHADOW, (_v: string, variableKey: string): void => {
+    const cssCode = buildCssCode({
+      attr: 'box-shadow',
+      keys: ['SHADOW', variableKey]
+    });
+    
+    pushCode(generator, `export const ${buildExportedMixinVarName('SHADOW', variableKey)} = css\`
+${cssCode}
 \`;`);
-    }
   });
   
-  return buildCode(generator);
+  return toCode(generator);
 }

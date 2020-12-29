@@ -1,3 +1,6 @@
 export default function buildInterpolation(...parts: string[]): string {
-  return `\${${parts.filter(v => v).join('.').toUpperCase()}}`;
+  const [category, ...leftParts] = parts;
+  const constName = `${category}.${leftParts.filter(v => v).join('_')}`.toUpperCase();
+  
+  return `\${${constName}}`;
 }

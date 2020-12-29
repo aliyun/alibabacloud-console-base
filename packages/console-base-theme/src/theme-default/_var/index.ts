@@ -2,7 +2,6 @@ import COLOR from './color';
 import TYPO from './typo';
 import SIZE from './size';
 import Z_INDEX from './z-index';
-import BORDER from './border';
 import SHADOW from './shadow';
 
 export {
@@ -10,6 +9,5 @@ export {
   TYPO,
   SIZE,
   Z_INDEX,
-  BORDER,
   SHADOW
 };

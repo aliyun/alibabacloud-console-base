@@ -11,7 +11,7 @@ import {
 
 import pushCode from './push-code';
 import buildCssVarName from './build-css-var-name';
-import buildCode from './build-code';
+import toCode from './to-code';
 import buildInterpolation from './build-interpolation';
 
 /**
@@ -33,7 +33,7 @@ export default createGlobalStyle\`
   :root {`,
     end: `  }
 \`;`,
-    indent: '    '
+    indent: 2
   };
   
   _forEach({
@@ -50,5 +50,5 @@ export default createGlobalStyle\`
     });
   });
   
-  return buildCode(generator);
+  return toCode(generator);
 }

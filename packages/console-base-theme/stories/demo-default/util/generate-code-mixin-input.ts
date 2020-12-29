@@ -1,12 +1,31 @@
+import _forEach from 'lodash/forEach';
+import {
+  COLOR
+} from '../../../src';
 import {
   ICodeGenerator
 } from '../types';
 
 import pushCode from './push-code';
-import buildCode from './build-code';
+import toCode from './to-code';
 import buildExportedMixinVarName from './build-exported-mixin-var-name';
-import buildConstName from './build-const-name';
-import buildStylesWithFallback from './build-styles-with-fallback';
+import buildCssCode from './build-css-code';
+
+function getAttr(varName: string): string {
+  if (/^INPUT_TEXT/.test(varName)) {
+    return 'color';
+  }
+  
+  if (/^INPUT_BG/.test(varName)) {
+    return 'background-color';
+  }
+  
+  if (/^INPUT_BORDER/.test(varName)) {
+    return 'border-color';
+  }
+  
+  return '';
+}
 
 // 生成 mixin/input.ts
 export default function generateCodeMixinInput(): string {
@@ -18,24 +37,39 @@ export default function generateCodeMixinInput(): string {
 import {
   COLOR
 } from '../theme-default';
-`
+
+export const mixinInputReset = css\`
+  border: 1px solid transparent;
+  outline: none;
+  background-color: transparent;
+  transition: all ease-in-out 0.3s;
+  
+  &::placeholder {
+${buildCssCode({
+    attr: 'color',
+    keys: ['COLOR', 'INPUT_PLACEHOLDER'],
+    indent: 2
+  })}
+  }
+\`;`
   };
   
-  ['', 'hover', 'focus', 'disabled'].forEach(v => {
-    const varName = buildExportedMixinVarName('input', v);
-    const constInputBorder = buildConstName('INPUT_BORDER', v);
-    const constInputBg = buildConstName('INPUT_BG', v);
-    const constInputText = buildConstName('INPUT_TEXT', v);
-    const theStyleCode = [
-      buildStylesWithFallback('  border', 'COLOR', constInputBorder, '1px solid '),
-      buildStylesWithFallback('  background-color', 'COLOR', constInputBg),
-      buildStylesWithFallback('  color', 'COLOR', constInputText)
-    ].join('\n');
+  _forEach(COLOR, (_v, k) => {
+    const attr = getAttr(k);
     
-    pushCode(generator, `export const ${varName} = css\`
-  ${theStyleCode}
-  \`;`);
+    if (!attr) {
+      return;
+    }
+    
+    const cssCode = buildCssCode({
+      attr,
+      keys: ['COLOR', k]
+    });
+    
+    pushCode(generator, `export const ${buildExportedMixinVarName(k)} = css\`
+${cssCode}
+\`;`);
   });
   
-  return buildCode(generator);
+  return toCode(generator);
 }

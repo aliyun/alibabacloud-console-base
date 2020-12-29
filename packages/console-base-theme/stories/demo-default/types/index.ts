@@ -2,5 +2,5 @@ export interface ICodeGenerator {
   begin?: string;
   body?: string[];
   end?: string;
-  indent?: string;
+  indent?: number;
 }

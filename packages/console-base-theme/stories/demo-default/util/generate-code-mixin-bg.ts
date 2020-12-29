@@ -8,9 +8,9 @@ import {
 } from '../types';
 
 import pushCode from './push-code';
-import buildCode from './build-code';
+import toCode from './to-code';
 import buildExportedMixinVarName from './build-exported-mixin-var-name';
-import buildStylesWithFallback from './build-styles-with-fallback';
+import buildCssCode from './build-css-code';
 
 // 生成 mixin/bg.ts 的代码
 export default function generateCodeMixinBg(): string {
@@ -27,11 +27,16 @@ import {
   
   _forEach(COLOR, (_v: string, variableKey: string): void => {
     if (/^BG_/.test(variableKey)) {
+      const cssCode = buildCssCode({
+        attr: 'background-color',
+        keys: ['COLOR', variableKey]
+      });
+      
       pushCode(generator, `export const ${buildExportedMixinVarName(variableKey)} = css\`
-${buildStylesWithFallback('  background-color', 'COLOR', variableKey)};
+${cssCode}
 \`;`);
     }
   });
   
-  return buildCode(generator);
+  return toCode(generator);
 }
