@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  button,
+  mixinButtonReset,
   typo
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
@@ -66,7 +66,7 @@ const ScNavItem = styled.div`
 `;
 
 const ScTab = styled.button`
-  ${button.reset};
+  ${mixinButtonReset};
   ${typo.ellipsis};
   padding: 0 ${props => (props['data-closable'] ? 28 : 12)}px 0 12px;
   border-radius: 4px 4px 0 0;

@@ -7,9 +7,9 @@ import {
   mixinTextSecondary
 } from '@alicloud/console-base-theme';
 import Button, {
-  ButtonSize,
-  EButtonThemeColor,
-  ButtonProps
+  ButtonProps,
+  ButtonTheme,
+  ButtonSize
 } from '@alicloud/console-base-rc-button';
 
 import {
@@ -62,8 +62,7 @@ const ScButton = styled(Button)<IProps>`
 
 export default function ControlButton(props: IProps): JSX.Element {
   return <ScButton {...{
-    color: EButtonThemeColor.NONE,
-    colorHover: EButtonThemeColor.NONE,
+    theme: ButtonTheme.NONE,
     size: ButtonSize.NONE,
     ...props
   }} />;
