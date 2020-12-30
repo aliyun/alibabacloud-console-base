@@ -8,6 +8,7 @@ import {
 
 export const mixinInputReset = css`
   border: 1px solid transparent;
+  box-sizing: border-box;
   outline: none;
   background-color: transparent;
   transition: all ease-in-out 0.3s;
@@ -15,6 +16,10 @@ export const mixinInputReset = css`
   &::placeholder {
     color: ${COLOR.INPUT_PLACEHOLDER};
     color: var(--cb-color-input-placeholder, ${COLOR.INPUT_PLACEHOLDER});
+  }
+  
+  &::-ms-clear {
+    display: none;
   }
 `;
 export const mixinInputTextDisabled = css`

@@ -50,6 +50,7 @@ const linkCommon = css\`
 export const CODE_BEGIN_INPUT = `${CODE_FRAGMENT_IMPORT_CSS_AND_COLOR}
 export const mixinInputReset = css\`
   border: 1px solid transparent;
+  box-sizing: border-box;
   outline: none;
   background-color: transparent;
   transition: all ease-in-out 0.3s;
@@ -60,6 +61,10 @@ ${buildCssCode({
     keys: ['COLOR', 'INPUT_PLACEHOLDER'],
     indent: 2
   })}
+  }
+  
+  &::-ms-clear {
+    display: none;
   }
 \`;`;
 

@@ -1,7 +1,5 @@
 import React from 'react';
-import styled, {
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
 import {
   mixinTextEmphasis,
@@ -30,7 +28,7 @@ function renderIcon(focused: boolean, hovered: boolean): JSX.Element {
 export default function SearchInput(props: IProps): JSX.Element {
   return <Input {...{
     round: true,
-    weakFocusStyle: true,
+    theme: 'brand',
     ...props,
     innerLeft: renderIcon
   }} />;

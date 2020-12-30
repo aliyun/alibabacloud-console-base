@@ -10,15 +10,22 @@ import styled, {
 
 import {
   SIZE,
-  mixinTextSecondary,
   mixinTextTertiary,
-  mixinTextDisabled,
   mixinShadowMDown,
-  mixinInput,
-  mixinInputDisabled,
+  mixinInputReset,
+  mixinInputTextDisabled,
+  mixinInputBgDisabled,
+  mixinInputBorderDisabled,
+  mixinInputText,
+  mixinInputBg,
+  mixinInputBorder,
   mixinInputTextHover,
+  mixinInputBgHover,
+  mixinInputBorderHover,
+  mixinInputTextFocus,
+  mixinInputBgFocus,
   mixinInputBorderFocus,
-  mixinInputBgFocus
+  mixinInputBorderFocusBrand
 } from '@alicloud/console-base-theme';
 
 import {
@@ -52,49 +59,57 @@ function renderInner(inner: TInner | TFnInner, focused: boolean, hovered: boolea
 
 const INNER_HEIGHT_PX = `${SIZE.HEIGHT_FORM_CONTROL_M - 2}px`;
 
+const cssNormal = css<IPropsScInput>`
+  ${mixinInputBg}
+  ${props => (props.borderless ? null : mixinInputBorder)}
+`;
+const cssHover = css<IPropsScInput>`
+  ${mixinInputBgHover}
+  ${mixinShadowMDown}
+  ${props => (props.borderless ? null : mixinInputBorderHover)}
+`;
+const cssFocus = css<IPropsScInput>`
+  ${mixinInputBgFocus}
+  ${mixinShadowMDown}
+  ${props => {
+    if (props.borderless) {
+      return null;
+    }
+    
+    return props.theme === 'brand' ? mixinInputBorderFocusBrand : mixinInputBorderFocus;
+  }}
+`;
+const cssDisabled = css<IPropsScInput>`
+  ${mixinInputBgDisabled}
+  ${props => (props.borderless ? null : mixinInputBorderDisabled)}
+`;
+
 const ScInput = styled.div<IPropsScInput>`
   display: ${props => (props.block ? 'flex' : 'inline-flex')};
   align-items: center;
   position: relative;
-  border-radius: ${props => (props.round ? `${SIZE.HEIGHT_FORM_CONTROL_M / 2}px` : 'none')};
+  border: 1px solid transparent;
+  border-radius: ${props => (props.round ? `${SIZE.HEIGHT_FORM_CONTROL_M}px` : 'none')};
   height: ${INNER_HEIGHT_PX};
   line-height: ${INNER_HEIGHT_PX};
   font-size: ${SIZE.FONT_SIZE_BODY}px;
   transition: all 0.3s ease-out;
-  ${mixinInput};
   
   ${props => {
     if (props.disabled) {
-      return css`
-        ${mixinInputDisabled};
-      `;
+      return cssDisabled;
     }
     
     if (props.focused && !props.weakFocusStyle) {
-      return css`
-        ${mixinInputTextFocus};
-        ${mixinInputBorderFocus};
-        ${mixinInputBgFocus};
-        ${mixinShadowMDown};
-      `;
+      return cssFocus;
     }
     
     if (props.hovered) {
-      return css`
-        ${mixinInputTextHover};
-        ${mixinInputBorderHover};
-        ${mixinInputBgHover};
-        ${mixinShadowMDown};
-      `;
+      return cssHover;
     }
-  }};
-  ${props => {
-    if (props.borderless) {
-      return css`
-        border-color: transparent;
-      `;
-    }
-  }};
+    
+    return cssNormal;
+  }}
 `;
 
 // input 有个诡异的宽度，需要一个容器限制一下（然后在 input 上设一个 width: 100%）
@@ -103,30 +118,35 @@ const ScInputWrap = styled.span`
   flex: 1;
 `;
 
-const ScInputReal = styled.input`
+const ScInputReal = styled.input<IPropsScInput>`
+  ${mixinInputReset}
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
   border: 0;
-  box-sizing: border-box;
-  outline: none;
-  background: transparent;
   width: 100%;
   height: ${INNER_HEIGHT_PX};
   line-height: ${INNER_HEIGHT_PX};
-  ${mixinTextSecondary};
   
-  &::placeholder {
-    ${mixinTextDisabled};
-  }
-  
-  &::-ms-clear {
-    display: none;
-  }
+  ${props => {
+    if (props.disabled) {
+      return mixinInputTextDisabled;
+    }
+    
+    if (props.focused) {
+      return mixinInputTextFocus;
+    }
+    
+    if (props.hovered) {
+      return mixinInputTextHover;
+    }
+    
+    return mixinInputText;
+  }}
 `;
 
 const ScInnerExtra = styled.span`
   height: ${INNER_HEIGHT_PX};
   line-height: ${INNER_HEIGHT_PX};
-  ${mixinTextTertiary};
+  ${mixinTextTertiary}
 `;
 
 const ScInnerLeft = styled(ScInnerExtra)`
@@ -138,6 +158,7 @@ const ScInnerRight = styled(ScInnerExtra)`
 `;
 
 export default function Input({
+  theme,
   block,
   round,
   borderless,
@@ -199,6 +220,7 @@ export default function Input({
   return <ScInput {...{
     className,
     style,
+    theme,
     block,
     round,
     weakFocusStyle,
@@ -216,6 +238,8 @@ export default function Input({
         'aria-autocomplete': 'none',
         autocomplete: 'off',
         disabled,
+        hovered: stateHovered,
+        focused: stateFocused,
         ...props,
         onFocus: handleFocus,
         onBlur: handleBlur,

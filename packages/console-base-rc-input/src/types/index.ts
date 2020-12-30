@@ -7,11 +7,12 @@ export type TInner = string | JSX.Element;
 export type TFnInner = (focused: boolean, hovered: boolean) => TInner;
 
 export interface IPropsLook {
+  theme?: 'normal' | 'brand';
   block?: boolean;
   round?: boolean;
   borderless?: boolean;
   /**
-   * 默认的 focus 的样式比较中（主要是 border，用它可以弱化）
+   * 默认的 focus 的样式比较重（主要是 border，用它可以弱化）
    */
   weakFocusStyle?: boolean;
 }
