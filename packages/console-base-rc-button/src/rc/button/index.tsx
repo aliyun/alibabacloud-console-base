@@ -59,13 +59,22 @@ const ScInnerLabel = styled.span`
   ${typo.ellipsis};
 `;
 
-function getSize(theme: EButtonTheme) {
-  
+function getSize(theme: EButtonTheme, size: EButtonSize): EButtonSize {
+  switch (theme) {
+    case EButtonTheme.TEXT_PRIMARY:
+    case EButtonTheme.TEXT_SECONDARY:
+    case EButtonTheme.TEXT_TERTIARY:
+    case EButtonTheme.TEXT_BRAND_PRIMARY:
+    case EButtonTheme.TEXT_BRAND_SECONDARY:
+      return EButtonSize.NONE;
+    default:
+      return size;
+  }
 }
 
 function Button({
   theme = EButtonTheme.TERTIARY,
-  size, // 默认有大小，可以通过设置 'none' 取消大小，取消大小之后就是 text button
+  size = EButtonSize.M, // 默认有大小，可以通过设置 'none' 取消大小，取消大小之后就是 text button
   label,
   title,
   iconLeft,
@@ -78,7 +87,7 @@ function Button({
   ...restProps
 }: IButtonProps, ref: Ref<HTMLElement>): JSX.Element {
   const propsForSc: IButtonPropsForSc = {
-    size,
+    size: getSize(theme, size),
     theme,
     disabled,
     loading,

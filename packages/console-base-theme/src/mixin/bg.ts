@@ -46,6 +46,14 @@ export const mixinBgTertiary = css`
   background-color: ${COLOR.BG_TERTIARY};
   background-color: var(--cb-color-bg-tertiary, ${COLOR.BG_TERTIARY});
 `;
+export const mixinBgSecondaryFade = css`
+  background-color: ${COLOR.BG_SECONDARY_FADE};
+  background-color: var(--cb-color-bg-secondary-fade, ${COLOR.BG_SECONDARY_FADE});
+`;
+export const mixinBgTertiaryFade = css`
+  background-color: ${COLOR.BG_TERTIARY_FADE};
+  background-color: var(--cb-color-bg-tertiary-fade, ${COLOR.BG_TERTIARY_FADE});
+`;
 export const mixinBgHelp = css`
   background-color: ${COLOR.BG_HELP};
   background-color: var(--cb-color-bg-help, ${COLOR.BG_HELP});

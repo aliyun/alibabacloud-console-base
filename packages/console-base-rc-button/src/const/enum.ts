@@ -11,6 +11,8 @@ export enum EButtonSize {
 export enum EButtonTheme {
   NONE = 'none',
   DANGER = 'danger',
+  MENU = 'menu',
+  MENU_ACTIVE = 'menu:active',
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   TERTIARY = 'tertiary',
@@ -19,5 +21,7 @@ export enum EButtonTheme {
   BRAND_TERTIARY = 'brand:tertiary',
   TEXT_PRIMARY = 'text:primary',
   TEXT_SECONDARY = 'text:secondary',
-  TEXT_TERTIARY = 'text:tertiary'
+  TEXT_TERTIARY = 'text:tertiary',
+  TEXT_BRAND_PRIMARY = 'text:brand:primary',
+  TEXT_BRAND_SECONDARY = 'text:brand:secondary'
 }

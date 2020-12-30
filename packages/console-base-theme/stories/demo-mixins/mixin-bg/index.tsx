@@ -16,6 +16,8 @@ import {
   mixinBgPrimary,
   mixinBgSecondary,
   mixinBgTertiary,
+  mixinBgSecondaryFade,
+  mixinBgTertiaryFade,
   mixinBgHelp,
   mixinBgInfo,
   mixinBgSuccess,
@@ -64,6 +66,12 @@ const ScMixinBgSecondary = styled(ScBrick)`
 const ScMixinBgTertiary = styled(ScBrick)`
   ${mixinBgTertiary}
 `;
+const ScMixinBgSecondaryFade = styled(ScBrick)`
+  ${mixinBgSecondaryFade}
+`;
+const ScMixinBgTertiaryFade = styled(ScBrick)`
+  ${mixinBgTertiaryFade}
+`;
 const ScMixinBgDisabled = styled(ScBrick)`
   ${mixinBgDisabled}
 `;
@@ -102,6 +110,8 @@ export default function MixinBg(): JSX.Element {
       <ScMixinBgPrimary>primary</ScMixinBgPrimary>
       <ScMixinBgSecondary>secondary</ScMixinBgSecondary>
       <ScMixinBgTertiary>tertiary</ScMixinBgTertiary>
+      <ScMixinBgSecondaryFade>secondary-fade</ScMixinBgSecondaryFade>
+      <ScMixinBgTertiaryFade>tertiary-fade</ScMixinBgTertiaryFade>
       <ScMixinBgDisabled>disabled</ScMixinBgDisabled>
       <ScMixinBgHelp>help</ScMixinBgHelp>
       <ScMixinBgInfo>info</ScMixinBgInfo>

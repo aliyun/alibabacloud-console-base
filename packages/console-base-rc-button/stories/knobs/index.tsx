@@ -14,7 +14,7 @@ import {
 
 import {
   ButtonProps,
-  EButtonTheme,
+  ButtonTheme,
   ButtonSize
 } from '../../src';
 
@@ -65,9 +65,9 @@ export default function Knobs({
     inUse: boolean('启用 props.iconRight', false, EGroup.CONTENT)
   });
   
-  const theme = optional<EButtonTheme>({
-    value: select<EButtonTheme>('props.theme', Object.values(EButtonTheme), EButtonTheme.PRIMARY, EGroup.LOOK),
-    inUse: boolean('启用 props.theme', false, EGroup.LOOK)
+  const theme = optional<ButtonTheme>({
+    value: select<ButtonTheme>('props.theme', Object.values(ButtonTheme), ButtonTheme.PRIMARY, EGroup.LOOK),
+    inUse: boolean('启用 props.theme', true, EGroup.LOOK)
   });
   const size = optional<ButtonSize>({
     value: select<ButtonSize>('props.size', Object.values(ButtonSize), ButtonSize.M, EGroup.LOOK),

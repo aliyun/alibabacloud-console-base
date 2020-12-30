@@ -19,18 +19,32 @@ enum EButtonState {
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL'];
 const THEMES = [
-  'BUTTON_DANGER',
+  'BUTTON_DANGER', 'BUTTON_MENU', 'BUTTON_MENU_ACTIVE',
   'BUTTON_PRIMARY', 'BUTTON_SECONDARY', 'BUTTON_TERTIARY',
   'BUTTON_BRAND_PRIMARY', 'BUTTON_BRAND_SECONDARY', 'BUTTON_BRAND_TERTIARY',
-  'BUTTON_TEXT_PRIMARY', 'BUTTON_TEXT_SECONDARY', 'BUTTON_TEXT_TERTIARY'
+  'BUTTON_TEXT_PRIMARY', 'BUTTON_TEXT_SECONDARY', 'BUTTON_TEXT_TERTIARY',
+  'BUTTON_TEXT_BRAND_PRIMARY', 'BUTTON_TEXT_BRAND_SECONDARY'
 ];
 
-function insertShadowMixin(theme: string): string {
-  if (/^BUTTON_TEXT_/.test(theme) || /TERTIARY/.test(theme)) { // 文字和三级按钮没有阴影
-    return '';
+function buildMixinButtonStateName(theme: string, state: EButtonState): string {
+  return buildExportedMixinVarName(theme, 'State', state);
+}
+
+function insertFullHeading(theme: string): string {
+  const code: string[] = [];
+  
+  if (/^BUTTON_MENU/.test(theme)) {
+    code.push('display: block;', 'border-radius: 0;', 'width: 100%;');
   }
   
-  return '${mixinButtonShadow}\n  '; // eslint-disable-line no-template-curly-in-string
+  if (!/^BUTTON_TEXT|^BUTTON_MENU/.test(theme) && !/TERTIARY/.test(theme)) { // 文字和三级按钮没有阴影
+    code.push('${mixinButtonShadow}'); // eslint-disable-line no-template-curly-in-string
+  }
+  
+  code.push(`\${${buildMixinButtonStateName(theme, EButtonState.NORMAL)}}`);
+  code.push('');
+  
+  return code.join('\n  ');
 }
 
 function buildCodeMixinButtonSize(size: string): string {
@@ -62,10 +76,6 @@ ${cssCodeBg}
 ${cssCodeText}`;
 }
 
-function buildMixinButtonStateName(theme: string, state: EButtonState): string {
-  return buildExportedMixinVarName(theme, 'State', state);
-}
-
 function buildCodeMixinButtonThemeState(theme: string, state: EButtonState): string {
   return `export const ${buildMixinButtonStateName(theme, state)} = css\`
 ${buildCodeButtonStyle(theme, state)}
@@ -73,25 +83,19 @@ ${buildCodeButtonStyle(theme, state)}
 }
 
 function buildCodeMixinButtonFull(theme: string): string {
-  const mixinNameNormal = buildMixinButtonStateName(theme, EButtonState.NORMAL);
-  const mixinNameHover = buildMixinButtonStateName(theme, EButtonState.HOVER);
-  const mixinNameActive = buildMixinButtonStateName(theme, EButtonState.ACTIVE);
-  const mixinNameDisabled = buildMixinButtonStateName(theme, EButtonState.DISABLED);
-  
   return `export const ${buildExportedMixinVarName(theme)} = css\`
-  \${${mixinNameNormal}}
-  ${insertShadowMixin(theme)}
+  ${insertFullHeading(theme)}
   &:hover,
   &:focus {
-    \${${mixinNameHover}}
+    \${${buildMixinButtonStateName(theme, EButtonState.HOVER)}}
   }
   
   &:active {
-    \${${mixinNameActive}}
+    \${${buildMixinButtonStateName(theme, EButtonState.ACTIVE)}}
   }
   
   &:disabled {
-    \${${mixinNameDisabled}}
+    \${${buildMixinButtonStateName(theme, EButtonState.DISABLED)}}
   }
 \`;`;
 }

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {
+  useState,
+  useCallback
+} from 'react';
 import styled from 'styled-components';
 
 import {
-  H1
+  H1,
+  Button
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -13,6 +17,8 @@ import {
   mixinButtonSizeXl,
   mixinButtonReset,
   mixinButtonDanger,
+  mixinButtonMenu,
+  mixinButtonMenuActive,
   mixinButtonPrimary,
   mixinButtonSecondary,
   mixinButtonTertiary,
@@ -21,13 +27,21 @@ import {
   mixinButtonBrandTertiary,
   mixinButtonTextPrimary,
   mixinButtonTextSecondary,
-  mixinButtonTextTertiary
+  mixinButtonTextTertiary,
+  mixinButtonTextBrandPrimary,
+  mixinButtonTextBrandSecondary
 } from '../../../src';
 
-const ScButtonBase = styled.button`
+const ScButton = styled.button`
   ${mixinButtonReset};
-  margin: 16px 8px;
-  padding: 6px 8px;
+`;
+
+const ScButtonBase = styled(ScButton)`
+  margin: 8px 2px;
+  padding: 4px 4px;
+`;
+const ScButtonBaseText = styled(ScButton)`
+  margin: 8px 2px;
 `;
 
 const ScMixinButtonSizeXs = styled(ScButtonBase)`
@@ -71,49 +85,63 @@ const ScMixinButtonBrandTertiary = styled(ScButtonBase)`
 const ScMixinButtonDanger = styled(ScButtonBase)`
   ${mixinButtonDanger}
 `;
-const ScMixinButtonTextPrimary = styled(ScButtonBase)`
+const ScMixinButtonMenu = styled(ScButtonBase)`
+  ${mixinButtonMenu}
+`;
+const ScMixinButtonMenuActive = styled(ScButtonBase)`
+  ${mixinButtonMenuActive}
+`;
+const ScMixinButtonTextPrimary = styled(ScButtonBaseText)`
   ${mixinButtonTextPrimary};
 `;
-const ScMixinButtonTextSecondary = styled(ScButtonBase)`
+const ScMixinButtonTextSecondary = styled(ScButtonBaseText)`
   ${mixinButtonTextSecondary};
 `;
-const ScMixinButtonTextTertiary = styled(ScButtonBase)`
+const ScMixinButtonTextTertiary = styled(ScButtonBaseText)`
   ${mixinButtonTextTertiary};
+`;
+const ScMixinButtonTextBrandPrimary = styled(ScButtonBaseText)`
+  ${mixinButtonTextBrandPrimary}
+`;
+const ScMixinButtonTextBrandSecondary = styled(ScButtonBaseText)`
+  ${mixinButtonTextBrandSecondary}
 `;
 
 export default function MixinButton(): JSX.Element {
+  const [stateDisabled, setStateDisabled] = useState<boolean>(false);
+  const handleToggleDisabled = useCallback(() => setStateDisabled(!stateDisabled), [stateDisabled, setStateDisabled]);
+  
   return <>
     <H1>mixins for button</H1>
+    <Button onClick={handleToggleDisabled}>toggle disabled - {`${stateDisabled}`}</Button>
     <div>
-      <ScMixinButtonSizeXs>size-xs</ScMixinButtonSizeXs>
-      <ScMixinButtonSizeS>size-s</ScMixinButtonSizeS>
-      <ScMixinButtonSizeM>size-m</ScMixinButtonSizeM>
-      <ScMixinButtonSizeL>size-l</ScMixinButtonSizeL>
-      <ScMixinButtonSizeXl>size-xl</ScMixinButtonSizeXl>
+      <ScMixinButtonSizeXs disabled={stateDisabled}>size-xs</ScMixinButtonSizeXs>
+      <ScMixinButtonSizeS disabled={stateDisabled}>size-s</ScMixinButtonSizeS>
+      <ScMixinButtonSizeM disabled={stateDisabled}>size-m</ScMixinButtonSizeM>
+      <ScMixinButtonSizeL disabled={stateDisabled}>size-l</ScMixinButtonSizeL>
+      <ScMixinButtonSizeXl disabled={stateDisabled}>size-xl</ScMixinButtonSizeXl>
     </div>
     <div>
-      <ScMixinButtonDanger>danger</ScMixinButtonDanger>
-      <ScMixinButtonPrimary>primary</ScMixinButtonPrimary>
-      <ScMixinButtonSecondary>secondary</ScMixinButtonSecondary>
-      <ScMixinButtonTertiary>tertiary</ScMixinButtonTertiary>
-      <ScMixinButtonBrandPrimary>brand-primary</ScMixinButtonBrandPrimary>
-      <ScMixinButtonBrandSecondary>brand-secondary</ScMixinButtonBrandSecondary>
-      <ScMixinButtonBrandTertiary>brand-tertiary</ScMixinButtonBrandTertiary>
-      <ScMixinButtonTextPrimary>text-primary</ScMixinButtonTextPrimary>
-      <ScMixinButtonTextSecondary>text-secondary</ScMixinButtonTextSecondary>
-      <ScMixinButtonTextTertiary>text-tertiary</ScMixinButtonTextTertiary>
+      <ScMixinButtonDanger disabled={stateDisabled}>danger</ScMixinButtonDanger>
+      <ScMixinButtonMenu disabled={stateDisabled}>menu</ScMixinButtonMenu>
+      <ScMixinButtonMenuActive disabled={stateDisabled}>menu-active</ScMixinButtonMenuActive>
     </div>
     <div>
-      <ScMixinButtonDanger disabled>danger</ScMixinButtonDanger>
-      <ScMixinButtonPrimary disabled>primary</ScMixinButtonPrimary>
-      <ScMixinButtonSecondary disabled>secondary</ScMixinButtonSecondary>
-      <ScMixinButtonTertiary disabled>tertiary</ScMixinButtonTertiary>
-      <ScMixinButtonBrandPrimary disabled>brand-primary</ScMixinButtonBrandPrimary>
-      <ScMixinButtonBrandSecondary disabled>brand-secondary</ScMixinButtonBrandSecondary>
-      <ScMixinButtonBrandTertiary disabled>brand-tertiary</ScMixinButtonBrandTertiary>
-      <ScMixinButtonTextPrimary disabled>text-primary</ScMixinButtonTextPrimary>
-      <ScMixinButtonTextSecondary disabled>text-secondary</ScMixinButtonTextSecondary>
-      <ScMixinButtonTextTertiary disabled>text-tertiary</ScMixinButtonTextTertiary>
+      <ScMixinButtonPrimary disabled={stateDisabled}>primary</ScMixinButtonPrimary>
+      <ScMixinButtonSecondary disabled={stateDisabled}>secondary</ScMixinButtonSecondary>
+      <ScMixinButtonTertiary disabled={stateDisabled}>tertiary</ScMixinButtonTertiary>
+    </div>
+    <div>
+      <ScMixinButtonBrandPrimary disabled={stateDisabled}>brand-primary</ScMixinButtonBrandPrimary>
+      <ScMixinButtonBrandSecondary disabled={stateDisabled}>brand-secondary</ScMixinButtonBrandSecondary>
+      <ScMixinButtonBrandTertiary disabled={stateDisabled}>brand-tertiary</ScMixinButtonBrandTertiary>
+    </div>
+    <div>
+      <ScMixinButtonTextPrimary disabled={stateDisabled}>text-primary</ScMixinButtonTextPrimary>
+      <ScMixinButtonTextSecondary disabled={stateDisabled}>text-secondary</ScMixinButtonTextSecondary>
+      <ScMixinButtonTextTertiary disabled={stateDisabled}>text-tertiary</ScMixinButtonTextTertiary>
+      <ScMixinButtonTextBrandPrimary disabled={stateDisabled}>text-brand-primary</ScMixinButtonTextBrandPrimary>
+      <ScMixinButtonTextBrandSecondary disabled={stateDisabled}>text-brand-secondary</ScMixinButtonTextBrandSecondary>
     </div>
   </>;
 }

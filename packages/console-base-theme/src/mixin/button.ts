@@ -120,8 +120,8 @@ export const mixinButtonDangerStateDisabled = css`
   color: var(--cb-color-button-danger-text-disabled, ${COLOR.BUTTON_DANGER_TEXT_DISABLED});
 `;
 export const mixinButtonDanger = css`
-  ${mixinButtonDangerStateNormal}
   ${mixinButtonShadow}
+  ${mixinButtonDangerStateNormal}
   
   &:hover,
   &:focus {
@@ -134,6 +134,108 @@ export const mixinButtonDanger = css`
   
   &:disabled {
     ${mixinButtonDangerStateDisabled}
+  }
+`;
+export const mixinButtonMenuStateNormal = css`
+  border-color: ${COLOR.BUTTON_MENU_BORDER};
+  border-color: var(--cb-color-button-menu-border, ${COLOR.BUTTON_MENU_BORDER});
+  background-color: ${COLOR.BUTTON_MENU_BG};
+  background-color: var(--cb-color-button-menu-bg, ${COLOR.BUTTON_MENU_BG});
+  color: ${COLOR.BUTTON_MENU_TEXT};
+  color: var(--cb-color-button-menu-text, ${COLOR.BUTTON_MENU_TEXT});
+`;
+export const mixinButtonMenuStateHover = css`
+  border-color: ${COLOR.BUTTON_MENU_BORDER_HOVER};
+  border-color: var(--cb-color-button-menu-border-hover, ${COLOR.BUTTON_MENU_BORDER_HOVER});
+  background-color: ${COLOR.BUTTON_MENU_BG_HOVER};
+  background-color: var(--cb-color-button-menu-bg-hover, ${COLOR.BUTTON_MENU_BG_HOVER});
+  color: ${COLOR.BUTTON_MENU_TEXT_HOVER};
+  color: var(--cb-color-button-menu-text-hover, ${COLOR.BUTTON_MENU_TEXT_HOVER});
+`;
+export const mixinButtonMenuStateActive = css`
+  border-color: ${COLOR.BUTTON_MENU_BORDER_ACTIVE};
+  border-color: var(--cb-color-button-menu-border-active, ${COLOR.BUTTON_MENU_BORDER_ACTIVE});
+  background-color: ${COLOR.BUTTON_MENU_BG_ACTIVE};
+  background-color: var(--cb-color-button-menu-bg-active, ${COLOR.BUTTON_MENU_BG_ACTIVE});
+  color: ${COLOR.BUTTON_MENU_TEXT_ACTIVE};
+  color: var(--cb-color-button-menu-text-active, ${COLOR.BUTTON_MENU_TEXT_ACTIVE});
+`;
+export const mixinButtonMenuStateDisabled = css`
+  border-color: ${COLOR.BUTTON_MENU_BORDER_DISABLED};
+  border-color: var(--cb-color-button-menu-border-disabled, ${COLOR.BUTTON_MENU_BORDER_DISABLED});
+  background-color: ${COLOR.BUTTON_MENU_BG_DISABLED};
+  background-color: var(--cb-color-button-menu-bg-disabled, ${COLOR.BUTTON_MENU_BG_DISABLED});
+  color: ${COLOR.BUTTON_MENU_TEXT_DISABLED};
+  color: var(--cb-color-button-menu-text-disabled, ${COLOR.BUTTON_MENU_TEXT_DISABLED});
+`;
+export const mixinButtonMenu = css`
+  display: block;
+  border-radius: 0;
+  width: 100%;
+  ${mixinButtonMenuStateNormal}
+  
+  &:hover,
+  &:focus {
+    ${mixinButtonMenuStateHover}
+  }
+  
+  &:active {
+    ${mixinButtonMenuStateActive}
+  }
+  
+  &:disabled {
+    ${mixinButtonMenuStateDisabled}
+  }
+`;
+export const mixinButtonMenuActiveStateNormal = css`
+  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER};
+  border-color: var(--cb-color-button-menu-active-border, ${COLOR.BUTTON_MENU_ACTIVE_BORDER});
+  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG};
+  background-color: var(--cb-color-button-menu-active-bg, ${COLOR.BUTTON_MENU_ACTIVE_BG});
+  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT};
+  color: var(--cb-color-button-menu-active-text, ${COLOR.BUTTON_MENU_ACTIVE_TEXT});
+`;
+export const mixinButtonMenuActiveStateHover = css`
+  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER_HOVER};
+  border-color: var(--cb-color-button-menu-active-border-hover, ${COLOR.BUTTON_MENU_ACTIVE_BORDER_HOVER});
+  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG_HOVER};
+  background-color: var(--cb-color-button-menu-active-bg-hover, ${COLOR.BUTTON_MENU_ACTIVE_BG_HOVER});
+  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT_HOVER};
+  color: var(--cb-color-button-menu-active-text-hover, ${COLOR.BUTTON_MENU_ACTIVE_TEXT_HOVER});
+`;
+export const mixinButtonMenuActiveStateActive = css`
+  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER_ACTIVE};
+  border-color: var(--cb-color-button-menu-active-border-active, ${COLOR.BUTTON_MENU_ACTIVE_BORDER_ACTIVE});
+  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG_ACTIVE};
+  background-color: var(--cb-color-button-menu-active-bg-active, ${COLOR.BUTTON_MENU_ACTIVE_BG_ACTIVE});
+  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT_ACTIVE};
+  color: var(--cb-color-button-menu-active-text-active, ${COLOR.BUTTON_MENU_ACTIVE_TEXT_ACTIVE});
+`;
+export const mixinButtonMenuActiveStateDisabled = css`
+  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER_DISABLED};
+  border-color: var(--cb-color-button-menu-active-border-disabled, ${COLOR.BUTTON_MENU_ACTIVE_BORDER_DISABLED});
+  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG_DISABLED};
+  background-color: var(--cb-color-button-menu-active-bg-disabled, ${COLOR.BUTTON_MENU_ACTIVE_BG_DISABLED});
+  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT_DISABLED};
+  color: var(--cb-color-button-menu-active-text-disabled, ${COLOR.BUTTON_MENU_ACTIVE_TEXT_DISABLED});
+`;
+export const mixinButtonMenuActive = css`
+  display: block;
+  border-radius: 0;
+  width: 100%;
+  ${mixinButtonMenuActiveStateNormal}
+  
+  &:hover,
+  &:focus {
+    ${mixinButtonMenuActiveStateHover}
+  }
+  
+  &:active {
+    ${mixinButtonMenuActiveStateActive}
+  }
+  
+  &:disabled {
+    ${mixinButtonMenuActiveStateDisabled}
   }
 `;
 export const mixinButtonPrimaryStateNormal = css`
@@ -169,8 +271,8 @@ export const mixinButtonPrimaryStateDisabled = css`
   color: var(--cb-color-button-primary-text-disabled, ${COLOR.BUTTON_PRIMARY_TEXT_DISABLED});
 `;
 export const mixinButtonPrimary = css`
-  ${mixinButtonPrimaryStateNormal}
   ${mixinButtonShadow}
+  ${mixinButtonPrimaryStateNormal}
   
   &:hover,
   &:focus {
@@ -218,8 +320,8 @@ export const mixinButtonSecondaryStateDisabled = css`
   color: var(--cb-color-button-secondary-text-disabled, ${COLOR.BUTTON_SECONDARY_TEXT_DISABLED});
 `;
 export const mixinButtonSecondary = css`
-  ${mixinButtonSecondaryStateNormal}
   ${mixinButtonShadow}
+  ${mixinButtonSecondaryStateNormal}
   
   &:hover,
   &:focus {
@@ -315,8 +417,8 @@ export const mixinButtonBrandPrimaryStateDisabled = css`
   color: var(--cb-color-button-brand-primary-text-disabled, ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_DISABLED});
 `;
 export const mixinButtonBrandPrimary = css`
-  ${mixinButtonBrandPrimaryStateNormal}
   ${mixinButtonShadow}
+  ${mixinButtonBrandPrimaryStateNormal}
   
   &:hover,
   &:focus {
@@ -364,8 +466,8 @@ export const mixinButtonBrandSecondaryStateDisabled = css`
   color: var(--cb-color-button-brand-secondary-text-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_DISABLED});
 `;
 export const mixinButtonBrandSecondary = css`
-  ${mixinButtonBrandSecondaryStateNormal}
   ${mixinButtonShadow}
+  ${mixinButtonBrandSecondaryStateNormal}
   
   &:hover,
   &:focus {
@@ -570,5 +672,101 @@ export const mixinButtonTextTertiary = css`
   
   &:disabled {
     ${mixinButtonTextTertiaryStateDisabled}
+  }
+`;
+export const mixinButtonTextBrandPrimaryStateNormal = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER};
+  border-color: var(--cb-color-button-text-brand-primary-border, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG};
+  background-color: var(--cb-color-button-text-brand-primary-bg, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG});
+  color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT};
+  color: var(--cb-color-button-text-brand-primary-text, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT});
+`;
+export const mixinButtonTextBrandPrimaryStateHover = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER_HOVER};
+  border-color: var(--cb-color-button-text-brand-primary-border-hover, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER_HOVER});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG_HOVER};
+  background-color: var(--cb-color-button-text-brand-primary-bg-hover, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG_HOVER});
+  color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT_HOVER};
+  color: var(--cb-color-button-text-brand-primary-text-hover, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT_HOVER});
+`;
+export const mixinButtonTextBrandPrimaryStateActive = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER_ACTIVE};
+  border-color: var(--cb-color-button-text-brand-primary-border-active, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER_ACTIVE});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG_ACTIVE};
+  background-color: var(--cb-color-button-text-brand-primary-bg-active, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG_ACTIVE});
+  color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT_ACTIVE};
+  color: var(--cb-color-button-text-brand-primary-text-active, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT_ACTIVE});
+`;
+export const mixinButtonTextBrandPrimaryStateDisabled = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER_DISABLED};
+  border-color: var(--cb-color-button-text-brand-primary-border-disabled, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BORDER_DISABLED});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG_DISABLED};
+  background-color: var(--cb-color-button-text-brand-primary-bg-disabled, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_BG_DISABLED});
+  color: ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT_DISABLED};
+  color: var(--cb-color-button-text-brand-primary-text-disabled, ${COLOR.BUTTON_TEXT_BRAND_PRIMARY_TEXT_DISABLED});
+`;
+export const mixinButtonTextBrandPrimary = css`
+  ${mixinButtonTextBrandPrimaryStateNormal}
+  
+  &:hover,
+  &:focus {
+    ${mixinButtonTextBrandPrimaryStateHover}
+  }
+  
+  &:active {
+    ${mixinButtonTextBrandPrimaryStateActive}
+  }
+  
+  &:disabled {
+    ${mixinButtonTextBrandPrimaryStateDisabled}
+  }
+`;
+export const mixinButtonTextBrandSecondaryStateNormal = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER};
+  border-color: var(--cb-color-button-text-brand-secondary-border, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG};
+  background-color: var(--cb-color-button-text-brand-secondary-bg, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG});
+  color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT};
+  color: var(--cb-color-button-text-brand-secondary-text, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT});
+`;
+export const mixinButtonTextBrandSecondaryStateHover = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_HOVER};
+  border-color: var(--cb-color-button-text-brand-secondary-border-hover, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_HOVER});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG_HOVER};
+  background-color: var(--cb-color-button-text-brand-secondary-bg-hover, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG_HOVER});
+  color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT_HOVER};
+  color: var(--cb-color-button-text-brand-secondary-text-hover, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT_HOVER});
+`;
+export const mixinButtonTextBrandSecondaryStateActive = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_ACTIVE};
+  border-color: var(--cb-color-button-text-brand-secondary-border-active, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_ACTIVE});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG_ACTIVE};
+  background-color: var(--cb-color-button-text-brand-secondary-bg-active, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG_ACTIVE});
+  color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT_ACTIVE};
+  color: var(--cb-color-button-text-brand-secondary-text-active, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT_ACTIVE});
+`;
+export const mixinButtonTextBrandSecondaryStateDisabled = css`
+  border-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_DISABLED};
+  border-color: var(--cb-color-button-text-brand-secondary-border-disabled, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_DISABLED});
+  background-color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG_DISABLED};
+  background-color: var(--cb-color-button-text-brand-secondary-bg-disabled, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG_DISABLED});
+  color: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT_DISABLED};
+  color: var(--cb-color-button-text-brand-secondary-text-disabled, ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_TEXT_DISABLED});
+`;
+export const mixinButtonTextBrandSecondary = css`
+  ${mixinButtonTextBrandSecondaryStateNormal}
+  
+  &:hover,
+  &:focus {
+    ${mixinButtonTextBrandSecondaryStateHover}
+  }
+  
+  &:active {
+    ${mixinButtonTextBrandSecondaryStateActive}
+  }
+  
+  &:disabled {
+    ${mixinButtonTextBrandSecondaryStateDisabled}
   }
 `;
