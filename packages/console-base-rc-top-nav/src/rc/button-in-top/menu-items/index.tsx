@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button, {
-  EButtonPreset
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
 import {
@@ -24,7 +24,7 @@ export default function MenuItems({
     }: IDropdownItem): JSX.Element => <Button {...{
       key,
       spm: key as string,
-      preset: EButtonPreset.MENU,
+      theme: ButtonTheme.MENU,
       label,
       href,
       onClick

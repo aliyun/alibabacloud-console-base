@@ -19,10 +19,14 @@ import {
   EButtonTheme
 } from '../../const';
 import mixinCommon from '../../mixin/common';
+import mixinBorder from '../../mixin/border';
+import mixinTextAlign from '../../mixin/text-align';
 import mixinBlock from '../../mixin/block';
 import mixinEllipsis from '../../mixin/ellipsis';
 import mixinSize from '../../mixin/size';
 import mixinTheme from '../../mixin/theme';
+import mixinShadow from '../../mixin/shadow';
+import mixinCursor from '../../mixin/cursor';
 import getHrefTarget from '../../util/get-href-target';
 import getTitle from '../../util/get-title';
 import renderIcon from '../../util/render-icon';
@@ -30,10 +34,14 @@ import renderIcon from '../../util/render-icon';
 const ScButton = styled.span<IButtonPropsForSc>`
   ${mixinButtonReset}
   ${mixinCommon}
+  ${mixinBorder}
+  ${mixinTextAlign}
   ${mixinBlock}
   ${mixinEllipsis}
   ${mixinSize}
   ${mixinTheme}
+  ${mixinShadow}
+  ${mixinCursor}
 `;
 
 // 当有 iconLeft iconRight loading 时对内容的包裹
@@ -82,6 +90,7 @@ function Button({
   children,
   loading,
   disabled,
+  borderRadius = true,
   spm = 'button',
   component = 'button',
   ...restProps
@@ -91,6 +100,7 @@ function Button({
     theme,
     disabled,
     loading,
+    borderRadius,
     title: getTitle(title, label),
     ...restProps
   };

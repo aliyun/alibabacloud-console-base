@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  EButtonThemeColor
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
 import ButtonInTop from '../../../rc/button-in-top';
@@ -23,8 +23,7 @@ export default function Logo(): JSX.Element {
     spm: 'logo',
     responsive: false,
     force: true,
-    themeColor: EButtonThemeColor.BRAND,
-    themeColorHover: EButtonThemeColor.BRAND,
+    themeColor: ButtonTheme.TEXT_BRAND_PRIMARY,
     ...logo
   }} />;
 }

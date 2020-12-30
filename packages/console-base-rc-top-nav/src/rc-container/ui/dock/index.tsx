@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import Button, {
   ButtonSize,
-  EButtonThemeColor,
-  EButtonThemeColorBg
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -27,37 +26,6 @@ const ScIcon = styled(Icon)`
  * 程序坞
  */
 export default function Dock(): JSX.Element | null {
-  // const [stateHovered, setStateHovered] = useState<boolean>(false); // 鼠标 hover 状态
-  // const dispatchToggleVisibleOfPane = useDispatchToggleVisibleOfPane();
-  //
-  // const handleClick = useCallback(() => dispatchToggleVisibleOfPane(), [dispatchToggleVisibleOfPane]);
-  //
-  // const handleMouseEnter = useCallback(() => {
-  //   setStateHovered(true);
-  // }, [setStateHovered]);
-  //
-  // const handleMouseLeave = useCallback(() => {
-  //   setStateHovered(false);
-  // }, [setStateHovered]);
-  //
-  // // 延时响应 hovered 状态
-  // useEffect(() => {
-  //   let timer: number | null = null;
-  //  
-  //   if (stateHovered) {
-  //     timer = setTimeout(() => {
-  //       dispatchToggleVisibleOfPane(true);
-  //       timer = null;
-  //     }, 200);
-  //   }
-  //  
-  //   return () => {
-  //     if (timer) {
-  //       clearTimeout(timer);
-  //       timer = null;
-  //     }
-  //   };
-  // }, [stateHovered, dispatchToggleVisibleOfPane]);
   const {
     dock
   } = useProps();
@@ -66,9 +34,7 @@ export default function Dock(): JSX.Element | null {
     spm: 'dock',
     label: <ScIcon type="menu" />,
     size: ButtonSize.NONE,
-    themeColor: EButtonThemeColor.WHITE,
-    themeColorHover: EButtonThemeColor.WHITE,
-    themeColorBg: EButtonThemeColorBg.BRAND,
+    theme: ButtonTheme.BRAND_PRIMARY,
     ...dock
   }} />;
 }

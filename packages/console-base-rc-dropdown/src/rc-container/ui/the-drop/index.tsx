@@ -36,28 +36,27 @@ interface IPropsScDropBody {
   bodyPadding?: TBodyPadding;
 }
 
+const cssVisible = css`
+  visibility: visible;
+  opacity: 1;
+`;
+const cssHidden = css`
+  visibility: hidden;
+  opacity: 0;
+`;
+
 const ScTheDrop = styled.div<IPropsScTheDrop>`
   display: block;
   position: absolute;
-  visibility: hidden;
-  opacity: 0;
   box-sizing: border-box;
   min-width: 120px;
   font-size: 12px;
   transition: all 360ms ease;
-  ${mixinTextPrimary};
-  ${mixinBorderPrimary};
-  ${mixinBgPrimary};
-  ${mixinShadowLDown};
-  
-  ${props => {
-    if (props.visible) {
-      return css`
-        visibility: visible;
-        opacity: 1;
-      `;
-    }
-  }};
+  ${mixinTextPrimary}
+  ${mixinBorderPrimary}
+  ${mixinBgPrimary}
+  ${mixinShadowLDown}
+  ${props => (props.visible ? cssVisible : cssHidden)}
 `;
 
 const ScTheDropBody = styled.div<IPropsScDropBody>`

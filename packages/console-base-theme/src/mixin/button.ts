@@ -120,7 +120,6 @@ export const mixinButtonDangerStateDisabled = css`
   color: var(--cb-color-button-danger-text-disabled, ${COLOR.BUTTON_DANGER_TEXT_DISABLED});
 `;
 export const mixinButtonDanger = css`
-  ${mixinButtonShadow}
   ${mixinButtonDangerStateNormal}
   
   &:hover,
@@ -169,9 +168,6 @@ export const mixinButtonMenuStateDisabled = css`
   color: var(--cb-color-button-menu-text-disabled, ${COLOR.BUTTON_MENU_TEXT_DISABLED});
 `;
 export const mixinButtonMenu = css`
-  display: block;
-  border-radius: 0;
-  width: 100%;
   ${mixinButtonMenuStateNormal}
   
   &:hover,
@@ -220,9 +216,6 @@ export const mixinButtonMenuActiveStateDisabled = css`
   color: var(--cb-color-button-menu-active-text-disabled, ${COLOR.BUTTON_MENU_ACTIVE_TEXT_DISABLED});
 `;
 export const mixinButtonMenuActive = css`
-  display: block;
-  border-radius: 0;
-  width: 100%;
   ${mixinButtonMenuActiveStateNormal}
   
   &:hover,
@@ -271,7 +264,6 @@ export const mixinButtonPrimaryStateDisabled = css`
   color: var(--cb-color-button-primary-text-disabled, ${COLOR.BUTTON_PRIMARY_TEXT_DISABLED});
 `;
 export const mixinButtonPrimary = css`
-  ${mixinButtonShadow}
   ${mixinButtonPrimaryStateNormal}
   
   &:hover,
@@ -320,7 +312,6 @@ export const mixinButtonSecondaryStateDisabled = css`
   color: var(--cb-color-button-secondary-text-disabled, ${COLOR.BUTTON_SECONDARY_TEXT_DISABLED});
 `;
 export const mixinButtonSecondary = css`
-  ${mixinButtonShadow}
   ${mixinButtonSecondaryStateNormal}
   
   &:hover,
@@ -417,7 +408,6 @@ export const mixinButtonBrandPrimaryStateDisabled = css`
   color: var(--cb-color-button-brand-primary-text-disabled, ${COLOR.BUTTON_BRAND_PRIMARY_TEXT_DISABLED});
 `;
 export const mixinButtonBrandPrimary = css`
-  ${mixinButtonShadow}
   ${mixinButtonBrandPrimaryStateNormal}
   
   &:hover,
@@ -466,7 +456,6 @@ export const mixinButtonBrandSecondaryStateDisabled = css`
   color: var(--cb-color-button-brand-secondary-text-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_TEXT_DISABLED});
 `;
 export const mixinButtonBrandSecondary = css`
-  ${mixinButtonShadow}
   ${mixinButtonBrandSecondaryStateNormal}
   
   &:hover,

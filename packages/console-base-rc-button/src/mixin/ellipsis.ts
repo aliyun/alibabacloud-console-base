@@ -10,8 +10,10 @@ import {
   IButtonPropsForSc
 } from '../types';
 
+const cssNoWrap = css`
+  white-space: nowrap;
+`;
+
 export default css<IButtonPropsForSc>`
-  ${props => (props.ellipsis ? typo.ellipsis : css`
-    white-space: nowrap;
-  `)};
+  ${props => (props.ellipsis ? typo.ellipsis : cssNoWrap)};
 `;

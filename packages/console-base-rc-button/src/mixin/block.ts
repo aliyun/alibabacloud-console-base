@@ -5,8 +5,20 @@ import {
 import {
   IButtonPropsForSc
 } from '../types';
+import {
+  EButtonTheme
+} from '../const';
+
+const THEMES_BLOCK: EButtonTheme[] = [
+  EButtonTheme.MENU,
+  EButtonTheme.MENU_ACTIVE
+];
+
+function isBlock(props: IButtonPropsForSc): boolean | undefined {
+  return THEMES_BLOCK.includes(props.theme) || props.block;
+}
 
 export default css<IButtonPropsForSc>`
-  display: ${props => (props.block ? 'block' : 'inline-block')};
-  width: ${props => (props.block ? '100%' : 'auto')};
+  display: ${props => (isBlock(props) ? 'block' : 'inline-block')};
+  width: ${props => (isBlock(props) ? '100%' : 'auto')};
 `;

@@ -77,10 +77,6 @@ const MAPPING: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.TEXT_BRAND_SECONDARY]: mixinButtonTextBrandSecondary
 };
 
-const cssCursorLoading = css`
-  cursor: default;
-`;
-
 export default css<IButtonPropsForSc>`
   ${props => { // loading 的时候没有 hover 样式
     if (props.loading && !props.disabled) {
@@ -88,10 +84,5 @@ export default css<IButtonPropsForSc>`
     }
     
     return MAPPING[props.theme];
-  }}
-  ${props => { // loading 的 cursor 在非 disabled 状态下为箭头
-    if (props.loading && !props.disabled) {
-      return cssCursorLoading;
-    }
   }}
 `;

@@ -30,23 +30,6 @@ function buildMixinButtonStateName(theme: string, state: EButtonState): string {
   return buildExportedMixinVarName(theme, 'State', state);
 }
 
-function insertFullHeading(theme: string): string {
-  const code: string[] = [];
-  
-  if (/^BUTTON_MENU/.test(theme)) {
-    code.push('display: block;', 'border-radius: 0;', 'width: 100%;');
-  }
-  
-  if (!/^BUTTON_TEXT|^BUTTON_MENU/.test(theme) && !/TERTIARY/.test(theme)) { // 文字和三级按钮没有阴影
-    code.push('${mixinButtonShadow}'); // eslint-disable-line no-template-curly-in-string
-  }
-  
-  code.push(`\${${buildMixinButtonStateName(theme, EButtonState.NORMAL)}}`);
-  code.push('');
-  
-  return code.join('\n  ');
-}
-
 function buildCodeMixinButtonSize(size: string): string {
   return `export const ${buildExportedMixinVarName('BUTTON_SIZE', size)} = css\`
   padding: 0 \${SIZE.PADDING_X_FORM_CONTROL_${size}}px;
@@ -84,7 +67,8 @@ ${buildCodeButtonStyle(theme, state)}
 
 function buildCodeMixinButtonFull(theme: string): string {
   return `export const ${buildExportedMixinVarName(theme)} = css\`
-  ${insertFullHeading(theme)}
+  \${${buildMixinButtonStateName(theme, EButtonState.NORMAL)}}
+  
   &:hover,
   &:focus {
     \${${buildMixinButtonStateName(theme, EButtonState.HOVER)}}

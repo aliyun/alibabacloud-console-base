@@ -4,7 +4,7 @@ import styled, {
 } from 'styled-components';
 
 import Button, {
-  EButtonThemeColor
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 import Dropdown from '@alicloud/console-base-rc-dropdown';
 
@@ -73,8 +73,7 @@ export default function ButtonInTop({
   }
   
   const jsxButton = <ScButton {...{
-    themeColor: EButtonThemeColor.NORMAL,
-    themeColorHover: EButtonThemeColor.BRAND,
+    theme: ButtonTheme.TEXT_BRAND_SECONDARY,
     label: <ButtonLabel label={label} />,
     responsive,
     ...buttonProps
