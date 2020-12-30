@@ -17,6 +17,7 @@ export default createGlobalStyle`
     --cb-color-text-accent: ${COLOR.TEXT_ACCENT};
     --cb-color-text-accent-hover: ${COLOR.TEXT_ACCENT_HOVER};
     --cb-color-text-accent-active: ${COLOR.TEXT_ACCENT_ACTIVE};
+    --cb-color-text-title: ${COLOR.TEXT_TITLE};
     --cb-color-text-primary: ${COLOR.TEXT_PRIMARY};
     --cb-color-text-secondary: ${COLOR.TEXT_SECONDARY};
     --cb-color-text-tertiary: ${COLOR.TEXT_TERTIARY};
@@ -27,7 +28,6 @@ export default createGlobalStyle`
     --cb-color-text-warning: ${COLOR.TEXT_WARNING};
     --cb-color-text-error: ${COLOR.TEXT_ERROR};
     --cb-color-text-danger: ${COLOR.TEXT_DANGER};
-    --cb-color-text-title: ${COLOR.TEXT_TITLE};
     --cb-color-text-emphasis: ${COLOR.TEXT_EMPHASIS};
     --cb-color-text-code: ${COLOR.TEXT_CODE};
     --cb-color-bg-disabled: ${COLOR.BG_DISABLED};

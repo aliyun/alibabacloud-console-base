@@ -10,7 +10,10 @@ import {
 } from '../theme-default';
 `;
 
-export const CODE_BEGIN_GLOBAL_STYLE = `${CODE_FRAGMENT_IMPORT_CSS}
+export const CODE_BEGIN_GLOBAL_STYLE = `import {
+  createGlobalStyle
+} from 'styled-components';
+
 import {
   COLOR,
   TYPO,

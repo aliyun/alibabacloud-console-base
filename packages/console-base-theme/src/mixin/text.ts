@@ -34,6 +34,10 @@ export const mixinTextAccentActive = css`
   color: ${COLOR.TEXT_ACCENT_ACTIVE};
   color: var(--cb-color-text-accent-active, ${COLOR.TEXT_ACCENT_ACTIVE});
 `;
+export const mixinTextTitle = css`
+  color: ${COLOR.TEXT_TITLE};
+  color: var(--cb-color-text-title, ${COLOR.TEXT_TITLE});
+`;
 export const mixinTextPrimary = css`
   color: ${COLOR.TEXT_PRIMARY};
   color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
@@ -73,10 +77,6 @@ export const mixinTextError = css`
 export const mixinTextDanger = css`
   color: ${COLOR.TEXT_DANGER};
   color: var(--cb-color-text-danger, ${COLOR.TEXT_DANGER});
-`;
-export const mixinTextTitle = css`
-  color: ${COLOR.TEXT_TITLE};
-  color: var(--cb-color-text-title, ${COLOR.TEXT_TITLE});
 `;
 export const mixinTextEmphasis = css`
   color: ${COLOR.TEXT_EMPHASIS};

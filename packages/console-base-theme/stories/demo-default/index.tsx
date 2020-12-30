@@ -2,42 +2,43 @@ import React from 'react';
 
 import {
   H1,
-  H2,
-  P,
-  Pre
+  P
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeGlobalStyle from './util/generate-code-global-style';
-import generateCodeCssVars from './util/generate-code-css-vars';
-import generateCodeMixinText from './util/generate-code-mixin-text';
-import generateCodeMixinBorder from './util/generate-code-mixin-border';
-import generateCodeMixinBg from './util/generate-code-mixin-bg';
-import generateCodeMixinShadow from './util/generate-code-mixin-shadow';
-import generateCodeMixinInput from './util/generate-code-mixin-input';
-import generateCodeMixinLink from './util/generate-code-mixin-link';
-import generateCodeMixinButton from './util/generate-code-mixin-button';
+import GeneratorGlobalStyle from './generator-global-style';
+import GeneratorLess from './generator-less';
+import GeneratorMixinText from './generator-mixin-text';
+import GeneratorMixinBg from './generator-mixin-bg';
+import GeneratorMixinBorder from './generator-mixin-border';
+import GeneratorMixinShadow from './generator-mixin-shadow';
+import GeneratorMixinLink from './generator-mixin-link';
+import GeneratorMixinInput from './generator-mixin-input';
+import GeneratorMixinButton from './generator-mixin-button';
 
 export default function DemoDefault(): JSX.Element {
   return <>
     <H1>生成 COLOR</H1>
     <P>这不仅仅是一个 demo！还是代码生成器 <span role="img" aria-label="factory">🏭</span>。</P>
-    <H2>src/theme-default/global-style.ts</H2>
-    <Pre>{generateCodeGlobalStyle()}</Pre>
-    <H2>doc/css/console-base.less</H2>
-    <Pre>{generateCodeCssVars()}</Pre>
-    <H2>src/mixin/text.ts</H2>
-    <Pre>{generateCodeMixinText()}</Pre>
-    <H2>src/mixin/bg.ts</H2>
-    <Pre>{generateCodeMixinBg()}</Pre>
-    <H2>src/mixin/border.ts</H2>
-    <Pre>{generateCodeMixinBorder()}</Pre>
-    <H2>src/mixin/shadow.ts</H2>
-    <Pre>{generateCodeMixinShadow()}</Pre>
-    <H2>src/mixin/link.ts</H2>
-    <Pre>{generateCodeMixinLink()}</Pre>
-    <H2>src/mixin/input.ts</H2>
-    <Pre>{generateCodeMixinInput()}</Pre>
-    <H2>src/mixin/button.ts</H2>
-    <Pre>{generateCodeMixinButton()}</Pre>
+    <GeneratorGlobalStyle />
+    <GeneratorLess />
+    <GeneratorMixinText />
+    <GeneratorMixinBg />
+    <GeneratorMixinBorder />
+    <GeneratorMixinShadow />
+    <GeneratorMixinLink />
+    <GeneratorMixinInput />
+    <GeneratorMixinButton />
   </>;
 }
+
+export {
+  GeneratorGlobalStyle,
+  GeneratorLess,
+  GeneratorMixinText,
+  GeneratorMixinBg,
+  GeneratorMixinBorder,
+  GeneratorMixinShadow,
+  GeneratorMixinLink,
+  GeneratorMixinInput,
+  GeneratorMixinButton
+};

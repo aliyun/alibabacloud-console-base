@@ -57,10 +57,11 @@ export default function generateCodeMixinButton(): string {
   };
   
   SIZES.forEach(v => {
-    pushCode(generator, `export const mixinButtonSize${v} = css\`
+    pushCode(generator, `export const ${buildExportedMixinVarName('BUTTON_SIZE', v)} = css\`
   padding: 0 \${SIZE.PADDING_X_FORM_CONTROL_${v}}px;
   height: \${SIZE.HEIGHT_FORM_CONTROL_${v}}px;
   line-height: \${SIZE.HEIGHT_FORM_CONTROL_${v} - 2}px;
+  font-size: \${SIZE.FONT_SIZE_FORM_CONTROL_${v}}px;
 \`;`);
   });
   

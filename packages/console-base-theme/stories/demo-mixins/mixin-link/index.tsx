@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  H2,
+  H1,
   List
 } from '@alicloud/demo-rc-elements';
 
@@ -36,7 +36,7 @@ const ScMixinLinkBrandSecondary = styled.a`
 
 export default function MixinLink(): JSX.Element {
   return <>
-    <H2>mixins for link</H2>
+    <H1>mixins for link</H1>
     <List>
       <ScMixinLinkDisabled href="//www.aliyun.com" target="_blank">disabled</ScMixinLinkDisabled>
       <ScMixinLinkPrimary href="//www.aliyun.com" target="_blank">primary</ScMixinLinkPrimary>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  H2,
+  H1,
   List
 } from '@alicloud/demo-rc-elements';
 
@@ -14,6 +14,7 @@ import {
   mixinTextAccent,
   mixinTextAccentHover,
   mixinTextAccentActive,
+  mixinTextTitle,
   mixinTextPrimary,
   mixinTextSecondary,
   mixinTextTertiary,
@@ -24,7 +25,6 @@ import {
   mixinTextWarning,
   mixinTextError,
   mixinTextDanger,
-  mixinTextTitle,
   mixinTextEmphasis,
   mixinTextCode
 } from '../../../src';
@@ -49,6 +49,9 @@ const ScMixinTextAccentHover = styled.span`
 `;
 const ScMixinTextAccentActive = styled.span`
   ${mixinTextAccentActive}
+`;
+const ScMixinTextTitle = styled.span`
+  ${mixinTextTitle}
 `;
 const ScMixinTextPrimary = styled.span`
   ${mixinTextPrimary}
@@ -80,9 +83,6 @@ const ScMixinTextError = styled.span`
 const ScMixinTextDanger = styled.span`
   ${mixinTextDanger}
 `;
-const ScMixinTextTitle = styled.span`
-  ${mixinTextTitle}
-`;
 const ScMixinTextEmphasis = styled.span`
   ${mixinTextEmphasis}
 `;
@@ -92,7 +92,7 @@ const ScMixinTextCode = styled.span`
 
 export default function MixinText(): JSX.Element {
   return <>
-    <H2>mixins for text</H2>
+    <H1>mixins for text</H1>
     <List>
       <ScMixinTextDisabled>disabled</ScMixinTextDisabled>
       <ScMixinTextBrand>brand</ScMixinTextBrand>
@@ -101,6 +101,7 @@ export default function MixinText(): JSX.Element {
       <ScMixinTextAccent>accent</ScMixinTextAccent>
       <ScMixinTextAccentHover>accent-hover</ScMixinTextAccentHover>
       <ScMixinTextAccentActive>accent-active</ScMixinTextAccentActive>
+      <ScMixinTextTitle>title</ScMixinTextTitle>
       <ScMixinTextPrimary>primary</ScMixinTextPrimary>
       <ScMixinTextSecondary>secondary</ScMixinTextSecondary>
       <ScMixinTextTertiary>tertiary</ScMixinTextTertiary>
@@ -111,7 +112,6 @@ export default function MixinText(): JSX.Element {
       <ScMixinTextWarning>warning</ScMixinTextWarning>
       <ScMixinTextError>error</ScMixinTextError>
       <ScMixinTextDanger>danger</ScMixinTextDanger>
-      <ScMixinTextTitle>title</ScMixinTextTitle>
       <ScMixinTextEmphasis>emphasis</ScMixinTextEmphasis>
       <ScMixinTextCode>code</ScMixinTextCode>
     </List>

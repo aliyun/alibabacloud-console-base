@@ -27,3 +27,13 @@ export default function DemoMixins(): JSX.Element {
     <MixinButton />
   </>;
 }
+
+export {
+  MixinText,
+  MixinBg,
+  MixinBorder,
+  MixinShadow,
+  MixinLink,
+  MixinInput,
+  MixinButton
+};

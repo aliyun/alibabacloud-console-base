@@ -13,6 +13,9 @@ const SUCCESS = '#1e8e3e';
 const WARNING = '#ffc440';
 const ERROR = '#d93026';
 const DANGER = '#c80000';
+const EMPHASIS = '#ff6a00'; // 突出说明，如「金额」、「最重要链接」等，用于 em 或未读标记,
+const CODE = '#f25c7f';
+const GRAY_TITLE = '#111';
 const GRAY_PRIMARY = '#333';
 const GRAY_SECONDARY = '#666';
 const GRAY_TERTIARY = '#999';
@@ -25,6 +28,7 @@ const TEXT_BRAND_ACTIVE = BRAND_ACTIVE;
 const TEXT_ACCENT = ACCENT;
 const TEXT_ACCENT_HOVER = ACCENT_HOVER;
 const TEXT_ACCENT_ACTIVE = ACCENT_ACTIVE;
+const TEXT_TITLE = GRAY_TITLE;
 const TEXT_PRIMARY = GRAY_PRIMARY;
 const TEXT_SECONDARY = GRAY_SECONDARY;
 const TEXT_TERTIARY = GRAY_TERTIARY;
@@ -34,6 +38,7 @@ const TEXT_SUCCESS = SUCCESS;
 const TEXT_WARNING = WARNING;
 const TEXT_ERROR = ERROR;
 const TEXT_DANGER = DANGER;
+const TEXT_EMPHASIS = EMPHASIS;
 
 const BG_DISABLED = DISABLED;
 const BG_BRAND = BRAND;
@@ -393,6 +398,7 @@ export default {
   TEXT_ACCENT,
   TEXT_ACCENT_HOVER,
   TEXT_ACCENT_ACTIVE,
+  TEXT_TITLE,
   TEXT_PRIMARY,
   TEXT_SECONDARY,
   TEXT_TERTIARY, // 用于说明性的文字
@@ -403,9 +409,8 @@ export default {
   TEXT_WARNING,
   TEXT_ERROR,
   TEXT_DANGER,
-  TEXT_TITLE: '#111',
-  TEXT_EMPHASIS: '#ff6a00', // 突出说明，如「金额」、「最重要链接」等，用于 em 或未读标记,
-  TEXT_CODE: '#f25c7f', // 用于 code 元素
+  TEXT_EMPHASIS,
+  TEXT_CODE: CODE,
   
   // --------------------------------------------------------------- //
   // 通用背景

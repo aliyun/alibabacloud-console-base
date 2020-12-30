@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  H2
+  H1
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -83,7 +83,7 @@ const ScMixinShadowXlLeft = styled(ScBrick)`
 
 export default function MixinShadow(): JSX.Element {
   return <>
-    <H2>mixins for shadow</H2>
+    <H1>mixins for shadow</H1>
     <ScBricks>
       <ScMixinShadowM>shadow-m</ScMixinShadowM>
       <ScMixinShadowMUp>shadow-m-up</ScMixinShadowMUp>

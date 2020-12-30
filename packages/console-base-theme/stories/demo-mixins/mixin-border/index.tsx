@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  H2
+  H1
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -407,7 +407,7 @@ const ScMixinBorderDangerLeft = styled(ScBrick)`
 
 export default function MixinBorder(): JSX.Element {
   return <>
-    <H2>mixins for border</H2>
+    <H1>mixins for border</H1>
     <ScBricks>
       <ScMixinBorderDisabledColor>disabled-color</ScMixinBorderDisabledColor>
       <ScMixinBorderDisabled>disabled</ScMixinBorderDisabled>

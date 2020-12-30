@@ -54,30 +54,35 @@ export const mixinButtonShadow = css`
   }
 `;
 
-export const mixinButtonSizeXS = css`
+export const mixinButtonSizeXs = css`
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_XS}px;
   height: ${SIZE.HEIGHT_FORM_CONTROL_XS}px;
   line-height: ${SIZE.HEIGHT_FORM_CONTROL_XS - 2}px;
+  font-size: ${SIZE.FONT_SIZE_FORM_CONTROL_XS}px;
 `;
 export const mixinButtonSizeS = css`
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_S}px;
   height: ${SIZE.HEIGHT_FORM_CONTROL_S}px;
   line-height: ${SIZE.HEIGHT_FORM_CONTROL_S - 2}px;
+  font-size: ${SIZE.FONT_SIZE_FORM_CONTROL_S}px;
 `;
 export const mixinButtonSizeM = css`
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_M}px;
   height: ${SIZE.HEIGHT_FORM_CONTROL_M}px;
   line-height: ${SIZE.HEIGHT_FORM_CONTROL_M - 2}px;
+  font-size: ${SIZE.FONT_SIZE_FORM_CONTROL_M}px;
 `;
 export const mixinButtonSizeL = css`
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_L}px;
   height: ${SIZE.HEIGHT_FORM_CONTROL_L}px;
   line-height: ${SIZE.HEIGHT_FORM_CONTROL_L - 2}px;
+  font-size: ${SIZE.FONT_SIZE_FORM_CONTROL_L}px;
 `;
-export const mixinButtonSizeXL = css`
+export const mixinButtonSizeXl = css`
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_XL}px;
   height: ${SIZE.HEIGHT_FORM_CONTROL_XL}px;
   line-height: ${SIZE.HEIGHT_FORM_CONTROL_XL - 2}px;
+  font-size: ${SIZE.FONT_SIZE_FORM_CONTROL_XL}px;
 `;
 export const mixinButtonDanger = css`
   border-color: ${COLOR.BUTTON_DANGER_BORDER};

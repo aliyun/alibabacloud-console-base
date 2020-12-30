@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  H2
+  H1
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -91,7 +91,7 @@ const ScMixinBgBackdrop = styled(ScBrick)`
 
 export default function MixinBg(): JSX.Element {
   return <>
-    <H2>mixins for bg</H2>
+    <H1>mixins for bg</H1>
     <ScBricks>
       <ScMixinBgBrand>brand</ScMixinBgBrand>
       <ScMixinBgBrandHover>brand-hover</ScMixinBgBrandHover>
