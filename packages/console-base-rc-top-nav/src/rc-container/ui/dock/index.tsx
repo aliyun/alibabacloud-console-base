@@ -35,6 +35,8 @@ export default function Dock(): JSX.Element | null {
     label: <ScIcon type="menu" />,
     size: ButtonSize.NONE,
     theme: ButtonTheme.BRAND_PRIMARY,
-    ...dock
+    ...dock,
+    borderRadius: false,
+    noShadow: true
   }} />;
 }
