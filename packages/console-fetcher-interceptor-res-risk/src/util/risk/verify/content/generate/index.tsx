@@ -8,7 +8,7 @@ import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 import Button, {
-  EButtonPreset
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
 import {
@@ -89,7 +89,7 @@ export default function Generate(): JSX.Element {
     label: stateCooling > 0 ? intl('op:resend_after_{n}s', {
       n: stateCooling
     }) : intl('op:send_code'),
-    preset: EButtonPreset.SECONDARY,
+    theme: ButtonTheme.SECONDARY,
     loading: stateGenerating,
     disabled: stateCooling > 0,
     onClick: handleClick

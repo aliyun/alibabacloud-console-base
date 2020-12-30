@@ -10,7 +10,7 @@ import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 import Button, {
-  EButtonPreset
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 import Input from '@alicloud/console-base-rc-input';
 import Flex from '@alicloud/console-base-rc-flex';
@@ -73,7 +73,7 @@ export default function Content(): JSX.Element {
         {detail ? <ScInfo>{detail}</ScInfo> : null}
         <Button {...{
           spm: `set-${type}`,
-          preset: EButtonPreset.LINK,
+          theme: ButtonTheme.TEXT_PRIMARY,
           label: intlVerifySetting(type),
           href: URL_SETTINGS
         }} />
