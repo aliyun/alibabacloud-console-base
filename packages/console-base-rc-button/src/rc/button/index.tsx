@@ -59,9 +59,13 @@ const ScInnerLabel = styled.span`
   ${typo.ellipsis};
 `;
 
+function getSize(theme: EButtonTheme) {
+  
+}
+
 function Button({
   theme = EButtonTheme.TERTIARY,
-  size = EButtonSize.M, // 默认有大小，可以通过设置 'none' 取消大小，取消大小之后就是 text button
+  size, // 默认有大小，可以通过设置 'none' 取消大小，取消大小之后就是 text button
   label,
   title,
   iconLeft,

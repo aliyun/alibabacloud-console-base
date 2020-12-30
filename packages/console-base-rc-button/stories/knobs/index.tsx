@@ -15,7 +15,7 @@ import {
 import {
   ButtonProps,
   EButtonTheme,
-  EButtonSize
+  ButtonSize
 } from '../../src';
 
 enum EGroup {
@@ -69,8 +69,8 @@ export default function Knobs({
     value: select<EButtonTheme>('props.theme', Object.values(EButtonTheme), EButtonTheme.PRIMARY, EGroup.LOOK),
     inUse: boolean('启用 props.theme', false, EGroup.LOOK)
   });
-  const size = optional<EButtonSize>({
-    value: select<EButtonSize>('props.size', Object.values(EButtonSize), EButtonSize.M, EGroup.LOOK),
+  const size = optional<ButtonSize>({
+    value: select<ButtonSize>('props.size', Object.values(ButtonSize), ButtonSize.M, EGroup.LOOK),
     inUse: boolean('启用 props.size', false, EGroup.LOOK)
   });
   const block = boolean('props.block', false, EGroup.LOOK);

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button, {
-  EButtonSize,
+  ButtonSize,
   EButtonThemeColor,
   EButtonThemeColorBg
 } from '@alicloud/console-base-rc-button';
@@ -65,7 +65,7 @@ export default function Dock(): JSX.Element | null {
   return hasNoActionPoint(dock) ? null : <ScDock {...{
     spm: 'dock',
     label: <ScIcon type="menu" />,
-    size: EButtonSize.NONE,
+    size: ButtonSize.NONE,
     themeColor: EButtonThemeColor.WHITE,
     themeColorHover: EButtonThemeColor.WHITE,
     themeColorBg: EButtonThemeColorBg.BRAND,

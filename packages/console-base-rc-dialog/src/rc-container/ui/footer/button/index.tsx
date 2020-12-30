@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import Button, {
   ButtonProps,
-  EButtonTheme
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
 import {
@@ -74,7 +74,7 @@ export default function FooterButton({
   
   return <ScButton {...{
     ...buttonProps as ButtonProps, // spm 参数一定存在，由上游保证
-    theme: primary ? EButtonTheme.PRIMARY : EButtonTheme.SECONDARY,
+    theme: primary ? ButtonTheme.PRIMARY : ButtonTheme.SECONDARY,
     onClick: handleClick
   }} />;
 }

@@ -7,7 +7,8 @@ import _isPlainObject from 'lodash/isPlainObject';
 import _snakeCase from 'lodash/snakeCase';
 import React, {
   isValidElement,
-  useState
+  useState,
+  useCallback
 } from 'react';
 import styled from 'styled-components';
 
@@ -17,8 +18,9 @@ import {
   typo
 } from '@alicloud/console-base-theme';
 import Button, {
-  EButtonPreset
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
+import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   IErrorInQueue,
@@ -135,7 +137,7 @@ export default function ErrorDetails({
   }
 }: IProps): JSX.Element | null {
   const [stateFolded, setStateFolded] = useState<boolean>(true);
-  
+  const handleToggleFolded = useCallback(() => setStateFolded(!stateFolded), [stateFolded, setStateFolded]);
   const kvList: IDetailKV[] = convertDetails(error);
   
   if (!kvList.length) {
@@ -146,12 +148,12 @@ export default function ErrorDetails({
     <ScButtonToggle {...{
       spm: 'detail-toggle',
       text: true,
-      iconRight: 'angle-down',
+      iconRight: <Icon type="angle-down" rotate={stateFolded ? 0 : 180} />,
       label: error.code ? intl('op:toggle_details_{code}', {
         code: error.code
       }) : intl('op:toggle_details'),
-      preset: EButtonPreset.TEXT,
-      onClick: () => setStateFolded(!stateFolded)
+      theme: ButtonTheme.TEXT_TERTIARY,
+      onClick: handleToggleFolded
     }} />
     <ScErrorDetails folded={stateFolded}>
       {kvList.map(({
