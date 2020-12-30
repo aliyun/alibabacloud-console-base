@@ -1,5 +1,5 @@
 import {
-  EModalMode
+  EModalMode as ModalMode
 } from './const';
 import {
   IPropsModal as ModalProps,
@@ -11,7 +11,7 @@ export {
 } from './rc-container';
 
 export {
-  EModalMode
+  ModalMode
 };
 
 export type {
