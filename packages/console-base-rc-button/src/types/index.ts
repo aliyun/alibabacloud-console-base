@@ -23,6 +23,7 @@ export interface IButtonPropsForSc extends TPropsForHtmlAnchorNButton {
   block?: boolean; // whether to display as a block level dom
   ellipsis?: boolean;
   loading?: boolean;
+  active?: boolean; // 将状态锁定在 active
 }
 
 export interface IButtonProps extends Omit<IButtonPropsForSc, 'title'> {

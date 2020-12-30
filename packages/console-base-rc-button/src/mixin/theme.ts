@@ -6,7 +6,6 @@ import {
 import {
   mixinButtonDangerStateNormal,
   mixinButtonMenuStateNormal,
-  mixinButtonMenuActiveStateNormal,
   mixinButtonPrimaryStateNormal,
   mixinButtonSecondaryStateNormal,
   mixinButtonTertiaryStateNormal,
@@ -18,9 +17,34 @@ import {
   mixinButtonTextTertiaryStateNormal,
   mixinButtonTextBrandPrimaryStateNormal,
   mixinButtonTextBrandSecondaryStateNormal,
+  mixinButtonDangerStateActive,
+  mixinButtonMenuStateActive,
+  mixinButtonPrimaryStateActive,
+  mixinButtonSecondaryStateActive,
+  mixinButtonTertiaryStateActive,
+  mixinButtonBrandPrimaryStateActive,
+  mixinButtonBrandSecondaryStateActive,
+  mixinButtonBrandTertiaryStateActive,
+  mixinButtonTextPrimaryStateActive,
+  mixinButtonTextSecondaryStateActive,
+  mixinButtonTextTertiaryStateActive,
+  mixinButtonTextBrandPrimaryStateActive,
+  mixinButtonTextBrandSecondaryStateActive,
+  mixinButtonDangerStateDisabled,
+  mixinButtonMenuStateDisabled,
+  mixinButtonPrimaryStateDisabled,
+  mixinButtonSecondaryStateDisabled,
+  mixinButtonTertiaryStateDisabled,
+  mixinButtonBrandPrimaryStateDisabled,
+  mixinButtonBrandSecondaryStateDisabled,
+  mixinButtonBrandTertiaryStateDisabled,
+  mixinButtonTextPrimaryStateDisabled,
+  mixinButtonTextSecondaryStateDisabled,
+  mixinButtonTextTertiaryStateDisabled,
+  mixinButtonTextBrandPrimaryStateDisabled,
+  mixinButtonTextBrandSecondaryStateDisabled,
   mixinButtonDanger,
   mixinButtonMenu,
-  mixinButtonMenuActive,
   mixinButtonPrimary,
   mixinButtonSecondary,
   mixinButtonTertiary,
@@ -41,11 +65,27 @@ import {
   EButtonTheme
 } from '../const';
 
+const MAPPING_DISABLED: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
+  [EButtonTheme.NONE]: null,
+  [EButtonTheme.DANGER]: mixinButtonDangerStateDisabled,
+  [EButtonTheme.MENU]: mixinButtonMenuStateDisabled,
+  [EButtonTheme.PRIMARY]: mixinButtonPrimaryStateDisabled,
+  [EButtonTheme.SECONDARY]: mixinButtonSecondaryStateDisabled,
+  [EButtonTheme.TERTIARY]: mixinButtonTertiaryStateDisabled,
+  [EButtonTheme.BRAND_PRIMARY]: mixinButtonBrandPrimaryStateDisabled,
+  [EButtonTheme.BRAND_SECONDARY]: mixinButtonBrandSecondaryStateDisabled,
+  [EButtonTheme.BRAND_TERTIARY]: mixinButtonBrandTertiaryStateDisabled,
+  [EButtonTheme.TEXT_PRIMARY]: mixinButtonTextPrimaryStateDisabled,
+  [EButtonTheme.TEXT_SECONDARY]: mixinButtonTextSecondaryStateDisabled,
+  [EButtonTheme.TEXT_TERTIARY]: mixinButtonTextTertiaryStateDisabled,
+  [EButtonTheme.TEXT_BRAND_PRIMARY]: mixinButtonTextBrandPrimaryStateDisabled,
+  [EButtonTheme.TEXT_BRAND_SECONDARY]: mixinButtonTextBrandSecondaryStateDisabled
+};
+
 const MAPPING_NORMAL: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.NONE]: null,
   [EButtonTheme.DANGER]: mixinButtonDangerStateNormal,
   [EButtonTheme.MENU]: mixinButtonMenuStateNormal,
-  [EButtonTheme.MENU_ACTIVE]: mixinButtonMenuActiveStateNormal,
   [EButtonTheme.PRIMARY]: mixinButtonPrimaryStateNormal,
   [EButtonTheme.SECONDARY]: mixinButtonSecondaryStateNormal,
   [EButtonTheme.TERTIARY]: mixinButtonTertiaryStateNormal,
@@ -59,11 +99,27 @@ const MAPPING_NORMAL: Record<EButtonTheme, FlattenSimpleInterpolation | null> = 
   [EButtonTheme.TEXT_BRAND_SECONDARY]: mixinButtonTextBrandSecondaryStateNormal
 };
 
+const MAPPING_ACTIVE: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
+  [EButtonTheme.NONE]: null,
+  [EButtonTheme.DANGER]: mixinButtonDangerStateActive,
+  [EButtonTheme.MENU]: mixinButtonMenuStateActive,
+  [EButtonTheme.PRIMARY]: mixinButtonPrimaryStateActive,
+  [EButtonTheme.SECONDARY]: mixinButtonSecondaryStateActive,
+  [EButtonTheme.TERTIARY]: mixinButtonTertiaryStateActive,
+  [EButtonTheme.BRAND_PRIMARY]: mixinButtonBrandPrimaryStateActive,
+  [EButtonTheme.BRAND_SECONDARY]: mixinButtonBrandSecondaryStateActive,
+  [EButtonTheme.BRAND_TERTIARY]: mixinButtonBrandTertiaryStateActive,
+  [EButtonTheme.TEXT_PRIMARY]: mixinButtonTextPrimaryStateActive,
+  [EButtonTheme.TEXT_SECONDARY]: mixinButtonTextSecondaryStateActive,
+  [EButtonTheme.TEXT_TERTIARY]: mixinButtonTextTertiaryStateActive,
+  [EButtonTheme.TEXT_BRAND_PRIMARY]: mixinButtonTextBrandPrimaryStateActive,
+  [EButtonTheme.TEXT_BRAND_SECONDARY]: mixinButtonTextBrandSecondaryStateActive
+};
+
 const MAPPING: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.NONE]: null,
   [EButtonTheme.DANGER]: mixinButtonDanger,
   [EButtonTheme.MENU]: mixinButtonMenu,
-  [EButtonTheme.MENU_ACTIVE]: mixinButtonMenuActive,
   [EButtonTheme.PRIMARY]: mixinButtonPrimary,
   [EButtonTheme.SECONDARY]: mixinButtonSecondary,
   [EButtonTheme.TERTIARY]: mixinButtonTertiary,
@@ -79,7 +135,15 @@ const MAPPING: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
 
 export default css<IButtonPropsForSc>`
   ${props => { // loading 的时候没有 hover 样式
-    if (props.loading && !props.disabled) {
+    if (props.disabled) {
+      return MAPPING_DISABLED[props.theme] || mixinButtonTextTertiaryStateDisabled;
+    }
+    
+    if (props.active) {
+      return MAPPING_ACTIVE[props.theme];
+    }
+    
+    if (props.loading) {
       return MAPPING_NORMAL[props.theme];
     }
     

@@ -9,11 +9,22 @@ import {
 import {
   IButtonPropsForSc
 } from '../types';
+import {
+  EButtonTheme
+} from '../const';
+
+const THEMES_NEED_ELLIPSIS: EButtonTheme[] = [
+  EButtonTheme.MENU
+];
 
 const cssNoWrap = css`
   white-space: nowrap;
 `;
 
+function needEllipsis(props: IButtonPropsForSc): boolean {
+  return props.ellipsis ?? THEMES_NEED_ELLIPSIS.includes(props.theme);
+}
+
 export default css<IButtonPropsForSc>`
-  ${props => (props.ellipsis ? typo.ellipsis : cssNoWrap)};
+  ${props => (needEllipsis(props) ? typo.ellipsis : cssNoWrap)};
 `;

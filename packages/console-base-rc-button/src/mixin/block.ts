@@ -10,8 +10,7 @@ import {
 } from '../const';
 
 const THEMES_BLOCK: EButtonTheme[] = [
-  EButtonTheme.MENU,
-  EButtonTheme.MENU_ACTIVE
+  EButtonTheme.MENU
 ];
 
 function isBlock(props: IButtonPropsForSc): boolean | undefined {

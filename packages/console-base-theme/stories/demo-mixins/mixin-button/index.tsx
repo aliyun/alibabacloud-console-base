@@ -10,6 +10,7 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
+  mixinButtonShadow,
   mixinButtonSizeXs,
   mixinButtonSizeS,
   mixinButtonSizeM,
@@ -18,7 +19,6 @@ import {
   mixinButtonReset,
   mixinButtonDanger,
   mixinButtonMenu,
-  mixinButtonMenuActive,
   mixinButtonPrimary,
   mixinButtonSecondary,
   mixinButtonTertiary,
@@ -64,6 +64,17 @@ const ScMixinButtonSizeXl = styled(ScButtonBase)`
   ${mixinButtonSizeXl}
   ${mixinButtonBrandSecondary}
 `;
+const ScMixinButtonShadow = styled(ScButtonBase)`
+  ${mixinButtonDanger}
+  ${mixinButtonSizeM}
+  ${mixinButtonShadow}
+`;
+const ScMixinButtonDanger = styled(ScButtonBase)`
+  ${mixinButtonDanger}
+`;
+const ScMixinButtonMenu = styled(ScButtonBase)`
+  ${mixinButtonMenu}
+`;
 const ScMixinButtonPrimary = styled(ScButtonBase)`
   ${mixinButtonPrimary}
 `;
@@ -81,15 +92,6 @@ const ScMixinButtonBrandSecondary = styled(ScButtonBase)`
 `;
 const ScMixinButtonBrandTertiary = styled(ScButtonBase)`
   ${mixinButtonBrandTertiary}
-`;
-const ScMixinButtonDanger = styled(ScButtonBase)`
-  ${mixinButtonDanger}
-`;
-const ScMixinButtonMenu = styled(ScButtonBase)`
-  ${mixinButtonMenu}
-`;
-const ScMixinButtonMenuActive = styled(ScButtonBase)`
-  ${mixinButtonMenuActive}
 `;
 const ScMixinButtonTextPrimary = styled(ScButtonBaseText)`
   ${mixinButtonTextPrimary};
@@ -124,7 +126,7 @@ export default function MixinButton(): JSX.Element {
     <div>
       <ScMixinButtonDanger disabled={stateDisabled}>danger</ScMixinButtonDanger>
       <ScMixinButtonMenu disabled={stateDisabled}>menu</ScMixinButtonMenu>
-      <ScMixinButtonMenuActive disabled={stateDisabled}>menu-active</ScMixinButtonMenuActive>
+      <ScMixinButtonShadow disabled={stateDisabled}>mixinButtonShadow</ScMixinButtonShadow>
     </div>
     <div>
       <ScMixinButtonPrimary disabled={stateDisabled}>primary</ScMixinButtonPrimary>

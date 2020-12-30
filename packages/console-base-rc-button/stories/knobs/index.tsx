@@ -76,6 +76,7 @@ export default function Knobs({
   const block = boolean('props.block', false, EGroup.LOOK);
   const ellipsis = boolean('props.ellipsis', false, EGroup.LOOK);
   const loading = boolean('props.loading', false, EGroup.LOOK);
+  const active = boolean('props.active', false, EGroup.LOOK);
   const disabled = boolean('props.disabled', false, EGroup.LOOK);
   
   const href = text('props.href', '', EGroup.OTHER);
@@ -97,6 +98,7 @@ export default function Knobs({
     block,
     ellipsis,
     loading,
+    active,
     disabled
   }), [
     component,
@@ -112,6 +114,7 @@ export default function Knobs({
     block,
     ellipsis,
     loading,
+    active,
     disabled
   ]);
   

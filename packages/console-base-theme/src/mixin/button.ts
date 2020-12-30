@@ -183,54 +183,6 @@ export const mixinButtonMenu = css`
     ${mixinButtonMenuStateDisabled}
   }
 `;
-export const mixinButtonMenuActiveStateNormal = css`
-  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER};
-  border-color: var(--cb-color-button-menu-active-border, ${COLOR.BUTTON_MENU_ACTIVE_BORDER});
-  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG};
-  background-color: var(--cb-color-button-menu-active-bg, ${COLOR.BUTTON_MENU_ACTIVE_BG});
-  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT};
-  color: var(--cb-color-button-menu-active-text, ${COLOR.BUTTON_MENU_ACTIVE_TEXT});
-`;
-export const mixinButtonMenuActiveStateHover = css`
-  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER_HOVER};
-  border-color: var(--cb-color-button-menu-active-border-hover, ${COLOR.BUTTON_MENU_ACTIVE_BORDER_HOVER});
-  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG_HOVER};
-  background-color: var(--cb-color-button-menu-active-bg-hover, ${COLOR.BUTTON_MENU_ACTIVE_BG_HOVER});
-  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT_HOVER};
-  color: var(--cb-color-button-menu-active-text-hover, ${COLOR.BUTTON_MENU_ACTIVE_TEXT_HOVER});
-`;
-export const mixinButtonMenuActiveStateActive = css`
-  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER_ACTIVE};
-  border-color: var(--cb-color-button-menu-active-border-active, ${COLOR.BUTTON_MENU_ACTIVE_BORDER_ACTIVE});
-  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG_ACTIVE};
-  background-color: var(--cb-color-button-menu-active-bg-active, ${COLOR.BUTTON_MENU_ACTIVE_BG_ACTIVE});
-  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT_ACTIVE};
-  color: var(--cb-color-button-menu-active-text-active, ${COLOR.BUTTON_MENU_ACTIVE_TEXT_ACTIVE});
-`;
-export const mixinButtonMenuActiveStateDisabled = css`
-  border-color: ${COLOR.BUTTON_MENU_ACTIVE_BORDER_DISABLED};
-  border-color: var(--cb-color-button-menu-active-border-disabled, ${COLOR.BUTTON_MENU_ACTIVE_BORDER_DISABLED});
-  background-color: ${COLOR.BUTTON_MENU_ACTIVE_BG_DISABLED};
-  background-color: var(--cb-color-button-menu-active-bg-disabled, ${COLOR.BUTTON_MENU_ACTIVE_BG_DISABLED});
-  color: ${COLOR.BUTTON_MENU_ACTIVE_TEXT_DISABLED};
-  color: var(--cb-color-button-menu-active-text-disabled, ${COLOR.BUTTON_MENU_ACTIVE_TEXT_DISABLED});
-`;
-export const mixinButtonMenuActive = css`
-  ${mixinButtonMenuActiveStateNormal}
-  
-  &:hover,
-  &:focus {
-    ${mixinButtonMenuActiveStateHover}
-  }
-  
-  &:active {
-    ${mixinButtonMenuActiveStateActive}
-  }
-  
-  &:disabled {
-    ${mixinButtonMenuActiveStateDisabled}
-  }
-`;
 export const mixinButtonPrimaryStateNormal = css`
   border-color: ${COLOR.BUTTON_PRIMARY_BORDER};
   border-color: var(--cb-color-button-primary-border, ${COLOR.BUTTON_PRIMARY_BORDER});

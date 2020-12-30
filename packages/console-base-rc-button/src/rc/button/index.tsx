@@ -89,6 +89,7 @@ function Button({
   iconRight,
   children,
   loading,
+  active,
   disabled,
   borderRadius = true,
   spm = 'button',
@@ -100,6 +101,7 @@ function Button({
     theme,
     disabled,
     loading,
+    active,
     borderRadius,
     title: getTitle(title, label),
     ...restProps

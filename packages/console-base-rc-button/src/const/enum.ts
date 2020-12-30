@@ -12,7 +12,6 @@ export enum EButtonTheme {
   NONE = 'none',
   DANGER = 'danger',
   MENU = 'menu',
-  MENU_ACTIVE = 'menu:active',
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   TERTIARY = 'tertiary',
