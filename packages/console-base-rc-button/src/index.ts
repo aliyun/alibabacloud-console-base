@@ -7,12 +7,8 @@ export {
 } from './rc/button';
 
 export {
-  EButtonPreset,
-  EButtonSize,
-  EButtonFontSize,
-  EButtonThemeColorBd,
-  EButtonThemeColorBg,
-  EButtonThemeColor
+  EButtonTheme,
+  EButtonSize
 } from './const';
 
 export type {

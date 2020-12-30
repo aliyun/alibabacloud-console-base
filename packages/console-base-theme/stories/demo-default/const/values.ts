@@ -114,5 +114,4 @@ export const mixinButtonShadow = css\`
   &:disabled {
     box-shadow: none;
   }
-\`;
-`;
+\`;`;
