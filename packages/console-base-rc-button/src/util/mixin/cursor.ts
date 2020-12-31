@@ -4,7 +4,7 @@ import {
 
 import {
   IButtonPropsForSc
-} from '../types';
+} from '../../types';
 
 const cssCursorLoading = css`
   cursor: default;

@@ -4,10 +4,10 @@ import {
 
 import {
   IButtonPropsForSc
-} from '../types';
+} from '../../types';
 import {
   EButtonTheme
-} from '../const';
+} from '../../const';
 
 const THEMES_BLOCK: EButtonTheme[] = [
   EButtonTheme.MENU

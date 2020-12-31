@@ -13,10 +13,10 @@ import {
 
 import {
   IButtonPropsForSc
-} from '../types';
+} from '../../types';
 import {
   EButtonSize
-} from '../const';
+} from '../../const';
 
 const MAPPING: Record<EButtonSize, FlattenSimpleInterpolation | null> = {
   [EButtonSize.NONE]: null,

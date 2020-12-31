@@ -60,10 +60,10 @@ import {
 
 import {
   IButtonPropsForSc
-} from '../types';
+} from '../../types';
 import {
   EButtonTheme
-} from '../const';
+} from '../../const';
 
 const MAPPING_DISABLED: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.NONE]: null,
@@ -133,20 +133,22 @@ const MAPPING: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.TEXT_BRAND_SECONDARY]: mixinButtonTextBrandSecondary
 };
 
+function getThemeMixin(props: IButtonPropsForSc): FlattenSimpleInterpolation | null {
+  if (props.disabled) {
+    return MAPPING_DISABLED[props.theme] || mixinButtonTextTertiaryStateDisabled;
+  }
+  
+  if (props.active) {
+    return MAPPING_ACTIVE[props.theme];
+  }
+  
+  if (props.loading) { // loading 的时候没有 hover 样式
+    return MAPPING_NORMAL[props.theme];
+  }
+  
+  return MAPPING[props.theme];
+}
+
 export default css<IButtonPropsForSc>`
-  ${props => { // loading 的时候没有 hover 样式
-    if (props.disabled) {
-      return MAPPING_DISABLED[props.theme] || mixinButtonTextTertiaryStateDisabled;
-    }
-    
-    if (props.active) {
-      return MAPPING_ACTIVE[props.theme];
-    }
-    
-    if (props.loading) {
-      return MAPPING_NORMAL[props.theme];
-    }
-    
-    return MAPPING[props.theme];
-  }}
+  ${props => getThemeMixin(props)}
 `;

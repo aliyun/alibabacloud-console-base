@@ -18,15 +18,15 @@ import {
   EButtonSize,
   EButtonTheme
 } from '../../const';
-import mixinCommon from '../../mixin/common';
-import mixinBorder from '../../mixin/border';
-import mixinTextAlign from '../../mixin/text-align';
-import mixinBlock from '../../mixin/block';
-import mixinEllipsis from '../../mixin/ellipsis';
-import mixinSize from '../../mixin/size';
-import mixinTheme from '../../mixin/theme';
-import mixinShadow from '../../mixin/shadow';
-import mixinCursor from '../../mixin/cursor';
+import mixinCommon from '../../util/mixin/common';
+import mixinBorder from '../../util/mixin/border';
+import mixinTextAlign from '../../util/mixin/text-align';
+import mixinBlock from '../../util/mixin/block';
+import mixinEllipsis from '../../util/mixin/ellipsis';
+import mixinSize from '../../util/mixin/size';
+import mixinTheme from '../../util/mixin/theme';
+import mixinShadow from '../../util/mixin/shadow';
+import mixinCursor from '../../util/mixin/cursor';
 import getHrefTarget from '../../util/get-href-target';
 import getTitle from '../../util/get-title';
 import renderIcon from '../../util/render-icon';

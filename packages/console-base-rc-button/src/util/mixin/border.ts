@@ -4,11 +4,11 @@ import {
 
 import {
   IButtonPropsForSc
-} from '../types';
+} from '../../types';
 import {
   EButtonSize,
   EButtonTheme
-} from '../const';
+} from '../../const';
 
 const THEMES_NEED_BORDER: EButtonTheme[] = [
   EButtonTheme.DANGER,
