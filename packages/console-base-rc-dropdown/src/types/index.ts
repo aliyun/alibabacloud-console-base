@@ -17,6 +17,7 @@ export interface IPropsTheDrop {
 export interface IPropsDropdown extends IPropsTheDrop {
   trigger: string | JSX.Element;
   block?: boolean; // 默认为 inline-block
+  disabled?: boolean;
   visible?: boolean; // 下拉是否可见（受控），如果 undefined 则表明不受控
   onEsc?(): void;
   onNavUp?(): void;
