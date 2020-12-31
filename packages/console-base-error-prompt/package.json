@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "ConsoleBase 错误弹窗器",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -44,11 +44,11 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.0.13",
-    "@alicloud/console-base-rc-button": "^1.0.14",
-    "@alicloud/console-base-rc-dialog": "^1.0.18",
-    "@alicloud/console-base-rc-icon": "^1.0.13",
-    "@alicloud/console-base-rc-pagination": "^1.0.18",
-    "@alicloud/console-base-theme": "^0.0.7",
+    "@alicloud/console-base-rc-button": "^1.0.15",
+    "@alicloud/console-base-rc-dialog": "^1.0.19",
+    "@alicloud/console-base-rc-icon": "^1.0.14",
+    "@alicloud/console-base-rc-pagination": "^1.0.19",
+    "@alicloud/console-base-theme": "^0.0.8",
     "lodash": "^4.17.20",
     "qs": "^6.9.4"
   },

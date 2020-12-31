@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-top-nav",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "ConsoleBase 组件 - 吊顶",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -41,10 +41,10 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-button": "^1.0.14",
-    "@alicloud/console-base-rc-dropdown": "^1.0.11",
-    "@alicloud/console-base-rc-icon": "^1.0.13",
-    "@alicloud/console-base-theme": "^0.0.7",
+    "@alicloud/console-base-rc-button": "^1.0.15",
+    "@alicloud/console-base-rc-dropdown": "^1.0.12",
+    "@alicloud/console-base-rc-icon": "^1.0.14",
+    "@alicloud/console-base-theme": "^0.0.8",
     "@alicloud/mere-dom": "^0.0.3",
     "lodash": "^4.17.20"
   },
