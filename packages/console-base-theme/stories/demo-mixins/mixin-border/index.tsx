@@ -113,7 +113,7 @@ const ScBricks = styled.div`
 const ScBrick = styled.div`
   padding: 8px;
   border: 3px dashed transparent;
-  background-color: rgba(0, 0, 0, 0.01);
+  background-color: rgba(255, 0, 128, 0.05);
   color: #666;
 `;
 const ScMixinBorderDisabledColor = styled(ScBrick)`

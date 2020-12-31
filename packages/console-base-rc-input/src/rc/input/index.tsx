@@ -4,85 +4,27 @@ import React, {
   useState,
   useCallback
 } from 'react';
-import styled, {
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
 import {
   SIZE,
   mixinTextTertiary,
-  mixinShadowMDown,
-  mixinInputReset,
-  mixinInputTextDisabled,
-  mixinInputBgDisabled,
-  mixinInputBorderDisabled,
-  mixinInputText,
-  mixinInputBg,
-  mixinInputBorder,
-  mixinInputTextHover,
-  mixinInputBgHover,
-  mixinInputBorderHover,
-  mixinInputTextFocus,
-  mixinInputBgFocus,
-  mixinInputBorderFocus,
-  mixinInputBorderFocusBrand
+  mixinInputReset
 } from '@alicloud/console-base-theme';
 
 import {
-  TInner,
-  TFnInner,
   IProps,
-  IPropsLook
+  IPropsScInput
 } from '../../types';
-
-interface IPropsScInput extends IPropsLook {
-  disabled?: boolean;
-  hovered: boolean;
-  focused: boolean;
-}
-
-function renderInner(inner: TInner | TFnInner, focused: boolean, hovered: boolean): TInner | null {
-  if (!inner) {
-    return null;
-  }
-  
-  if (React.isValidElement(inner) || typeof inner === 'string') {
-    return inner;
-  }
-  
-  if (typeof inner === 'function') {
-    return inner(focused, hovered);
-  }
-  
-  return null;
-}
+import mixinDisabled from '../../util/mixin/disabled';
+import mixinNormal from '../../util/mixin/normal';
+import mixinHover from '../../util/mixin/hover';
+import mixinFocus from '../../util/mixin/focus';
+import mixinShadow from '../../util/mixin/shadow';
+import mixinTheRealInput from '../../util/mixin/the-real-input';
+import renderInner from '../../util/render-inner';
 
 const INNER_HEIGHT_PX = `${SIZE.HEIGHT_FORM_CONTROL_M - 2}px`;
-
-const cssNormal = css<IPropsScInput>`
-  ${mixinInputBg}
-  ${props => (props.borderless ? null : mixinInputBorder)}
-`;
-const cssHover = css<IPropsScInput>`
-  ${mixinInputBgHover}
-  ${mixinShadowMDown}
-  ${props => (props.borderless ? null : mixinInputBorderHover)}
-`;
-const cssFocus = css<IPropsScInput>`
-  ${mixinInputBgFocus}
-  ${mixinShadowMDown}
-  ${props => {
-    if (props.borderless) {
-      return null;
-    }
-    
-    return props.theme === 'brand' ? mixinInputBorderFocusBrand : mixinInputBorderFocus;
-  }}
-`;
-const cssDisabled = css<IPropsScInput>`
-  ${mixinInputBgDisabled}
-  ${props => (props.borderless ? null : mixinInputBorderDisabled)}
-`;
 
 const ScInput = styled.div<IPropsScInput>`
   display: ${props => (props.block ? 'flex' : 'inline-flex')};
@@ -94,21 +36,22 @@ const ScInput = styled.div<IPropsScInput>`
   line-height: ${INNER_HEIGHT_PX};
   font-size: ${SIZE.FONT_SIZE_BODY}px;
   transition: all 0.3s ease-out;
+  ${mixinShadow}
   
   ${props => {
     if (props.disabled) {
-      return cssDisabled;
+      return mixinDisabled;
     }
     
     if (props.focused && !props.weakFocusStyle) {
-      return cssFocus;
+      return mixinFocus;
     }
     
     if (props.hovered) {
-      return cssHover;
+      return mixinHover;
     }
     
-    return cssNormal;
+    return mixinNormal;
   }}
 `;
 
@@ -120,27 +63,7 @@ const ScInputWrap = styled.span`
 
 const ScInputReal = styled.input<IPropsScInput>`
   ${mixinInputReset}
-  padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
-  border: 0;
-  width: 100%;
-  height: ${INNER_HEIGHT_PX};
-  line-height: ${INNER_HEIGHT_PX};
-  
-  ${props => {
-    if (props.disabled) {
-      return mixinInputTextDisabled;
-    }
-    
-    if (props.focused) {
-      return mixinInputTextFocus;
-    }
-    
-    if (props.hovered) {
-      return mixinInputTextHover;
-    }
-    
-    return mixinInputText;
-  }}
+  ${mixinTheRealInput}
 `;
 
 const ScInnerExtra = styled.span`
@@ -150,11 +73,11 @@ const ScInnerExtra = styled.span`
 `;
 
 const ScInnerLeft = styled(ScInnerExtra)`
-  padding-left: ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
+  padding-left: ${SIZE.PADDING_X_FORM_CONTROL_M - 1}px;
 `;
 
 const ScInnerRight = styled(ScInnerExtra)`
-  padding-right: ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
+  padding-right: ${SIZE.PADDING_X_FORM_CONTROL_M - 1}px;
 `;
 
 export default function Input({

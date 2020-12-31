@@ -48,10 +48,10 @@ const BG_ACCENT = ACCENT;
 const BG_ACCENT_HOVER = ACCENT_HOVER;
 const BG_ACCENT_ACTIVE = ACCENT_ACTIVE;
 const BG_PRIMARY = '#fff'; // 视觉上第一层级的背景色（用于 level1 的导航、dialog、dropdown 等）
-const BG_SECONDARY = '#f7f9fa'; // 视觉上第二层级的背景色（用于 level2 的导航）
-const BG_SECONDARY_FADE = 'rgba(0,64,96,0.03137)'; // 等价于 BG_SECONDARY
-const BG_TERTIARY = '#ebebeb'; // 视觉上第三层级的背景色（用于 body）
-const BG_TERTIARY_FADE = 'rgba(0,0,0,0.07843)'; // 等价于 BG_TERTIARY
+const BG_SECONDARY = '#f4f6f7'; // 视觉上第二层级的背景色（用于 level2 的导航）
+const BG_SECONDARY_FADE = 'rgba(0,46,70,0.04314)'; // 等价于 BG_SECONDARY
+const BG_TERTIARY = '#eee'; // 视觉上第三层级的背景色（用于 body）
+const BG_TERTIARY_FADE = 'rgba(0,0,0,0.066667)'; // 等价于 BG_TERTIARY
 const BG_HELP = '#f7f7f7';
 const BG_INFO = '#ebf4fb';
 const BG_SUCCESS = '#edfcf1';
@@ -66,10 +66,10 @@ const BORDER_BRAND_ACTIVE = BRAND_ACTIVE;
 const BORDER_ACCENT = ACCENT;
 const BORDER_ACCENT_HOVER = ACCENT_HOVER;
 const BORDER_ACCENT_ACTIVE = ACCENT_ACTIVE;
-const BORDER_PRIMARY = '#efefef';
-const BORDER_SECONDARY = '#dedede';
-const BORDER_TERTIARY = DISABLED;
-const BORDER_HELP = HELP;
+const BORDER_PRIMARY = '#d1d5d9';
+const BORDER_SECONDARY = '#e3e4e6';
+const BORDER_TERTIARY = '#ebebeb';
+const BORDER_HELP = '#ccc';
 const BORDER_INFO = INFO;
 const BORDER_SUCCESS = SUCCESS;
 const BORDER_WARNING = WARNING;
@@ -176,9 +176,9 @@ const BUTTON_DANGER_BORDER_DISABLED = BORDER_DISABLED;
  * 
  * 态\色 | 字 | 底 | 边
  * :-- | :-- | :-- | :--
- * 正常 | 黑字 | 透明浅灰底 | 无边
- * HOVER | 白字 | 红底 | 无边
- * ACTIVE | 白字 | 深红底 | 无边
+ * 正常 | 黑字2 | 透明浅灰底 | 无边
+ * HOVER | 黑字2 | 透明浅灰底 | 无边
+ * ACTIVE | 黑字2 | 透明浅灰底 | 无边
  * 禁用 | 灰字 | 无底 | 灰边
  */
 const BUTTON_MENU_TEXT = TEXT_SECONDARY;
@@ -187,8 +187,8 @@ const BUTTON_MENU_BORDER = TRANSPARENT;
 const BUTTON_MENU_TEXT_HOVER = TEXT_SECONDARY;
 const BUTTON_MENU_BG_HOVER = BG_SECONDARY_FADE;
 const BUTTON_MENU_BORDER_HOVER = TRANSPARENT;
-const BUTTON_MENU_TEXT_ACTIVE = TEXT_PRIMARY;
-const BUTTON_MENU_BG_ACTIVE = BG_TERTIARY_FADE;
+const BUTTON_MENU_TEXT_ACTIVE = TEXT_SECONDARY;
+const BUTTON_MENU_BG_ACTIVE = BG_SECONDARY_FADE;
 const BUTTON_MENU_BORDER_ACTIVE = TRANSPARENT;
 const BUTTON_MENU_TEXT_DISABLED = TEXT_DISABLED;
 const BUTTON_MENU_BG_DISABLED = TRANSPARENT;
@@ -499,8 +499,8 @@ export default {
   BG_ACCENT_ACTIVE,
   BG_PRIMARY,
   BG_SECONDARY,
-  BG_TERTIARY,
   BG_SECONDARY_FADE,
+  BG_TERTIARY,
   BG_TERTIARY_FADE,
   BG_HELP,
   BG_INFO,

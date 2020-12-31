@@ -24,3 +24,9 @@ export interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onM
   onMouseLeave?(): void;
   onChange?(value: string, e?: ChangeEvent<HTMLInputElement>): void;
 }
+
+export interface IPropsScInput extends IPropsLook {
+  disabled?: boolean;
+  hovered: boolean;
+  focused: boolean;
+}

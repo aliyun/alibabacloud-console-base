@@ -20,7 +20,6 @@ import {
 export const mixinButtonReset = css`
   padding: 0;
   border: 1px solid transparent;
-  border-radius: 2px;
   box-sizing: border-box;
   outline: none;
   background: none;

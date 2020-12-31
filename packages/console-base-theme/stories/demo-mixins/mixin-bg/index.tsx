@@ -15,8 +15,8 @@ import {
   mixinBgAccentActive,
   mixinBgPrimary,
   mixinBgSecondary,
-  mixinBgTertiary,
   mixinBgSecondaryFade,
+  mixinBgTertiary,
   mixinBgTertiaryFade,
   mixinBgHelp,
   mixinBgInfo,
@@ -63,11 +63,11 @@ const ScMixinBgPrimary = styled(ScBrick)`
 const ScMixinBgSecondary = styled(ScBrick)`
   ${mixinBgSecondary}
 `;
-const ScMixinBgTertiary = styled(ScBrick)`
-  ${mixinBgTertiary}
-`;
 const ScMixinBgSecondaryFade = styled(ScBrick)`
   ${mixinBgSecondaryFade}
+`;
+const ScMixinBgTertiary = styled(ScBrick)`
+  ${mixinBgTertiary}
 `;
 const ScMixinBgTertiaryFade = styled(ScBrick)`
   ${mixinBgTertiaryFade}
@@ -109,8 +109,8 @@ export default function MixinBg(): JSX.Element {
       <ScMixinBgAccentActive>accent-active</ScMixinBgAccentActive>
       <ScMixinBgPrimary>primary</ScMixinBgPrimary>
       <ScMixinBgSecondary>secondary</ScMixinBgSecondary>
-      <ScMixinBgTertiary>tertiary</ScMixinBgTertiary>
       <ScMixinBgSecondaryFade>secondary-fade</ScMixinBgSecondaryFade>
+      <ScMixinBgTertiary>tertiary</ScMixinBgTertiary>
       <ScMixinBgTertiaryFade>tertiary-fade</ScMixinBgTertiaryFade>
       <ScMixinBgDisabled>disabled</ScMixinBgDisabled>
       <ScMixinBgHelp>help</ScMixinBgHelp>
