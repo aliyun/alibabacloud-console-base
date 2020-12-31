@@ -6,6 +6,11 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
+  mixinShadowS,
+  mixinShadowSUp,
+  mixinShadowSRight,
+  mixinShadowSDown,
+  mixinShadowSLeft,
   mixinShadowM,
   mixinShadowMUp,
   mixinShadowMRight,
@@ -35,6 +40,21 @@ const ScBrick = styled.div`
   color: #666;
 `;
 
+const ScMixinShadowS = styled(ScBrick)`
+  ${mixinShadowS}
+`;
+const ScMixinShadowSUp = styled(ScBrick)`
+  ${mixinShadowSUp}
+`;
+const ScMixinShadowSRight = styled(ScBrick)`
+  ${mixinShadowSRight}
+`;
+const ScMixinShadowSDown = styled(ScBrick)`
+  ${mixinShadowSDown}
+`;
+const ScMixinShadowSLeft = styled(ScBrick)`
+  ${mixinShadowSLeft}
+`;
 const ScMixinShadowM = styled(ScBrick)`
   ${mixinShadowM}
 `;
@@ -85,6 +105,11 @@ export default function MixinShadow(): JSX.Element {
   return <>
     <H1>mixins for shadow</H1>
     <ScBricks>
+      <ScMixinShadowS>shadow-s</ScMixinShadowS>
+      <ScMixinShadowSUp>shadow-s-up</ScMixinShadowSUp>
+      <ScMixinShadowSRight>shadow-s-right</ScMixinShadowSRight>
+      <ScMixinShadowSDown>shadow-s-down</ScMixinShadowSDown>
+      <ScMixinShadowSLeft>shadow-s-left</ScMixinShadowSLeft>
       <ScMixinShadowM>shadow-m</ScMixinShadowM>
       <ScMixinShadowMUp>shadow-m-up</ScMixinShadowMUp>
       <ScMixinShadowMRight>shadow-m-right</ScMixinShadowMRight>

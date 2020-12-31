@@ -6,6 +6,26 @@ import {
   SHADOW
 } from '../theme-default';
 
+export const mixinShadowS = css`
+  box-shadow: ${SHADOW.S};
+  box-shadow: var(--cb-shadow-s, ${SHADOW.S});
+`;
+export const mixinShadowSUp = css`
+  box-shadow: ${SHADOW.S_UP};
+  box-shadow: var(--cb-shadow-s-up, ${SHADOW.S_UP});
+`;
+export const mixinShadowSRight = css`
+  box-shadow: ${SHADOW.S_RIGHT};
+  box-shadow: var(--cb-shadow-s-right, ${SHADOW.S_RIGHT});
+`;
+export const mixinShadowSDown = css`
+  box-shadow: ${SHADOW.S_DOWN};
+  box-shadow: var(--cb-shadow-s-down, ${SHADOW.S_DOWN});
+`;
+export const mixinShadowSLeft = css`
+  box-shadow: ${SHADOW.S_LEFT};
+  box-shadow: var(--cb-shadow-s-left, ${SHADOW.S_LEFT});
+`;
 export const mixinShadowM = css`
   box-shadow: ${SHADOW.M};
   box-shadow: var(--cb-shadow-m, ${SHADOW.M});
