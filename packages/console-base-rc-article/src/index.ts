@@ -4,7 +4,7 @@ import {
   mixinBorderSecondaryBottom,
   mixinTextTitle,
   mixinLinkPrimary,
-  mixinBorderPrimary,
+  mixinBorderTertiary,
   mixinBgPrimary,
   mixinBgSecondary,
   typo
@@ -220,7 +220,7 @@ export default styled.article`
       font-size: 0.9em;
       text-align: left;
       color: inherit;
-      ${mixinBorderPrimary};
+      ${mixinBorderTertiary};
       
       &:first-child {
         border-left: none;

@@ -13,10 +13,10 @@ import styled, {
 
 import {
   mixinTextPrimary,
-  mixinBorderPrimary,
+  mixinBorderTertiary,
   mixinBgPrimary,
   mixinShadowLDown,
-  mixinBorderPrimaryTop
+  mixinBorderTertiaryTop
 } from '@alicloud/console-base-theme';
 
 import {
@@ -53,7 +53,7 @@ const ScTheDrop = styled.div<IPropsScTheDrop>`
   font-size: 12px;
   transition: all 360ms ease;
   ${mixinTextPrimary}
-  ${mixinBorderPrimary}
+  ${mixinBorderTertiary}
   ${mixinBgPrimary}
   ${mixinShadowLDown}
   ${props => (props.visible ? cssVisible : cssHidden)}
@@ -81,7 +81,7 @@ const ScTheDropBody = styled.div<IPropsScDropBody>`
 `;
 
 const ScTheDropFooter = styled.footer`
-  ${mixinBorderPrimaryTop};
+  ${mixinBorderTertiaryTop};
 `;
 
 export default function TheDrop(): JSX.Element | ReactPortal {

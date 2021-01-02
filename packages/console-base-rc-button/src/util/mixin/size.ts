@@ -15,7 +15,8 @@ import {
   IButtonPropsForSc
 } from '../../types';
 import {
-  EButtonSize
+  EButtonSize,
+  EButtonTheme
 } from '../../const';
 
 const MAPPING: Record<EButtonSize, FlattenSimpleInterpolation | null> = {
@@ -27,6 +28,22 @@ const MAPPING: Record<EButtonSize, FlattenSimpleInterpolation | null> = {
   [EButtonSize.XL]: mixinButtonSizeXl
 };
 
+const THEMES_DEFAULT_SIZE_NONE = [
+  EButtonTheme.TEXT_PRIMARY,
+  EButtonTheme.TEXT_SECONDARY,
+  EButtonTheme.TEXT_TERTIARY,
+  EButtonTheme.TEXT_BRAND_PRIMARY,
+  EButtonTheme.TEXT_BRAND_SECONDARY
+];
+
+function getSize(props: IButtonPropsForSc): EButtonSize {
+  if (props.size) {
+    return props.size;
+  }
+  
+  return THEMES_DEFAULT_SIZE_NONE.includes(props.theme) ? EButtonSize.NONE : EButtonSize.M;
+}
+
 export default css<IButtonPropsForSc>`
-  ${props => MAPPING[props.size]}
+  ${props => MAPPING[getSize(props)]}
 `;

@@ -45,7 +45,7 @@ const ScButton = styled(Button)<IProps>`
       background: rgba(0, 0, 0, 0.1);
       ${mixinTextSecondary};
     }
-  `)};
+  `)}
   
   i {
     font-size: 12px;

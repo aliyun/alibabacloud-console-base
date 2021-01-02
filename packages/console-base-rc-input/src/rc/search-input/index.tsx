@@ -18,7 +18,7 @@ interface IPropsScIcon {
 
 const ScIcon = styled(Icon)<IPropsScIcon>`
   font-size: 16px;
-  ${props => (props.highlighted ? mixinTextEmphasis : mixinTextTertiary)};
+  ${props => (props.highlighted ? mixinTextEmphasis : mixinTextTertiary)}
 `;
 
 function renderIcon(focused: boolean, hovered: boolean): JSX.Element {

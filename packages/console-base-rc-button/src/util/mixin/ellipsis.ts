@@ -26,5 +26,5 @@ function needEllipsis(props: IButtonPropsForSc): boolean {
 }
 
 export default css<IButtonPropsForSc>`
-  ${props => (needEllipsis(props) ? typo.ellipsis : cssNoWrap)};
+  ${props => (needEllipsis(props) ? typo.ellipsis : cssNoWrap)}
 `;

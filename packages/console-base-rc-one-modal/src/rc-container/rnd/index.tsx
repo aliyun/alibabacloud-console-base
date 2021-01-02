@@ -42,10 +42,10 @@ const ScRnd = styled(Rnd)`
   background-color: #fff;
   ${props => (props['data-moving'] ? null : css`
     transition: all 0.3s ease-in;
-  `)};
+  `)}
   ${props => (props['data-invisible'] ? css`
     opacity: 0;
-  ` : null)};
+  ` : null)}
   
   ${`.${CLASS_J_RND_HANDLE}`} {
     cursor: move;

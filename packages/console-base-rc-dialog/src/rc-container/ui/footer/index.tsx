@@ -5,7 +5,7 @@ import styled, {
 
 import {
   SIZE,
-  mixinBorderPrimaryTop
+  mixinBorderTertiaryTop
 } from '@alicloud/console-base-theme';
 
 import {
@@ -43,12 +43,12 @@ const cssNormal = css`
 const cssSlide = css`
   justify-content: flex-start;
   height: ${SIZE.HEIGHT_DIALOG_SLIDE_FOOTER}px;
-  ${mixinBorderPrimaryTop};
+  ${mixinBorderTertiaryTop}
 `;
 
 const ScFooter = styled.footer<IScProps>`
-  ${cssCommon};
-  ${props => (props.mode === EDialogMode.SLIDE ? cssSlide : cssNormal)};
+  ${cssCommon}
+  ${props => (props.mode === EDialogMode.SLIDE ? cssSlide : cssNormal)}
 `;
 
 export default function Footer(): JSX.Element {

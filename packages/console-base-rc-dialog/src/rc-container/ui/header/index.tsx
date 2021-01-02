@@ -6,8 +6,8 @@ import styled, {
 import {
   SIZE,
   mixinTextTitle,
-  typo,
-  mixinBorderPrimaryBottom
+  mixinBorderTertiaryBottom,
+  typo
 } from '@alicloud/console-base-theme';
 
 import {
@@ -38,7 +38,7 @@ const cssNormal = css`
 // slide 和 slide-up 共用
 const cssSlide = css`
   height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;
-  ${mixinBorderPrimaryBottom};
+  ${mixinBorderTertiaryBottom}
 `;
 
 const ScHeader = styled.header<IScProps>`

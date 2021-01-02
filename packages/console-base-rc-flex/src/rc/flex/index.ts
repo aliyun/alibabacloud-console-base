@@ -19,12 +19,12 @@ const cssWrap = css`
  */
 export default styled.div<IProps>`
   display: flex;
-  ${props => (props.vertical ? cssVertical : null)};
-  ${props => (props.wrapping ? cssWrap : null)};
+  ${props => (props.vertical ? cssVertical : null)}
+  ${props => (props.wrapping ? cssWrap : null)}
   ${props => (props.align ? css`
     align-items: ${props.align};
-  ` : null)};
+  ` : null)}
   ${props => (props.justify ? css`
     justify-content: ${props.justify};
-  ` : null)};
+  ` : null)}
 `;

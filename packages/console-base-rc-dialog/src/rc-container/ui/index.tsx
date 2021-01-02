@@ -7,7 +7,7 @@ import {
   SIZE,
   mixinShadowL,
   mixinShadowLUp,
-  mixinBorderPrimary,
+  mixinBorderTertiary,
   mixinBgPrimary
 } from '@alicloud/console-base-theme';
 
@@ -72,9 +72,9 @@ const ScDialog = styled.div<IScDialogProps>`
   max-width: 100%;
   font-size: 12px;
   transition: all ease-in 200ms;
-  ${mixinBgPrimary};
-  ${mixinBorderPrimary};
-  ${mixinShadowL};
+  ${mixinBgPrimary}
+  ${mixinBorderTertiary}
+  ${mixinShadowL}
   ${props => {
     switch (props.mode) {
       case EDialogMode.SLIDE:
@@ -84,7 +84,7 @@ const ScDialog = styled.div<IScDialogProps>`
       default:
         return cssNormal;
     }
-  }};
+  }}
 `;
 
 /**
