@@ -4,7 +4,7 @@ import {
 
 import {
   COLOR
-} from '../theme-default';
+} from '../var';
 
 export const mixinInputReset = css`
   border: 1px solid transparent;
@@ -21,18 +21,6 @@ export const mixinInputReset = css`
   &::-ms-clear {
     display: none;
   }
-`;
-export const mixinInputTextDisabled = css`
-  color: ${COLOR.INPUT_TEXT_DISABLED};
-  color: var(--cb-color-input-text-disabled, ${COLOR.INPUT_TEXT_DISABLED});
-`;
-export const mixinInputBgDisabled = css`
-  background-color: ${COLOR.INPUT_BG_DISABLED};
-  background-color: var(--cb-color-input-bg-disabled, ${COLOR.INPUT_BG_DISABLED});
-`;
-export const mixinInputBorderDisabled = css`
-  border-color: ${COLOR.INPUT_BORDER_DISABLED};
-  border-color: var(--cb-color-input-border-disabled, ${COLOR.INPUT_BORDER_DISABLED});
 `;
 export const mixinInputText = css`
   color: ${COLOR.INPUT_TEXT};
@@ -73,4 +61,16 @@ export const mixinInputBorderFocus = css`
 export const mixinInputBorderFocusBrand = css`
   border-color: ${COLOR.INPUT_BORDER_FOCUS_BRAND};
   border-color: var(--cb-color-input-border-focus-brand, ${COLOR.INPUT_BORDER_FOCUS_BRAND});
+`;
+export const mixinInputTextDisabled = css`
+  color: ${COLOR.INPUT_TEXT_DISABLED};
+  color: var(--cb-color-input-text-disabled, ${COLOR.INPUT_TEXT_DISABLED});
+`;
+export const mixinInputBgDisabled = css`
+  background-color: ${COLOR.INPUT_BG_DISABLED};
+  background-color: var(--cb-color-input-bg-disabled, ${COLOR.INPUT_BG_DISABLED});
+`;
+export const mixinInputBorderDisabled = css`
+  border-color: ${COLOR.INPUT_BORDER_DISABLED};
+  border-color: var(--cb-color-input-border-disabled, ${COLOR.INPUT_BORDER_DISABLED});
 `;

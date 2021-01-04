@@ -5,7 +5,7 @@ import {
   Pre
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeMixinBorder from '../util/generate-code-mixin-border';
+import generateCodeMixinBorder from '../../util/generate-code-mixin-border';
 
 export default function GeneratorMixinBorder(): JSX.Element {
   return <>

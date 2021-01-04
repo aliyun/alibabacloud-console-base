@@ -4,7 +4,7 @@ import {
 
 import {
   COLOR
-} from '../theme-default';
+} from '../var';
 
 const linkCommon = css`
   transition: all ease-in-out 0.3s;
@@ -35,7 +35,7 @@ export const mixinLinkPrimary = css`
   color: ${COLOR.LINK_PRIMARY};
   color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
   ${linkCommon};
-
+  
   &:visited {
     color: ${COLOR.LINK_PRIMARY_VISITED};
     color: var(--cb-color-link-primary-visited, ${COLOR.LINK_PRIMARY_VISITED});
@@ -56,7 +56,7 @@ export const mixinLinkSecondary = css`
   color: ${COLOR.LINK_SECONDARY};
   color: var(--cb-color-link-secondary, ${COLOR.LINK_SECONDARY});
   ${linkCommon};
-
+  
   &:visited {
     color: ${COLOR.LINK_SECONDARY_VISITED};
     color: var(--cb-color-link-secondary-visited, ${COLOR.LINK_SECONDARY_VISITED});
@@ -77,7 +77,7 @@ export const mixinLinkTertiary = css`
   color: ${COLOR.LINK_TERTIARY};
   color: var(--cb-color-link-tertiary, ${COLOR.LINK_TERTIARY});
   ${linkCommon};
-
+  
   &:visited {
     color: ${COLOR.LINK_TERTIARY_VISITED};
     color: var(--cb-color-link-tertiary-visited, ${COLOR.LINK_TERTIARY_VISITED});
@@ -98,7 +98,7 @@ export const mixinLinkBrand = css`
   color: ${COLOR.LINK_BRAND};
   color: var(--cb-color-link-brand, ${COLOR.LINK_BRAND});
   ${linkCommon};
-
+  
   &:visited {
     color: ${COLOR.LINK_BRAND_VISITED};
     color: var(--cb-color-link-brand-visited, ${COLOR.LINK_BRAND_VISITED});
@@ -119,7 +119,7 @@ export const mixinLinkBrandSecondary = css`
   color: ${COLOR.LINK_BRAND_SECONDARY};
   color: var(--cb-color-link-brand-secondary, ${COLOR.LINK_BRAND_SECONDARY});
   ${linkCommon};
-
+  
   &:visited {
     color: ${COLOR.LINK_BRAND_SECONDARY_VISITED};
     color: var(--cb-color-link-brand-secondary-visited, ${COLOR.LINK_BRAND_SECONDARY_VISITED});

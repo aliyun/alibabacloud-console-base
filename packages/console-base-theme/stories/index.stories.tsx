@@ -22,10 +22,10 @@ import DemoDefault, {
 import DemoColorScale from './demo-color-scale';
 import DemoColorConversion from './demo-color-conversion';
 import DemoMixins, {
-  MixinText,
-  MixinBg,
-  MixinBorder,
-  MixinShadow,
+  MixinBaseText,
+  MixinBaseBg,
+  MixinBaseBorder,
+  MixinBaseShadow,
   MixinLink,
   MixinInput,
   MixinButton
@@ -44,10 +44,10 @@ storiesOf(pkgInfo.name, module)
     .add('gen-mixin-input', () => <GeneratorMixinInput />)
     .add('gen-mixin-button', () => <GeneratorMixinButton />)
     .add('mixins', () => <DemoMixins />)
-    .add('mixin-text', () => <MixinText />)
-    .add('mixin-bg', () => <MixinBg />)
-    .add('mixin-border', () => <MixinBorder />)
-    .add('mixin-shadow', () => <MixinShadow />)
+    .add('mixin-base-text', () => <MixinBaseText />)
+    .add('mixin-base-bg', () => <MixinBaseBg />)
+    .add('mixin-base-border', () => <MixinBaseBorder />)
+    .add('mixin-shadow', () => <MixinBaseShadow />)
     .add('mixin-link', () => <MixinLink />)
     .add('mixin-input', () => <MixinInput />)
     .add('mixin-button', () => <MixinButton />)

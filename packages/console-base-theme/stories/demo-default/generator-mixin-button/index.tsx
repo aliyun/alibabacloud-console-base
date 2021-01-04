@@ -5,7 +5,7 @@ import {
   Pre
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeMixinButton from '../util/generate-code-mixin-button';
+import generateCodeMixinButton from '../../util/generate-code-mixin-button';
 
 export default function GeneratorMixinButton(): JSX.Element {
   return <>

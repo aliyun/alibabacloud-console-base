@@ -1,7 +1,10 @@
-export * from './theme-default';
+export * from './var';
 export * from './helper';
 export * from './mixin';
 
 export {
-  default
-} from './theme-default';
+  default as ThemeStyleLight
+} from './theme/light';
+export {
+  default as ThemeStyleDark
+} from './theme/dark';

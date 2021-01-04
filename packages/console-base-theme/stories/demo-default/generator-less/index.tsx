@@ -5,7 +5,7 @@ import {
   Pre
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeCssVars from '../util/generate-code-css-vars';
+import generateCodeCssVars from '../../util/generate-code-css-vars';
 
 export default function GeneratorLess(): JSX.Element {
   return <>

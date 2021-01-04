@@ -5,7 +5,7 @@ import {
 import {
   COLOR,
   SIZE
-} from '../theme-default';
+} from '../var';
 
 import {
   mixinShadowLDown

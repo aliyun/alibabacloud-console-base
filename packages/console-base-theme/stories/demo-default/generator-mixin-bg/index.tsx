@@ -5,7 +5,7 @@ import {
   Pre
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeMixinBg from '../util/generate-code-mixin-bg';
+import generateCodeMixinBg from '../../util/generate-code-mixin-bg';
 
 export default function GeneratorMixinBg(): JSX.Element {
   return <>

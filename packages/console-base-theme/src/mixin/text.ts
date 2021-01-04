@@ -4,11 +4,15 @@ import {
 
 import {
   COLOR
-} from '../theme-default';
+} from '../var';
 
-export const mixinTextDisabled = css`
-  color: ${COLOR.TEXT_DISABLED};
-  color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED});
+export const mixinTextTransparent = css`
+  color: ${COLOR.TEXT_TRANSPARENT};
+  color: var(--cb-color-text-transparent, ${COLOR.TEXT_TRANSPARENT});
+`;
+export const mixinTextWhite = css`
+  color: ${COLOR.TEXT_WHITE};
+  color: var(--cb-color-text-white, ${COLOR.TEXT_WHITE});
 `;
 export const mixinTextBrand = css`
   color: ${COLOR.TEXT_BRAND};
@@ -34,10 +38,6 @@ export const mixinTextAccentActive = css`
   color: ${COLOR.TEXT_ACCENT_ACTIVE};
   color: var(--cb-color-text-accent-active, ${COLOR.TEXT_ACCENT_ACTIVE});
 `;
-export const mixinTextTitle = css`
-  color: ${COLOR.TEXT_TITLE};
-  color: var(--cb-color-text-title, ${COLOR.TEXT_TITLE});
-`;
 export const mixinTextPrimary = css`
   color: ${COLOR.TEXT_PRIMARY};
   color: var(--cb-color-text-primary, ${COLOR.TEXT_PRIMARY});
@@ -50,9 +50,9 @@ export const mixinTextTertiary = css`
   color: ${COLOR.TEXT_TERTIARY};
   color: var(--cb-color-text-tertiary, ${COLOR.TEXT_TERTIARY});
 `;
-export const mixinTextInverse = css`
-  color: ${COLOR.TEXT_INVERSE};
-  color: var(--cb-color-text-inverse, ${COLOR.TEXT_INVERSE});
+export const mixinTextDisabled = css`
+  color: ${COLOR.TEXT_DISABLED};
+  color: var(--cb-color-text-disabled, ${COLOR.TEXT_DISABLED});
 `;
 export const mixinTextHelp = css`
   color: ${COLOR.TEXT_HELP};

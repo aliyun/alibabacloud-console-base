@@ -5,7 +5,7 @@ import {
   Pre
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeMixinShadow from '../util/generate-code-mixin-shadow';
+import generateCodeMixinShadow from '../../util/generate-code-mixin-shadow';
 
 export default function GeneratorMixinShadow(): JSX.Element {
   return <>

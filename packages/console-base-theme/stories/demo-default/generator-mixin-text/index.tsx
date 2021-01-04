@@ -5,7 +5,7 @@ import {
   Pre
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeMixinText from '../util/generate-code-mixin-text';
+import generateCodeMixinText from '../../util/generate-code-mixin-text';
 
 export default function GeneratorMixinText(): JSX.Element {
   return <>

@@ -4,11 +4,15 @@ import {
 
 import {
   COLOR
-} from '../theme-default';
+} from '../var';
 
-export const mixinBgDisabled = css`
-  background-color: ${COLOR.BG_DISABLED};
-  background-color: var(--cb-color-bg-disabled, ${COLOR.BG_DISABLED});
+export const mixinBgTransparent = css`
+  background-color: ${COLOR.BG_TRANSPARENT};
+  background-color: var(--cb-color-bg-transparent, ${COLOR.BG_TRANSPARENT});
+`;
+export const mixinBgWhite = css`
+  background-color: ${COLOR.BG_WHITE};
+  background-color: var(--cb-color-bg-white, ${COLOR.BG_WHITE});
 `;
 export const mixinBgBrand = css`
   background-color: ${COLOR.BG_BRAND};
@@ -42,37 +46,61 @@ export const mixinBgSecondary = css`
   background-color: ${COLOR.BG_SECONDARY};
   background-color: var(--cb-color-bg-secondary, ${COLOR.BG_SECONDARY});
 `;
-export const mixinBgTertiary = css`
-  background-color: ${COLOR.BG_TERTIARY};
-  background-color: var(--cb-color-bg-tertiary, ${COLOR.BG_TERTIARY});
-`;
 export const mixinBgSecondaryFade = css`
   background-color: ${COLOR.BG_SECONDARY_FADE};
   background-color: var(--cb-color-bg-secondary-fade, ${COLOR.BG_SECONDARY_FADE});
+`;
+export const mixinBgTertiary = css`
+  background-color: ${COLOR.BG_TERTIARY};
+  background-color: var(--cb-color-bg-tertiary, ${COLOR.BG_TERTIARY});
 `;
 export const mixinBgTertiaryFade = css`
   background-color: ${COLOR.BG_TERTIARY_FADE};
   background-color: var(--cb-color-bg-tertiary-fade, ${COLOR.BG_TERTIARY_FADE});
 `;
+export const mixinBgDisabled = css`
+  background-color: ${COLOR.BG_DISABLED};
+  background-color: var(--cb-color-bg-disabled, ${COLOR.BG_DISABLED});
+`;
 export const mixinBgHelp = css`
   background-color: ${COLOR.BG_HELP};
   background-color: var(--cb-color-bg-help, ${COLOR.BG_HELP});
+`;
+export const mixinBgHelpFade = css`
+  background-color: ${COLOR.BG_HELP_FADE};
+  background-color: var(--cb-color-bg-help-fade, ${COLOR.BG_HELP_FADE});
 `;
 export const mixinBgInfo = css`
   background-color: ${COLOR.BG_INFO};
   background-color: var(--cb-color-bg-info, ${COLOR.BG_INFO});
 `;
+export const mixinBgInfoFade = css`
+  background-color: ${COLOR.BG_INFO_FADE};
+  background-color: var(--cb-color-bg-info-fade, ${COLOR.BG_INFO_FADE});
+`;
 export const mixinBgSuccess = css`
   background-color: ${COLOR.BG_SUCCESS};
   background-color: var(--cb-color-bg-success, ${COLOR.BG_SUCCESS});
+`;
+export const mixinBgSuccessFade = css`
+  background-color: ${COLOR.BG_SUCCESS_FADE};
+  background-color: var(--cb-color-bg-success-fade, ${COLOR.BG_SUCCESS_FADE});
 `;
 export const mixinBgWarning = css`
   background-color: ${COLOR.BG_WARNING};
   background-color: var(--cb-color-bg-warning, ${COLOR.BG_WARNING});
 `;
+export const mixinBgWarningFade = css`
+  background-color: ${COLOR.BG_WARNING_FADE};
+  background-color: var(--cb-color-bg-warning-fade, ${COLOR.BG_WARNING_FADE});
+`;
 export const mixinBgError = css`
   background-color: ${COLOR.BG_ERROR};
   background-color: var(--cb-color-bg-error, ${COLOR.BG_ERROR});
+`;
+export const mixinBgErrorFade = css`
+  background-color: ${COLOR.BG_ERROR_FADE};
+  background-color: var(--cb-color-bg-error-fade, ${COLOR.BG_ERROR_FADE});
 `;
 export const mixinBgDanger = css`
   background-color: ${COLOR.BG_DANGER};

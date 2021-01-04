@@ -71,6 +71,6 @@ export default function MixinInput(): JSX.Element {
     <H1>mixins for input</H1>
     <ScInput placeholder="accent input" />
     <ScInputAlt placeholder="brand input" />
-    <ScInputDisabled disabled />
+    <ScInputDisabled disabled placeholder="disabled input" />
   </>;
 }

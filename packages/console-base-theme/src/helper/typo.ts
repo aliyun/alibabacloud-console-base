@@ -5,7 +5,7 @@ import {
 import {
   COLOR,
   TYPO
-} from '../theme-default';
+} from '../var';
 import {
   mixinTextPrimary,
   mixinTextSecondary,

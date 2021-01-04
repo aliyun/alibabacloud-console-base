@@ -1,27 +1,52 @@
-import React from 'react';
+import React, {
+  useState,
+  useCallback
+} from 'react';
+import {
+  createGlobalStyle
+} from 'styled-components';
 
 import {
-  H1
+  H1,
+  Button
 } from '@alicloud/demo-rc-elements';
 
-import GlobalStyle from '../../src';
+import {
+  ThemeStyleLight,
+  ThemeStyleDark
+} from '../../src';
 
-import MixinText from './mixin-text';
-import MixinBg from './mixin-bg';
-import MixinBorder from './mixin-border';
-import MixinShadow from './mixin-shadow';
+import MixinBaseText from './mixin-base-text';
+import MixinBaseBg from './mixin-base-bg';
+import MixinBaseBorder from './mixin-base-border';
+import MixinBaseShadow from './mixin-base-shadow';
 import MixinLink from './mixin-link';
 import MixinInput from './mixin-input';
 import MixinButton from './mixin-button';
 
+const BgDark = createGlobalStyle`
+  body {
+    background-color: #000;
+  }
+`;
+
 export default function DemoMixins(): JSX.Element {
+  const [stateDarkMode, setStateDarkMode] = useState<boolean>(false);
+  const handleSetModeLight = useCallback(() => setStateDarkMode(false), []);
+  const handleSetModeDark = useCallback(() => setStateDarkMode(true), []);
+  
   return <>
-    <GlobalStyle />
     <H1>mixins tests</H1>
-    <MixinText />
-    <MixinBg />
-    <MixinBorder />
-    <MixinShadow />
+    <Button onClick={handleSetModeLight}>light</Button>
+    <Button onClick={handleSetModeDark}>dark</Button>
+    {stateDarkMode ? <>
+      <BgDark />
+      <ThemeStyleDark />
+    </> : <ThemeStyleLight />}
+    <MixinBaseText />
+    <MixinBaseBg />
+    <MixinBaseBorder />
+    <MixinBaseShadow />
     <MixinLink />
     <MixinInput />
     <MixinButton />
@@ -29,10 +54,10 @@ export default function DemoMixins(): JSX.Element {
 }
 
 export {
-  MixinText,
-  MixinBg,
-  MixinBorder,
-  MixinShadow,
+  MixinBaseText,
+  MixinBaseBg,
+  MixinBaseBorder,
+  MixinBaseShadow,
   MixinLink,
   MixinInput,
   MixinButton
