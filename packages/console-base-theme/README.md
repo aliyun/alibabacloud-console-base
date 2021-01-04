@@ -13,15 +13,13 @@
 # Usage
 
 ```js
-import ThemeGlobalStyle, {
+import {
   COLOR,
   TYPO,
   SIZE,
   Z_INDEX,
-  typo,
-  button,
-  glyph
+  glyph,
+  ThemeStyleLight,
+  ThemeStyleDark
 } from '@alicloud/console-base-theme';
-
-<ThemeGlobalStyle />
 ```
