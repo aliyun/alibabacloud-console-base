@@ -5,7 +5,7 @@ import styled, {
 
 import {
   SIZE,
-  mixinTextTitle,
+  mixinTextPrimary,
   mixinBorderTertiaryBottom,
   typo
 } from '@alicloud/console-base-theme';
@@ -28,7 +28,7 @@ const cssCommon = css`
   position: relative;
   padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   box-sizing: border-box;
-  ${mixinTextTitle};
+  ${mixinTextPrimary}
 `;
 
 const cssNormal = css`

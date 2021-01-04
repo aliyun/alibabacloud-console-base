@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Icon from '@alicloud/console-base-rc-icon';
 import {
-  mixinTextTitle,
+  mixinTextPrimary,
   mixinTextTertiary,
   mixinTextWarning
 } from '@alicloud/console-base-theme';
@@ -51,7 +51,7 @@ const ScTitle = styled.h5`
   margin: 0 0 8px 0;
   padding: 0;
   font-size: 16px;
-  ${mixinTextTitle};
+  ${mixinTextPrimary}
 `;
 
 const ScContent = styled.div`

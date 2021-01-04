@@ -46,28 +46,28 @@ const ScButtonBaseText = styled(ScButton)`
 
 const ScMixinButtonSizeXs = styled(ScButtonBase)`
   ${mixinButtonSizeXs}
+  ${mixinButtonShadow}
   ${mixinButtonDanger}
 `;
 const ScMixinButtonSizeS = styled(ScButtonBase)`
   ${mixinButtonSizeS}
-  ${mixinButtonPrimary}
+  ${mixinButtonShadow}
+  ${mixinButtonDanger}
 `;
 const ScMixinButtonSizeM = styled(ScButtonBase)`
   ${mixinButtonSizeM}
-  ${mixinButtonSecondary}
+  ${mixinButtonShadow}
+  ${mixinButtonDanger}
 `;
 const ScMixinButtonSizeL = styled(ScButtonBase)`
   ${mixinButtonSizeL}
-  ${mixinButtonBrandPrimary}
+  ${mixinButtonShadow}
+  ${mixinButtonDanger}
 `;
 const ScMixinButtonSizeXl = styled(ScButtonBase)`
   ${mixinButtonSizeXl}
-  ${mixinButtonBrandSecondary}
-`;
-const ScMixinButtonShadow = styled(ScButtonBase)`
-  ${mixinButtonDanger}
-  ${mixinButtonSizeM}
   ${mixinButtonShadow}
+  ${mixinButtonDanger}
 `;
 const ScMixinButtonDanger = styled(ScButtonBase)`
   ${mixinButtonDanger}
@@ -117,16 +117,15 @@ export default function MixinButton(): JSX.Element {
     <H1>mixins for button</H1>
     <Button onClick={handleToggleDisabled}>toggle disabled - {`${stateDisabled}`}</Button>
     <div>
-      <ScMixinButtonSizeXs disabled={stateDisabled}>size-xs</ScMixinButtonSizeXs>
-      <ScMixinButtonSizeS disabled={stateDisabled}>size-s</ScMixinButtonSizeS>
-      <ScMixinButtonSizeM disabled={stateDisabled}>size-m</ScMixinButtonSizeM>
-      <ScMixinButtonSizeL disabled={stateDisabled}>size-l</ScMixinButtonSizeL>
-      <ScMixinButtonSizeXl disabled={stateDisabled}>size-xl</ScMixinButtonSizeXl>
+      <ScMixinButtonSizeXs disabled={stateDisabled}>size-xs size + shadow</ScMixinButtonSizeXs>
+      <ScMixinButtonSizeS disabled={stateDisabled}>size-s size + shadow</ScMixinButtonSizeS>
+      <ScMixinButtonSizeM disabled={stateDisabled}>size-m size + shadow</ScMixinButtonSizeM>
+      <ScMixinButtonSizeL disabled={stateDisabled}>size-l size + shadow</ScMixinButtonSizeL>
+      <ScMixinButtonSizeXl disabled={stateDisabled}>size-xl size + shadow</ScMixinButtonSizeXl>
     </div>
     <div>
       <ScMixinButtonDanger disabled={stateDisabled}>danger</ScMixinButtonDanger>
       <ScMixinButtonMenu disabled={stateDisabled}>menu</ScMixinButtonMenu>
-      <ScMixinButtonShadow disabled={stateDisabled}>mixinButtonShadow</ScMixinButtonShadow>
     </div>
     <div>
       <ScMixinButtonPrimary disabled={stateDisabled}>primary</ScMixinButtonPrimary>

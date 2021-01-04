@@ -30,7 +30,7 @@ export const mixinButtonReset = css`
   text-align: center;
   text-decoration: none;
   color: inherit;
-  transition: all ease-out 0.2s;
+  transition: all ease-out 0.3s;
   
   &:hover {
     text-decoration: none;

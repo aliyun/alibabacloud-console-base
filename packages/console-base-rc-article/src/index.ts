@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {
   mixinBorderSecondaryBottom,
-  mixinTextTitle,
+  mixinTextPrimary,
   mixinLinkPrimary,
   mixinBorderTertiary,
   mixinBgPrimary,
@@ -102,7 +102,7 @@ export default styled.article`
   h3,
   h4 {
     font-weight: 600;
-    ${mixinTextTitle};
+    ${mixinTextPrimary}
   }
   
   h1 {

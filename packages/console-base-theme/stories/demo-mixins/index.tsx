@@ -31,7 +31,7 @@ const BgDark = createGlobalStyle`
 `;
 
 export default function DemoMixins(): JSX.Element {
-  const [stateDarkMode, setStateDarkMode] = useState<boolean>(false);
+  const [stateDarkMode, setStateDarkMode] = useState<boolean>(true);
   const handleSetModeLight = useCallback(() => setStateDarkMode(false), []);
   const handleSetModeDark = useCallback(() => setStateDarkMode(true), []);
   
