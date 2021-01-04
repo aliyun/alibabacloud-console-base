@@ -8,7 +8,7 @@ import {
   Z_INDEX,
   mixinBgPrimary,
   mixinShadowMDown,
-  typo
+  mixinTypoFontBase
 } from '@alicloud/console-base-theme';
 
 import Flex from '../../rc/flex';
@@ -26,9 +26,9 @@ const ScTopNaV = styled(Flex)`
   z-index: ${Z_INDEX.TOP_NAV};
   height: ${SIZE.HEIGHT_TOP_NAV}px;
   font-size: 12px;
-  ${typo.baseFont};
-  ${mixinBgPrimary};
-  ${mixinShadowMDown};
+  ${mixinTypoFontBase}
+  ${mixinBgPrimary}
+  ${mixinShadowMDown}
 `;
 
 export default function TopNavUi(props: HTMLAttributes<HTMLDivElement>): JSX.Element {

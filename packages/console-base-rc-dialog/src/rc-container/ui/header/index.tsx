@@ -7,7 +7,7 @@ import {
   SIZE,
   mixinTextPrimary,
   mixinBorderTertiaryBottom,
-  typo
+  mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
 
 import {
@@ -52,7 +52,7 @@ const ScHeader = styled.header<IScProps>`
     line-height: 24px;
     font-size: 16px;
     font-weight: 400;
-    ${typo.ellipsis};
+    ${mixinTypoEllipsis}
   }
 `;
 

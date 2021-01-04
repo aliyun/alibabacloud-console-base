@@ -1,6 +1,6 @@
 import {
   IColorEssential
-} from '../../../types';
+} from '../../types';
 
 // const TRANSPARENT = 'transparent';
 // const WHITE = '#fff';
@@ -17,14 +17,14 @@ const GRAY_PRIMARY = '#d8d9da';
 const GRAY_SECONDARY = '#ccc';
 const GRAY_TERTIARY = '#999';
 const GRAY_DISABLED = '#504a44';
-const GRAY_BD_PRIMARY = '#67676f';
-const GRAY_BD_SECONDARY = '#45454c';
-const GRAY_BD_TERTIARY = '#2a2a2c';
-const GRAY_BD_DISABLED = '#e3e4e6';
+const GRAY_BD_PRIMARY = '#888';
+const GRAY_BD_SECONDARY = '#67676f';
+const GRAY_BD_TERTIARY = '#45454c';
+const GRAY_BD_DISABLED = '#30363d';
 const GRAY_BG_PRIMARY = '#2b2d31';
 const GRAY_BG_SECONDARY = '#202023';
 const GRAY_BG_TERTIARY = '#121417';
-const GRAY_BG_DISABLED = '#e3e4e6';
+const GRAY_BG_DISABLED = '#161b22';
 const GRAY_BG_SECONDARY_FADE = 'rgba(0,2,5,0.9294118)';
 const GRAY_BG_TERTIARY_FADE = 'rgba(0,0,3,0.8745098)';
 // const HELP = '#888';

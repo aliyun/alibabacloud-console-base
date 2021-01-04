@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  typo,
   mixinTextPrimary,
-  mixinTextTertiary
+  mixinTextTertiary,
+  mixinTypoEllipsis,
+  mixinTypoLineWrap
 } from '@alicloud/console-base-theme';
 
 import {
@@ -29,7 +30,7 @@ const ScItemK = styled.div`
 `;
 const ScItemV = styled.div<IPropsScItemV>`
   flex: 1;
-  ${props => (props.wrapValue ? typo.lineWrap : typo.ellipsis)}
+  ${props => (props.wrapValue ? mixinTypoLineWrap : mixinTypoEllipsis)}
 `;
 
 /**

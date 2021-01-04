@@ -1,6 +1,6 @@
 import COLOR from './color';
 
-export * from '../../../var';
+export * from '../../var';
 
 export {
   COLOR

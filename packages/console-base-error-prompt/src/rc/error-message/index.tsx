@@ -3,7 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  typo
+  mixinTypoEm,
+  mixinTypoCode
 } from '@alicloud/console-base-theme';
 
 import {
@@ -19,11 +20,11 @@ const ScErrorMessage = styled.div`
   font-size: 14px;
   
   em {
-    ${typo.tagEm};
+    ${mixinTypoEm};
   }
   
   code {
-    ${typo.tagCode};
+    ${mixinTypoCode};
   }
 `;
 

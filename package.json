@@ -9,7 +9,7 @@
     "@alicloud/stylelint-config": "^1.0.3",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
-    "eslint": "^7.16.0",
+    "eslint": "^7.17.0",
     "lerna": "^3.22.1",
     "npm-check-updates": "^10.2.5",
     "react": "^16.14.0",

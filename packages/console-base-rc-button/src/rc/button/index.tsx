@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import {
   mixinButtonReset,
-  typo
+  mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -63,7 +63,7 @@ const ScInnerIcon = styled.span`
 
 const ScInnerLabel = styled.span`
   flex: 1;
-  ${typo.ellipsis};
+  ${mixinTypoEllipsis}
 `;
 
 function Button({

@@ -7,7 +7,12 @@ import {
   mixinBorderTertiary,
   mixinBgPrimary,
   mixinBgSecondary,
-  typo
+  mixinTypoBlockquote,
+  mixinTypoEm,
+  mixinTypoCode,
+  mixinTypoFontFamilyMono,
+  mixinTypoStrong,
+  mixinTypoKbd
 } from '@alicloud/console-base-theme';
 
 export default styled.article`
@@ -64,15 +69,15 @@ export default styled.article`
   }
   
   blockquote {
-    ${typo.tagBlockquote};
+    ${mixinTypoBlockquote}
   }
   
   em {
-    ${typo.tagEm};
+    ${mixinTypoEm}
   }
   
   code {
-    ${typo.tagCode};
+    ${mixinTypoCode}
     
     &.clean {
       background-color: transparent;
@@ -81,15 +86,15 @@ export default styled.article`
   
   pre,
   code {
-    ${typo.fontFamilyMono};
+    ${mixinTypoFontFamilyMono}
   }
   
   strong {
-    ${typo.tagStrong};
+    ${mixinTypoStrong}
   }
   
   kbd {
-    ${typo.tagKbd};
+    ${mixinTypoKbd}
   }
   
   br {

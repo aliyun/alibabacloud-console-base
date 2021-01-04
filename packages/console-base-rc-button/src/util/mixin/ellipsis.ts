@@ -3,7 +3,8 @@ import {
 } from 'styled-components';
 
 import {
-  typo
+  mixinTypoNoWrap,
+  mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
 
 import {
@@ -17,14 +18,10 @@ const THEMES_NEED_ELLIPSIS: EButtonTheme[] = [
   EButtonTheme.MENU
 ];
 
-const cssNoWrap = css`
-  white-space: nowrap;
-`;
-
 function needEllipsis(props: IButtonPropsForSc): boolean {
   return props.ellipsis ?? THEMES_NEED_ELLIPSIS.includes(props.theme);
 }
 
 export default css<IButtonPropsForSc>`
-  ${props => (needEllipsis(props) ? typo.ellipsis : cssNoWrap)}
+  ${props => (needEllipsis(props) ? mixinTypoEllipsis : mixinTypoNoWrap)}
 `;

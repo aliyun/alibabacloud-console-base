@@ -1,4 +1,4 @@
-import createThemeColor from '../../../util/create-theme-color';
+import createThemeColor from '../../util/create-theme-color';
 import {
   COLOR_ESSENTIAL_OVERRIDE
 } from '../const';

@@ -15,7 +15,7 @@ import styled from 'styled-components';
 import {
   mixinTextTertiary,
   mixinBorderSecondaryBottom,
-  typo
+  mixinTypoLineWrap
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonTheme
@@ -64,7 +64,7 @@ const ScErrorDetails = styled.ul<IPropsScDetails>`
 const ScKV = styled.li`
   display: flex;
   padding: 4px 0;
-  ${mixinBorderSecondaryBottom};
+  ${mixinBorderSecondaryBottom}
 `;
 
 const ScK = styled.div`
@@ -76,8 +76,8 @@ const ScK = styled.div`
 const ScV = styled.div`
   flex: 1;
   text-align: right;
-  ${mixinTextTertiary};
-  ${typo.lineWrap};
+  ${mixinTextTertiary}
+  ${mixinTypoLineWrap}
 `;
 
 function toDisplayValue(v: unknown): string | null {

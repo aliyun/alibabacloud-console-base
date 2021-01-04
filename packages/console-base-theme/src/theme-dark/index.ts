@@ -1,4 +1,4 @@
-import createThemeGlobalStyle from '../../util/create-theme-global-style';
+import createThemeGlobalStyle from '../util/create-theme-global-style';
 
 import * as VARS from './var';
 

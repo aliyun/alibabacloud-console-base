@@ -26,6 +26,7 @@ import DemoMixins, {
   MixinBaseBg,
   MixinBaseBorder,
   MixinBaseShadow,
+  MixinTypo,
   MixinLink,
   MixinInput,
   MixinButton
@@ -47,7 +48,8 @@ storiesOf(pkgInfo.name, module)
     .add('mixin-base-text', () => <MixinBaseText />)
     .add('mixin-base-bg', () => <MixinBaseBg />)
     .add('mixin-base-border', () => <MixinBaseBorder />)
-    .add('mixin-shadow', () => <MixinBaseShadow />)
+    .add('mixin-base-shadow', () => <MixinBaseShadow />)
+    .add('mixin-typo', () => <MixinTypo />)
     .add('mixin-link', () => <MixinLink />)
     .add('mixin-input', () => <MixinInput />)
     .add('mixin-button', () => <MixinButton />)

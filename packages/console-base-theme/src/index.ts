@@ -4,7 +4,7 @@ export * from './mixin';
 
 export {
   default as ThemeStyleLight
-} from './theme/light';
+} from './theme-light';
 export {
   default as ThemeStyleDark
-} from './theme/dark';
+} from './theme-dark';

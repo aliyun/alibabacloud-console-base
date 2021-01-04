@@ -4,8 +4,11 @@ import styled, {
 } from 'styled-components';
 
 import {
-  typo,
-  mixinBorderSecondaryBottom
+  mixinBorderSecondaryBottom,
+  mixinTypoStrong,
+  mixinTypoEm,
+  mixinTypoCode,
+  mixinTypoKbd
 } from '@alicloud/console-base-theme';
 
 import {
@@ -19,19 +22,19 @@ import Lines from './lines';
 // inline 元素样式
 const cssInlineElements = css`
   strong {
-    ${typo.tagStrong};
+    ${mixinTypoStrong}
   }
   
   em {
-    ${typo.tagEm};
+    ${mixinTypoEm}
   }
   
   code {
-    ${typo.tagCode};
+    ${mixinTypoCode}
   }
   
   kbd {
-    ${typo.tagKbd};
+    ${mixinTypoKbd}
   }
 `;
 

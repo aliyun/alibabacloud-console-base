@@ -38,7 +38,7 @@ const ScIndicatorNumber = styled.strong`
   font-size: 12px;
   font-weight: 600;
   transform: scale(0.8);
-  ${mixinTextEmphasis};
+  ${mixinTextEmphasis}
 `;
 
 /**
