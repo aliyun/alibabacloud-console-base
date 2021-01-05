@@ -6,6 +6,7 @@ import {
 } from '@alicloud/console-base-rc-button';
 
 import TopNavButton from '../../../rc/button-in-top';
+import IconAliyun from '../../../rc/icon-aliyun';
 import {
   useProps
 } from '../../../model';
@@ -23,7 +24,8 @@ export default function Logo(): JSX.Element {
     spm: 'logo',
     responsive: false,
     force: true,
-    themeColor: ButtonTheme.TEXT_BRAND_PRIMARY,
-    ...logo
+    theme: ButtonTheme.TEXT_BRAND_PRIMARY,
+    ...logo,
+    label: logo?.label || <IconAliyun />
   }} />;
 }

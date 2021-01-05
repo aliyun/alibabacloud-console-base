@@ -22,7 +22,8 @@ const topNavProps: TopNavProps = {
     }
   },
   logo: {
-    label: <img src="https://img.alicdn.com/imgextra/i4/2424298091/O1CN01WdxL9p29djBt2X6a5_!!2424298091.jpg" alt="" />
+    href: '/',
+    // label: <img src="https://img.alicdn.com/imgextra/i4/2424298091/O1CN01WdxL9p29djBt2X6a5_!!2424298091.jpg" alt="" />
   },
   menus: [{
     key: 'f-y',
