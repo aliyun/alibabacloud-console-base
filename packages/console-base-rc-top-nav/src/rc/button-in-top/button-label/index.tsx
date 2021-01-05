@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR,
-  mixinTextEmphasis
+  mixinTextEmphasis,
+  mixinBgBrand
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -24,10 +24,9 @@ const ScIndicatorDot = styled.span`
   top: 12px;
   right: 8px;
   border-radius: 2px;
-  background: ${COLOR.TEXT_EMPHASIS};
-  background: var(--cb-color-text-emphasis, ${COLOR.TEXT_EMPHASIS});
   width: 4px;
   height: 4px;
+  ${mixinBgBrand}
 `;
 
 const ScIndicatorNumber = styled.strong`
@@ -83,7 +82,7 @@ export default function ButtonLabel({
     
     return count > 0 ? <>
       {jsxLabel}
-      {countAsDot ? <ScIndicatorDot /> : <ScIndicatorNumber>{count}</ScIndicatorNumber>}
+      {countAsDot ? <ScIndicatorDot /> : <ScIndicatorNumber>{count > 99 ? '99+' : count}</ScIndicatorNumber>}
     </> : jsxLabel;
   }
   
