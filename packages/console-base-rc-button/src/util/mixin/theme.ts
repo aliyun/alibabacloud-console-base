@@ -150,5 +150,10 @@ function getThemeMixin(props: IButtonPropsForSc): FlattenSimpleInterpolation | n
 }
 
 export default css<IButtonPropsForSc>`
+  &:link,
+  &:visited {
+    ${props => MAPPING_NORMAL[props.theme]}
+  }
+  
   ${props => getThemeMixin(props)}
 `;

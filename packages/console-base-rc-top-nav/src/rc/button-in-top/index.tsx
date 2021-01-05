@@ -41,7 +41,7 @@ const ScButton = styled(Button)<IPropsScButton>`
   ` : null)};
   
   img {
-    display: block;
+    display: inline;
     max-width: 160px;
     max-height: 36px;
   }

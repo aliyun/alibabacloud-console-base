@@ -22,7 +22,7 @@ const topNavProps: TopNavProps = {
     }
   },
   logo: {
-    href: '/',
+    href: '/'
     // label: <img src="https://img.alicdn.com/imgextra/i4/2424298091/O1CN01WdxL9p29djBt2X6a5_!!2424298091.jpg" alt="" />
   },
   menus: [{
@@ -88,6 +88,7 @@ const topNavProps: TopNavProps = {
     }
   },
   account: {
+    href: '/account',
     avatar: 'https://img.alicdn.com/imgextra/i3/2228361831/O1CN01E9EAfp1POdoYo8idF_!!2228361831.jpg',
     dropdown: {
       minWidth: 300,
