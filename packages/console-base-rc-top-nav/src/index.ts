@@ -6,6 +6,7 @@ import {
   IPropsTopNavDock as TopNavDockProps,
   IPropsTopNavLogo as TopNavLogoProps,
   IPropsTopNavLanguage as TopNavLanguageProps,
+  IPropsTopNavLanguageItem as TopNavLanguageItemProps,
   IPropsTopNavAccount as TopNavAccountProps
 } from './types';
 import TopNavButton from './rc/button-in-top';
@@ -26,5 +27,6 @@ export type {
   TopNavDockProps,
   TopNavLogoProps,
   TopNavLanguageProps,
+  TopNavLanguageItemProps,
   TopNavAccountProps
 };

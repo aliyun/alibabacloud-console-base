@@ -43,13 +43,15 @@ export interface IPropsTopNavLogo extends IPropsTopNavButton {}
 
 export interface IPropsTopNavDock extends Partial<ButtonProps> {}
 
+export interface IPropsTopNavLanguageItem {
+  id: string;
+  name: string | JSX.Element;
+  nameShort?: string | JSX.Element; // 短名字，利用它可以节省 menu 上的展示宽度，不写则展示 name
+}
+
 export interface IPropsTopNavLanguage {
   current: string;
-  items: {
-    id: string;
-    name: string | JSX.Element;
-    nameShort?: string | JSX.Element; // 短名字，利用它可以节省 menu 上的展示宽度，不写则展示 name
-  }[];
+  items: IPropsTopNavLanguageItem[];
   onChange?(id: string): void;
 }
 
