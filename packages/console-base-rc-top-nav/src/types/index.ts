@@ -62,7 +62,7 @@ export interface IPropsTopNavPure {
   bodyClass?: string;
   dock?: IPropsTopNavDock; // 程序坞
   logo?: IPropsTopNavLogo;
-  menus?: IPropsTopNavButton[];
+  menus?: (IPropsTopNavButton | null)[];
   language?: IPropsTopNavLanguage;
   account?: IPropsTopNavAccount;
   customLeft?: ReactNode;

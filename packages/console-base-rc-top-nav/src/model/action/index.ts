@@ -1,5 +1,3 @@
-import actionCloseTab from './action-nothing';
-
 export {
-  actionCloseTab
-};
+  default as actionCloseTab
+} from './action-nothing';

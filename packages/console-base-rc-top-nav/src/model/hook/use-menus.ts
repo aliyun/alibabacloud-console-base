@@ -17,19 +17,14 @@ export default function useMenus(): IPropsTopNavButton[] {
     account
   } = useProps();
   
-  return useMemo(() => {
-    const finalMenus = [...menus];
+  return useMemo((): IPropsTopNavButton[] => {
     const menuLang = buildMenuLanguage(language);
     const menuAccount = buildMenuAccount(account);
     
-    if (menuLang) {
-      finalMenus.push(menuLang);
-    }
-    
-    if (menuAccount) {
-      finalMenus.push(menuAccount);
-    }
-    
-    return finalMenus;
+    return [
+      ...menus,
+      menuLang,
+      menuAccount
+    ].filter(v => v);
   }, [language, menus, account]);
 }

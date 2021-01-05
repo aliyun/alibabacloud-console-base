@@ -1,7 +1,6 @@
-import useProps from './use-props';
-import useMenus from './use-menus';
-
 export {
-  useProps,
-  useMenus
-};
+  default as useProps
+} from './use-props';
+export {
+  default as useMenus
+} from './use-menus';
