@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@alicloud/eslint-config": "^1.0.9",
+    "@alicloud/eslint-config": "^1.0.10",
     "@alicloud/stylelint-config": "^1.0.3",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
