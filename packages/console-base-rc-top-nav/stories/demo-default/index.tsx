@@ -8,12 +8,11 @@ import {
   Button
 } from '@alicloud/demo-rc-elements';
 
-import ThemeSwitcher from '../theme-switcher';
-
 import TopNav, {
   TopNavProps,
-  ButtonInTop
+  TopNavButton
 } from '../../src';
+import ThemeSwitcher from '../theme-switcher';
 
 const topNavProps: TopNavProps = {
   id: 'gave-the-top-nav-an-id-by-boshit',
@@ -98,7 +97,7 @@ const topNavProps: TopNavProps = {
     }
   },
   customLeft: <>
-    <ButtonInTop {...{
+    <TopNavButton {...{
       spm: 'l1',
       force: true,
       label: <span style={{ color: 'red' }}>L1</span>

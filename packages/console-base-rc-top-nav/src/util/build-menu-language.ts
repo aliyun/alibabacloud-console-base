@@ -1,10 +1,10 @@
 import {
-  ITopNavButton,
-  ITopNavButtonDropdownItem,
-  ITopNavLanguage
+  IPropsTopNavButton,
+  IPropsTopNavButtonDropdownItem,
+  IPropsTopNavLanguage
 } from '../types';
 
-export default function buildMenuLanguage(lang: ITopNavLanguage): ITopNavButton | null {
+export default function buildMenuLanguage(lang: IPropsTopNavLanguage): IPropsTopNavButton | null {
   if (!lang) {
     return null;
   }
@@ -22,7 +22,7 @@ export default function buildMenuLanguage(lang: ITopNavLanguage): ITopNavButton 
       icon: 'lang'
     },
     dropdown: {
-      items: items.reduce((result: ITopNavButtonDropdownItem[], {
+      items: items.reduce((result: IPropsTopNavButtonDropdownItem[], {
         id,
         name
       }) => {

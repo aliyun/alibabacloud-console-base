@@ -9,7 +9,7 @@ import Button, {
 import Dropdown from '@alicloud/console-base-rc-dropdown';
 
 import {
-  ITopNavButton
+  IPropsTopNavButton
 } from '../../types';
 import parseDropdownItems from '../../util/parse-dropdown-items';
 import hasNoActionPoint from '../../util/has-no-action-point';
@@ -21,7 +21,7 @@ interface IPropsScButton {
   responsive?: boolean;
 }
 
-interface IProps extends Omit<ITopNavButton, 'key'> {
+interface IProps extends Omit<IPropsTopNavButton, 'key'> {
   spm: string;
 }
 
@@ -34,23 +34,23 @@ const ScButton = styled(Button)<IPropsScButton>`
   height: 50px;
   line-height: 50px;
   
-  img {
-    display: block;
-    max-width: 160px;
-    max-height: 36px;
-  }
-  
   ${props => (props.responsive ? css`
     @media screen and (max-width: 1208px) {
       padding: 0 6px;
     }
   ` : null)};
+  
+  img {
+    display: block;
+    max-width: 160px;
+    max-height: 36px;
+  }
 `;
 
 /**
  * 预设样式 - 顶栏上的按钮（文字或按钮）
  */
-export default function ButtonInTop({
+export default function TopNavButton({
   label,
   responsive = true,
   force,

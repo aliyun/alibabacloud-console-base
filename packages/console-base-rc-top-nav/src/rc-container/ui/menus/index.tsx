@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Flex from '../../../rc/flex';
-import ButtonInTop from '../../../rc/button-in-top';
+import TopNavButton from '../../../rc/button-in-top';
 import {
   useMenus
 } from '../../../model';
@@ -13,7 +13,7 @@ export default function Menus(): JSX.Element {
     {menus.map(({
       key,
       ...props
-    }, i): JSX.Element => <ButtonInTop key={key || i} {...{
+    }, i): JSX.Element => <TopNavButton key={key || i} {...{
       spm: key || '',
       ...props
     }} />)}

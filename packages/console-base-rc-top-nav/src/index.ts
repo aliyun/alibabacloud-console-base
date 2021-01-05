@@ -1,30 +1,30 @@
 import {
   IPropsTopNav as TopNavProps,
-  ITopNavButton as TopNavButton,
-  ITopNavButtonDropdown as TopNavButtonDropdown,
-  ITopNavButtonDropdownItem as TopNavButtonDropdownItem,
-  ITopNavDock as TopNavDock,
-  ITopNavLogo as TopNavLogo,
-  ITopNavLanguage as TopNavLanguage,
-  ITopNavAccount as TopNavAccount
+  IPropsTopNavButton as TopNavButtonProps,
+  IPropsTopNavButtonDropdown as TopNavButtonDropdownProps,
+  IPropsTopNavButtonDropdownItem as TopNavButtonDropdownItemProps,
+  IPropsTopNavDock as TopNavDockProps,
+  IPropsTopNavLogo as TopNavLogoProps,
+  IPropsTopNavLanguage as TopNavLanguageProps,
+  IPropsTopNavAccount as TopNavAccountProps
 } from './types';
-import ButtonInTop from './rc/button-in-top';
+import TopNavButton from './rc/button-in-top';
 
 export {
   default
 } from './rc-container';
 
 export {
-  ButtonInTop
+  TopNavButton
 };
 
 export type {
   TopNavProps,
-  TopNavButton,
-  TopNavButtonDropdown,
-  TopNavButtonDropdownItem,
-  TopNavDock,
-  TopNavLogo,
-  TopNavLanguage,
-  TopNavAccount
+  TopNavButtonProps,
+  TopNavButtonDropdownProps,
+  TopNavButtonDropdownItemProps,
+  TopNavDockProps,
+  TopNavLogoProps,
+  TopNavLanguageProps,
+  TopNavAccountProps
 };

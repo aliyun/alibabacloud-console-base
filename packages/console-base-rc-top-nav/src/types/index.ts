@@ -14,7 +14,7 @@ import {
   DropdownProps
 } from '@alicloud/console-base-rc-dropdown';
 
-interface ITopNavButtonLabel {
+interface IPropsTopNavButtonLabel {
   icon?: IconType;
   html?: string;
   text?: string | ReactElement;
@@ -22,28 +22,28 @@ interface ITopNavButtonLabel {
   countAsDot?: boolean; // 个数展示为小红点或数字
 }
 
-export interface ITopNavButtonDropdownItem extends Partial<ButtonProps> {
+export interface IPropsTopNavButtonDropdownItem extends Partial<ButtonProps> {
   key?: string;
   inFooter?: boolean;
 }
 
-export interface ITopNavButtonDropdown extends Omit<DropdownProps, 'trigger'> {
-  items?: ITopNavButtonDropdownItem[];
+export interface IPropsTopNavButtonDropdown extends Omit<DropdownProps, 'trigger'> {
+  items?: IPropsTopNavButtonDropdownItem[];
 }
 
-export interface ITopNavButton extends Omit<Partial<ButtonProps>, 'label'> {
+export interface IPropsTopNavButton extends Omit<Partial<ButtonProps>, 'label'> {
   key?: string;
-  label?: string | ReactElement | ITopNavButtonLabel;
+  label?: string | ReactElement | IPropsTopNavButtonLabel;
   responsive?: boolean; // 是否对宽度做自适应
   force?: boolean; // 没有行动点（href、onXx）、也没有 dropdown 的情况下，默认不会展示，如果要展示，设置为 force
-  dropdown?: ITopNavButtonDropdown;
+  dropdown?: IPropsTopNavButtonDropdown;
 }
 
-export interface ITopNavLogo extends ITopNavButton {}
+export interface IPropsTopNavLogo extends IPropsTopNavButton {}
 
-export interface ITopNavDock extends Partial<ButtonProps> {}
+export interface IPropsTopNavDock extends Partial<ButtonProps> {}
 
-export interface ITopNavLanguage {
+export interface IPropsTopNavLanguage {
   current: string;
   items: {
     id: string;
@@ -53,18 +53,18 @@ export interface ITopNavLanguage {
   onChange?(id: string): void;
 }
 
-export interface ITopNavAccount extends ITopNavButton {
+export interface IPropsTopNavAccount extends IPropsTopNavButton {
   defaultAvatar?: string; // 默认「默认头像」是 ET 大脑
   avatar?: string; // 当前用户头像
 }
 
 export interface IPropsTopNavPure {
   bodyClass?: string;
-  dock?: ITopNavDock; // 程序坞
-  logo?: ITopNavLogo;
-  menus?: ITopNavButton[];
-  language?: ITopNavLanguage;
-  account?: ITopNavAccount;
+  dock?: IPropsTopNavDock; // 程序坞
+  logo?: IPropsTopNavLogo;
+  menus?: IPropsTopNavButton[];
+  language?: IPropsTopNavLanguage;
+  account?: IPropsTopNavAccount;
   customLeft?: ReactNode;
   customRight?: ReactNode;
 }

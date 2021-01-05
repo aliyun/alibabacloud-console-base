@@ -5,12 +5,12 @@ import {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
-import ButtonInTop from '../../../rc/button-in-top';
+import TopNavButton from '../../../rc/button-in-top';
 import {
   useProps
 } from '../../../model';
 
-const ScLogo = styled(ButtonInTop)`
+const ScLogo = styled(TopNavButton)`
   font-size: 18px;
 `;
 

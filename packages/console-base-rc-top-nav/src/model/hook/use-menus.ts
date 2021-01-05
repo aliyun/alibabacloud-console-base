@@ -3,14 +3,14 @@ import {
 } from 'react';
 
 import {
-  ITopNavButton
+  IPropsTopNavButton
 } from '../../types';
 import buildMenuLanguage from '../../util/build-menu-language';
 import buildMenuAccount from '../../util/build-menu-account';
 
 import useProps from './use-props';
 
-export default function useMenus(): ITopNavButton[] {
+export default function useMenus(): IPropsTopNavButton[] {
   const {
     menus,
     language,

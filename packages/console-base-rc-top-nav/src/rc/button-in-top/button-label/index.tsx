@@ -8,11 +8,11 @@ import {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  ITopNavButton
+  IPropsTopNavButton
 } from '../../../types';
 
 interface IProps {
-  label: ITopNavButton['label'];
+  label: IPropsTopNavButton['label'];
 }
 
 const ScButtonIcon = styled(Icon)`
