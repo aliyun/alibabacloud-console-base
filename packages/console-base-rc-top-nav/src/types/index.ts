@@ -22,13 +22,13 @@ interface ITopNavButtonLabel {
   countAsDot?: boolean; // 个数展示为小红点或数字
 }
 
-export interface IDropdownItem extends Partial<ButtonProps> {
+export interface ITopNavButtonDropdownItem extends Partial<ButtonProps> {
   key?: string;
   inFooter?: boolean;
 }
 
 export interface ITopNavButtonDropdown extends Omit<DropdownProps, 'trigger'> {
-  items?: IDropdownItem[];
+  items?: ITopNavButtonDropdownItem[];
 }
 
 export interface ITopNavButton extends Omit<Partial<ButtonProps>, 'label'> {

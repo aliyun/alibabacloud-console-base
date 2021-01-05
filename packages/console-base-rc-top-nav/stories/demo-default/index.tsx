@@ -7,7 +7,8 @@ import {
   H1,
   Button
 } from '@alicloud/demo-rc-elements';
-import ConsoleBaseTheme from '@alicloud/console-base-theme';
+
+import ThemeSwitcher from '../theme-switcher';
 
 import TopNav, {
   TopNavProps,
@@ -118,7 +119,7 @@ export default function Demo(): JSX.Element {
   }, [stateRemoved, setStateRemoved]);
   
   return <>
-    <ConsoleBaseTheme />
+    <ThemeSwitcher />
     {stateRemoved ? null : <TopNav {...topNavProps} />}
     <H1>吊顶</H1>
     <Button onClick={handleToggleRemoved}>移除 / 加入</Button>

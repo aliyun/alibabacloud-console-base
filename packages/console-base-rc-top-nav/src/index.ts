@@ -1,5 +1,12 @@
 import {
-  IPropsTopNav as TopNavProps
+  IPropsTopNav as TopNavProps,
+  ITopNavButton as TopNavButton,
+  ITopNavButtonDropdown as TopNavButtonDropdown,
+  ITopNavButtonDropdownItem as TopNavButtonDropdownItem,
+  ITopNavDock as TopNavDock,
+  ITopNavLogo as TopNavLogo,
+  ITopNavLanguage as TopNavLanguage,
+  ITopNavAccount as TopNavAccount
 } from './types';
 import ButtonInTop from './rc/button-in-top';
 
@@ -12,5 +19,12 @@ export {
 };
 
 export type {
-  TopNavProps
+  TopNavProps,
+  TopNavButton,
+  TopNavButtonDropdown,
+  TopNavButtonDropdownItem,
+  TopNavDock,
+  TopNavLogo,
+  TopNavLanguage,
+  TopNavAccount
 };

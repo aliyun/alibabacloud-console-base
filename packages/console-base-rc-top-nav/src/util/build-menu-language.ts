@@ -1,6 +1,6 @@
 import {
   ITopNavButton,
-  IDropdownItem,
+  ITopNavButtonDropdownItem,
   ITopNavLanguage
 } from '../types';
 
@@ -22,7 +22,7 @@ export default function buildMenuLanguage(lang: ITopNavLanguage): ITopNavButton 
       icon: 'lang'
     },
     dropdown: {
-      items: items.reduce((result: IDropdownItem[], {
+      items: items.reduce((result: ITopNavButtonDropdownItem[], {
         id,
         name
       }) => {
