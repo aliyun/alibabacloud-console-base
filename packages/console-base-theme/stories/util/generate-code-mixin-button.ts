@@ -17,6 +17,12 @@ enum EButtonState {
   DISABLED = 'disabled'
 }
 
+enum EButtonPart {
+  COLOR = 'color',
+  BG = 'bg',
+  BORDER = 'border'
+}
+
 const SIZES = ['XS', 'S', 'M', 'L', 'XL'];
 const THEMES = [
   'BUTTON_DANGER', 'BUTTON_MENU',
@@ -30,6 +36,10 @@ function buildMixinButtonStateName(theme: string, state: EButtonState): string {
   return buildExportedMixinVarName(theme, 'State', state);
 }
 
+function buildMixinButtonPartStateName(theme: string, part: EButtonPart, state: EButtonState): string {
+  return buildExportedMixinVarName(theme, part, 'State', state);
+}
+
 function buildCodeMixinButtonSize(size: string): string {
   return `export const ${buildExportedMixinVarName('BUTTON_SIZE', size)} = css\`
   padding: 0 \${SIZE.PADDING_X_FORM_CONTROL_${size}}px;
@@ -39,35 +49,61 @@ function buildCodeMixinButtonSize(size: string): string {
 \`;`;
 }
 
-function buildCodeButtonStyle(theme: string, state: EButtonState): string {
-  const stateString = state === EButtonState.NORMAL ? '' : state;
-  const cssCodeText = buildCssCode({
+function buildCodeButtonColorStyle(theme: string, state: EButtonState): string {
+  return buildCssCode({
     attr: 'color',
-    keys: ['COLOR', theme, 'TEXT', stateString]
+    keys: ['COLOR', theme, 'TEXT', state === EButtonState.NORMAL ? '' : state]
   });
-  const cssCodeBg = buildCssCode({
+}
+
+function buildCodeButtonBgStyle(theme: string, state: EButtonState): string {
+  return buildCssCode({
     attr: 'background-color',
-    keys: ['COLOR', theme, 'BG', stateString]
+    keys: ['COLOR', theme, 'BG', state === EButtonState.NORMAL ? '' : state]
   });
-  const cssCodeBorder = buildCssCode({
+}
+
+function buildCodeButtonBorderStyle(theme: string, state: EButtonState): string {
+  return buildCssCode({
     attr: 'border-color',
-    keys: ['COLOR', theme, 'BORDER', stateString]
+    keys: ['COLOR', theme, 'BORDER', state === EButtonState.NORMAL ? '' : state]
   });
-  
-  return `${cssCodeBorder}
-${cssCodeBg}
-${cssCodeText}`;
+}
+
+function buildCodeMixinButtonThemeColorState(theme: string, state: EButtonState): string {
+  return `export const ${buildMixinButtonPartStateName(theme, EButtonPart.COLOR, state)} = css\`
+${buildCodeButtonColorStyle(theme, state)}
+\`;`;
+}
+
+function buildCodeMixinButtonThemeBgState(theme: string, state: EButtonState): string {
+  return `export const ${buildMixinButtonPartStateName(theme, EButtonPart.BG, state)} = css\`
+${buildCodeButtonBgStyle(theme, state)}
+\`;`;
+}
+
+function buildCodeMixinButtonThemeBorderState(theme: string, state: EButtonState): string {
+  return `export const ${buildMixinButtonPartStateName(theme, EButtonPart.BORDER, state)} = css\`
+${buildCodeButtonBorderStyle(theme, state)}
+\`;`;
 }
 
 function buildCodeMixinButtonThemeState(theme: string, state: EButtonState): string {
   return `export const ${buildMixinButtonStateName(theme, state)} = css\`
-${buildCodeButtonStyle(theme, state)}
+  \${${buildMixinButtonPartStateName(theme, EButtonPart.COLOR, state)}}
+  \${${buildMixinButtonPartStateName(theme, EButtonPart.BG, state)}}
+  \${${buildMixinButtonPartStateName(theme, EButtonPart.BORDER, state)}}
 \`;`;
 }
 
 function buildCodeMixinButtonFull(theme: string): string {
   return `export const ${buildExportedMixinVarName(theme)} = css\`
   \${${buildMixinButtonStateName(theme, EButtonState.NORMAL)}}
+  
+  &:link,
+  &:visited {
+    \${${buildMixinButtonPartStateName(theme, EButtonPart.COLOR, EButtonState.NORMAL)}}
+  }
   
   &:hover,
   &:focus {
@@ -97,10 +133,12 @@ export default function generateCodeMixinButton(): string {
   pushCode(generator, '');
   pushCode(generator, '// theme mixins');
   THEMES.forEach(theme => {
-    pushCode(generator, buildCodeMixinButtonThemeState(theme, EButtonState.NORMAL));
-    pushCode(generator, buildCodeMixinButtonThemeState(theme, EButtonState.HOVER));
-    pushCode(generator, buildCodeMixinButtonThemeState(theme, EButtonState.ACTIVE));
-    pushCode(generator, buildCodeMixinButtonThemeState(theme, EButtonState.DISABLED));
+    Object.values(EButtonState).forEach(v => {
+      pushCode(generator, buildCodeMixinButtonThemeColorState(theme, v));
+      pushCode(generator, buildCodeMixinButtonThemeBgState(theme, v));
+      pushCode(generator, buildCodeMixinButtonThemeBorderState(theme, v));
+      pushCode(generator, buildCodeMixinButtonThemeState(theme, v));
+    });
     pushCode(generator, buildCodeMixinButtonFull(theme));
   });
   
