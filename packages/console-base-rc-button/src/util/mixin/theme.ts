@@ -154,6 +154,5 @@ export default css<IButtonPropsForSc>`
   &:visited {
     ${props => MAPPING_NORMAL[props.theme]}
   }
-  
   ${props => getThemeMixin(props)}
 `;

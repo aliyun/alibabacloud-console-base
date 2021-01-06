@@ -12,8 +12,6 @@ import toCode from './to-code';
 import buildExportedMixinVarName from './build-exported-mixin-var-name';
 import buildCssCode from './build-css-code';
 
-// import COLOR from './color';
-
 const SIZES = { // 注意每一个有末尾是空格
   S: '0 0 2px 0 ',
   S_UP: '0 -1px 2px 0 ',

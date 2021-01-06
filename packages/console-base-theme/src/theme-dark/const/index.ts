@@ -25,25 +25,25 @@ const GRAY_BG_PRIMARY = '#2b2d31';
 const GRAY_BG_SECONDARY = '#202023';
 const GRAY_BG_TERTIARY = '#121417';
 const GRAY_BG_DISABLED = '#161b22';
-const GRAY_BG_SECONDARY_FADE = 'rgba(0,2,5,0.9294118)';
-const GRAY_BG_TERTIARY_FADE = 'rgba(0,0,3,0.8745098)';
-// const HELP = '#888';
+const GRAY_BG_SECONDARY_FADE = 'rgba(37,37,41,0.862745)';
+const GRAY_BG_TERTIARY_FADE = 'rgba(20,22,25,0.909804)';
+const HELP = '#555';
 // const INFO = '#0064c8';
 // const SUCCESS = '#1e8e3e';
 // const WARNING = '#ffc440';
 // const ERROR = '#d93026';
-// const HELP_BG = '#f7f7f7';
+const HELP_BG = '#333';
 // const INFO_BG = '#ebf4fb';
 // const SUCCESS_BG = '#edfcf1';
 // const WARNING_BG = '#fff7db';
 // const ERROR_BG = '#fcefee';
-// const HELP_BG_FADE = 'rgba(0,0,0,0.031373)';
-// const INFO_BG_FADE = 'rgba(0,115,204,0.078431)';
+const HELP_BG_FADE = 'rgba(127,127,127,0.666667)';
+// const INFO_BG_FADE = 'rgba(0,255,255,0.215686)';
 // const SUCCESS_BG_FADE = 'rgba(0,212,57,0.070588)';
 // const WARNING_BG_FADE = 'rgba(255,198,0,0.141176)';
 // const ERROR_BG_FADE = 'rgba(210,15,0,0.066667)';
-const SHADOW = 'rgba(255,255,255,0.25)';
-const BACKDROP = 'rgba(255,255,255,0.30)';
+const SHADOW = 'rgba(255,255,255,0.2)';
+const BACKDROP = 'rgba(255,255,255,0.2)';
 
 export const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   // TRANSPARENT,
@@ -71,17 +71,17 @@ export const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   GRAY_BG_DISABLED,
   GRAY_BG_SECONDARY_FADE,
   GRAY_BG_TERTIARY_FADE,
-  // HELP,
+  HELP,
   // INFO,
   // SUCCESS,
   // WARNING,
   // ERROR,
-  // HELP_BG,
+  HELP_BG,
   // INFO_BG,
   // SUCCESS_BG,
   // WARNING_BG,
   // ERROR_BG,
-  // HELP_BG_FADE,
+  HELP_BG_FADE,
   // INFO_BG_FADE,
   // SUCCESS_BG_FADE,
   // WARNING_BG_FADE,
