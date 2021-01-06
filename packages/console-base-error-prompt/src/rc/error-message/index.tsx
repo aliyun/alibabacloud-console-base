@@ -20,11 +20,11 @@ const ScErrorMessage = styled.div`
   font-size: 14px;
   
   em {
-    ${mixinTypoEm};
+    ${mixinTypoEm}
   }
   
   code {
-    ${mixinTypoCode};
+    ${mixinTypoCode}
   }
 `;
 

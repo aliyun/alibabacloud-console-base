@@ -6,6 +6,8 @@ import {
   createGlobalStyle
 } from 'styled-components';
 
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+
 import {
   H1,
   P
@@ -35,6 +37,7 @@ export default function DemoDefault(): JSX.Element {
   const handleToggleInjectGlobalStyle = useCallback(() => setStateInjectGlobalStyle(!stateInjectGlobalStyle), [stateInjectGlobalStyle, setStateInjectGlobalStyle]);
   
   return <>
+    <ThemeSwitcher />
     <Knobs onChange={setStateProps} />
     <H1>Button 测试</H1>
     <P>请使用 knobs 进行调戏 <span role="img" aria-label="play">🙈</span>，通过注入全局样式测试 <code>:link</code> <code>:visited</code> 对链接按钮样式的干扰</P>

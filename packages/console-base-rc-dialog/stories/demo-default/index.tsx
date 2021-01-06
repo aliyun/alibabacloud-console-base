@@ -8,6 +8,7 @@ import {
   Button,
   PreJson
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Dialog, {
   DialogProps,
@@ -28,6 +29,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateProps, setStateProps] = useState<Partial<DialogProps>>({});
   
   return <>
+    <ThemeSwitcher />
     <Knobs onChange={setStateProps} />
     <H1>基础用法</H1>
     <Button {...{

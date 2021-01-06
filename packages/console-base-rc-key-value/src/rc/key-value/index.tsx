@@ -22,11 +22,11 @@ const ScKeyValue = styled.div``;
 const ScItem = styled.div`
   display: flex;
   margin: 4px 0;
-  ${mixinTextPrimary};
+  ${mixinTextPrimary}
 `;
 const ScItemK = styled.div`
   margin-right: 1em;
-  ${mixinTextTertiary};
+  ${mixinTextTertiary}
 `;
 const ScItemV = styled.div<IPropsScItemV>`
   flex: 1;

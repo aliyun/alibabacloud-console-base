@@ -43,10 +43,10 @@ const ScPaginationDisplay = styled.div`
   margin: 0 12px;
   padding-top: 2px;
   font-size: 12px;
-  ${mixinTextTertiary};
+  ${mixinTextTertiary}
   
   strong {
-    ${mixinTextAccent};
+    ${mixinTextAccent}
   }
 `;
 

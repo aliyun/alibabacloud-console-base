@@ -9,6 +9,7 @@ import {
   CheckboxGroup,
   Button
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import {
   ErrorDetailedInfo
@@ -27,6 +28,7 @@ export default function DemoDefault(): JSX.Element {
   const handleAlertErrors = useCallback(() => stateErrors.forEach(v => alertError(v)), [stateErrors]);
   
   return <>
+    <ThemeSwitcher />
     <H1>选择错误，模拟单个或多个错误的场景</H1>
     <CheckboxGroup<ErrorDetailedInfo> {...{
       items: ERRORS.map(v => ({

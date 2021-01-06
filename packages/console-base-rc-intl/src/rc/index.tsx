@@ -44,7 +44,7 @@ const cssBlockElements = css`
     margin: 16px 0;
     border: 0;
     height: 0;
-    ${mixinBorderSecondaryBottom};
+    ${mixinBorderSecondaryBottom}
   }
   
   p,
@@ -88,14 +88,14 @@ const cssBlockElements = css`
 `;
 
 const ScSpan = styled.span`
-  ${cssInlineElements};
+  ${cssInlineElements}
 `;
 
 const ScDiv = styled.div`
   line-height: 1.6;
   
-  ${cssInlineElements};
-  ${cssBlockElements};
+  ${cssInlineElements}
+  ${cssBlockElements}
 `;
 
 export default function Intl({

@@ -24,6 +24,7 @@
     "input"
   ],
   "devDependencies": {
+    "@alicloud/console-base-rc-demo-theme-switcher": "^0.0.2",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.4",
     "@types/jest": "^26.0.19",

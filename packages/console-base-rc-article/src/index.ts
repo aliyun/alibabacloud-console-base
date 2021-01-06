@@ -17,7 +17,7 @@ import {
 
 export default styled.article`
   a {
-    ${mixinLinkPrimary};
+    ${mixinLinkPrimary}
   }
   
   ul,
@@ -130,7 +130,7 @@ export default styled.article`
     margin: 16px 0;
     border: 0;
     height: 0;
-    ${mixinBorderSecondaryBottom};
+    ${mixinBorderSecondaryBottom}
   }
   
   section {
@@ -211,12 +211,12 @@ export default styled.article`
     
     thead {
       tr {
-        ${mixinBgSecondary};
+        ${mixinBgSecondary}
       }
     }
     
     tr {
-      ${mixinBgPrimary};
+      ${mixinBgPrimary}
     }
     
     th,
@@ -225,7 +225,7 @@ export default styled.article`
       font-size: 0.9em;
       text-align: left;
       color: inherit;
-      ${mixinBorderTertiary};
+      ${mixinBorderTertiary}
       
       &:first-child {
         border-left: none;

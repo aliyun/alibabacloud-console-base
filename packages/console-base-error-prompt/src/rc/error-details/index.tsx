@@ -14,7 +14,7 @@ import styled from 'styled-components';
 
 import {
   mixinTextTertiary,
-  mixinBorderSecondaryBottom,
+  mixinBorderTertiaryBottom,
   mixinTypoLineWrap
 } from '@alicloud/console-base-theme';
 import Button, {
@@ -64,7 +64,7 @@ const ScErrorDetails = styled.ul<IPropsScDetails>`
 const ScKV = styled.li`
   display: flex;
   padding: 4px 0;
-  ${mixinBorderSecondaryBottom}
+  ${mixinBorderTertiaryBottom}
 `;
 
 const ScK = styled.div`

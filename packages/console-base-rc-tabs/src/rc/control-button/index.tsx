@@ -39,11 +39,11 @@ const ScButton = styled(Button)<IProps>`
     color: #fff;
   ` : css`
     border-radius: 2px;
-    ${mixinTextSecondary};
+    ${mixinTextSecondary}
     
     &:hover {
       background: rgba(0, 0, 0, 0.1);
-      ${mixinTextSecondary};
+      ${mixinTextSecondary}
     }
   `)}
   
