@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-region-flag",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "ConsoleBase 组件 - Region 旗帜",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.4",
-    "@alicloud/demo-rc-elements": "^1.0.8",
+    "@alicloud/demo-rc-elements": "^1.0.9",
     "@types/jest": "^26.0.19",
     "@types/styled-components": "^5.1.7",
     "jest": "^26.6.3",
