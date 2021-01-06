@@ -34,5 +34,5 @@ export interface IButtonProps extends Omit<IButtonPropsForSc, 'title'> {
   iconLeft?: IconType | JSX.Element; // 左侧 Icon，如果是 string（IconType），则使用 @alicloud/console-base-rc-icon
   iconRight?: IconType | JSX.Element; // 右侧 Icon，类上
   // behavior
-  spm: string; // force to have a goldlog ghost click attribute
+  spm?: string; // force to have a goldlog ghost click attribute
 }
