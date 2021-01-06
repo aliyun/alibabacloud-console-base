@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {
+  mixinBgPrimary,
+  mixinTextSecondary
+} from '@alicloud/console-base-theme';
+
 import Rnd from '../rnd';
 import Toolbar from '../toolbar';
 import Content from '../content';
@@ -14,6 +19,8 @@ const ScUi = styled.div`
 const ScContent = styled.div`
   flex: 1;
   overflow: auto;
+  ${mixinBgPrimary}
+  ${mixinTextSecondary}
 `;
 
 /**

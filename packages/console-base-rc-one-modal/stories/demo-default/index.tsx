@@ -6,14 +6,16 @@ import styled from 'styled-components';
 
 import {
   ChoiceItem,
+  H1,
   Button,
   RadioGroup,
   LongArticle,
   Flex100HBF
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import OneModal, {
-  EModalMode,
+  ModalMode,
   ModalTab
 } from '../../src';
 import LoadConsoleBase from '../load-console-base';
@@ -56,14 +58,14 @@ const DEFAULT_PAGES: ModalTab[] = [{
   content: <>123123123</>
 }];
 
-const MODE_CHOICES: ChoiceItem<EModalMode>[] = Object.keys(EModalMode).map((k): ChoiceItem<EModalMode> => ({
+const MODE_CHOICES: ChoiceItem<ModalMode>[] = Object.keys(ModalMode).map((k): ChoiceItem<ModalMode> => ({
   label: k,
-  value: EModalMode[k as keyof typeof EModalMode]
+  value: ModalMode[k as keyof typeof ModalMode]
 }));
 
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState(DEFAULT_PAGES);
-  const [stateMode, setStateMode] = useState<EModalMode | undefined>(undefined);
+  const [stateMode, setStateMode] = useState<ModalMode | undefined>(undefined);
   const [stateVisible, setStateVisible] = useState<boolean>(true);
   
   const handleAdd = useCallback(() => {
@@ -76,6 +78,7 @@ export default function DemoDefault(): JSX.Element {
   }, [stateTabs, setStateTabs]);
   
   return <>
+    <ThemeSwitcher />
     <OneModal {...{
       tabs: stateTabs,
       affix: '#the-minimize-to-node-for-demo',
@@ -84,7 +87,8 @@ export default function DemoDefault(): JSX.Element {
       onModeChange: setStateMode,
       onClose: () => setStateVisible(false)
     }} />
-    <RadioGroup<EModalMode> {...{
+    <H1>props</H1>
+    <RadioGroup<ModalMode> {...{
       label: 'props.mode',
       items: MODE_CHOICES,
       value: stateMode,

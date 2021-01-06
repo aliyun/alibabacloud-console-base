@@ -24,6 +24,7 @@
     "modal"
   ],
   "devDependencies": {
+    "@alicloud/console-base-rc-demo-theme-switcher": "^0.0.2",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.4",
     "@alicloud/demo-rc-elements": "^1.0.9",
@@ -49,6 +50,7 @@
     "@alicloud/console-base-rc-button": "^1.0.21",
     "@alicloud/console-base-rc-icon": "^1.0.19",
     "@alicloud/console-base-rc-tabs": "^1.0.19",
+    "@alicloud/console-base-theme": "^0.0.13",
     "lodash": "^4.17.20",
     "react-rnd": "^10.2.4"
   },
