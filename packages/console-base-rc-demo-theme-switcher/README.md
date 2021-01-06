@@ -1,29 +1,20 @@
-import React, {
-  useState,
-  useCallback
-} from 'react';
+@alicloud/console-base-rc-demo-theme-switcher
+===
 
-import {
-  H1,
-  Button
-} from '@alicloud/demo-rc-elements';
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+> 具体看 types 下的类型说明。
 
-import TopNav, {
-  TopNavProps,
-  TopNavButton
-} from '../../src';
+例子：
 
-const topNavProps: TopNavProps = {
-  id: 'gave-the-top-nav-an-id-by-boshit',
+```typescript jsx
+<TopNav {...{
+  id: 'fuck',
   dock: {
     onClick() {
       console.info('只有含 onXx 或 href 才可以展示');
     }
   },
   logo: {
-    href: '/'
-    // label: <img src="https://img.alicdn.com/imgextra/i4/2424298091/O1CN01WdxL9p29djBt2X6a5_!!2424298091.jpg" alt="" />
+    label: <img src="https://img.alicdn.com/imgextra/i4/2424298091/O1CN01WdxL9p29djBt2X6a5_!!2424298091.jpg" alt="" />
   },
   menus: [{
     key: 'f-y',
@@ -88,7 +79,6 @@ const topNavProps: TopNavProps = {
     }
   },
   account: {
-    href: '/account',
     avatar: 'https://img.alicdn.com/imgextra/i3/2228361831/O1CN01E9EAfp1POdoYo8idF_!!2228361831.jpg',
     dropdown: {
       minWidth: 300,
@@ -99,7 +89,7 @@ const topNavProps: TopNavProps = {
     }
   },
   customLeft: <>
-    <TopNavButton {...{
+    <ButtonInTop {...{
       spm: 'l1',
       force: true,
       label: <span style={{ color: 'red' }}>L1</span>
@@ -110,19 +100,5 @@ const topNavProps: TopNavProps = {
     <div style={{ color: 'purple' }}>R1</div>
     <div style={{ color: 'pink' }}>R2</div>
   </>
-};
-
-export default function DemoDefault(): JSX.Element {
-  const [stateRemoved, setStateRemoved] = useState<boolean>(false);
-  
-  const handleToggleRemoved = useCallback(() => {
-    setStateRemoved(!stateRemoved);
-  }, [stateRemoved, setStateRemoved]);
-  
-  return <>
-    <ThemeSwitcher />
-    {stateRemoved ? null : <TopNav {...topNavProps} />}
-    <H1>吊顶</H1>
-    <Button onClick={handleToggleRemoved}>移除 / 加入</Button>
-  </>;
-}
+}} />
+```

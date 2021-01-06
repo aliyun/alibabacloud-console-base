@@ -1,15 +1,21 @@
 import React, {
   useState
 } from 'react';
+import {
+  createGlobalStyle
+} from 'styled-components';
 
 import {
-  ThemeStyleLight,
-  ThemeStyleDark
-} from '@alicloud/console-base-theme';
-import {
+  H1,
   ChoiceItem,
   RadioGroup
 } from '@alicloud/demo-rc-elements';
+import {
+  ThemeStyleLight,
+  ThemeStyleDark,
+  mixinBgPrimary,
+  mixinTextPrimary,
+} from '@alicloud/console-base-theme';
 
 enum ETheme {
   LIGHT,
@@ -24,14 +30,26 @@ const choices: ChoiceItem<ETheme>[] = [{
   label: 'Dark'
 }];
 
+const DarkAll = createGlobalStyle`
+  html {
+    ${mixinBgPrimary}
+    ${mixinTextPrimary}
+  }
+`;
+
 export default function ThemeSwitcher(): JSX.Element {
   const [stateTheme, setStateTheme] = useState<ETheme>(ETheme.LIGHT);
   
   return <>
-    <RadioGroup {...{
+    <H1>Theme Switcher</H1>
+    <RadioGroup<ETheme> {...{
+      value: stateTheme,
       items: choices,
       onChange: setStateTheme
     }} />
-    {stateTheme === ETheme.DARK ? <ThemeStyleDark /> : <ThemeStyleLight />}
+    {stateTheme === ETheme.DARK ? <>
+      <DarkAll />
+      <ThemeStyleDark />
+    </> : <ThemeStyleLight />}
   </>;
 }

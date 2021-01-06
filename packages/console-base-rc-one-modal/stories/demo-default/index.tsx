@@ -61,7 +61,7 @@ const MODE_CHOICES: ChoiceItem<EModalMode>[] = Object.keys(EModalMode).map((k): 
   value: EModalMode[k as keyof typeof EModalMode]
 }));
 
-export default function Demo(): JSX.Element {
+export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState(DEFAULT_PAGES);
   const [stateMode, setStateMode] = useState<EModalMode | undefined>(undefined);
   const [stateVisible, setStateVisible] = useState<boolean>(true);
