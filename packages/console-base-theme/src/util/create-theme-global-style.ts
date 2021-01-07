@@ -4,12 +4,12 @@ import {
 } from 'styled-components';
 
 import {
-  ThemeColor,
+  ThemeColors,
   ThemeTypo
 } from '../var';
 
 interface ITheme {
-  COLOR: ThemeColor;
+  COLOR: ThemeColors;
   TYPO: ThemeTypo;
 }
 
@@ -21,6 +21,8 @@ export default function createThemeGlobalStyle({
     :root {
       --cb-color-text-transparent: ${COLOR.TEXT_TRANSPARENT};
       --cb-color-text-white: ${COLOR.TEXT_WHITE};
+      --cb-color-text-black: ${COLOR.TEXT_BLACK};
+      --cb-color-text-inverse: ${COLOR.TEXT_INVERSE};
       --cb-color-text-brand: ${COLOR.TEXT_BRAND};
       --cb-color-text-brand-hover: ${COLOR.TEXT_BRAND_HOVER};
       --cb-color-text-brand-active: ${COLOR.TEXT_BRAND_ACTIVE};
@@ -41,6 +43,8 @@ export default function createThemeGlobalStyle({
       --cb-color-text-code: ${COLOR.TEXT_CODE};
       --cb-color-bg-transparent: ${COLOR.BG_TRANSPARENT};
       --cb-color-bg-white: ${COLOR.BG_WHITE};
+      --cb-color-bg-black: ${COLOR.BG_BLACK};
+      --cb-color-bg-inverse: ${COLOR.BG_INVERSE};
       --cb-color-bg-brand: ${COLOR.BG_BRAND};
       --cb-color-bg-brand-hover: ${COLOR.BG_BRAND_HOVER};
       --cb-color-bg-brand-active: ${COLOR.BG_BRAND_ACTIVE};

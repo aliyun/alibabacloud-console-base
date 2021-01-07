@@ -2,7 +2,7 @@ import {
   IColorText,
   IColorBg,
   IColorBorder,
-  IThemeColor,
+  IThemeColors,
   IColorEssential
 } from '../types';
 import {
@@ -17,7 +17,7 @@ import createConstColorLink from './create-const-color-link';
 import createConstColorInput from './create-const-color-input';
 import createConstColorButton from './create-const-color-button';
 
-export default function createThemeColor(colorEssentialOverride?: Partial<IColorEssential>): IThemeColor {
+export default function createThemeColor(colorEssentialOverride?: Partial<IColorEssential>): IThemeColors {
   const E = {
     ...COLOR_ESSENTIAL,
     ...colorEssentialOverride

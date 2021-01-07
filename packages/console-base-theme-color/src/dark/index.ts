@@ -1,9 +1,13 @@
 import {
   IColorEssential
-} from '../../types';
+} from '../types';
+import createThemeColor from '../util/create-theme-color';
 
 // const TRANSPARENT = 'transparent';
 // const WHITE = '#fff';
+// const BLACK = '#000';
+const INVERSE = '#000';
+const INVERSE_BG = '#fff';
 // const BRAND = '#ff6a00';
 // const BRAND_HOVER = '#ff6a00';
 // const BRAND_ACTIVE = '#e50';
@@ -17,16 +21,16 @@ const GRAY_PRIMARY = '#d8d9da';
 const GRAY_SECONDARY = '#ccc';
 const GRAY_TERTIARY = '#999';
 const GRAY_DISABLED = '#504a44';
-const GRAY_BD_PRIMARY = '#888';
-const GRAY_BD_SECONDARY = '#67676f';
-const GRAY_BD_TERTIARY = '#45454c';
-const GRAY_BD_DISABLED = '#30363d';
-const GRAY_BG_PRIMARY = '#333';
-const GRAY_BG_SECONDARY = '#202023';
-const GRAY_BG_TERTIARY = '#121417';
-const GRAY_BG_DISABLED = '#161b22';
-const GRAY_BG_SECONDARY_FADE = 'rgba(37,37,41,0.862745)';
-const GRAY_BG_TERTIARY_FADE = 'rgba(20,22,25,0.909804)';
+const GRAY_PRIMARY_BD = '#888';
+const GRAY_SECONDARY_BD = '#67676f';
+const GRAY_TERTIARY_BD = '#45454c';
+const GRAY_DISABLED_BD = '#30363d';
+const GRAY_PRIMARY_BG = '#333';
+const GRAY_SECONDARY_BG = '#202023';
+const GRAY_TERTIARY_BG = '#121417';
+const GRAY_DISABLED_BG = '#161b22';
+const GRAY_SECONDARY_FADE_BG = 'rgba(37,37,41,0.862745)';
+const GRAY_TERTIARY_FADE_BG = 'rgba(20,22,25,0.909804)';
 const HELP = '#555';
 // const INFO = '#0064c8';
 // const SUCCESS = '#1e8e3e';
@@ -45,9 +49,12 @@ const HELP_BG_FADE = 'rgba(127,127,127,0.666667)';
 const SHADOW = 'rgba(255,255,255,0.2)';
 const BACKDROP = 'rgba(255,255,255,0.2)';
 
-export const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
+const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   // TRANSPARENT,
   // WHITE,
+  // BLACK
+  INVERSE,
+  INVERSE_BG,
   // BRAND,
   // BRAND_HOVER,
   // BRAND_ACTIVE,
@@ -61,16 +68,16 @@ export const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   GRAY_SECONDARY,
   GRAY_TERTIARY,
   GRAY_DISABLED,
-  GRAY_BD_PRIMARY,
-  GRAY_BD_SECONDARY,
-  GRAY_BD_TERTIARY,
-  GRAY_BD_DISABLED,
-  GRAY_BG_PRIMARY,
-  GRAY_BG_SECONDARY,
-  GRAY_BG_TERTIARY,
-  GRAY_BG_DISABLED,
-  GRAY_BG_SECONDARY_FADE,
-  GRAY_BG_TERTIARY_FADE,
+  GRAY_PRIMARY_BD,
+  GRAY_SECONDARY_BD,
+  GRAY_TERTIARY_BD,
+  GRAY_DISABLED_BD,
+  GRAY_PRIMARY_BG,
+  GRAY_SECONDARY_BG,
+  GRAY_TERTIARY_BG,
+  GRAY_DISABLED_BG,
+  GRAY_SECONDARY_FADE_BG,
+  GRAY_TERTIARY_FADE_BG,
   HELP,
   // INFO,
   // SUCCESS,
@@ -89,3 +96,5 @@ export const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   SHADOW,
   BACKDROP
 };
+
+export default createThemeColor(COLOR_ESSENTIAL_OVERRIDE);

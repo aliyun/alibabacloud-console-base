@@ -16,12 +16,12 @@ export const CODE_BEGIN_GLOBAL_STYLE = `import {
 } from 'styled-components';
 
 import {
-  ThemeColor,
+  ThemeColors,
   ThemeTypo
 } from '../var';
 
 interface ITheme {
-  COLOR: ThemeColor;
+  COLOR: ThemeColors;
   TYPO: ThemeTypo;
 }
 

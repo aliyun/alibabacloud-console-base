@@ -1,6 +1,9 @@
 export interface IColorEssential {
   TRANSPARENT: string;
   WHITE: string;
+  BLACK: string;
+  INVERSE: string;
+  INVERSE_BG: string;
   BRAND: string;
   BRAND_HOVER: string;
   BRAND_ACTIVE: string;
@@ -14,16 +17,16 @@ export interface IColorEssential {
   GRAY_SECONDARY: string;
   GRAY_TERTIARY: string;
   GRAY_DISABLED: string;
-  GRAY_BD_PRIMARY: string;
-  GRAY_BD_SECONDARY: string;
-  GRAY_BD_TERTIARY: string;
-  GRAY_BD_DISABLED: string;
-  GRAY_BG_PRIMARY: string;
-  GRAY_BG_SECONDARY: string;
-  GRAY_BG_SECONDARY_FADE: string;
-  GRAY_BG_TERTIARY: string;
-  GRAY_BG_TERTIARY_FADE: string;
-  GRAY_BG_DISABLED: string;
+  GRAY_PRIMARY_BD: string;
+  GRAY_SECONDARY_BD: string;
+  GRAY_TERTIARY_BD: string;
+  GRAY_DISABLED_BD: string;
+  GRAY_PRIMARY_BG: string;
+  GRAY_SECONDARY_BG: string;
+  GRAY_SECONDARY_FADE_BG: string;
+  GRAY_TERTIARY_BG: string;
+  GRAY_TERTIARY_FADE_BG: string;
+  GRAY_DISABLED_BG: string;
   HELP: string;
   INFO: string;
   SUCCESS: string;
@@ -46,6 +49,8 @@ export interface IColorEssential {
 export interface IColorText {
   TEXT_TRANSPARENT: string;
   TEXT_WHITE: string;
+  TEXT_BLACK: string;
+  TEXT_INVERSE: string;
   TEXT_BRAND: string;
   TEXT_BRAND_HOVER: string;
   TEXT_BRAND_ACTIVE: string;
@@ -69,6 +74,8 @@ export interface IColorText {
 export interface IColorBg {
   BG_TRANSPARENT: string;
   BG_WHITE: string;
+  BG_BLACK: string;
+  BG_INVERSE: string;
   BG_BRAND: string;
   BG_BRAND_HOVER: string;
   BG_BRAND_ACTIVE: string;
@@ -320,4 +327,4 @@ export interface IColorButton {
   BUTTON_TEXT_BRAND_SECONDARY_BORDER_DISABLED: string;
 }
 
-export interface IThemeColor extends IColorText, IColorBg, IColorBorder, IColorShadow, IColorInput, IColorLink, IColorButton {}
+export interface IThemeColors extends IColorText, IColorBg, IColorBorder, IColorShadow, IColorInput, IColorLink, IColorButton {}

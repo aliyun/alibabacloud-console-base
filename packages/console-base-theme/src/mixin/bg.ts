@@ -14,6 +14,14 @@ export const mixinBgWhite = css`
   background-color: ${COLOR.BG_WHITE};
   background-color: var(--cb-color-bg-white, ${COLOR.BG_WHITE});
 `;
+export const mixinBgBlack = css`
+  background-color: ${COLOR.BG_BLACK};
+  background-color: var(--cb-color-bg-black, ${COLOR.BG_BLACK});
+`;
+export const mixinBgInverse = css`
+  background-color: ${COLOR.BG_INVERSE};
+  background-color: var(--cb-color-bg-inverse, ${COLOR.BG_INVERSE});
+`;
 export const mixinBgBrand = css`
   background-color: ${COLOR.BG_BRAND};
   background-color: var(--cb-color-bg-brand, ${COLOR.BG_BRAND});

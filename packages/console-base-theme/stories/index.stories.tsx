@@ -19,8 +19,6 @@ import DemoDefault, {
   GeneratorMixinInput,
   GeneratorMixinButton
 } from './demo-default';
-import DemoColorScale from './demo-color-scale';
-import DemoColorConversion from './demo-color-conversion';
 import DemoMixins, {
   MixinBaseText,
   MixinBaseBg,
@@ -52,6 +50,4 @@ storiesOf(pkgInfo.name, module)
     .add('mixin-typo', () => <MixinTypo />)
     .add('mixin-link', () => <MixinLink />)
     .add('mixin-input', () => <MixinInput />)
-    .add('mixin-button', () => <MixinButton />)
-    .add('color-scale', () => <DemoColorScale />)
-    .add('color-conversion', () => <DemoColorConversion />);
+    .add('mixin-button', () => <MixinButton />);

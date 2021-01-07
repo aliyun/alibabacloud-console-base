@@ -7,6 +7,8 @@ export default function createConstColorBaseText(E: IColorEssential): IColorText
   return {
     TEXT_TRANSPARENT: E.TRANSPARENT,
     TEXT_WHITE: E.WHITE,
+    TEXT_BLACK: E.BLACK,
+    TEXT_INVERSE: E.INVERSE,
     TEXT_BRAND: E.BRAND,
     TEXT_BRAND_HOVER: E.BRAND_HOVER,
     TEXT_BRAND_ACTIVE: E.BRAND_ACTIVE,

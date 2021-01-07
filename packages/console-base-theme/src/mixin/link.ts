@@ -34,7 +34,7 @@ export const mixinLinkDisabled = css`
 export const mixinLinkPrimary = css`
   color: ${COLOR.LINK_PRIMARY};
   color: var(--cb-color-link-primary, ${COLOR.LINK_PRIMARY});
-  ${linkCommon}
+  ${linkCommon};
   
   &:visited {
     color: ${COLOR.LINK_PRIMARY_VISITED};
@@ -55,7 +55,7 @@ export const mixinLinkPrimary = css`
 export const mixinLinkSecondary = css`
   color: ${COLOR.LINK_SECONDARY};
   color: var(--cb-color-link-secondary, ${COLOR.LINK_SECONDARY});
-  ${linkCommon}
+  ${linkCommon};
   
   &:visited {
     color: ${COLOR.LINK_SECONDARY_VISITED};
@@ -76,7 +76,7 @@ export const mixinLinkSecondary = css`
 export const mixinLinkTertiary = css`
   color: ${COLOR.LINK_TERTIARY};
   color: var(--cb-color-link-tertiary, ${COLOR.LINK_TERTIARY});
-  ${linkCommon}
+  ${linkCommon};
   
   &:visited {
     color: ${COLOR.LINK_TERTIARY_VISITED};
@@ -97,7 +97,7 @@ export const mixinLinkTertiary = css`
 export const mixinLinkBrand = css`
   color: ${COLOR.LINK_BRAND};
   color: var(--cb-color-link-brand, ${COLOR.LINK_BRAND});
-  ${linkCommon}
+  ${linkCommon};
   
   &:visited {
     color: ${COLOR.LINK_BRAND_VISITED};
@@ -118,7 +118,7 @@ export const mixinLinkBrand = css`
 export const mixinLinkBrandSecondary = css`
   color: ${COLOR.LINK_BRAND_SECONDARY};
   color: var(--cb-color-link-brand-secondary, ${COLOR.LINK_BRAND_SECONDARY});
-  ${linkCommon}
+  ${linkCommon};
   
   &:visited {
     color: ${COLOR.LINK_BRAND_SECONDARY_VISITED};

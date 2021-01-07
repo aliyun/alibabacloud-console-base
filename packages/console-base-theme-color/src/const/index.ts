@@ -4,6 +4,9 @@ import {
 
 const TRANSPARENT = 'transparent';
 const WHITE = '#fff';
+const BLACK = '#000';
+const INVERSE = '#fff';
+const INVERSE_BG = '#000';
 const BRAND = '#ff6a00';
 const BRAND_HOVER = '#ff6a00';
 const BRAND_ACTIVE = '#e50';
@@ -17,16 +20,16 @@ const GRAY_PRIMARY = '#333';
 const GRAY_SECONDARY = '#666';
 const GRAY_TERTIARY = '#999';
 const GRAY_DISABLED = '#c0c6cc';
-const GRAY_BD_PRIMARY = '#d1d5d9';
-const GRAY_BD_SECONDARY = '#e3e4e6';
-const GRAY_BD_TERTIARY = '#ebebeb';
-const GRAY_BD_DISABLED = '#e3e4e6';
-const GRAY_BG_PRIMARY = '#fff'; // 视觉上第一层级的背景色（用于 level1 的导航、dialog、dropdown 等）
-const GRAY_BG_SECONDARY = '#f4f6f7'; // 视觉上第二层级的背景色（用于 level2 的导航）
-const GRAY_BG_TERTIARY = '#eee'; // 视觉上第三层级的背景色（用于 body）
-const GRAY_BG_DISABLED = '#e3e4e6';
-const GRAY_BG_SECONDARY_FADE = 'rgba(0,46,70,0.04314)'; // 等价于 BG_SECONDARY
-const GRAY_BG_TERTIARY_FADE = 'rgba(0,0,0,0.066667)'; // 等价于 BG_TERTIARY
+const GRAY_PRIMARY_BD = '#d1d5d9';
+const GRAY_SECONDARY_BD = '#e3e4e6';
+const GRAY_TERTIARY_BD = '#ebebeb';
+const GRAY_DISABLED_BD = '#e3e4e6';
+const GRAY_PRIMARY_BG = '#fff'; // 视觉上第一层级的背景色（用于 level1 的导航、dialog、dropdown 等）
+const GRAY_SECONDARY_BG = '#f4f6f7'; // 视觉上第二层级的背景色（用于 level2 的导航）
+const GRAY_TERTIARY_BG = '#eee'; // 视觉上第三层级的背景色（用于 body）
+const GRAY_DISABLED_BG = '#e3e4e6';
+const GRAY_SECONDARY_FADE_BG = 'rgba(0,46,70,0.04314)'; // 等价于 BG_SECONDARY
+const GRAY_TERTIARY_FADE_BG = 'rgba(0,0,0,0.066667)'; // 等价于 BG_TERTIARY
 const HELP = '#888';
 const INFO = '#0064c8';
 const SUCCESS = '#1e8e3e';
@@ -48,6 +51,9 @@ const BACKDROP = 'rgba(0,0,0,0.2)';
 export const COLOR_ESSENTIAL: IColorEssential = {
   TRANSPARENT,
   WHITE,
+  BLACK,
+  INVERSE,
+  INVERSE_BG,
   BRAND,
   BRAND_HOVER,
   BRAND_ACTIVE,
@@ -61,16 +67,16 @@ export const COLOR_ESSENTIAL: IColorEssential = {
   GRAY_SECONDARY,
   GRAY_TERTIARY,
   GRAY_DISABLED,
-  GRAY_BD_PRIMARY,
-  GRAY_BD_SECONDARY,
-  GRAY_BD_TERTIARY,
-  GRAY_BD_DISABLED,
-  GRAY_BG_PRIMARY,
-  GRAY_BG_SECONDARY,
-  GRAY_BG_TERTIARY,
-  GRAY_BG_DISABLED,
-  GRAY_BG_SECONDARY_FADE,
-  GRAY_BG_TERTIARY_FADE,
+  GRAY_PRIMARY_BD,
+  GRAY_SECONDARY_BD,
+  GRAY_TERTIARY_BD,
+  GRAY_DISABLED_BD,
+  GRAY_PRIMARY_BG,
+  GRAY_SECONDARY_BG,
+  GRAY_TERTIARY_BG,
+  GRAY_DISABLED_BG,
+  GRAY_SECONDARY_FADE_BG,
+  GRAY_TERTIARY_FADE_BG,
   HELP,
   INFO,
   SUCCESS,

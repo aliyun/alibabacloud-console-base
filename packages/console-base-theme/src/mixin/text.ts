@@ -14,6 +14,14 @@ export const mixinTextWhite = css`
   color: ${COLOR.TEXT_WHITE};
   color: var(--cb-color-text-white, ${COLOR.TEXT_WHITE});
 `;
+export const mixinTextBlack = css`
+  color: ${COLOR.TEXT_BLACK};
+  color: var(--cb-color-text-black, ${COLOR.TEXT_BLACK});
+`;
+export const mixinTextInverse = css`
+  color: ${COLOR.TEXT_INVERSE};
+  color: var(--cb-color-text-inverse, ${COLOR.TEXT_INVERSE});
+`;
 export const mixinTextBrand = css`
   color: ${COLOR.TEXT_BRAND};
   color: var(--cb-color-text-brand, ${COLOR.TEXT_BRAND});
