@@ -25,6 +25,12 @@ const ScPre = styled.pre`
   white-space: pre-wrap;
   word-break: break-all;
   color: #999;
+  
+  .demo-theme-dark & {
+    border-color: #555;
+    background-color: #444;
+    color: #ccc;
+  }
 `;
 
 const ScNote = styled.span`

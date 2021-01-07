@@ -5,6 +5,10 @@ import styled from 'styled-components';
 const ScLongArticle = styled.article`
   color: #333;
   
+  .demo-theme-dark & {
+    color: #ccc;
+  }
+  
   audio {
     width: 100%;
   }

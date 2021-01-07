@@ -11,7 +11,7 @@ const cssHeading = css`
   margin: 2em 0 1em 0;
   padding: 0 0 0 40px;
   line-height: 2;
-  ${CSS_FONT_FAMILY};
+  ${CSS_FONT_FAMILY}
   
   &:first-child {
     margin-top: 0;
@@ -30,10 +30,15 @@ const cssHeading = css`
 `;
 
 export const H1 = styled.h1`
-  ${cssHeading};
   background-color: #000;
   font-size: 18px;
   color: #fff;
+  ${cssHeading}
+  
+  .demo-theme-dark & {
+    background-color: #fff;
+    color: #000;
+  }
    
   &:before {
     content: 'H1';
@@ -42,10 +47,15 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-  ${cssHeading};
   background-color: #333;
   font-size: 14px;
   color: #fff;
+  ${cssHeading}
+  
+  .demo-theme-dark & {
+    background-color: #ccc;
+    color: #000;
+  }
   
   &:before {
     content: 'H2';
@@ -54,9 +64,13 @@ export const H2 = styled.h2`
 `;
 
 export const H3 = styled.h3`
-  ${cssHeading};
   background-color: #eee;
   font-size: 12px;
+  ${cssHeading}
+  
+  .demo-theme-dark & {
+    background-color: #222;
+  }
    
   &:before {
     content: 'H3';
@@ -65,9 +79,13 @@ export const H3 = styled.h3`
 `;
 
 export const H4 = styled.h4`
-  ${cssHeading};
   background-color: #eee;
   font-size: 12px;
+  ${cssHeading}
+  
+  .demo-theme-dark & {
+    background-color: #222;
+  }
    
   &:before {
     content: 'H4';

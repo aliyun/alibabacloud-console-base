@@ -1,7 +1,5 @@
-import COLOR from './color';
-
 export * from '../../var';
 
 export {
-  COLOR
-};
+  COLOR_DARK as COLOR
+} from '@alicloud/console-base-theme-color';

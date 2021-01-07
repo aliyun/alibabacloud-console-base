@@ -1,5 +1,6 @@
 import React, {
-  useState
+  useState,
+  useEffect
 } from 'react';
 import {
   createGlobalStyle
@@ -14,8 +15,12 @@ import {
   ThemeStyleLight,
   ThemeStyleDark,
   mixinBgPrimary,
-  mixinTextPrimary,
+  mixinTextPrimary
 } from '@alicloud/console-base-theme';
+import {
+  addClass,
+  removeClass
+} from '@alicloud/mere-dom';
 
 enum ETheme {
   LIGHT,
@@ -37,6 +42,16 @@ const DarkAll = createGlobalStyle`
   }
 `;
 
+function ToggleDemoThemeDark(): null {
+  useEffect(() => {
+    addClass('body', 'demo-theme-dark');
+    
+    return () => removeClass('body', 'demo-theme-dark');
+  }, []);
+  
+  return null;
+}
+
 export default function ThemeSwitcher(): JSX.Element {
   const [stateTheme, setStateTheme] = useState<ETheme>(ETheme.LIGHT);
   
@@ -49,6 +64,7 @@ export default function ThemeSwitcher(): JSX.Element {
     }} />
     {stateTheme === ETheme.DARK ? <>
       <DarkAll />
+      <ToggleDemoThemeDark />
       <ThemeStyleDark />
     </> : <ThemeStyleLight />}
   </>;
