@@ -45,7 +45,7 @@ export const mixinTypoFontBase = css`
 
 export const mixinTypoStrong = css`
   font-weight: 600;
-  ${mixinTextPrimary};
+  ${mixinTextPrimary}
 `;
 
 export const mixinTypoEm = css`
