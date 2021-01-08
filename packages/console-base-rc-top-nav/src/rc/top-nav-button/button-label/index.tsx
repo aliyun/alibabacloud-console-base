@@ -57,6 +57,7 @@ export default function ButtonLabel({
   if (label) {
     const {
       icon,
+      iconRotate,
       html,
       text,
       count,
@@ -65,7 +66,7 @@ export default function ButtonLabel({
     let jsxLabel: JSX.Element;
     
     if (icon) {
-      jsxLabel = <ScButtonIcon type={icon} />;
+      jsxLabel = <ScButtonIcon type={icon} rotate={iconRotate} />;
     } else if (html) {
       jsxLabel = <span dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
         __html: html

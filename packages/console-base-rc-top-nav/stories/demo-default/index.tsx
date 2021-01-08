@@ -63,6 +63,22 @@ const topNavProps: TopNavProps = {
       count: 123
     },
     href: '/cart'
+  }, {
+    key: 'help',
+    label: {
+      icon: 'help'
+    },
+    href: '/help'
+  }, {
+    key: 'theme',
+    label: {
+      icon: 'theme-light-dark'
+    },
+    labelHover: {
+      icon: 'theme-light-dark',
+      iconRotate: 180
+    },
+    href: '/theme'
   }],
   language: {
     current: 'zh-CN',

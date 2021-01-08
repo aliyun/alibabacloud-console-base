@@ -5,13 +5,14 @@ import {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
-import TopNavButton from '../../../rc/button-in-top';
+import TopNavButton from '../../../rc/top-nav-button';
 import IconAliyun from '../../../rc/icon-aliyun';
 import {
   useProps
 } from '../../../model';
 
 const ScLogo = styled(TopNavButton)`
+  padding: 0 12px;
   font-size: 18px;
 `;
 

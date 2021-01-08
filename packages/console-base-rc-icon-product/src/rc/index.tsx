@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  GlyphBase,
   glyph
 } from '@alicloud/console-base-theme';
 
@@ -22,8 +23,7 @@ const fontFamily = glyph.injectGlobalFontFace({ // dataUrl 太大 50K+ 就不放
   hash: 't7d4xa4hty'
 });
 
-const ScI = styled.i<IPropsScI>`
-  ${glyph.base};
+const ScI = styled(GlyphBase)<IPropsScI>`
   font-family: ${fontFamily} !important;
   
   &:before {

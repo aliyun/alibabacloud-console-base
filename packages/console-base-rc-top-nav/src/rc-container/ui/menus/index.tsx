@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Flex from '../../../rc/flex';
-import TopNavButton from '../../../rc/button-in-top';
+import TopNavButton from '../../../rc/top-nav-button';
 import {
   useMenus
 } from '../../../model';

@@ -16,6 +16,7 @@ import {
 
 interface IPropsTopNavButtonLabel {
   icon?: IconType;
+  iconRotate?: number;
   html?: string;
   text?: string | ReactElement;
   count?: number; // 展示个数
@@ -34,6 +35,7 @@ export interface IPropsTopNavButtonDropdown extends Omit<DropdownProps, 'trigger
 export interface IPropsTopNavButton extends Omit<Partial<ButtonProps>, 'label'> {
   key?: string;
   label?: string | ReactElement | IPropsTopNavButtonLabel;
+  labelHover?: string | ReactElement | IPropsTopNavButtonLabel;
   responsive?: boolean; // 是否对宽度做自适应
   force?: boolean; // 没有行动点（href、onXx）、也没有 dropdown 的情况下，默认不会展示，如果要展示，设置为 force
   dropdown?: IPropsTopNavButtonDropdown;

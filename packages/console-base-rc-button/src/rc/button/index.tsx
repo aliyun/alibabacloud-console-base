@@ -5,7 +5,7 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  mixinButtonReset,
+  ButtonBase,
   mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
@@ -30,8 +30,7 @@ import getHrefTarget from '../../util/get-href-target';
 import getTitle from '../../util/get-title';
 import renderIcon from '../../util/render-icon';
 
-const ScButton = styled.span<IButtonPropsForSc>`
-  ${mixinButtonReset}
+const ScButton = styled(ButtonBase)<IButtonPropsForSc>`
   ${mixinCommon}
   ${mixinBorder}
   ${mixinTextAlign}
@@ -79,7 +78,7 @@ function Button({
   disabled,
   borderRadius = true,
   spm = 'button',
-  component = 'button',
+  component,
   ...restProps
 }: IButtonProps, ref: Ref<HTMLElement>): JSX.Element {
   const propsForSc: IButtonPropsForSc = {

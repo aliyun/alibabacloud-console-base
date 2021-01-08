@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {
+  MouseEvent,
+  useState,
+  useCallback
+} from 'react';
 import styled, {
   css
 } from 'styled-components';
@@ -29,7 +33,7 @@ interface IProps extends Omit<IPropsTopNavButton, 'key'> {
 const ScButton = styled(Button)<IPropsScButton>`
   display: block !important;
   position: relative;
-  padding: 0 12px;
+  padding: 0 10px;
   border: 0;
   height: 50px;
   line-height: 50px;
@@ -52,11 +56,29 @@ const ScButton = styled(Button)<IPropsScButton>`
  */
 export default function TopNavButton({
   label,
+  labelHover,
   responsive = true,
   force,
   dropdown = {},
+  onMouseEnter,
+  onMouseLeave,
   ...buttonProps
 }: IProps): JSX.Element | null {
+  const [stateHovered, setStateHovered] = useState<boolean>(false);
+  const handleMouseEnter = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    setStateHovered(true);
+    
+    if (onMouseEnter) {
+      onMouseEnter(e);
+    }
+  }, [onMouseEnter]);
+  const handleMouseLeave = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    setStateHovered(false);
+    
+    if (onMouseLeave) {
+      onMouseLeave(e);
+    }
+  }, [onMouseLeave]);
   const {
     items = [],
     header,
@@ -74,9 +96,11 @@ export default function TopNavButton({
   
   const jsxButton = <ScButton {...{
     theme: ButtonTheme.TEXT_BRAND_SECONDARY,
-    label: <ButtonLabel label={label} />,
+    label: <ButtonLabel label={stateHovered && labelHover ? labelHover : label} />,
     responsive,
-    ...buttonProps
+    ...buttonProps,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave
   }} />;
   
   if (noDropdown) {

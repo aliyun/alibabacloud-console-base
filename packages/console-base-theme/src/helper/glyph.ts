@@ -56,6 +56,7 @@ export function injectGlobalFontFace({
   return fontFamily;
 }
 
+// TODO 晚些杀了
 export const base = css`
   &:before {
     display: inline-block;
