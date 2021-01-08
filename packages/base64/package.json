@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/base64",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Base64",
   "license": "MIT",
   "main": "build/cjs/index.js",
