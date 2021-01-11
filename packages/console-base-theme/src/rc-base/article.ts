@@ -1,21 +1,28 @@
 import styled from 'styled-components';
 
 import {
-  mixinBorderSecondaryBottom,
-  mixinTextPrimary,
-  mixinLinkPrimary,
-  mixinBorderTertiary,
-  mixinBgPrimary,
-  mixinBgSecondary,
+  mixinTypoFontBase,
   mixinTypoBlockquote,
   mixinTypoEm,
   mixinTypoCode,
   mixinTypoFontFamilyMono,
   mixinTypoStrong,
-  mixinTypoKbd
-} from '@alicloud/console-base-theme';
+  mixinTypoKbd,
+  mixinTextPrimary,
+  mixinTextSecondary,
+  mixinTextInverse,
+  mixinLinkPrimary,
+  mixinBorderTertiary,
+  mixinBgPrimary,
+  mixinBgSecondary,
+  mixinBgInverse,
+  mixinBorderSecondaryBottom
+} from '../mixin';
 
 export default styled.article`
+  ${mixinTypoFontBase}
+  ${mixinTextSecondary}
+  
   a {
     ${mixinLinkPrimary}
   }
@@ -138,8 +145,16 @@ export default styled.article`
   }
   
   p {
-    margin: 0 0 1em 0;
+    margin: 1em 0 1em 0;
     word-break: break-all;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   
   dl {
@@ -157,11 +172,11 @@ export default styled.article`
   pre {
     margin: 0;
     padding: 16px;
-    background-color: #333;
     line-height: 1.6;
     overflow: auto;
     font-size: 0.9em;
-    color: #fff;
+    ${mixinTextInverse}
+    ${mixinBgInverse}
     
     ol {
       margin: 0 0 0 3em;

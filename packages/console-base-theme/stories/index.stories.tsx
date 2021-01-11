@@ -29,6 +29,7 @@ import DemoMixins, {
   MixinInput,
   MixinButton
 } from './demo-mixins';
+import DemoBase from './demo-base';
 
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
@@ -50,4 +51,5 @@ storiesOf(pkgInfo.name, module)
     .add('mixin-typo', () => <MixinTypo />)
     .add('mixin-link', () => <MixinLink />)
     .add('mixin-input', () => <MixinInput />)
-    .add('mixin-button', () => <MixinButton />);
+    .add('mixin-button', () => <MixinButton />)
+    .add('base', () => <DemoBase />);
