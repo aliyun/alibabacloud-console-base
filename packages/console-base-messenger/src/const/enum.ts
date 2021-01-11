@@ -37,6 +37,8 @@ export enum EMessageBroadcastByConsoleBase {
   // 资源组选择器
   RESOURCE_GROUP_DATA_LOADED = 'app_2_console_base:resource_group/data_loaded', // FIXME 前缀写错了...
   RESOURCE_GROUP_CHANGE = 'app_2_console_base:resource_group/change', // FIXME 前缀写错了...
+  // 主题
+  THEME_CHANGE = 'console_base_2_app:theme/change',
   // fastbuy
   FASTBUY_CLOSE = 'console_base_2_app:fastbuy/close',
   FASTBUY_BUY = 'console_base_2_app:fastbuy/buy',
