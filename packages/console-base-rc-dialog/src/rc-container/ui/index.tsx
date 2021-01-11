@@ -5,10 +5,11 @@ import styled, {
 
 import {
   SIZE,
-  mixinShadowL,
-  mixinShadowLUp,
+  mixinTextSecondary,
+  mixinBgPrimary,
   mixinBorderTertiary,
-  mixinBgPrimary
+  mixinShadowL,
+  mixinShadowLUp
 } from '@alicloud/console-base-theme';
 
 import {
@@ -60,7 +61,7 @@ const cssSlideUp = css<IScDialogProps>`
   bottom: 0;
   left: 0;
   transform: translateY(${props => (props.active ? '0' : '100%')});
-  ${mixinShadowLUp};
+  ${mixinShadowLUp}
 `;
 
 // 其实 HTML 有 dialog 元素，但浏览器支持不佳，目前只好用 div
@@ -72,6 +73,7 @@ const ScDialog = styled.div<IScDialogProps>`
   max-width: 100%;
   font-size: 12px;
   transition: all ease-in 200ms;
+  ${mixinTextSecondary}
   ${mixinBgPrimary}
   ${mixinBorderTertiary}
   ${mixinShadowL}
