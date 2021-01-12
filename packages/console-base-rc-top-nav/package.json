@@ -24,7 +24,7 @@
     "top-nav"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^0.0.8",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.0",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.6",
     "@alicloud/demo-rc-elements": "^1.0.10",
@@ -45,8 +45,8 @@
     "@alicloud/console-base-rc-button": "^1.0.27",
     "@alicloud/console-base-rc-dropdown": "^1.0.24",
     "@alicloud/console-base-rc-icon": "^1.0.25",
-    "@alicloud/console-base-theme": "^0.0.19",
-    "@alicloud/mere-dom": "^0.0.6",
+    "@alicloud/console-base-theme": "^1.0.0",
+    "@alicloud/mere-dom": "^1.0.0",
     "lodash": "^4.17.20"
   },
   "scripts": {

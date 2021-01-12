@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/mere-dom": "^0.0.6",
+    "@alicloud/mere-dom": "^1.0.0",
     "lodash": "^4.17.20"
   },
   "scripts": {
