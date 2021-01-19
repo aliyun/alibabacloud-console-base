@@ -26,10 +26,10 @@
   "devDependencies": {
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.1",
     "@alicloud/console-toolkit-cli": "^1.2.0",
-    "@alicloud/console-toolkit-preset-component": "^1.2.6",
+    "@alicloud/console-toolkit-preset-component": "^1.2.7",
     "@alicloud/demo-rc-elements": "^1.0.11",
     "@types/jest": "^26.0.20",
-    "@types/lodash": "^4.14.167",
+    "@types/lodash": "^4.14.168",
     "@types/qs": "^6.9.5",
     "@types/react": "^16.14.2",
     "@types/styled-components": "^5.1.7",
@@ -51,7 +51,7 @@
     "@alicloud/console-base-rc-pagination": "^1.0.32",
     "@alicloud/console-base-theme": "^1.0.1",
     "lodash": "^4.17.20",
-    "qs": "^6.9.4"
+    "qs": "^6.9.6"
   },
   "scripts": {
     "start": "breezr start-storybook",
