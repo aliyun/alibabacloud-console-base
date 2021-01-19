@@ -1,18 +1,9 @@
-import {
-  IPropsDropdown as DropdownProps
-} from './types';
-import {
+export { default } from './rc-container';
+
+export {
   useDropdown
 } from './model';
 
-export {
-  default
-} from './rc-container';
-
-export {
-  useDropdown
-};
-
 export type {
-  DropdownProps
-};
+  IPropsDropdown as DropdownProps
+} from './types';

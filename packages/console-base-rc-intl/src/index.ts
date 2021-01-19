@@ -1,11 +1,5 @@
-import {
-  IPropsIntl as IntlProps
-} from './types';
-
-export {
-  default
-} from './rc';
+export { default } from './rc';
 
 export type {
-  IntlProps
-};
+  IPropsIntl as IntlProps
+} from './types';

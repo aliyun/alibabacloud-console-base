@@ -20,7 +20,7 @@ interface IPropsScI {
 
 const fontFamily = glyph.injectGlobalFontFace({ // dataUrl 太大 50K+ 就不放了
   projectId: '1323992',
-  hash: 't7d4xa4hty'
+  hash: 'rs1va4gaft9'
 });
 
 const ScI = styled(GlyphBase)<IPropsScI>`

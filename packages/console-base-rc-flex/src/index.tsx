@@ -1,16 +1,6 @@
-import {
-  IProps as FlexProps
-} from './types';
-import FlexItem from './rc/flex-item';
-
-export {
-  default
-} from './rc/flex';
-
-export {
-  FlexItem
-};
+export { default } from './rc/flex';
+export { default as FlexItem } from './rc/flex-item';
 
 export type {
-  FlexProps
-};
+  IProps as FlexProps
+} from './types';

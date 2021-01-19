@@ -1,19 +1,10 @@
-import {
-  IHijacker as Interceptor
-} from './types';
-import {
+export {
   DATA_CLICK_HIJACK_IGNORE
 } from './const';
-import hijackClickGlobal from './hijack-click/global';
-import hijackClickInDom from './hijack-click/in-dom';
 
-export default hijackClickGlobal;
-
-export {
-  DATA_CLICK_HIJACK_IGNORE,
-  hijackClickInDom
-};
+export { default } from './hijack-click/global';
+export { default as hijackClickInDom } from './hijack-click/in-dom';
 
 export type {
-  Interceptor
-};
+  IHijacker as Interceptor
+} from './types';

@@ -1,20 +1,10 @@
-import {
-  IconProductType,
-  IPropsIconProduct as IconProductProps
-} from './types';
-import {
+export { default } from './rc';
+
+export {
   EIconType
 } from './const';
 
-export {
-  default
-} from './rc';
-
-export {
-  EIconType
-};
-
 export type {
   IconProductType,
-  IconProductProps
-};
+  IPropsIconProduct as IconProductProps
+} from './types';

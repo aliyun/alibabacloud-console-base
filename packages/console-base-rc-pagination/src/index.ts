@@ -1,11 +1,5 @@
-import {
-  IPropsPagination as PaginationProps
-} from './types';
-
-export {
-  default
-} from './rc/pagination';
+export { default } from './rc/pagination';
 
 export type {
-  PaginationProps
-};
+  IPropsPagination as PaginationProps
+} from './types';

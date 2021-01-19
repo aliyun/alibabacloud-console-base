@@ -31,6 +31,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'menu-all' = 'e6e3', // 菜单（九宫格）
   'menu' = 'e646', // 菜单（三道杠）
   'minus' = 'e768', // -
+  'mobile-app' = 'e60d', // 手机应用
   'notice' = 'e887', // 通知（铃铛）
   'plus' = 'e659', // +
   'question-fill' = 'e726', // 问号（圆形填充）

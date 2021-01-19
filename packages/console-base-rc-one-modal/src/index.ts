@@ -1,20 +1,10 @@
-import {
+export { default } from './rc-container';
+
+export {
   EModalMode as ModalMode
 } from './const';
-import {
+
+export type {
   IPropsModal as ModalProps,
   IModalTab as ModalTab
 } from './types';
-
-export {
-  default
-} from './rc-container';
-
-export {
-  ModalMode
-};
-
-export type {
-  ModalProps,
-  ModalTab
-};

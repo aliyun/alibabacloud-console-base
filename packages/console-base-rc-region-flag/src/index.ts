@@ -1,11 +1,5 @@
-import {
-  IRegionFlagProps as RegionFlagProps
-} from './types';
-
-export {
-  default
-} from './rc';
+export { default } from './rc';
 
 export type {
-  RegionFlagProps
-};
+  IRegionFlagProps as RegionFlagProps
+} from './types';

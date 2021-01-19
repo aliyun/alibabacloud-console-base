@@ -1,20 +1,10 @@
-import {
-  IButtonProps as ButtonProps
-} from './types';
-import {
+export { default } from './rc/button';
+
+export {
   EButtonTheme as ButtonTheme,
   EButtonSize as ButtonSize
 } from './const';
 
-export {
-  default
-} from './rc/button';
-
-export {
-  ButtonTheme,
-  ButtonSize
-};
-
 export type {
-  ButtonProps
-};
+  IButtonProps as ButtonProps
+} from './types';

@@ -1,19 +1,10 @@
-import {
+import createLogger from './factory/create-logger';
+
+export default createLogger;
+export { default as createLoggerFactory } from './factory/create-factory';
+
+export type {
   IFactoryOptions as FactoryOptions,
   TFnFactory as FactoryFn,
   IFnLog as LogFn
 } from './types';
-import createLogger from './factory/create-logger';
-import createLoggerFactory from './factory/create-factory';
-
-export default createLogger;
-
-export type {
-  FactoryOptions,
-  FactoryFn,
-  LogFn
-};
-
-export {
-  createLoggerFactory
-};

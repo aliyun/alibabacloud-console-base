@@ -1,4 +1,7 @@
-import {
+export { default } from './rc-container';
+export { default as TopNavButton } from './rc/top-nav-button';
+
+export type {
   IPropsTopNav as TopNavProps,
   IPropsTopNavButton as TopNavButtonProps,
   IPropsTopNavButtonDropdown as TopNavButtonDropdownProps,
@@ -9,24 +12,3 @@ import {
   IPropsTopNavLanguageItem as TopNavLanguageItemProps,
   IPropsTopNavAccount as TopNavAccountProps
 } from './types';
-import TopNavButton from './rc/top-nav-button';
-
-export {
-  default
-} from './rc-container';
-
-export {
-  TopNavButton
-};
-
-export type {
-  TopNavProps,
-  TopNavButtonProps,
-  TopNavButtonDropdownProps,
-  TopNavButtonDropdownItemProps,
-  TopNavDockProps,
-  TopNavLogoProps,
-  TopNavLanguageProps,
-  TopNavLanguageItemProps,
-  TopNavAccountProps
-};

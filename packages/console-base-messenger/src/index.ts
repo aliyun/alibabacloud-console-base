@@ -1,13 +1,3 @@
-import {
-  IPayloadRegion as MessengerRegion,
-  IPayloadRegionOnChange as MessengerRegionOnChange,
-  IPayloadRegionGroup as MessengerRegionGroup,
-  IPayloadResourceGroup as MessengerResourceGroup,
-  IPayloadLaunchTutorial as MessengerTutorial
-} from './types';
-import {
-  EToolkitIdSystem
-} from './const';
 import appBroadcast from './messenger/app-broadcast';
 import appSubscribe from './messenger/app-subscribe';
 import consoleBaseBroadcast from './messenger/console-base-broadcast';
@@ -31,12 +21,12 @@ export const forConsoleBase = {
 
 export {
   EToolkitIdSystem
-};
+} from './const';
 
 export type {
-  MessengerRegion,
-  MessengerRegionOnChange,
-  MessengerRegionGroup,
-  MessengerResourceGroup,
-  MessengerTutorial
-};
+  IPayloadRegion as MessengerRegion,
+  IPayloadRegionOnChange as MessengerRegionOnChange,
+  IPayloadRegionGroup as MessengerRegionGroup,
+  IPayloadResourceGroup as MessengerResourceGroup,
+  IPayloadLaunchTutorial as MessengerTutorial
+} from './types';
