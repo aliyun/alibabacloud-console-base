@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/demo-rc-elements",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "专用于 demo 的元素，为了好看和方便，切不可用于生产",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/mere-dom": "^1.0.1",
+    "@alicloud/mere-dom": "^1.0.2",
     "lodash": "^4.17.20"
   },
   "scripts": {
