@@ -15,7 +15,7 @@ export interface IPropsPrePromise extends Omit<IPropsPre, 'children'> {
   promise?: Promise<unknown> | null;
 }
 
-export interface IPropsList extends HTMLAttributes<HTMLOListElement> {
+export interface IPropsList extends HTMLAttributes<Element> {
   ordered?: boolean;
 }
 
