@@ -125,7 +125,10 @@ const topNavProps: TopNavProps = {
   customRight: <>
     <div style={{ color: 'purple' }}>R1</div>
     <div style={{ color: 'pink' }}>R2</div>
-  </>
+  </>,
+  onMenuMouseEnter(key: string) {
+    console.info(key);
+  }
 };
 
 export default function DemoDefault(): JSX.Element {

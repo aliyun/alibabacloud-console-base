@@ -1,15 +1,13 @@
 import React, {
   ReactNode,
-  useReducer,
-  useMemo
+  useReducer
 } from 'react';
 
 import {
   IPropsTopNavPure
 } from '../../types';
 import {
-  IContext,
-  IContextReducer
+  IModelReducer
 } from '../types';
 import {
   DEFAULT_CONTEXT_STATE
@@ -28,19 +26,13 @@ export default function Provider({
   props = {},
   children
 }: IProps): JSX.Element {
-  const [STATE, dispatch] = useReducer<IContextReducer>(reducer, DEFAULT_CONTEXT_STATE);
+  const [STATE, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
-  const contextValue: IContext = useMemo(() => ({
+  return <Context.Provider value={{
     PROPS: props,
     STATE,
     dispatch
-  }), [
-    props,
-    STATE,
-    dispatch
-  ]);
-  
-  return <Context.Provider value={contextValue}>
+  }}>
     <Lifecycle />
     {children}
   </Context.Provider>;

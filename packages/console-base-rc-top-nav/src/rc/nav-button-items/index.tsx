@@ -6,13 +6,16 @@ import Button, {
 
 import {
   IPropsTopNavButtonDropdownItem
-} from '../../../types';
+} from '../../types';
 
 interface IProps {
   items: IPropsTopNavButtonDropdownItem[];
 }
 
-export default function MenuItems({
+/**
+ * 顶栏按钮下拉里的菜单按钮
+ */
+export default function NavButtonItems({
   items
 }: IProps): JSX.Element {
   return <>

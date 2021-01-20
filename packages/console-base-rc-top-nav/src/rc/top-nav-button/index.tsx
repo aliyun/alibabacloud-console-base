@@ -3,13 +3,7 @@ import React, {
   useState,
   useCallback
 } from 'react';
-import styled, {
-  css
-} from 'styled-components';
 
-import Button, {
-  ButtonTheme
-} from '@alicloud/console-base-rc-button';
 import Dropdown from '@alicloud/console-base-rc-dropdown';
 
 import {
@@ -17,39 +11,13 @@ import {
 } from '../../types';
 import parseDropdownItems from '../../util/parse-dropdown-items';
 import hasNoActionPoint from '../../util/has-no-action-point';
-
-import MenuItems from './menu-items';
-import ButtonLabel from './button-label';
-
-interface IPropsScButton {
-  responsive?: boolean;
-}
+import NavButton from '../nav-button';
+import NavButtonLabel from '../nav-button-label';
+import NavButtonItems from '../nav-button-items';
 
 interface IProps extends Omit<IPropsTopNavButton, 'key'> {
   spm: string;
 }
-
-// `display: block !important;` 让 button 和 a 水平对齐，防止 Button 自身的样式干扰
-const ScButton = styled(Button)<IPropsScButton>`
-  display: block !important;
-  position: relative;
-  padding: 0 10px;
-  border: 0;
-  height: 50px;
-  line-height: 50px;
-  
-  ${props => (props.responsive ? css`
-    @media screen and (max-width: 1208px) {
-      padding: 0 6px;
-    }
-  ` : null)};
-  
-  img {
-    display: inline;
-    max-width: 160px;
-    max-height: 36px;
-  }
-`;
 
 /**
  * 预设样式 - 顶栏上的按钮（文字或按钮）
@@ -94,9 +62,8 @@ export default function TopNavButton({
     return null;
   }
   
-  const jsxButton = <ScButton {...{
-    theme: ButtonTheme.TEXT_BRAND_SECONDARY,
-    label: <ButtonLabel label={stateHovered && labelHover ? labelHover : label} />,
+  const jsxButton = <NavButton {...{
+    label: <NavButtonLabel label={stateHovered && labelHover ? labelHover : label} />,
     responsive,
     ...buttonProps,
     onMouseEnter: handleMouseEnter,
@@ -114,7 +81,11 @@ export default function TopNavButton({
     ...dropdownProps,
     trigger: jsxButton,
     header,
-    body: body || (itemsInBody.length ? <MenuItems items={itemsInBody} /> : undefined),
-    footer: footer || (itemsInFooter.length ? <MenuItems items={itemsInFooter} /> : undefined)
+    body: body || (itemsInBody.length ? <NavButtonItems items={itemsInBody} /> : undefined),
+    footer: footer || (itemsInFooter.length ? <NavButtonItems items={itemsInFooter} /> : undefined)
   }} />;
 }
+
+export type {
+  IProps as TopNavButtonProps
+};

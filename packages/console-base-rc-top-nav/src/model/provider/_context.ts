@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  IContext
+  IModelContext
 } from '../types';
 
-export default createContext<IContext>(null);
+export default createContext<IModelContext>(null);

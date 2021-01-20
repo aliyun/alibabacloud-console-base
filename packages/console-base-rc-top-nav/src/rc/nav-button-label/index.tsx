@@ -9,7 +9,7 @@ import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   IPropsTopNavButton
-} from '../../../types';
+} from '../../types';
 
 interface IProps {
   label: IPropsTopNavButton['label'];
@@ -43,7 +43,7 @@ const ScIndicatorNumber = styled.strong`
 /**
  * 让 button.label 可以纯配置化
  */
-export default function ButtonLabel({
+export default function NavButtonLabel({
   label
 }: IProps): JSX.Element {
   if (React.isValidElement(label)) {

@@ -1,3 +1,1 @@
-export {
-  default as actionCloseTab
-} from './action-nothing';
+export { default as actionCloseTab } from './action-nothing';

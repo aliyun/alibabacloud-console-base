@@ -1,5 +1,5 @@
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export const DEFAULT_CONTEXT_STATE: IContextState = {};
+export const DEFAULT_CONTEXT_STATE: IModelState = {};

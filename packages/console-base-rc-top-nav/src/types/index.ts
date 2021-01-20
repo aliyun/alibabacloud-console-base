@@ -1,7 +1,8 @@
 import {
   HTMLAttributes,
   ReactElement,
-  ReactNode
+  ReactNode,
+  MouseEvent
 } from 'react';
 
 import {
@@ -71,6 +72,10 @@ export interface IPropsTopNavPure {
   account?: IPropsTopNavAccount;
   customLeft?: ReactNode;
   customRight?: ReactNode;
+  // 任何菜单 mouseenter 的时候的回调，有 debounce
+  onMenuMouseEnter?(key: string): void;
+  // 任何菜单 mouseleave 的时候的回调，有 debounce
+  onMenuMouseLeave?(key: string): void;
 }
 
 export interface IPropsTopNav extends IPropsTopNavPure, HTMLAttributes<HTMLDivElement> {}

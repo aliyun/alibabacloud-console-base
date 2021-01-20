@@ -3,12 +3,12 @@ import {
 } from 'react';
 
 import {
-  IContext
+  IModelContext
 } from '../types';
 import {
   Context
 } from '../provider';
 
-export default function useModelContext(): IContext {
-  return useContext<IContext>(Context);
+export default function useModelContext(): IModelContext {
+  return useContext<IModelContext>(Context);
 }

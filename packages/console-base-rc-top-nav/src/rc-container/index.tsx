@@ -16,6 +16,8 @@ export default function WithProvider({
   account,
   customLeft,
   customRight,
+  onMenuMouseEnter,
+  onMenuMouseLeave,
   ...props
 }: IPropsTopNav): JSX.Element {
   return <Provider props={{
@@ -26,7 +28,9 @@ export default function WithProvider({
     language,
     account,
     customLeft,
-    customRight
+    customRight,
+    onMenuMouseEnter,
+    onMenuMouseLeave
   }}>
     <Ui {...props} />
   </Provider>;
