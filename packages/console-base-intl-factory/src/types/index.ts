@@ -1,6 +1,6 @@
 import {
   IntlFactoryOptions as IntlFactoryOptionsBasic,
-  FnIntl
+  FnIntl as FnIntlBasic
 } from '@alicloud/console-base-intl-factory-basic';
 
 export interface IIntlInstructions {
@@ -14,6 +14,6 @@ export interface IIntlFactoryOptions extends IntlFactoryOptionsBasic {
   linesInstruction?: string;
 }
 
-export interface IFnIntl<K extends string> extends FnIntl<K> {
-  <V = void, T = string>(id: K, values?: V, instructionsExtra?: IIntlInstructions): T;
+export interface IFnIntl<O> extends FnIntlBasic<O> {
+  <V = void, T = string>(id: keyof O, values?: V, instructionsExtra?: IIntlInstructions): T;
 }

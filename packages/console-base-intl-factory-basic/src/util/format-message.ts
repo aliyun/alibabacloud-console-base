@@ -1,15 +1,11 @@
-import {
-  TMessages
-} from '../types';
-
 /**
  * 获取替换插值后的原文案
  */
-export default function formatMessage<V = void>(messages: TMessages, id: string, values?: V): string {
-  const text = messages[id] || id || '';
+export default function formatMessage<O, V = void>(messages: O, id: keyof O, values?: V): string {
+  const text = (messages[id] || id || '') as string;
   
   if (!values) {
-    return text;
+    return text as string;
   }
   
   // 如果文案当中有类似 `{xx}` 的地方需要将其用 `values.xx` 来替换

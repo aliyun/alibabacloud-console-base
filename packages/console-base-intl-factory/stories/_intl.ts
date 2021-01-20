@@ -1,8 +1,6 @@
-import intlFactory, {
-  Messages
-} from '../src';
+import intlFactory from '../src';
 
-const zhCN: Messages = {
+const localeZhCN = {
   'demo.op.switch_locale': '切换 locale',
   'hello:world': '你好，世界！',
   'hello:{user}': '你好，{user}！',
@@ -20,7 +18,7 @@ const zhCN: Messages = {
 过于复杂的 HTML 文案，从设计上就应该杜绝。`,
   'html:without_html': '我有 HTML，但没有指令 <code>html</code>'
 };
-const enUS = {
+const localeEnUS = {
   'only:in:en': 'should fallback to en when message not found',
   'demo.op.switch_locale': 'Switch Locale',
   'hello:world': 'Hello, World!',
@@ -40,7 +38,7 @@ As of very complex HTML message, we shall avoid it at design phase.`,
   'html:without_html': 'I have HTML, but no <code>html</code> instruction'
 };
 
-export default intlFactory<keyof typeof zhCN>({
-  'zh-CN': zhCN,
-  'en-US': enUS
+export default intlFactory<typeof localeZhCN>({
+  'zh-CN': localeZhCN,
+  'en-US': localeEnUS
 });

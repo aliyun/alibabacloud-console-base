@@ -1,6 +1,6 @@
 import intlFactory from '../src';
 
-const zhCN = {
+const localeZhCN = {
   'demo.op.switch_locale': '切换 locale',
   'hello:world': '你好，世界！',
   'hello:{user}': '你好，{user}！',
@@ -17,8 +17,7 @@ const zhCN = {
 2. 有序列表
 过于复杂的 HTML 文案，从设计上就应该杜绝。`
 };
-const enUS = {
-  'only:in:en': 'should fallback to en when message not found',
+const localeEnUS = {
   'demo.op.switch_locale': 'Switch Locale',
   'hello:world': 'Hello, World!',
   'hello:{user}': 'Hello, {user}!',
@@ -36,9 +35,9 @@ OL (Ordered List) starts with a number and <code>.</code>:
 As of very complex HTML message, we shall avoid it at design phase.`
 };
 
-const intl = intlFactory({
-  'zh-CN': zhCN,
-  'en-US': enUS
+const intl = intlFactory<typeof localeZhCN>({
+  'zh-CN': localeZhCN,
+  'en-US': localeEnUS
 });
 
 export default intl;

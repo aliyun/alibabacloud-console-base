@@ -17,12 +17,12 @@ tnpm i @alicloud/console-base-intl-factory-basic -S
 // src/intl/index.ts
 import intlFactory from '@alicloud/console-base-intl-factory-basic';
 
-import zhCN from './messages/zh-cn';
-import enUS from './messages/en-us';
+import localeZhCN from './messages/zh-cn';
+import localeEnUS from './messages/en-us';
 
-const intl = intlFactory<keyof typeof zhCN>({
-  'zh-CN': zhCN, // 这里的 key 你可以写成 zhCN zh_cn 等，这里自会处理成 kebab-case 的 'zh-cn'
-  'en-US': enUS // 默认会把当前语言的 messages 和英文下做一个 merge，在当前语言下找不到的 message 会 fallback 为英文
+const intl = intlFactory<typeof localeZhCN>({
+  'zh-CN': localeZhCN, // 这里的 key 你可以写成 zhCN zh_cn 等，这里自会处理成 kebab-case 的 'zh-cn'
+  'en-US': localeEnUS // 默认会把当前语言的 messages 和英文下做一个 merge，在当前语言下找不到的 message 会 fallback 为英文
 }, {
   locale, // 可选，当前的 locale
   localeDefault // 可选，默认 fallback 的 locale，默认英文

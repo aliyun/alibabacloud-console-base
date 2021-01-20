@@ -1,8 +1,7 @@
 export { default } from './util/factory';
 
 export type {
-  TMessages as Messages,
-  TMessagesMap as MessagesMap,
+  TIntlMessagesMap as IntlMessagesMap,
   IIntlFactoryOptions as IntlFactoryOptions,
   IFnIntl as FnIntl,
   TFnIntlDate as FnIntlDate
