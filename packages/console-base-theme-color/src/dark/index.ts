@@ -36,16 +36,16 @@ const HELP = '#555';
 // const SUCCESS = '#1e8e3e';
 // const WARNING = '#ffc440';
 // const ERROR = '#d93026';
-const HELP_BG = '#333';
-// const INFO_BG = '#ebf4fb';
-// const SUCCESS_BG = '#edfcf1';
-// const WARNING_BG = '#fff7db';
-// const ERROR_BG = '#fcefee';
-const HELP_BG_FADE = 'rgba(127,127,127,0.666667)';
-// const INFO_BG_FADE = 'rgba(0,255,255,0.215686)';
-// const SUCCESS_BG_FADE = 'rgba(0,212,57,0.070588)';
-// const WARNING_BG_FADE = 'rgba(255,198,0,0.141176)';
-// const ERROR_BG_FADE = 'rgba(210,15,0,0.066667)';
+const HELP_TINT = '#333'; // TODO 这些 tint 色都不对...
+// const INFO_TINT = '#ebf4fb';
+// const SUCCESS_TINT = '#edfcf1';
+// const WARNING_TINT = '#fff7db';
+// const ERROR_TINT = '#fcefee';
+const HELP_TINT_FADE = 'rgba(127,127,127,0.666667)';
+// const INFO_TINT_FADE = 'rgba(0,115,204,0.078431)';
+// const SUCCESS_TINT_FADE = 'rgba(0,212,57,0.070588)';
+// const WARNING_TINT_FADE = 'rgba(255,198,0,0.141176)';
+// const ERROR_TINT_FADE = 'rgba(210,15,0,0.066667)';
 const SHADOW = 'rgba(255,255,255,0.2)';
 const BACKDROP = 'rgba(255,255,255,0.2)';
 
@@ -83,16 +83,16 @@ const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   // SUCCESS,
   // WARNING,
   // ERROR,
-  HELP_BG,
-  // INFO_BG,
-  // SUCCESS_BG,
-  // WARNING_BG,
-  // ERROR_BG,
-  HELP_BG_FADE,
-  // INFO_BG_FADE,
-  // SUCCESS_BG_FADE,
-  // WARNING_BG_FADE,
-  // ERROR_BG_FADE,
+  HELP_TINT,
+  // INFO_TINT,
+  // SUCCESS_TINT,
+  // WARNING_TINT,
+  // ERROR_TINT,
+  HELP_TINT_FADE,
+  // INFO_TINT_FADE,
+  // SUCCESS_TINT_FADE,
+  // WARNING_TINT_FADE,
+  // ERROR_TINT_FADE,
   SHADOW,
   BACKDROP
 };

@@ -15,10 +15,11 @@ import {
   mixinTextTertiary
 } from './text';
 import {
-  mixinBgTertiary
+  mixinBgSecondary
 } from './bg';
 import {
-  mixinBorderTertiary
+  mixinBorderTertiary,
+  mixinBorderTertiaryColor
 } from './border';
 
 interface IPropsEllipsisLines {
@@ -53,28 +54,36 @@ export const mixinTypoEm = css`
   ${mixinTextEmphasis}
 `;
 
+export const mixinTypoSmall = css`
+  font-size: inherit;
+  ${mixinTextTertiary}
+`;
+
 export const mixinTypoCode = css`
-  padding: 0 4px;
+  padding: 2px 4px;
   border-radius: 2px;
   ${mixinTextCode}
+  ${mixinBgSecondary}
   ${mixinBorderTertiary}
 `;
 
 export const mixinTypoKbd = css`
   display: inline-block;
-  padding: 3px 5px;
+  padding: 2px 4px;
   border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb;
+  box-shadow: inset 0 -1px 0 ${COLOR.SHADOW};
+  box-shadow: inset 0 -1px 0 var(--cb-color-shadow, ${COLOR.SHADOW});
   line-height: 1.2;
   ${mixinTextSecondary}
-  ${mixinBgTertiary}
+  ${mixinBgSecondary}
   ${mixinBorderTertiary}
 `;
 
 export const mixinTypoBlockquote = css`
-  padding: 0 1.2em;
-  border-left: 4px solid ${COLOR.BORDER_SECONDARY};
-  border-left: 4px solid var(--cb-color-border-secondary, ${COLOR.BORDER_SECONDARY});
+  padding: 8px 16px;
+  border-left-width: 4px;
+  border-left-style: solid;
+  ${mixinBorderTertiaryColor}
   ${mixinTextTertiary}
 `;
 
