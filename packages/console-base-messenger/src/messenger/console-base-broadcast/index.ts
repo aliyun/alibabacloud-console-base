@@ -5,6 +5,7 @@ import resourceGroupDataLoaded from './resource-group-data-loaded';
 import resourceGroupChange from './resource-group-change';
 import toolkitToolClicked from './toolkit-tool-clicked';
 import toolkitToolActiveChanged from './toolkit-tool-active-change';
+import themeChange from './theme-change';
 import fastbuyClose from './fastbuy-close';
 import fastbuyBuy from './fastbuy-buy';
 import fastbuySubmitPayment from './fastbuy-submit-payment';
@@ -23,6 +24,7 @@ export default {
   resourceGroupChange,
   toolkitToolClicked,
   toolkitToolActiveChanged,
+  themeChange,
   fastbuyClose,
   fastbuyBuy,
   fastbuySubmitPayment,

@@ -10,6 +10,9 @@ export interface IWin extends Window {
   viewframeSetting?: { // 兼容旧版 - TODO 杀
     languages?: ELanguage[];
   };
+  ALIYUN_CONSOLE_CONFIG?: {
+    LANG?: ELanguage;
+  }
 }
 
 export interface IConfLocale {

@@ -1,11 +1,12 @@
 import {
-  HTMLAttributes,
-  AnchorHTMLAttributes
+  HTMLAttributes
 } from 'react';
 
-export interface IPropsItem extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'children'> {
-  label: string | JSX.Element;
-}
+import {
+  ButtonProps
+} from '@alicloud/console-base-rc-button';
+
+export interface IPropsItem extends Omit<ButtonProps, 'theme' | 'size'> {}
 
 export interface IProps extends HTMLAttributes<HTMLDivElement> {
   items?: IPropsItem[];

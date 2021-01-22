@@ -4,10 +4,11 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR,
-  DIALOG,
-  typo
-} from '@alicloud/console-base-styled-mixin';
+  SIZE,
+  mixinTextPrimary,
+  mixinBorderTertiaryBottom,
+  mixinTypoEllipsis
+} from '@alicloud/console-base-theme';
 
 import {
   EDialogMode
@@ -25,19 +26,19 @@ const cssCommon = css`
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 ${DIALOG.PADDING * 2 + DIALOG.SIZE_X}px 0  ${DIALOG.PADDING}px;
+  padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   box-sizing: border-box;
-  color: ${COLOR.TEXT_TITLE};
+  ${mixinTextPrimary}
 `;
 
 const cssNormal = css`
-  padding-top: ${DIALOG.PADDING * 2 / 3}px;
+  padding-top: ${SIZE.PADDING_X_DIALOG * 2 / 3}px;
 `;
 
 // slide 和 slide-up 共用
 const cssSlide = css`
-  border-bottom: 1px solid ${COLOR.LINE_LIGHT};
-  height: ${DIALOG.SLIDE_HEADER_HEIGHT}px;
+  height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;
+  ${mixinBorderTertiaryBottom}
 `;
 
 const ScHeader = styled.header<IScProps>`
@@ -51,7 +52,7 @@ const ScHeader = styled.header<IScProps>`
     line-height: 24px;
     font-size: 16px;
     font-weight: 400;
-    ${typo.ellipsis};
+    ${mixinTypoEllipsis}
   }
 `;
 

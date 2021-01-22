@@ -1,5 +1,13 @@
-import React from 'react';
+import React, {
+  MouseEvent,
+  useRef,
+  useCallback
+} from 'react';
 import styled from 'styled-components';
+
+import {
+  selectText
+} from '@alicloud/mere-dom';
 
 import {
   IPropsPre
@@ -12,11 +20,17 @@ const ScPre = styled.pre`
   background-color: #fcfcfc;
   line-height: 1.5;
   overflow: auto;
-  font-family: Operator Mono, Menlo, Monaco, Liberation Mono, DejaVu Sans Mono, Courier New, monospace, serif;
+  font-family: 'Operator Mono', Menlo, Monaco, 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace, serif;
   font-size: 12px;
   white-space: pre-wrap;
   word-break: break-all;
   color: #999;
+  
+  .demo-theme-dark & {
+    border-color: #555;
+    background-color: #444;
+    color: #ccc;
+  }
 `;
 
 const ScNote = styled.span`
@@ -24,9 +38,9 @@ const ScNote = styled.span`
   position: absolute;
   right: 0;
   padding: 2px 8px;
+  background-color: rgba(0, 0, 0, 0.05);
   line-height: 1.15;
   font-size: 0.9em;
-  background-color: rgba(0, 0, 0, 0.05);
   color: #333;
 `;
 
@@ -42,11 +56,25 @@ export default function Pre({
   headnote,
   footnote,
   children,
+  onDoubleClick,
   ...props
 }: IPropsPre): JSX.Element {
-  return <ScPre {...props}>
+  const refInner = useRef<HTMLDivElement>();
+  const handleDoubleClick = useCallback((e: MouseEvent<HTMLPreElement>) => {
+    try {
+      selectText(refInner.current);
+    } catch (ex) {
+      // ignore
+    }
+    
+    if (onDoubleClick) {
+      onDoubleClick(e);
+    }
+  }, [onDoubleClick]);
+  
+  return <ScPre {...props} onDoubleClick={handleDoubleClick}>
     {headnote ? <ScHeadnote>{headnote}</ScHeadnote> : null}
-    {children}
+    <div ref={refInner}>{children}</div>
     {footnote ? <ScFootnote>{footnote}</ScFootnote> : null}
   </ScPre>;
 }

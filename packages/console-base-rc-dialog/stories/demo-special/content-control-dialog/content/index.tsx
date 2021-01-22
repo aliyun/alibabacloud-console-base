@@ -15,7 +15,7 @@ import {
   useDialog
 } from '../../../../src';
 
-export default function Demo(): JSX.Element {
+export default function Content(): JSX.Element {
   const {
     focus,
     lock,

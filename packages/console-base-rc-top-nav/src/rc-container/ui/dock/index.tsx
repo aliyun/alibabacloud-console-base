@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button, {
-  EButtonSize,
-  EButtonThemeColor,
-  EButtonThemeColorBg
+  ButtonSize,
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 import Icon from '@alicloud/console-base-rc-icon';
 
+import hasNoActionPoint from '../../../util/has-no-action-point';
 import {
-  useDock
+  useProps
 } from '../../../model';
 
 const ScDock = styled(Button)`
@@ -26,46 +26,17 @@ const ScIcon = styled(Icon)`
  * 程序坞
  */
 export default function Dock(): JSX.Element | null {
-  // const [stateHovered, setStateHovered] = useState<boolean>(false); // 鼠标 hover 状态
-  // const dispatchToggleVisibleOfPane = useDispatchToggleVisibleOfPane();
-  //
-  // const handleClick = useCallback(() => dispatchToggleVisibleOfPane(), [dispatchToggleVisibleOfPane]);
-  //
-  // const handleMouseEnter = useCallback(() => {
-  //   setStateHovered(true);
-  // }, [setStateHovered]);
-  //
-  // const handleMouseLeave = useCallback(() => {
-  //   setStateHovered(false);
-  // }, [setStateHovered]);
-  //
-  // // 延时响应 hovered 状态
-  // useEffect(() => {
-  //   let timer: number | null = null;
-  //  
-  //   if (stateHovered) {
-  //     timer = setTimeout(() => {
-  //       dispatchToggleVisibleOfPane(true);
-  //       timer = null;
-  //     }, 200);
-  //   }
-  //  
-  //   return () => {
-  //     if (timer) {
-  //       clearTimeout(timer);
-  //       timer = null;
-  //     }
-  //   };
-  // }, [stateHovered, dispatchToggleVisibleOfPane]);
-  const dock = useDock();
+  const {
+    dock
+  } = useProps();
   
-  return dock ? <ScDock {...{
+  return hasNoActionPoint(dock) ? null : <ScDock {...{
     spm: 'dock',
     label: <ScIcon type="menu" />,
-    size: EButtonSize.NONE,
-    themeColor: EButtonThemeColor.WHITE,
-    themeColorHover: EButtonThemeColor.WHITE,
-    themeColorBg: EButtonThemeColorBg.BRAND,
-    ...dock
-  }} /> : null;
+    size: ButtonSize.NONE,
+    theme: ButtonTheme.BRAND_PRIMARY,
+    ...dock,
+    borderRadius: false,
+    noShadow: true
+  }} />;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   Z_INDEX
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   IDialogProps,
@@ -34,7 +34,7 @@ interface IExtraOkCancel { // 自定义按钮文字
 /**
  * 系统级 Dialog 共享的不可覆盖 props
  */
-const COMMON_PROPS: Partial<IDialogProps<any, any>> = {
+const COMMON_PROPS: Partial<IDialogProps<never, never>> = {
   mode: EDialogMode.NORMAL,
   backdrop: true,
   zIndex: Z_INDEX.DIALOG_SYS,

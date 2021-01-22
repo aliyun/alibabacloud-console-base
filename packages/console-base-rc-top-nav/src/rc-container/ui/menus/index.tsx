@@ -1,21 +1,29 @@
 import React from 'react';
 
 import Flex from '../../../rc/flex';
-import ButtonInTop from '../../../rc/button-in-top';
+import TopNavButton from '../../../rc/top-nav-button';
 import {
-  useMenus
+  useMenus,
+  useHandleMenuMouseEnter,
+  useHandleMenuMouseLeave
 } from '../../../model';
 
 export default function Menus(): JSX.Element {
   const menus = useMenus();
+  const handleMenuMouseEnter = useHandleMenuMouseEnter();
+  const handleMenuMouseLeave = useHandleMenuMouseLeave();
   
   return <Flex as="nav">
     {menus.map(({
       key,
+      onMouseEnter,
+      onMouseLeave,
       ...props
-    }, i): JSX.Element => <ButtonInTop key={key || i} {...{
+    }, i): JSX.Element => <TopNavButton key={key || i} {...{
       spm: key || '',
-      ...props
+      ...props,
+      onMouseEnter: e => handleMenuMouseEnter(e, onMouseEnter, key),
+      onMouseLeave: e => handleMenuMouseLeave(e, onMouseLeave, key)
     }} />)}
   </Flex>;
 }

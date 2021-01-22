@@ -2,27 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  EButtonThemeColor
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
-import ButtonInTop from '../../../rc/button-in-top';
+import TopNavButton from '../../../rc/top-nav-button';
+import IconAliyun from '../../../rc/icon-aliyun';
 import {
-  useLogo
+  useProps
 } from '../../../model';
 
-const ScLogo = styled(ButtonInTop)`
+const ScLogo = styled(TopNavButton)`
+  padding: 0 12px;
   font-size: 18px;
 `;
 
 export default function Logo(): JSX.Element {
-  const logo = useLogo();
+  const {
+    logo
+  } = useProps();
   
   return <ScLogo {...{
     spm: 'logo',
     responsive: false,
     force: true,
-    themeColor: EButtonThemeColor.BRAND,
-    themeColorHover: EButtonThemeColor.BRAND,
-    ...logo
+    theme: ButtonTheme.TEXT_BRAND_PRIMARY,
+    ...logo,
+    label: logo?.label || <IconAliyun />
   }} />;
 }

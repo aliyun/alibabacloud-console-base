@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import Flex from '../../../rc/flex';
 import {
-  usePropCustomLeft,
-  usePropCustomRight
+  useProps
 } from '../../../model';
 
 const ScCustom = styled(Flex)`
@@ -17,8 +16,10 @@ const ScCustom = styled(Flex)`
  * 自定义区域
  */
 export default function Custom(): JSX.Element {
-  const customLeft = usePropCustomLeft();
-  const customRight = usePropCustomRight();
+  const {
+    customLeft,
+    customRight
+  } = useProps();
   
   return <ScCustom>
     <Flex>{customLeft}</Flex>

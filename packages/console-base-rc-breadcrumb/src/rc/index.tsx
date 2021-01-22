@@ -4,21 +4,30 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextTertiary
+} from '@alicloud/console-base-theme';
 
 import {
   IProps
 } from '../types';
 
-import Separator from './separator';
 import Item from './item';
 
 const ScBreadcrumb = styled.div`
   line-height: 1.5;
   overflow: hidden;
   white-space: nowrap;
-  color: ${COLOR.TEXT_SECONDARY};
+`;
+
+const ScSeparator = styled.span`
+  display: inline-block;
+  margin: 0 8px;
+  vertical-align: middle;
+  ${mixinTextTertiary}
+  
+  &:before {
+    content: '/';
+  }
 `;
 
 /**
@@ -34,7 +43,7 @@ export default function Breadcrumb({
   
   return <ScBreadcrumb {...props}>
     {items.map((v, i) => <Fragment key={i}>
-      {i > 0 ? <Separator /> : null}
+      {i > 0 ? <ScSeparator /> : null}
       <Item {...v} />
     </Fragment>)}
   </ScBreadcrumb>;

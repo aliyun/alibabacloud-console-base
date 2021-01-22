@@ -43,6 +43,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'star' = 'e611', // 星（收藏）
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
+  'theme-light-dark' = 'e6aa', // 黑/白主题 转 180 度后
   'toolkit-api' = 'e740', // API Inspector
   'toolkit-contact' = 'e61f', // 联系我们
   'toolkit-advisory' = 'e656', // 智能在线

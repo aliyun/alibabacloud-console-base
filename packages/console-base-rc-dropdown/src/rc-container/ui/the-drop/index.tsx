@@ -12,8 +12,12 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextPrimary,
+  mixinBorderTertiary,
+  mixinBgPrimary,
+  mixinShadowLDown,
+  mixinBorderTertiaryTop
+} from '@alicloud/console-base-theme';
 
 import {
   TBodyPadding
@@ -32,28 +36,27 @@ interface IPropsScDropBody {
   bodyPadding?: TBodyPadding;
 }
 
+const cssVisible = css`
+  visibility: visible;
+  opacity: 1;
+`;
+const cssHidden = css`
+  visibility: hidden;
+  opacity: 0;
+`;
+
 const ScTheDrop = styled.div<IPropsScTheDrop>`
   display: block;
   position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  background-color: #fff;
   min-width: 120px;
   font-size: 12px;
-  color: ${COLOR.TEXT_PRIMARY};
   transition: all 360ms ease;
-  
-  ${props => {
-    if (props.visible) {
-      return css`
-        visibility: visible;
-        opacity: 1;
-      `;
-    }
-  }};
+  ${mixinTextPrimary}
+  ${mixinBorderTertiary}
+  ${mixinBgPrimary}
+  ${mixinShadowLDown}
+  ${props => (props.visible ? cssVisible : cssHidden)}
 `;
 
 const ScTheDropBody = styled.div<IPropsScDropBody>`
@@ -78,7 +81,7 @@ const ScTheDropBody = styled.div<IPropsScDropBody>`
 `;
 
 const ScTheDropFooter = styled.footer`
-  border-top: 1px solid ${COLOR.LINE_LIGHT};
+  ${mixinBorderTertiaryTop};
 `;
 
 export default function TheDrop(): JSX.Element | ReactPortal {

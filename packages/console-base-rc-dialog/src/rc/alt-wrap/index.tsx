@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 import Icon from '@alicloud/console-base-rc-icon';
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextPrimary,
+  mixinTextTertiary,
+  mixinTextWarning
+} from '@alicloud/console-base-theme';
 
 import {
   TStringOrJSX
@@ -31,6 +33,7 @@ const ScIcon = styled(Icon)`
   top: 4px;
   left: 0;
   font-size: ${ICON_SIZE}px;
+  ${props => (props.type === 'question-fill' ? mixinTextTertiary : mixinTextWarning)}
   
   &:before {
     display: block;
@@ -48,7 +51,7 @@ const ScTitle = styled.h5`
   margin: 0 0 8px 0;
   padding: 0;
   font-size: 16px;
-  color: ${COLOR.TEXT_TITLE};
+  ${mixinTextPrimary}
 `;
 
 const ScContent = styled.div`
@@ -64,12 +67,7 @@ export default function AltWrap({
   content
 }: IProps): JSX.Element {
   return <ScWrap>
-    <ScIcon {...{
-      type: type === 'confirm' ? 'question-fill' : 'alert-fill',
-      style: {
-        color: type === 'confirm' ? COLOR.TEXT_CAPTION : COLOR.WARN
-      }
-    }} />
+    <ScIcon type={type === 'confirm' ? 'question-fill' : 'alert-fill'} />
     <ScMessage>
       {title ? <ScTitle>{title}</ScTitle> : null}
       <ScContent>{content}</ScContent>

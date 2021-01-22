@@ -35,6 +35,9 @@ export default function parse(): IConfEnv {
    * 有的控制台（甚至有些内部应用会用 console-base，它们的域名不是 .console.aliyun.com），有些逻辑（比如 CloudShell 是否本地打开）需要调整
    */
   const DOMAIN_IS_CONSOLE = /\.console\.aliyun\.(?:com|test)$/.test(hostname);
+  const FECS_HOST = `${DOMAIN_IS_4SERVICE ? 'fecs4service' : 'fecs'}.console.aliyun.${ENV_IS_DAILY ? 'test' : 'com'}`;
+  // 这个不推荐用 protocol-relative，Firefox 调用 CORS 时，有可能 request.header.Origin 是 null 而导致接口失败...
+  const FECS_URL_BASE = `https://${FECS_HOST}`;
   
   return {
     ENV,
@@ -46,6 +49,7 @@ export default function parse(): IConfEnv {
     DOMAIN_IS_CONSOLE,
     SITE,
     CHANNEL: getChannel(SITE),
-    FECS_HOST: `${DOMAIN_IS_4SERVICE ? 'fecs4service' : 'fecs'}.console.aliyun.${ENV_IS_DAILY ? 'test' : 'com'}`
+    FECS_HOST,
+    FECS_URL_BASE
   };
 }

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/stylelint-config",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "stylelint configuration",
   "license": "MIT",
   "main": "index.js",
@@ -21,7 +21,7 @@
     "config"
   ],
   "devDependencies": {
-    "stylelint": "^13.8.0"
+    "stylelint": "^13.9.0"
   },
   "peerDependencies": {
     "stylelint": ">=13"
@@ -34,5 +34,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "gitHead": "30c42c56d2af7338d3750516705eb7435e245de2"
 }

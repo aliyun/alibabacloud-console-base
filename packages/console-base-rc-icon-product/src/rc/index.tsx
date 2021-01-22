@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  GlyphBase,
   glyph
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   IconProductType,
@@ -19,11 +20,10 @@ interface IPropsScI {
 
 const fontFamily = glyph.injectGlobalFontFace({ // dataUrl 太大 50K+ 就不放了
   projectId: '1323992',
-  hash: 't7d4xa4hty'
+  hash: 'rs1va4gaft9'
 });
 
-const ScI = styled.i<IPropsScI>`
-  ${glyph.base};
+const ScI = styled(GlyphBase)<IPropsScI>`
   font-family: ${fontFamily} !important;
   
   &:before {

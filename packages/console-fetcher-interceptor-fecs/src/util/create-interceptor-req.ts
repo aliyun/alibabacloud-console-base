@@ -55,7 +55,7 @@ function interceptRequest(config: FetcherConfig): Partial<FetcherConfig> | void 
     
     // 强走 FECS
     return {
-      urlBase: `//${CONF_ENV.FECS_HOST}`,
+      urlBase: CONF_ENV.FECS_URL_BASE,
       body: {
         sec_token: cookieGetToken()
       }

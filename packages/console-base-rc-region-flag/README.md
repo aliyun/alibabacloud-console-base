@@ -1,7 +1,7 @@
-@ali/console-base-rc-region-flag
+@alicloud/console-base-rc-region-flag
 ===
 
-Region 的旗帜
+> Region 的旗帜
 
 # Usage
 

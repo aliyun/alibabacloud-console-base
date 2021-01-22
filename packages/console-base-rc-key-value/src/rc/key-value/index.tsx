@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR,
-  typo
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextPrimary,
+  mixinTextTertiary,
+  mixinTypoEllipsis,
+  mixinTypoLineWrap
+} from '@alicloud/console-base-theme';
 
 import {
   IItem,
@@ -20,15 +22,15 @@ const ScKeyValue = styled.div``;
 const ScItem = styled.div`
   display: flex;
   margin: 4px 0;
-  color: ${COLOR.TEXT_PRIMARY};
+  ${mixinTextPrimary}
 `;
 const ScItemK = styled.div`
   margin-right: 1em;
-  color: ${COLOR.TEXT_CAPTION};
+  ${mixinTextTertiary}
 `;
 const ScItemV = styled.div<IPropsScItemV>`
   flex: 1;
-  ${props => (props.wrapValue ? typo.lineWrap : typo.ellipsis)};
+  ${props => (props.wrapValue ? mixinTypoLineWrap : mixinTypoEllipsis)}
 `;
 
 /**

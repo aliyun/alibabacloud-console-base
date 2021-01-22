@@ -4,9 +4,9 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR,
-  DIALOG
-} from '@alicloud/console-base-styled-mixin';
+  SIZE,
+  mixinBorderTertiaryTop
+} from '@alicloud/console-base-theme';
 
 import {
   IDialogButtonProps
@@ -29,26 +29,26 @@ const cssCommon = css`
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 ${DIALOG.PADDING}px;
+  padding: 0 ${SIZE.PADDING_X_DIALOG}px;
   box-sizing: border-box;
 `;
 
 const cssNormal = css`
   justify-content: flex-end;
-  padding-top: ${DIALOG.PADDING * 2 / 3}px;
-  padding-bottom: ${DIALOG.PADDING * 2 / 3}px;
+  padding-top: ${SIZE.PADDING_X_DIALOG * 2 / 3}px;
+  padding-bottom: ${SIZE.PADDING_X_DIALOG * 2 / 3}px;
   text-align: right;
 `;
 
 const cssSlide = css`
   justify-content: flex-start;
-  border-top: 1px solid ${COLOR.LINE_LIGHT};
-  height: ${DIALOG.SLIDE_FOOTER_HEIGHT}px;
+  height: ${SIZE.HEIGHT_DIALOG_SLIDE_FOOTER}px;
+  ${mixinBorderTertiaryTop}
 `;
 
 const ScFooter = styled.footer<IScProps>`
-  ${cssCommon};
-  ${props => (props.mode === EDialogMode.SLIDE ? cssSlide : cssNormal)};
+  ${cssCommon}
+  ${props => (props.mode === EDialogMode.SLIDE ? cssSlide : cssNormal)}
 `;
 
 export default function Footer(): JSX.Element {

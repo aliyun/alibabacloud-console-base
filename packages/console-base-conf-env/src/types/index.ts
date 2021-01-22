@@ -19,4 +19,5 @@ export interface IConfEnv {
   SITE: 'CN' | 'INTL' | 'JP';
   CHANNEL: string;
   FECS_HOST: string;
+  FECS_URL_BASE: string;
 }

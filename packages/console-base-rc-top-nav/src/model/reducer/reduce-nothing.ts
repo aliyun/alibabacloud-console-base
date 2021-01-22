@@ -1,7 +1,7 @@
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export default function reduceNothing(state: IContextState): IContextState {
+export default function reduceNothing(state: IModelState): IModelState {
   return state;
 }

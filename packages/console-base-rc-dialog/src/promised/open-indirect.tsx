@@ -12,7 +12,7 @@ import {
   TDialogData
 } from '../types';
 import buildPropsForPromise from '../util/build-props-for-promise';
-import DialogWithProvider from '../rc-container';
+import WithProvider from '../rc-container';
 
 /**
  * 所有 Promise 化的 dialog 的基础。
@@ -71,7 +71,7 @@ export default function openIndirect<T = void, D = TDialogData>(contentOrProps?:
   document.body.appendChild(holder!);
   
   function renderDialog(props: IDialogProps<T, D>): void {
-    render(<DialogWithProvider {...props} />, holder);
+    render(<WithProvider {...props} />, holder);
   }
   
   function renderUpdate(updatedProps: Partial<IDialogProps<T, D>>): void {

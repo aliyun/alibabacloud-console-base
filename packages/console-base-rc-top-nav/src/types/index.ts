@@ -1,6 +1,8 @@
 import {
+  HTMLAttributes,
   ReactElement,
-  ReactNode
+  ReactNode,
+  MouseEvent
 } from 'react';
 
 import {
@@ -13,56 +15,67 @@ import {
   DropdownProps
 } from '@alicloud/console-base-rc-dropdown';
 
-interface ITopNavButtonLabel {
+interface IPropsTopNavButtonLabel {
   icon?: IconType;
+  iconRotate?: number;
   html?: string;
   text?: string | ReactElement;
   count?: number; // 展示个数
   countAsDot?: boolean; // 个数展示为小红点或数字
 }
 
-export interface IDropdownItem extends Partial<ButtonProps> {
+export interface IPropsTopNavButtonDropdownItem extends Partial<ButtonProps> {
   key?: string;
   inFooter?: boolean;
 }
 
-export interface ITopNavButtonDropdown extends Omit<DropdownProps, 'trigger'> {
-  items?: IDropdownItem[];
+export interface IPropsTopNavButtonDropdown extends Omit<DropdownProps, 'trigger'> {
+  items?: IPropsTopNavButtonDropdownItem[];
 }
 
-export interface ITopNavButton extends Omit<Partial<ButtonProps>, 'label'> {
+export interface IPropsTopNavButton extends Omit<Partial<ButtonProps>, 'label'> {
   key?: string;
-  label?: string | ReactElement | ITopNavButtonLabel;
+  label?: string | ReactElement | IPropsTopNavButtonLabel;
+  labelHover?: string | ReactElement | IPropsTopNavButtonLabel;
   responsive?: boolean; // 是否对宽度做自适应
   force?: boolean; // 没有行动点（href、onXx）、也没有 dropdown 的情况下，默认不会展示，如果要展示，设置为 force
-  dropdown?: ITopNavButtonDropdown;
+  dropdown?: IPropsTopNavButtonDropdown;
 }
 
-export interface ITopNavLogo extends ITopNavButton {}
+export interface IPropsTopNavLogo extends IPropsTopNavButton {}
 
-export interface ITopNavDock extends Partial<ButtonProps> {}
+export interface IPropsTopNavDock extends Partial<ButtonProps> {}
 
-export interface ITopNavLanguage {
+export interface IPropsTopNavLanguageItem {
+  id: string;
+  name: string | JSX.Element;
+  nameShort?: string | JSX.Element; // 短名字，利用它可以节省 menu 上的展示宽度，不写则展示 name
+}
+
+export interface IPropsTopNavLanguage {
   current: string;
-  items: {
-    id: string;
-    name: string | JSX.Element;
-    nameShort?: string | JSX.Element; // 短名字，利用它可以节省 menu 上的展示宽度，不写则展示 name
-  }[];
+  items: IPropsTopNavLanguageItem[];
   onChange?(id: string): void;
 }
 
-export interface ITopNavAccount extends ITopNavButton {
+export interface IPropsTopNavAccount extends IPropsTopNavButton {
   defaultAvatar?: string; // 默认「默认头像」是 ET 大脑
   avatar?: string; // 当前用户头像
 }
 
-export interface IPropsTopNav {
-  dock?: ITopNavDock; // 程序坞
-  logo?: ITopNavLogo;
-  menus?: ITopNavButton[];
-  language?: ITopNavLanguage;
-  account?: ITopNavAccount;
+export interface IPropsTopNavPure {
+  bodyClass?: string;
+  dock?: IPropsTopNavDock; // 程序坞
+  logo?: IPropsTopNavLogo;
+  menus?: (IPropsTopNavButton | null)[];
+  language?: IPropsTopNavLanguage;
+  account?: IPropsTopNavAccount;
   customLeft?: ReactNode;
   customRight?: ReactNode;
+  // 任何菜单 mouseenter 的时候的回调，有 debounce
+  onMenuMouseEnter?(key: string): void;
+  // 任何菜单 mouseleave 的时候的回调，有 debounce
+  onMenuMouseLeave?(key: string): void;
 }
+
+export interface IPropsTopNav extends IPropsTopNavPure, HTMLAttributes<HTMLDivElement> {}

@@ -29,7 +29,7 @@ export default function useDispatchCloseWithValue<T = void>(): (value?: T, rejec
     }
     
     dispatchToggleActive(false); // 触发 CSS 动画
-    setTimeout(() => { // wait for animation end FIXME hard coded timeout of 250ms
+    window.setTimeout(() => { // wait for animation end FIXME hard coded timeout of 250ms
       if (typeof onClose === 'function') {
         // 真正的从 DOM 上移除还是必须要靠使用的人在 onClose 上进行处理，但不要慌，在 promised 下边已经封装好了
         onClose(value, value === undefined && undefinedAsReject ? true : rejected);

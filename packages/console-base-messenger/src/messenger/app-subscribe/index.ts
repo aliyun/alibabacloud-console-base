@@ -7,6 +7,7 @@ import onToolkitItemClick from './on-toolkit-item-click';
 import onToolkitVersionNewClick from './on-toolkit-version-new-click';
 import onToolkitVersionOldClick from './on-toolkit-version-old-click';
 import onToolkitItemActiveChange from './on-toolkit-item-active-change';
+import onThemeChange from './on-theme-change';
 import onFastbuyClose from './on-fastbuy-close';
 import onFastbuyBuy from './on-fastbuy-buy';
 import onFastbuySubmitPayment from './on-fastbuy-submit-payment';
@@ -27,6 +28,7 @@ export default {
   onToolkitVersionNewClick,
   onToolkitVersionOldClick,
   onToolkitItemActiveChange,
+  onThemeChange,
   onFastbuyClose,
   onFastbuyBuy,
   onFastbuySubmitPayment,

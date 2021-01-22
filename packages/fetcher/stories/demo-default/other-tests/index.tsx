@@ -59,7 +59,7 @@ function testSkipNetwork(): Promise<unknown> {
     params: paramsInOptions,
     additionalInterceptorsForRequest: [
       [function() {
-        throw FetcherUtils.createErrorSkipNetwork<boolean>(new Promise<boolean>(resolve => setTimeout(() => resolve(true), 500)));
+        throw FetcherUtils.createErrorSkipNetwork<boolean>(new Promise<boolean>(resolve => window.setTimeout(() => resolve(true), 500)));
       }]
     ]
   }, 'https://mocks.alibaba-inc.com/mock/boshit/success', params);

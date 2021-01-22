@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  DIALOG
-} from '@alicloud/console-base-styled-mixin';
+  SIZE
+} from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 import Button, {
-  EButtonSize
+  ButtonTheme,
+  ButtonSize
 } from '@alicloud/console-base-rc-button';
 
 import {
@@ -21,10 +22,12 @@ import {
 // z-index 用于保证在没有 header 的情况下不会被内容遮住
 const ScX = styled(Button)`
   position: absolute;
-  top: ${(DIALOG.SLIDE_HEADER_HEIGHT - DIALOG.SIZE_X) / 2 - 2}px;
-  right: ${DIALOG.PADDING}px;
+  top: ${(SIZE.HEIGHT_DIALOG_SLIDE_HEADER - 16) / 2 - 2}px;
+  right: ${SIZE.PADDING_X_DIALOG}px;
   z-index: 1;
-  font-size: ${DIALOG.SIZE_X}px;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
 `;
 
 export default function X(): JSX.Element | null {
@@ -36,7 +39,8 @@ export default function X(): JSX.Element | null {
     spm: 'x',
     label: <Icon type="x" />,
     title: intl('op:close'),
-    size: EButtonSize.NONE,
+    theme: ButtonTheme.TEXT_TERTIARY,
+    size: ButtonSize.NONE,
     disabled: locked !== EDialogLockState.NO,
     onClick: dispatchClose
   }} />;

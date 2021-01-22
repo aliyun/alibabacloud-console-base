@@ -2,56 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextTertiary
+} from '@alicloud/console-base-theme';
+import Button, {
+  ButtonTheme,
+  ButtonSize
+} from '@alicloud/console-base-rc-button';
 
 import {
   IPropsItem
 } from '../../types';
 
-// 加 :link :visited 是为了防止被最基础的样式所覆盖
-const ScItemLink = styled.a`
-  display: inline-block;
-  cursor: pointer;
-  vertical-align: middle;
-  text-decoration: none;
-  color: ${COLOR.TEXT_SECONDARY};
-  
-  &:hover {
-    text-decoration: none;
-    color: ${COLOR.LINK};
-  }
-  
-  &:link,
-  &:visited {
-    color: ${COLOR.TEXT_SECONDARY};
-  }
-  
-  &:active,
-  &:link:hover {
-    color: ${COLOR.LINK};
-  }
-`;
-
 const ScItemPlain = styled.span`
   display: inline-block;
+  cursor: default;
   vertical-align: middle;
-  color: ${COLOR.TEXT_CAPTION};
+  ${mixinTextTertiary}
 `;
 
-export default function BreadcrumbItem({
-  label,
-  href,
-  onClick,
-  ...props
-}: IPropsItem): JSX.Element {
-  if (href || onClick) {
-    return <ScItemLink {...{
-      href,
-      onClick,
-      ...props
-    }}>{label}</ScItemLink>;
+export default function BreadcrumbItem(props: IPropsItem): JSX.Element {
+  if (props.href || props.onClick) {
+    return <Button {...{
+      ...props,
+      theme: ButtonTheme.TEXT_SECONDARY,
+      size: ButtonSize.NONE
+    }} />;
   }
   
-  return <ScItemPlain {...props}>{label}</ScItemPlain>;
+  return <ScItemPlain>{props.label}</ScItemPlain>;
 }

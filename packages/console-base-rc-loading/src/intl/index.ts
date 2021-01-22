@@ -8,7 +8,7 @@ import localesFrFr from './locales/fr-fr';
 import localesDeDe from './locales/de-de';
 import localesKoKr from './locales/ko-kr';
 
-export default intlFactory<keyof typeof localesZhCN>({
+export default intlFactory<typeof localesZhCN>({
   'en-US': localesEnUS,
   'zh-CN': localesZhCN,
   'zh-TW': localesZhTW,

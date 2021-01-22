@@ -1,4 +1,4 @@
-@ali/console-base-rc-top-nav
+@alicloud/console-base-rc-top-nav
 ===
 
 > 具体看 types 下的类型说明。

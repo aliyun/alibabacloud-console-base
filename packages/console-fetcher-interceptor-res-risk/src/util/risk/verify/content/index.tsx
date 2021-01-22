@@ -4,13 +4,13 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextError
+} from '@alicloud/console-base-theme';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 import Button, {
-  EButtonPreset
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 import Input from '@alicloud/console-base-rc-input';
 import Flex from '@alicloud/console-base-rc-flex';
@@ -42,7 +42,7 @@ const ScInput = styled(Input)`
 
 const ScError = styled.div`
   margin-top: 8px;
-  color: ${COLOR.ERROR};
+  ${mixinTextError};
 `;
 
 export default function Content(): JSX.Element {
@@ -73,7 +73,7 @@ export default function Content(): JSX.Element {
         {detail ? <ScInfo>{detail}</ScInfo> : null}
         <Button {...{
           spm: `set-${type}`,
-          preset: EButtonPreset.LINK,
+          theme: ButtonTheme.TEXT_PRIMARY,
           label: intlVerifySetting(type),
           href: URL_SETTINGS
         }} />

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import intlFactoryBasic, {
-  MessagesMap
+  IntlMessagesMap
 } from '@alicloud/console-base-intl-factory-basic';
 import RcIntl from '@alicloud/console-base-rc-intl';
 
@@ -14,13 +14,13 @@ import {
 /**
  * 获得扩展了的 intl 方法
  */
-export default function factory<K extends string>(messagesMap: MessagesMap, {
+export default function factory<O>(messagesMap: IntlMessagesMap<O>, {
   locale,
   localeDefault,
   instructionSeparator = '!',
   htmlInstruction = 'html',
   linesInstruction = 'lines'
-}: IIntlFactoryOptions = {}): IFnIntl<K> {
+}: IIntlFactoryOptions = {}): IFnIntl<O> {
   const intlBasic = intlFactoryBasic(messagesMap, {
     locale,
     localeDefault
@@ -39,13 +39,13 @@ export default function factory<K extends string>(messagesMap: MessagesMap, {
   }
   
   // 一般情况下它会返回 string，但如果 key 或 instructionsExtra 中带了指令，则可能返回 JSX.Element
-  const intlMessage = function<V = void, T = string>(id: K, values?: V, instructionsExtra?: IIntlInstructions): T {
+  const intlMessage = function<V = void, T = string>(id: keyof O, values?: V, instructionsExtra?: IIntlInstructions): T {
     const text = intlBasic(id, values);
     const {
       lines,
       html
     } = {
-      ...checkIdForInstructions(id),
+      ...checkIdForInstructions(id as string),
       ...instructionsExtra
     };
     

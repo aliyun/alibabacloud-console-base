@@ -4,8 +4,8 @@ import React, {
 import styled from 'styled-components';
 
 import Button, {
-  EButtonPreset,
-  ButtonProps
+  ButtonProps,
+  ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
 import {
@@ -20,7 +20,7 @@ import {
 
 const ScButton = styled(Button)`
   margin-right: 8px;
-  min-width: 64px;
+  min-width: 80px;
   
   &:last-child {
     margin-right: 0;
@@ -32,11 +32,11 @@ export default function FooterButton({
   primary,
   onClick,
   ...buttonProps
-}: IDialogButtonProps<any>): JSX.Element {
+}: IDialogButtonProps<unknown>): JSX.Element {
   const dialog = useDialog();
   const dispatchLock = useDispatchLock();
   const dispatchUnlock = useDispatchUnlock();
-  const dispatchCloseWithValue = useDispatchCloseWithValue();
+  const dispatchCloseWithValue = useDispatchCloseWithValue<unknown>();
   
   const handleClick = useCallback(e => {
     let willClose: boolean | void;
@@ -54,10 +54,10 @@ export default function FooterButton({
     if (typeof result === 'function') {
       finalResult = result(dialog.data);
       
-      if ((finalResult as Promise<any>).then) { // 弱判
+      if ((finalResult as Promise<unknown>).then) { // 弱判
         dispatchLock(true);
         
-        (finalResult as Promise<any>).then(resultResult => {
+        (finalResult as Promise<unknown>).then(resultResult => {
           dispatchUnlock();
           dispatchCloseWithValue(resultResult);
         }, err => {
@@ -74,7 +74,7 @@ export default function FooterButton({
   
   return <ScButton {...{
     ...buttonProps as ButtonProps, // spm 参数一定存在，由上游保证
-    preset: primary ? EButtonPreset.PRIMARY : EButtonPreset.SECONDARY,
+    theme: primary ? ButtonTheme.PRIMARY : ButtonTheme.SECONDARY,
     onClick: handleClick
   }} />;
 }

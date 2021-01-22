@@ -1,6 +1,8 @@
-export type TFnDefaultParams = () => Record<string, unknown>;
+export interface IFnDefaultParams {
+  (): Record<string, unknown>;
+}
 
-export type TDefaultParams = Record<string, unknown> | TFnDefaultParams;
+export type TDefaultParams = Record<string, unknown> | IFnDefaultParams;
 
 export type TFnOnBeforeSend = (options: IFactoryOptions) => void | boolean;
 
@@ -29,13 +31,6 @@ export interface IFactoryOptions {
    */
   defaultParams?: TDefaultParams;
   /**
-   * 真正开始记录日志的等待时间（默认 10000ms，即 10s），保证业务请求先行。
-   * 网络请求一般在页面的一开始最密集，如果日志在这时上报会造成网络阻塞而产生性能问题。
-   * 日志不是强需求，不能压过业务，要业务先行，方法是先积压着，等到时间到了，再把积压着的日志一起上报。
-   * 等待时间之后，日志的上报就是即时的。
-   */
-  suppressTime?: number;
-  /**
    * 上报之前进行判断是否继续，返回 false 以阻止上报
    * 
    * 在某些场景下需要禁用日志上报功能，比如国外禁止将日志上报到国内的 logstore
@@ -48,8 +43,17 @@ export interface IFactoryOptions {
  */
 export interface ILogOptionsQuick {
   /**
-   * 默认遵循 suppressTime 的规定，但如果这条日志比较重要，是应用在初始化的时候发送的，
-   * 需要拿它来算 PvUv 可以指定 instant 为 true
+   * 日志不是强需求，不能压过业务，要业务先行。网络请求一般在页面的一开始最密集，如果日志在这时上报会造成网络阻塞而产生性能问题。
+   * 
+   * ，方法是先积压着，等到时间到了，再把积压着的日志一起上报
+   * 
+   * 所以，为了提升性能，做了以下事情：
+   * 
+   * 1. 应用起来后，默认有 10s 的静默时间，这段时间的日志会被积压，用于给应用的请求让路
+   * 2. 每个日志也有一个很短的等待时间，在这段时间内，如果有新的日志进来，也将被积压，并重新计时
+   * 3. 最后，积压的日志利用 POST 请求对日志进行合并发送
+   * 
+   * 然而，总有例外，有的日志希望是即时的，比如需要拿它来算 PvUv，instant 就是为此而生。
    */
   instant?: boolean;
 }
@@ -62,14 +66,26 @@ export interface ILogOptions extends ILogOptionsQuick {
 }
 
 export interface IFnLog {
-  <P = void>(topic: string, params?: P, options?: ILogOptions): void;
-  debug<P = void>(topic: string, params?: P, options?: ILogOptionsQuick): void;
-  log<P = void>(topic: string, params?: P, options?: ILogOptionsQuick): void;
-  info<P = void>(topic: string, params?: P, options?: ILogOptionsQuick): void;
-  warn<P = void>(topic: string, params?: P, options?: ILogOptionsQuick): void;
-  error<P = void>(topic: string, params?: P, options?: ILogOptionsQuick): void;
-  fatal<P = void>(topic: string, params?: P, options?: ILogOptionsQuick): void;
-  biz<P = void>(topic: string, params?: P, options?: ILogOptionsQuick): void;
+  <I= void>(topic: string, info?: I, options?: ILogOptions): void;
+  debug<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  log<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  info<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  warn<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  error<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  fatal<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  biz<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
 }
 
 export type TFnFactory = (options: IFactoryOptions) => IFnLog;
+
+export interface ILogInfo {
+  __topic__: string;
+  [k: string]: unknown;
+}
+
+export interface ILogPostBody {
+  __topic__: string;
+  __logs__: Record<string, string>[];
+  // __source__?: string;
+  // __tags__?: Record<string, string>;
+}

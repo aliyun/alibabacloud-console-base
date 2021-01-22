@@ -4,12 +4,12 @@ import styled, {
 } from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextSecondary
+} from '@alicloud/console-base-theme';
 import Button, {
-  EButtonSize,
-  EButtonThemeColor,
-  ButtonProps
+  ButtonProps,
+  ButtonTheme,
+  ButtonSize
 } from '@alicloud/console-base-rc-button';
 
 import {
@@ -39,13 +39,13 @@ const ScButton = styled(Button)<IProps>`
     color: #fff;
   ` : css`
     border-radius: 2px;
-    color: ${COLOR.TEXT_SECONDARY};
+    ${mixinTextSecondary}
     
     &:hover {
       background: rgba(0, 0, 0, 0.1);
-      color: ${COLOR.TEXT_SECONDARY};
+      ${mixinTextSecondary}
     }
-  `)};
+  `)}
   
   i {
     font-size: 12px;
@@ -62,9 +62,8 @@ const ScButton = styled(Button)<IProps>`
 
 export default function ControlButton(props: IProps): JSX.Element {
   return <ScButton {...{
-    color: EButtonThemeColor.NONE,
-    colorHover: EButtonThemeColor.NONE,
-    size: EButtonSize.NONE,
+    theme: ButtonTheme.NONE,
+    size: ButtonSize.NONE,
     ...props
   }} />;
 }

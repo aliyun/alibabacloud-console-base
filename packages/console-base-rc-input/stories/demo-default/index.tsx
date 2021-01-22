@@ -1,12 +1,10 @@
 import React, {
   useState
 } from 'react';
-import {
-  boolean
-} from '@storybook/addon-knobs';
+
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Input, {
-  SearchInput,
   InputProps
 } from '../../src';
 import Knobs from '../knobs';
@@ -14,10 +12,9 @@ import Knobs from '../knobs';
 export default function DemoDefault(): JSX.Element {
   const [stateProps, setStateProps] = useState<InputProps>({});
   
-  const searchInput = boolean('使用 SearchInput', false);
-  
   return <>
+    <ThemeSwitcher />
     <Knobs onChange={setStateProps} />
-    {searchInput ? <SearchInput {...stateProps} /> : <Input {...stateProps} />}
+    <Input {...stateProps} />
   </>;
 }

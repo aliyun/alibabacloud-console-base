@@ -38,6 +38,7 @@ export default function Knobs({
   
   const align = select<'left' | 'right'>('props.align', ['left', 'right'], 'left', EGroup.LOOK);
   const bodyPadding = select<'both' | 'top' | 'bottom' | 'none'>('props.bodyPadding', ['both', 'top', 'bottom', 'none'], 'both', EGroup.LOOK);
+  const disabled = boolean('props.disabled', false, EGroup.LOOK);
   const width = number('props.width', 0, undefined, EGroup.LOOK);
   const minWidth = number('props.minWidth', 0, undefined, EGroup.LOOK);
   const maxWidth = number('props.maxWidth', 0, undefined, EGroup.LOOK);
@@ -58,6 +59,7 @@ export default function Knobs({
     footer,
     align,
     bodyPadding,
+    disabled,
     width,
     minWidth,
     maxWidth,
@@ -73,6 +75,7 @@ export default function Knobs({
     footer,
     align,
     bodyPadding,
+    disabled,
     width,
     minWidth,
     maxWidth,

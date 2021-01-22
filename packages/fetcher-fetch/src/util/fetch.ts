@@ -36,17 +36,18 @@ export default function(url: string, {
   timeout = 0,
   ...fetchOptions
 }: IFetchOptions = {}): Promise<Response> {
-  const promise = fetch(url, fetchOptions).catch(err => { // URL 不存在或者请求过程被中断（例如刷新页面）会发生此类错误
+  const promise = fetch(url, fetchOptions as RequestInit).catch(err => {
     if (err.name === EFetchError.TIMEOUT) {
       throw err;
     }
     
+    // URL 不存在或者请求过程被中断（例如刷新页面）会发生此类错误
     // TypeError: "NetworkError when attempting to fetch resource."
     throw createError(EFetchError.NETWORK, err?.message);
   });
   
   return timeout > 0 ? new Promise<Response>((resolve, reject) => {
-    const theTimer = setTimeout(() => {
+    const theTimer = window.setTimeout(() => {
       reject(createError(EFetchError.TIMEOUT, `fetch('${url}') timeout after ${timeout}ms`));
     }, timeout);
     

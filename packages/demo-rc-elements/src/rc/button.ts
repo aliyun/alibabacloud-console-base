@@ -21,7 +21,7 @@ export default styled.button`
   min-width: 60px;
   line-height: ${FORM_INPUT_HEIGHT}px;
   transition: all 0.3s ease-in-out;
-  ${CSS_FONT_FAMILY};
+  ${CSS_FONT_FAMILY}
   
   &:hover {
     border-color: ${FORM_BUTTON_BDC_HOVER};

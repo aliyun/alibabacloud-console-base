@@ -5,8 +5,7 @@ import {
 import {
   text,
   boolean,
-  select,
-  optionsKnob
+  select
 } from '@storybook/addon-knobs';
 
 import {
@@ -14,19 +13,14 @@ import {
 } from '@alicloud/console-base-rc-icon';
 
 import {
-  EButtonSize,
-  EButtonThemeColor,
-  EButtonThemeColorBg,
-  EButtonThemeColorBd,
-  EButtonPreset,
-  ButtonProps
+  ButtonProps,
+  ButtonTheme,
+  ButtonSize
 } from '../../src';
 
 enum EGroup {
   CONTENT = '内容',
-  PRESET = 'preset',
   LOOK = '长相',
-  THEME = 'Theme',
   OTHER = '其他'
 }
 
@@ -71,57 +65,19 @@ export default function Knobs({
     inUse: boolean('启用 props.iconRight', false, EGroup.CONTENT)
   });
   
-  const preset = optional<EButtonPreset>({
-    value: optionsKnob<EButtonPreset>('props.preset', EButtonPreset, EButtonPreset.PRIMARY, {
-      display: 'inline-radio'
-    }, EGroup.PRESET),
-    inUse: boolean('启用 props.preset', false, EGroup.PRESET)
+  const theme = optional<ButtonTheme>({
+    value: select<ButtonTheme>('props.theme', Object.values(ButtonTheme), ButtonTheme.PRIMARY, EGroup.LOOK),
+    inUse: boolean('启用 props.theme', true, EGroup.LOOK)
   });
-  
-  const block = optional<boolean>({
-    value: boolean('props.block', false, EGroup.LOOK),
-    inUse: boolean('启用 props.block', false, EGroup.LOOK)
-  });
-  const ellipsis = optional<boolean>({
-    value: boolean('props.ellipsis', false, EGroup.LOOK),
-    inUse: boolean('启用 props.ellipsis', false, EGroup.LOOK)
-  });
-  const loading = optional<boolean>({
-    value: boolean('props.loading', false, EGroup.LOOK),
-    inUse: boolean('启用 props.loading', false, EGroup.LOOK)
-  });
-  const disabled = optional<boolean>({
-    value: boolean('props.disabled', false, EGroup.LOOK),
-    inUse: boolean('启用 props.disabled', false, EGroup.LOOK)
-  });
-  const size = optional<EButtonSize>({
-    value: select<EButtonSize>('props.size', Object.values(EButtonSize), EButtonSize.NONE, EGroup.LOOK),
+  const size = optional<ButtonSize>({
+    value: select<ButtonSize>('props.size', Object.values(ButtonSize), ButtonSize.M, EGroup.LOOK),
     inUse: boolean('启用 props.size', false, EGroup.LOOK)
   });
-  const themeColor = optional<EButtonThemeColor>({
-    value: select<EButtonThemeColor>('props.themeColor', Object.values(EButtonThemeColor), EButtonThemeColor.NONE, EGroup.THEME),
-    inUse: boolean('启用 props.themeColor', false, EGroup.THEME)
-  });
-  const themeColorHover = optional<EButtonThemeColor>({
-    value: select<EButtonThemeColor>('props.themeColorHover', Object.values(EButtonThemeColor), EButtonThemeColor.NONE, EGroup.THEME),
-    inUse: boolean('启用 props.themeColorHover', false, EGroup.THEME)
-  });
-  const themeColorBg = optional<EButtonThemeColorBg>({
-    value: select<EButtonThemeColorBg>('props.themeColorBg', Object.values(EButtonThemeColorBg), EButtonThemeColorBg.NONE, EGroup.THEME),
-    inUse: boolean('启用 props.themeColorBg', false, EGroup.THEME)
-  });
-  const themeColorBgHover = optional<EButtonThemeColorBg>({
-    value: select<EButtonThemeColorBg>('props.themeColorBgHover', Object.values(EButtonThemeColorBg), EButtonThemeColorBg.NONE, EGroup.THEME),
-    inUse: boolean('启用 props.themeColorBgHover', false, EGroup.THEME)
-  });
-  const themeColorBd = optional<EButtonThemeColorBd>({
-    value: select<EButtonThemeColorBd>('props.themeColorBd', Object.values(EButtonThemeColorBd), EButtonThemeColorBd.TRANSPARENT, EGroup.THEME),
-    inUse: boolean('启用 props.themeColorBd', false, EGroup.THEME)
-  });
-  const themeColorBdHover = optional<EButtonThemeColorBd>({
-    value: select<EButtonThemeColorBd>('props.themeColorBdHover', Object.values(EButtonThemeColorBd), EButtonThemeColorBd.TRANSPARENT, EGroup.THEME),
-    inUse: boolean('启用 props.themeColorBdHover', false, EGroup.THEME)
-  });
+  const block = boolean('props.block', false, EGroup.LOOK);
+  const ellipsis = boolean('props.ellipsis', false, EGroup.LOOK);
+  const loading = boolean('props.loading', false, EGroup.LOOK);
+  const active = boolean('props.active', false, EGroup.LOOK);
+  const disabled = boolean('props.disabled', false, EGroup.LOOK);
   
   const href = text('props.href', '', EGroup.OTHER);
   const target = text('props.target', '', EGroup.OTHER);
@@ -137,18 +93,13 @@ export default function Knobs({
     href,
     target,
     spm,
+    theme,
+    size,
     block,
     ellipsis,
     loading,
-    disabled,
-    size,
-    preset,
-    themeColor,
-    themeColorHover,
-    themeColorBg,
-    themeColorBgHover,
-    themeColorBd,
-    themeColorBdHover
+    active,
+    disabled
   }), [
     component,
     label,
@@ -158,18 +109,13 @@ export default function Knobs({
     href,
     target,
     spm,
+    theme,
+    size,
     block,
     ellipsis,
     loading,
-    disabled,
-    size,
-    preset,
-    themeColor,
-    themeColorHover,
-    themeColorBg,
-    themeColorBgHover,
-    themeColorBd,
-    themeColorBdHover
+    active,
+    disabled
   ]);
   
   useEffect(() => onChange(props), [onChange, props]);

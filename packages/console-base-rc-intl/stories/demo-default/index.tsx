@@ -4,6 +4,8 @@ import {
   boolean
 } from '@storybook/addon-knobs';
 
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+
 import Intl from '../../src';
 
 export default function DemoDefault(): JSX.Element {
@@ -28,9 +30,12 @@ block 元素：p、ul、ol、hr（如下）
   const html = boolean('html', true);
   const lines = boolean('lines', true);
   
-  return <Intl {...{
-    text: textValue,
-    html,
-    lines
-  }} />;
+  return <>
+    <ThemeSwitcher />
+    <Intl {...{
+      text: textValue,
+      html,
+      lines
+    }} />
+  </>;
 }

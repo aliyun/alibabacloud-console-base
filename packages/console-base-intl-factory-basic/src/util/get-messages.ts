@@ -2,15 +2,14 @@ import _kebabCase from 'lodash/kebabCase';
 import _reduce from 'lodash/reduce';
 
 import {
-  TMessages,
-  TMessagesMap
+  TIntlMessagesMap
 } from '../types';
 
 /**
  * 从传入的 map 中提取当前 locale 需要的 messages 对象
  */
-export default function getMessages(messagesMap: TMessagesMap, locale: string, localeDefault = 'en-US'): TMessages {
-  const theMessageMap: TMessagesMap = _reduce(messagesMap, (result: TMessagesMap, v: TMessages, k: string) => {
+export default function getMessages<T>(messagesMap: TIntlMessagesMap<T>, locale: string, localeDefault = 'en-US'): T {
+  const theMessageMap: TIntlMessagesMap<T> = _reduce(messagesMap, (result: TIntlMessagesMap<T>, v: T, k: string) => {
     const key = _kebabCase(k); // 'zhCN' / 'zh-CN' 'zh_CN' -> 'zh-cn' 我负责您的随意
     
     if (result[key]) {
@@ -24,10 +23,10 @@ export default function getMessages(messagesMap: TMessagesMap, locale: string, l
     
     return result;
   }, {});
-  const messages: TMessages = theMessageMap[_kebabCase(locale)];
-  const messagesDefault: TMessages = theMessageMap[_kebabCase(localeDefault)] || {};
+  const messages: T = theMessageMap[_kebabCase(locale)];
+  const messagesDefault: T = theMessageMap[_kebabCase(localeDefault)];
   
-  return messages === messagesDefault ? messages : {
+  return messages && messages === messagesDefault ? messages : {
     ...messagesDefault,
     ...messages
   };

@@ -18,17 +18,17 @@ import {
 
 const cssList = css`
   padding-left: 3em;
-  ${CSS_BLOCK_LEVEL_ELEMENT};
+  ${CSS_BLOCK_LEVEL_ELEMENT}
 `;
 
 const ScUl = styled.ul`
   list-style: square;
-  ${cssList};
+  ${cssList}
 `;
 
 const ScOl = styled.ol`
   list-style: lower-roman;
-  ${cssList};
+  ${cssList}
 `;
 
 const ScLi = styled.li`

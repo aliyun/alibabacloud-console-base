@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+
 import Dropdown from '../../src';
 import Knobs, {
   IKnobsData
@@ -24,6 +26,7 @@ export default function DemoDefault(): JSX.Element {
   } = stateKnobsData;
   
   return <>
+    <ThemeSwitcher />
     <Knobs onChange={setStateKnobsData} />
     <Dropdown {...{
       ...props,

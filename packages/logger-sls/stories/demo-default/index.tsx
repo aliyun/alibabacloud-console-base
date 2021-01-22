@@ -8,9 +8,9 @@ import {
 import createLogger from '../../src';
 
 const sls = createLogger({
-  project: 'boshit-test-sls',
+  project: 'console-base',
   endpoint: 'cn-hangzhou.log.aliyuncs.com',
-  logstore: 'nbtest',
+  logstore: 'dev',
   defaultParams() {
     return {
       fuck: Date.now()
@@ -20,18 +20,67 @@ const sls = createLogger({
 
 function testSls(): void {
   sls('@alicloud/logger-sls');
+}
+
+function testSlsInstant(): void {
+  sls('@alicloud/logger-sls', {
+    type: 'instant'
+  }, {
+    instant: true
+  });
+}
+
+function testSlsDebug(): void {
   sls.debug('@alicloud/logger-sls/debug');
+}
+
+function testSlsLog(): void {
   sls.log('@alicloud/logger-sls/log');
+}
+
+function testSlsInfo(): void {
   sls.info('@alicloud/logger-sls/info');
+}
+
+function testSlsWarn(): void {
   sls.warn('@alicloud/logger-sls/warn');
+}
+
+function testSlsError(): void {
   sls.error('@alicloud/logger-sls/error');
+}
+
+function testSlsFatal(): void {
   sls.fatal('@alicloud/logger-sls/fatal');
+}
+
+function testSlsBiz(): void {
   sls.biz('@alicloud/logger-sls/biz');
+}
+
+function testSlsMultiple(): void {
+  testSls();
+  testSlsDebug();
+  testSlsLog();
+  testSlsInfo();
+  testSlsWarn();
+  testSlsError();
+  testSlsFatal();
+  testSlsBiz();
 }
 
 export default function DemoDefault(): JSX.Element {
   return <>
     <P>看 Console</P>
-    <Button onClick={testSls}>TEST</Button>
+    <Button onClick={testSlsMultiple}>testSlsMultiple</Button>
+    <Button onClick={testSls}>testSls</Button>
+    <Button onClick={testSlsInstant}>testSlsInstant</Button>
+    <Button onClick={testSlsDebug}>testSlsDebug</Button>
+    <Button onClick={testSlsLog}>testSlsLog</Button>
+    <Button onClick={testSlsInfo}>testSlsInfo</Button>
+    <Button onClick={testSlsWarn}>testSlsWarn</Button>
+    <Button onClick={testSlsError}>testSlsError</Button>
+    <Button onClick={testSlsFatal}>testSlsFatal</Button>
+    <Button onClick={testSlsBiz}>testSlsBiz</Button>
   </>;
 }

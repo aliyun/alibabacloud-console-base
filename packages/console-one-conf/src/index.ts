@@ -1,12 +1,4 @@
-import confFeature from './util/conf-feature';
-import confLinkGen from './util/conf-link-gen';
-
 export * from '@alicloud/console-one-config';
-export {
-  default
-} from '@alicloud/console-one-config';
-
-export {
-  confFeature,
-  confLinkGen
-};
+export { default } from '@alicloud/console-one-config';
+export { default as confFeature } from './util/conf-feature';
+export { default as confLinkGen } from './util/conf-link-gen';

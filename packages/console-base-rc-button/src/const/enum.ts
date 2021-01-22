@@ -8,67 +8,19 @@ export enum EButtonSize {
   XL = 'xl'
 }
 
-// 预设文字大小
-export enum EButtonFontSize {
+export enum EButtonTheme {
   NONE = 'none',
-  XS = 'xs',
-  S = 's',
-  M = 'm',
-  L = 'l',
-  XL = 'xl'
-}
-
-// 预设边框色
-export enum EButtonThemeColorBd {
-  TRANSPARENT = 'transparent',
-  GRAY_ALPHA = 'gray:alpha',
-  GRAY_ALPHA_SHADE = 'gray:alpha:shade',
-  GRAY = 'gray',
-  SHADE = 'shade',
-  BRAND = 'brand',
-  PRIMARY = 'primary',
-  PRIMARY_SHADE = 'primary:shade'
-}
-
-// 预设背景色
-export enum EButtonThemeColorBg {
-  NONE = 'none',
-  LIGHTER = 'lighter',
-  LIGHT = 'light',
-  NORMAL = 'normal',
-  DARK = 'dark',
-  DARKER= 'darker',
-  WHITE = 'white',
-  BRAND = 'brand',
-  BRAND_LIGHT = 'brand:light',
-  PRIMARY = 'primary',
-  PRIMARY_SHADE = 'primary:shade'
-}
-
-// 预设文字色
-export enum EButtonThemeColor {
-  NONE = 'none',
-  INHERIT = 'inherit',
-  BLACK = 'black',
-  NORMAL = 'normal',
-  GRAY = 'gray',
-  WHITE = 'white',
-  LINK = 'link',
-  LINK_GRAY = 'link_gray',
-  BRAND = 'brand',
-  PRIMARY = 'primary',
-  PRIMARY_SHADE = 'primary:shade'
-}
-
-export enum EButtonPreset {
+  DANGER = 'danger',
+  MENU = 'menu',
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
-  THIRDLY = 'thirdly',
-  BRAND = 'brand',
+  TERTIARY = 'tertiary',
+  BRAND_PRIMARY = 'brand:primary',
   BRAND_SECONDARY = 'brand:secondary',
-  MENU = 'menu',
-  MENU_ACTIVE = 'menu:active',
-  TEXT = 'text',
-  TEXT_LINK = 'text_link',
-  LINK = 'link'
+  BRAND_TERTIARY = 'brand:tertiary',
+  TEXT_PRIMARY = 'text:primary',
+  TEXT_SECONDARY = 'text:secondary',
+  TEXT_TERTIARY = 'text:tertiary',
+  TEXT_BRAND_PRIMARY = 'text:brand:primary',
+  TEXT_BRAND_SECONDARY = 'text:brand:secondary'
 }

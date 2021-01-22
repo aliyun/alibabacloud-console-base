@@ -1,7 +1,2 @@
-import encode from './util/encode';
-import decode from './util/decode';
-
-export {
-  encode,
-  decode
-};
+export { default as encode } from './util/encode';
+export { default as decode } from './util/decode';

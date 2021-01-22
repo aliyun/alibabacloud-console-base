@@ -55,14 +55,14 @@ const props: DialogProps<any> = {
     label: 'promise:resolve',
     result() {
       return new Promise(resolve => {
-        setTimeout(() => resolve('PROMISE RESOLVE'), 2000);
+        window.setTimeout(() => resolve('PROMISE RESOLVE'), 2000);
       });
     }
   }, {
     label: 'promise:reject',
     result() {
       return new Promise((_resolve, reject) => {
-        setTimeout(() => reject(new Error('PROMISE REJECT')), 2000);
+        window.setTimeout(() => reject(new Error('PROMISE REJECT')), 2000);
       });
     }
   }, {
@@ -76,7 +76,7 @@ const props: DialogProps<any> = {
       lock(true);
       
       new Promise(resolve => {
-        setTimeout(() => {
+        window.setTimeout(() => {
           resolve(data);
         }, 1000);
       }).then((result: any) => {

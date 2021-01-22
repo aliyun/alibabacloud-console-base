@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
-  ITopNavButton,
-  ITopNavAccount
+  IPropsTopNavButton,
+  IPropsTopNavAccount
 } from '../types';
 import {
   DEFAULT_ACCOUNT_AVATAR
@@ -13,7 +13,7 @@ export default function buildMenuAccount({
   avatar,
   defaultAvatar,
   ...restProps
-}: ITopNavAccount = {}): ITopNavButton | null {
+}: IPropsTopNavAccount = {}): IPropsTopNavButton | null {
   return {
     key: 'account',
     force: true,

@@ -67,7 +67,7 @@ function getHeight(h: string): number | string {
   }
 }
 
-export default function Demo(): JSX.Element {
+export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(DEFAULT_PAGES);
   const [stateWidth, setStateWidth] = useState<string>('M');
   const [stateHeight, setStateHeight] = useState<string>('M');

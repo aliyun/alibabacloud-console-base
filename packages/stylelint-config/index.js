@@ -16,7 +16,9 @@ module.exports = {
     'block-opening-brace-space-before': 'always-multi-line',
     'color-hex-length': 'short',
     'color-named': 'never',
-    'declaration-block-no-duplicate-properties': true,
+    'declaration-block-no-duplicate-properties': [true, { // 避免对 fallback 报错
+      ignore: ['consecutive-duplicates-with-different-values']
+    }],
     'declaration-block-semicolon-newline-after': 'always',
     'declaration-block-semicolon-newline-before': 'never-multi-line',
     'declaration-colon-newline-after': null,

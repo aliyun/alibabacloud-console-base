@@ -1,6 +1,6 @@
 import {
   extendConfiguration
-} from '@ali/breezr-preset-wind-component';
+} from '@alicloud/console-toolkit-preset-component';
 
 import pkgInfo from './package.json';
 

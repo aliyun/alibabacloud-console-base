@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  button,
-  typo
-} from '@alicloud/console-base-styled-mixin';
+  mixinButtonReset,
+  mixinTypoEllipsis
+} from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
@@ -65,9 +65,12 @@ const ScNavItem = styled.div`
   }
 `;
 
-const ScTab = styled.button`
-  ${button.reset};
-  ${typo.ellipsis};
+const ScTab0 = styled.button`
+  ${mixinButtonReset}
+  ${mixinTypoEllipsis}
+`;
+
+const ScTab = styled(ScTab0)`
   padding: 0 ${props => (props['data-closable'] ? 28 : 12)}px 0 12px;
   border-radius: 4px 4px 0 0;
   background-color: ${props => (props['data-active'] ? BGC_TAB_ACTIVE : BGC_TAB_IDLE)};

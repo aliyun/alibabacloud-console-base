@@ -11,9 +11,6 @@ import intl, {
 
 export default function DemoDefault(): JSX.Element {
   return <>
-    <H1>fallbacks</H1>
-    <P>{intl('only:in:en')}</P>
-    <P>{intl('should display as key when not found at all → 实在找不到就返回 key')}</P>
     <H1>OK...</H1>
     <P>{intl('demo.op.switch_locale')}</P>
     <P>{intl('hello:world')}</P>

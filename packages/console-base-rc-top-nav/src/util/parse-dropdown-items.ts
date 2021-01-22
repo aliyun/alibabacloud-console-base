@@ -1,12 +1,12 @@
 import {
-  IDropdownItem
+  IPropsTopNavButtonDropdownItem
 } from '../types';
 
-export default function parseDropdownItems(items: IDropdownItem[]): [IDropdownItem[], IDropdownItem[]] {
-  const itemsInBody: IDropdownItem[] = [];
-  const itemsInFooter: IDropdownItem[] = [];
+export default function parseDropdownItems(items: IPropsTopNavButtonDropdownItem[]): [IPropsTopNavButtonDropdownItem[], IPropsTopNavButtonDropdownItem[]] {
+  const itemsInBody: IPropsTopNavButtonDropdownItem[] = [];
+  const itemsInFooter: IPropsTopNavButtonDropdownItem[] = [];
   
-  items.forEach((v: IDropdownItem, i: number) => {
+  items.forEach((v: IPropsTopNavButtonDropdownItem, i: number) => {
     if (!v) {
       return;
     }
@@ -21,7 +21,7 @@ export default function parseDropdownItems(items: IDropdownItem[]): [IDropdownIt
       return;
     }
     
-    const solidItem: IDropdownItem = {
+    const solidItem: IPropsTopNavButtonDropdownItem = {
       ...restProps,
       key: `item-${key || i}`
     };

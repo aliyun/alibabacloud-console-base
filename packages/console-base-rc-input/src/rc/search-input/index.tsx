@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextEmphasis,
+  mixinTextTertiary
+} from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
@@ -17,16 +18,17 @@ interface IPropsScIcon {
 
 const ScIcon = styled(Icon)<IPropsScIcon>`
   font-size: 16px;
-  color: ${props => (props.highlighted ? COLOR.TEXT_EMPHASIS : COLOR.TEXT_DISABLED)};
+  ${props => (props.highlighted ? mixinTextEmphasis : mixinTextTertiary)}
 `;
 
-function renderIcon(focused: boolean): JSX.Element {
-  return <ScIcon type="search" highlighted={focused} />;
+function renderIcon(focused: boolean, hovered: boolean): JSX.Element {
+  return <ScIcon type="search" highlighted={focused || hovered} />;
 }
 
 export default function SearchInput(props: IProps): JSX.Element {
   return <Input {...{
     round: true,
+    theme: 'brand',
     ...props,
     innerLeft: renderIcon
   }} />;

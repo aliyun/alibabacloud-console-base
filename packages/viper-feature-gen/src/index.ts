@@ -1,11 +1,5 @@
-import {
-  IFnFeatureCheck as FnFeatureCheck
-} from './types';
-
-export {
-  default
-} from './util/factory';
+export { default } from './util/factory';
 
 export type {
-  FnFeatureCheck
-};
+  IFnFeatureCheck as FnFeatureCheck
+} from './types';

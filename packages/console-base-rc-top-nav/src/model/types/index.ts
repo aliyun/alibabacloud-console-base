@@ -3,30 +3,29 @@ import {
 } from 'react';
 
 import {
-  IPropsTopNav
+  IPropsTopNavPure
 } from '../../types';
 import {
   EAction
 } from '../const';
 
-export type TAction = {
+export type TModelAction = {
   type: EAction.NOTHING
 };
 
-export interface IContextProps extends IPropsTopNav {}
+export type TModelDispatch = Dispatch<TModelAction>;
 
-// export interface IContextRef {}
+export interface IModelProps extends IPropsTopNavPure {}
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IContextState {}
+export interface IModelState {}
 
-export interface IContextReducer {
-  (state: IContextState, action: TAction): IContextState;
+export interface IModelReducer {
+  (state: IModelState, action: TModelAction): IModelState;
 }
 
-export interface IContext {
-  // REF: IContextRef;
-  PROPS: IContextProps;
-  STATE: IContextState;
-  dispatch: Dispatch<TAction>;
+export interface IModelContext {
+  PROPS: IModelProps;
+  STATE: IModelState;
+  dispatch: TModelDispatch;
 }

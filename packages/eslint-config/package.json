@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/eslint-config",
-  "version": "1.0.1",
+  "version": "1.0.13",
   "description": "eslint config based on eslint-config-ali",
   "license": "MIT",
   "main": "index.js",
@@ -21,23 +21,24 @@
     "config"
   ],
   "devDependencies": {
-    "eslint": "^7.14.0"
+    "eslint": "^7.18.0"
   },
   "peerDependencies": {
     "eslint": ">=7"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "babel-eslint": "^10.1.0",
-    "eslint-config-ali": "^11.3.1",
+    "eslint-config-ali": "^11.4.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-lodash": "^7.1.0",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "gitHead": "95c4ed71b51510edd799076da495758f0250ec12"
 }

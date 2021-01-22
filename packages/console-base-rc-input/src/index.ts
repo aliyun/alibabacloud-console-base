@@ -1,16 +1,6 @@
-import {
-  IProps as InputProps
-} from './types';
-import SearchInput from './rc/search-input';
-
-export {
-  default
-} from './rc/input';
+export { default } from './rc/input';
+export { default as SearchInput } from './rc/search-input';
 
 export type {
-  InputProps
-};
-
-export {
-  SearchInput
-};
+  IProps as InputProps
+} from './types';

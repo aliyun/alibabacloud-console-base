@@ -8,47 +8,31 @@ import {
 } from '@alicloud/console-base-rc-icon';
 
 import {
-  EButtonSize,
-  EButtonFontSize,
-  EButtonThemeColorBd,
-  EButtonThemeColorBg,
-  EButtonThemeColor,
-  EButtonPreset
+  EButtonTheme,
+  EButtonSize
 } from '../const';
 
 type TPropsForHtmlAnchorNButton = ButtonHTMLAttributes<HTMLElement> & AnchorHTMLAttributes<HTMLElement>;
 
-export interface IButtonThemePack {
-  themeColorBd?: EButtonThemeColorBd;
-  themeColorBdHover?: EButtonThemeColorBd;
-  themeColorBg?: EButtonThemeColorBg;
-  themeColorBgHover?: EButtonThemeColorBg;
-  themeColor?: EButtonThemeColor;
-  themeColorHover?: EButtonThemeColor;
-}
-
-export interface IButtonAppearance {
-  disabled?: boolean;
+export interface IButtonPropsForSc extends TPropsForHtmlAnchorNButton {
+  theme?: EButtonTheme;
+  size?: EButtonSize;
+  textAlign?: 'left' | 'center' | 'right'; // a button is by default center aligned (`align` is a deprecated HTML attribute)
+  borderRadius?: boolean;
+  noShadow?: boolean; // 去掉 hover 及 active 时的 shadow（对非 tertiary 和 text）
   block?: boolean; // whether to display as a block level dom
   ellipsis?: boolean;
-  textAlign?: 'left' | 'center' | 'right'; // a button is by default center aligned (`align` is a deprecated HTML attribute)
-  size?: EButtonSize;
-  fontSize?: EButtonFontSize;
+  loading?: boolean;
+  active?: boolean; // 将状态锁定在 active
 }
 
-export interface IButtonAppearanceAndTheme extends IButtonAppearance, IButtonThemePack {}
-
-export interface IButtonProps extends IButtonAppearanceAndTheme, Omit<TPropsForHtmlAnchorNButton, 'title'> {
-  preset?: EButtonPreset;
+export interface IButtonProps extends Omit<IButtonPropsForSc, 'title'> {
   component?: 'button' | 'a' | 'span' | 'div'; // 理论上 button 不能包含 button 和 a，a 不能包含 a，当视觉上有这样的场景的时候，可以用该属性（无法搞成 as..）
   // content
   label?: string | JSX.Element; // or you can use `children` instead, but i prefer this way
   title?: string | boolean; // 为 `true` 时，使用 label（如果它是 string 的话）作为 title
-  iconLeft?: IconType | JSX.Element; // 左侧 Icon，如果是 string（IconType），则使用 @alicloud/console-base-rc-icon is used
+  iconLeft?: IconType | JSX.Element; // 左侧 Icon，如果是 string（IconType），则使用 @alicloud/console-base-rc-icon
   iconRight?: IconType | JSX.Element; // 右侧 Icon，类上
   // behavior
-  spm: string; // force to have a goldlog ghost click attribute
-  loading?: boolean;
+  spm?: string; // force to have a goldlog ghost click attribute
 }
-
-export interface IPropsForSc extends IButtonAppearanceAndTheme, TPropsForHtmlAnchorNButton {}

@@ -3,33 +3,28 @@ import {
 } from 'react';
 
 import {
-  ITopNavButton
+  IPropsTopNavButton
 } from '../../types';
 import buildMenuLanguage from '../../util/build-menu-language';
 import buildMenuAccount from '../../util/build-menu-account';
 
-import useModelProps from './_use-model-props';
+import useProps from './use-props';
 
-export default function useMenus(): ITopNavButton[] {
+export default function useMenus(): IPropsTopNavButton[] {
   const {
     menus,
     language,
     account
-  } = useModelProps();
+  } = useProps();
   
-  return useMemo(() => {
-    const finalMenus = [...menus];
+  return useMemo((): IPropsTopNavButton[] => {
     const menuLang = buildMenuLanguage(language);
     const menuAccount = buildMenuAccount(account);
     
-    if (menuLang) {
-      finalMenus.push(menuLang);
-    }
-    
-    if (menuAccount) {
-      finalMenus.push(menuAccount);
-    }
-    
-    return finalMenus;
+    return [
+      ...menus,
+      menuLang,
+      menuAccount
+    ].filter(v => v);
   }, [language, menus, account]);
 }

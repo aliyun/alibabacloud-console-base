@@ -1,20 +1,10 @@
-import {
-  IJsonpOptions as JsonpOptions,
-  IJsonpResponse as JsonpResponse
-} from './types';
-import {
+export { default } from './util/jsonp';
+
+export {
   EJsonpError
 } from './const';
 
-export {
-  default
-} from './util/jsonp';
-
-export {
-  EJsonpError
-};
-
 export type {
-  JsonpOptions,
-  JsonpResponse
-};
+  IJsonpOptions as JsonpOptions,
+  IJsonpResponse as JsonpResponse
+} from './types';

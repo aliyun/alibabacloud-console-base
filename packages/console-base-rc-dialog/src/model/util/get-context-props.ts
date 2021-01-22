@@ -1,6 +1,6 @@
 import {
   Z_INDEX
-} from '@alicloud/console-base-styled-mixin';
+} from '@alicloud/console-base-theme';
 
 import {
   IDialogProps,

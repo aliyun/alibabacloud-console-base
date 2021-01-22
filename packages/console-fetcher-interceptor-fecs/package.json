@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-fecs",
-  "version": "1.0.5",
+  "version": "1.0.22",
   "description": "@alicloud/console-fetcher 请求 + 响应拦截 - FECS",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -25,24 +25,23 @@
     "fecs"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helpers": "^1.0.5",
     "@alicloud/console-toolkit-cli": "^1.2.0",
-    "@alicloud/console-toolkit-preset-component": "^1.2.0",
-    "@alicloud/demo-rc-elements": "^1.0.1",
-    "@alicloud/fetcher-demo-helpers": "^1.0.3",
-    "@types/jest": "^26.0.16",
+    "@alicloud/console-toolkit-preset-component": "^1.2.8",
+    "@alicloud/demo-rc-elements": "^1.0.14",
+    "@alicloud/fetcher-demo-helpers": "^1.0.18",
+    "@types/jest": "^26.0.20",
     "@types/react": "^16.14.2",
     "jest": "^26.6.3",
     "react": "^16.14.0",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-env": "^1.0.3",
-    "@alicloud/console-one-config": "^1.0.3",
-    "@alicloud/cookie": "^1.0.3",
-    "@alicloud/fetcher": "^1.0.3",
-    "@alicloud/fetcher-fetch": "^1.0.3"
+    "@alicloud/console-base-conf-env": "^1.1.8",
+    "@alicloud/console-one-config": "^1.0.13",
+    "@alicloud/cookie": "^1.0.17",
+    "@alicloud/fetcher": "^1.0.18",
+    "@alicloud/fetcher-fetch": "^1.0.18"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -55,5 +54,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "1fe9625e6f1d5c64e9327f005312ccba063ac977"
+  "gitHead": "95c4ed71b51510edd799076da495758f0250ec12"
 }

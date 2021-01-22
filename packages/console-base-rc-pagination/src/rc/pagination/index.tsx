@@ -4,13 +4,12 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  COLOR
-} from '@alicloud/console-base-styled-mixin';
+  mixinTextAccent,
+  mixinTextTertiary
+} from '@alicloud/console-base-theme';
 import Button, {
-  ButtonProps,
-  EButtonSize,
-  EButtonThemeColor,
-  EButtonThemeColorBd
+  ButtonTheme,
+  ButtonSize
 } from '@alicloud/console-base-rc-button';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -38,31 +37,18 @@ const ScPagination = styled.div<IPropsScPagination>`
   display: flex;
   align-items: center;
   justify-content: ${props => getJustifyContent(props.align)};
-  font-size: 12px;
 `;
 
 const ScPaginationDisplay = styled.div`
   margin: 0 12px;
-  color: ${COLOR.TEXT_CAPTION};
+  padding-top: 2px;
+  font-size: 12px;
+  ${mixinTextTertiary}
   
   strong {
-    color: ${COLOR.LINK};
+    ${mixinTextAccent}
   }
 `;
-
-const BUTTON_THEME_PACK_SIMPLEST: Partial<ButtonProps> = {
-  size: EButtonSize.NONE,
-  themeColor: EButtonThemeColor.GRAY,
-  themeColorHover: EButtonThemeColor.BLACK
-};
-
-const BUTTON_THEME_PACK_SIMPLE: Partial<ButtonProps> = {
-  size: EButtonSize.S,
-  themeColor: EButtonThemeColor.GRAY,
-  themeColorHover: EButtonThemeColor.BLACK,
-  themeColorBd: EButtonThemeColorBd.GRAY_ALPHA,
-  themeColorBdHover: EButtonThemeColorBd.GRAY_ALPHA_SHADE
-};
 
 /**
  * 分页
@@ -93,7 +79,8 @@ export default function Pagination({
   }
   
   const themeIsSimplest = theme === 'simplest';
-  const buttonTheme = themeIsSimplest ? BUTTON_THEME_PACK_SIMPLEST : BUTTON_THEME_PACK_SIMPLE;
+  const buttonTheme = themeIsSimplest ? ButtonTheme.TEXT_TERTIARY : ButtonTheme.TERTIARY;
+  const buttonSize = themeIsSimplest ? ButtonSize.NONE : ButtonSize.S;
   const buttonLabelPrev: JSX.Element = themeIsSimplest ? <Icon type="angle-left" /> : <>
     <Icon type="angle-left" />
     {intl('page:prev')}
@@ -106,7 +93,8 @@ export default function Pagination({
   return <ScPagination {...props}>
     <Button {...{
       spm: 'prev',
-      ...buttonTheme,
+      theme: buttonTheme,
+      size: buttonSize,
       disabled: page <= 1,
       label: buttonLabelPrev,
       onClick: handlePrev
@@ -114,7 +102,8 @@ export default function Pagination({
     <ScPaginationDisplay><strong>{page}</strong> / {pages}</ScPaginationDisplay>
     <Button {...{
       spm: 'next',
-      ...buttonTheme,
+      theme: buttonTheme,
+      size: buttonSize,
       disabled: page >= pages,
       label: buttonLabelNext,
       onClick: handleNext

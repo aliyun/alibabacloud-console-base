@@ -50,7 +50,7 @@ export default function processButtons<R = void, D = TDialogData>(buttons: TDial
     return reduced;
   }, []);
   
-  if (!hasPrimary && buttonAttr.length > 1) {
+  if (!hasPrimary && buttonAttr.length) {
     buttonAttr[0].primary = true;
   }
   
