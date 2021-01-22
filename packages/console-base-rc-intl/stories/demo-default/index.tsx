@@ -10,8 +10,13 @@ import Intl from '../../src';
 
 export default function DemoDefault(): JSX.Element {
   const textValue = text('text', `国际化应该有它标准的样式输出。
-inline 元素：<em>em</em>、<code>code</code>、<strong>strong</strong>、<kbd>kbd</kbd>
-block 元素：p、ul、ol、hr（如下）
+inline 元素：
+* 利用 <em>em</em> 着重标注
+* 利用 <strong>strong</strong> 加粗标重
+* 利用 <small>small</small> 表示不重要
+* 利用 <code>code</code> 输出代码
+* 利用 <kbd>kbd</kbd> 展示键盘
+block 元素：p、ul、ol、hr（用三个短横线，效果如下）
 ---
 国际化既不能断句，也不能 <strong>断章</strong>。
 使用配置项 <code>lines</code>（可以和 <code>html</code> 并用），就可以自动按文案的原始换行渲染出 <code>p</code>、<code>ul</code>或 <code>ol</code>。

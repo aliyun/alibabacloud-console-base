@@ -4,6 +4,7 @@ import styled, {
 } from 'styled-components';
 
 import {
+  mixinTextTertiary,
   mixinBorderSecondaryBottom,
   mixinTypoStrong,
   mixinTypoEm,
@@ -35,6 +36,11 @@ const cssInlineElements = css`
   
   kbd {
     ${mixinTypoKbd}
+  }
+  
+  small {
+    font-size: inherit;
+    ${mixinTextTertiary}
   }
 `;
 
