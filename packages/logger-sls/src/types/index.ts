@@ -26,6 +26,10 @@ export interface IFactoryOptions {
    */
   apiVersion?: string;
   /**
+   * 生产出的日志方法的整体采样率，可以在调用的时候通过 sampling 参数覆盖，范围为 [0, 1]，默认 1
+   */
+  sampling: number;
+  /**
    * 默认参数，避免每次都要传，可以是静态数据或产生动态数据的方法，这些参数可以覆盖自动记录的参数，
    * 但会被日志方法的第二个参数 `params` 中对应的字段覆盖
    */
@@ -43,6 +47,10 @@ export interface IFactoryOptions {
  */
 export interface ILogOptionsQuick {
   /**
+   * 用于覆盖 IFactoryOptions 中的采样率设置
+   */
+  sampling?: number;
+  /**
    * 日志不是强需求，不能压过业务，要业务先行。网络请求一般在页面的一开始最密集，如果日志在这时上报会造成网络阻塞而产生性能问题。
    * 
    * ，方法是先积压着，等到时间到了，再把积压着的日志一起上报
@@ -54,6 +62,7 @@ export interface ILogOptionsQuick {
    * 3. 最后，积压的日志利用 POST 请求对日志进行合并发送
    * 
    * 然而，总有例外，有的日志希望是即时的，比如需要拿它来算 PvUv，instant 就是为此而生。
+   * 注意：instant 会忽略采样率
    */
   instant?: boolean;
 }
@@ -76,7 +85,9 @@ export interface IFnLog {
   biz<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
 }
 
-export type TFnFactory = (options: IFactoryOptions) => IFnLog;
+export interface IFnFactory {
+  (options: IFactoryOptions): IFnLog;
+}
 
 export interface ILogInfo {
   __topic__: string;

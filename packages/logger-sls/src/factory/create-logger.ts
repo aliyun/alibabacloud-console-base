@@ -8,6 +8,21 @@ import getSystemParams from '../util/get-system-params';
 import logPipe from '../util/log-pipe';
 
 /**
+ * 采样率检查，如果是 instant 则忽略采样率设置
+ */
+function checkSampling(instant?: boolean, factorySampling = 1, sampling = factorySampling): boolean {
+  if (instant) {
+    return true;
+  }
+  
+  if (sampling > 0 && sampling < 1) {
+    return sampling <= Math.random();
+  }
+  
+  return true;
+}
+
+/**
  * 创建 SLS 日志方法，一般直接用于项目。
  * 
  * 参考：Web Tracking <https://help.aliyun.com/document_detail/31752.html>
@@ -18,25 +33,28 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     endpoint,
     logstore,
     apiVersion,
+    sampling,
     defaultParams,
     onBeforeSend
   } = factoryOptions;
   const pipe = logPipe(project, endpoint, logstore, apiVersion);
   
-  function sls<I = void>(topic: string, info?: I, options: ILogOptions = {}): void {
-    if (onBeforeSend && onBeforeSend(factoryOptions) === false) {
+  function sls<I = void>(topic: string, info?: I, {
+    group = 'LOG',
+    sampling: optionSampling,
+    instant
+  }: ILogOptions = {}): void {
+    if ((onBeforeSend && onBeforeSend(factoryOptions) === false) || !checkSampling(instant, sampling, optionSampling)) {
       return;
     }
     
-    const paramsDefault = typeof defaultParams === 'function' ? defaultParams() : defaultParams;
-    
     pipe(topic, {
       __topic__: topic,
-      GROUP: options.group || 'LOG',
+      GROUP: group,
       ...getSystemParams(),
-      ...paramsDefault,
+      ...(typeof defaultParams === 'function' ? defaultParams() : defaultParams),
       ...info
-    }, options.instant);
+    }, instant);
   }
   
   sls.debug = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {

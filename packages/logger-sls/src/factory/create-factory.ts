@@ -2,7 +2,7 @@ import {
   TDefaultParams,
   IFactoryOptions,
   TFnOnBeforeSend,
-  TFnFactory
+  IFnFactory
 } from '../types';
 import mergeDefaultParams from '../util/merge-default-params';
 import mergeOnBeforeSend from '../util/merge-on-before-send';
@@ -14,7 +14,7 @@ import createLogger from './create-logger';
  *
  * 一般不会在项目中直接使用，而是用它来生成一个 npm 包。
  */
-export default function createFactory(factoryDefaultParams: TDefaultParams, factoryOnBeforeSend?: TFnOnBeforeSend): TFnFactory {
+export default function createFactory(factoryDefaultParams: TDefaultParams, factoryOnBeforeSend?: TFnOnBeforeSend): IFnFactory {
   return ({
     defaultParams,
     onBeforeSend,
