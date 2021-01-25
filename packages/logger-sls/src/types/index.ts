@@ -28,7 +28,7 @@ export interface IFactoryOptions {
   /**
    * 生产出的日志方法的整体采样率，可以在调用的时候通过 sampling 参数覆盖，范围为 [0, 1]，默认 1
    */
-  sampling: number;
+  sampling?: number;
   /**
    * 默认参数，避免每次都要传，可以是静态数据或产生动态数据的方法，这些参数可以覆盖自动记录的参数，
    * 但会被日志方法的第二个参数 `params` 中对应的字段覆盖
