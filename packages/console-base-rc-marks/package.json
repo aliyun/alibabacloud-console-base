@@ -28,6 +28,7 @@
     "beta"
   ],
   "devDependencies": {
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.6",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.8",
     "@types/jest": "^26.0.20",
@@ -42,6 +43,9 @@
   "peerDependencies": {
     "react": ">=16.8",
     "styled-components": ">=5"
+  },
+  "dependencies": {
+    "@alicloud/console-base-theme": "^1.0.6"
   },
   "scripts": {
     "start": "breezr start-storybook",
