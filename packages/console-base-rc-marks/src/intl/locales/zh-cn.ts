@@ -4,5 +4,5 @@ export default {
   'label:update': 'UPDATE',
   'label:alpha': 'ALPHA',
   'label:beta': 'BETA',
-  'label:public_beta': '公测'
+  'label:public_beta': '公测中'
 };

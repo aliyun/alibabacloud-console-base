@@ -45,11 +45,11 @@ function getCssBg(type: EMarkType): FlattenSimpleInterpolation {
     case EMarkType.UPDATE:
       return mixinBgInfo;
     case EMarkType.ALPHA:
-      return mixinBgWarning;
+      return mixinBgDanger;
     case EMarkType.BETA:
       return mixinBgSuccess;
     case EMarkType.PUBLIC_BETA:
-      return mixinBgDanger;
+      return mixinBgWarning;
     default:
       return null;
   }
@@ -61,9 +61,9 @@ const ScMark = styled.span<IPropsMarkWithType>`
   line-height: 1.5;
   font-family: 'PingFang SC', 'Microsoft Yahei', Arial, sans-serif;
   font-size: 12px;
-  text-shadow: 1px 1px 0 #999;
-  letter-spacing: 2px;
-  transform: scale(0.7);
+  text-shadow: 1px 1px 0 #666;
+  letter-spacing: 1px;
+  transform: scale(0.85);
   ${mixinTextWhite}
   ${props => getCssAlign(props.align)}
   ${props => getCssBg(props.type)}
