@@ -5,20 +5,22 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
+import {
+  mixinTextWhite,
+  mixinBgWarning,
+  mixinBgError,
+  mixinTextTertiary,
+  mixinTextPrimary,
+  mixinBgSecondary
+} from '@alicloud/console-base-theme';
+import {
+  InputText
+} from '@alicloud/demo-rc-elements';
+
 import IconProduct, {
   IconProductType,
   EIconType
 } from '../../src';
-
-const COLOR_NO_PRODUCT = '#f00';
-const COLOR_NO_TYPE = '#fc0';
-
-const ScInput = styled.input`
-  margin-right: 12px;
-  padding: 0 8px;
-  width: 160px;
-  line-height: 28px;
-`;
 
 const ScMessage = styled.span`
   strong {
@@ -28,19 +30,19 @@ const ScMessage = styled.span`
         content: '!';
         margin-left: 4px;
         padding: 2px 6px;
-        color: #fff;
+        ${mixinTextWhite}
       }
     }
     
     &.no-product {
       &:after {
-        background-color: ${COLOR_NO_PRODUCT};
+        ${mixinBgError}
       }
     }
     
     &.no-type {
       &:after {
-        background-color: ${COLOR_NO_TYPE};
+        ${mixinBgWarning}
       }
     }
   }
@@ -63,15 +65,15 @@ const ScList = styled.ul`
     height: 66px;
     font-size: 11px;
     text-align: center;
-    color: #bbb;
+    ${mixinTextTertiary}
     
     i {
       font-size: 32px;
-      color: #333;
+      ${mixinTextPrimary}
     }
     
     &:nth-child(2n) {
-      background-color: rgba(0, 0, 0, 0.05);
+      ${mixinBgSecondary}
     }
     
     &.no-product,
@@ -82,24 +84,20 @@ const ScList = styled.ul`
         top: 0;
         right: 0;
         padding: 2px 6px;
-        color: #fff;
+        ${mixinTextWhite}
       }
     }
     
     &.no-product {
       &:after {
-        background-color: ${COLOR_NO_PRODUCT};
+        ${mixinBgError}
       }
     }
     
     &.no-type {
       &:after {
-        background-color: ${COLOR_NO_TYPE};
+        ${mixinBgWarning}
       }
-    }
-    
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
     }
   }
 `;
@@ -403,7 +401,7 @@ export default function List(): JSX.Element {
   
   return <>
     <div>
-      <ScInput type="text" placeholder="Filter by product code" onChange={handleFilterChange} />
+      <InputText type="text" placeholder="Filter by product code" onChange={handleFilterChange} />
       <ScMessage>{typesAll.length} = 没图标的产品：<strong className="no-type">{countNotProduct}</strong> + 不存在的产品：<strong className="no-product">{countNotDefined}</strong> + 存在的产品：{countOk}</ScMessage>
     </div>
     <ScList>
