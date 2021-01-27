@@ -39,7 +39,6 @@ function getCssAlign(align: string): FlattenSimpleInterpolation {
 function getCssBg(type: EMarkType): FlattenSimpleInterpolation {
   switch (type) {
     case EMarkType.NEW:
-      return mixinBgDanger;
     case EMarkType.HOT:
       return mixinBgError;
     case EMarkType.UPDATE:
