@@ -35,7 +35,7 @@ export default function confLinkFactory<T>(LINK: T, interpolationMode: TConfLink
     const link = LINK[key];
     
     if (!link || typeof link !== 'string') {
-      return key as string || '';
+      return '';
     }
     
     if (!interpolation) {
