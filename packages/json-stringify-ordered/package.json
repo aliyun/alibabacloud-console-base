@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/json-stringify-ordered",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "JSON stringify in order, can be used for comparison or as cache keys",
   "license": "MIT",
   "main": "build/cjs/index.js",
