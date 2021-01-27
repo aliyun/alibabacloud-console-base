@@ -1,7 +1,7 @@
 {
   "name": "@alicloud/ua",
   "version": "0.0.1",
-  "description": "UA 信息提取",
+  "description": "UA 解析",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
@@ -19,9 +19,7 @@
     "access": "public"
   },
   "keywords": [
-    "viper",
-    "feature-gen",
-    "factory"
+    "ua"
   ],
   "devDependencies": {
     "@alicloud/demo-rc-elements": "^1.0.16",
@@ -35,7 +33,6 @@
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
   },
-  "dependencies": {},
   "scripts": {
     "start": "breezr start-storybook",
     "test": "breezr test:unit",

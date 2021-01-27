@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@alicloud/fetcher-fetch": "^1.0.20",
+    "@alicloud/ua": "^0.0.1",
     "lodash": "^4.17.20",
     "qs": "^6.9.6"
   },
