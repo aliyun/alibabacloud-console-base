@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-one-conf",
-  "version": "1.0.17",
+  "version": "1.1.0",
   "description": "OneConsole Config 对象解析与封装",
   "license": "MIT",
   "main": "build/cjs/index.js",
