@@ -4,7 +4,7 @@ import {
   IPropsTopNavLanguage
 } from '../types';
 
-export default function buildMenuLanguage(lang: IPropsTopNavLanguage): IPropsTopNavButton | null {
+export default function buildMenuLanguage(lang?: IPropsTopNavLanguage | null): IPropsTopNavButton | null {
   if (!lang) {
     return null;
   }

@@ -16,17 +16,17 @@ const ScLogo = styled(TopNavButton)`
   font-size: 18px;
 `;
 
-export default function Logo(): JSX.Element {
+export default function Logo(): JSX.Element | null {
   const {
-    logo
+    logo = {}
   } = useProps();
   
-  return <ScLogo {...{
+  return logo ? <ScLogo {...{
     spm: 'logo',
     responsive: false,
     force: true,
     theme: ButtonTheme.TEXT_BRAND_PRIMARY,
     ...logo,
-    label: logo?.label || <IconAliyun />
-  }} />;
+    label: logo.label || <IconAliyun />
+  }} /> : null;
 }

@@ -9,11 +9,17 @@ import {
 } from '../const';
 import Avatar from '../rc/avatar';
 
-export default function buildMenuAccount({
-  avatar,
-  defaultAvatar,
-  ...restProps
-}: IPropsTopNavAccount = {}): IPropsTopNavButton | null {
+export default function buildMenuAccount(account: IPropsTopNavAccount | null = {}): IPropsTopNavButton | null {
+  if (!account) {
+    return null;
+  }
+  
+  const {
+    avatar,
+    defaultAvatar,
+    ...restProps
+  } = account;
+  
   return {
     key: 'account',
     force: true,

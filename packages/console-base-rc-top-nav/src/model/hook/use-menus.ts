@@ -14,7 +14,7 @@ export default function useMenus(): IPropsTopNavButton[] {
   const {
     menus,
     language,
-    account
+    account = {}
   } = useProps();
   
   return useMemo((): IPropsTopNavButton[] => {
@@ -22,7 +22,7 @@ export default function useMenus(): IPropsTopNavButton[] {
     const menuAccount = buildMenuAccount(account);
     
     return [
-      ...menus,
+      ...(menus || []),
       menuLang,
       menuAccount
     ].filter(v => v);

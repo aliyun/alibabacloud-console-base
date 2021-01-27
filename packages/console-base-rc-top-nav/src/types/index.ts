@@ -1,8 +1,7 @@
 import {
   HTMLAttributes,
   ReactElement,
-  ReactNode,
-  MouseEvent
+  ReactNode
 } from 'react';
 
 import {
@@ -65,11 +64,11 @@ export interface IPropsTopNavAccount extends IPropsTopNavButton {
 
 export interface IPropsTopNavPure {
   bodyClass?: string;
-  dock?: IPropsTopNavDock; // 程序坞
-  logo?: IPropsTopNavLogo;
-  menus?: (IPropsTopNavButton | null)[];
-  language?: IPropsTopNavLanguage;
-  account?: IPropsTopNavAccount;
+  dock?: IPropsTopNavDock | null; // 程序坞
+  logo?: IPropsTopNavLogo | null;
+  menus?: (IPropsTopNavButton | null)[] | null;
+  language?: IPropsTopNavLanguage | null; // 也属于 menu 但比较特殊，所以单独拎出定义
+  account?: IPropsTopNavAccount | null; // 也属于 menu 但比较特殊，所以单独拎出定义
   customLeft?: ReactNode;
   customRight?: ReactNode;
   // 任何菜单 mouseenter 的时候的回调，有 debounce
