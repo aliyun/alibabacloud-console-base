@@ -21,7 +21,7 @@ import {
 /**
  * 将 fetch 和 jsonp 整合在一起（即当 method 为 'JSONP' 的时候会发送 JSONP 请求）
  */
-export default async function fetchX<T = void, C extends IFetcherConfig = IFetcherConfig>(config: C): Promise<IFetcherResponse<T>> {
+export default async function fetchX<T = void, C extends IFetcherConfig = IFetcherConfig>(fetcherConfig: C): Promise<IFetcherResponse<T>> {
   const {
     url = '',
     method: method0 = 'GET',
@@ -39,7 +39,7 @@ export default async function fetchX<T = void, C extends IFetcherConfig = IFetch
       arrayFormat: 'repeat'
     },
     ...options
-  } = config;
+  } = fetcherConfig;
   const method = method0.toUpperCase() as string; // 转成大写
   const fetchUrl = buildUrl(url, {
     urlBase,

@@ -92,7 +92,7 @@ function filterAndSort<F = void, R = void>(unsorted: IQueueItem<F, R>[]): IQueue
  * 3. `interceptRequest` 仅接受一个方法，而 `interceptResponse` 可以接受两个（跟 axios 类似）
  * 4. `interceptRequest` 的顺序和最终调用的顺序一致，而 axios 的顺序是倒着来的
  * 5. `interceptRequest` 如果抛错，不会触发真实的 API 请求（axios 一样），也不会触发任何 response interceptors（axios 会触发）
- * 6. `interceptRequest` 可以不必返回全的 config，这里会自动 merge，axios 要求返回全的
+ * 6. `interceptRequest` 可以不必返回全的 fetcherConfig，这里会自动 merge，axios 要求返回全的
  */
 export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   private readonly _defaultConfig: C;
@@ -106,24 +106,24 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   private _interceptorQueueForResponse: IQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>[] = [];
   
   /**
-   * 传递给 interceptor，这样在 interceptor 内部有需要的话可以通过它加上 config 进行重新请求
+   * 传递给 interceptor，这样在 interceptor 内部有需要的话可以通过它加上 fetcherConfig 进行重新请求
    */
-  private _handleRequest = <T = void>(config: C): Promise<T> => this.request<T>(config);
+  private _handleRequest = <T = void>(fetcherConfig: C): Promise<T> => this.request<T>(fetcherConfig);
   
-  constructor(config?: C) {
+  constructor(fetcherConfig?: C) {
     this._defaultConfig = {
-      ...config
+      ...fetcherConfig
     };
   }
   
   /**
    * 获取此次调用需要用到的所有请求拦截器，且拦截器的顺序按指定顺序
    */
-  private _getInterceptorsForRequest(config: C): IFnInterceptRequest<C>[] {
+  private _getInterceptorsForRequest(fetcherConfig: C): IFnInterceptRequest<C>[] {
     const unsorted: IQueueItem<IFnInterceptRequest<C>>[] = [...this._interceptorQueueForRequest];
     
-    if (config.additionalInterceptorsForRequest) {
-      config.additionalInterceptorsForRequest.forEach(v => unsorted.push(parseInterceptorQueueItemForRequest<C>(v as TArgsForInterceptRequest<C>)));
+    if (fetcherConfig.additionalInterceptorsForRequest) {
+      fetcherConfig.additionalInterceptorsForRequest.forEach(v => unsorted.push(parseInterceptorQueueItemForRequest<C>(v as TArgsForInterceptRequest<C>)));
     }
     
     return [
@@ -133,23 +133,23 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
     ];
   }
   
-  private _getInterceptorsForResponse(config: C): [IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>][] {
+  private _getInterceptorsForResponse(fetcherConfig: C): [IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>][] {
     const unsorted: IQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>[] = [...this._interceptorQueueForResponse];
     
-    if (config.additionalInterceptorsForResponse) {
-      config.additionalInterceptorsForResponse.forEach(v => unsorted.push(parseInterceptorQueueItemForResponse<C>(v as TArgsForInterceptResponse<C>)));
+    if (fetcherConfig.additionalInterceptorsForResponse) {
+      fetcherConfig.additionalInterceptorsForResponse.forEach(v => unsorted.push(parseInterceptorQueueItemForResponse<C>(v as TArgsForInterceptResponse<C>)));
     }
     
     return filterAndSort<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>(unsorted).map(v => [v.fulfilledFn, v.rejectedFn]);
   }
   
   /**
-   * 逐个调用排序好的请求拦截器，每个拦截器可以返回部分期望修改的 config（也可以不返回任何东西），最终得到的是合并完的 config 对象
+   * 逐个调用排序好的请求拦截器，每个拦截器可以返回部分期望修改的 fetcherConfig（也可以不返回任何东西），最终得到的是合并完的 fetcherConfig 对象
    */
-  private _invokeInterceptorsForRequest(config: C): Promise<C> {
-    let promise: Promise<C> = Promise.resolve(config);
+  private _invokeInterceptorsForRequest(fetcherConfig: C): Promise<C> {
+    let promise: Promise<C> = Promise.resolve(fetcherConfig);
     
-    this._getInterceptorsForRequest(config).forEach(fn => {
+    this._getInterceptorsForRequest(fetcherConfig).forEach(fn => {
       promise = promise.then((configLastMerged: C) => { // 上一次 merge 完的结果
         // 利用前置 Promise，不管 fn 返回是否 Promise 都可以在一个运行空间获取到 configLastMerged 和 configToMerge
         // configToMerge 是 fn 计算后得到的结果，可能为空；也可能是 Promise
@@ -163,7 +163,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   /**
    * 对执行请求返回得到的结果（正确返回或错误）进行后期处理
    */
-  private async _invokeInterceptorsForResponse<T>(config: C, fetcherResponse?: IFetcherResponse<T>, error?: IFetcherError<C>): Promise<T> {
+  private async _invokeInterceptorsForResponse<T>(fetcherConfig: C, fetcherResponse?: IFetcherResponse<T>, error?: IFetcherError<C>): Promise<T> {
     let promise: Promise<T>;
     
     if (fetcherResponse) {
@@ -173,10 +173,10 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
     }
     
     // 逐个调用响应拦截器，如果有 success 则其返回将作为结果传递给下一个拦截器
-    this._getInterceptorsForResponse(config).forEach(([fulfilledFn, rejectedFn]) => {
+    this._getInterceptorsForResponse(fetcherConfig).forEach(([fulfilledFn, rejectedFn]) => {
       promise = promise.then((result: T) => {
         if (fulfilledFn) {
-          return fulfilledFn(result, config, fetcherResponse, this._handleRequest);
+          return fulfilledFn(result, fetcherConfig, fetcherResponse, this._handleRequest);
         }
         
         return result;
@@ -186,13 +186,13 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
          * 所以这里提供了「纠错」和「调整错误」两个功能
          */
         if (rejectedFn) {
-          return rejectedFn(err, config, fetcherResponse, this._handleRequest);
+          return rejectedFn(err, fetcherConfig, fetcherResponse, this._handleRequest);
         }
         
         throw err;
       }).catch((err2: IFetcherError<C>) => {
         if (!err2.config) {
-          err2.config = config;
+          err2.config = fetcherConfig;
         }
         
         if (fetcherResponse?.data && !err2.responseData) {
@@ -209,9 +209,9 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   /**
    * 发送请求：前置请求拦截器 → 网络请求 → 后置响应拦截器
    */
-  async request<T = void>(config: C): Promise<T> {
+  async request<T = void>(fetcherConfig: C): Promise<T> {
     // 1. 前置请求拦截器
-    let finalConfig: C = mergeConfig(this._defaultConfig, config);
+    let finalConfig: C = mergeConfig(this._defaultConfig, fetcherConfig);
     
     try {
       finalConfig = await this._invokeInterceptorsForRequest(finalConfig);

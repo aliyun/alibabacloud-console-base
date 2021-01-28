@@ -16,9 +16,6 @@ export interface IBizJson<T = void> {
   data?: T;
 }
 
-/**
- * 给 FetcherConfig 的额外扩展
- */
 export interface IFetcherConfigExtra {
   /**
    * 判断请求是否成功，默认判断 `json.code === '200' || json.code === 200`
@@ -50,7 +47,4 @@ export interface IFetcherConfigExtra {
   getMessage?: TGetMessage;
 }
 
-/**
- * 扩展的 FetcherConfig
- */
 export interface IFetcherConfigExtended extends FetcherConfig, IFetcherConfigExtra {}

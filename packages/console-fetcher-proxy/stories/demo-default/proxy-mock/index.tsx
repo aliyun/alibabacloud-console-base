@@ -29,9 +29,7 @@ export default function ProxyMock(): JSX.Element {
   
   useEffect(() => setProxyFetcher(stateProxyMocked), [stateProxyMocked]);
   
-  useEffect(() => forConsoleBase.onFetcherRequest((config: FetcherConfig): Promise<unknown> => {
-    return fetcher.request(config);
-  }), []);
+  useEffect(() => forConsoleBase.onFetcherRequest((fetcherConfig: FetcherConfig): Promise<unknown> => fetcher.request(fetcherConfig)), []);
   
   return <>
     <H2>测试专用的 proxy 实现</H2>

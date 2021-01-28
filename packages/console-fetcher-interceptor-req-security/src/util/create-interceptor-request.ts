@@ -1,5 +1,6 @@
 import {
   FetcherFnInterceptRequest,
+  FetcherInterceptRequestReturn,
   FetcherUtils
 } from '@alicloud/fetcher';
 
@@ -20,7 +21,7 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
     getCollina = defaultGetCollina,
     getUmid = defaultGetUmid,
     getSecToken = defaultGetSecToken
-  }: IFetcherConfigExtended): void | Partial<IFetcherConfigExtended> => {
+  }: IFetcherConfigExtended): FetcherInterceptRequestReturn<IFetcherConfigExtended> => {
     if (!FetcherUtils.canHaveBody(method)) {
       return;
     }

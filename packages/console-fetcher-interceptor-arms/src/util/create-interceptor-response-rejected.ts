@@ -15,15 +15,15 @@ import {
 } from './bl';
 
 export default function createInterceptorResponseRejected(interceptorConfig?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected<FetcherConfig> {
-  return (err: FetcherError, config: FetcherConfig, response?: FetcherResponse): void => {
-    if (!interceptorConfig?.shouldIgnore(config, err)) {
+  return (err: FetcherError, fetcherConfig: FetcherConfig, response?: FetcherResponse): void => {
+    if (!interceptorConfig?.shouldIgnore(fetcherConfig, err)) {
       logError({
-        api: FetcherUtils.buildUrl(config.url || '', {
-          urlBase: config.urlBase
+        api: FetcherUtils.buildUrl(fetcherConfig.url || '', {
+          urlBase: fetcherConfig.urlBase
         }),
         code: err.code,
         message: err.message,
-        timeStarted: config._timeStarted,
+        timeStarted: fetcherConfig._timeStarted,
         traceId: response?.headers['Eagleeye-Traceid']
       });
     }

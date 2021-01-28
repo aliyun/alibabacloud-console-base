@@ -1,6 +1,7 @@
 import {
   FetcherConfig,
   FetcherFnInterceptRequest,
+  FetcherInterceptRequestReturn,
   FetcherUtils
 } from '@alicloud/console-fetcher';
 import {
@@ -11,7 +12,7 @@ import {
 } from '@alicloud/console-base-global';
 
 export default function createInterceptorRequest(): FetcherFnInterceptRequest<FetcherConfig> {
-  return (config: FetcherConfig): Partial<FetcherConfig> | void => {
+  return (fetcherConfig: FetcherConfig): FetcherInterceptRequestReturn => {
     if (!getProxyFetcher()) {
       return; // 将继续正常的请求流程
     }
@@ -19,12 +20,12 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<Fe
     let result: Promise<unknown>;
     
     try { // postMessage 可能抛错
-      result = forApp.fetcherRequest(config);
+      result = forApp.fetcherRequest(fetcherConfig);
     } catch (err) { // 抛错表明 message 的 payload 中含有无法序列化的数据
       // TODO log
       return; // 将继续正常的请求流程
     }
     
-    throw FetcherUtils.createErrorSkipNetwork(result, config);
+    throw FetcherUtils.createErrorSkipNetwork(result, fetcherConfig);
   };
 }

@@ -23,12 +23,10 @@ export default function requestWithBody<C extends IFetcherConfig, T, B, P>(fetch
     [options, url, body, params] = args as [TFetcherOptionsForQuickFn<C>, string, B, P];
   }
   
-  const config: C = mergeConfig<C>(options as C, {
+  return fetcher.request<T>(mergeConfig<C>(options as C, {
     url,
     method,
     params,
     body
-  } as C);
-  
-  return fetcher.request<T>(config);
+  } as C));
 }

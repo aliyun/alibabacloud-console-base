@@ -1,7 +1,8 @@
 import CONF_ENV from '@alicloud/console-base-conf-env';
 import {
   FetcherConfig,
-  FetcherFnInterceptRequest
+  FetcherFnInterceptRequest,
+  FetcherInterceptRequestReturn
 } from '@alicloud/fetcher';
 
 import {
@@ -19,10 +20,10 @@ export default function createInterceptorRequest({
   one = {},
   others = []
 }: IMockOptions = {}): FetcherFnInterceptRequest {
-  return (config: FetcherConfig): Partial<FetcherConfig> | void => {
+  return (fetcherConfig: FetcherConfig): FetcherInterceptRequestReturn => {
     // 这个包不应该被打包到应用，而只应该在 demo 中使用，若有**笨蛋🥚**很认真地把它放到项目代码里边...也不要对线上功能产生干扰
     // 同时，如果指定了 urlBase 的...忽略
-    if (!CONF_ENV.ENV_IS_DEV || config.urlBase) {
+    if (!CONF_ENV.ENV_IS_DEV || fetcherConfig.urlBase) {
       return;
     }
     
@@ -31,7 +32,7 @@ export default function createInterceptorRequest({
         id,
         check
       } = others[i];
-      const checkResult = check(config);
+      const checkResult = check(fetcherConfig);
       
       if (checkResult === true) {
         return {
@@ -47,8 +48,8 @@ export default function createInterceptorRequest({
       }
     }
     
-    if (REG_ONE_API.test(config.url)) {
-      const product = (config.body as IBodyWithProduct)?.product;
+    if (REG_ONE_API.test(fetcherConfig.url)) {
+      const product = (fetcherConfig.body as IBodyWithProduct)?.product;
       
       return {
         url: `${MOCK_PREFIX}/oneconsole/data/${RegExp.$1 ? 'multiApi' : 'api'}.json`,

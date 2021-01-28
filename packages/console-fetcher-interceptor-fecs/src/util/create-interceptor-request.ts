@@ -3,6 +3,7 @@ import CONF_ENV from '@alicloud/console-base-conf-env';
 import {
   FetcherConfig,
   FetcherFnInterceptRequest,
+  FetcherInterceptRequestReturn,
   FetcherUtils
 } from '@alicloud/fetcher';
 
@@ -24,14 +25,14 @@ const FECS_COMPATIBLE: boolean = (() => {
  * 1. 对于处理去往 FECS 的接口，为 POST 添加 FECS 专属的 sec_token
  * 2. 对于 OneConsole 封装的 open/inner/container 系列 API，在非 OneConsole 下自动走 FECS
  */
-function interceptRequest(config: FetcherConfig): Partial<FetcherConfig> | void {
+function interceptRequest(fetcherConfig: FetcherConfig): FetcherInterceptRequestReturn<FetcherConfig> {
   // 只有向 FECS 的带 body 的请求需要填 FECS 的 token
-  if (!FetcherUtils.canHaveBody(config.method)) {
+  if (!FetcherUtils.canHaveBody(fetcherConfig.method)) {
     return;
   }
   
-  const fecs = isFecs(config);
-  const relativeOne = isRelativeOneApi(config);
+  const fecs = isFecs(fetcherConfig);
+  const relativeOne = isRelativeOneApi(fetcherConfig);
   
   // 既不走 FECS，也不是当前域名下的 OneConsole API，不需要做什么
   if (!fecs && !relativeOne) {

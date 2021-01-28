@@ -14,13 +14,13 @@ import {
 } from './bl';
 
 export default function createInterceptorResponseSuccess(interceptorConfig?: IFetcherInterceptorConfig): FetcherFnInterceptResponseFulfilled<FetcherConfig> {
-  return (data: unknown, config: FetcherConfig, response: FetcherResponse): unknown => {
-    if (interceptorConfig?.shouldIgnore(config)) {
+  return (data: unknown, fetcherConfig: FetcherConfig, response: FetcherResponse): unknown => {
+    if (interceptorConfig?.shouldIgnore(fetcherConfig)) {
       logSuccess({
-        api: FetcherUtils.buildUrl(config.url || '', {
-          urlBase: config.urlBase
+        api: FetcherUtils.buildUrl(fetcherConfig.url || '', {
+          urlBase: fetcherConfig.urlBase
         }),
-        timeStarted: config._timeStarted,
+        timeStarted: fetcherConfig._timeStarted,
         traceId: response?.headers['Eagleeye-Traceid']
       });
     }

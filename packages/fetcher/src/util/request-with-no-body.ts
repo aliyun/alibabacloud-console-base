@@ -26,11 +26,9 @@ export default function requestWithNoBody<C extends IFetcherConfig, T = void, P 
     [options, url, params] = args as [TFetcherOptionsForQuickFn<C>, string, P?];
   }
   
-  const config: C = mergeConfig<C>(options as C, {
+  return fetcher.request<T>(mergeConfig<C>(options as C, {
     url,
     method,
     params
-  } as C);
-  
-  return fetcher.request<T>(config);
+  } as C));
 }

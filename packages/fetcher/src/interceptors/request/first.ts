@@ -8,10 +8,10 @@ import {
  * - 记录开始的时间
  * - 保证 method 存在且大写
  */
-export default function requestInterceptorFirst(config: IFetcherConfig): Partial<IFetcherConfig> {
+export default function requestInterceptorFirst(fetcherConfig: IFetcherConfig): Partial<IFetcherConfig> {
   const {
     method = 'GET'
-  } = config;
+  } = fetcherConfig;
   
   return {
     _timeStarted: Date.now(),

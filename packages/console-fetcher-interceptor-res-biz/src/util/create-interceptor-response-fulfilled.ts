@@ -21,17 +21,17 @@ import getMessage from './get-message';
  * 这里会判断业务是否成功，如果成功则返回从原屎返回中得出的真正的数据，如果失败在抛出 FetchErrorBiz。
  */
 export default function createInterceptorResponseFulfilled(): FetcherFnInterceptResponseFulfilled<IFetcherConfigExtended> {
-  return (json: IBizJson, config: IFetcherConfigExtended): any => { // eslint-disable-line @typescript-eslint/no-explicit-any
-    const success = isSuccess(json, config.isSuccess);
+  return (json: IBizJson, fetcherConfig: IFetcherConfigExtended): any => { // eslint-disable-line @typescript-eslint/no-explicit-any
+    const success = isSuccess(json, fetcherConfig.isSuccess);
     
     if (success) {
-      return getData(json, config.getData);
+      return getData(json, fetcherConfig.getData);
     }
     
-    const code: string = getCode(json, config.getCode) || '__UNKNOWN__';
-    const message: string = getMessage(json, config.getMessage) || code;
+    const code: string = getCode(json, fetcherConfig.getCode) || '__UNKNOWN__';
+    const message: string = getMessage(json, fetcherConfig.getMessage) || code;
     
-    throw FetcherUtils.createError<IFetcherConfigExtended>(config, ERROR_BIZ, message, code);
+    throw FetcherUtils.createError<IFetcherConfigExtended>(fetcherConfig, ERROR_BIZ, message, code);
   };
 }
 

@@ -104,7 +104,7 @@ import {
   FetcherError
 } from '@alicloud/fetcher';
 
-export default (err: FetcherError, config: FetcherConfig, fetcher: Fetcher): void => {
+export default (err: FetcherError, fetcherConfig: FetcherConfig, fetcher: Fetcher): void => {
   // do sth. according to err and config
   
   const dealt = dealWithError(err, config);
@@ -141,70 +141,160 @@ export default fetcher;
 
 同时，更更好的是，把你的拦截器，写成一个工厂方法，这样它就可以更具有普适性。
 
-以下是例子（多几个文件）：
+你可以看仓库中的几个拦截器，都是很好的例子：
+
+* `console-fetcher-interceptor-arms`
+* `console-fetcher-interceptor-fecs`
+* `console-fetcher-interceptor-req-mock`
+* `console-fetcher-interceptor-req-security`
+* `console-fetcher-interceptor-res-biz`
+* `console-fetcher-interceptor-res-error-message`
+* `console-fetcher-interceptor-res-risk`
+* `console-fetcher-interceptor-sls`
+
+他们的特点：
+
+`src/index` export `util/intercept` 为 default，并可能输出类型 `FetcherInterceptorConfig`、`FetcherConfigExtra`、`FetcherConfigExtended`。
+
+`util/intercept` 利用的是可能存在的以下三个文件，它们的输入都是 `FetcherInterceptorConfig`：
+
+* `util/create-interceptor-request` → `FetcherFnInterceptRequest`
+* `util/create-interceptor-response-fulfilled` → `FetcherFnInterceptResponseFulfilled`
+* `util/create-interceptor-response-rejected` → `FetcherFnInterceptResponseRejected`
+
+类型说明（任何一个都是可选的）：
+
+* `FetcherInterceptorConfig` 如上所说，是拦截器创建时需要的参数。
+* `FetcherConfigExtra` 是对 `@alicloud/fetcher` 的 `FetcherConfig` 的扩展，用于合适的地方做 `interface` 的 `extend`
+* `FetcherConfigExtended` 是扩展后的 `FetcherConfig`，一般不该被直接用到
+
+## 拦截器最佳实践
+
+```
+src/
+ ├── types/
+ │   └── index.ts
+ ├── util/
+ │   ├── ...
+ │   ├── create-interceptor-request.ts
+ │   ├── create-interceptor-response-fulfilled.ts
+ │   ├── create-interceptor-response-rejected.ts
+ │   └── intercept.ts
+ └── index.ts
+```
+
+### src/types/index.ts 范例
 
 ```typescript
-// interceptor-package/src/index.ts
 import {
-  Fetcher,
   FetcherConfig
 } from '@alicloud/fetcher';
 
-import createInterceptor from './_create-interceptor';
+// 创建拦截器时的配置参数，将被用于 fetcher 工厂的扩展参数
+export interface IFetcherInterceptorConfig {
+  ...
+}
 
-export default (fetcher: Fetcher, interceptorConfig: FetcherConfig): void => {
-  fetcher.interceptResponse(undefined, createInterceptor(interceptorConfig));
-};
+export interface IFetcherConfigExtra {
+  ...
+}
+
+export interface IFetcherConfigExtended extends FetcherConfig, IFetcherConfigExtra {}
 ```
 
+### src/util/create-interceptor-request.ts 范例
+
 ```typescript
-// interceptor-package/src/_create-interceptor.ts
 import {
-  Fetcher,
-  FetcherConfig,
-  FetcherError,
-  ResponseInterceptorFail
+  FetcherFnInterceptRequest,
+  FetcherInterceptRequestReturn
 } from '@alicloud/fetcher';
 
-import createInterceptor from './_create-interceptor';
+import {
+  IFetcherInterceptorConfig,
+  IFetcherConfigExtended
+} from '../types';
 
-export default function createInterceptor(interceptorConfig: FetcherConfig): ResponseInterceptorFail {
-  return (err: FetcherError, config: FetcherConfig, fetcher: Fetcher): any => {
-    // do your interceptor logic according to interceptorConfig, err, config
+export default function createInterceptorRequest(interceptorConfig: IFetcherInterceptorConfig): FetcherFnInterceptRequest<IFetcherConfigExtended> {
+  // 在这里消费 interceptorConfig
+  
+  return (fetcherConfig: IFetcherConfigExtended): FetcherInterceptRequestReturn<IFetcherConfigExtended> => {
+    ...
   };
 }
 ```
 
-而对使用者来说，这样就简单了：
+### src/util/create-interceptor-response-fulfilled.ts 范例
 
 ```typescript
-import createFetcher, {
-  Fetcher
+import {
+  FetcherFnInterceptResponseFulfilled
 } from '@alicloud/fetcher';
-import intercept from 'interceptor-package';
 
-const fetcher: Fetcher = createFetcher();
+import {
+  IFetcherInterceptorConfig,
+  IFetcherConfigExtended
+} from '../types';
 
-intercept(fetcher);
-
-export default fetcher;
+export default function createInterceptorResponseFulfilled(interceptorConfig: IFetcherInterceptorConfig): FetcherFnInterceptResponseFulfilled<IFetcherConfigExtended> {
+  // 在这里消费 interceptorConfig
+  
+  return (o: any, fetcherConfig: IFetcherConfigExtended): any => { // eslint-disable-line @typescript-eslint/no-explicit-any
+    ...
+  };
+}
 ```
 
-### interceptor 的输出
-
-有的 interceptor 可以对 FetcherConfig 进行扩充。在 export 的时候必须把扩充的部分暴露出来，如：
+### src/util/create-interceptor-response-rejected.ts 范例
 
 ```typescript
-// interceptor-package/src/index.ts
-...
 import {
-  IFetcherConfigExtra as FetcherConfigExtra
-} from './types';
+  FetcherError,
+  FetcherResponse,
+  FetcherFnInterceptResponseRejected,
+  FetcherFnRequest
+} from '@alicloud/fetcher';
 
-...
+import {
+  IFetcherInterceptorConfig,
+  IFetcherConfigExtended
+} from '../types';
+
+export default function createInterceptorResponseRejected(interceptorConfig: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected<IFetcherConfigExtended> {
+  // 在这里消费 interceptorConfig
+  
+  return (err: FetcherError, fetcherConfig: IFetcherConfigExtended, response: FetcherResponse, request: FetcherFnRequest): void => {
+    ...
+    
+    throw err; // 如果继续错下去就得 throw
+  };
+}
+```
+
+### src/util/intercept.ts 范例
+
+```typescript
+import createInterceptorRequest from './create-interceptor-request';
+import createInterceptorResponseFulfilled from './create-interceptor-response-fulfilled';
+import createInterceptorResponseRejected from './create-interceptor-response-rejected';
+
+export default function intercept(fetcher: Fetcher, interceptorConfig: IFetcherInterceptorConfig): () => void {
+  return fetcher.interceptRequest(createInterceptorRequest(interceptorConfig));
+  // 或，任一个可为 undefined
+  return fetcher.interceptResponse(createInterceptorResponseFulfilled(interceptorConfig), createInterceptorResponseRejected(interceptorConfig));
+}
+```
+
+### src/index.ts 范例
+
+```typescript
+export { default } from './util/intercept';
+
 export type {
-  FetcherConfigExtra
-};
+  IFetcherInterceptorConfig,
+  IFetcherConfigExtra,
+  IFetcherConfigExtended
+} from './types';
 ```
 
 [fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API

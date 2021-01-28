@@ -47,6 +47,7 @@ export type {
   TFetcherOptionsForQuickJsonp as FetcherOptionsForQuickJsonp,
   TFetcherOptionsForQuickFn as FetcherOptionsForQuickGet,
   TFetcherOptionsForQuickFn as FetcherOptionsForQuickPost,
+  TFetcherInterceptRequestReturn as FetcherInterceptRequestReturn,
   IFnInterceptRequest as FetcherFnInterceptRequest,
   IFnInterceptResponseFulfilled as FetcherFnInterceptResponseFulfilled,
   IFnInterceptResponseRejected as FetcherFnInterceptResponseRejected,

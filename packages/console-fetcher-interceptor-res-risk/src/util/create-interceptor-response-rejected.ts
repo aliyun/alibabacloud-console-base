@@ -87,7 +87,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
     ...o
   };
   
-  return async (err: FetcherError, config: FetcherConfig, response: FetcherResponse, request: FetcherFnRequest): Promise<unknown> => {
+  return async (err: FetcherError, fetcherConfig: FetcherConfig, response: FetcherResponse, request: FetcherFnRequest): Promise<unknown> => {
     const {
       code
     } = err;
@@ -126,13 +126,13 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
             break;
         }
         
-        if (_get(config, 'body.verifyCode') || _get(config, 'params.verifyCode')) {
+        if (_get(fetcherConfig, 'body.verifyCode') || _get(fetcherConfig, 'params.verifyCode')) {
           throw err;
         }
         
         return riskVerify({
           request,
-          fetcherConfig: config,
+          fetcherConfig: fetcherConfig,
           riskInfo,
           riskConfig
         }).catch(err1 => { // err1 undefined 表示 cancelled

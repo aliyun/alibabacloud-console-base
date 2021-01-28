@@ -7,11 +7,11 @@ import normalizeHeaders from '../util/normalize-headers';
 import mergeParams from '../util/merge-params';
 
 /**
- * 将多个 config 进行合并
+ * 将多个 fetcherConfig 进行合并
  */
-export default function mergeConfig<C extends IFetcherConfig = IFetcherConfig>(config: C, ...args: Partial<C>[]): C {
+export default function mergeConfig<C extends IFetcherConfig = IFetcherConfig>(fetcherConfig: C, ...args: Partial<C>[]): C {
   const finalConfig: C = {
-    ...config
+    ...fetcherConfig
   };
   
   finalConfig.headers = normalizeHeaders(finalConfig.headers);

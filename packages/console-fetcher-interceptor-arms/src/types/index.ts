@@ -4,5 +4,5 @@ import {
 } from '@alicloud/fetcher';
 
 export interface IFetcherInterceptorConfig {
-  shouldIgnore?(config: FetcherConfig, err?: FetcherError): boolean;
+  shouldIgnore?(fetcherConfig: FetcherConfig, err?: FetcherError): boolean;
 }

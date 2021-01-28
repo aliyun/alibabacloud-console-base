@@ -144,7 +144,7 @@ export type TFetcherOptionsForQuickFn<C extends IFetcherConfig = IFetcherConfig>
  * 执行请求的方法定义
  */
 export interface IFnFetcherRequest<C extends IFetcherConfig = IFetcherConfig> {
-  <T = void>(config: C): Promise<T>;
+  <T = void>(fetcherConfig: C): Promise<T>;
 }
 
 /**
@@ -205,28 +205,30 @@ export interface IFnFetcherPostAlike<C extends IFetcherConfig = IFetcherConfig> 
   <T = void, B = void, P = void>(options: TFetcherOptionsForQuickFn<C>, url: string, body?: B, params?: P): Promise<T>;
 }
 
+export type TFetcherInterceptRequestReturn<C extends IFetcherConfig = IFetcherConfig> = void | Partial<C> | Promise<void | Partial<C>>
+
 /**
  * request interceptor 方法类型
  */
 export interface IFnInterceptRequest<C extends IFetcherConfig = IFetcherConfig> {
-  (config: C, request: IFnFetcherRequest<C>): void | Partial<C> | Promise<void | Partial<C>>;
+  (fetcherConfig: C, request: IFnFetcherRequest<C>): TFetcherInterceptRequestReturn<C>;
 }
 
 /**
  * response success interceptor 方法类型
- *  - C - config 类型
+ *  - C - fetcherConfig 类型
  *  - T - 最终需要返回的 Promise 类型
  *  - D - 接口实际返回的 Promise 类型
  */
 export interface IFnInterceptResponseFulfilled<C extends IFetcherConfig = IFetcherConfig, T = any, D = T> {
-  (data: D, config: C, fetcherResponse: IFetcherResponse<T>, fetcherRequest: IFnFetcherRequest<C>): T;
+  (data: D, fetcherConfig: C, fetcherResponse: IFetcherResponse<T>, fetcherRequest: IFnFetcherRequest<C>): T;
 }
 
 /**
  * response error interceptor 方法类型
  */
 export interface IFnInterceptResponseRejected<C extends IFetcherConfig = IFetcherConfig, T = any> {
-  (error: IFetcherError, config: C, fetcherResponse: IFetcherResponse<T> | undefined, fetcherRequest: IFnFetcherRequest<C>): T;
+  (error: IFetcherError, fetcherConfig: C, fetcherResponse: IFetcherResponse<T> | undefined, fetcherRequest: IFnFetcherRequest<C>): T;
 }
 
 export interface IFetcher<C extends IFetcherConfig = IFetcherConfig> {

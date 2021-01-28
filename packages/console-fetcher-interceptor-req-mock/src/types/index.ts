@@ -4,7 +4,7 @@ import {
 
 interface IMockCheck {
   id: string; // mock 应用 ID
-  check(config: FetcherConfig): boolean | string | void;
+  check(fetcherConfig: FetcherConfig): boolean | string | void;
 }
 
 export interface IMockOptions {
