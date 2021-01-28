@@ -1,89 +1,30 @@
 /* eslint-disable no-param-reassign */
-interface IFnCompare {
-  (a: ICompareObject, b: ICompareObject): -1 | 0 | 1;
-}
-
-interface IFnReplacer {
-  (key: string | number, value: any): any;
-}
-
-interface IOpts {
-  space?: string | number;
-  cycles?: boolean;
-  compare?: IFnCompare;
-  replacer?: IFnReplacer;
-}
-
-interface IOptions {
-  space: string;
-  cycles: boolean;
-  compare?: IFnCompare;
-  replacer?: IFnReplacer;
-}
-
-interface ICompareObject {
-  key: string;
-  value: any;
-}
-
-function buildOptions(opts: IOpts | IFnCompare = {}): IOptions {
-  const options: IOptions = {
-    space: '',
-    cycles: false,
-    compare: undefined,
-    replacer: undefined
-  };
-  
-  if (!opts) {
-    return options;
-  }
-  
-  if (typeof opts === 'function') {
-    options.compare = opts;
-    
-    return options;
-  }
-  
-  if (typeof opts.space === 'string') {
-    options.space = opts.space;
-  } else if (typeof opts.space === 'number' && opts.space > 0) {
-    options.space = Array(opts.space + 1).join(' ');
-  }
-  
-  if (typeof opts.cycles === 'boolean') {
-    options.cycles = opts.cycles;
-  }
-  
-  if (typeof opts.replacer === 'function') {
-    options.replacer = opts.replacer;
-  }
-  
-  return options;
-}
+import {
+  IFnCompare,
+  IOpts
+} from './types';
+import buildOptions from './util/build-options';
 
 /**
  * 稳定的 JSON stringify，保证对象「相等」的情况下，给出的字符串是相同的，不论内部的属性顺序
  *
  * 代码采自 https://www.npmjs.com/package/json-stable-stringify
  */
-export default function jsonStringifyOrdered(obj: unknown, opts: IOpts | IFnCompare = {}): string {
-  const options = buildOptions(opts);
+export default function jsonStringifyOrdered(o: unknown, opts: IOpts | IFnCompare = {}): string {
   const {
     space,
     cycles,
     compare,
     replacer
-  } = options;
-  const compareFn = compare ? function (node: any) {
-    return function (a: string, b: string) {
-      return compare({
-        key: a,
-        value: node[a]
-      }, {
-        key: b,
-        value: node[b]
-      });
-    };
+  } = buildOptions(opts);
+  const compareFn = compare ? (node: any) => {
+    return (a: string, b: string) => compare({
+      key: a,
+      value: node[a]
+    }, {
+      key: b,
+      value: node[b]
+    });
   } : null;
   const seen: unknown[] = [];
   
@@ -135,6 +76,6 @@ export default function jsonStringifyOrdered(obj: unknown, opts: IOpts | IFnComp
   }
   
   return stringify({
-    '': obj
-  }, '', obj, 0) || '';
+    '': o
+  }, '', o, 0) || '';
 }
