@@ -5,12 +5,12 @@ import {
   createFetcher
 } from '@alicloud/console-fetcher';
 
-import interceptFetcherWithProxy from './intercept-fetcher-with-proxy';
+import intercept from './intercept';
 
 export default (config?: FetcherConfig, interceptorOptions?: FetcherInterceptorOptions): Fetcher => {
   const fetcher = createFetcher(config, interceptorOptions);
   
-  interceptFetcherWithProxy(fetcher);
+  intercept(fetcher);
   
   return fetcher;
 };
