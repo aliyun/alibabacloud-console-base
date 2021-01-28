@@ -5,6 +5,6 @@ export { default as Alpha } from './rc/alpha';
 export { default as Beta } from './rc/beta';
 export { default as PublicBeta } from './rc/public-beta';
 
-export {
+export type {
   IPropsMark as MarkProps
 } from './types';

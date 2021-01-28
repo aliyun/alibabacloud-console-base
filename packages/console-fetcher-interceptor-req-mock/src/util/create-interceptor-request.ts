@@ -15,7 +15,7 @@ interface IBodyWithProduct {
 const REG_ONE_API = /^\/data\/(multi)?(inner)?(api|call)\.json/i;
 const MOCK_PREFIX = 'https://mocks.alibaba-inc.com/mock'; // 只能 https
 
-export default function createInterceptor({
+export default function createInterceptorRequest({
   one = {},
   others = []
 }: IMockOptions = {}): FetcherFnInterceptRequest {

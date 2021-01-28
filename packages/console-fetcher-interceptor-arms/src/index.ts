@@ -1,11 +1,5 @@
-import {
-  IInterceptorArmsConfig as ConsoleFetcherInterceptorArmsConfig
-} from './types';
-
-export {
-  default
-} from './util/intercept';
+export { default } from './util/intercept';
 
 export type {
-  ConsoleFetcherInterceptorArmsConfig
-};
+  IInterceptorArmsConfig as ConsoleFetcherInterceptorArmsConfig
+} from './types';

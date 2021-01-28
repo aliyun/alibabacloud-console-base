@@ -63,6 +63,6 @@ function interceptRequest(config: FetcherConfig): Partial<FetcherConfig> | void 
   }
 }
 
-export default function createInterceptorReq(): FetcherFnInterceptRequest {
+export default function createInterceptorRequest(): FetcherFnInterceptRequest {
   return interceptRequest;
 }

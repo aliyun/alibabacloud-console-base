@@ -50,6 +50,6 @@ async function interceptResponse(err: FetcherError, config: IFetcherConfig, resp
 /**
  * 处理 FECS 的返回，如果抛错说 TOKEN 错误，则刷新 token 并重新再请求一次
  */
-export default function createInterceptorRes(): FetcherFnInterceptResponseRejected<IFetcherConfig> {
+export default function createInterceptorResponseRejected(): FetcherFnInterceptResponseRejected<IFetcherConfig> {
   return interceptResponse;
 }

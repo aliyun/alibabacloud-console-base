@@ -8,7 +8,7 @@ import {
 
 import intl from '../intl';
 
-export default function createInterceptor(): FetcherFnInterceptResponseRejected {
+export default function createInterceptorResponseRejected(): FetcherFnInterceptResponseRejected {
   return (err: Error, config: FetcherConfig): void => {
     // @alicloud/fetcher 给出的错误没有国际化 - 因为 fetcher 是最基础的，不想让它跟 console 环境有关，所以这些错误会在这里做对应的国际化
     switch (err?.name) {

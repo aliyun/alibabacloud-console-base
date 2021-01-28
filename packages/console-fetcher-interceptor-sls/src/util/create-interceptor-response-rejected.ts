@@ -20,7 +20,7 @@ interface IResponseData {
   requestId?: string;
 }
 
-export default function createInterceptor({
+export default function createInterceptorResponseRejected({
   topicError = 'api_error',
   logstoreDev,
   logstoreDaily,

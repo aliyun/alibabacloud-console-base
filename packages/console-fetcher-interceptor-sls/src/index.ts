@@ -1,11 +1,5 @@
-import {
-  IInterceptorSlsConfig as ConsoleFetcherInterceptorSlsConfig
-} from './types';
-
-export {
-  default
-} from './util/intercept';
+export { default } from './util/intercept';
 
 export type {
-  ConsoleFetcherInterceptorSlsConfig
-};
+  IInterceptorSlsConfig as ConsoleFetcherInterceptorSlsConfig
+} from './types';

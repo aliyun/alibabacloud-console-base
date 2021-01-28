@@ -81,7 +81,7 @@ import {
  *               +=============+
  * --------------------------------------------------------------------
  */
-export default (o?: IRiskConfig): FetcherFnInterceptResponseRejected => {
+export default function createInterceptorResponseRejected(o?: IRiskConfig): FetcherFnInterceptResponseRejected {
   const riskConfig: IRiskConfig = {
     ...DEFAULT_RISK_CONFIG,
     ...o
@@ -143,4 +143,4 @@ export default (o?: IRiskConfig): FetcherFnInterceptResponseRejected => {
         throw err;
     }
   };
-};
+}

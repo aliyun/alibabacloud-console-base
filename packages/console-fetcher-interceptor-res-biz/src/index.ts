@@ -1,28 +1,10 @@
-import {
-  Fetcher,
-  FetcherFnInterceptResponseFulfilled
-} from '@alicloud/fetcher';
-
-import {
-  IFetcherConfigExtraBiz as FetcherConfigExtraBiz,
-  IFetcherConfigExtendedBiz as FetcherConfigExtendedBiz
-} from './types';
-import {
-  ERROR_BIZ
-} from './const';
-import createInterceptor from './util/create-interceptor';
-
-export default function intercept(fetcher: Fetcher<FetcherConfigExtendedBiz>): () => void {
-  const interceptor: FetcherFnInterceptResponseFulfilled = createInterceptor();
-  
-  return fetcher.interceptResponse(interceptor);
-}
+export { default } from './util/intercept';
 
 export {
   ERROR_BIZ
-};
+} from './const';
 
 export type {
-  FetcherConfigExtraBiz,
-  FetcherConfigExtendedBiz
-};
+  IFetcherConfigExtraBiz as FetcherConfigExtraBiz,
+  IFetcherConfigExtendedBiz as FetcherConfigExtendedBiz
+} from './types';
