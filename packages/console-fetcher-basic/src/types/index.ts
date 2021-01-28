@@ -4,7 +4,7 @@ import {
   FetcherOptionsForQuickPost
 } from '@alicloud/fetcher';
 import {
-  FetcherConfigExtraSecurity
+  FetcherConfigExtra as FetcherConfigExtraSecurity
 } from '@alicloud/console-fetcher-interceptor-req-security';
 import {
   FetcherConfigExtra as FetcherConfigExtraBiz

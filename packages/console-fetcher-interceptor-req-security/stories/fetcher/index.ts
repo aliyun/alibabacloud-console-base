@@ -3,10 +3,10 @@ import fetcher0, {
 } from '@alicloud/fetcher';
 
 import intercept, {
-  FetcherConfigExtendedSecurity
+  FetcherConfigExtended
 } from '../../src';
 
-const fetcher1 = createFetcher<FetcherConfigExtendedSecurity>();
+const fetcher1 = createFetcher<FetcherConfigExtended>();
 
 intercept(fetcher1);
 

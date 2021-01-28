@@ -17,7 +17,7 @@
 可以在 config 对象上传入新增参数：
 
 ```typescript
-interface FetcherConfigExtraSecurity {
+interface FetcherConfigExtra {
   getCollina?: () => string;
   getUmid?: () => string;
   getSecToken?: () => string;
@@ -38,11 +38,11 @@ import createFetcher, {
 } from '@alicloud/fetcher';
 // import interceptors 1
 import intercept, {
-  FetcherConfigExtendedExtended
+  FetcherConfigExtended
 } from '@alicloud/console-fetcher-interceptor-req-security';
 // import interceptors 2
 
-const fetcher: Fetcher<FetcherConfigExtendedExtended> = createFetcher<FetcherConfigExtendedExtended>({
+const fetcher: Fetcher<FetcherConfigExtended> = createFetcher<FetcherConfigExtended>({
   getCollina, // 一般不需要自己传，这里已经做好了
   getUmid, // 一般不需要自己传，这里已经做好了
   getSecToken // 非 OneConsole 可能需要传
@@ -75,7 +75,7 @@ import createFetcher, {
 } from '@alicloud/fetcher';
 // import interceptors 1
 import intercept, {
-  FetcherConfigExtendedExtended
+  FetcherConfigExtended
 } from '@alicloud/console-fetcher-interceptor-req-security';
 // import interceptors 2
 
@@ -83,7 +83,7 @@ import intercept, {
 // import getUmid from ':/util/get-umid';
 import getSecToken from ':/util/get-sec-token';
 
-const fetcher: Fetcher<FetcherConfigExtendedExtended> = createFetcher<FetcherConfigExtendedExtended>({
+const fetcher: Fetcher<FetcherConfigExtended> = createFetcher<FetcherConfigExtended>({
   // getCollina,
   // getUmid,
   getSecToken

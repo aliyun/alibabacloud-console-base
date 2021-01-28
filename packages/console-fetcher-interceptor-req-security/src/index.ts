@@ -1,6 +1,6 @@
 export { default } from './util/intercept';
 
 export type {
-  IFetcherConfigExtra as FetcherConfigExtraSecurity,
-  IFetcherConfigExtended as FetcherConfigExtendedSecurity
+  IFetcherConfigExtra as FetcherConfigExtra,
+  IFetcherConfigExtended as FetcherConfigExtended
 } from './types';
