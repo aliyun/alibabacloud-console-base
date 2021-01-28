@@ -3,11 +3,11 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  IFetcherConfigExtendedSecurity
+  IFetcherConfigExtended
 } from '../types';
 
 import createInterceptorRequest from './create-interceptor-request';
 
-export default function intercept(fetcher: Fetcher<IFetcherConfigExtendedSecurity>): () => void {
+export default function intercept(fetcher: Fetcher<IFetcherConfigExtended>): () => void {
   return fetcher.interceptRequest(createInterceptorRequest());
 }

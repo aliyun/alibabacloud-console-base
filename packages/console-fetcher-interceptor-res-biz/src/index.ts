@@ -5,6 +5,6 @@ export {
 } from './const';
 
 export type {
-  IFetcherConfigExtraBiz as FetcherConfigExtraBiz,
-  IFetcherConfigExtendedBiz as FetcherConfigExtendedBiz
+  IFetcherConfigExtra as FetcherConfigExtra,
+  IFetcherConfigExtended as FetcherConfigExtended
 } from './types';

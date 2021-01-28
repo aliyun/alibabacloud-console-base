@@ -4,7 +4,7 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  IFetcherConfigExtendedSecurity
+  IFetcherConfigExtended
 } from '../types';
 
 import defaultGetCollina from './get-collina';
@@ -14,13 +14,13 @@ import defaultGetSecToken from './get-sec-token';
 /**
  * 对有 body 的请求，在 body 中添加阿里云安全必需的参数，这三个参数都可以可以在发送请求的时候覆盖的
  */
-export default function createInterceptorRequest(): FetcherFnInterceptRequest<IFetcherConfigExtendedSecurity> {
+export default function createInterceptorRequest(): FetcherFnInterceptRequest<IFetcherConfigExtended> {
   return ({
     method,
     getCollina = defaultGetCollina,
     getUmid = defaultGetUmid,
     getSecToken = defaultGetSecToken
-  }: IFetcherConfigExtendedSecurity): void | Partial<IFetcherConfigExtendedSecurity> => {
+  }: IFetcherConfigExtended): void | Partial<IFetcherConfigExtended> => {
     if (!FetcherUtils.canHaveBody(method)) {
       return;
     }

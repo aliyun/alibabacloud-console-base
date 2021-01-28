@@ -7,7 +7,7 @@ import {
   FetcherConfigExtraSecurity
 } from '@alicloud/console-fetcher-interceptor-req-security';
 import {
-  FetcherConfigExtraBiz
+  FetcherConfigExtra as FetcherConfigExtraBiz
 } from '@alicloud/console-fetcher-interceptor-res-biz';
 import {
   ConsoleFetcherInterceptorArmsConfig

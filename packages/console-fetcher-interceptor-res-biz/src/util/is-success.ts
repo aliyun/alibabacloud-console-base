@@ -1,9 +1,9 @@
 import {
   IBizJson,
-  BizIsSuccess
+  TIsSuccess
 } from '../types';
 
-export default function isSuccess(json: IBizJson, successChecker?: BizIsSuccess): boolean {
+export default function isSuccess(json: IBizJson, successChecker?: TIsSuccess): boolean {
   if (typeof successChecker === 'boolean') {
     return successChecker;
   }

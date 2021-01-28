@@ -36,7 +36,7 @@ export interface IWindow {
   };
 }
 
-export interface IFetcherConfigExtraSecurity {
+export interface IFetcherConfigExtra {
   /**
    * 人机识别码
    * 通过 `window[window.UA_Opt.LogVal]` 获取，`window.UA_Opt` 来自 `uab.js`，`uab.js` 是 t-engine 自动注入的
@@ -54,4 +54,4 @@ export interface IFetcherConfigExtraSecurity {
   getSecToken?(): string;
 }
 
-export interface IFetcherConfigExtendedSecurity extends FetcherConfig, IFetcherConfigExtraSecurity {}
+export interface IFetcherConfigExtended extends FetcherConfig, IFetcherConfigExtra {}

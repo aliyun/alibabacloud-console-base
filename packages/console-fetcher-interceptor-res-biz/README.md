@@ -37,11 +37,11 @@ import createFetcher, {
 } from '@alicloud/fetcher';
 // import interceptors 1
 import intercept, {
-  FetcherConfigExtendedBiz
+  FetcherConfigExtended
 } from '@alicloud/console-fetcher-interceptor-res-biz';
 // import interceptors 2
 
-const fetcher: Fetcher<FetcherConfigExtendedBiz> = createFetcher<FetcherConfigExtendedBiz>();
+const fetcher: Fetcher<FetcherConfigExtended> = createFetcher<FetcherConfigExtended>();
 
 // ... add interceptors 1  
 intercept(fetcher);
@@ -57,7 +57,7 @@ export default fetcher
 可以在 config 对象上传入新增参数：
 
 ```typescript
-interface FetcherConfigExtraBiz {
+interface FetcherConfigExtra {
   /**
    * 判断请求是否成功，默认判断 `json.code === '200' || json.code === 200`
    * 
@@ -107,11 +107,11 @@ import createFetcher, {
 } from '@alicloud/fetcher';
 // import interceptors 1
 import intercept, {
-  FetcherConfigExtendedBiz
+  FetcherConfigExtended
 } from '@alicloud/console-fetcher-interceptor-res-biz';
 // import interceptors 2
 
-const fetcher: Fetcher<FetcherConfigExtendedBiz> = createFetcher<FetcherConfigExtendedBiz>({
+const fetcher: Fetcher<FetcherConfigExtended> = createFetcher<FetcherConfigExtended>({
   isSuccess,
   getCode,
   getData,

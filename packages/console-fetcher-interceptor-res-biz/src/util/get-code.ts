@@ -1,9 +1,9 @@
 import {
   IBizJson,
-  BizGetCode
+  TGetCode
 } from '../types';
 
-export default function getCode(json: IBizJson, codeGetter?: BizGetCode): string | undefined {
+export default function getCode(json: IBizJson, codeGetter?: TGetCode): string | undefined {
   if (typeof codeGetter === 'function') {
     return codeGetter(json);
   }
