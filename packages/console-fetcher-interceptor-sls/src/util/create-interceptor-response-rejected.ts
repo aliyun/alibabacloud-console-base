@@ -9,8 +9,8 @@ import createLogger, {
 } from '@alicloud/console-logger-sls';
 
 import {
-  IInterceptorSlsConfig,
-  ISlsParams
+  IFetcherInterceptorConfig,
+  ISlsInfo
 } from '../types';
 
 import removeSecParamsFromBody from './remove-sec-params-from-body';
@@ -27,7 +27,7 @@ export default function createInterceptorResponseRejected({
   logstorePre,
   shouldIgnore,
   ...slsOptions
-}: IInterceptorSlsConfig): FetcherFnInterceptResponseRejected {
+}: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected {
   slsOptions.logstore = chooseStoreByEnv(slsOptions.logstore, {
     dev: logstoreDev,
     daily: logstoreDaily,
@@ -41,7 +41,7 @@ export default function createInterceptorResponseRejected({
       throw err;
     }
     
-    const slsParams: ISlsParams = {
+    const slsParams: ISlsInfo = {
       fetcherMethod: fetcherConfig.method,
       fetcherUrl: fetcherConfig.url,
       fetcherUrlBase: fetcherConfig.urlBase,
@@ -54,7 +54,7 @@ export default function createInterceptorResponseRejected({
       eagleEyeTraceId: response?.headers['Eagleeye-Traceid']
     };
     
-    sls.error<ISlsParams>(topicError, slsParams);
+    sls.error<ISlsInfo>(topicError, slsParams);
     
     throw err;
   };

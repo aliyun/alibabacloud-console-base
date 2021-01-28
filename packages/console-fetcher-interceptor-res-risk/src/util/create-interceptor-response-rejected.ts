@@ -9,7 +9,7 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  IRiskConfig
+  IFetcherInterceptorConfig
 } from '../types';
 import {
   EVerifyType,
@@ -81,8 +81,8 @@ import {
  *               +=============+
  * --------------------------------------------------------------------
  */
-export default function createInterceptorResponseRejected(o?: IRiskConfig): FetcherFnInterceptResponseRejected {
-  const riskConfig: IRiskConfig = {
+export default function createInterceptorResponseRejected(o?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected {
+  const riskConfig: IFetcherInterceptorConfig = {
     ...DEFAULT_RISK_CONFIG,
     ...o
   };

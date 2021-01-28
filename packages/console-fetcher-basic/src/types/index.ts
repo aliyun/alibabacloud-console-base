@@ -10,10 +10,10 @@ import {
   FetcherConfigExtra as FetcherConfigExtraBiz
 } from '@alicloud/console-fetcher-interceptor-res-biz';
 import {
-  ConsoleFetcherInterceptorArmsConfig
+  FetcherInterceptorConfig as FetcherInterceptorConfigArms
 } from '@alicloud/console-fetcher-interceptor-arms';
 import {
-  ConsoleFetcherInterceptorSlsConfig
+  FetcherInterceptorConfig as FetcherInterceptorConfigSls
 } from '@alicloud/console-fetcher-interceptor-sls';
 
 export type TApiMultiResult = Record<string, unknown>;
@@ -21,8 +21,8 @@ export type TApiMultiResult = Record<string, unknown>;
 export interface IConsoleFetcherConfig extends FetcherConfig, FetcherConfigExtraSecurity, FetcherConfigExtraBiz {}
 
 export interface IConsoleFetcherInterceptorOptions {
-  armsConfig?: ConsoleFetcherInterceptorArmsConfig;
-  slsConfig?: ConsoleFetcherInterceptorSlsConfig;
+  armsConfig?: FetcherInterceptorConfigArms;
+  slsConfig?: FetcherInterceptorConfigSls;
 }
 
 export interface IConsoleApiOptions<R = unknown> extends FetcherOptionsForQuickPost<IConsoleFetcherConfig> {

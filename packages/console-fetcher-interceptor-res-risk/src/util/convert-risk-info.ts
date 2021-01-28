@@ -1,13 +1,13 @@
 import _get from 'lodash/get';
 
 import {
-  IRiskConfig,
+  IFetcherInterceptorConfig,
   IRiskInfo
 } from '../types';
 
 import convertVerifyType from './convert-veriy-type';
 
-export default function convertRiskInfo(responseData: unknown, riskConfig: IRiskConfig): IRiskInfo {
+export default function convertRiskInfo(responseData: unknown, riskConfig: IFetcherInterceptorConfig): IRiskInfo {
   const type0: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_TYPE, '') as string;
   const detail: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_DETAIL, '') as string;
   const codeType: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_CODE_TYPE, '') as string;

@@ -13,7 +13,7 @@ export interface IRiskInfo {
   codeType: string;
 }
 
-export interface IRiskConfig {
+export interface IFetcherInterceptorConfig {
   // 从错误 data 中获取对应的信息
   DATA_PATH_VERIFY_TYPE?: string; // 如何从原始返回中获取风控类型，重新请求的时候需要带上
   DATA_PATH_VERIFY_DETAIL?: string; // 如何从原始返回中获取风控展示信息（邮箱或手机）
@@ -39,7 +39,7 @@ export interface IRiskConfig {
 export interface IRiskVerifyDialogData {
   request: FetcherFnRequest;
   riskInfo: IRiskInfo;
-  riskConfig: IRiskConfig;
+  riskConfig: IFetcherInterceptorConfig;
   code: string;
   requestId: string;
   errorMessage: string;

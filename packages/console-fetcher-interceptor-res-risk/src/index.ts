@@ -7,5 +7,5 @@ export {
 } from './const';
 
 export type {
-  IRiskConfig as ConsoleFetcherRiskConfig
+  IFetcherInterceptorConfig as FetcherInterceptorConfig
 } from './types';

@@ -1,5 +1,5 @@
 export { default } from './util/intercept';
 
 export type {
-  IInterceptorSlsConfig as ConsoleFetcherInterceptorSlsConfig
+  IFetcherInterceptorConfig as FetcherInterceptorConfig
 } from './types';

@@ -3,6 +3,6 @@ import {
   FetcherError
 } from '@alicloud/fetcher';
 
-export interface IInterceptorArmsConfig {
+export interface IFetcherInterceptorConfig {
   shouldIgnore?(config: FetcherConfig, err?: FetcherError): boolean;
 }

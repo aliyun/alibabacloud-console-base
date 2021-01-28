@@ -3,11 +3,11 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  IRiskConfig
+  IFetcherInterceptorConfig
 } from '../types';
 
 import createInterceptorResponseRejected from './create-interceptor-response-rejected';
 
-export default function intercept(fetcher: Fetcher, o?: IRiskConfig): () => void {
+export default function intercept(fetcher: Fetcher, o?: IFetcherInterceptorConfig): () => void {
   return fetcher.interceptResponse(undefined, createInterceptorResponseRejected(o));
 }

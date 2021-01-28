@@ -5,7 +5,7 @@ import {
   FetcherError
 } from '@alicloud/fetcher';
 
-export interface IInterceptorSlsConfig extends FactoryOptions {
+export interface IFetcherInterceptorConfig extends FactoryOptions {
   topicError?: string;
   // 除了 logstore 之外，还可以指定不同环境下的 logstore，不指定则用一个 logstore
   logstoreDev?: string;
@@ -15,7 +15,7 @@ export interface IInterceptorSlsConfig extends FactoryOptions {
   shouldIgnore?(err: FetcherError): boolean;
 }
 
-export interface ISlsParams {
+export interface ISlsInfo {
   fetcherMethod: string;
   fetcherUrl: string;
   fetcherUrlBase?: string;

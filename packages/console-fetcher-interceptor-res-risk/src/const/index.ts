@@ -1,5 +1,5 @@
 import {
-  IRiskConfig
+  IFetcherInterceptorConfig
 } from '../types';
 
 // 处理过了的风控错误，业务 UI 层无需再对其进行报错视图，忽略即可（但对于数据层来说还是一种错误）
@@ -18,7 +18,7 @@ export enum EVerifyType {
   UNKNOWN = 'UNKNOWN' // 有，但不支持
 }
 
-export const DEFAULT_RISK_CONFIG: Required<IRiskConfig> = { // 风控设置
+export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = { // 风控设置
   DATA_PATH_VERIFY_TYPE: 'data.verifyType',
   DATA_PATH_VERIFY_DETAIL: 'data.verifyDetail',
   DATA_PATH_VERIFY_CODE_TYPE: 'data.codeType',

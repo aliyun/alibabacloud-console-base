@@ -12,7 +12,7 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IRiskConfig,
+  IFetcherInterceptorConfig,
   IRiskInfo,
   IRiskVerifyDialogData
 } from '../../../types';
@@ -27,7 +27,7 @@ interface IParams {
   request: FetcherFnRequest;
   fetcherConfig: FetcherConfig;
   riskInfo: IRiskInfo;
-  riskConfig: IRiskConfig;
+  riskConfig: IFetcherInterceptorConfig;
 }
 
 /**

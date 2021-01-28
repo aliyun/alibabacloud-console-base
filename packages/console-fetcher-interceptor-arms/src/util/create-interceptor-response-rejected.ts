@@ -7,14 +7,14 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  IInterceptorArmsConfig
+  IFetcherInterceptorConfig
 } from '../types';
 
 import {
   logError
 } from './bl';
 
-export default function createInterceptorResponseRejected(interceptorConfig?: IInterceptorArmsConfig): FetcherFnInterceptResponseRejected<FetcherConfig> {
+export default function createInterceptorResponseRejected(interceptorConfig?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected<FetcherConfig> {
   return (err: FetcherError, config: FetcherConfig, response?: FetcherResponse): void => {
     if (!interceptorConfig?.shouldIgnore(config, err)) {
       logError({
