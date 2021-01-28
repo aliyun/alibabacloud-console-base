@@ -64,7 +64,7 @@ export default function jsonStringifyOrdered(o: unknown, opts: IOpts | IFnCompar
     
     seen.splice(seen.indexOf(node), 1);
     
-    return `{${Object.keys(node).sort(compareFn ? compareFn(node) : undefined).reduce((result: string[], v) => {
+    return `{${Object.keys(node).sort(compareFn ? compareFn(node) : undefined).reduce((result: string[], v): string[] => {
       const value = stringify(node, v, node[v], level + 1);
       
       if (value) {

@@ -1,26 +1,3 @@
-import {
-  IFetcher as Fetcher,
-  IFetcherConfig as FetcherConfig,
-  IFetcherResponse as FetcherResponse,
-  IFetcherError as FetcherError,
-  IFnFetcherRequest as FetcherFnRequest,
-  IFnFetcherJsonp as FetcherFnJsonp,
-  IFnFetcherGetAlike as FetcherFnGet,
-  IFnFetcherPostAlike as FetcherFnPost,
-  TFetcherOptionsForQuickJsonp as FetcherOptionsForQuickJsonp,
-  TFetcherOptionsForQuickFn as FetcherOptionsForQuickGet,
-  TFetcherOptionsForQuickFn as FetcherOptionsForQuickPost,
-  IFnInterceptRequest as FetcherFnInterceptRequest,
-  IFnInterceptResponseFulfilled as FetcherFnInterceptResponseFulfilled,
-  IFnInterceptResponseRejected as FetcherFnInterceptResponseRejected,
-  IFetcherBuildUrlOptions as FetcherBuildUrlOptions
-} from './types';
-import {
-  ERROR_TIMEOUT,
-  ERROR_NETWORK,
-  ERROR_RESPONSE_STATUS,
-  ERROR_RESPONSE_PARSE
-} from './const';
 import createFetcher from './util/create-fetcher';
 import createError from './util/error/create';
 import createErrorSkipNetwork from './util/error/create-skip-network';
@@ -46,31 +23,32 @@ fetcher.sealInterceptors();
 
 export default fetcher;
 
-// 常量与工具
 export {
   ERROR_TIMEOUT,
   ERROR_NETWORK,
   ERROR_RESPONSE_STATUS,
-  ERROR_RESPONSE_PARSE,
+  ERROR_RESPONSE_PARSE
+} from './const';
+
+export {
   createFetcher,
   FetcherUtils
 };
 
-// 类型
 export type {
-  Fetcher,
-  FetcherConfig,
-  FetcherResponse,
-  FetcherError,
-  FetcherFnRequest,
-  FetcherFnJsonp,
-  FetcherFnGet,
-  FetcherFnPost,
-  FetcherOptionsForQuickJsonp,
-  FetcherOptionsForQuickGet,
-  FetcherOptionsForQuickPost,
-  FetcherFnInterceptRequest,
-  FetcherFnInterceptResponseFulfilled,
-  FetcherFnInterceptResponseRejected,
-  FetcherBuildUrlOptions
-};
+  IFetcher as Fetcher,
+  IFetcherConfig as FetcherConfig,
+  IFetcherResponse as FetcherResponse,
+  IFetcherError as FetcherError,
+  IFnFetcherRequest as FetcherFnRequest,
+  IFnFetcherJsonp as FetcherFnJsonp,
+  IFnFetcherGetAlike as FetcherFnGet,
+  IFnFetcherPostAlike as FetcherFnPost,
+  TFetcherOptionsForQuickJsonp as FetcherOptionsForQuickJsonp,
+  TFetcherOptionsForQuickFn as FetcherOptionsForQuickGet,
+  TFetcherOptionsForQuickFn as FetcherOptionsForQuickPost,
+  IFnInterceptRequest as FetcherFnInterceptRequest,
+  IFnInterceptResponseFulfilled as FetcherFnInterceptResponseFulfilled,
+  IFnInterceptResponseRejected as FetcherFnInterceptResponseRejected,
+  IFetcherBuildUrlOptions as FetcherBuildUrlOptions
+} from './types';
