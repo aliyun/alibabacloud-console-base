@@ -1,4 +1,5 @@
 export {
+  URLS,
   SLS_CONFIG
 } from './const';
 export { default as FetcherDemoRcFecsTip } from './rc/demo-fecs-tip';

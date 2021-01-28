@@ -26,13 +26,12 @@ const cssCommon = css`
 `;
 
 export const InputText = styled.input`
-  ${cssCommon};
   padding: 0 8px;
   line-height: ${FORM_INPUT_HEIGHT}px;
+  ${cssCommon}
 `;
 
 export const InputTextarea = styled.textarea`
-  ${cssCommon};
   display: block;
   padding: 4px 8px;
   box-sizing: border-box;
@@ -40,4 +39,5 @@ export const InputTextarea = styled.textarea`
   min-height: 100px;
   line-height: 20px;
   resize: vertical;
+  ${cssCommon}
 `;

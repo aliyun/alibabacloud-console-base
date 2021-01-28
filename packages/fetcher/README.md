@@ -239,7 +239,7 @@ import {
 export default function createInterceptorResponseFulfilled(interceptorConfig: IFetcherInterceptorConfig): FetcherFnInterceptResponseFulfilled<IFetcherConfigExtended> {
   // 在这里消费 interceptorConfig
   
-  return (o: any, fetcherConfig: IFetcherConfigExtended): any => { // eslint-disable-line @typescript-eslint/no-explicit-any
+  return (o: unknown, fetcherConfig: IFetcherConfigExtended): unknown => {
     ...
   };
 }
@@ -274,6 +274,14 @@ export default function createInterceptorResponseRejected(interceptorConfig: IFe
 ### src/util/intercept.ts 范例
 
 ```typescript
+import {
+  Fetcher
+} from '@alicloud/fetcher';
+
+import {
+  IFetcherInterceptorConfig
+} from '../types';
+
 import createInterceptorRequest from './create-interceptor-request';
 import createInterceptorResponseFulfilled from './create-interceptor-response-fulfilled';
 import createInterceptorResponseRejected from './create-interceptor-response-rejected';
@@ -291,9 +299,9 @@ export default function intercept(fetcher: Fetcher, interceptorConfig: IFetcherI
 export { default } from './util/intercept';
 
 export type {
-  IFetcherInterceptorConfig,
-  IFetcherConfigExtra,
-  IFetcherConfigExtended
+  IFetcherInterceptorConfig as FetcherInterceptorConfig,
+  IFetcherConfigExtra as FetcherConfigExtra,
+  IFetcherConfigExtended as FetcherConfigExtended
 } from './types';
 ```
 
