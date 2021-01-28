@@ -4,9 +4,6 @@ import {
   ERROR_RISK_CANCELLED
 } from '@alicloud/console-fetcher-interceptor-res-risk';
 
-import {
-  IConsoleFetcherInterceptorOptions as FetcherInterceptorOptions
-} from './types';
 import createFetcher from './util/create-fetcher';
 
 const fetcher = createFetcher();
@@ -25,7 +22,5 @@ export {
 };
 
 export type {
-  // 修改 @alicloud/console-fetcher-basic 中的类型
-  FetcherInterceptorOptions
-};
-
+  IConsoleFetcherInterceptorOptions as FetcherInterceptorOptions // 修改 @alicloud/console-fetcher-basic 中的类型
+} from './types';
