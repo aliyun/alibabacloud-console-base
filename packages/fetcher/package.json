@@ -43,6 +43,7 @@
   "dependencies": {
     "@alicloud/fetcher-fetch": "^1.0.22",
     "@alicloud/fetcher-jsonp": "^1.0.22",
+    "@alicloud/json-stringify-ordered": "^0.0.4",
     "lodash": "^4.17.20",
     "qs": "^6.9.6"
   },

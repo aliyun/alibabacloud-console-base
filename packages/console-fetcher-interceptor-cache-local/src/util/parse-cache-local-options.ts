@@ -3,8 +3,6 @@ import {
   ICacheLocalOptionsParsed
 } from '../types';
 
-import cacheGenerateKey from './cache/gnerate-key';
-
 export default function parseCacheLocalOptions(fetcherConfig: IFetcherConfigExtended): ICacheLocalOptionsParsed | null {
   if (!fetcherConfig.cacheLocal) {
     return null;
@@ -17,7 +15,7 @@ export default function parseCacheLocalOptions(fetcherConfig: IFetcherConfigExte
   } = fetcherConfig.cacheLocal === true ? {} : fetcherConfig.cacheLocal;
   
   return {
-    key: key || cacheGenerateKey(fetcherConfig),
+    key: key || fetcherConfig._id,
     ttl,
     overwrite
   };

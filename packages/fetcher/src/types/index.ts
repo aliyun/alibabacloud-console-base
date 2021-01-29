@@ -30,11 +30,19 @@ export interface IFetcherBuildUrlOptions {
 /**
  * interceptor 的 config 参数，也是 Fetcher.prototype.request 的参数
  * 
- * 支持包括 JSONP 在内的所有请求方式
+ * `_` 打头的是 fetcher 自己填入的，传入也没用
  */
 export interface IFetcherConfig extends Omit<FetchOptions, 'method' | 'headers' | 'body'>, JsonpOptions {
   /**
-   * 便于需要记录耗时的场景，不要自己传入
+   * 根据 method、url、params、body 计算得到的 id，可以被拦截器使用，比如缓存、合并时需要
+   */
+  _id?: string;
+  /**
+   * 创建时间
+   */
+  _timeCreated?: number;
+  /**
+   * 真正开始请求的时间，由最末一个 interceptor 计入，便于需要记录耗时的场景
    */
   _timeStarted?: number;
   /**

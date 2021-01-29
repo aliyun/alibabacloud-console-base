@@ -6,22 +6,25 @@ import isJsonp from '../../util/is-jsonp';
 import canHaveBody from '../../util/can-have-body';
 
 /**
- * request 最后一个拦截器，对 headers 和 credentials 做补充
+ * request 最后一个拦截器，写入 _timeStarted，如果不是 JSONP，对 headers 和 credentials 做补充
  */
 export default function requestInterceptorLast(fetcherConfig: IFetcherConfig): Partial<IFetcherConfig> {
+  const c: Partial<IFetcherConfig> = {
+    _timeStarted: Date.now()
+  };
+  
   if (isJsonp(fetcherConfig)) {
-    return;
+    return c;
   }
   
   const headers = fetcherConfig.headers || {};
-  const credentials = fetcherConfig.credentials || (isCors(fetcherConfig) ? 'include' : 'same-origin'); // MUST
   
-  if (canHaveBody(fetcherConfig.method)) {
-    headers['Content-Type'] = headers['Content-Type'] || 'application/x-www-form-urlencoded';
+  if (!headers['Content-Type'] && canHaveBody(fetcherConfig.method)) {
+    headers['Content-Type'] = 'application/x-www-form-urlencoded';
   }
   
-  return {
-    headers,
-    credentials
-  };
+  c.headers = headers;
+  c.credentials = fetcherConfig.credentials || (isCors(fetcherConfig) ? 'include' : 'same-origin'); // MUST
+  
+  return c;
 }
