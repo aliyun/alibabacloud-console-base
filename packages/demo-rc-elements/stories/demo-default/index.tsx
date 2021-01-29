@@ -13,6 +13,7 @@ import {
   Hr,
   Button,
   InputText,
+  InputNumber,
   InputTextarea,
   // extended
   Pre,
@@ -62,6 +63,7 @@ export default function DemoDefault(): JSX.Element {
     <Hr />
     <Button>一个 Button</Button>
     <InputText placeholder="InputText" />
+    <InputNumber placeholder="InputNumber" />
     <InputTextarea placeholder="InputTextarea" />
     <H2>非原生元素，为便于书写</H2>
     <H3>List</H3>

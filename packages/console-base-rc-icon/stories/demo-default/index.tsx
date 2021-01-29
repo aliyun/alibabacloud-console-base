@@ -1,11 +1,11 @@
 import React, {
-  FormEvent,
   useState
 } from 'react';
 import styled from 'styled-components';
 
 import {
-  InputText
+  InputText,
+  InputNumber
 } from '@alicloud/demo-rc-elements';
 
 import Icon, {
@@ -47,20 +47,28 @@ const ScIconList = styled.ul`
 `;
 
 export default function DemoAll(): JSX.Element {
-  const [filter, setFilter] = useState('');
-  const [rotate, setRotate] = useState(0);
-  const filterTrimmed = filter.trim();
+  const [stateFilter, setStateFilter] = useState('');
+  const [stateRotate, setStateRotate] = useState(0);
+  const filterTrimmed = stateFilter.trim();
   const filteredTypes = filterTrimmed ? TYPES.filter(v => v.includes(filterTrimmed)) : TYPES;
   
   return <>
-    <InputText type="text" placeholder="filter" onChange={(e: FormEvent<HTMLInputElement>) => setFilter((e.target as HTMLInputElement).value)} />
-    <InputText type="number" placeholder="rotate" onChange={(e: FormEvent<HTMLInputElement>) => setRotate(Number((e.target as HTMLInputElement).value))} />
+    <InputText {...{
+      placeholder: 'filter',
+      value: stateFilter,
+      onChange: setStateFilter
+    }} />
+    <InputNumber {...{
+      placeholder: 'rotate',
+      value: stateRotate,
+      onChange: setStateRotate
+    }} />
     {filterTrimmed ? `${filteredTypes.length} / ${TYPES.length}` : null}
     <ScIconList>
       {filteredTypes.map(v => <li key={v}>
         <Icon {...{
           type: v,
-          rotate
+          rotate: stateRotate
         }} />
         <div className="type">{v}</div>
       </li>)}

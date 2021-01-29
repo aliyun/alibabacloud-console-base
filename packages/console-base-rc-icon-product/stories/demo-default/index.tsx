@@ -1,7 +1,5 @@
 import React, {
-  FormEvent,
-  useState,
-  useCallback
+  useState
 } from 'react';
 import styled from 'styled-components';
 
@@ -371,7 +369,6 @@ const PRODUCT_MAPPING: Record<string, string> = {
 export default function List(): JSX.Element {
   const [stateFilter, setStateFilter] = useState<string>('');
   const filterUC = stateFilter.trim().toUpperCase();
-  const handleFilterChange = useCallback((e: FormEvent<HTMLInputElement>) => setStateFilter((e.target as HTMLInputElement).value), [setStateFilter]);
   const typeSet = new Set<string>([...Object.keys(EIconType), ...Object.keys(PRODUCT_MAPPING)]);
   
   typeSet.delete('_'); // 不要
@@ -401,7 +398,10 @@ export default function List(): JSX.Element {
   
   return <>
     <div>
-      <InputText type="text" placeholder="Filter by product code" onChange={handleFilterChange} />
+      <InputText {...{
+        placeholder: 'Filter by product code',
+        onChange: setStateFilter
+      }} />
       <ScMessage>{typesAll.length} = 没图标的产品：<strong className="no-type">{countNotProduct}</strong> + 不存在的产品：<strong className="no-product">{countNotDefined}</strong> + 存在的产品：{countOk}</ScMessage>
     </div>
     <ScList>

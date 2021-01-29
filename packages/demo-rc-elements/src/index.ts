@@ -7,10 +7,10 @@ export {
 export { default as P } from './rc/p';
 export { default as Hr } from './rc/hr';
 export { default as Button } from './rc/button';
-export {
-  InputText,
-  InputTextarea
-} from './rc/input';
+export { default as InputText } from './rc/input-text';
+export { default as InputNumber } from './rc/input-number';
+export { default as InputTextarea } from './rc/input-textarea';
+export { default as InputSwitch } from './rc/input-switch';
 export { default as Pre } from './rc/pre';
 export { default as PreJson } from './rc/pre-json';
 export { default as PrePromise } from './rc/pre-promise';

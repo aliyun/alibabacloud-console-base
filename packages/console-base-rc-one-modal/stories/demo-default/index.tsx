@@ -8,6 +8,7 @@ import {
   ChoiceItem,
   H1,
   Button,
+  InputSwitch,
   RadioGroup,
   LongArticle,
   Flex100HBF
@@ -95,10 +96,9 @@ export default function DemoDefault(): JSX.Element {
       onChange: setStateMode
     }} />
     <label>
-      <input {...{
-        type: 'checkbox',
-        checked: stateVisible,
-        onChange: (e): void => setStateVisible(e.target.checked)
+      <InputSwitch {...{
+        value: stateVisible,
+        onChange: setStateVisible
       }} /> visible
     </label>
     <div>

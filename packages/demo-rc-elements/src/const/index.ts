@@ -2,6 +2,17 @@ import {
   css
 } from 'styled-components';
 
+export const FORM_INPUT_HEIGHT = 28;
+export const FORM_INPUT_BDC = '#eee';
+export const FORM_INPUT_BDC_HOVER = '#ccc';
+export const FORM_INPUT_BDC_FOCUS = '#c9f';
+export const FORM_BUTTON_BDC = 'transparent';
+export const FORM_BUTTON_BDC_HOVER = FORM_INPUT_BDC_HOVER;
+export const FORM_BUTTON_BDC_ACTIVE = '#eee';
+export const FORM_BUTTON_BGC = '#eee';
+export const FORM_BUTTON_BGC_HOVER = '#f7f7f7';
+export const FORM_BUTTON_BGC_ACTIVE = '#eee';
+
 export const CSS_FONT_FAMILY = css`
   font-family: 'PingFang SC', 'Hiragino Sans GB', Helvetica, Arial, sans-serif;
 `;
@@ -49,13 +60,20 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
   }
 `;
 
-export const FORM_INPUT_HEIGHT = 28;
-export const FORM_INPUT_BDC = '#eee';
-export const FORM_INPUT_BDC_HOVER = '#ccc';
-export const FORM_INPUT_BDC_FOCUS = '#c9f';
-export const FORM_BUTTON_BDC = 'transparent';
-export const FORM_BUTTON_BDC_HOVER = FORM_INPUT_BDC_HOVER;
-export const FORM_BUTTON_BDC_ACTIVE = '#eee';
-export const FORM_BUTTON_BGC = '#eee';
-export const FORM_BUTTON_BGC_HOVER = '#f7f7f7';
-export const FORM_BUTTON_BGC_ACTIVE = '#eee';
+export const CSS_INPUT_COMMON = css`
+  margin: 1px;
+  padding: 0 8px;
+  border: 1px solid ${FORM_INPUT_BDC};
+  box-sizing: border-box;
+  outline: none;
+  line-height: ${FORM_INPUT_HEIGHT}px;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    border-color: ${FORM_INPUT_BDC_HOVER};
+  }
+  
+  &:focus {
+    border-color: ${FORM_INPUT_BDC_FOCUS};
+  }
+`;

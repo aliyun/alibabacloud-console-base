@@ -1,5 +1,4 @@
 import React, {
-  ChangeEvent,
   useState,
   useCallback,
   useEffect
@@ -12,7 +11,9 @@ import {
   PrePromise,
   Button,
   InputText,
-  InputTextarea
+  InputNumber,
+  InputTextarea,
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -44,7 +45,7 @@ function getJsonFromString(str: string): Record<string, unknown> | null {
   return null;
 }
 
-function getCacheLocal(enabled: boolean, key: string, ttl: number, overwrite: boolean): FetcherCacheLocalOptions | true | undefined {
+function getCacheLocal(enabled: boolean, key: string, ttl: number | undefined, overwrite: boolean): FetcherCacheLocalOptions | true | undefined {
   if (enabled) {
     if (key || ttl || overwrite) {
       return {
@@ -70,26 +71,20 @@ export default function DemoSpecial(): JSX.Element {
   const [stateMethod, setStateMethod] = useState<string>('get');
   const [stateCacheLocalEnabled, setStateCacheLocalEnabled] = useState<boolean>(true);
   const [stateCacheLocalKey, setStateCacheLocalKey] = useState<string>('');
-  const [stateCacheLocalTtl, setStateCacheLocalTtl] = useState<number>(0);
+  const [stateCacheLocalTtl, setStateCacheLocalTtl] = useState<number | undefined>(undefined);
   const [stateCacheLocalOverwrite, setStateCacheLocalOverwrite] = useState<boolean>(false);
   const [stateParams, setStateParams] = useState<null | Record<string, unknown>>(null);
   const [stateBody, setStateBody] = useState<null | Record<string, unknown>>(null);
   const [stateJsCode, setStateJsCode] = useState<string>('fetch()');
   const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);
   
-  const handleParamChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>): void => {
-    setStateParams(getJsonFromString(e.target.value));
+  const handleParamChange = useCallback((value: string): void => {
+    setStateParams(getJsonFromString(value));
   }, []);
-  const handleBodyChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>): void => {
-    setStateBody(getJsonFromString(e.target.value));
+  const handleBodyChange = useCallback((value: string): void => {
+    setStateBody(getJsonFromString(value));
   }, []);
   
-  const handleUrlChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateUrl(e.target.value), []);
-  const handleMethodChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateMethod(e.target.value), []);
-  const handleCacheLocalEnabledChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalEnabled(e.target.checked), []);
-  const handleCacheLocalKeyChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalKey(e.target.value), []);
-  const handleCacheLocalTtlChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalTtl(Number(e.target.value) || 0), []);
-  const handleCacheLocalOverwriteChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalOverwrite(e.target.checked), []);
   const handleFetch = useCallback(() => {
     setStatePromise(fetcher.request({
       url: stateUrl,
@@ -125,40 +120,37 @@ export default function DemoSpecial(): JSX.Element {
       method <InputText {...{
         placeholder: 'method',
         value: stateMethod,
-        onChange: handleMethodChange
+        onChange: setStateMethod
       }} />
     </div>
     <div>
       url <InputText {...{
         placeholder: 'url',
         value: stateUrl,
-        onChange: handleUrlChange
+        onChange: setStateUrl
       }} />
     </div>
     <label>
-      <input {...{
-        type: 'checkbox',
-        checked: stateCacheLocalEnabled,
-        onChange: handleCacheLocalEnabledChange
+      <InputSwitch {...{
+        value: stateCacheLocalEnabled,
+        onChange: setStateCacheLocalEnabled
       }} /> cache local enabled
     </label>
     &nbsp; → &nbsp;
     cacheLocal.key <InputText {...{
       placeholder: 'cacheLocal.key',
       value: stateCacheLocalKey,
-      onChange: handleCacheLocalKeyChange
+      onChange: setStateCacheLocalKey
     }} />
-    cacheLocal.ttl <InputText {...{
+    cacheLocal.ttl <InputNumber {...{
       placeholder: 'cacheLocal.ttl',
-      type: 'number',
-      value: stateCacheLocalTtl.toString(),
-      onChange: handleCacheLocalTtlChange
+      value: stateCacheLocalTtl,
+      onChange: setStateCacheLocalTtl
     }} />
     <label>
-      <input {...{
-        type: 'checkbox',
-        checked: stateCacheLocalOverwrite,
-        onChange: handleCacheLocalOverwriteChange
+      <InputSwitch {...{
+        value: stateCacheLocalOverwrite,
+        onChange: setStateCacheLocalOverwrite
       }} /> cacheLocal.overwrite
     </label>
     <ScFlex>
