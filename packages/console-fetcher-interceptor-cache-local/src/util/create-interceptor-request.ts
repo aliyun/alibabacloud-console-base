@@ -20,17 +20,56 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
     
     fetcherConfig.cacheLocal = cacheLocal; // 保证 response 拿到的是对象或 null
     
-    // 不需要 cacheLocal 或 需要失效已有的时候，直接跳过，将继续请求
-    if (!cacheLocal || cacheLocal.overwrite) {
+    // 不需要 cacheLocal，直接跳过，将继续请求
+    if (!cacheLocal) {
       return;
     }
     
-    const cache = cacheGet(cacheLocal);
+    const {
+      key
+    } = cacheLocal;
+    const cache = cacheGet(key);
     
-    if (cache) {
-      throw FetcherUtils.createErrorSkipNetwork(_cloneDeep(cache.data), fetcherConfig); // 返回 clone 后的数据避免副作用
+    // 第 0 个请求
+    if (!cache) {
+      cacheAdd(key);
+      
+      return;
     }
     
-    cacheAdd(cacheLocal, null);
+    const {
+      queue,
+      data
+    } = cache;
+    
+    // 有缓存，依次判断
+    // 1. 还在请求中
+    if (queue) {
+      const promise = new Promise((resolve, reject) => queue.push({
+        resolve,
+        reject
+      }));
+      
+      throw FetcherUtils.createErrorSkipNetwork(promise, fetcherConfig); // 返回 clone 后的数据避免副作用
+    }
+    //
+    // if (!cache) {
+    //   return null;
+    // }
+    //
+    // const {
+    //   time,
+    //   ttl
+    // } = cache;
+    //
+    // if (ttl > 0 && Date.now() - time > ttl) { // 过期
+    //   return null;
+    // }
+    //
+    // if (ttl <= 0 && options.ttl > 0) { // 记录是「不过期」的，但新的需要过期，返回 null
+    //   return null;
+    // }
+    
+    throw FetcherUtils.createErrorSkipNetwork(_cloneDeep(data), fetcherConfig); // 返回 clone 后的数据避免副作用
   };
 }

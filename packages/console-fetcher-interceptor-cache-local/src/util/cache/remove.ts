@@ -1,16 +1,15 @@
-import {
-  ICacheLocalOptions
-} from '../../types';
+import cacheGetStorage from './get-storage';
+import cacheGet from './get';
 
-import getCacheStorage from './get-storage';
-
-export default function cacheRemove(options: ICacheLocalOptions | null): void {
-  if (!options?.key) {
+export default function cacheRemove(key: string): void {
+  const cache = cacheGet(key);
+  
+  if (!cache) {
     return;
   }
   
-  const cacheStorage = getCacheStorage();
+  const cacheStorage = cacheGetStorage();
   
-  cacheStorage[options.key] = null;
-  delete cacheStorage[options.key];
+  cacheStorage[key] = null;
+  delete cacheStorage[key];
 }

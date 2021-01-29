@@ -1,15 +1,21 @@
 import {
-  ICacheLocalOptionsParsed
+  ICache
 } from '../../types';
 
-import getCacheStorage from './get-storage';
+import cacheGetStorage from './get-storage';
 
-export default function cacheAdd<T = unknown>(options: ICacheLocalOptionsParsed, data: T): void {
-  const cacheStorage = getCacheStorage();
-  
-  cacheStorage[options.key] = {
-    time: Date.now(),
-    ttl: options.ttl,
-    data
+/**
+ * 添加一个新的缓存，此时没有数据，因此 time、ttl 没有意义
+ */
+export default function cacheAdd(key: string): ICache {
+  const cacheStorage = cacheGetStorage();
+  const cache: ICache = {
+    time: 0,
+    ttl: -1,
+    queue: []
   };
+  
+  cacheStorage[key] = cache;
+  
+  return cache;
 }

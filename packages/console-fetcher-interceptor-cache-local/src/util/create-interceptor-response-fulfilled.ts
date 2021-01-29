@@ -6,16 +6,16 @@ import {
   IFetcherConfigExtendedForResponseFulfilled
 } from '../types';
 
-import cacheAdd from './cache/add';
+import cacheResolve from './cache/resolve';
 
 export default function createInterceptorResponseFulfilled(): FetcherFnInterceptResponseFulfilled<IFetcherConfigExtendedForResponseFulfilled> {
-  return (o: unknown, {
+  return (data: unknown, {
     cacheLocal
   }: IFetcherConfigExtendedForResponseFulfilled): unknown => {
     if (cacheLocal) {
-      cacheAdd(cacheLocal, o);
+      cacheResolve(cacheLocal.key, data, cacheLocal.ttl);
     }
     
-    return o;
+    return data;
   };
 }

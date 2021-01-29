@@ -19,6 +19,10 @@ function replacer(k: string, val: unknown): unknown {
 }
 
 function formatJson(o: unknown): string {
+  if (o === undefined) {
+    return 'undefined';
+  }
+  
   try {
     return JSON.stringify(o, replacer, 2).replace(/"([$\w]+)":/g, '$1:');
   } catch (err) {

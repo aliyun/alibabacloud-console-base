@@ -7,11 +7,15 @@ import {
   IFetcherConfigExtendedForResponseFulfilled
 } from '../types';
 
-import cacheRemove from './cache/remove';
+import cacheReject from './cache/reject';
 
 export default function createInterceptorResponseRejected(): FetcherFnInterceptResponseRejected<IFetcherConfigExtendedForResponseFulfilled> {
-  return (err: FetcherError, fetcherConfig: IFetcherConfigExtendedForResponseFulfilled): void => {
-    cacheRemove(fetcherConfig.cacheLocal);
+  return (err: FetcherError, {
+    cacheLocal
+  }: IFetcherConfigExtendedForResponseFulfilled): void => {
+    if (cacheLocal) {
+      cacheReject(cacheLocal.key, err);
+    }
     
     throw err;
   };

@@ -19,13 +19,9 @@ export default function CacheStorage(): JSX.Element {
     ...cacheGetStorage()
   }), []);
   const handleCleanup = useCallback(() => {
-    Object.keys(stateCacheStorage).forEach(v => {
-      cacheRemove({
-        key: v
-      });
-    });
+    Object.keys(cacheGetStorage()).forEach(cacheRemove);
     handleRefreshCacheStorage();
-  }, [handleRefreshCacheStorage, stateCacheStorage]);
+  }, [handleRefreshCacheStorage]);
   
   return <>
     <H1>cache storage - 仅 demo 下可用（不 export）</H1>

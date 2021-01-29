@@ -60,11 +60,12 @@ function getCacheLocal(enabled: boolean, key: string, ttl: number, overwrite: bo
   return undefined;
 }
 
-function cleanJson(o: unknown): string {
-  return JSON.stringify(o).replace(/"([^"]+)":/g, '$1:');
+function cleanJson(o: unknown): string | undefined {
+  return JSON.stringify(o)?.replace(/"([^"]+)":/g, '$1:');
 }
 
 export default function DemoSpecial(): JSX.Element {
+  const [stateSequence, setStateSequence] = useState<number>(1); // 快速点击 fetch 测试顺序是否按原样
   const [stateUrl, setStateUrl] = useState<string>('https://mocks.alibaba-inc.com/mock/boshit/success');
   const [stateMethod, setStateMethod] = useState<string>('get');
   const [stateCacheLocalEnabled, setStateCacheLocalEnabled] = useState<boolean>(true);
@@ -97,11 +98,16 @@ export default function DemoSpecial(): JSX.Element {
       body: stateBody,
       cacheLocal: getCacheLocal(stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalTtl, stateCacheLocalOverwrite)
     }).then((o: unknown) => {
-      console.info(o);
+      console.info(stateSequence, o);
       
       return o;
+    }, err => {
+      console.info(stateSequence, err);
+      
+      throw err;
     }));
-  }, [stateBody, stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalOverwrite, stateCacheLocalTtl, stateMethod, stateParams, stateUrl]);
+    setStateSequence(stateSequence + 1);
+  }, [stateSequence, stateBody, stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalOverwrite, stateCacheLocalTtl, stateMethod, stateParams, stateUrl]);
   
   useEffect(() => {
     setStateJsCode(`fetch({
