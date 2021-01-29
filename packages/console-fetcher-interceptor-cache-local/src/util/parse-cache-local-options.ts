@@ -13,12 +13,12 @@ export default function parseCacheLocalOptions(fetcherConfig: IFetcherConfigExte
   const {
     key = '',
     ttl = -1,
-    invalidateOld = false
+    overwrite = false
   } = fetcherConfig.cacheLocal === true ? {} : fetcherConfig.cacheLocal;
   
   return {
     key: key || cacheGenerateKey(fetcherConfig),
     ttl,
-    overwrite: invalidateOld
+    overwrite
   };
 }

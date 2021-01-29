@@ -30,8 +30,8 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
     } = cacheLocal;
     const cache = cacheGet(key);
     
-    // 第 0 个请求
-    if (!cache) {
+    // 第 0 个请求 - 没有缓存，或缓存已过期
+    if (!cache || (cache.ttl > 0 && Date.now() - cache.time > cache.ttl)) {
       cacheAdd(key);
       
       return;
@@ -42,8 +42,7 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
       data
     } = cache;
     
-    // 有缓存，依次判断
-    // 1. 还在请求中
+    // 1. 第 0 个请求还在请求中，则附之
     if (queue) {
       const promise = new Promise((resolve, reject) => queue.push({
         resolve,
@@ -52,24 +51,17 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
       
       throw FetcherUtils.createErrorSkipNetwork(promise, fetcherConfig); // 返回 clone 后的数据避免副作用
     }
-    //
-    // if (!cache) {
-    //   return null;
-    // }
-    //
-    // const {
-    //   time,
-    //   ttl
-    // } = cache;
-    //
-    // if (ttl > 0 && Date.now() - time > ttl) { // 过期
-    //   return null;
-    // }
-    //
-    // if (ttl <= 0 && options.ttl > 0) { // 记录是「不过期」的，但新的需要过期，返回 null
-    //   return null;
-    // }
     
+    // 重新请求的场景，不要和之前的第 0 个请求逻辑合并
+    // 1. 指定了是 overwrite
+    // 2. 当前的缓存不会过期，但新的请求需要过期
+    if (cacheLocal.overwrite || (cache.ttl <= 0 && cacheLocal.ttl > 0)) {
+      cacheAdd(key);
+      
+      return;
+    }
+    
+    // 命中缓存
     throw FetcherUtils.createErrorSkipNetwork(_cloneDeep(data), fetcherConfig); // 返回 clone 后的数据避免副作用
   };
 }
