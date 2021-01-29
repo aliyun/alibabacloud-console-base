@@ -1,5 +1,5 @@
 import React, {
-  HTMLAttributes,
+  InputHTMLAttributes,
   ChangeEvent,
   Ref,
   forwardRef,
@@ -12,7 +12,7 @@ import {
   CSS_INPUT_COMMON
 } from '../const';
 
-interface IPropsInputText extends Omit<HTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
+interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
   onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
 }
 

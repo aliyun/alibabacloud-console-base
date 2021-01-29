@@ -1,5 +1,5 @@
 import React, {
-  HTMLAttributes,
+  TextareaHTMLAttributes,
   ChangeEvent,
   Ref,
   forwardRef,
@@ -11,7 +11,7 @@ import {
   CSS_INPUT_COMMON
 } from '../const';
 
-interface IPropsInputTextarea extends Omit<HTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
+interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
 }
 

@@ -1,12 +1,12 @@
 import React, {
-  HTMLAttributes,
+  InputHTMLAttributes,
   ChangeEvent,
   Ref,
   forwardRef,
   useCallback
 } from 'react';
 
-interface IPropsInputSwitch extends Omit<HTMLAttributes<HTMLInputElement>, 'checked' | 'type' | 'value' | 'defaultValue' | 'onChange'> {
+interface IPropsInputSwitch extends Omit<InputHTMLAttributes<HTMLInputElement>, 'checked' | 'type' | 'value' | 'defaultValue' | 'onChange'> {
   value?: boolean;
   defaultValue?: boolean;
   onChange?(value: boolean, e: ChangeEvent<HTMLInputElement>): void;

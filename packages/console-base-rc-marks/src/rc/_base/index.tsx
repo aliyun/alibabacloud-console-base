@@ -6,19 +6,12 @@ import styled, {
 
 import {
   mixinTextWhite,
-  mixinBgInfo,
-  mixinBgSuccess,
-  mixinBgWarning,
-  mixinBgError,
   mixinBgDanger
 } from '@alicloud/console-base-theme';
 
 import {
   IPropsMarkWithType
 } from '../../types';
-import {
-  EMarkType
-} from '../../const';
 import getLabel from '../../util/get-label';
 
 function getCssAlign(align: string): FlattenSimpleInterpolation {
@@ -36,36 +29,18 @@ function getCssAlign(align: string): FlattenSimpleInterpolation {
   }
 }
 
-function getCssBg(type: EMarkType): FlattenSimpleInterpolation {
-  switch (type) {
-    case EMarkType.NEW:
-    case EMarkType.HOT:
-      return mixinBgError;
-    case EMarkType.UPDATE:
-      return mixinBgInfo;
-    case EMarkType.ALPHA:
-      return mixinBgDanger;
-    case EMarkType.BETA:
-      return mixinBgSuccess;
-    case EMarkType.PUBLIC_BETA:
-      return mixinBgWarning;
-    default:
-      return null;
-  }
-}
-
 const ScMark = styled.span<IPropsMarkWithType>`
   display: inline-block;
   padding: 2px 6px;
+  border-radius: 2px;
   line-height: 1.5;
   font-family: 'PingFang SC', 'Microsoft Yahei', Arial, sans-serif;
   font-size: 12px;
-  text-shadow: 1px 1px 0 #666;
   letter-spacing: 1px;
-  transform: scale(0.85);
+  transform: scale(0.8);
   ${mixinTextWhite}
+  ${mixinBgDanger}
   ${props => getCssAlign(props.align)}
-  ${props => getCssBg(props.type)}
 `;
 
 export default function MarkBase({
