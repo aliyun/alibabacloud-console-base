@@ -8,8 +8,6 @@
     - `getData(): T`
     - `getCode(): string`
     - `getMessage(): string`
-    - `getUmid(): string`
-    - `getSecToken(): string`
 
 阿里云控制台的 API 请求一般会以如下形式返回：
 

@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@alicloud/console-fetcher-interceptor-arms": "^1.0.22",
+    "@alicloud/console-fetcher-interceptor-cache-local": "^0.0.2",
     "@alicloud/console-fetcher-interceptor-fecs": "^1.0.27",
     "@alicloud/console-fetcher-interceptor-req-security": "^1.0.22",
     "@alicloud/console-fetcher-interceptor-res-biz": "^1.0.22",

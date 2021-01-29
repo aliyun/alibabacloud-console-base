@@ -1,6 +1,7 @@
 import {
   createFetcher
 } from '@alicloud/fetcher';
+import interceptCacheLocal from '@alicloud/console-fetcher-interceptor-cache-local';
 import interceptSecurity from '@alicloud/console-fetcher-interceptor-req-security';
 import interceptFecs from '@alicloud/console-fetcher-interceptor-fecs';
 import interceptErrorMessage from '@alicloud/console-fetcher-interceptor-res-error-message';
@@ -28,8 +29,10 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
   } = interceptorOptions;
   const fetcher = createFetcher<C>(config);
   
-  interceptSecurity(fetcher);
+  // 顺序很重要...
   interceptBiz(fetcher);
+  interceptCacheLocal(fetcher); // 必须在 biz 之后，因为 biz 结果的处理影响缓存的数据
+  interceptSecurity(fetcher);
   interceptErrorMessage(fetcher);
   interceptFecs(fetcher);
   interceptArms(fetcher, armsConfig);
