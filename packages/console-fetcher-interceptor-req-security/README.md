@@ -18,9 +18,9 @@
 
 ```typescript
 interface FetcherConfigExtra {
-  getCollina?: () => string;
-  getUmid?: () => string;
-  getSecToken?: () => string;
+  getCollina?(): string;
+  getUmid?(): string;
+  getSecToken?(): string;
 }
 ```
 
