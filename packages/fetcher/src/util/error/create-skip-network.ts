@@ -15,7 +15,7 @@ import {
  * 1. 如果应用有缓存好已经获得到的结果，则直接返回结果
  * 2. 如果应用需要合并接口请求，则直接返回合并前的临时 Promise
  */
-export default function createSkipNetwork<T = void, C extends IFetcherConfig = IFetcherConfig>(result?: T | Promise<T>, fetcherConfig?: C): IFetcherErrorSpecial<T> {
+export default function createErrorSkipNetwork<T = void, C extends IFetcherConfig = IFetcherConfig>(result?: T | Promise<T>, fetcherConfig?: C): IFetcherErrorSpecial<T> {
   const error: IFetcherErrorSpecial<T> = new Error() as IFetcherErrorSpecial<T>;
   
   error.name = EErrorSpecial.SKIP_NETWORK; // Fetcher.request 中将用它来做判断

@@ -1,6 +1,5 @@
 import {
   IFetcherConfig,
-  TMethod,
   TArgsForJsonp,
   TArgsForGet,
   TFetcherOptionsForQuickFn
@@ -13,7 +12,7 @@ import Fetcher from '../fetcher';
  */
 export default function requestWithNoBody<C extends IFetcherConfig, T = void, P = void>(
     fetcher: Fetcher<C>,
-    method: TMethod,
+    method: string,
     args: TArgsForJsonp<C, P> | TArgsForGet<C, P>
 ): Promise<T> {
   let options: TFetcherOptionsForQuickFn<C> | undefined;

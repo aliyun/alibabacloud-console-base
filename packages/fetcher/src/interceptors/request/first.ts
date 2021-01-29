@@ -1,6 +1,5 @@
 import {
-  IFetcherConfig,
-  TMethod
+  IFetcherConfig
 } from '../../types';
 
 /**
@@ -15,6 +14,6 @@ export default function requestInterceptorFirst(fetcherConfig: IFetcherConfig): 
   
   return {
     _timeStarted: Date.now(),
-    method: method.toUpperCase() as TMethod
+    method: method.toUpperCase()
   };
 }

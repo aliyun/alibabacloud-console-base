@@ -1,6 +1,5 @@
 import {
   IFetcherConfig,
-  TMethod,
   TArgsForPost,
   TFetcherOptionsForQuickFn
 } from '../types';
@@ -11,7 +10,7 @@ import mergeConfig from './merge-config';
 /**
  * 用于执行带 body 的请求，对应点 method 有 'POST' / 'PUT' / 'PATCH'
  */
-export default function requestWithBody<C extends IFetcherConfig, T, B, P>(fetcher: Fetcher<C>, method: TMethod, args: TArgsForPost<C, B, P>): Promise<T> {
+export default function requestWithBody<C extends IFetcherConfig, T, B, P>(fetcher: Fetcher<C>, method: string, args: TArgsForPost<C, B, P>): Promise<T> {
   let options: TFetcherOptionsForQuickFn<C> | undefined;
   let url: string;
   let body: B | undefined;

@@ -1,25 +1,36 @@
 import React, {
   ChangeEvent,
   useState,
-  useCallback
+  useCallback,
+  useEffect
 } from 'react';
 import styled from 'styled-components';
 
 import {
   H1,
+  Pre,
   PrePromise,
   Button,
+  InputText,
   InputTextarea
 } from '@alicloud/demo-rc-elements';
 
+import {
+  FetcherCacheLocalOptions
+} from '../../src';
 import fetcher from '../fetcher';
 import CacheStorage from '../cache-storage';
 
-const ScParamAndBody = styled.div`
+const ScFlex = styled.div`
   display: flex;
+  
+  pre {
+    flex: 1;
+    width: 100%;
+  }
 `;
 
-function getJsonFromString(str: string): unknown {
+function getJsonFromString(str: string): Record<string, unknown> | null {
   try {
     const o = JSON.parse(str);
     
@@ -33,43 +44,37 @@ function getJsonFromString(str: string): unknown {
   return null;
 }
 
-export default function DemoSpecial(): JSX.Element {
-  const [stateParams, setStateParams] = useState<unknown>(null);
-  const [stateBody, setStateBody] = useState<unknown>(null);
-  const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);
+function getCacheLocal(enabled: boolean, key: string, ttl: number, overwrite: boolean): FetcherCacheLocalOptions | true | undefined {
+  if (enabled) {
+    if (key || ttl || overwrite) {
+      return {
+        key,
+        ttl,
+        overwrite
+      };
+    }
+    
+    return true;
+  }
   
-  const handleTestGet = useCallback(() => setStatePromise(fetcher.get({
-    cacheLocal: true
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success')), []);
-  const handleTestGetWithKey = useCallback(() => setStatePromise(fetcher.get({
-    cacheLocal: {
-      key: '不建议自己指定 key'
-    }
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success')), []);
-  const handleTestGetTtl = useCallback(() => setStatePromise(fetcher.get({
-    cacheLocal: {
-      ttl: 4000
-    }
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success')), []);
-  const handleTestGetWithParams = useCallback(() => setStatePromise(fetcher.get({
-    cacheLocal: true
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success', stateParams)), [stateParams]);
-  const handleTestPost = useCallback(() => setStatePromise(fetcher.post({
-    cacheLocal: true
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success')), []);
-  const handleTestPostWithKey = useCallback(() => setStatePromise(fetcher.post({
-    cacheLocal: {
-      key: '不建议自己指定 key'
-    }
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success')), []);
-  const handleTestPostInvalidateOld = useCallback(() => setStatePromise(fetcher.post({
-    cacheLocal: {
-      invalidateOld: true
-    }
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success')), []);
-  const handleTestPostWithBodyParams = useCallback(() => setStatePromise(fetcher.post({
-    cacheLocal: true
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success', stateBody, stateParams)), [stateBody, stateParams]);
+  return undefined;
+}
+
+function cleanJson(o: unknown): string {
+  return JSON.stringify(o).replace(/"([^"]+)":/g, '$1:');
+}
+
+export default function DemoSpecial(): JSX.Element {
+  const [stateUrl, setStateUrl] = useState<string>('https://mocks.alibaba-inc.com/mock/boshit/success');
+  const [stateMethod, setStateMethod] = useState<string>('get');
+  const [stateCacheLocalEnabled, setStateCacheLocalEnabled] = useState<boolean>(true);
+  const [stateCacheLocalKey, setStateCacheLocalKey] = useState<string>('');
+  const [stateCacheLocalTtl, setStateCacheLocalTtl] = useState<number>(0);
+  const [stateCacheLocalOverwrite, setStateCacheLocalOverwrite] = useState<boolean>(false);
+  const [stateParams, setStateParams] = useState<null | Record<string, unknown>>(null);
+  const [stateBody, setStateBody] = useState<null | Record<string, unknown>>(null);
+  const [stateJsCode, setStateJsCode] = useState<string>('fetch()');
+  const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);
   
   const handleParamChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>): void => {
     setStateParams(getJsonFromString(e.target.value));
@@ -78,17 +83,79 @@ export default function DemoSpecial(): JSX.Element {
     setStateBody(getJsonFromString(e.target.value));
   }, []);
   
+  const handleUrlChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateUrl(e.target.value), []);
+  const handleMethodChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateMethod(e.target.value), []);
+  const handleCacheLocalEnabledChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalEnabled(e.target.checked), []);
+  const handleCacheLocalKeyChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalKey(e.target.value), []);
+  const handleCacheLocalTtlChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalTtl(Number(e.target.value) || 0), []);
+  const handleCacheLocalOverwriteChange = useCallback((e: ChangeEvent<HTMLInputElement>) => setStateCacheLocalOverwrite(e.target.checked), []);
+  const handleFetch = useCallback(() => {
+    setStatePromise(fetcher.request({
+      url: stateUrl,
+      method: stateMethod,
+      params: stateParams,
+      body: stateBody,
+      cacheLocal: getCacheLocal(stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalTtl, stateCacheLocalOverwrite)
+    }).then((o: unknown) => {
+      console.info(o);
+      
+      return o;
+    }));
+  }, [stateBody, stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalOverwrite, stateCacheLocalTtl, stateMethod, stateParams, stateUrl]);
+  
+  useEffect(() => {
+    setStateJsCode(`fetch({
+  method: '${stateMethod}',
+  url: '${stateUrl}',
+  params: ${cleanJson(stateParams)},
+  body: ${cleanJson(stateBody)},
+  cacheLocal: ${cleanJson(getCacheLocal(stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalTtl, stateCacheLocalOverwrite))}
+});`);
+  }, [stateBody, stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalOverwrite, stateCacheLocalTtl, stateMethod, stateParams, stateUrl]);
+  
   return <>
     <H1>场景测试</H1>
-    <Button onClick={handleTestGet}>get(url)</Button>
-    <Button onClick={handleTestGetWithKey}>get(url) 指定 key</Button>
-    <Button onClick={handleTestGetTtl}>get(url) 测试 ttl = 4000ms</Button>
-    <Button onClick={handleTestGetWithParams}>get(url, params)</Button>
-    <Button onClick={handleTestPost}>post(url)</Button>
-    <Button onClick={handleTestPostWithKey}>post(url) 指定 key</Button>
-    <Button onClick={handleTestPostInvalidateOld}>post(url) 测试 invalidateOld</Button>
-    <Button onClick={handleTestPostWithBodyParams}>post(url, body, params)</Button>
-    <ScParamAndBody>
+    <div>
+      method <InputText {...{
+        placeholder: 'method',
+        value: stateMethod,
+        onChange: handleMethodChange
+      }} />
+    </div>
+    <div>
+      url <InputText {...{
+        placeholder: 'url',
+        value: stateUrl,
+        onChange: handleUrlChange
+      }} />
+    </div>
+    <label>
+      <input {...{
+        type: 'checkbox',
+        checked: stateCacheLocalEnabled,
+        onChange: handleCacheLocalEnabledChange
+      }} /> cache local enabled
+    </label>
+    &nbsp; → &nbsp;
+    cacheLocal.key <InputText {...{
+      placeholder: 'cacheLocal.key',
+      value: stateCacheLocalKey,
+      onChange: handleCacheLocalKeyChange
+    }} />
+    cacheLocal.ttl <InputText {...{
+      placeholder: 'cacheLocal.ttl',
+      type: 'number',
+      value: stateCacheLocalTtl.toString(),
+      onChange: handleCacheLocalTtlChange
+    }} />
+    <label>
+      <input {...{
+        type: 'checkbox',
+        checked: stateCacheLocalOverwrite,
+        onChange: handleCacheLocalOverwriteChange
+      }} /> cacheLocal.overwrite
+    </label>
+    <ScFlex>
       <InputTextarea {...{
         placeholder: 'params',
         onChange: handleParamChange
@@ -97,8 +164,12 @@ export default function DemoSpecial(): JSX.Element {
         placeholder: 'body',
         onChange: handleBodyChange
       }} />
-    </ScParamAndBody>
-    <PrePromise promise={statePromise} />
+    </ScFlex>
+    <Button onClick={handleFetch}>fetch</Button>
+    <ScFlex>
+      <Pre>{stateJsCode}</Pre>
+      <PrePromise promise={statePromise} />
+    </ScFlex>
     <CacheStorage />
   </>;
 }

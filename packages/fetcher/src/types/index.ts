@@ -16,13 +16,6 @@ import {
 type TQuickMethodConfigExclusion = 'url' | 'method';
 
 /**
- * 做一下限制（不推荐手动调用 HEADER/OPTIONS 等），增加 JSONP，理论上大小写无关，但为了保持代码的统一性，这里用全大写
- * 
- * https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
- */
-export type TMethod = 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH' | 'JSONP';
-
-/**
  * 表示 `() => void` 类型
  */
 export type TFnVoid = () => void;
@@ -45,21 +38,17 @@ export interface IFetcherConfig extends Omit<FetchOptions, 'method' | 'headers' 
    */
   _timeStarted?: number;
   /**
+   * - 支持除了标准 HTTP 请求的 GET/POST/DELETE/PUT/PATCH + JSONP
+   * - 大小写无关，但内部一开始就会转成大写，建议统一用大写
+   * - 不要手动调用 HEADER/OPTIONS
+   * 
+   * https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+   */
+  method?: string;
+  /**
    * config 中需要有 url
    */
   url?: string;
-  /**
-   * 约束 FetchOptions.method
-   */
-  method?: TMethod;
-  /**
-   * 约束 FetchOptions.headers
-   */
-  headers?: Record<string, string>;
-  /**
-   * 约束 FetchOptions.body
-   */
-  body?: Record<string, unknown> | string;
   /**
    * 如果指定 `urlBase` 且 `url` 不是绝对路径，会将两者拼接起来
    */
@@ -69,12 +58,20 @@ export interface IFetcherConfig extends Omit<FetchOptions, 'method' | 'headers' 
    */
   urlCacheBusting?: boolean;
   /**
+   * 约束 FetchOptions.headers
+   */
+  headers?: Record<string, string> | null;
+  /**
    * url 上的 search 参数，会跟已有的参数合并
    * 纯的 fetch/jsonp 的 url 要求是已经拼接好参数的 url
    * 
    * `{ url: '/url', params: { a: 1, b: 2} }` 等价于 `{ url: '/url', params: 'a=1&b=2' }` 等价于 `{ url: '/url?a=1&b=2' }`
    */
-  params?: null | string | Record<string, unknown>;
+  params?: Record<string, unknown> | string | null;
+  /**
+   * 约束 FetchOptions.body
+   */
+  body?: Record<string, unknown> | string | null;
   /**
    * 如果传入的 params 是对象，如何用 qs 来序列化它
    */

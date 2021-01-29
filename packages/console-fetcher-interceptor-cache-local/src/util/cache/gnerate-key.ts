@@ -5,7 +5,7 @@ import jsonStringifyOrdered from '@alicloud/json-stringify-ordered';
 
 import {
   IFetcherConfigExtended
-} from '../types';
+} from '../../types';
 
 function convertToString(o: unknown): string {
   if (!o) {
@@ -25,7 +25,7 @@ function stringifyParam(o: unknown): string {
   return str === '{}' ? '' : str;
 }
 
-export default function generateCacheKey({
+export default function cacheGenerateKey({
   method,
   url,
   urlBase,

@@ -3,7 +3,11 @@ import {
 } from '@alicloud/fetcher';
 
 export interface ICache<T = unknown> {
-  expire: number;
+  /*
+   * 缓存开始生效时间，请求成功的时候设置，如果 <= 0 则表示请求还没有完成
+   */
+  time: number;
+  ttl: number;
   data: T;
 }
 
@@ -13,15 +17,18 @@ export interface ICacheLocalOptions {
    */
   key?: string;
   /**
-   * 本地缓存的生存时间，一旦超过会重新请求
+   * 本地缓存的生存时间（单位 ms），一旦超过会重新请求，一般建议不小于 10000，即 10s
+   * 如果 ttl > 0，但已有的缓存是无生存时间的，则一定会请求
    */
   ttl?: number;
   /**
-   * 如果已经有本地缓存，且未失效，指定此参数将重新请求，并在成功之后重置缓存
+   * 如果已经有本地缓存，且未失效，指定此参数将重置缓存且重新请求
    * 注意：连续调用此类接口没有意义，跟不设 cacheLocal 一样，建议在修改数据后重新获取数据时
    */
-  invalidateOld?: boolean;
+  overwrite?: boolean;
 }
+
+export interface ICacheLocalOptionsParsed extends Required<ICacheLocalOptions> {}
 
 export interface IFetcherConfigExtra {
   // fetch 已经有一个 cache 了
@@ -34,5 +41,5 @@ export interface IFetcherConfigExtended extends FetcherConfig, IFetcherConfigExt
  * request 里会把 cacheLocal 局限成 null | ICacheLocalOptions
  */
 export interface IFetcherConfigExtendedForResponseFulfilled extends FetcherConfig {
-  cacheLocal?: null | ICacheLocalOptions;
+  cacheLocal?: null | ICacheLocalOptionsParsed;
 }

@@ -1,11 +1,11 @@
 import {
   IFetcherConfigExtended,
-  ICacheLocalOptions
+  ICacheLocalOptionsParsed
 } from '../types';
 
-import generateCacheKey from './generate-cache-key';
+import cacheGenerateKey from './cache/gnerate-key';
 
-export default function parseCacheLocalOptions(fetcherConfig: IFetcherConfigExtended): Required<ICacheLocalOptions> | null {
+export default function parseCacheLocalOptions(fetcherConfig: IFetcherConfigExtended): ICacheLocalOptionsParsed | null {
   if (!fetcherConfig.cacheLocal) {
     return null;
   }
@@ -17,8 +17,8 @@ export default function parseCacheLocalOptions(fetcherConfig: IFetcherConfigExte
   } = fetcherConfig.cacheLocal === true ? {} : fetcherConfig.cacheLocal;
   
   return {
-    key: key || generateCacheKey(fetcherConfig),
+    key: key || cacheGenerateKey(fetcherConfig),
     ttl,
-    invalidateOld
+    overwrite: invalidateOld
   };
 }
