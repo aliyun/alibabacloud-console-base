@@ -119,7 +119,7 @@ import {
 } from '@alicloud/post-message';
 
 class SomeComponent extends Component {
-  _unsubscribe?: () => void;
+  _unsubscribe?(): void;
   
   componentDidMount(): void {
     this._unsubscribe = subscribe(_SOME_MESSAGE_TYPE_ENUM_, () => {
