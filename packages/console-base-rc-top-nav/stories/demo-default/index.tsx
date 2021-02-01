@@ -126,8 +126,8 @@ const topNavProps: TopNavProps = {
     <div style={{ color: 'purple' }}>R1</div>
     <div style={{ color: 'pink' }}>R2</div>
   </>,
-  onMenuMouseEnter(key: string) {
-    console.info(key);
+  onMenuDropdown(key: string) {
+    console.info('dropdown!', key);
   }
 };
 
