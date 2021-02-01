@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/ua",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "UA 解析",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.8",
-    "@alicloud/demo-rc-elements": "^1.1.1",
+    "@alicloud/demo-rc-elements": "^1.1.2",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.14.2",
