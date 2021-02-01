@@ -3,16 +3,19 @@ import {
   IFetcherConfigExtended
 } from '../types';
 
-export default function parseOptions(fetcherConfig: IFetcherConfigExtended): IMergerOptionsParsed | null {
-  if (!fetcherConfig.merger) {
+export default function parseOptions({
+  _id,
+  merger = true
+}: IFetcherConfigExtended): IMergerOptionsParsed | null {
+  if (!merger) {
     return null;
   }
   
   const {
     key = ''
-  } = fetcherConfig.merger === true ? {} : fetcherConfig.merger;
+  } = merger === true ? {} : merger;
   
   return {
-    key: key || fetcherConfig._id
+    key: key || _id
   };
 }

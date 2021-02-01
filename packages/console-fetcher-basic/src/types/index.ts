@@ -4,14 +4,17 @@ import {
   FetcherOptionsForQuickPost
 } from '@alicloud/fetcher';
 import {
+  FetcherConfigExtra as FetcherConfigExtraBiz
+} from '@alicloud/console-fetcher-interceptor-res-biz';
+import {
   FetcherConfigExtra as FetcherConfigExtraCacheLocal
 } from '@alicloud/console-fetcher-interceptor-cache-local';
 import {
+  FetcherConfigExtra as FetcherConfigExtraMerger
+} from '@alicloud/console-fetcher-interceptor-merger';
+import {
   FetcherConfigExtra as FetcherConfigExtraSecurity
 } from '@alicloud/console-fetcher-interceptor-req-security';
-import {
-  FetcherConfigExtra as FetcherConfigExtraBiz
-} from '@alicloud/console-fetcher-interceptor-res-biz';
 import {
   FetcherInterceptorConfig as FetcherInterceptorConfigArms
 } from '@alicloud/console-fetcher-interceptor-arms';
@@ -21,7 +24,7 @@ import {
 
 export type TApiMultiResult = Record<string, unknown>;
 
-export interface IConsoleFetcherConfig extends FetcherConfig, FetcherConfigExtraCacheLocal, FetcherConfigExtraSecurity, FetcherConfigExtraBiz {}
+export interface IConsoleFetcherConfig extends FetcherConfig, FetcherConfigExtraBiz, FetcherConfigExtraCacheLocal, FetcherConfigExtraMerger, FetcherConfigExtraSecurity {}
 
 export interface IConsoleFetcherInterceptorOptions {
   armsConfig?: FetcherInterceptorConfigArms;
