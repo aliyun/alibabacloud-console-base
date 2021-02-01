@@ -29,7 +29,7 @@ function InputTextarea({
   onChange,
   ...props
 }: IPropsInputTextarea, ref: Ref<HTMLTextAreaElement>): JSX.Element {
-  const handleChangeEvent = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {
       onChange(e.target.value, e);
     }
@@ -38,7 +38,7 @@ function InputTextarea({
   return <ScInputTextarea {...{
     ...props,
     ref,
-    handleChangeEvent
+    onChange: handleChange
   }} />;
 }
 

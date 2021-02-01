@@ -10,15 +10,15 @@ import {
   IFetcherConfigExtended
 } from '../types';
 
-import parseCacheLocalOptions from './parse-cache-local-options';
+import parseOptions from './parse-options';
 import cacheAdd from './cache/add';
 import cacheGet from './cache/get';
 
 export default function createInterceptorRequest(): FetcherFnInterceptRequest<IFetcherConfigExtended> {
   return (fetcherConfig: IFetcherConfigExtended): FetcherInterceptRequestReturn<IFetcherConfigExtended> => {
-    const cacheLocal = parseCacheLocalOptions(fetcherConfig);
+    const cacheLocal = parseOptions(fetcherConfig);
     
-    fetcherConfig.cacheLocal = cacheLocal; // 保证 response 拿到的是对象或 null
+    fetcherConfig.cacheLocal = cacheLocal; // 保证 response 拿到的 cacheLocal 是对象或 null
     
     // 不需要 cacheLocal，直接跳过，将继续请求
     if (!cacheLocal) {
@@ -49,7 +49,7 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
         reject
       }));
       
-      throw FetcherUtils.createErrorSkipNetwork(promise, fetcherConfig); // 返回 clone 后的数据避免副作用
+      throw FetcherUtils.createErrorSkipNetwork(promise, fetcherConfig);
     }
     
     // 重新请求的场景，不要和之前的第 0 个请求逻辑合并

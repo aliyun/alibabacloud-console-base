@@ -4,15 +4,15 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  IFetcherConfigExtendedForResponseFulfilled
+  IFetcherConfigExtendedForResponse
 } from '../types';
 
 import cacheReject from './cache/reject';
 
-export default function createInterceptorResponseRejected(): FetcherFnInterceptResponseRejected<IFetcherConfigExtendedForResponseFulfilled> {
+export default function createInterceptorResponseRejected(): FetcherFnInterceptResponseRejected<IFetcherConfigExtendedForResponse> {
   return (err: FetcherError, {
     cacheLocal
-  }: IFetcherConfigExtendedForResponseFulfilled): void => {
+  }: IFetcherConfigExtendedForResponse): void => {
     if (cacheLocal) {
       cacheReject(cacheLocal.key, err);
     }

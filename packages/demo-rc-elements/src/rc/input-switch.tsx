@@ -18,7 +18,7 @@ function InputSwitch({
   onChange,
   ...props
 }: IPropsInputSwitch, ref: Ref<HTMLInputElement>): JSX.Element {
-  const handleChangeEvent = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(e.target.checked, e);
     }
@@ -31,7 +31,7 @@ function InputSwitch({
     defaultChecked: defaultValue,
     type: 'checkbox',
     ref,
-    handleChangeEvent
+    onChange: handleChange
   }} />;
 }
 

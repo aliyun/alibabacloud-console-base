@@ -20,7 +20,7 @@ export interface ICache<T = unknown> {
 
 export interface ICacheLocalOptions {
   /**
-   * 默认会根据 method + url + params + body 的方式做 key，你也可以指定专属的 key
+   * 默认用 FetcherConfig._id，也可以自己指定（不推荐自己指定）
    */
   key?: string;
   /**
@@ -47,6 +47,6 @@ export interface IFetcherConfigExtended extends FetcherConfig, IFetcherConfigExt
 /**
  * request 里会把 cacheLocal 局限成 null | ICacheLocalOptions
  */
-export interface IFetcherConfigExtendedForResponseFulfilled extends FetcherConfig {
+export interface IFetcherConfigExtendedForResponse extends FetcherConfig {
   cacheLocal?: null | ICacheLocalOptionsParsed;
 }

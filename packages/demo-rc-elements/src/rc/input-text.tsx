@@ -26,7 +26,7 @@ function InputText({
   onChange,
   ...props
 }: IPropsInputText, ref: Ref<HTMLInputElement>): JSX.Element {
-  const handleChangeEvent = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(e.target.value, e);
     }
@@ -36,7 +36,7 @@ function InputText({
     ...props,
     type: 'text',
     ref,
-    handleChangeEvent
+    onChange: handleChange
   }} />;
 }
 

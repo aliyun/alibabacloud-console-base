@@ -3,7 +3,7 @@ import {
   ICacheLocalOptionsParsed
 } from '../types';
 
-export default function parseCacheLocalOptions(fetcherConfig: IFetcherConfigExtended): ICacheLocalOptionsParsed | null {
+export default function parseOptions(fetcherConfig: IFetcherConfigExtended): ICacheLocalOptionsParsed | null {
   if (!fetcherConfig.cacheLocal) {
     return null;
   }

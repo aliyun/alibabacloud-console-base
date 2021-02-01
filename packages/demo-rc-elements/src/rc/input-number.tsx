@@ -41,7 +41,7 @@ function InputNumber({
   onChange,
   ...props
 }: IPropsInputNumber, ref: Ref<HTMLInputElement>): JSX.Element {
-  const handleChangeEvent = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(string2number(e.target.value), e);
     }
@@ -53,7 +53,7 @@ function InputNumber({
     defaultValue: number2string(defaultValue),
     type: 'number',
     ref,
-    handleChangeEvent
+    onChange: handleChange
   }} />;
 }
 
