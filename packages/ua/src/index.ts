@@ -10,6 +10,11 @@ export {
   parse
 };
 
+export {
+  EOsType as OsType,
+  EBrowserType as BrowserType
+} from './const';
+
 export type {
   Ua
 };

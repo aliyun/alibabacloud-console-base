@@ -1,10 +1,15 @@
+import {
+  EOsType,
+  EBrowserType
+} from '../const';
+
 import getOs from './get-os';
 import getBrowser from './get-browser';
 
 export interface IParseResult {
-  OS: string;
+  OS: EOsType;
   OS_VERSION: string;
-  BROWSER: string;
+  BROWSER: EBrowserType;
   BROWSER_VERSION: string;
 }
 
