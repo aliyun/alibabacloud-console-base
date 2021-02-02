@@ -1,6 +1,6 @@
 export interface IDemoConfig {
   url?: string;
-  method?: 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH' | 'JSONP';
+  method?: string;
   timeout?: number;
 }
 

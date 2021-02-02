@@ -2,15 +2,15 @@ import {
   Fetcher,
   FetcherConfig,
   FetcherInterceptorOptions,
-  createFetcher
+  createFetcher as createFetcher0
 } from '@alicloud/console-fetcher';
 
 import intercept from './intercept';
 
-export default (config?: FetcherConfig, interceptorOptions?: FetcherInterceptorOptions): Fetcher => {
-  const fetcher = createFetcher(config, interceptorOptions);
+export default function createFetcher(config?: FetcherConfig, interceptorOptions?: FetcherInterceptorOptions): Fetcher {
+  const fetcher = createFetcher0(config, interceptorOptions);
   
   intercept(fetcher);
   
   return fetcher;
-};
+}

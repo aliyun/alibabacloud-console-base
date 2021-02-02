@@ -85,7 +85,8 @@ function Button({
     size,
     theme,
     disabled,
-    loading,
+    // 老是报错说「Received `true` for a non-boolean attribute `loading`」但奇怪的是其他的 boolean（如 active）属性没有关系...
+    loading: (loading ? 1 : 0) as unknown as boolean,
     active,
     borderRadius,
     title: getTitle(title, label),
