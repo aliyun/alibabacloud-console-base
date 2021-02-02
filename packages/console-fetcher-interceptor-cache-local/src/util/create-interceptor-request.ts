@@ -3,7 +3,7 @@ import _cloneDeep from 'lodash/cloneDeep';
 import {
   FetcherFnInterceptRequest,
   FetcherInterceptRequestReturn,
-  FetcherUtils
+  createErrorSkipNetwork
 } from '@alicloud/fetcher';
 
 import {
@@ -49,7 +49,7 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
         reject
       }));
       
-      throw FetcherUtils.createErrorSkipNetwork(promise, fetcherConfig);
+      throw createErrorSkipNetwork(promise, fetcherConfig);
     }
     
     // 重新请求的场景，不要和之前的第 0 个请求逻辑合并
@@ -62,6 +62,6 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
     }
     
     // 命中缓存
-    throw FetcherUtils.createErrorSkipNetwork(_cloneDeep(data), fetcherConfig); // 返回 clone 后的数据避免副作用
+    throw createErrorSkipNetwork(_cloneDeep(data), fetcherConfig); // 返回 clone 后的数据避免副作用
   };
 }
