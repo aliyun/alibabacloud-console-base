@@ -1,7 +1,7 @@
 import {
   FetcherFnInterceptRequest,
   FetcherInterceptRequestReturn,
-  FetcherUtils
+  canHaveBody
 } from '@alicloud/fetcher';
 
 import {
@@ -16,16 +16,16 @@ import defaultGetSecToken from './get-sec-token';
  * 对有 body 的请求，在 body 中添加阿里云安全必需的参数，这三个参数都可以可以在发送请求的时候覆盖的
  */
 export default function createInterceptorRequest(): FetcherFnInterceptRequest<IFetcherConfigExtended> {
-  return ({
-    method,
-    getCollina = defaultGetCollina,
-    getUmid = defaultGetUmid,
-    getSecToken = defaultGetSecToken
-  }: IFetcherConfigExtended): FetcherInterceptRequestReturn<IFetcherConfigExtended> => {
-    if (!FetcherUtils.canHaveBody(method)) {
+  return (fetcherConfig: IFetcherConfigExtended): FetcherInterceptRequestReturn<IFetcherConfigExtended> => {
+    if (!canHaveBody(fetcherConfig)) {
       return;
     }
     
+    const {
+      getCollina = defaultGetCollina,
+      getUmid = defaultGetUmid,
+      getSecToken = defaultGetSecToken
+    } = fetcherConfig;
     const body: Record<'sec_token' | 'collina' | 'umid', string> = {
       collina: getCollina(),
       umid: getUmid(),
