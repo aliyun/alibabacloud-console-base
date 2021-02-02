@@ -4,7 +4,8 @@ import {
   FetcherError,
   FetcherConfig,
   FetcherFnRequest,
-  FetcherUtils
+  canHaveBody,
+  mergeConfig
 } from '@alicloud/fetcher';
 import {
   DialogButtonProps,
@@ -39,7 +40,7 @@ export default ({
   riskInfo,
   riskConfig
 }: IParams): Promise<unknown> => {
-  const buttonConfirm: DialogButtonProps<any, IRiskVerifyDialogData> = {
+  const buttonConfirm: DialogButtonProps<unknown, IRiskVerifyDialogData> = {
     spm: 'confirm',
     disabled: true,
     label: intl('op:confirm'),
@@ -61,7 +62,7 @@ export default ({
         requestId: data.requestId
       };
       
-      request<unknown>(FetcherUtils.mergeConfig(fetcherConfig, FetcherUtils.canHaveBody(fetcherConfig.method) ? {
+      request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
         body: verifyResult
       } : {
         params: verifyResult
