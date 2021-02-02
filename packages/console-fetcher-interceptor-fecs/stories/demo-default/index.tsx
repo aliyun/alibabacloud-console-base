@@ -31,17 +31,11 @@ function manyRefreshes(): void {
   refreshToken().then(() => console.info(5));
 }
 
-function openApiWillUseFecs(): void {
-  fetcherNoFecs.post('/data/api.json', {
-    product: 'slb',
-    action: 'DescribeRegions'
-  });
-}
-
 export default function DemoDefault(): JSX.Element {
   const [stateToken, setStateToken] = useState<string>(cookieGetToken());
   const [statePromisePost, setStatePromisePost] = useState<Promise<unknown> | null>(null);
   const [statePromiseGet, setStatePromiseGet] = useState<Promise<unknown> | null>(null);
+  const [statePromiseOpenAPI, setStatePromiseOpenAPI] = useState<Promise<unknown> | null>(null);
   
   const handleClearToken = useCallback(() => {
     cookieSetToken('');
@@ -60,6 +54,10 @@ export default function DemoDefault(): JSX.Element {
     productIds: ['oss']
   })), []);
   const handleTestGet = useCallback(() => setStatePromiseGet(fetcher.get('/api/console-base/config')), []);
+  const handleTestOpenAPI = useCallback(() => setStatePromiseOpenAPI(fetcherNoFecs.post('/data/api.json', {
+    product: 'slb',
+    action: 'DescribeRegions'
+  })), []);
   
   return <>
     <FetcherDemoRcFecsTip />
@@ -85,6 +83,7 @@ export default function DemoDefault(): JSX.Element {
     <P>同时很多个 refreshToken 仅会发送一个请求</P>
     <Button onClick={manyRefreshes}>一次性触发多次仅发一个请求</Button>
     <H2>OpenAPI 自动转接到 FECS（因为当前不是 OneConsole）</H2>
-    <Button onClick={openApiWillUseFecs}>OpenAPI</Button>
+    <Button onClick={handleTestOpenAPI}>OpenAPI</Button>
+    <PrePromise promise={statePromiseOpenAPI} />
   </>;
 }

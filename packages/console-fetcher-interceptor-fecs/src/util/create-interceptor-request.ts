@@ -4,7 +4,7 @@ import {
   FetcherConfig,
   FetcherFnInterceptRequest,
   FetcherInterceptRequestReturn,
-  FetcherUtils
+  canHaveBody
 } from '@alicloud/fetcher';
 
 import isFecs from './is-fecs';
@@ -26,21 +26,12 @@ const FECS_COMPATIBLE: boolean = (() => {
  * 2. 对于 OneConsole 封装的 open/inner/container 系列 API，在非 OneConsole 下自动走 FECS
  */
 function interceptRequest(fetcherConfig: FetcherConfig): FetcherInterceptRequestReturn<FetcherConfig> {
-  // 只有向 FECS 的带 body 的请求需要填 FECS 的 token
-  if (!FetcherUtils.canHaveBody(fetcherConfig.method)) {
-    return;
-  }
-  
-  const fecs = isFecs(fetcherConfig);
-  const relativeOne = isRelativeOneApi(fetcherConfig);
-  
-  // 既不走 FECS，也不是当前域名下的 OneConsole API，不需要做什么
-  if (!fecs && !relativeOne) {
+  if (!canHaveBody(fetcherConfig)) {
     return;
   }
   
   // 走 FECS，填充 FECS 特有的 sec_token
-  if (fecs) {
+  if (isFecs(fetcherConfig)) {
     return {
       body: {
         sec_token: cookieGetToken()
@@ -49,7 +40,7 @@ function interceptRequest(fetcherConfig: FetcherConfig): FetcherInterceptRequest
   }
   
   // 不走 FECS 的当前域名下的 OneConsole API，需要判断当前是不是 OneConsole
-  if (relativeOne) {
+  if (isRelativeOneApi(fetcherConfig)) {
     if (ONE_CONF.ONE || !FECS_COMPATIBLE) { // 是 OneConsole，或非 FECS 兼容的域名，则不需要处理什么
       return;
     }
