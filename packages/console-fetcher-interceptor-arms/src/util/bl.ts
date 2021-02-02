@@ -1,42 +1,25 @@
 import {
   ArmsWindowExtended
 } from '@alicloud/console-base-common-typings';
+import {
+  FetcherConfig,
+  buildUrl
+} from '@alicloud/fetcher';
 
-interface ILogInfoBase {
-  api: string;
-  timeStarted?: number;
-  traceId?: string;
-}
-
-interface ILogInfoError extends ILogInfoBase {
-  code?: string;
-  message: string;
-}
-
-interface ILogInfoSuccess extends ILogInfoBase {}
-
-interface ILogInfo extends ILogInfoBase {
-  success: boolean;
-  code: string;
-  message: string;
-}
-
-function log(info: ILogInfo): void {
+export default function logApi(fetcherConfig: FetcherConfig, traceId?: string, success = true, code = '200', message = ''): void {
   const bl = (window as ArmsWindowExtended).__bl;
   
   if (!bl?._conf?.disableHook) {
     return;
   }
   
-  const {
-    api,
-    success,
-    code,
-    message,
-    timeStarted,
-    traceId
-  } = info;
+  const timeStarted = fetcherConfig._timeStarted;
   const duration = timeStarted ? Date.now() - timeStarted : -1;
+  const api = buildUrl({
+    url: fetcherConfig.url,
+    urlBase: fetcherConfig.urlBase,
+    urlCacheBusting: false
+  });
   
   if (bl.api) {
     bl.api(api, success, duration, code, message, timeStarted, traceId);
@@ -53,36 +36,4 @@ function log(info: ILogInfo): void {
       traceId
     ]);
   }
-}
-
-export function logError({
-  api,
-  code = 'UNKNOWN',
-  message = '',
-  timeStarted,
-  traceId
-}: ILogInfoError): void {
-  log({
-    api,
-    timeStarted,
-    traceId,
-    success: false,
-    code,
-    message
-  });
-}
-
-export function logSuccess({
-  api,
-  timeStarted,
-  traceId
-}: ILogInfoSuccess): void {
-  log({
-    api,
-    timeStarted,
-    traceId,
-    success: true,
-    code: '200',
-    message: ''
-  });
 }
