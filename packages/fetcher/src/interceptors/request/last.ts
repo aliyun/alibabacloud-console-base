@@ -19,7 +19,7 @@ export default function requestInterceptorLast(fetcherConfig: IFetcherConfig): P
   
   const headers = fetcherConfig.headers || {};
   
-  if (!headers['Content-Type'] && canHaveBody(fetcherConfig.method)) {
+  if (!headers['Content-Type'] && canHaveBody(fetcherConfig)) {
     headers['Content-Type'] = 'application/x-www-form-urlencoded';
   }
   

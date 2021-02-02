@@ -1,21 +1,4 @@
 import createFetcher from './util/create-fetcher';
-import createError from './util/error/create';
-import createErrorSkipNetwork from './util/error/create-skip-network';
-import buildUrl from './util/build-url';
-import canHaveBody from './util/can-have-body';
-import isCors from './util/is-cors';
-import mergeConfig from './util/merge-config';
-import extractProtocolHost from './util/extract-protocol-host';
-
-const FetcherUtils = {
-  createError,
-  createErrorSkipNetwork,
-  buildUrl,
-  canHaveBody,
-  isCors,
-  mergeConfig,
-  extractProtocolHost
-};
 
 const fetcher = createFetcher();
 
@@ -29,10 +12,16 @@ export {
   ERROR_RESPONSE_STATUS,
   ERROR_RESPONSE_PARSE
 } from './const';
+export { default as createError } from './util/error/create';
+export { default as createErrorSkipNetwork } from './util/error/create-skip-network';
+export { default as buildUrl } from './util/build-url';
+export { default as canHaveBody } from './util/can-have-body';
+export { default as isCors } from './util/is-cors';
+export { default as mergeConfig } from './util/merge-config';
+export { default as extractProtocolHost } from './util/extract-protocol-host';
 
 export {
-  createFetcher,
-  FetcherUtils
+  createFetcher
 };
 
 export type {

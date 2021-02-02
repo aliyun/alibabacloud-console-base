@@ -7,23 +7,19 @@ import extractProtocolHost from './extract-protocol-host';
 /**
  * 测试最终的请求是否跨域
  */
-export default function isCors({
-  url,
-  urlBase
-}: IFetcherConfig): boolean {
+export default function isCors(fetcherConfig: IFetcherConfig): boolean {
+  const protocolHost = extractProtocolHost(fetcherConfig);
+  
+  if (!protocolHost) {
+    return false;
+  }
+  
   const {
     location: {
       protocol,
       host
     }
   } = window;
-  let protocolHost = extractProtocolHost(url);
   
-  if (protocolHost) { // url 是绝对路径，则不会用到 urlBase
-    return (protocolHost[0] && protocolHost[0] !== protocol) || protocolHost[1] !== host;
-  }
-  
-  protocolHost = extractProtocolHost(urlBase);
-  
-  return protocolHost ? (protocolHost[0] && protocolHost[0] !== protocol) || protocolHost[1] !== host : false;
+  return protocolHost[1] !== host || (protocolHost[0] && protocolHost[0] !== protocol);
 }

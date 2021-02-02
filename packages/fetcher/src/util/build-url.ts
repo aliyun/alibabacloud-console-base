@@ -1,8 +1,8 @@
 import {
-  IFetcherBuildUrlOptions
+  IFetcherConfig
 } from '../types';
 
-import extractProtocolHost from './extract-protocol-host';
+import getProtocolAndHost from './get-protocol-and-host';
 import mergeParams from './merge-params';
 import serializeParams from './serialize-params';
 
@@ -16,12 +16,16 @@ import serializeParams from './serialize-params';
  * 
  * 这里，我们会将以上参数混合在一起，并生成一个新 URL
  */
-export default function buildUrl(url: string, {
+export default function buildUrl({
+  method,
+  url = '',
   urlBase,
-  urlCacheBusting,
+  urlCacheBusting = /^(GET|JSONP)$/i.test(method || 'GET'), // 只有 GET 和 JSONP 请求的默认 urlCacheBusting 为 true
   params,
-  serializeOptions
-}: IFetcherBuildUrlOptions): string {
+  paramsSerializeOptions = { // 默认 URL 参数序列化操作，qs 默认 a[0]=b&a[1]=c&a[2]=d，但我们需要 a=0&a=1&a=2
+    indices: false
+  }
+}: IFetcherConfig): string {
   const searchIndex = url.indexOf('?');
   let urlWithoutQuery = url;
   let searchStr = '';
@@ -32,7 +36,7 @@ export default function buildUrl(url: string, {
   }
   
   // 传入了 urlBase 且 url 是相对路径，则需要将 urlBase 拼接在前部
-  if (urlBase && !extractProtocolHost(urlWithoutQuery)) {
+  if (urlBase && !getProtocolAndHost(urlWithoutQuery)) {
     urlWithoutQuery = `${urlBase}${urlWithoutQuery}`;
   }
   
@@ -42,8 +46,8 @@ export default function buildUrl(url: string, {
       _cache_busting_: Date.now()
     } : undefined,
     params
-  ], serializeOptions);
-  const finalQueryStr = serializeParams(finalParams, serializeOptions);
+  ], paramsSerializeOptions);
+  const finalQueryStr = serializeParams(finalParams, paramsSerializeOptions);
   
   return finalQueryStr ? `${urlWithoutQuery}?${finalQueryStr}` : urlWithoutQuery;
 }

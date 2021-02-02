@@ -33,8 +33,10 @@ export default function generateConfigId({
 }: IFetcherConfig): string {
   const parts: string[] = [
     `M_${method}`,
-    `U_${buildUrl(url, {
-      urlBase
+    `U_${buildUrl({ // 不要直接传整个 fetcherConfig
+      url,
+      urlBase,
+      urlCacheBusting: false
     })}`
   ];
   const p = stringifyParam(params);

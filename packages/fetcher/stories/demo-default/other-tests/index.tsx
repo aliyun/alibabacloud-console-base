@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, {
   useState,
   useCallback
@@ -13,7 +12,7 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import {
-  FetcherUtils
+  createErrorSkipNetwork
 } from '../../../src';
 import {
   fetcher1
@@ -59,7 +58,7 @@ function testSkipNetwork(): Promise<unknown> {
     params: paramsInOptions,
     additionalInterceptorsForRequest: [
       [function() {
-        throw FetcherUtils.createErrorSkipNetwork<boolean>(new Promise<boolean>(resolve => window.setTimeout(() => resolve(true), 500)));
+        throw createErrorSkipNetwork<boolean>(new Promise<boolean>(resolve => window.setTimeout(() => resolve(true), 500)));
       }]
     ]
   }, 'https://mocks.alibaba-inc.com/mock/boshit/success', params);
@@ -77,7 +76,7 @@ export default function OtherTests(): JSX.Element {
     <List ordered>
       <span>默认的临时拦截器会在 <em>预设</em> 拦截器（如果没有指定优先级）之后执行，优先级的默认值为 10</span>
       <span>通过指定优先级，如 <code>[1, interceptor]</code> 可以让它在预设拦截器之前执行</span>
-      <span>通过在请求拦截器中使用 <code>FetcherUtils.createErrorSkipNetwork()</code> 可以直接返回结果，不经过网络请求和响应拦截器</span>
+      <span>通过在请求拦截器中使用 <code>createErrorSkipNetwork(promise, fetcherConfig)</code> 可以直接返回结果，不经过网络请求和响应拦截器</span>
     </List>
     <Button onClick={handleTestNormal}>testNormal</Button>
     <Button onClick={handleTestPriority}>testPriority</Button>
