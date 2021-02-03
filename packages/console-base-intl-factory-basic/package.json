@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-intl-factory-basic",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "ConsoleBase Intl Factory Basic, Pure Text, No JSX",
   "license": "MIT",
   "main": "build/cjs/index.js",

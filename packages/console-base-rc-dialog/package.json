@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dialog",
-  "version": "1.0.44",
+  "version": "1.0.45",
   "description": "ConsoleBase 组件 - Dialog",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -47,7 +47,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.1.7",
+    "@alicloud/console-base-intl-factory-basic": "^1.1.8",
     "@alicloud/console-base-rc-button": "^1.0.38",
     "@alicloud/console-base-rc-icon": "^1.0.36",
     "@alicloud/console-base-rc-input": "^1.0.36",
