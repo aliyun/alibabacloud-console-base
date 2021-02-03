@@ -1,7 +1,7 @@
 /**
  * 获取替换插值后的原文案
  */
-export default function formatMessage<O, V = void>(messages: O, id: keyof O, values?: V): string {
+export default function formatMessage<O, V = void>(messages: O, id: keyof O, values?: V, escapeValues?: boolean): string {
   const text = (messages[id] || id || '') as string;
   
   if (!values) {
@@ -14,6 +14,16 @@ export default function formatMessage<O, V = void>(messages: O, id: keyof O, val
       return match.slice(1);
     }
     
-    return values[k] === undefined ? '' : String(values[k]);
+    const value = values[k];
+    
+    if (value === undefined) {
+      return '';
+    }
+    
+    if (typeof value === 'string' && escapeValues) {
+      return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    
+    return String(value);
   });
 }

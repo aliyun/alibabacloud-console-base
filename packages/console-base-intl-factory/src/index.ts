@@ -1,6 +1,6 @@
 export * from '@alicloud/console-base-intl-factory-basic';
 
-export { default } from './util/factory';
+export { default } from './factory';
 
 export type {
   IFnIntl as FnIntl,

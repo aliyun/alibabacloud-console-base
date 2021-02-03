@@ -1,4 +1,4 @@
-export { default } from './util/factory';
+export { default } from './factory';
 
 export type {
   TIntlMessagesMap as IntlMessagesMap,

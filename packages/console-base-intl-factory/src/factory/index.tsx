@@ -40,7 +40,6 @@ export default function factory<O>(messagesMap: IntlMessagesMap<O>, {
   
   // 一般情况下它会返回 string，但如果 key 或 instructionsExtra 中带了指令，则可能返回 JSX.Element
   const intlMessage = function<V = void, T = string>(id: keyof O, values?: V, instructionsExtra?: IIntlInstructions): T {
-    const text = intlBasic(id, values);
     const {
       lines,
       html
@@ -48,6 +47,7 @@ export default function factory<O>(messagesMap: IntlMessagesMap<O>, {
       ...checkIdForInstructions(id as string),
       ...instructionsExtra
     };
+    const text = intlBasic(id, values, html);
     
     if (!html && !lines) { // 没有特殊处理
       return text as unknown as T;

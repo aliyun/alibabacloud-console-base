@@ -10,6 +10,6 @@ export interface IIntlFactoryOptions {
 export type TFnIntlDate = (date: Date | string | number, format?: TDateFormat) => string;
 
 export interface IFnIntl<O> {
-  <V = void>(id: keyof O, values?: V): string;
+  <V = void>(id: keyof O, values?: V, escapeValues?: boolean): string;
   intlDate: TFnIntlDate;
 }
