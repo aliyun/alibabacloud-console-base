@@ -55,7 +55,7 @@ import {
  * // ...
  * ```
  */
-export default function factory(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnFeatureCheck {
+export default function index(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnFeatureCheck {
   return (key: string, arg?: string | IFeatureCheckAttributes): boolean => {
     /*
      * 这是一个 map，长相如下：
