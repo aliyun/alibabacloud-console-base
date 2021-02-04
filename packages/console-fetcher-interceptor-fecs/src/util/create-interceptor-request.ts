@@ -16,7 +16,7 @@ const FECS_COMPATIBLE: boolean = (() => {
   const arr1 = location.hostname.split('.');
   const arr2 = CONF_ENV.FECS_HOST.split('.');
   
-  return arr1[arr1.length - 2] === arr2[arr1.length - 2] && arr1[arr1.length - 1] === arr2[arr1.length - 1];
+  return arr1[arr1.length - 2] === arr2[arr2.length - 2] && arr1[arr1.length - 1] === arr2[arr2.length - 1];
 })();
 
 /**
