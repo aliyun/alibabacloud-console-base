@@ -1,7 +1,7 @@
 @alicloud/console-base-rc-marks
 ===
 
-NEW / HOT / UPDATE / ALPHA / BETA 标记
+NEW / HOT / UPDATE / ALPHA / BETA / 公测中 标记
 
 # Usage
 
