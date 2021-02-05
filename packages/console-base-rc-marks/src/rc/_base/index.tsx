@@ -14,9 +14,9 @@ import getCssOfAlign from '../../util/get-css-of-align';
 
 const ScMarkBase = styled.span`
   display: inline-block;
-  padding: 2px 4px;
+  padding: 0 4px;
   border-radius: 2px;
-  line-height: 1.5;
+  line-height: 1.6;
   font-family: 'PingFang SC', 'Microsoft Yahei', Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
