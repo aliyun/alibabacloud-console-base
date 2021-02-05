@@ -4,11 +4,13 @@ import {
 } from 'styled-components';
 
 import {
-  mixinBgDanger,
   mixinTextWhite,
-  mixinBgWarning,
   mixinTextDanger,
-  mixinBorderDanger
+  mixinBgDanger,
+  mixinBgSuccess,
+  mixinBgWhite,
+  mixinBorderDangerColor,
+  mixinBorderSuccessColor
 } from '@alicloud/console-base-theme';
 
 import {
@@ -16,17 +18,19 @@ import {
 } from '../const';
 
 const CSS_NEW = css`
-  ${mixinBgDanger}
   ${mixinTextWhite}
+  ${mixinBgDanger}
 `;
 const CSS_HOT = CSS_NEW;
 const CSS_UPDATE = css`
-  ${mixinBgWarning}
   ${mixinTextWhite}
+  ${mixinBgSuccess}
+  ${mixinBorderSuccessColor}
 `;
 const CSS_ALPHA = css`
-  ${mixinBorderDanger}
   ${mixinTextDanger}
+  ${mixinBgWhite}
+  ${mixinBorderDangerColor}
 `;
 const CSS_BETA = CSS_ALPHA;
 const CSS_PUBLIC_BETA = CSS_ALPHA;

@@ -12,7 +12,7 @@ import getLabel from '../../util/get-label';
 import getCssOfType from '../../util/get-css-of-type';
 import getCssOfAlign from '../../util/get-css-of-align';
 
-const ScMark = styled.span<IPropsMarkWithType>`
+const ScMarkBase = styled.span`
   display: inline-block;
   padding: 2px 4px;
   border-radius: 2px;
@@ -22,6 +22,9 @@ const ScMark = styled.span<IPropsMarkWithType>`
   font-weight: 600;
   letter-spacing: 1px;
   ${mixinBorderTransparent}
+`;
+
+const ScMark = styled(ScMarkBase)<IPropsMarkWithType>`
   ${props => getCssOfType(props.type)}
   ${props => getCssOfAlign(props.align)}
 `;
