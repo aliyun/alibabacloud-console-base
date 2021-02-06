@@ -9,7 +9,7 @@
 
 * `@typescript-eslint/eslint-plugin`
 * `@typescript-eslint/parser`
-* `babel-eslint`
+* `@babel/eslint-parser`
 * `eslint-config-ali`
 * `eslint-plugin-import`
 * `eslint-plugin-jsx-a11y`
@@ -41,17 +41,19 @@ tnpm i -D eslint @alicloud/eslint-config
 
 ## es6 项目
 
-默认 parser 为 `babel-eslint` 已安装。
+默认 parser 为 `@babel/eslint-parser` 已安装。
 
+```json
 {
   "extends": [
     "@alicloud/eslint-config/es6"
   ]
 }
+```
 
 ## react 项目
 
-默认 parser 为 `babel-eslint` 已安装。
+默认 parser 为 `@babel/eslint-parser` 已安装。
 
 ```json
 {
