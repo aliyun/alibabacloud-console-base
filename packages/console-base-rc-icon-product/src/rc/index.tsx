@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
   GlyphBase,
-  glyph
+  injectIconFont
 } from '@alicloud/console-base-theme';
 
 import {
@@ -18,10 +18,8 @@ interface IPropsScI {
   code: string;
 }
 
-const fontFamily = glyph.injectGlobalFontFace({ // dataUrl 太大 50K+ 就不放了
-  projectId: '1323992',
-  hash: 'rs1va4gaft9'
-});
+// dataUrl 太大 50K+ 就不放了
+const fontFamily = injectIconFont('1323992', 'rs1va4gaft9');
 
 const ScI = styled(GlyphBase)<IPropsScI>`
   font-family: ${fontFamily} !important;

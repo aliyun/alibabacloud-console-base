@@ -39,7 +39,6 @@ export enum EIconType {
   clickhouse = 'e67f', // 云数据库 ClickHouse
   cloudap = 'e7d7', // 云 AP
   cloudauth = 'e831', // 实人认证
-  clouddesktop = 'e7d2', // 云桌面
   cloudmarketing = 'e79e', // 云营销解决方案
   cloudphoto = 'e79a', // 智能云相册
   cloudshell = 'e8ec', // CloudShell
@@ -92,6 +91,7 @@ export enum EIconType {
   ecs = 'e606', // 云服务器
   ecsgpu = 'e707', // 阿里云图形工作站
   edas = 'e631', // 企业级分布式应用服务 EDAS
+  eds = 'e7d2', // 弹性云桌面
   ehpc = 'e7b1', // 弹性高性能计算
   elasticsearch = 'e80f', // 阿里云 Elasticsearch
   emas = 'e607', // 移动研发平台
