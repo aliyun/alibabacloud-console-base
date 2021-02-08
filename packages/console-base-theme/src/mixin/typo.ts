@@ -3,6 +3,9 @@ import {
 } from 'styled-components';
 
 import {
+  IPropsEllipsisLines
+} from '../types';
+import {
   TYPO,
   COLOR
 } from '../var';
@@ -21,11 +24,6 @@ import {
   mixinBorderTertiary,
   mixinBorderTertiaryColor
 } from './border';
-
-interface IPropsEllipsisLines {
-  lines: number;
-  lineHeight: number;
-}
 
 export const mixinTypoFontFamilyBase = css`
   font-family: ${TYPO.FONT_FAMILY_BASE};
