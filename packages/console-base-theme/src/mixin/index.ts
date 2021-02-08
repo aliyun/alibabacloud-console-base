@@ -5,6 +5,7 @@
 export * from './text';
 export * from './bg';
 export * from './border';
+export * from './border-radius';
 export * from './shadow';
 export * from './typo';
 export * from './input';

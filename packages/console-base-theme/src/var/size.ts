@@ -74,5 +74,14 @@ export default {
   
   // dialog 内边距
   PADDING_X_DIALOG: 24,
-  PADDING_X_DIALOG_SLIDE: 24
+  PADDING_X_DIALOG_SLIDE: 24,
+  
+  /* *************************
+   * ---------- 圆角 ----------
+   ************************* */
+  BORDER_RADIUS_XS: 2,
+  BORDER_RADIUS_S: 4,
+  BORDER_RADIUS_M: 8,
+  BORDER_RADIUS_L: 12,
+  BORDER_RADIUS_XL: 16
 };

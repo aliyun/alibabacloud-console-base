@@ -6,7 +6,7 @@ interface IParams {
   keys: string[];
   indent?: number; // 缩进层级
   before?: string;
-  after?: string;
+  unit?: string;
 }
 
 const INDENT = '  ';
@@ -18,14 +18,14 @@ export default function buildCssCode({
   attr,
   keys,
   before = '',
-  after = '',
+  unit = '',
   indent = 1
 }: IParams): string {
-  const varInterpolation = buildInterpolation(...keys);
+  const varInterpolation = buildInterpolation(keys, unit);
   const leftPart = `${INDENT.repeat(indent)}${attr}: ${before}`;
   
   return [
-    `${leftPart}${varInterpolation}${after};`,
-    `${leftPart}var(${buildCssVarName(...keys)}, ${varInterpolation})${after};`
+    `${leftPart}${varInterpolation};`,
+    `${leftPart}var(${buildCssVarName(...keys)}, ${varInterpolation});`
   ].join('\n');
 }

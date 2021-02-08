@@ -10,6 +10,7 @@ import GeneratorLess from './generator-less';
 import GeneratorMixinText from './generator-mixin-text';
 import GeneratorMixinBg from './generator-mixin-bg';
 import GeneratorMixinBorder from './generator-mixin-border';
+import GeneratorMixinBorderRadius from './generator-mixin-border-radius';
 import GeneratorMixinShadow from './generator-mixin-shadow';
 import GeneratorMixinLink from './generator-mixin-link';
 import GeneratorMixinInput from './generator-mixin-input';
@@ -24,6 +25,7 @@ export default function DemoDefault(): JSX.Element {
     <GeneratorMixinText />
     <GeneratorMixinBg />
     <GeneratorMixinBorder />
+    <GeneratorMixinBorderRadius />
     <GeneratorMixinShadow />
     <GeneratorMixinLink />
     <GeneratorMixinInput />
@@ -37,6 +39,7 @@ export {
   GeneratorMixinText,
   GeneratorMixinBg,
   GeneratorMixinBorder,
+  GeneratorMixinBorderRadius,
   GeneratorMixinShadow,
   GeneratorMixinLink,
   GeneratorMixinInput,

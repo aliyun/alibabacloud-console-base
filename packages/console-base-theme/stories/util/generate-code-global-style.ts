@@ -2,7 +2,8 @@ import _forEach from 'lodash/forEach';
 
 import {
   COLOR,
-  TYPO
+  TYPO,
+  SIZE
 } from '../../src';
 import {
   ICodeGenerator
@@ -33,8 +34,14 @@ export default function generateCodeGlobalStyle(): string {
     TYPO
   }, (variables, upperWhatKey: string) => {
     _forEach(variables, (_v: string, variableKey: string): void => {
-      pushCode(generator, `${buildCssVarName(upperWhatKey, variableKey)}: ${buildInterpolation(upperWhatKey, variableKey)};`);
+      pushCode(generator, `${buildCssVarName(upperWhatKey, variableKey)}: ${buildInterpolation([upperWhatKey, variableKey])};`);
     });
+  });
+  
+  _forEach(SIZE, (_v, key: string) => {
+    if (/^BORDER_RADIUS_/.test(key)) { // TODO 所有 size？
+      pushCode(generator, `${buildCssVarName('SIZE', key)}: ${buildInterpolation(['SIZE', key], 'px')};`);
+    }
   });
   
   return toCode(generator);

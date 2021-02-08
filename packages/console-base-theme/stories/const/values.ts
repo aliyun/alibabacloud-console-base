@@ -9,6 +9,11 @@ import {
   COLOR
 } from '../var';
 `;
+const CODE_FRAGMENT_IMPORT_CSS_AND_SIZE = `${CODE_FRAGMENT_IMPORT_CSS}
+import {
+  SIZE
+} from '../var';
+`;
 
 export const CODE_BEGIN_GLOBAL_STYLE = `import {
   GlobalStyleComponent,
@@ -17,17 +22,20 @@ export const CODE_BEGIN_GLOBAL_STYLE = `import {
 
 import {
   ThemeColors,
-  ThemeTypo
+  ThemeTypo,
+  ThemeSize
 } from '../var';
 
 interface ITheme {
   COLOR: ThemeColors;
   TYPO: ThemeTypo;
+  SIZE: ThemeSize;
 }
 
 export default function createThemeGlobalStyle({
   COLOR,
-  TYPO
+  TYPO,
+  SIZE
 }: ITheme): GlobalStyleComponent<null, any> { // eslint-disable-line @typescript-eslint/no-explicit-any
   return createGlobalStyle\`
     :root {`;
@@ -35,11 +43,12 @@ export const CODE_END_GLOBAL_STYLE = `    }
   \`;
 }`;
 export const CODE_INDENT_GLOBAL_STYLE = 3;
-export const CODE_BEGIN_TS_TEXT = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
-export const CODE_BEGIN_TS_BG = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
-export const CODE_BEGIN_TS_BORDER = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
+export const CODE_BEGIN_TEXT = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
+export const CODE_BEGIN_BG = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
+export const CODE_BEGIN_BORDER = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
+export const CODE_BEGIN_ORDER_RADIUS = CODE_FRAGMENT_IMPORT_CSS_AND_SIZE;
 export const CODE_BEGIN_SHADOW = CODE_FRAGMENT_IMPORT_CSS_AND_COLOR;
-export const CODE_BEGIN_TS_LINK = `${CODE_FRAGMENT_IMPORT_CSS_AND_COLOR}
+export const CODE_BEGIN_LINK = `${CODE_FRAGMENT_IMPORT_CSS_AND_COLOR}
 const linkCommon = css\`
   transition: all ease-in-out 0.3s;
   

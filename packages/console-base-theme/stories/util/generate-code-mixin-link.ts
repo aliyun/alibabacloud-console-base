@@ -2,7 +2,7 @@ import {
   ICodeGenerator
 } from '../types';
 import {
-  CODE_BEGIN_TS_LINK
+  CODE_BEGIN_LINK
 } from '../const';
 
 import pushCode from './push-code';
@@ -24,7 +24,7 @@ function buildLinkStyle(theme: string, state: string, indent?: number): string {
 // 生成 mixin/link.ts
 export default function generateCodeMixinLink(): string {
   const generator: ICodeGenerator = {
-    begin: CODE_BEGIN_TS_LINK
+    begin: CODE_BEGIN_LINK
   };
   
   pushCode(generator, `export const mixinLinkDisabled = css\`

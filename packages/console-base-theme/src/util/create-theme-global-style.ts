@@ -5,17 +5,20 @@ import {
 
 import {
   ThemeColors,
-  ThemeTypo
+  ThemeTypo,
+  ThemeSize
 } from '../var';
 
 interface ITheme {
   COLOR: ThemeColors;
   TYPO: ThemeTypo;
+  SIZE: ThemeSize;
 }
 
 export default function createThemeGlobalStyle({
   COLOR,
-  TYPO
+  TYPO,
+  SIZE
 }: ITheme): GlobalStyleComponent<null, any> { // eslint-disable-line @typescript-eslint/no-explicit-any
   return createGlobalStyle`
     :root {
@@ -286,6 +289,11 @@ export default function createThemeGlobalStyle({
       --cb-color-button-text-brand-secondary-border-disabled: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_DISABLED};
       --cb-typo-font-family-base: ${TYPO.FONT_FAMILY_BASE};
       --cb-typo-font-family-monospace: ${TYPO.FONT_FAMILY_MONOSPACE};
+      --cb-size-border-radius-xs: ${SIZE.BORDER_RADIUS_XS}px;
+      --cb-size-border-radius-s: ${SIZE.BORDER_RADIUS_S}px;
+      --cb-size-border-radius-m: ${SIZE.BORDER_RADIUS_M}px;
+      --cb-size-border-radius-l: ${SIZE.BORDER_RADIUS_L}px;
+      --cb-size-border-radius-xl: ${SIZE.BORDER_RADIUS_XL}px;
     }
   `;
 }

@@ -7,7 +7,7 @@ import {
   ICodeGenerator
 } from '../types';
 import {
-  CODE_BEGIN_TS_BG
+  CODE_BEGIN_BG
 } from '../const';
 
 import pushCode from './push-code';
@@ -18,7 +18,7 @@ import buildCssCode from './build-css-code';
 // 生成 mixin/bg.ts 的代码
 export default function generateCodeMixinBg(): string {
   const generator: ICodeGenerator = {
-    begin: CODE_BEGIN_TS_BG
+    begin: CODE_BEGIN_BG
   };
   
   _forEach(COLOR, (_v: string, variableKey: string): void => {

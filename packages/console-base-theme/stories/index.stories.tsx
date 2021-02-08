@@ -14,16 +14,18 @@ import DemoDefault, {
   GeneratorMixinText,
   GeneratorMixinBg,
   GeneratorMixinBorder,
+  GeneratorMixinBorderRadius,
   GeneratorMixinShadow,
   GeneratorMixinLink,
   GeneratorMixinInput,
   GeneratorMixinButton
 } from './demo-default';
 import DemoMixins, {
-  MixinBaseText,
-  MixinBaseBg,
-  MixinBaseBorder,
-  MixinBaseShadow,
+  MixinText,
+  MixinBg,
+  MixinBorder,
+  MixinBorderRadius,
+  MixinShadow,
   MixinTypo,
   MixinLink,
   MixinInput,
@@ -39,15 +41,17 @@ storiesOf(pkgInfo.name, module)
     .add('gen-mixin-text', () => <GeneratorMixinText />)
     .add('gen-mixin-bg', () => <GeneratorMixinBg />)
     .add('gen-mixin-border', () => <GeneratorMixinBorder />)
+    .add('gen-mixin-border-radius', () => <GeneratorMixinBorderRadius />)
     .add('gen-mixin-shadow', () => <GeneratorMixinShadow />)
     .add('gen-mixin-link', () => <GeneratorMixinLink />)
     .add('gen-mixin-input', () => <GeneratorMixinInput />)
     .add('gen-mixin-button', () => <GeneratorMixinButton />)
     .add('mixins', () => <DemoMixins />)
-    .add('mixin-base-text', () => <MixinBaseText />)
-    .add('mixin-base-bg', () => <MixinBaseBg />)
-    .add('mixin-base-border', () => <MixinBaseBorder />)
-    .add('mixin-base-shadow', () => <MixinBaseShadow />)
+    .add('mixin-text', () => <MixinText />)
+    .add('mixin-bg', () => <MixinBg />)
+    .add('mixin-border', () => <MixinBorder />)
+    .add('mixin-border-radius', () => <MixinBorderRadius />)
+    .add('mixin-shadow', () => <MixinShadow />)
     .add('mixin-typo', () => <MixinTypo />)
     .add('mixin-link', () => <MixinLink />)
     .add('mixin-input', () => <MixinInput />)

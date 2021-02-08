@@ -9,7 +9,7 @@ import {
 
 import MixinElements from '../../rc/mixin-elements';
 
-const REG = /^mixinBg(\w+)$/;
+const REG = /^mixinBorderRadius(\w+)$/;
 
 const ScBricks = styled.div`
   display: grid;
@@ -19,12 +19,14 @@ const ScBricks = styled.div`
 
 const cssExtra = css`
   padding: 8px;
+  border: 1px solid #999;
+  background-color: rgba(128, 0, 240, 0.01);
   color: #666;
 `;
 
-export default function MixinBaseBg(): JSX.Element {
+export default function MixinBorderRadius(): JSX.Element {
   return <>
-    <H1>mixins for bg</H1>
+    <H1>mixins for border-radius</H1>
     <ScBricks>
       <MixinElements reg={REG} extra={cssExtra} />
     </ScBricks>

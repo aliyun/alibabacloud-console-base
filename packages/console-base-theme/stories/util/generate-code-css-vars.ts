@@ -3,7 +3,7 @@ import _forEach from 'lodash/forEach';
 import {
   COLOR,
   TYPO,
-  SHADOW
+  SIZE
 } from '../../src';
 import {
   ICodeGenerator
@@ -22,12 +22,18 @@ export default function generateCodeCssVars(): string {
     indent: 1
   };
   
+  // TODO shadow 还没有 export
   _forEach({
     COLOR,
-    TYPO,
-    SHADOW
-  }, (variables: Record<string, string>, upperWhatKey: string) => {
+    TYPO
+  }, (variables, upperWhatKey: string) => {
     _forEach(variables, (realValue: string, variableKey: string): void => pushCode(generator, `${buildCssVarName(upperWhatKey, variableKey)}: ${realValue};`));
+  });
+  
+  _forEach(SIZE, (v, key: string) => {
+    if (/^BORDER_RADIUS_/.test(key)) {
+      pushCode(generator, `${buildCssVarName('SIZE', key)}: ${v}px;`);
+    }
   });
   
   return toCode(generator);

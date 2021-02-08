@@ -6,10 +6,11 @@ import {
 
 import ThemeSwitcher from '../rc/theme-switcher';
 
-import MixinBaseText from './mixin-base-text';
-import MixinBaseBg from './mixin-base-bg';
-import MixinBaseBorder from './mixin-base-border';
-import MixinBaseShadow from './mixin-base-shadow';
+import MixinText from './mixin-text';
+import MixinBg from './mixin-bg';
+import MixinBorder from './mixin-border';
+import MixinBorderRadius from './mixin-border-radius';
+import MixinShadow from './mixin-shadow';
 import MixinTypo from './mixin-typo';
 import MixinLink from './mixin-link';
 import MixinInput from './mixin-input';
@@ -19,10 +20,11 @@ export default function DemoMixins(): JSX.Element {
   return <>
     <H1>mixins tests</H1>
     <ThemeSwitcher />
-    <MixinBaseText />
-    <MixinBaseBg />
-    <MixinBaseBorder />
-    <MixinBaseShadow />
+    <MixinText />
+    <MixinBg />
+    <MixinBorder />
+    <MixinBorderRadius />
+    <MixinShadow />
     <MixinTypo />
     <MixinLink />
     <MixinInput />
@@ -31,10 +33,11 @@ export default function DemoMixins(): JSX.Element {
 }
 
 export {
-  MixinBaseText,
-  MixinBaseBg,
-  MixinBaseBorder,
-  MixinBaseShadow,
+  MixinText,
+  MixinBg,
+  MixinBorder,
+  MixinBorderRadius,
+  MixinShadow,
   MixinTypo,
   MixinLink,
   MixinInput,

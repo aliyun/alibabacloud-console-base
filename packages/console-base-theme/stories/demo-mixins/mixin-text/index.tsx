@@ -8,7 +8,7 @@ import MixinElements from '../../rc/mixin-elements';
 
 const REG = /^mixinText(\w+)$/;
 
-export default function MixinBaseText(): JSX.Element {
+export default function MixinText(): JSX.Element {
   return <>
     <H1>mixins for text</H1>
     <MixinElements reg={REG} />

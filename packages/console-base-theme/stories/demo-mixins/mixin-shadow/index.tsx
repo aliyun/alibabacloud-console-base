@@ -23,7 +23,7 @@ const cssExtra = css`
   color: #666;
 `;
 
-export default function MixinBaseShadow(): JSX.Element {
+export default function MixinShadow(): JSX.Element {
   return <>
     <H1>mixins for shadow</H1>
     <ScBricks>
