@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme-color",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "控制台主题颜色 - 仅颜色",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.5",
+    "@alicloud/demo-rc-elements": "^1.1.6",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.14.2",

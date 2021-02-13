@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-flex",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "ConsoleBase 组件 - Flex",
   "license": "MIT",
   "main": "build/cjs/index.js",
