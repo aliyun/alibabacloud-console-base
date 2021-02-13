@@ -9,12 +9,12 @@
     "@alicloud/stylelint-config": "^1.0.7",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "lerna": "^3.22.1",
     "npm-check-updates": "^11.1.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "stylelint": "^13.9.0"
+    "stylelint": "^13.10.0"
   },
   "scripts": {
     "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
