@@ -6,7 +6,6 @@ import styled, {
 import {
   mixinTextTertiary,
   mixinBorderSecondaryBottom,
-  mixinTypoStrong,
   mixinTypoEm,
   mixinTypoCode,
   mixinTypoKbd
@@ -20,10 +19,10 @@ import parseLines from '../util/parse-lines';
 
 import Lines from './lines';
 
-// inline 元素样式
+// inline 元素样式，strong 只加粗不加色
 const cssInlineElements = css`
   strong {
-    ${mixinTypoStrong}
+    font-weight: 600;
   }
   
   em {
@@ -45,6 +44,7 @@ const cssInlineElements = css`
 `;
 
 // block 元素样式
+// p 的 min-height: 1px 是为了能让空行占高
 const cssBlockElements = css`
   hr {
     margin: 16px 0;
@@ -82,6 +82,10 @@ const cssBlockElements = css`
         margin-top: 0;
       }
     }
+  }
+  
+  p {
+    min-height: 1px;
   }
   
   ul {
