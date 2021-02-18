@@ -1,5 +1,6 @@
 import {
-  TSelector
+  TSelector,
+  TParent
 } from '../types';
 
 import find from './find';
@@ -7,8 +8,8 @@ import find from './find';
 /**
  * 删除 DOM
  */
-export default function remove(selector: TSelector): void {
-  find(selector).forEach(v => {
+export default function remove(selector: TSelector, parent?: TParent): void {
+  find(selector, parent).forEach(v => {
     if (v.parentNode) {
       v.parentNode.removeChild(v);
     }

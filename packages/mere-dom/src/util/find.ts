@@ -1,11 +1,12 @@
 import {
-  TSelector
+  TSelector,
+  TParent
 } from '../types';
 
 /**
  * 类似 jquery 的 find，只是返回的是数组
  */
-export default function find<E extends Element = Element>(selector: TSelector<E>, parent: Document | Element = document): E[] {
+export default function find<E extends Element = Element>(selector: TSelector<E>, parent: TParent = document): E[] {
   const arr: E[] = [];
   
   if (!selector) {
