@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-intl-factory-basic",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "ConsoleBase Intl Factory Basic, Pure Text, No JSX",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.7",
+    "@alicloud/demo-rc-elements": "^1.1.8",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.14.2",
@@ -37,7 +37,7 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-locale": "^1.1.18",
+    "@alicloud/console-base-conf-locale": "^1.1.19",
     "lodash": "^4.17.20"
   },
   "scripts": {
