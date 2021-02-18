@@ -1,4 +1,5 @@
 import {
+  TParent,
   TSelector
 } from '../types';
 
@@ -36,8 +37,8 @@ const doScroll = (() => {
  * 
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
  */
-export default function scrollIntoView(selector: TSelector): void {
-  const [el] = find(selector);
+export default function scrollIntoView(selector: TSelector, parent?: TParent): void {
+  const [el] = find(selector, parent);
   
   if (!el) {
     return;
