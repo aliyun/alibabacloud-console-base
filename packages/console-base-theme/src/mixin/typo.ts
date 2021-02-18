@@ -104,9 +104,17 @@ export const mixinTypoEllipsis = css`
 
 export const mixinTypoEllipsisLines = css<IPropsEllipsisLines>`
   display: -webkit-box;
-  min-height: ${props => props.lineHeight * props.lines}px;
   line-height: ${props => props.lineHeight}px;
   overflow: hidden;
   -webkit-line-clamp: ${props => props.lines};
   -webkit-box-orient: vertical;
+  ${props => {
+    const h = props.lineHeight * props.lines;
+    
+    return props.withMaxHeight ? css`
+      max-height: ${h}px;
+    ` : css`
+      height: ${h}px;
+    `;
+  }}
 `;
