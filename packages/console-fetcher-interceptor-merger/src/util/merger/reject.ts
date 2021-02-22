@@ -1,15 +1,15 @@
-import mergerGet from './get';
-import mergerRemove from './remove';
+import get from './get';
+import remove from './remove';
 
-export default function mergerReject(key: string, err: Error): void {
-  const queue = mergerGet(key);
+export default function reject(key: string, err: Error): void {
+  const queue = get(key);
   
   if (queue) {
-    mergerRemove(key);
+    remove(key);
     
-    // setTimeout 以第 0 个请求最先 reject
+    // setTimeout 以第 0 个请求最先
     setTimeout(() => queue?.forEach(({
-      reject
-    }) => reject(err)), 0);
+      reject: promiseReject
+    }) => promiseReject(err)), 0);
   }
 }

@@ -1,15 +1,15 @@
-import cacheGetStorage from './get-storage';
-import cacheGet from './get';
+import storage from './_storage';
+import get from './get';
 
-export default function cacheRemove(key: string): void {
-  const cache = cacheGet(key);
+export default function remove(key: string): void {
+  const cache = get(key);
   
   if (!cache) {
     return;
   }
   
-  const cacheStorage = cacheGetStorage();
+  const o = storage();
   
-  cacheStorage[key] = null;
-  delete cacheStorage[key];
+  o[key] = null;
+  delete o[key];
 }

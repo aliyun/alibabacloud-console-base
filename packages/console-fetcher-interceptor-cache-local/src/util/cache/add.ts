@@ -2,20 +2,20 @@ import {
   ICache
 } from '../../types';
 
-import cacheGetStorage from './get-storage';
+import storage from './_storage';
 
 /**
  * 添加一个新的缓存，此时没有数据，因此 time、ttl 没有意义
  */
-export default function cacheAdd(key: string): ICache {
-  const cacheStorage = cacheGetStorage();
+export default function add(key: string): ICache {
+  const o = storage();
   const cache: ICache = {
     time: 0,
     ttl: -1,
     queue: []
   };
   
-  cacheStorage[key] = cache;
+  o[key] = cache;
   
   return cache;
 }

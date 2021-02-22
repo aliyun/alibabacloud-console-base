@@ -1,15 +1,15 @@
-import mergerGetStorage from './get-storage';
-import mergerGet from './get';
+import storage from './_storage';
+import get from './get';
 
-export default function mergerRemove(key: string): void {
-  const queue = mergerGet(key);
+export default function remove(key: string): void {
+  const queue = get(key);
   
   if (!queue) {
     return;
   }
   
-  const mergerStorage = mergerGetStorage();
+  const o = storage();
   
-  mergerStorage[key] = null;
-  delete mergerStorage[key];
+  o[key] = null;
+  delete o[key];
 }

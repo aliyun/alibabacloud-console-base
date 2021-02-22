@@ -8,14 +8,14 @@ interface IWin extends Window {
   [WINDOW_CACHE_STORAGE]?: Record<string, ICache>;
 }
 
-export default function cacheGetStorage(): Record<string, ICache | null> {
+export default function storage(): Record<string, ICache | null> {
   const win = window as IWin;
-  let cacheStorage = win[WINDOW_CACHE_STORAGE];
+  let o = win[WINDOW_CACHE_STORAGE];
   
-  if (!cacheStorage) {
-    cacheStorage = {};
-    win[WINDOW_CACHE_STORAGE] = cacheStorage;
+  if (!o) {
+    o = {};
+    win[WINDOW_CACHE_STORAGE] = o;
   }
   
-  return cacheStorage;
+  return o;
 }

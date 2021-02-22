@@ -1,8 +1,8 @@
-import cacheGet from './get';
-import cacheRemove from './remove';
+import get from './get';
+import remove from './remove';
 
-export default function cacheReject(key: string, err: Error): void {
-  const cache = cacheGet(key);
+export default function reject(key: string, err: Error): void {
+  const cache = get(key);
   
   if (!cache) {
     return;
@@ -12,10 +12,10 @@ export default function cacheReject(key: string, err: Error): void {
     queue
   } = cache;
   
-  cacheRemove(key);
+  remove(key);
   
   // setTimeout 以第 0 个请求最先 reject
   setTimeout(() => queue?.forEach(({
-    reject
-  }) => reject(err)), 0);
+    reject: promiseReject
+  }) => promiseReject(err)), 0);
 }

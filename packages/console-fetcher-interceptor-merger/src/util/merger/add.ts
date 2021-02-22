@@ -1,7 +1,7 @@
-import cacheGetStorage from './get-storage';
+import storage from './_storage';
 
-export default function cacheAdd(key: string): void {
-  const cacheStorage = cacheGetStorage();
+export default function add(key: string): void {
+  const o = storage();
   
-  cacheStorage[key] = [];
+  o[key] = [];
 }

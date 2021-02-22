@@ -9,14 +9,14 @@ interface IWin extends Window {
   [WINDOW_MERGER_STORAGE]?: Record<string, IMergerQueueItem[]>;
 }
 
-export default function mergerGetStorage(): Record<string, IMergerQueueItem[]> {
+export default function storage(): Record<string, IMergerQueueItem[]> {
   const win = window as IWin;
-  let cacheStorage = win[WINDOW_MERGER_STORAGE];
+  let o = win[WINDOW_MERGER_STORAGE];
   
-  if (!cacheStorage) {
-    cacheStorage = {};
-    win[WINDOW_MERGER_STORAGE] = cacheStorage;
+  if (!o) {
+    o = {};
+    win[WINDOW_MERGER_STORAGE] = o;
   }
   
-  return cacheStorage;
+  return o;
 }

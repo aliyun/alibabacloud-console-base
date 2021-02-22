@@ -2,8 +2,8 @@ import {
   ICache
 } from '../../types';
 
-import getStorage from './get-storage';
+import storage from './_storage';
 
-export default function cacheGet(key: string): ICache | null {
-  return getStorage()[key] || null;
+export default function get(key: string): ICache | null {
+  return storage()[key] || null;
 }

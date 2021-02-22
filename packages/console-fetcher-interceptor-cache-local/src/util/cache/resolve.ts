@@ -1,9 +1,9 @@
 import _cloneDeep from 'lodash/cloneDeep';
 
-import cacheGet from './get';
+import get from './get';
 
-export default function cacheResolve(key: string, data: unknown, ttl: number): void {
-  const cache = cacheGet(key);
+export default function resolve(key: string, data: unknown, ttl: number): void {
+  const cache = get(key);
   
   if (!cache) {
     return;
@@ -20,6 +20,6 @@ export default function cacheResolve(key: string, data: unknown, ttl: number): v
   
   // setTimeout 以第 0 个请求最先 resolve
   setTimeout(() => queue?.forEach(({
-    resolve
-  }) => resolve(_cloneDeep(data))), 0);
+    resolve: promiseResolve
+  }) => promiseResolve(_cloneDeep(data))), 0);
 }

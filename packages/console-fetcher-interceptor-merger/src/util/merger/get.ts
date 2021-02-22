@@ -2,8 +2,8 @@ import {
   IMergerQueueItem
 } from '../../types';
 
-import getStorage from './get-storage';
+import storage from './_storage';
 
-export default function cacheGet(key: string): IMergerQueueItem[] | null {
-  return getStorage()[key] || null;
+export default function get(key: string): IMergerQueueItem[] | null {
+  return storage()[key] || null;
 }

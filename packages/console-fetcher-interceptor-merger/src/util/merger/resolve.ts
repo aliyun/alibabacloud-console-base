@@ -1,17 +1,17 @@
 import _cloneDeep from 'lodash/cloneDeep';
 
-import mergerGet from './get';
-import mergerRemove from './remove';
+import get from './get';
+import remove from './remove';
 
-export default function mergerResolve(key: string, data: unknown): void {
-  const queue = mergerGet(key);
+export default function resolve(key: string, data: unknown): void {
+  const queue = get(key);
   
   if (queue) {
-    mergerRemove(key);
+    remove(key);
     
     // setTimeout 以第 0 个请求最先 resolve
     setTimeout(() => queue.forEach(({
-      resolve
-    }) => resolve(_cloneDeep(data))), 0);
+      resolve: promiseResolve
+    }) => promiseResolve(_cloneDeep(data))), 0);
   }
 }
