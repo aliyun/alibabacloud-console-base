@@ -44,7 +44,7 @@
     "@alicloud/fetcher-fetch": "^1.0.30",
     "@alicloud/fetcher-jsonp": "^1.0.30",
     "@alicloud/json-stringify-ordered": "^1.0.6",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "qs": "^6.9.6"
   },
   "scripts": {

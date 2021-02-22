@@ -47,7 +47,7 @@
     "@alicloud/console-base-rc-icon": "^1.0.46",
     "@alicloud/console-base-theme": "^1.1.8",
     "@alicloud/mere-dom": "^1.0.14",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "start": "breezr start-storybook",

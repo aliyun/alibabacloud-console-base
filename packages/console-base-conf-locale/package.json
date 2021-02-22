@@ -38,7 +38,7 @@
   "dependencies": {
     "@alicloud/cookie": "^1.0.29",
     "@alicloud/fetcher-jsonp": "^1.0.30",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "start": "breezr start-storybook",
