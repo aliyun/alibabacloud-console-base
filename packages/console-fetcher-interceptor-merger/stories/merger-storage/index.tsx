@@ -9,17 +9,17 @@ import {
   Button
 } from '@alicloud/demo-rc-elements';
 
-import mergerGetStorage from '../../src/util/merger/get-storage';
-import mergerRemove from '../../src/util/merger/remove';
+import storage from '../../src/util/merger/_storage';
+import remove from '../../src/util/merger/remove';
 
 export default function CacheStorage(): JSX.Element {
-  const [stateCacheStorage, setStateCacheStorage] = useState<Record<string, unknown>>(mergerGetStorage());
+  const [stateCacheStorage, setStateCacheStorage] = useState<Record<string, unknown>>(storage());
   
   const handleRefreshCacheStorage = useCallback(() => setStateCacheStorage({
-    ...mergerGetStorage()
+    ...storage()
   }), []);
   const handleCleanup = useCallback(() => {
-    Object.keys(mergerGetStorage()).forEach(mergerRemove);
+    Object.keys(storage()).forEach(remove);
     handleRefreshCacheStorage();
   }, [handleRefreshCacheStorage]);
   

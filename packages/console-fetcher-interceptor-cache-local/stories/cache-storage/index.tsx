@@ -9,17 +9,17 @@ import {
   Button
 } from '@alicloud/demo-rc-elements';
 
-import cacheGetStorage from '../../src/util/cache/get-storage';
-import cacheRemove from '../../src/util/cache/remove';
+import storage from '../../src/util/cache/_storage';
+import remove from '../../src/util/cache/remove';
 
 export default function CacheStorage(): JSX.Element {
-  const [stateCacheStorage, setStateCacheStorage] = useState<Record<string, unknown>>(cacheGetStorage());
+  const [stateCacheStorage, setStateCacheStorage] = useState<Record<string, unknown>>(storage());
   
   const handleRefreshCacheStorage = useCallback(() => setStateCacheStorage({
-    ...cacheGetStorage()
+    ...storage()
   }), []);
   const handleCleanup = useCallback(() => {
-    Object.keys(cacheGetStorage()).forEach(cacheRemove);
+    Object.keys(storage()).forEach(remove);
     handleRefreshCacheStorage();
   }, [handleRefreshCacheStorage]);
   
