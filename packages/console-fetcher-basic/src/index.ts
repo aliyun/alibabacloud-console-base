@@ -27,5 +27,6 @@ export type {
   IFnConsoleApi as FetcherFnOpenApi,
   IFnConsoleApi as FetcherFnInnerApi,
   IFnConsoleApi as FetcherFnContainerApi,
-  IFnConsoleApiMulti as FetcherFnOpenApiMulti
+  IFnConsoleApiMulti as FetcherFnOpenApiMulti,
+  IConsoleApiMultiAction as FetcherOpenApiMultiAction
 } from './types';

@@ -22,8 +22,6 @@ import {
   FetcherInterceptorConfig as FetcherInterceptorConfigSls
 } from '@alicloud/console-fetcher-interceptor-sls';
 
-export type TApiMultiResult = Record<string, unknown>;
-
 export interface IConsoleFetcherConfig extends FetcherConfig, FetcherConfigExtraBiz, FetcherConfigExtraCacheLocal, FetcherConfigExtraMerger, FetcherConfigExtraSecurity {}
 
 export interface IConsoleFetcherInterceptorOptions {
@@ -36,24 +34,7 @@ export interface IConsoleApiOptions<R = unknown> extends FetcherOptionsForQuickP
   roa?: R; // ROA 形式的接口需要
 }
 
-/**
- * call(Open/Inner/Container)API 的共同类型
- */
-export interface IFnConsoleApi {
-  <T = void, P = void, R = void>(product: string, action: string, param?: P, options?: IConsoleApiOptions<R>): Promise<T>;
-}
-
-export interface IFnConsoleApiMulti {
-  (product: string, actions: IApiMultiAction[]): Promise<TApiMultiResult>;
-}
-
-export interface IApiMultiAction {
-  action: string;
-  params?: Record<string, unknown>;
-  customRequestKey?: string;
-}
-
-export interface IApiBody {
+export interface IConsoleApiBody {
   product: string;
   action: string;
   params?: string;
@@ -61,9 +42,28 @@ export interface IApiBody {
   content?: string;
 }
 
-export interface IApiBodyMulti {
+/**
+ * call(Open/Inner/Container)API 的共同类型
+ */
+export interface IFnConsoleApi {
+  <T = void, P = void, R = void>(product: string, action: string, param?: P, options?: IConsoleApiOptions<R>): Promise<T>;
+}
+
+export type TConsoleApiMultiResult = Record<string, unknown>;
+
+export interface IConsoleApiMultiAction {
+  action: string;
+  params?: Record<string, unknown>;
+  customRequestKey?: string;
+}
+
+export interface IConsoleApiBodyMulti {
   product: string;
   actions: string;
+}
+
+export interface IFnConsoleApiMulti {
+  (product: string, actions: IConsoleApiMultiAction[]): Promise<TConsoleApiMultiResult>;
 }
 
 export interface IConsoleApis {

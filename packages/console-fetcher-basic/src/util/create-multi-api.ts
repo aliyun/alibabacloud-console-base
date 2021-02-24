@@ -4,15 +4,15 @@ import {
 
 import {
   IFnConsoleApiMulti,
-  IApiMultiAction,
-  TApiMultiResult,
-  IApiBodyMulti
+  IConsoleApiMultiAction,
+  TConsoleApiMultiResult,
+  IConsoleApiBodyMulti
 } from '../types';
 import {
   ETypeApiMulti
 } from '../const';
 
-import composeApiUrl from './compose-api-url';
+import buildUrlForDebugPurpose from './build-url-for-debug-purpose';
 
 function getApiUrl(type: ETypeApiMulti): string {
   switch (type) {
@@ -32,8 +32,10 @@ function getApiUrl(type: ETypeApiMulti): string {
 export default function createMultiApi(fetcherPost: FetcherFnPost, type: ETypeApiMulti): IFnConsoleApiMulti {
   const url = getApiUrl(type);
   
-  return (product: string, actions: IApiMultiAction[]): Promise<TApiMultiResult> => fetcherPost<TApiMultiResult, IApiBodyMulti>(composeApiUrl(url, product, actions.map(v => v.action)), {
-    product,
-    actions: JSON.stringify(actions)
-  });
+  return (product: string, actions: IConsoleApiMultiAction[]): Promise<TConsoleApiMultiResult> => {
+    return fetcherPost<TConsoleApiMultiResult, IConsoleApiBodyMulti>(buildUrlForDebugPurpose(url, product, actions.map(v => v.action)), {
+      product,
+      actions: JSON.stringify(actions)
+    });
+  };
 }

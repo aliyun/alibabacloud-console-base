@@ -8,11 +8,11 @@ import {
 import {
   IConsoleFetcherConfig,
   IFnConsoleApi,
-  IApiBody,
+  IConsoleApiBody,
   IConsoleApiOptions
 } from '../types';
 
-import composeApiUrl from './compose-api-url';
+import buildUrlForDebugPurpose from './build-url-for-debug-purpose';
 
 function getApiUrl(type: ETypeApi): string {
   switch (type) {
@@ -35,7 +35,7 @@ export default function createApi(fetcherPost: FetcherFnPost<IConsoleFetcherConf
     roa,
     ...options
   }: IConsoleApiOptions<R> = {}): Promise<T> {
-    const body: IApiBody = {
+    const body: IConsoleApiBody = {
       product,
       action
     };
@@ -52,6 +52,6 @@ export default function createApi(fetcherPost: FetcherFnPost<IConsoleFetcherConf
       body.content = JSON.stringify(roa); // ROA 形式的接口要在 body 中透传参数，参数名是 content...
     }
     
-    return fetcherPost<T, IApiBody>(options, composeApiUrl(url, product, action), body);
+    return fetcherPost<T, IConsoleApiBody>(options, buildUrlForDebugPurpose(url, product, action), body);
   };
 }
