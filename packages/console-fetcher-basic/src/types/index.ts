@@ -29,9 +29,9 @@ export interface IConsoleFetcherInterceptorOptions {
   slsConfig?: FetcherInterceptorConfigSls;
 }
 
-export interface IConsoleApiOptions<R = unknown> extends FetcherOptionsForQuickPost<IConsoleFetcherConfig> {
+export interface IConsoleApiOptions extends FetcherOptionsForQuickPost<IConsoleFetcherConfig> {
   region?: string;
-  roa?: R; // ROA 形式的接口需要
+  roa?: unknown; // ROA 形式的接口需要，字符串或 JSON 对象
 }
 
 export interface IConsoleApiBody {
@@ -42,11 +42,11 @@ export interface IConsoleApiBody {
   content?: string;
 }
 
-/**
- * call(Open/Inner/Container)API 的共同类型
- */
-export interface IFnConsoleApi {
-  <T = void, P = void, R = void>(product: string, action: string, param?: P, options?: IConsoleApiOptions<R>): Promise<T>;
+export interface IConsoleApiBodyMulti {
+  product: string;
+  actions: string;
+  region?: string;
+  content?: string;
 }
 
 export type TConsoleApiMultiResult = Record<string, unknown>;
@@ -57,13 +57,15 @@ export interface IConsoleApiMultiAction {
   customRequestKey?: string;
 }
 
-export interface IConsoleApiBodyMulti {
-  product: string;
-  actions: string;
+/**
+ * call(Open/Inner/Container)API 的共同类型
+ */
+export interface IFnConsoleApi {
+  <T = void, P = void>(product: string, action: string, param?: P, options?: IConsoleApiOptions): Promise<T>;
 }
 
 export interface IFnConsoleApiMulti {
-  (product: string, actions: IConsoleApiMultiAction[]): Promise<TConsoleApiMultiResult>;
+  (product: string, actions: IConsoleApiMultiAction[], options?: IConsoleApiOptions): Promise<TConsoleApiMultiResult>;
 }
 
 export interface IConsoleApis {

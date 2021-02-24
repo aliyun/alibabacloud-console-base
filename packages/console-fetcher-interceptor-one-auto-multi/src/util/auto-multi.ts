@@ -2,15 +2,14 @@ import _forEach from 'lodash/forEach';
 
 import {
   FetcherFnOpenApi,
-  // FetcherFnInnerApi,
-  // FetcherFnContainerApi,
-  FetcherFnOpenApiMulti
+  FetcherFnOpenApiMulti,
+  FetcherOpenApiMultiAction
 } from '@alicloud/console-fetcher-basic';
 
 // import {
-//   IFnOneApi,
-//   IFnOneApiMulti,
-//   IOneApiMultiAction,
+//   FetcherFnOpenApi,
+//   FetcherFnOpenApiMulti,
+//   FetcherOpenApiMultiAction,
 //   IOpenApiMultiResult
 // } from '../types';
 // import FetchBizError from '../error/biz';
@@ -44,9 +43,9 @@ export default class AutoMulti {
   
   _product: string;
   
-  _openApi: IFnOneApi;
+  _openApi: FetcherFnOpenApi;
   
-  _openApiMulti: IFnOneApiMulti;
+  _openApiMulti: FetcherFnOpenApiMulti;
   
   _timer: number | null = null;
   
@@ -57,7 +56,7 @@ export default class AutoMulti {
    * @param openApi 执行原生的 OpenAPI 的方法
    * @param openApiMulti 执行原生的并发 OpenAPI 的方法
    */
-  constructor(product: string, openApi: IFnOneApi, openApiMulti: IFnOneApiMulti) {
+  constructor(product: string, openApi: FetcherFnOpenApi, openApiMulti: FetcherFnOpenApiMulti) {
     this._product = product;
     this._openApi = openApi;
     this._openApiMulti = openApiMulti;
@@ -113,7 +112,7 @@ export default class AutoMulti {
     this._timer = null;
     this._queueMapping = {};
     
-    const actions: IOneApiMultiAction[] = [];
+    const actions: FetcherOpenApiMultiAction[] = [];
     const resolvesArr: Function[][] = [];
     const rejectsArr: Function[][] = [];
     

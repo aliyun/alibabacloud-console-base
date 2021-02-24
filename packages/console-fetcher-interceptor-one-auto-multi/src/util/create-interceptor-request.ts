@@ -28,7 +28,6 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
       return;
     }
     
-    
     const {
       key
     } = merger;

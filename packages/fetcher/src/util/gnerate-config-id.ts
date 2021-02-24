@@ -19,11 +19,14 @@ function convertToString(o: unknown): string {
 }
 
 function stringifyParam(o: unknown): string {
-  const str = convertToString(o).replace(/"/g, '\'');
+  const str = convertToString(o).replace(/"(\w+)":/, '$1:').replace(/"/g, '\'');
   
   return str === '{}' ? '' : str;
 }
 
+/**
+ * 根据 config 中的相关数据创建一个 ID，类似 hash，可用于判断两个请求是否等价
+ */
 export default function generateConfigId({
   method,
   url = '',

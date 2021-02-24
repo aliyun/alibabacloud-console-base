@@ -1,57 +1,82 @@
 import {
-  FetcherFnPost
+  FetcherFnPost,
+  FetcherOptionsForQuickPost
 } from '@alicloud/fetcher';
 
 import {
-  ETypeApi
+  ETypeApi,
+  MULTI_TYPES
 } from '../const';
 import {
   IConsoleFetcherConfig,
   IFnConsoleApi,
   IConsoleApiBody,
-  IConsoleApiOptions
+  IConsoleApiOptions,
+  IConsoleApiMultiAction,
+  TConsoleApiMultiResult,
+  IConsoleApiBodyMulti,
+  IFnConsoleApiMulti
 } from '../types';
 
-import buildUrlForDebugPurpose from './build-url-for-debug-purpose';
+import getApiUrl from './get-api-url';
+import buildParamsForDebug, {
+  IParamsForDebug
+} from './build-params-for-debug';
 
-function getApiUrl(type: ETypeApi): string {
-  switch (type) {
-    case ETypeApi.OPEN:
-      return '/data/api.json';
-    case ETypeApi.INNER:
-      return '/data/innerApi.json';
-    case ETypeApi.CONTAINER:
-      return '/data/call.json';
-    default:
-      throw new Error(`OneAPI type ${type} not supported!`);
+function fillBodyAndGetRestOptions(body: IConsoleApiBody | IConsoleApiBodyMulti, options?: IConsoleApiOptions): FetcherOptionsForQuickPost<IConsoleFetcherConfig> {
+  if (!options) {
+    return {};
   }
-}
-
-export default function createApi(fetcherPost: FetcherFnPost<IConsoleFetcherConfig>, type: ETypeApi): IFnConsoleApi {
-  const url = getApiUrl(type);
   
-  return function<T = void, P = void, R = void>(product: string, action: string, params?: P, {
+  const {
     region,
     roa,
-    ...options
-  }: IConsoleApiOptions<R> = {}): Promise<T> {
+    ...restOptions
+  } = options;
+  
+  if (region) {
+    body.region = region;
+  }
+  
+  if (roa) {
+    body.content = typeof roa === 'string' ? roa : JSON.stringify(roa); // ROA 形式的接口要在 body 中透传参数，参数名是 content...
+  }
+  
+  return restOptions;
+}
+
+function createApi(fetcherPost: FetcherFnPost<IConsoleFetcherConfig>, type: ETypeApi.OPEN | ETypeApi.INNER | ETypeApi.CONTAINER): IFnConsoleApi;
+function createApi(fetcherPost: FetcherFnPost<IConsoleFetcherConfig>, type: ETypeApi.OPEN_MULTI): IFnConsoleApiMulti;
+
+function createApi(fetcherPost: FetcherFnPost<IConsoleFetcherConfig>, type: ETypeApi): IFnConsoleApi | IFnConsoleApiMulti {
+  const url = getApiUrl(type);
+  
+  if (MULTI_TYPES.includes(type)) {
+    return function callApiMulti(product: string, actions: IConsoleApiMultiAction[], options?: IConsoleApiOptions): Promise<TConsoleApiMultiResult> {
+      const body: IConsoleApiBodyMulti = {
+        product,
+        actions: JSON.stringify(actions)
+      };
+      const restOptions = fillBodyAndGetRestOptions(body, options);
+      
+      return fetcherPost<TConsoleApiMultiResult, IConsoleApiBodyMulti, IParamsForDebug>(restOptions, url, body, buildParamsForDebug(product, actions.map(v => v.action)));
+    };
+  }
+  
+  return function callApi<T = void, P = void>(product: string, action: string, params?: P, options?: IConsoleApiOptions): Promise<T> {
     const body: IConsoleApiBody = {
       product,
       action
     };
     
     if (params) {
-      body.params = JSON.stringify(params);
+      body.params = typeof params === 'string' ? params : JSON.stringify(params);
     }
     
-    if (region) {
-      body.region = region;
-    }
+    const restOptions = fillBodyAndGetRestOptions(body, options);
     
-    if (roa) {
-      body.content = JSON.stringify(roa); // ROA 形式的接口要在 body 中透传参数，参数名是 content...
-    }
-    
-    return fetcherPost<T, IConsoleApiBody>(options, buildUrlForDebugPurpose(url, product, action), body);
+    return fetcherPost<T, IConsoleApiBody, IParamsForDebug>(restOptions, url, body, buildParamsForDebug(product, action));
   };
 }
+
+export default createApi;

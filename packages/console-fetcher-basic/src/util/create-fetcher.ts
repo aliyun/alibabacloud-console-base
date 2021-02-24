@@ -16,12 +16,10 @@ import {
   IConsoleFetcherInterceptorOptions
 } from '../types';
 import {
-  ETypeApi,
-  ETypeApiMulti
+  ETypeApi
 } from '../const';
 
 import createApi from './create-api';
-import createMultiApi from './create-multi-api';
 
 export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> => {
   const {
@@ -48,6 +46,6 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
     callOpenApi: createApi(fetcher.post, ETypeApi.OPEN),
     callInnerApi: createApi(fetcher.post, ETypeApi.INNER),
     callContainerApi: createApi(fetcher.post, ETypeApi.CONTAINER),
-    callMultiOpenApi: createMultiApi(fetcher.post, ETypeApiMulti.OPEN)
+    callMultiOpenApi: createApi(fetcher.post, ETypeApi.OPEN_MULTI)
   };
 };
