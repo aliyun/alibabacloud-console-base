@@ -1,6 +1,6 @@
 import {
   FetcherConfig
-} from '@alicloud/fetcher';
+} from '@alicloud/console-fetcher-basic';
 
 export interface IAutoMultiQueueItem {
   resolve(data: unknown): void;

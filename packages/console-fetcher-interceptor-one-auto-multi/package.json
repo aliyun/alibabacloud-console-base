@@ -1,12 +1,12 @@
 {
-  "name": "@alicloud/console-fetcher-interceptor-auto-multi",
+  "name": "@alicloud/console-fetcher-interceptor-one-auto-multi",
   "version": "0.0.0",
   "description": "@alicloud/fetcher 请求拦截 - 自动合并 OneConsole 请求",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-fetcher-interceptor-auto-multi",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-fetcher-interceptor-one-auto-multi",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -32,8 +32,8 @@
     "@types/react": "^16.14.4",
     "jest": "^26.6.3",
     "react": "^16.14.0",
-    "ts-jest": "^26.5.1",
-    "typescript": "^4.1.5"
+    "ts-jest": "^26.5.2",
+    "typescript": "^4.2.2"
   },
   "dependencies": {
     "@alicloud/console-fetcher-basic": "^1.2.11",

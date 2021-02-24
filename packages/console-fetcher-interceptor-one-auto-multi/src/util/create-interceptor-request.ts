@@ -14,7 +14,8 @@ import mergerGet from './merger/get';
 
 export default function createInterceptorRequest(): FetcherFnInterceptRequest<IFetcherConfigExtended> {
   return (fetcherConfig: IFetcherConfigExtended): FetcherInterceptRequestReturn<IFetcherConfigExtended> => {
-    if (!_one_api_single_) {
+    // 不是 openApi，跳过，将继续请求
+    if (!/^\/data\/api.json$/.test(fetcherConfig.url)) {
       return;
     }
     
@@ -22,11 +23,10 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
     
     fetcherConfig.merger = merger; // 保证 response 拿到的 merger 是对象或 null
     
-    // 不需要，直接跳过，将继续请求
+    // 不需要自动 multi，直接跳过，将继续请求
     if (!merger) {
       return;
     }
-    
     
     
     const {
