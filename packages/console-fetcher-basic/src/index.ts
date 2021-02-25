@@ -2,7 +2,7 @@ import {
   ERROR_BIZ
 } from '@alicloud/console-fetcher-interceptor-res-biz';
 
-import createFetcher from './util/create-fetcher';
+import createFetcher from './factory';
 
 const fetcher = createFetcher();
 

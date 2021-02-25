@@ -43,9 +43,9 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
   
   return {
     ...fetcher,
-    callOpenApi: createApi(fetcher.post, ETypeApi.OPEN),
-    callInnerApi: createApi(fetcher.post, ETypeApi.INNER),
-    callContainerApi: createApi(fetcher.post, ETypeApi.CONTAINER),
-    callMultiOpenApi: createApi(fetcher.post, ETypeApi.OPEN_MULTI)
+    callOpenApi: createApi(fetcher, ETypeApi.OPEN),
+    callInnerApi: createApi(fetcher, ETypeApi.INNER),
+    callContainerApi: createApi(fetcher, ETypeApi.CONTAINER),
+    callMultiOpenApi: createApi(fetcher, ETypeApi.OPEN_MULTI)
   };
 };
