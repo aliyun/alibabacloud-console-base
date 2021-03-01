@@ -14,7 +14,7 @@ export interface IErrorDetails {
   method?: string;
   params?: string | Record<string, unknown> | null;
   body?: string | Record<string, unknown> | null;
-  [k: string]: any;
+  [k: string]: unknown;
 }
 
 /**

@@ -132,7 +132,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
         
         return riskVerify({
           request,
-          fetcherConfig: fetcherConfig,
+          fetcherConfig,
           riskInfo,
           riskConfig
         }).catch(err1 => { // err1 undefined 表示 cancelled

@@ -45,5 +45,5 @@ export default function useMenus(): IPropsTopNavButton[] {
       
       return v;
     });
-  }, [language, menus, account]);
+  }, [language, menus, account, handleMenuDropdownVisibleChange]);
 }

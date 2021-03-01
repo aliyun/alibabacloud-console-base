@@ -17,7 +17,7 @@ export default function jsonStringifyOrdered(o: unknown, opts: IOpts | IFnCompar
     compare,
     replacer
   } = buildOptions(opts);
-  const compareFn = compare ? (node: any) => {
+  const compareFn = compare ? (node: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
     return (a: string, b: string) => compare({
       key: a,
       value: node[a]
@@ -28,7 +28,7 @@ export default function jsonStringifyOrdered(o: unknown, opts: IOpts | IFnCompar
   } : null;
   const seen: unknown[] = [];
   
-  function stringify(parent: unknown, key: string | number, node: any, level: number): string | undefined {
+  function stringify(parent: unknown, key: string | number, node: any, level: number): string | undefined { // eslint-disable-line @typescript-eslint/no-explicit-any
     const indent = space ? (`\n${new Array(level + 1).join(space)}`) : '';
     const colonSeparator = space ? ': ' : ':';
     

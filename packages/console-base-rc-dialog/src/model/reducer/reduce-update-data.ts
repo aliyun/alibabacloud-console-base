@@ -7,7 +7,7 @@ import {
 /**
  * 更新 data
  */
-export default function reduceUpdateData(state: IContextState, payload: Record<string, any>): IContextState {
+export default function reduceUpdateData(state: IContextState, payload: Record<string, unknown>): IContextState {
   return update(state, {
     data: {
       $merge: payload

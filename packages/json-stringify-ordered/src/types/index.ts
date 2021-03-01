@@ -3,7 +3,7 @@ export interface IFnCompare {
 }
 
 export interface IFnReplacer {
-  (key: string | number, value: any): any;
+  (key: string | number, value: any): any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export interface IOpts {
@@ -22,5 +22,5 @@ export interface IOptions {
 
 export interface ICompareObject {
   key: string;
-  value: any;
+  value: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

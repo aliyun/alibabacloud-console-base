@@ -6,7 +6,6 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IErrorQueueItem,
   IErrorPromptSolo,
   IErrorDialogData,
   TErrorPromptArg,
