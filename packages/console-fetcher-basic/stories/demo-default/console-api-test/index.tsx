@@ -47,14 +47,7 @@ function testCallInnerApi(): Promise<unknown> {
 }
 
 function testCallContainerApi(): Promise<unknown> {
-  return callContainerApi(FAKE_PRODUCT, FAKE_ACTION, {
-    p1: 'param1',
-    p2: 2
-  }, {
-    body: {
-      region: 'cn-hangzhou-wuchang'
-    }
-  });
+  return callContainerApi('one-console-app-home', 'ListProduct');
 }
 
 export default function ConsoleApiTest(): JSX.Element {

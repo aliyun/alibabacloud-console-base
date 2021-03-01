@@ -38,7 +38,7 @@
   "dependencies": {
     "@alicloud/console-base-conf-account": "^1.0.30",
     "@alicloud/console-base-conf-env": "^1.1.21",
-    "@alicloud/console-base-conf-locale": "^1.1.20",
+    "@alicloud/console-base-conf-locale": "^1.2.0",
     "@alicloud/logger-sls": "^1.1.14"
   },
   "scripts": {

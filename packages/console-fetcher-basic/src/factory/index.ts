@@ -13,13 +13,15 @@ import interceptSls from '@alicloud/console-fetcher-interceptor-sls';
 import {
   IConsoleFetcher,
   IConsoleFetcherConfig,
-  IConsoleFetcherInterceptorOptions
+  IConsoleFetcherInterceptorOptions,
+  IConsoleApiOptions
 } from '../types';
 import {
   ETypeApi
 } from '../const';
 
 import createApi from './create-api';
+import createApiAutoMulti from './create-api-auto-multi';
 
 export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> => {
   const {
@@ -41,11 +43,16 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
     interceptSls(fetcher, slsConfig);
   }
   
+  const callOpenApi = createApi(fetcher, ETypeApi.OPEN);
+  const callInnerApi = createApi(fetcher, ETypeApi.INNER);
+  const callContainerApi = createApi(fetcher, ETypeApi.CONTAINER);
+  const callMultiOpenApi = createApi(fetcher, ETypeApi.OPEN_MULTI);
+  
   return {
     ...fetcher,
-    callOpenApi: createApi(fetcher, ETypeApi.OPEN),
-    callInnerApi: createApi(fetcher, ETypeApi.INNER),
-    callContainerApi: createApi(fetcher, ETypeApi.CONTAINER),
-    callMultiOpenApi: createApi(fetcher, ETypeApi.OPEN_MULTI)
+    callOpenApi: createApiAutoMulti(callOpenApi, callMultiOpenApi),
+    callInnerApi,
+    callContainerApi,
+    callMultiOpenApi
   };
 };
