@@ -14,7 +14,7 @@ export interface IErrorDetails {
   method?: string;
   params?: string | Record<string, unknown> | null;
   body?: string | Record<string, unknown> | null;
-  [k: string]: unknown;
+  [k: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 /**
