@@ -14,9 +14,11 @@ const THEMES_NEED_BORDER: EButtonTheme[] = [
   EButtonTheme.DANGER,
   EButtonTheme.PRIMARY,
   EButtonTheme.SECONDARY,
+  EButtonTheme.SECONDARY_ALT,
   EButtonTheme.TERTIARY,
   EButtonTheme.BRAND_PRIMARY,
   EButtonTheme.BRAND_SECONDARY,
+  EButtonTheme.BRAND_SECONDARY_ALT,
   EButtonTheme.BRAND_TERTIARY
 ];
 

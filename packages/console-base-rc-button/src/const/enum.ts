@@ -14,9 +14,11 @@ export enum EButtonTheme {
   MENU = 'menu',
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
+  SECONDARY_ALT = 'secondary:alt', // 空心
   TERTIARY = 'tertiary',
   BRAND_PRIMARY = 'brand:primary',
   BRAND_SECONDARY = 'brand:secondary',
+  BRAND_SECONDARY_ALT = 'brand:secondary:alt', // 空心
   BRAND_TERTIARY = 'brand:tertiary',
   TEXT_PRIMARY = 'text:primary',
   TEXT_SECONDARY = 'text:secondary',

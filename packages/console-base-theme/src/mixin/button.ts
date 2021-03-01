@@ -442,6 +442,95 @@ export const mixinButtonSecondary = css`
     ${mixinButtonSecondaryStateDisabled}
   }
 `;
+export const mixinButtonSecondaryAltColorStateNormal = css`
+  color: ${COLOR.BUTTON_SECONDARY_ALT_TEXT};
+  color: var(--cb-color-button-secondary-alt-text, ${COLOR.BUTTON_SECONDARY_ALT_TEXT});
+`;
+export const mixinButtonSecondaryAltBgStateNormal = css`
+  background-color: ${COLOR.BUTTON_SECONDARY_ALT_BG};
+  background-color: var(--cb-color-button-secondary-alt-bg, ${COLOR.BUTTON_SECONDARY_ALT_BG});
+`;
+export const mixinButtonSecondaryAltBorderStateNormal = css`
+  border-color: ${COLOR.BUTTON_SECONDARY_ALT_BORDER};
+  border-color: var(--cb-color-button-secondary-alt-border, ${COLOR.BUTTON_SECONDARY_ALT_BORDER});
+`;
+export const mixinButtonSecondaryAltStateNormal = css`
+  ${mixinButtonSecondaryAltColorStateNormal}
+  ${mixinButtonSecondaryAltBgStateNormal}
+  ${mixinButtonSecondaryAltBorderStateNormal}
+`;
+export const mixinButtonSecondaryAltColorStateHover = css`
+  color: ${COLOR.BUTTON_SECONDARY_ALT_TEXT_HOVER};
+  color: var(--cb-color-button-secondary-alt-text-hover, ${COLOR.BUTTON_SECONDARY_ALT_TEXT_HOVER});
+`;
+export const mixinButtonSecondaryAltBgStateHover = css`
+  background-color: ${COLOR.BUTTON_SECONDARY_ALT_BG_HOVER};
+  background-color: var(--cb-color-button-secondary-alt-bg-hover, ${COLOR.BUTTON_SECONDARY_ALT_BG_HOVER});
+`;
+export const mixinButtonSecondaryAltBorderStateHover = css`
+  border-color: ${COLOR.BUTTON_SECONDARY_ALT_BORDER_HOVER};
+  border-color: var(--cb-color-button-secondary-alt-border-hover, ${COLOR.BUTTON_SECONDARY_ALT_BORDER_HOVER});
+`;
+export const mixinButtonSecondaryAltStateHover = css`
+  ${mixinButtonSecondaryAltColorStateHover}
+  ${mixinButtonSecondaryAltBgStateHover}
+  ${mixinButtonSecondaryAltBorderStateHover}
+`;
+export const mixinButtonSecondaryAltColorStateActive = css`
+  color: ${COLOR.BUTTON_SECONDARY_ALT_TEXT_ACTIVE};
+  color: var(--cb-color-button-secondary-alt-text-active, ${COLOR.BUTTON_SECONDARY_ALT_TEXT_ACTIVE});
+`;
+export const mixinButtonSecondaryAltBgStateActive = css`
+  background-color: ${COLOR.BUTTON_SECONDARY_ALT_BG_ACTIVE};
+  background-color: var(--cb-color-button-secondary-alt-bg-active, ${COLOR.BUTTON_SECONDARY_ALT_BG_ACTIVE});
+`;
+export const mixinButtonSecondaryAltBorderStateActive = css`
+  border-color: ${COLOR.BUTTON_SECONDARY_ALT_BORDER_ACTIVE};
+  border-color: var(--cb-color-button-secondary-alt-border-active, ${COLOR.BUTTON_SECONDARY_ALT_BORDER_ACTIVE});
+`;
+export const mixinButtonSecondaryAltStateActive = css`
+  ${mixinButtonSecondaryAltColorStateActive}
+  ${mixinButtonSecondaryAltBgStateActive}
+  ${mixinButtonSecondaryAltBorderStateActive}
+`;
+export const mixinButtonSecondaryAltColorStateDisabled = css`
+  color: ${COLOR.BUTTON_SECONDARY_ALT_TEXT_DISABLED};
+  color: var(--cb-color-button-secondary-alt-text-disabled, ${COLOR.BUTTON_SECONDARY_ALT_TEXT_DISABLED});
+`;
+export const mixinButtonSecondaryAltBgStateDisabled = css`
+  background-color: ${COLOR.BUTTON_SECONDARY_ALT_BG_DISABLED};
+  background-color: var(--cb-color-button-secondary-alt-bg-disabled, ${COLOR.BUTTON_SECONDARY_ALT_BG_DISABLED});
+`;
+export const mixinButtonSecondaryAltBorderStateDisabled = css`
+  border-color: ${COLOR.BUTTON_SECONDARY_ALT_BORDER_DISABLED};
+  border-color: var(--cb-color-button-secondary-alt-border-disabled, ${COLOR.BUTTON_SECONDARY_ALT_BORDER_DISABLED});
+`;
+export const mixinButtonSecondaryAltStateDisabled = css`
+  ${mixinButtonSecondaryAltColorStateDisabled}
+  ${mixinButtonSecondaryAltBgStateDisabled}
+  ${mixinButtonSecondaryAltBorderStateDisabled}
+`;
+export const mixinButtonSecondaryAlt = css`
+  ${mixinButtonSecondaryAltStateNormal}
+  
+  &:link,
+  &:visited {
+    ${mixinButtonSecondaryAltColorStateNormal}
+  }
+  
+  &:hover,
+  &:focus {
+    ${mixinButtonSecondaryAltStateHover}
+  }
+  
+  &:active {
+    ${mixinButtonSecondaryAltStateActive}
+  }
+  
+  &:disabled {
+    ${mixinButtonSecondaryAltStateDisabled}
+  }
+`;
 export const mixinButtonTertiaryColorStateNormal = css`
   color: ${COLOR.BUTTON_TERTIARY_TEXT};
   color: var(--cb-color-button-tertiary-text, ${COLOR.BUTTON_TERTIARY_TEXT});
@@ -707,6 +796,95 @@ export const mixinButtonBrandSecondary = css`
   
   &:disabled {
     ${mixinButtonBrandSecondaryStateDisabled}
+  }
+`;
+export const mixinButtonBrandSecondaryAltColorStateNormal = css`
+  color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT};
+  color: var(--cb-color-button-brand-secondary-alt-text, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT});
+`;
+export const mixinButtonBrandSecondaryAltBgStateNormal = css`
+  background-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG};
+  background-color: var(--cb-color-button-brand-secondary-alt-bg, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG});
+`;
+export const mixinButtonBrandSecondaryAltBorderStateNormal = css`
+  border-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER};
+  border-color: var(--cb-color-button-brand-secondary-alt-border, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER});
+`;
+export const mixinButtonBrandSecondaryAltStateNormal = css`
+  ${mixinButtonBrandSecondaryAltColorStateNormal}
+  ${mixinButtonBrandSecondaryAltBgStateNormal}
+  ${mixinButtonBrandSecondaryAltBorderStateNormal}
+`;
+export const mixinButtonBrandSecondaryAltColorStateHover = css`
+  color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT_HOVER};
+  color: var(--cb-color-button-brand-secondary-alt-text-hover, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT_HOVER});
+`;
+export const mixinButtonBrandSecondaryAltBgStateHover = css`
+  background-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG_HOVER};
+  background-color: var(--cb-color-button-brand-secondary-alt-bg-hover, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG_HOVER});
+`;
+export const mixinButtonBrandSecondaryAltBorderStateHover = css`
+  border-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER_HOVER};
+  border-color: var(--cb-color-button-brand-secondary-alt-border-hover, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER_HOVER});
+`;
+export const mixinButtonBrandSecondaryAltStateHover = css`
+  ${mixinButtonBrandSecondaryAltColorStateHover}
+  ${mixinButtonBrandSecondaryAltBgStateHover}
+  ${mixinButtonBrandSecondaryAltBorderStateHover}
+`;
+export const mixinButtonBrandSecondaryAltColorStateActive = css`
+  color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT_ACTIVE};
+  color: var(--cb-color-button-brand-secondary-alt-text-active, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT_ACTIVE});
+`;
+export const mixinButtonBrandSecondaryAltBgStateActive = css`
+  background-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG_ACTIVE};
+  background-color: var(--cb-color-button-brand-secondary-alt-bg-active, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG_ACTIVE});
+`;
+export const mixinButtonBrandSecondaryAltBorderStateActive = css`
+  border-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER_ACTIVE};
+  border-color: var(--cb-color-button-brand-secondary-alt-border-active, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER_ACTIVE});
+`;
+export const mixinButtonBrandSecondaryAltStateActive = css`
+  ${mixinButtonBrandSecondaryAltColorStateActive}
+  ${mixinButtonBrandSecondaryAltBgStateActive}
+  ${mixinButtonBrandSecondaryAltBorderStateActive}
+`;
+export const mixinButtonBrandSecondaryAltColorStateDisabled = css`
+  color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT_DISABLED};
+  color: var(--cb-color-button-brand-secondary-alt-text-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_TEXT_DISABLED});
+`;
+export const mixinButtonBrandSecondaryAltBgStateDisabled = css`
+  background-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG_DISABLED};
+  background-color: var(--cb-color-button-brand-secondary-alt-bg-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BG_DISABLED});
+`;
+export const mixinButtonBrandSecondaryAltBorderStateDisabled = css`
+  border-color: ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER_DISABLED};
+  border-color: var(--cb-color-button-brand-secondary-alt-border-disabled, ${COLOR.BUTTON_BRAND_SECONDARY_ALT_BORDER_DISABLED});
+`;
+export const mixinButtonBrandSecondaryAltStateDisabled = css`
+  ${mixinButtonBrandSecondaryAltColorStateDisabled}
+  ${mixinButtonBrandSecondaryAltBgStateDisabled}
+  ${mixinButtonBrandSecondaryAltBorderStateDisabled}
+`;
+export const mixinButtonBrandSecondaryAlt = css`
+  ${mixinButtonBrandSecondaryAltStateNormal}
+  
+  &:link,
+  &:visited {
+    ${mixinButtonBrandSecondaryAltColorStateNormal}
+  }
+  
+  &:hover,
+  &:focus {
+    ${mixinButtonBrandSecondaryAltStateHover}
+  }
+  
+  &:active {
+    ${mixinButtonBrandSecondaryAltStateActive}
+  }
+  
+  &:disabled {
+    ${mixinButtonBrandSecondaryAltStateDisabled}
   }
 `;
 export const mixinButtonBrandTertiaryColorStateNormal = css`

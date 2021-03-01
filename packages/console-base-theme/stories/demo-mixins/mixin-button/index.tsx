@@ -21,9 +21,11 @@ import {
   mixinButtonMenu,
   mixinButtonPrimary,
   mixinButtonSecondary,
+  mixinButtonSecondaryAlt,
   mixinButtonTertiary,
   mixinButtonBrandPrimary,
   mixinButtonBrandSecondary,
+  mixinButtonBrandSecondaryAlt,
   mixinButtonBrandTertiary,
   mixinButtonTextPrimary,
   mixinButtonTextSecondary,
@@ -81,6 +83,9 @@ const ScMixinButtonPrimary = styled(ScButtonBase)`
 const ScMixinButtonSecondary = styled(ScButtonBase)`
   ${mixinButtonSecondary}
 `;
+const ScMixinButtonSecondaryAlt = styled(ScButtonBase)`
+  ${mixinButtonSecondaryAlt}
+`;
 const ScMixinButtonTertiary = styled(ScButtonBase)`
   ${mixinButtonTertiary}
 `;
@@ -89,6 +94,9 @@ const ScMixinButtonBrandPrimary = styled(ScButtonBase)`
 `;
 const ScMixinButtonBrandSecondary = styled(ScButtonBase)`
   ${mixinButtonBrandSecondary}
+`;
+const ScMixinButtonBrandSecondaryAlt = styled(ScButtonBase)`
+  ${mixinButtonBrandSecondaryAlt}
 `;
 const ScMixinButtonBrandTertiary = styled(ScButtonBase)`
   ${mixinButtonBrandTertiary}
@@ -130,11 +138,13 @@ export default function MixinButton(): JSX.Element {
     <div>
       <ScMixinButtonPrimary disabled={stateDisabled}>primary</ScMixinButtonPrimary>
       <ScMixinButtonSecondary disabled={stateDisabled}>secondary</ScMixinButtonSecondary>
+      <ScMixinButtonSecondaryAlt disabled={stateDisabled}>secondary-alt</ScMixinButtonSecondaryAlt>
       <ScMixinButtonTertiary disabled={stateDisabled}>tertiary</ScMixinButtonTertiary>
     </div>
     <div>
       <ScMixinButtonBrandPrimary disabled={stateDisabled}>brand-primary</ScMixinButtonBrandPrimary>
       <ScMixinButtonBrandSecondary disabled={stateDisabled}>brand-secondary</ScMixinButtonBrandSecondary>
+      <ScMixinButtonBrandSecondaryAlt disabled={stateDisabled}>brand-secondary-alt</ScMixinButtonBrandSecondaryAlt>
       <ScMixinButtonBrandTertiary disabled={stateDisabled}>brand-tertiary</ScMixinButtonBrandTertiary>
     </div>
     <div>
