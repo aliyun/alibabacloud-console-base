@@ -13,8 +13,7 @@ import interceptSls from '@alicloud/console-fetcher-interceptor-sls';
 import {
   IConsoleFetcher,
   IConsoleFetcherConfig,
-  IConsoleFetcherInterceptorOptions,
-  IConsoleApiOptions
+  IConsoleFetcherInterceptorOptions
 } from '../types';
 import {
   ETypeApi
