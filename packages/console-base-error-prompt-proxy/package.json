@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt-proxy",
-  "version": "1.1.52",
+  "version": "1.1.53",
   "description": "ConsoleBase 错误弹窗器（集中代理）",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -41,9 +41,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-error-prompt": "^1.1.48",
-    "@alicloud/console-base-global": "^1.0.40",
-    "@alicloud/console-base-messenger": "^1.0.40"
+    "@alicloud/console-base-error-prompt": "^1.1.49",
+    "@alicloud/console-base-global": "^1.0.41",
+    "@alicloud/console-base-messenger": "^1.0.41"
   },
   "scripts": {
     "start": "breezr start-storybook",
