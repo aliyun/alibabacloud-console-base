@@ -1,3 +1,1 @@
-export {
-  default
-} from './_use-model-props';
+export { default } from './_use-model-props';

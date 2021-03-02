@@ -1,5 +1,3 @@
-export {
-  default
-} from './provider';
+export { default } from './provider';
 
 export * from './hook';

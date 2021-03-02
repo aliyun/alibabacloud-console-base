@@ -1,5 +1,3 @@
-export * from '@alicloud/console-base-error-prompt';
+export { default } from './util/proxy';
 
-export {
-  default
-} from './util/proxy';
+export * from '@alicloud/console-base-error-prompt';
