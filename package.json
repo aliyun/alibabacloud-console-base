@@ -30,7 +30,7 @@
     "lerna:build": "lerna run prepublishOnly",
     "tnpm:sync": "lerna exec tnpm sync",
     "ncu:main": "ncu",
-    "ncu:packages": "lerna exec ncu -- --timeout 120000",
-    "ncu:full": "ncu && lerna exec ncu"
+    "ncu:packages": "lerna exec --no-bail -- ncu --timeout 120000",
+    "ncu:full": "tnpm run ncu && tnpm run ncu:packages"
   }
 }
