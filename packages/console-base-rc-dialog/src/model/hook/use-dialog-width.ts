@@ -40,6 +40,8 @@ export default function useDialogWidth(): number | string {
       return 'auto';
     case EDialogSize.ALMOST_FULL:
       return '95%';
+    case EDialogSize.FULL:
+      return '100%';
     default:
       return modeIsSlide ? SIZE.WIDTH_DIALOG_SLIDE_M : SIZE.WIDTH_DIALOG_NORMAL_M;
   }

@@ -12,7 +12,8 @@ export enum EDialogSize {
   XL = 'xl',
   XXL = 'xxl',
   AUTO = 'auto',
-  ALMOST_FULL = 'almost-full'
+  ALMOST_FULL = 'almost-full',
+  FULL = 'full'
 }
 
 export enum EDialogLockState {
