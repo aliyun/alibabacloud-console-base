@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/mixed-black-whitelist-checker",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "混合黑白名单检查器",
   "license": "MIT",
   "main": "build/cjs/index.js",
