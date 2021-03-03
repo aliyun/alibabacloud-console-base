@@ -35,7 +35,7 @@ export default function WithLoading<T>({
         }} />;
       }
       
-      return renderLoaded(data);
+      return renderLoaded(data!);
     default:
       return <Loading {...{
         message: messageLoading

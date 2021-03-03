@@ -10,8 +10,6 @@ import find from './find';
  */
 export default function remove(selector: TSelector, parent?: TParent): void {
   find(selector, parent).forEach(v => {
-    if (v.parentNode) {
-      v.parentNode.removeChild(v);
-    }
+    v.parentNode?.removeChild(v);
   });
 }

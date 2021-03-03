@@ -17,9 +17,9 @@ import WithLoading from '../with-loading';
 export default function WithPromise<T>({
   promise,
   ...props
-}: IPropsWithPromise<T>): JSX.Element {
+}: IPropsWithPromise<T>): JSX.Element | null {
   const isUnmounted = useIsUnmounted();
-  const [stateDwl, setStateDwl] = useState<DataWithLoading<T>>(null);
+  const [stateDwl, setStateDwl] = useState<DataWithLoading<T | null> | null>(null);
   
   useEffect(() => {
     if (!promise) {

@@ -26,7 +26,7 @@ export interface IPropsLoading extends HTMLAttributes<HTMLDivElement> {
   retry?(): void;
 }
 
-export interface IPropsWithLoading<T> extends DataWithLoading<T>, IWithLoading<T> {}
+export interface IPropsWithLoading<T> extends Partial<DataWithLoading<T | null>>, IWithLoading<T> {}
 
 export interface IPropsWithPromise<T> extends IWithLoading<T> {
   promise?: Promise<T> | null;

@@ -43,5 +43,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "77210df1b0ebf6bdac9bb2727ffb36223d822ac4"
+  "gitHead": "11c40d96b0a6768aa61ddb33bfb56e8d26cb271e"
 }
