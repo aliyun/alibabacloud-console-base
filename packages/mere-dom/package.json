@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/mere-dom",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Very little DOM utils",
   "license": "MIT",
   "main": "build/cjs/index.js",
