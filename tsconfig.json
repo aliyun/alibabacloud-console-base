@@ -7,12 +7,12 @@
       "scripthost",
       "dom.iterable"
     ],
+    "strict": true,
     "allowJs": false,
     "jsx": "react",
     "skipLibCheck": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
