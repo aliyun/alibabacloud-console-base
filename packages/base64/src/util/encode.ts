@@ -1,7 +1,7 @@
 import btoa from './btoa';
 import utob from './utob';
 
-function _encode(u): string {
+function _encode(u: string): string {
   return btoa(utob(u));
 }
 

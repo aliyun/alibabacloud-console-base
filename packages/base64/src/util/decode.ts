@@ -1,7 +1,7 @@
 import atob from './atob';
 import btou from './btou';
 
-function _decode(a): string {
+function _decode(a: string): string {
   return btou(atob(a));
 }
 
