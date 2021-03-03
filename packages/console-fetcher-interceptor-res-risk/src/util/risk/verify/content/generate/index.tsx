@@ -61,20 +61,20 @@ export default function Generate(): JSX.Element {
         requestId: data?.requestId || ''
       }));
       
-      setStateCooling(Math.round(COOLING_AFTER_SENT));
+      setStateCooling(Math.round(COOLING_AFTER_SENT!));
     } catch (err) {
       updateData({
         errorMessage: err?.message || ''
       });
       
-      setStateCooling(Math.round(COOLING_AFTER_SEND_FAIL));
+      setStateCooling(Math.round(COOLING_AFTER_SEND_FAIL!));
     } finally {
       setStateGenerating(false);
       unlock();
     }
   }, [lock, unlock, updateData, request, verifyType, codeType, URL_SEND_CODE, COOLING_AFTER_SENT, COOLING_AFTER_SEND_FAIL, METHOD_SEND_CODE]);
   
-  useEffect(() => {
+  useEffect((): () => void => {
     let timer: number | undefined;
     
     if (stateCooling > 0) {

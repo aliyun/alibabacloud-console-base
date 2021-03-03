@@ -9,7 +9,7 @@ export default function getData(json: IBizJson, dataGetter?: TGetData): any { //
   }
   
   if (typeof dataGetter === 'string') {
-    return json[dataGetter];
+    return (json as any)[dataGetter];
   }
   
   return json.data;

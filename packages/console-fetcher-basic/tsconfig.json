@@ -6,7 +6,7 @@
       "es2015",
       "es2017"
     ],
-    "strict": true,
+    "strict": false,
     "allowJs": false,
     "resolveJsonModule": true,
     "jsx": "react",

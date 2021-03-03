@@ -39,7 +39,7 @@ export default function mergeConfig<C extends IFetcherConfig = IFetcherConfig>(f
           
           break;
         default: // 其他，替换
-          finalConfig[k] = v;
+          (finalConfig as any)[k] = v; // eslint-disable-line @typescript-eslint/no-explicit-any
           
           break;
       }

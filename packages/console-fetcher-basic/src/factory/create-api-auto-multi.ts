@@ -17,7 +17,7 @@ export default function createApiAutoMulti(api: IFnConsoleApi, apiMulti: IFnCons
   
   // 不要提出去做静态的方法，因为它跟 api + apiMulti 紧密相连
   function getAutoMultiQueue(product: string, region: string | undefined): AutoMultiQueue {
-    const key = region ? `P=${product}~R=${region}` : region;
+    const key: string = region ? `P=${product}~R=${region}` : product;
     const queue = QUEUE_MAPPED_BY_PRODUCT_AND_REGION[key];
     
     if (queue) {

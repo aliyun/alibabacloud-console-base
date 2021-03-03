@@ -68,7 +68,7 @@ export interface IFetcherConfig extends Omit<FetchOptions, 'method' | 'headers' 
   /**
    * 约束 FetchOptions.headers
    */
-  headers?: Record<string, string> | null;
+  headers?: Record<string, string | number | boolean>;
   /**
    * url 上的 search 参数，会跟已有的参数合并
    * 纯的 fetch/jsonp 的 url 要求是已经拼接好参数的 url
@@ -132,7 +132,7 @@ export interface IFetcherError<C extends IFetcherConfig = IFetcherConfig> extend
 export interface IFetcherErrorSpecial<T = void, C extends IFetcherConfig = IFetcherConfig> extends Error {
   name: EErrorSpecial;
   config?: C;
-  result?: T | Promise<T>;
+  result: T | Promise<T>;
 }
 
 /**

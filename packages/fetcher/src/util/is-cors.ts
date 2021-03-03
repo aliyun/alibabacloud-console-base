@@ -21,5 +21,5 @@ export default function isCors(fetcherConfig: IFetcherConfig): boolean {
     }
   } = window;
   
-  return protocolHost[1] !== host || (protocolHost[0] && protocolHost[0] !== protocol);
+  return protocolHost[1] !== host || (!!protocolHost[0] && protocolHost[0] !== protocol);
 }

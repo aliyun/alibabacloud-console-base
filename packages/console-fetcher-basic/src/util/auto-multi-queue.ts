@@ -23,7 +23,7 @@ import {
 import getAutoMultiError from './get-auto-multi-error';
 
 interface IFnResolve {
-  (value: unknown): void;
+  (value: any): void;
 }
 
 interface IFnReject {
@@ -164,7 +164,7 @@ export default class AutoMultiQueue {
     }
     
     function rejectAll(err: Error, index?: number): void {
-      if (index >= 0) { // 传入 index
+      if (typeof index === 'number' && index >= 0) { // 传入 index
         const rejects = rejectsArr[index];
         
         if (rejects) {

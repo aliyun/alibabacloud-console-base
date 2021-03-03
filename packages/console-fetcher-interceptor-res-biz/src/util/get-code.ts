@@ -9,7 +9,7 @@ export default function getCode(json: IBizJson, codeGetter?: TGetCode): string |
   }
   
   if (typeof codeGetter === 'string') {
-    return json[codeGetter] as string;
+    return (json as any)[codeGetter] as string;
   }
   
   return json.code;

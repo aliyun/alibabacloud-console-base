@@ -54,6 +54,7 @@ function parseInterceptorQueueItemForResponse<C extends IFetcherConfig>(args: TA
   } else {
     item = {
       fulfilledFn: args[0],
+      // @ts-ignore
       rejectedFn: args[1]
     };
   }
@@ -113,7 +114,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   constructor(fetcherConfig?: C) {
     this._defaultConfig = {
       ...fetcherConfig
-    };
+    } as C;
   }
   
   /**
@@ -123,12 +124,15 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
     const unsorted: IQueueItem<IFnInterceptRequest<C>>[] = [...this._interceptorQueueForRequest];
     
     if (fetcherConfig.additionalInterceptorsForRequest) {
+      // @ts-ignore
       fetcherConfig.additionalInterceptorsForRequest.forEach(v => unsorted.push(parseInterceptorQueueItemForRequest<C>(v as TArgsForInterceptRequest<C>)));
     }
     
     return [
       requestInterceptorFirst as unknown as IFnInterceptRequest<C>,
+      // @ts-ignore
       ...filterAndSort<IFnInterceptRequest<C>>(unsorted).map(v => v.fulfilledFn),
+      // @ts-ignore
       requestInterceptorLast as unknown as IFnInterceptRequest<C>
     ];
   }
@@ -140,6 +144,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
       fetcherConfig.additionalInterceptorsForResponse.forEach(v => unsorted.push(parseInterceptorQueueItemForResponse<C>(v as TArgsForInterceptResponse<C>)));
     }
     
+    // @ts-ignore
     return filterAndSort<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>(unsorted).map(v => [v.fulfilledFn, v.rejectedFn]);
   }
   
@@ -153,6 +158,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
       promise = promise.then((configLastMerged: C) => { // 上一次 merge 完的结果
         // 利用前置 Promise，不管 fn 返回是否 Promise 都可以在一个运行空间获取到 configLastMerged 和 configToMerge
         // configToMerge 是 fn 计算后得到的结果，可能为空；也可能是 Promise
+        // @ts-ignore
         return Promise.resolve().then(() => fn(configLastMerged, this._handleRequest)).then((configToMerge: Partial<C>) => mergeConfig(configLastMerged, configToMerge));
       });
     });
@@ -176,7 +182,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
     this._getInterceptorsForResponse(fetcherConfig).forEach(([fulfilledFn, rejectedFn]) => {
       promise = promise.then((result: T) => {
         if (fulfilledFn) {
-          return fulfilledFn(result, fetcherConfig, fetcherResponse, this._handleRequest);
+          return fulfilledFn(result, fetcherConfig, fetcherResponse!, this._handleRequest);
         }
         
         return result;

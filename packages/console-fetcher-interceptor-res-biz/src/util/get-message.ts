@@ -9,7 +9,7 @@ export default function getMessage(json: IBizJson, messageGetter?: TGetMessage):
   }
   
   if (typeof messageGetter === 'string') {
-    return json[messageGetter] as string;
+    return (json as any)[messageGetter] as string;
   }
   
   return json.message;

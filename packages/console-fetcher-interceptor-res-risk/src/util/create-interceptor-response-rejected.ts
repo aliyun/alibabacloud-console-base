@@ -87,7 +87,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
     ...o
   };
   
-  return async (err: FetcherError, fetcherConfig: FetcherConfig, response: FetcherResponse, request: FetcherFnRequest): Promise<unknown> => {
+  return async (err: FetcherError, fetcherConfig: FetcherConfig, response: FetcherResponse | undefined, request: FetcherFnRequest): Promise<unknown> => {
     const {
       code
     } = err;
@@ -103,20 +103,20 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
         
         switch (riskInfo.type) {
           case EVerifyType.NONE:
-            await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS);
+            await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.UNKNOWN:
             await riskInvalid(intl('message:invalid_unsupported_{method}!html!lines', {
               method: riskInfo.verifyType
-            }), riskConfig.URL_SETTINGS);
+            }), riskConfig.URL_SETTINGS!);
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.SMS:
           case EVerifyType.EMAIL:
             // 手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
             if (!riskInfo.detail) {
-              await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS);
+              await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
               
               throw convertToRiskErrorInvalid(err);
             }

@@ -16,7 +16,7 @@ import {
  * 2. 合并接口请求，则直接返回合并前的临时 Promise
  * 3. 请求被代理
  */
-export default function createErrorSkipNetwork<T = void, C extends IFetcherConfig = IFetcherConfig>(result?: T | Promise<T>, fetcherConfig?: C): IFetcherErrorSpecial<T> {
+export default function createErrorSkipNetwork<T = void, C extends IFetcherConfig = IFetcherConfig>(result: T | Promise<T>, fetcherConfig?: C): IFetcherErrorSpecial<T> {
   const error: IFetcherErrorSpecial<T> = new Error() as IFetcherErrorSpecial<T>;
   
   error.name = EErrorSpecial.SKIP_NETWORK; // Fetcher.request 中将用它来做判断
