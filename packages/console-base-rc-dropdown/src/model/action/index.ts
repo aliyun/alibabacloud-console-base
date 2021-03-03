@@ -1,9 +1,3 @@
-import actionMouseEnter from './action-mouse-enter';
-import actionMouseLeave from './action-mouse-leave';
-import actionToggleVisible from './action-toggle-visible';
-
-export {
-  actionMouseEnter,
-  actionMouseLeave,
-  actionToggleVisible
-};
+export { default as actionMouseEnter } from './action-mouse-enter';
+export { default as actionMouseLeave } from './action-mouse-leave';
+export { default as actionToggleVisible } from './action-toggle-visible';

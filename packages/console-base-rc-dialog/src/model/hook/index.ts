@@ -1,65 +1,31 @@
-import useRefDialog from './use-ref-dialog';
-import useRefContent from './use-ref-content';
-import usePropMode from './use-prop-mode';
-import usePropClosable from './use-prop-cloasable';
-import usePropBackdrop from './use-prop-backdrop';
-import usePropClassName from './use-prop-class-name';
-import usePropClassNameContent from './use-prop-class-name-content';
-import useStateId from './use-state-id';
-import useStateActive from './use-state-active';
-import useStateLocked from './use-state-locked';
-import useDialogTitle from './use-dialog-title';
-import useDialogContent from './use-dialog-content';
-import useDialogButtons from './use-dialog-buttons';
-import useDialogWidth from './use-dialog-width';
-import useDialogZIndex from './use-dialog-z-index';
-import useDialogStackItem from './use-dialog-stack-item';
-import useDialogMaxContentHeight from './use-dialog-max-content-height';
-import useDispatchMounted from './use-dispatch-mounted';
-import useDispatchToggleActive from './use-dispatch-toggle-active';
-import useDispatchUpdateProps from './use-dispatch-update-props';
-import useDispatchSetZIndex from './use-dispatch-set-z-index';
-import useDispatchLock from './use-dispatch-lock';
-import useDispatchUnlock from './use-dispatch-unlock';
-import useDispatchCloseWithValue from './use-dispatch-close-with-value';
-import useDispatchClose from './use-dispatch-close';
-import useDispatchCloseOnEsc from './use-dispatch-close-on-ecs';
-import useDispatchCloseOnExternal from './use-dispatch-close-on-external';
-import useDispatchResetScrollTop from './use-dispatch-reset-scroll-top';
-import useDispatchFocus from './use-dispatch-focus';
-import useDispatchUpdateWindowHeight from './use-dispatch-update-window-height';
-import useDialog from './use-dialog';
-
-export {
-  useRefDialog,
-  useRefContent,
-  useStateId,
-  useDialogTitle,
-  useDialogContent,
-  useDialogButtons,
-  usePropBackdrop,
-  usePropClosable,
-  usePropClassName,
-  usePropClassNameContent,
-  usePropMode,
-  useDialogWidth,
-  useDialogZIndex,
-  useStateActive,
-  useStateLocked,
-  useDialogStackItem,
-  useDialogMaxContentHeight,
-  useDispatchMounted,
-  useDispatchToggleActive,
-  useDispatchUpdateProps,
-  useDispatchSetZIndex,
-  useDispatchLock,
-  useDispatchUnlock,
-  useDispatchCloseWithValue,
-  useDispatchClose,
-  useDispatchCloseOnEsc,
-  useDispatchCloseOnExternal,
-  useDispatchResetScrollTop,
-  useDispatchFocus,
-  useDispatchUpdateWindowHeight,
-  useDialog
-};
+export { default as useRefDialog } from './use-ref-dialog';
+export { default as useRefContent } from './use-ref-content';
+export { default as usePropMode } from './use-prop-mode';
+export { default as usePropClosable } from './use-prop-cloasable';
+export { default as usePropBackdrop } from './use-prop-backdrop';
+export { default as usePropClassName } from './use-prop-class-name';
+export { default as usePropClassNameContent } from './use-prop-class-name-content';
+export { default as useStateId } from './use-state-id';
+export { default as useStateActive } from './use-state-active';
+export { default as useStateLocked } from './use-state-locked';
+export { default as useDialogTitle } from './use-dialog-title';
+export { default as useDialogContent } from './use-dialog-content';
+export { default as useDialogButtons } from './use-dialog-buttons';
+export { default as useDialogWidth } from './use-dialog-width';
+export { default as useDialogZIndex } from './use-dialog-z-index';
+export { default as useDialogStackItem } from './use-dialog-stack-item';
+export { default as useDialogMaxContentHeight } from './use-dialog-max-content-height';
+export { default as useDispatchMounted } from './use-dispatch-mounted';
+export { default as useDispatchToggleActive } from './use-dispatch-toggle-active';
+export { default as useDispatchUpdateProps } from './use-dispatch-update-props';
+export { default as useDispatchSetZIndex } from './use-dispatch-set-z-index';
+export { default as useDispatchLock } from './use-dispatch-lock';
+export { default as useDispatchUnlock } from './use-dispatch-unlock';
+export { default as useDispatchCloseWithValue } from './use-dispatch-close-with-value';
+export { default as useDispatchClose } from './use-dispatch-close';
+export { default as useDispatchCloseOnEsc } from './use-dispatch-close-on-ecs';
+export { default as useDispatchCloseOnExternal } from './use-dispatch-close-on-external';
+export { default as useDispatchResetScrollTop } from './use-dispatch-reset-scroll-top';
+export { default as useDispatchFocus } from './use-dispatch-focus';
+export { default as useDispatchUpdateWindowHeight } from './use-dispatch-update-window-height';
+export { default as useDialog } from './use-dialog';

@@ -36,7 +36,7 @@ export default function Provider({
   const REF = useMemo((): IContextRef => ({
     refDialog,
     refContent
-  }), []);
+  }), [refDialog, refContent]);
   const contextValue: IContext = useMemo(() => ({
     REF,
     PROPS,

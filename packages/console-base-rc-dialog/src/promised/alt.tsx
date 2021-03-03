@@ -34,7 +34,7 @@ interface IExtraOkCancel { // 自定义按钮文字
 /**
  * 系统级 Dialog 共享的不可覆盖 props
  */
-const COMMON_PROPS: Partial<IDialogProps<never, never>> = {
+const COMMON_PROPS: Partial<IDialogProps<any, any>> = {
   mode: EDialogMode.NORMAL,
   backdrop: true,
   zIndex: Z_INDEX.DIALOG_SYS,
@@ -118,7 +118,7 @@ export function confirm(contentOrProps?: string | JSX.Element | IDialogPropsConf
   
   delete promiseProps.title;
   
-  return open<boolean | undefined>(promiseProps).then(result => !!result);
+  return open<boolean>(promiseProps).then(result => !!result);
 }
 
 /**

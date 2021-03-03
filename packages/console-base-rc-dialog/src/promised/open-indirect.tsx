@@ -64,9 +64,9 @@ import WithProvider from '../rc-container';
  * ```
  */
 export default function openIndirect<T = void, D = TDialogData>(contentOrProps?: TStringOrJSX | IDialogProps<T, D>): IDialogIndirectPromise<T, D> {
-  let dialogProps: IDialogProps<T, D> = buildPropsForPromise<T, D>(contentOrProps);
+  let dialogProps: IDialogProps<T, D> | null = buildPropsForPromise<T, D>(contentOrProps);
   let holder: HTMLDivElement | null = document.createElement('div'); // 只是一个 gateway 真实的 Dialog 并不会被渲染到它里边
-  let close: (result?: T, rejected?: boolean) => void = _noop;
+  let close: ((result?: T, rejected?: boolean) => void) | null = _noop;
   
   document.body.appendChild(holder!);
   
@@ -116,7 +116,7 @@ export default function openIndirect<T = void, D = TDialogData>(contentOrProps?:
     
     dialogProps!.onClose = close;
     
-    renderDialog(dialogProps);
+    renderDialog(dialogProps!);
   });
   
   return {

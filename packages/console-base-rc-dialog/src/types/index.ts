@@ -100,12 +100,12 @@ export interface IDialogPropsMutable<T = void, D = TDialogData> extends Omit<IDi
  */
 export type TDialogPropsForAlts<T = void, D = TDialogData> = Omit<IDialogProps<T, D>, 'content' | 'buttons' | 'mode' | 'backdrop' | 'esc' | 'zIndex' | 'zIndexBackdrop'>;
 
-export interface IDialogPropsAlert extends TDialogPropsForAlts {
+export interface IDialogPropsAlert extends Omit<TDialogPropsForAlts, 'data'> {
   title?: TStringOrJSX;
   content: TStringOrJSX;
 }
 
-export interface IDialogPropsConfirm extends TDialogPropsForAlts<boolean> {
+export interface IDialogPropsConfirm extends Omit<TDialogPropsForAlts<boolean>, 'data'> {
   title?: TStringOrJSX;
   content: TStringOrJSX;
 }

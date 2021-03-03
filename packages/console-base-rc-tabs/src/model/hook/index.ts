@@ -1,33 +1,15 @@
-import useRefTabs from './use-ref-tabs';
-import useRefNav from './use-ref-nav';
-import usePropWidth from './use-prop-width';
-import usePropClassNameForTabBar from './use-prop-class-name-for-tab-bar';
-import usePropClassNameForTabItem from './use-prop-class-name-for-tab-item';
-import usePropClassNameForTabScroller from './use-prop-class-name-for-tab-scroller';
-import useStateNavOffset from './use-state-nav-offset';
-import useStateNavOffsetMax from './use-state-nav-offset-max';
-import useTabs from './use-tabs';
-import useActiveTab from './use-active-tab';
-import useDispatchActivateTab from './use-dispatch-activate-tab';
-import useDispatchCloseTab from './use-dispatch-close-tab';
-import useDispatchPruneClosedTabs from './use-dispatch-prune-closed-tabs';
-import useDispatchUpdateNavOffset from './use-dispatch-update-nav-offset';
-import useDispatchUpdateNavOffsetMax from './use-dispatch-update-nav-offset-max';
-
-export {
-  useRefTabs,
-  useRefNav,
-  usePropWidth,
-  usePropClassNameForTabBar,
-  usePropClassNameForTabItem,
-  usePropClassNameForTabScroller,
-  useStateNavOffset,
-  useStateNavOffsetMax,
-  useTabs,
-  useActiveTab,
-  useDispatchActivateTab,
-  useDispatchCloseTab,
-  useDispatchPruneClosedTabs,
-  useDispatchUpdateNavOffset,
-  useDispatchUpdateNavOffsetMax
-};
+export { default as useRefTabs } from './use-ref-tabs';
+export { default as useRefNav } from './use-ref-nav';
+export { default as usePropWidth } from './use-prop-width';
+export { default as usePropClassNameForTabBar } from './use-prop-class-name-for-tab-bar';
+export { default as usePropClassNameForTabItem } from './use-prop-class-name-for-tab-item';
+export { default as usePropClassNameForTabScroller } from './use-prop-class-name-for-tab-scroller';
+export { default as useStateNavOffset } from './use-state-nav-offset';
+export { default as useStateNavOffsetMax } from './use-state-nav-offset-max';
+export { default as useTabs } from './use-tabs';
+export { default as useActiveTab } from './use-active-tab';
+export { default as useDispatchActivateTab } from './use-dispatch-activate-tab';
+export { default as useDispatchCloseTab } from './use-dispatch-close-tab';
+export { default as useDispatchPruneClosedTabs } from './use-dispatch-prune-closed-tabs';
+export { default as useDispatchUpdateNavOffset } from './use-dispatch-update-nav-offset';
+export { default as useDispatchUpdateNavOffsetMax } from './use-dispatch-update-nav-offset-max';

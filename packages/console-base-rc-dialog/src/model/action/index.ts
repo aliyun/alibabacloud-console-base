@@ -1,23 +1,10 @@
-import actionDidMount from './action-did-mount';
-import actionActivate from './action-activate';
-import actionDeactivate from './action-deactivate';
-import actionSetZIndex from './action-set-z-index';
-import actionLock from './action-lock';
-import actionUnlock from './action-unlock';
-import actionUpdateProps from './action-update-props';
-import actionUpdateData from './action-update-data';
-import actionUpdateWindowHeight from './action-update-window-height';
-import actionForceUpdate from './action-force-update';
-
-export {
-  actionDidMount,
-  actionActivate,
-  actionDeactivate,
-  actionSetZIndex,
-  actionLock,
-  actionUnlock,
-  actionUpdateProps,
-  actionUpdateData,
-  actionUpdateWindowHeight,
-  actionForceUpdate
-};
+export { default as actionDidMount } from './action-did-mount';
+export { default as actionActivate } from './action-activate';
+export { default as actionDeactivate } from './action-deactivate';
+export { default as actionSetZIndex } from './action-set-z-index';
+export { default as actionLock } from './action-lock';
+export { default as actionUnlock } from './action-unlock';
+export { default as actionUpdateProps } from './action-update-props';
+export { default as actionUpdateData } from './action-update-data';
+export { default as actionUpdateWindowHeight } from './action-update-window-height';
+export { default as actionForceUpdate } from './action-force-update';

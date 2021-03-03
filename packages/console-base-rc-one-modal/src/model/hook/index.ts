@@ -1,33 +1,15 @@
-import usePropMinimizable from './use-prop-minimizable';
-import usePropPinnable from './use-prop-pinnable';
-import usePropTabs from './use-prop-tabs';
-import useMode from './use-mode';
-import useRndState from './use-rnd-state';
-import useRndDragHandleClass from './use-rnd-drag-handle-class';
-import useRndResizeHandleStyles from './use-rnd-resize-handle-styles';
-import useRndDraggingDisabled from './use-rnd-dragging-disabled';
-import useDispatchChangeMode from './use-dispatch-change-mode';
-import useDispatchRndDragStart from './use-dispatch-rnd-drag-start';
-import useDispatchRndDragStop from './use-dispatch-rnd-drag-stop';
-import useDispatchRndResizeStart from './use-dispatch-rnd-resize-start';
-import useDispatchRndResize from './use-dispatch-rnd-resize';
-import useDispatchClose from './use-dispatch-close';
-import useDispatchRefreshWindowSize from './use-dispatch-refresh-window-size';
-
-export {
-  usePropMinimizable,
-  usePropPinnable,
-  usePropTabs,
-  useMode,
-  useRndState,
-  useRndDragHandleClass,
-  useRndResizeHandleStyles,
-  useRndDraggingDisabled,
-  useDispatchChangeMode,
-  useDispatchRndDragStart,
-  useDispatchRndDragStop,
-  useDispatchRndResizeStart,
-  useDispatchRndResize,
-  useDispatchClose,
-  useDispatchRefreshWindowSize
-};
+export { default as usePropMinimizable } from './use-prop-minimizable';
+export { default as usePropPinnable } from './use-prop-pinnable';
+export { default as usePropTabs } from './use-prop-tabs';
+export { default as useMode } from './use-mode';
+export { default as useRndState } from './use-rnd-state';
+export { default as useRndDragHandleClass } from './use-rnd-drag-handle-class';
+export { default as useRndResizeHandleStyles } from './use-rnd-resize-handle-styles';
+export { default as useRndDraggingDisabled } from './use-rnd-dragging-disabled';
+export { default as useDispatchChangeMode } from './use-dispatch-change-mode';
+export { default as useDispatchRndDragStart } from './use-dispatch-rnd-drag-start';
+export { default as useDispatchRndDragStop } from './use-dispatch-rnd-drag-stop';
+export { default as useDispatchRndResizeStart } from './use-dispatch-rnd-resize-start';
+export { default as useDispatchRndResize } from './use-dispatch-rnd-resize';
+export { default as useDispatchClose } from './use-dispatch-close';
+export { default as useDispatchRefreshWindowSize } from './use-dispatch-refresh-window-size';

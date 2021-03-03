@@ -10,8 +10,8 @@ const REG_PROTOCOL_HOST_EXTRACTOR = /^(https?:)?\/\/([^/]+)/;
 /**
  * 提取 protocol 和 host，如果能够提取到则说明 url 是绝对地址
  */
-export default function getProtocolAndHost(url: string): [string, string] | null {
-  if (REG_PROTOCOL_HOST_EXTRACTOR.test(url)) {
+export default function getProtocolAndHost(url?: string): [string, string] | null {
+  if (url && REG_PROTOCOL_HOST_EXTRACTOR.test(url)) {
     return [RegExp.$1, RegExp.$2];
   }
   
