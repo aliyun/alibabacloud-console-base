@@ -11,7 +11,7 @@ import useModelState from './_use-model-state';
  *
  * 注意会经常变，因为涉及到 active 和 locked
  */
-export default function useDispatchCloseWithValue<T = void>(): (value?: T, rejected?: boolean) => void {
+export default function useDispatchCloseWithValue<T = void>(): (value?: T | Error, rejected?: boolean) => void {
   const {
     undefinedAsReject,
     onClose
@@ -23,7 +23,7 @@ export default function useDispatchCloseWithValue<T = void>(): (value?: T, rejec
   
   const dispatchToggleActive = useDispatchToggleActive();
   
-  return useCallback((value: T, rejected?: boolean): void => { // eslint-disable-line @typescript-eslint/no-explicit-any
+  return useCallback((value?: T | Error, rejected?: boolean): void => {
     if (locked || !active) {
       return;
     }

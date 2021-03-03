@@ -18,7 +18,7 @@ function getTextAlignLeft(props: IButtonPropsForSc): string {
     return props.textAlign;
   }
   
-  if (THEMES_TEXT_ALIGN_LEFT.includes(props.theme)) {
+  if (props.theme && THEMES_TEXT_ALIGN_LEFT.includes(props.theme)) {
     return 'left';
   }
   

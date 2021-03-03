@@ -11,6 +11,6 @@ import {
  * 
  * 原 @ali/console-base-sdk-toolkit messenger.subscribeActivated + subscribeDeactivated
  */
-export default function onToolkitItemActiveChange(id: string, fn: (active: boolean) => void): () => void {
+export default function onToolkitItemActiveChange(id: string, fn: (active?: boolean) => void): () => void {
   return subscribeByApp(composeToolkitTypeWithId(EToolkitTypeShort.TOOL_ACTIVATED, id), fn);
 }

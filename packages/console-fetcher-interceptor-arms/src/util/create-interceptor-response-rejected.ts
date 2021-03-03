@@ -13,7 +13,7 @@ import logApi from './bl';
 
 export default function createInterceptorResponseRejected(interceptorConfig?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected<FetcherConfig> {
   return (err: FetcherError, fetcherConfig: FetcherConfig, response?: FetcherResponse): void => {
-    if (!interceptorConfig?.shouldIgnore(fetcherConfig, err)) {
+    if (!interceptorConfig?.shouldIgnore || !interceptorConfig.shouldIgnore(fetcherConfig, err)) {
       logApi(fetcherConfig, response?.headers['Eagleeye-Traceid'], false, err.code, err.message);
     }
     

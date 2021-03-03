@@ -49,9 +49,9 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
   
   return {
     title: title || defaultTitle,
-    message,
+    message: message!,
     button: button || defaultButton,
-    buttonCancel,
+    buttonCancel: buttonCancel!,
     error,
     resolve: _noop // 由主方法负责填充成正式的 resolve 方法
   };

@@ -23,7 +23,7 @@ const THEMES_NEED_BORDER: EButtonTheme[] = [
 ];
 
 function needBorder(props: IButtonPropsForSc): boolean {
-  return props.size !== EButtonSize.NONE && THEMES_NEED_BORDER.includes(props.theme);
+  return props.size !== EButtonSize.NONE && (props.theme ? THEMES_NEED_BORDER.includes(props.theme) : false);
 }
 
 function getBorderRadius(props: IButtonPropsForSc): string {

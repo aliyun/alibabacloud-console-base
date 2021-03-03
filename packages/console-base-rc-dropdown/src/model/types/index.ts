@@ -20,7 +20,7 @@ export type TAction = {
 export interface IContextProps extends IPropsDropdown {}
 
 export interface IContextRef {
-  refDropdown: MutableRefObject<HTMLDivElement>;
+  refDropdown: MutableRefObject<HTMLDivElement | null>;
 }
 
 export interface IContextState {

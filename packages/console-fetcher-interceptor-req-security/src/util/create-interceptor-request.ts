@@ -26,14 +26,13 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
       getUmid = defaultGetUmid,
       getSecToken = defaultGetSecToken
     } = fetcherConfig;
-    const body: Record<'sec_token' | 'collina' | 'umid', string> = {
-      collina: getCollina(),
-      umid: getUmid(),
-      sec_token: getSecToken()
-    };
     
     return {
-      body // body 会被 mix
+      body: {
+        collina: getCollina(),
+        umid: getUmid(),
+        sec_token: getSecToken()
+      }
     };
   };
 }

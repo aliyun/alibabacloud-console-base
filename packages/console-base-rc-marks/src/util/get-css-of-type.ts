@@ -35,7 +35,7 @@ const CSS_ALPHA = css`
 const CSS_BETA = CSS_ALPHA;
 const CSS_PUBLIC_BETA = CSS_ALPHA;
 
-export default function getCssOfType(type: EMarkType): FlattenSimpleInterpolation {
+export default function getCssOfType(type: EMarkType): FlattenSimpleInterpolation | null {
   switch (type) {
     case EMarkType.NEW:
       return CSS_NEW;

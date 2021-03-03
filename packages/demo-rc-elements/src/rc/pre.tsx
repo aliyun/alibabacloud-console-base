@@ -59,10 +59,12 @@ export default function Pre({
   onDoubleClick,
   ...props
 }: IPropsPre): JSX.Element {
-  const refInner = useRef<HTMLDivElement>();
+  const refInner = useRef<HTMLDivElement>(null);
   const handleDoubleClick = useCallback((e: MouseEvent<HTMLPreElement>) => {
     try {
-      selectText(refInner.current);
+      if (refInner.current) {
+        selectText(refInner.current);
+      }
     } catch (ex) {
       // ignore
     }

@@ -12,7 +12,7 @@ import {
  * 有限更新 props
  */
 export default function reduceUpdateProps(state: IContextState, payload: IDialogPropsMutable): IContextState {
-  const newUpdate = {
+  const newUpdate: any = {
     ...state.propsUpdate
   };
   

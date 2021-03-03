@@ -21,7 +21,7 @@ interface IFetcherConfig extends FetcherConfig {
   tokenRefreshed?: boolean;
 }
 
-async function interceptResponse(err: FetcherError, fetcherConfig: IFetcherConfig, response: FetcherResponse, request: FetcherFnRequest): Promise<unknown> {
+async function interceptResponse(err: FetcherError, fetcherConfig: IFetcherConfig, response: FetcherResponse | undefined, request: FetcherFnRequest): Promise<unknown> {
   if (!isFecs(fetcherConfig) || err?.code !== ERROR_CODE_TOKEN_INVALID) {
     throw err;
   }

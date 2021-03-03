@@ -1,4 +1,4 @@
-type TAnyCallback = (...args: unknown[]) => void;
+type TAnyCallback = (...args: any[]) => void;
 type TReceivers = Record<string, TAnyCallback[]>;
 
 const MAP_RECEIVERS: TReceivers = {}; // 某一 type 对应的所有回调

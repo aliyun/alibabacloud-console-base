@@ -17,13 +17,14 @@ class LogPipe {
   private readonly trackUrl: string;
   private readonly apiVersion: string;
   private queue: ILogInfo[];
-  private timer: number;
+  private timer: number | null;
   private frozen: boolean;
   
   constructor(project: string, endpoint: string, logstore: string, apiVersion = API_VERSION) {
     this.trackUrl = `//${project}.${endpoint}/logstores/${logstore}/track`;
     this.apiVersion = apiVersion;
     this.queue = [];
+    this.timer = null;
     this.frozen = true;
     
     setTimeout(() => {
@@ -75,7 +76,7 @@ class LogPipe {
   private clearTimer(): void {
     if (this.timer) {
       window.clearTimeout(this.timer);
-      this.timer = 0;
+      this.timer = null;
     }
   }
   

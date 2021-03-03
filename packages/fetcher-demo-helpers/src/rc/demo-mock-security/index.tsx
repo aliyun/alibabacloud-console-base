@@ -28,6 +28,7 @@ interface IWin {
   ALIYUN_CONSOLE_CONFIG?: {
     SEC_TOKEN?: string;
   };
+  collina_fucking_by_boshit?: string;
 }
 
 /**

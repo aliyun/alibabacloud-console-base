@@ -114,6 +114,7 @@ export default function openIndirect<T = void, D = TDialogData>(contentOrProps?:
       close = null;
     };
     
+    // @ts-ignore
     dialogProps!.onClose = close;
     
     renderDialog(dialogProps!);

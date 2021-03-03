@@ -32,6 +32,11 @@ import {
 } from '../../../model';
 import ControlButton from '../../../rc/control-button';
 
+interface IScProps {
+  'data-active'?: 1 | '';
+  'data-closable'?: 1 | '';
+}
+
 const ScNav = styled.nav`
   display: inline-block;
   padding-left: 16px;
@@ -39,7 +44,7 @@ const ScNav = styled.nav`
   transition: transform 0.3s ease-in;
 `;
 
-const ScNavItem = styled.div`
+const ScNavItem = styled.div<IScProps>`
   display: inline-block;
   position: relative;
   margin-top: ${TAB_TOP_SPACE}px;
@@ -70,7 +75,7 @@ const ScTab0 = styled.button`
   ${mixinTypoEllipsis}
 `;
 
-const ScTab = styled(ScTab0)`
+const ScTab = styled(ScTab0)<IScProps>`
   padding: 0 ${props => (props['data-closable'] ? 28 : 12)}px 0 12px;
   border-radius: 4px 4px 0 0;
   background-color: ${props => (props['data-active'] ? BGC_TAB_ACTIVE : BGC_TAB_IDLE)};

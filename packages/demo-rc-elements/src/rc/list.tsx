@@ -43,7 +43,7 @@ function List({
   const ListComponent = ordered ? ScOl : ScUl;
   
   return <ListComponent ref={ref} {...props}>
-    {Children.map(children, (v: ReactChild, i): JSX.Element | null => <ScLi key={i}>{v}</ScLi>)}
+    {Children.map(children as unknown as ReactChild[], (v: ReactChild, i): JSX.Element | null => <ScLi key={i}>{v}</ScLi>)}
   </ListComponent>;
 }
 

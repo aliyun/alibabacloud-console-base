@@ -54,8 +54,6 @@ function buildPostBody(infoList: ILogInfo[]): ILogPostBody {
   
   if (infoList.length === 1) {
     __topic__ = infoList[0].__topic__;
-    
-    delete infoList[0].__topic__; // 可以少一个没有必要的 __topic__0
   }
   
   return {

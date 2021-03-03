@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  isValidElement
+} from 'react';
 
 import {
   IPropsPreJson
@@ -11,7 +13,7 @@ function replacer(k: string, val: unknown): unknown {
     return val.toString();
   }
   
-  if (React.isValidElement(val)) {
+  if (isValidElement(val as string)) {
     return '# JSX #';
   }
   

@@ -6,6 +6,6 @@ import {
 } from '../../const';
 import subscribeByApp from '../../util/subscribe-by-app';
 
-export default function onFastbuySubmitPayment(fn: (payload: IPayloadFastbuy) => void): () => void {
+export default function onFastbuySubmitPayment(fn: (payload?: IPayloadFastbuy) => void): () => void {
   return subscribeByApp<IPayloadFastbuy>(EMessageBroadcastByConsoleBase.FASTBUY_SUBMIT_PAYMENT, fn);
 }

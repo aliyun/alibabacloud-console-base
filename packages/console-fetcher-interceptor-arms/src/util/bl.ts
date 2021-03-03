@@ -13,7 +13,7 @@ export default function logApi(fetcherConfig: FetcherConfig, traceId?: string, s
     return;
   }
   
-  const timeStarted = fetcherConfig._timeStarted;
+  const timeStarted = fetcherConfig._timeStarted!;
   const duration = timeStarted ? Date.now() - timeStarted : -1;
   const api = buildUrl({
     url: fetcherConfig.url,

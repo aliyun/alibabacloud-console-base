@@ -137,6 +137,7 @@ export function RadioGroup<T = string>({
     return null;
   }
   
+  // @ts-ignore
   return <ChoiceGroup<T> {...{
     label,
     items,

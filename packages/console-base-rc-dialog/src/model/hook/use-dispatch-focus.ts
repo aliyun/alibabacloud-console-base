@@ -13,5 +13,5 @@ export default function useDispatchFocus(): () => void {
   const refContent = useRefContent();
   const refDialog = useRefDialog();
   
-  return useCallback((): void => focusDialog(refDialog.current, refContent.current), [refDialog, refContent]);
+  return useCallback((): void => focusDialog(refDialog.current!, refContent.current!), [refDialog, refContent]);
 }

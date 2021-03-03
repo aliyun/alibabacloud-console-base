@@ -22,8 +22,11 @@ export default function useDialogStackItem(): IDialogStackItem {
   const dispatchCloseOnExternal = useDispatchCloseOnExternal();
   
   return {
+    // @ts-ignore
     backdrop,
+    // @ts-ignore
     zIndex,
+    // @ts-ignore
     zIndexBackdrop,
     domDialog: refDialog.current,
     domDialogContent: refContent.current,

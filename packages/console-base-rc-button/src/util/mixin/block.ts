@@ -14,7 +14,7 @@ const THEMES_BLOCK: EButtonTheme[] = [
 ];
 
 function isBlock(props: IButtonPropsForSc): boolean | undefined {
-  return THEMES_BLOCK.includes(props.theme) || props.block;
+  return (props.theme && THEMES_BLOCK.includes(props.theme)) || props.block;
 }
 
 export default css<IButtonPropsForSc>`

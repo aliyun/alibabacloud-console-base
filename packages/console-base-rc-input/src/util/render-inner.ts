@@ -7,7 +7,7 @@ import {
   TFnInner
 } from '../types';
 
-export default function renderInner(inner: TInner | TFnInner, focused: boolean, hovered: boolean): TInner | null {
+export default function renderInner(inner: TInner | TFnInner | undefined, focused: boolean, hovered: boolean): TInner | null {
   if (!inner) {
     return null;
   }

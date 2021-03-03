@@ -9,8 +9,10 @@ export default function createStorageFn(wholeDataKey: string, theStorage: Storag
   }
   
   function getWholeData(): TDataWhole {
-    try {
-      return JSON.parse(theStorage.getItem(wholeDataKey)) || {};
+    try { // getItem 和 JSON.parse 都可能出错
+      const str = theStorage.getItem(wholeDataKey);
+      
+      return str ? JSON.parse(str) : {};
     } catch (ex) {
       return {};
     }

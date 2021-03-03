@@ -8,7 +8,7 @@ import {
   EAction
 } from '../const';
 
-export default function actionUpdateData<D = TDialogData>(payload: D): TAction {
+export default function actionUpdateData<D = TDialogData>(payload: Partial<D>): TAction {
   return {
     type: EAction.UPDATE_DATA,
     payload

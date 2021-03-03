@@ -11,11 +11,11 @@ function getContainer(selector: string | HTMLElement | Window | null): Window | 
 }
 
 function fallbackForDom(dom: HTMLElement, top?: number, left?: number): void {
-  if (top >= 0) {
+  if (typeof top === 'number' && top >= 0) {
     dom.scrollTop = top;
   }
   
-  if (left >= 0) {
+  if (typeof left === 'number' && left >= 0) {
     dom.scrollLeft = left;
   }
 }

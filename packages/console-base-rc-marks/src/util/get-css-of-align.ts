@@ -3,7 +3,7 @@ import {
   css
 } from 'styled-components';
 
-export default function getCssOfAlign(align: string): FlattenSimpleInterpolation {
+export default function getCssOfAlign(align?: string): FlattenSimpleInterpolation | null {
   switch (align) {
     case 'left':
       return css`

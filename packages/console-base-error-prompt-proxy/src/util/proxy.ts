@@ -28,7 +28,7 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
     return errorPrompt(o, extra);
   }
   
-  const errorInfo: ErrorDetailedInfo = convertToErrorDetailedInfo(o);
+  const errorInfo: ErrorDetailedInfo | null = o ? convertToErrorDetailedInfo(o) : null;
   
   if (!errorInfo) {
     return;
@@ -36,7 +36,7 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
   
   try { // postMessage 可能抛错
     return forApp.promptError<IMessengerPayload>({
-      error: pruneForMessage<ErrorDetailedInfo>(errorInfo),
+      error: pruneForMessage<ErrorDetailedInfo>(errorInfo) as Error, // FIXME
       extra: pruneForMessage<ErrorPromptExtra>(typeof extra === 'function' ? extra(errorInfo) || {} : extra)
     });
   } catch (err) { // 抛错表明 message 的 payload 中含有无法序列化的数据

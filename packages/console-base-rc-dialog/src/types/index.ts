@@ -29,7 +29,7 @@ export type TFnButtonOnClick<T = void, D = TDialogData> = (dialog: IContextForCo
 /**
  * Dialog props.onClose 方法定义，value 的类型为 Promise resolve 的类型
  */
-export type TFnDialogOnClose<T = void> = (result?: T, rejected?: boolean) => void;
+export type TFnDialogOnClose<T = void> = (result?: T | Error, rejected?: boolean) => void;
 
 export type TFnCloseWithResult<T = void> = (result?: T | Error, rejected?: boolean) => void;
 

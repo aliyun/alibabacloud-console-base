@@ -48,8 +48,8 @@ export interface IArmsBlConfig {
 export interface IArmsBl {
   config?: Partial<IArmsBlConfig>;
   _conf?: IArmsBlConfig;
-  api?(url: string, success: boolean, duration: number, code: string, message: string, timeStarted: number, traceId: string): void;
-  pipe?: ['api', string, boolean, number, string, string, number, string][];
+  api?(url: string, success: boolean, duration: number, code: string, message: string, timeStarted: number, traceId?: string): void;
+  pipe?: ['api', string, boolean, number, string, string, number, string?][];
 }
 
 // bl.js 初始化前传参可以通过创建一个全局对象 `window.__bl`，并写入 `config.pid`，

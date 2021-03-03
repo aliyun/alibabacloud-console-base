@@ -28,8 +28,8 @@ export type TAction = {
 export interface IContextProps extends Required<IPropsTabs> {}
 
 export interface IContextRef {
-  refTabs: MutableRefObject<HTMLDivElement>;
-  refNav: MutableRefObject<HTMLDivElement>;
+  refTabs: MutableRefObject<HTMLDivElement | null>;
+  refNav: MutableRefObject<HTMLDivElement | null>;
 }
 
 export interface IContextState {

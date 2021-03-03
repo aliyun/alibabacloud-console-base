@@ -32,8 +32,8 @@ export default function FooterButton({
   primary,
   onClick,
   ...buttonProps
-}: IDialogButtonProps<unknown>): JSX.Element {
-  const dialog = useDialog();
+}: IDialogButtonProps<any>): JSX.Element {
+  const dialog = useDialog<unknown>();
   const dispatchLock = useDispatchLock();
   const dispatchUnlock = useDispatchUnlock();
   const dispatchCloseWithValue = useDispatchCloseWithValue<unknown>();

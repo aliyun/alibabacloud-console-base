@@ -60,7 +60,7 @@ export default function NavButtonLabel({
       iconRotate,
       html,
       text,
-      count,
+      count = 0,
       countAsDot
     } = label;
     let jsxLabel: JSX.Element;

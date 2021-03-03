@@ -26,7 +26,7 @@ export default function reducePruneClosedTabs(state: IContextState, tabs: IProps
     }
     
     return result;
-  }, []);
+  }, [] as IPropsTab[]);
   
   if (!pruned) {
     return state;

@@ -17,6 +17,6 @@ import {
  * - P props 类型
  * - E extra 类型
  */
-export default function onLaunchWidget<T = void, P = void, E = void>(fn: (payload: IPayloadLaunchWidget<P, E>) => Promise<T>): () => void {
+export default function onLaunchWidget<T = void, P = void, E = void>(fn: (payload?: IPayloadLaunchWidget<P, E>) => Promise<T>): () => void {
   return subscribePromiseByConsoleBase<T, IPayloadLaunchWidget<P, E>>(EMessageBroadcastByApp.LAUNCH_WIDGET, fn);
 }

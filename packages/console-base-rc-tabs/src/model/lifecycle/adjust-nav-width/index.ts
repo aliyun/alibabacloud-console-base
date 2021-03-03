@@ -25,14 +25,14 @@ export default function AdjustNavWidth(): null {
   const dispatchUpdateNavOffsetMax = useDispatchUpdateNavOffsetMax();
   
   useEffect(() => {
-    const widthOfTabs = width > 0 ? width : refTabs.current.offsetWidth; // 容器有 transition 的情况下，width 变化不会立马影响 tabs 的实际宽度
-    const widthOfNav = refNav.current.offsetWidth;
+    const widthOfTabs = width > 0 ? width : refTabs.current!.offsetWidth; // 容器有 transition 的情况下，width 变化不会立马影响 tabs 的实际宽度
+    const widthOfNav = refNav.current!.offsetWidth;
     
     const activeIndex = tabs.indexOf(activeTab);
     let activeOffset = 0;
     
     for (let i = 0; i < activeIndex; i++) {
-      activeOffset -= (refNav.current.children[i] as HTMLElement).offsetWidth;
+      activeOffset -= (refNav.current!.children[i] as HTMLElement).offsetWidth;
     }
     
     dispatchUpdateNavOffsetMax(Math.min(widthOfTabs - widthOfNav - WIDTH_SCROLLER_BUTTON * 2, 0));

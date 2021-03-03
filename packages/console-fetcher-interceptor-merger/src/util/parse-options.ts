@@ -16,6 +16,6 @@ export default function parseOptions({
   } = merger === true ? {} : merger;
   
   return {
-    key: key || _id
+    key: key || _id!
   };
 }

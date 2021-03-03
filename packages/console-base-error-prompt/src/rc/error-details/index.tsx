@@ -161,10 +161,10 @@ export default function ErrorDetails({
         k,
         v
       }): JSX.Element => {
-        let displayValue: string | JSX.Element;
+        let displayValue: string | null | JSX.Element;
         
-        if (_isString(v) || isValidElement(v)) {
-          displayValue = v;
+        if (_isString(v) || isValidElement(v as JSX.Element)) {
+          displayValue = v as string | JSX.Element;
         } else if (_isPlainObject(v)) { // 对象转成 
           displayValue = renderObject(v as Record<string, unknown>);
         } else {

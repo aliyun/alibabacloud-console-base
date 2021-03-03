@@ -31,7 +31,7 @@ export default function useMenus(): IPropsTopNavButton[] {
       const {
         key,
         dropdown
-      } = v;
+      } = v!;
       
       if (dropdown && key) {
         return {
@@ -44,6 +44,6 @@ export default function useMenus(): IPropsTopNavButton[] {
       }
       
       return v;
-    });
+    }) as IPropsTopNavButton[];
   }, [language, menus, account, handleMenuDropdownVisibleChange]);
 }

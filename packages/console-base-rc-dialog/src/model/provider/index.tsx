@@ -29,8 +29,8 @@ export default function Provider({
   props,
   children
 }: IProps): JSX.Element {
-  const refDialog = useRef<HTMLDivElement>(); // 指向 dialog 本身节点
-  const refContent = useRef<HTMLDivElement>(); // 指向 dialog 内容节点
+  const refDialog = useRef<HTMLDivElement>(null); // 指向 dialog 本身节点
+  const refContent = useRef<HTMLDivElement>(null); // 指向 dialog 内容节点
   const [STATE, dispatch] = useReducer<IContextReducer>(reducer, getDefaultContextState(props.data));
   const PROPS = useMemo((): IContextProps => getContextProps(props, STATE.propsUpdate), [props, STATE.propsUpdate]);
   const REF = useMemo((): IContextRef => ({

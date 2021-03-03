@@ -22,7 +22,7 @@ const THEMES_NEED_SHADOW: EButtonTheme[] = [
 ];
 
 function needShadow(props: IButtonPropsForSc): boolean {
-  return props.noShadow || props.disabled || props.loading || props.active ? false : THEMES_NEED_SHADOW.includes(props.theme);
+  return props.noShadow || props.disabled || props.loading || props.active ? false : (props.theme ? THEMES_NEED_SHADOW.includes(props.theme) : false);
 }
 
 export default css<IButtonPropsForSc>`

@@ -51,7 +51,7 @@ const ScFooter = styled.footer<IScProps>`
   ${props => (props.mode === EDialogMode.SLIDE ? cssSlide : cssNormal)}
 `;
 
-export default function Footer(): JSX.Element {
+export default function Footer(): JSX.Element | null {
   const mode = usePropMode();
   const buttons: IDialogButtonProps[] = useDialogButtons();
   

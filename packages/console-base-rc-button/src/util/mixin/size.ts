@@ -41,7 +41,7 @@ function getSize(props: IButtonPropsForSc): EButtonSize {
     return props.size;
   }
   
-  return THEMES_DEFAULT_SIZE_NONE.includes(props.theme) ? EButtonSize.NONE : EButtonSize.M;
+  return (props.theme && THEMES_DEFAULT_SIZE_NONE.includes(props.theme)) ? EButtonSize.NONE : EButtonSize.M;
 }
 
 export default css<IButtonPropsForSc>`

@@ -151,18 +151,18 @@ const MAPPING: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
 
 function getThemeMixin(props: IButtonPropsForSc): FlattenSimpleInterpolation | null {
   if (props.disabled) {
-    return MAPPING_DISABLED[props.theme] || mixinButtonTextTertiaryStateDisabled;
+    return (props.theme ? MAPPING_DISABLED[props.theme] : null) || mixinButtonTextTertiaryStateDisabled;
   }
   
   if (props.active) {
-    return MAPPING_ACTIVE[props.theme];
+    return props.theme ? MAPPING_ACTIVE[props.theme] : null;
   }
   
   if (props.loading) { // loading 的时候没有 hover 样式
-    return MAPPING_NORMAL[props.theme];
+    return props.theme ? MAPPING_NORMAL[props.theme] : null;
   }
   
-  return MAPPING[props.theme];
+  return props.theme ? MAPPING[props.theme] : null;
 }
 
 export default css<IButtonPropsForSc>`

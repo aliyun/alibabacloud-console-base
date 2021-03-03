@@ -14,7 +14,7 @@ export default function formatMessage<O, V = void>(messages: O, id: keyof O, val
       return match.slice(1);
     }
     
-    const value = values[k];
+    const value = (values as Record<string, unknown>)[k];
     
     if (value === undefined) {
       return '';

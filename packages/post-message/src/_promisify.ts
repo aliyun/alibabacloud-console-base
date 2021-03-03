@@ -40,14 +40,14 @@ function errorToPlain(err: unknown): unknown {
   
   ['message', 'name', 'stack'].forEach(v => {
     if (!plain[v]) {
-      plain[v] = err[v];
+      plain[v] = (err as any)[v];
     }
   });
   
   return plain;
 }
 
-function plainToError(o: unknown): unknown {
+function plainToError(o: any): unknown {
   if (!_isPlainObject(o)) {
     return o;
   }
@@ -55,7 +55,7 @@ function plainToError(o: unknown): unknown {
   const err = new Error();
   
   _forEach(o as Record<string, unknown>, (v, k) => {
-    err[k] = o[k];
+    (err as any)[k] = o[k];
   });
   
   return err;
@@ -100,7 +100,7 @@ export function broadcastPromise<T = void, P = void>(type: string, payload?: P):
 /**
  * 对 broadcastPromise 对应的 type 进行响应，这里关心的 payload 还是 broadcastPromise 所传入的 payload
  */
-export function subscribePromise<T = void, P = void>(type: string, fn: (payload: P) => T | Promise<T>): () => void {
+export function subscribePromise<T = void, P = void>(type: string, fn: (payload?: P) => T | Promise<T>): () => void {
   return subscribe<IPayloadBroadcast<P>>(type, (payload?: IPayloadBroadcast<P>) => {
     // 得到的 payload 下有 _dismiss_ 参数才响应，否则 pass
     if (!payload?._dismiss_) {

@@ -20,7 +20,8 @@ export const DEFAULT_CONTEXT_PROPS: IContextProps = {
   tabs: [],
   affix: null,
   visible: true,
-  mode: undefined,
+  // @ts-ignore
+  mode: undefined, // FIXME..
   minWidth: DEFAULT_VALUES.MIN_WIDTH,
   minHeight: DEFAULT_VALUES.MIN_HEIGHT,
   maxWidth: DEFAULT_VALUES.MAX_WIDTH,

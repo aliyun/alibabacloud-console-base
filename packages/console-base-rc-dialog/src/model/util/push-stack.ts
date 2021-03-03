@@ -42,7 +42,7 @@ function findTopmost(): IDialogStackItem | undefined {
  * 判断鼠标点击事件是否发生在 dialog 内部
  */
 function inDialog(e: MouseEvent, domDialog: HTMLDivElement): boolean {
-  let el = e.target as HTMLElement;
+  let el: HTMLElement | null = e.target as HTMLElement;
 
   while (el && el !== document.body) {
     if (el === domDialog) {
@@ -84,7 +84,7 @@ function handleClickExternalClick(e: MouseEvent): void {
     dispatchCloseOnExternal
   } = topmost;
   
-  if (inDialog(e, domDialog)) {
+  if (inDialog(e, domDialog!)) {
     return;
   }
   
@@ -122,7 +122,7 @@ function handleMouseDownTrapTab(e: KeyboardEvent): void {
     return;
   }
   
-  trapFocus(topmost.domDialog, topmost.domDialogContent, e.shiftKey ? EDialogFocusHow.PREV : EDialogFocusHow.NEXT);
+  trapFocus(topmost.domDialog!, topmost.domDialogContent!, e.shiftKey ? EDialogFocusHow.PREV : EDialogFocusHow.NEXT);
   
   e.preventDefault();
 }

@@ -44,11 +44,11 @@ export default function Scroller(): JSX.Element {
   }, [navOffset, dispatchUpdateNavOffset]);
   
   const handleScrollLeft = useCallback((): void => {
-    handleScrollBy(refTabs.current.offsetWidth);
+    handleScrollBy(refTabs.current!.offsetWidth);
   }, [refTabs, handleScrollBy]);
   
   const handleScrollRight = useCallback((): void => {
-    handleScrollBy(-refTabs.current.offsetWidth);
+    handleScrollBy(-refTabs.current!.offsetWidth);
   }, [refTabs, handleScrollBy]);
   
   return <ScScroller className={className}>

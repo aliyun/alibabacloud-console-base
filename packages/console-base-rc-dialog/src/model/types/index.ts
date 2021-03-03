@@ -39,8 +39,8 @@ export interface IDialogStackItem {
   backdrop: boolean;
   zIndex: number;
   zIndexBackdrop: number;
-  domDialog: HTMLDivElement;
-  domDialogContent: HTMLDivElement;
+  domDialog: HTMLDivElement | null;
+  domDialogContent: HTMLDivElement | null;
   dispatchSetZIndex(zIndex: number): void;
   dispatchCloseOnEsc(): boolean | void;
   dispatchCloseOnExternal(): void;
@@ -52,8 +52,8 @@ export interface IContextProps<R = void, D = TDialogData> extends IDialogProps<R
  * Dialog 的本体和内容两者需要有 ref，因为这里涉及到 A11Y 的焦点获取
  */
 export interface IContextRef {
-  refDialog: MutableRefObject<HTMLDivElement | undefined>;
-  refContent: MutableRefObject<HTMLDivElement | undefined>;
+  refDialog: MutableRefObject<HTMLDivElement | null>;
+  refContent: MutableRefObject<HTMLDivElement | null>;
 }
 
 /**

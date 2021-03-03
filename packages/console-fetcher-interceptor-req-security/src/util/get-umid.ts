@@ -7,7 +7,7 @@ import {
  */
 export default function getUmid(): string | undefined {
   try {
-    return (window as IWindow)?.um.getToken();
+    return (window as IWindow)?.um?.getToken();
   } catch (ex) {
     return undefined;
   }

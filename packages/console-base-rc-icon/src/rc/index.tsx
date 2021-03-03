@@ -47,7 +47,7 @@ const cssRotate = css<IPropsIconPure>`
       return cssLoading;
     }
     
-    if (props.rotate > 0) {
+    if (typeof props.rotate === 'number' && props.rotate > 0) {
       return css`
         transform: rotate(${props.rotate}deg);
       `;

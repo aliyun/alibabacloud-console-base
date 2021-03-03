@@ -29,12 +29,12 @@ export default function Provider({
   props,
   children
 }: IProps): JSX.Element {
-  const refDropdown = useRef<HTMLDivElement>();
+  const refDropdown = useRef<HTMLDivElement>(null);
   const [STATE, dispatch] = useReducer<IContextReducer>(reducer, DEFAULT_STATE);
   const PROPS = props;
   const REF = useMemo((): IContextRef => ({
     refDropdown
-  }), []);
+  }), [refDropdown]);
   const contextValue: IContext = useMemo(() => ({
     REF,
     PROPS,

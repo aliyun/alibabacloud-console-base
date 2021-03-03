@@ -1,5 +1,5 @@
 export interface IFeatureCheckAttributes {
-  region?: string;
+  // region?: string;
   [k: string]: string;
 }
 

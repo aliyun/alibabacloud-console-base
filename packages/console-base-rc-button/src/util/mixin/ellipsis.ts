@@ -19,7 +19,7 @@ const THEMES_NEED_ELLIPSIS: EButtonTheme[] = [
 ];
 
 function needEllipsis(props: IButtonPropsForSc): boolean {
-  return props.ellipsis ?? THEMES_NEED_ELLIPSIS.includes(props.theme);
+  return props.ellipsis ?? (props.theme ? THEMES_NEED_ELLIPSIS.includes(props.theme) : false);
 }
 
 export default css<IButtonPropsForSc>`

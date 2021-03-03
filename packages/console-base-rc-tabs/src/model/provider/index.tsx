@@ -37,14 +37,11 @@ export default function Provider({
   const PROPS: IContextProps = useMemo((): IContextProps => ({
     ...DEFAULT_CONTEXT_PROPS,
     ...props
-  }), [props]);
+  } as IContextProps), [props]);
   const REF: IContextRef = useMemo((): IContextRef => ({
     refTabs,
     refNav
-  }), [
-    refTabs,
-    refNav
-  ]);
+  }), [refTabs, refNav]);
   const [STATE, dispatch] = useReducer<IContextReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
   const contextValue: IContext = useMemo(() => ({

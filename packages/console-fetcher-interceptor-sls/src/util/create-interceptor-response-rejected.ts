@@ -42,8 +42,8 @@ export default function createInterceptorResponseRejected({
     }
     
     const slsParams: ISlsInfo = {
-      fetcherMethod: fetcherConfig.method,
-      fetcherUrl: fetcherConfig.url,
+      fetcherMethod: fetcherConfig.method!,
+      fetcherUrl: fetcherConfig.url!,
       fetcherUrlBase: fetcherConfig.urlBase,
       fetcherParams: fetcherConfig.params,
       fetcherBody: removeSecParamsFromBody(fetcherConfig.body),

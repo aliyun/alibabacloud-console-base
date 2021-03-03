@@ -20,7 +20,7 @@ export default function getCollina(): string | undefined {
     // UAOpt.Token = `${Date.now()}:${Math.random()}`;
     // UAOpt.reload();
     
-    return win[UAOpt.LogVal];
+    return (win as any)[UAOpt.LogVal];
   } catch (e) {
     return undefined;
   }

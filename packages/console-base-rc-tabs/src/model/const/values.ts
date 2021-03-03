@@ -1,11 +1,13 @@
 import _noop from 'lodash/noop';
 
 import {
-  IContextState,
-  IContextProps
+  IPropsTabs
+} from '../../types';
+import {
+  IContextState
 } from '../types';
 
-export const DEFAULT_CONTEXT_PROPS: IContextProps = {
+export const DEFAULT_CONTEXT_PROPS: IPropsTabs = {
   tabs: [],
   width: -1,
   classNameForTabBar: '',

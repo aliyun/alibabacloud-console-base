@@ -15,7 +15,7 @@ export default function parseOptions(fetcherConfig: IFetcherConfigExtended): ICa
   } = fetcherConfig.cacheLocal === true ? {} : fetcherConfig.cacheLocal;
   
   return {
-    key: key || fetcherConfig._id,
+    key: key || fetcherConfig._id!,
     ttl,
     overwrite
   };

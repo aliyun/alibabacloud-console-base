@@ -10,6 +10,6 @@ export default function remove(key: string): void {
   
   const o = storage();
   
-  o[key] = null;
+  o[key] = null as any;
   delete o[key];
 }
