@@ -52,7 +52,7 @@ export default function jsonp<T = void>(url = '', {
   
   return new Promise<IJsonpResponse<T>>((resolve, reject) => {
     // create a callback function
-    window[jsonpCallbackFunction] = (result: T) => {
+    (window as unknown as Record<string, (result: T) => void>)[jsonpCallbackFunction] = (result: T) => {
       resolve({
         ok: true,
         url,
@@ -70,7 +70,7 @@ export default function jsonp<T = void>(url = '', {
         
         // 虽然 DOM 被移除了，但 JS 的加载还在继续，超时后还有可能加载完毕，需要避免这种情况下抛错
         // 注意这行一定要放在 cleanup 之后
-        window[jsonpCallbackFunction] = () => clearCallbackFn(jsonpCallbackFunction);
+        (window as unknown as Record<string, () => void>)[jsonpCallbackFunction] = () => clearCallbackFn(jsonpCallbackFunction);
       }, timeout);
     }
     

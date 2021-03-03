@@ -52,5 +52,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "c361eff543e233ec43702875bb94f2786b73ca49"
+  "gitHead": "77210df1b0ebf6bdac9bb2727ffb36223d822ac4"
 }

@@ -40,6 +40,6 @@ export default function copyText(text = ''): boolean {
   } catch (e) {
     return false;
   } finally {
-    textarea.parentNode.removeChild(textarea);
+    textarea.parentNode?.removeChild(textarea);
   }
 }

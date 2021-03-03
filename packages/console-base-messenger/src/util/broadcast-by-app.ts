@@ -21,13 +21,13 @@ const CONSOLE_BASE_READY = '_console_base_ready_'; // 不要轻易改这个命�
 
 let BROADCASTS_WHEN_NOT_READY: (() => void)[] | undefined;
 
-if (!window[CONSOLE_BASE_READY]) {
+if (!(window as unknown as Record<'_console_base_ready_', boolean>)[CONSOLE_BASE_READY]) {
   BROADCASTS_WHEN_NOT_READY = [];
   
   subscribeOnce(EMessageBroadcastByConsoleBase.READY, () => {
-    window[CONSOLE_BASE_READY] = true;
+    (window as unknown as Record<'_console_base_ready_', boolean>)[CONSOLE_BASE_READY] = true;
     
-    BROADCASTS_WHEN_NOT_READY.forEach(v => v());
+    BROADCASTS_WHEN_NOT_READY!.forEach(v => v());
     BROADCASTS_WHEN_NOT_READY = undefined; // 清除后便不会往它里边 push 了
   });
 }
@@ -55,7 +55,7 @@ export function broadcastPromiseByApp<T = void, P = void>(type: EMessageBroadcas
     slsBroadcastByApp(type, payload, true);
     
     return new Promise<T>((resolve, reject) => {
-      BROADCASTS_WHEN_NOT_READY.push(() => broadcastPromise<T, P>(type, payload).then(resolve, reject));
+      BROADCASTS_WHEN_NOT_READY?.push(() => broadcastPromise<T, P>(type, payload).then(resolve, reject));
     });
   }
   
