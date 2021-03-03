@@ -10,7 +10,7 @@ function fixOneOpenStatus(shity: IShittyOpenStatus): IOpenStatus {
   const o: Record<string, unknown> = {};
   
   Object.keys(shity).forEach(v => {
-    const value: string = shity[v];
+    const value: string = shity[v as keyof IShittyOpenStatus];
     
     if (value === 'true') {
       o[v] = true;
