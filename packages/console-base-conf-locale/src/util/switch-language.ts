@@ -6,11 +6,13 @@ import {
   ELanguage
 } from '../const';
 
-import getLanguageInCookie from './get-language-in-cookie';
-import setLanguageInCookie from './set-language-in-cookie';
+import cookieGetLanguage from './cookie-get-language';
+import cookieSetLanguage from './cookie-set-language';
 
 /**
  * 切换语言
+ * 
+ * @deprecated will be removed soon use @ali/console-base-data-locale
  * 
  * 1. 必须要同时搞 www.alibabacloud.com/api/changeLanguage，它只有在国际站登录的场景下有效（否则会 302 到错误页），但有这样的场景：
  *    1.1 在控制台上切语言
@@ -22,7 +24,7 @@ import setLanguageInCookie from './set-language-in-cookie';
  */
 export default function switchLanguage(lang: ELanguage): Promise<void> {
   if (/.test$/.test(location.hostname)) { // 不要依赖 console-base-conf-env
-    setLanguageInCookie(lang);
+    cookieSetLanguage(lang);
     
     return Promise.resolve();
   }
@@ -33,9 +35,9 @@ export default function switchLanguage(lang: ELanguage): Promise<void> {
     // set-cookie: aliyun_lang=_传入的值_; path=/; max-age=2592000; expires=...; domain=.aliyun.com; samesite=none; secure
     fetcherJsonp<void>(`//intl.aliyun.com/api/changeLanguage?lang=${encodeURIComponent(lang)}`, {
       timeout: 2000
-    }).then(response => response.json()).then(() => getLanguageInCookie() !== lang, () => true).then(needFix => {
+    }).then(response => response.json()).then(() => cookieGetLanguage() !== lang, () => true).then(needFix => {
       if (needFix) {
-        setLanguageInCookie(lang);
+        cookieSetLanguage(lang);
       }
     }), fetcherJsonp<void>(`//www.alibabacloud.com/api/changeLanguage?lang=${encodeURIComponent(lang)}`)]).then(_noop, _noop);
 }

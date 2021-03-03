@@ -7,6 +7,6 @@ import {
   COOKIE_KEY
 } from '../const';
 
-export default function setLanguageInCookie(lang: ELanguage): void {
+export default function cookieSetLanguage(lang: ELanguage): void {
   setCookie(COOKIE_KEY, lang);
 }

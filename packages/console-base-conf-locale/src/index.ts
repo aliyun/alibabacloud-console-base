@@ -1,21 +1,16 @@
-import {
-  IConfLocale as ConsoleBaseConfLocale
-} from './types';
-import {
-  ELanguage,
-  ELocale
-} from './const';
 import parseConfLocale from './util/parse-conf-locale';
-import switchLanguage from './util/switch-language';
 
 export default parseConfLocale();
 
 export {
-  ELocale,
   ELanguage,
-  switchLanguage
-};
+  ELocale
+} from './const';
+
+export { default as cookieGetLanguage } from './util/cookie-get-language';
+export { default as cookieSetLanguage } from './util/cookie-set-language';
+export { default as switchLanguage } from './util/switch-language';
 
 export type {
-  ConsoleBaseConfLocale
-};
+  IConfLocale as ConsoleBaseConfLocale
+} from './types';
