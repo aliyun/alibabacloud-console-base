@@ -48,15 +48,15 @@ export default function createInterceptorRequest({
       }
     }
     
-    if (REG_ONE_API.test(fetcherConfig.url)) {
+    if (fetcherConfig.url && REG_ONE_API.test(fetcherConfig.url)) {
       const product = (fetcherConfig.body as IBodyWithProduct)?.product;
       
-      return {
+      return product ? {
         url: `${MOCK_PREFIX}/oneconsole/data/${RegExp.$1 ? 'multiApi' : 'api'}.json`,
         body: {
           product: one[product] || product
         }
-      };
+      } : undefined;
     }
   };
 }

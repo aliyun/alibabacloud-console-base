@@ -1,7 +1,7 @@
 @alicloud/console-fetcher-interceptor-req-mock
 ===
 
-利用 mocks.alibaba-inc.com 对非 OneConsole 及非 OneConsole 的接口进行 mock。
+利用 mocks.alibaba-inc.com 对 OneConsole 及非 OneConsole 的接口进行 mock。
 
 # 如何使用
 
@@ -23,5 +23,5 @@ tnpm i @alicloud/console-fetcher-interceptor-req-mock -D
 import fetcher from '你的 fetcher 包';
 import intercept from '@alicloud/console-fetcher-interceptor-req-mock';
 
-intercept(fetcher); // 这里会影响到其他用这个 fetcher 的地方，所以这个只写在 demo 用的代码里就行
+intercept(fetcher, options?); // 这里会影响到其他用这个 fetcher 的地方，所以这个只写在 demo 用的代码里就行
 ```
