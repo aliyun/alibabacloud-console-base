@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-markdown",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "ConsoleBase 组件 - Markdown 渲染（带通用样式）",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,7 +24,7 @@
     "markdown"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.30",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.31",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
     "@types/jest": "^26.0.20",
@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme-sc-base": "^0.0.1",
+    "@alicloud/console-base-theme-sc-base": "^1.0.0",
     "react-markdown": "^5.0.3",
     "remark-gfm": "^1.0.0"
   },
