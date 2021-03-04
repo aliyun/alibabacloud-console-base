@@ -66,6 +66,7 @@ export default styled.article`
   h2,
   h3,
   h4,
+  h5,
   blockquote,
   fieldset,
   figure {
@@ -112,9 +113,14 @@ export default styled.article`
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5 {
     font-weight: 600;
     ${mixinTextPrimary}
+    
+    &:first-child {
+      margin-top: 0;
+    }
   }
   
   h1 {
