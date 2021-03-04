@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-tabs",
-  "version": "1.0.59",
+  "version": "1.0.60",
   "description": "ConsoleBase 组件 - 一个简单但代码写的很清爽的 tabs 容器",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -42,9 +42,9 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.1.23",
-    "@alicloud/console-base-rc-button": "^1.0.57",
-    "@alicloud/console-base-rc-icon": "^1.0.55",
-    "@alicloud/console-base-theme": "^1.1.17",
+    "@alicloud/console-base-rc-button": "^1.0.58",
+    "@alicloud/console-base-rc-icon": "^1.0.56",
+    "@alicloud/console-base-theme": "^1.1.18",
     "immutability-helper": "^3.1.1",
     "lodash": "^4.17.21"
   },
