@@ -11,6 +11,6 @@ import broadcastByConsoleBase from '../../util/boradcast-by-console-base';
  * 
  * FIXME 构建后会丢失 null..
  */
-export default function resourceGroupChange(payload?: null | IPayloadResourceGroup): void {
+export default function resourceGroupChange(payload: null | IPayloadResourceGroup): void {
   broadcastByConsoleBase<IPayloadResourceGroup | null>(EMessageBroadcastByConsoleBase.RESOURCE_GROUP_CHANGE, payload);
 }
