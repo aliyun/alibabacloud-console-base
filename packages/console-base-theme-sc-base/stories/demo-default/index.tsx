@@ -7,7 +7,7 @@ import {
 
 import Article from './article';
 
-export default function DemoBase(): JSX.Element {
+export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <H1>ArticleBase</H1>

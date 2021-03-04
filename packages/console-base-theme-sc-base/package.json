@@ -1,7 +1,7 @@
 {
-  "name": "@alicloud/console-base-theme",
-  "version": "1.1.18",
-  "description": "控制台主题 - 基于 css variable 和 styled-components",
+  "name": "@alicloud/console-base-theme-sc-base",
+  "version": "0.0.1",
+  "description": "控制台主题的基础 styled-components",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
@@ -20,7 +20,8 @@
   },
   "keywords": [
     "console-base",
-    "theme"
+    "theme",
+    "sc"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
@@ -41,7 +42,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme-color": "^1.0.25"
+    "@alicloud/console-base-theme": "^1.1.18"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -53,6 +54,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": "11c40d96b0a6768aa61ddb33bfb56e8d26cb271e"
+  }
 }

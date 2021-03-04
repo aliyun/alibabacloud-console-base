@@ -17,11 +17,8 @@ import {
   mixinBgSecondary,
   mixinBgInverse,
   mixinBorderSecondaryBottom
-} from '../mixin';
+} from '@alicloud/console-base-theme';
 
-/**
- * @deprecated 使用 @alicloud/console-base-theme-sc-base
- */
 export default styled.article`
   ${mixinTypoFontBase}
   ${mixinTextSecondary}

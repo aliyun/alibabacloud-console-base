@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-/**
- * @deprecated 使用 @alicloud/console-base-theme-sc-base
- */
 export default styled.i`
   &:before {
     display: inline-block;
