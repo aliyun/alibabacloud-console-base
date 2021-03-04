@@ -178,6 +178,15 @@ export default styled.article`
     ${mixinTextInverse}
     ${mixinBgInverse}
     
+    code {
+      padding: unset;
+      border: unset;
+      border-radius: unset;
+      background: unset;
+      font-size: inherit;
+      color: unset;
+    }
+    
     ol {
       margin: 0 0 0 3em;
       list-style: decimal outside;
