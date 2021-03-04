@@ -10,5 +10,5 @@ import {
 } from '../provider';
 
 export default function useModelContext(): IModelContext {
-  return useContext<IModelContext>(Context);
+  return useContext(Context)!;
 }

@@ -6,5 +6,4 @@ import {
   IModelContext
 } from '../types';
 
-// @ts-ignore
-export default createContext<IModelContext>(null);
+export default createContext<IModelContext | null>(null);
