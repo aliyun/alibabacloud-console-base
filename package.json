@@ -31,7 +31,6 @@
     "tnpm:sync": "lerna exec tnpm sync",
     "ncu:main": "ncu",
     "ncu:packages": "lerna exec --no-bail -- ncu --timeout 120000",
-    "ncu:full": "npm run ncu && npm run ncu:packages",
-    "fuck": "lerna run --no-bail build:typings"
+    "ncu:full": "npm run ncu && npm run ncu:packages"
   }
 }
