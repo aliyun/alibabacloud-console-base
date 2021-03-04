@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.1.18",
+    "@alicloud/console-base-theme-sc-base": "^0.0.1",
     "react-markdown": "^5.0.3",
     "remark-gfm": "^1.0.0"
   },

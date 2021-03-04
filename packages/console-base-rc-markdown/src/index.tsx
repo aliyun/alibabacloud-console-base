@@ -6,7 +6,7 @@ import gfm from 'remark-gfm';
 
 import {
   ArticleBase
-} from '@alicloud/console-base-theme';
+} from '@alicloud/console-base-theme-sc-base';
 
 /**
  * ReactMarkdown 没有样式，这里给它默认的样式
