@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 /**
- * @deprecated 使用 @alicloud/console-base-theme-sc-base
+ * @deprecated 使用 @alicloud/iconfont-helper
  */
 export default styled.i`
   &:before {

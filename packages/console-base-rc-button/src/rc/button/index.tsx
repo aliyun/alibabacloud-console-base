@@ -5,9 +5,11 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  ButtonBase,
   mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
+import {
+  ButtonBase
+} from '@alicloud/console-base-theme-sc-base';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {

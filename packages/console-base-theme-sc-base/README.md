@@ -11,7 +11,6 @@ import {
   FontBase12,
   FontBase14,
   ButtonBase,
-  GlyphBase,
   ArticleBase
 } from '@alicloud/console-base-theme-sc-base';
 ```
