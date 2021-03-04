@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-input",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "description": "ConsoleBase 组件 - Input",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,7 +24,7 @@
     "input"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.28",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.29",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
     "@types/jest": "^26.0.20",
@@ -41,8 +41,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-icon": "^1.0.54",
-    "@alicloud/console-base-theme": "^1.1.16"
+    "@alicloud/console-base-rc-icon": "^1.0.55",
+    "@alicloud/console-base-theme": "^1.1.17"
   },
   "scripts": {
     "start": "breezr start-storybook",
