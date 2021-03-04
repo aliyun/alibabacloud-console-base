@@ -5,9 +5,9 @@ import styled, {
 } from 'styled-components';
 
 import {
-  GlyphBase,
+  IconBase,
   injectIconFont
-} from '@alicloud/console-base-theme';
+} from '@alicloud/iconfont-helper';
 
 import {
   IPropsIconPure,
@@ -55,7 +55,7 @@ const cssRotate = css<IPropsIconPure>`
   }}
 `;
 
-const ScIcon = styled(GlyphBase)<IPropsIconPure>`
+const ScIcon = styled(IconBase)<IPropsIconPure>`
   font-family: ${fontFamily} !important;
   
   &:before {

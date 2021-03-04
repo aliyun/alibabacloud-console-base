@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  GlyphBase,
+  IconBase,
   injectIconFont
-} from '@alicloud/console-base-theme';
+} from '@alicloud/iconfont-helper';
 
 import {
   IconProductType,
@@ -21,7 +21,7 @@ interface IPropsScI {
 // dataUrl 太大 50K+ 就不放了
 const fontFamily = injectIconFont('1323992', 'rs1va4gaft9');
 
-const ScI = styled(GlyphBase)<IPropsScI>`
+const ScI = styled(IconBase)<IPropsScI>`
   font-family: ${fontFamily} !important;
   
   &:before {
