@@ -1,0 +1,57 @@
+{
+  "name": "@alicloud/markdown",
+  "version": "0.0.1",
+  "description": "React wrapped Markdown based on micromark",
+  "license": "MIT",
+  "main": "build/cjs/index.js",
+  "module": "build/es/index.js",
+  "types": "build/types/index.d.ts",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/markdown",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "markdown",
+    "remark"
+  ],
+  "devDependencies": {
+    "@alicloud/console-toolkit-cli": "^1.2.0",
+    "@alicloud/console-toolkit-preset-component": "^1.2.9",
+    "@alicloud/console-base-theme-sc-base": "^1.0.0",
+    "@types/jest": "^26.0.20",
+    "@types/react": "^16.14.4",
+    "jest": "^26.6.3",
+    "react": "^16.14.0",
+    "styled-components": "^5.2.1",
+    "ts-jest": "^26.5.3",
+    "typescript": "^4.2.3"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "dependencies": {
+    "micromark": "^2.11.4",
+    "micromark-extension-directive": "^1.2.0",
+    "micromark-extension-gfm": "^0.3.3"
+  },
+  "scripts": {
+    "start": "breezr start-storybook",
+    "test": "breezr test:unit",
+    "build:esm": "breezr build --engine babel --es-module",
+    "build:cjs": "breezr build --engine babel",
+    "build:bundle": "breezr build --engine webpack",
+    "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
+    "clean": "rm -rf build",
+    "prepublishOnly": "yarn clean && yarn build"
+  }
+}
