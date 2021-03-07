@@ -208,6 +208,46 @@ Nope
 
 Nope
 
+# Directive
+
+> Powered by [micromark-extension-directive]
+
+A lovely language know as :abbr[HTML]{title="HyperText Markup Language"}.
+
+You need to manually set \`plugins.directive\`, like this:
+
+\`\`\`typescript
+import Markdown, {
+  MarkdownDirectiveOptions,
+  MarkdownDirectiveHtmlElement
+} from '@alicloud/markdown';
+
+const directiveOptions: MarkdownDirectiveOptions = {
+  abbr(d: MarkdownDirectiveHtmlElement) {
+    if (d.type !== 'textDirective') {
+      return false;
+    }
+    
+    this.tag('<abbr');
+    
+    if (d.attributes && 'title' in d.attributes) {
+      this.tag(' title="' + this.encode(d.attributes.title) + '"');
+    }
+    
+    this.tag('>');
+    this.raw(d.label || '');
+    this.tag('</abbr>');
+  }
+};
+
+<Markdown {...{
+  ...
+  plugins: {
+    directive: directiveOptions
+  }
+}} />;
+\`\`\`
+
 # Useful Links
 
 * [Markdown](https://daringfireball.net/projects/markdown)
@@ -215,8 +255,10 @@ Nope
 * [Learn Markdown in 16 Seconds](https://commonmark.org/help)
 * [Markdown Basic Syntax]
 * [Markdown Extended Syntax]
-* [mdast]
 * [micromark]
+* [micromark-extension-gfm]
+* [micromark-extension-directive]
+* [mdast]
 * [remark]
 * [react-markdown]
 
@@ -226,6 +268,7 @@ Nope
 [GFM]: https://github.github.com/gfm "GitHub Flavored Markdown"
 [micromark]: https://github.com/micromark/micromark
 [micromark-extension-gfm]: https://github.com/micromark/micromark-extension-gfm
+[micromark-extension-directive]: https://github.com/micromark/micromark-extension-directive
 [mdast]: https://github.com/syntax-tree/mdast
 [remark]: https://github.com/remarkjs/remark
 [react-markdown]: https://github.com/remarkjs/react-markdown`;

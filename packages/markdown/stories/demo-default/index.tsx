@@ -10,16 +10,40 @@ import {
   InputSwitch
 } from '@alicloud/demo-rc-elements';
 
-import Markdown from '../../src';
+import Markdown, {
+  MarkdownDirectiveOptions,
+  MarkdownDirectiveHtmlElement
+} from '../../src';
 
 import source from './_source';
+
+const directiveOptions: MarkdownDirectiveOptions = {
+  abbr(d: MarkdownDirectiveHtmlElement) {
+    if (d.type !== 'textDirective') {
+      return false;
+    }
+    
+    this.tag('<abbr');
+    
+    if (d.attributes && 'title' in d.attributes) {
+      this.tag(` title="${this.encode(d.attributes.title)}"`);
+    }
+    
+    this.tag('>');
+    this.raw(d.label || '');
+    this.tag('</abbr>');
+  }
+};
 
 export default function DemoDefault(): JSX.Element {
   const [stateAllowDangerousHtml, setStateAllowDangerousHtml] = useState<boolean>(false);
   const [stateApplyStyle, setStateApplyStyle] = useState<boolean>(true);
   const jsxMarkdown = <Markdown {...{
+    source,
     allowDangerousHtml: stateAllowDangerousHtml,
-    source
+    plugins: {
+      directive: directiveOptions
+    }
   }} />;
   
   return <>
