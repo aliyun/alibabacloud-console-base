@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-req-security",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "@alicloud/console-fetcher 请求拦截 - 类 POST 请求添加安全参数",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -28,8 +28,8 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.18",
-    "@alicloud/fetcher-demo-helpers": "^1.0.39",
+    "@alicloud/demo-rc-elements": "^1.1.19",
+    "@alicloud/fetcher-demo-helpers": "^1.0.40",
     "@types/jest": "^26.0.20",
     "@types/react": "^16.14.4",
     "jest": "^26.6.3",
@@ -39,7 +39,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/fetcher": "^1.0.40"
+    "@alicloud/fetcher": "^1.0.41"
   },
   "scripts": {
     "start": "breezr start-storybook",
