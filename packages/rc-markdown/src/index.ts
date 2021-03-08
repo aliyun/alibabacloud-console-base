@@ -5,8 +5,11 @@ export type {
   IPropsMarkdown as MarkdownProps
 } from './types';
 
-export {
-  MicromarkDirectiveOptions as MarkdownDirectiveOptions,
-  MicromarkDirectiveHtmlElement as MarkdownDirectiveHtmlElement,
-  MicromarkDirectiveHtmlContext
+export type {
+  MicromarkDirective as MarkdownDirective,
+  MicromarkDirectiveText as MarkdownDirectiveText,
+  MicromarkDirectiveLeaf as MarkdownDirectiveLeaf,
+  MicromarkDirectiveContainer as MarkdownDirectiveContainer,
+  MicromarkDirectiveExtensionOptions as MarkdownDirectivePluginOptions,
+  MicromarkDirectiveHtmlContext as MarkdownDirectivePluginContext
 } from 'micromark-extension-directive/html';

@@ -6,5 +6,4 @@ declare module 'micromark-extension-directive' {
   function syntax(): SyntaxExtension;
   
   export = syntax;
-
 }

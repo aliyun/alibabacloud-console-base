@@ -1,13 +1,13 @@
 import extensionDirective from 'micromark-extension-directive';
 import html, {
-  MicromarkDirectiveOptions
+  MicromarkDirectiveExtensionOptions
 } from 'micromark-extension-directive/html';
 
 import {
   IMarkdownPlugin
 } from '../../types';
 
-export default function createPlugin(options: MicromarkDirectiveOptions): IMarkdownPlugin {
+export default function createPlugin(options: MicromarkDirectiveExtensionOptions): IMarkdownPlugin {
   return {
     syntax: extensionDirective(),
     html: html(options)

@@ -214,16 +214,28 @@ Nope
 
 A lovely language know as :abbr[HTML]{title="HyperText Markup Language"}.
 
+:::main{#readme}
+Lorem:br
+ipsum.
+
+::hr{.red}
+::hr{.blue data-type=blue}
+
+A :i[lovely] language know as :abbr[HTML]{title="HyperText Markup Language"}.
+:::
+
+More about directive syntax here: <https://github.com/micromark/micromark-extension-directive#syntax>.
+
 You need to manually set \`plugins.directive\`, like this:
 
 \`\`\`typescript
 import Markdown, {
-  MarkdownDirectiveOptions,
-  MarkdownDirectiveHtmlElement
+  MarkdownDirectivePluginOptions,
+  MarkdownDirective
 } from '@alicloud/rc-markdown';
 
-const directiveOptions: MarkdownDirectiveOptions = {
-  abbr(d: MarkdownDirectiveHtmlElement) {
+const directiveOptions: MarkdownDirectivePluginOptions = {
+  abbr(d: MarkdownDirective) {
     if (d.type !== 'textDirective') {
       return false;
     }

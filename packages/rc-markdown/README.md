@@ -46,13 +46,13 @@ export default function MyMarkdown(): JSX.Element {
 import React from 'react';
 
 import Markdown, {
-  MarkdownDirectiveOptions,
-  MarkdownDirectiveHtmlElement
+  MarkdownDirectivePluginOptions,
+  MicromarkDirective
 } from '@alicloud/rc-markdown';
 
 // remember to make it static, do NOT put it inside render
-const directiveOptions: MarkdownDirectiveOptions = {
-  abbr(d: MarkdownDirectiveHtmlElement) {
+const directiveOptions: MarkdownDirectivePluginOptions = {
+  abbr(d: MicromarkDirective) {
     if (d.type !== 'textDirective') {
       return false;
     }

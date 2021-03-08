@@ -218,12 +218,12 @@ You need to manually set \`plugins.directive\`, like this:
 
 \`\`\`typescript
 import Markdown, {
-  MarkdownDirectiveOptions,
-  MarkdownDirectiveHtmlElement
+  MarkdownDirectivePluginOptions,
+  MarkdownDirective
 } from '@alicloud/rc-markdown';
 
-const directiveOptions: MarkdownDirectiveOptions = {
-  abbr(d: MarkdownDirectiveHtmlElement) {
+const directiveOptions: MarkdownDirectivePluginOptions = {
+  abbr(d: MarkdownDirective) {
     if (d.type !== 'textDirective') {
       return false;
     }

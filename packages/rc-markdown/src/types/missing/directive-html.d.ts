@@ -5,6 +5,86 @@ declare module 'micromark-extension-directive/html' {
   } from 'micromark/dist/shared-types';
   
   /**
+   * https://github.com/micromark/micromark-extension-directive
+   * https://github.com/syntax-tree/mdast-util-directive
+   * 
+   * More about directive syntax here: https://github.com/micromark/micromark-extension-directive#syntax
+   * 
+   * @examples
+   * 
+   * ```markdown
+   * :::main{#readme}
+   * Lorem:br
+   * ipsum.
+   * 
+   * ::hr{.red}
+   * 
+   * A :i[lovely] language know as :abbr[HTML]{title="HyperText Markup Language"}.
+   * :::
+   * ```
+   * 
+   * ```
+   * :br → { type: 'textDirective', name: 'br' }
+   * ::hr{.red} → { type: 'leafDirective', name: 'hr', attributes: { class: 'red' } }
+   * :i[lovely] → { type: 'textDirective', name: 'i', label: 'lovely' }
+   * :abbr[HTML]{title="HyperText Markup Language"} → { type: 'textDirective', name: 'abbr', label: 'HTML', attributes: { title: 'HyperText Markup Language' } }
+   * :::main ... → { type: 'containerDirective', name: 'main', attributes: Object { id: 'readme' }, content: '<p>Lorem\nipsum.</p>\n<p>A  language know as .</p>\n', fenceCount: 2 }
+   * ```
+   */
+  interface MicromarkDirectiveBase {
+    type: 'textDirective' | 'leafDirective' | 'containerDirective';
+    name: string;
+    attributes?: Record<string, string>;
+  }
+  
+  /**
+   * Directives in text can form with a single colon:
+   * 
+   * :text
+   */
+  export interface MicromarkDirectiveText extends MicromarkDirectiveBase {
+    type: 'textDirective';
+    label?: string;
+  }
+  
+  /**
+   * Leaf (block without content) on its own line
+   * 
+   * ::leaf
+   */
+  export interface MicromarkDirectiveLeaf extends MicromarkDirectiveBase {
+    type: 'leafDirective';
+    label?: string;
+  }
+  
+  /**
+   * Containers (blocks with content) using three colons:
+   * 
+   * :::container
+   * contents
+   * :::
+   * 
+   * NOTE:
+   * 
+   * Containers can be nested by using more colons outside:
+   * 
+   * ::::spoiler
+   * He dies.
+   * 
+   * :::spoiler
+   * She is born.
+   * :::
+   * ::::
+   */
+  export interface MicromarkDirectiveContainer {
+    type: 'containerDirective';
+    fenceCount: 1 | 2;
+    content: string;
+  }
+  
+  export type MicromarkDirective = MicromarkDirectiveText | MicromarkDirectiveLeaf | MicromarkDirectiveContainer;
+  
+  /**
    * micromark/lib/compile/html.mjs 中的 context，但没有被 export 出类型
    */
   export interface MicromarkDirectiveHtmlContext {
@@ -46,18 +126,11 @@ declare module 'micromark-extension-directive/html' {
     getData(key: string): string;
   }
   
-  export interface MicromarkDirectiveHtmlElement {
-    attributes: Record<string, string>;
-    label: 'HTML';
-    name: string;
-    type: 'textDirective';
-  }
-  
-  export type MicromarkDirectiveOptions = ThisType<MicromarkDirectiveHtmlContext> & {
-    [tag](el: MicromarkDirectiveHtmlElement): false | void;
+  export type MicromarkDirectiveExtensionOptions = ThisType<MicromarkDirectiveHtmlContext> & {
+    [name](el: MicromarkDirective): false | void;
   };
   
-  declare function createHtmlExtension(options?: MicromarkDirectiveOptions): HtmlExtension;
+  declare function createHtmlExtension(options?: MicromarkDirectiveExtensionOptions): HtmlExtension;
   
   export = createHtmlExtension;
 }

@@ -11,27 +11,32 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import Markdown, {
-  MarkdownDirectiveOptions,
-  MarkdownDirectiveHtmlElement
+  MarkdownDirective,
+  MarkdownDirectivePluginOptions
 } from '../../src';
 
 import source from './_source';
 
-const directiveOptions: MarkdownDirectiveOptions = {
-  abbr(d: MarkdownDirectiveHtmlElement) {
+const directiveOptions: MarkdownDirectivePluginOptions = {
+  abbr(d: MarkdownDirective) {
     if (d.type !== 'textDirective') {
       return false;
     }
-    
+
     this.tag('<abbr');
-    
+
     if (d.attributes && 'title' in d.attributes) {
       this.tag(` title="${this.encode(d.attributes.title)}"`);
     }
-    
+
     this.tag('>');
     this.raw(d.label || '');
     this.tag('</abbr>');
+  },
+  '*': function any(d: MarkdownDirective) {
+    console.info(d); // for inspection purpose only..
+    
+    return false;
   }
 };
 

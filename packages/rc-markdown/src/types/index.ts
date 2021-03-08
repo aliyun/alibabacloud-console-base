@@ -3,7 +3,7 @@ import {
   HtmlExtension
 } from 'micromark/dist/shared-types';
 import {
-  MicromarkDirectiveOptions
+  MicromarkDirectiveExtensionOptions
 } from 'micromark-extension-directive/html';
 
 import './missing/gfm-html';
@@ -17,7 +17,7 @@ export interface IMarkdownPlugin { // internal use only
 
 export interface IPropsMarkdownPlugins {
   gfm?: boolean;
-  directive?: MicromarkDirectiveOptions;
+  directive?: MicromarkDirectiveExtensionOptions;
 }
 
 export interface IPropsMarkdown {
