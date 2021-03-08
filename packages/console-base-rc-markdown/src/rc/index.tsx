@@ -2,7 +2,7 @@ import React from 'react';
 
 import Markdown0, {
   MarkdownProps
-} from '@alicloud/markdown';
+} from '@alicloud/rc-markdown';
 import {
   ArticleBase
 } from '@alicloud/console-base-theme-sc-base';

@@ -1,4 +1,4 @@
-@alicloud/markdown
+@alicloud/rc-markdown
 ===
 
 > Yet another react wrapper of markdown parse based on [micromark].
@@ -31,7 +31,7 @@ So far so good, cheers 🎉.
 ```typescript jsx
 import React from 'react';
 
-import Markdown from '@alicloud/markdown';
+import Markdown from '@alicloud/rc-markdown';
 
 export default function MyMarkdown(): JSX.Element {
   return <Markdown {...{
@@ -48,7 +48,7 @@ import React from 'react';
 import Markdown, {
   MarkdownDirectiveOptions,
   MarkdownDirectiveHtmlElement
-} from '@alicloud/markdown';
+} from '@alicloud/rc-markdown';
 
 // remember to make it static, do NOT put it inside render
 const directiveOptions: MarkdownDirectiveOptions = {

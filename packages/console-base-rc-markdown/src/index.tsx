@@ -1,3 +1,3 @@
 export { default } from './rc';
 
-export * from '@alicloud/markdown';
+export * from '@alicloud/rc-markdown';

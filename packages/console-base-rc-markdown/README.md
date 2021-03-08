@@ -1,7 +1,7 @@
 @alicloud/console-base-rc-markdown
 ===
 
-@alicloud/markdown + 通用样式
+@alicloud/rc-markdown + 通用样式
 
 # 使用
 

@@ -130,7 +130,7 @@ You can add __strong__ or *em* or _**strong and em**_ in your content.
 \`\`\`js
 import React from 'react';
 
-import Markdown from '@alicloud/markdown';
+import Markdown from '@alicloud/rc-markdown';
 
 React.render(<Markdown source="# Your markdown here" />, document.getElementById('content'));
 \`\`\`
@@ -139,7 +139,7 @@ Or indent 4 spaces to make a code block:
 
     import React from 'react';
     
-    import Markdown from '@alicloud/markdown';
+    import Markdown from '@alicloud/rc-markdown';
     
     React.render(<Markdown source="# Your markdown here" />, document.getElementById('content'));
 
@@ -220,7 +220,7 @@ You need to manually set \`plugins.directive\`, like this:
 import Markdown, {
   MarkdownDirectiveOptions,
   MarkdownDirectiveHtmlElement
-} from '@alicloud/markdown';
+} from '@alicloud/rc-markdown';
 
 const directiveOptions: MarkdownDirectiveOptions = {
   abbr(d: MarkdownDirectiveHtmlElement) {

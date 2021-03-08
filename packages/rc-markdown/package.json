@@ -1,6 +1,6 @@
 {
-  "name": "@alicloud/markdown",
-  "version": "0.0.1",
+  "name": "@alicloud/rc-markdown",
+  "version": "0.0.0",
   "description": "React wrapped Markdown based on micromark",
   "license": "MIT",
   "main": "build/cjs/index.js",
