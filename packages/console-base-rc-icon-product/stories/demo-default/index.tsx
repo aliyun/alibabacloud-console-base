@@ -4,14 +4,6 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  mixinTextWhite,
-  mixinBgWarning,
-  mixinBgError,
-  mixinTextTertiary,
-  mixinTextPrimary,
-  mixinBgSecondary
-} from '@alicloud/console-base-theme';
-import {
   InputText
 } from '@alicloud/demo-rc-elements';
 
@@ -28,19 +20,19 @@ const ScMessage = styled.span`
         content: '!';
         margin-left: 4px;
         padding: 2px 6px;
-        ${mixinTextWhite}
+        color: #fff;
       }
     }
     
     &.no-product {
       &:after {
-        ${mixinBgError}
+        background-color: #f00;
       }
     }
     
     &.no-type {
       &:after {
-        ${mixinBgWarning}
+        background-color: #fc6;
       }
     }
   }
@@ -63,15 +55,14 @@ const ScList = styled.ul`
     height: 66px;
     font-size: 11px;
     text-align: center;
-    ${mixinTextTertiary}
     
     i {
       font-size: 32px;
-      ${mixinTextPrimary}
+      color: #333;
     }
     
     &:nth-child(2n) {
-      ${mixinBgSecondary}
+      background-color: #eee;
     }
     
     &.no-product,
@@ -82,19 +73,19 @@ const ScList = styled.ul`
         top: 0;
         right: 0;
         padding: 2px 6px;
-        ${mixinTextWhite}
+        color: #fff;
       }
     }
     
     &.no-product {
       &:after {
-        ${mixinBgError}
+        background-color: #f00;
       }
     }
     
     &.no-type {
       &:after {
-        ${mixinBgWarning}
+        background-color: #fc6;
       }
     }
   }
