@@ -15,6 +15,9 @@ import onSetResourceGroupResourceCount from './resource-group/on-set-resource-gr
 import onSetGoTopContainer from './toolkit/on-set-go-top-container';
 import onToolkitPut from './toolkit/on-toolkit-put';
 import onToolkitRemove from './toolkit/on-toolkit-remove';
+import onRegisterTutor from './tutor/on-register';
+import onOpenTutor from './tutor/on-open';
+import onCloseTutor from './tutor/on-close';
 
 /* --------------------------------------------- *
  * console-base 必须实现这里所有事件的处理
@@ -38,5 +41,8 @@ export default {
   onSetResourceGroupResourceCount,
   onSetGoTopContainer,
   onToolkitPut,
-  onToolkitRemove
+  onToolkitRemove,
+  onRegisterTutor,
+  onOpenTutor,
+  onCloseTutor
 };
