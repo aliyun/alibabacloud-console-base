@@ -24,7 +24,7 @@ export enum EMessageBroadcastByApp {
   // 交互式教程
   TUTOR_REGISTER = 'app_2_console_base:tutor/register',
   TUTOR_OPEN = 'app_2_console_base:tutor/open',
-  TUTOR_CLOSE = 'app_2_console_base:tutor/open'
+  TUTOR_CLOSE = 'app_2_console_base:tutor/close'
 }
 
 /**
