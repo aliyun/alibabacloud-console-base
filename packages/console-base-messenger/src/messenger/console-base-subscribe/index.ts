@@ -3,18 +3,18 @@ import onFetcherRequest from './on-fetcher-request';
 import onToggleTopNav from './on-toggle-top-nav';
 import onLaunchTutorial from './on-launch-tutorial';
 import onLaunchWidget from './on-launch-widget';
-import onToggleRegion from './on-toggle-region';
-import onToggleRegionGlobal from './on-toggle-region-global';
-import onSetRegionId from './on-set-region-id';
-import onSetRegions from './on-set-regions';
-import onSetRegionGroups from './on-set-region-groups';
-import onSetRegionResourceCount from './on-set-region-resource-count';
-import onToggleResourceGroup from './on-toggle-resource-group';
-import onSetResourceGroupId from './on-set-resource-group-id';
-import onSetResourceGroupResourceCount from './on-set-resource-group-resource-count';
-import onSetGoTopContainer from './on-set-go-top-container';
-import onToolkitPut from './on-toolkit-put';
-import onToolkitRemove from './on-toolkit-remove';
+import onToggleRegion from './region/on-toggle-region';
+import onToggleRegionGlobal from './region/on-toggle-region-global';
+import onSetRegionId from './region/on-set-region-id';
+import onSetRegions from './region/on-set-regions';
+import onSetRegionGroups from './region/on-set-region-groups';
+import onSetRegionResourceCount from './region/on-set-region-resource-count';
+import onToggleResourceGroup from './resource-group/on-toggle-resource-group';
+import onSetResourceGroupId from './resource-group/on-set-resource-group-id';
+import onSetResourceGroupResourceCount from './resource-group/on-set-resource-group-resource-count';
+import onSetGoTopContainer from './toolkit/on-set-go-top-container';
+import onToolkitPut from './toolkit/on-toolkit-put';
+import onToolkitRemove from './toolkit/on-toolkit-remove';
 
 /* --------------------------------------------- *
  * console-base 必须实现这里所有事件的处理

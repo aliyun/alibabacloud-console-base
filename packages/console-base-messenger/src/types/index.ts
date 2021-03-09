@@ -1,24 +1,12 @@
 import {
-  SettingsRegionItem,
-  SettingsRegionGroup,
   SettingsToolkitItem
 } from '@alicloud/console-base-common-typings';
 
-export interface IPayloadRegion extends SettingsRegionItem {}
+export * from './payload/region';
+export * from './payload/resource-group';
+export * from './payload/tutor';
 
-export interface IPayloadRegionOnChange extends IPayloadRegion {
-  correctedFrom?: string;
-}
-
-export interface IPayloadRegionGroup extends SettingsRegionGroup {}
-
-export interface IPayloadResourceGroup {
-  id: string;
-  name: string;
-  defaultOne?: boolean;
-}
-
-export interface IPayloadLaunchTutorial {
+export interface IPayloadLaunchTutorial { // will be deprecated soon
   title?: string;
   contents: string[];
   width?: number;
@@ -36,9 +24,6 @@ export interface IPayloadPutTool {
   tool: SettingsToolkitItem;
 }
 
-/**
- * Fastbuy payload 类型定义
- */
 export interface IPayloadFastbuy {
   commodityCode: string;
 }

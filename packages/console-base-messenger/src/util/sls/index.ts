@@ -1,7 +1,2 @@
-import slsBroadcastByApp from './broadcast-by-app';
-import slsSubscribeByApp from './subscribe-by-app';
-
-export {
-  slsBroadcastByApp,
-  slsSubscribeByApp
-};
+export { default as slsBroadcastByApp } from './sls-broadcast-by-app';
+export { default as slsSubscribeByApp } from './sls-subscribe-by-app';

@@ -1,15 +1,17 @@
 import ready from './ready';
-import regionChange from './region-change';
-import regionRefreshResourceCount from './region-refresh-resource-count';
-import resourceGroupDataLoaded from './resource-group-data-loaded';
-import resourceGroupChange from './resource-group-change';
-import toolkitToolClicked from './toolkit-tool-clicked';
-import toolkitToolActiveChanged from './toolkit-tool-active-change';
 import themeChange from './theme-change';
-import fastbuyClose from './fastbuy-close';
-import fastbuyBuy from './fastbuy-buy';
-import fastbuySubmitPayment from './fastbuy-submit-payment';
-import fastbuyOrderFinish from './fastbuy-order-finish';
+import regionChange from './region/region-change';
+import regionRefreshResourceCount from './region/region-refresh-resource-count';
+import resourceGroupDataLoaded from './resource-group/resource-group-data-loaded';
+import resourceGroupChange from './resource-group/resource-group-change';
+import toolkitToolClicked from './toolkit/toolkit-tool-clicked';
+import toolkitToolActiveChanged from './toolkit/toolkit-tool-active-change';
+import fastbuyClose from './fastbuy/fastbuy-close';
+import fastbuyBuy from './fastbuy/fastbuy-buy';
+import fastbuySubmitPayment from './fastbuy/fastbuy-submit-payment';
+import fastbuyOrderFinish from './fastbuy/fastbuy-order-finish';
+import tutorStepChange from './tutor/step-change';
+import tutorDismiss from './tutor/dismiss';
 
 /* --------------------------------------------- *
  * console-base 调用：通知控制台应用
@@ -18,15 +20,17 @@ import fastbuyOrderFinish from './fastbuy-order-finish';
  * --------------------------------------------- */
 export default {
   ready,
+  themeChange,
   regionChange,
   regionRefreshResourceCount,
   resourceGroupDataLoaded,
   resourceGroupChange,
   toolkitToolClicked,
   toolkitToolActiveChanged,
-  themeChange,
   fastbuyClose,
   fastbuyBuy,
   fastbuySubmitPayment,
-  fastbuyOrderFinish
+  fastbuyOrderFinish,
+  tutorStepChange,
+  tutorDismiss
 };

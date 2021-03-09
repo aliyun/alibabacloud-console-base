@@ -3,18 +3,21 @@ import fetcherRequest from './fetcher-request';
 import toggleTopNav from './toggle-top-nav';
 import launchTutorial from './launch-tutorial';
 import launchWidget from './launch-widget';
-import toggleRegion from './toggle-region';
-import toggleRegionGlobal from './toggle-region-global';
-import setRegionId from './set-region-id';
-import setRegions from './set-regions';
-import setRegionGroups from './set-region-groups';
-import setRegionResourceCount from './set-region-resource-count';
-import toggleResourceGroup from './toggle-resource-group';
-import setResourceGroupId from './set-resource-group-id';
-import setResourceGroupResourceCount from './set-resource-group-resource-count';
-import setGoTopContainer from './set-go-top-container';
-import putToolkitItem from './put-toolkit-item';
-import removeToolkitItem from './remove-toolkit-item';
+import toggleRegion from './region/toggle-region';
+import toggleRegionGlobal from './region/toggle-region-global';
+import setRegionId from './region/set-region-id';
+import setRegions from './region/set-regions';
+import setRegionGroups from './region/set-region-groups';
+import setRegionResourceCount from './region/set-region-resource-count';
+import toggleResourceGroup from './resource-group/toggle-resource-group';
+import setResourceGroupId from './resource-group/set-resource-group-id';
+import setResourceGroupResourceCount from './resource-group/set-resource-group-resource-count';
+import setGoTopContainer from './toolkit/set-go-top-container';
+import putToolkitItem from './toolkit/put-toolkit-item';
+import removeToolkitItem from './toolkit/remove-toolkit-item';
+import registerTutor from './tutor/register';
+import openTutor from './tutor/open';
+import closeTutor from './tutor/close';
 
 /* --------------------------------------------- *
  * 控制台调用
@@ -38,5 +41,8 @@ export default {
   setResourceGroupResourceCount,
   setGoTopContainer,
   putToolkitItem,
-  removeToolkitItem
+  removeToolkitItem,
+  registerTutor,
+  openTutor,
+  closeTutor
 };

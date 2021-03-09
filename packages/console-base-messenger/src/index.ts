@@ -28,5 +28,9 @@ export type {
   IPayloadRegionOnChange as MessengerRegionOnChange,
   IPayloadRegionGroup as MessengerRegionGroup,
   IPayloadResourceGroup as MessengerResourceGroup,
-  IPayloadLaunchTutorial as MessengerTutorial
+  IPayloadLaunchTutorial as MessengerTutorial,
+  IPayloadTutorRegister as MessengerTutorRegister,
+  IPayloadTutorOpen as MessengerTutorOpen,
+  IPayloadTutorStepChange as MessengerTutorStepChange,
+  IPayloadTutorDismiss as MessengerTutorDismiss
 } from './types';
