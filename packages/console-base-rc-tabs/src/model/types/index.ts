@@ -25,27 +25,25 @@ export type TAction = {
   payload: number;
 };
 
-export interface IContextProps extends Required<IPropsTabs> {}
+export type TModelDispatch = Dispatch<TAction>;
 
-export interface IContextRef {
-  refTabs: MutableRefObject<HTMLDivElement | null>;
-  refNav: MutableRefObject<HTMLDivElement | null>;
-}
+export interface IModelProps extends Required<IPropsTabs> {}
 
-export interface IContextState {
+export interface IModelState {
   activeTab: IPropsTab | null;
   closedTabs: IPropsTab[];
   navOffset: number; // >= navOffsetMax
   navOffsetMax: number; // <= 0
 }
 
-export interface IContextReducer {
-  (state: IContextState, action: TAction): IContextState;
+export interface IModelReducer {
+  (state: IModelState, action: TAction): IModelState;
 }
 
-export interface IContext {
-  REF: IContextRef;
-  PROPS: IContextProps;
-  STATE: IContextState;
-  dispatch: Dispatch<TAction>;
+export interface IModelContext {
+  PROPS: IModelProps;
+  STATE: IModelState;
+  refTabs: MutableRefObject<HTMLDivElement | null>;
+  refNav: MutableRefObject<HTMLDivElement | null>;
+  dispatch: TModelDispatch;
 }

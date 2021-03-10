@@ -4,10 +4,10 @@ import {
   IPropsTab
 } from '../../types';
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export default function reducePruneClosedTabs(state: IContextState, tabs: IPropsTab[]): IContextState {
+export default function reducePruneClosedTabs(state: IModelState, tabs: IPropsTab[]): IModelState {
   const {
     closedTabs
   } = state;

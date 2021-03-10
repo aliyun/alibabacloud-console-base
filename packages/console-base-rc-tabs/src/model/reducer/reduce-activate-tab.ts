@@ -4,10 +4,10 @@ import {
   IPropsTab
 } from '../../types';
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export default function reduceActivateTab(state: IContextState, tab: IPropsTab): IContextState {
+export default function reduceActivateTab(state: IModelState, tab: IPropsTab): IModelState {
   return update(state, {
     activeTab: {
       $set: tab

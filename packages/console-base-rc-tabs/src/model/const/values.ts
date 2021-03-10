@@ -4,7 +4,7 @@ import {
   IPropsTabs
 } from '../../types';
 import {
-  IContextState
+  IModelState
 } from '../types';
 
 export const DEFAULT_CONTEXT_PROPS: IPropsTabs = {
@@ -19,7 +19,7 @@ export const DEFAULT_CONTEXT_PROPS: IPropsTabs = {
   onTabClose: _noop
 };
 
-export const DEFAULT_CONTEXT_STATE: IContextState = {
+export const DEFAULT_CONTEXT_STATE: IModelState = {
   activeTab: null,
   closedTabs: [],
   navOffset: 0,

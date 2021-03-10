@@ -9,10 +9,9 @@ import {
   IPropsTabs
 } from '../../types';
 import {
-  IContext,
-  IContextProps,
-  IContextReducer,
-  IContextRef
+  IModelContext,
+  IModelProps,
+  IModelReducer
 } from '../types';
 import {
   DEFAULT_CONTEXT_STATE,
@@ -34,27 +33,19 @@ export default function Provider({
 }: IProps): JSX.Element {
   const refTabs = useRef<HTMLDivElement>(null);
   const refNav = useRef<HTMLDivElement>(null);
-  const PROPS: IContextProps = useMemo((): IContextProps => ({
+  const PROPS: IModelProps = useMemo((): IModelProps => ({
     ...DEFAULT_CONTEXT_PROPS,
     ...props
-  } as IContextProps), [props]);
-  const REF: IContextRef = useMemo((): IContextRef => ({
-    refTabs,
-    refNav
-  }), [refTabs, refNav]);
-  const [STATE, dispatch] = useReducer<IContextReducer>(reducer, DEFAULT_CONTEXT_STATE);
+  } as IModelProps), [props]);
+  const [STATE, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
-  const contextValue: IContext = useMemo(() => ({
-    REF,
+  const contextValue: IModelContext = useMemo(() => ({
     PROPS,
     STATE,
+    refTabs,
+    refNav,
     dispatch
-  }), [
-    REF,
-    PROPS,
-    STATE,
-    dispatch
-  ]);
+  }), [PROPS, STATE, refTabs, refNav, dispatch]);
   
   return <Context.Provider value={contextValue}>
     <Lifecycle />

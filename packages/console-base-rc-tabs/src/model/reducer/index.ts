@@ -1,5 +1,5 @@
 import {
-  IContextState,
+  IModelState,
   TAction
 } from '../types';
 import {
@@ -12,7 +12,7 @@ import reducePruneClosedTabs from './reduce-prune-closed-tabs';
 import reduceNavOffsetMax from './reduce-nav-offset-max';
 import reduceNavOffset from './reduce-nav-offset';
 
-export default function reducer(state: IContextState, action: TAction): IContextState {
+export default function reducer(state: IModelState, action: TAction): IModelState {
   switch (action.type) {
     case EAction.ACTIVATE_TAB:
       return reduceActivateTab(state, action.payload);

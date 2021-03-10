@@ -1,10 +1,10 @@
 import update from 'immutability-helper';
 
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export default function reduceNavOffsetMax(state: IContextState, value: number): IContextState {
+export default function reduceNavOffsetMax(state: IModelState, value: number): IModelState {
   return update(state, {
     navOffsetMax: {
       $set: Math.min(value, 0)

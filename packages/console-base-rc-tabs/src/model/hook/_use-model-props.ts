@@ -1,9 +1,9 @@
 import {
-  IContextProps
+  IModelProps
 } from '../types';
 
 import useModelContext from './_use-model-context';
 
-export default function useModelProps(): IContextProps {
+export default function useModelProps(): IModelProps {
   return useModelContext().PROPS;
 }
