@@ -17,8 +17,8 @@ export default function WithLoading<T>({
   messageEmpty,
   loading,
   data,
-  renderLoaded,
-  retry
+  retry,
+  renderLoaded
 }: IPropsWithLoading<T>): JSX.Element {
   switch (loading) {
     case ELoading.ERROR:

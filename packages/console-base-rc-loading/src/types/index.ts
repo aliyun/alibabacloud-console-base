@@ -11,8 +11,8 @@ interface IWithLoading<T> {
   messageError?: string | JSX.Element;
   messageErrorRetry?: string | JSX.Element;
   messageEmpty?: string | JSX.Element;
-  renderLoaded(data: T): JSX.Element;
   retry?(): void;
+  renderLoaded(data: T): JSX.Element;
 }
 
 export type TStatus = 'loading' | 'error' | 'empty';

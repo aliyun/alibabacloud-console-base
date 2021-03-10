@@ -18,39 +18,43 @@ interface IScPropsLoading {
   align?: TAlign;
 }
 
-function getJustifyContent(align?: TAlign): string {
+function getTextAlign(align?: TAlign): string {
   switch (align) {
     case 'c':
       return 'center';
     case 'r':
-      return 'flex-end';
+      return 'right';
     default:
-      return 'flex-start';
+      return 'left';
   }
 }
 
 const cssLoading = css`
   font-size: 12px;
-  ${mixinTextDisabled};
+  ${mixinTextDisabled}
 `;
 
 const ScLoading = styled.div<IScPropsLoading>`
-  display: flex;
-  align-items: center;
-  justify-content: ${props => getJustifyContent(props.align)};
   padding: 20px 8px;
-  ${cssLoading};
+  text-align: ${props => getTextAlign(props.align)};
+  ${cssLoading}
 `;
 
 const ScLoadingInline = styled.span`
-  ${cssLoading};
+  ${cssLoading}
 `;
 
 const ScIconWrap = styled.span`
   display: inline-block;
-  width: 1.75em;
+  width: 1.8em;
   font-size: 1.1em;
+  vertical-align: middle;
   text-align: center;
+`;
+
+const ScMessageWrap = styled.span`
+  display: inline-block;
+  vertical-align: middle;
 `;
 
 const ScButtonRetry = styled.button`
@@ -97,9 +101,9 @@ export default function Loading({
   
   return inline ? <ScLoadingInline {...props}>
     <ScIconWrap>{jsxIcon}</ScIconWrap>
-    {jsxMessage}
+    <ScMessageWrap>{jsxMessage}</ScMessageWrap>
   </ScLoadingInline> : <ScLoading align={align} {...props}>
     <ScIconWrap>{jsxIcon}</ScIconWrap>
-    {jsxMessage}
+    <ScMessageWrap>{jsxMessage}</ScMessageWrap>
   </ScLoading>;
 }
