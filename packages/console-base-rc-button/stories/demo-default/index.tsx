@@ -7,13 +7,13 @@ import {
 } from 'styled-components';
 
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
-
 import {
   H1,
   P
 } from '@alicloud/demo-rc-elements';
 
 import Button, {
+  ButtonTheme,
   ButtonProps
 } from '../../src';
 import Knobs from '../knobs';
@@ -52,5 +52,14 @@ export default function DemoDefault(): JSX.Element {
       href: '//www.aliyun.com',
       label: 'this button will stay an anchor'
     }}>www.aliyun.com</Button></div>
+    <H1>Themes</H1>
+    <P>所有 theme</P>
+    {Object.entries(ButtonTheme).map(([k, v]) => {
+      return <Button {...{
+        key: k,
+        theme: v,
+        label: v
+      }} />;
+    })}
   </>;
 }
