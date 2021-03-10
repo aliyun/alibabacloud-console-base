@@ -3,6 +3,10 @@ import {
 } from 'react';
 
 import {
+  getFixedRect
+} from '@alicloud/mere-dom';
+
+import {
   DEFAULT_RECT
 } from '../const';
 
@@ -14,15 +18,15 @@ export default function useHandleRefreshRect(): () => void {
   const dispatchSetRect = useDispatchSetRect();
   
   return useCallback(() => {
-    const el = attentionSeeker?.element;
+    const rect = attentionSeeker?.element ? getFixedRect(attentionSeeker.element) : null;
     
-    if (el) {
+    if (rect) {
       const {
         top,
         left,
         width,
         height
-      } = el.getBoundingClientRect();
+      } = rect;
       
       dispatchSetRect({
         top,

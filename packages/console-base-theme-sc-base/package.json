@@ -24,6 +24,7 @@
     "sc"
   ],
   "devDependencies": {
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.34",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
     "@alicloud/demo-rc-elements": "^1.1.19",

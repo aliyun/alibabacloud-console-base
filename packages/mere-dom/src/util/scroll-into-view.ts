@@ -4,33 +4,7 @@ import {
 } from '../types';
 
 import find from './find';
-
-/**
- * 防止短时间内很多一起
- */
-const doScroll = (() => {
-  let scrolling = false;
-  
-  return (el: Element) => {
-    if (scrolling) {
-      return;
-    }
-    
-    scrolling = true;
-    
-    setTimeout(() => {
-      scrolling = false;
-    }, 50);
-    
-    try { // 防止不支持的浏览器报错
-      el.scrollIntoView({
-        behavior: 'smooth'
-      });
-    } catch (e) {
-      // ignore
-    }
-  };
-})();
+import inViewport from './in-viewport';
 
 /**
  * 基本都支持
@@ -40,9 +14,16 @@ const doScroll = (() => {
 export default function scrollIntoView(selector: TSelector, parent?: TParent): void {
   const [el] = find(selector, parent);
   
-  if (!el) {
+  if (!el || inViewport(el)) {
     return;
   }
   
-  doScroll(el);
+  try {
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  } catch (e) {
+    // ignore
+  }
 }

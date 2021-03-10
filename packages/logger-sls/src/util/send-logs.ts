@@ -69,6 +69,8 @@ function buildPostBodyString(infoList: ILogInfo[]): string {
 
 /**
  * POST 发送日志参考文档 https://help.aliyun.com/document_detail/120218.html
+ * 
+ * 不再推荐使用的 GET 方式上传日志，一次只能一条，性能差 https://help.aliyun.com/document_detail/31752.html
  */
 export default function sendLogs(trackUrl: string, apiVersion: string, infoList: ILogInfo[]): void {
   if (!infoList.length) {
@@ -92,15 +94,3 @@ export default function sendLogs(trackUrl: string, apiVersion: string, infoList:
     body
   }).catch(_noop);
 }
-
-// 不再推荐使用的 GET 方式上传日志，一次只能一条，性能差
-// https://help.aliyun.com/document_detail/31752.html
-// function doLog(trackUrl: string, apiVersion: string, info: ILogInfo): void {
-//   fetch(`${trackUrl}?${qs.stringify({
-//     APIVersion: apiVersion,
-//     ...info
-//   })}`, {
-//     timeout: 20000,
-//     credentials: 'omit'
-//   }).catch(_noop);
-// }
