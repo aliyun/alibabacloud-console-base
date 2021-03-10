@@ -16,7 +16,7 @@ export type TAction = {
   payload: IPropsTab[];
 } | {
   type: EAction.ACTIVATE_TAB;
-  payload: IPropsTab;
+  payload: string | number;
 } | {
   type: EAction.CLOSE_TAB;
   payload: IPropsTab;
@@ -28,7 +28,7 @@ export type TAction = {
 export type TModelDispatch = Dispatch<TAction>;
 
 export interface IModelState {
-  activeTab: IPropsTab | null;
+  activeKey: string | number;
   closedTabs: IPropsTab[];
   navOffset: number; // >= navOffsetMax
   navOffsetMax: number; // <= 0

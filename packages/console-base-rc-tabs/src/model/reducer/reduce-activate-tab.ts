@@ -1,16 +1,13 @@
 import update from 'immutability-helper';
 
 import {
-  IPropsTab
-} from '../../types';
-import {
   IModelState
 } from '../types';
 
-export default function reduceActivateTab(state: IModelState, tab: IPropsTab): IModelState {
+export default function reduceActivateTab(state: IModelState, payload: string | number): IModelState {
   return update(state, {
-    activeTab: {
-      $set: tab
+    activeKey: {
+      $set: payload
     }
   });
 }

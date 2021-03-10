@@ -4,6 +4,7 @@ import React, {
   useCallback
 } from 'react';
 import styled from 'styled-components';
+import update from 'immutability-helper';
 
 import {
   Hr,
@@ -28,13 +29,16 @@ const ScDemoLR = styled.div`
   width: 600px;
 `;
 
-const DEFAULT_PAGES: TabProps[] = [{
+const TABS: TabProps[] = [{
+  key: 'long-article',
   title: '长文',
   content: <LongArticle />
 }, {
+  key: 'hbr',
   title: 'HBR 100%',
   content: <Flex100HBF />
 }, {
+  key: 'long-title',
   title: '标题很长长长长长长长长长长长长长长长长长长长长长长长长长长长',
   content: <>123123123</>
 }];
@@ -68,24 +72,21 @@ function getHeight(h: string): number | string {
 }
 
 export default function DemoDefault(): JSX.Element {
-  const [stateTabs, setStateTabs] = useState<TabProps[]>(DEFAULT_PAGES);
+  const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
   const [stateWidth, setStateWidth] = useState<string>('M');
   const [stateHeight, setStateHeight] = useState<string>('M');
-  const [stateActiveTab, setStateActiveTab] = useState<TabProps | undefined>(DEFAULT_PAGES[1]);
   const width = getWidth(stateWidth);
   const height = getHeight(stateHeight);
   
-  const handleAdd = useCallback(() => {
-    setStateTabs([...stateTabs, {
+  const handleAdd = useCallback(() => setStateTabs(update(stateTabs, {
+    $push: [{
       title: new Date().toISOString(),
-      content: <>{new Date().toString()}</>,
+      content: new Date().toString(),
       closable: true
-    }]);
-  }, [stateTabs, setStateTabs]);
+    }]
+  })), [stateTabs, setStateTabs]);
   
-  const handleTabClose = useCallback((item: TabProps) => {
-    setStateTabs(_without(stateTabs, item));
-  }, [stateTabs, setStateTabs]);
+  const handleTabClose = useCallback((item: TabProps) => setStateTabs(_without(stateTabs, item)), [stateTabs, setStateTabs]);
   
   return <ScDemo>
     <ScDemoL>
@@ -141,8 +142,6 @@ export default function DemoDefault(): JSX.Element {
       <Tabs {...{
         tabs: stateTabs,
         width,
-        activeTab: stateActiveTab,
-        onTabActivate: setStateActiveTab,
         onTabClose: handleTabClose
       }} />
     </ScDemoLR>

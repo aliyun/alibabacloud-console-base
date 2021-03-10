@@ -2,23 +2,19 @@ import {
   IPropsTab
 } from '../../types';
 
-import useModelProps from './_use-model-props';
-import useModelState from './_use-model-state';
 import useTabs from './use-tabs';
+import useActiveKey from './use-active-key';
 
 /**
  * 当前激活的 tab
  */
 export default function useActiveTab(): IPropsTab {
-  const {
-    activeTab: activeTabInProps,
-    defaultActiveTab
-  } = useModelProps();
+  const activeKey = useActiveKey();
   const tabs = useTabs();
-  const {
-    activeTab: activeTabInState
-  } = useModelState();
-  const activeTab = activeTabInProps || activeTabInState || defaultActiveTab;
   
-  return tabs.includes(activeTab) ? activeTab : tabs[0];
+  if (typeof activeKey === 'number') {
+    return tabs[activeKey] || tabs[0];
+  }
+  
+  return tabs.find(v => v.key === activeKey) || tabs[0];
 }

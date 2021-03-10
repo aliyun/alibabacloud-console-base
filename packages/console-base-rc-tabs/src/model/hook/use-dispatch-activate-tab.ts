@@ -3,26 +3,23 @@ import {
 } from 'react';
 
 import {
-  IPropsTab
-} from '../../types';
-import {
   actionActivateTab
 } from '../action';
 
-import useModelProps from './_use-model-props';
 import useModelDispatch from './_use-model-dispatch';
+import useProps from './use-props';
 
-export default function useDispatchActivateTab(): (tab: IPropsTab) => void {
+export default function useDispatchActivateTab(): (key: string | number) => void {
   const {
-    onTabActivate
-  } = useModelProps();
+    onChange
+  } = useProps();
   const dispatch = useModelDispatch();
   
-  return useCallback((tab: IPropsTab): void => {
-    dispatch(actionActivateTab(tab));
+  return useCallback((key: string | number): void => {
+    dispatch(actionActivateTab(key));
     
-    if (onTabActivate) {
-      onTabActivate(tab);
+    if (onChange) {
+      onChange(key);
     }
-  }, [dispatch, onTabActivate]);
+  }, [dispatch, onChange]);
 }

@@ -1,16 +1,13 @@
 import {
-  IPropsTab
-} from '../../types';
-import {
   TAction
 } from '../types';
 import {
   EAction
 } from '../const';
 
-export default function actionActivateTab(tab: IPropsTab): TAction {
+export default function actionActivateTab(payload: string | number): TAction {
   return {
     type: EAction.ACTIVATE_TAB,
-    payload: tab
+    payload
   };
 }

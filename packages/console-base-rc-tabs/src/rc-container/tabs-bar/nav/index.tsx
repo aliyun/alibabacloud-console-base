@@ -128,7 +128,7 @@ export default function Nav(): JSX.Element {
           'data-closable': v.closable ? 1 : '',
           'data-active': active ? 1 : '',
           title: getTitleAttr(v),
-          onClick: () => dispatchActivateTab(v)
+          onClick: () => dispatchActivateTab(v.key || i)
         }}>{v.title}</ScTab>
         {v.closable ? <ScTabX {...{
           spm: 'x',

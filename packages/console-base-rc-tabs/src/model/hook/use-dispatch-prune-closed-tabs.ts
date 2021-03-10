@@ -6,13 +6,13 @@ import {
   actionPruneClosedTabs
 } from '../action';
 
-import useModelProps from './_use-model-props';
 import useModelDispatch from './_use-model-dispatch';
+import useProps from './use-props';
 
 export default function useDispatchPruneClosedTabs(): () => void {
   const {
     tabs
-  } = useModelProps();
+  } = useProps();
   const dispatch = useModelDispatch();
   
   return useCallback(() => dispatch(actionPruneClosedTabs(tabs)), [dispatch, tabs]);
