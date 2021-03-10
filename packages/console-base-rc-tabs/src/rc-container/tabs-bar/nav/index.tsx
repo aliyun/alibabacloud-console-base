@@ -5,6 +5,9 @@ import {
   mixinButtonReset,
   mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
+import {
+  ButtonBase
+} from '@alicloud/console-base-theme-sc-base';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
@@ -53,14 +56,17 @@ const ScNavItem = styled.div<IScProps>`
   line-height: ${HEIGHT_TAB}px;
   
   &:after {
-    content: '|';
-    display: ${props => (props['data-active'] ? 'none' : 'inline')};
+    content: '';
     position: absolute;
-    top: 0;
+    top: 30%;
     right: -3px;
+    opacity: ${props => (props['data-active'] ? 0 : 1)};
     z-index: 1;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 100%);
+    width: 1px;
+    height: 40%;
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.34);
+    transition: all linear 200ms;
   }
   
   &:last-child {
@@ -70,12 +76,7 @@ const ScNavItem = styled.div<IScProps>`
   }
 `;
 
-const ScTab0 = styled.button`
-  ${mixinButtonReset}
-  ${mixinTypoEllipsis}
-`;
-
-const ScTab = styled(ScTab0)<IScProps>`
+const ScTab = styled(ButtonBase)<IScProps>`
   padding: 0 ${props => (props['data-closable'] ? 28 : 12)}px 0 12px;
   border-radius: 4px 4px 0 0;
   background-color: ${props => (props['data-active'] ? BGC_TAB_ACTIVE : BGC_TAB_IDLE)};
@@ -84,11 +85,12 @@ const ScTab = styled(ScTab0)<IScProps>`
   height: ${HEIGHT_TAB}px;
   cursor: default;
   color: ${props => (props['data-active'] ? FGC_TAB_ACTIVE : FGC_TAB_IDLE)};
+  ${mixinTypoEllipsis}
 `;
 
 const ScTabX = styled(ControlButton)`
   position: absolute;
-  top: 7px;
+  top: 8px;
   right: 6px;
 `;
 
