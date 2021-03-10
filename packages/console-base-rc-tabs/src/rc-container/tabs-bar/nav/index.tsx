@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  mixinButtonReset,
   mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
 import {
@@ -25,8 +24,8 @@ import {
 } from '../../../const';
 import intl from '../../../intl';
 import {
+  useProps,
   useRefNav,
-  usePropClassNameForTabItem,
   useStateNavOffset,
   useTabs,
   useActiveTab,
@@ -101,8 +100,10 @@ function getTitleAttr({
 }
 
 export default function Nav(): JSX.Element {
+  const {
+    classNameForTabItem
+  } = useProps();
   const refNav = useRefNav();
-  const className = usePropClassNameForTabItem();
   const navOffset = useStateNavOffset();
   const tabs = useTabs();
   const activeTab = useActiveTab();
@@ -120,7 +121,7 @@ export default function Nav(): JSX.Element {
       
       return <ScNavItem {...{
         key: i,
-        className,
+        className: classNameForTabItem,
         'data-active': active ? 1 : ''
       }}>
         <ScTab {...{

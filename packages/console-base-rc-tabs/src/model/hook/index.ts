@@ -1,9 +1,6 @@
+export { default as useProps } from './use-props';
 export { default as useRefTabs } from './use-ref-tabs';
 export { default as useRefNav } from './use-ref-nav';
-export { default as usePropWidth } from './use-prop-width';
-export { default as usePropClassNameForTabBar } from './use-prop-class-name-for-tab-bar';
-export { default as usePropClassNameForTabItem } from './use-prop-class-name-for-tab-item';
-export { default as usePropClassNameForTabScroller } from './use-prop-class-name-for-tab-scroller';
 export { default as useStateNavOffset } from './use-state-nav-offset';
 export { default as useStateNavOffsetMax } from './use-state-nav-offset-max';
 export { default as useTabs } from './use-tabs';

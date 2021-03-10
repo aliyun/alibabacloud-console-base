@@ -6,19 +6,21 @@ import {
   WIDTH_SCROLLER_BUTTON
 } from '../../../const';
 import {
+  useProps,
   useRefTabs,
   useRefNav,
   useTabs,
   useActiveTab,
-  usePropWidth,
   useDispatchUpdateNavOffset,
   useDispatchUpdateNavOffsetMax
 } from '../../hook';
 
 export default function AdjustNavWidth(): null {
+  const {
+    width
+  } = useProps();
   const refTabs = useRefTabs();
   const refNav = useRefNav();
-  const width = usePropWidth();
   const tabs = useTabs();
   const activeTab = useActiveTab();
   const dispatchUpdateNavOffset = useDispatchUpdateNavOffset();

@@ -11,8 +11,8 @@ import {
   TAB_TOP_SPACE
 } from '../../../const';
 import {
+  useProps,
   useRefTabs,
-  usePropClassNameForTabScroller,
   useStateNavOffset,
   useStateNavOffsetMax,
   useDispatchUpdateNavOffset
@@ -33,8 +33,10 @@ const ScScroller = styled.div`
 `;
 
 export default function Scroller(): JSX.Element {
+  const {
+    classNameForTabScroller
+  } = useProps();
   const refTabs = useRefTabs();
-  const className = usePropClassNameForTabScroller();
   const navOffset = useStateNavOffset();
   const navOffsetMax = useStateNavOffsetMax();
   const dispatchUpdateNavOffset = useDispatchUpdateNavOffset();
@@ -51,7 +53,7 @@ export default function Scroller(): JSX.Element {
     handleScrollBy(-refTabs.current!.offsetWidth);
   }, [refTabs, handleScrollBy]);
   
-  return <ScScroller className={className}>
+  return <ScScroller className={classNameForTabScroller}>
     <ControlButton {...{
       disabled: navOffset >= 0,
       spm: 'prev',

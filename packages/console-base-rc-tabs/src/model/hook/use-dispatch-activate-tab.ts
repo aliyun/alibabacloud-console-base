@@ -21,6 +21,8 @@ export default function useDispatchActivateTab(): (tab: IPropsTab) => void {
   return useCallback((tab: IPropsTab): void => {
     dispatch(actionActivateTab(tab));
     
-    onTabActivate(tab);
+    if (onTabActivate) {
+      onTabActivate(tab);
+    }
   }, [dispatch, onTabActivate]);
 }

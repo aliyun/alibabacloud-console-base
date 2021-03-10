@@ -6,7 +6,7 @@ import {
   BGC_TAB_BAR
 } from '../../const';
 import {
-  usePropClassNameForTabBar,
+  useProps,
   useStateNavOffsetMax
 } from '../../model';
 
@@ -23,10 +23,12 @@ const ScTabsBar = styled.div`
 `;
 
 export default function TabBar(): JSX.Element {
-  const className = usePropClassNameForTabBar();
+  const {
+    classNameForTabBar
+  } = useProps();
   const navOffsetMax = useStateNavOffsetMax();
   
-  return <ScTabsBar className={className}>
+  return <ScTabsBar className={classNameForTabBar}>
     <Nav />
     {navOffsetMax < 0 ? <Scroller /> : null}
   </ScTabsBar>;

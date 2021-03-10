@@ -43,6 +43,8 @@ export default function useDispatchCloseTab(): (tab: IPropsTab) => void {
     
     dispatch(actionCloseTab(tab));
     
-    onTabClose(tab);
+    if (onTabClose) {
+      onTabClose(tab);
+    }
   }, [activeTab, dispatch, dispatchActivateTab, onTabClose, tabs]);
 }

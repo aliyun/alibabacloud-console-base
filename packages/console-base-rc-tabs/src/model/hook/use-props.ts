@@ -9,8 +9,7 @@ import {
 import useModelContext from './_use-model-context';
 
 interface IModelProps extends IPropsTabs {
-  tabs: IPropsTabs['tabs'];
-  width: IPropsTabs['width'];
+  width: number;
 }
 
 export default function useModelProps(): IModelProps {

@@ -27,8 +27,6 @@ export type TAction = {
 
 export type TModelDispatch = Dispatch<TAction>;
 
-export interface IModelProps extends Required<IPropsTabs> {}
-
 export interface IModelState {
   activeTab: IPropsTab | null;
   closedTabs: IPropsTab[];
@@ -41,7 +39,7 @@ export interface IModelReducer {
 }
 
 export interface IModelContext {
-  PROPS: IModelProps;
+  PROPS: IPropsTabs;
   STATE: IModelState;
   refTabs: MutableRefObject<HTMLDivElement | null>;
   refNav: MutableRefObject<HTMLDivElement | null>;
