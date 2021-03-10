@@ -1,5 +1,4 @@
 import React, {
-  ChangeEvent,
   useState,
   useCallback
 } from 'react';
@@ -21,8 +20,8 @@ const ScInputText = styled(InputText)`
 
 export default function DemoDefault(): JSX.Element {
   const [stateUa, setStateUa] = useState<Ua>(UA);
-  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const uaString = e.target.value.trim();
+  const handleChange = useCallback(value => {
+    const uaString = value.trim();
     
     if (!uaString) {
       setStateUa(UA);
@@ -34,6 +33,7 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <ScInputText {...{
       placeholder: 'Paste ua string here',
+      defaultValue: navigator.userAgent,
       onChange: handleChange
     }} />
     <PreJson o={stateUa} />

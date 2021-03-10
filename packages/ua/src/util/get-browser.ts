@@ -99,7 +99,8 @@ export default function getBrowser(ua: string): [EBrowserType, string] {
   
   // Edge
   // e.g. Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.18363
-  if (/Edge\/([^ /;()]+)/i.test(ua)) {
+  // e.g. Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36 Edg/89.0.774.48
+  if (/Edge?\/([^ /;()]+)/i.test(ua)) {
     return [EBrowserType.EDGE, RegExp.$1];
   }
   
