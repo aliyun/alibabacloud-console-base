@@ -10,7 +10,8 @@ export interface IPayloadTutorOpen {
 
 export interface IPayloadTutorStepChange {
   id: string;
-  step: number;
+  to: number;
+  from: number;
 }
 
 export interface IPayloadTutorDismiss {

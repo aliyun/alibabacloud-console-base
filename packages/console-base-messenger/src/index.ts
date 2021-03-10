@@ -24,13 +24,34 @@ export {
 } from './const';
 
 export type {
+  /**
+   * @deprecated MessengerPayloadRegion
+   */
   IPayloadRegion as MessengerRegion,
+  /**
+   * @deprecated MessengerPayloadRegionOnChange
+   */
   IPayloadRegionOnChange as MessengerRegionOnChange,
+  /**
+   * @deprecated MessengerPayloadRegionGroup
+   */
   IPayloadRegionGroup as MessengerRegionGroup,
+  /**
+   * @deprecated MessengerPayloadResourceGroup
+   */
   IPayloadResourceGroup as MessengerResourceGroup,
+  /**
+   * @deprecated MessengerPayloadTutorial
+   */
   IPayloadLaunchTutorial as MessengerTutorial,
-  IPayloadTutorRegister as MessengerTutorRegister,
-  IPayloadTutorOpen as MessengerTutorOpen,
-  IPayloadTutorStepChange as MessengerTutorStepChange,
-  IPayloadTutorDismiss as MessengerTutorDismiss
+  // TODO 废弃上边的
+  IPayloadRegion as MessengerPayloadRegion,
+  IPayloadRegionOnChange as MessengerPayloadRegionOnChange,
+  IPayloadRegionGroup as MessengerPayloadRegionGroup,
+  IPayloadResourceGroup as MessengerPayloadResourceGroup,
+  IPayloadLaunchTutorial as MessengerPayloadTutorial,
+  IPayloadTutorRegister as MessengerPayloadTutorRegister,
+  IPayloadTutorOpen as MessengerPayloadTutorOpen,
+  IPayloadTutorStepChange as MessengerPayloadTutorStepChange,
+  IPayloadTutorDismiss as MessengerPayloadTutorDismiss
 } from './types';
