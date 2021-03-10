@@ -46,15 +46,18 @@ const ScLoadingInline = styled.span`
 
 const ScIconWrap = styled.span`
   display: inline-block;
-  width: 1.8em;
-  font-size: 1.1em;
-  vertical-align: middle;
+  padding-top: 1px;
+  width: 2em;
+  vertical-align: top;
   text-align: center;
+  
+  i {
+    font-size: 1.1em;
+  }
 `;
 
 const ScMessageWrap = styled.span`
   display: inline-block;
-  vertical-align: middle;
 `;
 
 const ScButtonRetry = styled.button`
