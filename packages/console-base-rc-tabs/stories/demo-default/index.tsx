@@ -71,6 +71,18 @@ function getHeight(h: string): number | string {
   }
 }
 
+let addIndex = 0;
+
+function generateTabForAdd(): TabProps {
+  addIndex += 1;
+  
+  return {
+    title: `add-${addIndex}`,
+    content: new Date().toString(),
+    closable: true
+  };
+}
+
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
   const [stateWidth, setStateWidth] = useState<string>('M');
@@ -79,11 +91,7 @@ export default function DemoDefault(): JSX.Element {
   const height = getHeight(stateHeight);
   
   const handleAdd = useCallback(() => setStateTabs(update(stateTabs, {
-    $push: [{
-      title: new Date().toISOString(),
-      content: new Date().toString(),
-      closable: true
-    }]
+    $push: [generateTabForAdd()]
   })), [stateTabs, setStateTabs]);
   
   const handleTabClose = useCallback((item: TabProps) => setStateTabs(_without(stateTabs, item)), [stateTabs, setStateTabs]);

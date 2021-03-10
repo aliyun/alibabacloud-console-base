@@ -1,5 +1,5 @@
 export interface IPropsTab {
-  key?: string | number;
+  key?: string;
   title: string | JSX.Element;
   content: string | JSX.Element;
   contentPadding?: 'normal' | 'none';

@@ -29,8 +29,8 @@ import {
   useStateNavOffset,
   useTabs,
   useActiveTab,
-  useDispatchActivateTab,
-  useDispatchCloseTab
+  useOnClose,
+  useOnChange
 } from '../../../model';
 import ControlButton from '../../../rc/control-button';
 
@@ -107,8 +107,8 @@ export default function Nav(): JSX.Element {
   const navOffset = useStateNavOffset();
   const tabs = useTabs();
   const activeTab = useActiveTab();
-  const dispatchActivateTab = useDispatchActivateTab();
-  const dispatchCloseTab = useDispatchCloseTab();
+  const onChange = useOnChange();
+  const onClose = useOnClose();
   
   return <ScNav {...{
     ref: refNav,
@@ -128,14 +128,14 @@ export default function Nav(): JSX.Element {
           'data-closable': v.closable ? 1 : '',
           'data-active': active ? 1 : '',
           title: getTitleAttr(v),
-          onClick: () => dispatchActivateTab(v.key || i)
+          onClick: () => onChange(v.key || i)
         }}>{v.title}</ScTab>
         {v.closable ? <ScTabX {...{
           spm: 'x',
           title: intl('op:close'),
           light: !active,
           label: <Icon type="x" />,
-          onClick: () => dispatchCloseTab(v)
+          onClick: () => onClose(v)
         }} /> : null}
       </ScNavItem>;
     })}
