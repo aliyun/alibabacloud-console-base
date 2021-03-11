@@ -1,14 +1,14 @@
 import update from 'immutability-helper';
 
 import {
-  IContextState
+  IModelState
 } from '../types';
 import getWindowSize from '../../util/get-window-size';
 
 /**
  * 浏览器窗口缩放的时候保持右下角位置不变、且大小不变
  */
-export default function reduceRefreshWindowSize(state: IContextState): IContextState {
+export default function reduceRefreshWindowSize(state: IModelState): IModelState {
   const [W, H] = getWindowSize();
   const {
     x,

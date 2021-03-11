@@ -9,17 +9,20 @@ import {
   actionChangeMode
 } from '../action';
 
-import useModelProps from './_use-model-props';
 import useModelDispatch from './_use-model-dispatch';
+import useProps from './use-props';
 
 export default function useDispatchChangeMode(): (mode: EModalMode) => void {
   const {
     onModeChange
-  } = useModelProps();
+  } = useProps();
   const dispatch = useModelDispatch();
   
   return useCallback((mode: EModalMode) => {
     dispatch(actionChangeMode(mode));
-    onModeChange(mode);
+    
+    if (onModeChange) {
+      onModeChange(mode);
+    }
   }, [dispatch, onModeChange]);
 }

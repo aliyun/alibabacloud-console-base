@@ -6,13 +6,15 @@ import {
   CLASS_J_RND_CANCEL
 } from '../../const';
 import {
-  usePropTabs,
+  useProps,
   useRndState,
   useRndDragHandleClass
 } from '../../model';
 
 export default function Content(): JSX.Element {
-  const tabs = usePropTabs();
+  const {
+    tabs
+  } = useProps();
   const {
     w
   } = useRndState();

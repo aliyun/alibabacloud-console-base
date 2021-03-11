@@ -4,10 +4,10 @@ import {
   EModalMode
 } from '../../const';
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export default function reduceChangeMode(state: IContextState, payload: EModalMode): IContextState {
+export default function reduceChangeMode(state: IModelState, payload: EModalMode): IModelState {
   return update(state, {
     mode: {
       $set: payload

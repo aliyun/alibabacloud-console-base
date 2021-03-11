@@ -26,7 +26,7 @@ export interface IPayloadResize {
   stopped?: boolean;
 }
 
-export type TAction = {
+export type TModelAction = {
   type: EAction.REFRESH_WINDOW_SIZE | EAction.RND_RESIZE_START | EAction.RND_DRAG_START;
 } | {
   type: EAction.CHANGE_MODE;
@@ -39,9 +39,9 @@ export type TAction = {
   payload: IPayloadResize;
 };
 
-export interface IContextProps extends Required<IPropsModal> {}
+export type TModelDispatch = Dispatch<TModelAction>;
 
-export interface IContextState {
+export interface IModelState {
   mode: EModalMode;
   x: number; // modal 左上角 x
   y: number; // modal 左上角 y
@@ -54,12 +54,12 @@ export interface IContextState {
   resizing: number;
 }
 
-export interface IContextReducer {
-  (state: IContextState, action: TAction): IContextState;
+export interface IModelReducer {
+  (state: IModelState, action: TModelAction): IModelState;
 }
 
-export interface IContext {
-  PROPS: IContextProps;
-  STATE: IContextState;
-  dispatch: Dispatch<TAction>;
+export interface IModelContext {
+  PROPS: IPropsModal;
+  STATE: IModelState;
+  dispatch: TModelDispatch;
 }

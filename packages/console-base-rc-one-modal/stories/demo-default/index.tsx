@@ -71,7 +71,7 @@ export default function DemoDefault(): JSX.Element {
   
   const handleAdd = useCallback(() => {
     setStateTabs([...stateTabs, {
-      key: Date.now(),
+      key: `${Date.now()}`,
       title: new Date().toISOString(),
       content: <>{new Date().toString()}</>,
       closable: true

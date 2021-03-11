@@ -2,8 +2,8 @@ import {
   EModalMode
 } from '../../const';
 
-import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
+import useProps from './use-props';
 
 /**
  * 当前模式
@@ -14,7 +14,7 @@ export default function useMode(): EModalMode {
   } = useModelState();
   const {
     mode = modeInState
-  } = useModelProps();
+  } = useProps();
   
   return mode;
 }

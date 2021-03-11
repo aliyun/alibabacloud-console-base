@@ -4,18 +4,18 @@ import {
   EModalMode
 } from '../../const';
 import {
-  IContextState,
+  IModelState,
   IPayloadResize
 } from '../types';
 
-export default function reduceRndResize(state: IContextState, {
+export default function reduceRndResize(state: IModelState, {
   mode,
   x,
   y,
   w,
   h,
   stopped
-}: IPayloadResize): IContextState {
+}: IPayloadResize): IModelState {
   const resizing = stopped ? -1 : state.resizing + 1;
   
   switch (mode) {

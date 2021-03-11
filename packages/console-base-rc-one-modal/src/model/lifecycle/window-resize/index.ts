@@ -3,22 +3,22 @@ import {
 } from 'react';
 
 import {
-  useDispatchRefreshWindowSize
+  useOnWindowResize
 } from '../../hook';
 
 /**
  * 窗口变化需要调整位置和大小等
  */
 export default function WindowResize(): null {
-  const dispatchRefreshWindowSize = useDispatchRefreshWindowSize();
+  const onWindowSize = useOnWindowResize();
   
   useEffect(() => {
-    window.addEventListener('resize', dispatchRefreshWindowSize);
+    window.addEventListener('resize', onWindowSize);
     
     return () => {
-      window.removeEventListener('resize', dispatchRefreshWindowSize);
+      window.removeEventListener('resize', onWindowSize);
     };
-  }, [dispatchRefreshWindowSize]);
+  }, [onWindowSize]);
   
   return null;
 }

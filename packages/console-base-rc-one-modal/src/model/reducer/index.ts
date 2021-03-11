@@ -1,6 +1,6 @@
 import {
-  TAction,
-  IContextState
+  TModelAction,
+  IModelState
 } from '../types';
 import {
   EAction
@@ -13,7 +13,7 @@ import reduceRndResizeStart from './reduce-rnd-resize-start';
 import reduceRndResize from './reduce-rnd-resize';
 import reduceRefreshWindowSize from './reduce-refresh-window-size';
 
-export default function reducer(state: IContextState, action: TAction): IContextState {
+export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
     case EAction.CHANGE_MODE:
       return reduceChangeMode(state, action.payload);

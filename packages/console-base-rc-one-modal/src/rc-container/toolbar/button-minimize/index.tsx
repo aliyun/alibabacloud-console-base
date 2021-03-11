@@ -1,16 +1,10 @@
-import React, {
-  useCallback
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import {
-  EModalMode
-} from '../../../const';
 import intl from '../../../intl';
 import {
-  usePropMinimizable,
-  useMode,
-  useDispatchChangeMode
+  useProps,
+  useOnMinimize
 } from '../../../model';
 import ControlButton from '../../../rc/control-button';
 
@@ -25,15 +19,15 @@ const ScIconMinimize = styled.i`
 `;
 
 export default function ButtonMinimize(): JSX.Element | null {
-  const minimizable = usePropMinimizable();
-  const mode = useMode();
-  const dispatchChangeMode = useDispatchChangeMode();
-  const handleToggleMinimized = useCallback(() => dispatchChangeMode(mode === EModalMode.MINIMIZED ? EModalMode.FREE : EModalMode.MINIMIZED), [mode, dispatchChangeMode]);
+  const {
+    minimizable
+  } = useProps();
+  const onMinimize = useOnMinimize();
   
   return minimizable ? <ControlButton {...{
     spm: 'min',
     label: <ScIconMinimize />,
     title: intl('op:minimize'),
-    onClick: handleToggleMinimized
+    onClick: onMinimize
   }} /> : null;
 }

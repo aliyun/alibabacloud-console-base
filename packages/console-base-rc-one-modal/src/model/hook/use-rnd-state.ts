@@ -6,11 +6,11 @@ import {
   EModalMode
 } from '../../const';
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
+import useProps from './use-props';
 import useMode from './use-mode';
 
 interface IRndState {
@@ -29,7 +29,7 @@ interface IRndState {
 function getRectForModeMinimized({
   x2,
   y2
-}: IContextState, affix?: string | Element | null): [number, number, number, number] {
+}: IModelState, affix?: string | Element | null): [number, number, number, number] {
   let width = 40;
   let height = 40;
   let posX = x2;
@@ -63,7 +63,7 @@ function getRectForModePinned({
   x2,
   y2,
   pinnedWidth
-}: IContextState, propPinnedWidth: number): [number, number, number, number] {
+}: IModelState, propPinnedWidth: number): [number, number, number, number] {
   const w = Math.min(pinnedWidth > 0 ? pinnedWidth : propPinnedWidth, x2);
   
   return [w, y2, x2 > w ? x2 - w : 0, 0];
@@ -74,7 +74,7 @@ function getRectForModeFree({
   y,
   x1,
   y1
-}: IContextState): [number, number, number, number] {
+}: IModelState): [number, number, number, number] {
   return [x1 - x, y1 - y, x > 0 ? x : 0, y > 0 ? y : 0];
 }
 
@@ -82,7 +82,7 @@ function getRectForModeFree({
  * 当前状态、大小、位置等信息
  */
 export default function useRndState(): IRndState {
-  const props = useModelProps();
+  const props = useProps();
   const state = useModelState();
   const mode = useMode();
   const {

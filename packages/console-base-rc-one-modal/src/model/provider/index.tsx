@@ -8,12 +8,10 @@ import {
   IPropsModal
 } from '../../types';
 import {
-  IContext,
-  IContextProps,
-  IContextReducer
+  IModelContext,
+  IModelReducer
 } from '../types';
 import {
-  DEFAULT_CONTEXT_PROPS,
   DEFAULT_CONTEXT_STATE
 } from '../const';
 import reducer from '../reducer';
@@ -30,21 +28,13 @@ export default function Provider({
   children,
   props
 }: IProps): JSX.Element {
-  const PROPS: IContextProps = useMemo((): IContextProps => ({
-    ...DEFAULT_CONTEXT_PROPS,
-    ...props
-  }), [props]);
-  const [STATE, dispatch] = useReducer<IContextReducer>(reducer, DEFAULT_CONTEXT_STATE);
+  const [STATE, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
-  const contextValue: IContext = useMemo(() => ({
-    PROPS,
+  const contextValue: IModelContext = useMemo(() => ({
+    PROPS: props,
     STATE,
     dispatch
-  }), [
-    PROPS,
-    STATE,
-    dispatch
-  ]);
+  }), [props, STATE, dispatch]);
   
   return <Context.Provider value={contextValue}>
     <Lifecycle />

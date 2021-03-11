@@ -5,16 +5,18 @@ import Icon from '@alicloud/console-base-rc-icon';
 import intl from '../../../intl';
 import ControlButton from '../../../rc/control-button';
 import {
-  useDispatchClose
+  useProps
 } from '../../../model';
 
 export default function ButtonX(): JSX.Element {
-  const dispatchClose = useDispatchClose();
+  const {
+    onClose
+  } = useProps();
   
   return <ControlButton {...{
     spm: 'close',
     label: <Icon type="x" />,
     title: intl('op:close'),
-    onClick: dispatchClose
+    onClick: onClose
   }} />;
 }

@@ -26,7 +26,5 @@ export interface IPropsModal {
   pinnable?: boolean; // 是否能在靠右模式下进一步挤压 body（给 padding-right）
   // 回调
   onModeChange?(mode: EModalMode): void;
-  onHide?(): void;
   onClose?(): void;
-  onDestroy?(): void;
 }

@@ -1,10 +1,10 @@
 import update from 'immutability-helper';
 
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export default function reduceRndDragStart(state: IContextState): IContextState {
+export default function reduceRndDragStart(state: IModelState): IModelState {
   return update(state, {
     dragging: {
       $set: true

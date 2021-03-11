@@ -2,11 +2,7 @@ import {
   HandleStyles
 } from 'react-rnd';
 
-import {
-  EModalMode
-} from '../../const';
-
-import useMode from './use-mode';
+import useStickRightActive from './use-stick-right-active';
 
 const resizeHandleStyleHidden = {
   display: 'none'
@@ -23,9 +19,7 @@ const onlyLeft: HandleStyles = {
 };
 
 export default function useRndResizeHandleStyles(): HandleStyles | undefined {
-  const mode = useMode();
-  
-  if (mode === EModalMode.TO_THE_RIGHT || mode === EModalMode.TO_THE_RIGHT_PINNED) {
+  if (useStickRightActive()) {
     return onlyLeft;
   }
 }

@@ -1,11 +1,8 @@
 import React, {
-  ReactNode,
-  useCallback
+  ReactNode
 } from 'react';
 import {
-  Rnd,
-  RndResizeCallback,
-  RndDragCallback
+  Rnd
 } from 'react-rnd';
 import styled, {
   css
@@ -20,10 +17,11 @@ import {
   useRndState,
   useRndResizeHandleStyles,
   useRndDraggingDisabled,
-  useDispatchRndDragStart,
-  useDispatchRndDragStop,
-  useDispatchRndResizeStart,
-  useDispatchRndResize
+  useOnDragStop,
+  useOnResize,
+  useOnResizeStop,
+  useOnDragStart,
+  useOnResizeStart
 } from '../../model';
 
 interface IProps {
@@ -73,27 +71,12 @@ export default function TheRnd({
     y
   } = useRndState();
   const draggingDisabled = useRndDraggingDisabled();
-  const dispatchRndDragStart = useDispatchRndDragStart();
-  const dispatchRndDragStop = useDispatchRndDragStop();
-  const dispatchRndResizeStart = useDispatchRndResizeStart();
-  const dispatchRndResize = useDispatchRndResize();
   
-  const handleDragStop: RndDragCallback = useCallback((e, dragData) => dispatchRndDragStop(dragData.x, dragData.y), [dispatchRndDragStop]);
-  const handleResize: RndResizeCallback = useCallback((e, dir, ref, delta, newPosition) => dispatchRndResize({
-    mode,
-    w: ref.offsetWidth,
-    h: ref.offsetHeight,
-    x: newPosition.x,
-    y: newPosition.y
-  }), [mode, dispatchRndResize]);
-  const handleResizeStop: RndResizeCallback = useCallback((e, dir, ref, delta, newPosition) => dispatchRndResize({
-    mode,
-    w: ref.offsetWidth,
-    h: ref.offsetHeight,
-    x: newPosition.x,
-    y: newPosition.y,
-    stopped: true
-  }), [mode, dispatchRndResize]);
+  const onResizeStart = useOnResizeStart();
+  const onDragStart = useOnDragStart();
+  const onDragStop = useOnDragStop();
+  const onResize = useOnResize();
+  const onResizeStop = useOnResizeStop();
   
   return <ScFixedWrapper {...{
     style: {
@@ -119,11 +102,11 @@ export default function TheRnd({
       dragHandleClassName: CLASS_J_RND_HANDLE,
       cancel: `.${CLASS_J_RND_CANCEL}`,
       disableDragging: draggingDisabled,
-      onDragStart: dispatchRndDragStart,
-      onDragStop: handleDragStop,
-      onResizeStart: dispatchRndResizeStart,
-      onResize: handleResize,
-      onResizeStop: handleResizeStop
+      onDragStart,
+      onDragStop,
+      onResizeStart,
+      onResize,
+      onResizeStop
     }}>{children}</ScRnd>
   </ScFixedWrapper>;
 }

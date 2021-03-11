@@ -1,11 +1,11 @@
 import update from 'immutability-helper';
 
 import {
-  IContextState,
+  IModelState,
   IPayloadDrag
 } from '../types';
 
-export default function reduceRndDragStop(state: IContextState, payload: IPayloadDrag): IContextState {
+export default function reduceRndDragStop(state: IModelState, payload: IPayloadDrag): IModelState {
   const {
     x,
     y,
