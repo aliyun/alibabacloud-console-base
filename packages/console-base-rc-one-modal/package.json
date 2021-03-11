@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-one-modal",
-  "version": "1.1.0",
+  "version": "1.0.42",
   "description": "ConsoleBase 组件 - 专用于文档组件的可拖拽、带标签的容器",
   "license": "MIT",
   "main": "build/cjs/index.js",
