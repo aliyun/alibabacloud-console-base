@@ -58,7 +58,7 @@ const ScNavItem = styled.div<IScProps>`
     content: '';
     position: absolute;
     top: 30%;
-    right: -3px;
+    right: 0;
     opacity: ${props => (props['data-active'] ? 0 : 1)};
     z-index: 1;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 100%);
@@ -76,7 +76,8 @@ const ScNavItem = styled.div<IScProps>`
 `;
 
 const ScTab = styled(ButtonBase)<IScProps>`
-  padding: 0 ${props => (props['data-closable'] ? 28 : 12)}px 0 12px;
+  padding: 0 ${props => (props['data-closable'] ? 24 : 8)}px 0 8px;
+  border: 0;
   border-radius: 4px 4px 0 0;
   background-color: ${props => (props['data-active'] ? BGC_TAB_ACTIVE : BGC_TAB_IDLE)};
   min-width: ${MIN_WIDTH_TAB}px;
