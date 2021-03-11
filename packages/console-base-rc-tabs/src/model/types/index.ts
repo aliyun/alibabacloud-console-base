@@ -39,8 +39,8 @@ export interface IModelReducer {
 }
 
 export interface IModelContext {
-  PROPS: IPropsTabs;
-  STATE: IModelState;
+  props: IPropsTabs;
+  state: IModelState;
   refTabs: MutableRefObject<HTMLDivElement | null>;
   refNav: MutableRefObject<HTMLDivElement | null>;
   dispatch: TModelDispatch;

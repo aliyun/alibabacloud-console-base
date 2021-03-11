@@ -31,15 +31,15 @@ export default function Provider({
 }: IProps): JSX.Element {
   const refTabs = useRef<HTMLDivElement>(null);
   const refNav = useRef<HTMLDivElement>(null);
-  const [STATE, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
+  const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
   const contextValue: IModelContext = useMemo(() => ({
-    PROPS: props,
-    STATE,
+    props,
+    state,
     refTabs,
     refNav,
     dispatch
-  }), [props, STATE, refTabs, refNav, dispatch]);
+  }), [props, state, refTabs, refNav, dispatch]);
   
   return <Context.Provider value={contextValue}>
     <Lifecycle />

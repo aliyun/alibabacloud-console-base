@@ -14,11 +14,11 @@ interface IModelProps extends IPropsTabs {
 
 export default function useModelProps(): IModelProps {
   const {
-    PROPS
+    props
   } = useModelContext();
   
   return useMemo((): IModelProps => ({
     width: -1,
-    ...PROPS
-  }), [PROPS]);
+    ...props
+  }), [props]);
 }
