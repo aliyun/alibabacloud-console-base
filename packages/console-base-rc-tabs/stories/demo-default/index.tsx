@@ -83,6 +83,10 @@ function generateTabForAdd(): TabProps {
   };
 }
 
+function onTabChange(key: string | number): void {
+  console.info('tab change', key);
+}
+
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
   const [stateWidth, setStateWidth] = useState<string>('M');
@@ -150,7 +154,8 @@ export default function DemoDefault(): JSX.Element {
       <Tabs {...{
         tabs: stateTabs,
         width,
-        onTabClose: handleTabClose
+        onTabClose: handleTabClose,
+        onChange: onTabChange
       }} />
     </ScDemoLR>
   </ScDemo>;
