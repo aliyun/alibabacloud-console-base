@@ -1,6 +1,4 @@
-import React, {
-  useCallback
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Icon from '@alicloud/console-base-rc-icon';
@@ -12,10 +10,10 @@ import {
 } from '../../../const';
 import {
   useProps,
-  useRefTabs,
   useStateNavOffset,
   useStateNavOffsetMax,
-  useDispatchUpdateNavOffset
+  useOnScrollLeft,
+  useOnScrollRight
 } from '../../../model';
 import ControlButton from '../../../rc/control-button';
 
@@ -36,22 +34,11 @@ export default function Scroller(): JSX.Element {
   const {
     classNameForTabScroller
   } = useProps();
-  const refTabs = useRefTabs();
   const navOffset = useStateNavOffset();
   const navOffsetMax = useStateNavOffsetMax();
-  const dispatchUpdateNavOffset = useDispatchUpdateNavOffset();
   
-  const handleScrollBy = useCallback((deltaOffset: number): void => {
-    dispatchUpdateNavOffset(navOffset + deltaOffset);
-  }, [navOffset, dispatchUpdateNavOffset]);
-  
-  const handleScrollLeft = useCallback((): void => {
-    handleScrollBy(refTabs.current!.offsetWidth);
-  }, [refTabs, handleScrollBy]);
-  
-  const handleScrollRight = useCallback((): void => {
-    handleScrollBy(-refTabs.current!.offsetWidth);
-  }, [refTabs, handleScrollBy]);
+  const onScrollLeft = useOnScrollLeft();
+  const onScrollRight = useOnScrollRight();
   
   return <ScScroller className={classNameForTabScroller}>
     <ControlButton {...{
@@ -59,14 +46,14 @@ export default function Scroller(): JSX.Element {
       spm: 'prev',
       label: <Icon type="angle-left" />,
       light: true,
-      onClick: handleScrollLeft
+      onClick: onScrollLeft
     }} />
     <ControlButton {...{
       disabled: navOffset <= navOffsetMax,
       spm: 'next',
       label: <Icon type="angle-right" />,
       light: true,
-      onClick: handleScrollRight
+      onClick: onScrollRight
     }} />
   </ScScroller>;
 }

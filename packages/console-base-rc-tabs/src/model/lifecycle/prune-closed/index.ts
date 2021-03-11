@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  useDispatchPruneClosedTabs
+  useHandlePrune
 } from '../../hook';
 
 /**
@@ -12,9 +12,9 @@ import {
  * 如果用 useEffect 的话，这里将依赖 STATE.closedTabs
  */
 export default function PruneClosed(): null {
-  const dispatchPruneClosedTabs = useDispatchPruneClosedTabs();
+  const handlePrune = useHandlePrune();
   
-  useEffect(dispatchPruneClosedTabs, [dispatchPruneClosedTabs]);
+  useEffect(handlePrune, [handlePrune]);
   
   return null;
 }

@@ -3,17 +3,16 @@ import {
 } from 'react';
 
 import {
+  IPropsTab
+} from '../../types';
+import {
   actionPruneClosedTabs
 } from '../action';
 
 import useModelDispatch from './_use-model-dispatch';
-import useProps from './use-props';
 
-export default function useDispatchPruneClosedTabs(): () => void {
-  const {
-    tabs
-  } = useProps();
+export default function useDispatchPruneClosedTabs(): (payload: IPropsTab[]) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback(() => dispatch(actionPruneClosedTabs(tabs)), [dispatch, tabs]);
+  return useCallback((payload: IPropsTab[]) => dispatch(actionPruneClosedTabs(payload)), [dispatch]);
 }
