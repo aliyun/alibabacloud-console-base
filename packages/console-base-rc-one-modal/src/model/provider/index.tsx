@@ -28,13 +28,13 @@ export default function Provider({
   children,
   props
 }: IProps): JSX.Element {
-  const [STATE, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
+  const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
   const contextValue: IModelContext = useMemo(() => ({
-    PROPS: props,
-    STATE,
+    props,
+    state,
     dispatch
-  }), [props, STATE, dispatch]);
+  }), [props, state, dispatch]);
   
   return <Context.Provider value={contextValue}>
     <Lifecycle />

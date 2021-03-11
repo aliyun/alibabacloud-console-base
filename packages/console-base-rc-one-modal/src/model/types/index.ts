@@ -59,7 +59,7 @@ export interface IModelReducer {
 }
 
 export interface IModelContext {
-  PROPS: IPropsModal;
-  STATE: IModelState;
+  props: IPropsModal;
+  state: IModelState;
   dispatch: TModelDispatch;
 }

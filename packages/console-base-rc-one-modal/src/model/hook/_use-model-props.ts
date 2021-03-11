@@ -5,5 +5,5 @@ import {
 import useModelContext from './_use-model-context';
 
 export default function useModelProps(): IPropsModal {
-  return useModelContext().PROPS;
+  return useModelContext().props;
 }

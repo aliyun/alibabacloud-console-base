@@ -37,11 +37,11 @@ const DEFAULT_PROPS: IModelProps = {
 
 export default function useProps(): IModelProps {
   const {
-    PROPS
+    props
   } = useModelContext();
    
   return useMemo((): IModelProps => ({
     ...DEFAULT_PROPS,
-    ...PROPS
-  }), [PROPS]);
+    ...props
+  }), [props]);
 }
