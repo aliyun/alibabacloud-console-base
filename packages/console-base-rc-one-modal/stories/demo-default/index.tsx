@@ -81,7 +81,9 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <OneModal {...{
-      tabs: stateTabs,
+      tabs: {
+        tabs: stateTabs
+      },
       affix: '#the-minimize-to-node-for-demo',
       mode: stateMode,
       visible: stateVisible,

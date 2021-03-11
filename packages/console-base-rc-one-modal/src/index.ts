@@ -6,5 +6,9 @@ export {
 
 export type {
   IPropsModal as ModalProps,
-  IModalTab as ModalTab
+  TModalTabs as ModalTabs
 } from './types';
+
+export type {
+  TabProps as ModalTab
+} from '@alicloud/console-base-rc-tabs';

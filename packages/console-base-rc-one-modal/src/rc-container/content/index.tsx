@@ -21,7 +21,7 @@ export default function Content(): JSX.Element {
   const dragHandleClass = useRndDragHandleClass();
   
   return <Tabs {...{
-    tabs,
+    ...tabs,
     classNameForTabBar: dragHandleClass,
     classNameForTabItem: CLASS_J_RND_CANCEL,
     classNameForTabScroller: CLASS_J_RND_CANCEL,

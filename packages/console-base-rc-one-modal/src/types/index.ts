@@ -1,16 +1,16 @@
 import {
-  TabProps
+  TabsProps
 } from '@alicloud/console-base-rc-tabs';
 
 import {
   EModalMode
 } from '../const';
 
-export interface IModalTab extends TabProps {}
+export type TModalTabs = Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller' | 'width'>;
 
 export interface IPropsModal {
   // 内容
-  tabs?: IModalTab[];
+  tabs: TModalTabs;
   affix?: string | null | Element;
   // 长相
   mode?: EModalMode;

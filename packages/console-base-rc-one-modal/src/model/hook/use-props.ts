@@ -22,7 +22,9 @@ type TOptional = 'mode' | 'onModeChange' | 'onClose';
 type IModelProps = RequiredBut<IPropsModal, TOptional>;
 
 const DEFAULT_PROPS: IModelProps = {
-  tabs: [],
+  tabs: {
+    tabs: []
+  },
   affix: null,
   visible: true,
   minWidth: DEFAULT_VALUES.MIN_WIDTH,
