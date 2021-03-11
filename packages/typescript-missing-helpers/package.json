@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/typescript-missing-helpers",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "ConsoleBase common types",
   "license": "MIT",
   "main": "build/cjs/index.js",
