@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher",
-  "version": "1.3.16",
+  "version": "1.3.17",
   "description": "控制台 fetcher",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -34,7 +34,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/console-fetcher-basic": "^1.3.12",
+    "@alicloud/console-fetcher-basic": "^1.3.13",
     "@alicloud/console-fetcher-interceptor-res-risk": "^1.0.74"
   },
   "scripts": {
