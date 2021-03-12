@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "ConsoleBase 信使 - 与控制台应用之间的交互",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "@alicloud/console-base-common-typings": "^1.0.31",
-    "@alicloud/console-base-log-sls": "^1.0.46",
-    "@alicloud/post-message": "^1.0.40"
+    "@alicloud/console-base-log-sls": "^1.0.47",
+    "@alicloud/post-message": "^1.0.41"
   },
   "scripts": {
     "start": "breezr start-storybook",

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-breadcrumb",
-  "version": "1.0.60",
+  "version": "1.0.61",
   "description": "ConsoleBase 组件 - 面包屑",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,7 +24,7 @@
     "breadcrumb"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.35",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.36",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
     "@types/jest": "^26.0.20",
@@ -41,8 +41,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-button": "^1.0.63",
-    "@alicloud/console-base-theme": "^1.2.2"
+    "@alicloud/console-base-rc-button": "^1.0.64",
+    "@alicloud/console-base-theme": "^1.2.3"
   },
   "scripts": {
     "start": "breezr start-storybook",

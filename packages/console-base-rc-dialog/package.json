@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dialog",
-  "version": "1.0.72",
+  "version": "1.0.73",
   "description": "ConsoleBase 组件 - Dialog",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -25,10 +25,10 @@
     "promise"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.35",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.36",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.20",
+    "@alicloud/demo-rc-elements": "^1.1.21",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.14.4",
@@ -47,11 +47,11 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.1.26",
-    "@alicloud/console-base-rc-button": "^1.0.63",
-    "@alicloud/console-base-rc-icon": "^1.0.59",
-    "@alicloud/console-base-rc-input": "^1.0.61",
-    "@alicloud/console-base-theme": "^1.2.2",
+    "@alicloud/console-base-intl-factory-basic": "^1.1.27",
+    "@alicloud/console-base-rc-button": "^1.0.64",
+    "@alicloud/console-base-rc-icon": "^1.0.60",
+    "@alicloud/console-base-rc-input": "^1.0.62",
+    "@alicloud/console-base-theme": "^1.2.3",
     "@alicloud/react-hook-is-unmounted": "^1.0.31",
     "immutability-helper": "^3.1.1",
     "lodash": "^4.17.21"

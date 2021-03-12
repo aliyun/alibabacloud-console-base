@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-tabs",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "ConsoleBase 组件 - 一个简单但代码写的很清爽的 tabs 容器",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.20",
+    "@alicloud/demo-rc-elements": "^1.1.21",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
     "@types/styled-components": "^5.1.8",
@@ -41,11 +41,11 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.1.26",
-    "@alicloud/console-base-rc-button": "^1.0.63",
-    "@alicloud/console-base-rc-icon": "^1.0.59",
-    "@alicloud/console-base-theme": "^1.2.2",
-    "@alicloud/console-base-theme-sc-base": "^1.0.4",
+    "@alicloud/console-base-intl-factory-basic": "^1.1.27",
+    "@alicloud/console-base-rc-button": "^1.0.64",
+    "@alicloud/console-base-rc-icon": "^1.0.60",
+    "@alicloud/console-base-theme": "^1.2.3",
+    "@alicloud/console-base-theme-sc-base": "^1.0.5",
     "immutability-helper": "^3.1.1",
     "lodash": "^4.17.21"
   },
