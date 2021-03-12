@@ -18,6 +18,7 @@ interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 't
 
 const ScInputText = styled.input`
   padding: 0 8px;
+  width: 100%;
   line-height: ${FORM_INPUT_HEIGHT}px;
   ${CSS_INPUT_COMMON}
 `;

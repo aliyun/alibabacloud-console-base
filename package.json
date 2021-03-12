@@ -11,7 +11,7 @@
     "@types/react-dom": "^16.9.11",
     "eslint": "^7.21.0",
     "lerna": "^4.0.0",
-    "npm-check-updates": "^11.2.1",
+    "npm-check-updates": "^11.2.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "stylelint": "^13.12.0"

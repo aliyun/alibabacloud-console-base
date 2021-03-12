@@ -2,7 +2,6 @@ import React, {
   useState,
   useCallback
 } from 'react';
-import styled from 'styled-components';
 
 import {
   InputText,
@@ -13,10 +12,6 @@ import UA, {
   Ua,
   parse
 } from '../../src';
-
-const ScInputText = styled(InputText)`
-  width: 100%;
-`;
 
 export default function DemoDefault(): JSX.Element {
   const [stateUa, setStateUa] = useState<Ua>(UA);
@@ -31,7 +26,8 @@ export default function DemoDefault(): JSX.Element {
   }, []);
   
   return <>
-    <ScInputText {...{
+    <InputText {...{
+      block: true,
       placeholder: 'Paste ua string here',
       defaultValue: navigator.userAgent,
       onChange: handleChange
