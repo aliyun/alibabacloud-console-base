@@ -1,7 +1,6 @@
 import React, {
   HTMLAttributes,
   useReducer,
-  useMemo,
   useRef
 } from 'react';
 
@@ -9,9 +8,7 @@ import {
   IPropsDropdown
 } from '../../types';
 import {
-  IContext,
-  IContextRef,
-  IContextReducer
+  IModelReducer
 } from '../types';
 import {
   DEFAULT_STATE
@@ -29,25 +26,15 @@ export default function Provider({
   props,
   children
 }: IProps): JSX.Element {
-  const refDropdown = useRef<HTMLDivElement>(null);
-  const [STATE, dispatch] = useReducer<IContextReducer>(reducer, DEFAULT_STATE);
-  const PROPS = props;
-  const REF = useMemo((): IContextRef => ({
-    refDropdown
-  }), [refDropdown]);
-  const contextValue: IContext = useMemo(() => ({
-    REF,
-    PROPS,
-    STATE,
-    dispatch
-  }), [
-    REF,
-    PROPS,
-    STATE,
-    dispatch
-  ]);
+  const refDropdown = useRef<HTMLDivElement | null>(null);
+  const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_STATE);
   
-  return <Context.Provider value={contextValue}>
+  return <Context.Provider value={{
+    props,
+    state,
+    refDropdown,
+    dispatch
+  }}>
     <Lifecycle />
     {children}
   </Context.Provider>;

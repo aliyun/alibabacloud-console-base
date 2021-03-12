@@ -1,10 +1,10 @@
 import update from 'immutability-helper';
 
 import {
-  IContextState
+  IModelState
 } from '../types';
 
-export default function reduceToggleVisible(state: IContextState, payload: boolean): IContextState {
+export default function reduceToggleVisible(state: IModelState, payload: boolean): IModelState {
   return update(state, {
     visible: {
       $set: payload

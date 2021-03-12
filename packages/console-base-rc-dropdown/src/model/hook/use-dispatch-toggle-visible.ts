@@ -6,13 +6,13 @@ import {
   actionToggleVisible
 } from '../action';
 
-import useModelProps from './_use-model-props';
 import useModelDispatch from './_use-model-dispatch';
+import useProps from './use-props';
 
 export default function useDispatchToggleVisible(): (visible?: boolean) => void {
   const {
     onVisibleChange
-  } = useModelProps();
+  } = useProps();
   const dispatch = useModelDispatch();
   
   return useCallback((visible = true): void => {

@@ -15,8 +15,6 @@ export type TModelAction = {
 
 export type TModelDispatch = Dispatch<TModelAction>;
 
-export interface IModelProps extends IPropsTopNavPure {}
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IModelState {}
 
@@ -25,7 +23,7 @@ export interface IModelReducer {
 }
 
 export interface IModelContext {
-  PROPS: IModelProps;
-  STATE: IModelState;
+  props: IPropsTopNavPure;
+  state: IModelState;
   dispatch: TModelDispatch;
 }

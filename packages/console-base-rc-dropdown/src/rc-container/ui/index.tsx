@@ -1,12 +1,11 @@
-import React, {
-  useCallback
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import {
   useProps,
   useRefDropdown,
-  useDispatchToggleVisibleWithDebounce
+  useOnDropdownMouseEnter,
+  useOnDropdownMouseLeave
 } from '../../model';
 
 import TheTrigger from './the-trigger';
@@ -26,15 +25,14 @@ export default function Dropdown(): JSX.Element {
     block
   } = useProps();
   const refDropdown = useRefDropdown();
-  const dispatchToggleVisibleWithDebounce = useDispatchToggleVisibleWithDebounce();
-  const handleMouseEnter = useCallback((): void => dispatchToggleVisibleWithDebounce(true), [dispatchToggleVisibleWithDebounce]);
-  const handleMouseLeave = useCallback((): void => dispatchToggleVisibleWithDebounce(false), [dispatchToggleVisibleWithDebounce]);
+  const onMouseEnter = useOnDropdownMouseEnter();
+  const onMouseLeave = useOnDropdownMouseLeave();
   
   return <ScDropdown {...{
     ref: refDropdown,
     block,
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave
+    onMouseEnter,
+    onMouseLeave
   }}>
     <TheTrigger />
     <TheDrop />

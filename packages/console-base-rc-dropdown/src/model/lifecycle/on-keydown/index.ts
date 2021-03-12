@@ -1,61 +1,23 @@
 import {
-  useEffect,
-  useCallback
+  useEffect
 } from 'react';
 
 import {
-  useProps,
   useVisible,
-  useDispatchToggleVisible
+  useOnDocKeydown
 } from '../../hook';
 
 export default function OnKeydown(): null {
-  const {
-    onEsc,
-    onNavUp,
-    onNavDown
-  } = useProps();
-  const visibleFinal = useVisible();
-  const dispatchToggleVisible = useDispatchToggleVisible();
-  
-  const handleDocKeyDown = useCallback((e: KeyboardEvent): void => {
-    switch (e.key) {
-      case 'Escape':
-        dispatchToggleVisible(false);
-        
-        if (onEsc) {
-          onEsc();
-        }
-        
-        break;
-      case 'ArrowDown':
-        if (onNavDown) {
-          e.preventDefault();
-          
-          onNavDown();
-        }
-        
-        break;
-      case 'ArrowUp':
-        if (onNavUp) {
-          e.preventDefault();
-          
-          onNavUp();
-        }
-        
-        break;
-      default:
-        break;
-    }
-  }, [dispatchToggleVisible, onEsc, onNavUp, onNavDown]);
+  const visible = useVisible();
+  const onDocKeydown = useOnDocKeydown();
   
   useEffect(() => {
-    if (visibleFinal) {
-      document.addEventListener('keydown', handleDocKeyDown);
+    if (visible) {
+      document.addEventListener('keydown', onDocKeydown, true);
+      
+      return () => document.removeEventListener('keydown', onDocKeydown, true);
     }
-    
-    return () => document.removeEventListener('keydown', handleDocKeyDown);
-  }, [visibleFinal, handleDocKeyDown]);
+  }, [visible, onDocKeydown]);
   
   return null;
 }

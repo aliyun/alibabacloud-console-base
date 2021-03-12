@@ -10,32 +10,28 @@ import {
   EAction
 } from '../const';
 
-export type TAction = {
+export type TModelAction = {
   type: EAction.MOUSE_ENTER | EAction.MOUSE_LEAVE;
 } | {
   type: EAction.TOGGLE_VISIBLE;
   payload: boolean;
 };
 
-export interface IContextProps extends IPropsDropdown {}
+export type TModelDispatch = Dispatch<TModelAction>;
 
-export interface IContextRef {
-  refDropdown: MutableRefObject<HTMLDivElement | null>;
-}
-
-export interface IContextState {
+export interface IModelState {
   visible: boolean;
 }
 
-export interface IContextReducer {
-  (state: IContextState, action: TAction): IContextState;
+export interface IModelReducer {
+  (state: IModelState, action: TModelAction): IModelState;
 }
 
-export interface IContext {
-  REF: IContextRef;
-  PROPS: IContextProps;
-  STATE: IContextState;
-  dispatch: Dispatch<TAction>;
+export interface IModelContext {
+  props: IPropsDropdown;
+  state: IModelState;
+  refDropdown: MutableRefObject<HTMLDivElement | null>;
+  dispatch: TModelDispatch;
 }
 
 export interface IContextForContent {

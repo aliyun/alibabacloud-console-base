@@ -2,8 +2,8 @@ import {
   MutableRefObject
 } from 'react';
 
-import useModelRef from './_use-model-ref';
+import useModelContext from './_use-model-context';
 
 export default function useRefDropdown(): MutableRefObject<HTMLDivElement | null> {
-  return useModelRef().refDropdown;
+  return useModelContext().refDropdown;
 }

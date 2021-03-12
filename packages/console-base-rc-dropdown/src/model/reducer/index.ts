@@ -1,6 +1,6 @@
 import {
-  IContextState,
-  TAction
+  IModelState,
+  TModelAction
 } from '../types';
 import {
   EAction
@@ -8,7 +8,7 @@ import {
 
 import reduceToggleVisible from './reduce-toggle-visible';
 
-export default function reducer(state: IContextState, action: TAction): IContextState {
+export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
     case EAction.TOGGLE_VISIBLE:
       return reduceToggleVisible(state, action.payload);
