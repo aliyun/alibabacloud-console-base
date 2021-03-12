@@ -15,9 +15,9 @@ import {
 
 import useModelContext from './_use-model-context';
 
-type IModelProps = RequiredBut<IPropsModal, 'mode' | 'onModeChange' | 'onClose'>;
+type TModelProps = RequiredBut<IPropsModal, 'mode' | 'onModeChange' | 'onClose'>;
 
-const DEFAULT_PROPS: IModelProps = {
+const DEFAULT_PROPS: TModelProps = {
   tabs: {
     tabs: []
   },
@@ -33,12 +33,12 @@ const DEFAULT_PROPS: IModelProps = {
   pinnable: true
 };
 
-export default function useProps(): IModelProps {
+export default function useProps(): TModelProps {
   const {
     props
   } = useModelContext();
    
-  return useMemo((): IModelProps => ({
+  return useMemo((): TModelProps => ({
     ...DEFAULT_PROPS,
     ...props
   }), [props]);

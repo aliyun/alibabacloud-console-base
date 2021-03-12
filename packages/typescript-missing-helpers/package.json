@@ -1,7 +1,7 @@
 {
   "name": "@alicloud/typescript-missing-helpers",
   "version": "0.0.1",
-  "description": "ConsoleBase common types",
+  "description": "Supplements to TypeScript type helpers",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
