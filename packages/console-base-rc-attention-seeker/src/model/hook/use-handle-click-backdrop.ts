@@ -2,12 +2,12 @@ import {
   useCallback
 } from 'react';
 
-import useModelProps from './_use-model-props';
+import useProps from './use-props';
 
 export default function useHandleClickBackdrop(): () => void {
   const {
     onClose
-  } = useModelProps();
+  } = useProps();
   
   return useCallback(() => {
     if (onClose) {

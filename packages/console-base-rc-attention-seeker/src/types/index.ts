@@ -9,5 +9,6 @@ export interface IAttentionSeekerItem {
 
 export interface IPropsAttentionSeeker {
   items: IAttentionSeekerItem[];
+  timestamp?: number; // 用于强制 refresh
   onClose?(): void;
 }

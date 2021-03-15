@@ -20,6 +20,7 @@ export default function refresh(): void {
   if (items.length) {
     render(<AttentionSeeker {...{
       items,
+      timestamp: Date.now(),
       onClose: clear
     }} />, getSoloHolder());
   } else {

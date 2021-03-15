@@ -1,3 +1,4 @@
+export { default as useProps } from './use-props';
 export { default as useRect } from './use-rect';
 export { default as useAttentionSeeker } from './use-attention-seeker';
 export { default as useHandleRefreshRect } from './use-handle-refersh-rect';

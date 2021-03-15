@@ -6,7 +6,7 @@ import React, {
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
-  IModelProps,
+  IModelProviderProps,
   IModelReducer
 } from '../types';
 import {
@@ -17,21 +17,16 @@ import Lifecycle from '../lifecycle';
 
 import Context from './_context';
 
-interface IProps {
-  props: IModelProps;
-  children: ReactNode;
-}
-
 export default function Provider({
   props,
   children
-}: IProps): JSX.Element {
+}: IModelProviderProps): JSX.Element {
   const isUnmounted = useIsUnmounted();
-  const [STATE, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_MODEL_STATE);
+  const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_MODEL_STATE);
   
   return <Context.Provider value={{
-    PROPS: props,
-    STATE,
+    props,
+    state,
     dispatch,
     isUnmounted
   }}>

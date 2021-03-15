@@ -1,4 +1,5 @@
 import {
+  ReactNode,
   Dispatch
 } from 'react';
 
@@ -24,8 +25,6 @@ export type TModelAction = {
   payload: IRect;
 };
 
-export interface IModelProps extends IPropsAttentionSeeker {}
-
 export interface IModelState {
   index: number;
   rect: IRect;
@@ -37,9 +36,14 @@ export interface IModelReducer {
 
 export type TModelDispatch = Dispatch<TModelAction>;
 
+export interface IModelProviderProps {
+  props: IPropsAttentionSeeker;
+  children: ReactNode;
+}
+
 export interface IModelValue {
-  PROPS: IModelProps;
-  STATE: IModelState;
+  props: IPropsAttentionSeeker;
+  state: IModelState;
   dispatch: TModelDispatch;
   isUnmounted(): boolean;
 }

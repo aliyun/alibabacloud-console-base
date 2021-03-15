@@ -2,13 +2,13 @@ import {
   IAttentionSeekerItem
 } from '../../types';
 
-import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
+import useProps from './use-props';
 
 export default function useAttentionSeeker(): IAttentionSeekerItem | null {
   const {
     items
-  } = useModelProps();
+  } = useProps();
   const {
     index
   } = useModelState();
