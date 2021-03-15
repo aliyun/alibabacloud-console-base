@@ -1,9 +1,8 @@
 export { default } from './rc-container';
-
-export {
-  append,
-  prepend
-} from './util/put';
+export { default as append } from './helper/append';
+export { default as prepend } from './helper/prepend';
+export { default as clear } from './helper/clear';
+export { default as refresh } from './helper/refresh';
 
 export type {
   IPropsAttentionSeeker as AttentionSeekerProps
