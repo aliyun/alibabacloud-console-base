@@ -46,7 +46,7 @@ export function putItem(element: HTMLElement, options?: IAttentionSeekerOptions,
 export function pullItem(element: HTMLElement): IAttentionSeekerItem[] {
   const index = getIndex(element);
   
-  if (index < 0) { // 不太可能
+  if (index < 0) {
     return ITEMS;
   }
   
