@@ -1,3 +1,4 @@
+import _without from 'lodash/without';
 import {
   useCallback
 } from 'react';
@@ -7,21 +8,18 @@ import {
 } from '../../types';
 
 import useProps from './use-props';
-import useTabs from './use-tabs';
 import useActiveKey from './use-active-key';
 import useActiveTab from './use-active-tab';
-import useDispatchCloseTab from './use-dispatch-close-tab';
-import useDispatchActivateTab from './use-dispatch-activate-tab';
+import useHandleOnChange from './use-handle-on-change';
 
-export default function useOnClose(): (tab: IPropsTab) => void {
+export default function useHandleOnClose(): (tab: IPropsTab) => void {
   const {
+    tabs,
     onTabClose
   } = useProps();
-  const tabs = useTabs();
   const activeKey = useActiveKey();
   const activeTab = useActiveTab();
-  const dispatchCloseTab = useDispatchCloseTab();
-  const dispatchActivateTab = useDispatchActivateTab();
+  const handleOnChange = useHandleOnChange();
   
   return useCallback((tab: IPropsTab): void => {
     const closeIndex = tabs.indexOf(tab);
@@ -38,14 +36,12 @@ export default function useOnClose(): (tab: IPropsTab) => void {
       nextActiveKey = activeIndex - 1;
     }
     
-    dispatchCloseTab(tab);
-    
     if (onTabClose) {
-      onTabClose(tab);
+      onTabClose(tab, _without(tabs, tab), tabs);
     }
     
     if (nextActiveKey !== undefined) {
-      dispatchActivateTab(nextActiveKey);
+      handleOnChange(nextActiveKey);
     }
-  }, [tabs, activeKey, activeTab, dispatchCloseTab, dispatchActivateTab, onTabClose]);
+  }, [tabs, activeKey, activeTab, onTabClose, handleOnChange]);
 }

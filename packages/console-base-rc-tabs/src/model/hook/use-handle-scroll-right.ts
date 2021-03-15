@@ -5,11 +5,11 @@ import {
 import useRefTabs from './use-ref-tabs';
 import useHandleScrollBy from './use-handle-scroll-by';
 
-export default function useOnScrollLeft(): () => void {
+export default function useHandleScrollRight(): () => void {
   const refTabs = useRefTabs();
   const handleScrollBy = useHandleScrollBy();
   
   return useCallback((): void => {
-    handleScrollBy(refTabs.current!.offsetWidth);
+    handleScrollBy(-refTabs.current!.offsetWidth);
   }, [refTabs, handleScrollBy]);
 }

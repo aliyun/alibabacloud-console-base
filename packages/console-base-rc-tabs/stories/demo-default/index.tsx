@@ -1,4 +1,3 @@
-import _without from 'lodash/without';
 import React, {
   useState,
   useCallback
@@ -11,7 +10,8 @@ import {
   Button,
   RadioGroup,
   LongArticle,
-  Flex100HBF
+  Flex100HBF,
+  PreJson
 } from '@alicloud/demo-rc-elements';
 
 import Tabs, {
@@ -83,12 +83,9 @@ function generateTabForAdd(): TabProps {
   };
 }
 
-function onTabChange(key: string | number): void {
-  console.info('tab change', key);
-}
-
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
+  const [stateActiveTab, setStateActiveTab] = useState<string | number>(TABS[1].key!);
   const [stateWidth, setStateWidth] = useState<string>('M');
   const [stateHeight, setStateHeight] = useState<string>('M');
   const width = getWidth(stateWidth);
@@ -98,7 +95,15 @@ export default function DemoDefault(): JSX.Element {
     $push: [generateTabForAdd()]
   })), [stateTabs, setStateTabs]);
   
-  const handleTabClose = useCallback((item: TabProps) => setStateTabs(_without(stateTabs, item)), [stateTabs, setStateTabs]);
+  const handleTabClose = useCallback((_tab: TabProps, toTabs: TabProps[]) => setStateTabs(toTabs), [setStateTabs]);
+  
+  const tabsProps = {
+    tabs: stateTabs,
+    activeKey: stateActiveTab,
+    width,
+    onTabClose: handleTabClose,
+    onChange: setStateActiveTab
+  };
   
   return <ScDemo>
     <ScDemoL>
@@ -146,17 +151,13 @@ export default function DemoDefault(): JSX.Element {
         value: stateHeight,
         onChange: setStateHeight
       }} />
+      <PreJson o={tabsProps} />
     </ScDemoL>
     <ScDemoLR style={{
       width,
       height
     }}>
-      <Tabs {...{
-        tabs: stateTabs,
-        width,
-        onTabClose: handleTabClose,
-        onChange: onTabChange
-      }} />
+      <Tabs {...tabsProps} />
     </ScDemoLR>
   </ScDemo>;
 }

@@ -27,10 +27,9 @@ import {
   useProps,
   useRefNav,
   useStateNavOffset,
-  useTabs,
   useActiveTab,
-  useOnClose,
-  useOnChange
+  useHandleOnClose,
+  useHandleOnChange
 } from '../../../model';
 import ControlButton from '../../../rc/control-button';
 
@@ -102,14 +101,14 @@ function getTitleAttr({
 
 export default function Nav(): JSX.Element {
   const {
+    tabs,
     classNameForTabItem
   } = useProps();
   const refNav = useRefNav();
   const navOffset = useStateNavOffset();
-  const tabs = useTabs();
   const activeTab = useActiveTab();
-  const onChange = useOnChange();
-  const onClose = useOnClose();
+  const onChange = useHandleOnChange();
+  const onClose = useHandleOnClose();
   
   return <ScNav {...{
     ref: refNav,

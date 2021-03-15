@@ -2,15 +2,17 @@ import {
   IPropsTab
 } from '../../types';
 
-import useTabs from './use-tabs';
+import useProps from './use-props';
 import useActiveKey from './use-active-key';
 
 /**
  * 当前激活的 tab
  */
 export default function useActiveTab(): IPropsTab {
+  const {
+    tabs
+  } = useProps();
   const activeKey = useActiveKey();
-  const tabs = useTabs();
   
   if (typeof activeKey === 'number') {
     return tabs[activeKey] || tabs[0];

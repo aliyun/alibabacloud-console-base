@@ -3,22 +3,29 @@ import {
 } from 'react';
 
 import {
+  RequiredSelected
+} from '@alicloud/typescript-missing-helpers';
+
+import {
   IPropsTabs
 } from '../../types';
 
 import useModelContext from './_use-model-context';
 
-interface IModelProps extends IPropsTabs {
-  width: number;
-}
+type TModelProps = RequiredSelected<IPropsTabs, 'width'>;
 
-export default function useModelProps(): IModelProps {
+const DEFAULT_PROPS: TModelProps = {
+  tabs: [],
+  width: -1
+};
+
+export default function useProps(): TModelProps {
   const {
     props
   } = useModelContext();
   
-  return useMemo((): IModelProps => ({
-    width: -1,
+  return useMemo((): TModelProps => ({
+    ...DEFAULT_PROPS,
     ...props
   }), [props]);
 }

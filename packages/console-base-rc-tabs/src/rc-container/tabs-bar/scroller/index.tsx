@@ -12,8 +12,8 @@ import {
   useProps,
   useStateNavOffset,
   useStateNavOffsetMax,
-  useOnScrollLeft,
-  useOnScrollRight
+  useHandleScrollLeft,
+  useHandleScrollRight
 } from '../../../model';
 import ControlButton from '../../../rc/control-button';
 
@@ -37,8 +37,8 @@ export default function Scroller(): JSX.Element {
   const navOffset = useStateNavOffset();
   const navOffsetMax = useStateNavOffsetMax();
   
-  const onScrollLeft = useOnScrollLeft();
-  const onScrollRight = useOnScrollRight();
+  const onScrollLeft = useHandleScrollLeft();
+  const onScrollRight = useHandleScrollRight();
   
   return <ScScroller className={classNameForTabScroller}>
     <ControlButton {...{
