@@ -5,7 +5,7 @@ import {
 import useProps from './use-props';
 import useDispatchActivateTab from './use-dispatch-activate-tab';
 
-export default function useHandleOnChange(): (key: string | number) => void {
+export default function useHandleTabActivate(): (key: string | number) => void {
   const {
     onChange
   } = useProps();

@@ -32,15 +32,18 @@ const ScDemoLR = styled.div`
 const TABS: TabProps[] = [{
   key: 'long-article',
   title: '长文',
-  content: <LongArticle />
+  content: <LongArticle />,
+  closable: true
 }, {
   key: 'hbr',
   title: 'HBR 100%',
-  content: <Flex100HBF />
+  content: <Flex100HBF />,
+  closable: true
 }, {
   key: 'long-title',
   title: '标题很长长长长长长长长长长长长长长长长长长长长长长长长长长长',
-  content: <>123123123</>
+  content: <>123123123</>,
+  closable: true
 }];
 
 function getWidth(w: string): number {
@@ -85,7 +88,7 @@ function generateTabForAdd(): TabProps {
 
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
-  const [stateActiveTab, setStateActiveTab] = useState<string | number>(TABS[1].key!);
+  const [stateActiveTab, setStateActiveTab] = useState<string | number>('hbr');
   const [stateWidth, setStateWidth] = useState<string>('M');
   const [stateHeight, setStateHeight] = useState<string>('M');
   const width = getWidth(stateWidth);

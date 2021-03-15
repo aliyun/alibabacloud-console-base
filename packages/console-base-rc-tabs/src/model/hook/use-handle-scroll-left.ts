@@ -10,6 +10,8 @@ export default function useHandleScrollLeft(): () => void {
   const handleScrollBy = useHandleScrollBy();
   
   return useCallback((): void => {
-    handleScrollBy(refTabs.current!.offsetWidth);
+    if (refTabs.current) {
+      handleScrollBy(refTabs.current.offsetWidth);
+    }
   }, [refTabs, handleScrollBy]);
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  useProps,
   useRefTabs
 } from '../../model';
 import TabsBar from '../tabs-bar';
@@ -16,14 +15,7 @@ const ScTabs = styled.div`
 `;
 
 export default function Ui(): JSX.Element | null {
-  const {
-    tabs
-  } = useProps();
   const refTabs = useRefTabs();
-  
-  if (!tabs?.length) {
-    return null;
-  }
   
   return <ScTabs ref={refTabs}>
     <TabsBar />

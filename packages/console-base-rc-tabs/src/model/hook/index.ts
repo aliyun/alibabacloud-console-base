@@ -7,5 +7,5 @@ export { default as useActiveTab } from './use-active-tab';
 export { default as useHandleAdjustNavWidth } from './use-handle-adjust-nav-width';
 export { default as useHandleScrollLeft } from './use-handle-scroll-left';
 export { default as useHandleScrollRight } from './use-handle-scroll-right';
-export { default as useHandleOnChange } from './use-handle-on-change';
-export { default as useHandleOnClose } from './use-handle-on-close';
+export { default as useHandleTabClose } from './use-handle-tab-close';
+export { default as useHandleTabActivate } from './use-handle-tab-activate';

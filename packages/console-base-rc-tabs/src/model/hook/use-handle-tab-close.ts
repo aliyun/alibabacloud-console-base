@@ -10,16 +10,16 @@ import {
 import useProps from './use-props';
 import useActiveKey from './use-active-key';
 import useActiveTab from './use-active-tab';
-import useHandleOnChange from './use-handle-on-change';
+import useHandleTabActivate from './use-handle-tab-activate';
 
-export default function useHandleOnClose(): (tab: IPropsTab) => void {
+export default function useHandleTabClose(): (tab: IPropsTab) => void {
   const {
     tabs,
     onTabClose
   } = useProps();
   const activeKey = useActiveKey();
   const activeTab = useActiveTab();
-  const handleOnChange = useHandleOnChange();
+  const handleTabActivate = useHandleTabActivate();
   
   return useCallback((tab: IPropsTab): void => {
     const closeIndex = tabs.indexOf(tab);
@@ -41,7 +41,7 @@ export default function useHandleOnClose(): (tab: IPropsTab) => void {
     }
     
     if (nextActiveKey !== undefined) {
-      handleOnChange(nextActiveKey);
+      handleTabActivate(nextActiveKey);
     }
-  }, [tabs, activeKey, activeTab, onTabClose, handleOnChange]);
+  }, [tabs, activeKey, activeTab, onTabClose, handleTabActivate]);
 }
