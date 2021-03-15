@@ -1,6 +1,7 @@
 export { default as useProps } from './use-props';
 export { default as useRefTabs } from './use-ref-tabs';
 export { default as useRefNav } from './use-ref-nav';
+export { default as useVisibleTabs } from './use-visible-tabs';
 export { default as useStateNavOffset } from './use-state-nav-offset';
 export { default as useStateNavOffsetMax } from './use-state-nav-offset-max';
 export { default as useActiveTab } from './use-active-tab';

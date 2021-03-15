@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  useProps,
   useRefNav,
-  useStateNavOffset
+  useStateNavOffset,
+  useVisibleTabs
 } from '../../../model';
 
 import NavItem from './nav-item';
@@ -17,9 +17,7 @@ const ScNav = styled.nav`
 `;
 
 export default function Nav(): JSX.Element {
-  const {
-    tabs
-  } = useProps();
+  const visibleTabs = useVisibleTabs();
   const refNav = useRefNav();
   const navOffset = useStateNavOffset();
   
@@ -29,7 +27,7 @@ export default function Nav(): JSX.Element {
       transform: `translate(${navOffset}px, 0)`
     }
   }}>
-    {tabs.map((v, i): JSX.Element => <NavItem {...{
+    {visibleTabs.map((v, i): JSX.Element | null => <NavItem {...{
       key: v.key || i,
       tab: v,
       index: i

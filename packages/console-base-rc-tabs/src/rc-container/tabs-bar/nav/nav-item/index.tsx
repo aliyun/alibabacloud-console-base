@@ -105,8 +105,9 @@ export default function NavItem({
     classNameForTabItem
   } = useProps();
   const active = useActiveTab() === tab;
-  const onChange = useHandleTabActivate();
+  const handleTabActivate = useHandleTabActivate();
   const handleTabClose = useHandleTabClose();
+  const handleTabClick = useCallback(() => handleTabActivate(tab.key || index), [tab.key, index, handleTabClose]);
   const handleXClick = useCallback(() => handleTabClose(tab), [tab, handleTabClose]);
   
   return <ScNavItem {...{
@@ -117,7 +118,7 @@ export default function NavItem({
       'data-closable': tab.closable ? 1 : '',
       'data-active': active ? 1 : '',
       title: getTitleAttr(tab),
-      onClick: () => onChange(tab.key || index)
+      onClick: handleTabClick
     }}>{tab.title}</ScTab>
     {tab.closable ? <ScTabX {...{
       spm: 'x',

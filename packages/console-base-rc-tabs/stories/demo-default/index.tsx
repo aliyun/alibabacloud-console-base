@@ -43,7 +43,12 @@ const TABS: TabProps[] = [{
   key: 'long-title',
   title: '标题很长长长长长长长长长长长长长长长长长长长长长长长长长长长',
   content: <>123123123</>,
+  visible: false,
   closable: true
+}, {
+  title: 'Never Visible',
+  content: <>Never Visible</>,
+  visible: false
 }];
 
 function getWidth(w: string): number {
