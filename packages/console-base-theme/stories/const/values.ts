@@ -16,6 +16,7 @@ import {
 `;
 
 export const CODE_BEGIN_GLOBAL_STYLE = `import {
+  DefaultTheme,
   GlobalStyleComponent,
   createGlobalStyle
 } from 'styled-components';
@@ -36,8 +37,9 @@ export default function createThemeGlobalStyle({
   COLOR,
   TYPO,
   SIZE
-}: ITheme): GlobalStyleComponent<null, any> { // eslint-disable-line @typescript-eslint/no-explicit-any
-  return createGlobalStyle\`
+}: ITheme): GlobalStyleComponent<any, DefaultTheme> { // eslint-disable-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return createGlobalStyle<any>\`
     :root {`;
 export const CODE_END_GLOBAL_STYLE = `    }
   \`;

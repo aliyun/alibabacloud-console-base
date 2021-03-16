@@ -1,4 +1,5 @@
 import {
+  DefaultTheme,
   GlobalStyleComponent,
   createGlobalStyle
 } from 'styled-components';
@@ -19,8 +20,9 @@ export default function createThemeGlobalStyle({
   COLOR,
   TYPO,
   SIZE
-}: ITheme): GlobalStyleComponent<null, any> { // eslint-disable-line @typescript-eslint/no-explicit-any
-  return createGlobalStyle`
+}: ITheme): GlobalStyleComponent<any, DefaultTheme> { // eslint-disable-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return createGlobalStyle<any>`
     :root {
       --cb-color-text-transparent: ${COLOR.TEXT_TRANSPARENT};
       --cb-color-text-white: ${COLOR.TEXT_WHITE};
