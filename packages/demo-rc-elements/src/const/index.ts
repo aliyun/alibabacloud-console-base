@@ -20,7 +20,7 @@ export const CSS_FONT_FAMILY = css`
 export const CSS_BLOCK_LEVEL_ELEMENT = css`
   margin: 1em 0 0.5em 0;
   line-height: 1.5;
-  ${CSS_FONT_FAMILY};
+  ${CSS_FONT_FAMILY}
   
   em {
     font-style: normal;
@@ -57,23 +57,5 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
   
   &:last-child {
     margin-bottom: 0;
-  }
-`;
-
-export const CSS_INPUT_COMMON = css`
-  margin: 1px;
-  padding: 0 8px;
-  border: 1px solid ${FORM_INPUT_BDC};
-  box-sizing: border-box;
-  outline: none;
-  line-height: ${FORM_INPUT_HEIGHT}px;
-  transition: all 0.3s ease-in-out;
-  
-  &:hover {
-    border-color: ${FORM_INPUT_BDC_HOVER};
-  }
-  
-  &:focus {
-    border-color: ${FORM_INPUT_BDC_FOCUS};
   }
 `;

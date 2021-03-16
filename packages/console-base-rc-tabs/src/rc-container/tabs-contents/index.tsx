@@ -9,7 +9,6 @@ import ContentItem from './content-item';
 
 const ScContents = styled.div`
   flex: 1;
-  overflow: auto;
 `;
 
 export default function TabsContents(): JSX.Element {

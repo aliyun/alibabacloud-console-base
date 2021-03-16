@@ -7,16 +7,13 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import {
-  CSS_INPUT_COMMON
-} from '../const';
+import InputBase from './_input-base';
 
 interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
 }
 
-const ScInputTextarea = styled.textarea`
-  ${CSS_INPUT_COMMON}
+const ScInputTextarea = styled(InputBase)`
   display: block;
   padding: 4px 8px;
   box-sizing: border-box;
@@ -35,7 +32,7 @@ function InputTextarea({
     }
   }, [onChange]);
   
-  return <ScInputTextarea {...{
+  return <ScInputTextarea as="textarea" {...{
     ...props,
     ref,
     onChange: handleChange

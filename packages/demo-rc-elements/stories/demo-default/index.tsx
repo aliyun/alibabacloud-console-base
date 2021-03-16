@@ -62,8 +62,9 @@ export default function DemoDefault(): JSX.Element {
     <P>一个 P，这里的 <strong>strong</strong>、<code>code</code>、<kbd>kbd</kbd>、<em>em</em> 会有些样式</P>
     <Hr />
     <Button>一个 Button</Button>
-    <InputText placeholder="InputText" />
     <InputNumber placeholder="InputNumber" />
+    <InputText placeholder="InputText" />
+    <InputText placeholder="InputText - block" block />
     <InputTextarea placeholder="InputTextarea" />
     <H2>非原生元素，为便于书写</H2>
     <H3>List</H3>

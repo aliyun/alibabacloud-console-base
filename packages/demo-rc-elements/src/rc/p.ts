@@ -5,5 +5,5 @@ import {
 } from '../const';
 
 export default styled.p`
-  ${CSS_BLOCK_LEVEL_ELEMENT};
+  ${CSS_BLOCK_LEVEL_ELEMENT}
 `;

@@ -29,7 +29,7 @@
     "@alicloud/demo-rc-elements": "^1.1.21",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.168",
-    "@types/styled-components": "^5.1.8",
+    "@types/styled-components": "^5.1.9",
     "jest": "^26.6.3",
     "react": "^16.14.0",
     "styled-components": "^5.2.1",

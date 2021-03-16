@@ -5,25 +5,30 @@ import React, {
   forwardRef,
   useCallback
 } from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
-import {
-  FORM_INPUT_HEIGHT,
-  CSS_INPUT_COMMON
-} from '../const';
+import InputBase from './_input-base';
+
+interface IScInput {
+  block: 0 | 1;
+}
 
 interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
+  block?: boolean;
   onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
 }
 
-const ScInputText = styled.input`
-  padding: 0 8px;
-  width: 100%;
-  line-height: ${FORM_INPUT_HEIGHT}px;
-  ${CSS_INPUT_COMMON}
+const ScInputText = styled(InputBase)<IScInput>`
+  ${props => (props.block ? css`
+    display: block;
+    width: 100%;
+  ` : null)}
 `;
 
 function InputText({
+  block,
   onChange,
   ...props
 }: IPropsInputText, ref: Ref<HTMLInputElement>): JSX.Element {
@@ -35,6 +40,7 @@ function InputText({
   
   return <ScInputText {...{
     ...props,
+    block: block ? 1 : 0,
     type: 'text',
     ref,
     onChange: handleChange
