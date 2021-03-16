@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dialog",
-  "version": "1.0.75",
+  "version": "1.0.76",
   "description": "ConsoleBase 组件 - Dialog",
   "license": "MIT",
   "main": "build/cjs/index.js",
