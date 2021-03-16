@@ -15,21 +15,13 @@ import {
 } from '../../../const';
 import {
   usePropMode,
-  useDialogTitle
+  useDialogTitle,
+  usePropClosable
 } from '../../../model';
 
 interface IScProps {
   mode?: EDialogMode;
 }
-
-const cssCommon = css`
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
-  box-sizing: border-box;
-  ${mixinTextPrimary}
-`;
 
 const cssNormal = css`
   padding-top: ${SIZE.PADDING_X_DIALOG * 2 / 3}px;
@@ -42,8 +34,13 @@ const cssSlide = css`
 `;
 
 const ScHeader = styled.header<IScProps>`
-  ${cssCommon};
-  ${props => (props.mode !== EDialogMode.NORMAL ? cssSlide : cssNormal)};
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
+  box-sizing: border-box;
+  ${mixinTextPrimary}
+  ${props => (props.mode !== EDialogMode.NORMAL ? cssSlide : cssNormal)}
   
   h4 {
     flex: 1;
@@ -59,10 +56,19 @@ const ScHeader = styled.header<IScProps>`
 export default function Header(): JSX.Element | null {
   const title = useDialogTitle();
   const mode = usePropMode();
+  const closable = usePropClosable();
+  let noHeader = false;
   
-  return mode !== EDialogMode.NORMAL || title ? <ScHeader {...{
+  // SLIDE+ 模式下，既没有 title 有没有 X 才可以不展示整条 header
+  if (!title && !closable) {
+    noHeader = true;
+  } else if (!title) {
+    noHeader = mode === EDialogMode.NORMAL;
+  }
+  
+  return noHeader ? null : <ScHeader {...{
     mode
   }}>
     <h4>{title}</h4>
-  </ScHeader> : null;
+  </ScHeader>;
 }
