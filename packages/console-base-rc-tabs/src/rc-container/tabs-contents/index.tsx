@@ -7,8 +7,10 @@ import {
 
 import ContentItem from './content-item';
 
+// 需要 overflow，否则会被内容撑到很大
 const ScContents = styled.div`
   flex: 1;
+  overflow: auto;
 `;
 
 export default function TabsContents(): JSX.Element {
