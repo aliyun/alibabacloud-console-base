@@ -1,15 +1,12 @@
 import React, {
-  ReactNode,
   useReducer,
   useMemo
 } from 'react';
 
 import {
-  IPropsModal
-} from '../../types';
-import {
   IModelContext,
-  IModelReducer
+  IModelReducer,
+  IModelProviderPros
 } from '../types';
 import {
   DEFAULT_CONTEXT_STATE
@@ -19,15 +16,10 @@ import Lifecycle from '../lifecycle';
 
 import Context from './_context';
 
-interface IProps {
-  props: IPropsModal;
-  children: ReactNode;
-}
-
 export default function Provider({
-  children,
-  props
-}: IProps): JSX.Element {
+  props,
+  children
+}: IModelProviderPros): JSX.Element {
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
   const contextValue: IModelContext = useMemo(() => ({

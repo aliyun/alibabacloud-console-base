@@ -1,4 +1,5 @@
 import {
+  ReactNode,
   Dispatch
 } from 'react';
 
@@ -20,6 +21,11 @@ export interface IModelState {}
 
 export interface IModelReducer {
   (state: IModelState, action: TModelAction): IModelState;
+}
+
+export interface IModelProviderProps {
+  props: IPropsTopNavPure;
+  children: ReactNode;
 }
 
 export interface IModelContext {

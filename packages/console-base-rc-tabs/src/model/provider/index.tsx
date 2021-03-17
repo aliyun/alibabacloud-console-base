@@ -1,16 +1,13 @@
 import React, {
-  ReactNode,
   useRef,
   useReducer,
   useMemo
 } from 'react';
 
 import {
-  IPropsTabs
-} from '../../types';
-import {
   IModelContext,
-  IModelReducer
+  IModelReducer,
+  IModelProviderProps
 } from '../types';
 import {
   DEFAULT_CONTEXT_STATE
@@ -20,15 +17,10 @@ import Lifecycle from '../lifecycle';
 
 import Context from './_context';
 
-interface IProps {
-  props: IPropsTabs;
-  children: ReactNode;
-}
-
 export default function Provider({
-  children,
-  props
-}: IProps): JSX.Element {
+  props,
+  children
+}: IModelProviderProps): JSX.Element {
   const refTabs = useRef<HTMLDivElement>(null);
   const refNav = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);

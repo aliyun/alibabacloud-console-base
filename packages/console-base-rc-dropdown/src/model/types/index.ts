@@ -1,4 +1,5 @@
 import {
+  ReactNode,
   MutableRefObject,
   Dispatch
 } from 'react';
@@ -32,6 +33,11 @@ export interface IModelContext {
   state: IModelState;
   refDropdown: MutableRefObject<HTMLDivElement | null>;
   dispatch: TModelDispatch;
+}
+
+export interface IModelProviderProps {
+  props: IPropsDropdown;
+  children?: ReactNode;
 }
 
 export interface IContextForContent {
