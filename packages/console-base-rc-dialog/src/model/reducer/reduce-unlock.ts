@@ -4,13 +4,13 @@ import {
   EDialogLockState
 } from '../../const';
 import {
-  IContextState
+  IModelState
 } from '../types';
 
 /**
  * 解除锁定
  */
-export default function reduceUnlock(state: IContextState): IContextState {
+export default function reduceUnlock(state: IModelState): IModelState {
   return update(state, {
     locked: {
       $set: EDialogLockState.NO

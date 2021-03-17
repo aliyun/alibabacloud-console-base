@@ -1,4 +1,5 @@
 import {
+  ReactNode,
   MutableRefObject,
   Dispatch
 } from 'react';
@@ -19,7 +20,7 @@ import {
   EAction
 } from '../const';
 
-export type TAction = {
+export type TModelAction = {
   type: EAction.DID_MOUNT | EAction.ACTIVATE | EAction.DEACTIVATE | EAction.UNLOCK | EAction.UPDATE_WINDOW_HEIGHT | EAction.FORCE_UPDATE;
 } | {
   type: EAction.SET_Z_INDEX;
@@ -35,6 +36,8 @@ export type TAction = {
   payload: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
+export type TModelDispatch = Dispatch<TModelAction>;
+
 export interface IDialogStackItem {
   backdrop: boolean;
   zIndex: number;
@@ -46,20 +49,10 @@ export interface IDialogStackItem {
   dispatchCloseOnExternal(): void;
 }
 
-export interface IContextProps<R = void, D = TDialogData> extends IDialogProps<R, D> {}
-
-/**
- * Dialog 的本体和内容两者需要有 ref，因为这里涉及到 A11Y 的焦点获取
- */
-export interface IContextRef {
-  refDialog: MutableRefObject<HTMLDivElement | null>;
-  refContent: MutableRefObject<HTMLDivElement | null>;
-}
-
 /**
  * Dialog 的
  */
-export interface IContextState<R = void, D = TDialogData> {
+export interface IModelState<R = void, D = TDialogData> {
   /**
    * Dialog 生命周期的唯一标识
    */
@@ -98,15 +91,21 @@ export interface IContextState<R = void, D = TDialogData> {
   countForcedUpdate: number;
 }
 
-export interface IContextReducer {
-  (state: IContextState, action: TAction): IContextState;
+export interface IModelReducer {
+  (state: IModelState, action: TModelAction): IModelState;
 }
 
-export interface IContext<R = void, D = TDialogData> {
-  REF: IContextRef;
-  PROPS: IContextProps<R, D>;
-  STATE: IContextState<R, D>;
-  dispatch: Dispatch<TAction>;
+export interface IModelContext<R = void, D = TDialogData> {
+  props: IDialogProps<R, D>;
+  state: IModelState<R, D>;
+  refDialog: MutableRefObject<HTMLDivElement | null>;
+  refContent: MutableRefObject<HTMLDivElement | null>;
+  dispatch: TModelDispatch;
+}
+
+export interface IModelProviderProps<R = void, D = TDialogData> {
+  props: IDialogProps<R, D>;
+  children: ReactNode;
 }
 
 // 给内容使用的 context

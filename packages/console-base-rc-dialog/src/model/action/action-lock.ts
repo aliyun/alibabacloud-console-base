@@ -1,11 +1,11 @@
 import {
-  TAction
+  TModelAction
 } from '../types';
 import {
   EAction
 } from '../const';
 
-export default function actionLock(loading?: boolean): TAction {
+export default function actionLock(loading?: boolean): TModelAction {
   return {
     type: EAction.LOCK,
     payload: loading

@@ -7,13 +7,13 @@ import {
   EDialogSize
 } from '../../const';
 
-import useModelProps from './_use-model-props';
+import useProps from './use-props';
 
 export default function useDialogWidth(): number | string {
   const {
     mode,
     size
-  } = useModelProps();
+  } = useProps();
   
   if (mode === EDialogMode.SLIDE_UP) {
     return 'auto';

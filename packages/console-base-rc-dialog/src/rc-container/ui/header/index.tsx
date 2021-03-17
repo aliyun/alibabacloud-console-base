@@ -14,9 +14,8 @@ import {
   EDialogMode
 } from '../../../const';
 import {
-  usePropMode,
-  useDialogTitle,
-  usePropClosable
+  useProps,
+  useDialogTitle
 } from '../../../model';
 
 interface IScProps {
@@ -54,9 +53,11 @@ const ScHeader = styled.header<IScProps>`
 `;
 
 export default function Header(): JSX.Element | null {
+  const {
+    mode,
+    closable
+  } = useProps();
   const title = useDialogTitle();
-  const mode = usePropMode();
-  const closable = usePropClosable();
   let noHeader = false;
   
   // SLIDE+ 模式下，既没有 title 有没有 X 才可以不展示整条 header
@@ -67,7 +68,7 @@ export default function Header(): JSX.Element | null {
   }
   
   return noHeader ? null : <ScHeader {...{
-    mode
+    mode: mode as EDialogMode
   }}>
     <h4>{title}</h4>
   </ScHeader>;

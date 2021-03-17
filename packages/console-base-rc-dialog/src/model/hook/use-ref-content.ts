@@ -2,9 +2,9 @@ import {
   MutableRefObject
 } from 'react';
 
-import useModelRef from './_use-model-ref';
+import useModelContext from './_use-model-context';
 
 export default function useRefContent(): MutableRefObject<HTMLDivElement | null> {
-  return useModelRef().refContent;
+  return useModelContext().refContent;
 }
 

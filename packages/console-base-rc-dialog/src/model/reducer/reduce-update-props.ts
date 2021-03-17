@@ -5,13 +5,13 @@ import {
   IDialogPropsMutable
 } from '../../types';
 import {
-  IContextState
+  IModelState
 } from '../types';
 
 /**
  * 有限更新 props
  */
-export default function reduceUpdateProps(state: IContextState, payload: IDialogPropsMutable): IContextState {
+export default function reduceUpdateProps(state: IModelState, payload: IDialogPropsMutable): IModelState {
   const newUpdate: any = {
     ...state.propsUpdate
   };

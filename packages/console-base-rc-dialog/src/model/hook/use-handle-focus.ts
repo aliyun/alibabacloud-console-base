@@ -9,7 +9,7 @@ import {
 import useRefContent from './use-ref-content';
 import useRefDialog from './use-ref-dialog';
 
-export default function useDispatchFocus(): () => void {
+export default function useHandleFocus(): () => void {
   const refContent = useRefContent();
   const refDialog = useRefDialog();
   

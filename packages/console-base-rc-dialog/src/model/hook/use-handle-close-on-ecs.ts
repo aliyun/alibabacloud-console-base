@@ -4,21 +4,21 @@ import {
 
 import detectFusionOverlay from '../../util/detect-fusion-overlay';
 
-import useModelProps from './_use-model-props';
-import useDispatchClose from './use-dispatch-close';
+import useProps from './use-props';
+import useHandleClose from './use-handle-close';
 
 /**
  * 处理 ESC 事件
  *
  * 注意会经常变，引用用到了 dispatchCloseWithValue
  */
-export default function useDispatchCloseOnEsc(): () => void {
+export default function useHandleCloseOnEsc(): () => void {
   const {
     esc,
     closable
-  } = useModelProps();
+  } = useProps();
   
-  const dispatchClose = useDispatchClose();
+  const dispatchClose = useHandleClose();
   
   return useCallback((): boolean | void => {
     if (detectFusionOverlay()) {

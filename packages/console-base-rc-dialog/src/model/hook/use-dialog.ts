@@ -12,9 +12,9 @@ import {
 import useModelState from './_use-model-state';
 import useDispatchLock from './use-dispatch-lock';
 import useDispatchUnlock from './use-dispatch-unlock';
-import useDispatchFocus from './use-dispatch-focus';
-import useDispatchResetScrollTop from './use-dispatch-reset-scroll-top';
-import useDispatchCloseWithValue from './use-dispatch-close-with-value';
+import useHandleFocus from './use-handle-focus';
+import useHandleResetScrollTop from './use-handle-reset-scroll-top';
+import useHandleCloseWithValue from './use-handle-close-with-value';
 import useDispatchUpdateProps from './use-dispatch-update-props';
 import useDispatchForceUpdate from './use-dispatch-force-update';
 import useDispatchUpdateData from './use-dispatch-update-data';
@@ -26,11 +26,11 @@ export default function useDialog<T = void, D = TDialogData>(): IContextForConte
   const {
     data
   } = useModelState<T, D>();
-  const focus = useDispatchFocus();
+  const focus = useHandleFocus();
   const lock = useDispatchLock();
   const unlock = useDispatchUnlock();
-  const resetScrollTop = useDispatchResetScrollTop();
-  const close = useDispatchCloseWithValue<T>();
+  const resetScrollTop = useHandleResetScrollTop();
+  const close = useHandleCloseWithValue<T>();
   const updateData = useDispatchUpdateData<D>();
   const update = useDispatchUpdateProps<T, D>();
   const forceUpdate = useDispatchForceUpdate();

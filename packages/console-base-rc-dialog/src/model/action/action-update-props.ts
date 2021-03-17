@@ -2,13 +2,13 @@ import {
   IDialogPropsMutable
 } from '../../types';
 import {
-  TAction
+  TModelAction
 } from '../types';
 import {
   EAction
 } from '../const';
 
-export default function actionUpdateProps<T, D>(payload: IDialogPropsMutable<T, D>): TAction {
+export default function actionUpdateProps<T, D>(payload: IDialogPropsMutable<T, D>): TModelAction {
   return {
     type: EAction.UPDATE_PROPS,
     payload

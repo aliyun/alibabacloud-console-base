@@ -1,11 +1,11 @@
 import {
-  TAction
+  TModelAction
 } from '../types';
 import {
   EAction
 } from '../const';
 
-export default function actionDeactivate(): TAction {
+export default function actionDeactivate(): TModelAction {
   return {
     type: EAction.DEACTIVATE
   };

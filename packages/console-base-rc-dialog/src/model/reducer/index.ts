@@ -1,6 +1,6 @@
 import {
-  IContextState,
-  TAction
+  IModelState,
+  TModelAction
 } from '../types';
 import {
   EAction
@@ -16,7 +16,7 @@ import reduceUpdateData from './reduce-update-data';
 import reduceForceUpdate from './reduce-force-update';
 import reduceUpdateWindowHeight from './reduce-update-window-height';
 
-export default function reducer(state: IContextState, action: TAction): IContextState {
+export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
     case EAction.DID_MOUNT:
       return reduceDidMount(state);

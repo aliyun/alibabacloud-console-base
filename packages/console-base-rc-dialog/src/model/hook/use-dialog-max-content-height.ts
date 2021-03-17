@@ -3,13 +3,15 @@ import {
 } from '../..';
 
 import useModelState from './_use-model-state';
-import usePropMode from './use-prop-mode';
+import useProps from './use-props';
 
 /**
  * Normal 模式下需要对内容区域限高
  */
 export default function useDialogMaxContentHeight(): number {
-  const mode = usePropMode();
+  const {
+    mode
+  } = useProps();
   const {
     windowHeight
   } = useModelState();

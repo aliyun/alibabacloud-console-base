@@ -15,8 +15,8 @@ import {
   EDialogMode
 } from '../../../const';
 import {
-  useDialogButtons,
-  usePropMode
+  useProps,
+  useDialogButtons
 } from '../../../model';
 
 import FooterButton from './button';
@@ -52,11 +52,13 @@ const ScFooter = styled.footer<IScProps>`
 `;
 
 export default function Footer(): JSX.Element | null {
-  const mode = usePropMode();
+  const {
+    mode
+  } = useProps();
   const buttons: IDialogButtonProps[] = useDialogButtons();
   
   return buttons.length ? <ScFooter {...{
-    mode
+    mode: mode as EDialogMode
   }}>
     {buttons.map((v, i): JSX.Element => <FooterButton key={v.spm || i} {...v} />)}
   </ScFooter> : null;

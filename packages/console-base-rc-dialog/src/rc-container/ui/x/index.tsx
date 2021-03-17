@@ -16,7 +16,7 @@ import {
 import intl from '../../../intl';
 import {
   useStateLocked,
-  useDispatchClose
+  useHandleClose
 } from '../../../model';
 
 // z-index 用于保证在没有 header 的情况下不会被内容遮住
@@ -32,7 +32,7 @@ const ScX = styled(Button)`
 
 export default function X(): JSX.Element | null {
   const locked = useStateLocked();
-  const dispatchClose = useDispatchClose();
+  const dispatchClose = useHandleClose();
   
   return <ScX {...{
     'aria-label': intl('op:close'),

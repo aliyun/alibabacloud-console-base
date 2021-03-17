@@ -16,12 +16,10 @@ import {
   EDialogMode
 } from '../../const';
 import {
+  useProps,
   useRefDialog,
-  usePropMode,
   useDialogWidth,
   useDialogZIndex,
-  usePropClosable,
-  usePropClassName,
   useRefContent,
   useStateActive
 } from '../../model';
@@ -93,11 +91,13 @@ const ScDialog = styled.div<IScDialogProps>`
  * Dialog 本 Dialog
  */
 export default function DialogUi(): JSX.Element {
+  const {
+    className,
+    mode,
+    closable
+  } = useProps();
   const refDialog = useRefDialog();
   const refContent = useRefContent();
-  const className = usePropClassName();
-  const closable = usePropClosable();
-  const mode = usePropMode();
   const width = useDialogWidth();
   const active = useStateActive();
   const zIndex = useDialogZIndex();
@@ -108,7 +108,7 @@ export default function DialogUi(): JSX.Element {
     role: 'dialog',
     className,
     tabIndex: 0,
-    mode,
+    mode: mode as EDialogMode,
     active,
     style: {
       zIndex,

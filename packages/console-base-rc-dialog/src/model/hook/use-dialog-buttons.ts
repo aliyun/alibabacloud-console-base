@@ -9,13 +9,13 @@ import {
 } from '../../types';
 import processButtons from '../../util/process-buttons';
 
-import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
+import useProps from './use-props';
 
 export default function useDialogButtons<T = void, D = TDialogData>(): IDialogButtonProps<T, D>[] {
   let {
     buttons
-  } = useModelProps();
+  } = useProps();
   const {
     data,
     locked

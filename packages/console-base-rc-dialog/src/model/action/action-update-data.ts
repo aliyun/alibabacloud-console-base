@@ -2,13 +2,13 @@ import {
   TDialogData
 } from '../../types';
 import {
-  TAction
+  TModelAction
 } from '../types';
 import {
   EAction
 } from '../const';
 
-export default function actionUpdateData<D = TDialogData>(payload: Partial<D>): TAction {
+export default function actionUpdateData<D = TDialogData>(payload: Partial<D>): TModelAction {
   return {
     type: EAction.UPDATE_DATA,
     payload

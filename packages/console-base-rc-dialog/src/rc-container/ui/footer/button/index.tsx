@@ -15,7 +15,7 @@ import {
   useDialog,
   useDispatchLock,
   useDispatchUnlock,
-  useDispatchCloseWithValue
+  useHandleCloseWithValue
 } from '../../../../model';
 
 const ScButton = styled(Button)`
@@ -36,7 +36,7 @@ export default function FooterButton({
   const dialog = useDialog<unknown>();
   const dispatchLock = useDispatchLock();
   const dispatchUnlock = useDispatchUnlock();
-  const dispatchCloseWithValue = useDispatchCloseWithValue<unknown>();
+  const dispatchCloseWithValue = useHandleCloseWithValue<unknown>();
   
   const handleClick = useCallback(e => {
     let willClose: boolean | void;

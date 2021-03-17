@@ -6,12 +6,12 @@ import {
   TDialogData
 } from '../../types';
 import {
-  IContext
+  IModelContext
 } from '../types';
 import {
   Context
 } from '../provider';
 
-export default function useModelContext<T = void, D = TDialogData>(): IContext<T, D> {
-  return useContext(Context) as unknown as IContext<T, D>;
+export default function useModelContext<T = void, D = TDialogData>(): IModelContext<T, D> {
+  return useContext(Context) as unknown as IModelContext<T, D>;
 }

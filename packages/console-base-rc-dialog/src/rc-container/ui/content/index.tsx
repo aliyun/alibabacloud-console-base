@@ -13,9 +13,7 @@ import {
   IDialogProps
 } from '../../../types';
 import {
-  usePropMode,
-  useDialogContent,
-  usePropClassNameContent,
+  useProps,
   useDialogMaxContentHeight
 } from '../../../model';
 
@@ -29,9 +27,11 @@ const ScContent = styled.div<Partial<IDialogProps>>`
 `;
 
 function Content(props: IProps, ref: Ref<HTMLDivElement>): JSX.Element {
-  const mode = usePropMode();
-  const content = useDialogContent();
-  const classNameOnBody = usePropClassNameContent();
+  const {
+    mode,
+    classNameOnBody,
+    content
+  } = useProps();
   const maxHeight = useDialogMaxContentHeight();
   
   return <ScContent {...{
