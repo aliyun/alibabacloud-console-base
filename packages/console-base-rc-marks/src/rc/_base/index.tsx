@@ -19,6 +19,7 @@ const ScMarkBase = styled.span`
   line-height: 1.6;
   font-family: 'PingFang SC', 'Microsoft Yahei', Arial, sans-serif;
   font-size: 11px;
+  font-weight: 400;
   letter-spacing: 1px;
   ${mixinBorderTransparent}
 `;

@@ -18,6 +18,7 @@ import {
 } from '../const';
 
 const CSS_NEW = css`
+  font-weight: 600;
   letter-spacing: 2px;
   ${mixinTextWhite}
   ${mixinBgDanger}
