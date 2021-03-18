@@ -6,11 +6,11 @@ import {
 import {
   mixinTextWhite,
   mixinTextDanger,
+  mixinTextAccent,
   mixinBgDanger,
-  mixinBgSuccess,
   mixinBgWhite,
   mixinBorderDangerColor,
-  mixinBorderSuccessColor
+  mixinBorderAccentColor
 } from '@alicloud/console-base-theme';
 
 import {
@@ -18,14 +18,15 @@ import {
 } from '../const';
 
 const CSS_NEW = css`
+  letter-spacing: 2px;
   ${mixinTextWhite}
   ${mixinBgDanger}
 `;
 const CSS_HOT = CSS_NEW;
 const CSS_UPDATE = css`
-  ${mixinTextWhite}
-  ${mixinBgSuccess}
-  ${mixinBorderSuccessColor}
+  ${mixinTextAccent}
+  ${mixinBgWhite}
+  ${mixinBorderAccentColor}
 `;
 const CSS_ALPHA = css`
   ${mixinTextDanger}
