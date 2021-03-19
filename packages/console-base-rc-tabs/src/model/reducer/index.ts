@@ -1,6 +1,6 @@
 import {
   IModelState,
-  TAction
+  TModelAction
 } from '../types';
 import {
   EAction
@@ -10,7 +10,7 @@ import reduceActivateTab from './reduce-activate-tab';
 import reduceNavOffsetMax from './reduce-nav-offset-max';
 import reduceNavOffset from './reduce-nav-offset';
 
-export default function reducer(state: IModelState, action: TAction): IModelState {
+export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
     case EAction.ACTIVATE_TAB:
       return reduceActivateTab(state, action.payload);

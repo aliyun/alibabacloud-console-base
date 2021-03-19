@@ -11,7 +11,7 @@ import {
   EAction
 } from '../const';
 
-export type TAction = {
+export type TModelAction = {
   type: EAction.ACTIVATE_TAB;
   payload: string | number;
 } | {
@@ -19,7 +19,7 @@ export type TAction = {
   payload: number;
 };
 
-export type TModelDispatch = Dispatch<TAction>;
+export type TModelDispatch = Dispatch<TModelAction>;
 
 export interface IModelState {
   activeKey: string | number;
@@ -28,7 +28,7 @@ export interface IModelState {
 }
 
 export interface IModelReducer {
-  (state: IModelState, action: TAction): IModelState;
+  (state: IModelState, action: TModelAction): IModelState;
 }
 
 export interface IModelProviderProps {
