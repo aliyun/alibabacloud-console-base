@@ -23,6 +23,18 @@ type TIgnoreParsed = string | RegExp | ((input: string) => boolean);
 
 type TUriHelper = string | RegExp | IRuleAndTarget | IFnUriHelper;
 
+export interface IApiOptions {
+  code?: string | number;
+  message?: string;
+  timeStarted?: number;
+  traceId?: string;
+  sessionId?: string;
+}
+
+export interface IApiSuccessOptions extends Omit<IApiOptions, 'code' | 'message'> {}
+
+export interface IApiFailOptions extends IApiOptions {}
+
 export interface IErrorInfo {
   message: string;
   name?: string;

@@ -4,6 +4,8 @@ export { default as armsSetPage } from './util/arms/set-page';
 export { default as armsSetCommonInfo } from './util/arms/set-common-info';
 export { default as armsCustom } from './util/arms/custom';
 export { default as armsApi } from './util/arms/api';
+export { default as armsApiSuccess } from './util/arms/api-success';
+export { default as armsApiFail } from './util/arms/api-fail';
 export { default as armsError } from './util/arms/error';
 export { default as armsSpeed } from './util/arms/speed';
 export { default as armsSum } from './util/arms/sum';

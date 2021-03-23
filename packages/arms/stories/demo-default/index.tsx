@@ -19,6 +19,8 @@ import {
   armsSetCommonInfo,
   armsCustom,
   armsApi,
+  armsApiSuccess,
+  armsApiFail,
   armsError,
   armsSpeed,
   armsSum,
@@ -34,7 +36,10 @@ function testInstallBl(): void {
   });
   
   // 如果没有安装，这两条日志会在安装完成后发送，用以测试 pipe 功能
-  armsApi('/api/when-install', true, 1);
+  armsApi('/api/success/when-install', true, 1);
+  armsApi('/api/fail/when-install', false, 2);
+  armsApiSuccess('/api/success/when-install', 3);
+  armsApiFail('/api/fail/when-install', 4);
   armsError(new Error('when install'));
 }
 
@@ -69,8 +74,10 @@ function testArmsCustom(): void {
 }
 
 function testArmsApi(): void {
-  armsApi('/api/success', true, 1234);
-  armsApi('/api/fail', false, 4321);
+  armsApi('/api/success', true, 11);
+  armsApi('/api/fail', false, 22);
+  armsApiSuccess('/api/success', 33);
+  armsApiFail('/api/fail', 44);
 }
 
 function testArmsError(): void {
@@ -140,7 +147,7 @@ function testArmsResource(): void {
 export default function DemoDefault(): JSX.Element {
   const [stateConfig, setStateConfig] = useState<ArmsBlConfigBeforeReady | undefined>();
   
-  const handleGetConfig = useCallback(() => setStateConfig(getBlConfig()), [setStateConfig])
+  const handleGetConfig = useCallback(() => setStateConfig(getBlConfig()), [setStateConfig]);
   
   return <>
     <H1>安装</H1>
