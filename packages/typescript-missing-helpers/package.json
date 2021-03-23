@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/typescript-missing-helpers",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Supplements to TypeScript type helpers",
   "license": "MIT",
   "main": "build/cjs/index.js",
