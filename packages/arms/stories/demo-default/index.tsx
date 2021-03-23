@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {
+  useState,
+  useCallback
+} from 'react';
 
 import {
   H1,
   P,
+  PreJson,
   Button
 } from '@alicloud/demo-rc-elements';
 
 import {
+  ArmsBlConfigBeforeReady,
+  getBlConfig,
   installBl,
   armsSetConfig,
   armsSetPage,
@@ -132,10 +138,16 @@ function testArmsResource(): void {
 }
 
 export default function DemoDefault(): JSX.Element {
+  const [stateConfig, setStateConfig] = useState<ArmsBlConfigBeforeReady | undefined>();
+  
+  const handleGetConfig = useCallback(() => setStateConfig(getBlConfig()), [setStateConfig])
+  
   return <>
     <H1>安装</H1>
     <P>安装 <code>bl.js</code> 后才可以测试下边的功能，只会安装一次，安装后会有 <code>per → api → error → pv</code> 四条日志，<code>per / pv</code> 是默认发送的，<code>api / error</code> 是用来测试 pipe 的。</P>
     <Button onClick={testInstallBl}>installBl</Button>
+    <Button onClick={handleGetConfig}>getBlConfig</Button>
+    <PreJson o={stateConfig} />
     <H1>测试设置</H1>
     <Button onClick={testArmsSetConfig}>armsSetConfig(disabled: true)</Button>
     <Button onClick={testArmsSetConfig2}>armsSetConfig(disabled: false)</Button>

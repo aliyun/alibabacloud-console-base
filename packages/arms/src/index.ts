@@ -12,13 +12,14 @@ export { default as armsPercent } from './util/arms/percent';
 export { default as armsResource } from './util/arms/resource';
 
 // 其他方法
-export { default as getBlPid } from './util/get-bl-pid';
+export { default as getBlConfig } from './util/get-bl-config';
 export { default as installBl } from './util/install-bl';
 
 export type {
   IBlConfigBeforeReady as ArmsBlConfigBeforeReady,
   IBlConfig as ArmsBlConfig,
-  IBlBeforeReady as ArmsBlBeforeReady,
-  IBl as ArmsBl,
-  IWindowWithBl as ArmsWindowExtended
+  IErrorInfo as ArmsErrorInfo,
+  IErrorPosition as ArmsErrorPosition,
+  TSpeedPoint as ArmsSpeedPoint,
+  IResourceData as ArmsResourceData
 } from './types';

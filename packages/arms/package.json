@@ -1,7 +1,7 @@
 {
   "name": "@alicloud/arms",
-  "version": "0.0.1",
-  "description": "Copy Text",
+  "version": "0.2.1",
+  "description": "基于 CDN 形式的 ARMS 埋点的类型封装，及相关工具方法",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",

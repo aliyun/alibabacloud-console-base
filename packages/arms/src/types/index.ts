@@ -147,6 +147,7 @@ export interface IBlConfigBeforeReady {
   enableApiCors?: boolean;
   enableConsole?: boolean;
   enableLinkTrace?: boolean;
+  setUsername?: (() => string) | null;
   /**
    * 配合 enableSPA 使用，将 URL hash 解析为 page
    */
@@ -159,15 +160,14 @@ export interface IBlConfigBeforeReady {
 
 export interface IBlConfig extends Required<IBlConfigBeforeReady> {
   release: string;
-  region: string | null;
   startTime: number | null;
+  region: string | null;
   ignore: {
     ignoreUrls: TIgnoreParsed[];
     ignoreApis: TIgnoreParsed[];
     ignoreErrors: TIgnoreParsed[];
     ignoreResErrors: TIgnoreParsed[];
   };
-  setUsername: (() => string) | null;
 }
 
 /**

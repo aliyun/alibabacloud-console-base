@@ -5,25 +5,9 @@ import React, {
 import {
   H2
 } from '@alicloud/demo-rc-elements';
-
-import injectScript from '../../util/inject-script';
-
-interface IWindow extends Window {
-  __bl?: {
-    config: {
-      pid: string; // ARMS pid，每个控制台产品不一样，测试用 ad45dhvr9m@6594c08d3216a5d
-      uid?: string; // 用户 ID
-      tag?: string; // channel
-      imgUrl?: string; // 固定 https://arms-retcode.aliyuncs.com/r.png?
-      release?: string;
-      environment?: 'production' | 'pre' | 'daily';
-      useFmp?: boolean;
-      disableHook?: boolean;
-      enableSPA?: boolean;
-      // parseResponse?:(): object;
-    };
-  };
-}
+import {
+  installBl
+} from '@alicloud/arms';
 
 /**
  * 模拟埋入 arms 脚本
@@ -31,23 +15,11 @@ interface IWindow extends Window {
  */
 export default function DemoInjectArms(): JSX.Element {
   useEffect(() => {
-    if ((window as IWindow).__bl) {
-      return;
-    }
-    
-    (window as IWindow).__bl = {
-      config: {
-        pid: 'ad45dhvr9m@6594c08d3216a5d',
-        imgUrl: 'https://arms-retcode.aliyuncs.com/r.png?',
-        uid: 'UID',
-        tag: 'TAG',
-        // release: '1.3.4',
-        environment: 'daily',
-        disableHook: true
-      }
-    };
-    
-    injectScript('https://retcode.alicdn.com/retcode/bl.js');
+    installBl('ad45dhvr9m@6594c08d3216a5d', 'UID', {
+      tag: 'TAG',
+      environment: 'daily',
+      disableHook: true
+    });
   }, []);
   
   return <>

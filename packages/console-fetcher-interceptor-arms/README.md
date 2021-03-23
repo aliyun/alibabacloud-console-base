@@ -13,14 +13,13 @@
   window.__bl = {
     config: {
       pid,
-      imgUrl: 'https://arms-retcode.aliyuncs.com/r.png?',
-      useFmp,
-      disableHook, // 如果希望通过 __bl.api 进行主动上报接口调用日志的，这里设为 true
-      enableSPA,
       uid, // 用户 
       tag, // channel
-      release,
-      environment
+      environment,
+      imgUrl: 'https://arms-retcode.aliyuncs.com/r.png?',
+      disableHook, // 如果希望通过 __bl.api 进行主动上报接口调用日志的，这里设为 true
+      enableSPA,
+      useFmp
     }
   };
   

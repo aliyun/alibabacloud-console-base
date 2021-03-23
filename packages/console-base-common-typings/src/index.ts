@@ -1,4 +1,6 @@
-import {
+export * from './const';
+
+export type {
   IDataWithLoading as DataWithLoading,
   IPagedList as PagedList,
   TSettingsIntlString as SettingsIntlString,
@@ -12,42 +14,11 @@ import {
   ISettingsToolkit as SettingsToolkit,
   ISettingsToolkitItem as SettingsToolkitItem,
   ISettingsToolkitItemLabel as SettingsToolkitItemLabel,
-  ISettingsToolkitItemTooltip as SettingsToolkitItemTooltip,
-  IArmsBl as ArmsBl,
-  IArmsBlConfig as ArmsBlConfig,
-  IArmsWindowExtended as ArmsWindowExtended
+  ISettingsToolkitItemTooltip as SettingsToolkitItemTooltip
 } from './types';
-import createPagedList from './util/create-paged-list';
-import createDataWithLoading from './util/create-data-with-loading';
-import getIntlString from './util/get-intl-string';
-import isLoading from './util/is-loading';
-
-export * from './const';
-
-export type {
-  DataWithLoading,
-  PagedList,
-  SettingsIntlString,
-  SettingsRawRegionItem,
-  SettingsRawRegionGroup,
-  SettingsRawRegion,
-  SettingsRegionItem,
-  SettingsRegionGroup,
-  SettingsRegion,
-  SettingsResourceGroup,
-  SettingsToolkit,
-  SettingsToolkitItem,
-  SettingsToolkitItemLabel,
-  SettingsToolkitItemTooltip,
-  ArmsBl,
-  ArmsBlConfig,
-  ArmsWindowExtended
-};
 
 // TODO 这个包不纯洁...了
-export {
-  createPagedList,
-  createDataWithLoading,
-  getIntlString,
-  isLoading
-};
+export { default as createPagedList } from './util/create-paged-list';
+export { default as createDataWithLoading } from './util/create-data-with-loading';
+export { default as getIntlString } from './util/get-intl-string';
+export { default as isLoading } from './util/is-loading';

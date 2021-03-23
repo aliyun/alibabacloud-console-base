@@ -1,7 +1,7 @@
 @alicloud/arms
 ===
 
-基于 CDN 形式的 ARMS 埋点的类型封装，及相关工具方法。
+> 基于 CDN 形式的 ARMS 埋点的类型封装，及相关工具方法
 
 # WHY
 
