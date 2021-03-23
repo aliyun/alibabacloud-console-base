@@ -11,5 +11,7 @@ export default function slsSubscribeByApp(type: string, fn: TAnyFunction): void 
   sls('message_subscribe_by_app', {
     name: type,
     value: stringifyCallback(fn) // 可以判断有效性
+  }, {
+    sampling: 0.1
   });
 }
