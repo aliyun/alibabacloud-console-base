@@ -7,7 +7,6 @@ import {
   MULTI_TYPES
 } from '../const';
 import {
-  IConsoleFetcherConfig,
   IFnConsoleApi,
   IConsoleApiOptions,
   IConsoleApiMultiAction,

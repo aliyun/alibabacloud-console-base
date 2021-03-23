@@ -10,9 +10,7 @@ import {
   IConsoleApiBodyMulti
 } from '../types';
 
-import buildParamsForDebug, {
-  IParamsForDebug
-} from './build-params-for-debug';
+import buildApiUrlWithDebug from './build-api-url-with-debug';
 import fillBodyAndGetRestOptions from './fill-body-and-get-rest-options';
 
 export default function callApiMulti(
@@ -28,10 +26,5 @@ export default function callApiMulti(
   };
   const restOptions = fillBodyAndGetRestOptions(body, options);
   
-  return fetcher.post<TConsoleApiMultiResult, IConsoleApiBodyMulti, IParamsForDebug>(
-      restOptions,
-      url,
-      body,
-      buildParamsForDebug(product, actions.map(v => v.action))
-  );
+  return fetcher.post<TConsoleApiMultiResult, IConsoleApiBodyMulti>(restOptions, buildApiUrlWithDebug(url, product, actions.map(v => v.action)), body);
 }

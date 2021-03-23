@@ -8,9 +8,7 @@ import {
   IConsoleApiOptions
 } from '../types';
 
-import buildParamsForDebug, {
-  IParamsForDebug
-} from './build-params-for-debug';
+import buildApiUrlWithDebug from './build-api-url-with-debug';
 import fillBodyAndGetRestOptions from './fill-body-and-get-rest-options';
 
 export default function callApi<T = void, P = void>(
@@ -31,10 +29,5 @@ export default function callApi<T = void, P = void>(
   
   const restOptions = fillBodyAndGetRestOptions(body, options);
   
-  return fetcher.post<T, IConsoleApiBody, IParamsForDebug>(
-      restOptions,
-      url,
-      body,
-      buildParamsForDebug(product, action)
-  );
+  return fetcher.post<T, IConsoleApiBody>(restOptions, buildApiUrlWithDebug(url, product, action), body);
 }
