@@ -35,7 +35,7 @@ if (!(window as unknown as Record<'_console_base_ready_', boolean>)[CONSOLE_BASE
 /**
  * 应用发消息，需要记录日志
  */
-export function broadcastByApp<P = void>(type: EMessageBroadcastByApp | string, payload?: P): void {
+export default function broadcastByApp<P = void>(type: EMessageBroadcastByApp | string, payload?: P): void {
   if (BROADCASTS_WHEN_NOT_READY) {
     slsBroadcastByApp(type, payload, true);
     

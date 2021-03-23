@@ -1,9 +1,7 @@
 import {
   EMessageBroadcastByApp
 } from '../../../const';
-import {
-  broadcastByApp
-} from '../../../util/broadcast-by-app';
+import broadcastByApp from '../../../util/broadcast-by-app';
 
 /**
  * 修改当前选中的地域

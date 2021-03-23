@@ -1,12 +1,12 @@
 import {
   IPayloadLaunchWidget
-} from '../../types';
+} from '../../../types';
 import {
   EMessageBroadcastByApp
-} from '../../const';
+} from '../../../const';
 import {
   subscribePromiseByConsoleBase
-} from '../../util/subscribe-by-console-base';
+} from '../../../util/subscribe-by-console-base';
 
 /**
  * console-base 响应 Widget 唤起

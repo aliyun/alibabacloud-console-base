@@ -4,9 +4,7 @@ import {
 import {
   IPayloadTutorRegister
 } from '../../../types';
-import {
-  broadcastByApp
-} from '../../../util/broadcast-by-app';
+import broadcastByApp from '../../../util/broadcast-by-app';
 
 /**
  * 注册教程

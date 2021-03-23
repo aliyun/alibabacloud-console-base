@@ -1,9 +1,9 @@
 import {
   EMessageBroadcastByApp
-} from '../../const';
+} from '../../../const';
 import {
   subscribePromiseByConsoleBase
-} from '../../util/subscribe-by-console-base';
+} from '../../../util/subscribe-by-console-base';
 
 /**
  * console-base 响应接口统一请求

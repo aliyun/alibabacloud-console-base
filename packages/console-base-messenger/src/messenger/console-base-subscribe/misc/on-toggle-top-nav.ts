@@ -1,7 +1,7 @@
 import {
   EMessageBroadcastByApp
-} from '../../const';
-import subscribeByConsoleBase from '../../util/subscribe-by-console-base';
+} from '../../../const';
+import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
 
 /**
  * console-base 响应隐藏/展示 TopNav

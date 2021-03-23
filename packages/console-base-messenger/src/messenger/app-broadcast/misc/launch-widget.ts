@@ -1,12 +1,12 @@
 import {
   IPayloadLaunchWidget
-} from '../../types';
+} from '../../../types';
 import {
   EMessageBroadcastByApp
-} from '../../const';
+} from '../../../const';
 import {
   broadcastPromiseByApp
-} from '../../util/broadcast-by-app';
+} from '../../../util/broadcast-by-app';
 
 /**
  * 唤起 widget，并返回 Promise，需要传入 Widget 的 id + version + props，并通过 extra 传递更多的信息

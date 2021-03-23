@@ -1,8 +1,9 @@
-import promptError from './prompt-error';
-import fetcherRequest from './fetcher-request';
-import toggleTopNav from './toggle-top-nav';
-import launchTutorial from './launch-tutorial';
-import launchWidget from './launch-widget';
+import promptError from './misc/prompt-error';
+import fetcherRequest from './misc/fetcher-request';
+import toggleTopNav from './misc/toggle-top-nav';
+import armsError from './misc/arms-error';
+import launchTutorial from './misc/launch-tutorial';
+import launchWidget from './misc/launch-widget';
 import toggleRegion from './region/toggle-region';
 import toggleRegionGlobal from './region/toggle-region-global';
 import setRegionId from './region/set-region-id';
@@ -28,6 +29,7 @@ export default {
   promptError,
   fetcherRequest,
   toggleTopNav,
+  armsError,
   launchTutorial,
   launchWidget,
   toggleRegion,

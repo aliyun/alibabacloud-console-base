@@ -1,7 +1,7 @@
 /**
  * 控制台应用发给 console-base 的消息类型（不可随意修改）
  * 
- * 前缀一般为 `app_2_console_base:`
+ * 前缀 `app_2_console_base:`
  */
 export enum EMessageBroadcastByApp {
   // 杂项
@@ -10,6 +10,7 @@ export enum EMessageBroadcastByApp {
   TOGGLE_TOP_NAV = 'app_2_console_base:top_nav/toggle',
   LAUNCH_TUTORIAL = 'app_2_console_base:launch_tutorial',
   LAUNCH_WIDGET = 'app_2_console_base:launch_widget',
+  ARMS_ERROR = 'app_2_console_base:arms/error',
   // 地域选择器
   REGION_TOGGLE = 'app_2_console_base:region/toggle',
   REGION_TOGGLE_GLOBAL = 'app_2_console_base:region/toggle_global',
@@ -30,7 +31,7 @@ export enum EMessageBroadcastByApp {
 /**
  * ConsoleBase 通知外部应用的消息类型（不可随意修改）
  * 
- * 前缀一般为 `console_base_2_app:`
+ * 前缀 `console_base_2_app:`
  */
 export enum EMessageBroadcastByConsoleBase {
   // 杂项

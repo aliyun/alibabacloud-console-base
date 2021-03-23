@@ -1,8 +1,9 @@
-import onPromptError from './on-prompt-error';
-import onFetcherRequest from './on-fetcher-request';
-import onToggleTopNav from './on-toggle-top-nav';
-import onLaunchTutorial from './on-launch-tutorial';
-import onLaunchWidget from './on-launch-widget';
+import onPromptError from './misc/on-prompt-error';
+import onFetcherRequest from './misc/on-fetcher-request';
+import onToggleTopNav from './misc/on-toggle-top-nav';
+import onArmsError from './misc/on-arms-error';
+import onLaunchTutorial from './misc/on-launch-tutorial';
+import onLaunchWidget from './misc/on-launch-widget';
 import onToggleRegion from './region/on-toggle-region';
 import onToggleRegionGlobal from './region/on-toggle-region-global';
 import onSetRegionId from './region/on-set-region-id';
@@ -28,6 +29,7 @@ export default {
   onPromptError,
   onFetcherRequest,
   onToggleTopNav,
+  onArmsError,
   onLaunchTutorial,
   onLaunchWidget,
   onToggleRegion,

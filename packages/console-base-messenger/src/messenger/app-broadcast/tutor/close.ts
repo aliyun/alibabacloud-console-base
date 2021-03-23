@@ -1,9 +1,7 @@
 import {
   EMessageBroadcastByApp
 } from '../../../const';
-import {
-  broadcastByApp
-} from '../../../util/broadcast-by-app';
+import broadcastByApp from '../../../util/broadcast-by-app';
 
 /**
  * 主动关闭教程

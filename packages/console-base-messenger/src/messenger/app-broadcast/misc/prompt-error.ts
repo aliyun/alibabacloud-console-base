@@ -1,9 +1,9 @@
 import {
   EMessageBroadcastByApp
-} from '../../const';
+} from '../../../const';
 import {
   broadcastPromiseByApp
-} from '../../util/broadcast-by-app';
+} from '../../../util/broadcast-by-app';
 
 /**
  * 错误提示
