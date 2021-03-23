@@ -8,7 +8,7 @@ import {
   IFetcherInterceptorConfig
 } from '../types';
 
-import logApi from './bl';
+import logApi from './log-api';
 
 export default function createInterceptorResponseFulfilled(interceptorConfig?: IFetcherInterceptorConfig): FetcherFnInterceptResponseFulfilled<FetcherConfig> {
   return (data: unknown, fetcherConfig: FetcherConfig, response: FetcherResponse): unknown => {

@@ -1,15 +1,15 @@
 import {
-  ArmsWindowExtended
-} from '@alicloud/console-base-common-typings';
-import {
   FetcherConfig,
   buildUrl
 } from '@alicloud/fetcher';
+import {
+  getInitializedArms
+} from '@alicloud/arms';
 
 export default function logApi(fetcherConfig: FetcherConfig, traceId?: string, success = true, code = '200', message = ''): void {
-  const bl = (window as ArmsWindowExtended).__bl;
+  const arms = getInitializedArms();
   
-  if (!bl?._conf?.disableHook) {
+  if (!arms?._conf.disableHook) {
     return;
   }
   
@@ -21,11 +21,11 @@ export default function logApi(fetcherConfig: FetcherConfig, traceId?: string, s
     urlCacheBusting: false
   });
   
-  if (bl.api) {
-    bl.api(api, success, duration, code, message, timeStarted, traceId);
+  if (arms.api) {
+    arms.api(api, success, duration, code, message, timeStarted, traceId);
   } else {
-    bl.pipe = bl.pipe || [];
-    bl.pipe.push([
+    arms.pipe = arms.pipe || [];
+    arms.pipe.push([
       'api',
       api,
       success,
