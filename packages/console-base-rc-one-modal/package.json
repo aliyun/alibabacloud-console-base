@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-one-modal",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "ConsoleBase 组件 - 专用于文档组件的可拖拽、带标签的容器",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -46,10 +46,10 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.1.31",
+    "@alicloud/console-base-intl-factory-basic": "^1.1.32",
     "@alicloud/console-base-rc-button": "^1.0.68",
     "@alicloud/console-base-rc-icon": "^1.0.64",
-    "@alicloud/console-base-rc-tabs": "^1.1.9",
+    "@alicloud/console-base-rc-tabs": "^1.1.10",
     "@alicloud/console-base-theme": "^1.2.7",
     "@alicloud/typescript-missing-helpers": "^0.0.4",
     "lodash": "^4.17.21",
