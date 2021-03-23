@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-attention-seeker",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "ConsoleBase 组件 - 寻求用户关注",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -43,8 +43,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.2.6",
-    "@alicloud/mere-dom": "^1.0.27",
+    "@alicloud/console-base-theme": "^1.2.7",
+    "@alicloud/mere-dom": "^1.0.28",
     "immutability-helper": "^3.1.1"
   },
   "scripts": {
