@@ -16,7 +16,7 @@ function checkSampling(instant?: boolean, factorySampling = 1, sampling = factor
   }
   
   if (sampling > 0 && sampling < 1) {
-    return sampling <= Math.random();
+    return Math.random() <= sampling;
   }
   
   return true;
