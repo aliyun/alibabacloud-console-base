@@ -33,8 +33,9 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/console-one-config": "^1.0.42",
-    "@alicloud/viper-feature-gen": "^1.0.36"
+    "@alicloud/console-conf-link-factory": "^1.0.16",
+    "@alicloud/viper-feature-gen": "^1.0.36",
+    "@alicloud/console-one-config": "^1.0.42"
   },
   "scripts": {
     "start": "breezr start-storybook",
