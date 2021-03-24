@@ -11,6 +11,7 @@ export default function slsBroadcastByApp(type: string, payload?: unknown, befor
     value: stringifyPayload(payload),
     beforeReady
   }, {
-    sampling: 0.1
+    sampling: 0.5,
+    once: type
   });
 }

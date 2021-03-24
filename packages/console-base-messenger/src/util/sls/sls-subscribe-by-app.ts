@@ -12,6 +12,7 @@ export default function slsSubscribeByApp(type: string, fn: TAnyFunction): void 
     name: type,
     value: stringifyCallback(fn) // 可以判断有效性
   }, {
-    sampling: 0.1
+    sampling: 0.5,
+    once: type
   });
 }
