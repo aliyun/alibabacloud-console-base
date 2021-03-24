@@ -27,6 +27,8 @@ export interface IFactoryOptions {
   apiVersion?: string;
   /**
    * 生产出的日志方法的整体采样率，可以在调用的时候通过 sampling 参数覆盖，范围为 [0, 1]，默认 1
+   * 
+   * 一般不建议在 factory 上设置采样率
    */
   sampling?: number;
   /**
@@ -53,7 +55,7 @@ export interface ILogOptionsQuick {
   /**
    * 日志不是强需求，不能压过业务，要业务先行。网络请求一般在页面的一开始最密集，如果日志在这时上报会造成网络阻塞而产生性能问题。
    * 
-   * ，方法是先积压着，等到时间到了，再把积压着的日志一起上报
+   * 办法是先积压着，等到时间到了，再把积压着的日志一起上报。
    * 
    * 所以，为了提升性能，做了以下事情：
    * 
@@ -65,6 +67,13 @@ export interface ILogOptionsQuick {
    * 注意：instant 会忽略采样率
    */
   instant?: boolean;
+  /**
+   * 有日志只需要在应用起来后记录一次，后续的将被丢弃
+   * 
+   * - true 表示以该 topic 做判断，针对该 topic 只记录一次
+   * - 如果是字符串，则以「topic + 此字符串」做判断
+   */
+  once?: true | string;
 }
 
 /**

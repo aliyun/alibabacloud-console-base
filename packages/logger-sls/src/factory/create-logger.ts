@@ -7,19 +7,16 @@ import {
 import getSystemParams from '../util/get-system-params';
 import logPipe from '../util/log-pipe';
 
-/**
- * 采样率检查，如果是 instant 则忽略采样率设置
- */
-function checkSampling(instant?: boolean, factorySampling = 1, sampling = factorySampling): boolean {
-  if (instant) {
-    return true;
+function getOnceKey(topic: string, once?: true | string): string | undefined {
+  if (!once) {
+    return;
   }
   
-  if (sampling > 0 && sampling < 1) {
-    return Math.random() <= sampling;
+  if (once === true) {
+    return topic;
   }
   
-  return true;
+  return `${topic}~${once}`;
 }
 
 /**
@@ -33,19 +30,51 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     endpoint,
     logstore,
     apiVersion,
-    sampling,
+    sampling: factorySampling,
     defaultParams,
     onBeforeSend
   } = factoryOptions;
   const pipe = logPipe(project, endpoint, logstore, apiVersion);
+  const ONCE: Record<string, 1> = {};
+  
+  // 检查是否上报
+  function checkIfIgnore(instant?: boolean, sampling?: number, onceKey?: string): boolean {
+    // onBeforeSend 阻止发送
+    if ((onBeforeSend && onBeforeSend(factoryOptions) === false)) { // 不能 simplify to !onBeforeSend(factoryOptions)
+      return true;
+    }
+    
+    // 已发送过，且只需要发送一次，则忽略
+    if (onceKey && ONCE[onceKey]) {
+      return true;
+    }
+    
+    // instant 将忽略 sampling
+    if (instant) {
+      return false;
+    }
+    
+    if (typeof sampling === 'number' && sampling > 0 && sampling < 1) {
+      return Math.random() > sampling;
+    }
+    
+    return false;
+  }
   
   function sls<I = void>(topic: string, info?: I, {
     group = 'LOG',
-    sampling: optionSampling,
-    instant
+    sampling = factorySampling,
+    instant,
+    once
   }: ILogOptions = {}): void {
-    if ((onBeforeSend && onBeforeSend(factoryOptions) === false) || !checkSampling(instant, sampling, optionSampling)) {
+    const onceKey: string | undefined = getOnceKey(topic, once);
+    
+    if (checkIfIgnore(instant, sampling, onceKey)) {
       return;
+    }
+    
+    if (onceKey) {
+      ONCE[onceKey] = 1;
     }
     
     pipe(topic, {

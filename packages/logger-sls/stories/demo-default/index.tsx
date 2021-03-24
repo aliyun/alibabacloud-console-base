@@ -5,29 +5,10 @@ import {
   Button
 } from '@alicloud/demo-rc-elements';
 
-import createLogger from '../../src';
-
-const sls = createLogger({
-  project: 'console-base',
-  endpoint: 'cn-hangzhou.log.aliyuncs.com',
-  logstore: 'dev',
-  defaultParams() {
-    return {
-      fuck: Date.now()
-    };
-  }
-});
+import sls from '../_sls';
 
 function testSls(): void {
   sls('@alicloud/logger-sls');
-}
-
-function testSlsInstant(): void {
-  sls('@alicloud/logger-sls', {
-    type: 'instant'
-  }, {
-    instant: true
-  });
 }
 
 function testSlsDebug(): void {
@@ -74,7 +55,6 @@ export default function DemoDefault(): JSX.Element {
     <P>看 Console</P>
     <Button onClick={testSlsMultiple}>testSlsMultiple</Button>
     <Button onClick={testSls}>testSls</Button>
-    <Button onClick={testSlsInstant}>testSlsInstant</Button>
     <Button onClick={testSlsDebug}>testSlsDebug</Button>
     <Button onClick={testSlsLog}>testSlsLog</Button>
     <Button onClick={testSlsInfo}>testSlsInfo</Button>
