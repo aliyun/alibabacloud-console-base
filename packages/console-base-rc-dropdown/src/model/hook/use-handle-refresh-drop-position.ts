@@ -61,6 +61,9 @@ function computePosition(dropdownEl: HTMLDivElement | null | undefined, visible?
   };
 }
 
+/**
+ * 根据当前状态获取位置信息
+ */
 export default function useHandleRefreshDropPosition(): () => void {
   const {
     align,
@@ -68,9 +71,8 @@ export default function useHandleRefreshDropPosition(): () => void {
   } = useProps();
   const refDropdown = useRefDropdown();
   const visible = useVisible();
-  
-  const dropdownEl: HTMLDivElement | null | undefined = dropContainer === 'body' ? refDropdown.current : undefined; // 当 dropContainer 为 body 的时候，它才有用
   const dispatchSetDropPosition = useDispatchSetDropPosition();
+  const dropdownEl: HTMLDivElement | null | undefined = dropContainer === 'body' ? refDropdown.current : undefined; // 当 dropContainer 为 body 的时候，它才有用
   
   return useCallback(() => dispatchSetDropPosition(computePosition(dropdownEl, visible, align)), [align, dropdownEl, visible, dispatchSetDropPosition]);
 }

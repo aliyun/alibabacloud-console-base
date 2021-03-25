@@ -5,7 +5,7 @@ import {
 import useVisible from '../../hook/use-visible';
 import useHandleDocKeydown from '../../hook/use-handle-doc-keydown';
 
-export default function OnKeydown(): null {
+export default function OnDocKeydown(): null {
   const visible = useVisible();
   const handleDocKeydown = useHandleDocKeydown();
   

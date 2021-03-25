@@ -5,7 +5,9 @@ import {
 import useHandleRefreshDropPosition from '../../hook/use-handle-refresh-drop-position';
 
 export default function RefreshDropPosition(): null {
-  useEffect(useHandleRefreshDropPosition, [useHandleRefreshDropPosition]);
+  const handleRefreshDropPosition = useHandleRefreshDropPosition();
+  
+  useEffect(handleRefreshDropPosition, [handleRefreshDropPosition]);
   
   return null;
 }

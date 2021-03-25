@@ -23,14 +23,10 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
   
   return useCallback((payload: boolean): void => {
     if (visibleTimer) {
-      console.info('clear timer', visible, visibleTimer);
-      
       window.clearTimeout(visibleTimer);
     }
     
     if (visible === payload) {
-      console.info('same', visible)
-      
       return;
     }
     
@@ -45,11 +41,7 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
       if (onVisibleChange) {
         onVisibleChange(payload);
       }
-      
-      console.info('in timer');
     }, 200);
-    
-    console.info('timer', timer);
     
     dispatchToggleVisibleTimer(timer);
   }, [visible, visibleTimer, isUnmounted, onVisibleChange, dispatchSetVisible, dispatchToggleVisibleTimer]);

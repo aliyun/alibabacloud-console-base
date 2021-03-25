@@ -1,7 +1,11 @@
 import React from 'react';
 
-import OnKeydown from './on-keydown';
+import OnDocKeydown from './on-doc-keydown';
+import RefreshDropPosition from './refresh-drop-position';
 
 export default function Lifecycle(): JSX.Element {
-  return <OnKeydown />;
+  return <>
+    <OnDocKeydown />
+    <RefreshDropPosition />
+  </>;
 }
