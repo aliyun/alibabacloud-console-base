@@ -3,6 +3,8 @@ import React, {
   useRef
 } from 'react';
 
+import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
+
 import {
   IModelReducer,
   IModelProviderProps
@@ -21,11 +23,13 @@ export default function Provider({
 }: IModelProviderProps): JSX.Element {
   const refDropdown = useRef<HTMLDivElement | null>(null);
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_STATE);
+  const isUnmounted = useIsUnmounted();
   
   return <Context.Provider value={{
     props,
     state,
     refDropdown,
+    isUnmounted,
     dispatch
   }}>
     <Lifecycle />

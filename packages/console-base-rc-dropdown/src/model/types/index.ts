@@ -11,17 +11,29 @@ import {
   EAction
 } from '../const';
 
+export interface IModelStateDropPosition {
+  top?: number | string;
+  left?: number | string;
+  right?: number | string;
+}
+
 export type TModelAction = {
-  type: EAction.MOUSE_ENTER | EAction.MOUSE_LEAVE;
-} | {
-  type: EAction.TOGGLE_VISIBLE;
+  type: EAction.SET_VISIBLE;
   payload: boolean;
+} | {
+  type: EAction.SET_VISIBLE_TIMER;
+  payload: number | null;
+} | {
+  type: EAction.SET_DROP_POSITION;
+  payload: IModelStateDropPosition;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;
 
 export interface IModelState {
   visible: boolean;
+  visibleTimer: number | null; // 如果是 visible 的时候就是隐藏
+  dropPosition: IModelStateDropPosition;
 }
 
 export interface IModelReducer {
@@ -32,6 +44,7 @@ export interface IModelContext {
   props: IPropsDropdown;
   state: IModelState;
   refDropdown: MutableRefObject<HTMLDivElement | null>;
+  isUnmounted(): boolean;
   dispatch: TModelDispatch;
 }
 

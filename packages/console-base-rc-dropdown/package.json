@@ -47,8 +47,8 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme": "^1.2.7",
-    "immutability-helper": "^3.1.1",
-    "lodash": "^4.17.21"
+    "@alicloud/react-hook-is-unmounted": "^1.0.33",
+    "immutability-helper": "^3.1.1"
   },
   "scripts": {
     "start": "breezr start-storybook",

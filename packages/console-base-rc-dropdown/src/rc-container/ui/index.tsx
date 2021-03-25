@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import {
   useProps,
   useRefDropdown,
-  useOnDropdownMouseEnter,
-  useOnDropdownMouseLeave
+  useHandleDropdownMouseEnter,
+  useHandleDropdownMouseLeave
 } from '../../model';
 
 import TheTrigger from './the-trigger';
@@ -25,14 +25,14 @@ export default function Dropdown(): JSX.Element {
     block
   } = useProps();
   const refDropdown = useRefDropdown();
-  const onMouseEnter = useOnDropdownMouseEnter();
-  const onMouseLeave = useOnDropdownMouseLeave();
+  const handleMouseEnter = useHandleDropdownMouseEnter();
+  const handleMouseLeave = useHandleDropdownMouseLeave();
   
   return <ScDropdown {...{
     ref: refDropdown,
     block,
-    onMouseEnter,
-    onMouseLeave
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave
   }}>
     <TheTrigger />
     <TheDrop />

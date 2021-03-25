@@ -3,5 +3,7 @@ import {
 } from '../types';
 
 export const DEFAULT_STATE: IModelState = {
-  visible: false
+  visible: false,
+  visibleTimer: null,
+  dropPosition: {}
 };

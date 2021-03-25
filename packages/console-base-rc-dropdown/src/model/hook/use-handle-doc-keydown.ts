@@ -3,15 +3,15 @@ import {
 } from 'react';
 
 import useProps from './use-props';
-import useDispatchToggleVisible from './use-dispatch-toggle-visible';
+import useDispatchSetVisible from './use-dispatch-set-visible';
 
-export default function useOnDocKeydown(): (e: KeyboardEvent) => void {
+export default function useHandleDocKeydown(): (e: KeyboardEvent) => void {
   const {
     onEsc,
     onNavUp,
     onNavDown
   } = useProps();
-  const dispatchToggleVisible = useDispatchToggleVisible();
+  const dispatchToggleVisible = useDispatchSetVisible();
   
   return useCallback((e: KeyboardEvent): void => {
     switch (e.key) {

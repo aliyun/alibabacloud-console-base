@@ -1,8 +1,6 @@
 import React, {
   ReactPortal,
-  CSSProperties,
-  useState,
-  useEffect
+  CSSProperties
 } from 'react';
 import {
   createPortal
@@ -25,7 +23,8 @@ import {
 import {
   useProps,
   useRefDropdown,
-  useVisible
+  useVisible,
+  useDropPosition
 } from '../../../model';
 
 interface IPropsScTheDrop {
@@ -94,24 +93,19 @@ export default function TheDrop(): JSX.Element | ReactPortal {
     maxWidth,
     zIndex = 10,
     offset,
-    align,
     bodyPadding,
     dropContainer = 'inside'
   } = useProps();
   const refDropdown = useRefDropdown();
   const visible = useVisible();
+  const dropPosition = useDropPosition();
   
-  const [stateTop, setStateTop] = useState<string | number | undefined>();
-  const [stateLeft, setStateLeft] = useState<number | undefined>();
-  const [stateRight, setStateRight] = useState<number | undefined>();
   const dropdownEl: HTMLDivElement | null | undefined = dropContainer === 'body' ? refDropdown.current : undefined; // 当 dropContainer 为 body 的时候，它才有用
   const [offsetX = 0, offsetY = 0] = offset || [];
   
   const style: CSSProperties = {
     zIndex,
-    top: stateTop,
-    left: stateLeft,
-    right: stateRight
+    ...dropPosition
   };
   
   if (width) {
@@ -129,54 +123,6 @@ export default function TheDrop(): JSX.Element | ReactPortal {
   if (offsetX || offsetY) {
     style.transform = `translate(${offsetX}px, ${offsetY}px)`;
   }
-  
-  useEffect(() => {
-    function getTopLeft(div: HTMLDivElement): [number, number] {
-      const rect = div.getBoundingClientRect();
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-      const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || 0;
-      
-      return [
-        Math.ceil((rect.y || rect.top) + rect.height) + scrollTop + 1,
-        Math.ceil(rect.left) + scrollLeft + 1
-      ];
-    }
-    
-    if (!visible) { // 不可见时
-      if (dropdownEl) {
-        const [t, l] = getTopLeft(dropdownEl);
-        
-        setStateTop(t + 10); // +10 是为了动画
-        setStateLeft(l);
-      } else {
-        setStateTop('150%'); // 为了动画
-      }
-      
-      return;
-    }
-    
-    if (!dropdownEl) {
-      setStateTop('100%');
-      
-      if (align === 'right') {
-        setStateLeft(undefined);
-        setStateRight(0);
-      } else {
-        setStateLeft(0);
-        setStateRight(undefined);
-      }
-      
-      return;
-    }
-    
-    // TODO align right 还有问题
-    if (dropdownEl) {
-      const [t, l] = getTopLeft(dropdownEl);
-      
-      setStateTop(t);
-      setStateLeft(l);
-    }
-  }, [dropdownEl, visible, align]);
   
   const jsx = <ScTheDrop {...{
     visible,

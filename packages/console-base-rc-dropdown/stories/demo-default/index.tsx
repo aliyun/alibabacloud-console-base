@@ -16,6 +16,10 @@ const ScTrigger = styled.div`
   color: #f00;
 `;
 
+function onVisibleChange(visible: boolean): void {
+  console.info('!!visible change', visible);
+}
+
 export default function DemoDefault(): JSX.Element {
   const [stateKnobsData, setStateKnobsData] = useState<IKnobsData>({} as IKnobsData);
   
@@ -30,7 +34,8 @@ export default function DemoDefault(): JSX.Element {
     <Knobs onChange={setStateKnobsData} />
     <Dropdown {...{
       ...props,
-      trigger: triggerAsJSX ? <ScTrigger>{trigger}</ScTrigger> : trigger
+      trigger: triggerAsJSX ? <ScTrigger>{trigger}</ScTrigger> : trigger,
+      onVisibleChange
     }} />
   </>;
 }

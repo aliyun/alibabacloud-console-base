@@ -1,5 +1,4 @@
 import React, {
-  ReactNode,
   useReducer
 } from 'react';
 

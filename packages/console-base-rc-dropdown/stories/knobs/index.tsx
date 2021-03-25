@@ -1,4 +1,4 @@
-import {
+import React, {
   useMemo,
   useEffect
 } from 'react';
@@ -10,6 +10,10 @@ import {
 } from '@storybook/addon-knobs';
 
 import {
+  P
+} from '@alicloud/demo-rc-elements';
+
+import {
   DropdownProps
 } from '../../src';
 
@@ -19,7 +23,7 @@ enum EGroup {
   OTHERS = '其他'
 }
 
-export interface IKnobsData extends DropdownProps {
+interface IKnobsData extends DropdownProps {
   triggerAsJSX?: boolean;
 }
 
@@ -29,7 +33,7 @@ interface IProps {
 
 export default function Knobs({
   onChange
-}: IProps): null {
+}: IProps): JSX.Element {
   const trigger = text('props.trigger', 'this is trigger', EGroup.CONTENT) || 'you should always have a trigger';
   const triggerAsJSX = boolean('(none-props) render trigger as JSX', false, EGroup.CONTENT);
   const header = text('props.header', '', EGroup.CONTENT);
@@ -89,5 +93,9 @@ export default function Knobs({
   
   useEffect(() => onChange(o), [onChange, o]);
   
-  return null;
+  return <P>使用 knobs 进行调戏 <span role="img" aria-label="play">🙈</span></P>;
 }
+
+export type {
+  IKnobsData
+};

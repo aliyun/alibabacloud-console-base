@@ -4,9 +4,9 @@ import {
   IModelState
 } from '../types';
 
-export default function reduceToggleVisible(state: IModelState, payload: boolean): IModelState {
+export default function reduceSetVisibleTimer(state: IModelState, payload: number | null): IModelState {
   return update(state, {
-    visible: {
+    visibleTimer: {
       $set: payload
     }
   });
