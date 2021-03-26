@@ -53,7 +53,7 @@ export default function Knobs({
   const visibleInUse = boolean('启用 props.visible', false, EGroup.LOOK);
   const visible = visibleInUse ? visible0 : undefined;
   const dropContainer0 = select<'inside' | 'body'>('props.dropContainer', ['inside', 'body'], 'body', EGroup.OTHERS);
-  const dropContainerInUse = boolean('启用 props.dropContainer', true, EGroup.OTHERS);
+  const dropContainerInUse = boolean('启用 props.dropContainer', false, EGroup.OTHERS);
   const dropContainer = dropContainerInUse ? dropContainer0 : undefined;
   
   const o: IKnobsData = useMemo(() => ({

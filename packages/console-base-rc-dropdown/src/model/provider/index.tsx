@@ -22,6 +22,7 @@ export default function Provider({
   children
 }: IModelProviderProps): JSX.Element {
   const refDropdown = useRef<HTMLDivElement | null>(null);
+  const refDrop = useRef<HTMLDivElement | null>(null);
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_STATE);
   const isUnmounted = useIsUnmounted();
   
@@ -29,6 +30,7 @@ export default function Provider({
     props,
     state,
     refDropdown,
+    refDrop,
     isUnmounted,
     dispatch
   }}>

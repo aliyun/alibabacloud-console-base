@@ -5,5 +5,5 @@ import {
 export const DEFAULT_STATE: IModelState = {
   visible: false,
   visibleTimer: null,
-  dropPosition: {}
+  dropExiting: false
 };

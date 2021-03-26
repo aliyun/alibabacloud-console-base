@@ -3,6 +3,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
+import {
+  LongArticle
+} from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Dropdown from '../../src';
@@ -10,9 +13,13 @@ import Knobs, {
   IKnobsData
 } from '../knobs';
 
-const ScTrigger = styled.div`
+const ScTriggerJsx = styled.div`
   padding: 8px;
   background: #ff0;
+  color: #f00;
+`;
+
+const ScTriggerSpan = styled.span`
   color: #f00;
 `;
 
@@ -32,10 +39,13 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <Knobs onChange={setStateKnobsData} />
-    <Dropdown {...{
-      ...props,
-      trigger: triggerAsJSX ? <ScTrigger>{trigger}</ScTrigger> : trigger,
-      onVisibleChange
-    }} />
+    <div>
+      This text is to make the dropdown not stick to the left of the window. <Dropdown {...{
+        ...props,
+        trigger: triggerAsJSX ? <ScTriggerJsx>{trigger}</ScTriggerJsx> : <ScTriggerSpan>{trigger}</ScTriggerSpan>,
+        onVisibleChange
+      }} />
+    </div>
+    <LongArticle />
   </>;
 }

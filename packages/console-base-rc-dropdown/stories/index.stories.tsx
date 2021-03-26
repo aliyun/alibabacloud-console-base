@@ -10,10 +10,8 @@ import pkgInfo from '../package.json';
 
 import DemoDefault from './demo-default';
 import DemoHook from './demo-hook';
-import DemoFuck from './demo-fuck';
 
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
     .add('default', () => <DemoDefault />)
-    .add('hook', () => <DemoHook />)
-    .add('fuck', () => <DemoFuck />);
+    .add('hook', () => <DemoHook />);

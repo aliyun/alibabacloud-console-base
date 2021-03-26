@@ -2,7 +2,7 @@ import {
   useCallback
 } from 'react';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useDispatchSetVisible from './use-dispatch-set-visible';
 
 export default function useHandleDocKeydown(): (e: KeyboardEvent) => void {
@@ -10,7 +10,7 @@ export default function useHandleDocKeydown(): (e: KeyboardEvent) => void {
     onEsc,
     onNavUp,
     onNavDown
-  } = useProps();
+  } = useModelProps();
   const dispatchToggleVisible = useDispatchSetVisible();
   
   return useCallback((e: KeyboardEvent): void => {

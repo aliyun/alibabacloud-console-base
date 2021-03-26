@@ -1,0 +1,83 @@
+import React from 'react';
+import styled from 'styled-components';
+import {
+  CSSTransition
+} from 'react-transition-group';
+
+import {
+  mixinTextPrimary,
+  mixinBorderTertiary,
+  mixinBgPrimary,
+  mixinShadowLDown
+} from '@alicloud/console-base-theme';
+import {
+  FontBase12
+} from '@alicloud/console-base-theme-sc-base';
+
+import {
+  useDropVisible,
+  useDropStyle,
+  useHandleDropExit,
+  useHandleDropExitDone,
+  useRefDrop
+} from '../../../model';
+
+import Header from './header';
+import Body from './body';
+import Footer from './footer';
+
+const ScDrop = styled(FontBase12)`
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  min-width: 120px;
+  font-size: 12px;
+  transition: all ease-in-out 300ms;
+  ${mixinTextPrimary}
+  ${mixinBorderTertiary}
+  ${mixinBgPrimary}
+  ${mixinShadowLDown}
+  
+  &.enter {
+    opacity: 0;
+    transform: translate(0, 10px);
+  }
+  
+  &.enter-active {
+    opacity: 1;
+  }
+  
+  &.exit {
+    opacity: 1;
+  }
+  
+  &.exit-active {
+    opacity: 0;
+    transform: translate(0, 10px);
+  }
+`;
+
+export default function TheDrop(): JSX.Element {
+  const refDrop = useRefDrop();
+  const dropVisible = useDropVisible();
+  const dropStyle = useDropStyle();
+  const handleDropExit = useHandleDropExit();
+  const handleDropExitDone = useHandleDropExitDone();
+  
+  return <CSSTransition {...{
+    in: dropVisible,
+    unmountOnExit: true,
+    timeout: {
+      enter: 10,
+      exit: 300
+    },
+    onExit: handleDropExit,
+    onExited: handleDropExitDone
+  }}>
+    <ScDrop style={dropStyle} ref={refDrop}>
+      <Header />
+      <Body />
+      <Footer />
+    </ScDrop>
+  </CSSTransition>;
+}

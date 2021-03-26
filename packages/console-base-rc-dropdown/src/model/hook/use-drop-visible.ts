@@ -1,11 +1,11 @@
+import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
-import useProps from './use-props';
 
-export default function useVisible(): boolean {
+export default function useDropVisible(): boolean {
   const {
     disabled,
     visible
-  } = useProps();
+  } = useModelProps();
   const {
     visible: visibleInState
   } = useModelState();

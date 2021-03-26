@@ -2,22 +2,22 @@ import {
   useCallback
 } from 'react';
 
+import useModelProps from './_use-model-props';
 import useModelIsUnmounted from './_use-model-is-unmounted';
 import useModelState from './_use-model-state';
 import useDispatchSetVisibleTimer from './use-dispatch-set-visible-timer';
 import useDispatchSetVisible from './use-dispatch-set-visible';
-import useVisible from './use-visible';
-import useProps from './use-props';
+import useDropVisible from './use-drop-visible';
 
 export default function useHandleSetVisible(): (payload: boolean) => void {
   const {
     onVisibleChange
-  } = useProps();
+  } = useModelProps();
   const {
     visibleTimer
   } = useModelState();
   const isUnmounted = useModelIsUnmounted();
-  const visible = useVisible();
+  const visible = useDropVisible();
   const dispatchToggleVisibleTimer = useDispatchSetVisibleTimer();
   const dispatchSetVisible = useDispatchSetVisible();
   

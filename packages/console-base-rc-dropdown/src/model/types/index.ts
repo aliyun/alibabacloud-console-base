@@ -24,8 +24,8 @@ export type TModelAction = {
   type: EAction.SET_VISIBLE_TIMER;
   payload: number | null;
 } | {
-  type: EAction.SET_DROP_POSITION;
-  payload: IModelStateDropPosition;
+  type: EAction.SET_DROP_EXITING;
+  payload: boolean;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;
@@ -33,7 +33,7 @@ export type TModelDispatch = Dispatch<TModelAction>;
 export interface IModelState {
   visible: boolean;
   visibleTimer: number | null; // 如果是 visible 的时候就是隐藏
-  dropPosition: IModelStateDropPosition;
+  dropExiting: boolean;
 }
 
 export interface IModelReducer {
@@ -44,6 +44,7 @@ export interface IModelContext {
   props: IPropsDropdown;
   state: IModelState;
   refDropdown: MutableRefObject<HTMLDivElement | null>;
+  refDrop: MutableRefObject<HTMLDivElement | null>;
   isUnmounted(): boolean;
   dispatch: TModelDispatch;
 }
