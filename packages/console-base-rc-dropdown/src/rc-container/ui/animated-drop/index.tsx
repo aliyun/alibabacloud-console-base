@@ -38,22 +38,15 @@ const ScDrop = styled(FontBase12)`
   ${mixinBgPrimary}
   ${mixinShadowLDown}
   
-  &.enter {
-    opacity: 0;
-    transform: translate(0, 10px);
-  }
-  
-  &.enter-active {
-    opacity: 1;
-  }
-  
-  &.exit {
-    opacity: 1;
-  }
-  
+  &.enter,
   &.exit-active {
     opacity: 0;
     transform: translate(0, 10px);
+  }
+  
+  &.enter-active,
+  &.exit {
+    opacity: 1;
   }
 `;
 
