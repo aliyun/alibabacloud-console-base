@@ -1,12 +1,12 @@
 {
-  "name": "@alicloud/console-base-messenger",
-  "version": "1.1.14",
-  "description": "ConsoleBase 信使 - 与控制台应用之间的交互",
+  "name": "@alicloud/console-base-types-settings-toolkit",
+  "version": "0.0.1",
+  "description": "ConsoleBase 类型 - CONSOLE_BASE_SETTINGS.TOOLKIT",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-messenger",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-settings-toolkit",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -20,7 +20,9 @@
   },
   "keywords": [
     "console-base",
-    "messenger"
+    "types",
+    "settings",
+    "toolkit"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
@@ -32,12 +34,6 @@
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3"
   },
-  "dependencies": {
-    "@alicloud/console-base-common-typings": "^1.0.33",
-    "@alicloud/console-base-types-settings-toolkit": "^0.0.1",
-    "@alicloud/console-base-log-sls": "^1.0.54",
-    "@alicloud/post-message": "^1.0.45"
-  },
   "scripts": {
     "start": "breezr start-storybook",
     "test": "breezr test:unit",
@@ -45,9 +41,8 @@
     "build:cjs": "breezr build --engine babel",
     "build:bundle": "breezr build --engine webpack",
     "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
-    "build": "yarn build:esm && yarn build:cjs && yarn build:bundle && yarn build:typings",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": "ebe2db789dfbfa2957c80115d310a2216dff7f3d"
+  }
 }

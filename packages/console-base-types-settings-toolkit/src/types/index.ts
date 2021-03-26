@@ -1,5 +1,3 @@
-/* ---- CONSOLE_BASE_SETTINGS.REGION 类型 ---- */
-
 // 工具的 label 定制属性
 export interface ISettingsToolkitItemLabel {
   icon?: 'survey' | 'qr' | 'dingding'; // 预设的图标（问卷、二维码、钉钉），考虑的是特别通用的场景
@@ -32,7 +30,6 @@ export interface ISettingsToolkitItem {
 }
 
 export interface ISettingsToolkit {
-  contact?: boolean; // 展示「联系我们」
   api?: Record<string, unknown> | null | boolean; // 展示「API Inspector」，对象表示对此组件的自定义透传
   version?: 'old' | 'new' | null | boolean; // 「返回旧版」或「体验新版」，需要通过 @alicloud/console-base-messenger 自定义对应操作
   customTools?: ISettingsToolkitItem[]; // 自定义工具

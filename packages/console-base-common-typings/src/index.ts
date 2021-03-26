@@ -10,11 +10,7 @@ export type {
   ISettingsRegionGroup as SettingsRegionGroup,
   ISettingsRawRegion as SettingsRawRegion,
   ISettingsRegion as SettingsRegion,
-  ISettingsResourceGroup as SettingsResourceGroup,
-  ISettingsToolkit as SettingsToolkit,
-  ISettingsToolkitItem as SettingsToolkitItem,
-  ISettingsToolkitItemLabel as SettingsToolkitItemLabel,
-  ISettingsToolkitItemTooltip as SettingsToolkitItemTooltip
+  ISettingsResourceGroup as SettingsResourceGroup
 } from './types';
 
 // TODO 这个包不纯洁...了

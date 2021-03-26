@@ -1,6 +1,6 @@
 import {
   SettingsToolkitItem
-} from '@alicloud/console-base-common-typings';
+} from '@alicloud/console-base-types-settings-toolkit';
 
 export interface IPayloadArmsError {
   message: string;
