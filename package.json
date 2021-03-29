@@ -7,7 +7,7 @@
   "devDependencies": {
     "@alicloud/eslint-config": "^1.1.15",
     "@alicloud/stylelint-config": "^1.0.12",
-    "@types/react": "^16.14.4",
+    "@types/react": "^16.14.5",
     "@types/react-dom": "^16.9.11",
     "eslint": "^7.23.0",
     "lerna": "^4.0.0",
