@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-demo-theme-switcher",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "description": "ConsoleBase DEMO 专用组件 - 主题切换",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -40,9 +40,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.27",
-    "@alicloud/mere-dom": "^1.0.30"
+    "@alicloud/console-base-theme": "^1.2.10",
+    "@alicloud/demo-rc-elements": "^1.1.28",
+    "@alicloud/mere-dom": "^1.0.31"
   },
   "scripts": {
     "start": "breezr start-storybook",

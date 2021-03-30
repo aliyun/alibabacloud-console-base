@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme-sc-base",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "控制台主题的基础 styled-components",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,10 +24,10 @@
     "sc"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.42",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.43",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.27",
+    "@alicloud/demo-rc-elements": "^1.1.28",
     "@types/jest": "^26.0.22",
     "@types/react": "^16.14.5",
     "@types/styled-components": "^5.1.9",
@@ -42,7 +42,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.2.9"
+    "@alicloud/console-base-theme": "^1.2.10"
   },
   "scripts": {
     "start": "breezr start-storybook",
