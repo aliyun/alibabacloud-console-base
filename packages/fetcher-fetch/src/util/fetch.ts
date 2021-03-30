@@ -43,7 +43,7 @@ export default function(url: string, {
     
     // URL 不存在或者请求过程被中断（例如刷新页面）会发生此类错误
     // TypeError: "NetworkError when attempting to fetch resource."
-    throw createError(EFetchError.NETWORK, err?.message);
+    throw createError(EFetchError.NETWORK, err.message);
   });
   
   return timeout > 0 ? new Promise<Response>((resolve, reject) => {

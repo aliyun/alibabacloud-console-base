@@ -63,7 +63,6 @@ export interface IPropsTopNavAccount extends IPropsTopNavButton {
 }
 
 export interface IPropsTopNavPure {
-  bodyClass?: string;
   dock?: IPropsTopNavDock | null; // 程序坞
   logo?: IPropsTopNavLogo | null;
   menus?: (IPropsTopNavButton | null)[] | null;

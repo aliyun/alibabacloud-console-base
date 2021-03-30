@@ -8,7 +8,6 @@ import {
 import Ui from './ui';
 
 export default function WithProvider({
-  bodyClass,
   dock,
   logo,
   menus,
@@ -20,7 +19,6 @@ export default function WithProvider({
   ...props
 }: IPropsTopNav): JSX.Element {
   return <Provider props={{
-    bodyClass,
     dock,
     logo,
     menus,
