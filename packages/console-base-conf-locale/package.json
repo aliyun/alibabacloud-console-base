@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-locale",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "description": "ConsoleBase CONF.LOCALE",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.29",
+    "@alicloud/demo-rc-elements": "^1.1.30",
     "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.14.5",
@@ -36,8 +36,8 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/cookie": "^1.0.49",
-    "@alicloud/fetcher-jsonp": "^1.0.51",
+    "@alicloud/cookie": "^1.0.50",
+    "@alicloud/fetcher-jsonp": "^1.0.52",
     "lodash": "^4.17.21"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-demo-theme-switcher",
-  "version": "1.0.44",
+  "version": "1.0.45",
   "description": "ConsoleBase DEMO 专用组件 - 主题切换",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -40,8 +40,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.2.11",
-    "@alicloud/demo-rc-elements": "^1.1.29",
+    "@alicloud/console-base-theme": "^1.2.12",
+    "@alicloud/demo-rc-elements": "^1.1.30",
     "@alicloud/mere-dom": "^1.0.32"
   },
   "scripts": {
