@@ -23,7 +23,10 @@ tnpm i @alicloud/fetcher -S
 
 # Polyfill
 
-这里对浏览器的依赖主要有两个：[fetch] 和 [Promise]，其中 [fetch] 在这里已经由 [whatwg-fetch] 保证了，[Promise] 需要应用代码保证。
+这里对浏览器的依赖主要有两个：[fetch] 和 [Promise]：
+
+* `fetch` 在依赖包 `@alicloud/fetcher-fetch` 中用 [unfetch] 做了 fallback，没有全局 polyfill，应用可自行选择，比如 [whatwg-fetch]
+* `Promise` 需要应用代码保证
 
 # API
 
@@ -307,5 +310,6 @@ export type {
 
 [fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[unfetch]: https://github.com/developit/unfetch
 [whatwg-fetch]: https://github.com/github/fetch
 [axios]: https://github.com/axios/axios
