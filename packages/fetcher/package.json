@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher",
-  "version": "1.0.53",
+  "version": "1.0.54",
   "description": "类似 axios，封装 fetch/jsonp，可以加拦截器",
   "license": "MIT",
   "sideEffects": false,
@@ -30,8 +30,8 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.30",
-    "@alicloud/fetcher-demo-helpers": "^1.0.52",
+    "@alicloud/demo-rc-elements": "^1.1.31",
+    "@alicloud/fetcher-demo-helpers": "^1.0.53",
     "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
     "@types/qs": "^6.9.6",
@@ -42,9 +42,9 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/fetcher-fetch": "^1.0.53",
-    "@alicloud/fetcher-jsonp": "^1.0.52",
-    "@alicloud/json-stringify-ordered": "^1.0.27",
+    "@alicloud/fetcher-fetch": "^1.0.54",
+    "@alicloud/fetcher-jsonp": "^1.0.53",
+    "@alicloud/json-stringify-ordered": "^1.0.28",
     "lodash": "^4.17.21",
     "qs": "^6.10.1"
   },

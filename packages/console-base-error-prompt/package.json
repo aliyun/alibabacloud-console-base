@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt",
-  "version": "1.1.75",
+  "version": "1.1.76",
   "description": "ConsoleBase 错误弹窗器",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,10 +24,10 @@
     "promise"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.45",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.46",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.30",
+    "@alicloud/demo-rc-elements": "^1.1.31",
     "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
     "@types/qs": "^6.9.6",
@@ -44,12 +44,12 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.1.37",
-    "@alicloud/console-base-rc-button": "^1.0.73",
-    "@alicloud/console-base-rc-dialog": "^1.0.85",
-    "@alicloud/console-base-rc-icon": "^1.1.0",
-    "@alicloud/console-base-rc-pagination": "^1.0.81",
-    "@alicloud/console-base-theme": "^1.2.12",
+    "@alicloud/console-base-intl-factory-basic": "^1.1.38",
+    "@alicloud/console-base-rc-button": "^1.0.74",
+    "@alicloud/console-base-rc-dialog": "^1.0.86",
+    "@alicloud/console-base-rc-icon": "^1.1.1",
+    "@alicloud/console-base-rc-pagination": "^1.0.82",
+    "@alicloud/console-base-theme": "^1.2.13",
     "lodash": "^4.17.21",
     "qs": "^6.10.1"
   },

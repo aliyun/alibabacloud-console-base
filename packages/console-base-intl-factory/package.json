@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-intl-factory",
-  "version": "1.1.46",
+  "version": "1.1.47",
   "description": "ConsoleBase Intl Factory",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
-    "@alicloud/demo-rc-elements": "^1.1.30",
+    "@alicloud/demo-rc-elements": "^1.1.31",
     "@types/jest": "^26.0.22",
     "@types/react": "^16.14.5",
     "jest": "^26.6.3",
@@ -38,8 +38,8 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.1.37",
-    "@alicloud/console-base-rc-intl": "^1.0.69"
+    "@alicloud/console-base-intl-factory-basic": "^1.1.38",
+    "@alicloud/console-base-rc-intl": "^1.0.70"
   },
   "scripts": {
     "start": "breezr start-storybook",
