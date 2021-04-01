@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-pagination",
-  "version": "1.0.82",
+  "version": "1.0.83",
   "description": "ConsoleBase 组件 - 分页",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -40,7 +40,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.1.38",
+    "@alicloud/console-base-intl-factory-basic": "^1.1.39",
     "@alicloud/console-base-rc-button": "^1.0.74",
     "@alicloud/console-base-rc-icon": "^1.1.1",
     "@alicloud/console-base-theme": "^1.2.13"

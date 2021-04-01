@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-loading",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "ConsoleBase 组件 - 加载中",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-common-typings": "^1.1.4",
-    "@alicloud/console-base-intl-factory-basic": "^1.1.38",
+    "@alicloud/console-base-intl-factory-basic": "^1.1.39",
     "@alicloud/console-base-rc-icon": "^1.1.1",
     "@alicloud/console-base-theme": "^1.2.13",
     "@alicloud/react-hook-is-unmounted": "^1.0.38",
