@@ -3,6 +3,7 @@
   "version": "1.0.5",
   "description": "ConsoleBase 组件 - 寻求用户关注",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

@@ -3,6 +3,7 @@
   "version": "1.3.27",
   "description": "控制台基础 Fetcher（无风控）",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

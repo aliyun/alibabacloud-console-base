@@ -3,6 +3,7 @@
   "version": "1.0.54",
   "description": "@alicloud/console-fetcher 请求拦截 - 类 POST 请求添加安全参数",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

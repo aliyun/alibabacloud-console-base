@@ -3,6 +3,7 @@
   "version": "1.3.4",
   "description": "ConsoleBase 组件 - 吊顶",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

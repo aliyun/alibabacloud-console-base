@@ -3,6 +3,7 @@
   "version": "1.1.90",
   "description": "ConsoleBase 错误弹窗器（集中代理）",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

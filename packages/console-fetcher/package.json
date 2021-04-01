@@ -3,6 +3,7 @@
   "version": "1.3.33",
   "description": "控制台 fetcher",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
