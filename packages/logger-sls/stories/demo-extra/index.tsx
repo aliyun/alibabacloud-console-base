@@ -46,6 +46,20 @@ function testSlsSampling(): void {
   });
 }
 
+function testSlsComplexData(): void {
+  sls('@alicloud/logger-sls/sampling', {
+    a: {
+      b: true,
+      c: {
+        hello: 'string',
+        arr: [1, 2, {
+          value: 3
+        }]
+      }
+    }
+  });
+}
+
 export default function DemoExtra(): JSX.Element {
   useEffect(() => {
     testSlsOnLoad(); // 会延时发送
@@ -59,5 +73,6 @@ export default function DemoExtra(): JSX.Element {
     <Button onClick={testSlsOnceCustom}>testSlsOnceCustom</Button>
     <Button onClick={testSlsOnceCustom2}>testSlsOnceCustom2</Button>
     <Button onClick={testSlsSampling}>testSlsSampling</Button>
+    <Button onClick={testSlsComplexData}>testSlsComplexData</Button>
   </>;
 }
