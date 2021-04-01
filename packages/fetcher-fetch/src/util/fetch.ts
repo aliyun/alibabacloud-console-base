@@ -1,3 +1,5 @@
+import unfetch from 'unfetch';
+
 import {
   IFetchOptions
 } from '../types';
@@ -36,6 +38,7 @@ export default function(url: string, {
   timeout = 0,
   ...fetchOptions
 }: IFetchOptions = {}): Promise<Response> {
+  const fetch = window.fetch || unfetch as unknown as WindowOrWorkerGlobalScope['fetch'];
   const promise = fetch(url, fetchOptions as RequestInit).catch(err => {
     if (err.name === EFetchError.TIMEOUT) {
       throw err;

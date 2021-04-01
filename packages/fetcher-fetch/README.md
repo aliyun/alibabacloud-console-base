@@ -3,7 +3,7 @@
 
 > `@alicloud/fetcher` 的底层 [fetch]，可以单独使用。几乎原生的 `fetch`，除了：
 > 1. 添加 timeout（原生 [fetch] 不支持超时）
-> 2. 引入 polyfill [whatwg-fetch]
+> 2. 没有 fetch 的情况下使用 [unfetch]，它非常轻量，不做全局性 polyfill，应用有需要的话，可以自行引入 [whatwg-fetch]
 
 # INSTALL
 
@@ -27,4 +27,5 @@ fetch(url, {
 ```
 
 [fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+[unfetch]: https://github.com/developit/unfetch
 [whatwg-fetch]: https://github.com/github/fetch

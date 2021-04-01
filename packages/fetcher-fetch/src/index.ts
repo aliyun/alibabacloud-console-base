@@ -1,5 +1,3 @@
-import 'whatwg-fetch'; // polyfill
-
 export { default } from './util/fetch';
 
 export {
