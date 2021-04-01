@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-intl",
-  "version": "1.0.70",
+  "version": "1.0.71",
   "description": "ConsoleBase 组件 - 带样式的国际化文案展示",
   "license": "MIT",
   "sideEffects": false,
@@ -25,7 +25,7 @@
     "intl"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.46",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.47",
     "@alicloud/console-toolkit-cli": "^1.2.0",
     "@alicloud/console-toolkit-preset-component": "^1.2.9",
     "@types/jest": "^26.0.22",

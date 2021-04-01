@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/logger-sls",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "SLS logger factory",
   "license": "MIT",
   "sideEffects": false,
@@ -36,7 +36,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/fetcher-fetch": "^1.0.54",
+    "@alicloud/fetcher-fetch": "^1.1.0",
     "@alicloud/ua": "^1.0.28"
   },
   "scripts": {

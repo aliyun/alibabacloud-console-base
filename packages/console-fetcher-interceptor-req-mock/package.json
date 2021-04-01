@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-req-mock",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "description": "@alicloud/console-fetcher 请求拦截 - mock 转接",
   "license": "MIT",
   "sideEffects": false,
@@ -39,8 +39,8 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-env": "^1.1.43",
-    "@alicloud/fetcher": "^1.0.54"
+    "@alicloud/console-base-conf-env": "^1.1.44",
+    "@alicloud/fetcher": "^1.0.55"
   },
   "scripts": {
     "start": "breezr start-storybook",

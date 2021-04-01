@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-biz",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "description": "@alicloud/console-fetcher 响应拦截 - 业务层错误",
   "license": "MIT",
   "sideEffects": false,
@@ -38,7 +38,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@alicloud/fetcher": "^1.0.54"
+    "@alicloud/fetcher": "^1.0.55"
   },
   "scripts": {
     "start": "breezr start-storybook",
