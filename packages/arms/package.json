@@ -3,6 +3,7 @@
   "version": "1.0.4",
   "description": "基于 CDN 形式的 ARMS 埋点的类型封装，及相关工具方法",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

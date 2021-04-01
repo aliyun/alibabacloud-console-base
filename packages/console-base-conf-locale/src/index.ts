@@ -9,7 +9,6 @@ export {
 
 export { default as cookieGetLanguage } from './util/cookie-get-language';
 export { default as cookieSetLanguage } from './util/cookie-set-language';
-export { default as switchLanguage } from './util/switch-language';
 
 export type {
   IConfLocale as ConsoleBaseConfLocale

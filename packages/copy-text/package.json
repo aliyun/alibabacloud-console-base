@@ -3,6 +3,7 @@
   "version": "1.0.49",
   "description": "Copy Text",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

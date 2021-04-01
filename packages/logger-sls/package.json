@@ -3,6 +3,7 @@
   "version": "1.2.5",
   "description": "SLS logger factory",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

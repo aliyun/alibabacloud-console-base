@@ -3,6 +3,7 @@
   "version": "1.2.22",
   "description": "ConsoleBase CONF.LOCALE",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
@@ -37,7 +38,6 @@
   },
   "dependencies": {
     "@alicloud/cookie": "^1.0.50",
-    "@alicloud/fetcher-jsonp": "^1.0.52",
     "lodash": "^4.17.21"
   },
   "scripts": {

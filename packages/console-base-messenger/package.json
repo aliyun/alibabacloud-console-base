@@ -3,6 +3,7 @@
   "version": "1.1.19",
   "description": "ConsoleBase 信使 - 与控制台应用之间的交互",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

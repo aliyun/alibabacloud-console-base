@@ -3,6 +3,7 @@
   "version": "1.0.27",
   "description": "JSON stringify in order, can be used for comparison or as cache keys",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

@@ -3,6 +3,7 @@
   "version": "1.0.37",
   "description": "混合黑白名单检查器",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

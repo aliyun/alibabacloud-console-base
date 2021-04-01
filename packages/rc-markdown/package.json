@@ -3,6 +3,7 @@
   "version": "1.0.14",
   "description": "React wrapped Markdown based on micromark",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

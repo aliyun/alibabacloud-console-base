@@ -3,6 +3,7 @@
   "version": "1.0.59",
   "description": "ConsoleBase Log SLS",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

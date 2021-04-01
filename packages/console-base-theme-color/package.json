@@ -3,6 +3,7 @@
   "version": "1.0.39",
   "description": "控制台主题颜色 - 仅颜色",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

@@ -3,6 +3,7 @@
   "version": "1.0.40",
   "description": "阿里云控制台（接入 viper）功能开关检查（工厂方法）",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",

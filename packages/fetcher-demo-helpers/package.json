@@ -3,6 +3,7 @@
   "version": "1.0.52",
   "description": "fetcher 测试专用包，避免代码冗余",
   "license": "MIT",
+  "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
