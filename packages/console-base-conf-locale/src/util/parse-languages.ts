@@ -1,8 +1,5 @@
-import _intersection from 'lodash/intersection';
-
 import {
   ELanguage,
-  LANGUAGES_DEFAULT,
   LANGUAGES_ALL
 } from '../const';
 
@@ -12,19 +9,16 @@ import {
  */
 export default function parseLanguages(languagesInSettings: ELanguage[] = []): ELanguage[] {
   if (!languagesInSettings.length) {
-    return LANGUAGES_DEFAULT;
+    return [ELanguage.EN, ELanguage.ZH, ELanguage.ZT, ELanguage.JA];
   }
   
-  const languages: ELanguage[] = _intersection(languagesInSettings, LANGUAGES_ALL);
+  const languages: ELanguage[] = [ELanguage.EN, ELanguage.ZH];
   
-  // 保证英语和简体中文一定存在
-  if (!languages.includes(ELanguage.EN)) {
-    languages.unshift(ELanguage.EN);
-  }
-  
-  if (!languages.includes(ELanguage.ZH)) {
-    languages.push(ELanguage.ZH);
-  }
+  languagesInSettings.forEach(v => {
+    if (!languages.includes(v) && LANGUAGES_ALL.includes(v)) {
+      languages.push(v);
+    }
+  });
   
   return languages;
 }

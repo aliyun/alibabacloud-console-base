@@ -5,13 +5,6 @@ import {
 
 export const COOKIE_KEY = 'aliyun_lang';
 
-export const LANGUAGES_DEFAULT: ELanguage[] = [
-  ELanguage.EN,
-  ELanguage.ZH,
-  ELanguage.ZT,
-  ELanguage.JA
-];
-
 export const LANGUAGES_ALL: ELanguage[] = [
   ELanguage.EN,
   ELanguage.ZH,
