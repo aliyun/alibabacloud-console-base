@@ -21,12 +21,11 @@ export interface IFactoryOptions {
    */
   logstore: string;
   /**
-   * APIVersion，不知所谓的参数，但必需，说是保留字段，
-   * 默认 `0.6.0`（文档中的版本号）
+   * 不知所谓的参数，但必需，说是保留字段，默认 `0.6.0`（文档中的版本号），请不要使用
    */
   apiVersion?: string;
   /**
-   * 生产出的日志方法的整体采样率，可以在调用的时候通过 sampling 参数覆盖，范围为 [0, 1]，默认 1
+   * 生产出的日志方法的整体采样率，可以在调用的时候通过 sampling 参数覆盖，范围为 (0, 1]，默认 1
    * 
    * 一般不建议在 factory 上设置采样率
    */
@@ -83,15 +82,19 @@ export interface ILogOptions extends ILogOptionsQuick {
   group?: string;
 }
 
+export interface IFnLogQuick {
+  <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+}
+
 export interface IFnLog {
   <I= void>(topic: string, info?: I, options?: ILogOptions): void;
-  debug<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
-  log<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
-  info<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
-  warn<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
-  error<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
-  fatal<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
-  biz<I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  debug: IFnLogQuick;
+  log: IFnLogQuick;
+  info: IFnLogQuick;
+  warn: IFnLogQuick;
+  error: IFnLogQuick;
+  fatal: IFnLogQuick;
+  biz: IFnLogQuick;
 }
 
 export interface IFnFactory {

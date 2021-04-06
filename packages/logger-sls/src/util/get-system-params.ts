@@ -10,8 +10,8 @@ interface ISystemParams {
   REFERRER: string;
   LOCATION_HOST: string;
   LOCATION_PATHNAME: string;
-  LOCATION_SEARCH: string; // 去掉 ?
-  LOCATION_HASH: string; // 去掉 #
+  LOCATION_SEARCH: string; // 去掉 `?`
+  LOCATION_HASH: string; // 去掉 `#`
 }
 
 const IN_IFRAME: boolean = window !== window.top;

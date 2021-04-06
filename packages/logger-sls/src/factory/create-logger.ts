@@ -2,7 +2,8 @@ import {
   IFactoryOptions,
   ILogOptionsQuick,
   ILogOptions,
-  IFnLog
+  IFnLog,
+  IFnLogQuick
 } from '../types';
 import getSystemParams from '../util/get-system-params';
 import logPipe from '../util/log-pipe';
@@ -37,23 +38,21 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
   const pipe = logPipe(project, endpoint, logstore, apiVersion);
   const ONCE: Record<string, 1> = {};
   
-  // 检查是否上报
-  function checkIfIgnore(instant?: boolean, sampling?: number, onceKey?: string): boolean {
+  /**
+   * 检查是否需要忽略
+   */
+  function checkIfIgnore(sampling?: number, onceKey?: string): boolean {
     // onBeforeSend 阻止发送
     if ((onBeforeSend && onBeforeSend(factoryOptions) === false)) { // 不能 simplify to !onBeforeSend(factoryOptions)
       return true;
     }
     
-    // 已发送过，且只需要发送一次，则忽略
+    // 只需要发送一次，已发送过，则忽略
     if (onceKey && ONCE[onceKey]) {
       return true;
     }
     
-    // instant 将忽略 sampling
-    if (instant) {
-      return false;
-    }
-    
+    // 采样，`(0, 1)` 开区间
     if (typeof sampling === 'number' && sampling > 0 && sampling < 1) {
       return Math.random() > sampling;
     }
@@ -64,12 +63,12 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
   function sls<I = void>(topic: string, info?: I, {
     group = 'LOG',
     sampling = factorySampling,
-    instant,
-    once
+    once,
+    instant
   }: ILogOptions = {}): void {
     const onceKey: string | undefined = getOnceKey(topic, once);
     
-    if (checkIfIgnore(instant, sampling, onceKey)) {
+    if (checkIfIgnore(sampling, onceKey)) {
       return;
     }
     
@@ -86,34 +85,20 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     }, instant);
   }
   
-  sls.debug = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
-    ...options,
-    group: 'DEBUG'
-  });
-  sls.log = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
-    ...options,
-    group: 'LOG'
-  });
-  sls.info = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
-    ...options,
-    group: 'INFO'
-  });
-  sls.warn = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
-    ...options,
-    group: 'WARN'
-  });
-  sls.error = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
-    ...options,
-    group: 'ERROR'
-  });
-  sls.fatal = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
-    ...options,
-    group: 'FATAL'
-  });
-  sls.biz = <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
-    ...options,
-    group: 'BIZ'
-  });
+  function creteQuickFn(group: string): IFnLogQuick {
+    return <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
+      ...options,
+      group
+    });
+  }
+  
+  sls.debug = creteQuickFn('DEBUG');
+  sls.log = creteQuickFn('LOG');
+  sls.info = creteQuickFn('INFO');
+  sls.warn = creteQuickFn('WARN');
+  sls.error = creteQuickFn('ERROR');
+  sls.fatal = creteQuickFn('FATAL');
+  sls.biz = creteQuickFn('BIZ');
   
   return sls;
 }
