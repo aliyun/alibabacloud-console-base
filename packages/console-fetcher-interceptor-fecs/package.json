@@ -41,7 +41,7 @@
     "@alicloud/console-base-conf-env": "^1.1.44",
     "@alicloud/console-one-config": "^1.0.48",
     "@alicloud/cookie": "^1.0.51",
-    "@alicloud/fetcher": "^1.0.55",
+    "@alicloud/fetcher": "^1.0.56",
     "@alicloud/fetcher-fetch": "^1.1.0"
   },
   "scripts": {
