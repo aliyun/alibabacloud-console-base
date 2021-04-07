@@ -1,3 +1,5 @@
+import _forEach from 'lodash/forEach';
+
 import {
   JsonpResponse
 } from '@alicloud/fetcher-jsonp';
@@ -26,9 +28,11 @@ function createError(name: string, message: string): Error {
 export async function convertResponseFromFetch<T = void>(response: Response): Promise<IFetcherResponse<T>> {
   const headers: Record<string, string> = {};
   
-  response.headers?.forEach((v, k) => {
-    headers[normalizeHeaderKey(k)] = v;
-  });
+  if (typeof response.headers?.forEach === 'function') {
+    response.headers.forEach((v, k) => {
+      headers[normalizeHeaderKey(k)] = v;
+    });
+  }
   
   if (!response.ok) { // 如 400 500 系列错误
     throw createError(ERROR_RESPONSE_STATUS, `response status ${response.status}`);
