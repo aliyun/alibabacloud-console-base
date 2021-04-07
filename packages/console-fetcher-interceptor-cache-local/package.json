@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-cache-local",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "@alicloud/fetcher 请求拦截 - 缓存",
   "license": "MIT",
   "sideEffects": false,

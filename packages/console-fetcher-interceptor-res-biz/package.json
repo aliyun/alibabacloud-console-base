@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-biz",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "description": "@alicloud/console-fetcher 响应拦截 - 业务层错误",
   "license": "MIT",
   "sideEffects": false,

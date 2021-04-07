@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-arms",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "description": "@alicloud/console-fetcher ARMS 拦截",
   "license": "MIT",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-merger",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "@alicloud/fetcher 请求拦截 - 合并请求",
   "license": "MIT",
   "sideEffects": false,

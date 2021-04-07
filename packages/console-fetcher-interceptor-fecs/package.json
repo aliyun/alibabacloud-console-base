@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-fecs",
-  "version": "1.0.61",
+  "version": "1.0.62",
   "description": "@alicloud/console-fetcher 请求 + 响应拦截 - FECS",
   "license": "MIT",
   "sideEffects": false,

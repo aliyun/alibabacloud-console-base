@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-sls",
-  "version": "1.0.63",
+  "version": "1.0.64",
   "description": "SLS logger interceptor for @alicloud/console-fetcher",
   "license": "MIT",
   "sideEffects": false,
