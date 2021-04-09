@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-demo-helpers",
-  "version": "1.0.53",
+  "version": "1.0.54",
   "description": "fetcher 测试专用包，避免代码冗余",
   "license": "MIT",
   "sideEffects": false,
@@ -39,8 +39,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/arms": "^1.0.5",
-    "@alicloud/demo-rc-elements": "^1.1.31"
+    "@alicloud/arms": "^1.0.6",
+    "@alicloud/demo-rc-elements": "^1.1.32"
   },
   "scripts": {
     "start": "breezr start-storybook",
