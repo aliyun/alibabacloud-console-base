@@ -5,13 +5,13 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@alicloud/eslint-config": "^1.1.17",
+    "@alicloud/eslint-config": "^1.1.18",
     "@alicloud/stylelint-config": "^1.0.12",
     "@types/react": "^16.14.5",
     "@types/react-dom": "^16.9.11",
     "eslint": "^7.23.0",
     "lerna": "^4.0.0",
-    "npm-check-updates": "^11.3.0",
+    "npm-check-updates": "^11.4.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "stylelint": "^13.12.0"
@@ -27,6 +27,7 @@
     "lerna:boot": "lerna bootstrap --hoist",
     "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
+    "lerna:publish:canary": "lerna publish --no-verify-access --no-verify-registry --npm-tag=canary --canary=canary",
     "lerna:build": "lerna run prepublishOnly",
     "tnpm:sync": "lerna exec tnpm sync",
     "ncu:main": "ncu",

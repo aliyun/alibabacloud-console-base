@@ -26,8 +26,8 @@
     "risk-control"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.2.0",
-    "@alicloud/console-toolkit-preset-component": "^1.2.9",
+    "@alicloud/console-toolkit-cli": "^1.2.13",
+    "@alicloud/console-toolkit-preset-component": "^1.2.13",
     "@alicloud/demo-rc-elements": "^1.1.31",
     "@alicloud/fetcher-demo-helpers": "^1.0.53",
     "@types/jest": "^26.0.22",
@@ -37,7 +37,7 @@
     "react": "^16.14.0",
     "styled-components": "^5.2.3",
     "ts-jest": "^26.5.4",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.4"
   },
   "peerDependencies": {
     "react": ">=16.8",

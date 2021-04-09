@@ -1,8 +1,7 @@
 /* global describe, it, expect */
 
 import getFromSettings from '../src/util/get-from-settings';
-import getFromHostname from '../src/util/get-from-hostname';
-import getFromYundunHref from '../src/util/get-from-yundun-href';
+import getFromUrl from '../src/util/get-from-url';
 
 import pkgInfo from '../package.json';
 
@@ -24,23 +23,20 @@ describe(pkgInfo.name, () => {
     expect(getFromSettings('renew4whatever')).toBe('renew');
   });
   
-  it('getFromHostname', () => {
-    expect(getFromHostname('oss.console.aliyun.com')).toBe('oss');
-    expect(getFromHostname('ossnew.console.aliyun.com')).toBe('oss');
-    expect(getFromHostname('ossnext.console.aliyun.com')).toBe('oss');
-    expect(getFromHostname('oss-pre.console.aliyun.com')).toBe('oss');
-    expect(getFromHostname('pre-ossnext.console.aliyun.com')).toBe('oss');
-    expect(getFromHostname('pre-ossnew.console.aliyun.com')).toBe('oss');
-    expect(getFromHostname('pre-ossnew-cn-hangzhou.console.aliyun.com')).toBe('oss');
-    expect(getFromHostname('renewnew.console.aliyun.com')).toBe('renew');
-    expect(getFromHostname('renewnext.console.aliyun.com')).toBe('renew');
-    expect(getFromHostname('renew.console.aliyun.com')).toBe('renew');
-  });
-  
-  it('getFromYundunHref', () => {
-    expect(getFromYundunHref('https://yundun.console.aliyun.com')).toBe('');
-    expect(getFromYundunHref('https://yundun.console.aliyun.com/?p=cas')).toBe('cas');
-    expect(getFromYundunHref('https://yundun.console.aliyun.com?p=waf')).toBe('waf');
-    expect(getFromYundunHref('https://yundun.console.aliyun.com?p=cwfnext')).toBe('cwf');
+  it('getFromUrl', () => {
+    expect(getFromUrl('https://oss.console.aliyun.com')).toBe('oss');
+    expect(getFromUrl('https://ossnew.console.aliyun.com')).toBe('oss');
+    expect(getFromUrl('https://ossnext.console.aliyun.com')).toBe('oss');
+    expect(getFromUrl('https://oss-pre.console.aliyun.com')).toBe('oss');
+    expect(getFromUrl('https://pre-ossnext.console.aliyun.com')).toBe('oss');
+    expect(getFromUrl('https://pre-ossnew.console.aliyun.com')).toBe('oss');
+    expect(getFromUrl('https://pre-ossnew-cn-hangzhou.console.aliyun.com')).toBe('oss');
+    expect(getFromUrl('https://renewnew.console.aliyun.com')).toBe('renew');
+    expect(getFromUrl('https://renewnext.console.aliyun.com')).toBe('renew');
+    expect(getFromUrl('https://renew.console.aliyun.com')).toBe('renew');
+    expect(getFromUrl('https://yundun.console.aliyun.com')).toBe('yundun');
+    expect(getFromUrl('https://yundun.console.aliyun.com/?p=cas')).toBe('cas');
+    expect(getFromUrl('https://yundun.console.aliyun.com?p=waf')).toBe('waf');
+    expect(getFromUrl('https://yundun.console.aliyun.com?p=cwfnext')).toBe('cwf');
   });
 });
