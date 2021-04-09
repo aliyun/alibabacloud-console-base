@@ -27,7 +27,7 @@
     "lerna:boot": "lerna bootstrap --hoist",
     "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
-    "lerna:publish:canary": "lerna publish --no-verify-access --no-verify-registry --npm-tag=canary --canary=canary",
+    "lerna:publish:canary": "lerna publish --no-verify-access --no-verify-registry --dist-tag=canary --canary=canary",
     "lerna:build": "lerna run prepublishOnly",
     "tnpm:sync": "lerna exec tnpm sync",
     "ncu:main": "ncu",
