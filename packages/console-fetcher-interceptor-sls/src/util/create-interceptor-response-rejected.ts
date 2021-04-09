@@ -54,7 +54,9 @@ export default function createInterceptorResponseRejected({
       eagleEyeTraceId: response?.headers['Eagleeye-Traceid']
     };
     
-    sls.error<ISlsInfo>(topicError, slsParams);
+    sls.error<ISlsInfo>(topicError, slsParams, {
+      delay: 2000 // 延时 2s
+    });
     
     throw err;
   };

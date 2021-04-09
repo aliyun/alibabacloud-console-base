@@ -22,6 +22,15 @@ function testSlsInstant(): void {
   });
 }
 
+function testSlsDelay(): void {
+  sls('@alicloud/logger-sls/instant', {
+    type: 'instant',
+    hello: 'world'
+  }, {
+    delay: 1234
+  });
+}
+
 function testSlsOnce(): void {
   sls('@alicloud/logger-sls/once', undefined, {
     once: true
@@ -68,11 +77,12 @@ export default function DemoExtra(): JSX.Element {
   
   return <>
     <P>看 Console</P>
-    <Button onClick={testSlsInstant}>testSlsInstant</Button>
-    <Button onClick={testSlsOnce}>testSlsOnce</Button>
-    <Button onClick={testSlsOnceCustom}>testSlsOnceCustom</Button>
-    <Button onClick={testSlsOnceCustom2}>testSlsOnceCustom2</Button>
-    <Button onClick={testSlsSampling}>testSlsSampling</Button>
-    <Button onClick={testSlsComplexData}>testSlsComplexData</Button>
+    <Button onClick={testSlsInstant}>instant</Button>
+    <Button onClick={testSlsDelay}>delay</Button>
+    <Button onClick={testSlsOnce}>once</Button>
+    <Button onClick={testSlsOnceCustom}>onceCustom</Button>
+    <Button onClick={testSlsOnceCustom2}>onceCustom2</Button>
+    <Button onClick={testSlsSampling}>sampling</Button>
+    <Button onClick={testSlsComplexData}>complexData</Button>
   </>;
 }
