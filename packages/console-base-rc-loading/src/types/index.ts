@@ -3,8 +3,8 @@ import {
 } from 'react';
 
 import {
-  DataWithLoading
-} from '@alicloud/console-base-common-typings';
+  ELoadingStatus
+} from '../const';
 
 interface IWithLoading<T> {
   messageLoading?: string | JSX.Element;
@@ -18,6 +18,15 @@ interface IWithLoading<T> {
 export type TStatus = 'loading' | 'error' | 'empty';
 export type TAlign = 'l' | 'r' | 'c';
 
+/**
+ * 带加载状态的数据
+ */
+export interface IDataWithLoading<T> {
+  loading: ELoadingStatus;
+  data: T;
+  error?: Error;
+}
+
 export interface IPropsLoading extends HTMLAttributes<HTMLDivElement> {
   message?: string | JSX.Element;
   inline?: boolean;
@@ -26,7 +35,7 @@ export interface IPropsLoading extends HTMLAttributes<HTMLDivElement> {
   retry?(): void;
 }
 
-export interface IPropsWithLoading<T> extends Partial<DataWithLoading<T | null>>, IWithLoading<T> {}
+export interface IPropsWithLoading<T> extends Partial<IDataWithLoading<T | null>>, IWithLoading<T> {}
 
 export interface IPropsWithPromise<T> extends IWithLoading<T> {
   promise?: Promise<T> | null;

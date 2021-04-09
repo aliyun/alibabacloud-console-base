@@ -46,7 +46,6 @@ const ScLoadingInline = styled.span`
 
 const ScIconWrap = styled.span`
   display: inline-block;
-  padding-top: 1px;
   width: 2em;
   vertical-align: top;
   text-align: center;

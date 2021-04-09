@@ -2,12 +2,11 @@ import _isEmpty from 'lodash/isEmpty';
 import React from 'react';
 
 import {
-  ELoading
-} from '@alicloud/console-base-common-typings';
-
-import {
   IPropsWithLoading
 } from '../../types';
+import {
+  ELoadingStatus
+} from '../../const';
 import Loading from '../loading';
 
 export default function WithLoading<T>({
@@ -21,13 +20,13 @@ export default function WithLoading<T>({
   renderLoaded
 }: IPropsWithLoading<T>): JSX.Element {
   switch (loading) {
-    case ELoading.ERROR:
+    case ELoadingStatus.ERROR:
       return <Loading {...{
         status: 'error',
         message: retry ? messageErrorRetry : messageError,
         retry
       }} />;
-    case ELoading.SUCCESS:
+    case ELoadingStatus.SUCCESS:
       if (_isEmpty(data)) {
         return <Loading {...{
           status: 'empty',

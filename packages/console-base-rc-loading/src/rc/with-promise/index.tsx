@@ -4,14 +4,14 @@ import React, {
 } from 'react';
 
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
-import {
-  ELoading,
-  DataWithLoading
-} from '@alicloud/console-base-common-typings';
 
 import {
+  IDataWithLoading,
   IPropsWithPromise
 } from '../../types';
+import {
+  ELoadingStatus
+} from '../../const';
 import WithLoading from '../with-loading';
 
 export default function WithPromise<T>({
@@ -19,7 +19,7 @@ export default function WithPromise<T>({
   ...props
 }: IPropsWithPromise<T>): JSX.Element | null {
   const isUnmounted = useIsUnmounted();
-  const [stateDwl, setStateDwl] = useState<DataWithLoading<T | null> | null>(null);
+  const [stateDwl, setStateDwl] = useState<IDataWithLoading<T | null> | null>(null);
   
   useEffect(() => {
     if (!promise) {
@@ -29,7 +29,7 @@ export default function WithPromise<T>({
     }
     
     setStateDwl({
-      loading: ELoading.LOADING,
+      loading: ELoadingStatus.LOADING,
       data: null
     });
     
@@ -39,7 +39,7 @@ export default function WithPromise<T>({
       }
       
       setStateDwl({
-        loading: ELoading.SUCCESS,
+        loading: ELoadingStatus.SUCCESS,
         data: result
       });
     }).catch(err => {
@@ -48,7 +48,7 @@ export default function WithPromise<T>({
       }
       
       setStateDwl({
-        loading: ELoading.ERROR,
+        loading: ELoadingStatus.ERROR,
         data: null,
         error: err
       });
