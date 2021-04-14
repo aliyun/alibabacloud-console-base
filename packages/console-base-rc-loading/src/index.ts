@@ -8,6 +8,7 @@ export {
 } from './const';
 
 export type {
+  IDataWithLoading as DataWithLoading,
   IPropsLoading as LoadingProps,
   IPropsWithLoading as WithLoadingProps,
   IPropsWithPromise as WithPromiseProps

@@ -6,11 +6,12 @@ import {
   ELoadingStatus
 } from '../const';
 
-interface IWithLoading<T> {
+interface IWithLoadingBase<T> {
   messageLoading?: string | JSX.Element;
   messageError?: string | JSX.Element;
   messageErrorRetry?: string | JSX.Element;
   messageEmpty?: string | JSX.Element;
+  isEmpty?(data: T): boolean;
   retry?(): void;
   renderLoaded(data: T): JSX.Element;
 }
@@ -35,8 +36,8 @@ export interface IPropsLoading extends HTMLAttributes<HTMLDivElement> {
   retry?(): void;
 }
 
-export interface IPropsWithLoading<T> extends Partial<IDataWithLoading<T | null>>, IWithLoading<T> {}
+export interface IPropsWithLoading<T> extends Partial<IDataWithLoading<T | null>>, IWithLoadingBase<T> {}
 
-export interface IPropsWithPromise<T> extends IWithLoading<T> {
+export interface IPropsWithPromise<T> extends IWithLoadingBase<T> {
   promise?: Promise<T> | null;
 }

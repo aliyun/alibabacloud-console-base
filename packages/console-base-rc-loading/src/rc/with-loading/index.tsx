@@ -1,5 +1,7 @@
 import _isEmpty from 'lodash/isEmpty';
-import React from 'react';
+import React, {
+  useCallback
+} from 'react';
 
 import {
   IPropsWithLoading
@@ -16,25 +18,33 @@ export default function WithLoading<T>({
   messageEmpty,
   loading,
   data,
+  isEmpty,
   retry,
   renderLoaded
-}: IPropsWithLoading<T>): JSX.Element {
-  switch (loading) {
-    case ELoadingStatus.ERROR:
+}: IPropsWithLoading<T>): JSX.Element | null {
+  const handleRenderError = useCallback((): JSX.Element => <Loading {...{
+    status: 'error',
+    message: retry ? messageErrorRetry : messageError,
+    retry
+  }} />, [messageError, messageErrorRetry, retry]);
+  const handleRenderSuccess = useCallback((): JSX.Element => {
+    if (!data || _isEmpty(data) || (isEmpty && isEmpty(data))) {
       return <Loading {...{
-        status: 'error',
-        message: retry ? messageErrorRetry : messageError,
-        retry
+        status: 'empty',
+        message: messageEmpty
       }} />;
+    }
+    
+    return renderLoaded(data);
+  }, [data, messageEmpty, isEmpty, renderLoaded]);
+  
+  switch (loading) {
+    case ELoadingStatus.IDLE:
+      return null;
+    case ELoadingStatus.ERROR:
+      return handleRenderError();
     case ELoadingStatus.SUCCESS:
-      if (_isEmpty(data)) {
-        return <Loading {...{
-          status: 'empty',
-          message: messageEmpty
-        }} />;
-      }
-      
-      return renderLoaded(data!);
+      return handleRenderSuccess();
     default:
       return <Loading {...{
         message: messageLoading
