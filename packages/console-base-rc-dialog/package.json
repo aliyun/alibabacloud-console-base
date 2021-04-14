@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dialog",
-  "version": "1.0.88",
+  "version": "1.0.89",
   "description": "ConsoleBase 组件 - Dialog",
   "license": "MIT",
   "sideEffects": false,
