@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.0.48",
     "@alicloud/console-toolkit-cli": "^1.2.13",
-    "@alicloud/console-toolkit-preset-component": "^1.2.13",
+    "@alicloud/console-toolkit-preset-component": "^1.2.14",
     "@alicloud/demo-rc-elements": "^1.1.32",
     "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
