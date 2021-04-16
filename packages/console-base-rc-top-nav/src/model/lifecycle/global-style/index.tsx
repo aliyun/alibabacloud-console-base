@@ -8,12 +8,8 @@ import {
 import {
   SIZE
 } from '@alicloud/console-base-theme';
-import {
-  addClass,
-  removeClass
-} from '@alicloud/mere-dom';
 
-const BODY_CLASS = 'hasTopbar';
+import toggleBodyClass from '../../../util/toggle-body-class';
 
 const GlobalStyleHasTopNav = createGlobalStyle`
   body.hasTopbar {
@@ -24,9 +20,9 @@ const GlobalStyleHasTopNav = createGlobalStyle`
 
 export default function GlobalStyle(): JSX.Element {
   useEffect(() => {
-    addClass(document.body, BODY_CLASS);
+    toggleBodyClass();
     
-    return () => removeClass(document.body, BODY_CLASS);
+    return () => toggleBodyClass(false);
   }, []);
   
   return <GlobalStyleHasTopNav />;
