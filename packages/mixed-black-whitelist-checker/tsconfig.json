@@ -13,6 +13,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "sourceMap": true,
     "moduleResolution": "node",
     "baseUrl": "./",
     "outDir": "lib"

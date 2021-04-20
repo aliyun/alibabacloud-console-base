@@ -6,13 +6,14 @@
       "es2015",
       "es2017"
     ],
-    "strict": false,
+    "strict": true,
     "allowJs": false,
     "resolveJsonModule": true,
     "jsx": "react",
     "declaration": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "sourceMap": true,
     "moduleResolution": "node",
     "baseUrl": "./",
     "outDir": "lib"

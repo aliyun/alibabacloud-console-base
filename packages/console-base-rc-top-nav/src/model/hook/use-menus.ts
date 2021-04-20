@@ -8,15 +8,15 @@ import {
 import buildMenuLanguage from '../../util/build-menu-language';
 import buildMenuAccount from '../../util/build-menu-account';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useHandleMenuDropdownVisibleChange from './use-handle-menu-dropdown-visible-change';
 
 export default function useMenus(): IPropsTopNavButton[] {
   const {
     menus,
     language,
-    account = {}
-  } = useProps();
+    account
+  } = useModelProps();
   const handleMenuDropdownVisibleChange = useHandleMenuDropdownVisibleChange();
   
   return useMemo((): IPropsTopNavButton[] => {

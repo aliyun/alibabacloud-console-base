@@ -2,12 +2,12 @@ import {
   useCallback
 } from 'react';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 
 export default function useHandleMenuDropdownVisibleChange(): (visible: boolean, onVisibleChange?: (visible: boolean) => void, key?: string) => void {
   const {
     onMenuDropdown
-  } = useProps();
+  } = useModelProps();
   
   return useCallback((visible: boolean, onVisibleChange?: (visible: boolean) => void, key?: string): void => {
     if (visible && onMenuDropdown && key) {
