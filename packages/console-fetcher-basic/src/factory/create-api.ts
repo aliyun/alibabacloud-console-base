@@ -7,6 +7,7 @@ import {
   MULTI_TYPES
 } from '../const';
 import {
+  IConsoleFetcherConfig,
   IFnConsoleApi,
   IConsoleApiOptions,
   IConsoleApiMultiAction,
@@ -17,10 +18,10 @@ import getApiUrl from '../util/get-api-url';
 import callApi from '../util/call-api';
 import callApiMulti from '../util/call-api-multi';
 
-function createApi(fetcher: Fetcher, type: ETypeApi.OPEN | ETypeApi.INNER | ETypeApi.CONTAINER): IFnConsoleApi;
-function createApi(fetcher: Fetcher, type: ETypeApi.OPEN_MULTI): IFnConsoleApiMulti;
+function createApi(fetcher: Fetcher<IConsoleFetcherConfig>, type: ETypeApi.OPEN | ETypeApi.INNER | ETypeApi.CONTAINER): IFnConsoleApi;
+function createApi(fetcher: Fetcher<IConsoleFetcherConfig>, type: ETypeApi.OPEN_MULTI): IFnConsoleApiMulti;
 
-function createApi(fetcher: Fetcher, type: ETypeApi): IFnConsoleApi | IFnConsoleApiMulti {
+function createApi(fetcher: Fetcher<IConsoleFetcherConfig>, type: ETypeApi): IFnConsoleApi | IFnConsoleApiMulti {
   const url = getApiUrl(type);
   
   if (MULTI_TYPES.includes(type)) {

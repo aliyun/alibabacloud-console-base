@@ -62,7 +62,7 @@ export interface IPropsTopNavAccount extends IPropsTopNavButton {
   avatar?: string; // 当前用户头像
 }
 
-export interface IPropsTopNavPure {
+export interface IPropsTopNav {
   fixed?: boolean;
   dock?: IPropsTopNavDock | null; // 程序坞
   logo?: IPropsTopNavLogo | null;
@@ -71,8 +71,7 @@ export interface IPropsTopNavPure {
   account?: IPropsTopNavAccount | null; // 也属于 menu 但比较特殊，所以单独拎出定义
   customLeft?: ReactNode;
   customRight?: ReactNode;
+  uiProps?: HTMLAttributes<HTMLDivElement>;
   // 任何菜单有 dropdown 的时候，dropdown 展示时的回调，一般用于打点
   onMenuDropdown?(key: string): void;
 }
-
-export interface IPropsTopNav extends IPropsTopNavPure, HTMLAttributes<HTMLDivElement> {}

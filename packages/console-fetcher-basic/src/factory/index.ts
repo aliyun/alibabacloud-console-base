@@ -1,4 +1,5 @@
 import {
+  Fetcher,
   createFetcher
 } from '@alicloud/fetcher';
 import interceptBiz from '@alicloud/console-fetcher-interceptor-res-biz';
@@ -27,7 +28,7 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
     slsConfig,
     armsConfig
   } = interceptorOptions;
-  const fetcher = createFetcher<C>(config);
+  const fetcher = createFetcher<C>(config) as unknown as Fetcher<IConsoleFetcherConfig>; // FIXME
   
   // 顺序很重要...
   interceptBiz(fetcher);
@@ -48,7 +49,7 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
   const callMultiOpenApi = createApi(fetcher, ETypeApi.OPEN_MULTI);
   
   return {
-    ...fetcher,
+    ...(fetcher as unknown as Fetcher<C>),
     callOpenApi: createApiAutoMulti(callOpenApi, callMultiOpenApi),
     callInnerApi,
     callContainerApi,

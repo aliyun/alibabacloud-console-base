@@ -4,7 +4,7 @@ import {
 } from 'react';
 
 import {
-  IPropsTopNavPure
+  IPropsTopNav
 } from '../../types';
 import {
   EAction
@@ -24,12 +24,12 @@ export interface IModelReducer {
 }
 
 export interface IModelProviderProps {
-  props: IPropsTopNavPure;
+  props: IPropsTopNav;
   children: ReactNode;
 }
 
 export interface IModelContext {
-  props: IPropsTopNavPure;
+  props: IPropsTopNav;
   state: IModelState;
   dispatch: TModelDispatch;
 }
