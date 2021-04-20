@@ -1,5 +1,6 @@
 export interface IPayloadTutorRegister {
   id: string;
+  title?: string;
   contents: string[];
 }
 
