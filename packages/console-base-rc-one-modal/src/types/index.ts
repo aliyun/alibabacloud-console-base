@@ -14,7 +14,7 @@ export interface IPropsModal {
   affix?: string | null | Element;
   // 长相
   mode?: EModalMode;
-  visible?: boolean,
+  visible?: boolean;
   zIndex?: number;
   minWidth?: number;
   minHeight?: number;

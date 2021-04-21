@@ -17,7 +17,7 @@ export default function errorToPlain(err: unknown): Record<string, unknown> {
   
   ['message', 'name', 'stack'].forEach(v => {
     if (!plain[v]) {
-      plain[v] = (err as any)[v];
+      plain[v] = (err as unknown as Record<string, unknown>)[v];
     }
   });
   

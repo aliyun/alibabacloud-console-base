@@ -1,5 +1,3 @@
-import _forEach from 'lodash/forEach';
-
 import {
   JsonpResponse
 } from '@alicloud/fetcher-jsonp';

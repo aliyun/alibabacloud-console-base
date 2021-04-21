@@ -1,7 +1,7 @@
 interface IIE8Style {
   styleSheet: {
     cssText: string;
-  }
+  };
 }
 
 export default function injectFont(fontFamily: string, dataUrl?: string): string {

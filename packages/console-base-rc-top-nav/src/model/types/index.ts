@@ -11,7 +11,7 @@ import {
 } from '../const';
 
 export type TModelAction = {
-  type: EAction.NOTHING
+  type: EAction.NOTHING;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;

@@ -54,7 +54,7 @@ function normalizeError(error: Error): Record<string, unknown> {
   
   // eslint-disable-next-line guard-for-in
   for (const k in error) {
-    o[k] = (error as any)[k];
+    o[k] = (error as never)[k];
   }
   
   return o;

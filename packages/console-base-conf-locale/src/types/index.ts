@@ -13,7 +13,7 @@ export interface IWin extends Window {
   ALIYUN_CONSOLE_CONFIG?: { // OneConsole
     LANG?: ELanguage;
     // LOCALE: ELocale;
-  }
+  };
 }
 
 export interface IConfLocale {
