@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-risk",
-  "version": "1.0.93",
+  "version": "1.0.94",
   "description": "@alicloud/console-fetcher 响应拦截 - 风控处理",
   "license": "MIT",
   "sideEffects": false,
@@ -28,8 +28,8 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.14",
-    "@alicloud/demo-rc-elements": "^1.1.33",
-    "@alicloud/fetcher-demo-helpers": "^1.0.55",
+    "@alicloud/demo-rc-elements": "^1.1.34",
+    "@alicloud/fetcher-demo-helpers": "^1.0.56",
     "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.14.5",
@@ -44,13 +44,13 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory": "^1.1.51",
-    "@alicloud/console-base-rc-button": "^1.0.77",
-    "@alicloud/console-base-rc-dialog": "^1.0.91",
+    "@alicloud/console-base-intl-factory": "^1.1.52",
+    "@alicloud/console-base-rc-button": "^1.0.78",
+    "@alicloud/console-base-rc-dialog": "^1.0.92",
     "@alicloud/console-base-rc-flex": "^1.0.45",
-    "@alicloud/console-base-rc-input": "^1.0.75",
-    "@alicloud/console-base-theme": "^1.2.15",
-    "@alicloud/fetcher": "^1.0.58",
+    "@alicloud/console-base-rc-input": "^1.0.76",
+    "@alicloud/console-base-theme": "^1.2.16",
+    "@alicloud/fetcher": "^1.0.59",
     "lodash": "^4.17.21"
   },
   "scripts": {
