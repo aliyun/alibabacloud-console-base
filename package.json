@@ -5,13 +5,13 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@alicloud/eslint-config": "^1.2.0",
+    "@alicloud/eslint-config": "^1.2.2",
     "@alicloud/stylelint-config": "^1.0.12",
     "@types/react": "^16.14.5",
     "@types/react-dom": "^16.9.11",
     "eslint": "^7.24.0",
     "lerna": "^4.0.0",
-    "npm-check-updates": "^11.5.0",
+    "npm-check-updates": "^11.5.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "stylelint": "^13.12.0"
