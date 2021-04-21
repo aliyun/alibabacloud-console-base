@@ -1,7 +1,16 @@
 module.exports = {
-  'no-shadow': 'off', // 必需，否则 enum 会被误报 见 https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md#how-to-use
+  /**
+   * disable eslint base rules so that corresponding @typescript-eslint/xx rules can work without problem
+   * 
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md#how-to-use
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md#how-to-use
+   */
+  'no-shadow': 'off',
+  'no-use-before-define': 'off', // 必需，否则会误报，见 
+  indent: 'off',
+  // now the @typescript-eslint rules
   '@typescript-eslint/no-shadow': ['error'],
-  'no-use-before-define': 'off', // 必需，否则会误报，见 https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
   '@typescript-eslint/no-use-before-define': ['error', {
     ignoreTypeReferences: false
   }],
@@ -21,7 +30,16 @@ module.exports = {
       parameters: 2
     }
   }],
-  '@typescript-eslint/no-var-requires': 'off',
+  '@typescript-eslint/member-delimiter-style': ['error', {
+    multiline: {
+      delimiter: 'semi',
+      requireLast: true
+    },
+    singleline: {
+      delimiter: 'semi',
+      requireLast: true
+    },
+  }],
   '@typescript-eslint/explicit-member-accessibility': ['error', {
     accessibility: 'no-public'
   }],
