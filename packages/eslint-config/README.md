@@ -83,7 +83,7 @@ tnpm i -D eslint @alicloud/eslint-config
 }
 ```
 
-## `.eslintignore`
+## `.eslintignore` 推荐
 
 ```ignore
 # common
@@ -94,8 +94,6 @@ tnpm i -D eslint @alicloud/eslint-config
 
 build/
 coverage/
-lib/
-dist/
 ```
 
 ## npm script
@@ -105,10 +103,12 @@ dist/
 ```json
 {
   "script": {
-    "lint": "eslint src/"
+    "lint": "eslint src/ --ext js,ts,tsx"
   }
 }
 ```
+
+使用 lerna 做包管理的应用，还可以加上 `"lint:packages": "eslint packages/**/src/ --ext js,ts,tsx"`。
 
 在项目根目录下执行 `yarn lint` 或 `npm run lint` 查看结果。
 
