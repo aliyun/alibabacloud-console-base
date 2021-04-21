@@ -84,7 +84,7 @@ export default function DemoOne(): JSX.Element {
   const handleCallMultiContainerApi = useCallback(() => setStatePromise(callMultiContainerApi()), [setStatePromise]);
   
   return <>
-    <H1>利用 mocks.alibaba-inc.com 对 OneConsole 接口进行 mock</H1>
+    <H1>利用 oneapi.alibaba-inc.com 对 OneConsole 接口进行 mock</H1>
     <P>请看 console</P>
     <Button onClick={handleCallOpenApi}>callOpenApi</Button>
     <Button onClick={handleCallInnerApi}>callInnerApi</Button>

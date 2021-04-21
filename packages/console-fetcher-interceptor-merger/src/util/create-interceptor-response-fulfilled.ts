@@ -1,3 +1,5 @@
+import _cloneDeep from 'lodash/cloneDeep';
+
 import {
   FetcherFnInterceptResponseFulfilled
 } from '@alicloud/fetcher';
@@ -16,6 +18,6 @@ export default function createInterceptorResponseFulfilled(): FetcherFnIntercept
       mergerResolve(merger.key, data);
     }
     
-    return data;
+    return _cloneDeep(data); // 避免第一个请求对 data 做了 mutation 而影响到后续的结果
   };
 }

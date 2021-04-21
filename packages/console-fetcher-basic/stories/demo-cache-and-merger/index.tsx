@@ -19,7 +19,7 @@ import {
 const ARR_10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export default function DemoCacheAndMerger(): JSX.Element {
-  const [stateUrl, setStateUrl] = useState<string>('https://mocks.alibaba-inc.com/mock/boshit/success');
+  const [stateUrl, setStateUrl] = useState<string>('https://oneapi.alibaba-inc.com/mock/boshit/success');
   const [stateCacheLocal, setStateCacheLocal] = useState<boolean>(false);
   const [stateMerger, setStateMerger] = useState<boolean>(true);
   const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);

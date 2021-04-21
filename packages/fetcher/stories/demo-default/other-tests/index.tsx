@@ -36,7 +36,7 @@ const params = {
 function testNormal(): Promise<unknown> {
   return get({
     params: paramsInOptions
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success', params);
+  }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
 }
 
 function testPriority(): Promise<unknown> {
@@ -50,7 +50,7 @@ function testPriority(): Promise<unknown> {
         console.info(222); // 在开始执行
       }]
     ]
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success', params);
+  }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
 }
 
 function testSkipNetwork(): Promise<unknown> {
@@ -61,7 +61,7 @@ function testSkipNetwork(): Promise<unknown> {
         throw createErrorSkipNetwork<boolean>(new Promise<boolean>(resolve => window.setTimeout(() => resolve(true), 500)));
       }]
     ]
-  }, 'https://mocks.alibaba-inc.com/mock/boshit/success', params);
+  }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
 }
 
 export default function OtherTests(): JSX.Element {

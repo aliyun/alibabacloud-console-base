@@ -10,7 +10,7 @@ import {
 export default function fetcherDemoInterceptorMockVerifyCodeUrl(config: IDemoConfig): Partial<IDemoConfig> | undefined {
   if (config.url === '/risk/sendVerifyMessage.json') {
     return {
-      url: 'https://mocks.alibaba-inc.com/mock/boshit/risk-send-code'
+      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-send-code'
     };
   }
 }

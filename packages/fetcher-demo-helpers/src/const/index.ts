@@ -1,4 +1,4 @@
-const MOCK_PREFIX = 'https://mocks.alibaba-inc.com/mock/boshit';
+const MOCK_PREFIX = 'https://oneapi.alibaba-inc.com/mock/boshit';
 
 export enum ELoadingStatus {
   IDLE,

@@ -1,7 +1,7 @@
 @alicloud/console-fetcher-interceptor-req-mock
 ===
 
-利用 mocks.alibaba-inc.com 对 OneConsole 及非 OneConsole 的接口进行 mock。
+利用 oneapi.alibaba-inc.com 对 OneConsole 及非 OneConsole 的接口进行 mock。
 
 # 如何使用
 

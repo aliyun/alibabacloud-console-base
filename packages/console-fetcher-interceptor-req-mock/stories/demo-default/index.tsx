@@ -14,7 +14,7 @@ import {
 
 export default function DemoDefault(): JSX.Element {
   return <>
-    <H1>利用 mocks.alibaba-inc.com 对非 OneConsole 接口进行 mock</H1>
+    <H1>利用 oneapi.alibaba-inc.com 对非 OneConsole 接口进行 mock</H1>
     <FetcherDemoRcFetchers {...{
       urls: [
         '/boshit/success',

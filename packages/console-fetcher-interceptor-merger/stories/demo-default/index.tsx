@@ -64,7 +64,7 @@ function cleanJson(o: unknown): string | undefined {
 
 export default function DemoDefault(): JSX.Element {
   const [stateSequence, setStateSequence] = useState<number>(1); // 快速点击 fetch 测试顺序是否按原样
-  const [stateUrl, setStateUrl] = useState<string>('https://mocks.alibaba-inc.com/mock/boshit/success');
+  const [stateUrl, setStateUrl] = useState<string>('https://oneapi.alibaba-inc.com/mock/boshit/success');
   const [stateMethod, setStateMethod] = useState<string>('get');
   const [stateMergerEnabled, setStateMergerEnabled] = useState<boolean>(true);
   const [stateMergerKey, setStateMergerKey] = useState<string>('');
@@ -88,16 +88,21 @@ export default function DemoDefault(): JSX.Element {
       body: stateBody,
       merger: getMerger(stateMergerEnabled, stateMergerKey)
     }).then((o: unknown) => {
-      console.info(stateSequence, o);
+      console.info(stateSequence, o); // eslint-disable-line no-console
       
       return o;
     }, err => {
-      console.info(stateSequence, err);
+      console.info(stateSequence, err); // eslint-disable-line no-console
       
       throw err;
     }));
     setStateSequence(stateSequence + 1);
   }, [stateSequence, stateBody, stateMergerEnabled, stateMergerKey, stateMethod, stateParams, stateUrl]);
+  const handleFetchX3 = useCallback(() => {
+    handleFetch();
+    handleFetch();
+    handleFetch();
+  }, [handleFetch]);
   
   useEffect(() => {
     setStateJsCode(`fetch({
@@ -147,7 +152,7 @@ export default function DemoDefault(): JSX.Element {
         onChange: handleBodyChange
       }} />
     </ScFlex>
-    <Button onClick={handleFetch}>fetch</Button>
+    <Button onClick={handleFetchX3}>fetch x3</Button>
     <ScFlex>
       <Pre>{stateJsCode}</Pre>
       <PrePromise promise={statePromise} />
