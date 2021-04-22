@@ -1,4 +1,3 @@
-import _map from 'lodash/map';
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -33,10 +32,10 @@ function Colors({
   colors
 }: IProps): JSX.Element {
   return <ScColors>
-    {_map(colors, (v, k) => <ScColor key={k} style={{
-      backgroundColor: v,
-      color: readableColor(v, '#ccc', '#ee3')
-    }}>{k}</ScColor>)}
+    {Object.keys(colors).map(v => <ScColor key={v} style={{
+      backgroundColor: colors[v as keyof ThemeColors],
+      color: readableColor(colors[v as keyof ThemeColors], '#ccc', '#ee3')
+    }}>{v}</ScColor>)}
   </ScColors>;
 }
 
