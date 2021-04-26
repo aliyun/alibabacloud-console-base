@@ -21,13 +21,13 @@
     "config"
   ],
   "devDependencies": {
-    "stylelint": "^13.12.0"
+    "stylelint": "^13.13.0"
   },
   "peerDependencies": {
     "stylelint": ">=13"
   },
   "dependencies": {
-    "stylelint-config-standard": "^21.0.0",
+    "stylelint-config-standard": "^22.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^4.1.0",
     "stylelint-processor-styled-components": "^1.10.0"
