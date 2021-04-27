@@ -27,7 +27,11 @@ function needBorder(props: IButtonPropsForSc): boolean {
 }
 
 function getBorderRadius(props: IButtonPropsForSc): string {
-  return needBorder(props) && props.borderRadius ? '2px' : '0';
+  if (!needBorder(props) || !props.borderRadius) {
+    return '0';
+  }
+  
+  return props.borderRadius === 'full' ? '100px' : '2px';
 }
 
 export default css<IButtonPropsForSc>`

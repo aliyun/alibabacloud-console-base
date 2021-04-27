@@ -19,7 +19,13 @@ export interface IButtonPropsForSc extends TPropsForHtmlAnchorNButton {
   size?: EButtonSize;
   textAlign?: 'left' | 'center' | 'right'; // a button is by default center aligned (`align` is a deprecated HTML attribute)
   cursor?: string;
-  borderRadius?: boolean;
+  /**
+   * 在有边框的时候，按钮默认会有个很小的圆角（2px），可以设置
+   * - true 默认
+   * - false 没有圆角
+   * - 'full' 两头圆角
+   */
+  borderRadius?: boolean | 'full';
   noShadow?: boolean; // 去掉 hover 及 active 时的 shadow（对非 tertiary 和 text）
   block?: boolean; // whether to display as a block level dom
   ellipsis?: boolean;
