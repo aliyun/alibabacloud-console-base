@@ -32,5 +32,5 @@ function getBorderRadius(props: IButtonPropsForSc): string {
 
 export default css<IButtonPropsForSc>`
   border: ${props => (needBorder(props) ? '1px solid transparent' : 'none')};
-  border-radius: ${props => getBorderRadius(props)};
+  border-radius: ${getBorderRadius};
 `;

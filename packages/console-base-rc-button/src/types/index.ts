@@ -18,6 +18,7 @@ export interface IButtonPropsForSc extends TPropsForHtmlAnchorNButton {
   theme?: EButtonTheme;
   size?: EButtonSize;
   textAlign?: 'left' | 'center' | 'right'; // a button is by default center aligned (`align` is a deprecated HTML attribute)
+  cursor?: string;
   borderRadius?: boolean;
   noShadow?: boolean; // 去掉 hover 及 active 时的 shadow（对非 tertiary 和 text）
   block?: boolean; // whether to display as a block level dom

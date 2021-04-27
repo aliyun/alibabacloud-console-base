@@ -26,5 +26,5 @@ function getTextAlignLeft(props: IButtonPropsForSc): string {
 }
 
 export default css<IButtonPropsForSc>`
-  text-align: ${props => getTextAlignLeft(props)};
+  text-align: ${getTextAlignLeft};
 `;
