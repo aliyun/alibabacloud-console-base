@@ -21,7 +21,7 @@
     "config"
   ],
   "devDependencies": {
-    "stylelint": "^13.13.0"
+    "stylelint": "^13.13.1"
   },
   "peerDependencies": {
     "stylelint": ">=13"

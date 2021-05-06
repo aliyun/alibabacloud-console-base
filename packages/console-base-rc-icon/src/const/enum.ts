@@ -13,7 +13,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'app' = 'e603', // 应用（单个）
   'cart' = 'e882', // 购物车
   'check-circle-fill' = 'e7e2', // 勾（带填充圈）
-  'diamond' = 'e6df', // 钻石（表示 VIP）
+  'copy' = 'e60d', // 复制
   'dingding' = 'e881', // 钉钉
   'drag' = 'e6e1', // 拖拽
   'empty' = 'e655', // 空
