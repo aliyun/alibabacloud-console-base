@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/rc-markdown",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "React wrapped Markdown based on micromark",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "remark"
   ],
   "devDependencies": {
-    "@alicloud/console-base-theme-sc-base": "^1.1.1",
+    "@alicloud/console-base-theme-sc-base": "^1.1.2",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.16",
-    "@alicloud/demo-rc-elements": "^1.2.1",
+    "@alicloud/demo-rc-elements": "^1.2.2",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.5",
     "jest": "^26.6.3",
