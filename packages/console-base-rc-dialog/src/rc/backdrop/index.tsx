@@ -1,9 +1,6 @@
-import React, {
-  ReactPortal
-} from 'react';
+import React from 'react';
 import {
   render,
-  createPortal,
   unmountComponentAtNode
 } from 'react-dom';
 import styled from 'styled-components';
@@ -16,7 +13,7 @@ interface IProps {
   zIndex: number;
 }
 
-const ID_BACKDROP_GATEWAY_DIV = 'console-base-rc-dialog-overlay-gateway';
+let backdropGateway: HTMLDivElement | null = null;
 
 const ScBackdrop = styled.div`
   position: fixed;
@@ -27,46 +24,42 @@ const ScBackdrop = styled.div`
   ${mixinBgBackdrop};
 `;
 
-function createBackdropGateway(): HTMLElement {
-  const div = document.createElement('div');
+function getBackdropGateWay(): HTMLDivElement {
+  if (!backdropGateway) {
+    backdropGateway = document.createElement('div');
+    backdropGateway.setAttribute('data-dialog-backdrop-overlay', ''); // 仅仅只是给个标注，没有任何意义
+    document.body.appendChild(backdropGateway);
+  }
   
-  div.id = ID_BACKDROP_GATEWAY_DIV;
-  document.body.appendChild(div);
-  
-  return div;
-}
-
-function getBackdropGateWay(): HTMLElement | null {
-  return document.getElementById(ID_BACKDROP_GATEWAY_DIV);
+  return backdropGateway;
 }
 
 export default function Backdrop({
   zIndex
-}: IProps): ReactPortal {
-  return createPortal(<ScBackdrop {...{
+}: IProps): JSX.Element {
+  return <ScBackdrop {...{
     style: {
       zIndex
     }
-  }} />, document.body);
+  }} />;
 }
 
 export function showBackdrop(zIndex: number): void {
-  const gateway: HTMLElement = getBackdropGateWay() || createBackdropGateway();
+  const gateway: HTMLDivElement = getBackdropGateWay();
   
   render(<Backdrop zIndex={zIndex} />, gateway);
 }
 
 export function removeBackdrop(): void {
-  const gateway: HTMLElement | null = getBackdropGateWay();
-
-  if (!gateway) {
+  if (!backdropGateway) {
     return;
   }
   
-  unmountComponentAtNode(gateway);
+  unmountComponentAtNode(backdropGateway);
   
   try {
-    gateway.remove(); // IE 不支持 remove https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+    backdropGateway.remove(); // IE 不支持 remove https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+    backdropGateway = null;
   } catch (e) {
     // 那就不 remove 也没事
   }
