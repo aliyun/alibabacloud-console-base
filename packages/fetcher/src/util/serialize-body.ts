@@ -9,10 +9,19 @@ import serializeParams from './serialize-params';
  * 但有的时候，复杂对象数组 `arr: [{a: xx, b, c}, ...]` 默认转成 arr[0][a]=xx 需要搞成 `arr[0].a=xx`，这个时候可以传 `{ allowDots: true }` 覆盖默认行为
  */
 export default function serializeBody({
+  headers,
   body,
   bodySerializeOptions = {
     arrayFormat: 'repeat'
   }
 }: IFetcherConfig): string {
-  return body ? serializeParams(body, bodySerializeOptions) : '';
+  if (!body) {
+    return '';
+  }
+  
+  if (headers && headers['Content-Type'] === 'application/json') {
+    return typeof body === 'string' ? body : JSON.stringify(body);
+  }
+  
+  return serializeParams(body, bodySerializeOptions);
 }

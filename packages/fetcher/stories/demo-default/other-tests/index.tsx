@@ -19,7 +19,8 @@ import {
 } from '../../fetcher';
 
 const {
-  get
+  get,
+  post
 } = fetcher1;
 
 const paramsInOptions = {
@@ -64,6 +65,15 @@ function testSkipNetwork(): Promise<unknown> {
   }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
 }
 
+function testPostJson(): Promise<unknown> {
+  return post({
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    params: paramsInOptions
+  }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
+}
+
 export default function OtherTests(): JSX.Element {
   const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);
   const handleTestNormal = useCallback(() => setStatePromise(testNormal()), [setStatePromise]);
@@ -81,6 +91,7 @@ export default function OtherTests(): JSX.Element {
     <Button onClick={handleTestNormal}>testNormal</Button>
     <Button onClick={handleTestPriority}>testPriority</Button>
     <Button onClick={handleTestSkipNetwork}>testSkipNetwork</Button>
+    <Button onClick={testPostJson}>testPostJson</Button>
     <PrePromise promise={statePromise} />
   </>;
 }
