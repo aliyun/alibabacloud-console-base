@@ -1,6 +1,5 @@
-// eslint-disable-next-line import/prefer-default-export
 export enum EAction {
-  CHANGE_MODE,
+  SET_MODE,
   REFRESH_WINDOW_SIZE,
   RND_RESIZE_START,
   RND_RESIZE,

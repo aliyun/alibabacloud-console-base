@@ -6,12 +6,12 @@ import {
   EModalMode
 } from '../../const';
 
-import useDispatchChangeMode from './use-dispatch-change-mode';
+import useHandleModeChange from './use-handle-mode-change';
 import useStickRightActive from './use-stick-right-active';
 
 export default function useOnStickRight(): () => void {
-  const dispatchChangeMode = useDispatchChangeMode();
+  const handleModeChange = useHandleModeChange();
   const active = useStickRightActive();
   
-  return useCallback(() => dispatchChangeMode(active ? EModalMode.FREE : EModalMode.TO_THE_RIGHT), [active, dispatchChangeMode]);
+  return useCallback(() => handleModeChange(active ? EModalMode.FREE : EModalMode.TO_THE_RIGHT), [active, handleModeChange]);
 }

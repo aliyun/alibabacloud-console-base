@@ -7,11 +7,11 @@ import {
 } from '../../const';
 
 import useMode from './use-mode';
-import useDispatchChangeMode from './use-dispatch-change-mode';
+import useHandleModeChange from './use-handle-mode-change';
 
 export default function useOnMinimize(): () => void {
   const mode = useMode();
-  const dispatchChangeMode = useDispatchChangeMode();
+  const handleModeChange = useHandleModeChange();
   
-  return useCallback(() => dispatchChangeMode(mode === EModalMode.MINIMIZED ? EModalMode.FREE : EModalMode.MINIMIZED), [mode, dispatchChangeMode]);
+  return useCallback(() => handleModeChange(mode === EModalMode.MINIMIZED ? EModalMode.FREE : EModalMode.MINIMIZED), [mode, handleModeChange]);
 }

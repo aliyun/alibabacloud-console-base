@@ -30,7 +30,7 @@ export interface IPayloadResize {
 export type TModelAction = {
   type: EAction.REFRESH_WINDOW_SIZE | EAction.RND_RESIZE_START | EAction.RND_DRAG_START;
 } | {
-  type: EAction.CHANGE_MODE;
+  type: EAction.SET_MODE;
   payload: EModalMode;
 } | {
   type: EAction.RND_DRAG_STOP;

@@ -7,12 +7,12 @@ import {
 } from '../../const';
 
 import useMode from './use-mode';
-import useDispatchChangeMode from './use-dispatch-change-mode';
+import useHandleModeChange from './use-handle-mode-change';
 
 export default function useOnPin(): () => void {
   const mode = useMode();
-  const dispatchChangeMode = useDispatchChangeMode();
+  const handleModeChange = useHandleModeChange();
   const active = mode === EModalMode.TO_THE_RIGHT_PINNED;
   
-  return useCallback(() => dispatchChangeMode(active ? EModalMode.TO_THE_RIGHT : EModalMode.TO_THE_RIGHT_PINNED), [active, dispatchChangeMode]);
+  return useCallback(() => handleModeChange(active ? EModalMode.TO_THE_RIGHT : EModalMode.TO_THE_RIGHT_PINNED), [active, handleModeChange]);
 }

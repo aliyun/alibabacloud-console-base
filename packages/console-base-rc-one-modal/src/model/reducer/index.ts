@@ -15,7 +15,7 @@ import reduceRefreshWindowSize from './reduce-refresh-window-size';
 
 export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
-    case EAction.CHANGE_MODE:
+    case EAction.SET_MODE:
       return reduceChangeMode(state, action.payload);
     case EAction.RND_DRAG_START:
       return reduceRndDragStart(state);

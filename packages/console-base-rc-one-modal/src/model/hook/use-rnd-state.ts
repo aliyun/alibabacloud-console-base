@@ -122,10 +122,6 @@ export default function useRndState(): IRndState {
         break;
     }
     
-    if (!visible) {
-      x = state.x2 + 20;
-    }
-    
     return {
       mode,
       visible,
