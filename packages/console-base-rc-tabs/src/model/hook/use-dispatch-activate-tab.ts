@@ -3,13 +3,16 @@ import {
 } from 'react';
 
 import {
-  actionActivateTab
-} from '../action';
+  EAction
+} from '../const';
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchActivateTab(): (key: string | number) => void {
+export default function useDispatchActivateTab(): (payload: string | number) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((key: string | number): void => dispatch(actionActivateTab(key)), [dispatch]);
+  return useCallback((payload: string | number): void => dispatch({
+    type: EAction.ACTIVATE_TAB,
+    payload
+  }), [dispatch]);
 }

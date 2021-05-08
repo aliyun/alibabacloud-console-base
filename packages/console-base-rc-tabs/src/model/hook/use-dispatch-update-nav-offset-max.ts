@@ -3,13 +3,16 @@ import {
 } from 'react';
 
 import {
-  actionUpdateNavOffsetMax
-} from '../action';
+  EAction
+} from '../const';
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchUpdateNavOffsetMax(): (offsetMax: number) => void {
+export default function useDispatchUpdateNavOffsetMax(): (payload: number) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((offsetMax: number): void => dispatch(actionUpdateNavOffsetMax(offsetMax)), [dispatch]);
+  return useCallback((payload: number): void => dispatch({
+    type: EAction.UPDATE_NAV_OFFSET_MAX,
+    payload
+  }), [dispatch]);
 }

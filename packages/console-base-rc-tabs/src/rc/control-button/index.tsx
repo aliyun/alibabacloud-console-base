@@ -42,7 +42,7 @@ const ScButton = styled(Button)<IProps>`
     ${mixinTextSecondary}
     
     &:hover {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.05);
       ${mixinTextSecondary}
     }
   `)}
@@ -64,6 +64,7 @@ export default function ControlButton(props: IProps): JSX.Element {
   return <ScButton {...{
     theme: ButtonTheme.NONE,
     size: ButtonSize.NONE,
+    cursor: 'default',
     ...props
   }} />;
 }
