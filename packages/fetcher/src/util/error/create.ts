@@ -6,12 +6,19 @@ import {
 /**
  * 创建 FetcherError 它一定得有 config 属性
  */
-export default function createError<C extends IFetcherConfig = IFetcherConfig>(fetcherConfig: C, name: string, message?: string, code?: string): IFetcherError<C> {
+export default function createError<C extends IFetcherConfig = IFetcherConfig>(fetcherConfig: C, name: string, message?: string, code?: string, responseData?: unknown): IFetcherError<C> {
   const error = new Error(message) as IFetcherError<C>;
   
   error.config = fetcherConfig;
   error.name = name;
-  error.code = code;
+  
+  if (code) {
+    error.code = code;
+  }
+  
+  if (responseData) {
+    error.responseData = responseData;
+  }
   
   return error;
 }

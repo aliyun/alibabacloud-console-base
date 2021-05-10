@@ -12,10 +12,8 @@ import isJsonp from './is-jsonp';
 import serializeBody from './serialize-body';
 import buildUrl from './build-url';
 import canHaveBody from './can-have-body';
-import {
-  convertResponseFromFetch,
-  convertResponseFromJsonp
-} from './convert-response';
+import convertResponseFromFetch from './convert-response-from-fetch';
+import convertResponseFromJsonp from './convert-response-from-jsonp';
 
 /**
  * 将 fetch 和 jsonp 整合在一起（即当 method 为 'JSONP' 的时候会发送 JSONP 请求）
@@ -54,5 +52,5 @@ export default async function fetchX<T = void, C extends IFetcherConfig = IFetch
     fetchOptions.body = serializeBody(fetcherConfig);
   }
   
-  return fetch(fetchUrl, fetchOptions).then(response => convertResponseFromFetch<T>(response));
+  return fetch(fetchUrl, fetchOptions).then(response => convertResponseFromFetch<T>(response, fetcherConfig));
 }

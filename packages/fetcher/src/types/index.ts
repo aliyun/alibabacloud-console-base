@@ -109,16 +109,7 @@ export interface IFetcherResponse<T = void> {
 }
 
 /**
- * 错误类型
- */
-export interface IFetcherError<C extends IFetcherConfig = IFetcherConfig> extends Error {
-  config: C;
-  code?: string; // 为了后边的扩展需要
-  responseData?: unknown; // 如果强行把返回变成出错，则需要记录最原始的 response 中的数据
-}
-
-/**
- * 错误类型
+ * 错误
  */
 export interface IFetcherError<C extends IFetcherConfig = IFetcherConfig> extends Error {
   config: C;
