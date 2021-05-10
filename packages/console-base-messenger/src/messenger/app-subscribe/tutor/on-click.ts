@@ -6,6 +6,15 @@ import {
 } from '../../../const';
 import subscribeByApp from '../../../util/subscribe-by-app';
 
-export default function onTutorClick(fn: (payload: IPayloadTutorClick) => void): () => void {
-  return subscribeByApp<IPayloadTutorClick>(EMessageBroadcastByConsoleBase.TUTOR_CLICK, fn);
+/**
+ * 微教程内部元素 ::tutor-click 点击后的事件注册
+ */
+export default function onTutorClick(fn: (id: string, value: string) => void): () => void {
+  return subscribeByApp<IPayloadTutorClick>(EMessageBroadcastByConsoleBase.TUTOR_CLICK, payload => {
+    if (!payload) {
+      return;
+    }
+    
+    fn(payload.id, payload.value);
+  });
 }
