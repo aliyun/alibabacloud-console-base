@@ -12,6 +12,7 @@ import fastbuySubmitPayment from './fastbuy/fastbuy-submit-payment';
 import fastbuyOrderFinish from './fastbuy/fastbuy-order-finish';
 import tutorStepChange from './tutor/step-change';
 import tutorDismiss from './tutor/dismiss';
+import tutorClick from './tutor/click';
 
 /* --------------------------------------------- *
  * console-base 调用：通知控制台应用
@@ -32,5 +33,6 @@ export default {
   fastbuySubmitPayment,
   fastbuyOrderFinish,
   tutorStepChange,
-  tutorDismiss
+  tutorDismiss,
+  tutorClick
 };

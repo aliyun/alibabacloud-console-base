@@ -19,3 +19,8 @@ export interface IPayloadTutorDismiss {
   id: string;
   done: boolean;
 }
+
+export interface IPayloadTutorClick {
+  id: string;
+  value: string;
+}

@@ -51,7 +51,8 @@ export enum EMessageBroadcastByConsoleBase {
   FASTBUY_ORDER_FINISH = 'console_base_2_app:fastbuy/order_finish',
   // 交互式教程
   TUTOR_STEP_CHANGE = 'console_base_2_app:tutor/step-change',
-  TUTOR_DISMISS = 'console_base_2_app:tutor/dismiss'
+  TUTOR_DISMISS = 'console_base_2_app:tutor/dismiss',
+  TUTOR_CLICK = 'console_base_2_app:tutor/click'
 }
 
 export enum EToolkitTypeShort {

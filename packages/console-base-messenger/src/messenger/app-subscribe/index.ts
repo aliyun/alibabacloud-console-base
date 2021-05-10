@@ -14,6 +14,7 @@ import onFastbuySubmitPayment from './fastbuy/on-fastbuy-submit-payment';
 import onFastbuyOrderFinish from './fastbuy/on-fastbuy-order-finish';
 import onTutorStepChange from './tutor/on-step-change';
 import onTutorDismiss from './tutor/on-dismiss';
+import onTutorClick from './tutor/on-click';
 
 /* --------------------------------------------- *
  * 控制台应用调用：响应 console-base 通知
@@ -36,5 +37,6 @@ export default {
   onFastbuySubmitPayment,
   onFastbuyOrderFinish,
   onTutorStepChange,
-  onTutorDismiss
+  onTutorDismiss,
+  onTutorClick
 };
