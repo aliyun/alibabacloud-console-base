@@ -43,7 +43,9 @@ export interface IPropsTopNavButton extends Omit<Partial<ButtonProps>, 'label'> 
 
 export interface IPropsTopNavLogo extends IPropsTopNavButton {}
 
-export interface IPropsTopNavDock extends Partial<ButtonProps> {}
+export interface IPropsTopNavDock extends Partial<ButtonProps> {
+  onActiveChange?(active: boolean): void;
+}
 
 export interface IPropsTopNavLanguageItem {
   id: string;

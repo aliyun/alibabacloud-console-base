@@ -6,12 +6,15 @@ import {
   EAction
 } from '../const';
 
-import reduceNothing from './reduce-nothing';
+import reduceSetDockHoverActiveTimer from './reduce-set-dock-hover-active-timer';
+import reduceSetDockActive from './reduce-set-dock-active';
 
 export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
-    case EAction.NOTHING:
-      return reduceNothing(state);
+    case EAction.SET_DOCK_ACTIVE:
+      return reduceSetDockActive(state, action.payload);
+    case EAction.SET_DOCK_HOVER_ACTIVE_TIMER:
+      return reduceSetDockHoverActiveTimer(state, action.payload);
     default:
       return state;
   }

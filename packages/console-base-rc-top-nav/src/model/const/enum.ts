@@ -1,3 +1,4 @@
 export enum EAction {
-  NOTHING
+  SET_DOCK_ACTIVE,
+  SET_DOCK_HOVER_ACTIVE_TIMER
 }

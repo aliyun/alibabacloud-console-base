@@ -11,13 +11,25 @@ import {
 } from '../const';
 
 export type TModelAction = {
-  type: EAction.NOTHING;
+  type: EAction.SET_DOCK_ACTIVE;
+  payload: boolean;
+} | {
+  type: EAction.SET_DOCK_HOVER_ACTIVE_TIMER;
+  payload: number | null;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IModelState {}
+export interface IModelState {
+  /**
+   * dock 是否为按下状态，props.dock.active 为其对应受控属性
+   */
+  dockActive: boolean;
+  /**
+   * dock 鼠标移上去后，有个延时按下的逻辑
+   */
+  dockHoverActiveTimer: number | null;
+}
 
 export interface IModelReducer {
   (state: IModelState, action: TModelAction): IModelState;
@@ -31,5 +43,6 @@ export interface IModelProviderProps {
 export interface IModelContext {
   props: IPropsTopNav;
   state: IModelState;
+  isUnmounted(): boolean;
   dispatch: TModelDispatch;
 }
