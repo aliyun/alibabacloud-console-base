@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-one-conf",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "OneConsole Config 对象解析与封装",
   "license": "MIT",
   "sideEffects": false,
@@ -35,8 +35,8 @@
   },
   "dependencies": {
     "@alicloud/console-conf-link-factory": "^1.1.3",
-    "@alicloud/console-one-config": "^1.1.3",
-    "@alicloud/viper-feature-gen": "^1.1.3"
+    "@alicloud/console-one-config": "^1.1.4",
+    "@alicloud/viper-feature-gen": "^1.1.4"
   },
   "scripts": {
     "start": "breezr start-storybook",
