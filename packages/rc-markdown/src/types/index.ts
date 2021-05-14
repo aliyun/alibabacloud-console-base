@@ -3,7 +3,12 @@ import {
   HtmlExtension
 } from 'micromark/dist/shared-types';
 import {
-  MicromarkDirectiveExtensionOptions
+  MicromarkDirective,
+  MicromarkDirectiveText,
+  MicromarkDirectiveLeaf,
+  MicromarkDirectiveContainer,
+  MicromarkDirectiveExtensionOptions,
+  MicromarkDirectiveHtmlContext
 } from 'micromark-extension-directive/html';
 
 import './missing/gfm-html';
@@ -25,3 +30,12 @@ export interface IPropsMarkdown {
   allowDangerousHtml?: boolean;
   plugins?: IPropsMarkdownPlugins;
 }
+
+export type {
+  MicromarkDirective as MarkdownDirective,
+  MicromarkDirectiveText as MarkdownDirectiveText,
+  MicromarkDirectiveLeaf as MarkdownDirectiveLeaf,
+  MicromarkDirectiveContainer as MarkdownDirectiveContainer,
+  MicromarkDirectiveExtensionOptions as MarkdownDirectivePluginOptions,
+  MicromarkDirectiveHtmlContext as MarkdownDirectivePluginContext
+};

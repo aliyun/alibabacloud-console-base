@@ -2,14 +2,11 @@ export { default } from './rc';
 
 export type {
   IPropsMarkdownPlugins as MarkdownPluginsProps,
-  IPropsMarkdown as MarkdownProps
+  IPropsMarkdown as MarkdownProps,
+  MarkdownDirective,
+  MarkdownDirectiveText,
+  MarkdownDirectiveLeaf,
+  MarkdownDirectiveContainer,
+  MarkdownDirectivePluginOptions,
+  MarkdownDirectivePluginContext
 } from './types';
-
-export type {
-  MicromarkDirective as MarkdownDirective,
-  MicromarkDirectiveText as MarkdownDirectiveText,
-  MicromarkDirectiveLeaf as MarkdownDirectiveLeaf,
-  MicromarkDirectiveContainer as MarkdownDirectiveContainer,
-  MicromarkDirectiveExtensionOptions as MarkdownDirectivePluginOptions,
-  MicromarkDirectiveHtmlContext as MarkdownDirectivePluginContext
-} from 'micromark-extension-directive/html';
