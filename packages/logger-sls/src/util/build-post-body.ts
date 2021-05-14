@@ -35,6 +35,15 @@ function convertLogInfo(info: ILogInfo): Record<string, string> {
     }
   });
   
+  /**
+   * SLS 说不要用 __topic__ 做检索... ~~但又必须每条日志有个 __topic__...~~ <- 刚看了文档 __topic__ 非必填
+   * 在发送多条日志的时候，无法通过内部的 __topic__ 检索到相关的内容，这是一个很奇葩的设定，所以这里给每条日志
+   * 增加一个 TOPIC 属性用来检索的时候替代 __topic__
+   * 
+   * 详情 https://aone.alibaba-inc.com/issue/34492769
+   */
+  o.TOPIC = o.__topic__;
+  
   return o;
 }
 

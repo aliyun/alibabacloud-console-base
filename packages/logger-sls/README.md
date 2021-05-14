@@ -108,6 +108,7 @@ export default createLogger(options);
 `LOCATION_SEARCH` | `window.location.search` | 去掉 `?`
 `LOCATION_HASH` | `window.location.hash` | 去掉 `#`
 `GROUP` | 日志分组，`DEBUG | LOG | INFO | WARN | ERROR | FATAL | BIZ | 自定义` | 默认 `LOG`
+`TOPIC` | `__topic__` 的复制 | 多个日志请求并发，会有个 `__topic__0`（合并 topic） 和 `__topic__`（真正），然，控制台检索的时候无法通过 `__topic__` 检索到，我认为这是设计上的 bug，但他们不改，只好新增一个
 
 # 创建一个带更多默认参数的工厂
 
