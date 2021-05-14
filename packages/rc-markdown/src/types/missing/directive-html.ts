@@ -34,7 +34,6 @@ declare module 'micromark-extension-directive/html' {
   interface MicromarkDirectiveBase {
     type: 'textDirective' | 'leafDirective' | 'containerDirective';
     name: string;
-    attributes?: Record<string, string>;
   }
   
   // https://stackoverflow.com/questions/55506545/export-assignment-and-exporting-types-in-typescript-ambient-module
@@ -48,6 +47,7 @@ declare module 'micromark-extension-directive/html' {
     interface MicromarkDirectiveText extends MicromarkDirectiveBase {
       type: 'textDirective';
       label?: string;
+      attributes?: Record<string, string>;
     }
     
     /**
@@ -58,6 +58,7 @@ declare module 'micromark-extension-directive/html' {
     interface MicromarkDirectiveLeaf extends MicromarkDirectiveBase {
       type: 'leafDirective';
       label?: string;
+      attributes?: Record<string, string>;
     }
     
     /**
@@ -79,7 +80,7 @@ declare module 'micromark-extension-directive/html' {
      * :::
      * ::::
      */
-    interface MicromarkDirectiveContainer {
+    interface MicromarkDirectiveContainer extends MicromarkDirectiveBase {
       type: 'containerDirective';
       fenceCount: 1 | 2;
       content: string;
