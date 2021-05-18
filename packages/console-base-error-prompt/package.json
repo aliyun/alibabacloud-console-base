@@ -28,7 +28,7 @@
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.4",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.18",
-    "@alicloud/demo-rc-elements": "^1.2.4",
+    "@alicloud/console-base-demo-helper-error-prompt": "^0.0.1",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.169",
     "@types/qs": "^6.9.6",

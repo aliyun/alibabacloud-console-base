@@ -1,10 +1,15 @@
-import errorPrompt, {
-  ErrorPromptArg,
-  ErrorDetailedInfo,
-  ErrorWithDetails
-} from '../../src';
+import React from 'react';
 
-const ERROR_DETAILS_MIX: ErrorDetailedInfo = {
+import {
+  H3
+} from '@alicloud/demo-rc-elements';
+
+import {
+  IErrorDetails,
+  TErrorArg
+} from '../types';
+
+const ERROR_DETAILS_MIX: IErrorDetails = {
   code: 'ERROR_CODE',
   requestId: 'I_AM_A_FUCKING_REQUEST_ID',
   url: '/fuck/delete?_cache_busting=123456',
@@ -20,14 +25,14 @@ const ERROR_DETAILS_MIX: ErrorDetailedInfo = {
   ].join('&')
 };
 
-export const ERRORS: ErrorDetailedInfo[] = [{
-  message: '你妹登录（官方）',
+export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>JSX as Error</H3>, new Error('Error as Error'), {
+  message: '登录失效（官方）',
   code: 'ConsoleNeedLogin'
 }, {
   message: 'TokenError（官方）',
   code: 'PostonlyOrTokenError'
 }, {
-  message: '你妹登录（非官方）',
+  message: '登录失效（非官方）',
   code: 'YOUR_SISTER_NOT_SIGNED_IN',
   requestId: 'REQUEST_ID_000_SIGN_IN',
   url: 'any url',
@@ -45,13 +50,34 @@ export const ERRORS: ErrorDetailedInfo[] = [{
     collina: '115#1cBu+C1O1TNgn3QyT5EV1Cso5lQGs2AaxuXu1gvG5fZ3qNZ1lR2Habo9Ef6VGub8z8kkY/SfqH88AkNcaoi2vUeyUkPPeKT8ukNdxab1haUdkHNcaLpAurPQOSfPFtNCj+pQ97WRhs1Gv6NDaL9Xt6zCvIAyeH38uWZQG7WRhZz4ODNDaTBXyzEQvsAyFtQ4uWN0aCS+o1fCl1Oa6HHCwN7kOqTsGRxBHfgpxf0umqsb2kGnStS08uIHu9bXKeIlMYDnTsS3hIyTrePvDg+DgOeY6f0UCvbnnc6RWxfApVlWAp1p2rttNNYDuSvMd0lbxYvuF9ojPgb8ugIHvSSEyEEhNdLCPnItxVkjjPHuG5b8ERddAKDf7N5vme9jt0hUkuujKOm6TwD/9vUW1JYzNjF9bCtrUaj/2b0GUX1RX2K4653eaK57R7/SuK+eTheet3LftNS+e11jGamdmXY3U6Gq9uEvSvYGbo/sNB8TMad32W0Ni2446o4QlHNsfaSsdvHUQDZdl3r9L5bAyJuTYjv/MBY3lneekfwHVdH+iTtYH2fSV6SRoyeS5mwlD39e62WVZtIgL7ogCuFMaI/wqdpde17lCaH4HwbaTHlGMNnuviGAFtUr4UcwsM8yBkK6MctKL5wJe69pH1mzjkVfCi7LvZGHbOszkiYpzpgDRp6Jd69MrbsPC/n94C2gvW5qLFFSdnBjHPDZaAylwxxQWqVwZbZU8BDjdv6GzdNrhhOxhY+9LG169S/rdcUeJd3lgjoPrgtLyOKXXRDS+LFhl9flmCkwGHKuv4t5TvGf1OHP4UZE3Bixz1XsXd+mUd3/WvpBwm1qCDtqcbbRHlXm5fjfUaWHTq03tCfcuzD7Vz1='
   }
 }, {
+  message: '复杂的对象...',
+  requestId: '1234567890',
+  url: 'some URL',
+  URL: 'some URL 2',
+  method: 'get',
+  code: 'I_FUCKING_NOT_SIGNED_IN',
+  params: {
+    a: '锄禾日当午',
+    A: '彩虹若等我',
+    ao: {
+      en: 'NO'
+    }
+  },
+  body: {
+    b: '汗滴禾下土',
+    B: '后端好系统',
+    bo: {
+      en: 'NB'
+    }
+  }
+}, {
   message: '无 code，有详情',
   requestId: 'REQUEST_ID_1234567890',
   url: 'any url'
 }, {
   requestId: 'REQUEST_ID_1234567890',
   url: 'any url',
-  toString() {
+  toString(): string {
     return '无 code 无 message';
   }
 }, {
@@ -69,7 +95,7 @@ export const ERRORS: ErrorDetailedInfo[] = [{
   code: 'CODE_WITH_OUT_MESSAGE',
   method: 'GET',
   url: '//get_api?fuck=true',
-  toString() {
+  toString(): string {
     return '有 code 无 message 的错误，message 将 fallback 到 code';
   }
 }, {
@@ -97,25 +123,3 @@ export const ERRORS: ErrorDetailedInfo[] = [{
     'collinaXXX=115#1cBu+C1O1TNgn3QyT5EV1Cso5lQGs2AaxuXu1gvG5fZ3qNZ1lR2Habo9Ef6VGub8z8kkY/SfqH88AkNcaoi2vUeyUkPPeKT8ukNdxab1haUdkHNcaLpAurPQOSfPFtNCj+pQ97WRhs1Gv6NDaL9Xt6zCvIAyeH38uWZQG7WRhZz4ODNDaTBXyzEQvsAyFtQ4uWN0aCS+o1fCl1Oa6HHCwN7kOqTsGRxBHfgpxf0umqsb2kGnStS08uIHu9bXKeIlMYDnTsS3hIyTrePvDg+DgOeY6f0UCvbnnc6RWxfApVlWAp1p2rttNNYDuSvMd0lbxYvuF9ojPgb8ugIHvSSEyEEhNdLCPnItxVkjjPHuG5b8ERddAKDf7N5vme9jt0hUkuujKOm6TwD/9vUW1JYzNjF9bCtrUaj/2b0GUX1RX2K4653eaK57R7/SuK+eTheet3LftNS+e11jGamdmXY3U6Gq9uEvSvYGbo/sNB8TMad32W0Ni2446o4QlHNsfaSsdvHUQDZdl3r9L5bAyJuTYjv/MBY3lneekfwHVdH+iTtYH2fSV6SRoyeS5mwlD39e62WVZtIgL7ogCuFMaI/wqdpde17lCaH4HwbaTHlGMNnuviGAFtUr4UcwsM8yBkK6MctKL5wJe69pH1mzjkVfCi7LvZGHbOszkiYpzpgDRp6Jd69MrbsPC/n94C2gvW5qLFFSdnBjHPDZaAylwxxQWqVwZbZU8BDjdv6GzdNrhhOxhY+9LG169S/rdcUeJd3lgjoPrgtLyOKXXRDS+LFhl9flmCkwGHKuv4t5TvGf1OHP4UZE3Bixz1XsXd+mUd3/WvpBwm1qCDtqcbbRHlXm5fjfUaWHTq03tCfcuzD7Vz1='
   ].join('&')
 }];
-
-export function createErrorWithDetails(): ErrorWithDetails {
-  const error: ErrorWithDetails = new Error('zhege ErrorInstance duixiang libian youge details shuxing');
-  
-  error.details = ERROR_DETAILS_MIX;
-  
-  return error;
-}
-
-export function alertError(o?: ErrorPromptArg): Promise<void> {
-  return errorPrompt(o, error => {
-    if (error.code && ['YOUR_SISTER_NOT_SIGNED_IN', 'I_FUCKING_NOT_SIGNED_IN'].includes(error.code)) {
-      return {
-        // title: '你妹登录呢',
-        button: {
-          label: '唉，登录吧',
-          href: '/'
-        }
-      };
-    }
-  });
-}

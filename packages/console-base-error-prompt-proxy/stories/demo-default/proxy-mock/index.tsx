@@ -16,7 +16,7 @@ import errorPrompt, {
   ErrorPromptExtra
 } from '@alicloud/console-base-error-prompt';
 import {
-  H2,
+  H1,
   Button
 } from '@alicloud/demo-rc-elements';
 
@@ -47,7 +47,7 @@ export default function ProxyMock(): JSX.Element {
   }), []);
   
   return <>
-    <H2>测试专用的 proxy 实现</H2>
+    <H1>测试专用的 proxy 实现</H1>
     <Button {...{
       onClick: handleToggleProxyMocked
     }}>mock proxy {stateProxyMocked ? 'ON' : 'OFF'}</Button>
