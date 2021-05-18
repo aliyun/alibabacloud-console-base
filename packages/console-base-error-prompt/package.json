@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "ConsoleBase 错误弹窗器",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "promise"
   ],
   "devDependencies": {
+    "@alicloud/console-base-demo-helper-error-prompt": "^1.0.0",
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.4",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.18",
-    "@alicloud/console-base-demo-helper-error-prompt": "^0.0.1",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.169",
     "@types/qs": "^6.9.6",
