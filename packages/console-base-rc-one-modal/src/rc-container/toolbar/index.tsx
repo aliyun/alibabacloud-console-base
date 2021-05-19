@@ -6,7 +6,8 @@ import {
   HEIGHT_TOOLBAR
 } from '../../const';
 import {
-  useRndDragHandleClass
+  useRndDragHandleClass,
+  useHandleDragBarDoubleClick
 } from '../../model';
 
 import ButtonMinimize from './button-minimize';
@@ -35,10 +36,12 @@ const ScControls = styled.div`
 
 export default function Toolbar(): JSX.Element {
   const dragHandleClass = useRndDragHandleClass();
+  const handleDragBarDoubleClick = useHandleDragBarDoubleClick();
   
   return <ScToolbar>
     <ScDragHandle {...{
-      className: dragHandleClass
+      className: dragHandleClass,
+      onDoubleClick: handleDragBarDoubleClick
     }} />
     <ScControls>
       <ButtonMinimize />
