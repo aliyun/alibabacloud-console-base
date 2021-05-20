@@ -9,8 +9,8 @@ import {
   IModelState
 } from '../types';
 
+import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
-import useProps from './use-props';
 import useMode from './use-mode';
 
 interface IRndState {
@@ -82,7 +82,7 @@ function getRectForModeFree({
  * 当前状态、大小、位置等信息
  */
 export default function useRndState(): IRndState {
-  const props = useProps();
+  const props = useModelProps();
   const state = useModelState();
   const mode = useMode();
   const {

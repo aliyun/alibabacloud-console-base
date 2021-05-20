@@ -33,7 +33,7 @@ const DEFAULT_PROPS: TModelProps = {
   pinnable: true
 };
 
-export default function useProps(): TModelProps {
+export default function useModelProps(): TModelProps {
   const {
     props
   } = useModelContext();

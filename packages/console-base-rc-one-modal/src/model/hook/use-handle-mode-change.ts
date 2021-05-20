@@ -6,13 +6,13 @@ import {
   EModalMode
 } from '../../const';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useDispatchSetMode from './use-dispatch-set-mode';
 
 export default function useHandleModeChange(): (mode: EModalMode) => void {
   const {
     onModeChange
-  } = useProps();
+  } = useModelProps();
   const dispatchSetMode = useDispatchSetMode();
   
   return useCallback((mode: EModalMode) => {

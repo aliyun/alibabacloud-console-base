@@ -5,9 +5,7 @@ import {
 import {
   EModalMode
 } from '../../../const';
-import {
-  useRndState
-} from '../../hook';
+import useRndState from '../../hook/use-rnd-state';
 
 /**
  * PIN 模式下，需要对其他内容进行左推
@@ -45,18 +43,21 @@ export default function PushBody(): null {
   } = useRndState();
   
   useEffect(() => {
-    if (!visible) {
+    if (!visible || mode !== EModalMode.TO_THE_RIGHT_PINNED) {
       return;
     }
     
-    let style: HTMLStyleElement | undefined;
+    const style: HTMLStyleElement = createStyle(w);
     
-    if (mode === EModalMode.TO_THE_RIGHT_PINNED && w > 0) {
-      style = createStyle(w);
+    // home 有绝对定位布局，它通过监听 resize 进行布局刷新
+    try {
+      window.dispatchEvent(new CustomEvent('resize'));
+    } catch (ex) {
+      // ignore
     }
     
     return () => {
-      style?.parentNode?.removeChild(style);
+      style.parentNode?.removeChild(style);
     };
   }, [mode, visible, w]);
   

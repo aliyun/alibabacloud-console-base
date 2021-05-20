@@ -2,9 +2,7 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useOnWindowResize
-} from '../../hook';
+import useOnWindowResize from '../../hook/use-on-window-resize';
 
 /**
  * 窗口变化需要调整位置和大小等
