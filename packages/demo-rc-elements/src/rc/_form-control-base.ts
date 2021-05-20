@@ -1,32 +1,31 @@
 import styled from 'styled-components';
 
 import {
-  FORM_CONTROL_BDC_ACTIVE,
+  CSS_FORM_CONTROL_BASE,
   FORM_CONTROL_BGC,
   FORM_CONTROL_BGC_HOVER,
+  FORM_CONTROL_BDC_ACTIVE,
   FORM_CONTROL_BGC_ACTIVE
 } from '../const';
 
-import {
-  ButtonBase
-} from './_form-control-base';
-
-export default styled(ButtonBase)`
+export const ButtonBase = styled.button`
   background-color: ${FORM_CONTROL_BGC};
   min-width: 60px;
-  border-radius: 4px;
+  ${CSS_FORM_CONTROL_BASE}
   
   &:hover {
     background-color: ${FORM_CONTROL_BGC_HOVER};
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   &:active {
     background-color: ${FORM_CONTROL_BGC_ACTIVE};
-    box-shadow: none;
   }
   
   &:focus {
     border-color: ${FORM_CONTROL_BDC_ACTIVE};
   }
+`;
+
+export const InputBase = styled.input`
+  ${CSS_FORM_CONTROL_BASE}
 `;

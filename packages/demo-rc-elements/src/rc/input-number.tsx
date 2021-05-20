@@ -6,7 +6,9 @@ import React, {
   useCallback
 } from 'react';
 
-import InputBase from './_input-base';
+import {
+  InputBase
+} from './_form-control-base';
 
 interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'defaultValue' | 'onChange'> {
   value?: number;

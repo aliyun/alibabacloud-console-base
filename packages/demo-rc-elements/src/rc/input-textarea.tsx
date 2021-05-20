@@ -7,7 +7,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import InputBase from './_input-base';
+import {
+  InputBase
+} from './_form-control-base';
 
 interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;

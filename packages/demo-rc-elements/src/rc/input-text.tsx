@@ -9,7 +9,9 @@ import styled, {
   css
 } from 'styled-components';
 
-import InputBase from './_input-base';
+import {
+  InputBase
+} from './_form-control-base';
 
 interface IScInput {
   block: 0 | 1;

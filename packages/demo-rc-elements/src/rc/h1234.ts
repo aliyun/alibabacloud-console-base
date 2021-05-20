@@ -9,20 +9,19 @@ import {
 const cssHeading = css`
   position: relative;
   margin: 2em 0 1em 0;
-  padding: 0 0 0 40px;
-  line-height: 2;
+  padding: 0 0 0 48px;
   ${CSS_FONT_FAMILY}
   
   &:first-child {
     margin-top: 0;
   }
-      
+  
   &:before {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    width: 32px;
+    width: 36px;
     font-weight: 100;
     text-align: center;
     color: #fff;
@@ -32,6 +31,7 @@ const cssHeading = css`
 export const H1 = styled.h1`
   background-color: #000;
   font-size: 18px;
+  line-height: 2;
   color: #fff;
   ${cssHeading}
   
@@ -49,6 +49,7 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   background-color: #333;
   font-size: 14px;
+  line-height: 2.2;
   color: #fff;
   ${cssHeading}
   
@@ -66,6 +67,7 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
   background-color: #eee;
   font-size: 12px;
+  line-height: 2.4;
   ${cssHeading}
   
   .demo-theme-dark & {
@@ -81,6 +83,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
   background-color: #eee;
   font-size: 12px;
+  line-height: 2;
   ${cssHeading}
   
   .demo-theme-dark & {

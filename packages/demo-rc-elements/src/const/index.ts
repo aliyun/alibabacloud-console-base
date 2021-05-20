@@ -2,19 +2,42 @@ import {
   css
 } from 'styled-components';
 
-export const FORM_INPUT_HEIGHT = 28;
-export const FORM_INPUT_BDC = '#eee';
-export const FORM_INPUT_BDC_HOVER = '#ccc';
-export const FORM_INPUT_BDC_FOCUS = '#c9f';
-export const FORM_BUTTON_BDC = 'transparent';
-export const FORM_BUTTON_BDC_HOVER = FORM_INPUT_BDC_HOVER;
-export const FORM_BUTTON_BDC_ACTIVE = '#eee';
-export const FORM_BUTTON_BGC = '#eee';
-export const FORM_BUTTON_BGC_HOVER = '#f7f7f7';
-export const FORM_BUTTON_BGC_ACTIVE = '#eee';
+export const FORM_CONTROL_HEIGHT = 32;
+export const FORM_CONTROL_BDC = '#ddd';
+export const FORM_CONTROL_BDC_HOVER = '#999';
+export const FORM_CONTROL_BDC_ACTIVE = '#999';
+export const FORM_CONTROL_BDC_FOCUS = '#66c';
+export const FORM_CONTROL_BGC = '#f3f3f3';
+export const FORM_CONTROL_BGC_HOVER = '#f3f3f3';
+export const FORM_CONTROL_BGC_ACTIVE = '#f7f7f7';
 
 export const CSS_FONT_FAMILY = css`
   font-family: 'PingFang SC', 'Hiragino Sans GB', Helvetica, Arial, sans-serif;
+`;
+
+export const CSS_FORM_CONTROL_BASE = css`
+  margin: 1px;
+  padding: 0 12px;
+  border: 1px solid ${FORM_CONTROL_BDC};
+  box-sizing: border-box;
+  outline: none;
+  line-height: ${FORM_CONTROL_HEIGHT}px;
+  font-size: 11px;
+  transition: all 0.3s ease-in-out;
+  ${CSS_FONT_FAMILY}
+  
+  &:hover {
+    border-color: ${FORM_CONTROL_BDC_HOVER};
+  }
+  
+  &:active {
+    border-color: ${FORM_CONTROL_BDC_ACTIVE};
+  }
+  
+  &:focus {
+    border-color: ${FORM_CONTROL_BDC_FOCUS};
+    outline: none;
+  }
 `;
 
 export const CSS_BLOCK_LEVEL_ELEMENT = css`
