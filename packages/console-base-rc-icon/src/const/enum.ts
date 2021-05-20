@@ -30,7 +30,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'logo-aliyun-word-cn' = 'e653', // 图标文字 - 「阿里云」
   'logo-aliyun-word-en' = 'e654', // 图标文字 - 「Alibaba Cloud」
   'menu-all' = 'e6e3', // 菜单（九宫格）
-  'menu' = 'e646', // 菜单（三道杠）
   'minus' = 'e768', // -
   'notice' = 'e887', // 通知（铃铛）
   'plus' = 'e659', // +
