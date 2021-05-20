@@ -239,14 +239,19 @@ export default styled.article`
       display: none;
     }
     
+    tr {
+      ${mixinBgPrimary}
+    }
+    
     thead {
       tr {
         ${mixinBgSecondary}
       }
     }
     
-    tr {
-      ${mixinBgPrimary}
+    th,
+    td {
+      ${mixinBorderTertiary}
     }
     
     th,
@@ -255,23 +260,25 @@ export default styled.article`
       font-size: 0.95em;
       text-align: left;
       color: inherit;
-      ${mixinBorderTertiary}
+      border-top-width: 0;
       
       &:first-child {
-        border-left: none;
+        border-left-width: 0;
         text-align: left;
       }
       
       &:last-child {
-        border-right: none;
+        border-right-width: 0;
         text-align: left;
       }
     }
     
     th {
-      border-top: none;
-      border-bottom: none;
       font-weight: 600;
+      
+      &[colspan] {
+        text-align: center;
+      }
     }
     
     ul {
