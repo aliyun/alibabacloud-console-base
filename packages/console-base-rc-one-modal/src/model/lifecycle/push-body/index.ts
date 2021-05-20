@@ -33,6 +33,17 @@ div.show-panel div.slide-panels,
 }
 
 /**
+ * home 有绝对定位布局，它通过监听 resize 进行布局刷新
+ */
+function fireResize(): void {
+  try {
+    window.dispatchEvent(new CustomEvent('resize'));
+  } catch (ex) {
+    // ignore
+  }
+}
+
+/**
  * pinned 模式下可能需要调整 body 的 style.padding-left 或 ng 项目的容器的 style.right
  */
 export default function PushBody(): null {
@@ -49,15 +60,11 @@ export default function PushBody(): null {
     
     const style: HTMLStyleElement = createStyle(w);
     
-    // home 有绝对定位布局，它通过监听 resize 进行布局刷新
-    try {
-      window.dispatchEvent(new CustomEvent('resize'));
-    } catch (ex) {
-      // ignore
-    }
+    fireResize();
     
     return () => {
       style.parentNode?.removeChild(style);
+      fireResize();
     };
   }, [mode, visible, w]);
   
