@@ -2,8 +2,8 @@ import {
   EDialogMode
 } from '../..';
 
+import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
-import useProps from './use-props';
 
 /**
  * Normal 模式下需要对内容区域限高
@@ -11,7 +11,7 @@ import useProps from './use-props';
 export default function useDialogMaxContentHeight(): number {
   const {
     mode
-  } = useProps();
+  } = useModelProps();
   const {
     windowHeight
   } = useModelState();

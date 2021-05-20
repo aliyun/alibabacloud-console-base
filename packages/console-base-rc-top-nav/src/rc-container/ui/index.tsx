@@ -47,8 +47,9 @@ export default function TopNavUi(): JSX.Element {
     fixed,
     uiProps
   } = useProps();
+  const className = `${uiProps?.className || ''} J_fixed_right_will_be_pushed_left`.trim(); // 注意：和 one-modal 中有耦合，可以忍
   
-  return <ScTopNaV data-spm="top-nav" {...uiProps} fixed={fixed ? 1 : 0}>
+  return <ScTopNaV data-spm="top-nav" {...uiProps} className={className} fixed={fixed ? 1 : 0}>
     <Flex>
       <Dock />
       <Logo />

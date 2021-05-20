@@ -2,7 +2,7 @@ import {
   IDialogStackItem
 } from '../types';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useRefDialog from './use-ref-dialog';
 import useRefContent from './use-ref-content';
 import useDispatchSetZIndex from './use-dispatch-set-z-index';
@@ -16,7 +16,7 @@ export default function useDialogStackItem(): IDialogStackItem {
     backdrop,
     zIndex,
     zIndexBackdrop
-  } = useProps();
+  } = useModelProps();
   const dispatchSetZIndex = useDispatchSetZIndex();
   const dispatchCloseOnEsc = useHandleCloseOnEsc();
   const dispatchCloseOnExternal = useHandleCloseOnExternal();

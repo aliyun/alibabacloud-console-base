@@ -9,23 +9,29 @@ import {
   useRndState
 } from '../../hook';
 
-function changeStyleRight(selector: string, w: number): void {
-  try {
-    const el = document.querySelector<HTMLElement>(selector);
-    
-    if (el) {
-      el.style.right = w > 0 ? `${w}px` : '0';
-    }
-  } catch (e) {
-    // ignore
-  }
-}
-
-function pushBodyLeft(w: number): void {
-  document.body.style.paddingRight = w > 0 ? `${w}px` : '';
+/**
+ * PIN 模式下，需要对其他内容进行左推
+ * 
+ * 1. body padding-right
+ * 2. ng 项目下 .viewFramework-body 绝对定位 right 为 0，覆盖之
+ * 3. 写得很屎的 wind 的 slide panel 的样式覆盖
+ * 4. 其他不可预期的 fixed-to-right 组件，可以自行加上 class="J_fixed_right_will_be_pushed_left" 达到被自动左推的效果
+ */
+function createStyle(right: number): HTMLStyleElement {
+  const head: HTMLHeadElement = document.head || document.getElementsByTagName('head')[0];
+  const style = document.createElement('style');
   
-  changeStyleRight('div[view-framework] .viewFramework-body', w); // ng 项目下 .viewFramework-body 的是绝对定位 right 为 0，这里处理一下
-  changeStyleRight('#J_console_base_top_nav', w); // TopNav 耦合
+  style.textContent = `body {
+  padding-right: ${right}px;
+}
+div[view-framework] .viewFramework-body,
+div.show-panel div.slide-panels,
+.J_fixed_right_will_be_pushed_left {
+  right: ${right}px !important;
+}`;
+  head.appendChild(style);
+  
+  return style;
 }
 
 /**
@@ -43,11 +49,15 @@ export default function PushBody(): null {
       return;
     }
     
-    if (mode === EModalMode.TO_THE_RIGHT_PINNED) {
-      pushBodyLeft(w);
+    let style: HTMLStyleElement | undefined;
+    
+    if (mode === EModalMode.TO_THE_RIGHT_PINNED && w > 0) {
+      style = createStyle(w);
     }
     
-    return () => pushBodyLeft(0);
+    return () => {
+      style?.parentNode?.removeChild(style);
+    };
   }, [mode, visible, w]);
   
   return null;

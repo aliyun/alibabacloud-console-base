@@ -1,4 +1,4 @@
-export { default as useProps } from './use-props';
+export { default as useProps } from './_use-model-props';
 export { default as useRefDialog } from './use-ref-dialog';
 export { default as useRefContent } from './use-ref-content';
 export { default as useStateId } from './use-state-id';

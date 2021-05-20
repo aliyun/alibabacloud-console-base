@@ -7,7 +7,7 @@ interface IIE8Style {
 export default function injectFont(fontFamily: string, dataUrl?: string): string {
   const existedStyleElement = document.getElementById(fontFamily);
   
-  if (existedStyleElement && existedStyleElement.tagName === 'SCRIPT') { // 避免多次注入
+  if (existedStyleElement && existedStyleElement.tagName === 'STYLE') { // 避免多次注入
     return fontFamily;
   }
   

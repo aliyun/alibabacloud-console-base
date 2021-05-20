@@ -1,10 +1,10 @@
+import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
-import useProps from './use-props';
 
 export default function useDialogZIndex(): number | undefined {
   const {
     zIndex
-  } = useProps();
+  } = useModelProps();
   const {
     zIndex: zIndexInState
   } = useModelState();

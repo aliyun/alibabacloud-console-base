@@ -2,8 +2,8 @@ import {
   useCallback
 } from 'react';
 
+import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
-import useProps from './use-props';
 import useDispatchToggleActive from './use-dispatch-toggle-active';
 
 /**
@@ -15,7 +15,7 @@ export default function useHandleCloseWithValue<T = void>(): (value?: T | Error,
   const {
     undefinedAsReject,
     onClose
-  } = useProps<T>();
+  } = useModelProps<T>();
   const {
     locked,
     active

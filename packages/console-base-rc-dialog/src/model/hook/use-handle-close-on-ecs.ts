@@ -4,7 +4,7 @@ import {
 
 import detectFusionOverlay from '../../util/detect-fusion-overlay';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useHandleClose from './use-handle-close';
 
 /**
@@ -16,7 +16,7 @@ export default function useHandleCloseOnEsc(): () => void {
   const {
     esc,
     closable
-  } = useProps();
+  } = useModelProps();
   
   const dispatchClose = useHandleClose();
   
