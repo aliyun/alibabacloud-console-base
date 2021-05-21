@@ -1,61 +1,93 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  FlattenSimpleInterpolation
+} from 'styled-components';
 
-import Icon from '@alicloud/console-base-rc-icon';
+import Icon, {
+  IconType
+} from '@alicloud/console-base-rc-icon';
 import {
+  mixinTypoLineWrap,
   mixinTextPrimary,
   mixinTextTertiary,
-  mixinTextWarning
+  mixinTextSecondary,
+  mixinTextWarning, mixinTextSuccess, mixinTextError
 } from '@alicloud/console-base-theme';
 
 import {
   TStringOrJSX
 } from '../../types';
 
+type TType = 'alert' | 'success' | 'error' | 'confirm';
+
 interface IProps {
-  type?: 'alert' | 'confirm';
+  type?: TType;
   title?: TStringOrJSX;
   content?: TStringOrJSX;
+}
+
+function getIconType(type?: TType): IconType {
+  switch (type) {
+    case 'confirm':
+      return 'question-fill';
+    case 'success':
+      return 'check-circle-fill';
+    case 'error':
+      return 'x-circle-fill';
+    default:
+      return 'alert-fill';
+  }
+}
+
+function getIconColorMixin(iconType: IconType): FlattenSimpleInterpolation {
+  switch (iconType) {
+    case 'alert-fill':
+      return mixinTextWarning;
+    case 'check-circle-fill':
+      return mixinTextSuccess;
+    case 'x-circle-fill':
+      return mixinTextError;
+    default:
+      return mixinTextTertiary;
+  }
 }
 
 const ICON_SIZE = 20;
 const SPACING = 12;
 
-const ScWrap = styled.div`
+const ScAltWrap = styled.div`
   position: relative;
   margin-top: 16px;
-  padding-top: 2px;
+  padding: 0 ${SPACING * 2}px 0 ${ICON_SIZE + SPACING}px;
   min-height: ${ICON_SIZE + SPACING * 2}px;
 `;
 
 const ScIcon = styled(Icon)`
   position: absolute;
-  top: 4px;
+  top: 2px;
   left: 0;
   font-size: ${ICON_SIZE}px;
-  ${props => (props.type === 'question-fill' ? mixinTextTertiary : mixinTextWarning)}
+  ${props => getIconColorMixin(props.type)}
   
   &:before {
     display: block;
   }
 `;
 
-const ScMessage = styled.div`
-  padding: 0 ${SPACING}px 0 ${ICON_SIZE + SPACING}px;
-  line-height: 1.6;
-  white-space: normal;
-  word-wrap: break-word;
-`;
-
 const ScTitle = styled.h5`
   margin: 0 0 8px 0;
   padding: 0;
   font-size: 16px;
+  line-height: 24px;
   ${mixinTextPrimary}
+  ${mixinTypoLineWrap}
 `;
 
 const ScContent = styled.div`
-  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  ${mixinTextSecondary}
+  ${mixinTypoLineWrap}
 `;
 
 /**
@@ -66,11 +98,9 @@ export default function AltWrap({
   title,
   content
 }: IProps): JSX.Element {
-  return <ScWrap>
-    <ScIcon type={type === 'confirm' ? 'question-fill' : 'alert-fill'} />
-    <ScMessage>
-      {title ? <ScTitle>{title}</ScTitle> : null}
-      <ScContent>{content}</ScContent>
-    </ScMessage>
-  </ScWrap>;
+  return <ScAltWrap>
+    <ScIcon type={getIconType(type)} />
+    {title ? <ScTitle>{title}</ScTitle> : null}
+    <ScContent>{content}</ScContent>
+  </ScAltWrap>;
 }

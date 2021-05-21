@@ -7,7 +7,7 @@ import Input from '@alicloud/console-base-rc-input';
 
 import {
   useDialog
-} from '../../model';
+} from '../../../model';
 
 const ScPromptContent = styled.div`
   padding-top: 24px;

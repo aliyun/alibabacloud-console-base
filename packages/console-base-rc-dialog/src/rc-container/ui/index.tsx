@@ -8,6 +8,7 @@ import {
   mixinTextSecondary,
   mixinBgPrimary,
   mixinBorderTertiary,
+  mixinBorderRadiusS,
   mixinShadowL,
   mixinShadowLUp
 } from '@alicloud/console-base-theme';
@@ -39,6 +40,7 @@ const cssNormal = css<IScDialogProps>`
   left: 50%;
   min-height: 80px;
   transform: translate(-50%, -50%);
+  ${mixinBorderRadiusS}
 `;
 
 const cssSlide = css<IScDialogProps>`

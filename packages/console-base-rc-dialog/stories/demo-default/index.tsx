@@ -53,6 +53,16 @@ export default function DemoDefault(): JSX.Element {
       onClick: () => alert(stateProps as DialogPropsAlert).then(console.info)
     }}>alert</Button>
     <Button {...{
+      onClick: () => alert(stateProps as DialogPropsAlert, {
+        type: 'success'
+      }).then(console.info)
+    }}>alert - success</Button>
+    <Button {...{
+      onClick: () => alert(stateProps as DialogPropsAlert, {
+        type: 'error'
+      }).then(console.info)
+    }}>alert - error</Button>
+    <Button {...{
       onClick: () => confirm(stateProps as unknown as DialogPropsConfirm).then(console.info)
     }}>confirm</Button>
     <Button {...{

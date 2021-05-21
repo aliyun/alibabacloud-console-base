@@ -8,17 +8,15 @@ export {
   slide,
   slideUp
 } from './promised/open';
-export {
-  alert,
-  confirm,
-  prompt
-} from './promised/alt';
+export { default as alert } from './promised/alt/alert';
+export { default as confirm } from './promised/alt/confirm';
+export { default as prompt } from './promised/alt/prompt';
+export { default as openIndirect } from './promised/open-indirect';
+export { default as AltWrap } from './rc/alt-wrap';
 export {
   Context as DialogContext, // 用于外部不可用 hooks 的场景
   useDialog
 } from './model';
-export { default as openIndirect } from './promised/open-indirect';
-export { default as AltWrap } from './rc/alt-wrap';
 
 export type {
   IDialogProps as DialogProps,
