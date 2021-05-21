@@ -20,7 +20,7 @@ import {
 
 const ScButton = styled(Button)`
   margin-right: 8px;
-  min-width: 72px;
+  min-width: 68px;
   
   &:last-child {
     margin-right: 0;
@@ -32,7 +32,7 @@ export default function FooterButton({
   primary,
   onClick,
   ...buttonProps
-}: IDialogButtonProps<any>): JSX.Element {
+}: IDialogButtonProps<any>): JSX.Element { // eslint-disable-line @typescript-eslint/no-explicit-any
   const dialog = useDialog<unknown>();
   const dispatchLock = useDispatchLock();
   const dispatchUnlock = useDispatchUnlock();

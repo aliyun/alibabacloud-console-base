@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {
-  IDialogPropsAlert
+  IDialogPropsAlert,
+  IAlertExtra
 } from '../../types';
 import {
   COMMON_PROPS_SYS_DIALOG
@@ -10,17 +11,6 @@ import intl from '../../intl';
 import buildPropsForPromise from '../../util/build-props-for-promise';
 import AltWrap from '../../rc/alt-wrap';
 import open from '../open';
-
-interface IExtraAlert {
-  /**
-   * 自定义按钮文字
-   */
-  ok?: string;
-  /**
-   * 图标选择
-   */
-  type?: 'alert' | 'info' | 'success' | 'error';
-}
 
 /**
  * 系统 window.alert 的替代
@@ -39,12 +29,11 @@ interface IExtraAlert {
  * await alert(...);
  * ```
  */
-export default function alert(contentOrProps: string | JSX.Element | IDialogPropsAlert, extra: IExtraAlert = {}): Promise<void> {
+export default function alert(contentOrProps: string | JSX.Element | IDialogPropsAlert, extra: IAlertExtra = {}): Promise<void> {
   const promiseProps = buildPropsForPromise(contentOrProps, {
     buttons: [{
       spm: 'ok',
-      label: extra.ok ?? intl('op:ok'),
-      
+      label: extra.ok || intl('op:ok'),
       primary: true
     }],
     ...COMMON_PROPS_SYS_DIALOG

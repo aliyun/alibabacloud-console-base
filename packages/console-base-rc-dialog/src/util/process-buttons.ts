@@ -21,7 +21,7 @@ function normalizeButton<R = void, D = TDialogData>(button: TDialogButton<R, D>)
     };
   }
   
-  return { // 因为需要往里边塞 spm disabled 等属性，不能修改传入的对象
+  return { // 因为需要往里边塞 spm disabled 等属性，故浅拷贝，保证不能修改传入的对象
     ...button
   };
 }
@@ -50,7 +50,8 @@ export default function processButtons<R = void, D = TDialogData>(buttons: TDial
     return reduced;
   }, []);
   
-  if (!hasPrimary && buttonAttr.length) {
+  // 对于多于 2 个按钮的，第一个自动为 primary
+  if (!hasPrimary && buttonAttr.length > 1) {
     buttonAttr[0].primary = true;
   }
   

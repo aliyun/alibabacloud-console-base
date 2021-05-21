@@ -60,7 +60,7 @@ function getIconColorMixin(iconType: IconType): FlattenSimpleInterpolation {
 }
 
 const ICON_SIZE = 20;
-const SPACING = 12;
+const SPACING = 8;
 
 const ScAltWrap = styled.div`
   position: relative;

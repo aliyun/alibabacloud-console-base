@@ -24,5 +24,8 @@ export type {
   IDialogPropsConfirm as DialogPropsConfirm,
   IDialogPropsPrompt as DialogPropsPrompt,
   IDialogButtonProps as DialogButtonProps,
-  IDialogIndirectPromise as DialogIndirectPromise
+  IDialogIndirectPromise as DialogIndirectPromise,
+  IAlertExtra as AlertExtra,
+  IConfirmExtra as ConfirmExtra,
+  IPromptExtra as PromptExtra
 } from './types';

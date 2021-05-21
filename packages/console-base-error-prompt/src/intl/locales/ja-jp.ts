@@ -2,7 +2,7 @@ export default {
   'title:normal': 'エラープロンプト',
   'title:session_timeout': 'セッションタイムアウト',
   'title:token_expired': '期限切れのトークン',
-  'op:ok': 'OK',
+  'op:close': '閉じる',
   'op:cancel': 'キャンセル',
   'op:sign_in': 'サインイン',
   'op:reload_page': 'ページをリロード',

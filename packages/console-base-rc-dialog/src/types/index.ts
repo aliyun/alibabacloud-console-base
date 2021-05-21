@@ -119,3 +119,21 @@ export interface IDialogIndirectPromise<T = void, D = TDialogData> {
   close(result?: T | Error, rejected?: boolean): void;
   promise: Promise<T>;
 }
+
+export interface IAlertExtra {
+  /**
+   * 自定义按钮文字
+   */
+  ok?: string;
+  /**
+   * 图标选择
+   */
+  type?: 'alert' | 'info' | 'success' | 'error';
+}
+
+export interface IConfirmExtra {
+  ok?: string;
+  cancel?: string;
+}
+
+export interface IPromptExtra extends IConfirmExtra {}

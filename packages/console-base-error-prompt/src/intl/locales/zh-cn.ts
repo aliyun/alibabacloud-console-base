@@ -2,7 +2,7 @@ export default {
   'title:normal': '错误提示',
   'title:session_timeout': '会话超时',
   'title:token_expired': '令牌失效',
-  'op:ok': '确定',
+  'op:close': '关闭',
   'op:cancel': '取消',
   'op:sign_in': '登录',
   'op:reload_page': '刷新页面',

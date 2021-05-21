@@ -3,6 +3,9 @@ import {
 } from 'react';
 
 import {
+  RequiredBut
+} from '@alicloud/typescript-missing-helpers';
+import {
   DialogIndirectPromise,
   DialogButtonProps
 } from '@alicloud/console-base-rc-dialog';
@@ -61,7 +64,7 @@ export interface IErrorInQueue extends Omit<IErrorDetailedInfo, 'body' | 'params
   body?: Record<string, unknown> | null;
 }
 
-export interface IErrorQueueItem extends Required<IErrorPromptExtra> {
+export interface IErrorQueueItem extends RequiredBut<IErrorPromptExtra, 'button'> {
   error: IErrorInQueue;
   resolve(): void;
 }

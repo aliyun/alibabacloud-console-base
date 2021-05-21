@@ -59,13 +59,28 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPro
   }
   
   const dialogIndirect = openIndirect<void, IErrorDialogData>({
-    content: dialogContent,
-    // title: (data: IErrorDialogData) => queue[data.page - 1].title,
-    buttons: (data: IErrorDialogData) => [queue[data.page - 1].button, queue[data.page - 1].buttonCancel],
-    undefinedAsReject: false,
     data: {
       page: 1
-    }
+    },
+    content: dialogContent,
+    buttons: (data: IErrorDialogData) => {
+      const {
+        button,
+        buttonCancel
+      } = queue[data.page - 1];
+      const buttons = [];
+      
+      if (button) {
+        buttons.push(button);
+      }
+      
+      if (buttonCancel) {
+        buttons.push(buttonCancel);
+      }
+      
+      return buttons;
+    },
+    undefinedAsReject: false
   });
   
   SOLO.dialogIndirect = dialogIndirect;

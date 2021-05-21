@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {
-  IDialogPropsConfirm
+  IDialogPropsConfirm,
+  IConfirmExtra
 } from '../../types';
 import {
   COMMON_PROPS_SYS_DIALOG
@@ -10,11 +11,6 @@ import intl from '../../intl';
 import buildPropsForPromise from '../../util/build-props-for-promise';
 import AltWrap from '../../rc/alt-wrap';
 import open from '../open';
-
-interface IExtraConfirm { // 自定义按钮文字
-  ok?: string;
-  cancel?: string;
-}
 
 /**
  * 系统 window.confirm 的替代
@@ -32,15 +28,15 @@ interface IExtraConfirm { // 自定义按钮文字
  * const yes = await alert(...);
  * ```
  */
-export default function confirm(contentOrProps?: string | JSX.Element | IDialogPropsConfirm, extra: IExtraConfirm = {}): Promise<boolean> {
+export default function confirm(contentOrProps?: string | JSX.Element | IDialogPropsConfirm, extra: IConfirmExtra = {}): Promise<boolean> {
   const promiseProps = buildPropsForPromise<boolean>(contentOrProps, {
     buttons: [{
       spm: 'ok',
-      label: extra.ok ?? intl('op:ok'),
+      label: extra.ok || intl('op:ok'),
       result: true
     }, {
       spm: 'cancel',
-      label: extra.cancel ?? intl('op:cancel')
+      label: extra.cancel || intl('op:cancel')
     }],
     ...COMMON_PROPS_SYS_DIALOG
   });

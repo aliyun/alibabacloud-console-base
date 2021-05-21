@@ -14,7 +14,7 @@ export const ERROR_NAMES_IGNORE_LIST = [
   'FetcherErrorRiskCancelled'
 ];
 
-export const ERROR_CODE_EXTRA_MAPPING: Record<string, Required<IErrorPromptExtra>> = {
+export const ERROR_CODE_EXTRA_MAPPING: Record<string, IErrorPromptExtra> = {
   // 登录失效，需要重新登录
   ConsoleNeedLogin: {
     title: intl('title:session_timeout'),
@@ -22,8 +22,7 @@ export const ERROR_CODE_EXTRA_MAPPING: Record<string, Required<IErrorPromptExtra
     button: {
       label: intl('op:sign_in'),
       onClick: reload
-    },
-    buttonCancel: intl('op:cancel')
+    }
   },
   // SecToken 失效，可能是在另一个浏览器 tab 中做了重新登录或切换账号操作
   PostonlyOrTokenError: {
@@ -32,7 +31,6 @@ export const ERROR_CODE_EXTRA_MAPPING: Record<string, Required<IErrorPromptExtra
     button: {
       label: intl('op:reload_page'),
       onClick: reload
-    },
-    buttonCancel: intl('op:cancel')
+    }
   }
 };

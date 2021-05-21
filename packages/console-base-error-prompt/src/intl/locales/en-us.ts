@@ -2,7 +2,7 @@ export default {
   'title:normal': 'Error Prompt',
   'title:session_timeout': 'Session Timeout',
   'title:token_expired': 'Token Expired',
-  'op:ok': 'OK',
+  'op:close': 'Close',
   'op:cancel': 'Cancel',
   'op:sign_in': 'Sign In',
   'op:reload_page': 'Reload Page',
