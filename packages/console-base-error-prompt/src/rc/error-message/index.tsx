@@ -1,5 +1,7 @@
 import _isString from 'lodash/isString';
-import React from 'react';
+import React, {
+  isValidElement
+} from 'react';
 import styled from 'styled-components';
 
 import {
@@ -16,9 +18,6 @@ interface IProps {
 }
 
 const ScErrorMessage = styled.div`
-  margin-bottom: 32px;
-  font-size: 14px;
-  
   em {
     ${mixinTypoEm}
   }
@@ -28,25 +27,21 @@ const ScErrorMessage = styled.div`
   }
 `;
 
-function getJsxMessage(message: string | JSX.Element, code: string): string | JSX.Element {
-  if (!message) {
-    return code || 'n / a';
-  }
-  
-  if (_isString(message)) {
-    return <span dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-      __html: message
-    }} />;
-  }
-  
-  return message;
-}
-
 export default function ErrorMessage({
   queueItem: {
     message,
     error
   }
 }: IProps): JSX.Element {
-  return <ScErrorMessage>{getJsxMessage(message || error.message, error.code)}</ScErrorMessage>;
+  const theMessage = message || error.message || error.code || 'n / a';
+  
+  if (_isString(theMessage) && /</.test(theMessage)) {
+    return <ScErrorMessage>
+      <span dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+        __html: theMessage
+      }} />
+    </ScErrorMessage>;
+  }
+  
+  return isValidElement(theMessage) ? theMessage : <>{theMessage.toString()}</>;
 }

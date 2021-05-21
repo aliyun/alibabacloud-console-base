@@ -86,7 +86,7 @@ export default function Loading({
       
       break;
     case 'error':
-      jsxIcon = <Icon type="alert" />;
+      jsxIcon = <Icon type="alert-circle" />;
       jsxMessage = message ?? intl(retry ? 'phrase:failed_retry' : 'phrase:failed');
       
       if (retry) {

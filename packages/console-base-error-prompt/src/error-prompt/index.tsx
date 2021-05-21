@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  AltWrap,
   openIndirect
 } from '@alicloud/console-base-rc-dialog';
 
@@ -47,10 +46,8 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPro
   
   queue.push(queueItem);
   
-  const dialogContent = <AltWrap {...{
-    content: <DialogContent {...{
-      queue
-    }} />
+  const dialogContent = <DialogContent {...{
+    queue
   }} />;
   
   if (SOLO.dialogIndirect) { // dialog 已经打开
@@ -63,7 +60,7 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPro
   
   const dialogIndirect = openIndirect<void, IErrorDialogData>({
     content: dialogContent,
-    title: (data: IErrorDialogData) => queue[data.page - 1].title,
+    // title: (data: IErrorDialogData) => queue[data.page - 1].title,
     buttons: (data: IErrorDialogData) => [queue[data.page - 1].button, queue[data.page - 1].buttonCancel],
     undefinedAsReject: false,
     data: {

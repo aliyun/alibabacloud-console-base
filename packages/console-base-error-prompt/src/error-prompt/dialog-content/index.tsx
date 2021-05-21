@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Pagination from '@alicloud/console-base-rc-pagination';
 import {
+  AltWrap,
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 
@@ -35,15 +36,19 @@ export default function DialogContent({
   }), [updateData]);
   const queueItem: IErrorQueueItem = queue[data.page - 1];
   
-  return <>
-    <ErrorMessage queueItem={queueItem} />
-    <ErrorDetails queueItem={queueItem} />
-    <ScPagination {...{
-      total: queue.length,
-      page: data.page,
-      pageSize: 1,
-      theme: 'simplest',
-      onChange: handlePage
-    }} />
-  </>;
+  return <AltWrap {...{
+    type: 'error',
+    title: queueItem.title,
+    content: <>
+      <ErrorMessage queueItem={queueItem} />
+      <ErrorDetails queueItem={queueItem} />
+      <ScPagination {...{
+        total: queue.length,
+        page: data.page,
+        pageSize: 1,
+        theme: 'simplest',
+        onChange: handlePage
+      }} />
+    </>
+  }} />;
 }

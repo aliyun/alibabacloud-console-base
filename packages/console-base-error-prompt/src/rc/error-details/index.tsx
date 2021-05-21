@@ -42,6 +42,11 @@ interface IDetailKV {
   v: unknown;
 }
 
+const ScErrorDetails = styled.div`
+  margin-top: 12px;
+  font-size: 12px;
+`;
+
 const ScButtonToggle = styled(Button)`
   opacity: 0.6;
   max-width: 100%;
@@ -51,7 +56,7 @@ const ScButtonToggle = styled(Button)`
   }
 `;
 
-const ScErrorDetails = styled.ul<IPropsScDetails>`
+const ScList = styled.ul<IPropsScDetails>`
   margin: 1.5em 0 0 1em;
   padding: 0;
   max-height: ${props => (props.folded ? '0' : '1000px')};
@@ -144,7 +149,7 @@ export default function ErrorDetails({
     return null;
   }
   
-  return <>
+  return <ScErrorDetails>
     <ScButtonToggle {...{
       spm: 'detail-toggle',
       text: true,
@@ -155,7 +160,7 @@ export default function ErrorDetails({
       theme: ButtonTheme.TEXT_TERTIARY,
       onClick: handleToggleFolded
     }} />
-    <ScErrorDetails folded={stateFolded}>
+    <ScList folded={stateFolded}>
       {kvList.map(({
         k0,
         k,
@@ -176,6 +181,6 @@ export default function ErrorDetails({
           <ScV>{displayValue}</ScV>
         </ScKV>;
       })}
-    </ScErrorDetails>
-  </>;
+    </ScList>
+  </ScErrorDetails>;
 }

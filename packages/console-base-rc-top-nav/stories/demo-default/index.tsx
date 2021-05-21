@@ -80,7 +80,7 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'help',
         label: {
-          icon: 'help'
+          icon: 'help-circle'
         },
         href: '/help'
       }, {

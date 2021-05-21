@@ -19,7 +19,7 @@ interface IExtraAlert {
   /**
    * 图标选择
    */
-  type?: 'alert' | 'success' | 'error';
+  type?: 'alert' | 'info' | 'success' | 'error';
 }
 
 /**

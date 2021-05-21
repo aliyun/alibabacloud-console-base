@@ -9,16 +9,19 @@ import Icon, {
 import {
   mixinTypoLineWrap,
   mixinTextPrimary,
-  mixinTextTertiary,
   mixinTextSecondary,
-  mixinTextWarning, mixinTextSuccess, mixinTextError
+  mixinTextTertiary,
+  mixinTextInfo,
+  mixinTextWarning,
+  mixinTextSuccess,
+  mixinTextError
 } from '@alicloud/console-base-theme';
 
 import {
   TStringOrJSX
 } from '../../types';
 
-type TType = 'alert' | 'success' | 'error' | 'confirm';
+type TType = 'info' | 'alert' | 'success' | 'error' | 'confirm';
 
 interface IProps {
   type?: TType;
@@ -28,24 +31,28 @@ interface IProps {
 
 function getIconType(type?: TType): IconType {
   switch (type) {
+    case 'info':
+      return 'info-circle-fill';
     case 'confirm':
-      return 'question-fill';
+      return 'help-circle-fill';
     case 'success':
-      return 'check-circle-fill';
+      return 'success-circle-fill';
     case 'error':
-      return 'x-circle-fill';
+      return 'error-circle-fill';
     default:
-      return 'alert-fill';
+      return 'alert-circle-fill';
   }
 }
 
 function getIconColorMixin(iconType: IconType): FlattenSimpleInterpolation {
   switch (iconType) {
-    case 'alert-fill':
+    case 'info-circle-fill':
+      return mixinTextInfo;
+    case 'alert-circle-fill':
       return mixinTextWarning;
-    case 'check-circle-fill':
+    case 'success-circle-fill':
       return mixinTextSuccess;
-    case 'x-circle-fill':
+    case 'error-circle-fill':
       return mixinTextError;
     default:
       return mixinTextTertiary;
@@ -57,14 +64,14 @@ const SPACING = 12;
 
 const ScAltWrap = styled.div`
   position: relative;
-  margin-top: 16px;
+  margin-top: 36px;
   padding: 0 ${SPACING * 2}px 0 ${ICON_SIZE + SPACING}px;
   min-height: ${ICON_SIZE + SPACING * 2}px;
 `;
 
 const ScIcon = styled(Icon)`
   position: absolute;
-  top: 2px;
+  top: 0;
   left: 0;
   font-size: ${ICON_SIZE}px;
   ${props => getIconColorMixin(props.type)}
