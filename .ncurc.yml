@@ -1,4 +1,6 @@
 upgrade: true
 dep: dev,prod
-# reject:
+reject:
+  - 'jest'
+  - 'ts-jest' # https://github.com/kulshekhar/ts-jest/issues/2623
 #   - 'x' # 举例原因
