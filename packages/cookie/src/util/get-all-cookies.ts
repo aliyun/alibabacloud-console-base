@@ -2,7 +2,11 @@
  * 获取当前页面可以访问到的全部 cookie
  */
 export default function getAllCookies(): Record<string, string> {
-  return document.cookie ? document.cookie.split(/\s*;\s*/).reduce((result: Record<string, string>, v) => {
+  if (typeof document === 'undefined' || !document.cookie) { // for SSR
+    return {};
+  }
+  
+  return document.cookie.split(/\s*;\s*/).reduce((result: Record<string, string>, v) => {
     const [cookieName, cookieValue] = v.split('=');
     
     // 原来的实现有问题，set 的时候用的是 `escape`，get 的时候用的是 `decodeURIComponent`，这在大多数情况下
@@ -15,5 +19,5 @@ export default function getAllCookies(): Record<string, string> {
     }
     
     return result;
-  }, {}) : {};
+  }, {});
 }
