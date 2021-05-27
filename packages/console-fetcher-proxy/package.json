@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-proxy",
-  "version": "1.3.20",
+  "version": "1.3.21",
   "description": "控制台 fetcher 代理",
   "license": "MIT",
   "sideEffects": false,
@@ -36,9 +36,9 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "@alicloud/console-base-global": "^1.1.11",
-    "@alicloud/console-base-messenger": "^1.3.2",
-    "@alicloud/console-fetcher": "^1.4.17"
+    "@alicloud/console-base-global": "^1.1.12",
+    "@alicloud/console-base-messenger": "^1.3.3",
+    "@alicloud/console-fetcher": "^1.4.18"
   },
   "scripts": {
     "start": "breezr start-storybook",
