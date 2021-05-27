@@ -9,11 +9,11 @@ function getFromHostname(hostname: string): string {
   return normalizeProductId(productId);
 }
 
-export default function getFromUrl(href: string): string {
+export default function getFromUrl(href: string, base?: string): string {
   let productId = '';
   
   try {
-    const url = new URL(href); // new URL 不要写第二个参数
+    const url = new URL(href, base); // new URL 不要写第二个参数
     
     productId = getFromHostname(url.hostname);
     

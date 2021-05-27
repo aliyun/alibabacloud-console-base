@@ -1,9 +1,8 @@
 /* global describe, it, expect */
 
+import pkgInfo from '../package.json';
 import getFromSettings from '../src/util/get-from-settings';
 import getFromUrl from '../src/util/get-from-url';
-
-import pkgInfo from '../package.json';
 
 describe(pkgInfo.name, () => {
   it('getFromSettings', () => {
