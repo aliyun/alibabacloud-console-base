@@ -10,8 +10,6 @@ import createError from './create-error';
 import generateCallbackName from './generate-callback-name';
 import clearCallbackFn from './clear-callback-fn';
 
-const head = document.head || document.getElementsByTagName('head')[0];
-
 /**
  * 一个「纯」的 Promise 封装的 JSONP
  * 
@@ -32,7 +30,7 @@ export default function jsonp<T = void>(url = '', {
     scriptElement.setAttribute('charset', charset);
   }
   
-  head.appendChild(scriptElement);
+  (document.head || document.getElementsByTagName('head')[0]).appendChild(scriptElement);
   
   // 清除全局污染
   function cleanup(): void {
