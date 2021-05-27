@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-flex",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "ConsoleBase 组件 - Flex",
   "license": "MIT",
   "sideEffects": false,
