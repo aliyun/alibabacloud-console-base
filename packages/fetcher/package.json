@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "类似 axios，封装 fetch/jsonp，可以加拦截器",
   "license": "MIT",
   "sideEffects": false,
@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@alicloud/fetcher-fetch": "^1.2.7",
-    "@alicloud/fetcher-jsonp": "^1.1.7",
+    "@alicloud/fetcher-jsonp": "^1.1.8",
     "@alicloud/json-stringify-ordered": "^1.1.7",
     "lodash": "^4.17.21",
     "qs": "^6.10.1"
