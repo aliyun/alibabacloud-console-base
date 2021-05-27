@@ -1,5 +1,5 @@
 {
-  "name": "@alicloud/console-fetcher-interceptor-cache-local",
+  "name": "@alicloud/fetcher-interceptor-cache-local",
   "version": "1.1.10",
   "description": "@alicloud/fetcher 请求拦截 - 缓存",
   "license": "MIT",
@@ -7,7 +7,7 @@
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-fetcher-interceptor-cache-local",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/fetcher-interceptor-cache-local",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -51,6 +51,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": "764fac32c65f9a8bfef9a98dbd6fb66b8bdba542"
+  }
 }

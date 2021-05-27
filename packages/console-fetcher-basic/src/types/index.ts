@@ -8,10 +8,10 @@ import {
 } from '@alicloud/console-fetcher-interceptor-res-biz';
 import {
   FetcherConfigExtra as FetcherConfigExtraCacheLocal
-} from '@alicloud/console-fetcher-interceptor-cache-local';
+} from '@alicloud/fetcher-interceptor-cache-local';
 import {
   FetcherConfigExtra as FetcherConfigExtraMerger
-} from '@alicloud/console-fetcher-interceptor-merger';
+} from '@alicloud/fetcher-interceptor-merger';
 import {
   FetcherConfigExtra as FetcherConfigExtraSecurity
 } from '@alicloud/console-fetcher-interceptor-req-security';
