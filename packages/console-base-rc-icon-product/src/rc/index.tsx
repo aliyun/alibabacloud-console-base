@@ -19,7 +19,7 @@ interface IPropsScI {
 }
 
 // dataUrl 太大 50K+ 就不放了
-const fontFamily = injectIconFont('1323992', 'wqkzucytnue');
+const fontFamily = injectIconFont('1323992', 'undemcgca3');
 
 const ScI = styled(IconBase)<IPropsScI>`
   font-family: ${fontFamily} !important;

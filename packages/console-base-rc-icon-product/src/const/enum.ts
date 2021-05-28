@@ -124,6 +124,7 @@ export enum EIconType {
   hpc = 'e70a', // 高性能计算
   hsm = 'e747', // 加密服务（数据安全）
   httpdns = 'e76b', // HTTPDNS
+  ice = 'e602', // 智能媒体生产
   idaas = 'e601', // 应用身份服务
   indvi = 'e664', // 工业视觉智能
   image = 'e8c6', // 图像识别
@@ -187,6 +188,8 @@ export enum EIconType {
   ram = 'e74a', // 访问控制
   rdc = 'e699', // 云效
   rds = 'e73a', // 云数据库 RDS 版
+  rdsmysql = 'e86e', // 云数据库 RDS MySQL 版
+  rdssqlserver = 'e871', // 云数据库 RDS SQL Server 版
   receng = 'e63f', // 推荐引擎
   retailir = 'e960', // 货架商品识别与管理
   ri = 'e614', // 高速通道
