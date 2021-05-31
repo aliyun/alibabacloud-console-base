@@ -27,19 +27,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'arrow-left' = 'e7c3', // 箭头 ← - 左
   'arrow-right' = 'e88c', // 箭头 → - 右
   'angle-circle-right' = 'e60c', // 圈圈箭头 - 右
-  // 常用
-  'plus' = 'e659', // +
-  'minus' = 'e768', // -
-  'x' = 'e61d', // x
-  'refresh' = 'e6c1', // 刷新
-  'loading' = 'e602', // 加载中
-  'search' = 'e82e', // 搜索
-  'filter' = 'e608', // 过滤
-  'copy' = 'e60d', // 复制
-  'external' = 'e610', // 外部链接
-  'cart' = 'e882', // 购物车
-  'lang' = 'e70b', // 语言
-  'recycle-bin' = 'e621', // 删除（垃圾桶）
   // 用户
   'user-ak' = 'e871', // AK
   'user-ambassador' = 'e870', // 云大使（推荐返利后台）
@@ -60,6 +47,20 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'toolkit-survey' = 'e606', // 问卷
   'toolkit-version-new' = 'e62e', // 尝试新版
   'toolkit-version-old' = 'e72f', // 返回旧版
+  // 常用
+  'home' = 'e88b', // 首页
+  'plus' = 'e659', // +
+  'minus' = 'e768', // -
+  'x' = 'e61d', // x
+  'refresh' = 'e6c1', // 刷新
+  'loading' = 'e602', // 加载中
+  'search' = 'e82e', // 搜索
+  'filter' = 'e608', // 过滤
+  'copy' = 'e60d', // 复制
+  'external' = 'e610', // 外部链接
+  'cart' = 'e882', // 购物车
+  'lang' = 'e70b', // 语言
+  'recycle-bin' = 'e621', // 删除（垃圾桶）
   // 其他
   'apps' = 'e60e', // 应用（负数）
   'app' = 'e603', // 应用（单个）
@@ -78,5 +79,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'star' = 'e611', // 星（收藏）
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
-  'theme-light-dark' = 'e6aa' // 黑/白主题 转 180 度后
+  'theme-light-dark' = 'e6aa', // 黑/白主题 转 180 度后
+  'resource-group' = 'e634' // 资源组
 }

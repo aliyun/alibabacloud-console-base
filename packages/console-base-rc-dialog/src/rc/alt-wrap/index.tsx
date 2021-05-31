@@ -71,7 +71,7 @@ const ScAltWrap = styled.div`
 
 const ScIcon = styled(Icon)`
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 0;
   font-size: ${ICON_SIZE}px;
   ${props => getIconColorMixin(props.type)}
@@ -82,7 +82,7 @@ const ScIcon = styled(Icon)`
 `;
 
 const ScTitle = styled.h5`
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
   padding: 0;
   font-size: 16px;
   line-height: 24px;

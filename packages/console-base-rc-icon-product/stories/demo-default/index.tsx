@@ -253,6 +253,7 @@ const PRODUCT_MAPPING: Record<string, string> = {
   kvstore: '云数据库 Redis 版',
   lc: '逻辑编排',
   ledgerdb: '可信账本数据库',
+  lindorm: '云原生多模数据库 Lindorm',
   linkwan: '物联网络管理平台',
   live: '视频直播',
   mail: '企业邮箱',

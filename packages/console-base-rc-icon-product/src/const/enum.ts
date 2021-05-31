@@ -144,6 +144,7 @@ export enum EIconType {
   kms = 'e716', // 密钥管理服务
   kvstore = 'e624', // 云数据库 Redis 版
   lc = 'e921', // 逻辑编排
+  lindorm = 'e7fa', // 云原生多模数据库 Lindorm
   linkwan = 'e8eb', // 物联网络管理平台
   live = 'e63d', // 视频直播
   livinglink = 'e913', // 智能生活开放平台
