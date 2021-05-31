@@ -48,16 +48,11 @@ const ScErrorDetails = styled.div`
 `;
 
 const ScButtonToggle = styled(Button)`
-  opacity: 0.6;
   max-width: 100%;
-  
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 
 const ScList = styled.ul<IPropsScDetails>`
-  margin: 1.5em 0 0 1em;
+  margin: 8px 0 0 0;
   padding: 0;
   max-height: ${props => (props.folded ? '0' : '1000px')};
   overflow: hidden;
@@ -69,7 +64,6 @@ const ScList = styled.ul<IPropsScDetails>`
 const ScKV = styled.li`
   display: flex;
   padding: 4px 0;
-  ${mixinBorderTertiaryBottom}
 `;
 
 const ScK = styled.div`

@@ -15,7 +15,9 @@ export const ERROR_NAMES_IGNORE_LIST = [
 ];
 
 export const ERROR_CODE_EXTRA_MAPPING: Record<string, IErrorPromptExtra> = {
-  // 登录失效，需要重新登录
+  /**
+   * 登录失效，需要重新登录
+   */
   ConsoleNeedLogin: {
     title: intl('title:session_timeout'),
     message: intl('message:sign_in'),
@@ -24,7 +26,9 @@ export const ERROR_CODE_EXTRA_MAPPING: Record<string, IErrorPromptExtra> = {
       onClick: reload
     }
   },
-  // SecToken 失效，可能是在另一个浏览器 tab 中做了重新登录或切换账号操作
+  /**
+   * SecToken 失效，可能是在另一个浏览器 tab 中做了重新登录或切换账号操作
+   */
   PostonlyOrTokenError: {
     title: intl('title:token_expired'),
     message: intl('message:token_expired'),
