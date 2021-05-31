@@ -10,11 +10,11 @@ import {
 } from '../types';
 
 const ERROR_DETAILS_MIX: IErrorDetails = {
-  code: 'ERROR_CODE',
-  requestId: 'I_AM_A_FUCKING_REQUEST_ID',
   url: '/fuck/delete?_cache_busting=123456',
+  requestId: 'I_AM_A_FUCKING_REQUEST_ID',
   method: 'post',
   params: 'id=boshit&boshit=alot',
+  code: 'ERROR_CODE',
   body: [
     'bucketName=boshit',
     'region=oss-cn-qingdao',

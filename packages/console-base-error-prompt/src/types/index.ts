@@ -76,3 +76,12 @@ export interface IErrorPromptSolo {
   dialogIndirect: DialogIndirectPromise<void, IErrorDialogData> | null;
   queue: IErrorQueueItem[];
 }
+
+/**
+ * 展示用的 k-v 对
+ */
+export interface IErrorDetailKV {
+  K0: string;
+  k: string;
+  v: unknown;
+}

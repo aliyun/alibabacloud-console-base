@@ -1,5 +1,5 @@
 export { default } from './rc/ copy-it';
 
-export {
+export type {
   IProps as CopyItProps
 } from './types';

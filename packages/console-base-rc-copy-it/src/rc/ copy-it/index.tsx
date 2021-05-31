@@ -86,6 +86,12 @@ export default function CopyIt({
     }
   }, [stateCopiedTimestamp]);
   
+  useEffect(() => {
+    if (text) {
+      setStateCopiedTimestamp(0); // will reset timer, and hide 'copied' text
+    }
+  }, [text]);
+  
   return <ScCopyIt>
     <ScLabel>{label || text}</ScLabel>
     <ScButton {...{
