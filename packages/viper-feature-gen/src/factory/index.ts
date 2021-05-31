@@ -36,8 +36,9 @@ import {
  *
  * 在你的模块中使用：
  *
- * > 最佳实践 1：给 src 下的一级目录加上 webpack alias，alias 的命名规则为目录名前加冒号（比改成大写的方式好）
- * > 最佳实践 2：杜绝硬编码到处飞，feature 字符串定义到一个统一的常量文件中，并加以说明
+ * > 最佳实践
+ * > 1. 给 src 下的一级目录加上 webpack alias，alias 的命名规则为目录名前加冒号（比改成大写的方式好）
+ * > 2. 杜绝硬编码到处飞，feature 字符串定义到一个统一的常量文件中，并加以说明
  *
  * ```js
  * import confFeature, {
@@ -55,7 +56,7 @@ import {
  * // ...
  * ```
  */
-export default function index(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnFeatureCheck {
+export default function factory(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnFeatureCheck {
   return (key: string, arg?: string | IFeatureCheckAttributes): boolean => {
     /*
      * 这是一个 map，长相如下：
