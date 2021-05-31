@@ -39,14 +39,14 @@
   },
   "dependencies": {
     "@alicloud/console-fetcher-interceptor-arms": "^1.1.10",
-    "@alicloud/console-fetcher-interceptor-cache-local": "^1.1.10",
     "@alicloud/console-fetcher-interceptor-fecs": "^1.1.13",
-    "@alicloud/console-fetcher-interceptor-merger": "^1.1.10",
     "@alicloud/console-fetcher-interceptor-req-security": "^1.1.10",
     "@alicloud/console-fetcher-interceptor-res-biz": "^1.1.10",
     "@alicloud/console-fetcher-interceptor-res-error-message": "^1.1.11",
     "@alicloud/console-fetcher-interceptor-sls": "^1.1.12",
     "@alicloud/fetcher": "^1.1.10",
+    "@alicloud/fetcher-interceptor-cache-local": "^1.0.0",
+    "@alicloud/fetcher-interceptor-merger": "^1.0.0",
     "lodash": "^4.17.21"
   },
   "scripts": {

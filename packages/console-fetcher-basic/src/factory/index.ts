@@ -2,9 +2,9 @@ import {
   Fetcher,
   createFetcher
 } from '@alicloud/fetcher';
-import interceptBiz from '@alicloud/console-fetcher-interceptor-res-biz';
 import interceptCacheLocal from '@alicloud/fetcher-interceptor-cache-local';
 import interceptMerger from '@alicloud/fetcher-interceptor-merger';
+import interceptBiz from '@alicloud/console-fetcher-interceptor-res-biz';
 import interceptSecurity from '@alicloud/console-fetcher-interceptor-req-security';
 import interceptFecs from '@alicloud/console-fetcher-interceptor-fecs';
 import interceptErrorMessage from '@alicloud/console-fetcher-interceptor-res-error-message';
