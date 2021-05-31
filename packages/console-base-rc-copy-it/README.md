@@ -1,12 +1,13 @@
 @alicloud/console-base-rc-copy-it
 ===
 
-一个简单的 Flex 布局容器
+一个简单 Copy 组件
 
 # Usage
 
 ```js
-import Flex from '@alicloud/console-base-rc-copy-it';
+import CopyIt from '@alicloud/console-base-rc-copy-it';
 
-<Flex>...</Flex>
+<CopyIt text="xxx" />
+<CopyIt text="xxx" label="not xxx" />
 ```
