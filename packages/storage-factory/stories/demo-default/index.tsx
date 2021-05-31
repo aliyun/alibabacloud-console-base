@@ -12,5 +12,5 @@ import React from 'react';
 // fuck('you', '12345');
 
 export default function DemoDefault(): JSX.Element {
-  return <>天有不测风云</>;
+  return <>天有不測風雲</>;
 }

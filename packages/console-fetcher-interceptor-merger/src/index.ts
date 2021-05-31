@@ -1,7 +1,2 @@
-export { default } from './util/intercept';
-
-export type {
-  IMergerOptions as FetcherMergerOptions,
-  IFetcherConfigExtra as FetcherConfigExtra,
-  IFetcherConfigExtended as FetcherConfigExtended
-} from './types';
+export * from '@alicloud/fetcher-interceptor-merger';
+export { default } from '@alicloud/fetcher-interceptor-merger';

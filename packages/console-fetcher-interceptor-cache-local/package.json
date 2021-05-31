@@ -27,19 +27,15 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.19",
-    "@alicloud/fetcher-demo-helpers": "^1.1.7",
     "@types/jest": "^26.0.23",
-    "@types/lodash": "^4.14.170",
     "@types/react": "^17.0.8",
     "jest": "^27.0.3",
     "react": "^17.0.2",
-    "styled-components": "^5.3.0",
     "ts-jest": "^27.0.1",
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "@alicloud/fetcher": "^1.1.10",
-    "lodash": "^4.17.21"
+    "@alicloud/fetcher-interceptor-cache-local": "^1.0.0"
   },
   "scripts": {
     "start": "breezr start-storybook",
