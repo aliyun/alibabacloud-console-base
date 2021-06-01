@@ -85,7 +85,7 @@ const ScTitle = styled.h5`
   margin: 0 0 12px 0;
   padding: 0;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 26px;
   ${mixinTextPrimary}
   ${mixinTypoLineWrap}
 `;

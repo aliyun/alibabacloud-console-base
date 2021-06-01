@@ -1,7 +1,7 @@
 import {
   FetcherFnInterceptRequest,
   FetcherInterceptRequestReturn,
-  createErrorSkipNetwork
+  createFetcherErrorSkipNetwork
 } from '@alicloud/fetcher';
 
 import {
@@ -35,7 +35,7 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
         reject
       }));
       
-      throw createErrorSkipNetwork(promise, fetcherConfig);
+      throw createFetcherErrorSkipNetwork(promise, fetcherConfig);
     } else {
       mergerAdd(key);
     }

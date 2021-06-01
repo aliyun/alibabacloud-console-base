@@ -9,6 +9,9 @@ import {
   TErrorPromptArg,
   IErrorWithDetails
 } from '../types';
+import {
+  EErrorField
+} from '../const';
 
 function convertToErrorInQueueFromError(e: Error): IErrorDetailedInfo {
   const {
@@ -20,8 +23,8 @@ function convertToErrorInQueueFromError(e: Error): IErrorDetailedInfo {
   };
   
   if (!details) { // 如果没有详情 则尽可能拿更多的信息
-    errorInQueue.errorName = e.name;
-    errorInQueue.stack = e.stack;
+    errorInQueue[EErrorField.ERROR_NAME] = e.name;
+    errorInQueue[EErrorField.STACK] = e.stack;
   }
   
   return errorInQueue;

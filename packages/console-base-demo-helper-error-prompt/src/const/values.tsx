@@ -9,12 +9,16 @@ import {
   TErrorArg
 } from '../types';
 
+let i = 0;
+
+function generateRequestId(): string {
+  return `REQUEST_ID_${Math.round(100000 * Math.random())}_${++i}`;
+}
+
 const ERROR_DETAILS_MIX: IErrorDetails = {
   url: '/fuck/delete?_cache_busting=123456',
-  requestId: 'I_AM_A_FUCKING_REQUEST_ID',
   method: 'post',
   params: 'id=boshit&boshit=alot',
-  code: 'ERROR_CODE',
   body: [
     'bucketName=boshit',
     'region=oss-cn-qingdao',
@@ -27,14 +31,15 @@ const ERROR_DETAILS_MIX: IErrorDetails = {
 
 export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>JSX as Error</H3>, new Error('Error as Error'), {
   message: '登录失效（官方）',
-  code: 'ConsoleNeedLogin'
+  code: 'ConsoleNeedLogin',
+  requestId: generateRequestId()
 }, {
   message: 'TokenError（官方）',
   code: 'PostonlyOrTokenError'
 }, {
   message: '登录失效（非官方）',
   code: 'YOUR_SISTER_NOT_SIGNED_IN',
-  requestId: 'REQUEST_ID_000_SIGN_IN',
+  requestId: generateRequestId(),
   url: 'any url',
   method: 'any method',
   params: {
@@ -51,7 +56,7 @@ export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>J
   }
 }, {
   message: '复杂的对象...',
-  requestId: '1234567890',
+  requestId: generateRequestId(),
   url: 'some URL',
   URL: 'some URL 2',
   method: 'get',
@@ -72,17 +77,15 @@ export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>J
   }
 }, {
   message: '无 code，有详情',
-  requestId: 'REQUEST_ID_1234567890',
-  url: 'any url'
+  ...ERROR_DETAILS_MIX
 }, {
-  requestId: 'REQUEST_ID_1234567890',
   url: 'any url',
   toString(): string {
-    return '无 code 无 message';
+    return '三无产品 - 无 code 无 message 无 requestId';
   }
 }, {
   message: '带额外的信息',
-  requestId: 'REQUEST_ID_1234567890',
+  requestId: generateRequestId(),
   extra1: 'this is some extra info',
   extra0: 0,
   extra2: {
@@ -94,6 +97,7 @@ export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>J
 }, {
   code: 'CODE_WITH_OUT_MESSAGE',
   method: 'GET',
+  requestId: generateRequestId(),
   url: '//get_api?fuck=true',
   toString(): string {
     return '有 code 无 message 的错误，message 将 fallback 到 code';
@@ -101,16 +105,19 @@ export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>J
 }, {
   message: 'Error code 很长的情况下，不可产生 UI 问题',
   ...ERROR_DETAILS_MIX,
+  requestId: generateRequestId(),
   code: 'ERROR_CODE_VERY_LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG'
 }, {
   message: 'Message 里有 HTML，请 <a href="//www.aliyun.com" target="_blank">登录</a> 或者 <em>不登录</em>，一切 <code>都随你...</code>。'
 }, {
   message: '需要 ignore 一下 body 参数，且需要把 string 类型的 param 及 body 解析成可读性好的分行形式',
   ...ERROR_DETAILS_MIX,
+  requestId: generateRequestId(),
   code: 'ERROR_POST_SHOULD_IGNORE_SOME_BODY'
 }, {
   message: 'body 很大很大',
   ...ERROR_DETAILS_MIX,
+  requestId: generateRequestId(),
   code: 'ERROR_POST_SHOULD_IGNORE_SOME_BODY',
   params: 'id=boshit&boshit=alot',
   body: [

@@ -15,6 +15,7 @@ import CopyIt from '@alicloud/console-base-rc-copy-it';
 import {
   IErrorDetailKV
 } from '../../../types';
+import { EErrorField } from '../../../const';
 
 interface IProps {
   items: IErrorDetailKV[];
@@ -70,13 +71,13 @@ export default function KvList({
 }: IProps): JSX.Element | null {
   return <ScKvList folded={folded}>
     {items.map(({
-      K0,
+      k0,
       k,
       v
     }): JSX.Element => {
       let displayValue: string | null | JSX.Element;
       
-      if (_isString(v) && K0 === 'REQUEST_ID') {
+      if (_isString(v) && k0 === EErrorField.REQUEST_ID) {
         displayValue = <CopyIt text={v} />;
       } else if (_isString(v) || isValidElement(v as JSX.Element)) {
         displayValue = v as string | JSX.Element;
@@ -86,7 +87,7 @@ export default function KvList({
         displayValue = toDisplayValue(v);
       }
       
-      return <ScKV key={K0}>
+      return <ScKV key={k0}>
         <ScK>{k}</ScK>
         <ScV>{displayValue}</ScV>
       </ScKV>;

@@ -2,7 +2,7 @@ import {
   FetcherConfig,
   FetcherFnInterceptRequest,
   FetcherInterceptRequestReturn,
-  createErrorSkipNetwork
+  createFetcherErrorSkipNetwork
 } from '@alicloud/console-fetcher';
 import {
   forApp
@@ -26,6 +26,6 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<Fe
       return; // 将继续正常的请求流程
     }
     
-    throw createErrorSkipNetwork(result, fetcherConfig);
+    throw createFetcherErrorSkipNetwork(result, fetcherConfig);
   };
 }

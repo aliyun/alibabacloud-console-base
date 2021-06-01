@@ -1,23 +1,30 @@
 import {
   IFetcherConfig,
-  IFetcherError
+  IFetcherError,
+  IFetcherErrorExtendedInfo
 } from '../../types';
 
 /**
  * 创建 FetcherError 它一定得有 config 属性
  */
-export default function createError<C extends IFetcherConfig = IFetcherConfig>(fetcherConfig: C, name: string, message?: string, code?: string, responseData?: unknown): IFetcherError<C> {
+export default function createFetcherError<C extends IFetcherConfig = IFetcherConfig>(fetcherConfig: C, name: string, message?: string, info?: IFetcherErrorExtendedInfo): IFetcherError<C> {
   const error = new Error(message) as IFetcherError<C>;
   
   error.config = fetcherConfig;
   error.name = name;
   
-  if (code) {
-    error.code = code;
-  }
-  
-  if (responseData) {
-    error.responseData = responseData;
+  if (info) {
+    if (info.title) {
+      error.title = info.title;
+    }
+    
+    if (info.code) {
+      error.code = info.code;
+    }
+    
+    if (info.responseData) {
+      error.responseData = info.responseData;
+    }
   }
   
   return error;

@@ -108,13 +108,26 @@ export interface IFetcherResponse<T = void> {
   readonly data: T;
 }
 
+export interface IFetcherErrorExtendedInfo {
+  /**
+   * 预留扩展字段 - 错误标题
+   */
+  title?: string;
+  /**
+   * 预留扩展字段 - 错误码
+   */
+  code?: string;
+  /**
+   * 预留扩展字段 - 原始 response 中的数据；强行把返回变成出错时需要
+   */
+  responseData?: unknown;
+}
+
 /**
  * 错误
  */
-export interface IFetcherError<C extends IFetcherConfig = IFetcherConfig> extends Error {
+export interface IFetcherError<C extends IFetcherConfig = IFetcherConfig> extends Error, IFetcherErrorExtendedInfo {
   config: C;
-  code?: string; // 为了后边的扩展需要
-  responseData?: unknown; // 如果强行把返回变成出错，则需要记录最原始的 response 中的数据
 }
 
 /**

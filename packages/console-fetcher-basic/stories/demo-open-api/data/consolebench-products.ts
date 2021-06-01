@@ -3,8 +3,8 @@ import {
 } from '../../fetcher';
 
 interface IParams {
-  PageNumber: 1,
-  PageSize: 10
+  PageNumber: 1;
+  PageSize: 10;
 }
 
 export default function dataConsolebenchProducts(): Promise<any> {

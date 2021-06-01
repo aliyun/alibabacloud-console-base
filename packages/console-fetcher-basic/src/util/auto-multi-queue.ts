@@ -3,7 +3,7 @@ import _isEmpty from 'lodash/isEmpty';
 import _forEach from 'lodash/forEach';
 
 import {
-  createError
+  createFetcherError
 } from '@alicloud/fetcher';
 import {
   ERROR_BIZ
@@ -215,7 +215,7 @@ export default class AutoMultiQueue {
         const i = Number(k);
         
         if (errInMulti) {
-          rejectAll(createError({
+          rejectAll(createFetcherError({
             url: '(auto multi api)',
             options: {
               method: 'POST',
@@ -226,7 +226,10 @@ export default class AutoMultiQueue {
               }
             },
             responseJson: errInMulti
-          }, ERROR_BIZ, errInMulti.Message, errInMulti.Code), i);
+          }, ERROR_BIZ, errInMulti.Message, {
+            code: errInMulti.Code,
+            title: errInMulti.Title
+          }), i);
         } else {
           resolveAll(v, i);
         }

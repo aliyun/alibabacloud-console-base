@@ -49,7 +49,6 @@ export interface IErrorPromptExtra {
   title?: string;
   message?: string | ReactElement;
   button?: string | DialogButtonProps<void, IErrorDialogData>;
-  buttonCancel?: string | DialogButtonProps<void, IErrorDialogData>;
 }
 
 /**
@@ -81,7 +80,7 @@ export interface IErrorPromptSolo {
  * 展示用的 k-v 对
  */
 export interface IErrorDetailKV {
-  K0: string;
+  k0: string;
   k: string;
   v: unknown;
 }

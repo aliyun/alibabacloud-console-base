@@ -3,13 +3,13 @@ import {
   TGetMessage
 } from '../types';
 
-export default function getMessage(json: IBizJson, messageGetter?: TGetMessage): string | undefined {
-  if (typeof messageGetter === 'function') {
-    return messageGetter(json);
+export default function getMessage(json: IBizJson, getter?: TGetMessage): string | undefined {
+  if (typeof getter === 'function') {
+    return getter(json);
   }
   
-  if (typeof messageGetter === 'string') {
-    return (json as any)[messageGetter] as string;
+  if (typeof getter === 'string') {
+    return (json as any)[getter] as string; // eslint-disable-line @typescript-eslint/no-explicit-any
   }
   
   return json.message;

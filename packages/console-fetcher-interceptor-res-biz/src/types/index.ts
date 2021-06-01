@@ -10,8 +10,11 @@ export type TGetCode = ((o: any) => string) | string; // eslint-disable-line @ty
 
 export type TGetMessage = ((o: any) => string) | string; // eslint-disable-line @typescript-eslint/no-explicit-any
 
+export type TGetTitle = ((o: any) => string) | string; // eslint-disable-line @typescript-eslint/no-explicit-any
+
 export interface IBizJson<T = void> {
   code?: string;
+  title?: string;
   message?: string;
   data?: T;
 }
@@ -39,10 +42,17 @@ export interface IFetcherConfigExtra {
    */
   getCode?: TGetCode;
   /**
+   * 当 `isSuccess` 判定为失败时，从数据中提取错误 title，默认 `json.title`
+   * 
+   * - `string` 自定义数据字段，如 `'TITLE'` 则表示获取 `json.TITLE`
+   * - `(json: any) => string` 从原始 json 对象进行自定义提取
+   */
+  getTitle?: TGetMessage;
+  /**
    * 当 `isSuccess` 判定为失败时，从数据中提取错误 message，默认 `json.message`
    * 
    * - `string` 自定义数据字段，如 `'MESSAGE'` 则表示获取 `json.MESSAGE`
-   * - `(json: any) => any` 从原始 json 对象进行自定义提取
+   * - `(json: any) => string` 从原始 json 对象进行自定义提取
    */
   getMessage?: TGetMessage;
 }

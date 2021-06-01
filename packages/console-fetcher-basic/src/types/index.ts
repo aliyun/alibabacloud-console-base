@@ -60,6 +60,7 @@ export interface IConsoleApiBodyMulti {
 
 export interface IConsoleApiMultiError {
   Code: string;
+  Title?: string;
   Message: string;
   RequestId: string;
   HttpStatusCode: string; // e.g. 404

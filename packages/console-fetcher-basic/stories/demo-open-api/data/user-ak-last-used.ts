@@ -11,7 +11,7 @@ interface IParams {
 
 interface IShitty {
   AccessKeyLastUsed: {
-    LastUsedDate: string
+    LastUsedDate: string;
   };
   // RequestId: string;
 }

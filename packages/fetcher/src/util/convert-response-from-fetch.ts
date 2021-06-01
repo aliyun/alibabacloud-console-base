@@ -7,7 +7,7 @@ import {
 } from '../const';
 
 import normalizeHeaderKey from './normalize-header-key';
-import createError from './error/create';
+import createFetcherError from './error/create';
 
 export default async function convertResponseFromFetch<T = void, C extends IFetcherConfig = IFetcherConfig>(response: Response, fetcherConfig: C): Promise<IFetcherResponse<T>> {
   const headers: Record<string, string> = {};
@@ -27,7 +27,10 @@ export default async function convertResponseFromFetch<T = void, C extends IFetc
       // ignore
     }
     
-    throw createError(fetcherConfig, ERROR_RESPONSE_STATUS, `response status ${response.status}`, `${response.status}`, responseData);
+    throw createFetcherError(fetcherConfig, ERROR_RESPONSE_STATUS, `response status ${response.status}`, {
+      code: `${response.status}`,
+      responseData
+    });
   }
   
   try { // TODO 可能要一个非 JSON 的设置
@@ -37,6 +40,6 @@ export default async function convertResponseFromFetch<T = void, C extends IFetc
       data: await response.json() as T
     };
   } catch (err) { // 如果后端返回的不是 JSON，这里会报错「JSON.parse: unexpected character at line 1 column 1 of the JSON data」
-    throw createError(fetcherConfig, ERROR_RESPONSE_PARSE, err?.message);
+    throw createFetcherError(fetcherConfig, ERROR_RESPONSE_PARSE, err?.message);
   }
 }

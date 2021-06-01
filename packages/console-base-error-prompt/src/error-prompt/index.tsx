@@ -12,6 +12,7 @@ import {
   IFnErrorPromptExtra
 } from '../types';
 import convertToQueueItem from '../util/convert-to-queue-item';
+import intl from '../intl';
 
 import DialogContent from './dialog-content';
 
@@ -65,8 +66,7 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPro
     content: dialogContent,
     buttons: (data: IErrorDialogData) => {
       const {
-        button,
-        buttonCancel
+        button
       } = queue[data.page - 1];
       const buttons = [];
       
@@ -74,9 +74,7 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPro
         buttons.push(button);
       }
       
-      if (buttonCancel) {
-        buttons.push(buttonCancel);
-      }
+      buttons.push(intl('op:close'));
       
       return buttons;
     },

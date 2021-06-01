@@ -57,6 +57,10 @@ function normalizeError(error: Error): Record<string, unknown> {
     o[k] = (error as never)[k];
   }
   
+  if (error.stack) {
+    o.stack = error.stack;
+  }
+  
   return o;
 }
 

@@ -1,4 +1,4 @@
-import createFetcher from './util/create-fetcher';
+import createFetcher from './factory';
 
 const fetcher = createFetcher();
 
@@ -12,8 +12,8 @@ export {
   ERROR_RESPONSE_STATUS,
   ERROR_RESPONSE_PARSE
 } from './const';
-export { default as createError } from './util/error/create';
-export { default as createErrorSkipNetwork } from './util/error/create-skip-network';
+export { default as createFetcherError } from './util/error/create';
+export { default as createFetcherErrorSkipNetwork } from './util/error/create-skip-network';
 export { default as buildUrl } from './util/build-url';
 export { default as canHaveBody } from './util/can-have-body';
 export { default as isCors } from './util/is-cors';

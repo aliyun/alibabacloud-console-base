@@ -1,9 +1,9 @@
 import {
   IBizJson,
-  TGetCode
+  TGetTitle
 } from '../types';
 
-export default function getCode(json: IBizJson, getter?: TGetCode): string | undefined {
+export default function getTitle(json: IBizJson, getter?: TGetTitle): string | undefined {
   if (typeof getter === 'function') {
     return getter(json);
   }
@@ -12,5 +12,5 @@ export default function getCode(json: IBizJson, getter?: TGetCode): string | und
     return (json as any)[getter] as string; // eslint-disable-line @typescript-eslint/no-explicit-any
   }
   
-  return json.code;
+  return json.title;
 }
