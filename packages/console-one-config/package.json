@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-one-config",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "OneConsole Config 对象解析与封装",
   "license": "MIT",
   "sideEffects": false,
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.19",
-    "@alicloud/demo-rc-elements": "^1.2.9",
+    "@alicloud/demo-rc-elements": "^1.2.10",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.8",
     "jest": "^27.0.3",

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-icon",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "ConsoleBase 组件 - 图标",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.19",
-    "@alicloud/demo-rc-elements": "^1.2.9",
+    "@alicloud/demo-rc-elements": "^1.2.10",
     "@types/jest": "^26.0.23",
     "@types/react": "^17.0.8",
     "@types/styled-components": "^5.1.9",
