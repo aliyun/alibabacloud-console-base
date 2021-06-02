@@ -183,7 +183,6 @@ export enum EIconType {
   postgresql = 'e620', // 云数据库 RDS PostgreSQL 版
   portrait = 'e961', // 画像分析
   prometheus = 'e689', // Prometheus 监控服务
-  prophet = 'e765', // 公众趋势分析
   pts = 'e635', // 性能测试服务
   quickbi = 'e757', // Quick BI
   ram = 'e74a', // 访问控制

@@ -298,7 +298,6 @@ const PRODUCT_MAPPING: Record<string, string> = {
   postgresql: '云数据库 RDS PostgreSQL 版',
   premiumpics: '图片与设计',
   prometheus: 'Prometheus 监控服务',
-  prophet: '公众趋势分析',
   pts: '性能测试服务',
   quickbi: 'Quick BI',
   quotas: '配额中心',
