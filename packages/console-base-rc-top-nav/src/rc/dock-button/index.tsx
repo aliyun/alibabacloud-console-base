@@ -4,7 +4,9 @@ import styled, {
 } from 'styled-components';
 
 import {
-  SIZE
+  SIZE,
+  mixinBgBrand,
+  mixinTextWhite
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonProps,
@@ -26,6 +28,8 @@ const ScDockButton = styled(Button)`
   position: relative;
   width: ${SIZE.HEIGHT_TOP_NAV}px;
   height: ${SIZE.HEIGHT_TOP_NAV}px;
+  ${mixinBgBrand}
+  ${mixinTextWhite}
   
   span {
     display: block;
@@ -73,7 +77,11 @@ const ScDockButton = styled(Button)`
 `;
 
 /**
- * 程序坞按钮
+ * 程序坞按钮，这种三道杠有个学名叫「汉堡包菜单图标」hamburger-menu-icon，可以有很多动效
+ * 
+ * - https://freefrontend.com/css-hamburger-menu-icons/
+ * - https://codemyui.com/tag/hamburger-menu/
+ * - https://codepen.io/designcouch/pen/Atyop
  */
 export default function DockButton(props: ButtonProps): JSX.Element {
   return <ScDockButton {...{
@@ -85,7 +93,7 @@ export default function DockButton(props: ButtonProps): JSX.Element {
       <span />
     </>,
     size: ButtonSize.NONE,
-    theme: ButtonTheme.BRAND_PRIMARY,
+    theme: ButtonTheme.NONE,
     borderRadius: false,
     noShadow: true
   }} />;
