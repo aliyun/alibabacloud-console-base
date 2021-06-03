@@ -26,7 +26,7 @@ export default function useHandleDockClick(): (e: MouseEvent<HTMLElement>) => vo
   
   return useCallback((e: MouseEvent<HTMLElement>): void => {
     if (dockActive) {
-      if (!dockActiveByHoverTimestamp || Date.now() - dockActiveByHoverTimestamp > 300) { // 300 是动画的时间，避免误操
+      if (!dockActiveByHoverTimestamp || Date.now() - dockActiveByHoverTimestamp > 250) { // 比 300 的动画时间稍小一些
         dispatchSetDockActiveByHoverTimestamp(0);
         handleDockActiveChange(false);
       }
