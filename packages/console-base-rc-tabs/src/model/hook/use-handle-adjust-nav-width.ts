@@ -6,7 +6,7 @@ import {
   WIDTH_SCROLLER_BUTTON
 } from '../../const';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useRefTabs from './use-ref-tabs';
 import useRefNav from './use-ref-nav';
 import useActiveTab from './use-active-tab';
@@ -20,7 +20,7 @@ import useVisibleTabs from './use-visible-tabs';
 export default function useHandleAdjustNavWidth(): () => void {
   const {
     width
-  } = useProps();
+  } = useModelProps();
   const refTabs = useRefTabs();
   const refNav = useRefNav();
   const visibleTabs = useVisibleTabs();

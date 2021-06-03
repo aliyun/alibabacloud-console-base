@@ -1,11 +1,11 @@
 import useModelState from './_use-model-state';
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 
 export default function useActiveKey(): string | number {
   const {
     activeKey: activeKeyInProps,
     defaultActiveKey
-  } = useProps();
+  } = useModelProps();
   const {
     activeKey: activeKeyInState
   } = useModelState();

@@ -1,4 +1,4 @@
-export { default as useProps } from './use-props';
+export { default as useProps } from './_use-model-props';
 export { default as useRefTabs } from './use-ref-tabs';
 export { default as useRefNav } from './use-ref-nav';
 export { default as useVisibleTabs } from './use-visible-tabs';

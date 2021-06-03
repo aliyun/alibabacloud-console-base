@@ -7,7 +7,7 @@ import {
   IPropsTab
 } from '../../types';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useVisibleTabs from './use-visible-tabs';
 import useActiveKey from './use-active-key';
 import useActiveTab from './use-active-tab';
@@ -17,7 +17,7 @@ export default function useHandleTabClose(): (tab: IPropsTab) => void {
   const {
     tabs,
     onTabClose
-  } = useProps();
+  } = useModelProps();
   const visibleTabs = useVisibleTabs();
   const activeKey = useActiveKey();
   const activeTab = useActiveTab();

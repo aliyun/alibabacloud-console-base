@@ -6,12 +6,12 @@ import {
   IPropsTab
 } from '../../types';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 
 export default function useVisibleTabs(): IPropsTab[] {
   const {
     tabs
-  } = useProps();
+  } = useModelProps();
   
   return useMemo(() => tabs.filter(v => v.visible !== false), [tabs]);
 }

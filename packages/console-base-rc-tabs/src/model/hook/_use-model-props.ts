@@ -12,14 +12,15 @@ import {
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IPropsTabs, 'width'>;
+type TModelProps = RequiredSelected<IPropsTabs, 'width' | 'contentPadding'>;
 
 const DEFAULT_PROPS: TModelProps = {
   tabs: [],
+  contentPadding: 'top',
   width: -1
 };
 
-export default function useProps(): TModelProps {
+export default function useModelProps(): TModelProps {
   const {
     props
   } = useModelContext();
