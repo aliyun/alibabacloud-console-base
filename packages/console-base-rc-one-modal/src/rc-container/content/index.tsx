@@ -22,6 +22,7 @@ export default function Content(): JSX.Element {
   
   return <Tabs {...{
     ...tabs,
+    contentPadding: 'none',
     classNameForTabBar: dragHandleClass,
     classNameForTabItem: CLASS_J_RND_CANCEL,
     classNameForTabScroller: CLASS_J_RND_CANCEL,
