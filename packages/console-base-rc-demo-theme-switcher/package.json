@@ -30,7 +30,7 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.19",
     "@types/jest": "^26.0.23",
     "@types/styled-components": "^5.1.9",
-    "jest": "^27.0.3",
+    "jest": "^27.0.4",
     "react": "^17.0.2",
     "styled-components": "^5.3.0",
     "ts-jest": "^27.0.2",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme": "^1.3.11",
-    "@alicloud/demo-rc-elements": "^1.2.11",
+    "@alicloud/demo-rc-elements": "^1.3.0",
     "@alicloud/mere-dom": "^1.1.9"
   },
   "scripts": {
