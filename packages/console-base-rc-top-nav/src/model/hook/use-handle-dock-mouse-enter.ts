@@ -6,6 +6,7 @@ import {
 import useModelProps from './_use-model-props';
 import useModelIsUnmounted from './_use-model-is-unmounted';
 import useDispatchSetDockHoverActiveTimer from './use-dispatch-set-dock-hover-active-timer';
+import useDispatchSetDockActiveByHoverTimestamp from './use-dispatch-set-dock-active-by-hover-timestamp';
 import useDockActive from './use-dock-active';
 import useHandleDockActiveChange from './use-handle-dock-active-change';
 
@@ -16,6 +17,7 @@ export default function useHandleDockMouseEnter(): (e: MouseEvent<HTMLElement>) 
   const isUnmounted = useModelIsUnmounted();
   const dockActive = useDockActive();
   const dispatchSetDockHoverActiveTimer = useDispatchSetDockHoverActiveTimer();
+  const dispatchSetDockActiveByHoverTimestamp = useDispatchSetDockActiveByHoverTimestamp();
   const handleDockActiveChange = useHandleDockActiveChange();
   
   const {
@@ -30,6 +32,7 @@ export default function useHandleDockMouseEnter(): (e: MouseEvent<HTMLElement>) 
         }
         
         handleDockActiveChange(true);
+        dispatchSetDockActiveByHoverTimestamp(Date.now()); // 避免自动 active 被 click 瞬间反转
         dispatchSetDockHoverActiveTimer(null);
       }, 400);
       
@@ -39,5 +42,5 @@ export default function useHandleDockMouseEnter(): (e: MouseEvent<HTMLElement>) 
     if (onMouseEnter) {
       onMouseEnter(e);
     }
-  }, [isUnmounted, dockActive, onMouseEnter, dispatchSetDockHoverActiveTimer, handleDockActiveChange]);
+  }, [isUnmounted, dockActive, onMouseEnter, dispatchSetDockHoverActiveTimer, dispatchSetDockActiveByHoverTimestamp, handleDockActiveChange]);
 }

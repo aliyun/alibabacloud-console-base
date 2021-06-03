@@ -4,14 +4,20 @@ import {
 } from 'react';
 
 import useModelProps from './_use-model-props';
+import useModelState from './_use-model-state';
 import useDockActive from './use-dock-active';
+import useDispatchSetDockActiveByHoverTimestamp from './use-dispatch-set-dock-active-by-hover-timestamp';
 import useHandleDockActiveChange from './use-handle-dock-active-change';
 
 export default function useHandleDockClick(): (e: MouseEvent<HTMLElement>) => void {
-  const docActive = useDockActive();
   const {
     dock
   } = useModelProps();
+  const {
+    dockActiveByHoverTimestamp
+  } = useModelState();
+  const dispatchSetDockActiveByHoverTimestamp = useDispatchSetDockActiveByHoverTimestamp();
+  const dockActive = useDockActive();
   const handleDockActiveChange = useHandleDockActiveChange();
   
   const {
@@ -19,10 +25,17 @@ export default function useHandleDockClick(): (e: MouseEvent<HTMLElement>) => vo
   } = dock || {};
   
   return useCallback((e: MouseEvent<HTMLElement>): void => {
-    handleDockActiveChange(!docActive);
+    if (dockActive) {
+      if (!dockActiveByHoverTimestamp || Date.now() - dockActiveByHoverTimestamp > 300) { // 300 是动画的时间，避免误操
+        dispatchSetDockActiveByHoverTimestamp(0);
+        handleDockActiveChange(false);
+      }
+    } else {
+      handleDockActiveChange(true);
+    }
     
     if (onClick) {
       onClick(e);
     }
-  }, [docActive, handleDockActiveChange, onClick]);
+  }, [onClick, dockActive, dockActiveByHoverTimestamp, dispatchSetDockActiveByHoverTimestamp, handleDockActiveChange]);
 }
