@@ -4,16 +4,12 @@ import {
 } from 'react';
 
 import useModelProps from './_use-model-props';
-import useModelState from './_use-model-state';
 import useDispatchSetDockHoverActiveTimer from './use-dispatch-set-dock-hover-active-timer';
 
 export default function useHandleDockMouseLeave(): (e: MouseEvent<HTMLElement>) => void {
   const {
     dock
   } = useModelProps();
-  const {
-    dockHoverActiveTimer
-  } = useModelState();
   const dispatchSetDockHoverActiveTimer = useDispatchSetDockHoverActiveTimer();
   
   const {
@@ -21,13 +17,10 @@ export default function useHandleDockMouseLeave(): (e: MouseEvent<HTMLElement>) 
   } = dock || {};
   
   return useCallback((e: MouseEvent<HTMLElement>): void => {
-    if (dockHoverActiveTimer) {
-      window.clearTimeout(dockHoverActiveTimer);
-      dispatchSetDockHoverActiveTimer(null);
-    }
+    dispatchSetDockHoverActiveTimer(null); // lifecycle 会清理未完成的 timeout
     
     if (onMouseLeave) {
       onMouseLeave(e);
     }
-  }, [dockHoverActiveTimer, onMouseLeave, dispatchSetDockHoverActiveTimer]);
+  }, [onMouseLeave, dispatchSetDockHoverActiveTimer]);
 }

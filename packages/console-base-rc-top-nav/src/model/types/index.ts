@@ -22,11 +22,11 @@ export type TModelDispatch = Dispatch<TModelAction>;
 
 export interface IModelState {
   /**
-   * dock 是否为按下状态，props.dock.active 为其对应受控属性
+   * dock 是否为 active 状态，props.dock.active 为其对应受控属性
    */
   dockActive: boolean;
   /**
-   * dock 鼠标移上去后，有个延时按下的逻辑
+   * dock 鼠标移上去后，如果为非 active 状态，则一定时间后自动触发 active
    */
   dockHoverActiveTimer: number | null;
 }
