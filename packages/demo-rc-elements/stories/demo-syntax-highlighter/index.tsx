@@ -1,6 +1,12 @@
 import React from 'react';
 
 import {
+  SyntaxHighlighter
+} from '../../src';
+
+const CODE = `import React from 'react';
+
+import {
   H1,
   H2,
   H3,
@@ -28,4 +34,10 @@ export default function DemoDefault(): JSX.Element {
     <InputText placeholder="InputText - block" block />
     <InputTextarea placeholder="InputTextarea" />
   </>;
+}`;
+
+export default function DemoSyntaxHighlighter(): JSX.Element {
+  return <SyntaxHighlighter language="tsx" showLineNumbers>
+    {CODE}
+  </SyntaxHighlighter>;
 }

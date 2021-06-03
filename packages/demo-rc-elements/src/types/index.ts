@@ -1,6 +1,9 @@
 import {
   HTMLAttributes
 } from 'react';
+import {
+  SyntaxHighlighterProps
+} from 'react-syntax-highlighter';
 
 export interface IPropsPre extends HTMLAttributes<HTMLPreElement> {
   headnote?: string | JSX.Element;
@@ -41,3 +44,7 @@ export interface IPropsFlex100HBF {
 export type TPropsCheckboxGroup<T> = IPropsChoiceGroup<T, T[]>;
 
 export type TPropsRadioGroup<T> = IPropsChoiceGroup<T, T>;
+
+export interface ISyntaxHighlighterProps extends Omit<SyntaxHighlighterProps, 'style'> {
+  theme?: 'light' | 'dark';
+}

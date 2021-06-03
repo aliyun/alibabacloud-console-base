@@ -21,6 +21,7 @@ export {
 } from './rc/choice-group';
 export { default as LongArticle } from './rc/long-article';
 export { default as Flex100HBF } from './rc/flex-100hbf';
+export { default as SyntaxHighlighter } from './rc/syntax-highlighter';
 
 export type {
   IPropsPre as PreProps,
@@ -30,5 +31,6 @@ export type {
   IChoiceItem as ChoiceItem,
   TPropsCheckboxGroup as CheckboxGroupProps,
   TPropsRadioGroup as RadioGroupProps,
-  IPropsFlex100HBF as Flex100HBFProps
+  IPropsFlex100HBF as Flex100HBFProps,
+  ISyntaxHighlighterProps as SyntaxHighlighterProps
 } from './types';
