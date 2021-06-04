@@ -3,35 +3,9 @@ import {
 } from '../types';
 import intl from '../intl';
 
-import {
-  EErrorField
-} from './enum';
-
 function reload(): void {
   location.reload();
 }
-
-/**
- * 非开发环境下，仅展示这些信息，开发环境可以展示更多信息
- */
-export const ERROR_INTL_MAPPING: Record<string, string> = {
-  [EErrorField.CODE]: intl('attr:code'),
-  [EErrorField.REQUEST_ID]: intl('attr:request_id')
-};
-
-/**
- * 保证字段排序
- */
-export const ERROR_ORDER: Record<string, number> = {
-  [EErrorField.CODE]: 1,
-  [EErrorField.REQUEST_ID]: 2,
-  [EErrorField.URL]: 3,
-  [EErrorField.METHOD]: 4,
-  [EErrorField.PARAMS]: 5,
-  [EErrorField.BODY]: 6,
-  [EErrorField.NAME]: 7,
-  [EErrorField.STACK]: 8
-};
 
 // 需要忽略的 error 的 name 列表 TODO 硬编码，不想依赖 @alicloud/console-fetcher 的输出
 export const ERROR_NAMES_IGNORE_LIST = [

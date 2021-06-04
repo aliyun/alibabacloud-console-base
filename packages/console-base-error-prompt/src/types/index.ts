@@ -11,9 +11,10 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 /**
- * 开发期间可以通过它展示更多的信息，同时它也是日志需要的重要信息
+ * 开发期间可以通过它展示更多的信息，同时它也是日志需要的重要信息，
+ * 使用 fetcher 的话，不需要传，这里有处理的逻辑
  */
-interface IErrorDetails {
+export interface IErrorDetails {
   url?: string;
   method?: string;
   params?: string | Record<string, unknown> | null;
