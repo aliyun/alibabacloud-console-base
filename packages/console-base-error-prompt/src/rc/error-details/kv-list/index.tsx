@@ -7,6 +7,7 @@ import React, {
 import styled from 'styled-components';
 
 import {
+  mixinTextPrimary,
   mixinTextTertiary,
   mixinTypoLineWrap
 } from '@alicloud/console-base-theme';
@@ -33,7 +34,6 @@ const ScKvList = styled.ul<IPropsScDetails>`
   padding: 0;
   max-height: ${props => (props.folded ? '0' : '1000px')};
   font-size: 0.95em;
-  font-weight: 200;
   overflow: hidden;
   list-style: none;
   transition: all 0.3s ease-out;
@@ -55,6 +55,15 @@ const ScV = styled.div`
   ${mixinTypoLineWrap}
 `;
 
+const ScStrong = styled.strong`
+  font-weight: 600;
+  ${mixinTextPrimary}
+  
+  &:after {
+    content: ' = ';
+  }
+`;
+
 function toDisplayValue(v: unknown): string {
   try {
     return JSON.stringify(v);
@@ -64,7 +73,10 @@ function toDisplayValue(v: unknown): string {
 }
 
 function renderObject(o: Record<string, unknown>): JSX.Element {
-  return <>{_map(o, (v, k) => <div key={k}>{`${k} = ${toDisplayValue(v)}`}</div>)}</>;
+  return <>{_map(o, (v, k) => <div key={k}>
+    <ScStrong>{k}</ScStrong>
+    <span>{toDisplayValue(v)}</span>
+  </div>)}</>;
 }
 
 export default function KvList({

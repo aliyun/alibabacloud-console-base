@@ -11,28 +11,32 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 /**
- * 标准化后的 IErrorDetailedInfo，纯对象，可以安全用于 postMessage 等场景，因为 Error 对象不可用在 postMessage 里边，会报错：
- * 
- * 「Uncaught DOMException: The object could not be cloned.」
+ * 开发期间可以通过它展示更多的信息，同时它也是日志需要的重要信息
  */
-export interface IErrorDetailedInfo {
-  code?: string;
-  requestId?: string;
-  title?: string;
-  message?: string | ReactElement;
-  // 请求相关
+interface IErrorDetails {
   url?: string;
   method?: string;
   params?: string | Record<string, unknown> | null;
   body?: string | Record<string, unknown> | null;
-  // 实在没有可用的信息
-  name?: string;
-  stack?: string;
+  [k: string]: unknown;
 }
 
-export interface IErrorWithDetails extends Error {
-  details?: IErrorDetailedInfo;
+/**
+ * 标准化后的纯对象，可以安全用于 postMessage 等场景，因为 Error 对象不可用在 postMessage 里边，会报错：
+ * 
+ * 「Uncaught DOMException: The object could not be cloned.」
+ */
+export interface IErrorPlain {
+  name: string;
+  requestId?: string;
+  code?: string;
+  title?: string;
+  message: string;
+  stack?: string;
+  details?: IErrorDetails;
 }
+
+export interface IError extends Error, IErrorPlain {}
 
 export interface IErrorDialogData {
   page: number;
@@ -41,7 +45,7 @@ export interface IErrorDialogData {
 /**
  * errorPrompt 接收的第一个参数
  */
-export type TErrorPromptArg = string | ReactElement | IErrorWithDetails | IErrorDetailedInfo;
+export type TErrorPromptArg = string | ReactElement | IError | IErrorPlain;
 
 /**
  * errorPrompt 第二个参数（对象形式），用于
@@ -61,16 +65,11 @@ export interface IErrorPromptExtra {
  * errorPrompt 第二个参数（函数形式）
  */
 export interface IFnErrorPromptExtra {
-  <T extends IErrorDetailedInfo>(errInQueue: T): IErrorPromptExtra | void;
-}
-
-export interface IErrorInQueue extends Omit<IErrorDetailedInfo, 'body' | 'params'> {
-  params?: Record<string, unknown> | null;
-  body?: Record<string, unknown> | null;
+  <T extends IErrorPlain>(errInQueue: T): IErrorPromptExtra | void;
 }
 
 export interface IErrorQueueItem extends RequiredBut<IErrorPromptExtra, 'button'> {
-  error: IErrorInQueue;
+  error: IErrorPlain;
   resolve(): void;
 }
 

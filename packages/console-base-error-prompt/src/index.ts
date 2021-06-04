@@ -6,6 +6,6 @@ export type {
   TErrorPromptArg as ErrorPromptArg,
   IErrorPromptExtra as ErrorPromptExtra,
   IFnErrorPromptExtra as ErrorPromptExtraFn,
-  IErrorDetailedInfo as ErrorDetailedInfo,
-  IErrorWithDetails as ErrorWithDetails
+  IErrorPlain as ErrorDetailedInfo,
+  IError as ErrorWithDetails
 } from './types';

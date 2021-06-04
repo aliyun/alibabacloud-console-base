@@ -1,4 +1,5 @@
 import _isString from 'lodash/isString';
+import _isPlainObject from 'lodash/isPlainObject';
 import _isEmpty from 'lodash/isEmpty';
 import qs from 'qs';
 
@@ -9,36 +10,35 @@ const DEFAULT_IGNORED_KEYS = [
   'umid'
 ];
 
-/**
- * 获取去干扰的 params 参数
- */
-export default function parseParams(params?: string | Record<string, unknown>): Record<string, unknown> | null {
-  if (!params) {
+function getPlainObject(o?: unknown): Record<string, unknown> | null {
+  if (!o) {
     return null;
   }
   
-  const o: Record<string, unknown> = _isString(params) ? qs.parse(params) : {
-    ...params
-  };
-
-  DEFAULT_IGNORED_KEYS.forEach(v => {
-    delete o[v];
-  });
-
-  return _isEmpty(o) ? null : o;
+  if (_isString(o)) {
+    return qs.parse(o);
+  }
+  
+  if (_isPlainObject(o)) {
+    return o as Record<string, unknown>;
+  }
+  
+  return null;
 }
 
 /**
- * 获取去干扰的 body 参数
+ * 获取去干扰的 params/body 参数
  */
-export function parseBody(body?: string | Record<string, unknown>): Record<string, unknown> | null {
-  const o = parseParams(body);
+export default function parseParams(params?: unknown): Record<string, unknown> | null {
+  const o = getPlainObject(params);
   
-  if (o) {
-    DEFAULT_IGNORED_KEYS.forEach(v => {
-      delete o[v];
-    });
+  if (!o) {
+    return null;
   }
+  
+  DEFAULT_IGNORED_KEYS.forEach(v => {
+    delete o[v];
+  });
 
   return _isEmpty(o) ? null : o;
 }

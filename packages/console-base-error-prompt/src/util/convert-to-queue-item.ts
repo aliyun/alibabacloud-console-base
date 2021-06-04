@@ -3,7 +3,7 @@ import _noop from 'lodash/noop';
 import {
   TErrorPromptArg,
   IErrorQueueItem,
-  IErrorInQueue,
+  IErrorPlain,
   IErrorPromptExtra,
   IFnErrorPromptExtra
 } from '../types';
@@ -13,11 +13,11 @@ import {
 } from '../const';
 import intl from '../intl';
 
-import convertToErrorInQueue from './convert-to-error-in-queue';
+import convertToErrorDetailedInfo from './convert-to-error-detailed-info';
 
 const defaultTitle = intl('title:normal');
 
-function parseExtra(error: IErrorInQueue, extra?: IErrorPromptExtra | IFnErrorPromptExtra): IErrorPromptExtra {
+function parseExtra(error: IErrorPlain, extra?: IErrorPromptExtra | IFnErrorPromptExtra): IErrorPromptExtra {
   return (typeof extra === 'function' ? extra(error) : extra) || {};
 }
 
@@ -25,9 +25,13 @@ function parseExtra(error: IErrorInQueue, extra?: IErrorPromptExtra | IFnErrorPr
  * 把错误 `o?: TErrorPromptArg` 转化成 IErrorQueueItem
  */
 export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra): IErrorQueueItem | null {
-  const error = convertToErrorInQueue(o);
+  if (!o) {
+    return null;
+  }
   
-  if (!error || ERROR_NAMES_IGNORE_LIST.includes(error.name || '')) {
+  const error = convertToErrorDetailedInfo(o);
+  
+  if (ERROR_NAMES_IGNORE_LIST.includes(error.name || '')) {
     return null;
   }
   
@@ -47,8 +51,8 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
   return {
     title: title || defaultTitle,
     message: message!,
-    button,
     error,
+    button,
     resolve: _noop // 由主方法负责填充成正式的 resolve 方法
   };
 }

@@ -3,9 +3,6 @@ import {
 } from 'react';
 
 export interface IErrorDetails {
-  message?: string | ReactElement;
-  code?: string;
-  requestId?: string;
   url?: string;
   method?: string;
   params?: string | Record<string, unknown> | null;

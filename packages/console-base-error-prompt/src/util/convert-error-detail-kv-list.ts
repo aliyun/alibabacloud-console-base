@@ -1,46 +1,49 @@
 import _forEach from 'lodash/forEach';
 import _isFunction from 'lodash/isFunction';
-import _isNil from 'lodash/isNil';
 import _snakeCase from 'lodash/snakeCase';
 
 import {
-  IErrorInQueue,
+  IErrorPlain,
   IErrorDetailKV
 } from '../types';
-import {
-  ERROR_INTL_MAPPING,
-  ERROR_ORDER
-} from '../const';
+import intl from '../intl';
+
+import parseParams from './parse-params';
 
 /**
  * 把错误对象转成 `{k0, k, v}` 对象数组，保证某些字段的顺序
  */
-export default function convertErrorDetailKvList(errorInQueue: IErrorInQueue): IErrorDetailKV[] {
+export default function convertErrorDetailKvList(error: IErrorPlain): IErrorDetailKV[] {
   const kvList: IErrorDetailKV[] = [];
   
-  _forEach(errorInQueue, (v, k): void => {
-    if (k === 'message' || _isFunction(v) || _isNil(v) || v === '') {
-      return;
-    }
-    
-    const mappedKey = ERROR_INTL_MAPPING[k];
-    
-    // 保证非开发模式下只有 ERROR_INTL_MAPPING 指定的 key 才可以被展示，但开发模式下所有都可见
-    if (!mappedKey && process.env.NODE_ENV !== 'development') {
+  function pushInfo(v: unknown, k0: string, k: string): void {
+    if (!v || _isFunction(v)) {
       return;
     }
     
     kvList.push({
-      k0: k,
-      k: mappedKey || _snakeCase(k).toUpperCase(),
+      k0,
+      k,
       v
     });
-  });
+  }
   
-  return kvList.sort((v1, v2) => {
-    const order1 = ERROR_ORDER[v1.k0] || 100;
-    const order2 = ERROR_ORDER[v2.k0] || 100;
+  pushInfo(error.code, 'code', intl('attr:code'));
+  pushInfo(error.requestId, 'requestId', intl('attr:request_id'));
+  
+  // 仅在开发模式下展示的信息
+  if (process.env.NODE_ENV === 'development') {
+    // 详情仅在开发模式下，对 details.params 和 details.body 有良好的展示
+    _forEach(error.details, (v, k) => {
+      pushInfo(k === 'params' || k === 'body' ? parseParams(v) : v, `detail.${k}`, _snakeCase(k).toUpperCase());
+    });
     
-    return order1 - order2;
-  });
+    // 实在没有可用信息的话，很可能是运行时错误，需要给开发一些醍醐灌顶..
+    if (!kvList.length) {
+      pushInfo(error.name, 'name', 'NAME');
+      pushInfo(error.stack, 'stack', 'STACK');
+    }
+  }
+  
+  return kvList;
 }
