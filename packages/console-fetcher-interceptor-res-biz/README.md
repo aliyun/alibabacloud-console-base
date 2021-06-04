@@ -3,18 +3,22 @@
 
 > `@alicloud/console-fetcher` 的响应拦截器，封装业务错误。
 
-* 扩展 `FetcherConfig` 增加可选方法
-    - `isSuccess(o: any): boolean`
-    - `getData(): T`
-    - `getCode(): string`
-    - `getMessage(): string`
+* 扩展 `FetcherConfig` 增加可选方法（一般情况下不需要设置，除非非正常场景）
+    - `isSuccess(o: IBizJson): boolean`
+    - `getData(o: IBizJson): T`
+    - `getCode(o: IBizJson): string`
+    - `getRequestId(o: IBizJson): string`
+    - `getTitle(o: IBizJson): string`
+    - `getMessage(o: IBizJson): string`
 
 阿里云控制台的 API 请求一般会以如下形式返回：
 
 ```
 {
   code: string;
+  requestId: string;
   data?: T;
+  title?: string;
   message?: string;
 }
 ```
@@ -110,10 +114,12 @@ import intercept, {
 // import interceptors 2
 
 const fetcher: Fetcher<FetcherConfigExtended> = createFetcher<FetcherConfigExtended>({
-  isSuccess,
-  getCode,
-  getData,
-  getMessage
+  isSuccess?,
+  getData?,
+  getCode?,
+  getRequestId?,
+  getTitle?,
+  getMessage?
 });
 
 // ... add interceptors 1  
@@ -138,17 +144,21 @@ interface IBody {
 
 fetcher.request<IResult>({
   url: '____url____',
-  isSuccess,
-  getCode,
-  getData,
-  getMessage
+  isSuccess?,
+  getData?,
+  getCode?,
+  getRequestId?,
+  getTitle?,
+  getMessage?
 });
 
 fetcher.post<IResult, IBody>({
-  isSuccess,
-  getCode,
-  getData,
-  getMessage
+  isSuccess?,
+  getData?,
+  getCode?,
+  getRequestId?,
+  getTitle?,
+  getMessage?
 }, '____url____', {
   id: '____id____'
 });

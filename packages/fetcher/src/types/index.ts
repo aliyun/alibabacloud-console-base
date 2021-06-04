@@ -118,6 +118,10 @@ export interface IFetcherErrorExtendedInfo {
    */
   code?: string;
   /**
+   * 预留扩展字段 - 请求 ID
+   */
+  requestId?: string;
+  /**
    * 预留扩展字段 - 原始 response 中的数据；强行把返回变成出错时需要
    */
   responseData?: unknown;

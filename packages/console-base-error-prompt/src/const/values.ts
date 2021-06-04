@@ -29,7 +29,7 @@ export const ERROR_ORDER: Record<string, number> = {
   [EErrorField.METHOD]: 4,
   [EErrorField.PARAMS]: 5,
   [EErrorField.BODY]: 6,
-  [EErrorField.ERROR_NAME]: 7,
+  [EErrorField.NAME]: 7,
   [EErrorField.STACK]: 8
 };
 

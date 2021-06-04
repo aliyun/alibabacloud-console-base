@@ -25,6 +25,7 @@ export default function convertErrorDetailKvList(errorInQueue: IErrorInQueue): I
     
     const mappedKey = ERROR_INTL_MAPPING[k];
     
+    // 保证非开发模式下只有 ERROR_INTL_MAPPING 指定的 key 才可以被展示，但开发模式下所有都可见
     if (!mappedKey && process.env.NODE_ENV !== 'development') {
       return;
     }

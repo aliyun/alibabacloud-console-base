@@ -22,6 +22,10 @@ export default function createFetcherError<C extends IFetcherConfig = IFetcherCo
       error.code = info.code;
     }
     
+    if (info.requestId) {
+      error.requestId = info.requestId;
+    }
+    
     if (info.responseData) {
       error.responseData = info.responseData;
     }

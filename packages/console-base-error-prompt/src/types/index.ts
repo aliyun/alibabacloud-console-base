@@ -10,27 +10,28 @@ import {
   DialogButtonProps
 } from '@alicloud/console-base-rc-dialog';
 
-export interface IErrorDetails {
-  code?: string;
-  requestId?: string;
-  url?: string;
-  method?: string;
-  params?: string | Record<string, unknown> | null;
-  body?: string | Record<string, unknown> | null;
-  [k: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-}
-
 /**
  * 标准化后的 IErrorDetailedInfo，纯对象，可以安全用于 postMessage 等场景，因为 Error 对象不可用在 postMessage 里边，会报错：
  * 
  * 「Uncaught DOMException: The object could not be cloned.」
  */
-export interface IErrorDetailedInfo extends IErrorDetails {
+export interface IErrorDetailedInfo {
+  code?: string;
+  requestId?: string;
+  title?: string;
   message?: string | ReactElement;
+  // 请求相关
+  url?: string;
+  method?: string;
+  params?: string | Record<string, unknown> | null;
+  body?: string | Record<string, unknown> | null;
+  // 实在没有可用的信息
+  name?: string;
+  stack?: string;
 }
 
 export interface IErrorWithDetails extends Error {
-  details?: IErrorDetails;
+  details?: IErrorDetailedInfo;
 }
 
 export interface IErrorDialogData {
@@ -43,7 +44,12 @@ export interface IErrorDialogData {
 export type TErrorPromptArg = string | ReactElement | IErrorWithDetails | IErrorDetailedInfo;
 
 /**
- * errorPrompt 第二个参数（对象形式），用于自定义 title 和 button
+ * errorPrompt 第二个参数（对象形式），用于
+ * 
+ * 1. 添加自定义 button
+ * 2. 覆盖 title 和 message
+ * 
+ * 但不能覆盖由 ERROR_CODE_EXTRA_MAPPING 指定的这部分信息
  */
 export interface IErrorPromptExtra {
   title?: string;
@@ -52,7 +58,7 @@ export interface IErrorPromptExtra {
 }
 
 /**
- * errorPrompt 第二个参数（函数形式），用于自定义 title 和 button
+ * errorPrompt 第二个参数（函数形式）
  */
 export interface IFnErrorPromptExtra {
   <T extends IErrorDetailedInfo>(errInQueue: T): IErrorPromptExtra | void;

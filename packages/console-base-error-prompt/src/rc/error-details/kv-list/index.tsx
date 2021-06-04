@@ -15,7 +15,9 @@ import CopyIt from '@alicloud/console-base-rc-copy-it';
 import {
   IErrorDetailKV
 } from '../../../types';
-import { EErrorField } from '../../../const';
+import {
+  EErrorField
+} from '../../../const';
 
 interface IProps {
   items: IErrorDetailKV[];

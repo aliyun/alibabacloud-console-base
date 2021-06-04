@@ -2,21 +2,26 @@ import {
   FetcherConfig
 } from '@alicloud/fetcher';
 
+type TGetterString = ((o: any) => string) | string; // eslint-disable-line @typescript-eslint/no-explicit-any
+
 export type TIsSuccess = ((o: any) => boolean) | boolean; // eslint-disable-line @typescript-eslint/no-explicit-any
 
 export type TGetData = ((o: any) => any) | string; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-export type TGetCode = ((o: any) => string) | string; // eslint-disable-line @typescript-eslint/no-explicit-any
+export type TGetCode = TGetterString;
 
-export type TGetMessage = ((o: any) => string) | string; // eslint-disable-line @typescript-eslint/no-explicit-any
+export type TGetMessage = TGetterString;
 
-export type TGetTitle = ((o: any) => string) | string; // eslint-disable-line @typescript-eslint/no-explicit-any
+export type TGetTitle = TGetterString;
+
+export type TGetRequestId = TGetterString;
 
 export interface IBizJson<T = void> {
   code?: string;
+  data?: T;
+  requestId?: string;
   title?: string;
   message?: string;
-  data?: T;
 }
 
 export interface IFetcherConfigExtra {
@@ -37,10 +42,17 @@ export interface IFetcherConfigExtra {
   /**
    * 当 `isSuccess` 判定为失败时，从数据中提取错误 code，默认 `json.code`
    * 
-   * - `string` 自定义数据字段，如 `'DATA'` 则表示获取 `json.DATA`
+   * - `string` 自定义数据字段，如 `'CODE'` 则表示获取 `json.CODE`
    * - `(json: any) => any` 从原始 json 对象进行自定义提取
    */
   getCode?: TGetCode;
+  /**
+   * 当 `isSuccess` 判定为失败时，从数据中提取错误 requestId，默认 `json.requestId`
+   * 
+   * - `string` 自定义数据字段，如 `'REQUEST_ID'` 则表示获取 `json.REQUEST_ID`
+   * - `(json: any) => any` 从原始 json 对象进行自定义提取
+   */
+  getRequestId?: TGetRequestId;
   /**
    * 当 `isSuccess` 判定为失败时，从数据中提取错误 title，默认 `json.title`
    * 

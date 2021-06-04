@@ -7,14 +7,17 @@ import {
   InputTextarea,
   InputSwitch,
   CheckboxGroup,
-  RadioGroup
+  RadioGroup, Button
 } from '../../src';
 
-export default function DemoInput(): JSX.Element {
+export default function DemoFormControl(): JSX.Element {
   return <>
-    <H1>输入元素</H1>
+    <H1>表单元素</H1>
+    <Button>一个 Button</Button>
+    <Button disabled>一个 disabled Button</Button>
     <InputNumber placeholder="InputNumber" />
     <InputText placeholder="InputText" />
+    <InputText placeholder="InputText - disabled" disabled />
     <InputText placeholder="InputText - block" block />
     <InputTextarea placeholder="InputTextarea" />
     <InputSwitch />

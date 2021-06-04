@@ -123,9 +123,11 @@ export default function ChooseNTest({
     }} />
     <Hr />
     {!onPrompt ? null : <Button {...{
+      disabled: !stateErrors.length,
       onClick: handleAlertErrors
-    }}>error prompt</Button>}
+    }}>error prompt ({stateErrors.length})</Button>}
     <Button {...{
+      disabled: !stateErrors.length,
       onClick: handleClear
     }}>clear</Button>
   </>;

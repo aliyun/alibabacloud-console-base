@@ -6,11 +6,7 @@ import {
   H3,
   H4,
   P,
-  Hr,
-  Button,
-  InputText,
-  InputNumber,
-  InputTextarea
+  Hr
 } from '../../src';
 
 export default function DemoDefault(): JSX.Element {
@@ -22,10 +18,5 @@ export default function DemoDefault(): JSX.Element {
     <H3>P / Pre / Hr / Button / InputText / InputTextArea</H3>
     <P>一个 P，这里的 <strong>strong</strong>、<code>code</code>、<kbd>kbd</kbd>、<em>em</em> 会有些样式</P>
     <Hr />
-    <Button>一个 Button</Button>
-    <InputNumber placeholder="InputNumber" />
-    <InputText placeholder="InputText" />
-    <InputText placeholder="InputText - block" block />
-    <InputTextarea placeholder="InputTextarea" />
   </>;
 }

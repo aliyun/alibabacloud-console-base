@@ -54,8 +54,7 @@ function parseInterceptorQueueItemForResponse<C extends IFetcherConfig>(args: TA
   } else {
     item = {
       fulfilledFn: args[0],
-      // @ts-ignore
-      rejectedFn: args[1]
+      rejectedFn: args[1] as IFnInterceptResponseRejected<C>
     };
   }
   

@@ -27,7 +27,7 @@ function parseExtra(error: IErrorInQueue, extra?: IErrorPromptExtra | IFnErrorPr
 export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra): IErrorQueueItem | null {
   const error = convertToErrorInQueue(o);
   
-  if (!error || ERROR_NAMES_IGNORE_LIST.includes(error.name)) {
+  if (!error || ERROR_NAMES_IGNORE_LIST.includes(error.name || '')) {
     return null;
   }
   
@@ -36,7 +36,7 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
     button,
     message
   }: IErrorPromptExtra = parseExtra(error, extra);
-  const specialExtra = ERROR_CODE_EXTRA_MAPPING[error.code];
+  const specialExtra = error.code ? ERROR_CODE_EXTRA_MAPPING[error.code] : undefined;
   
   if (specialExtra) {
     title = specialExtra.title || title;

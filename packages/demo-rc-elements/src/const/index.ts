@@ -3,13 +3,16 @@ import {
 } from 'styled-components';
 
 export const FORM_CONTROL_HEIGHT = 32;
+export const FORM_CONTROL_FGC_DISABLED = '#c0c6cc';
 export const FORM_CONTROL_BDC = '#ddd';
 export const FORM_CONTROL_BDC_HOVER = '#999';
 export const FORM_CONTROL_BDC_ACTIVE = '#999';
 export const FORM_CONTROL_BDC_FOCUS = '#66c';
+export const FORM_CONTROL_BDC_DISABLED = '#f0f1f3';
 export const FORM_CONTROL_BGC = '#f3f3f3';
 export const FORM_CONTROL_BGC_HOVER = '#f3f3f3';
 export const FORM_CONTROL_BGC_ACTIVE = '#f7f7f7';
+export const FORM_CONTROL_BGC_DISABLED = '#f0f1f3';
 
 export const CSS_FONT_FAMILY = css`
   font-family: 'PingFang SC', 'Hiragino Sans GB', Helvetica, Arial, sans-serif;

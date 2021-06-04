@@ -29,4 +29,8 @@ export default styled(ButtonBase)`
   &:focus {
     border-color: ${FORM_CONTROL_BDC_ACTIVE};
   }
+  
+  &[disabled] {
+    box-shadow: none;
+  }
 `;

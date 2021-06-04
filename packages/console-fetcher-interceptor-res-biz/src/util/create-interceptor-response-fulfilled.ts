@@ -16,6 +16,7 @@ import getData from './get-data';
 import getCode from './get-code';
 import getTitle from './get-title';
 import getMessage from './get-message';
+import getRequestId from './get-request-id';
 
 /**
  * 请求到这里，说明服务端有返回，但业务上不一定是成功的。
@@ -34,7 +35,8 @@ export default function createInterceptorResponseFulfilled(): FetcherFnIntercept
     
     throw createFetcherError<IFetcherConfigExtended>(fetcherConfig, ERROR_BIZ, message, {
       code,
-      title: getTitle(json, fetcherConfig.getTitle)
+      title: getTitle(json, fetcherConfig.getTitle),
+      requestId: getRequestId(json, fetcherConfig.getRequestId)
     });
   };
 }
