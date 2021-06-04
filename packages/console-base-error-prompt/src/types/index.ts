@@ -54,7 +54,7 @@ export type TErrorPromptArg = string | ReactElement | IError | IErrorPlain;
  * 1. 添加自定义 button
  * 2. 覆盖 title 和 message
  * 
- * 但不能覆盖由 ERROR_CODE_EXTRA_MAPPING 指定的这部分信息
+ * 但不能覆盖由 getPredefinedExtra 指定的这部分信息
  */
 export interface IErrorPromptExtra {
   title?: string;

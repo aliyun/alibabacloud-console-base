@@ -7,13 +7,11 @@ import {
   IErrorPromptExtra,
   IFnErrorPromptExtra
 } from '../types';
-import {
-  ERROR_NAMES_IGNORE_LIST,
-  ERROR_CODE_EXTRA_MAPPING
-} from '../const';
 import intl from '../intl';
 
+import shouldIgnore from './should-ignore';
 import convertToErrorDetailedInfo from './convert-to-error-detailed-info';
+import getPredefinedExtra from './get-predefined-extra';
 
 const defaultTitle = intl('title:normal');
 
@@ -25,22 +23,18 @@ function parseExtra(error: IErrorPlain, extra?: IErrorPromptExtra | IFnErrorProm
  * 把错误 `o?: TErrorPromptArg` 转化成 IErrorQueueItem
  */
 export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra): IErrorQueueItem | null {
-  if (!o) {
+  if (shouldIgnore(o)) {
     return null;
   }
   
-  const error = convertToErrorDetailedInfo(o);
-  
-  if (ERROR_NAMES_IGNORE_LIST.includes(error.name || '')) {
-    return null;
-  }
+  const error = convertToErrorDetailedInfo(o!);
   
   let {
     title,
     button,
     message
   }: IErrorPromptExtra = parseExtra(error, extra);
-  const specialExtra = error.code ? ERROR_CODE_EXTRA_MAPPING[error.code] : undefined;
+  const specialExtra = getPredefinedExtra(error.code);
   
   if (specialExtra) {
     title = specialExtra.title || title;
