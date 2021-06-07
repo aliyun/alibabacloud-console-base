@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-key-value",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "ConsoleBase 组件 - key-value 对的展示",
   "license": "MIT",
   "sideEffects": false,
@@ -42,7 +42,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.3.13",
+    "@alicloud/console-base-theme": "^1.3.14",
     "lodash": "^4.17.21"
   },
   "scripts": {
