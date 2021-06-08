@@ -24,6 +24,7 @@ import buildInterpolation from './build-interpolation';
  */
 export default function generateCodeGlobalStyle(): string {
   const generator: ICodeGenerator = {
+    generator: 'generator-code-global-style',
     begin: CODE_BEGIN_GLOBAL_STYLE,
     end: CODE_END_GLOBAL_STYLE,
     indent: CODE_INDENT_GLOBAL_STYLE

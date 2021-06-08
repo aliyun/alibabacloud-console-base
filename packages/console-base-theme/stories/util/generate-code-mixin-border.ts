@@ -20,6 +20,7 @@ const BUTTON_ALTS = ['', '-top', '-right', '-bottom', '-left'];
 // 生成 mixin/border.ts 的代码
 export default function generateCodeMixinBorder(): string {
   const generator: ICodeGenerator = {
+    generator: 'generator-code-mixin-border',
     begin: CODE_BEGIN_BORDER
   };
   

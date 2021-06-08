@@ -18,6 +18,7 @@ import buildCssCode from './build-css-code';
 // 生成 mixin/text.ts 的代码
 export default function generateCodeMixinText(): string {
   const generator: ICodeGenerator = {
+    generator: 'generator-code-mixin-text',
     begin: CODE_BEGIN_TEXT
   };
   

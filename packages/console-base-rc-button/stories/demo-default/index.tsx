@@ -2,13 +2,14 @@ import React, {
   useState,
   useCallback
 } from 'react';
-import {
+import styled, {
   createGlobalStyle
 } from 'styled-components';
 
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 import {
   H1,
+  Hr,
   P
 } from '@alicloud/demo-rc-elements';
 
@@ -26,6 +27,10 @@ const GlobalStyle = createGlobalStyle`
   a:visited {
     color: #ff10f2;
   }
+`;
+
+const ScButtonThemes = styled(Button)`
+  margin: 2px;
 `;
 
 export default function DemoDefault(): JSX.Element {
@@ -52,10 +57,14 @@ export default function DemoDefault(): JSX.Element {
       href: '//www.aliyun.com',
       label: 'this button will stay an anchor'
     }}>www.aliyun.com</Button></div>
-    <H1>Themes</H1>
-    <P>所有 theme</P>
+    <Hr />
+    <ScButtonThemes {...{
+      ...stateProps,
+      label: 'default (no props.theme)'
+    }} />
     {Object.entries(ButtonTheme).map(([k, v]) => {
-      return <Button {...{
+      return <ScButtonThemes {...{
+        ...stateProps,
         key: k,
         theme: v,
         label: v

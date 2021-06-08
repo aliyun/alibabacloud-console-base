@@ -16,6 +16,7 @@ export enum EButtonTheme {
   SECONDARY = 'secondary',
   SECONDARY_ALT = 'secondary:alt', // 空心
   TERTIARY = 'tertiary',
+  TERTIARY_ALT = 'tertiary:alt', // 空心
   BRAND_PRIMARY = 'brand:primary',
   BRAND_SECONDARY = 'brand:secondary',
   BRAND_SECONDARY_ALT = 'brand:secondary:alt', // 空心

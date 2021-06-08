@@ -34,6 +34,7 @@ function getAttr(varName: string): string {
 // 生成 mixin/input.ts
 export default function generateCodeMixinInput(): string {
   const generator: ICodeGenerator = {
+    generator: 'generator-code-mixin-input',
     begin: CODE_BEGIN_INPUT
   };
   

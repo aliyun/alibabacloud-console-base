@@ -24,6 +24,7 @@ function buildLinkStyle(theme: string, state: string, indent?: number): string {
 // 生成 mixin/link.ts
 export default function generateCodeMixinLink(): string {
   const generator: ICodeGenerator = {
+    generator: 'generator-code-mixin-link',
     begin: CODE_BEGIN_LINK
   };
   
