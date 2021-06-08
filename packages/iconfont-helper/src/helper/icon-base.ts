@@ -11,7 +11,7 @@ export default styled.i`
     -moz-osx-font-smoothing: grayscale;
     vertical-align: baseline;
     text-rendering: auto;
-    transition: all 200ms ease;
+    transition: all linear 200ms;
     -webkit-text-stroke-width: 0.2px;
   }
 `;
