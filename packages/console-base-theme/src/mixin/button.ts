@@ -622,6 +622,95 @@ export const mixinButtonTertiary = css`
     ${mixinButtonTertiaryStateDisabled}
   }
 `;
+export const mixinButtonTertiaryAltColorStateNormal = css`
+  color: ${COLOR.BUTTON_TERTIARY_ALT_TEXT};
+  color: var(--cb-color-button-tertiary-alt-text, ${COLOR.BUTTON_TERTIARY_ALT_TEXT});
+`;
+export const mixinButtonTertiaryAltBgStateNormal = css`
+  background-color: ${COLOR.BUTTON_TERTIARY_ALT_BG};
+  background-color: var(--cb-color-button-tertiary-alt-bg, ${COLOR.BUTTON_TERTIARY_ALT_BG});
+`;
+export const mixinButtonTertiaryAltBorderStateNormal = css`
+  border-color: ${COLOR.BUTTON_TERTIARY_ALT_BORDER};
+  border-color: var(--cb-color-button-tertiary-alt-border, ${COLOR.BUTTON_TERTIARY_ALT_BORDER});
+`;
+export const mixinButtonTertiaryAltStateNormal = css`
+  ${mixinButtonTertiaryAltColorStateNormal}
+  ${mixinButtonTertiaryAltBgStateNormal}
+  ${mixinButtonTertiaryAltBorderStateNormal}
+`;
+export const mixinButtonTertiaryAltColorStateHover = css`
+  color: ${COLOR.BUTTON_TERTIARY_ALT_TEXT_HOVER};
+  color: var(--cb-color-button-tertiary-alt-text-hover, ${COLOR.BUTTON_TERTIARY_ALT_TEXT_HOVER});
+`;
+export const mixinButtonTertiaryAltBgStateHover = css`
+  background-color: ${COLOR.BUTTON_TERTIARY_ALT_BG_HOVER};
+  background-color: var(--cb-color-button-tertiary-alt-bg-hover, ${COLOR.BUTTON_TERTIARY_ALT_BG_HOVER});
+`;
+export const mixinButtonTertiaryAltBorderStateHover = css`
+  border-color: ${COLOR.BUTTON_TERTIARY_ALT_BORDER_HOVER};
+  border-color: var(--cb-color-button-tertiary-alt-border-hover, ${COLOR.BUTTON_TERTIARY_ALT_BORDER_HOVER});
+`;
+export const mixinButtonTertiaryAltStateHover = css`
+  ${mixinButtonTertiaryAltColorStateHover}
+  ${mixinButtonTertiaryAltBgStateHover}
+  ${mixinButtonTertiaryAltBorderStateHover}
+`;
+export const mixinButtonTertiaryAltColorStateActive = css`
+  color: ${COLOR.BUTTON_TERTIARY_ALT_TEXT_ACTIVE};
+  color: var(--cb-color-button-tertiary-alt-text-active, ${COLOR.BUTTON_TERTIARY_ALT_TEXT_ACTIVE});
+`;
+export const mixinButtonTertiaryAltBgStateActive = css`
+  background-color: ${COLOR.BUTTON_TERTIARY_ALT_BG_ACTIVE};
+  background-color: var(--cb-color-button-tertiary-alt-bg-active, ${COLOR.BUTTON_TERTIARY_ALT_BG_ACTIVE});
+`;
+export const mixinButtonTertiaryAltBorderStateActive = css`
+  border-color: ${COLOR.BUTTON_TERTIARY_ALT_BORDER_ACTIVE};
+  border-color: var(--cb-color-button-tertiary-alt-border-active, ${COLOR.BUTTON_TERTIARY_ALT_BORDER_ACTIVE});
+`;
+export const mixinButtonTertiaryAltStateActive = css`
+  ${mixinButtonTertiaryAltColorStateActive}
+  ${mixinButtonTertiaryAltBgStateActive}
+  ${mixinButtonTertiaryAltBorderStateActive}
+`;
+export const mixinButtonTertiaryAltColorStateDisabled = css`
+  color: ${COLOR.BUTTON_TERTIARY_ALT_TEXT_DISABLED};
+  color: var(--cb-color-button-tertiary-alt-text-disabled, ${COLOR.BUTTON_TERTIARY_ALT_TEXT_DISABLED});
+`;
+export const mixinButtonTertiaryAltBgStateDisabled = css`
+  background-color: ${COLOR.BUTTON_TERTIARY_ALT_BG_DISABLED};
+  background-color: var(--cb-color-button-tertiary-alt-bg-disabled, ${COLOR.BUTTON_TERTIARY_ALT_BG_DISABLED});
+`;
+export const mixinButtonTertiaryAltBorderStateDisabled = css`
+  border-color: ${COLOR.BUTTON_TERTIARY_ALT_BORDER_DISABLED};
+  border-color: var(--cb-color-button-tertiary-alt-border-disabled, ${COLOR.BUTTON_TERTIARY_ALT_BORDER_DISABLED});
+`;
+export const mixinButtonTertiaryAltStateDisabled = css`
+  ${mixinButtonTertiaryAltColorStateDisabled}
+  ${mixinButtonTertiaryAltBgStateDisabled}
+  ${mixinButtonTertiaryAltBorderStateDisabled}
+`;
+export const mixinButtonTertiaryAlt = css`
+  ${mixinButtonTertiaryAltStateNormal}
+  
+  &:link,
+  &:visited {
+    ${mixinButtonTertiaryAltColorStateNormal}
+  }
+  
+  &:hover,
+  &:focus {
+    ${mixinButtonTertiaryAltStateHover}
+  }
+  
+  &:active {
+    ${mixinButtonTertiaryAltStateActive}
+  }
+  
+  &:disabled {
+    ${mixinButtonTertiaryAltStateDisabled}
+  }
+`;
 export const mixinButtonBrandPrimaryColorStateNormal = css`
   color: ${COLOR.BUTTON_BRAND_PRIMARY_TEXT};
   color: var(--cb-color-button-brand-primary-text, ${COLOR.BUTTON_BRAND_PRIMARY_TEXT});

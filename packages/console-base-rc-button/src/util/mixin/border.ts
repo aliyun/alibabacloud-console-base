@@ -16,6 +16,7 @@ const THEMES_NEED_BORDER: EButtonTheme[] = [
   EButtonTheme.SECONDARY,
   EButtonTheme.SECONDARY_ALT,
   EButtonTheme.TERTIARY,
+  EButtonTheme.TERTIARY_ALT,
   EButtonTheme.BRAND_PRIMARY,
   EButtonTheme.BRAND_SECONDARY,
   EButtonTheme.BRAND_SECONDARY_ALT,
