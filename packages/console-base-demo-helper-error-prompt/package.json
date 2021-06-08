@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-demo-helper-error-prompt",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "ConsoleBase Demo Helper for Error Prompt",
   "license": "MIT",
   "sideEffects": false,
@@ -26,7 +26,7 @@
     "error-prompt"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.14",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.15",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.19",
     "@types/jest": "^26.0.23",
