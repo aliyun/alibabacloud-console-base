@@ -20,10 +20,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'angle-right' = 'e65e', // 角箭头 - 右
   'angle-down' = 'e65a', // 角箭头 - 下
   'angle-left' = 'e658', // 角箭头 - 左
-  'triangle-up' = 'e60b', // 实心小三角 - 上
-  'triangle-right' = 'e718', // 实心小三角 - 右
-  'triangle-down' = 'e719', // 实心小三角 - 下
-  'triangle-left' = 'e60a', // 实心小三角 - 左
   'arrow-left' = 'e7c3', // 箭头 ← - 左
   'arrow-right' = 'e88c', // 箭头 → - 右
   'angle-circle-right' = 'e60c', // 圈圈箭头 - 右

@@ -11,8 +11,8 @@ import {
   mixinShadowMDown,
   mixinTypoFontBase
 } from '@alicloud/console-base-theme';
+import Flex from '@alicloud/console-base-rc-flex';
 
-import Flex from '../../rc/flex';
 import {
   useProps
 } from '../../model';
@@ -47,10 +47,15 @@ export default function TopNavUi(): JSX.Element {
     fixed,
     uiProps
   } = useProps();
-  const className = `${uiProps?.className || ''} J_fixed_right_will_be_pushed_left`.trim(); // 注意：和 one-modal 中有耦合，可以忍
   
-  return <ScTopNaV data-spm="top-nav" {...uiProps} className={className} fixed={fixed ? 1 : 0}>
-    <Flex>
+  return <ScTopNaV {...{
+    'data-spm': 'top-nav',
+    ...uiProps,
+    align: 'center',
+    className: `${uiProps?.className || ''} J_fixed_right_will_be_pushed_left`.trim(), // 注意：和 one-modal 中有耦合，可以忍
+    fixed: fixed ? 1 : 0
+  }}>
+    <Flex align="center">
       <Dock />
       <Logo />
     </Flex>

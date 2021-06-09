@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Flex from '../../../rc/flex';
+import Flex from '@alicloud/console-base-rc-flex';
+
 import TopNavButton from '../../../rc/top-nav-button';
 import {
   useMenus
@@ -9,7 +10,7 @@ import {
 export default function Menus(): JSX.Element {
   const menus = useMenus();
   
-  return <Flex as="nav">
+  return <Flex align="center" as="nav">
     {menus.map(({
       key,
       ...props
