@@ -23,8 +23,9 @@ interface IProps {
 }
 
 const ScErrorDetails = styled.div`
-  margin-top: 12px;
+  margin-top: 8px;
   font-size: 12px;
+  line-height: 1.5;
 `;
 
 const ScButtonToggle = styled(Button)`

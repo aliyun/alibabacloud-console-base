@@ -59,7 +59,7 @@ function getIconColorMixin(iconType: IconType): FlattenSimpleInterpolation {
   }
 }
 
-const ICON_SIZE = 20;
+const ICON_SIZE = 24;
 const SPACING = 8;
 
 const ScAltWrap = styled.div`
@@ -71,7 +71,7 @@ const ScAltWrap = styled.div`
 
 const ScIcon = styled(Icon)`
   position: absolute;
-  top: 2px;
+  top: 0;
   left: 0;
   font-size: ${ICON_SIZE}px;
   ${props => getIconColorMixin(props.type)}
@@ -85,14 +85,14 @@ const ScTitle = styled.h5`
   margin: 0 0 12px 0;
   padding: 0;
   font-size: 16px;
-  line-height: 26px;
+  line-height: ${ICON_SIZE}px;
   ${mixinTextPrimary}
   ${mixinTypoLineWrap}
 `;
 
 const ScContent = styled.div`
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 22px;
   ${mixinTextSecondary}
   ${mixinTypoLineWrap}
 `;

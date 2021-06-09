@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  EDialogSize,
   openIndirect
 } from '@alicloud/console-base-rc-dialog';
 
@@ -78,6 +79,7 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPro
       
       return buttons;
     },
+    size: EDialogSize.S,
     undefinedAsReject: false
   });
   

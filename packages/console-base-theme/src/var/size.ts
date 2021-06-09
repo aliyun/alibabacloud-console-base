@@ -28,12 +28,12 @@ export default {
    ************************* */
   
   // 普通 dialog 的宽度梯度
-  WIDTH_DIALOG_NORMAL_XS: 400,
+  WIDTH_DIALOG_NORMAL_XS: 360,
   WIDTH_DIALOG_NORMAL_S: 480,
   WIDTH_DIALOG_NORMAL_M: 560,
   WIDTH_DIALOG_NORMAL_L: 640,
   WIDTH_DIALOG_NORMAL_XL: 720,
-  WIDTH_DIALOG_NORMAL_XXL: 900,
+  WIDTH_DIALOG_NORMAL_XXL: 960,
   
   // 侧拉 dialog 的宽度梯度
   WIDTH_DIALOG_SLIDE_XS: 480,

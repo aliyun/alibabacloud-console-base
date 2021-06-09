@@ -23,11 +23,12 @@ interface IScProps {
 }
 
 const cssNormal = css`
-  padding-top: ${SIZE.PADDING_X_DIALOG * 2 / 3}px;
+  padding: ${SIZE.PADDING_X_DIALOG}px ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
 `;
 
 // slide 和 slide-up 共用
 const cssSlide = css`
+  padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;
   ${mixinBorderTertiaryBottom}
 `;
@@ -36,7 +37,6 @@ const ScHeader = styled.header<IScProps>`
   display: flex;
   align-items: center;
   position: relative;
-  padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   box-sizing: border-box;
   ${mixinTextPrimary}
   ${props => (props.mode !== EDialogMode.NORMAL ? cssSlide : cssNormal)}
@@ -45,7 +45,7 @@ const ScHeader = styled.header<IScProps>`
     flex: 1;
     margin: 0;
     padding: 0;
-    line-height: 24px;
+    line-height: 22px;
     font-size: 16px;
     font-weight: 400;
     ${mixinTypoEllipsis}
