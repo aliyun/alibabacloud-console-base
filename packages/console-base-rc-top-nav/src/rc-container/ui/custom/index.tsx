@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Flex from '../../../rc/flex';
+import Flex from '@alicloud/console-base-rc-flex';
+
 import {
   useProps
 } from '../../../model';
 
 const ScCustom = styled(Flex)`
   flex: 1;
-  justify-content: space-between;
-  margin: 0 12px 0 0;
+`;
+
+const ScCustomInner = styled(ScCustom)`
+  margin: 0 8px;
 `;
 
 /**
@@ -21,8 +24,8 @@ export default function Custom(): JSX.Element {
     customRight
   } = useProps();
   
-  return <ScCustom>
-    <Flex>{customLeft}</Flex>
-    <Flex>{customRight}</Flex>
+  return <ScCustom align="center">
+    <ScCustomInner align="center" justify="flex-start">{customLeft}</ScCustomInner>
+    <ScCustomInner align="center" justify="flex-end">{customRight}</ScCustomInner>
   </ScCustom>;
 }

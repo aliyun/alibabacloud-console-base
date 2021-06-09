@@ -52,6 +52,7 @@ const ScInner = styled.span`
 
 const ScInnerIcon = styled.span`
   margin: 0 8px 0 4px;
+  font-size: 1.1em;
   
   &:first-child {
     margin-left: 0;
@@ -81,6 +82,8 @@ function Button({
   borderRadius = true,
   spm = 'button',
   component,
+  classNameForIconLeft,
+  classNameForIconRight,
   ...restProps
 }: IButtonProps, ref: Ref<HTMLElement>): JSX.Element {
   const propsForSc: IButtonPropsForSc = {
@@ -101,9 +104,9 @@ function Button({
   
   if (jsxIconLeft || jsxIconRight) {
     jsxInner = <ScInner>
-      {jsxIconLeft ? <ScInnerIcon>{jsxIconLeft}</ScInnerIcon> : null}
+      {jsxIconLeft ? <ScInnerIcon className={classNameForIconLeft}>{jsxIconLeft}</ScInnerIcon> : null}
       {jsxInner ? <ScInnerLabel>{jsxInner}</ScInnerLabel> : null}
-      {jsxIconRight ? <ScInnerIcon>{jsxIconRight}</ScInnerIcon> : null}
+      {jsxIconRight ? <ScInnerIcon className={classNameForIconRight}>{jsxIconRight}</ScInnerIcon> : null}
     </ScInner>;
   }
   

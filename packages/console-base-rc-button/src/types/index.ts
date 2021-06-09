@@ -42,4 +42,7 @@ export interface IButtonProps extends Omit<IButtonPropsForSc, 'title'> {
   iconRight?: IconType | JSX.Element; // 右侧 Icon，类上
   // behavior
   spm?: string; // force to have a goldlog ghost click attribute
+  // class 钩子，以便有需要自定义样式（比如 responsive 的情况，隐藏图标的需求）
+  classNameForIconLeft?: string;
+  classNameForIconRight?: string;
 }
