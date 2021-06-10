@@ -33,7 +33,7 @@
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.19",
     "@types/jest": "^26.0.23",
-    "@types/react": "^17.0.9",
+    "@types/react": "^17.0.11",
     "@types/styled-components": "^5.1.10",
     "jest": "^27.0.4",
     "react": "^17.0.2",
