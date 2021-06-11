@@ -69,6 +69,8 @@ export interface IFnErrorPromptExtra {
   <T extends IErrorPlain>(errInQueue: T): IErrorPromptExtra | void;
 }
 
+export type TErrorPromptArgExtra = IErrorPromptExtra | IFnErrorPromptExtra;
+
 export interface IErrorQueueItem extends RequiredBut<IErrorPromptExtra, 'button'> {
   error: IErrorPlain;
   resolve(): void;

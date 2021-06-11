@@ -4,8 +4,9 @@ export { default as convertToErrorDetailedInfo } from './util/convert-to-error-d
 
 export type {
   TErrorPromptArg as ErrorPromptArg,
-  IErrorPromptExtra as ErrorPromptExtra,
-  IFnErrorPromptExtra as ErrorPromptExtraFn,
+  TErrorPromptArgExtra as ErrorPromptArgExtra,
+  IError as ErrorWithDetails,
   IErrorPlain as ErrorDetailedInfo,
-  IError as ErrorWithDetails
+  IErrorPromptExtra as ErrorPromptExtra,
+  IFnErrorPromptExtra as ErrorPromptExtraFn
 } from './types';

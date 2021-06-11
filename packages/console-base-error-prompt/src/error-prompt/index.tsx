@@ -9,8 +9,7 @@ import {
   IErrorPromptSolo,
   IErrorDialogData,
   TErrorPromptArg,
-  IErrorPromptExtra,
-  IFnErrorPromptExtra
+  TErrorPromptArgExtra
 } from '../types';
 import convertToQueueItem from '../util/convert-to-queue-item';
 import intl from '../intl';
@@ -31,7 +30,7 @@ const SOLO: IErrorPromptSolo = {
  *    3. plain object
  * `extra` 用于自定义
  */
-export default async function errorPrompt(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra): Promise<void> {
+export default async function errorPrompt(o?: TErrorPromptArg, extra?: TErrorPromptArgExtra): Promise<void> {
   const queueItem = convertToQueueItem(o, extra);
   
   if (!queueItem) {
