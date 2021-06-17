@@ -1,12 +1,14 @@
-import {
-  SettingsRegionItem,
-  SettingsRegionGroup
-} from '@alicloud/console-base-common-typings';
+export interface IPayloadRegion {
+  id: string;
+  name: string;
+  disabled?: boolean;
+}
 
-export interface IPayloadRegion extends SettingsRegionItem {}
+export interface IPayloadRegionGroup {
+  name: string;
+  regions: IPayloadRegion[];
+}
 
 export interface IPayloadRegionOnChange extends IPayloadRegion {
   correctedFrom?: string;
 }
-
-export interface IPayloadRegionGroup extends SettingsRegionGroup {}

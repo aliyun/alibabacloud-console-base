@@ -31,10 +31,9 @@
     "jest": "^27.0.4",
     "react": "^17.0.2",
     "ts-jest": "^27.0.3",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.3"
   },
   "dependencies": {
-    "@alicloud/console-base-common-typings": "^1.3.11",
     "@alicloud/console-base-log-sls": "^1.1.19",
     "@alicloud/console-base-types-settings-toolkit": "^1.1.11",
     "@alicloud/post-message": "^1.1.16"

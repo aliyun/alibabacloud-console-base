@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-common-typings",
-  "version": "1.3.11",
-  "description": "ConsoleBase common types",
+  "name": "@alicloud/console-base-helper-paged-list",
+  "version": "0.0.1",
+  "description": "ConsoleBase Helper - PagedList",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-common-typings",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-helper-paged-list",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -21,8 +21,8 @@
   },
   "keywords": [
     "console-base",
-    "types",
-    "typings"
+    "helper",
+    "paged-list"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
@@ -32,7 +32,7 @@
     "jest": "^27.0.4",
     "react": "^17.0.2",
     "ts-jest": "^27.0.3",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.3"
   },
   "scripts": {
     "start": "breezr start-storybook",
