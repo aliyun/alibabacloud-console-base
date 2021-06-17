@@ -123,7 +123,7 @@ function Button({
   }
   
   return <ScButton {...{
-    ref,
+    ref: ref as any, // eslint-disable-line @typescript-eslint/no-explicit-any
     as,
     ...propsForSc,
     'data-spm-click': `gostr=/aliyun;locaid=d${spm}`
