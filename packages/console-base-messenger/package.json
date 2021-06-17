@@ -48,5 +48,6 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:bundle && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  }
+  },
+  "gitHead": "2c369347e08c59061a1022f850b3314bf5340d9f"
 }

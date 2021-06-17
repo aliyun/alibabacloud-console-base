@@ -5,16 +5,21 @@ import React, {
   forwardRef,
   useCallback
 } from 'react';
+import styled from 'styled-components';
 
 import {
-  InputBase
-} from './_form-control-base';
+  CSS_FORM_CONTROL_INPUT_BASE
+} from '../const';
 
 interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'defaultValue' | 'onChange'> {
   value?: number;
   defaultValue?: number;
   onChange?(value: number | undefined, e: ChangeEvent<HTMLInputElement>): void;
 }
+
+const ScInputNumber = styled.input`
+  ${CSS_FORM_CONTROL_INPUT_BASE}
+`;
 
 function number2string(n?: number): string | undefined {
   if (typeof n === 'undefined') {
@@ -42,7 +47,7 @@ function InputNumber({
     }
   }, [onChange]);
   
-  return <InputBase {...{
+  return <ScInputNumber {...{
     ...props,
     value: number2string(value),
     defaultValue: number2string(defaultValue),

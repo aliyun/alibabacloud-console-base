@@ -10,8 +10,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  InputBase
-} from './_form-control-base';
+  CSS_FORM_CONTROL_INPUT_BASE
+} from '../const';
 
 interface IScInput {
   block: 0 | 1;
@@ -22,8 +22,10 @@ interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 't
   onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
 }
 
-const ScInputText = styled(InputBase)<IScInput>`
+const ScInputText = styled.input<IScInput>`
+  ${CSS_FORM_CONTROL_INPUT_BASE}
   ${props => (props.block ? css`
+    margin: 1px 0 1px 0;
     display: block;
     width: 100%;
   ` : null)}

@@ -8,22 +8,16 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  InputBase
-} from './_form-control-base';
+  CSS_FORM_CONTROL_INPUT_TEXTAREA
+} from '../const';
+
+const ScInputTextarea = styled.textarea`
+  ${CSS_FORM_CONTROL_INPUT_TEXTAREA}
+`;
 
 interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
 }
-
-const ScInputTextarea = styled(InputBase)`
-  display: block;
-  padding: 4px 8px;
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 100px;
-  resize: vertical;
-  line-height: 1.8;
-`;
 
 function InputTextarea({
   onChange,
@@ -35,7 +29,7 @@ function InputTextarea({
     }
   }, [onChange]);
   
-  return <ScInputTextarea as="textarea" {...{
+  return <ScInputTextarea {...{
     ...props,
     ref,
     onChange: handleChange
