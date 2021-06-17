@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-pagination",
-  "version": "1.1.31",
+  "version": "1.1.32",
   "description": "ConsoleBase 组件 - 分页",
   "license": "MIT",
   "sideEffects": false,
@@ -38,10 +38,10 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.2.21",
-    "@alicloud/console-base-rc-button": "^1.1.30",
-    "@alicloud/console-base-rc-icon": "^1.4.17",
-    "@alicloud/console-base-theme": "^1.3.22"
+    "@alicloud/console-base-intl-factory-basic": "^1.2.22",
+    "@alicloud/console-base-rc-button": "^1.1.31",
+    "@alicloud/console-base-rc-icon": "^1.4.18",
+    "@alicloud/console-base-theme": "^1.3.23"
   },
   "scripts": {
     "start": "breezr start-storybook",

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-copy-it",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "ConsoleBase 组件 - Copy It",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.22",
-    "@alicloud/demo-rc-elements": "^1.3.9",
+    "@alicloud/demo-rc-elements": "^1.3.10",
     "@types/react": "^17.0.11",
     "@types/react-test-renderer": "^17.0.1",
     "@types/react-transition-group": "^4.4.1",
@@ -42,11 +42,11 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.2.21",
-    "@alicloud/console-base-rc-button": "^1.1.30",
-    "@alicloud/console-base-rc-icon": "^1.4.17",
-    "@alicloud/console-base-theme": "^1.3.22",
-    "@alicloud/copy-text": "^1.1.20",
+    "@alicloud/console-base-intl-factory-basic": "^1.2.22",
+    "@alicloud/console-base-rc-button": "^1.1.31",
+    "@alicloud/console-base-rc-icon": "^1.4.18",
+    "@alicloud/console-base-theme": "^1.3.23",
+    "@alicloud/copy-text": "^1.1.21",
     "react-transition-group": "^4.4.2"
   },
   "scripts": {
