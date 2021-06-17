@@ -31,5 +31,8 @@
     "ncu:main": "ncu",
     "ncu:packages": "lerna exec --no-bail -- ncu --timeout 120000",
     "ncu:full": "npm run ncu && npm run ncu:packages"
+  },
+  "dependencies": {
+    "jest": "^27.0.4"
   }
 }
