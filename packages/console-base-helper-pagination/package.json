@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-helper-paged-list",
+  "name": "@alicloud/console-base-helper-pagination",
   "version": "0.0.1",
-  "description": "ConsoleBase Helper - PagedList",
+  "description": "ConsoleBase Helper - Pagination",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-helper-paged-list",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-helper-pagination",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -22,7 +22,7 @@
   "keywords": [
     "console-base",
     "helper",
-    "paged-list"
+    "pagination"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
