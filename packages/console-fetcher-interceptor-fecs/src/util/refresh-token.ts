@@ -1,6 +1,5 @@
 import CONF_ENV from '@alicloud/console-base-conf-env';
 import fetch from '@alicloud/fetcher-fetch';
-import sls from '@alicloud/console-base-log-sls';
 
 import cookieSetToken from './cookie-set-token';
 import cookieGetToken from './cookie-get-token';
@@ -20,8 +19,6 @@ const REFRESH_QUEUE: IRefreshTokenQueueItem[] = [];
  * 真正执行请求刷新 FECS 的 token
  */
 function refresh(): Promise<void> {
-  const start = Date.now();
-  
   return fetch(`${CONF_ENV.FECS_URL_BASE}/data/heartbeat`, {
     credentials: 'include' // 必需，否则刷新出来的 token 无效
   }).then(response => response.json()).then((result: IRefreshTokenResult) => {
@@ -32,12 +29,6 @@ function refresh(): Promise<void> {
     if (cookieGetToken() !== newToken) {
       cookieSetToken(newToken);
     }
-    
-    sls('FECS_REFRESH_TOKEN_TIME_COST', { // 临时的日志记录 等有数据了 就删
-      value: Date.now() - start
-    }, {
-      delay: 2000
-    });
   });
 }
 
