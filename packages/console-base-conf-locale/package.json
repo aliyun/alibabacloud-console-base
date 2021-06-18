@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-locale",
-  "version": "1.4.22",
+  "version": "1.4.23",
   "description": "ConsoleBase CONF.LOCALE",
   "license": "MIT",
   "sideEffects": false,
@@ -27,13 +27,13 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.22",
-    "@alicloud/demo-rc-elements": "^1.3.10",
+    "@alicloud/demo-rc-elements": "^1.3.11",
     "@types/react": "^17.0.11",
     "react": "^17.0.2",
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "@alicloud/cookie": "^1.1.22"
+    "@alicloud/cookie": "^1.1.23"
   },
   "scripts": {
     "start": "breezr start-storybook",
