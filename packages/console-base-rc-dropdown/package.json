@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dropdown",
-  "version": "1.2.28",
+  "version": "1.2.29",
   "description": "ConsoleBase 组件 - 下拉",
   "license": "MIT",
   "sideEffects": false,
@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme": "^1.3.25",
-    "@alicloud/console-base-theme-sc-base": "^1.1.26",
+    "@alicloud/console-base-theme-sc-base": "^1.1.27",
     "@alicloud/mere-dom": "^1.1.18",
     "@alicloud/react-hook-is-unmounted": "^1.1.17",
     "@alicloud/typescript-missing-helpers": "^1.1.17",
