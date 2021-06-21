@@ -1,3 +1,5 @@
+import ONE_CONF from '@alicloud/console-one-config';
+
 import {
   IWin,
   IConfEnv
@@ -45,6 +47,7 @@ export default function parse(): IConfEnv {
     ENV_IS_DAILY,
     ENV_IS_PRE: ENV === EEnv.PRE,
     ENV_IS_PROD: ENV === EEnv.PROD,
+    APP_ID: ONE_CONF.APP_ID,
     DOMAIN_IS_4SERVICE,
     DOMAIN_IS_CONSOLE,
     SITE,

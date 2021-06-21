@@ -21,6 +21,7 @@ function fillByShitty(ONE_CONF: IConsoleOneConfig, shittyConf: IShittyConsoleOne
     TYPE: shittyConf.ACCOUNT_TYPE || ONE_CONF.ACCOUNT.TYPE,
     CERTIFIED: shittyConf.IS_CERTIFIED === 'true'
   };
+  ONE_CONF.APP_ID = shittyConf.APP_ID || '';
   ONE_CONF.REGIONS = fixRegions(shittyConf.REGIONS);
   ONE_CONF.OPEN_STATUS = fixOpenStatus(shittyConf.OPEN_STATUS);
   ONE_CONF.LINK = shittyConf.CHANNEL_LINKS || ONE_CONF.LINK;
@@ -50,6 +51,7 @@ export default function parseOneConf(): IConsoleOneConfig {
       TYPE: 'main',
       CERTIFIED: false
     },
+    APP_ID: '',
     REGIONS: [],
     OPEN_STATUS: {},
     LINK: {},

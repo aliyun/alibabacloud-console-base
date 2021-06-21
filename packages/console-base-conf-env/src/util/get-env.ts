@@ -8,7 +8,7 @@ import {
 } from '../const';
 
 /**
- * 获取当前运行的环境
+ * 获取当前运行的环境（线上 → 预发 → 日常 → 本地开发）
  */
 export default function getEnv(): EEnv {
   const {

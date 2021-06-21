@@ -16,6 +16,7 @@ export interface IConfEnv {
   ENV_IS_PROD: boolean;
   DOMAIN_IS_4SERVICE: boolean;
   DOMAIN_IS_CONSOLE: boolean;
+  APP_ID: string;
   SITE: 'CN' | 'INTL' | 'JP';
   CHANNEL: string;
   FECS_HOST: string;

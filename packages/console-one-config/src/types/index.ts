@@ -64,6 +64,8 @@ export interface IShittyConsoleOneConfig {
   CURRENT_PK: string;
   MAIN_ACCOUNT_PK: string; // 对应主账号 ID
   IS_CERTIFIED: 'true' | 'false'; // 用户已实名
+  // VIPER meta
+  APP_ID?: string; // 2021/06 新增，对应 VIPER 上的应用 ID，可快速对应的 VIPER 应用，一般用于全局性的日志
   // VIPER 配置
   REGIONS: IShittyRegion[]; // 根据应用基础信息的「Location 服务应用」获取，没有则为空
   OPEN_STATUS?: Record<string, IShittyOpenStatus>; // 项目配置 → UBSMS（即产品开通状态，不配的这个对象不存在 💩）
@@ -145,6 +147,11 @@ export interface IConsoleOneConfig {
     TYPE: 'main' | 'sub' | 'sts'; // ACCOUNT_TYPE
     CERTIFIED: boolean; // IS_CERTIFIED === 'true'
   };
+  // VIPER meta
+  /**
+   * Viper 上 OneConsole 应用的 ID
+   */
+  APP_ID: string;
   // VIPER 配置
   REGIONS: IRegion[];
   OPEN_STATUS?: Record<string, IOpenStatus>; // 产品开通状态（UBSMS 信息），OPEN_STATUS 净化而来

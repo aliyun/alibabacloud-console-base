@@ -14,6 +14,7 @@ const INTL_CHANNELS = [
 ];
 
 export default createLoggerFactory({
+  APP_ID: CONF_ENV.APP_ID,
   channel: CONF_ENV.CHANNEL,
   locale: CONF_LOCALE.LOCALE,
   uid: CONF_ACCOUNT.ID,
