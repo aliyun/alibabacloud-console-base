@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-one-conf",
-  "version": "1.3.23",
+  "version": "1.3.24",
   "description": "OneConsole Config 对象解析与封装",
   "license": "MIT",
   "sideEffects": false,
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@alicloud/console-conf-link-factory": "^1.1.17",
-    "@alicloud/console-one-config": "^1.1.22",
+    "@alicloud/console-one-config": "^1.1.23",
     "@alicloud/viper-feature-gen": "^1.1.19"
   },
   "scripts": {

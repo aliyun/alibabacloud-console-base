@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-basic",
-  "version": "1.4.30",
+  "version": "1.4.31",
   "description": "控制台基础 Fetcher（无风控）",
   "license": "MIT",
   "sideEffects": false,
@@ -27,23 +27,23 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.22",
-    "@alicloud/demo-rc-elements": "^1.3.11",
-    "@alicloud/fetcher-demo-helpers": "^1.1.22",
+    "@alicloud/demo-rc-elements": "^1.3.12",
+    "@alicloud/fetcher-demo-helpers": "^1.1.23",
     "@types/lodash": "^4.14.170",
     "@types/react": "^17.0.11",
     "react": "^17.0.2",
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "@alicloud/console-fetcher-interceptor-arms": "^1.1.25",
-    "@alicloud/console-fetcher-interceptor-fecs": "^1.1.30",
-    "@alicloud/console-fetcher-interceptor-req-security": "^1.1.25",
-    "@alicloud/console-fetcher-interceptor-res-biz": "^1.1.25",
-    "@alicloud/console-fetcher-interceptor-res-error-message": "^1.1.26",
-    "@alicloud/console-fetcher-interceptor-sls": "^1.1.28",
-    "@alicloud/fetcher": "^1.1.25",
-    "@alicloud/fetcher-interceptor-cache-local": "^1.0.15",
-    "@alicloud/fetcher-interceptor-merger": "^1.0.15",
+    "@alicloud/console-fetcher-interceptor-arms": "^1.1.26",
+    "@alicloud/console-fetcher-interceptor-fecs": "^1.1.31",
+    "@alicloud/console-fetcher-interceptor-req-security": "^1.1.26",
+    "@alicloud/console-fetcher-interceptor-res-biz": "^1.1.26",
+    "@alicloud/console-fetcher-interceptor-res-error-message": "^1.1.27",
+    "@alicloud/console-fetcher-interceptor-sls": "^1.1.29",
+    "@alicloud/fetcher": "^1.1.26",
+    "@alicloud/fetcher-interceptor-cache-local": "^1.0.16",
+    "@alicloud/fetcher-interceptor-merger": "^1.0.16",
     "lodash": "^4.17.21"
   },
   "scripts": {
