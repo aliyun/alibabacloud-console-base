@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger",
-  "version": "1.3.21",
+  "version": "1.3.22",
   "description": "ConsoleBase 信使 - 与控制台应用之间的交互",
   "license": "MIT",
   "sideEffects": false,
@@ -31,7 +31,7 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "@alicloud/console-base-log-sls": "^1.1.27",
+    "@alicloud/console-base-log-sls": "^1.1.28",
     "@alicloud/console-base-types-settings-toolkit": "^1.1.17",
     "@alicloud/post-message": "^1.1.23"
   },
