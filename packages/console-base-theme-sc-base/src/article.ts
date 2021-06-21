@@ -181,6 +181,8 @@ export default styled.article`
     line-height: 1.6;
     overflow: auto;
     font-size: 0.95em;
+    white-space: pre-wrap;
+    word-break: break-all;
     ${mixinTextInverse}
     ${mixinBgInverse}
     
@@ -191,15 +193,6 @@ export default styled.article`
       background: unset;
       font-size: inherit;
       color: unset;
-    }
-    
-    ol {
-      margin: 0 0 0 3em;
-      list-style: decimal outside;
-      
-      li {
-        margin: 0;
-      }
     }
   }
   
