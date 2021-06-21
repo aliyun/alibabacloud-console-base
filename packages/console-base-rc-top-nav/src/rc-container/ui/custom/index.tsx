@@ -11,21 +11,41 @@ const ScCustom = styled(Flex)`
   flex: 1;
 `;
 const ScCustomL = styled(ScCustom)`
-  margin-right: 8px;
+  margin-right: 10px;
+  
+  > * {
+    margin-left: 10px;
+  }
 `;
-const ScCustomR = ScCustom;
+const ScCustomR = styled(ScCustom)`
+  > * {
+    margin-right: 10px;
+  }
+`;
 
 /**
  * 自定义区域
+ * 
+ * 有默认的 margin，可以用 customLeftClassName 和 customRightClassName 覆盖
  */
 export default function Custom(): JSX.Element {
   const {
     customLeft,
-    customRight
+    customRight,
+    customLeftClassName,
+    customRightClassName
   } = useProps();
   
   return <ScCustom align="center">
-    <ScCustomL align="center" justify="flex-start">{customLeft}</ScCustomL>
-    <ScCustomR align="center" justify="flex-end">{customRight}</ScCustomR>
+    <ScCustomL {...{
+      className: customLeftClassName,
+      align: 'center',
+      justify: 'flex-start'
+    }}>{customLeft}</ScCustomL>
+    <ScCustomR {...{
+      className: customRightClassName,
+      align: 'center',
+      justify: 'flex-end'
+    }}>{customRight}</ScCustomR>
   </ScCustom>;
 }

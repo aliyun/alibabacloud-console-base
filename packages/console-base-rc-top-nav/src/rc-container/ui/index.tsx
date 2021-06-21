@@ -42,17 +42,18 @@ const ScTopNaV = styled(Flex)<IScPropsTopNav>`
   ${props => (props.fixed ? mixinShadowMDown : mixinShadowM)}
 `;
 
-export default function TopNavUi(): JSX.Element {
+export default function Ui(): JSX.Element {
   const {
-    fixed,
-    uiProps
+    id,
+    className,
+    fixed
   } = useProps();
   
   return <ScTopNaV {...{
     'data-spm': 'top-nav',
-    ...uiProps,
+    id,
     align: 'center',
-    className: `${uiProps?.className || ''} J_fixed_right_will_be_pushed_left`.trim(), // 注意：和 one-modal 中有耦合，可以忍
+    className: `${className || ''} J_fixed_right_will_be_pushed_left`.trim(), // 注意：和 one-modal 中有耦合，可以忍
     fixed: fixed ? 1 : 0
   }}>
     <Flex align="center">

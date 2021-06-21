@@ -9,9 +9,7 @@ import {
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
-import TopNav, {
-  TopNavButton
-} from '../../src';
+import TopNav from '../../src';
 
 export default function DemoDefault(): JSX.Element {
   const [stateRemoved, setStateRemoved] = useState<boolean>(false);
@@ -129,11 +127,7 @@ export default function DemoDefault(): JSX.Element {
         }
       },
       customLeft: <>
-        <TopNavButton {...{
-          spm: 'l1',
-          force: true,
-          label: <span style={{ color: 'red' }}>L1</span>
-        }} />
+        <div style={{ color: 'red' }}>L1</div>
         <div style={{ color: 'green' }}>L2</div>
       </>,
       customRight: <>
