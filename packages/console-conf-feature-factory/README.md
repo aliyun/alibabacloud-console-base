@@ -66,9 +66,9 @@
 > 最佳实践：杜绝硬编码到处飞，feature 字符串定义到这里，并加以说明。
 
 ```typescript
-import viperFeatureGen from '@alicloud/console-conf-feature-factory'; // 在你的代码中应该只出现这里一次
+import confFeatureFactory from '@alicloud/console-conf-feature-factory'; // 在你的代码中应该只出现这里一次
 
-export default viperFeatureGen(VIPER_功能开关_输出, VIPER_灰度_输出);
+export default confFeatureFactory(VIPER_功能开关_输出, VIPER_灰度_输出);
 
 export enum EFeature {
   WHAT_OP = 'what:op' // 什么什么功能，需不需要判断 region
@@ -102,18 +102,18 @@ const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, { // 关心 region
 
 # API
 
-`viperFeatureGen` 的函数签名为 `function viperFeatureGen(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnFeatureCheck`：
+`confFeatureFactory` 的函数签名为 `function confFeatureFactory(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnConfFeatureCC`：
 
 * `FEATURE_CONF: Record<string, IFeatureItem>` 功能开关配置，「必需」OneConsole 的项目可以统一用 `window.ALIYUN_CONSOLE_CONFIG.CHANNEL_FEATURE_STATUS`，非 OneConsole 的项目根据自身 HTML 的输出调整自己的代码。
 * `GRAY_CONF: Record<string, boolean>` 灰度配置，「必需」OneConsole 的项目可以统一用 `window.ALIYUN_CONSOLE_CONFIG.FEATURE_STATUS`（再次吐槽此狗屎命名），非 OneConsole 的项目根据自身 HTML 的输出调整自己的代码。
 
-再次提醒 `viperFeatureGen` 是一个工厂方法（虽然在一个项目中可能仅用一次），它生产出来的方法的签名如下：
+再次提醒 `confFeatureFactory` 是一个工厂方法（虽然在一个项目中可能仅用一次），它生产出来的方法的签名如下：
 
 ```typescript
-interface IFnFeatureCheck {
-  (key: string): boolean;
-  (key: string, region: string): boolean;
-  (key: string, attributes: IFeatureCheckAttributes): boolean;
+interface IFnConfFeature<K = string> {
+  (key: K): boolean;
+  (key: K, region: string): boolean;
+  (key: K, attributes: IFeatureCheckAttributes): boolean;
 }
 ```
 
