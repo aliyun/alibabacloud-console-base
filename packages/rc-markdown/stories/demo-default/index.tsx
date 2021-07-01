@@ -68,7 +68,7 @@ export default function DemoDefault(): JSX.Element {
       <InputSwitch {...{
         value: stateApplyStyle,
         onChange: setStateApplyStyle
-      }} /> (this component comes with not style at all... it is for demo only)
+      }} /> (this component comes with NO style at all... it is for demo only)
     </div>
     <H1>展示 <span role="img" aria-label="mwa">💋</span></H1>
     {stateApplyStyle ? <ArticleBase>{jsxMarkdown}</ArticleBase> : jsxMarkdown}
