@@ -37,9 +37,9 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "micromark": "^3.0.0",
-    "micromark-extension-directive": "^2.0.0",
-    "micromark-extension-gfm": "^1.0.0"
+    "micromark": "^2.11.4",
+    "micromark-extension-directive": "^1.4.0",
+    "micromark-extension-gfm": "^0.3.3"
   },
   "scripts": {
     "start": "breezr start-storybook",
