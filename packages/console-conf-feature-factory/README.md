@@ -1,13 +1,13 @@
-@alicloud/viper-feature-gen
+@alicloud/console-conf-feature-factory
 ===
 
-阿里云控制台（接入 viper）功能开关检查（工厂方法）
+控制台配置平台 Viper - 功能开关/灰度 - 工厂方法
 
 > 💥 OneConsole 控制台可以使用 `@alicloud/console-one-conf`，它整合了 OneConsole 下
 > * `window.ALIYUN_CONSOLE_CONFIG` 这个全局对象的类型定义和纠正
-> * `confFeature()` 利用 `@alicloud/viper-feature-gen` 标准化了功能开关加灰度的使用
+> * `confFeature()` 利用 `@alicloud/console-conf-feature-factory` 标准化了功能开关加灰度的使用
 > * `confLinkGen()` 标准化了渠道链接的使用方式，在 TS 下可以对传入的 key 做类型约束（需要传入默认的所有链接兜底），避免漏写和写错
-> 墙裂推荐 OneConsole 的控制台直接使用 `@alicloud/console-one-conf` 而不是这个 `@alicloud/viper-feature-gen`
+> 墙裂推荐 OneConsole 的控制台直接使用 `@alicloud/console-one-conf` 而不是这个 `@alicloud/console-conf-feature-factory`
 
 # WHY
 
@@ -66,7 +66,7 @@
 > 最佳实践：杜绝硬编码到处飞，feature 字符串定义到这里，并加以说明。
 
 ```typescript
-import viperFeatureGen from '@alicloud/viper-feature-gen'; // 在你的代码中应该只出现这里一次
+import viperFeatureGen from '@alicloud/console-conf-feature-factory'; // 在你的代码中应该只出现这里一次
 
 export default viperFeatureGen(VIPER_功能开关_输出, VIPER_灰度_输出);
 

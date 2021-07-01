@@ -133,6 +133,11 @@ export interface IWindow extends Window {
 
 // 整容后的配置对象
 export interface IConsoleOneConfig {
+  // VIPER meta
+  /**
+   * Viper 上 OneConsole 应用的 ID
+   */
+  APP_ID: string;
   // 环境
   ONE: boolean; // window.ALIYUN_CONSOLE_CONFIG?.portalType === 'one'
   ENV: 'prod' | 'pre' | 'daily'; // fEnv
@@ -147,11 +152,6 @@ export interface IConsoleOneConfig {
     TYPE: 'main' | 'sub' | 'sts'; // ACCOUNT_TYPE
     CERTIFIED: boolean; // IS_CERTIFIED === 'true'
   };
-  // VIPER meta
-  /**
-   * Viper 上 OneConsole 应用的 ID
-   */
-  APP_ID: string;
   // VIPER 配置
   REGIONS: IRegion[];
   OPEN_STATUS?: Record<string, IOpenStatus>; // 产品开通状态（UBSMS 信息），OPEN_STATUS 净化而来

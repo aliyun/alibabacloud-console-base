@@ -1,12 +1,11 @@
 /* global describe, test, expect */
-import viperFeatureGen from '../src';
-
 import pkgInfo from '../package.json';
+import confFeatureFactory from '../src';
 
 describe(pkgInfo.name, () => {
   describe('missing FEATURE_CONF or key', () => {
     test('TRUE when `FEATURE_CONF` does NOT exist', () => {
-      const checkFeature = viperFeatureGen();
+      const checkFeature = confFeatureFactory({});
       
       expect(checkFeature('feature:op')).toBe(true);
       expect(checkFeature('feature:op', 'region')).toBe(true);
@@ -16,7 +15,7 @@ describe(pkgInfo.name, () => {
     });
     
     test('TRUE when `FEATURE_CONF` does NOT contain key', () => {
-      const checkFeature = viperFeatureGen({});
+      const checkFeature = confFeatureFactory({});
       
       expect(checkFeature('feature:op')).toBe(true);
       expect(checkFeature('feature:op', 'region')).toBe(true);
@@ -29,7 +28,7 @@ describe(pkgInfo.name, () => {
       const TRUE_GRAY = 'true:gray';
       const FALSE_GRAY = 'false:gray';
       
-      const checkFeature = viperFeatureGen({}, {
+      const checkFeature = confFeatureFactory({}, {
         [TRUE_GRAY]: true,
         [FALSE_GRAY]: false
       });
@@ -125,8 +124,8 @@ describe(pkgInfo.name, () => {
       [EFeature.FALSE]: true,
       [EFeature.TRUE]: false
     };
-    const confFeature = viperFeatureGen(FEATURE_CONF);
-    const confFeatureWithGray = viperFeatureGen(FEATURE_CONF, GRAY_CONF);
+    const confFeature = confFeatureFactory<EFeature>(FEATURE_CONF);
+    const confFeatureWithGray = confFeatureFactory(FEATURE_CONF, GRAY_CONF);
     
     // status === false -> false
     test('FALSE when status is `false`, regardless of regions configured and passed', () => {

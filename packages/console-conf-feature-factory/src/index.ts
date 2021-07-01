@@ -1,5 +1,6 @@
 export { default } from './factory';
 
 export type {
-  IFnFeatureCheck as FnFeatureCheck
+  IFnConfFeature as ConfFeature,
+  IFeatureItem as ConfFeatureItem
 } from './types';

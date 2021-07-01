@@ -3,10 +3,10 @@ export interface IFeatureCheckAttributes {
   [k: string]: string;
 }
 
-export interface IFnFeatureCheck {
-  (key: string): boolean;
-  (key: string, region: string): boolean;
-  (key: string, attributes: IFeatureCheckAttributes): boolean;
+export interface IFnConfFeature<K = string> {
+  (key: K): boolean;
+  (key: K, region: string): boolean;
+  (key: K, attributes: IFeatureCheckAttributes): boolean;
 }
 
 export interface IFeatureItem {

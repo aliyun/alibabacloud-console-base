@@ -1,7 +1,6 @@
 /* global describe, test, expect */
-import mixedBlackWhitelistChecker from '../src';
-
 import pkgInfo from '../package.json';
+import mixedBlackWhitelistChecker from '../src';
 
 describe(pkgInfo.name, () => {
   const CN_WILED = 'cn-*';

@@ -6,7 +6,7 @@ import mixedBlackWhitelistChecker from '@alicloud/mixed-black-whitelist-checker'
 import {
   IFeatureItem,
   IFeatureCheckAttributes,
-  IFnFeatureCheck,
+  IFnConfFeature,
   ICheckItem
 } from '../types';
 
@@ -56,8 +56,8 @@ import {
  * // ...
  * ```
  */
-export default function factory(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnFeatureCheck {
-  return (key: string, arg?: string | IFeatureCheckAttributes): boolean => {
+export default function factory<K extends string = string>(FEATURE_CONF: Record<string, IFeatureItem>, GRAY_CONF: Record<string, boolean> = {}): IFnConfFeature<K> {
+  return (key: K, arg?: string | IFeatureCheckAttributes): boolean => {
     /*
      * 这是一个 map，长相如下：
      *
@@ -76,7 +76,7 @@ export default function factory(FEATURE_CONF: Record<string, IFeatureItem> = {},
     const grayValue: boolean = GRAY_CONF[key] === undefined ? true : GRAY_CONF[key];
     
     // 灰度为 false 则必然为 false（此 if 以后灰度可以认为一直是 true）
-    if (grayValue === false) {
+    if (!grayValue) {
       return false;
     }
     
