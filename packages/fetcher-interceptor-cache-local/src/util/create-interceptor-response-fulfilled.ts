@@ -8,12 +8,18 @@ import {
   IFetcherConfigExtendedForResponse
 } from '../types';
 
+import removeMatched from './cache/remove-matched';
 import cacheResolve from './cache/resolve';
 
 export default function createInterceptorResponseFulfilled(): FetcherFnInterceptResponseFulfilled<IFetcherConfigExtendedForResponse> {
   return (data: unknown, {
-    cacheLocal
+    cacheLocal,
+    cacheLocalRemove
   }: IFetcherConfigExtendedForResponse): unknown => {
+    if (cacheLocalRemove) {
+      removeMatched(cacheLocalRemove);
+    }
+    
     if (cacheLocal) {
       cacheResolve(cacheLocal.key, data, cacheLocal.ttl);
     }
