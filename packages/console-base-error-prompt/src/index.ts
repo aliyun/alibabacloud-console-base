@@ -1,6 +1,7 @@
 export { default } from './error-prompt';
 
 export { default as convertToErrorDetailedInfo } from './util/convert-to-error-detailed-info';
+export { default as createErrorToIgnore } from './helper/create-error-to-ignore';
 
 export type {
   TErrorPromptArg as ErrorPromptArg,
