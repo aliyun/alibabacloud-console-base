@@ -5,6 +5,10 @@ interface IIE8Style {
 }
 
 export default function injectFont(fontFamily: string, dataUrl?: string): string {
+  if (typeof document === 'undefined') { // for SSR
+    return fontFamily;
+  }
+  
   const existedStyleElement = document.getElementById(fontFamily);
   
   if (existedStyleElement && existedStyleElement.tagName === 'STYLE') { // 避免多次注入

@@ -21,7 +21,8 @@ function createTextarea(text: string): HTMLTextAreaElement {
   return textarea;
 }
 
-export const COPY_SUPPORTED = document.queryCommandSupported(COMMAND);
+// check document FOR SSR
+export const COPY_SUPPORTED = typeof document !== 'undefined' && document.queryCommandSupported(COMMAND);
 
 export default function copyText(text = ''): boolean {
   if (!COPY_SUPPORTED) {
