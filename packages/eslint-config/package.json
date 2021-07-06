@@ -21,15 +21,15 @@
     "config"
   ],
   "devDependencies": {
-    "eslint": "^7.29.0"
+    "eslint": "^7.30.0"
   },
   "peerDependencies": {
     "eslint": ">=7"
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.14.7",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
     "eslint-config-ali": "^12.1.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
