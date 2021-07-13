@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-fecs",
-  "version": "1.1.35",
+  "version": "1.1.36",
   "description": "@alicloud/console-fetcher 请求 + 响应拦截 - FECS",
   "license": "MIT",
   "sideEffects": false,
@@ -35,7 +35,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-env": "^1.2.28",
+    "@alicloud/console-base-conf-env": "^1.2.29",
     "@alicloud/console-one-config": "^1.1.27",
     "@alicloud/cookie": "^1.1.27",
     "@alicloud/fetcher": "^1.1.29",
