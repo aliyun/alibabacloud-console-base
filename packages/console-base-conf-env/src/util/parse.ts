@@ -44,7 +44,7 @@ export default function parse(): IConfEnv {
   return {
     ENV,
     ENV_IS_DEV: ENV === EEnv.DEV,
-    ENV_IS_DAILY: ENV === EEnv.DAILY || DOMAIN_IS_TEST,
+    ENV_IS_DAILY: ENV === EEnv.DAILY,
     ENV_IS_PRE: ENV === EEnv.PRE,
     ENV_IS_PROD: ENV === EEnv.PROD,
     APP_ID: ONE_CONF.APP_ID,
