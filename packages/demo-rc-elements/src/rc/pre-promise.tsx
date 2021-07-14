@@ -2,12 +2,12 @@ import React, {
   useState,
   useEffect
 } from 'react';
+import styled from 'styled-components';
 
 import {
   IPropsPrePromise
 } from '../types';
 
-import Pre from './pre';
 import PreJson from './pre-json';
 
 enum ELoading {
@@ -23,24 +23,35 @@ interface IPromiseResult {
   duration?: number;
 }
 
-const BD: Record<ELoading, string> = {
-  [ELoading.IDLE]: '#ddd',
-  [ELoading.LOADING]: '#eed',
-  [ELoading.RESOLVED]: '#cec',
-  [ELoading.REJECTED]: '#edd'
-};
-
-const BG: Record<ELoading, string> = {
-  [ELoading.IDLE]: '#eee',
-  [ELoading.LOADING]: '#ffe',
-  [ELoading.RESOLVED]: '#dfd',
-  [ELoading.REJECTED]: '#fee'
-};
-
 const DEFAULT_RESULT: IPromiseResult = {
   loading: ELoading.IDLE,
   result: null
 };
+
+const ScPrePromise = styled.div`
+  position: relative;
+`;
+
+const ScInfoIdle = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.33);
+  color: #eee;
+`;
+
+const ScInfoLoading = styled(ScInfoIdle)`
+  background-color: rgba(255, 255, 0, 0.33);
+`;
+
+const ScInfoResolved = styled(ScInfoIdle)`
+  background-color: rgba(0, 255, 0, 0.33);
+`;
+
+const ScInfoRejected = styled(ScInfoIdle)`
+  background-color: rgba(255, 0, 0, 0.33);
+`;
 
 function normalizeError(error: Error): Record<string, unknown> {
   if (!error) {
@@ -65,19 +76,9 @@ function normalizeError(error: Error): Record<string, unknown> {
 }
 
 export default function PrePromise({
-  promise,
-  style,
-  ...props
+  promise
 }: IPropsPrePromise): JSX.Element {
   const [stateResult, setStateResult] = useState<IPromiseResult>(DEFAULT_RESULT);
-  const preProps = {
-    ...props,
-    style: {
-      ...style,
-      borderColor: BD[stateResult.loading],
-      backgroundColor: BG[stateResult.loading]
-    }
-  };
   
   useEffect(() => {
     if (!promise) {
@@ -104,16 +105,21 @@ export default function PrePromise({
     }));
   }, [promise]);
   
-  switch (stateResult.loading) {
-    case ELoading.IDLE:
-      return <Pre {...preProps}>Idle</Pre>;
-    case ELoading.LOADING:
-      return <Pre {...preProps}>Loading...</Pre>;
-    default: // RESOLVED + REJECTED
-      return <PreJson {...{
-        ...preProps,
-        o: stateResult.loading === ELoading.REJECTED ? normalizeError(stateResult.result as Error) : stateResult.result,
-        footnote: `耗时：${stateResult.duration}ms`
-      }} />;
-  }
+  return <ScPrePromise>
+    {((): JSX.Element => {
+      switch (stateResult.loading) {
+        case ELoading.LOADING:
+          return <ScInfoLoading>Loading...</ScInfoLoading>;
+        case ELoading.RESOLVED:
+          return <ScInfoResolved>Success, time: {stateResult.duration}ms</ScInfoResolved>;
+        case ELoading.REJECTED:
+          return <ScInfoRejected>Failed, time: {stateResult.duration}ms</ScInfoRejected>;
+        default:
+          return <ScInfoIdle>Idle</ScInfoIdle>;
+      }
+    })()}
+    <PreJson {...{
+      o: stateResult.loading === ELoading.REJECTED ? normalizeError(stateResult.result as Error) : stateResult.result
+    }} />
+  </ScPrePromise>;
 }

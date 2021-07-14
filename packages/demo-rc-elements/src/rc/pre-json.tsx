@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 
 import {
-  IPropsPreJson
+  ISyntaxHighlighterProps
 } from '../types';
 
-import Pre from './pre';
+import SyntaxHighlighter from './syntax-highlighter';
 
 function replacer(k: string, val: unknown): unknown {
   if (typeof val === 'function') {
@@ -42,6 +42,6 @@ function formatJson(o: unknown): string {
 export default function PreJson({
   o,
   ...props
-}: IPropsPreJson): JSX.Element {
-  return <Pre {...props}>{formatJson(o)}</Pre>;
+}: ISyntaxHighlighterProps): JSX.Element {
+  return <SyntaxHighlighter {...props} language="json5">{formatJson(o)}</SyntaxHighlighter>;
 }
