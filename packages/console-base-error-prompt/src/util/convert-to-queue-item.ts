@@ -28,23 +28,22 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
   }
   
   const error = convertToErrorDetailedInfo(o!);
-  
-  let {
-    title,
-    button,
-    message
-  }: IErrorPromptExtra = parseExtra(error, extra);
   const specialExtra = getPredefinedExtra(error.code);
+  let {
+    title = error.title,
+    message = error.message,
+    button
+  }: IErrorPromptExtra = parseExtra(error, extra);
   
   if (specialExtra) {
     title = specialExtra.title || title;
-    button = specialExtra.button || button;
     message = specialExtra.message || message;
+    button = specialExtra.button || button;
   }
   
   return {
     title: title || defaultTitle,
-    message: message!,
+    message,
     error,
     button,
     resolve: _noop // 由主方法负责填充成正式的 resolve 方法

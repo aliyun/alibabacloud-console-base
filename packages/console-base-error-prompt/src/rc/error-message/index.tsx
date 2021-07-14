@@ -33,7 +33,7 @@ export default function ErrorMessage({
     error
   }
 }: IProps): JSX.Element {
-  const theMessage = message || error.message || error.code || 'n / a';
+  const theMessage = message || error.code || 'n / a';
   
   if (_isString(theMessage) && /</.test(theMessage)) {
     return <ScErrorMessage>

@@ -71,8 +71,9 @@ export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>J
     }
   }
 }), createError({
+  title: 'Error 对象中有 title',
   code: 'I_FUCKING_NOT_SIGNED_IN',
-  message: '复杂的对象...',
+  message: '复杂的对象... and title in Error',
   requestId: generateRequestId(),
   details: {
     url: 'some URL',
