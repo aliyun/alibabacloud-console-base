@@ -28,16 +28,16 @@ export interface IErrorDetails {
  * 「Uncaught DOMException: The object could not be cloned.」
  */
 export interface IErrorPlain {
-  name: string;
-  requestId?: string;
-  code?: string;
-  title?: string;
+  name?: string;
   message: string;
+  title?: string;
+  code?: string;
+  requestId?: string;
   stack?: string;
   details?: IErrorDetails;
 }
 
-export interface IError extends Error, IErrorPlain {}
+export interface IError extends Error, Omit<IErrorPlain, 'name' | 'message' | 'stack'> {}
 
 export interface IErrorDialogData {
   page: number;
