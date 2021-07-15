@@ -7,6 +7,7 @@ interface IProps {
   maxHeight: number;
 }
 
+// CodeMirror 并没有 auto-resize 的配置，只能通过 CSS 来搞 https://codemirror.net/demo/resize.html
 export default css<IProps>`.CodeMirror {
   height: auto;
   

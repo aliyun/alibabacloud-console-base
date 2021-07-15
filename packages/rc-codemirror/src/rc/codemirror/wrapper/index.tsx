@@ -9,6 +9,7 @@ import cssAddonDialog from './css/css-addon-dialog';
 import cssAddonFoldGutter from './css/css-addon-fold-gutter';
 import cssAddonSearchMatch from './css/css-addon-search-match';
 import cssAddonLint from './css/css-addon-lint';
+import cssFixFont from './css/css-fix-font';
 import cssFixAutoResize from './css/css-fix-auto-resize';
 
 interface IScProps {
@@ -16,9 +17,6 @@ interface IScProps {
   maxHeight: number;
 }
 
-/*
- * CodeMirror 并没有 auto-resize 的配置，只能通过 CSS 来搞 https://codemirror.net/demo/resize.html
- */
 export default styled.div<IScProps>`
   ${cssBasic}
   ${cssThemeDark}
@@ -27,5 +25,6 @@ export default styled.div<IScProps>`
   ${cssAddonFoldGutter}
   ${cssAddonSearchMatch}
   ${cssAddonLint}
+  ${cssFixFont}
   ${cssFixAutoResize}
 `;
