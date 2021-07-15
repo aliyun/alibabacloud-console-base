@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/demo-rc-elements",
-  "version": "1.3.19",
+  "version": "1.3.20",
   "description": "专用于 demo 的元素，为了好看和方便，切不可用于生产",
   "license": "MIT",
   "sideEffects": false,
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@alicloud/mere-dom": "^1.1.21",
-    "@alicloud/rc-codemirror": "^0.2.1",
+    "@alicloud/rc-codemirror": "^0.2.2",
     "@types/react-syntax-highlighter": "^13.5.2",
     "lodash": "^4.17.21",
     "react-syntax-highlighter": "^15.4.3"
