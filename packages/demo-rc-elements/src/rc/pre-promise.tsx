@@ -37,20 +37,24 @@ const ScInfoIdle = styled.div`
   top: 0;
   right: 0;
   padding: 8px 16px;
-  background-color: rgba(255, 255, 255, 0.33);
-  color: #eee;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  z-index: 123;
 `;
 
 const ScInfoLoading = styled(ScInfoIdle)`
-  background-color: rgba(255, 255, 0, 0.33);
+  background-color: rgba(255, 255, 0, 0.5);
+  color: #666;
 `;
 
 const ScInfoResolved = styled(ScInfoIdle)`
-  background-color: rgba(0, 255, 0, 0.33);
+  background-color: rgba(0, 255, 0, 0.5);
+  color: #090;
 `;
 
 const ScInfoRejected = styled(ScInfoIdle)`
-  background-color: rgba(255, 0, 0, 0.33);
+  background-color: rgba(255, 0, 0, 0.5);
+  color: #c00;
 `;
 
 function normalizeError(error: Error): Record<string, unknown> {

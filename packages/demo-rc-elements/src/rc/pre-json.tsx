@@ -2,11 +2,11 @@ import React, {
   isValidElement
 } from 'react';
 
-import {
-  ISyntaxHighlighterProps
-} from '../types';
+import CodeMirror from '@alicloud/rc-codemirror';
 
-import SyntaxHighlighter from './syntax-highlighter';
+interface IProps {
+  o: unknown;
+}
 
 function replacer(k: string, val: unknown): unknown {
   if (typeof val === 'function') {
@@ -40,8 +40,13 @@ function formatJson(o: unknown): string {
  * 展示简化的 JSON
  */
 export default function PreJson({
-  o,
-  ...props
-}: ISyntaxHighlighterProps): JSX.Element {
-  return <SyntaxHighlighter {...props} language="json5">{formatJson(o)}</SyntaxHighlighter>;
+  o
+}: IProps): JSX.Element {
+  return <CodeMirror {...{
+    conf: {
+      mode: 'application/json',
+      readOnly: true
+    },
+    value: formatJson(o)
+  }} />;
 }
