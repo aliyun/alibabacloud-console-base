@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-button",
-  "version": "1.1.46",
+  "version": "1.1.47",
   "description": "ConsoleBase 组件 - 按钮",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "button"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.36",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.37",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.23",
-    "@alicloud/demo-rc-elements": "^1.3.23",
+    "@alicloud/demo-rc-elements": "^1.3.24",
     "@types/react": "^17.0.14",
     "@types/styled-components": "^5.1.11",
     "react": "^17.0.2",
@@ -40,9 +40,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-icon": "^1.4.32",
-    "@alicloud/console-base-theme": "^1.3.36",
-    "@alicloud/console-base-theme-sc-base": "^1.1.38"
+    "@alicloud/console-base-rc-icon": "^1.4.33",
+    "@alicloud/console-base-theme": "^1.3.37",
+    "@alicloud/console-base-theme-sc-base": "^1.1.39"
   },
   "scripts": {
     "start": "breezr start-storybook",
