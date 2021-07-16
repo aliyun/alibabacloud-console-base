@@ -30,18 +30,22 @@ import {
 export default function createEditor(div: HTMLDivElement, value: string, conf: IPropsCodeMirror['conf'] = {}): Editor {
   return CodeMirror(div, {
     value,
-    theme: conf.theme ?? (conf.readOnly ? 'mdn-like' : 'oceanic-next'),
     mode: 'text/plain', // 支持的 mode 可以查看 mode 模块的末尾
+    // display
+    theme: conf.theme ?? (conf.readOnly ? 'mdn-like' : 'oceanic-next'),
     indentUnit: 2,
     lineNumbers: true,
     lineWrapping: true,
     styleActiveLine: !conf.readOnly,
     gutters: conf.readOnly ? [] : ['CodeMirror-lint-markers', 'CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-    lint: !conf.readOnly,
     foldGutter: true,
+    matchBrackets: true,
+    // ease
+    autoRefresh: true,
     autoCloseBrackets: '()[]{}\'\'""',
     autoCloseTags: true,
-    matchBrackets: true,
+    // others
+    lint: !conf.readOnly,
     extraKeys: {
       Tab: false
     },
