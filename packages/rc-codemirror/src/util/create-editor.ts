@@ -4,7 +4,8 @@ import CodeMirror, {
 
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/htmlmixed/htmlmixed';
-import 'codemirror/addon/lint/lint';
+import 'codemirror/addon/display/autorefresh'; // https://codemirror.net/doc/manual.html#addon_autorefresh
+import 'codemirror/addon/display/fullscreen';
 import 'codemirror/addon/selection/active-line';
 import 'codemirror/addon/fold/foldcode';
 import 'codemirror/addon/fold/foldgutter';
@@ -18,6 +19,7 @@ import 'codemirror/addon/search/search';
 import 'codemirror/addon/search/searchcursor';
 import 'codemirror/addon/search/jump-to-line';
 import 'codemirror/addon/search/matchesonscrollbar';
+import 'codemirror/addon/lint/lint';
 
 import '../addon/lint/json'; // 官方的 JSON Lint 有问题 https://github.com/scniro/react-codemirror2/issues/21
 
