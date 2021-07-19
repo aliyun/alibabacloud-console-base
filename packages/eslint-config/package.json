@@ -21,7 +21,7 @@
     "config"
   ],
   "devDependencies": {
-    "eslint": "^7.30.0"
+    "eslint": "^7.31.0"
   },
   "peerDependencies": {
     "eslint": ">=7"
