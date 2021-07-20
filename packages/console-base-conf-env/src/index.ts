@@ -1,7 +1,5 @@
-import parse from './util/parse';
+import parseEnv from '@alicloud/console-base-conf-parse-env';
 
-export default parse();
+export default parseEnv();
 
-export type {
-  IConfEnv as ConsoleBaseConfEnv
-} from './types';
+export * from '@alicloud/console-base-conf-parse-env';

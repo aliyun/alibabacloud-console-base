@@ -12,7 +12,7 @@ import cookieGetLanguage from './cookie-get-language';
 import parseLanguages from './parse-languages';
 import parseLanguage from './parse-language';
 
-export default function parseConfLocale(): IConfLocale {
+export default function parseLocale(): IConfLocale {
   const {
     CONSOLE_BASE_SETTINGS = {},
     viewframeSetting = {},

@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-conf-locale",
-  "version": "1.4.36",
-  "description": "ConsoleBase CONF.LOCALE",
+  "name": "@alicloud/console-base-conf-parse-account",
+  "version": "0.0.1",
+  "description": "ConsoleBase CONF.ACCOUNT parse",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-conf-locale",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-conf-parse-account",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -22,7 +22,8 @@
   "keywords": [
     "console-base",
     "conf",
-    "locale"
+    "parse",
+    "account"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
@@ -33,7 +34,8 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-parse-locale": "^0.0.1"
+    "@alicloud/console-one-config": "^1.1.36",
+    "@alicloud/cookie": "^1.1.36"
   },
   "scripts": {
     "start": "breezr start-storybook",

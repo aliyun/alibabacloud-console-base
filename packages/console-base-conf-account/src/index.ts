@@ -1,11 +1,5 @@
-import parseAccount from './util/parse-account';
+import parseAccount from '@alicloud/console-base-conf-parse-account';
 
 export default parseAccount();
 
-export {
-  EAccountType
-} from './enum';
-
-export type {
-  IConfAccount as ConsoleBaseConfAccount
-} from './types';
+export * from '@alicloud/console-base-conf-parse-account';

@@ -1,7 +1,7 @@
 {
   "name": "@alicloud/console-base-conf-parse-product-id",
   "version": "1.0.0",
-  "description": "ConsoleBase CONF parse product id",
+  "description": "ConsoleBase CONF.PRODUCT_ID parse",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",

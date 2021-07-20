@@ -1,15 +1,5 @@
-import parseConfLocale from './util/parse-conf-locale';
+import parseLocale from '@alicloud/console-base-conf-parse-locale';
 
-export default parseConfLocale();
+export default parseLocale();
 
-export {
-  ELanguage,
-  ELocale
-} from './const';
-
-export { default as cookieGetLanguage } from './util/cookie-get-language';
-export { default as cookieSetLanguage } from './util/cookie-set-language';
-
-export type {
-  IConfLocale as ConsoleBaseConfLocale
-} from './types';
+export * from '@alicloud/console-base-conf-parse-locale';
