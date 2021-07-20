@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-conf-feature-factory",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "控制台配置平台 Viper - 功能开关/灰度 - 工厂方法",
   "license": "MIT",
   "sideEffects": false,
