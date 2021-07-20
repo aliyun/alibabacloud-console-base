@@ -7,13 +7,13 @@ import styled from 'styled-components';
 
 import {
   H1,
-  Pre,
   PrePromise,
   Button,
   InputText,
   InputNumber,
   InputTextarea,
-  InputSwitch
+  InputSwitch,
+  CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -170,7 +170,7 @@ export default function DemoSpecial(): JSX.Element {
     </ScFlex>
     <Button onClick={handleFetchX3}>fetch x3</Button>
     <ScFlex>
-      <Pre>{stateJsCode}</Pre>
+      <CodeViewerTs>{stateJsCode}</CodeViewerTs>
       <PrePromise promise={statePromise} />
     </ScFlex>
     <CacheStorage />

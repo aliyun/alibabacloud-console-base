@@ -2,8 +2,8 @@ import React from 'react';
 
 import {
   H1,
-  Pre,
-  Button
+  Button,
+  CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -28,7 +28,7 @@ update(...);
 export default function Update(): JSX.Element {
   return <>
     <H1>content 通过 useDialog 提供的 update 方法，可以修改除了 content 之外的所有 props</H1>
-    <Pre>{snippet}</Pre>
+    <CodeViewerTs>{snippet}</CodeViewerTs>
     <Button {...{
       onClick: () => open(props)
     }}>open</Button>

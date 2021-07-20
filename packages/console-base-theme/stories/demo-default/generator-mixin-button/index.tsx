@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   H1,
-  Pre
+  CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
 import generateCodeMixinButton from '../../util/generate-code-mixin-button';
@@ -10,6 +10,6 @@ import generateCodeMixinButton from '../../util/generate-code-mixin-button';
 export default function GeneratorMixinButton(): JSX.Element {
   return <>
     <H1>src/mixin/button.ts</H1>
-    <Pre>{generateCodeMixinButton()}</Pre>
+    <CodeViewerTs>{generateCodeMixinButton()}</CodeViewerTs>
   </>;
 }

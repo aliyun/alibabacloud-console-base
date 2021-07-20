@@ -87,7 +87,7 @@ const CODE_LESS = `/* Based on https://github.com/dempfi/ayu */
 .cm-s-ayu-dark div.CodeMirror-selected { background: #273747; }
 .cm-s-ayu-dark .CodeMirror-line::selection, .cm-s-ayu-dark .CodeMirror-line > span::selection, .cm-s-ayu-dark .CodeMirror-line > span > span::selection { background: rgba(39, 55, 71, 99); }
 .cm-s-ayu-dark .CodeMirror-line::-moz-selection, .cm-s-ayu-dark .CodeMirror-line > span::-moz-selection, .cm-s-ayu-dark .CodeMirror-line > span > span::-moz-selection { background: rgba(39, 55, 71, 99); }
-.cm-s-ayu-dark .CodeMirror-gutters { background: #0a0e14; border-right: 0px; }
+.cm-s-ayu-dark .CodeMirror-gutters { background: #0a0e14; border-right: 0; }
 .cm-s-ayu-dark .CodeMirror-guttermarker { color: white; }
 .cm-s-ayu-dark .CodeMirror-guttermarker-subtle { color: #3d424d; }
 .cm-s-ayu-dark .CodeMirror-linenumber { color: #3d424d; }

@@ -33,15 +33,16 @@ export default function createEditor(div: HTMLDivElement, value: string, conf: I
     value,
     mode: 'text/plain', // 支持的 mode 可以查看 mode 模块的末尾
     // display
-    theme: conf.theme ?? (conf.readOnly ? 'mdn-like' : 'oceanic-next'),
+    theme: conf.theme ?? (conf.readOnly ? 'mdn-like' : 'oceanic-next'), // 额外的 theme 要应用自行安装
     indentUnit: 2,
     lineNumbers: true,
     lineWrapping: true,
     styleActiveLine: !conf.readOnly,
-    gutters: conf.readOnly ? [] : ['CodeMirror-lint-markers', 'CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+    gutters: ['CodeMirror-lint-markers', 'CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
     foldGutter: true,
     matchBrackets: true,
     // ease
+    fullScreen: true, // FIXME 用不了..
     autoRefresh: true,
     autoCloseBrackets: '()[]{}\'\'""',
     autoCloseTags: true,

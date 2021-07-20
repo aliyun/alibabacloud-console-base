@@ -122,8 +122,6 @@ export default function PrePromise({
           return <ScInfoIdle>Idle</ScInfoIdle>;
       }
     })()}
-    <PreJson {...{
-      o: stateResult.loading === ELoading.REJECTED ? normalizeError(stateResult.result as Error) : stateResult.result
-    }} />
+    <PreJson o={stateResult.loading === ELoading.REJECTED ? normalizeError(stateResult.result as Error) : stateResult.result} />
   </ScPrePromise>;
 }

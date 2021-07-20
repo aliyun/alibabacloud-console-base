@@ -29,10 +29,7 @@ export default function FetcherDemoRcRequest({
       defaults: defaultConfig,
       onChange: setStateConfig
     }} />
-    <PreJson {...{
-      headnote: 'config',
-      o: stateConfig
-    }} />
+    <PreJson o={stateConfig} />
     <RequestWithConfig {...{
       config: stateConfig,
       request

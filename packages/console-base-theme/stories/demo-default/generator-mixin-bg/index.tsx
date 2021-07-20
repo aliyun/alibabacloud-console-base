@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   H1,
-  Pre
+  CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
 import generateCodeMixinBg from '../../util/generate-code-mixin-bg';
@@ -10,6 +10,6 @@ import generateCodeMixinBg from '../../util/generate-code-mixin-bg';
 export default function GeneratorMixinBg(): JSX.Element {
   return <>
     <H1>src/mixin/bg.ts</H1>
-    <Pre>{generateCodeMixinBg()}</Pre>
+    <CodeViewerTs>{generateCodeMixinBg()}</CodeViewerTs>
   </>;
 }

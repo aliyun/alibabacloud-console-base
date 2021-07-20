@@ -30,6 +30,6 @@ export default function RequestWithConfig({
   
   return <>
     <Button onClick={handleDoRequest}>request</Button>
-    <PrePromise headnote="result" promise={statePromise} />
+    <PrePromise promise={statePromise} />
   </>;
 }

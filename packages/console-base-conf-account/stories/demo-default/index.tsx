@@ -7,8 +7,5 @@ import {
 import CONF_ACCOUNT from '../../src';
 
 export default function DemoDefault(): JSX.Element {
-  return <PreJson {...{
-    headnote: 'CONF_ACCOUNT',
-    o: CONF_ACCOUNT
-  }} />;
+  return <PreJson o={CONF_ACCOUNT} />;
 }

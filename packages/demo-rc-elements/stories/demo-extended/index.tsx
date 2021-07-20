@@ -7,7 +7,6 @@ import {
   H1,
   H2,
   Button,
-  Pre,
   PreJson,
   PrePromise,
   List
@@ -57,8 +56,7 @@ export default function DemoExtended(): JSX.Element {
       <>充分草于是</>
       <span>这里的 <strong>strong</strong>、<code>code</code>、<kbd>kbd</kbd>、<em>em</em> 会有些样式</span>
     </List>
-    <H2>Pre / PreJson / PrePromise</H2>
-    <Pre>一个 Pre</Pre>
+    <H2>PreJson / PrePromise</H2>
     <PreJson o={TEST_JSON} />
     <Button onClick={handleRandomPromise}>random promise</Button>
     <PrePromise promise={statePromise} />

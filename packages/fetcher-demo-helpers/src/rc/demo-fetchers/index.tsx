@@ -53,10 +53,7 @@ export default function FetcherDemoRcFetchers({
       defaults: defaultConfig,
       onChange: setStateConfig
     }} />
-    <PreJson {...{
-      headnote: 'config',
-      o: stateConfig
-    }} />
+    <PreJson o={stateConfig} />
     <ScTwoFetchers>
       <ScOneFetcher>
         <H3>{fetcher0Title}</H3>

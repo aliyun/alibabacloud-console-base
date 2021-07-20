@@ -6,7 +6,8 @@ CodeMirror 5 的 React 封装，适用于极简的场景。
 预加载以下样式：
 
 * `codemirror/lib/codemirror.css`
-* `codemirror/theme/oceanic-next.css`
+* `codemirror/display/fullscreen.css`
+* `codemirror/theme/mdn-like.css`
 * `codemirror/theme/mdn-like.css`
 * `codemirror/addon/fold/foldgutter.css`
 * `codemirror/addon/dialog/dialog.css`

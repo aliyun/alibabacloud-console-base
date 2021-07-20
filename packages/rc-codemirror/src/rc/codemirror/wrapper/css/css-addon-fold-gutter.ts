@@ -6,7 +6,7 @@ import {
 export default css`.CodeMirror-foldmarker {
   color: blue;
   text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
-  font-family: arial;
+  font-family: Arial, sans-serif;
   line-height: .3;
   cursor: pointer;
 }

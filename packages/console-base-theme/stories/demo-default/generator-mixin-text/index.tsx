@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   H1,
-  Pre
+  CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
 import generateCodeMixinText from '../../util/generate-code-mixin-text';
@@ -10,6 +10,6 @@ import generateCodeMixinText from '../../util/generate-code-mixin-text';
 export default function GeneratorMixinText(): JSX.Element {
   return <>
     <H1>src/mixin/text.ts</H1>
-    <Pre>{generateCodeMixinText()}</Pre>
+    <CodeViewerTs>{generateCodeMixinText()}</CodeViewerTs>
   </>;
 }
