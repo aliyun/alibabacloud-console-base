@@ -11,7 +11,7 @@ import intl, {
 
 export default function DemoDefault(): JSX.Element {
   return <>
-    <H1>OK...</H1>
+    <H1>不会产出 HTML</H1>
     <P>{intl('demo.op.switch_locale')}</P>
     <P>{intl('hello:world')}</P>
     <P>{intl('hello:{user}', {

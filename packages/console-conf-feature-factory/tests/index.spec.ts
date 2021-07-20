@@ -115,7 +115,8 @@ describe(pkgInfo.name, () => {
         attribute: {
           customAttrs: {
             attr1: '1',
-            attr2: '22'
+            attr2: '22',
+            list: 'fuck,suck,duck,truck'
           }
         }
       }
@@ -250,6 +251,9 @@ describe(pkgInfo.name, () => {
       expect(confFeatureWithGray(EFeature.WITH_CUSTOM_ATTRIBUTES, {
         attr1: '1',
         attrNotExist: 'fucking'
+      })).toBe(true);
+      expect(confFeatureWithGray(EFeature.WITH_CUSTOM_ATTRIBUTES, {
+        list: 'fuck'
       })).toBe(true);
     });
   });
