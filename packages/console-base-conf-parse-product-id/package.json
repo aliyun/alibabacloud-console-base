@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-conf-product-id",
-  "version": "1.1.21",
-  "description": "ConsoleBase CONF product id",
+  "name": "@alicloud/console-base-conf-parse-product-id",
+  "version": "0.0.1",
+  "description": "ConsoleBase CONF parse product id",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-conf-product-id",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-conf-parse-product-id",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -22,6 +22,7 @@
   "keywords": [
     "console-base",
     "conf",
+    "parse",
     "product-id"
   ],
   "devDependencies": {
@@ -30,9 +31,6 @@
     "@types/react": "^17.0.14",
     "react": "^17.0.2",
     "typescript": "^4.3.5"
-  },
-  "dependencies": {
-    "@alicloud/console-base-conf-parse-product-id": "^0.0.1"
   },
   "scripts": {
     "start": "breezr start-storybook",

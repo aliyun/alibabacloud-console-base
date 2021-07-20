@@ -18,7 +18,7 @@ interface IWindow extends Window {
  * 3. 但 云盾 都是以 ?p=xx 来表示产品的
  * 4. 从 url 提取的 ID 可能会有奇怪的后缀，需要干掉
  */
-export default function getProductId(): string {
+export default function parseProductId(): string {
   const {
     CONSOLE_BASE_SETTINGS: newSettings = {},
     viewframeSetting: oldSettings = {}

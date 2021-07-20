@@ -11,13 +11,13 @@ import pkgInfo from '../package.json';
 import DemoDefault from './demo-default';
 import DemoFormControl from './demo-form-control';
 import DemoExtended from './demo-extended';
+import DemoCodeViewer from './demo-code-viewer';
 import DemoSpecial from './demo-special';
-import DemoSyntaxHighlighter from './demo-syntax-highlighter';
 
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
     .add('default', () => <DemoDefault />)
     .add('form-control', () => <DemoFormControl />)
     .add('extended', () => <DemoExtended />)
-    .add('syntax-highlighter', () => <DemoSyntaxHighlighter />)
+    .add('code', () => <DemoCodeViewer />)
     .add('special', () => <DemoSpecial />);

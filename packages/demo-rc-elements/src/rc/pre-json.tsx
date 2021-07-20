@@ -2,7 +2,9 @@ import React, {
   isValidElement
 } from 'react';
 
-import CodeMirror from '@alicloud/rc-codemirror';
+import {
+  CodeViewerJson
+} from './code-viewer';
 
 interface IProps {
   o: unknown;
@@ -42,11 +44,5 @@ function formatJson(o: unknown): string {
 export default function PreJson({
   o
 }: IProps): JSX.Element {
-  return <CodeMirror {...{
-    conf: {
-      mode: 'application/json',
-      readOnly: true
-    },
-    value: formatJson(o)
-  }} />;
+  return <CodeViewerJson>{formatJson(o)}</CodeViewerJson>;
 }

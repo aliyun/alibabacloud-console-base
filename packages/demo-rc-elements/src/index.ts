@@ -22,6 +22,8 @@ export {
 export { default as LongArticle } from './rc/long-article';
 export { default as Flex100HBF } from './rc/flex-100hbf';
 export { default as SyntaxHighlighter } from './rc/syntax-highlighter';
+export { default as CodeViewer } from './rc/code-viewer';
+export * from './rc/code-viewer';
 
 export type {
   IPropsPre as PreProps,

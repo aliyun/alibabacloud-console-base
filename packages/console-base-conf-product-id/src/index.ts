@@ -1,6 +1,5 @@
-import getProductId from './util/get-product-id';
+import parseProductId from '@alicloud/console-base-conf-parse-product-id';
 
-export default getProductId();
+export default parseProductId();
 
-// 作为辅助方法外透
-export { default as getProductIdFromUrl } from './util/get-from-url';
+export * from '@alicloud/console-base-conf-parse-product-id';
