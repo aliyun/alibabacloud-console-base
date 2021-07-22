@@ -8,6 +8,7 @@ import cssThemeLight from './css/css-theme-light';
 import cssAddonDialog from './css/css-addon-dialog';
 import cssAddonFoldGutter from './css/css-addon-fold-gutter';
 import cssAddonSearchMatch from './css/css-addon-search-match';
+import cssAddonDisplayFullscreen from './css/css-addon-display-fullscreen';
 import cssAddonLint from './css/css-addon-lint';
 import cssFixFont from './css/css-fix-font';
 import cssFixAutoResize from './css/css-fix-auto-resize';
@@ -24,6 +25,7 @@ export default styled.div<IScProps>`
   ${cssAddonDialog}
   ${cssAddonFoldGutter}
   ${cssAddonSearchMatch}
+  ${cssAddonDisplayFullscreen}
   ${cssAddonLint}
   ${cssFixFont}
   ${cssFixAutoResize}

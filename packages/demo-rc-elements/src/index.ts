@@ -11,7 +11,6 @@ export { default as InputText } from './rc/input-text';
 export { default as InputNumber } from './rc/input-number';
 export { default as InputTextarea } from './rc/input-textarea';
 export { default as InputSwitch } from './rc/input-switch';
-export { default as Pre } from './rc/pre';
 export { default as PreJson } from './rc/pre-json';
 export { default as PrePromise } from './rc/pre-promise';
 export { default as List } from './rc/list';
@@ -21,18 +20,15 @@ export {
 } from './rc/choice-group';
 export { default as LongArticle } from './rc/long-article';
 export { default as Flex100HBF } from './rc/flex-100hbf';
-export { default as SyntaxHighlighter } from './rc/syntax-highlighter';
 export { default as CodeViewer } from './rc/code-viewer';
 export * from './rc/code-viewer';
 
 export type {
-  IPropsPre as PreProps,
   IPropsPreJson as PreJsonProps,
   IPropsPrePromise as PrePromiseProps,
   IPropsList as ListProps,
   IChoiceItem as ChoiceItem,
   TPropsCheckboxGroup as CheckboxGroupProps,
   TPropsRadioGroup as RadioGroupProps,
-  IPropsFlex100HBF as Flex100HBFProps,
-  ISyntaxHighlighterProps as SyntaxHighlighterProps
+  IPropsFlex100HBF as Flex100HBFProps
 } from './types';

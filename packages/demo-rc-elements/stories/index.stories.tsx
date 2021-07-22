@@ -19,5 +19,5 @@ storiesOf(pkgInfo.name, module)
     .add('default', () => <DemoDefault />)
     .add('form-control', () => <DemoFormControl />)
     .add('extended', () => <DemoExtended />)
-    .add('code', () => <DemoCodeViewer />)
+    .add('code-viewer', () => <DemoCodeViewer />)
     .add('special', () => <DemoSpecial />);

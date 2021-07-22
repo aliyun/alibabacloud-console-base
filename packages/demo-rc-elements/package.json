@@ -41,9 +41,7 @@
   "dependencies": {
     "@alicloud/mere-dom": "^1.1.21",
     "@alicloud/rc-codemirror": "^0.3.5",
-    "@types/react-syntax-highlighter": "^13.5.2",
-    "lodash": "^4.17.21",
-    "react-syntax-highlighter": "^15.4.3"
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "start": "breezr start-storybook",

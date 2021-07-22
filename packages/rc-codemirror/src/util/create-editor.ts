@@ -42,7 +42,7 @@ export default function createEditor(div: HTMLDivElement, value: string, conf: I
     foldGutter: true,
     matchBrackets: true,
     // ease
-    fullScreen: true, // FIXME 用不了..
+    fullScreen: false,
     autoRefresh: true,
     autoCloseBrackets: '()[]{}\'\'""',
     autoCloseTags: true,

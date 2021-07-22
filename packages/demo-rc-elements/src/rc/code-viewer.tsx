@@ -2,15 +2,12 @@ import React from 'react';
 
 import CodeMirror from '@alicloud/rc-codemirror';
 
-interface IPropsSimple {
-  children?: string;
-}
+import {
+  IPropsCodeViewer,
+  IPropsCodeViewerSimple
+} from '../types';
 
-interface IProps extends IPropsSimple {
-  type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'text';
-}
-
-function getMode(type: IProps['type']): string | undefined {
+function getMode(type: IPropsCodeViewer['type']): string | undefined {
   switch (type) {
     case 'json':
       return 'application/json';
@@ -29,47 +26,51 @@ function getMode(type: IProps['type']): string | undefined {
 }
 
 export default function CodeViewer({
+  conf,
   children,
-  type
-}: IProps): JSX.Element {
+  type,
+  ...props
+}: IPropsCodeViewer): JSX.Element {
   return <CodeMirror {...{
     conf: {
+      ...conf,
       mode: getMode(type),
       readOnly: true
     },
+    ...props,
     value: typeof children === 'string' ? children : 'Error: children should be a string value'
   }} />;
 }
 
-export function CodeViewerHtml(props: IPropsSimple): JSX.Element {
+export function CodeViewerHtml(props: IPropsCodeViewerSimple): JSX.Element {
   return <CodeViewer {...{
     ...props,
     type: 'html'
   }} />;
 }
 
-export function CodeViewerJson(props: IPropsSimple): JSX.Element {
+export function CodeViewerJson(props: IPropsCodeViewerSimple): JSX.Element {
   return <CodeViewer {...{
     ...props,
     type: 'json'
   }} />;
 }
 
-export function CodeViewerJs(props: IPropsSimple): JSX.Element {
+export function CodeViewerJs(props: IPropsCodeViewerSimple): JSX.Element {
   return <CodeViewer {...{
     ...props,
     type: 'js'
   }} />;
 }
 
-export function CodeViewerTs(props: IPropsSimple): JSX.Element {
+export function CodeViewerTs(props: IPropsCodeViewerSimple): JSX.Element {
   return <CodeViewer {...{
     ...props,
     type: 'ts'
   }} />;
 }
 
-export function CodeViewerLess(props: IPropsSimple): JSX.Element {
+export function CodeViewerLess(props: IPropsCodeViewerSimple): JSX.Element {
   return <CodeViewer {...{
     ...props,
     type: 'less'

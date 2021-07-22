@@ -1,20 +1,23 @@
 import {
   HTMLAttributes
 } from 'react';
-import {
-  SyntaxHighlighterProps
-} from 'react-syntax-highlighter';
 
-export interface IPropsPre extends HTMLAttributes<HTMLPreElement> {
-  headnote?: string | JSX.Element;
-  footnote?: string | JSX.Element;
+import {
+  CodeMirrorProps
+} from '@alicloud/rc-codemirror';
+
+export interface IPropsCodeViewer extends CodeMirrorProps {
+  type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'text';
+  children?: string;
 }
 
-export interface IPropsPreJson extends Omit<IPropsPre, 'children'> {
+export interface IPropsCodeViewerSimple extends Omit<IPropsCodeViewer, 'type'> {}
+
+export interface IPropsPreJson extends Omit<IPropsCodeViewerSimple, 'children'> {
   o?: unknown;
 }
 
-export interface IPropsPrePromise extends Omit<IPropsPre, 'children'> {
+export interface IPropsPrePromise extends Omit<IPropsCodeViewerSimple, 'children'> {
   promise?: Promise<unknown> | null;
 }
 
@@ -44,7 +47,3 @@ export interface IPropsFlex100HBF {
 export type TPropsCheckboxGroup<T> = IPropsChoiceGroup<T, T[]>;
 
 export type TPropsRadioGroup<T> = IPropsChoiceGroup<T, T>;
-
-export interface ISyntaxHighlighterProps extends Omit<SyntaxHighlighterProps, 'style'> {
-  theme?: 'light' | 'dark';
-}
