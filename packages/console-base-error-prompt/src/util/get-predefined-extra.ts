@@ -50,6 +50,11 @@ const API_NOT_EXIST: IErrorPromptExtra = {
   message: intl('message:api_not_exist')
 };
 
+const PERMISSION_DENIED: IErrorPromptExtra = {
+  title: intl('title:permission_denied'),
+  message: intl('message:permission_denied')
+};
+
 // TODO code ApiUnknownEndpoint
 
 /**
@@ -65,6 +70,8 @@ export default function getPredefinedExtra(code?: string): IErrorPromptExtra | u
     case 'InvalidAction.NotFound':
     case 'ApiDefineNotExist':
       return API_NOT_EXIST;
+    case 'Forbidden.RAM':
+      return PERMISSION_DENIED;
     default:
       break;
   }

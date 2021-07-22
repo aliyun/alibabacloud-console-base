@@ -9,10 +9,14 @@ import {
   TErrorArg
 } from '../types';
 
-let i = 0;
+const SEED = Math.pow(36, 8);
+
+function generate8Bits(): string {
+  return Math.round(SEED * Math.random()).toString(36).toUpperCase().padStart(8, '0');
+}
 
 function generateRequestId(): string {
-  return `REQUEST_ID_${Math.round(100000 * Math.random())}_${++i}`;
+  return `REQUEST-ID-FAKE-${generate8Bits()}${generate8Bits()}`;
 }
 
 const ERROR_DETAILS_MIX: IErrorDetails = {
@@ -41,35 +45,45 @@ function createError(o: Record<string, unknown>): Error {
   return error;
 }
 
+const details = {
+  url: 'any url',
+  method: 'any method',
+  params: {
+    id: 'ineedanid',
+    name: 'idonotknowmyname',
+    fuck: 'ifuckalot'
+  },
+  body: {
+    region: 'oss-cn-qingdao',
+    objects: 'fuck/CGK478JF00AJ0003.jpg',
+    token: 'Y7d6e57670fa81c2518a42ac531d0e57b',
+    secToken: 'PznQqh1Snec2NuH9TKVCv9',
+    collina: '115#1cBu+C1O1TNgn3QyT5EV1Cso5lQGs2AaxuXu1gvG5fZ3qNZ1lR2Habo9Ef6VGub8z8kkY/SfqH88AkNcaoi2vUeyUkPPeKT8ukNdxab1haUdkHNcaLpAurPQOSfPFtNCj+pQ97WRhs1Gv6NDaL9Xt6zCvIAyeH38uWZQG7WRhZz4ODNDaTBXyzEQvsAyFtQ4uWN0aCS+o1fCl1Oa6HHCwN7kOqTsGRxBHfgpxf0umqsb2kGnStS08uIHu9bXKeIlMYDnTsS3hIyTrePvDg+DgOeY6f0UCvbnnc6RWxfApVlWAp1p2rttNNYDuSvMd0lbxYvuF9ojPgb8ugIHvSSEyEEhNdLCPnItxVkjjPHuG5b8ERddAKDf7N5vme9jt0hUkuujKOm6TwD/9vUW1JYzNjF9bCtrUaj/2b0GUX1RX2K4653eaK57R7/SuK+eTheet3LftNS+e11jGamdmXY3U6Gq9uEvSvYGbo/sNB8TMad32W0Ni2446o4QlHNsfaSsdvHUQDZdl3r9L5bAyJuTYjv/MBY3lneekfwHVdH+iTtYH2fSV6SRoyeS5mwlD39e62WVZtIgL7ogCuFMaI/wqdpde17lCaH4HwbaTHlGMNnuviGAFtUr4UcwsM8yBkK6MctKL5wJe69pH1mzjkVfCi7LvZGHbOszkiYpzpgDRp6Jd69MrbsPC/n94C2gvW5qLFFSdnBjHPDZaAylwxxQWqVwZbZU8BDjdv6GzdNrhhOxhY+9LG169S/rdcUeJd3lgjoPrgtLyOKXXRDS+LFhl9flmCkwGHKuv4t5TvGf1OHP4UZE3Bixz1XsXd+mUd3/WvpBwm1qCDtqcbbRHlXm5fjfUaWHTq03tCfcuzD7Vz1='
+  }
+};
+
 export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>JSX as Error</H3>, {
   message: 'Message 里有 HTML，请 <a href="//www.aliyun.com" target="_blank">登录</a> 或者 <em>不登录</em>，一切 <code>都随你...</code>。'
 }, new Error('Plain Error'), {
   code: 'ConsoleNeedLogin',
-  message: '登录失效（官方）',
-  requestId: generateRequestId()
+  message: '登录失效（官方，由组件标准化）',
+  requestId: generateRequestId(),
+  details
 }, {
   code: 'PostonlyOrTokenError',
-  message: 'TokenError（官方）'
+  message: 'TokenError（官方，由组件标准化）',
+  requestId: generateRequestId(),
+  details
+}, {
+  code: 'Forbidden.RAM',
+  message: '未授权（官方，由组件标准化）',
+  requestId: generateRequestId(),
+  details
 }, createError({
   message: '登录失效（非官方）',
   code: 'YOUR_SISTER_NOT_SIGNED_IN',
   requestId: generateRequestId(),
-  details: {
-    url: 'any url',
-    method: 'any method',
-    params: {
-      id: 'ineedanid',
-      name: 'idonotknowmyname',
-      fuck: 'ifuckalot'
-    },
-    body: {
-      region: 'oss-cn-qingdao',
-      objects: 'fuck/CGK478JF00AJ0003.jpg',
-      token: 'Y7d6e57670fa81c2518a42ac531d0e57b',
-      secToken: 'PznQqh1Snec2NuH9TKVCv9',
-      collina: '115#1cBu+C1O1TNgn3QyT5EV1Cso5lQGs2AaxuXu1gvG5fZ3qNZ1lR2Habo9Ef6VGub8z8kkY/SfqH88AkNcaoi2vUeyUkPPeKT8ukNdxab1haUdkHNcaLpAurPQOSfPFtNCj+pQ97WRhs1Gv6NDaL9Xt6zCvIAyeH38uWZQG7WRhZz4ODNDaTBXyzEQvsAyFtQ4uWN0aCS+o1fCl1Oa6HHCwN7kOqTsGRxBHfgpxf0umqsb2kGnStS08uIHu9bXKeIlMYDnTsS3hIyTrePvDg+DgOeY6f0UCvbnnc6RWxfApVlWAp1p2rttNNYDuSvMd0lbxYvuF9ojPgb8ugIHvSSEyEEhNdLCPnItxVkjjPHuG5b8ERddAKDf7N5vme9jt0hUkuujKOm6TwD/9vUW1JYzNjF9bCtrUaj/2b0GUX1RX2K4653eaK57R7/SuK+eTheet3LftNS+e11jGamdmXY3U6Gq9uEvSvYGbo/sNB8TMad32W0Ni2446o4QlHNsfaSsdvHUQDZdl3r9L5bAyJuTYjv/MBY3lneekfwHVdH+iTtYH2fSV6SRoyeS5mwlD39e62WVZtIgL7ogCuFMaI/wqdpde17lCaH4HwbaTHlGMNnuviGAFtUr4UcwsM8yBkK6MctKL5wJe69pH1mzjkVfCi7LvZGHbOszkiYpzpgDRp6Jd69MrbsPC/n94C2gvW5qLFFSdnBjHPDZaAylwxxQWqVwZbZU8BDjdv6GzdNrhhOxhY+9LG169S/rdcUeJd3lgjoPrgtLyOKXXRDS+LFhl9flmCkwGHKuv4t5TvGf1OHP4UZE3Bixz1XsXd+mUd3/WvpBwm1qCDtqcbbRHlXm5fjfUaWHTq03tCfcuzD7Vz1='
-    }
-  }
+  details
 }), createError({
   title: 'Error 对象中有 title',
   code: 'I_FUCKING_NOT_SIGNED_IN',
@@ -128,7 +142,7 @@ export const ERRORS: TErrorArg[] = [undefined, null, '字符串 as Error', <H3>J
     return '有 code 无 message 的错误，message 将 fallback 到 code';
   }
 }), createError({
-  message: 'Error code 很长的情况下，不可产生 UI 问题',
+  message: 'Error code 很长的情况下，不可产生 UI 问题。',
   requestId: generateRequestId(),
   code: 'ERROR_CODE_VERY_LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG',
   details: {

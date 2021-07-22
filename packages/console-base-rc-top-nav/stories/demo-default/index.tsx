@@ -5,9 +5,12 @@ import React, {
 
 import {
   H1,
-  Button
+  Button as ButtonForDemo
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import Button, {
+  ButtonTheme
+} from '@alicloud/console-base-rc-button';
 
 import TopNav from '../../src';
 
@@ -90,7 +93,7 @@ export default function DemoDefault(): JSX.Element {
           icon: 'theme-light-dark',
           iconRotate: 180
         },
-        href: '/theme'
+        force: true
       }],
       language: {
         current: 'zh-CN',
@@ -127,6 +130,12 @@ export default function DemoDefault(): JSX.Element {
         }
       },
       customLeft: <>
+        <Button {...{
+          spm: 'console-home',
+          label: 'Home',
+          iconLeft: 'home',
+          theme: ButtonTheme.TERTIARY_ALT
+        }} />
         <div style={{ color: 'red' }}>L1</div>
         <div style={{ color: 'green' }}>L2</div>
       </>,
@@ -139,6 +148,6 @@ export default function DemoDefault(): JSX.Element {
       }
     }} />}
     <H1>吊顶</H1>
-    <Button onClick={handleToggleRemoved}>移除 / 加入</Button>
+    <ButtonForDemo onClick={handleToggleRemoved}>移除 / 加入</ButtonForDemo>
   </>;
 }

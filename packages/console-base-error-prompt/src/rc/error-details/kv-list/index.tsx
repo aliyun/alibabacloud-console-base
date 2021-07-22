@@ -44,7 +44,7 @@ const ScKV = styled.li`
 
 const ScK = styled.div`
   margin-right: 1em;
-  min-width: 8em;
+  min-width: 5em;
 `;
 
 const ScV = styled.div`
