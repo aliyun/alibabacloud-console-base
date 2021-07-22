@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@types/codemirror": "^5.60.2",
-    "codemirror": "^5.62.0"
+    "codemirror": "^5.62.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
