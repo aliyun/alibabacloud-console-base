@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-parse-locale",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ConsoleBase CONF.LOCALE parse",
   "license": "MIT",
   "sideEffects": false,
@@ -33,7 +33,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/cookie": "^1.1.38"
+    "@alicloud/cookie": "^1.1.39"
   },
   "scripts": {
     "start": "breezr start-storybook",
