@@ -6,17 +6,14 @@ import styled, {
 import {
   SIZE,
   mixinBgBrand,
-  mixinTextWhite
+  mixinTextWhite,
+  mixinTopNavButtonDarkFix
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonProps,
   ButtonSize,
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
-
-import {
-  themeDarkButtonFix
-} from '../../const';
 
 const STRIPE_WIDTH = SIZE.HEIGHT_TOP_NAV * 0.4;
 const STRIPE_HEIGHT = 2;
@@ -79,7 +76,7 @@ const ScDockButton = styled(Button)`
     }
   ` : null)}
   
-  ${themeDarkButtonFix}
+  ${mixinTopNavButtonDarkFix}
 `;
 
 /**

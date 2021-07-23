@@ -9,16 +9,17 @@ import {
   Button as ButtonForDemo
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import {
+  mixinTopNavButtonDarkFix
+} from '@alicloud/console-base-theme';
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
-import TopNav, {
-  themeDarkButtonFix
-} from '../../src';
+import TopNav from '../../src';
 
 const ScHome = styled(Button)`
-  ${themeDarkButtonFix}
+  ${mixinTopNavButtonDarkFix}
 `;
 
 export default function DemoDefault(): JSX.Element {
