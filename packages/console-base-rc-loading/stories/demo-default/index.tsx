@@ -7,6 +7,7 @@ import {
   H1,
   Button
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Loading, {
   LoadingProps,
@@ -39,6 +40,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <Knobs onChange={setStateProps} />
+    <ThemeSwitcher />
     <H1>Loading - 调整 knobs 看效果</H1>
     <Loading {...stateProps} />
     <H1>WithLoading</H1>

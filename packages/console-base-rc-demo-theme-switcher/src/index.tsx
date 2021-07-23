@@ -15,12 +15,9 @@ import {
   ThemeStyleLight,
   ThemeStyleDark,
   mixinBgPrimary,
-  mixinTextPrimary
+  mixinTextPrimary,
+  toggleBodyClass
 } from '@alicloud/console-base-theme';
-import {
-  addClass,
-  removeClass
-} from '@alicloud/mere-dom';
 
 enum ETheme {
   LIGHT,
@@ -44,9 +41,9 @@ const DarkAll = createGlobalStyle`
 
 function ToggleDemoThemeDark(): null {
   useEffect(() => {
-    addClass('body', 'theme-dark');
+    toggleBodyClass(true);
     
-    return () => removeClass('body', 'theme-dark');
+    return () => toggleBodyClass(false);
   }, []);
   
   return null;
