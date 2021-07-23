@@ -41,7 +41,7 @@ export interface IPropsTopNavButton extends Omit<Partial<ButtonProps>, 'label'> 
   dropdown?: IPropsTopNavButtonDropdown;
 }
 
-export interface IPropsTopNavLogo extends IPropsTopNavButton {}
+export interface IPropsTopNavLogo extends ButtonProps {}
 
 export interface IPropsTopNavDock extends Partial<ButtonProps> {
   onActiveChange?(active: boolean): void;

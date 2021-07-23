@@ -2,6 +2,7 @@ import React, {
   useState,
   useCallback
 } from 'react';
+import styled from 'styled-components';
 
 import {
   H1,
@@ -13,6 +14,12 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import TopNav from '../../src';
+
+const ScHome = styled(Button)`
+  .theme-dark & {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+`;
 
 export default function DemoDefault(): JSX.Element {
   const [stateRemoved, setStateRemoved] = useState<boolean>(false);
@@ -87,11 +94,10 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'theme',
         label: {
-          icon: 'theme-light-dark'
+          icon: 'lights-on'
         },
         labelHover: {
-          icon: 'theme-light-dark',
-          iconRotate: 180
+          icon: 'lights-off'
         },
         force: true
       }],
@@ -130,7 +136,7 @@ export default function DemoDefault(): JSX.Element {
         }
       },
       customLeft: <>
-        <Button {...{
+        <ScHome {...{
           spm: 'console-home',
           label: 'Home',
           iconLeft: 'home',

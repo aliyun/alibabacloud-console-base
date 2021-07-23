@@ -3,6 +3,9 @@ import styled, {
   css
 } from 'styled-components';
 
+import {
+  SIZE
+} from '@alicloud/console-base-theme';
 import Button, {
   ButtonProps,
   ButtonTheme
@@ -18,8 +21,8 @@ const ScNavButton = styled(Button)<IProps>`
   position: relative;
   padding: 0 10px;
   border: 0;
-  height: 50px;
-  line-height: 50px;
+  height: ${SIZE.HEIGHT_TOP_NAV}px;
+  line-height: ${SIZE.HEIGHT_TOP_NAV}px;
   
   ${props => (props.responsive ? css`
     @media screen and (max-width: 1208px) {
@@ -31,6 +34,12 @@ const ScNavButton = styled(Button)<IProps>`
     display: inline;
     max-width: 160px;
     max-height: 36px;
+  }
+  
+  .theme-dark & {
+    &:hover {
+      color: #fff;
+    }
   }
 `;
 

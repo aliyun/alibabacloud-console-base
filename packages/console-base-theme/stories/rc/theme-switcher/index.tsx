@@ -30,7 +30,7 @@ const choices: ChoiceItem<ETheme>[] = [{
 
 const DarkAll = createGlobalStyle`
   html {
-    background: #000;
+    background: #272727;
     color: #fff;
   }
 `;

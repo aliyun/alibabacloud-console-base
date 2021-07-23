@@ -15,7 +15,7 @@ const ScAttentionSeekerMask = styled.div`
   bottom: 0;
   left: 0;
   z-index: ${Z_INDEX_BACKDROP};
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0,0,0,0.25);
   background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
   height: 100%;
 `;

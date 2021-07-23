@@ -36,7 +36,7 @@ const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
   
   &:hover {
     background-color: ${FORM_CONTROL_BGC_HOVER};
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   
   &:active {
@@ -76,7 +76,7 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
   code {
     padding: 0 4px;
     border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(0,0,0,0.04);
     color: #39f;
   }
   

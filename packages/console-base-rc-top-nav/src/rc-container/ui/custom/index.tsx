@@ -11,15 +11,15 @@ const ScCustom = styled(Flex)`
   flex: 1;
 `;
 const ScCustomL = styled(ScCustom)`
-  margin-right: 10px;
+  margin-right: 12px;
   
   > * {
-    margin-left: 10px;
+    margin-left: 12px;
   }
 `;
 const ScCustomR = styled(ScCustom)`
   > * {
-    margin-right: 10px;
+    margin-right: 12px;
   }
 `;
 

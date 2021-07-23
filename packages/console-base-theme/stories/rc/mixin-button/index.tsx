@@ -5,7 +5,6 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  H1,
   Button
 } from '@alicloud/demo-rc-elements';
 
@@ -126,7 +125,6 @@ export default function MixinButton(): JSX.Element {
   const handleToggleDisabled = useCallback(() => setStateDisabled(!stateDisabled), [stateDisabled, setStateDisabled]);
   
   return <>
-    <H1>mixins for button</H1>
     <Button onClick={handleToggleDisabled}>toggle disabled - {`${stateDisabled}`}</Button>
     <div>
       <ScMixinButtonSizeXs disabled={stateDisabled}>size-xs size + shadow</ScMixinButtonSizeXs>

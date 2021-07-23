@@ -67,8 +67,8 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'face-smile' = 'e7f9', // 笑脸
   'global' = 'e70d', // 全球 - 用于 @alicloud/console-base-wd-region
   'go-top' = 'e694', // 回到顶部
-  'lignts-on' = 'e664', // 主题 - 亮
-  'lignts-off' = 'e665', // 主题 - 暗
+  'lights-on' = 'e664', // 主题 - 亮
+  'lights-off' = 'e665', // 主题 - 暗
   'menu-all' = 'e6e3', // 菜单（九宫格）
   'notice' = 'e887', // 通知（铃铛）
   'pin' = 'e79e', // 固定
@@ -77,6 +77,5 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'star' = 'e611', // 星（收藏）
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
-  'theme-light-dark' = 'e6aa', // 黑/白主题 转 180 度后
   'resource-group' = 'e634' // 资源组
 }

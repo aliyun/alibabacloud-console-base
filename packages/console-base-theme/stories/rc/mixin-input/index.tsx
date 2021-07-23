@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  H1
-} from '@alicloud/demo-rc-elements';
-
-import {
   mixinShadowLDown,
   mixinInputReset,
   mixinInputTextDisabled,
@@ -68,7 +64,6 @@ const ScInputDisabled = styled(ScInputBase)`
 
 export default function MixinInput(): JSX.Element {
   return <>
-    <H1>mixins for input</H1>
     <ScInput placeholder="accent input" />
     <ScInputAlt placeholder="brand input" />
     <ScInputDisabled disabled placeholder="disabled input" />

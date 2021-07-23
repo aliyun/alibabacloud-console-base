@@ -74,6 +74,10 @@ const ScDockButton = styled(Button)`
       transform: rotate(-45deg);
     }
   ` : null)}
+  
+  .theme-dark & {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
 `;
 
 /**

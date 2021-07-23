@@ -22,7 +22,6 @@ interface IScProps {
 }
 
 const ScItem = styled.div<IScProps>`
-  margin: 4px;
   ${props => props.extra}
   ${props => props.mixin}
 `;

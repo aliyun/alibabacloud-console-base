@@ -2,18 +2,43 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  SIZE
+} from '@alicloud/console-base-theme';
+import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
-import TopNavButton from '../../../rc/top-nav-button';
 import IconAliyun from '../../../rc/icon-aliyun';
 import {
   useProps
 } from '../../../model';
 
-const ScLogo = styled(TopNavButton)`
+const FONT_SIZE = 18;
+
+const ScLogo = styled(Button)`
+  position: relative;
   padding: 0 12px;
-  font-size: 18px;
+  font-size: ${FONT_SIZE}px;
+  height: ${SIZE.HEIGHT_TOP_NAV}px;
+  line-height: ${SIZE.HEIGHT_TOP_NAV}px;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: ${(SIZE.HEIGHT_TOP_NAV - FONT_SIZE) / 2}px;
+    right: 0;
+    width: 1px;
+    height: ${FONT_SIZE}px;
+    background-color: #ddd;
+  }
+  
+  .theme-dark & {
+    color: #E6E6E6;
+    
+    &:after {
+      background-color: #666;
+    }
+  }
 `;
 
 export default function Logo(): JSX.Element | null {

@@ -40,6 +40,10 @@ const ScTopNaV = styled(Flex)<IScPropsTopNav>`
     z-index: ${Z_INDEX.TOP_NAV};
   ` : null)}
   ${props => (props.fixed ? mixinShadowMDown : mixinShadowM)}
+  
+  .theme-dark & {
+    box-shadow: 0 1px 0 0 rgba(255,255,255,0.16), 0 4px 8px 0 rgba(0,0,0,0.32);
+  }
 `;
 
 export default function Ui(): JSX.Element {

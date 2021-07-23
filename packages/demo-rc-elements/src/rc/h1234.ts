@@ -8,13 +8,9 @@ import {
 
 const cssHeading = css`
   position: relative;
-  margin: 2em 0 1em 0;
+  margin: 1em 0;
   padding: 0 0 0 48px;
   ${CSS_FONT_FAMILY}
-  
-  &:first-child {
-    margin-top: 0;
-  }
   
   &:before {
     position: absolute;
@@ -35,7 +31,7 @@ export const H1 = styled.h1`
   color: #fff;
   ${cssHeading}
   
-  .demo-theme-dark & {
+  .theme-dark & {
     background-color: #fff;
     color: #000;
   }
@@ -53,7 +49,7 @@ export const H2 = styled.h2`
   color: #fff;
   ${cssHeading}
   
-  .demo-theme-dark & {
+  .theme-dark & {
     background-color: #ccc;
     color: #000;
   }
@@ -70,7 +66,7 @@ export const H3 = styled.h3`
   line-height: 2.4;
   ${cssHeading}
   
-  .demo-theme-dark & {
+  .theme-dark & {
     background-color: #222;
   }
    
@@ -86,7 +82,7 @@ export const H4 = styled.h4`
   line-height: 2;
   ${cssHeading}
   
-  .demo-theme-dark & {
+  .theme-dark & {
     background-color: #222;
   }
    

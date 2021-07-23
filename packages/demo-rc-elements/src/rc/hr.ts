@@ -6,7 +6,7 @@ export default styled.hr`
   border-bottom: 0.5px solid #eee;
   height: 0;
   
-  .demo-theme-dark & {
+  .theme-dark & {
     border-bottom: 0.5px solid #333;
   }
 `;

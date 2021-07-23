@@ -44,9 +44,9 @@ const DarkAll = createGlobalStyle`
 
 function ToggleDemoThemeDark(): null {
   useEffect(() => {
-    addClass('body', 'demo-theme-dark');
+    addClass('body', 'theme-dark');
     
-    return () => removeClass('body', 'demo-theme-dark');
+    return () => removeClass('body', 'theme-dark');
   }, []);
   
   return null;
