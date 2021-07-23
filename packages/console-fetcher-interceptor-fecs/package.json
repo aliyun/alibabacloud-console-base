@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-fecs",
-  "version": "1.1.49",
+  "version": "1.1.50",
   "description": "@alicloud/console-fetcher 请求 + 响应拦截 - FECS",
   "license": "MIT",
   "sideEffects": false,
@@ -28,18 +28,18 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.23",
-    "@alicloud/demo-rc-elements": "^1.3.28",
-    "@alicloud/fetcher-demo-helpers": "^1.1.39",
+    "@alicloud/demo-rc-elements": "^1.3.29",
+    "@alicloud/fetcher-demo-helpers": "^1.1.40",
     "@types/react": "^17.0.14",
     "react": "^17.0.2",
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-env": "^1.3.3",
-    "@alicloud/console-one-config": "^1.1.40",
-    "@alicloud/cookie": "^1.1.40",
-    "@alicloud/fetcher": "^1.1.42",
-    "@alicloud/fetcher-fetch": "^1.2.39"
+    "@alicloud/console-base-conf-env": "^1.3.4",
+    "@alicloud/console-one-config": "^1.1.41",
+    "@alicloud/cookie": "^1.1.41",
+    "@alicloud/fetcher": "^1.1.43",
+    "@alicloud/fetcher-fetch": "^1.2.40"
   },
   "scripts": {
     "start": "breezr start-storybook",
