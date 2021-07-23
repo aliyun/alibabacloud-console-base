@@ -13,12 +13,12 @@ import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
-import TopNav from '../../src';
+import TopNav, {
+  themeDarkButtonFix
+} from '../../src';
 
 const ScHome = styled(Button)`
-  .theme-dark & {
-    background-color: rgba(255, 255, 255, 0.08);
-  }
+  ${themeDarkButtonFix}
 `;
 
 export default function DemoDefault(): JSX.Element {

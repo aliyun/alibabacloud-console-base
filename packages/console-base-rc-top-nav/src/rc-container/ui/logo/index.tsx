@@ -33,7 +33,7 @@ const ScLogo = styled(Button)`
   }
   
   .theme-dark & {
-    color: #E6E6E6;
+    color: #e6e6e6;
     
     &:after {
       background-color: #666;
