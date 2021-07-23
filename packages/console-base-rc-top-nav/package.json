@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-top-nav",
-  "version": "1.8.19",
+  "version": "1.8.20",
   "description": "ConsoleBase 组件 - 吊顶",
   "license": "MIT",
   "sideEffects": false,
