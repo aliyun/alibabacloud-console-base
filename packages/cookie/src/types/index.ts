@@ -7,4 +7,6 @@ export interface ICookieSetOptions {
 export interface ICookieDeleteOptions {
   domain?: string;
   path?: string;
+  // samesite: 'none'; TODO
+  // secure?: boolean;
 }
