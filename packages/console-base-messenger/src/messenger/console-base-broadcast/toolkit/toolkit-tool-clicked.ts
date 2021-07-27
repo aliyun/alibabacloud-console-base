@@ -4,7 +4,7 @@ import {
 import {
   composeToolkitTypeWithId
 } from '../../../util/compose-toolkit-type';
-import broadcastByConsoleBase from '../../../util/boradcast-by-console-base';
+import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
 
 /**
  * 通知控制台应用：某工具被点击

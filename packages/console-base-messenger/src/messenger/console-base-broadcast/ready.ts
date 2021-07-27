@@ -1,7 +1,7 @@
 import {
   EMessageBroadcastByConsoleBase
 } from '../../const';
-import broadcastByConsoleBase from '../../util/boradcast-by-console-base';
+import broadcastByConsoleBase from '../../util/broadcast-by-console-base';
 
 /**
  * 通知控制台应用：console-base 已初始化完毕，可以进行交互
