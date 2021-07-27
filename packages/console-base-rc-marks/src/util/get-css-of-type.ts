@@ -25,13 +25,13 @@ const CSS_NEW = css`
 `;
 const CSS_HOT = CSS_NEW;
 const CSS_UPDATE = css`
+  background-color: rgba(255, 255, 255, 0.05);
   ${mixinTextAccent}
-  ${mixinBgWhite}
   ${mixinBorderAccentColor}
 `;
 const CSS_ALPHA = css`
+  background-color: rgba(255, 255, 255, 0.05);
   ${mixinTextDanger}
-  ${mixinBgWhite}
   ${mixinBorderDangerColor}
 `;
 const CSS_BETA = CSS_ALPHA;
