@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/logger-sls",
-  "version": "1.4.38",
+  "version": "1.4.39",
   "description": "SLS logger factory",
   "license": "MIT",
   "sideEffects": false,
@@ -27,14 +27,14 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.23",
-    "@alicloud/demo-rc-elements": "^1.3.30",
+    "@alicloud/demo-rc-elements": "^1.3.31",
     "@types/react": "^17.0.15",
     "react": "^17.0.2",
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/fetcher-fetch": "^1.2.41",
-    "@alicloud/ua": "^1.1.41"
+    "@alicloud/fetcher-fetch": "^1.2.42",
+    "@alicloud/ua": "^1.1.42"
   },
   "scripts": {
     "start": "breezr start-storybook",
