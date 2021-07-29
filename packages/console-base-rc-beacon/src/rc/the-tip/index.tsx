@@ -25,8 +25,9 @@ import {
 
 const ScTheTip = styled.div`
   position: absolute;
-  padding: 12px 16px;
+  padding: 12px;
   border-radius: 2px;
+  box-sizing: border-box;
   ${mixinBgSecondary}
   ${mixinBorderTertiary}
   ${mixinShadowL}
