@@ -6,7 +6,7 @@ import Button, {
 
 import {
   IPropsTopNavButtonDropdownItem
-} from '../../types';
+} from '../../../types';
 
 interface IProps {
   items: IPropsTopNavButtonDropdownItem[];

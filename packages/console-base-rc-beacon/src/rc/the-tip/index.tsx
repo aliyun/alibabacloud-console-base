@@ -4,7 +4,8 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  mixinBgPrimary,
+  mixinBgSecondary,
+  mixinBorderTertiary,
   mixinShadowL,
   mixinTypoLineWrap
 } from '@alicloud/console-base-theme';
@@ -26,7 +27,8 @@ const ScTheTip = styled.div`
   position: absolute;
   padding: 12px 16px;
   border-radius: 2px;
-  ${mixinBgPrimary}
+  ${mixinBgSecondary}
+  ${mixinBorderTertiary}
   ${mixinShadowL}
   ${mixinTypoLineWrap}
 `;

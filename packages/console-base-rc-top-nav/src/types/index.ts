@@ -13,6 +13,9 @@ import {
 import {
   DropdownProps
 } from '@alicloud/console-base-rc-dropdown';
+import {
+  BeaconProps
+} from '@alicloud/console-base-rc-beacon';
 
 interface IPropsTopNavButtonLabel {
   icon?: IconType;
@@ -39,6 +42,7 @@ export interface IPropsTopNavButton extends Omit<Partial<ButtonProps>, 'label'> 
   responsive?: boolean; // 是否对宽度做自适应
   force?: boolean; // 没有行动点（href、onXx）、也没有 dropdown 的情况下，默认不会展示，如果要展示，设置为 force
   dropdown?: IPropsTopNavButtonDropdown;
+  beacon?: BeaconProps;
 }
 
 export interface IPropsTopNavLogo extends ButtonProps {}

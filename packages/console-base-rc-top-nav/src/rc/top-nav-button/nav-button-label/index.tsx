@@ -9,7 +9,7 @@ import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   IPropsTopNavButton
-} from '../../types';
+} from '../../../types';
 
 interface IProps {
   label: IPropsTopNavButton['label'];
