@@ -88,7 +88,6 @@ export const mixinTypoBlockquote = css`
 export const mixinTypoLineWrap = css`
   white-space: normal;
   word-wrap: break-word;
-  word-break: break-all;
 `;
 
 export const mixinTypoNoWrap = css`
