@@ -53,8 +53,8 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<IF
     }
     
     // 重新请求的场景，不要和之前的第 0 个请求逻辑合并
-    // 1. 指定了是 overwrite
-    // 2. 当前的缓存不会过期，但新的请求需要过期
+    // 1. 指定 overwrite
+    // 2. 当前的缓存不会过期，但新的请求设置了过期
     if (cacheLocal.overwrite || (cache.ttl <= 0 && cacheLocal.ttl > 0)) {
       cacheAdd(key);
       
