@@ -1,6 +1,4 @@
-import createLogger from './factory/create-logger';
-
-export default createLogger;
+export { default } from './factory/create-logger';
 export { default as createLoggerFactory } from './factory/create-factory';
 
 export type {
