@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-parse-account",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "ConsoleBase CONF.ACCOUNT parse",
   "license": "MIT",
   "sideEffects": false,
@@ -33,8 +33,8 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/console-one-config": "^1.1.43",
-    "@alicloud/cookie": "^1.1.43"
+    "@alicloud/console-one-config": "^1.1.44",
+    "@alicloud/cookie": "^1.1.44"
   },
   "scripts": {
     "start": "breezr start-storybook",
