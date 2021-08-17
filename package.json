@@ -18,7 +18,6 @@
   },
   "scripts": {
     "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
-    "boot2": "yarn install && rm yarn.lock && lerna link",
     "clean": "rm -rf node_modules",
     "clean:lock": "rm -f packages/**/package-lock.json",
     "lint": "eslint packages/**/src/ --ext js,ts,tsx",
@@ -29,7 +28,7 @@
     "lerna:publish:patch": "lerna publish patch --no-verify-access --no-verify-registry",
     "lerna:publish:minor": "lerna publish minor --no-verify-access --no-verify-registry",
     "lerna:publish:prerelease": "lerna publish prerelease --no-verify-access --no-verify-registry",
-    "lerna:build": "lerna run prepublishOnly",
+    "lerna:build:local": "lerna run prepublishOnly",
     "tnpm:sync": "lerna exec tnpm sync",
     "ncu:main": "ncu",
     "ncu:packages": "lerna exec --no-bail -- ncu --timeout 120000",

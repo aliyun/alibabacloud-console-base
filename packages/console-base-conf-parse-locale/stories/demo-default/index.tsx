@@ -1,5 +1,11 @@
 import React from 'react';
 
+import {
+  PreJson
+} from '@alicloud/demo-rc-elements';
+
+import parseLocale from '../../src';
+
 export default function DemoDefault(): JSX.Element {
-  return <>天有不測風雲</>;
+  return <PreJson o={parseLocale()} />;
 }
