@@ -56,8 +56,8 @@ export interface IShittyConsoleOneConfig {
   portalType: 'one'; // 有 ALIYUN_CONSOLE_CONFIG 的不一定就等于 OneConsole（有的自建控制台也会用这个全局变量）
   fEnv?: 'daily' | 'pre'; // 线上没有
   CHANNEL: string; // e.g. 'OFFICIAL'
-  LANG: string; // e.g. 'zh'、'en'、'zt'
-  LOCALE: string; // e.g. 'zh-CN'、'en-US'、'zh-TW'
+  LANG: string; // e.g. 'zh'、'en'、'ja'、'zh'（之前繁体是 zt 被改成 zh 了）
+  LOCALE: string; // e.g. 'zh-CN'、'en-US'、'ja-JP'、'zh-TW'
   SEC_TOKEN: string; // 执行 POST 请求时需要插入请求体的 `sec_token` 的安全码（也可能是 `secToken`...）
   // 用户
   ACCOUNT_TYPE: 'main' | 'sub' | 'sts';
