@@ -1,4 +1,4 @@
-export { default } from './util/parse-locale';
+export { default } from './util/parse-conf-locale';
 
 export {
   ELanguage,
