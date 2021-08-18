@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-parse-env",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "ConsoleBase CONF.ENV parse",
   "license": "MIT",
   "sideEffects": false,
@@ -33,7 +33,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/console-one-config": "^1.1.45",
+    "@alicloud/console-one-config": "^1.1.46",
     "@alicloud/cookie": "^1.1.44"
   },
   "scripts": {

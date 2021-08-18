@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-intl-factory-basic",
-  "version": "1.2.44",
+  "version": "1.2.45",
   "description": "ConsoleBase Intl Factory Basic, Pure Text, No JSX",
   "license": "MIT",
   "sideEffects": false,
@@ -34,7 +34,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-locale": "^1.5.7",
+    "@alicloud/console-base-conf-locale": "^1.5.8",
     "lodash": "^4.17.21"
   },
   "scripts": {
