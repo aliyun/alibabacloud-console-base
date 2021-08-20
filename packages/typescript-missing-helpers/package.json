@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/typescript-missing-helpers",
-  "version": "1.1.23",
+  "version": "1.1.24",
   "description": "Supplements to TypeScript type helpers",
   "license": "MIT",
   "sideEffects": false,
