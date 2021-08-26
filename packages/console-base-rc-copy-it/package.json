@@ -31,7 +31,7 @@
     "@types/react": "^17.0.19",
     "@types/react-test-renderer": "^17.0.1",
     "@types/react-transition-group": "^4.4.2",
-    "@types/styled-components": "^5.1.12",
+    "@types/styled-components": "^5.1.13",
     "react": "^17.0.2",
     "react-test-renderer": "^17.0.2",
     "styled-components": "^5.3.1",
