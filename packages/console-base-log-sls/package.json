@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-log-sls",
-  "version": "1.1.56",
+  "version": "1.1.57",
   "description": "ConsoleBase Log SLS",
   "license": "MIT",
   "sideEffects": false,
@@ -27,14 +27,14 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/demo-rc-elements": "^1.3.36",
+    "@alicloud/demo-rc-elements": "^1.3.37",
     "@types/react": "^17.0.19",
     "react": "^17.0.2",
     "typescript": "^4.4.2"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-product-id": "^1.2.5",
-    "@alicloud/console-logger-sls": "^1.1.55"
+    "@alicloud/console-base-conf-product-id": "^1.2.6",
+    "@alicloud/console-logger-sls": "^1.1.56"
   },
   "scripts": {
     "start": "breezr start-storybook",
