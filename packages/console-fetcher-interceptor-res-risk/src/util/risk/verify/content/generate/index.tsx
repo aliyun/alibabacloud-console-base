@@ -64,7 +64,7 @@ export default function Generate(): JSX.Element {
       setStateCooling(Math.round(COOLING_AFTER_SENT!));
     } catch (err) {
       updateData({
-        errorMessage: err?.message || ''
+        errorMessage: (err as Error)?.message || ''
       });
       
       setStateCooling(Math.round(COOLING_AFTER_SEND_FAIL!));

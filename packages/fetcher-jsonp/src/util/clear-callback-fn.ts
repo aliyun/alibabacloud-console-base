@@ -6,7 +6,7 @@ export default function clearCallbackFn(callbackName: string): void {
   
   try { // IE8 throws exception when try to delete a property on window http://stackoverflow.com/a/1824228/751089
     delete win[callbackName];
-  } catch (e) {
+  } catch (err) {
     win[callbackName] = undefined;
   }
 }

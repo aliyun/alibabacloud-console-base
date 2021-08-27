@@ -60,7 +60,7 @@ export function removeBackdrop(): void {
   try {
     backdropGateway.remove(); // IE 不支持 remove https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
     backdropGateway = null;
-  } catch (e) {
+  } catch (err) {
     // 那就不 remove 也没事
   }
 }

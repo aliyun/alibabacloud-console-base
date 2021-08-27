@@ -225,11 +225,11 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
         throw err;
       }
       
-      if (err.name === EErrorSpecial.SKIP_NETWORK) { // 绕过请求，直接返回
+      if ((err as Error).name === EErrorSpecial.SKIP_NETWORK) { // 绕过请求，直接返回
         return (err as IFetcherErrorSpecial<T>).result;
       }
       
-      throw convertError(err, finalConfig); // 继续错下去
+      throw convertError(err as Error, finalConfig); // 继续错下去
     }
     
     // 2. 网络请求
@@ -239,7 +239,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
     try {
       fetcherResponse = await fetchX<T, C>(finalConfig);
     } catch (err) {
-      error = convertError<C>(err, finalConfig);
+      error = convertError<C>(err as Error, finalConfig);
     }
     
     // 3. 后置响应拦截器

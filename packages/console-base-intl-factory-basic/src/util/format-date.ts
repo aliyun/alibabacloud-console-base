@@ -84,7 +84,7 @@ function getFormatPattern(format?: TDateFormat): string {
 export default function formatDate(date: Date, format?: TDateFormat, locale = 'en-US'): string {
   try {
     return new Intl.DateTimeFormat(locale, getFormatOptions(format)).format(date);
-  } catch (e) {
+  } catch (err) {
     return fallbackFormat(date, getFormatPattern(format));
   }
 }

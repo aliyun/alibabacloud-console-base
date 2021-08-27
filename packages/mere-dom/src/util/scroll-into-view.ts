@@ -23,7 +23,7 @@ export default function scrollIntoView(selector: TSelector, parent?: TParent): v
       behavior: 'smooth',
       block: 'center'
     });
-  } catch (e) {
+  } catch (err) {
     // ignore
   }
 }
