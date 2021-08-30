@@ -1,5 +1,9 @@
 module.exports = {
   /**
+   * TS rules
+   * 
+   * https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules
+   * 
    * disable eslint base rules so that corresponding @typescript-eslint/xx rules can work without problem
    * 
    * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md#how-to-use
@@ -37,6 +41,8 @@ module.exports = {
     args: 'after-used',
     ignoreRestSiblings: true
   }],
+  // typescript-only rules
+  '@typescript-eslint/type-annotation-spacing': ['error'],
   '@typescript-eslint/member-delimiter-style': ['error', {
     multiline: {
       delimiter: 'semi',
