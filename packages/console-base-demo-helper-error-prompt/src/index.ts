@@ -1,1 +1,1 @@
-export { default } from './rc/chose-n-test';
+export { default } from './rc';

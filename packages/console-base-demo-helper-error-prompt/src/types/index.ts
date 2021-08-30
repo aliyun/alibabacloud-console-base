@@ -11,3 +11,7 @@ export interface IErrorDetails {
 }
 
 export type TErrorArg = undefined | null | string | ReactElement | Error | IErrorDetails;
+
+export interface IProps {
+  onPrompt(error: TErrorArg): Promise<void>;
+}

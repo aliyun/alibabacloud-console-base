@@ -13,7 +13,10 @@ const ERROR_NAMES_IGNORE_LIST = [
   'FetcherErrorRiskCancelled'
 ];
 
-export default function shouldIgnore(o?: TErrorPromptArg): boolean {
+/**
+ * 是否直接忽略该错误
+ */
+export default function shouldIgnore(o?: TErrorPromptArg): o is undefined {
   if (!o) {
     return true;
   }
