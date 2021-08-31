@@ -110,6 +110,7 @@ export enum EIconType {
   gds = 'e902', // 图数据库 GDB
   gpdb = 'e62a', // 分析型数据库 PostgreSQL版
   gcs = 'e925', // 图计算服务 - Graph Compute Service
+  governance = 'e6b2', // 云治理中心
   gts = 'e637', // 全局事务服务
   gws = 'e87d', // 图形工作站
   hbase = 'e78b', // 云数据库 HBase 版
