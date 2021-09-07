@@ -31,8 +31,8 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
     "@types/lodash": "^4.14.172",
     "@types/qs": "^6.9.7",
-    "@types/react": "^17.0.19",
-    "@types/styled-components": "^5.1.13",
+    "@types/react": "^17.0.20",
+    "@types/styled-components": "^5.1.14",
     "react": "^17.0.2",
     "styled-components": "^5.3.1",
     "typescript": "^4.4.2"
