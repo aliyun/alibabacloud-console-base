@@ -13,4 +13,28 @@ export default function fetcherDemoInterceptorMockVerifyCodeUrl(config: IDemoCon
       url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-send-code'
     };
   }
+
+  if (config.url === '/identity/getMfaInfoToBind') {
+    return {
+      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-get-mfa-info-to-bind'
+    };
+  }
+
+  if (config.url === '/identity/getMfaInfoToAuth') {
+    return {
+      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-get-mfa-info-to-bind'
+    };
+  }
+
+  if (config.url === '/identity/bindMfa') {
+    return {
+      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-bind-mfa'
+    };
+  }
+
+  if (config.url === '/identity/verify') {
+    return {
+      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-auth-mfa'
+    };
+  }
 }
