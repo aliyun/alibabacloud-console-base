@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-basic",
-  "version": "1.5.29",
+  "version": "1.5.30",
   "description": "控制台基础 Fetcher（无风控）",
   "license": "MIT",
   "sideEffects": false,
@@ -40,7 +40,7 @@
     "@alicloud/console-fetcher-interceptor-req-security": "^1.1.52",
     "@alicloud/console-fetcher-interceptor-res-biz": "^1.1.52",
     "@alicloud/console-fetcher-interceptor-res-error-message": "^1.1.54",
-    "@alicloud/console-fetcher-interceptor-sls": "^1.1.60",
+    "@alicloud/console-fetcher-interceptor-sls": "^1.1.61",
     "@alicloud/fetcher": "^1.1.52",
     "@alicloud/fetcher-interceptor-cache-local": "^1.1.26",
     "@alicloud/fetcher-interceptor-merger": "^1.0.42",

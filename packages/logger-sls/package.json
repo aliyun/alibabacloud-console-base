@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/logger-sls",
-  "version": "1.4.47",
+  "version": "1.5.0",
   "description": "SLS logger factory",
   "license": "MIT",
   "sideEffects": false,
