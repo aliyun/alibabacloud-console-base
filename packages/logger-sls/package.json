@@ -28,13 +28,15 @@
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
     "@alicloud/demo-rc-elements": "^1.3.38",
+    "@types/lodash": "^4.14.172",
     "@types/react": "^17.0.20",
     "react": "^17.0.2",
     "typescript": "^4.4.2"
   },
   "dependencies": {
     "@alicloud/fetcher-fetch": "^1.2.49",
-    "@alicloud/ua": "^1.1.49"
+    "@alicloud/ua": "^1.1.49",
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "start": "breezr start-storybook",
