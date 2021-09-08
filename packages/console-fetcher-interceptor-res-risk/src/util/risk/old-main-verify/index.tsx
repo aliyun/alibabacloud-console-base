@@ -14,32 +14,31 @@ import {
 
 import {
   IFetcherInterceptorConfig,
-  IRiskInfo,
+  IOldMainRiskInfo,
   IRiskVerifyDialogData
 } from '../../../types';
 import intl from '../../../intl';
 import {
   intlVerifyTitle
 } from '../../intl-verify';
-
-import Content from './content';
+import Content from '../../../container/old-main-verify-content';
 
 interface IParams {
   request: FetcherFnRequest;
   fetcherConfig: FetcherConfig;
-  riskInfo: IRiskInfo;
+  riskInfo: IOldMainRiskInfo;
   riskConfig: IFetcherInterceptorConfig;
 }
 
 /**
  * 风控 - 二次验证（SMS + EMAIL + MFA）
  */
-export default ({
+export default function OldMainAccountVerify({
   request,
   fetcherConfig,
   riskInfo,
   riskConfig
-}: IParams): Promise<unknown> => {
+}: IParams): Promise<unknown> {
   const buttonConfirm: DialogButtonProps<unknown, IRiskVerifyDialogData> = {
     spm: 'confirm',
     disabled: true,
@@ -106,4 +105,4 @@ export default ({
     },
     undefinedAsReject: true
   });
-};
+}

@@ -35,7 +35,7 @@ export default function Generate(): JSX.Element {
         URL_SEND_CODE,
         COOLING_AFTER_SENT,
         COOLING_AFTER_SEND_FAIL,
-        METHOD_SEND_CODE
+        REQUEST_METHOD
       }
     },
     updateData,
@@ -51,7 +51,7 @@ export default function Generate(): JSX.Element {
     try {
       // 这里用当前的 fetcher
       await request<ISendCodeReturn>({
-        method: METHOD_SEND_CODE,
+        method: REQUEST_METHOD,
         url: URL_SEND_CODE,
         body: {
           verifyType,
@@ -72,7 +72,7 @@ export default function Generate(): JSX.Element {
       setStateGenerating(false);
       unlock();
     }
-  }, [lock, unlock, updateData, request, verifyType, codeType, URL_SEND_CODE, COOLING_AFTER_SENT, COOLING_AFTER_SEND_FAIL, METHOD_SEND_CODE]);
+  }, [lock, unlock, updateData, request, verifyType, codeType, URL_SEND_CODE, COOLING_AFTER_SENT, COOLING_AFTER_SEND_FAIL, REQUEST_METHOD]);
   
   useEffect((): () => void => {
     let timer: number | undefined;
