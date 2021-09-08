@@ -14,14 +14,14 @@ import Input from '@alicloud/console-base-rc-input';
 
 import {
   IVerifyVMfaPayload,
-  ISubRiskVerifyDialogData
+  INewSubAccountRisk
 } from '../../../../types';
 import {
   EPayloadVerifyType
 } from '../../../../const';
 import intl from '../../../../intl';
 import Form from '../../../../rc/form';
-import getTicketType from '../../../../util/common-utils/get-ticket-type';
+import getTicketType from '../../../../util/get-ticket-type';
 
 const ScInfo = styled.strong`
   margin-right: 12px;
@@ -35,7 +35,7 @@ const ScInput = styled(Input)`
 
 const ScError = styled.div`
   margin-top: 8px;
-  ${mixinTextError};
+  ${mixinTextError}
 `;
 
 const ticketType = getTicketType();
@@ -49,7 +49,7 @@ export default function VMfaAuth(): JSX.Element {
       errorMessage
     },
     updateData
-  } = useDialog<void, ISubRiskVerifyDialogData>();
+  } = useDialog<void, INewSubAccountRisk>();
 
   const handleInputChange = useCallback(value => {
     const verifyMfaPayload: IVerifyVMfaPayload = {

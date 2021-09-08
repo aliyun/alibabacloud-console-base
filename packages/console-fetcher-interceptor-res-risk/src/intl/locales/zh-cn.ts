@@ -50,8 +50,8 @@ export default {
   'message:u2f_get_key_cancel': '获取 U2F 安全密钥流程被终止，请刷新页面重试或返回上一步。',
   'message:u2f_bind_get_key': '正在等待 U2F 安全密钥...',
   'message:u2f_bind_get_key_success': '获取 U2F 安全密钥成功。',
-  'message:vmfa_bind_step1': '1. 扫码绑定，或手动输入密钥。',
-  'message:vmfa_bind_step2': '2. 填写两组校验码。',
+  'message:vmfa_bind_step1': '第一步：扫码绑定，或手动输入密钥。',
+  'message:vmfa_bind_step2': '第二步：填写两组校验码。',
   'message:mfa_choose_vmfa': '您需要在手机上准备好 MFA 应用程序。',
   'message:mfa_choose_u2f': 'YubiKey 或任何其他兼容的 U2F 设备。',
   'message:u2f:bind:description!lines!html': `<strong>请按照下述说明绑定 U2F 安全密钥：</strong>

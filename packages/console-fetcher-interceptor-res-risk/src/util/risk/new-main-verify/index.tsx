@@ -15,7 +15,7 @@ import {
 import {
   IFetcherInterceptorConfig,
   IMainAccountRiskInfo,
-  IMainRiskVerifyDialogData
+  INewMainAccountRisk
 } from '../../../types';
 import intl from '../../../intl';
 import Content from '../../../container/new-main-verify-content';
@@ -33,7 +33,7 @@ export default function RiskMainVerify({
   riskConfig,
   mainRiskInfo
 }: IParams): Promise<unknown> {
-  const buttonPrimary: DialogButtonProps<unknown, IMainRiskVerifyDialogData> = {
+  const buttonPrimary: DialogButtonProps<unknown, INewMainAccountRisk> = {
     label: intl('op:confirm'),
     primary: true,
     onClick({
@@ -82,8 +82,9 @@ export default function RiskMainVerify({
 
   const buttonCancel = intl('op:cancel');
   
-  return open<unknown, IMainRiskVerifyDialogData>({
+  return open<unknown, INewMainAccountRisk>({
     title: intl('title:main'),
+    size: 'l',
     data: {
       request,
       mainRiskInfo,
@@ -92,7 +93,7 @@ export default function RiskMainVerify({
       primaryButtonDisabled: true
     },
     content: <Content />,
-    buttons: (data: IMainRiskVerifyDialogData) => {
+    buttons: (data: INewMainAccountRisk) => {
       return [{
         ...buttonPrimary,
         disabled: data.primaryButtonDisabled

@@ -15,7 +15,7 @@ import {
 import {
   IFetcherInterceptorConfig,
   ISubAccountRiskInfo,
-  ISubRiskVerifyDialogData,
+  INewSubAccountRisk,
   TGetAuthMfaInfoData,
   TGetBindMfaInfoData,
   IMfaData
@@ -26,7 +26,7 @@ import {
 } from '../../../../const';
 import intl from '../../../../intl';
 import Content from '../../../../container/new-sub-verify-content';
-import getTicketType from '../../../common-utils/get-ticket-type';
+import getTicketType from '../../../get-ticket-type';
 
 interface IParams {
   request: FetcherFnRequest;
@@ -94,7 +94,7 @@ export default async function RiskSubVerify({
     await getMfaInfoToAuth();
   }
 
-  const buttonBindNext: DialogButtonProps<unknown, ISubRiskVerifyDialogData> = {
+  const buttonBindNext: DialogButtonProps<unknown, INewSubAccountRisk> = {
     label: intl('op:confirm'),
     primary: true,
     onClick({
@@ -108,7 +108,7 @@ export default async function RiskSubVerify({
       const {
         getBindMfaInfoPayload
       } = data;
-
+      
       request<TGetBindMfaInfoData>({
         method: REQUEST_METHOD,
         url: URL_GET_MFA_INFO_TO_BIND,
@@ -137,7 +137,7 @@ export default async function RiskSubVerify({
     }
   };
 
-  const buttonPreviousStep: DialogButtonProps<unknown, ISubRiskVerifyDialogData> = {
+  const buttonPreviousStep: DialogButtonProps<unknown, INewSubAccountRisk> = {
     label: intl('op:previous_step'),
     primary: false,
     onClick({
@@ -153,7 +153,7 @@ export default async function RiskSubVerify({
     }
   };
 
-  const generateSubmitButton = (type: ESubmitType, primaryButtonDisabled: boolean): DialogButtonProps<unknown, ISubRiskVerifyDialogData> => {
+  const generateSubmitButton = (type: ESubmitType, primaryButtonDisabled: boolean): DialogButtonProps<unknown, INewSubAccountRisk> => {
     const url = type === ESubmitType.AUTH ? URL_MFA_AUTH : URL_MFA_BIND;
 
     return ({
@@ -222,8 +222,8 @@ export default async function RiskSubVerify({
 
   const buttonCancel = intl('op:cancel');
 
-  return open<unknown, ISubRiskVerifyDialogData>({
-    title: (data: ISubRiskVerifyDialogData) => {
+  return open<unknown, INewSubAccountRisk>({
+    title: (data: INewSubAccountRisk) => {
       const {
         step
       } = data;
@@ -243,6 +243,7 @@ export default async function RiskSubVerify({
           return intl('title:sub_default');
       }
     },
+    size: 'l',
     data: {
       request,
       subRiskInfo,
@@ -254,7 +255,7 @@ export default async function RiskSubVerify({
       u2fTimeout: U2F_TIMEOUT
     },
     content: <Content />,
-    buttons: (data: ISubRiskVerifyDialogData) => {
+    buttons: (data: INewSubAccountRisk) => {
       const primaryButtonDisabled = data.primaryButtonDisabled || false;
       let primaryButton;
 

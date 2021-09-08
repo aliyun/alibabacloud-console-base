@@ -5,7 +5,7 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  ISubRiskVerifyDialogData
+  INewSubAccountRisk
 } from '../../types';
 import {
   EStep
@@ -26,7 +26,7 @@ export default function Content(): JSX.Element {
     data: {
       step
     }
-  } = useDialog<void, ISubRiskVerifyDialogData>();
+  } = useDialog<void, INewSubAccountRisk>();
 
   switch (step) {
     case EStep.MFA_CHOOSE:

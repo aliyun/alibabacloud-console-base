@@ -9,21 +9,23 @@ import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 import u2fApi from '@alicloud/u2f-api';
+import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
   IGetAuthU2FInfoData,
-  ISubRiskVerifyDialogData
+  INewSubAccountRisk
 } from '../../../../types';
 import {
   EPayloadVerifyType
 } from '../../../../const';
 import intl from '../../../../intl';
-import getTicketType from '../../../../util/common-utils/get-ticket-type';
+import getTicketType from '../../../../util/get-ticket-type';
 import U2fUi from '../../_components/u2f-ui';
 
 const ticketType = getTicketType();
 
 export default function U2FAuth(): JSX.Element {
+  const isUnmounted = useIsUnmounted();
   const {
     data: {
       errorMessage,
@@ -31,7 +33,7 @@ export default function U2FAuth(): JSX.Element {
       u2fTimeout
     },
     updateData
-  } = useDialog<void, ISubRiskVerifyDialogData>();
+  } = useDialog<void, INewSubAccountRisk>();
 
   const [stateU2FSupported, setStateU2fSupported] = useState<boolean>(false);
   const [stateGetU2fKey, setStateGetU2fKey] = useState<boolean>(true);
@@ -42,6 +44,10 @@ export default function U2FAuth(): JSX.Element {
   const u2fKeyHandle = _get(getAuthMfaInfoData as IGetAuthU2FInfoData, 'U2FKeyHandle', '');
   
   const fetchData = useCallback(async () => {
+    if (isUnmounted()) {
+      return;
+    }
+
     try {
       const isU2FSupported = await u2fApi.isSupported();
 
@@ -81,7 +87,7 @@ export default function U2FAuth(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, updateData]);
+  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({

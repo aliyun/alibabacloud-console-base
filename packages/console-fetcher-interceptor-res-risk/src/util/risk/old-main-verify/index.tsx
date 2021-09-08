@@ -15,7 +15,7 @@ import {
 import {
   IFetcherInterceptorConfig,
   IOldMainRiskInfo,
-  IRiskVerifyDialogData
+  IOldMainAccountRisk
 } from '../../../types';
 import intl from '../../../intl';
 import {
@@ -39,7 +39,7 @@ export default function OldMainAccountVerify({
   riskInfo,
   riskConfig
 }: IParams): Promise<unknown> {
-  const buttonConfirm: DialogButtonProps<unknown, IRiskVerifyDialogData> = {
+  const buttonConfirm: DialogButtonProps<unknown, IOldMainAccountRisk> = {
     spm: 'confirm',
     disabled: true,
     label: intl('op:confirm'),
@@ -86,7 +86,7 @@ export default function OldMainAccountVerify({
   };
   const buttonCancel = intl('op:cancel');
   
-  return open<unknown, IRiskVerifyDialogData>({
+  return open<unknown, IOldMainAccountRisk>({
     title: intlVerifyTitle(riskInfo.type),
     data: {
       request,
@@ -97,7 +97,7 @@ export default function OldMainAccountVerify({
       errorMessage: ''
     },
     content: <Content />,
-    buttons: (data: IRiskVerifyDialogData) => {
+    buttons: (data: IOldMainAccountRisk) => {
       return [{
         ...buttonConfirm,
         disabled: !data.code

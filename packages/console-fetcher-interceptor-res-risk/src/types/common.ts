@@ -85,9 +85,9 @@ export interface ISubAccountRiskInfo {
 export type TRiskInfo = IOldMainRiskInfo | ISubAccountRiskInfo | IMainAccountRiskInfo;
 
 /**
- * 旧版主账号风控 - 弹窗的 data 类型
+ * 旧版主账号风控 - 弹窗的数据类型
  */
-export interface IRiskVerifyDialogData {
+export interface IOldMainAccountRisk {
   request: FetcherFnRequest;
   riskInfo: IOldMainRiskInfo;
   riskConfig: IFetcherInterceptorConfig;
@@ -97,9 +97,9 @@ export interface IRiskVerifyDialogData {
 }
 
 /**
- * 子账号风控 - MFA 类型的弹窗 data 类型
+ * 子账号风控 - MFA 类型的弹窗的数据类型
  */
-export interface ISubRiskVerifyDialogData {
+export interface INewSubAccountRisk {
   request: FetcherFnRequest;
   subRiskInfo: ISubAccountRiskInfo;
   requestId: string;
@@ -118,9 +118,9 @@ export interface ISubRiskVerifyDialogData {
 }
 
 /**
- * 主账号风控的弹窗 data 类型
+ * 主账号风控的弹窗的数据类型
  */
-export interface IMainRiskVerifyDialogData {
+export interface INewMainAccountRisk {
   request: FetcherFnRequest;
   mainRiskInfo: IMainAccountRiskInfo;
   requestId: string;

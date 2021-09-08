@@ -10,22 +10,24 @@ import {
   confirm
 } from '@alicloud/console-base-rc-dialog';
 import u2fApi from '@alicloud/u2f-api';
+import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
   IGetBindU2FInfoData,
-  ISubRiskVerifyDialogData
+  INewSubAccountRisk
 } from '../../../../types';
 import {
   ESubMFADeviceType
 } from '../../../../const';
 import intl from '../../../../intl';
-import getU2FStateMessage from '../../../../util/common-utils/get-u2f-state-message';
-import getTicketType from '../../../../util/common-utils/get-ticket-type';
+import getU2FStateMessage from '../../../../util/get-u2f-state-message';
+import getTicketType from '../../../../util/get-ticket-type';
 import U2fUi from '../../_components/u2f-ui';
 
 const ticketType = getTicketType();
 
 export default function U2FBind(): JSX.Element {
+  const isUnmounted = useIsUnmounted();
   const {
     data: {
       errorMessage,
@@ -33,7 +35,7 @@ export default function U2FBind(): JSX.Element {
       u2fTimeout
     },
     updateData
-  } = useDialog<void, ISubRiskVerifyDialogData>();
+  } = useDialog<void, INewSubAccountRisk>();
 
   const {
     noPopUp
@@ -47,6 +49,10 @@ export default function U2FBind(): JSX.Element {
   const u2fVersion = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FVersion', '');
 
   const fetchData = useCallback(async () => {
+    if (isUnmounted()) {
+      return;
+    }
+
     try {
       const isU2FSupported = await u2fApi.isSupported();
 
@@ -103,7 +109,7 @@ export default function U2FBind(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, updateData]);
+  }, [u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({

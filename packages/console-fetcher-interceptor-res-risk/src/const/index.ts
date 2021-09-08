@@ -19,7 +19,6 @@ export enum EVerifyType {
 }
 
 /**
- * /**
  * 区分新旧风控，以及新版风控中的主/子账号风控
  */
 export enum ERisk {
@@ -73,7 +72,7 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   DATA_PATH_VERIFY_CODE_TYPE: 'data.codeType',
   DATA_PATH_VERIFY_URL: 'data.verifyURL',
   DATA_PATH_USER_PRINCIPAL_NAME: 'data.userPrincipalName',
-  CONFIG_PATH_RISK_VERSION: 'body.newConsole',
+  CONFIG_PATH_RISK_VERSION: 'body.newRisk',
   // 风控错误码
   CODE_NEED_VERIFY: 'FoundRiskAndDoubleConfirm',
   CODE_FORBIDDEN: 'FoundRiskAndTip',

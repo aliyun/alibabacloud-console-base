@@ -14,23 +14,23 @@ import Input from '@alicloud/console-base-rc-input';
 
 import {
   IBindVMfaPayload,
-  ISubRiskVerifyDialogData
+  INewSubAccountRisk
 } from '../../../../../types';
 import {
   ESubMFADeviceType
 } from '../../../../../const';
 import intl from '../../../../../intl';
 import Form from '../../../../../rc/form';
-import getTicketType from '../../../../../util/common-utils/get-ticket-type';
+import getTicketType from '../../../../../util/get-ticket-type';
 
 const ScInput = styled(Input)`
   margin-right: 12px;
-  width: 100%;
+  width: 90%;
 `;
 
 const ScError = styled.div`
   margin-top: 8px;
-  ${mixinTextError};
+  ${mixinTextError}
 `;
 
 const ticketType = getTicketType();
@@ -41,7 +41,7 @@ export default function VMfaBindForm(): JSX.Element {
       errorMessage
     },
     updateData
-  } = useDialog<void, ISubRiskVerifyDialogData>();
+  } = useDialog<void, INewSubAccountRisk>();
 
   const [stateCode1, setStateCode1] = useState<string>('');
   const [stateCode2, setStateCode2] = useState<string>('');

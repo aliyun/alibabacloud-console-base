@@ -8,7 +8,7 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IMainRiskVerifyDialogData
+  INewMainAccountRisk
 } from '../../types';
 import intl from '../../intl';
 
@@ -25,14 +25,16 @@ export default function Content(): JSX.Element {
       }
     },
     updateData
-  } = useDialog<void, IMainRiskVerifyDialogData>();
+  } = useDialog<void, INewMainAccountRisk>();
 
   const getValidateToken = useCallback((event: MessageEvent): void => {
     try {
       const json: IJson = JSON.parse(decodeURIComponent(event.data));
 
-      if (json?.type === 'iframevalid') {
-        const ivToken = json?.ivToken;
+      if (json.type === 'iframevalid') {
+        const {
+          ivToken
+        } = json;
 
         if (ivToken) {
           updateData({

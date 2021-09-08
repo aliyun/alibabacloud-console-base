@@ -11,12 +11,8 @@ import {
   EIconType
 } from '../../../../const';
 import intl from '../../../../intl';
-import getU2FStateMessage from '../../../../util/common-utils/get-u2f-state-message';
+import getU2FStateMessage from '../../../../util/get-u2f-state-message';
 import U2FMessage from '../u2f-message';
-
-const ScError = styled.div`
-  ${mixinTextError};
-`;
 
 interface IProps {
   u2fSupported: boolean;
@@ -24,6 +20,10 @@ interface IProps {
   content: string;
   errorMessage: string;
 }
+
+const ScError = styled.div`
+  ${mixinTextError}
+`;
 
 export default function U2fUi({
   u2fSupported,

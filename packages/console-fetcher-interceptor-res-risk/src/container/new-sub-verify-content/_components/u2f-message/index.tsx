@@ -17,33 +17,37 @@ import {
   EIconType
 } from '../../../../const';
 
+interface IIconProps {
+  iconType: EIconType;
+}
+interface IProps {
+  iconType: EIconType;
+  message: string;
+}
+
 const CssDivCommon = css`
-  width: 95%;
-  padding: 5px 12px;
+  width: 90%;
+  padding: 8px 12px;
   margin-bottom: 12px;
 `;
 
 const ScU2fError = styled.div`
-  ${CssDivCommon};
-  ${mixinBgErrorTint};
+  ${CssDivCommon}
+  ${mixinBgErrorTint}
   ${mixinTextError}
 `;
 
 const ScU2FNotice = styled.div`
-   ${CssDivCommon};
+   ${CssDivCommon}
    ${mixinBgInfoTint}
    ${mixinTextInfo}
 `;
 
 const ScU2fSuccess = styled.div`
-  ${CssDivCommon};
+  ${CssDivCommon}
   ${mixinBgSuccessTint}
   ${mixinTextSuccess}
 `;
-
-interface IIconProps {
-  iconType: EIconType;
-}
 
 const ScIcon = styled(Icon)<IIconProps>`
   ${props => {
@@ -58,11 +62,6 @@ const ScIcon = styled(Icon)<IIconProps>`
   }};
   margin-right: 6px;
 `;
-
-interface IProps {
-  iconType: EIconType;
-  message: string;
-}
 
 export default function U2FMessage({
   iconType,

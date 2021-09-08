@@ -2,7 +2,7 @@ import UA, {
   BrowserType
 } from '@alicloud/ua';
 
-import intl from '../../intl';
+import intl from '../intl';
 
 interface IU2FStateMessage {
   noPopUp: boolean;

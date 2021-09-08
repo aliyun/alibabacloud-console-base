@@ -17,7 +17,7 @@ import Flex from '@alicloud/console-base-rc-flex';
 
 import {
   IGetBindVMfaInfoData,
-  ISubRiskVerifyDialogData
+  INewSubAccountRisk
 } from '../../../../../types';
 import intl from '../../../../../intl';
 
@@ -64,7 +64,7 @@ export default function VMfaBindInfo(): JSX.Element {
     data: {
       getBindMfaInfoData
     }
-  } = useDialog<void, ISubRiskVerifyDialogData>();
+  } = useDialog<void, INewSubAccountRisk>();
 
   const qrCodeUri = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'QRCodeUri', '');
   const targetMfaDeviceSecret = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'TargetMfaDeviceSecret', '');
@@ -72,7 +72,7 @@ export default function VMfaBindInfo(): JSX.Element {
 
   return <Flex align="center">
     <ScQrCodeDiv>
-      <ScQrCodeWrap size={160} value={qrCodeUri} />
+      <ScQrCodeWrap size={140} value={qrCodeUri} />
     </ScQrCodeDiv>
     <ScManualContentWrap>
       <ScManualContentRow>

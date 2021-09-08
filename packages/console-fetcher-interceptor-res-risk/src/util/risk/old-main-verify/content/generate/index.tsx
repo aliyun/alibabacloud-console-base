@@ -12,7 +12,7 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
-  IRiskVerifyDialogData
+  IOldMainAccountRisk
 } from '../../../../../types';
 import intl from '../../../../../intl';
 
@@ -41,7 +41,7 @@ export default function Generate(): JSX.Element {
     updateData,
     lock,
     unlock
-  } = useDialog<void, IRiskVerifyDialogData>();
+  } = useDialog<void, IOldMainAccountRisk>();
   const [stateGenerating, setStateGenerating] = useState<boolean>(false);
   const [stateCooling, setStateCooling] = useState<number>(0);
   const handleClick = useCallback(async () => {
