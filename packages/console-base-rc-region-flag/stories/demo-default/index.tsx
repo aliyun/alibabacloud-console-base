@@ -26,6 +26,8 @@ const REGION_IDS = [
   'ap-southeast-2',
   'ap-southeast-3',
   'ap-southeast-5',
+  'ap-southeast-6',
+  'ap-southeast-6a',
   'ap-northeast-1',
   'ap-northeast-2-pop',
   'ap-south-1',
