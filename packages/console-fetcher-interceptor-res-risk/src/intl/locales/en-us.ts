@@ -55,8 +55,9 @@ To protect your account, set a verification method.`,
   'message:mfa_choose_vmfa': 'You must install the MFA application on your mobile phone.',
   'message:mfa_choose_u2f': 'YubiKey or other U2F compliant security keys.',
   'message:u2f:bind:description!lines!html': `<strong>Please follow the instructions below to bind the U2F security key:</strong>
-  1. Insert the U2F security key into the USB port of the computer;
-  2. Tap the button on the U2F security key.`,
+1. Insert the U2F security key into the USB port of the computer;
+2. Tap the button on the U2F security key.`,
   'message:u2f:auth:description!lines!html': `<strong>Please follow the instructions below to verify the U2F security key:</strong>
-  Insert your U2F security key into the USB port, then tap the button on the U2F security key.`
+1. Insert the U2F security key into the USB port of the computer;
+2. Tap the button on the U2F security key.`
 };

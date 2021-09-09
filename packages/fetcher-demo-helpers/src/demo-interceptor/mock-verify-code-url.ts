@@ -22,7 +22,7 @@ export default function fetcherDemoInterceptorMockVerifyCodeUrl(config: IDemoCon
 
   if (config.url === '/identity/getMfaInfoToAuth') {
     return {
-      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-get-mfa-info-to-bind'
+      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-get-mfa-info-to-auth'
     };
   }
 

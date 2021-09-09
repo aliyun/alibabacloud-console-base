@@ -56,7 +56,8 @@ export default {
   'message:mfa_choose_u2f': 'YubiKey 或任何其他兼容的 U2F 设备。',
   'message:u2f:bind:description!lines!html': `<strong>请按照下述说明绑定 U2F 安全密钥：</strong>
 1. 将 U2F 安全密钥插入计算机的 USB 端口；
-2. 轻点 U2F 安全密钥上的按钮。`,
+2. 点击 U2F 安全密钥上的按钮。`,
   'message:u2f:auth:description!lines!html': `<strong>请按照下述说明验证 U2F 安全密钥：</strong>
-将您的 U2F 安全密钥插入 USB 端口，然后轻点 U2F 安全密钥上的按钮。`
+1. 将 U2F 安全密钥插入计算机的 USB 端口；
+2. 点击 U2F 安全密钥上的按钮。`
 };
