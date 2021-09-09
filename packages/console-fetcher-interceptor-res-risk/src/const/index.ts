@@ -24,7 +24,7 @@ export enum EVerifyType {
 export enum ERisk {
   OLD_MAIN, // 旧版主账号风控
   NEW_MAIN, // 新版主账号风控
-  NEW_SUB // 新版主账号风控
+  NEW_SUB // 新版子账号风控
 }
 
 /**

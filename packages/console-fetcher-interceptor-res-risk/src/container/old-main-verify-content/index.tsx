@@ -32,7 +32,6 @@ import Generate from './generate';
 
 const ScInfo = styled.strong`
   margin-right: 12px;
-  font-family: Arial, sans-serif;
 `;
 
 const ScInput = styled(Input)`

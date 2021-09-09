@@ -25,7 +25,6 @@ import getTicketType from '../../../../util/get-ticket-type';
 
 const ScInfo = styled.strong`
   margin-right: 12px;
-  font-family: Arial, sans-serif;
 `;
 
 const ScInput = styled(Input)`
