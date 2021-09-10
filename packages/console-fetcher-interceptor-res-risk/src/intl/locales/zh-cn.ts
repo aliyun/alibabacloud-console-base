@@ -25,5 +25,39 @@ export default {
   'message:code_send_error': '校验码发送失败，请稍后重试。',
   'message:code_incorrect': '校验码不正确，请重新输入。',
   'message:verify_cancelled': '用户取消验证。',
-  'message:no_get_code_url': '获取验证码 URL 未设置，请联系开发。'
+  'message:no_get_code_url': '获取验证码 URL 未设置，请联系开发。',
+
+  'op:previous_step': '上一步',
+  'attr:vmfa_auth_userName': '用户名',
+  'attr:vmfa_auth_code': '校验码',
+  'attr:vmfa_bind_code1': '第一组校验码',
+  'attr:vmfa_bind_code2': '第二组校验码',
+  'attr:vmfa_bind_info_title': '身份验证信息',
+  'attr:vmfa_bind_info_account': '账号：',
+  'attr:vmfa_bind_info_key': '密钥：',
+  'attr:mfa_choose_vmfa': '虚拟 MFA 设备',
+  'attr:mfa_choose_u2f': 'U2F 安全密钥',
+  'title:main': '身份核验服务',
+  'title:sub_mfa_choose': '选择要绑定的 MFA 设备类型',
+  'title:sub_vmfa_bind': '绑定虚拟 MFA 设备',
+  'title:sub_u2f_bind': '绑定 U2F 安全密钥',
+  'title:sub_vmfa_auth': '验证虚拟 MFA 设备',
+  'title:sub_u2f_auth': '验证 U2F 安全密钥',
+  'title:sub_default': '子账号风控验证',
+  'message:u2f_browser_not_support': '您的浏览器不支持 U2F 安全密钥或者浏览器版本过低。',
+  'message:u2f_http_not_support': '基于 HTTP 协议的页面不支持 U2F 安全密钥。',
+  'message:u2f_bind_confirm_tip': '允许查看您的安全密钥的品牌与型号。',
+  'message:u2f_get_key_cancel': '获取 U2F 安全密钥流程被终止，请刷新页面重试或返回上一步。',
+  'message:u2f_bind_get_key': '正在等待 U2F 安全密钥...',
+  'message:u2f_bind_get_key_success': '获取 U2F 安全密钥成功。',
+  'message:vmfa_bind_step1': '第一步：扫码绑定，或手动输入密钥。',
+  'message:vmfa_bind_step2': '第二步：填写两组校验码。',
+  'message:mfa_choose_vmfa': '您需要在手机上准备好 MFA 应用程序。',
+  'message:mfa_choose_u2f': 'YubiKey 或任何其他兼容的 U2F 设备。',
+  'message:u2f:bind:description!lines!html': `<strong>请按照下述说明绑定 U2F 安全密钥：</strong>
+1. 将 U2F 安全密钥插入计算机的 USB 端口；
+2. 点击 U2F 安全密钥上的按钮。`,
+  'message:u2f:auth:description!lines!html': `<strong>请按照下述说明验证 U2F 安全密钥：</strong>
+1. 将 U2F 安全密钥插入计算机的 USB 端口；
+2. 点击 U2F 安全密钥上的按钮。`
 };

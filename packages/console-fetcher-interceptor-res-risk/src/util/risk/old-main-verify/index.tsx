@@ -14,33 +14,32 @@ import {
 
 import {
   IFetcherInterceptorConfig,
-  IRiskInfo,
-  IRiskVerifyDialogData
+  IOldMainRiskInfo,
+  IOldMainAccountRisk
 } from '../../../types';
 import intl from '../../../intl';
 import {
   intlVerifyTitle
 } from '../../intl-verify';
-
-import Content from './content';
+import Content from '../../../container/old-main-verify-content';
 
 interface IParams {
   request: FetcherFnRequest;
   fetcherConfig: FetcherConfig;
-  riskInfo: IRiskInfo;
+  riskInfo: IOldMainRiskInfo;
   riskConfig: IFetcherInterceptorConfig;
 }
 
 /**
  * 风控 - 二次验证（SMS + EMAIL + MFA）
  */
-export default ({
+export default function OldMainAccountVerify({
   request,
   fetcherConfig,
   riskInfo,
   riskConfig
-}: IParams): Promise<unknown> => {
-  const buttonConfirm: DialogButtonProps<unknown, IRiskVerifyDialogData> = {
+}: IParams): Promise<unknown> {
+  const buttonConfirm: DialogButtonProps<unknown, IOldMainAccountRisk> = {
     spm: 'confirm',
     disabled: true,
     label: intl('op:confirm'),
@@ -87,7 +86,7 @@ export default ({
   };
   const buttonCancel = intl('op:cancel');
   
-  return open<unknown, IRiskVerifyDialogData>({
+  return open<unknown, IOldMainAccountRisk>({
     title: intlVerifyTitle(riskInfo.type),
     data: {
       request,
@@ -98,7 +97,7 @@ export default ({
       errorMessage: ''
     },
     content: <Content />,
-    buttons: (data: IRiskVerifyDialogData) => {
+    buttons: (data: IOldMainAccountRisk) => {
       return [{
         ...buttonConfirm,
         disabled: !data.code
@@ -106,4 +105,4 @@ export default ({
     },
     undefinedAsReject: true
   });
-};
+}

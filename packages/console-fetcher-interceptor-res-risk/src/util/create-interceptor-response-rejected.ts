@@ -13,13 +13,16 @@ import {
 } from '../types';
 import {
   EVerifyType,
+  ERisk,
   DEFAULT_RISK_CONFIG
 } from '../const';
 import intl from '../intl';
 
 import riskForbidden from './risk/forbidden';
 import riskInvalid from './risk/invalid';
-import riskVerify from './risk/verify';
+import riskOldMainVerify from './risk/old-main-verify';
+import riskNewSubVerify from './risk/new-sub-verify/mfa';
+import riskNewMainVerify from './risk/new-main-verify';
 import convertRiskInfo from './convert-risk-info';
 import {
   convertToRiskErrorForbidden,
@@ -99,23 +102,41 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
         
         throw convertToRiskErrorForbidden(err);
       case riskConfig.CODE_NEED_VERIFY: { // 加花括号防止 eslint no-case-declarations
-        const riskInfo = convertRiskInfo(responseData, riskConfig);
+        const riskInfo = convertRiskInfo(responseData, riskConfig, fetcherConfig);
+
+        // 新版主账号风控
+        if (riskInfo.risk === ERisk.NEW_MAIN) {
+          return riskNewMainVerify({
+            request,
+            mainRiskInfo: riskInfo,
+            fetcherConfig,
+            riskConfig
+          }).catch(err1 => {
+            throw err1 ?? convertToRiskErrorCancelled(err);
+          });
+        }
+
+        const {
+          risk,
+          verifyType,
+          type
+        } = riskInfo;
         
-        switch (riskInfo.type) {
+        switch (type) {
           case EVerifyType.NONE:
             await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.UNKNOWN:
             await riskInvalid(intl('message:invalid_unsupported_{method}!html!lines', {
-              method: riskInfo.verifyType
+              method: verifyType
             }), riskConfig.URL_SETTINGS!);
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.SMS:
           case EVerifyType.EMAIL:
-            // 手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
-            if (!riskInfo.detail) {
+            // 旧版主账号风控手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
+            if (risk === ERisk.OLD_MAIN && !riskInfo.detail) {
               await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
               
               throw convertToRiskErrorInvalid(err);
@@ -125,15 +146,27 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           default: // EVerifyType.MFA
             break;
         }
-        
-        if (_get(fetcherConfig, 'body.verifyCode') || _get(fetcherConfig, 'params.verifyCode')) {
-          throw err;
+
+        // 旧版主账号风控
+        if (risk === ERisk.OLD_MAIN) {
+          if (_get(fetcherConfig, 'body.verifyCode') || _get(fetcherConfig, 'params.verifyCode')) {
+            throw err;
+          }
+          
+          return riskOldMainVerify({
+            request,
+            fetcherConfig,
+            riskInfo,
+            riskConfig
+          }).catch(err1 => { // err1 undefined 表示 cancelled
+            throw err1 ?? convertToRiskErrorCancelled(err);
+          });
         }
-        
-        return riskVerify({
+
+        return riskNewSubVerify({
           request,
+          subRiskInfo: riskInfo,
           fetcherConfig,
-          riskInfo,
           riskConfig
         }).catch(err1 => { // err1 undefined 表示 cancelled
           throw err1 ?? convertToRiskErrorCancelled(err);
