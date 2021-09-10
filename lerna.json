@@ -8,7 +8,8 @@
   "command": {
     "publish": {
       "allowBranch": [
-        "lerna/pub"
+        "lerna/pub",
+        "lerna/pub-prerelease"
       ]
     }
   },
