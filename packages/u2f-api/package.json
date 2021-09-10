@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/u2f-api",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "控制台子账号风控 U2F 相关的 API",
   "license": "MIT",
   "sideEffects": false,
