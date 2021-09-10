@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-parse-product-id",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "ConsoleBase CONF.PRODUCT_ID parse",
   "license": "MIT",
   "sideEffects": false,
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.19",
+    "@types/react": "^17.0.20",
     "react": "^17.0.2",
     "typescript": "^4.4.2"
   },

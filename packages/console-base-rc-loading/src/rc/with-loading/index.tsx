@@ -18,17 +18,30 @@ export default function WithLoading<T>({
   messageEmpty,
   loading,
   data,
-  isEmpty,
+  error,
   retry,
+  isEmpty,
+  renderError,
+  renderEmpty,
   renderLoaded
 }: IPropsWithLoading<T>): JSX.Element | null {
-  const handleRenderError = useCallback((): JSX.Element => <Loading {...{
-    status: 'error',
-    message: retry ? messageErrorRetry : messageError,
-    retry
-  }} />, [messageError, messageErrorRetry, retry]);
+  const handleRenderError = useCallback((err: Error): JSX.Element => {
+    if (renderError) {
+      return renderError(err);
+    }
+    
+    return <Loading {...{
+      status: 'error',
+      message: retry ? messageErrorRetry : messageError,
+      retry
+    }} />;
+  }, [messageError, messageErrorRetry, retry, renderError]);
   const handleRenderSuccess = useCallback((): JSX.Element => {
     if (!data || _isEmpty(data) || (isEmpty && isEmpty(data))) {
+      if (renderEmpty) {
+        return renderEmpty();
+      }
+      
       return <Loading {...{
         status: 'empty',
         message: messageEmpty
@@ -36,13 +49,13 @@ export default function WithLoading<T>({
     }
     
     return renderLoaded(data);
-  }, [data, messageEmpty, isEmpty, renderLoaded]);
+  }, [data, messageEmpty, isEmpty, renderEmpty, renderLoaded]);
   
   switch (loading) {
     case ELoadingStatus.IDLE:
       return null;
     case ELoadingStatus.ERROR:
-      return handleRenderError();
+      return handleRenderError(error!);
     case ELoadingStatus.SUCCESS:
       return handleRenderSuccess();
     default:

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/mixed-black-whitelist-checker",
-  "version": "1.1.26",
+  "version": "1.1.27",
   "description": "混合黑白名单检查器",
   "license": "MIT",
   "sideEffects": false,
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.19",
+    "@types/react": "^17.0.20",
     "react": "^17.0.2",
     "typescript": "^4.4.2"
   },
