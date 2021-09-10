@@ -27,7 +27,7 @@ export default function WithLoading<T>({
 }: IPropsWithLoading<T>): JSX.Element | null {
   const handleRenderError = useCallback((err: Error): JSX.Element => {
     if (renderError) {
-      renderError(err);
+      return renderError(err);
     }
     
     return <Loading {...{
