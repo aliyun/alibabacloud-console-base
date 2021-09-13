@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-interceptor-cache-local",
-  "version": "1.1.26",
+  "version": "1.1.27",
   "description": "@alicloud/fetcher 请求拦截 - 缓存",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/fetcher-demo-helpers": "^1.1.49",
+    "@alicloud/fetcher-demo-helpers": "^1.1.50",
     "@types/lodash": "^4.14.172",
     "@types/react": "^17.0.20",
     "react": "^17.0.2",
@@ -35,7 +35,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/fetcher": "^1.1.52",
+    "@alicloud/fetcher": "^1.1.53",
     "lodash": "^4.17.21"
   },
   "scripts": {
