@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme-sc-base": "^1.1.62",
-    "@alicloud/rc-markdown": "^1.1.65"
+    "@alicloud/rc-markdown": "^1.1.66"
   },
   "scripts": {
     "start": "breezr start-storybook",
