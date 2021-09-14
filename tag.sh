@@ -9,10 +9,7 @@ echo @alicloud/console-fetcher-interceptor-req-mock@1.1.59-alpha.2 && git tag -d
 echo @alicloud/console-fetcher-interceptor-req-security@1.1.53-alpha.2 && git tag -d @alicloud/console-fetcher-interceptor-req-security@1.1.53-alpha.2
 echo @alicloud/console-fetcher-interceptor-res-biz@1.1.53-alpha.2 && git tag -d @alicloud/console-fetcher-interceptor-res-biz@1.1.53-alpha.2
 echo @alicloud/console-fetcher-interceptor-res-error-message@1.1.55-alpha.2 && git tag -d @alicloud/console-fetcher-interceptor-res-error-message@1.1.55-alpha.2
-echo @alicloud/console-fetcher-interceptor-res-risk@1.1.81-alpha.2 && git tag -d @alicloud/console-fetcher-interceptor-res-risk@1.1.81-alpha.2
 echo @alicloud/console-fetcher-interceptor-sls@1.1.62-alpha.2 && git tag -d @alicloud/console-fetcher-interceptor-sls@1.1.62-alpha.2
-echo @alicloud/console-fetcher-proxy@1.4.45-alpha.2 && git tag -d @alicloud/console-fetcher-proxy@1.4.45-alpha.2
-echo @alicloud/console-fetcher@1.5.42-alpha.2 && git tag -d @alicloud/console-fetcher@1.5.42-alpha.2
 echo @alicloud/console-logger-sls@1.2.1-alpha.2 && git tag -d @alicloud/console-logger-sls@1.2.1-alpha.2
 echo @alicloud/fetcher-demo-helpers@1.1.50-alpha.2 && git tag -d @alicloud/fetcher-demo-helpers@1.1.50-alpha.2
 echo @alicloud/fetcher-fetch@1.2.50-alpha.2 && git tag -d @alicloud/fetcher-fetch@1.2.50-alpha.2
@@ -22,3 +19,7 @@ echo @alicloud/fetcher-jsonp@1.1.51-alpha.2 && git tag -d @alicloud/fetcher-json
 echo @alicloud/fetcher@1.1.53-alpha.2 && git tag -d @alicloud/fetcher@1.1.53-alpha.2
 echo @alicloud/logger-sls@1.5.1-alpha.2 && git tag -d @alicloud/logger-sls@1.5.1-alpha.2
 echo @alicloud/u2f-api@0.0.1-alpha.2 && git tag -d @alicloud/u2f-api@0.0.1-alpha.2
+
+echo @alicloud/console-fetcher@1.5.42-alpha.2 && git tag -d @alicloud/console-fetcher@1.5.42-alpha.2
+echo @alicloud/console-fetcher-proxy@1.4.45-alpha.2 && git tag -d @alicloud/console-fetcher-proxy@1.4.45-alpha.2
+echo @alicloud/console-fetcher-interceptor-res-risk@1.1.81-alpha.2 && git tag -d @alicloud/console-fetcher-interceptor-res-risk@1.1.81-alpha.2

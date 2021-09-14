@@ -22,7 +22,7 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
   const verifyUrl = _get(responseData, riskConfig.DATA_PATH_VERIFY_URL!, '') as string;
   const userPrincipalName = _get(responseData, riskConfig.DATA_PATH_USER_PRINCIPAL_NAME!, '') as string;
 
-  console.log(`fetcherConfig`, fetcherConfig, newRisk);
+  console.log('fetcherConfig', fetcherConfig, newRisk);
   
   if (newRisk === 'true') {
     if (verifyUrl) {
