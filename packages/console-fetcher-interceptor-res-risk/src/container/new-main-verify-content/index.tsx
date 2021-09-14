@@ -60,7 +60,8 @@ export default function Content(): JSX.Element {
 
   return <iframe {...{
     style: {
-      width: '100%',
+      // 宽度设定 100% 会有横向的滚动条
+      width: '98%',
       height: '100%'
     },
     title: intl('title:main'),
