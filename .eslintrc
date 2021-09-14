@@ -1,6 +1,3 @@
 {
-  "extends": "@alicloud/eslint-config/tsx",
-  "rules": {
-    
-  }
+  "extends": "@alicloud/eslint-config/tsx"
 }
