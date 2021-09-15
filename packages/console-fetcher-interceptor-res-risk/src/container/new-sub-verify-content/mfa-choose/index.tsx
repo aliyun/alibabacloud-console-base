@@ -8,6 +8,9 @@ import styled from 'styled-components';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
+import {
+  mixinTextError
+} from '@alicloud/console-base-theme';
 import u2fApi from '@alicloud/u2f-api';
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
@@ -25,14 +28,19 @@ import getTicketType from '../../../util/get-ticket-type';
 import getU2fStateMessage from '../../../util/get-u2f-state-message';
 import U2FMessage from '../_components/u2f-message';
 
-const ticketType = getTicketType();
-const {
-  u2fNotSupportedMsg
-} = getU2fStateMessage;
+const ScError = styled.div`
+  margin-top: 8px;
+  ${mixinTextError}
+`;
 
 const ScDesc = styled.div`
   margin: 10px 0 16px 20px;
 `;
+
+const ticketType = getTicketType();
+const {
+  u2fNotSupportedMsg
+} = getU2fStateMessage;
 
 export default function MfaChoose(): JSX.Element {
   const isUnmounted = useIsUnmounted();
@@ -40,7 +48,8 @@ export default function MfaChoose(): JSX.Element {
     data: {
       subRiskInfo: {
         userPrincipalName
-      }
+      },
+      errorMessage
     },
     updateData
   } = useDialog<void, INewSubAccountRisk>();
@@ -98,10 +107,10 @@ export default function MfaChoose(): JSX.Element {
   }, [userPrincipalName, isUnmounted, updateData]);
 
   return <div>
-    <U2FMessage {...{
+    {!stateU2FSupported ? <U2FMessage {...{
       iconType: EIconType.error,
       message: u2fNotSupportedMsg
-    }} />
+    }} /> : null}
     <Radio {...{
       checked: stateRadioChecked === EStep.VMFA_BIND,
       label: intl('attr:mfa_choose_vmfa'),
@@ -115,5 +124,8 @@ export default function MfaChoose(): JSX.Element {
       onChange: handleU2FRadioChange
     }} />
     <ScDesc>{intl('message:mfa_choose_u2f')}</ScDesc>
+    <ScError>
+      {errorMessage}
+    </ScError>
   </div>;
 }

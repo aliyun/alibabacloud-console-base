@@ -70,6 +70,9 @@ export default async function RiskSubVerify({
     try {
       const getAuthMfaInfo = await request<TGetAuthMfaInfoData>({
         method: REQUEST_METHOD,
+        headers: {
+          'Content-Type': 'application/json'
+        },
         url: URL_GET_MFA_INFO_TO_AUTH,
         body: {
           TicketType: ticketType
@@ -111,6 +114,9 @@ export default async function RiskSubVerify({
       
       request<TGetBindMfaInfoData>({
         method: REQUEST_METHOD,
+        headers: {
+          'Content-Type': 'application/json'
+        },
         url: URL_GET_MFA_INFO_TO_BIND,
         body: {
           ...getBindMfaInfoPayload
@@ -181,6 +187,9 @@ export default async function RiskSubVerify({
 
         request<IMfaData>({
           method: REQUEST_METHOD,
+          headers: {
+            'Content-Type': 'application/json'
+          },
           url,
           body: {
             ...payload
