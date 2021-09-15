@@ -215,6 +215,8 @@ export default async function RiskSubVerify({
           updateData({
             errorMessage: err?.message || ''
           });
+
+          return false; // 注意，如果验证 MFA 的接口也报错了，那么同样不应该关闭弹窗
         });
       }
     });

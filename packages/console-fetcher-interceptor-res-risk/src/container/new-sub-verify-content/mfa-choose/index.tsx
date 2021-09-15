@@ -37,6 +37,11 @@ const ScDesc = styled.div`
 export default function MfaChoose(): JSX.Element {
   const isUnmounted = useIsUnmounted();
   const {
+    data: {
+      subRiskInfo: {
+        userPrincipalName
+      }
+    },
     updateData
   } = useDialog<void, INewSubAccountRisk>();
 
@@ -51,11 +56,12 @@ export default function MfaChoose(): JSX.Element {
     setStateRadioChecked(EStep.VMFA_BIND);
     updateData({
       getBindMfaInfoPayload: {
+        UserPrincipalName: userPrincipalName,
         TicketType: ticketType,
         DeviceType: ESubMFADeviceType.VMFA
       }
     });
-  }, [updateData]);
+  }, [userPrincipalName, updateData]);
 
   const handleU2FRadioChange = useCallback((checked: boolean): void => {
     if (!checked) {
@@ -65,11 +71,12 @@ export default function MfaChoose(): JSX.Element {
     setStateRadioChecked(EStep.U2F_BIND);
     updateData({
       getBindMfaInfoPayload: {
+        UserPrincipalName: userPrincipalName,
         TicketType: ticketType,
         DeviceType: ESubMFADeviceType.U2F
       }
     });
-  }, [updateData]);
+  }, [userPrincipalName, updateData]);
 
   useEffect(() => {
     if (isUnmounted()) {
@@ -79,6 +86,7 @@ export default function MfaChoose(): JSX.Element {
     // 由于默认的 MFA 设备类型是 VMFA，因此默认的 getBindMfaInfoPayload 也是 VMFA 类型的
     updateData({
       getBindMfaInfoPayload: {
+        UserPrincipalName: userPrincipalName,
         TicketType: ticketType,
         DeviceType: ESubMFADeviceType.VMFA
       }
@@ -87,7 +95,7 @@ export default function MfaChoose(): JSX.Element {
     u2fApi.isSupported().then(isU2FSupported => {
       setStateU2FSupported(isU2FSupported);
     });
-  }, [isUnmounted, updateData]);
+  }, [userPrincipalName, isUnmounted, updateData]);
 
   return <div>
     <U2FMessage {...{

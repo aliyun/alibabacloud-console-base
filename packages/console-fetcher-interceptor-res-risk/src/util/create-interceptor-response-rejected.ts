@@ -104,8 +104,6 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
       case riskConfig.CODE_NEED_VERIFY: { // 加花括号防止 eslint no-case-declarations
         const riskInfo = convertRiskInfo(responseData, riskConfig, fetcherConfig);
 
-        console.log('riskInfo', riskInfo);
-
         // 新版主账号风控
         if (riskInfo.risk === ERisk.NEW_MAIN) {
           return riskNewMainVerify({
