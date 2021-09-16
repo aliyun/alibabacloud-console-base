@@ -15,17 +15,17 @@ import hijackClickGlobal, {
 } from '@alicloud/dom-event-hijacker';
 
 // 全局劫持
-hijackClickGlobal(hijackor);
+hijackClickGlobal(hijacker);
 
 // 局部劫持
-hijackClickInDom(dom, hijackor);
+hijackClickInDom(dom, hijacker);
 ```
 
 ```typescript
-interface Interceptor<T> {
+interface Hijacker<T> {
   condition: (el: HTMLElement) => T | void; // 判定条件，返回「真」即表示劫持成功，改返回值将作为 callback 的第二参数
   callback?(el: HTMLElement, conditionResult: T): void; // 劫持操作
-  noPreventDefault?: boolean; // 劫持后是否不 preventDefault
-  noStopPropagation?: boolean; // 劫持后是否不 stopPropagation
+  shouldPreventDefault?: boolean; // 默认仅对链接阻止其默认行为
+  shouldStopPropagation?: boolean; // 默认不阻止事件冒泡
 }
 ```

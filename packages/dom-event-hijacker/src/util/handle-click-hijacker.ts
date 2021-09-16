@@ -16,8 +16,8 @@ export default function handleClickHijacker<T>(el: HTMLElement, e: MouseEvent, h
   const {
     condition,
     callback,
-    noPreventDefault,
-    noStopPropagation
+    shouldPreventDefault,
+    shouldStopPropagation
   } = hijacker;
   const result = condition(el);
   
@@ -29,11 +29,11 @@ export default function handleClickHijacker<T>(el: HTMLElement, e: MouseEvent, h
     callback(el, result);
   }
   
-  if (!noPreventDefault) {
+  if (typeof shouldPreventDefault === 'boolean' ? shouldPreventDefault : el.tagName === 'A') { // 不传 shouldPreventDefault，则默认仅对链接阻止默认行为
     e.preventDefault();
   }
   
-  if (!noStopPropagation) {
+  if (shouldStopPropagation) { // 默认不阻止冒泡
     e.stopPropagation();
   }
   

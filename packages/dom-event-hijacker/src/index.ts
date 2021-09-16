@@ -6,5 +6,5 @@ export { default } from './hijack-click/global';
 export { default as hijackClickInDom } from './hijack-click/in-dom';
 
 export type {
-  IHijacker as Interceptor
+  IHijacker as Hijacker
 } from './types';
