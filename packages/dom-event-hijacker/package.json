@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/dom-event-hijacker",
-  "version": "1.1.52",
+  "version": "2.0.0",
   "description": "DOM 事件拦截，类似于 jQuery 的 delegate",
   "license": "MIT",
   "sideEffects": false,
