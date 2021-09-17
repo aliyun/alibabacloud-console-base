@@ -152,7 +152,7 @@ export default styled.article`
   
   p {
     margin: 1em 0 1em 0;
-    word-break: break-all;
+    word-break: break-word;
     
     &:first-child {
       margin-top: 0;
@@ -182,7 +182,7 @@ export default styled.article`
     overflow: auto;
     font-size: 0.95em;
     white-space: pre-wrap;
-    word-break: break-all;
+    word-break: break-word;
     ${mixinTextInverse}
     ${mixinBgInverse}
     
