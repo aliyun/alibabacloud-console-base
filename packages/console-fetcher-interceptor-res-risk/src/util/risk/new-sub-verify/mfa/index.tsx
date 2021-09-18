@@ -204,7 +204,7 @@ export default async function RiskSubVerify({
           }
         }).then(bindMfaData => {
           const verifyResult = {
-            valiateToken: bindMfaData.ValiateToken
+            ivToken: bindMfaData?.IvToken
           };
 
           // 如果请求 BindMFA / Verify 失败，那么会去再次请求被风控的接口。此时无论请求成功或是失败，都会调用 close()方法来关闭弹窗

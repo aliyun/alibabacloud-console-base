@@ -37,5 +37,5 @@ export type TGetAuthMfaInfoData = IGetAuthVMfaInfoData | IGetAuthU2FInfoData;
 
 // 接口 /identity/bindMFA 以及 /identity/verify  的返回 data
 export interface IMfaData {
-  ValiateToken: string;
+  IvToken: string;
 }

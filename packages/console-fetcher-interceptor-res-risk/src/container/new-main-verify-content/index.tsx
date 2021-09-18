@@ -38,7 +38,7 @@ export default function Content(): JSX.Element {
 
         if (ivToken) {
           updateData({
-            valideToken: ivToken,
+            ivToken,
             primaryButtonDisabled: false
           });
         }

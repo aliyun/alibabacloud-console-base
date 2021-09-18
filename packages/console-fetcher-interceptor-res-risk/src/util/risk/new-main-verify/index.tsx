@@ -49,7 +49,7 @@ export default function RiskMainVerify({
       });
 
       const verifyResult = {
-        valiateToken: data.valideToken || ''
+        ivToken: data.ivToken || ''
       };
 
       request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {

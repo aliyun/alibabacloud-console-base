@@ -31,7 +31,7 @@ export enum ERisk {
  * 子账号验证接口 /identity/verify 的参数 VerifyType，一期只有 MFA
  */
 export enum EPayloadVerifyType {
-  MFA = 'MFA'
+  MFA = 'mfa'
 }
 
 /**

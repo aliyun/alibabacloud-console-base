@@ -125,6 +125,6 @@ export interface INewMainAccountRisk {
   mainRiskInfo: IMainAccountRiskInfo;
   requestId: string;
   errorMessage: string;
-  valideToken?: string;
+  ivToken?: string;
   primaryButtonDisabled?: boolean;
 }
