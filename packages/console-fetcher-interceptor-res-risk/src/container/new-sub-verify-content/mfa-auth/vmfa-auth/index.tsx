@@ -52,6 +52,7 @@ export default function VMfaAuth(): JSX.Element {
 
   const handleInputChange = useCallback(value => {
     const verifyMfaPayload: IVerifyVMfaPayload = {
+      TargetUserPrincipalName: userPrincipalName,
       TicketType: ticketType,
       VerifyType: EPayloadVerifyType.MFA,
       AuthCode: value
@@ -61,7 +62,7 @@ export default function VMfaAuth(): JSX.Element {
       verifyMfaPayload,
       primaryButtonDisabled: !value
     });
-  }, [updateData]);
+  }, [userPrincipalName, updateData]);
 
   useEffect(() => {
     updateData({

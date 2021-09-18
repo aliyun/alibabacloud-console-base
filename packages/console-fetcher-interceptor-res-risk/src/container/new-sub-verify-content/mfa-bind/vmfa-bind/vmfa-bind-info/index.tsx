@@ -82,12 +82,10 @@ export default function VMfaBindInfo(): JSX.Element {
       </ScManualContentRow>
       <ScManualContentRow>
         <span>{intl('attr:vmfa_bind_info_account')}</span>
-        <span>{targetUserPrincipalName}</span>
         <CopyIt text={targetUserPrincipalName} />
       </ScManualContentRow>
       <ScManualContentRowNoBorderBottom>
         <span>{intl('attr:vmfa_bind_info_key')}</span>
-        <span>{targetMfaDeviceSecret}</span>
         <CopyIt text={targetMfaDeviceSecret} />
       </ScManualContentRowNoBorderBottom>
     </ScManualContentWrap>

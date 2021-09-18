@@ -107,8 +107,8 @@ export interface INewSubAccountRisk {
   step?: EStep;
   getBindMfaInfoPayload?: IGetBindMfaInfoPayload; // 获取 MFA 绑定信息的接口 /identity/getMfaInfoToBind 的 payload
   getBindMfaInfoData?: TGetBindMfaInfoData; // 获取 MFA 绑定信息的接口 /identity/getMfaInfoToBind 的返回 data
-  bindMfaPayload?: TBindMfaPayload; // 绑定 MFA 接口 /identity/bindMfa 的 payload
-  bindMfaData?: IMfaData; // 绑定 MFA 接口 /identity/bindMfa 的返回 data
+  bindMfaPayload?: TBindMfaPayload; // 绑定 MFA 接口 /identity/bindMFA 的 payload
+  bindMfaData?: IMfaData; // 绑定 MFA 接口 /identity/bindMFA 的返回 data
   getAuthMfaInfoPayload?: IGetAuthMfaInfoPayload; // 获取 MFA 验证信息的接口 /identity/getMfaInfoToAuth 的 payload
   getAuthMfaInfoData?: TGetAuthMfaInfoData; // 获取 MFA 验证信息的接口 /identity/getMfaInfoToAuth 的返回 data
   verifyMfaPayload?: TVerifyMfaPayload; // 验证 MFA 接口 /identity/verify 的 payload

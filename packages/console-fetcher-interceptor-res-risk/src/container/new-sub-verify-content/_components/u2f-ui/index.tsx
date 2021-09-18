@@ -22,6 +22,7 @@ interface IProps {
 }
 
 const ScError = styled.div`
+  margin-top: 8px;
   ${mixinTextError}
 `;
 

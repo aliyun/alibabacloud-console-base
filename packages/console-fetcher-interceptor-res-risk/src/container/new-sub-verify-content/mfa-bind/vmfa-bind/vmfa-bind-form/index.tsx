@@ -29,7 +29,7 @@ const ScInput = styled(Input)`
 `;
 
 const ScError = styled.div`
-  margin-top: 8px;
+  margin-top: 12px;
   ${mixinTextError}
 `;
 
@@ -38,6 +38,9 @@ const ticketType = getTicketType();
 export default function VMfaBindForm(): JSX.Element {
   const {
     data: {
+      subRiskInfo: {
+        userPrincipalName
+      },
       errorMessage
     },
     updateData
@@ -49,6 +52,7 @@ export default function VMfaBindForm(): JSX.Element {
   const handleCode1InputChange = useCallback(inputCode1 => {
     const newBindMfaPayload: IBindVMfaPayload = {
       TicketType: ticketType,
+      TargetUserPrincipalName: userPrincipalName,
       DeviceType: ESubMFADeviceType.VMFA,
       Code1: inputCode1,
       Code2: stateCode2
@@ -58,10 +62,11 @@ export default function VMfaBindForm(): JSX.Element {
     updateData({
       bindMfaPayload: newBindMfaPayload
     });
-  }, [stateCode2, updateData]);
+  }, [userPrincipalName, stateCode2, updateData]);
 
   const handleCode2InputChange = useCallback(inputCode2 => {
     const newBindMfaPayload: IBindVMfaPayload = {
+      TargetUserPrincipalName: userPrincipalName,
       TicketType: ticketType,
       DeviceType: ESubMFADeviceType.VMFA,
       Code1: stateCode1,
@@ -72,7 +77,7 @@ export default function VMfaBindForm(): JSX.Element {
     updateData({
       bindMfaPayload: newBindMfaPayload
     });
-  }, [stateCode1, updateData]);
+  }, [userPrincipalName, stateCode1, updateData]);
 
   return <Form {...{
     items: [{

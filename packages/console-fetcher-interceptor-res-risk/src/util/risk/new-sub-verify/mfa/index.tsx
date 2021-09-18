@@ -54,7 +54,8 @@ export default async function RiskSubVerify({
   let initialPrimaryButtonDisable = false;
 
   const {
-    detail
+    detail,
+    userPrincipalName
   } = subRiskInfo;
   const {
     REQUEST_METHOD,
@@ -75,6 +76,7 @@ export default async function RiskSubVerify({
         },
         url: URL_GET_MFA_INFO_TO_AUTH,
         body: {
+          TargetUserPrincipalName: userPrincipalName,
           TicketType: ticketType
         }
       });
@@ -101,13 +103,16 @@ export default async function RiskSubVerify({
     label: intl('op:confirm'),
     primary: true,
     onClick({
+      lock,
+      unlock,
       data,
       updateData
     }) {
+      lock(true);
       updateData({
         errorMessage: ''
       });
-
+      
       const {
         getBindMfaInfoPayload
       } = data;
@@ -122,6 +127,8 @@ export default async function RiskSubVerify({
           ...getBindMfaInfoPayload
         }
       }).then(getBindMfaInfoData => {
+        unlock();
+        
         if (getBindMfaInfoData.QRCodeUri !== null) { // VMFA
           updateData({
             step: EStep.VMFA_BIND,
@@ -134,6 +141,7 @@ export default async function RiskSubVerify({
           });
         }
       }).catch(error => {
+        unlock();
         updateData({
           errorMessage: error?.message || ''
         });
@@ -199,6 +207,7 @@ export default async function RiskSubVerify({
             valiateToken: bindMfaData.ValiateToken
           };
 
+          // 如果请求 BindMFA / Verify 失败，那么会去再次请求被风控的接口。此时无论请求成功或是失败，都会调用 close()方法来关闭弹窗
           request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
             body: verifyResult
           } : {
@@ -218,15 +227,15 @@ export default async function RiskSubVerify({
               close(error, true);
             }
           });
-
-          return false; // 注意 onClose 的返回要是 false, 表示不会关闭弹窗
         }).catch(err => {
           updateData({
             errorMessage: err?.message || ''
           });
-
-          return false; // 注意，如果验证 MFA 的接口也报错了，那么同样不应该关闭弹窗
         });
+        unlock();
+
+        // 如果请求 BindMFA / Verify 失败，那么会更新错误信息，并且 return false 阻止弹窗关闭
+        return false;
       }
     });
   };

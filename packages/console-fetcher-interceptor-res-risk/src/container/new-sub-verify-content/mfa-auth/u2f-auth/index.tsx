@@ -30,7 +30,10 @@ export default function U2FAuth(): JSX.Element {
     data: {
       errorMessage,
       getAuthMfaInfoData,
-      u2fTimeout
+      u2fTimeout,
+      subRiskInfo: {
+        userPrincipalName
+      }
     },
     updateData
   } = useDialog<void, INewSubAccountRisk>();
@@ -75,6 +78,7 @@ export default function U2FAuth(): JSX.Element {
       setStateGetU2fKey(false);
       updateData({
         verifyMfaPayload: {
+          TargetUserPrincipalName: userPrincipalName,
           TicketType: ticketType,
           VerifyType: EPayloadVerifyType.MFA,
           U2fSignatureData: signatureData,

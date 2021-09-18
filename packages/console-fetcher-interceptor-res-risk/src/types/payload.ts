@@ -17,7 +17,7 @@ export interface IGetBindMfaInfoPayload extends IMfaSharedPayload {
   DeviceType: ESubMFADeviceType;
 }
 
-// 接口 /identity/bindMfa 的 payload
+// 接口 /identity/bindMFA 的 payload
 export interface IBindVMfaPayload extends IMfaSharedInfo, IMfaSharedPayload {
   DeviceType: ESubMFADeviceType.VMFA;
   Code1: string;
@@ -35,10 +35,10 @@ export interface IBindU2FPayload extends IMfaSharedInfo, IMfaSharedPayload {
 export type TBindMfaPayload = IBindVMfaPayload | IBindU2FPayload;
 
 // 接口 /identity/getMfaInfoToAuth 的 payload
-export interface IGetAuthMfaInfoPayload extends IMfaSharedPayload {}
+export interface IGetAuthMfaInfoPayload extends IMfaSharedInfo, IMfaSharedPayload {}
 
 // 接口 /identity/verify 的 payload
-export interface IVerifyMfaSharedPayload extends IMfaSharedPayload {
+export interface IVerifyMfaSharedPayload extends IMfaSharedInfo, IMfaSharedPayload {
   VerifyType: EPayloadVerifyType;
 }
 

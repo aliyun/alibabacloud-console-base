@@ -26,27 +26,31 @@ interface IProps {
 }
 
 const CssDivCommon = css`
-  width: 90%;
+  width: 95%;
   padding: 8px 12px;
   margin-bottom: 12px;
 `;
 
+// 浏览器不支持 U2F 的信息会出现在顶部
 const ScU2fError = styled.div`
   ${CssDivCommon}
   ${mixinBgErrorTint}
   ${mixinTextError}
 `;
 
+// 等待 U2F 安全密钥以及绑定/验证 U2F 安全密钥的提示会出现在底部
 const ScU2FNotice = styled.div`
    ${CssDivCommon}
    ${mixinBgInfoTint}
    ${mixinTextInfo}
+   margin-top: 12px;
 `;
 
 const ScU2fSuccess = styled.div`
   ${CssDivCommon}
   ${mixinBgSuccessTint}
   ${mixinTextSuccess}
+  margin-top: 12px;
 `;
 
 const ScIcon = styled(Icon)<IIconProps>`

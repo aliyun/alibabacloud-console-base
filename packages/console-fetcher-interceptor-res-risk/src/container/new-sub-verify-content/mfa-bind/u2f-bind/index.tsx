@@ -32,7 +32,10 @@ export default function U2FBind(): JSX.Element {
     data: {
       errorMessage,
       getBindMfaInfoData,
-      u2fTimeout
+      u2fTimeout,
+      subRiskInfo: {
+        userPrincipalName
+      }
     },
     updateData
   } = useDialog<void, INewSubAccountRisk>();
@@ -96,6 +99,7 @@ export default function U2FBind(): JSX.Element {
 
       updateData({
         bindMfaPayload: {
+          TargetUserPrincipalName: userPrincipalName,
           TicketType: ticketType,
           DeviceType: ESubMFADeviceType.U2F,
           U2FClientData: clientData,
@@ -109,7 +113,7 @@ export default function U2FBind(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
+  }, [userPrincipalName, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({

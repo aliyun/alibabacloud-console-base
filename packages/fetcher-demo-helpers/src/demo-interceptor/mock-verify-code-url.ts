@@ -26,7 +26,7 @@ export default function fetcherDemoInterceptorMockVerifyCodeUrl(config: IDemoCon
     };
   }
 
-  if (config.url === '/identity/bindMfa') {
+  if (config.url === '/identity/bindMFA') {
     return {
       url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-bind-mfa'
     };
