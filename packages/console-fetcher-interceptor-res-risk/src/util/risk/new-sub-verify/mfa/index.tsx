@@ -122,7 +122,7 @@ export default async function RiskSubVerify({
           ...getBindMfaInfoPayload
         }
       }).then(getBindMfaInfoData => {
-        if ('QRCodeUri' in getBindMfaInfoData) {
+        if (getBindMfaInfoData.QRCodeUri !== null) { // VMFA
           updateData({
             step: EStep.VMFA_BIND,
             getBindMfaInfoData

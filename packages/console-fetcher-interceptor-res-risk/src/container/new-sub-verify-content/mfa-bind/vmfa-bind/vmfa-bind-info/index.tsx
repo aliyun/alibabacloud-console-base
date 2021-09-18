@@ -66,8 +66,8 @@ export default function VMfaBindInfo(): JSX.Element {
     }
   } = useDialog<void, INewSubAccountRisk>();
 
-  const qrCodeUri = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'QRCodeUri', '');
-  const targetMfaDeviceSecret = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'TargetMfaDeviceSecret', '');
+  const qrCodeUri = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'QRCodeUri', '') || '';
+  const targetMfaDeviceSecret = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'TargetMfaDeviceSecret', '') || '';
   const targetUserPrincipalName = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'TargetUserPrincipalName', '');
 
   return <Flex align="center">

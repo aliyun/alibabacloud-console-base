@@ -35,7 +35,7 @@ export default function U2FAuth(): JSX.Element {
     updateData
   } = useDialog<void, INewSubAccountRisk>();
 
-  const [stateU2FSupported, setStateU2fSupported] = useState<boolean>(false);
+  const [stateU2FSupported, setStateU2fSupported] = useState<boolean>(true);
   const [stateGetU2fKey, setStateGetU2fKey] = useState<boolean>(true);
 
   const version = _get(getAuthMfaInfoData as IGetAuthU2FInfoData, 'U2FVersion', '');

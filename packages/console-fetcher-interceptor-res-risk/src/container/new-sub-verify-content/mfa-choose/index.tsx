@@ -55,7 +55,7 @@ export default function MfaChoose(): JSX.Element {
   } = useDialog<void, INewSubAccountRisk>();
 
   const [stateRadioChecked, setStateRadioChecked] = useState<EStep.VMFA_BIND | EStep.U2F_BIND>(EStep.VMFA_BIND);
-  const [stateU2FSupported, setStateU2FSupported] = useState<boolean>(false);
+  const [stateU2FSupported, setStateU2FSupported] = useState<boolean>(true);
 
   const handleVMFARadioChange = useCallback((checked: boolean): void => {
     if (!checked) {

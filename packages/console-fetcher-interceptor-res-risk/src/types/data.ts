@@ -8,17 +8,17 @@ import {
 
 // 接口 /identity/getMfaInfoToBind 的返回 data
 export interface IGetBindVMfaInfoData extends IMfaSharedInfo {
-  QRCodeUri: string;
-  TargetMfaDeviceSecret: string;
+  QRCodeUri: string | null; // 选择的类型是 VMFA 时不为 null
+  TargetMfaDeviceSecret: string | null; // 选择的类型是 VMFA 时不为 null
 }
 
 export interface IGetBindU2FInfoData extends IMfaSharedInfo {
-  U2FAppId: string;
-  U2FVersion: string;
-  U2FChallenge: string;
+  U2FAppId: string | null; // 选择的类型是 U2F 时不为 null
+  U2FVersion: string | null; // 选择的类型是 U2F 时不为 null
+  U2FChallenge: string | null; // 选择的类型是 U2F 时不为 null
 }
 
-export type TGetBindMfaInfoData = IGetBindVMfaInfoData | IGetBindU2FInfoData;
+export type TGetBindMfaInfoData = IGetBindVMfaInfoData & IGetBindU2FInfoData;
 
 // 接口 /identity/getMfaInfoToAuth 的返回 data
 export interface IGetAuthVMfaInfoData extends IMfaSharedInfo {

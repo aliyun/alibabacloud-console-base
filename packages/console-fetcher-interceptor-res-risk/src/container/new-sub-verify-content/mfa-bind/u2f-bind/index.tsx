@@ -41,12 +41,12 @@ export default function U2FBind(): JSX.Element {
     noPopUp
   } = getU2FStateMessage;
   
-  const [stateU2FSupported, setStateU2fSupported] = useState<boolean>(false);
+  const [stateU2FSupported, setStateU2fSupported] = useState<boolean>(true);
   const [stateGetU2fKey, setStateGetU2fKey] = useState<boolean>(true);
 
-  const u2fAppId = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FAppId', '');
-  const u2fChallenge = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FChallenge', '');
-  const u2fVersion = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FVersion', '');
+  const u2fAppId = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FAppId', '') || ''; // null 的时候也用空字符串代替
+  const u2fChallenge = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FChallenge', '') || '';
+  const u2fVersion = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FVersion', '') || '';
 
   const fetchData = useCallback(async () => {
     if (isUnmounted()) {

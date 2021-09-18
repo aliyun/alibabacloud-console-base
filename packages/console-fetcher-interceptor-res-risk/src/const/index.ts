@@ -86,7 +86,7 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   URL_SETTINGS: '//account.console.aliyun.com/#/secure',
   // 新版子账号风控 URL
   URL_GET_MFA_INFO_TO_BIND: '/identity/getMfaInfoToBind',
-  URL_MFA_BIND: '/identity/bindMfa',
+  URL_MFA_BIND: '/identity/bindMFA',
   URL_GET_MFA_INFO_TO_AUTH: '/identity/getMfaInfoToAuth',
   URL_MFA_AUTH: '/identity/verify',
   // 旧版主账号风控冷却/超时时间设置 (单位：秒)
