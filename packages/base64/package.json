@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/base64",
-  "version": "1.1.31",
+  "version": "1.1.32",
   "description": "Base64",
   "license": "MIT",
   "sideEffects": false,
