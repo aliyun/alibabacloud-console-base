@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.21",
+    "@types/react": "^17.0.24",
     "@types/styled-components": "^5.1.14",
     "react": "^17.0.2",
     "styled-components": "^5.3.1",
@@ -38,8 +38,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@types/codemirror": "^5.60.2",
-    "codemirror": "^5.62.3"
+    "@types/codemirror": "^5.60.3",
+    "codemirror": "^5.63.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

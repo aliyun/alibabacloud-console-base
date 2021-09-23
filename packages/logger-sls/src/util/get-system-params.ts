@@ -39,6 +39,6 @@ export default function getSystemParams(): ISystemParams {
     RESOLUTION_SCREEN: getResolutionOfScreen(),
     RESOLUTION_BROWSER: getResolutionOfBrowser(),
     IN_IFRAME,
-    REFERRER: document.referrer
+    REFERRER: typeof document === 'undefined' ? 'SSR' : document.referrer
   };
 }
