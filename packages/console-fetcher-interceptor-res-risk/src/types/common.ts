@@ -1,5 +1,6 @@
 import {
-  FetcherFnRequest
+  FetcherFnRequest,
+  FetcherConfig
 } from '@alicloud/fetcher';
 
 import {
@@ -122,6 +123,8 @@ export interface INewSubAccountRisk {
  */
 export interface INewMainAccountRisk {
   request: FetcherFnRequest;
+  fetcherConfig: FetcherConfig;
+  riskConfig: IFetcherInterceptorConfig;
   mainRiskInfo: IMainAccountRiskInfo;
   requestId: string;
   errorMessage: string;

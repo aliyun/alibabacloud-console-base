@@ -1,14 +1,10 @@
 import React from 'react';
 
 import {
-  FetcherError,
   FetcherConfig,
-  FetcherFnRequest,
-  canHaveBody,
-  mergeConfig
+  FetcherFnRequest
 } from '@alicloud/fetcher';
 import {
-  DialogButtonProps,
   open
 } from '@alicloud/console-base-rc-dialog';
 
@@ -33,71 +29,18 @@ export default function RiskMainVerify({
   riskConfig,
   mainRiskInfo
 }: IParams): Promise<unknown> {
-  const buttonPrimary: DialogButtonProps<unknown, INewMainAccountRisk> = {
-    label: intl('op:confirm'),
-    primary: true,
-    onClick({
-      data,
-      lock,
-      unlock,
-      updateData,
-      close
-    }) {
-      lock(true);
-      updateData({
-        errorMessage: ''
-      });
-
-      const verifyResult = {
-        ivToken: data.ivToken || ''
-      };
-
-      request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
-        body: verifyResult
-      } : {
-        params: verifyResult
-      })).then(result => {
-        unlock();
-
-        close(result);
-      }, (error: FetcherError) => {
-        unlock();
-
-        if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
-          updateData({
-            errorMessage: intl('message:code_incorrect')
-          });
-        } else {
-          close(error, true);
-        }
-
-        return false;
-      }).catch(err => {
-        updateData({
-          errorMessage: err?.message || ''
-        });
-      });
-    }
-  };
-
-  const buttonCancel = intl('op:cancel');
-  
   return open<unknown, INewMainAccountRisk>({
     title: intl('title:main'),
     size: 'l',
     data: {
       request,
+      fetcherConfig,
+      riskConfig,
       mainRiskInfo,
       requestId: '',
       errorMessage: '',
       primaryButtonDisabled: true
     },
-    content: <Content />,
-    buttons: (data: INewMainAccountRisk) => {
-      return [{
-        ...buttonPrimary,
-        disabled: data.primaryButtonDisabled
-      }, buttonCancel];
-    }
+    content: <Content />
   });
 }

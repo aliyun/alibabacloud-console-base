@@ -65,7 +65,7 @@ export default function MfaChoose(): JSX.Element {
     setStateRadioChecked(EStep.VMFA_BIND);
     updateData({
       getBindMfaInfoPayload: {
-        UserPrincipalName: userPrincipalName,
+        TargetUserPrincipalName: userPrincipalName,
         TicketType: ticketType,
         DeviceType: ESubMFADeviceType.VMFA
       }
@@ -80,7 +80,7 @@ export default function MfaChoose(): JSX.Element {
     setStateRadioChecked(EStep.U2F_BIND);
     updateData({
       getBindMfaInfoPayload: {
-        UserPrincipalName: userPrincipalName,
+        TargetUserPrincipalName: userPrincipalName,
         TicketType: ticketType,
         DeviceType: ESubMFADeviceType.U2F
       }
@@ -95,7 +95,7 @@ export default function MfaChoose(): JSX.Element {
     // 由于默认的 MFA 设备类型是 VMFA，因此默认的 getBindMfaInfoPayload 也是 VMFA 类型的
     updateData({
       getBindMfaInfoPayload: {
-        UserPrincipalName: userPrincipalName,
+        TargetUserPrincipalName: userPrincipalName,
         TicketType: ticketType,
         DeviceType: ESubMFADeviceType.VMFA
       }

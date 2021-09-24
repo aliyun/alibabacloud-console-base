@@ -91,7 +91,7 @@ export default function U2FAuth(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, isUnmounted, updateData]);
+  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, userPrincipalName, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({

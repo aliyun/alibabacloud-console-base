@@ -13,7 +13,7 @@ export interface IMfaSharedPayload {
 
 // 接口 /identity/getMfaInfoToBind 的 payload
 export interface IGetBindMfaInfoPayload extends IMfaSharedPayload {
-  UserPrincipalName?: string;
+  TargetUserPrincipalName?: string;
   DeviceType: ESubMFADeviceType;
 }
 
