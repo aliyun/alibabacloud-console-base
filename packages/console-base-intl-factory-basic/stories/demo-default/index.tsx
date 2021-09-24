@@ -20,10 +20,12 @@ export default function DemoDefault(): JSX.Element {
     <P>{intl('message!html')}</P>
     <P>{intl('message!html!lines')}</P>
     <H1>intlDate</H1>
-    <P>{intlDate(new Date())}</P>
-    <P>{intlDate('2020-04-15 07:07')}</P>
-    <P>{intlDate(Date.now(), 'date')}</P>
-    <P>{intlDate(Date.now(), 'time')}</P>
-    <P>{intlDate('FUCK')}</P>
+    <P>new Date() → {intlDate(new Date())}</P>
+    <P>2020-04-15 07:07 → {intlDate('2020-04-15 07:07')}</P>
+    <P>2020-07-27 00:07:07 → {intlDate('2020-07-27 00:07:07')}</P>
+    <P>2020-07-27 23:07:07 → {intlDate('2020-07-27 23:57:47')}</P>
+    <P>Date.now() + format: date → {intlDate(Date.now(), 'date')}</P>
+    <P>Date.now() + format: time → {intlDate(Date.now(), 'time')}</P>
+    <P>Invalid → {intlDate('InvalidDATE')}</P>
   </>;
 }
