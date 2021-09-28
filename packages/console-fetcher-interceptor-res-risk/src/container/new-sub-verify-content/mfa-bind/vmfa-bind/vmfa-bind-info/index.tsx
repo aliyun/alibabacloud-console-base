@@ -43,7 +43,7 @@ const ScHeading = styled.div`
 
 const ScManualContentWrap = styled.div`
   padding: 16px;
-  width: 320px;
+  width: 350px;
   ${mixinBgWhite}
 `;
 

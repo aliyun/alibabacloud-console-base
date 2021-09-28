@@ -42,7 +42,7 @@ export default {
   'attr:mfa_choose_vmfa': '虚拟 MFA 设备',
   'attr:mfa_choose_u2f': 'U2F 安全密钥',
   'title:main': '身份核验服务',
-  'title:sub_mfa_choose': '选择要绑定的 MFA 设备类型',
+  'title:sub_mfa_choose': '安全验证',
   'title:sub_vmfa_bind': '绑定虚拟 MFA 设备',
   'title:sub_u2f_bind': '绑定 U2F 安全密钥',
   'title:sub_vmfa_auth': '验证虚拟 MFA 设备',

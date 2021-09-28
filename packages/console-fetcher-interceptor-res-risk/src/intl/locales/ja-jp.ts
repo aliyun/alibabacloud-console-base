@@ -42,7 +42,7 @@ export default {
   'attr:mfa_choose_vmfa': 'Virtual MFA Device',
   'attr:mfa_choose_u2f': 'U2F Security Key',
   'title:main': 'Identity Verification Service',
-  'title:sub_mfa_choose': 'Select MFA Device Type',
+  'title:sub_mfa_choose': 'Safety Verification',
   'title:sub_vmfa_bind': 'Bind Virtual MFA Device',
   'title:sub_u2f_bind': 'Bind U2F Security Key',
   'title:sub_vmfa_auth': 'Auth Virtual MFA Device',
