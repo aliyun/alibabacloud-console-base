@@ -62,10 +62,6 @@ export default function U2FBind(): JSX.Element {
       setStateU2fSupported(isU2FSupported);
 
       if (!isU2FSupported) {
-        updateData({
-          primaryButtonDisabled: true
-        });
-
         return;
       }
 
@@ -83,14 +79,14 @@ export default function U2FBind(): JSX.Element {
         const permitted = await confirm(intl('message:u2f_bind_confirm_tip'));
 
         setStateGetU2fKey(!permitted);
-
-        updateData({
-          primaryButtonDisabled: !permitted
-        });
         
         if (!permitted) {
           updateData({
             errorMessage: intl('message:u2f_get_key_cancel')
+          });
+        } else {
+          updateData({
+            primaryButtonDisabled: false
           });
         }
       } else {
@@ -117,7 +113,7 @@ export default function U2FBind(): JSX.Element {
 
   useEffect(() => {
     updateData({
-      primaryButtonDisabled: false
+      primaryButtonDisabled: true
     });
     fetchData();
   }, [updateData, fetchData]);

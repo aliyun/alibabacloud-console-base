@@ -57,10 +57,6 @@ export default function U2FAuth(): JSX.Element {
       setStateU2fSupported(isU2FSupported);
 
       if (!isU2FSupported) {
-        updateData({
-          primaryButtonDisabled: true
-        });
-
         return;
       }
 
@@ -84,7 +80,8 @@ export default function U2FAuth(): JSX.Element {
           U2fSignatureData: signatureData,
           U2fKeyHandle: keyHandle,
           U2fClientData: clientData
-        }
+        },
+        primaryButtonDisabled: false
       });
     } catch (error) {
       updateData({
@@ -95,7 +92,7 @@ export default function U2FAuth(): JSX.Element {
 
   useEffect(() => {
     updateData({
-      primaryButtonDisabled: false
+      primaryButtonDisabled: true
     });
     fetchData();
   }, [updateData, fetchData]);

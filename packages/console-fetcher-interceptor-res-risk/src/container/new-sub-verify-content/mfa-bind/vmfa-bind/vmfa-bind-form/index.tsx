@@ -80,14 +80,20 @@ export default function VMfaBindForm(): JSX.Element {
   const input1InnerRight = useMemo(() => {
     return <XIcon onClick={() => {
       setStateCode1('');
+      updateData({
+        errorMessage: ''
+      });
     }} />;
-  }, []);
+  }, [updateData]);
 
   const input2InnerRight = useMemo(() => {
     return <XIcon onClick={() => {
       setStateCode2('');
+      updateData({
+        errorMessage: ''
+      });
     }} />;
-  }, []);
+  }, [updateData]);
 
   const input1Error = useMemo((): string => {
     return getInputError(stateCode1, stateInput1IsError);

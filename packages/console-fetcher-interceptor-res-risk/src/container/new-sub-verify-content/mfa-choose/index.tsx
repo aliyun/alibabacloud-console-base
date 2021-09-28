@@ -9,7 +9,6 @@ import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 import {
-  mixinTextError,
   mixinBorderSecondary,
   mixinBgInfoTint,
   mixinButtonSecondaryStateDisabled
@@ -39,11 +38,6 @@ interface IScItemProps extends FlexProps {
   marginTop?: number;
   disabled?: boolean;
 }
-
-const ScError = styled.div`
-  margin-top: 8px;
-  ${mixinTextError}
-`;
 
 const ScDesc = styled.div`
   margin: 10px 0 16px 20px;
@@ -177,8 +171,5 @@ export default function MfaChoose(): JSX.Element {
       </div>
       <img src={SvgUrls.VMFA_ICON_GREY} alt="" width={120} />
     </ScItem>
-    <ScError>
-      {errorMessage}
-    </ScError>
   </div>;
 }

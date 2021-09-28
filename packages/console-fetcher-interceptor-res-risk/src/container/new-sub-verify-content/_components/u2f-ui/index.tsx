@@ -50,7 +50,21 @@ const ScFlex = styled(Flex)`
   margin-top: 12px;
 `;
 
-const ScImg = styled.img`
+// 由于图片需要从 CDN 加载。为了防止屏幕抖动，先用空父元素的 padding 撑起来
+const ScSvgImgWrapper = styled.div`
+  position: relative;
+  width: 100px;
+  height: 0;
+  padding-top: 100px;
+`;
+
+const SvgImg = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+const ScU2FIcon = styled.img`
   position: absolute;
   bottom: -16px;
   right: -16px;
@@ -98,14 +112,18 @@ export default function U2fUi({
         {title}
       </ScU2FTitle>
       <Flex align="center">
-        <img src={SvgUrls.U2F_INSERT} width={100} alt="" />
+        <ScSvgImgWrapper>
+          <SvgImg src={SvgUrls.U2F_INSERT} width={100} alt="" />
+        </ScSvgImgWrapper>
         <ScU2FDesc>{intl('attr:u2f_insert')}</ScU2FDesc>
       </Flex>
       <ScFlex align="center">
-        <img src={SvgUrls.U2F_CLICK} width={100} alt="" />
+        <ScSvgImgWrapper>
+          <SvgImg src={SvgUrls.U2F_CLICK} width={100} alt="" />
+        </ScSvgImgWrapper>
         <ScU2FDesc>{intl('attr:u2f_click')}</ScU2FDesc>
       </ScFlex>
-      <ScImg src={SvgUrls.U2F_ICON} width={120} alt="" />
+      <ScU2FIcon src={SvgUrls.U2F_ICON} width={120} alt="" />
     </ScU2FWrapper>
   </>;
 }

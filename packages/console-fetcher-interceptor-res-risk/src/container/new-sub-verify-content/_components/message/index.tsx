@@ -35,7 +35,6 @@ interface IErrorProps {
 }
 
 const CssDivCommon = css`
-  width: 95%;
   padding: 8px 12px;
   margin-bottom: 16px;
 `;

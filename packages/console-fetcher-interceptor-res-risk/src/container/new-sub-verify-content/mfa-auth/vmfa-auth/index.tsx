@@ -85,8 +85,11 @@ export default function VMfaAuth(): JSX.Element {
   const inputInnerRight = useMemo(() => {
     return <XIcon onClick={() => {
       setStateCode('');
+      updateData({
+        errorMessage: ''
+      });
     }} />;
-  }, []);
+  }, [updateData]);
 
   const inputError = useMemo(() => {
     return getInputError(stateCode, stateInputIsError);
