@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt",
-  "version": "1.4.15",
+  "version": "1.4.16",
   "description": "ConsoleBase 错误弹窗器",
   "license": "MIT",
   "sideEffects": false,
