@@ -48,7 +48,7 @@ export default async function RiskSubVerify({
   riskConfig,
   subRiskInfo
 }: IParams): Promise<unknown> {
-  let initialStep: EStep = EStep.MFA_CHOOSE;
+  let initialStep: EStep = EStep.VMFA_BIND;
   let initialGetAuthMfaInfoData;
   let initialErrorMessage = '';
   let initialPrimaryButtonDisable = false;

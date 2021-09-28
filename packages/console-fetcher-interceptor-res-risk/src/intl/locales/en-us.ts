@@ -35,6 +35,10 @@ To protect your account, set a verification method.`,
   'attr:vmfa_bind_info_title': 'Authentication Information',
   'attr:vmfa_bind_info_account': 'Account: ',
   'attr:vmfa_bind_info_key': 'Key: ',
+  'attr:u2f_insert': 'Insert the U2F security key into the USB port of the computer',
+  'attr:u2f_click': 'Tap the button on the U2F security key',
+  'attr:u2f_auth_title': 'Please follow the instructions below to verify the U2F security key',
+  'attr:u2f_bind_title': 'Please follow the instructions below to bind the U2F security key',
   'attr:mfa_choose_vmfa': 'Virtual MFA Device',
   'attr:mfa_choose_u2f': 'U2F Security Key',
   'title:main': 'Identity Verification Service',
@@ -51,13 +55,10 @@ To protect your account, set a verification method.`,
   'message:u2f_bind_get_key': 'Waiting for the U2F security key...',
   'message:u2f_bind_get_key_success': 'The U2F security key is obtained.',
   'message:vmfa_bind_step1': 'The First Step: Scan the code to bind, or manually enter the key.',
-  'message:vmfa_bind_step2': 'The Second Step: Fill in two sets of security key.',
+  'message:vmfa_bind_step2': 'The Second Step: Fill in two sets of security code.',
+  'message:vmfa_input_error_tip': 'Security code must be 6-digit.',
+  'message:vmfa_input_empty_tip': 'Security code cannot be empty.',
   'message:mfa_choose_vmfa': 'You must install the MFA application on your mobile phone.',
   'message:mfa_choose_u2f': 'YubiKey or other U2F compliant security keys.',
-  'message:u2f:bind:description!lines!html': `<strong>Please follow the instructions below to bind the U2F security key:</strong>
-1. Insert the U2F security key into the USB port of the computer;
-2. Tap the button on the U2F security key.`,
-  'message:u2f:auth:description!lines!html': `<strong>Please follow the instructions below to verify the U2F security key:</strong>
-1. Insert the U2F security key into the USB port of the computer;
-2. Tap the button on the U2F security key.`
+  'message:mfa_choose_tip': 'Security verification is required when performing sensitive operations. Please bind the MFA device in the following ways.'
 };

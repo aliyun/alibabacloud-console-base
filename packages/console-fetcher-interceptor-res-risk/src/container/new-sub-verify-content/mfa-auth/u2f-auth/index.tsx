@@ -103,7 +103,7 @@ export default function U2FAuth(): JSX.Element {
   return <U2fUi {...{
     u2fSupported: stateU2FSupported,
     getU2fKey: stateGetU2fKey,
-    content: intl('message:u2f:auth:description!lines!html'),
+    title: intl('attr:u2f_auth_title'),
     errorMessage
   }} />;
 }

@@ -1,40 +1,49 @@
 import React, {
+  useMemo,
+  useState,
   useEffect,
   useCallback
 } from 'react';
 import styled from 'styled-components';
 
 import {
-  mixinTextError
+  mixinBgSecondary,
+  mixinBorderSecondary
 } from '@alicloud/console-base-theme';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
-import Input from '@alicloud/console-base-rc-input';
 
 import {
   IVerifyVMfaPayload,
   INewSubAccountRisk
 } from '../../../../types';
 import {
+  SvgUrls,
+  EIconType,
+  REG_MFA_CODE,
   EPayloadVerifyType
 } from '../../../../const';
 import intl from '../../../../intl';
 import Form from '../../../../rc/form';
+import XIcon from '../../../../rc/x-icon';
+import Message from '../../_components/message';
+import VmfaInput from '../../_components/vmfa-input';
 import getTicketType from '../../../../util/get-ticket-type';
+import getInputError from '../../../../util/get-input-error';
 
-const ScInfo = styled.strong`
-  margin-right: 12px;
+const ScFormWrapper = styled.div`
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  ${mixinBgSecondary}
+  ${mixinBorderSecondary}
 `;
 
-const ScInput = styled(Input)`
-  margin-right: 12px;
-  width: 90%;
-`;
-
-const ScError = styled.div`
-  margin-top: 8px;
-  ${mixinTextError}
+const ScImg = styled.img`
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
 `;
 
 const ticketType = getTicketType();
@@ -50,19 +59,38 @@ export default function VMfaAuth(): JSX.Element {
     updateData
   } = useDialog<void, INewSubAccountRisk>();
 
-  const handleInputChange = useCallback(value => {
+  const [stateCode, setStateCode] = useState<string>('');
+  const [stateInputIsError, setStateInputIsError] = useState<boolean>(false);
+
+  const handleInputChange = useCallback(code => {
     const verifyMfaPayload: IVerifyVMfaPayload = {
       TargetUserPrincipalName: userPrincipalName,
       TicketType: ticketType,
       VerifyType: EPayloadVerifyType.MFA,
-      AuthCode: value
+      AuthCode: code
     };
+
+    const isInputError = !REG_MFA_CODE.test(code);
+
+    setStateCode(code);
+    setStateInputIsError(isInputError);
 
     updateData({
       verifyMfaPayload,
-      primaryButtonDisabled: !value
+      primaryButtonDisabled: isInputError,
+      errorMessage: ''
     });
   }, [userPrincipalName, updateData]);
+
+  const inputInnerRight = useMemo(() => {
+    return <XIcon onClick={() => {
+      setStateCode('');
+    }} />;
+  }, []);
+
+  const inputError = useMemo(() => {
+    return getInputError(stateCode, stateInputIsError);
+  }, [stateCode, stateInputIsError]);
 
   useEffect(() => {
     updateData({
@@ -70,22 +98,33 @@ export default function VMfaAuth(): JSX.Element {
     });
   }, [updateData]);
 
-  return <Form {...{
-    items: [{
-      label: intl('attr:vmfa_auth_userName'),
-      labelWidth: '100px',
-      labelTextAlign: 'center',
-      content: <ScInfo>{userPrincipalName}</ScInfo>
-    }, {
-      label: intl('attr:vmfa_auth_code'),
-      labelWidth: '100px',
-      labelTextAlign: 'center',
-      content: <div>
-        <ScInput {...{
-          onChange: handleInputChange
-        }} />
-        <ScError>{errorMessage}</ScError>
-      </div>
-    }]
-  }} />;
+  return <>
+    {errorMessage ? <Message {...{
+      iconType: EIconType.error,
+      message: errorMessage
+    }} /> : null}
+    <ScFormWrapper>
+      <Form {...{
+        items: [{
+          label: intl('attr:vmfa_auth_userName'),
+          labelWidth: '100px',
+          labelTextAlign: 'center',
+          content: <strong>{userPrincipalName}</strong>
+        }, {
+          label: intl('attr:vmfa_auth_code'),
+          labelWidth: '100px',
+          labelTextAlign: 'center',
+          content: <VmfaInput {...{
+            value: stateCode,
+            isError: stateInputIsError,
+            widthPercent: 70,
+            errorMessage: inputError,
+            onChange: handleInputChange,
+            innerRight: inputInnerRight
+          }} />
+        }]
+      }} />
+      <ScImg src={SvgUrls.VMFA_ICON_WHITE} width={100} alt="" />
+    </ScFormWrapper>
+  </>;
 }

@@ -10,8 +10,9 @@ import CopyIt from '@alicloud/console-base-rc-copy-it';
 import {
   SIZE,
   mixinTextSecondary,
-  mixinBorderTertiary,
-  mixinBorderTertiaryBottom
+  mixinBgWhite,
+  mixinTextTertiary,
+  mixinBorderTertiary
 } from '@alicloud/console-base-theme';
 import Flex from '@alicloud/console-base-rc-flex';
 
@@ -33,27 +34,25 @@ const ScQrCodeWrap = styled(QRCode)`
   ${mixinBorderTertiary}
 `;
 
-const ScManualContentWrap = styled.div`
-  margin: 0 auto;
-  border-radius: 8px;
-  max-width: 350px;
-  ${mixinBorderTertiary}
-`;
-
 const ScHeading = styled.div`
+  margin-bottom: 12px;
+  margin-left: 4px;
   font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
-  font-weight: 600;
   ${mixinTextSecondary}
 `;
 
-const ScManualContentRow = styled.div`
-  margin: 0 auto;
-  padding: 12px;
-  word-break: break-all;
-  ${mixinBorderTertiaryBottom}
+const ScManualContentWrap = styled.div`
+  padding: 16px;
+  width: 320px;
+  ${mixinBgWhite}
 `;
 
-const ScManualContentRowNoBorderBottom = styled.div`
+const ScSpan = styled.span`
+  font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
+  ${mixinTextTertiary}
+`;
+
+const ScManualContentDiv = styled.div`
   margin: 0 auto;
   padding: 12px;
   word-break: break-all;
@@ -74,20 +73,20 @@ export default function VMfaBindInfo(): JSX.Element {
     <ScQrCodeDiv>
       <ScQrCodeWrap size={140} value={qrCodeUri} />
     </ScQrCodeDiv>
-    <ScManualContentWrap>
-      <ScManualContentRow>
-        <ScHeading>
-          {intl('attr:vmfa_bind_info_title')}
-        </ScHeading>
-      </ScManualContentRow>
-      <ScManualContentRow>
-        <span>{intl('attr:vmfa_bind_info_account')}</span>
-        <CopyIt text={targetUserPrincipalName} />
-      </ScManualContentRow>
-      <ScManualContentRowNoBorderBottom>
-        <span>{intl('attr:vmfa_bind_info_key')}</span>
-        <CopyIt text={targetMfaDeviceSecret} />
-      </ScManualContentRowNoBorderBottom>
-    </ScManualContentWrap>
+    <div>
+      <ScHeading>
+        {intl('attr:vmfa_bind_info_title')}
+      </ScHeading>
+      <ScManualContentWrap>
+        <ScManualContentDiv>
+          <ScSpan>{intl('attr:vmfa_bind_info_account')}</ScSpan>
+          <CopyIt text={targetUserPrincipalName} />
+        </ScManualContentDiv>
+        <ScManualContentDiv>
+          <ScSpan>{intl('attr:vmfa_bind_info_key')}</ScSpan>
+          <CopyIt text={targetMfaDeviceSecret} />
+        </ScManualContentDiv>
+      </ScManualContentWrap>
+    </div>
   </Flex>;
 }

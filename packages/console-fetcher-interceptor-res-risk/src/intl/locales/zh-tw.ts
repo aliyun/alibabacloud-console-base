@@ -35,6 +35,10 @@ export default {
   'attr:vmfa_bind_info_title': '身份验证信息',
   'attr:vmfa_bind_info_account': '账号：',
   'attr:vmfa_bind_info_key': '密钥：',
+  'attr:u2f_insert': '将 U2F 安全密钥插入计算机的 USB 端口',
+  'attr:u2f_click': '点击 U2F 安全密钥上的按钮',
+  'attr:u2f_auth_title': '请按照下述说明验证 U2F 安全密钥',
+  'attr:u2f_bind_title': '请按照下述说明绑定 U2F 安全密钥',
   'attr:mfa_choose_vmfa': '虚拟 MFA 设备',
   'attr:mfa_choose_u2f': 'U2F 安全密钥',
   'title:main': '身份核验服务',
@@ -47,17 +51,14 @@ export default {
   'message:u2f_browser_not_support': '您的浏览器不支持 U2F 安全密钥或者浏览器版本过低。',
   'message:u2f_http_not_support': '基于 HTTP 协议的页面不支持 U2F 安全密钥。',
   'message:u2f_bind_confirm_tip': '允许查看您的安全密钥的品牌与型号。',
-  'message:u2f_get_key_cancel': '获取 U2F 安全密钥流程被终止，请返回上一步并重试',
+  'message:u2f_get_key_cancel': '获取 U2F 安全密钥流程被终止，请返回上一步并重试。',
   'message:u2f_bind_get_key': '正在等待 U2F 安全密钥...',
   'message:u2f_bind_get_key_success': '获取 U2F 安全密钥成功。',
   'message:vmfa_bind_step1': '第一步：扫码绑定，或手动输入密钥。',
-  'message:vmfa_bind_step2': '第一步：填写两组校验码。',
+  'message:vmfa_bind_step2': '第二步：填写两组校验码。',
+  'message:vmfa_input_error_tip': '校验码必须为 6 位数字。',
+  'message:vmfa_input_empty_tip': '校验码不能为空。',
   'message:mfa_choose_vmfa': '您需要在手机上准备好 MFA 应用程序。',
   'message:mfa_choose_u2f': 'YubiKey 或任何其他兼容的 U2F 设备。',
-  'message:u2f:bind:description!lines!html': `<strong>请按照下述说明绑定 U2F 安全密钥：</strong>
-1. 将 U2F 安全密钥插入计算机的 USB 端口；
-2. 轻点 U2F 安全密钥上的按钮。`,
-  'message:u2f:auth:description!lines!html': `<strong>请按照下述说明验证 U2F 安全密钥：</strong>
-1. 将 U2F 安全密钥插入计算机的 USB 端口；
-2. 点击 U2F 安全密钥上的按钮。`
+  'message:mfa_choose_tip': '子账号在进行敏感操作时需要进行安全验证，您需要通过下列方式绑定 MFA 设备。'
 };

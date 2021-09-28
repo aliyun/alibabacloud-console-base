@@ -1,37 +1,28 @@
 import React, {
   useState,
+  useMemo,
+  useEffect,
   useCallback
 } from 'react';
-import styled from 'styled-components';
 
-import {
-  mixinTextError
-} from '@alicloud/console-base-theme';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
-import Input from '@alicloud/console-base-rc-input';
 
 import {
   IBindVMfaPayload,
   INewSubAccountRisk
 } from '../../../../../types';
 import {
+  REG_MFA_CODE,
   ESubMFADeviceType
 } from '../../../../../const';
 import intl from '../../../../../intl';
 import Form from '../../../../../rc/form';
+import XIcon from '../../../../../rc/x-icon';
+import VmfaInput from '../../../_components/vmfa-input';
 import getTicketType from '../../../../../util/get-ticket-type';
-
-const ScInput = styled(Input)`
-  margin-right: 12px;
-  width: 90%;
-`;
-
-const ScError = styled.div`
-  margin-top: 12px;
-  ${mixinTextError}
-`;
+import getInputError from '../../../../../util/get-input-error';
 
 const ticketType = getTicketType();
 
@@ -40,14 +31,15 @@ export default function VMfaBindForm(): JSX.Element {
     data: {
       subRiskInfo: {
         userPrincipalName
-      },
-      errorMessage
+      }
     },
     updateData
   } = useDialog<void, INewSubAccountRisk>();
 
   const [stateCode1, setStateCode1] = useState<string>('');
   const [stateCode2, setStateCode2] = useState<string>('');
+  const [stateInput1IsError, setStateInput1IsError] = useState<boolean>(false);
+  const [stateInput2IsError, setStateInput2IsError] = useState<boolean>(false);
 
   const handleCode1InputChange = useCallback(inputCode1 => {
     const newBindMfaPayload: IBindVMfaPayload = {
@@ -59,8 +51,11 @@ export default function VMfaBindForm(): JSX.Element {
     };
 
     setStateCode1(inputCode1);
+    setStateInput1IsError(!REG_MFA_CODE.test(inputCode1));
     updateData({
-      bindMfaPayload: newBindMfaPayload
+      bindMfaPayload: newBindMfaPayload,
+      errorMessage: '',
+      primaryButtonDisabled: !REG_MFA_CODE.test(inputCode1) || !REG_MFA_CODE.test(stateCode2)
     });
   }, [userPrincipalName, stateCode2, updateData]);
 
@@ -74,29 +69,65 @@ export default function VMfaBindForm(): JSX.Element {
     };
 
     setStateCode2(inputCode2);
+    setStateInput2IsError(!REG_MFA_CODE.test(inputCode2));
     updateData({
-      bindMfaPayload: newBindMfaPayload
+      bindMfaPayload: newBindMfaPayload,
+      errorMessage: '',
+      primaryButtonDisabled: !REG_MFA_CODE.test(inputCode2) || !REG_MFA_CODE.test(stateCode1)
     });
   }, [userPrincipalName, stateCode1, updateData]);
 
-  return <Form {...{
-    items: [{
-      label: intl('attr:vmfa_bind_code1'),
-      labelWidth: '100px',
-      labelTextAlign: 'center',
-      content: <ScInput {...{
-        onChange: handleCode1InputChange
-      }} />
-    }, {
-      label: intl('attr:vmfa_bind_code2'),
-      labelWidth: '100px',
-      labelTextAlign: 'center',
-      content: <div>
-        <ScInput {...{
-          onChange: handleCode2InputChange
+  const input1InnerRight = useMemo(() => {
+    return <XIcon onClick={() => {
+      setStateCode1('');
+    }} />;
+  }, []);
+
+  const input2InnerRight = useMemo(() => {
+    return <XIcon onClick={() => {
+      setStateCode2('');
+    }} />;
+  }, []);
+
+  const input1Error = useMemo((): string => {
+    return getInputError(stateCode1, stateInput1IsError);
+  }, [stateCode1, stateInput1IsError]);
+
+  const input2Error = useMemo((): string => {
+    return getInputError(stateCode2, stateInput2IsError);
+  }, [stateCode2, stateInput2IsError]);
+
+  useEffect(() => {
+    updateData({
+      primaryButtonDisabled: true
+    });
+  }, [updateData]);
+  
+  return <>
+    <Form {...{
+      items: [{
+        label: intl('attr:vmfa_bind_code1'),
+        labelWidth: '150px',
+        labelTextAlign: 'center',
+        content: <VmfaInput {...{
+          value: stateCode1,
+          isError: stateInput1IsError,
+          errorMessage: input1Error,
+          onChange: handleCode1InputChange,
+          innerRight: input1InnerRight
         }} />
-        <ScError>{errorMessage}</ScError>
-      </div>
-    }]
-  }} />;
+      }, {
+        label: intl('attr:vmfa_bind_code2'),
+        labelWidth: '150px',
+        labelTextAlign: 'center',
+        content: <VmfaInput {...{
+          value: stateCode2,
+          isError: stateInput2IsError,
+          errorMessage: input2Error,
+          onChange: handleCode2InputChange,
+          innerRight: input2InnerRight
+        }} />
+      }]
+    }} />
+  </>;
 }

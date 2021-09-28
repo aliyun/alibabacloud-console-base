@@ -9,8 +9,14 @@ import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 import {
-  mixinTextError
+  mixinTextError,
+  mixinBorderSecondary,
+  mixinBgInfoTint,
+  mixinButtonSecondaryStateDisabled
 } from '@alicloud/console-base-theme';
+import Flex, {
+  FlexProps
+} from '@alicloud/console-base-rc-flex';
 import u2fApi from '@alicloud/u2f-api';
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
@@ -19,6 +25,7 @@ import {
 } from '../../../types';
 import {
   EStep,
+  SvgUrls,
   EIconType,
   ESubMFADeviceType
 } from '../../../const';
@@ -26,7 +33,12 @@ import intl from '../../../intl';
 import Radio from '../../../rc/radio';
 import getTicketType from '../../../util/get-ticket-type';
 import getU2fStateMessage from '../../../util/get-u2f-state-message';
-import U2FMessage from '../_components/u2f-message';
+import Message from '../_components/message';
+
+interface IScItemProps extends FlexProps {
+  marginTop?: number;
+  disabled?: boolean;
+}
 
 const ScError = styled.div`
   margin-top: 8px;
@@ -35,6 +47,30 @@ const ScError = styled.div`
 
 const ScDesc = styled.div`
   margin: 10px 0 16px 20px;
+`;
+
+const ScItem = styled(Flex)<IScItemProps>`
+  overflow-y: hidden;
+  padding-left: 16px;
+  height: 100px;
+  margin-top: ${props => props.marginTop || 0}px;
+  ${props => {
+    if (props.disabled) {
+      return mixinButtonSecondaryStateDisabled;
+    }
+
+    return mixinBorderSecondary;
+  }}
+  
+  &:hover {
+    ${props => {
+    if (props.disabled) {
+      return '';
+    }
+
+    return mixinBgInfoTint;
+  }}
+  }
 `;
 
 const ticketType = getTicketType();
@@ -107,23 +143,40 @@ export default function MfaChoose(): JSX.Element {
   }, [userPrincipalName, isUnmounted, updateData]);
 
   return <div>
-    {!stateU2FSupported ? <U2FMessage {...{
-      iconType: EIconType.error,
-      message: u2fNotSupportedMsg
-    }} /> : null}
-    <Radio {...{
-      checked: stateRadioChecked === EStep.VMFA_BIND,
-      label: intl('attr:mfa_choose_vmfa'),
-      onChange: handleVMFARadioChange
-    }} />
-    <ScDesc>{intl('message:mfa_choose_vmfa')}</ScDesc>
-    <Radio {...{
-      checked: stateRadioChecked === EStep.U2F_BIND,
-      disabled: !stateU2FSupported,
-      label: intl('attr:mfa_choose_u2f'),
-      onChange: handleU2FRadioChange
-    }} />
-    <ScDesc>{intl('message:mfa_choose_u2f')}</ScDesc>
+    {<Message {...{
+      iconType: errorMessage ? EIconType.error : EIconType.warning,
+      message: errorMessage || intl('message:mfa_choose_tip')
+    }} />}
+    <ScItem align="center" justify="space-between">
+      <div>
+        <Radio {...{
+          checked: stateRadioChecked === EStep.VMFA_BIND,
+          label: intl('attr:mfa_choose_vmfa'),
+          onChange: handleVMFARadioChange
+        }} />
+        <ScDesc>{intl('message:mfa_choose_vmfa')}</ScDesc>
+      </div>
+      <img src={SvgUrls.U2F_ICON} alt="" width={120} />
+    </ScItem>
+    <ScItem marginTop={20} disabled={!stateU2FSupported} align="center" justify="space-between">
+      <div>
+        {!stateU2FSupported ? <Message {...{
+          noBg: true,
+          iconType: EIconType.error,
+          message: u2fNotSupportedMsg
+        }} /> : null}
+        <Flex>
+          <Radio {...{
+            checked: stateRadioChecked === EStep.U2F_BIND,
+            disabled: !stateU2FSupported,
+            label: intl('attr:mfa_choose_u2f'),
+            onChange: handleU2FRadioChange
+          }} />
+        </Flex>
+        <ScDesc>{intl('message:mfa_choose_u2f')}</ScDesc>
+      </div>
+      <img src={SvgUrls.VMFA_ICON_GREY} alt="" width={120} />
+    </ScItem>
     <ScError>
       {errorMessage}
     </ScError>

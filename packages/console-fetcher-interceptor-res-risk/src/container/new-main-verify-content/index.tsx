@@ -50,7 +50,8 @@ export default function Content(): JSX.Element {
 
   const getValidateToken = useCallback((event: MessageEvent): void => {
     try {
-      const json: IJson = JSON.parse(decodeURIComponent(event.data));
+      // event.data 可能是 object 或者 Json String, 这会导致 decodeURIComponent(event.data) 的结果是 [object, object]，从而导致 JSON.parse 报错
+      const json: IJson = typeof (event.data) === 'object' ? event.data : JSON.parse(decodeURIComponent(event.data));
       const {
         ivToken
       } = json;
@@ -103,8 +104,8 @@ export default function Content(): JSX.Element {
       style: {
       // 宽度设定 100% 会有横向的滚动条
         width: '98%',
-        minHeight: 300,
-        paddingTop: 24
+        minHeight: 360,
+        paddingTop: 16
       },
       title: intl('title:main'),
       src: verifyUrl

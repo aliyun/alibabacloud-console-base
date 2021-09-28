@@ -10,7 +10,7 @@ import intercept from '../../src';
 
 const fetcher1 = createFetcher({
   body: {
-    newRisk: 'true'
+    consoleVersion: '2.0'
   }
 });
 

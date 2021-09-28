@@ -7,9 +7,12 @@ import {
   mixinTextError,
   mixinTextSuccess,
   mixinTextInfo,
+  mixinTextPrimary,
+  mixinTextWarning,
   mixinBgErrorTint,
   mixinBgInfoTint,
-  mixinBgSuccessTint
+  mixinBgSuccessTint,
+  mixinBgWarningTint
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 
@@ -20,37 +23,62 @@ import {
 interface IIconProps {
   iconType: EIconType;
 }
+
 interface IProps {
   iconType: EIconType;
   message: string;
+  noBg?: boolean;
+}
+
+interface IErrorProps {
+  noBg?: boolean;
 }
 
 const CssDivCommon = css`
   width: 95%;
   padding: 8px 12px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 `;
 
-// 浏览器不支持 U2F 的信息会出现在顶部
-const ScU2fError = styled.div`
-  ${CssDivCommon}
-  ${mixinBgErrorTint}
+const CssDivTip = css`
+  margin-left: 4px;
+  margin-bottom: 8px;
+`;
+
+const ScError = styled.div<IErrorProps>`
+  ${props => {
+    if (props.noBg) {
+      return '';
+    }
+
+    return mixinBgErrorTint;
+  }}
+  ${props => {
+    if (props.noBg) {
+      return CssDivTip;
+    }
+
+    return CssDivCommon;
+  }}
   ${mixinTextError}
 `;
 
-// 等待 U2F 安全密钥以及绑定/验证 U2F 安全密钥的提示会出现在底部
-const ScU2FNotice = styled.div`
+const ScNotice = styled.div`
    ${CssDivCommon}
    ${mixinBgInfoTint}
    ${mixinTextInfo}
-   margin-top: 12px;
 `;
 
-const ScU2fSuccess = styled.div`
+const ScSuccess = styled.div`
   ${CssDivCommon}
   ${mixinBgSuccessTint}
   ${mixinTextSuccess}
-  margin-top: 12px;
+`;
+
+const ScWarning = styled.div`
+  ${CssDivCommon}
+  ${mixinBgWarningTint}
+  ${mixinTextPrimary}
 `;
 
 const ScIcon = styled(Icon)<IIconProps>`
@@ -60,6 +88,8 @@ const ScIcon = styled(Icon)<IIconProps>`
         return mixinTextError;
       case EIconType.success:
         return mixinTextSuccess;
+      case EIconType.warning:
+        return mixinTextWarning;
       default:
         return mixinTextInfo;
     }
@@ -67,26 +97,31 @@ const ScIcon = styled(Icon)<IIconProps>`
   margin-right: 6px;
 `;
 
-export default function U2FMessage({
+export default function Message({
   iconType,
+  noBg = false,
   message
 }: IProps): JSX.Element {
   switch (iconType) {
     case EIconType.error:
-      return <ScU2fError>
+      return <ScError noBg={noBg}>
         <ScIcon type={EIconType.error} iconType={EIconType.error} />
         {message}
-      </ScU2fError>;
+      </ScError>;
     case EIconType.notice:
-      return <ScU2FNotice>
+      return <ScNotice>
         <ScIcon type={EIconType.notice} iconType={EIconType.notice} />
         {message}
-      </ScU2FNotice>;
-    // EIconType.success
-    default:
-      return <ScU2fSuccess>
+      </ScNotice>;
+    case EIconType.success:
+      return <ScSuccess>
         <ScIcon type={EIconType.success} iconType={EIconType.success} />
         {message}
-      </ScU2fSuccess>;
+      </ScSuccess>;
+    default:
+      return <ScWarning>
+        <ScIcon type={EIconType.warning} iconType={EIconType.warning} />
+        {message}
+      </ScWarning>;
   }
 }

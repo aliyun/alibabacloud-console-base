@@ -125,7 +125,7 @@ export default function U2FBind(): JSX.Element {
   return <U2fUi {...{
     u2fSupported: stateU2FSupported,
     getU2fKey: stateGetU2fKey,
-    content: intl('message:u2f:bind:description!lines!html'),
+    title: intl('attr:u2f_bind_title'),
     errorMessage
   }} />;
 }

@@ -57,9 +57,10 @@ export enum EStep {
  * U2F Message 的 Icon
  */
 export enum EIconType {
-  error = 'alert-circle-fill',
-  notice = 'notice',
-  success = 'success-circle-fill'
+  error = 'alert-circle',
+  notice = 'loading',
+  success = 'success-circle-fill',
+  warning = 'alert-circle-fill'
 }
 
 /**
@@ -72,7 +73,7 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   DATA_PATH_VERIFY_CODE_TYPE: 'data.codeType',
   DATA_PATH_VERIFY_URL: 'data.verifyURL',
   DATA_PATH_USER_PRINCIPAL_NAME: 'data.userPrincipalName',
-  CONFIG_PATH_RISK_VERSION: 'body.newRisk',
+  CONFIG_PATH_RISK_VERSION: 'body.consoleVersion',
   // 风控错误码
   CODE_NEED_VERIFY: 'FoundRiskAndDoubleConfirm',
   CODE_FORBIDDEN: 'FoundRiskAndTip',
@@ -96,4 +97,14 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   U2F_TIMEOUT: 180,
   // 其他
   REQUEST_METHOD: 'POST'
+};
+
+export const REG_MFA_CODE = /^[0-9]{6}$/;
+
+export const SvgUrls = {
+  U2F_INSERT: 'https://img.alicdn.com/imgextra/i1/O1CN01UuCEK71WIsE3LvTB3_!!6000000002766-55-tps-86-86.svg',
+  U2F_CLICK: 'https://img.alicdn.com/imgextra/i3/O1CN01ryyaVx1OZLXnuN6Mn_!!6000000001719-55-tps-86-86.svg',
+  U2F_ICON: 'https://img.alicdn.com/imgextra/i3/O1CN01F386u021hNVTPjltB_!!6000000007016-55-tps-123-123.svg',
+  VMFA_ICON_GREY: 'https://img.alicdn.com/imgextra/i1/O1CN01JabR2128pLi0tVEDE_!!6000000007981-55-tps-123-123.svg',
+  VMFA_ICON_WHITE: 'https://img.alicdn.com/imgextra/i1/O1CN01RoiIfD1wtg3vK02Fk_!!6000000006366-55-tps-123-123.svg'
 };
