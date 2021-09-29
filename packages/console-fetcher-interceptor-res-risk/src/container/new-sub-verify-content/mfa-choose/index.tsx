@@ -175,7 +175,7 @@ export default function MfaChoose(): JSX.Element {
     }}>
       <div>
         {!stateU2FSupported ? <Message {...{
-          noBg: true,
+          noBackground: true,
           iconType: EIconType.error,
           message: u2fNotSupportedMsg
         }} /> : null}

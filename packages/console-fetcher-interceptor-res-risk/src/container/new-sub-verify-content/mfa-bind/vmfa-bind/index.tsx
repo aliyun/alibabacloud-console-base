@@ -33,7 +33,7 @@ const ScWrapper = styled.div<IProps>`
   ${mixinBgSecondary}
   ${props => {
     if (props.hasTopMargin) {
-      return 'margin-top: 16px';
+      return 'margin-top: 16px;';
     }
 
     return '';

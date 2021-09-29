@@ -24,17 +24,17 @@ interface IIconProps {
   iconType: EIconType;
 }
 
-interface IProps {
-  iconType: EIconType;
-  message: string;
-  noBg?: boolean;
+interface IErrorDivProps {
+  noBackground?: boolean;
 }
 
-interface IErrorProps {
-  noBg?: boolean;
+interface IProps extends IErrorDivProps {
+  iconType: EIconType;
+  message: string;
 }
 
 const CssDivCommon = css`
+  width: 100%;
   padding: 8px 12px;
   margin-bottom: 16px;
 `;
@@ -44,20 +44,20 @@ const CssDivTip = css`
   margin-bottom: 8px;
 `;
 
-const ScError = styled.div<IErrorProps>`
+const ScError = styled.div<IErrorDivProps>`
   ${props => {
-    if (props.noBg) {
-      return '';
-    }
-
-    return mixinBgErrorTint;
-  }}
-  ${props => {
-    if (props.noBg) {
+    if (props.noBackground) {
       return CssDivTip;
     }
 
     return CssDivCommon;
+  }}
+  ${props => {
+    if (props.noBackground) {
+      return '';
+    }
+
+    return mixinBgErrorTint;
   }}
   ${mixinTextError}
 `;
@@ -98,12 +98,12 @@ const ScIcon = styled(Icon)<IIconProps>`
 
 export default function Message({
   iconType,
-  noBg = false,
+  noBackground = false,
   message
 }: IProps): JSX.Element {
   switch (iconType) {
     case EIconType.error:
-      return <ScError noBg={noBg}>
+      return <ScError noBackground={noBackground}>
         <ScIcon type={EIconType.error} iconType={EIconType.error} />
         {message}
       </ScError>;

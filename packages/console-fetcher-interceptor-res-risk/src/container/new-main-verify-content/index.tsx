@@ -13,7 +13,8 @@ import {
   mixinTextError
 } from '@alicloud/console-base-theme';
 import {
-  useDialog
+  useDialog,
+  AltWrap
 } from '@alicloud/console-base-rc-dialog';
 
 import {
@@ -21,15 +22,15 @@ import {
 } from '../../types';
 import intl from '../../intl';
 
-const ScError = styled.div`
-  margin-top: 8px;
-  ${mixinTextError}
-`;
-
 interface IJson {
   type?: string;
   ivToken?: string;
 }
+
+const ScError = styled.div`
+  margin-top: 8px;
+  ${mixinTextError}
+`;
 
 export default function Content(): JSX.Element {
   const {
@@ -92,15 +93,21 @@ export default function Content(): JSX.Element {
   }, [riskConfig, fetcherConfig, request, lock, unlock, close, updateData]);
 
   useEffect(() => {
+    if (!verifyUrl) {
+      updateData({
+        hasCancelButton: true
+      });
+    }
+
     window.addEventListener('message', getValidateToken);
 
     return () => {
       window.removeEventListener('message', getValidateToken);
     };
-  }, [getValidateToken]);
+  }, [verifyUrl, updateData, getValidateToken]);
 
   return <>
-    <iframe {...{
+    {verifyUrl ? <iframe {...{
       style: {
       // 宽度设定 100% 会有横向的滚动条
         width: '98%',
@@ -109,7 +116,10 @@ export default function Content(): JSX.Element {
       },
       title: intl('title:main'),
       src: verifyUrl
-    }} />
+    }} /> : <AltWrap {...{
+      type: 'alert',
+      content: intl('message:new_main_verify_error')
+    }} />}
     <ScError>
       {errorMessage}
     </ScError>

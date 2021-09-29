@@ -29,6 +29,8 @@ export default function RiskMainVerify({
   riskConfig,
   mainRiskInfo
 }: IParams): Promise<unknown> {
+  const buttonCancel = intl('op:cancel');
+
   return open<unknown, INewMainAccountRisk>({
     title: intl('title:main'),
     size: 'l',
@@ -38,9 +40,16 @@ export default function RiskMainVerify({
       riskConfig,
       mainRiskInfo,
       requestId: '',
-      errorMessage: '',
-      primaryButtonDisabled: true
+      errorMessage: ''
     },
-    content: <Content />
+    content: <Content />,
+    buttons: (data: INewMainAccountRisk) => {
+      if (data.hasCancelButton) {
+        return [buttonCancel];
+      }
+
+      return [];
+    },
+    undefinedAsReject: true
   });
 }

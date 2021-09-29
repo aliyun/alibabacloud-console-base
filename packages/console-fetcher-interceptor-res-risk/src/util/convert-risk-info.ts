@@ -1,4 +1,5 @@
 import _get from 'lodash/get';
+import _isUndefined from 'lodash/isUndefined';
 
 import {
   FetcherConfig
@@ -23,19 +24,19 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
   const userPrincipalName = _get(responseData, riskConfig.DATA_PATH_USER_PRINCIPAL_NAME!, '') as string;
   
   if (consoleVersion === '2.0') {
-    if (verifyUrl) {
+    if (_isUndefined(verifyUrl)) {
       return {
-        risk: ERisk.NEW_MAIN,
-        verifyUrl
+        risk: ERisk.NEW_SUB,
+        userPrincipalName,
+        verifyType: type0,
+        type: convertVerifyType(type0, riskConfig),
+        detail
       };
     }
 
     return {
-      risk: ERisk.NEW_SUB,
-      userPrincipalName,
-      verifyType: type0,
-      type: convertVerifyType(type0, riskConfig),
-      detail
+      risk: ERisk.NEW_MAIN,
+      verifyUrl
     };
   }
 

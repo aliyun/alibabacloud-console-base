@@ -249,8 +249,6 @@ export default async function RiskSubVerify({
       } = data;
 
       switch (step) {
-        case EStep.MFA_CHOOSE:
-          return intl('title:sub_mfa_choose');
         case EStep.VMFA_BIND:
           return intl('title:sub_vmfa_bind');
         case EStep.U2F_BIND:

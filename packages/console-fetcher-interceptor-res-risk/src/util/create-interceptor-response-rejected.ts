@@ -124,20 +124,34 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
         
         switch (type) {
           case EVerifyType.NONE:
-            await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
+            await riskInvalid({
+              newRisk: risk === ERisk.NEW_SUB,
+              message: risk === ERisk.NEW_SUB ? intl('message:new_main_verify_error') : intl('message:invalid_unknown!lines'),
+              urlSettings: risk === ERisk.NEW_SUB ? riskConfig.URL_SETTINGS : ''
+            });
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.UNKNOWN:
-            await riskInvalid(intl('message:invalid_unsupported_{method}!html!lines', {
-              method: verifyType
-            }), riskConfig.URL_SETTINGS!);
+            await riskInvalid({
+              newRisk: risk === ERisk.NEW_SUB,
+              message: risk === ERisk.NEW_SUB ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
+                method: verifyType
+              }) : intl('message:invalid_unsupported_{method}!html!lines', {
+                method: verifyType
+              }),
+              urlSettings: risk === ERisk.NEW_SUB ? riskConfig.URL_SETTINGS : ''
+            });
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.SMS:
           case EVerifyType.EMAIL:
             // 旧版主账号风控手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
             if (risk === ERisk.OLD_MAIN && !riskInfo.detail) {
-              await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
+              await riskInvalid({
+                newRisk: false,
+                message: intl('message:invalid_unknown!lines'),
+                urlSettings: riskConfig.URL_SETTINGS
+              });
               
               throw convertToRiskErrorInvalid(err);
             }

@@ -47,7 +47,8 @@ const ScHeading = styled.div`
 `;
 
 const ScManualContentWrap = styled.div`
-  width: 320px;
+  box-sizing: border-box;
+  width: 350px;
   padding: 16px;
   ${mixinBgWhite}
 `;
@@ -62,11 +63,11 @@ const ScManualContentDiv = styled.div<IManualProps>`
   word-break: break-all;
   ${props => {
     if (props.needTopPadding) {
-      return 'padding-top: 8px';
+      return 'padding-top: 8px;';
     }
 
     if (props.needBottomPadding) {
-      return 'padding-bottom: 8px';
+      return 'padding-bottom: 8px;';
     }
 
     return '';

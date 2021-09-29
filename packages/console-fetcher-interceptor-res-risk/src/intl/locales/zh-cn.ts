@@ -41,13 +41,12 @@ export default {
   'attr:u2f_bind_title': '请按照下述说明绑定 U2F 安全密钥',
   'attr:mfa_choose_vmfa': '虚拟 MFA 设备',
   'attr:mfa_choose_u2f': 'U2F 安全密钥',
-  'title:main': '身份核验服务',
-  'title:sub_mfa_choose': '安全验证',
+  'title:main': '安全验证',
   'title:sub_vmfa_bind': '绑定虚拟 MFA 设备',
   'title:sub_u2f_bind': '绑定 U2F 安全密钥',
   'title:sub_vmfa_auth': '验证虚拟 MFA 设备',
   'title:sub_u2f_auth': '验证 U2F 安全密钥',
-  'title:sub_default': '子账号风控验证',
+  'title:sub_default': '子账号安全验证',
   'message:u2f_browser_not_support': '您的浏览器不支持 U2F 安全密钥或者浏览器版本过低。',
   'message:u2f_http_not_support': '基于 HTTP 协议的页面不支持 U2F 安全密钥。',
   'message:u2f_bind_confirm_tip': '允许查看您的安全密钥的品牌与型号。',
@@ -60,5 +59,8 @@ export default {
   'message:vmfa_input_empty_tip': '校验码不能为空。',
   'message:mfa_choose_vmfa': '您需要在手机上准备好 MFA 应用程序。',
   'message:mfa_choose_u2f': 'YubiKey 或任何其他兼容的 U2F 设备。',
-  'message:mfa_choose_tip': '子账号在进行敏感操作时需要进行安全验证，您需要通过下列方式绑定 MFA 设备。'
+  'message:mfa_choose_tip': '子账号在进行敏感操作时需要进行安全验证，您需要通过下列方式绑定 MFA 设备。',
+  'message:new_main_verify_error': '安全验证服务发生未知错误，请重试。',
+  'message:sub_invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
+为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`
 };

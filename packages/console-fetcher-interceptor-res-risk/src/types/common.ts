@@ -129,5 +129,5 @@ export interface INewMainAccountRisk {
   requestId: string;
   errorMessage: string;
   ivToken?: string;
-  primaryButtonDisabled?: boolean;
+  hasCancelButton?: boolean;
 }

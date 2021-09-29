@@ -6,6 +6,7 @@ import React, {
   InputHTMLAttributes
 } from 'react';
 import styled from 'styled-components';
+import _isUndefined from 'lodash/isUndefined';
 
 import {
   mixinTextPrimary,
@@ -40,7 +41,7 @@ export default function Radio({
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const currentChecked = e.target.checked;
 
-    if (checked === undefined) {
+    if (_isUndefined(checked)) {
       setStateChecked(currentChecked);
     }
 
@@ -49,7 +50,7 @@ export default function Radio({
 
   const checkedAttr = useMemo((): boolean => {
     // 如果有 checked 属性，那么这个 radio 就是受控的，是否被选中由 checked 属性决定，反之，由 stateChecked 决定
-    if (checked === undefined) {
+    if (_isUndefined(checked)) {
       return stateChecked;
     }
 
