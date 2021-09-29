@@ -4,6 +4,7 @@ import styled, {
 } from 'styled-components';
 
 import {
+  SIZE,
   mixinTextError,
   mixinTextSuccess,
   mixinTextInfo,
@@ -15,6 +16,9 @@ import {
   mixinBgWarningTint
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
+import Flex, {
+  FlexProps
+} from '@alicloud/console-base-rc-flex';
 
 import {
   EIconType
@@ -22,10 +26,12 @@ import {
 
 interface IIconProps {
   iconType: EIconType;
+  isSmallICon?: boolean;
 }
 
-interface IErrorDivProps {
+interface IErrorDivProps extends FlexProps {
   noBackground?: boolean;
+  isSmallICon?: boolean;
 }
 
 interface IProps extends IErrorDivProps {
@@ -34,7 +40,6 @@ interface IProps extends IErrorDivProps {
 }
 
 const CssDivCommon = css`
-  width: 100%;
   padding: 8px 12px;
   margin-bottom: 16px;
 `;
@@ -44,7 +49,13 @@ const CssDivTip = css`
   margin-bottom: 8px;
 `;
 
-const ScError = styled.div<IErrorDivProps>`
+const ScNotice = styled(Flex)`
+   ${CssDivCommon}
+   ${mixinBgInfoTint}
+   ${mixinTextInfo}
+`;
+
+const ScError = styled(Flex)<IErrorDivProps>`
   ${props => {
     if (props.noBackground) {
       return CssDivTip;
@@ -62,25 +73,20 @@ const ScError = styled.div<IErrorDivProps>`
   ${mixinTextError}
 `;
 
-const ScNotice = styled.div`
-   ${CssDivCommon}
-   ${mixinBgInfoTint}
-   ${mixinTextInfo}
-`;
-
-const ScSuccess = styled.div`
+const ScSuccess = styled(Flex)`
   ${CssDivCommon}
   ${mixinBgSuccessTint}
   ${mixinTextSuccess}
 `;
 
-const ScWarning = styled.div`
+const ScWarning = styled(Flex)`
   ${CssDivCommon}
   ${mixinBgWarningTint}
   ${mixinTextPrimary}
 `;
 
 const ScIcon = styled(Icon)<IIconProps>`
+  margin-right: 8px;
   ${props => {
     switch (props.iconType) {
       case EIconType.error:
@@ -93,32 +99,39 @@ const ScIcon = styled(Icon)<IIconProps>`
         return mixinTextInfo;
     }
   }};
-  margin-right: 8px;
+  ${props => {
+    if (props.isSmallICon) {
+      return `font-size: ${SIZE.FONT_SIZE_BODY}px;`;
+    }
+
+    return `font-size: ${SIZE.FONT_SIZE_H6}px;`;
+  }};
 `;
 
 export default function Message({
   iconType,
-  noBackground = false,
+  noBackground,
+  isSmallICon = false,
   message
 }: IProps): JSX.Element {
   switch (iconType) {
     case EIconType.error:
-      return <ScError noBackground={noBackground}>
-        <ScIcon type={EIconType.error} iconType={EIconType.error} />
+      return <ScError noBackground={noBackground} align="center">
+        <ScIcon type={EIconType.error} iconType={EIconType.error} isSmallICon={isSmallICon} />
         {message}
       </ScError>;
     case EIconType.notice:
-      return <ScNotice>
+      return <ScNotice align="center">
         <ScIcon type={EIconType.notice} iconType={EIconType.notice} />
         {message}
       </ScNotice>;
     case EIconType.success:
-      return <ScSuccess>
+      return <ScSuccess align="center">
         <ScIcon type={EIconType.success} iconType={EIconType.success} />
         {message}
       </ScSuccess>;
     default:
-      return <ScWarning>
+      return <ScWarning align="center">
         <ScIcon type={EIconType.warning} iconType={EIconType.warning} />
         {message}
       </ScWarning>;

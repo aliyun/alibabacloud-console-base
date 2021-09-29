@@ -20,8 +20,8 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
   const detail: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_DETAIL!, '') as string;
   const codeType: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_CODE_TYPE!, '') as string;
   const consoleVersion = _get(fetcherConfig, riskConfig.CONFIG_PATH_RISK_VERSION!, '') as string;
-  const verifyUrl = _get(responseData, riskConfig.DATA_PATH_VERIFY_URL!, '') as string;
   const userPrincipalName = _get(responseData, riskConfig.DATA_PATH_USER_PRINCIPAL_NAME!, '') as string;
+  const verifyUrl = _get(responseData, riskConfig.DATA_PATH_VERIFY_URL!);
   
   if (consoleVersion === '2.0') {
     if (_isUndefined(verifyUrl)) {
