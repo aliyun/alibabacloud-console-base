@@ -60,5 +60,7 @@ export default {
   'message:mfa_choose_vmfa': 'You must install the MFA application on your mobile phone.',
   'message:mfa_choose_u2f': 'YubiKey or other U2F compliant security keys.',
   'message:mfa_choose_tip': 'Security verification is required when performing sensitive operations. Please bind the MFA device in the following ways.',
-  'message:new_main_verify_error': 'UnKown error occurred，please try again.'
+  'message:new_main_verify_error': 'UnKown error occurred，please try again.',
+  'message:sub_invalid_unsupported_{method}!html!lines': `Verification method <code>{method}</code> is not supported.
+  To protect your account, use your Alibaba Cloud account or the RAM user that has administrative rights to log on to the RAM console and reset the verification method.`
 };

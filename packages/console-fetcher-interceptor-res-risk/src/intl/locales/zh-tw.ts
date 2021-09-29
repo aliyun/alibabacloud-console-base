@@ -60,5 +60,7 @@ export default {
   'message:mfa_choose_vmfa': '您需要在手机上准备好 MFA 应用程序。',
   'message:mfa_choose_u2f': 'YubiKey 或任何其他兼容的 U2F 设备。',
   'message:mfa_choose_tip': '子账号在进行敏感操作时需要进行安全验证，您需要通过下列方式绑定 MFA 设备。',
-  'message:new_main_verify_error': '安全验证服务发生未知错误，请重试。'
+  'message:new_main_verify_error': '安全验证服务发生未知错误，请重试。',
+  'message:sub_invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
+为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`
 };
