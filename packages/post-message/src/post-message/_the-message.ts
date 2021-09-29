@@ -6,9 +6,11 @@ import {
 const MAP_RECEIVERS: TReceivers = {}; // 某一 type 对应的所有回调
 const MAP_RECEIVERS_ONCE: TReceivers = {}; // 某一 type 对应的所有单次回调
 
-if (window.addEventListener) { // 虽然支持的很好了，但..也谨慎一下吧
+const rawWindow = (new Function('', 'return window'))(); // 避免 window 被 with 劫持
+
+if (rawWindow.addEventListener) { // 虽然支持的很好了，但..也谨慎一下吧
   // 全局唯一的 message receiver，所以就无所谓解不解绑了
-  window.addEventListener('message', (e: MessageEvent): void => {
+  rawWindow.addEventListener('message', (e: MessageEvent): void => {
     const {
       data: {
         type,
