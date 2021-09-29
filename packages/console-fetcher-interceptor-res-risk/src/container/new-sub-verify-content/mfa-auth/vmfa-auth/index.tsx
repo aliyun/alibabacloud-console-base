@@ -127,7 +127,11 @@ export default function VMfaAuth(): JSX.Element {
           }} />
         }]
       }} />
-      <ScImg src={SvgUrls.VMFA_ICON_WHITE} width={100} alt="" />
+      <ScImg {...{
+        src: SvgUrls.VMFA_ICON_WHITE,
+        width: 100,
+        alt: ''
+      }} />
     </ScFormWrapper>
   </>;
 }

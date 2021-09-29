@@ -99,8 +99,14 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   REQUEST_METHOD: 'POST'
 };
 
+/**
+ * 校验虚拟 MFA 校验码的规则：6位数字
+ */
 export const REG_MFA_CODE = /^[0-9]{6}$/;
 
+/*
+ *  用到的 SVG 图像的链接 
+ */
 export const SvgUrls = {
   U2F_INSERT: 'https://img.alicdn.com/imgextra/i1/O1CN01UuCEK71WIsE3LvTB3_!!6000000002766-55-tps-86-86.svg',
   U2F_CLICK: 'https://img.alicdn.com/imgextra/i3/O1CN01ryyaVx1OZLXnuN6Mn_!!6000000001719-55-tps-86-86.svg',

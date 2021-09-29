@@ -45,6 +45,13 @@ const ScDesc = styled.div`
 
 const ScItem = styled(Flex)<IScItemProps>`
   overflow-y: hidden;
+  cursor: ${props => {
+    if (props.disabled) {
+      return 'not-allowed';
+    }
+
+    return 'pointer';
+  }};
   padding-left: 16px;
   height: 100px;
   margin-top: ${props => props.marginTop || 0}px;
@@ -87,8 +94,8 @@ export default function MfaChoose(): JSX.Element {
   const [stateRadioChecked, setStateRadioChecked] = useState<EStep.VMFA_BIND | EStep.U2F_BIND>(EStep.VMFA_BIND);
   const [stateU2FSupported, setStateU2FSupported] = useState<boolean>(true);
 
-  const handleVMFARadioChange = useCallback((checked: boolean): void => {
-    if (!checked) {
+  const haneleVmfaRadioClick = useCallback((): void => {
+    if (stateRadioChecked === EStep.VMFA_BIND) {
       return;
     }
 
@@ -100,10 +107,10 @@ export default function MfaChoose(): JSX.Element {
         DeviceType: ESubMFADeviceType.VMFA
       }
     });
-  }, [userPrincipalName, updateData]);
+  }, [userPrincipalName, stateRadioChecked, updateData]);
 
-  const handleU2FRadioChange = useCallback((checked: boolean): void => {
-    if (!checked) {
+  const handleU2FRadioCheck = useCallback((): void => {
+    if (stateRadioChecked === EStep.U2F_BIND || !stateU2FSupported) {
       return;
     }
 
@@ -115,7 +122,7 @@ export default function MfaChoose(): JSX.Element {
         DeviceType: ESubMFADeviceType.U2F
       }
     });
-  }, [userPrincipalName, updateData]);
+  }, [userPrincipalName, stateRadioChecked, stateU2FSupported, updateData]);
 
   useEffect(() => {
     if (isUnmounted()) {
@@ -136,23 +143,36 @@ export default function MfaChoose(): JSX.Element {
     });
   }, [userPrincipalName, isUnmounted, updateData]);
 
-  return <div>
-    {<Message {...{
+  return <>
+    <Message {...{
       iconType: errorMessage ? EIconType.error : EIconType.warning,
       message: errorMessage || intl('message:mfa_choose_tip')
-    }} />}
-    <ScItem align="center" justify="space-between">
+    }} />
+    <ScItem {...{
+      align: 'center',
+      justify: 'space-between',
+      onClick: haneleVmfaRadioClick
+    }}>
       <div>
         <Radio {...{
           checked: stateRadioChecked === EStep.VMFA_BIND,
-          label: intl('attr:mfa_choose_vmfa'),
-          onChange: handleVMFARadioChange
+          label: intl('attr:mfa_choose_vmfa')
         }} />
         <ScDesc>{intl('message:mfa_choose_vmfa')}</ScDesc>
       </div>
-      <img src={SvgUrls.U2F_ICON} alt="" width={120} />
+      <img {...{
+        src: SvgUrls.U2F_ICON,
+        width: 120,
+        alt: ''
+      }} />
     </ScItem>
-    <ScItem marginTop={20} disabled={!stateU2FSupported} align="center" justify="space-between">
+    <ScItem {...{
+      marginTop: 20,
+      disabled: !stateU2FSupported,
+      align: 'center',
+      justify: 'space-between',
+      onClick: handleU2FRadioCheck
+    }}>
       <div>
         {!stateU2FSupported ? <Message {...{
           noBg: true,
@@ -163,13 +183,16 @@ export default function MfaChoose(): JSX.Element {
           <Radio {...{
             checked: stateRadioChecked === EStep.U2F_BIND,
             disabled: !stateU2FSupported,
-            label: intl('attr:mfa_choose_u2f'),
-            onChange: handleU2FRadioChange
+            label: intl('attr:mfa_choose_u2f')
           }} />
         </Flex>
         <ScDesc>{intl('message:mfa_choose_u2f')}</ScDesc>
       </div>
-      <img src={SvgUrls.VMFA_ICON_GREY} alt="" width={120} />
+      <img {...{
+        src: SvgUrls.VMFA_ICON_GREY,
+        width: 120,
+        alt: ''
+      }} />
     </ScItem>
-  </div>;
+  </>;
 }

@@ -27,6 +27,10 @@ interface IProps {
   errorMessage: string;
 }
 
+const ScFlex = styled(Flex)`
+  margin-top: 12px;
+`;
+
 const ScU2FWrapper = styled.div`
   padding: 16px;
   position: relative;
@@ -44,10 +48,6 @@ const ScU2FTitle = styled.div`
 const ScU2FDesc = styled.div`
   margin-left: 12px;
   ${mixinTextSecondary}
-`;
-
-const ScFlex = styled(Flex)`
-  margin-top: 12px;
 `;
 
 // 由于图片需要从 CDN 加载。为了防止屏幕抖动，先用空父元素的 padding 撑起来
@@ -113,17 +113,29 @@ export default function U2fUi({
       </ScU2FTitle>
       <Flex align="center">
         <ScSvgImgWrapper>
-          <SvgImg src={SvgUrls.U2F_INSERT} width={100} alt="" />
+          <SvgImg {...{
+            src: SvgUrls.U2F_INSERT,
+            width: 100,
+            alt: ''
+          }} />
         </ScSvgImgWrapper>
         <ScU2FDesc>{intl('attr:u2f_insert')}</ScU2FDesc>
       </Flex>
       <ScFlex align="center">
         <ScSvgImgWrapper>
-          <SvgImg src={SvgUrls.U2F_CLICK} width={100} alt="" />
+          <SvgImg {...{
+            src: SvgUrls.U2F_CLICK,
+            width: 100,
+            alt: ''
+          }} />
         </ScSvgImgWrapper>
         <ScU2FDesc>{intl('attr:u2f_click')}</ScU2FDesc>
       </ScFlex>
-      <ScU2FIcon src={SvgUrls.U2F_ICON} width={120} alt="" />
+      <ScU2FIcon {...{
+        src: SvgUrls.U2F_ICON,
+        width: 120,
+        alt: ''
+      }} />
     </ScU2FWrapper>
   </>;
 }

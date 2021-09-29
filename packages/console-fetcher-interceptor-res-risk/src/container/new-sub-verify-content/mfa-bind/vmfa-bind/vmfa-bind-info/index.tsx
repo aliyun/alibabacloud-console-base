@@ -22,16 +22,21 @@ import {
 } from '../../../../../types';
 import intl from '../../../../../intl';
 
-const ScQrCodeDiv = styled.div`
-  margin-right: 20px;
-  padding: 0 16px;
-  text-align: center;
-`;
+interface IManualProps {
+  needTopPadding?: boolean;
+  needBottomPadding?: boolean;
+}
 
 const ScQrCodeWrap = styled(QRCode)`
   margin: 0 auto;
   padding: 4px;
   ${mixinBorderTertiary}
+`;
+
+const ScQrCodeDiv = styled.div`
+  margin-right: 20px;
+  padding: 0 16px;
+  text-align: center;
 `;
 
 const ScHeading = styled.div`
@@ -42,8 +47,8 @@ const ScHeading = styled.div`
 `;
 
 const ScManualContentWrap = styled.div`
+  width: 320px;
   padding: 16px;
-  width: 350px;
   ${mixinBgWhite}
 `;
 
@@ -52,10 +57,20 @@ const ScSpan = styled.span`
   ${mixinTextTertiary}
 `;
 
-const ScManualContentDiv = styled.div`
+const ScManualContentDiv = styled.div<IManualProps>`
   margin: 0 auto;
-  padding: 12px;
   word-break: break-all;
+  ${props => {
+    if (props.needTopPadding) {
+      return 'padding-top: 8px';
+    }
+
+    if (props.needBottomPadding) {
+      return 'padding-bottom: 8px';
+    }
+
+    return '';
+  }}
 `;
 
 export default function VMfaBindInfo(): JSX.Element {
@@ -78,11 +93,11 @@ export default function VMfaBindInfo(): JSX.Element {
         {intl('attr:vmfa_bind_info_title')}
       </ScHeading>
       <ScManualContentWrap>
-        <ScManualContentDiv>
+        <ScManualContentDiv needBottomPadding>
           <ScSpan>{intl('attr:vmfa_bind_info_account')}</ScSpan>
           <CopyIt text={targetUserPrincipalName} />
         </ScManualContentDiv>
-        <ScManualContentDiv>
+        <ScManualContentDiv needTopPadding>
           <ScSpan>{intl('attr:vmfa_bind_info_key')}</ScSpan>
           <CopyIt text={targetMfaDeviceSecret} />
         </ScManualContentDiv>

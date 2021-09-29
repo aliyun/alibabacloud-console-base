@@ -93,7 +93,7 @@ const ScIcon = styled(Icon)<IIconProps>`
         return mixinTextInfo;
     }
   }};
-  margin-right: 6px;
+  margin-right: 8px;
 `;
 
 export default function Message({
