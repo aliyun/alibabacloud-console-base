@@ -27,7 +27,7 @@
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
     "@alicloud/fetcher-demo-helpers": "^1.1.59",
-    "@types/react": "^17.0.25",
+    "@types/react": "^17.0.27",
     "react": "^17.0.2",
     "typescript": "^4.4.3"
   },
