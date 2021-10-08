@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/iconfont-helper",
-  "version": "1.1.44",
+  "version": "1.1.45",
   "description": "iconfont.cn 辅助，用于注入 iconfont 或 webfont 并返回对应的 font 名，是写组件的好帮手",
   "license": "MIT",
   "sideEffects": false,
