@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-interceptor-merger",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "description": "@alicloud/fetcher 请求拦截 - 合并请求",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/fetcher-demo-helpers": "^1.1.61",
+    "@alicloud/fetcher-demo-helpers": "^1.1.62",
     "@types/lodash": "^4.14.175",
     "@types/react": "^17.0.27",
     "@types/styled-components": "^5.1.15",
@@ -36,7 +36,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/fetcher": "^1.1.64",
+    "@alicloud/fetcher": "^1.1.65",
     "lodash": "^4.17.21"
   },
   "scripts": {
