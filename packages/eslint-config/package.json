@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/eslint-config",
-  "version": "1.3.13",
+  "version": "1.3.14",
   "description": "eslint config based on eslint-config-ali",
   "license": "MIT",
   "main": "index.js",
