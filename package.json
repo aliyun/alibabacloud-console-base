@@ -21,6 +21,8 @@
     "boot:packages": "lerna run prepublishOnly",
     "clean": "rm -rf node_modules",
     "clean:lock": "rm -f packages/**/package-lock.json",
+    "clean:tag:remote": "git tag -l \"@alicloud/*\" | xargs git push --delete origin",
+    "clean:tag:locale": "git tag -l \"@alicloud/*\" | xargs git tag -d",
     "lint": "eslint packages/**/src/ --ext js,ts,tsx",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
     "lerna:boot": "lerna bootstrap --hoist",
