@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dropdown",
-  "version": "1.2.84",
+  "version": "1.2.85",
   "description": "ConsoleBase 组件 - 下拉",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "dropdown"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.78",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.79",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/demo-rc-elements": "^1.3.58",
+    "@alicloud/demo-rc-elements": "^1.3.59",
     "@types/react": "^17.0.27",
     "@types/react-dom": "^17.0.9",
     "@types/react-transition-group": "^4.4.3",
@@ -44,11 +44,11 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.3.79",
-    "@alicloud/console-base-theme-sc-base": "^1.1.82",
-    "@alicloud/mere-dom": "^1.1.51",
-    "@alicloud/react-hook-is-unmounted": "^1.1.44",
-    "@alicloud/typescript-missing-helpers": "^1.1.44",
+    "@alicloud/console-base-theme": "^1.3.80",
+    "@alicloud/console-base-theme-sc-base": "^1.1.83",
+    "@alicloud/mere-dom": "^1.1.52",
+    "@alicloud/react-hook-is-unmounted": "^1.1.45",
+    "@alicloud/typescript-missing-helpers": "^1.1.45",
     "immutability-helper": "^3.1.1",
     "react-transition-group": "^4.4.2"
   },

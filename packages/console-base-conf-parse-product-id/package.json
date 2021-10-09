@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-parse-product-id",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "description": "ConsoleBase CONF.PRODUCT_ID parse",
   "license": "MIT",
   "sideEffects": false,
