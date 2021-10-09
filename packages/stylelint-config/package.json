@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/stylelint-config",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "stylelint configuration",
   "license": "MIT",
   "main": "index.js",

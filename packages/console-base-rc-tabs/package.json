@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-tabs",
-  "version": "1.2.99",
+  "version": "1.2.100",
   "description": "ConsoleBase 组件 - 一个简单但代码写的很清爽的 tabs 容器",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "tabs"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.80",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.81",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/demo-rc-elements": "^1.3.60",
+    "@alicloud/demo-rc-elements": "^1.3.61",
     "@types/lodash": "^4.14.175",
     "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
@@ -40,12 +40,12 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.2.74",
-    "@alicloud/console-base-rc-button": "^1.1.95",
-    "@alicloud/console-base-rc-icon": "^1.4.71",
-    "@alicloud/console-base-theme": "^1.3.81",
-    "@alicloud/console-base-theme-sc-base": "^1.1.84",
-    "@alicloud/typescript-missing-helpers": "^1.1.46",
+    "@alicloud/console-base-intl-factory-basic": "^1.2.75",
+    "@alicloud/console-base-rc-button": "^1.1.96",
+    "@alicloud/console-base-rc-icon": "^1.4.72",
+    "@alicloud/console-base-theme": "^1.3.82",
+    "@alicloud/console-base-theme-sc-base": "^1.1.85",
+    "@alicloud/typescript-missing-helpers": "^1.1.47",
     "immutability-helper": "^3.1.1",
     "lodash": "^4.17.21"
   },
