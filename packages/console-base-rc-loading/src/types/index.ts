@@ -11,8 +11,10 @@ interface IWithLoadingBase<T> {
   messageError?: string | JSX.Element;
   messageErrorRetry?: string | JSX.Element;
   messageEmpty?: string | JSX.Element;
-  isEmpty?(data: T): boolean;
   retry?(): void;
+  isEmpty?(data: T): boolean;
+  renderError?(err: Error): JSX.Element; // 如果 messageXx 等无法满足的情况，可以用它
+  renderEmpty?(): JSX.Element; // 如果 messageXx 等无法满足的情况，可以用它
   renderLoaded(data: T): JSX.Element;
 }
 

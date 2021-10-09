@@ -64,7 +64,7 @@ const ScStrong = styled.strong`
 function toDisplayValue(v: unknown): string {
   try {
     return JSON.stringify(v);
-  } catch (ex) {
+  } catch (err) {
     return '!JSON.stringify - ERROR!';
   }
 }

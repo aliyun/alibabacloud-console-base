@@ -6,6 +6,9 @@ import {
   IErrorPlain,
   IErrorDetailKV
 } from '../types';
+import {
+  DETAILED_MODE
+} from '../const';
 import intl from '../intl';
 
 import parseParams from './parse-params';
@@ -31,9 +34,8 @@ export default function convertErrorDetailKvList(error: IErrorPlain): IErrorDeta
   pushInfo(error.code, 'code', intl('attr:code'));
   pushInfo(error.requestId, 'requestId', intl('attr:request_id'));
   
-  // 仅在开发模式下展示的信息
-  if (process.env.NODE_ENV === 'development') {
-    // 详情仅在开发模式下，对 details.params 和 details.body 有良好的展示
+  if (DETAILED_MODE) {
+    // 对 details.params 和 details.body 有良好的展示
     _forEach(error.details, (v, k) => {
       pushInfo(k === 'params' || k === 'body' ? parseParams(v) : v, `detail.${k}`, _snakeCase(k).toUpperCase());
     });

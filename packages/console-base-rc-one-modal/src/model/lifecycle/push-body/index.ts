@@ -38,7 +38,7 @@ div.show-panel div.slide-panels,
 function fireResize(): void {
   try {
     window.dispatchEvent(new CustomEvent('resize'));
-  } catch (ex) {
+  } catch (err) {
     // ignore
   }
 }

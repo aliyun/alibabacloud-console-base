@@ -100,6 +100,9 @@ export default function DemoDefault(): JSX.Element {
         labelHover: {
           icon: 'lights-off'
         },
+        beacon: {
+          tip: 'You DONT know how I fucking hate widget... 🤧'
+        },
         force: true
       }],
       language: {

@@ -15,6 +15,7 @@ import Ae from './ae';
 import Kr from './kr';
 import Za from './za';
 import Ru from './ru';
+import Ph from './ph';
 
 interface IProps {
   regionId: string;
@@ -62,6 +63,10 @@ export default function SvgInner({
   
   if (/ap-southeast-5[-\w]*/.test(regionId)) { // 印度尼西亚（雅加达）
     return <Id />;
+  }
+  
+  if (/ap-southeast-6[-\w]*/.test(regionId)) { // 菲律宾
+    return <Ph />;
   }
   
   if (/eu-west-1[-\w]*/.test(regionId)) { // 英国（伦敦）

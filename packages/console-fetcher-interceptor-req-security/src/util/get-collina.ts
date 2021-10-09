@@ -21,7 +21,7 @@ export default function getCollina(): string | undefined {
     // UAOpt.reload();
     
     return (win as any)[UAOpt.LogVal];
-  } catch (e) {
+  } catch (err) {
     return undefined;
   }
 }

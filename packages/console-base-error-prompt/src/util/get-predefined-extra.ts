@@ -2,6 +2,10 @@ import {
   IErrorPromptExtra
 } from '../types';
 import intl from '../intl';
+import {
+  ERROR_CODE_LOGIN,
+  ERROR_CODE_TOKEN_EXPIRED
+} from '../const';
 
 function reload(): void {
   location.reload();
@@ -62,9 +66,9 @@ const PERMISSION_DENIED: IErrorPromptExtra = {
  */
 export default function getPredefinedExtra(code?: string): IErrorPromptExtra | undefined {
   switch (code) {
-    case 'ConsoleNeedLogin':
+    case ERROR_CODE_LOGIN:
       return LOGIN;
-    case 'PostonlyOrTokenError':
+    case ERROR_CODE_TOKEN_EXPIRED:
       return TOKEN_EXPIRED;
     case 'ApiNotExist':
     case 'InvalidAction.NotFound':

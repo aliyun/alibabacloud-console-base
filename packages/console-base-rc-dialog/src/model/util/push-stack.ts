@@ -64,7 +64,7 @@ function trapFocus(domDialog: HTMLDivElement, domDialogContent: HTMLDivElement, 
   try {
     el.focus();
     (el as HTMLInputElement).select();
-  } catch (ex) {
+  } catch (err) {
     // ignore it
   }
 }

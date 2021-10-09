@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-global",
-  "version": "1.1.54",
+  "version": "1.1.90",
   "description": "ConsoleBase 唯一官方指定全局变量... 的 API",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -24,13 +24,13 @@
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
-    "@alicloud/console-toolkit-preset-component": "^1.2.23",
-    "@types/react": "^17.0.15",
+    "@alicloud/console-toolkit-preset-component": "^1.2.29",
+    "@types/react": "^17.0.27",
     "react": "^17.0.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger": "^1.3.45"
+    "@alicloud/console-base-messenger": "^1.3.81"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -43,5 +43,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "c9db2f5fb5ae4a167f45cdafd46febc0a7dc5a24"
+  "gitHead": "d23161a92e3e06ab52fb4e499ac832067d98e5aa"
 }

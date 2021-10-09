@@ -29,7 +29,7 @@ function convertLogInfo(info: ILogInfo): Record<string, string> {
     } else {
       try { // 避免 cyclic error
         o[k] = JSON.stringify(v);
-      } catch (ex) {
+      } catch (err) {
         o[k] = 'TypeError: cyclic object value';
       }
     }

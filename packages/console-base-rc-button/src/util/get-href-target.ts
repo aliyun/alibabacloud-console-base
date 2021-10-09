@@ -9,7 +9,7 @@ export default function getHrefTarget(href: string, target?: string): string | u
     } = new URL(href, window.location.href);
     
     return host === window.location.host ? undefined : '_blank';
-  } catch (e) {
+  } catch (err) {
     return undefined;
   }
 }

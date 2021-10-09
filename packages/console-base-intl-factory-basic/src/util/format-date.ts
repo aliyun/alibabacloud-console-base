@@ -44,11 +44,34 @@ const dateOptions: Intl.DateTimeFormatOptions = {
   day: 'numeric'
 };
 
+/**
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
+ * https://stackoverflow.com/questions/65604554/intl-datetimeformat-returns-an-hour-over-24
+ * 
+ * Chrome 有个 BUG，不认 hour12: false
+ * 
+ * ```
+ * new Intl.DateTimeFormat('zh-CN', {
+ *   year: 'numeric',
+ *   month: 'short',
+ *   day: 'numeric',
+ *   hour: '2-digit',
+ *   minute: '2-digit',
+ *   second: '2-digit',
+ *   hour12: false
+ * }).format(new Date('2021-09-12 00:09:12'))
+ * ```
+ * 
+ * - Chrome: 2021年9月12日 24:09:12
+ * - Firefox: 021年9月12日 00:09:12
+ * 
+ * 注意：hour12: boolean 和 hourCycle：'h11' | 'h12' | 'h23' | 'h24' 是不可共用的
+ */
 const timeOptions: Intl.DateTimeFormatOptions = {
   hour: '2-digit',
   minute: '2-digit',
   second: '2-digit',
-  hour12: false // 默认居然是 true
+  hourCycle: 'h23'
 };
 
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
@@ -84,7 +107,7 @@ function getFormatPattern(format?: TDateFormat): string {
 export default function formatDate(date: Date, format?: TDateFormat, locale = 'en-US'): string {
   try {
     return new Intl.DateTimeFormat(locale, getFormatOptions(format)).format(date);
-  } catch (e) {
+  } catch (err) {
     return fallbackFormat(date, getFormatPattern(format));
   }
 }

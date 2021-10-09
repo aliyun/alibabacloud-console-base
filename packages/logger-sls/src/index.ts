@@ -1,7 +1,6 @@
-import createLogger from './factory/create-logger';
-
-export default createLogger;
+export { default } from './factory/create-logger';
 export { default as createLoggerFactory } from './factory/create-factory';
+export { default as flattenObject } from './helper/flatten-object';
 
 export type {
   IFactoryOptions as FactoryOptions,

@@ -35,7 +35,7 @@ export default function sendLogs(trackUrl: string, apiVersion: string, infoList:
     }).catch(() => {
       // ignore
     });
-  } catch (ex) {
+  } catch (err) {
     // ignore
   }
 }

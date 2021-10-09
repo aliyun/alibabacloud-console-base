@@ -1,29 +1,13 @@
-import createLogger, {
-  FactoryOptions,
-  chooseStoreByEnv
-} from '@alicloud/console-logger-sls';
-import CONF_PRODUCT_ID from '@alicloud/console-base-conf-product-id';
+import createLogger from '@alicloud/console-logger-sls';
 
-import getVersions from './util/get-versions';
+import getOptions from './util/get-options';
 
-const [loaderVersions, consoleBaseVersions] = getVersions();
+export * from '@alicloud/console-logger-sls';
 
-export const SLS_OPTIONS: FactoryOptions = { // export 出去，在 console-base-fetcher 里会用到
-  project: 'console-base',
-  endpoint: 'log-global.aliyuncs.com',
-  logstore: chooseStoreByEnv('prod', {
-    dev: 'dev',
-    daily: 'daily',
-    pre: 'pre'
-  }),
-  defaultParams: {
-    product: CONF_PRODUCT_ID,
-    versionOfLoader: loaderVersions.join('~') || 'NONE', // 本地的时候可能是 NONE
-    versionOfConsoleBase: consoleBaseVersions.join('~') || 'NONE' // 本地的时候可能是 NONE
-  }
-};
+// export 出去，在 console-base-fetcher 里会用到
+export const SLS_OPTIONS = getOptions();
 
 /**
- * console-base 专用 logger
+ * console-base 专用 logger TODO 这个包要迁回 @ali
  */
 export default createLogger(SLS_OPTIONS);

@@ -69,5 +69,9 @@ export default function parseOneConf(): IConsoleOneConfig {
     fillByShitty(ONE_CONF, shittyConf);
   }
   
+  if (ONE_CONF.LOCALE === 'zh-TW') {
+    ONE_CONF.LANG = 'zh-TW'; // OneConsole 在这种情况下写的是 zh，这是不对的
+  }
+  
   return ONE_CONF;
 }

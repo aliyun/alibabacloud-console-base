@@ -35,12 +35,6 @@ const ScNavButton = styled(Button)<IProps>`
     max-width: 160px;
     max-height: 36px;
   }
-  
-  .theme-dark & {
-    &:hover {
-      color: #fff;
-    }
-  }
 `;
 
 /**

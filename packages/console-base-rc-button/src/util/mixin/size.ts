@@ -29,6 +29,7 @@ const MAPPING: Record<EButtonSize, FlattenSimpleInterpolation | null> = {
 };
 
 const THEMES_DEFAULT_SIZE_NONE = [
+  EButtonTheme.NONE,
   EButtonTheme.TEXT_PRIMARY,
   EButtonTheme.TEXT_SECONDARY,
   EButtonTheme.TEXT_TERTIARY,

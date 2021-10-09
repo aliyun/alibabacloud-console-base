@@ -14,6 +14,7 @@ import {
   Flex100HBF,
   PreJson
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Tabs, {
   TabProps
@@ -117,6 +118,7 @@ export default function DemoDefault(): JSX.Element {
   return <ScDemo>
     <ThemeSwitcher />
     <ScDemoL>
+      <ThemeSwitcher />
       <Button onClick={handleAdd}>Add Tab</Button>
       <Hr />
       <RadioGroup {...{

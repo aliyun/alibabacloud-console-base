@@ -34,7 +34,7 @@ function formatJson(o: unknown): string {
   try {
     return JSON.stringify(o, replacer, 2).replace(/"([$\w]+)":/g, '$1:');
   } catch (err) {
-    return `[ERROR] ${err.message}`;
+    return `[ERROR] ${(err as Error).message}`;
   }
 }
 

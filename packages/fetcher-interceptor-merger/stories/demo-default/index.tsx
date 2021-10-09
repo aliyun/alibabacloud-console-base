@@ -37,7 +37,7 @@ function getJsonFromString(str: string): Record<string, unknown> | null {
     if (typeof o === 'object') {
       return o;
     }
-  } catch (ex) {
+  } catch (err) {
     // ignore
   }
   

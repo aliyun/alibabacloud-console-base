@@ -18,8 +18,8 @@ interface IPropsScI {
   code: string;
 }
 
-// dataUrl 太大 50K+ 就不放了
-const fontFamily = injectIconFont('1323992', 'csa16ohh4yw');
+// https://at.alicdn.com/t/font_1323992_8nmbvtbxrqr.css
+const fontFamily = injectIconFont('1323992', '8nmbvtbxrqr');
 
 const ScI = styled(IconBase)<IPropsScI>`
   font-family: ${fontFamily} !important;

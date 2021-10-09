@@ -47,7 +47,7 @@ const HELP_TINT_FADE = 'rgba(127,127,127,0.666667)';
 // const WARNING_TINT_FADE = 'rgba(255,198,0,0.141176)';
 // const ERROR_TINT_FADE = 'rgba(210,15,0,0.066667)';
 const SHADOW = 'rgba(0,0,0,0.32)';
-const BACKDROP = 'rgba(255,255,255,0.2)';
+const BACKDROP = 'rgba(0,0,0,0.4)';
 
 const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   // TRANSPARENT,

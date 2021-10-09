@@ -3,20 +3,43 @@ import React, {
   useState,
   useCallback
 } from 'react';
+import styled from 'styled-components';
 
 import Dropdown from '@alicloud/console-base-rc-dropdown';
+import Beacon, {
+  BeaconProps
+} from '@alicloud/console-base-rc-beacon';
 
 import {
   IPropsTopNavButton
 } from '../../types';
 import parseDropdownItems from '../../util/parse-dropdown-items';
 import hasNoActionPoint from '../../util/has-no-action-point';
-import NavButton from '../nav-button';
-import NavButtonLabel from '../nav-button-label';
-import NavButtonItems from '../nav-button-items';
+
+import NavButton from './nav-button';
+import NavButtonLabel from './nav-button-label';
+import NavButtonItems from './nav-button-items';
 
 interface IProps extends Omit<IPropsTopNavButton, 'key'> {
   spm: string;
+}
+
+const ScBeaconWrap = styled.div`
+  position: relative;
+`;
+
+function wrapWithBeacon(jsx: JSX.Element, beacon?: BeaconProps): JSX.Element {
+  return beacon ? <ScBeaconWrap>
+    {jsx}
+    <Beacon {...{
+      style: {
+        bottom: 16,
+        left: 14
+      },
+      tipAlign: 'bl',
+      ...beacon
+    }} />
+  </ScBeaconWrap> : jsx;
 }
 
 /**
@@ -28,6 +51,7 @@ export default function TopNavButton({
   responsive = true,
   force,
   dropdown = {},
+  beacon,
   onMouseEnter,
   onMouseLeave,
   ...buttonProps
@@ -71,10 +95,10 @@ export default function TopNavButton({
   }} />;
   
   if (noDropdown) {
-    return jsxButton;
+    return wrapWithBeacon(jsxButton, beacon);
   }
   
-  return <Dropdown {...{
+  return wrapWithBeacon(<Dropdown {...{
     align: 'right',
     offset: [0, -10],
     bodyPadding: itemsInFooter.length ? 'top' : undefined,
@@ -83,9 +107,5 @@ export default function TopNavButton({
     header,
     body: body || (itemsInBody.length ? <NavButtonItems items={itemsInBody} /> : undefined),
     footer: footer || (itemsInFooter.length ? <NavButtonItems items={itemsInFooter} /> : undefined)
-  }} />;
+  }} />, beacon);
 }
-
-export type {
-  IProps as TopNavButtonProps
-};

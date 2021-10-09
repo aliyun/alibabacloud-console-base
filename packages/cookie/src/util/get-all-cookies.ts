@@ -14,7 +14,7 @@ export default function getAllCookies(): Record<string, string> {
     // 这里做一下兼容，因为大部分情况下 `decodeURIComponent(escape(value)) === value`
     try {
       result[cookieName] = decodeURIComponent(cookieValue);
-    } catch (e) {
+    } catch (err) {
       result[cookieName] = unescape(cookieValue);
     }
     

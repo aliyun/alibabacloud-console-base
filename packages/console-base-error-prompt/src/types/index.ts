@@ -76,13 +76,7 @@ export interface IErrorQueueItem extends RequiredBut<IErrorPromptExtra, 'button'
   resolve(): void;
 }
 
-/**
- * dialog openIndirect 需要用它来保存未完成的队列
- */
-export interface IErrorPromptSolo {
-  dialogIndirect: DialogIndirectPromise<void, IErrorDialogData> | null;
-  queue: IErrorQueueItem[];
-}
+export type TDialogIndirect = DialogIndirectPromise<void, IErrorDialogData>;
 
 /**
  * 展示用的 k-v 对

@@ -1,7 +1,7 @@
 @alicloud/console-fetcher-interceptor-res-risk
 ===
 
-> `@alicloud/console-fetcher` 的响应拦截器 - 风控。依赖 `@alicloud/console-fetcher-interceptor-res-biz` 的前置拦截。
+> `@alicloud/console-fetcher` 的响应拦截器 - 风控。依赖 `@alicloud/console-fetcher-interceptor-res-biz` 的前置拦截。其中包含旧版的主账号风控、新版的主账号风控、新版的子账号风控三部分逻辑
 
 # INSTALL
 

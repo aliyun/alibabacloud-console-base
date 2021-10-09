@@ -36,7 +36,7 @@ codeMirror.registerHelper('lint', 'json', (text: string): Annotation[] => {
   
   try {
     parser.parse(text);
-  } catch (e) {
+  } catch (err) {
     // ignore
   }
   

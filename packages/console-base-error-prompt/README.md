@@ -9,34 +9,29 @@ TODO see in action
 
 ## 一般用法
 
-```typescript
+```tsx
 import errorPrompt from '@alicloud/console-base-error-prompt';
 
-errorPrompt('字符串 message');
-errorPrompt(<p>JSX 错误 message</p>);
-errorPrompt({ // 包含 message 的 plain 对象
-  message: string | JSX.Element;
-  requestId: string;
-  code: string;
-  url: string;
-  method: string;
-  params: string | Record<string, unkonwn>;
-  body: string | Record<string, unkonwn>;
-});
-errorPrompt(error); // error 对象，可以在其下塞入 details: {requestId, code, url, method, params, body}
+errorPrompt(error/*, extra*/);
 ```
 
-默认 error 详情中有 `requestId`、`code`、`url`、`method`、`params`、`body`，其中的 `params` 和 `body` 可以是字符串或对象，展示的时候会做相应的变化。
+`error` 可以是以下类型：
 
-除了以上这些信息之外，你可以随意补充其他的信息，如：
+* `undefined | null` 将被忽略
+* 字符串
+* JSX
+* plain 对象
+* 扩展了的 Error 实例对象
+
+如果 error 是对象，除了标准属性 message 之外，可以附加 code、requestId，同时可以有 `details` 属性，长这样：
 
 ```typescript
-errorPrompt({ // 包含 message 的 plain 对象
-  ...
-  extra1,
-  extra2,
-  extra3
-});
+interface IErrorDetails {
+  url?: string;
+  method?: string;
+  params?: string | Record<string, unkonwn>;
+  body?: string | Record<string, unkonwn>;
+}
 ```
 
 ## 自定义标题、按钮
@@ -63,5 +58,28 @@ errorPrompt(error, ({ // 这里是解析后的对象，保证存在，但不保�
       }
     };
   }
-}));
+});
+```
+
+## 如何忽略错误
+
+所谓「忽略」错误，是指虽然被接收，但不会弹窗。
+
+虽然可以用 `null | undefined`，是的，在 JS 中 `null | undefined` 是可以被当成错误的存在，但这并不是推荐的做法。
+
+这种场景下，可以利用帮助方法 `createErrorToIgnore` throw 一个新错误，这个错误一定会被忽略。
+
+```typescript
+import {
+  createErrorToIgnore
+} from '@alicloud/console-base-error-prompt';
+
+try {
+  doMyStuff();
+} catch (err) {
+  // 可以忽略该错误，或错误在业务层已经被处理
+  if (canIgnoreError(err)) {
+    throw createErrorToIgnore();
+  }
+}
 ```

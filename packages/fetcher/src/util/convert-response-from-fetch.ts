@@ -40,6 +40,6 @@ export default async function convertResponseFromFetch<T = void, C extends IFetc
       data: await response.json() as T
     };
   } catch (err) { // 如果后端返回的不是 JSON，这里会报错「JSON.parse: unexpected character at line 1 column 1 of the JSON data」
-    throw createFetcherError(fetcherConfig, ERROR_RESPONSE_PARSE, err?.message);
+    throw createFetcherError(fetcherConfig, ERROR_RESPONSE_PARSE, (err as Error)?.message);
   }
 }

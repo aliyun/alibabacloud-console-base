@@ -57,6 +57,8 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'cart' = 'e882', // 购物车
   'lang' = 'e70b', // 语言
   'recycle-bin' = 'e621', // 删除（垃圾桶）
+  'thumb-up' = 'e601', // 大拇指朝上
+  'thumb-down' = 'e88d', // 大拇指朝下
   // 其他
   'apps' = 'e60e', // 应用（负数）
   'app' = 'e603', // 应用（单个）

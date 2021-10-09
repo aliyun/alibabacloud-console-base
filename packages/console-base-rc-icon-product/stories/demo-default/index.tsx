@@ -220,6 +220,7 @@ const PRODUCT_MAPPING: Record<string, string> = {
   gds: '图数据库 GDB',
   gpdb: '云原生数据仓库 ADB PostgreSQL 版',
   gts: '全局事务服务',
+  governance: '云治理中心',
   gw: '绿网',
   gws: '云桌面',
   hbase: '云数据库 HBase 版',

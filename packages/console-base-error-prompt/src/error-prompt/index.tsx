@@ -6,20 +6,23 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IErrorPromptSolo,
   IErrorDialogData,
   TErrorPromptArg,
   TErrorPromptArgExtra
 } from '../types';
-import convertToQueueItem from '../util/convert-to-queue-item';
 import intl from '../intl';
+import convertToQueueItem from '../util/convert-to-queue-item';
+import {
+  getSoloQueue,
+  getSoloDialogIndirect,
+  setSoloDialogIndirect,
+  pushSoloQueue,
+  resolveSolo
+} from '../util/the-solo';
 
 import DialogContent from './dialog-content';
 
-const SOLO: IErrorPromptSolo = {
-  dialogIndirect: null,
-  queue: []
-};
+const queue = getSoloQueue(); // 永远指向一个对象
 
 /**
  * 错误弹窗
@@ -37,29 +40,27 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: TErrorPro
     return;
   }
   
-  const {
-    queue
-  } = SOLO;
-  
   const errorPromise = new Promise<void>(resolve => {
     queueItem.resolve = resolve;
   });
   
-  queue.push(queueItem);
+  pushSoloQueue(queueItem);
   
   const dialogContent = <DialogContent {...{
     queue
   }} />;
+  let dialogIndirect = getSoloDialogIndirect();
   
-  if (SOLO.dialogIndirect) { // dialog 已经打开
-    SOLO.dialogIndirect.renderUpdate({
+  if (dialogIndirect) { // dialog 已经打开
+    dialogIndirect.renderUpdate({
       content: dialogContent
     });
-    
+
     return errorPromise;
   }
   
-  const dialogIndirect = openIndirect<void, IErrorDialogData>({
+  dialogIndirect = openIndirect<void, IErrorDialogData>({
+    className: 'J-console-base-error-prompt', // TODO 临时对外的样式钩子（J），供复写纵向位置（ESC 的需求，等 dialog 整体调整完毕可以去掉并通知 ESC）
     data: {
       page: 1
     },
@@ -82,14 +83,9 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: TErrorPro
     undefinedAsReject: false
   });
   
-  SOLO.dialogIndirect = dialogIndirect;
+  setSoloDialogIndirect(dialogIndirect);
   
-  dialogIndirect.promise.then(() => {
-    queue.forEach(v => v.resolve());
-    
-    SOLO.dialogIndirect = null;
-    SOLO.queue = [];
-  });
+  dialogIndirect.promise.then(resolveSolo);
   
   return errorPromise;
 }

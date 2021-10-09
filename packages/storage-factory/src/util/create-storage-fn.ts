@@ -13,7 +13,7 @@ export default function createStorageFn(wholeDataKey: string, theStorage: Storag
       const str = theStorage.getItem(wholeDataKey);
       
       return str ? JSON.parse(str) : {};
-    } catch (ex) {
+    } catch (err) {
       return {};
     }
   }
@@ -37,7 +37,7 @@ export default function createStorageFn(wholeDataKey: string, theStorage: Storag
       }
       
       theStorage.setItem(wholeDataKey, JSON.stringify(wholeData));
-    } catch (ex) {
+    } catch (err) {
       // ignore
     }
   } as TFnStorage;

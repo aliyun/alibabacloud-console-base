@@ -38,7 +38,7 @@ export default function copyText(text = ''): boolean {
     document.execCommand(COMMAND);
     
     return true;
-  } catch (e) {
+  } catch (err) {
     return false;
   } finally {
     textarea.parentNode?.removeChild(textarea);

@@ -20,7 +20,7 @@ export default function find<E extends Element = Element>(selector: TSelector<E>
       for (let i = 0; i < elements.length; i++) {
         arr.push(elements[i]);
       }
-    } catch (e) {
+    } catch (err) {
       // do nothing
     }
   } else { // selector as element
