@@ -1,5 +1,4 @@
 {
-  "lerna": "3.22.1",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": [
@@ -7,6 +6,8 @@
   ],
   "command": {
     "publish": {
+      "npmClient": "npm",
+      "ignoreChanges": ["stories/**", "tests/**", "*.md"],
       "allowBranch": [
         "lerna/pub",
         "lerna/pub-prerelease"
