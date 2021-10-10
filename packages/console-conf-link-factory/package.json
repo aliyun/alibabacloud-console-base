@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-conf-link-factory",
-  "version": "1.1.47",
+  "version": "1.1.48",
   "description": "控制台配置平台 Viper - 渠道链接 - 工厂方法",
   "license": "MIT",
   "sideEffects": false,
@@ -44,5 +44,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "cc3d5bc2fb0a1399e01679a856ea8187b5f45348"
+  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
 }

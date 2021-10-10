@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-conf-feature-factory",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "控制台配置平台 Viper - 功能开关/灰度 - 工厂方法",
   "license": "MIT",
   "sideEffects": false,
@@ -36,7 +36,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/mixed-black-whitelist-checker": "^1.1.47",
+    "@alicloud/mixed-black-whitelist-checker": "^1.1.48",
     "lodash": "^4.17.21"
   },
   "scripts": {
@@ -50,5 +50,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "cc3d5bc2fb0a1399e01679a856ea8187b5f45348"
+  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
 }

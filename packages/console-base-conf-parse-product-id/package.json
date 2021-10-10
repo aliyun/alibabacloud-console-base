@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-parse-product-id",
-  "version": "1.1.27",
+  "version": "1.1.28",
   "description": "ConsoleBase CONF.PRODUCT_ID parse",
   "license": "MIT",
   "sideEffects": false,
@@ -43,5 +43,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "cc3d5bc2fb0a1399e01679a856ea8187b5f45348"
+  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
 }

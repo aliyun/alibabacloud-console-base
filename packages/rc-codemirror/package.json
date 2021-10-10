@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/rc-codemirror",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "CodeMirror@5 的 React 封装",
   "license": "MIT",
   "sideEffects": false,
@@ -54,5 +54,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "cc3d5bc2fb0a1399e01679a856ea8187b5f45348"
+  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
 }
