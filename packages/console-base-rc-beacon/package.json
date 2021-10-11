@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-beacon",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "ConsoleBase 组件 - 导航灯提示",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "beacon"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.82",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.83",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/demo-rc-elements": "^1.3.62",
+    "@alicloud/demo-rc-elements": "^1.3.63",
     "@types/react": "^17.0.27",
     "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
@@ -40,9 +40,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-button": "^1.1.97",
-    "@alicloud/console-base-theme": "^1.3.83",
-    "@alicloud/console-base-theme-sc-base": "^1.1.86"
+    "@alicloud/console-base-rc-button": "^1.1.98",
+    "@alicloud/console-base-theme": "^1.3.84",
+    "@alicloud/console-base-theme-sc-base": "^1.1.87"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -55,5 +55,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
+  "gitHead": "67b833030d05b28a125b8b7df3c81374243fa1a4"
 }

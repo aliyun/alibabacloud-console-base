@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/storage-factory",
-  "version": "1.1.48",
+  "version": "1.1.49",
   "description": "Storage factory - use storage with types",
   "license": "MIT",
   "sideEffects": false,
@@ -41,5 +41,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
+  "gitHead": "67b833030d05b28a125b8b7df3c81374243fa1a4"
 }

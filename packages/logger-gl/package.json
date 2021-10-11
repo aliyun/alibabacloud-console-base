@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/logger-gl",
-  "version": "1.2.48",
+  "version": "1.2.49",
   "description": "黄金令箭封装",
   "license": "MIT",
   "sideEffects": false,
@@ -46,5 +46,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
+  "gitHead": "67b833030d05b28a125b8b7df3c81374243fa1a4"
 }

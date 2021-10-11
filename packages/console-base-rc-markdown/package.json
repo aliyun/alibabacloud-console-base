@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-markdown",
-  "version": "1.1.89",
+  "version": "1.1.90",
   "description": "ConsoleBase 组件 - Markdown 渲染（带通用样式）",
   "license": "MIT",
   "sideEffects": false,
@@ -25,7 +25,7 @@
     "markdown"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.82",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.83",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
     "@types/react": "^17.0.27",
@@ -36,8 +36,8 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-theme-sc-base": "^1.1.86",
-    "@alicloud/rc-markdown": "^1.1.90"
+    "@alicloud/console-base-theme-sc-base": "^1.1.87",
+    "@alicloud/rc-markdown": "^1.1.91"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -50,5 +50,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "f41b4a2a49862c0431a3df8f98e0c58f6059ae5a"
+  "gitHead": "67b833030d05b28a125b8b7df3c81374243fa1a4"
 }
