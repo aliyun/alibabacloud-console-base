@@ -39,7 +39,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/rc-codemirror": "^1.0.25",
+    "@alicloud/rc-codemirror": "^1.0.26",
     "lodash": "^4.17.21"
   },
   "scripts": {

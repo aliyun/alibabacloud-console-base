@@ -31,9 +31,9 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/console-base-log-sls": "^1.2.25",
-    "@alicloud/console-base-types-settings-toolkit": "^1.1.49",
-    "@alicloud/post-message": "^1.2.16"
+    "@alicloud/console-base-log-sls": "^1.2.26",
+    "@alicloud/console-base-types-settings-toolkit": "^1.1.50",
+    "@alicloud/post-message": "^1.2.17"
   },
   "scripts": {
     "start": "breezr start-storybook",

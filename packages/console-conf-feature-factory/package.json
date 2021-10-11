@@ -36,7 +36,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/mixed-black-whitelist-checker": "^1.1.49",
+    "@alicloud/mixed-black-whitelist-checker": "^1.1.50",
     "lodash": "^4.17.21"
   },
   "scripts": {

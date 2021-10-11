@@ -31,9 +31,9 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/console-conf-feature-factory": "^1.0.35",
-    "@alicloud/console-conf-link-factory": "^1.1.49",
-    "@alicloud/console-one-config": "^1.1.77"
+    "@alicloud/console-conf-feature-factory": "^1.0.36",
+    "@alicloud/console-conf-link-factory": "^1.1.50",
+    "@alicloud/console-one-config": "^1.1.78"
   },
   "scripts": {
     "start": "breezr start-storybook",
