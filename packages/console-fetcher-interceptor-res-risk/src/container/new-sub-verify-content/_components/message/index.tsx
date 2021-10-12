@@ -108,6 +108,7 @@ const ScIcon = styled(Icon)<IIconProps>`
   }};
 `;
 
+// 通用的顶部提示 Message
 export default function Message({
   iconType,
   noBackground,
