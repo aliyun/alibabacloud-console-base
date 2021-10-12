@@ -108,7 +108,7 @@ const ScIcon = styled(Icon)<IIconProps>`
   }};
 `;
 
-// 通用的顶部提示 Message
+// 通用的顶部提示 Message 组件
 export default function Message({
   iconType,
   noBackground,
