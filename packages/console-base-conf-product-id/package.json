@@ -25,9 +25,9 @@
     "product-id"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.2.13",
-    "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.27",
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.30",
+    "@types/react": "^17.0.28",
     "react": "^17.0.2",
     "typescript": "^4.4.3"
   },

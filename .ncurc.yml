@@ -4,4 +4,4 @@ reject:
 - 'micromark' # 2.11.4 → 3.0.0 TODO
 - 'micromark-extension-directive' # ^1.4.0 → 2.0.0 TODO
 - 'micromark-extension-gfm' # 0.3.3 → 1.0.0 TODO
-- 'eslint' # 8 的 import 会报错
+- 'eslint' # react-hooks 在 8 下不 work
