@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-parse-env",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "description": "ConsoleBase CONF.ENV parse",
   "license": "MIT",
   "sideEffects": false,

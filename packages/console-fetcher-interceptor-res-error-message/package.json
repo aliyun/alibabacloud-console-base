@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-error-message",
-  "version": "1.1.80",
+  "version": "1.1.81",
   "description": "@alicloud/console-fetcher 响应拦截 - 一般性错误 message 国际化",
   "license": "MIT",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-fetch",
-  "version": "1.2.74",
+  "version": "1.2.75",
   "description": "@alicloud/fetcher 的底层 fetch 实现，可独立使用",
   "license": "MIT",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/copy-text",
-  "version": "1.1.75",
+  "version": "1.1.76",
   "description": "Copy Text",
   "license": "MIT",
   "sideEffects": false,

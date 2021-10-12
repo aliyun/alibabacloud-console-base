@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-logger-sls",
-  "version": "1.2.25",
+  "version": "1.2.26",
   "description": "SLS logger factory for console",
   "license": "MIT",
   "sideEffects": false,

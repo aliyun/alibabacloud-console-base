@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-copy-it",
-  "version": "1.0.87",
+  "version": "1.0.88",
   "description": "ConsoleBase 组件 - Copy It",
   "license": "MIT",
   "sideEffects": false,

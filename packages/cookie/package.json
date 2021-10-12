@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/cookie",
-  "version": "1.1.75",
+  "version": "1.1.76",
   "description": "ConsoleBase Cookie",
   "license": "MIT",
   "sideEffects": false,

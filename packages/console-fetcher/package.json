@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher",
-  "version": "1.5.69",
+  "version": "1.5.70",
   "description": "控制台 fetcher",
   "license": "MIT",
   "sideEffects": false,

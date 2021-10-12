@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-proxy",
-  "version": "1.4.74",
+  "version": "1.4.75",
   "description": "控制台 fetcher 代理",
   "license": "MIT",
   "sideEffects": false,

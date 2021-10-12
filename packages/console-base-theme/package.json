@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme",
-  "version": "1.3.84",
+  "version": "1.3.85",
   "description": "控制台主题 - 基于 css variable 和 styled-components",
   "license": "MIT",
   "sideEffects": false,

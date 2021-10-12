@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-locale",
-  "version": "1.5.39",
+  "version": "1.5.40",
   "description": "ConsoleBase CONF.LOCALE",
   "license": "MIT",
   "sideEffects": false,

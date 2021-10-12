@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dropdown",
-  "version": "1.2.89",
+  "version": "1.2.90",
   "description": "ConsoleBase 组件 - 下拉",
   "license": "MIT",
   "sideEffects": false,

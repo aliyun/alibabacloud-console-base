@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-intl",
-  "version": "1.1.83",
+  "version": "1.1.84",
   "description": "ConsoleBase 组件 - 带样式的国际化文案展示",
   "license": "MIT",
   "sideEffects": false,
