@@ -12,9 +12,7 @@ import {
   EButtonSize
 } from '../const';
 
-type TPropsForHtmlAnchorNButton = ButtonHTMLAttributes<HTMLElement> & AnchorHTMLAttributes<HTMLElement>;
-
-export interface IButtonPropsForSc extends TPropsForHtmlAnchorNButton {
+export interface IButtonPropsForSc extends ButtonHTMLAttributes<HTMLElement>, Omit<AnchorHTMLAttributes<HTMLElement>, 'type'> {
   theme?: EButtonTheme;
   size?: EButtonSize;
   textAlign?: 'left' | 'center' | 'right'; // a button is by default center aligned (`align` is a deprecated HTML attribute)
@@ -31,6 +29,7 @@ export interface IButtonPropsForSc extends TPropsForHtmlAnchorNButton {
   ellipsis?: boolean;
   loading?: boolean;
   active?: boolean; // 将状态锁定在 active
+  [dataName: `data-${string}`]: unknown;
 }
 
 export interface IButtonProps extends Omit<IButtonPropsForSc, 'title'> {

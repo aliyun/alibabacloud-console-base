@@ -26,18 +26,19 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.20",
+    "@types/react": "^17.0.27",
+    "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
     "styled-components": "^5.3.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "peerDependencies": {
     "react": ">=16.8",
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/arms": "^1.1.49",
-    "@alicloud/demo-rc-elements": "^1.3.38"
+    "@alicloud/arms": "^1.1.74",
+    "@alicloud/demo-rc-elements": "^1.3.63"
   },
   "scripts": {
     "start": "breezr start-storybook",

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-one-modal",
-  "version": "1.3.72",
+  "version": "1.3.100",
   "description": "ConsoleBase 组件 - 专用于文档组件的可拖拽、带标签的容器",
   "license": "MIT",
   "sideEffects": false,
@@ -25,17 +25,17 @@
     "modal"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.58",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.83",
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/demo-rc-elements": "^1.3.38",
-    "@types/react": "^17.0.20",
+    "@alicloud/demo-rc-elements": "^1.3.63",
+    "@types/react": "^17.0.27",
     "@types/react-dom": "^17.0.9",
-    "@types/styled-components": "^5.1.14",
+    "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "peerDependencies": {
     "react": ">=16.8",
@@ -43,13 +43,13 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.2.51",
-    "@alicloud/console-base-rc-button": "^1.1.71",
-    "@alicloud/console-base-rc-icon": "^1.4.49",
-    "@alicloud/console-base-rc-tabs": "^1.2.74",
-    "@alicloud/console-base-theme": "^1.3.59",
-    "@alicloud/typescript-missing-helpers": "^1.1.27",
-    "react-rnd": "^10.3.4"
+    "@alicloud/console-base-intl-factory-basic": "^1.2.77",
+    "@alicloud/console-base-rc-button": "^1.1.98",
+    "@alicloud/console-base-rc-icon": "^1.4.74",
+    "@alicloud/console-base-rc-tabs": "^1.2.102",
+    "@alicloud/console-base-theme": "^1.3.84",
+    "@alicloud/typescript-missing-helpers": "^1.1.49",
+    "react-rnd": "^10.3.5"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -62,5 +62,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "334b313bee61b741d1732011e095212aebfa20a9"
+  "gitHead": "ee2ed7a41a260a432339b7e5f9d8535bb820d629"
 }

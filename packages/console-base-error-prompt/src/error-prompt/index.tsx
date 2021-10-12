@@ -60,6 +60,7 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: TErrorPro
   }
   
   dialogIndirect = openIndirect<void, IErrorDialogData>({
+    className: 'J-console-base-error-prompt', // TODO 临时对外的样式钩子（J），供复写纵向位置（ESC 的需求，等 dialog 整体调整完毕可以去掉并通知 ESC）
     data: {
       page: 1
     },

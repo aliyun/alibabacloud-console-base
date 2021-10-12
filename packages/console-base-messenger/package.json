@@ -26,9 +26,9 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.13",
     "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.20",
+    "@types/react": "^17.0.27",
     "react": "^17.0.2",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "dependencies": {
     "@alicloud/console-base-log-sls": "^1.2.1-alpha.4",

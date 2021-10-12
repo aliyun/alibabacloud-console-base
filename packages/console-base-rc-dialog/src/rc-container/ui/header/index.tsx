@@ -26,7 +26,7 @@ const cssNormal = css`
   padding: ${SIZE.PADDING_X_DIALOG}px ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
 `;
 
-// slide 和 slide-up 共用
+// slide 和 slide_up 共用
 const cssSlide = css`
   padding: 0 ${SIZE.PADDING_X_DIALOG * 2 + 16}px 0 ${SIZE.PADDING_X_DIALOG}px;
   height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;

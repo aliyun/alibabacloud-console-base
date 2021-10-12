@@ -1,5 +1,17 @@
+// https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules
 module.exports = {
   'react/display-name': 1,
+  'react/jsx-curly-brace-presence': ['error', {
+    'props': 'never',
+    'children': 'never'
+  }],
+  'react/jsx-curly-newline': ['error', 'never'],
+  'react/jsx-curly-spacing': ['error', {
+    'when': 'never',
+    'children': {
+      'when': 'never'
+    }
+  }],
   'react/jsx-wrap-multilines': ['off'],
   'react/jsx-closing-bracket-location': ['error', 'after-props'],
   'react/jsx-closing-tag-location': ['off'],

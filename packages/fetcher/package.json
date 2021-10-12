@@ -34,9 +34,9 @@
     "@alicloud/fetcher-demo-helpers": "^1.1.50-alpha.4",
     "@types/lodash": "^4.14.172",
     "@types/qs": "^6.9.7",
-    "@types/react": "^17.0.20",
+    "@types/react": "^17.0.27",
     "react": "^17.0.2",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "dependencies": {
     "@alicloud/fetcher-fetch": "^1.2.50-alpha.4",

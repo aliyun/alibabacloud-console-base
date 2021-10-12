@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/stylelint-config",
-  "version": "1.0.14",
+  "version": "1.0.19",
   "description": "stylelint configuration",
   "license": "MIT",
   "main": "index.js",
@@ -35,5 +35,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "gitHead": "6565724afb5a9a268dba6516fdc2832b85b56601"
+  "gitHead": "ee2ed7a41a260a432339b7e5f9d8535bb820d629"
 }
