@@ -69,6 +69,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'face-smile' = 'e7f9', // 笑脸
   'global' = 'e70d', // 全球 - 用于 @alicloud/console-base-wd-region
   'go-top' = 'e694', // 回到顶部
+  'labs' = 'e88e', // 实验室
   'lights-on' = 'e664', // 主题 - 亮
   'lights-off' = 'e665', // 主题 - 暗
   'menu-all' = 'e6e3', // 菜单（九宫格）
