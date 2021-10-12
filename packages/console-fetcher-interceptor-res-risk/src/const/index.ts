@@ -70,10 +70,11 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   // 从错误 data 中获取对应信息
   DATA_PATH_VERIFY_TYPE: 'data.verifyType',
   DATA_PATH_VERIFY_DETAIL: 'data.verifyDetail',
+  DATA_PATH_VALIDATORS: 'data.validators',
   DATA_PATH_VERIFY_CODE_TYPE: 'data.codeType',
   DATA_PATH_VERIFY_URL: 'data.verifyURL',
-  DATA_PATH_USER_PRINCIPAL_NAME: 'data.userPrincipalName',
-  CONFIG_PATH_RISK_VERSION: 'body.consoleVersion',
+  DATA_PATH_USER_ID: 'data.userId',
+  CONFIG_PATH_RISK_VERSION: 'body.riskVersion',
   // 风控错误码
   CODE_NEED_VERIFY: 'FoundRiskAndDoubleConfirm',
   CODE_FORBIDDEN: 'FoundRiskAndTip',

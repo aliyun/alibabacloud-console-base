@@ -4,7 +4,7 @@ import {
 } from '../const';
 
 import {
-  IMfaSharedInfo
+  IAccountId
 } from './shared';
 
 export interface IMfaSharedPayload {
@@ -12,19 +12,18 @@ export interface IMfaSharedPayload {
 }
 
 // 接口 /identity/getMfaInfoToBind 的 payload
-export interface IGetBindMfaInfoPayload extends IMfaSharedPayload {
-  TargetUserPrincipalName?: string;
+export interface IGetBindMfaInfoPayload extends IAccountId, IMfaSharedPayload {
   DeviceType: ESubMFADeviceType;
 }
 
 // 接口 /identity/bindMFA 的 payload
-export interface IBindVMfaPayload extends IMfaSharedInfo, IMfaSharedPayload {
+export interface IBindVMfaPayload extends IAccountId, IMfaSharedPayload {
   DeviceType: ESubMFADeviceType.VMFA;
   Code1: string;
   Code2: string;
 }
 
-export interface IBindU2FPayload extends IMfaSharedInfo, IMfaSharedPayload {
+export interface IBindU2FPayload extends IAccountId, IMfaSharedPayload {
   DeviceType: ESubMFADeviceType.U2F;
   U2FAppId: string;
   U2FVersion: string;
@@ -35,10 +34,10 @@ export interface IBindU2FPayload extends IMfaSharedInfo, IMfaSharedPayload {
 export type TBindMfaPayload = IBindVMfaPayload | IBindU2FPayload;
 
 // 接口 /identity/getMfaInfoToAuth 的 payload
-export interface IGetAuthMfaInfoPayload extends IMfaSharedInfo, IMfaSharedPayload {}
+export interface IGetAuthMfaInfoPayload extends IAccountId, IMfaSharedPayload {}
 
 // 接口 /identity/verify 的 payload
-export interface IVerifyMfaSharedPayload extends IMfaSharedInfo, IMfaSharedPayload {
+export interface IVerifyMfaSharedPayload extends IAccountId, IMfaSharedPayload {
   VerifyType: EPayloadVerifyType;
 }
 

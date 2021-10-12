@@ -121,25 +121,27 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           verifyType,
           type
         } = riskInfo;
+
+        const newSubRisk = risk === ERisk.NEW_SUB;
         
         switch (type) {
           case EVerifyType.NONE:
             await riskInvalid({
-              newRisk: risk === ERisk.NEW_SUB,
-              message: risk === ERisk.NEW_SUB ? intl('message:new_main_verify_error') : intl('message:invalid_unknown!lines'),
-              urlSettings: risk === ERisk.NEW_SUB ? riskConfig.URL_SETTINGS : ''
+              newSubRisk,
+              message: newSubRisk ? intl('message:new_main_verify_error') : intl('message:invalid_unknown!lines'),
+              urlSettings: newSubRisk ? riskConfig.URL_SETTINGS : ''
             });
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.UNKNOWN:
             await riskInvalid({
-              newRisk: risk === ERisk.NEW_SUB,
-              message: risk === ERisk.NEW_SUB ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
+              newSubRisk,
+              message: newSubRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
                 method: verifyType
               }) : intl('message:invalid_unsupported_{method}!html!lines', {
                 method: verifyType
               }),
-              urlSettings: risk === ERisk.NEW_SUB ? riskConfig.URL_SETTINGS : ''
+              urlSettings: newSubRisk ? riskConfig.URL_SETTINGS : ''
             });
             
             throw convertToRiskErrorInvalid(err);
@@ -148,7 +150,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
             // 旧版主账号风控手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
             if (risk === ERisk.OLD_MAIN && !riskInfo.detail) {
               await riskInvalid({
-                newRisk: false,
+                newSubRisk: false,
                 message: intl('message:invalid_unknown!lines'),
                 urlSettings: riskConfig.URL_SETTINGS
               });

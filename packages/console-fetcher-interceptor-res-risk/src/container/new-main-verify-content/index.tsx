@@ -61,7 +61,7 @@ export default function Content(): JSX.Element {
         lock(true);
 
         const verifyResult = {
-          ivToken
+          verifyCode: ivToken
         };
         
         // 主应用

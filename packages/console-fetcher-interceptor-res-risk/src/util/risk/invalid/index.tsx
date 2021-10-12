@@ -8,23 +8,23 @@ import {
 import intl from '../../../intl';
 
 interface IProps {
-  newRisk: boolean;
+  newSubRisk: boolean;
   message: string;
   urlSettings?: string;
 }
 
 export default function riskInvalid({
-  newRisk,
+  newSubRisk,
   message,
   urlSettings
 }: IProps): Promise<void> {
   return open<void>({
-    title: newRisk ? intl('title:sub_default') : intl('op:risk_invalid'),
+    title: newSubRisk ? intl('title:sub_default') : intl('op:risk_invalid'),
     content: <AltWrap {...{
       type: 'alert',
       content: message
     }} />,
-    buttons: !newRisk && urlSettings ? [{
+    buttons: !newSubRisk && urlSettings ? [{
       label: intl('op:risk_invalid_go'),
       spm: 'add',
       href: urlSettings

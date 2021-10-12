@@ -1,3 +1,7 @@
-export interface IMfaSharedInfo {
-  TargetUserPrincipalName: string; // 用户名（包含 @ 后缀）
+export interface ITargetUserPrincipalName {
+  TargetUserPrincipalName: string; // 用户名
+}
+
+export interface IAccountId {
+  AccountId: string; // 用户 ID
 }

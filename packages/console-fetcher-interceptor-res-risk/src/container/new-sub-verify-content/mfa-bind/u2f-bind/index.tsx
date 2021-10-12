@@ -34,7 +34,7 @@ export default function U2FBind(): JSX.Element {
       getBindMfaInfoData,
       u2fTimeout,
       subRiskInfo: {
-        userPrincipalName
+        accountId
       }
     },
     updateData
@@ -95,7 +95,7 @@ export default function U2FBind(): JSX.Element {
 
       updateData({
         bindMfaPayload: {
-          TargetUserPrincipalName: userPrincipalName,
+          AccountId: accountId,
           TicketType: ticketType,
           DeviceType: ESubMFADeviceType.U2F,
           U2FClientData: clientData,
@@ -109,7 +109,7 @@ export default function U2FBind(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [userPrincipalName, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
+  }, [accountId, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({

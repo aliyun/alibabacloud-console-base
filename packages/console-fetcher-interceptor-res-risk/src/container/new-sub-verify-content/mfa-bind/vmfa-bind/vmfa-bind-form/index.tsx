@@ -30,7 +30,7 @@ export default function VMfaBindForm(): JSX.Element {
   const {
     data: {
       subRiskInfo: {
-        userPrincipalName
+        accountId
       }
     },
     updateData
@@ -44,7 +44,7 @@ export default function VMfaBindForm(): JSX.Element {
   const handleCode1InputChange = useCallback(inputCode1 => {
     const newBindMfaPayload: IBindVMfaPayload = {
       TicketType: ticketType,
-      TargetUserPrincipalName: userPrincipalName,
+      AccountId: accountId,
       DeviceType: ESubMFADeviceType.VMFA,
       Code1: inputCode1,
       Code2: stateCode2
@@ -57,11 +57,11 @@ export default function VMfaBindForm(): JSX.Element {
       errorMessage: '',
       primaryButtonDisabled: !REG_MFA_CODE.test(inputCode1) || !REG_MFA_CODE.test(stateCode2)
     });
-  }, [userPrincipalName, stateCode2, updateData]);
+  }, [accountId, stateCode2, updateData]);
 
   const handleCode2InputChange = useCallback(inputCode2 => {
     const newBindMfaPayload: IBindVMfaPayload = {
-      TargetUserPrincipalName: userPrincipalName,
+      AccountId: accountId,
       TicketType: ticketType,
       DeviceType: ESubMFADeviceType.VMFA,
       Code1: stateCode1,
@@ -75,7 +75,7 @@ export default function VMfaBindForm(): JSX.Element {
       errorMessage: '',
       primaryButtonDisabled: !REG_MFA_CODE.test(inputCode2) || !REG_MFA_CODE.test(stateCode1)
     });
-  }, [userPrincipalName, stateCode1, updateData]);
+  }, [accountId, stateCode1, updateData]);
 
   const input1InnerRight = useMemo(() => {
     return <XIcon onClick={() => {

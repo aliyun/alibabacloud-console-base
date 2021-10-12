@@ -52,19 +52,22 @@ export default function VMfaAuth(): JSX.Element {
   const {
     data: {
       subRiskInfo: {
-        userPrincipalName
+        accountId
       },
+      getAuthMfaInfoData,
       errorMessage
     },
     updateData
   } = useDialog<void, INewSubAccountRisk>();
+
+  const userPrincipalName = getAuthMfaInfoData?.TargetUserPrincipalName || '';
 
   const [stateCode, setStateCode] = useState<string>('');
   const [stateInputIsError, setStateInputIsError] = useState<boolean>(false);
 
   const handleInputChange = useCallback(code => {
     const verifyMfaPayload: IVerifyVMfaPayload = {
-      TargetUserPrincipalName: userPrincipalName,
+      AccountId: accountId,
       TicketType: ticketType,
       VerifyType: EPayloadVerifyType.MFA,
       AuthCode: code
@@ -80,7 +83,7 @@ export default function VMfaAuth(): JSX.Element {
       primaryButtonDisabled: isInputError,
       errorMessage: ''
     });
-  }, [userPrincipalName, updateData]);
+  }, [accountId, updateData]);
 
   const inputInnerRight = useMemo(() => {
     return <XIcon onClick={() => {

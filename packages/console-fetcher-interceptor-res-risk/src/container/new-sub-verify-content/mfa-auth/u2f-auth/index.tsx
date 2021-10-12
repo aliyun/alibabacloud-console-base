@@ -32,7 +32,7 @@ export default function U2FAuth(): JSX.Element {
       getAuthMfaInfoData,
       u2fTimeout,
       subRiskInfo: {
-        userPrincipalName
+        accountId
       }
     },
     updateData
@@ -74,7 +74,7 @@ export default function U2FAuth(): JSX.Element {
       setStateGetU2fKey(false);
       updateData({
         verifyMfaPayload: {
-          TargetUserPrincipalName: userPrincipalName,
+          AccountId: accountId,
           TicketType: ticketType,
           VerifyType: EPayloadVerifyType.MFA,
           U2fSignatureData: signatureData,
@@ -88,7 +88,7 @@ export default function U2FAuth(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, userPrincipalName, isUnmounted, updateData]);
+  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, accountId, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({

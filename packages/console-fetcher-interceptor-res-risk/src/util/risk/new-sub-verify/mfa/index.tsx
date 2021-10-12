@@ -55,7 +55,7 @@ export default async function RiskSubVerify({
 
   const {
     detail,
-    userPrincipalName
+    accountId
   } = subRiskInfo;
   const {
     REQUEST_METHOD,
@@ -76,7 +76,7 @@ export default async function RiskSubVerify({
         },
         url: URL_GET_MFA_INFO_TO_AUTH,
         body: {
-          TargetUserPrincipalName: userPrincipalName,
+          AccountId: accountId,
           TicketType: ticketType
         }
       });
@@ -204,7 +204,7 @@ export default async function RiskSubVerify({
           }
         }).then(bindMfaData => {
           const verifyResult = {
-            ivToken: bindMfaData?.IvToken
+            verifyCode: bindMfaData?.IvToken
           };
 
           // 如果请求 BindMFA / Verify 失败，那么会去再次请求被风控的接口。此时无论请求成功或是失败，都会调用 close()方法来关闭弹窗
@@ -234,7 +234,7 @@ export default async function RiskSubVerify({
         });
         unlock();
 
-        // 如果请求 BindMFA / Verify 失败，那么会更新错误信息，并且 return false 阻止弹窗关闭
+        // 如果请求 BindMFA/Verify 失败，那么会更新错误信息，并且 return false 阻止弹窗关闭
         return false;
       }
     });

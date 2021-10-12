@@ -21,13 +21,19 @@ import {
   TGetAuthMfaInfoData
 } from './data';
 
+export interface INewSubRiskValidators {
+  verifyType: string; // 用户验证类型
+  verifyDetail?: string; // 用户验证具体信息，若 verifyType === mfa，'true' 表示用户已绑定过 mfa， 'false' 表示用户未绑定过 mfa
+}
+
 export interface IFetcherInterceptorConfig {
   // 从错误 data 中获取对应的信息
-  DATA_PATH_VERIFY_TYPE?: string; // 如何从原始返回中获取风控类型，重新请求的时候需要带上
-  DATA_PATH_VERIFY_DETAIL?: string; // 如何从原始返回中获取风控展示信息（邮箱或手机）
+  DATA_PATH_VERIFY_TYPE?: string; // 如何从原始返回中获取（旧版）主账号的风控类型
+  DATA_PATH_VERIFY_DETAIL?: string; // 如何从原始返回中获取（旧版）主账号风控展示信息（邮箱或手机）
+  DATA_PATH_VALIDATORS?: string; // 如何从原始返回中获取子账号的风控信息
   DATA_PATH_VERIFY_CODE_TYPE?: string; // 请求验证码的接口需要它
   DATA_PATH_VERIFY_URL?: string; // 主账号风控，如何从原始返回中获取集团会员平台的核身 URL，将嵌入在 iframe 里面
-  DATA_PATH_USER_PRINCIPAL_NAME?: string; // 子账号风控，如何从原始返回中中获取子账号名
+  DATA_PATH_USER_ID?: string; // 子账号风控，如何从原始返回中中获取子账号 ID
   // 从返回的 fetcher config 中获取对应信息
   CONFIG_PATH_RISK_VERSION?: string; // 如何从原始返回的 config 中获取风控是新版还是旧版
   // 风控错误码
@@ -77,7 +83,7 @@ export interface IMainAccountRiskInfo {
  */
 export interface ISubAccountRiskInfo {
   risk: ERisk.NEW_SUB;
-  userPrincipalName: string; // 子账号完整名称
+  accountId: string; // 子账号 ID
   verifyType: string; // 原始的风控验证方式
   type: EVerifyType; // 解析后的风控验证方式
   detail: string;
