@@ -105,7 +105,7 @@ module.exports = {
     prev: '*',
     next: ['return', 'throw', 'break', 'continue', 'block', 'block-like', 'export']
   }, {
-    blankLine: 'never',
+    blankLine: 'any',
     prev: ['const', 'let', 'var'],
     next: ['const', 'let', 'var']
   }, {
