@@ -16,23 +16,22 @@ import Input from '@alicloud/console-base-rc-input';
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
-  IRiskVerifyDialogData
-} from '../../../../types';
+  IOldMainAccountRisk
+} from '../../types';
 import {
   EVerifyType
-} from '../../../../const';
-import intl from '../../../../intl';
-import Form from '../../../../rc/form';
+} from '../../const';
+import intl from '../../intl';
+import Form from '../../rc/form';
 import {
   intlVerifyLabel,
   intlVerifySetting
-} from '../../../intl-verify';
+} from '../../util/intl-verify';
 
 import Generate from './generate';
 
 const ScInfo = styled.strong`
   margin-right: 12px;
-  font-family: Arial, sans-serif;
 `;
 
 const ScInput = styled(Input)`
@@ -42,7 +41,7 @@ const ScInput = styled(Input)`
 
 const ScError = styled.div`
   margin-top: 8px;
-  ${mixinTextError};
+  ${mixinTextError}
 `;
 
 export default function Content(): JSX.Element {
@@ -58,7 +57,7 @@ export default function Content(): JSX.Element {
       errorMessage
     },
     updateData
-  } = useDialog<void, IRiskVerifyDialogData>();
+  } = useDialog<void, IOldMainAccountRisk>();
   const handleInputChange = useCallback(value => {
     updateData({
       code: value.trim(),

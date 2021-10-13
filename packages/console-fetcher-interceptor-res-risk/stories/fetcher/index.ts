@@ -8,7 +8,14 @@ import {
 
 import intercept from '../../src';
 
-const fetcher1 = createFetcher();
+const fetcher1 = createFetcher({
+  body: {
+    riskVersion: '2.0'
+  },
+  params: {
+    riskVersion: '2.0'
+  }
+});
 
 fetcher1.interceptResponse(fetcherDemoInterceptorBiz);
 fetcher1.interceptRequest(fetcherDemoInterceptorMockVerifyCodeUrl);
