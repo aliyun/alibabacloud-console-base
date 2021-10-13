@@ -8,8 +8,9 @@ export const SIZE_CONTROL_BUTTON = 18;
 
 export const BGC_TAB_BAR = '#333';
 export const BGC_TAB_IDLE = 'transparent';
-export const BGC_TAB_DARK_ACTIVE = 'rgb(30, 30, 30)';
 export const BGC_TAB_ACTIVE = '#fff';
+export const BGC_TAB_ACTIVE_DARK = '#000';
 
 export const FGC_TAB_IDLE = 'rgba(255, 255, 255, 0.65)';
 export const FGC_TAB_ACTIVE = '#333';
+export const FGC_TAB_ACTIVE_DARK = '#fff';
