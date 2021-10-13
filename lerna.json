@@ -10,7 +10,7 @@
       "ignoreChanges": ["stories/**", "tests/**", "*.md"],
       "allowBranch": [
         "lerna/pub",
-        "lerna/pub-prerelease"
+        "lerna/pub-*"
       ]
     }
   },
