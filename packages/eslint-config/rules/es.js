@@ -108,6 +108,10 @@ module.exports = {
     blankLine: 'never',
     prev: ['const', 'let', 'var'],
     next: ['const', 'let', 'var']
+  }, {
+    blankLine: 'any',
+    prev: ['export'],
+    next: ['export']
   }],
   'no-multiple-empty-lines': ['error', {
     max: 1,
