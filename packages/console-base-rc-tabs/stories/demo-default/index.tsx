@@ -5,6 +5,7 @@ import React, {
 import styled from 'styled-components';
 import update from 'immutability-helper';
 
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 import {
   Hr,
   Button,
@@ -115,6 +116,7 @@ export default function DemoDefault(): JSX.Element {
   };
   
   return <ScDemo>
+    <ThemeSwitcher />
     <ScDemoL>
       <ThemeSwitcher />
       <Button onClick={handleAdd}>Add Tab</Button>

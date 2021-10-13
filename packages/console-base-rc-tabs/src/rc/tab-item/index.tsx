@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import {
   mixinTypoEllipsis
@@ -11,6 +13,7 @@ import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   HEIGHT_TAB,
+  BGC_TAB_DARK_ACTIVE,
   BGC_TAB_ACTIVE,
   BGC_TAB_IDLE,
   FGC_TAB_ACTIVE,
@@ -39,9 +42,8 @@ const ScTabItem = styled.div<IScProps>`
     content: '';
     position: absolute;
     top: 30%;
-    right: 0;
+    right: 1;
     opacity: ${props => (props['data-active'] ? 0 : 1)};
-    z-index: 1;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 100%);
     width: 1px;
     height: 40%;
@@ -67,6 +69,12 @@ const ScTab = styled(ButtonBase)<IScProps>`
   cursor: default;
   color: ${props => (props['data-active'] ? FGC_TAB_ACTIVE : FGC_TAB_IDLE)};
   ${mixinTypoEllipsis}
+  
+  .theme-dark && {
+  ${props => (props['data-active'] ? css`
+  background-color: ${BGC_TAB_DARK_ACTIVE};
+  color: ${BGC_TAB_ACTIVE};
+  ` : null)}
 `;
 
 const ScTabX = styled(ControlButton)`
