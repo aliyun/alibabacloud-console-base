@@ -26,11 +26,11 @@
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.32",
     "@alicloud/fetcher-demo-helpers": "^1.1.78",
-    "@types/react": "^17.0.28",
+    "@types/react": "^17.0.29",
     "react": "^17.0.2",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.4"
   },
   "dependencies": {
     "@alicloud/console-base-global": "^1.1.96",
