@@ -1,3 +1,4 @@
+// 错误类型
 export enum EErrorCode {
   OK = 0,
   OTHER_ERROR = 1,
