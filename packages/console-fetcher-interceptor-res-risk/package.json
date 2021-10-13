@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-risk",
-  "version": "1.1.81-alpha.21",
+  "version": "1.1.112",
   "description": "@alicloud/console-fetcher 响应拦截 - 风控处理",
   "license": "MIT",
   "sideEffects": false,
@@ -26,13 +26,14 @@
     "risk-control"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.2.13",
-    "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/demo-rc-elements": "^1.3.38",
-    "@alicloud/fetcher-demo-helpers": "^1.1.50-alpha.4",
-    "@types/lodash": "^4.14.172",
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.30",
+    "@alicloud/demo-rc-elements": "^1.3.67",
+    "@alicloud/fetcher-demo-helpers": "^1.1.78",
+    "@types/lodash": "^4.14.175",
+    "@types/react": "^17.0.28",
     "@types/qrcode.react": "^1.0.2",
-    "@types/react": "^17.0.20",
+    "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
     "styled-components": "^5.3.1",
     "typescript": "^4.4.3"
@@ -67,5 +68,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "a0b049c37847182e1d2c7c65d839881d0e67c332"
+  "gitHead": "e575919bb3e5dc36f28501101c18cf0d7cee2488"
 }

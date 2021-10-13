@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-helper-pagination",
-  "version": "1.0.24",
+  "version": "1.0.28",
   "description": "ConsoleBase Helper - Pagination",
   "license": "MIT",
   "sideEffects": false,
@@ -25,9 +25,9 @@
     "pagination"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.2.13",
-    "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.27",
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.30",
+    "@types/react": "^17.0.28",
     "react": "^17.0.2",
     "typescript": "^4.4.3"
   },
@@ -42,5 +42,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "ee2ed7a41a260a432339b7e5f9d8535bb820d629"
+  "gitHead": "e575919bb3e5dc36f28501101c18cf0d7cee2488"
 }

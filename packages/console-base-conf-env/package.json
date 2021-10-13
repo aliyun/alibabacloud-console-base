@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-conf-env",
-  "version": "1.3.41",
+  "version": "1.3.45",
   "description": "ConsoleBase CONF.ENV",
   "license": "MIT",
   "sideEffects": false,
@@ -25,15 +25,15 @@
     "env"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.2.13",
-    "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@alicloud/demo-rc-elements": "^1.3.63",
-    "@types/react": "^17.0.27",
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.30",
+    "@alicloud/demo-rc-elements": "^1.3.67",
+    "@types/react": "^17.0.28",
     "react": "^17.0.2",
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-parse-env": "^1.0.40"
+    "@alicloud/console-base-conf-parse-env": "^1.0.44"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -46,5 +46,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "ee2ed7a41a260a432339b7e5f9d8535bb820d629"
+  "gitHead": "e575919bb3e5dc36f28501101c18cf0d7cee2488"
 }

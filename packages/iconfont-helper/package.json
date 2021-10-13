@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/iconfont-helper",
-  "version": "1.1.52",
+  "version": "1.1.56",
   "description": "iconfont.cn 辅助，用于注入 iconfont 或 webfont 并返回对应的 font 名，是写组件的好帮手",
   "license": "MIT",
   "sideEffects": false,
@@ -24,9 +24,9 @@
     "helper"
   ],
   "devDependencies": {
-    "@alicloud/console-toolkit-cli": "^1.2.13",
-    "@alicloud/console-toolkit-preset-component": "^1.2.29",
-    "@types/react": "^17.0.27",
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.30",
+    "@types/react": "^17.0.28",
     "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
     "styled-components": "^5.3.1",
@@ -47,5 +47,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "ee2ed7a41a260a432339b7e5f9d8535bb820d629"
+  "gitHead": "e575919bb3e5dc36f28501101c18cf0d7cee2488"
 }
