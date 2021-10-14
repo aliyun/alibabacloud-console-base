@@ -8,8 +8,9 @@ import {
   mergeConfig
 } from '@alicloud/fetcher';
 import {
+  open,
   DialogButtonProps,
-  open
+  AltWrap
 } from '@alicloud/console-base-rc-dialog';
 
 import {
@@ -50,8 +51,6 @@ export default async function RiskSubVerify({
 }: IParams): Promise<unknown> {
   let initialStep: EStep = EStep.MFA_CHOOSE;
   let initialGetAuthMfaInfoData;
-  let initialErrorMessage = '';
-  let initialPrimaryButtonDisable = false;
 
   const {
     detail,
@@ -66,8 +65,9 @@ export default async function RiskSubVerify({
     U2F_TIMEOUT
   } = riskConfig;
   const isUnbind = detail === 'false';
+  const buttonCancel = intl('op:cancel');
 
-  const getMfaInfoToAuth = async (): Promise<void> => {
+  if (!isUnbind) {
     try {
       const getAuthMfaInfo = await request<TGetAuthMfaInfoData>({
         method: REQUEST_METHOD,
@@ -89,14 +89,16 @@ export default async function RiskSubVerify({
         initialStep = EStep.VMFA_AUTH;
       }
     } catch (error: unknown) {
-      initialStep = EStep.VMFA_AUTH;
-      initialPrimaryButtonDisable = true;
-      initialErrorMessage = (error as Error)?.message || '';
+      // 当获取用户绑定的 U2F 信息失败时，直接弹出错误弹窗
+      return open<void>({
+        title: intl('title:sub_default'),
+        content: <AltWrap {...{
+          type: 'alert',
+          content: (error as Error).message
+        }} />,
+        buttons: [buttonCancel]
+      });
     }
-  };
-
-  if (!isUnbind) {
-    await getMfaInfoToAuth();
   }
 
   const buttonBindNext: DialogButtonProps<unknown, INewSubAccountRisk> = {
@@ -225,12 +227,13 @@ export default async function RiskSubVerify({
               let u2fPrimaryButtonDisabled = false;
 
               // 只有在验证 U2F 的场景，重新请求被风控的接口报错的时候，才能允许重新获取 U2F 安全密钥。
-              // 如果是绑定的场景，U2F 其实已经绑定成功。如果重试会导致重复绑定 U2F，核身接口会报错
               if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F
-                errorMessage = intl('messsage:incorrect_u2f_auth');
+                errorMessage = intl('message:incorrect_u2f_auth');
                 canU2FRetry = true;
                 // 如果需要重新获取 U2F 安全密钥，那么确定按钮需要置灰。等到获取到了 U2F 安全密钥，才能点击确定提交 U2F 绑定/验证。
                 u2fPrimaryButtonDisabled = true;
+              } else if (payload && 'U2FAppId' in payload) { // 绑定 U2F，当重新请求被风控的接口报错时，U2F 其实已经绑定成功。如果重试会导致重复绑定 U2F，核身接口会报错
+                errorMessage = intl('message:incorrect_u2f_bind');
               }
 
               updateData({
@@ -254,8 +257,6 @@ export default async function RiskSubVerify({
       }
     });
   };
-
-  const buttonCancel = intl('op:cancel');
 
   return open<unknown, INewSubAccountRisk>({
     title: (data: INewSubAccountRisk) => {
@@ -281,8 +282,8 @@ export default async function RiskSubVerify({
       request,
       subRiskInfo,
       requestId: '',
-      primaryButtonDisabled: initialPrimaryButtonDisable,
-      errorMessage: initialErrorMessage,
+      primaryButtonDisabled: false,
+      errorMessage: '',
       step: initialStep,
       getAuthMfaInfoData: initialGetAuthMfaInfoData,
       u2fTimeout: U2F_TIMEOUT
