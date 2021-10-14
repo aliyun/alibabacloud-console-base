@@ -225,21 +225,28 @@ export default async function RiskSubVerify({
               let errorMessage = intl('message:code_incorrect');
               let canU2FRetry = false; // 是否显示 U2F 重试按钮。
               let u2fPrimaryButtonDisabled = false;
+              let bindFailObj = {};
 
-              // 只有在验证 U2F 的场景，重新请求被风控的接口报错的时候，才能允许重新获取 U2F 安全密钥。
-              if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F
-                errorMessage = intl('message:incorrect_u2f_auth');
+              if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F 成功，但重新请求被风控的接口报错
                 canU2FRetry = true;
                 // 如果需要重新获取 U2F 安全密钥，那么确定按钮需要置灰。等到获取到了 U2F 安全密钥，才能点击确定提交 U2F 绑定/验证。
                 u2fPrimaryButtonDisabled = true;
-              } else if (payload && 'U2FAppId' in payload) { // 绑定 U2F，当重新请求被风控的接口报错时，U2F 其实已经绑定成功。如果重试会导致重复绑定 U2F，核身接口会报错
+                errorMessage = intl('message:incorrect_u2f_auth');
+              } else if (payload && 'U2FAppId' in payload) { // 当绑定 U2F【成功】，但重新请求被风控的接口报错时，重试需要让用户走 U2F 验证。
+                canU2FRetry = true;
+                u2fPrimaryButtonDisabled = true;
                 errorMessage = intl('message:incorrect_u2f_bind');
+                bindFailObj = {
+                  step: EStep.U2F_AUTH,
+                  fromU2FBindtoAuth: true
+                };
               }
 
               updateData({
                 errorMessage,
                 canU2FRetry,
-                primaryButtonDisabled: u2fPrimaryButtonDisabled
+                primaryButtonDisabled: u2fPrimaryButtonDisabled,
+                ...bindFailObj
               });
             } else {
               close(error, true);

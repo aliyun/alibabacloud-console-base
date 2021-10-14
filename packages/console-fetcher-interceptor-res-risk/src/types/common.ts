@@ -124,7 +124,8 @@ export interface INewSubAccountRisk {
   verifyMfaData?: IMfaData; // 验证 MFA 接口 /identity/verify 的返回 data
   primaryButtonDisabled?: boolean; // primary button 是否禁用
   u2fTimeout?: number; // U2F 设备绑定/验证的超时时间
-  canU2FRetry?: boolean; // 验证/绑定 U2F 失败后，允许重新跟 U2F 设备交互 
+  canU2FRetry?: boolean; // 验证/绑定 U2F 失败后，允许重新跟 U2F 设备交互
+  fromU2FBindtoAuth?: boolean; // 在 U2F 验证场景中，是不是由 U2F 绑定成功，但是重新请求被风控的接口后跳转过来的
 }
 
 /**
