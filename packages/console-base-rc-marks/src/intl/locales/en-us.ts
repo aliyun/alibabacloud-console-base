@@ -1,8 +1,8 @@
 export default {
-  'label:new': 'NEW',
-  'label:hot': 'HOT',
-  'label:update': 'UPDATE',
-  'label:alpha': 'ALPHA',
-  'label:beta': 'BETA',
-  'label:public_beta': 'Public Beta'
+  'label:new': 'new',
+  'label:hot': 'hot',
+  'label:update': 'update',
+  'label:alpha': 'alpha',
+  'label:beta': 'beta',
+  'label:public_beta': 'public beta'
 };

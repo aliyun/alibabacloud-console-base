@@ -16,9 +16,10 @@ const ScMarkBase = styled.span`
   display: inline-block;
   padding: 0 4px;
   border-radius: 2px;
-  line-height: 1.6;
+  line-height: 1.4;
   font-family: 'PingFang SC', 'Microsoft Yahei', Arial, sans-serif;
-  font-size: 11px;
+  font-variant: small-caps;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 1px;
   ${mixinBorderTransparent}
@@ -32,11 +33,13 @@ const ScMark = styled(ScMarkBase)<IPropsMarkWithType>`
 export default function MarkBase({
   type,
   align,
-  component
+  component,
+  ...props
 }: IPropsMarkWithType): JSX.Element {
   return <ScMark {...{
     as: component,
     align,
-    type
+    type,
+    ...props
   }}>{getLabel(type)}</ScMark>;
 }
