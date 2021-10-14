@@ -67,37 +67,47 @@ export default async function RiskSubVerify({
   const isUnbind = detail === 'false';
   const buttonCancel = intl('op:cancel');
 
-  if (!isUnbind) {
+  const generateAuthMfaInfoFailDialog = (errMsg: string): Promise<unknown> => {
+    return open<void>({
+      title: intl('title:sub_default'),
+      content: <AltWrap {...{
+        type: 'alert',
+        content: errMsg
+      }} />,
+      buttons: [buttonCancel]
+    });
+  };
+
+  const getAuthMfaInfo = async (): Promise<TGetAuthMfaInfoData> => {
+    const authMfaInfo = await request<TGetAuthMfaInfoData>({
+      method: REQUEST_METHOD,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      url: URL_GET_MFA_INFO_TO_AUTH,
+      body: {
+        AccountId: accountId,
+        TicketType: ticketType
+      }
+    });
+
+    return authMfaInfo;
+  };
+
+  if (!isUnbind) { // 如果用户已经绑定了 MFA ，需要获取绑定的 MFA 设备的具体类型
     try {
-      const getAuthMfaInfo = await request<TGetAuthMfaInfoData>({
-        method: REQUEST_METHOD,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        url: URL_GET_MFA_INFO_TO_AUTH,
-        body: {
-          AccountId: accountId,
-          TicketType: ticketType
-        }
-      });
+      const authMfaInfo = await getAuthMfaInfo();
+      
+      initialGetAuthMfaInfoData = authMfaInfo;
 
-      initialGetAuthMfaInfoData = getAuthMfaInfo;
-
-      if (getAuthMfaInfo.DeviceType === ESubMFADeviceType.U2F) {
+      if (authMfaInfo.DeviceType === ESubMFADeviceType.U2F) {
         initialStep = EStep.U2F_AUTH;
       } else {
         initialStep = EStep.VMFA_AUTH;
       }
     } catch (error: unknown) {
       // 当获取用户绑定的 U2F 信息失败时，直接弹出错误弹窗
-      return open<void>({
-        title: intl('title:sub_default'),
-        content: <AltWrap {...{
-          type: 'alert',
-          content: (error as Error).message
-        }} />,
-        buttons: [buttonCancel]
-      });
+      return generateAuthMfaInfoFailDialog((error as Error).message);
     }
   }
 
@@ -218,7 +228,7 @@ export default async function RiskSubVerify({
             unlock();
 
             close(result);
-          }, (error: FetcherError) => {
+          }, async (error: FetcherError) => {
             unlock();
 
             if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
@@ -227,19 +237,31 @@ export default async function RiskSubVerify({
               let u2fPrimaryButtonDisabled = false;
               let bindFailObj = {};
 
-              if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F 成功，但重新请求被风控的接口报错
+              // 验证 U2F 成功，但重新请求被风控的接口报错
+              if (payload && ('U2fSignatureData' in payload)) {
                 canU2FRetry = true;
                 // 如果需要重新获取 U2F 安全密钥，那么确定按钮需要置灰。等到获取到了 U2F 安全密钥，才能点击确定提交 U2F 绑定/验证。
                 u2fPrimaryButtonDisabled = true;
                 errorMessage = intl('message:incorrect_u2f_auth');
-              } else if (payload && 'U2FAppId' in payload) { // 当绑定 U2F【成功】，但重新请求被风控的接口报错时，重试需要让用户走 U2F 验证。
+              // 当绑定 U2F【成功】，但重新请求被风控的接口报错时，重试需要让用户走 U2F 验证。
+              } else if (payload && 'U2FAppId' in payload) {
                 canU2FRetry = true;
                 u2fPrimaryButtonDisabled = true;
                 errorMessage = intl('message:incorrect_u2f_bind');
-                bindFailObj = {
-                  step: EStep.U2F_AUTH,
-                  fromU2FBindtoAuth: true
-                };
+
+                // 获取 U2F 验证的数据
+                try {
+                  const authMfaInfo = await getAuthMfaInfo();
+
+                  bindFailObj = {
+                    step: EStep.U2F_AUTH,
+                    getAuthMfaInfoData: authMfaInfo,
+                    fromU2FBindtoAuth: true
+                  };
+                } catch (getAuthMfaInfoError: unknown) {
+                  // 当获取用户绑定的 U2F 信息失败时，直接弹出错误弹窗
+                  return generateAuthMfaInfoFailDialog((getAuthMfaInfoError as Error).message);
+                }
               }
 
               updateData({

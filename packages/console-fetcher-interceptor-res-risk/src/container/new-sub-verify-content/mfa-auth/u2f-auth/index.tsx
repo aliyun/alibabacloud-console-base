@@ -32,10 +32,10 @@ export default function U2FAuth(): JSX.Element {
   const {
     data: {
       errorMessage,
-      getAuthMfaInfoData,
       u2fTimeout,
       canU2FRetry,
       fromU2FBindtoAuth,
+      getAuthMfaInfoData,
       subRiskInfo: {
         accountId,
         codeType
