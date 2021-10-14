@@ -112,6 +112,10 @@ module.exports = {
     blankLine: 'any',
     prev: ['export'],
     next: ['export']
+  }, {
+    blankLine: 'never',
+    prev: '*',
+    next: ['case', 'default']
   }],
   'no-multiple-empty-lines': ['error', {
     max: 1,
