@@ -74,7 +74,7 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   DATA_PATH_VALIDATORS: 'data.Validators.Validator',
   DATA_PATH_USER_ID: 'data.AliyunIdkp',
   DATA_PATH_NEW_VERIFY_CODE_TYPE: 'data.CodeType',
-  DATA_PATH_VERIFY_URL: 'data.verifyURL',
+  DATA_PATH_VERIFY_URL: 'data.VerifyURL',
   CONFIG_PATH_RISK_VERSION: 'body.riskVersion',
   // 风控错误码
   CODE_NEED_VERIFY: 'FoundRiskAndDoubleConfirm',

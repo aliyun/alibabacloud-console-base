@@ -221,19 +221,25 @@ export default async function RiskSubVerify({
 
             if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
               let errorMessage = intl('message:code_incorrect');
-              let canU2FRetry = false;
+              let canU2FRetry = false; // 是否显示 U2F 重试按钮。
+              let u2fPrimaryButtonDisabled = false;
 
-              if (payload && ('U2FAppId' in payload)) { // payload 里面有 U2FAppId 字段（代表是绑定 U2F）
+              // 如果核身服务对 U2F 安全密钥的验证失败了，那么获取 U2F 安全密钥是可以重试的。
+              if (payload && ('U2FAppId' in payload)) { // 绑定 U2F
                 errorMessage = intl('message:incorrect_u2f_bind');
                 canU2FRetry = true;
-              } else if (payload && ('U2fSignatureData' in payload)) { // payload 里面有 U2fSignatureData 字段（代表是验证 U2F）
+                // 如果需要重新获取 U2F 安全密钥，那么确定按钮需要置灰。等到获取到了 U2F 安全密钥，才能点击确定提交 U2F 绑定/验证。
+                u2fPrimaryButtonDisabled = true;
+              } else if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F
                 errorMessage = intl('messsage:incorrect_u2f_auth');
                 canU2FRetry = true;
+                u2fPrimaryButtonDisabled = true;
               }
 
               updateData({
                 errorMessage,
-                canU2FRetry
+                canU2FRetry,
+                primaryButtonDisabled: u2fPrimaryButtonDisabled
               });
             } else {
               close(error, true);

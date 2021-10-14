@@ -50,6 +50,8 @@ export default {
   'title:sub_default': '子账号安全验证',
   'message:incorrect_u2f_bind': '绑定 U2F 安全密钥失败，请重新获取 U2F 安全密钥信息，并提交绑定。',
   'messsage:incorrect_u2f_auth': '验证 U2F 安全密钥失败，请重新获取 U2F 安全密钥信息，并提交验证。',
+  'message:u2f_get_key_fail': '获取 U2F 安全密钥失败，请重试。',
+  'message:u2f_get_key_timeout': '获取 U2F 安全密钥超时，请重试。',
   'message:u2f_browser_not_support': '您的浏览器不支持 U2F 安全密钥或者浏览器版本过低。',
   'message:u2f_http_not_support': '基于 HTTP 协议的页面不支持 U2F 安全密钥。',
   'message:u2f_bind_confirm_tip': '允许查看您的安全密钥的品牌与型号。',

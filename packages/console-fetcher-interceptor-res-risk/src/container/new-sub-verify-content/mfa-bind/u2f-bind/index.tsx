@@ -9,7 +9,9 @@ import {
   useDialog,
   confirm
 } from '@alicloud/console-base-rc-dialog';
-import u2fApi from '@alicloud/u2f-api';
+import u2fApi, {
+  IErrorU2f
+} from '@alicloud/u2f-api';
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
@@ -22,6 +24,7 @@ import {
 import intl from '../../../../intl';
 import getU2FStateMessage from '../../../../util/get-u2f-state-message';
 import getTicketType from '../../../../util/get-ticket-type';
+import intlU2FError from '../../../../util/intl-u2f-error';
 import U2fUi from '../../_components/u2f-ui';
 
 const ticketType = getTicketType();
@@ -57,6 +60,11 @@ export default function U2FBind(): JSX.Element {
     if (isUnmounted()) {
       return;
     }
+
+    // 当后端核身服务校验 U2F 安全密钥失败时，需要重新获取 U2F 安全密钥。这时需要把报错信息清空，才能展示获取 U2F 安全密钥的状态
+    updateData({
+      errorMessage: ''
+    });
 
     try {
       const isU2FSupported = await u2fApi.isSupported();
@@ -111,7 +119,9 @@ export default function U2FBind(): JSX.Element {
       });
     } catch (error) {
       updateData({
-        errorMessage: (error as Error)?.message || ''
+        errorMessage: intlU2FError((error as IErrorU2f).metaData?.code) || '',
+        // 如果获取 U2F 安全密钥失败，那么【重试】按钮也应该要展示，来重新获取 U2F 安全密钥
+        canU2FRetry: true
       });
     }
   }, [accountId, codeType, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);

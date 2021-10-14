@@ -111,7 +111,7 @@ export default function Content(): JSX.Element {
       style: {
       // 宽度设定 100% 会有横向的滚动条
         width: '98%',
-        minHeight: 360,
+        minHeight: 400,
         paddingTop: 16
       },
       title: intl('title:main'),

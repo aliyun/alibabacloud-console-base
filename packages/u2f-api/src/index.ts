@@ -19,5 +19,6 @@ export type {
   SignResponse,
   Transport,
   Transports,
-  RegisteredKey
+  RegisteredKey,
+  IErrorU2f
 } from './types';
