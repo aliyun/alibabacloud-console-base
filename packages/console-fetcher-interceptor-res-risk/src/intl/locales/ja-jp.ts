@@ -28,6 +28,7 @@ export default {
   'message:no_get_code_url': '確認コードのURLが設定されていないことを確認し、開発に連絡してください。',
 
   'op:previous_step': 'Previous',
+  'op:retry': 'Retry',
   'attr:vmfa_auth_userName': 'UserName',
   'attr:vmfa_auth_code': 'Verification Code',
   'attr:vmfa_bind_code1': 'The First Security Code',
@@ -47,6 +48,8 @@ export default {
   'title:sub_vmfa_auth': 'Auth Virtual MFA Device',
   'title:sub_u2f_auth': 'Auth U2F Security Key',
   'title:sub_default': 'RAM Account Safety Verification',
+  'message:incorrect_u2f_bind': 'Failed to bind the U2F security key, please obtain the U2F security key information again and submit the binding.',
+  'messsage:incorrect_u2f_auth': 'Failed to auth the U2F security key, please obtain the U2F security key information again and submit the authing.',
   'message:u2f_browser_not_support': 'Your browser does not support the U2F security key, or the version of your browser is outdated.',
   'message:u2f_http_not_support': 'HTTP web pages do not support U2F security keys.',
   'message:u2f_bind_confirm_tip': 'Do You Allow the Browser to View Brand and Type of U2F Security Key?',

@@ -52,7 +52,8 @@ export default function VMfaAuth(): JSX.Element {
   const {
     data: {
       subRiskInfo: {
-        accountId
+        accountId,
+        codeType
       },
       getAuthMfaInfoData,
       errorMessage
@@ -70,6 +71,9 @@ export default function VMfaAuth(): JSX.Element {
       AccountId: accountId,
       TicketType: ticketType,
       VerifyType: EPayloadVerifyType.MFA,
+      Ext: JSON.stringify({
+        codeType
+      }),
       AuthCode: code
     };
 
@@ -83,7 +87,7 @@ export default function VMfaAuth(): JSX.Element {
       primaryButtonDisabled: isInputError,
       errorMessage: ''
     });
-  }, [accountId, updateData]);
+  }, [accountId, codeType, updateData]);
 
   const inputInnerRight = useMemo(() => {
     return <XIcon onClick={() => {

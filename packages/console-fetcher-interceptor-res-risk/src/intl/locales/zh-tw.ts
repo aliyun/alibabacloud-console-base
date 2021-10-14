@@ -28,6 +28,7 @@ export default {
   'message:no_get_code_url': '獲取驗證碼 URL 未設置，請聯繫開發。',
 
   'op:previous_step': '上一步',
+  'op:retry': '重试',
   'attr:vmfa_auth_userName': '用户名',
   'attr:vmfa_auth_code': '校验码',
   'attr:vmfa_bind_code1': '第一组校验码',

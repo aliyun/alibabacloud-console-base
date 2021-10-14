@@ -4,7 +4,8 @@ import {
 } from '../const';
 
 import {
-  IAccountId
+  IAccountId,
+  IExt
 } from './shared';
 
 export interface IMfaSharedPayload {
@@ -17,13 +18,13 @@ export interface IGetBindMfaInfoPayload extends IAccountId, IMfaSharedPayload {
 }
 
 // 接口 /identity/bindMFA 的 payload
-export interface IBindVMfaPayload extends IAccountId, IMfaSharedPayload {
+export interface IBindVMfaPayload extends IAccountId, IExt, IMfaSharedPayload {
   DeviceType: ESubMFADeviceType.VMFA;
   Code1: string;
   Code2: string;
 }
 
-export interface IBindU2FPayload extends IAccountId, IMfaSharedPayload {
+export interface IBindU2FPayload extends IAccountId, IExt, IMfaSharedPayload {
   DeviceType: ESubMFADeviceType.U2F;
   U2FAppId: string;
   U2FVersion: string;
@@ -37,7 +38,7 @@ export type TBindMfaPayload = IBindVMfaPayload | IBindU2FPayload;
 export interface IGetAuthMfaInfoPayload extends IAccountId, IMfaSharedPayload {}
 
 // 接口 /identity/verify 的 payload
-export interface IVerifyMfaSharedPayload extends IAccountId, IMfaSharedPayload {
+export interface IVerifyMfaSharedPayload extends IAccountId, IExt, IMfaSharedPayload {
   VerifyType: EPayloadVerifyType;
 }
 

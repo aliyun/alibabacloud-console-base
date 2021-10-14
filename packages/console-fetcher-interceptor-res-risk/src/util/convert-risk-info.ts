@@ -20,7 +20,8 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
   // 旧版主账号风控用到的数据
   const oldMainRiskType0: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_TYPE!, '') as string;
   const oldMainRiskDetail: string = _get(responseData, riskConfig.DATA_PATH_VERIFY_DETAIL!, '') as string;
-  const codeType = _get(responseData, riskConfig.DATA_PATH_VERIFY_CODE_TYPE!, '') as string;
+  const oldMainCodeType = _get(responseData, riskConfig.DATA_PATH_VERIFY_CODE_TYPE!, '') as string;
+  const codeType = _get(responseData, riskConfig.DATA_PATH_NEW_VERIFY_CODE_TYPE!, '') as string;
   const riskVersion = _get(fetcherConfig, riskConfig.CONFIG_PATH_RISK_VERSION!, '') as string;
   const accountId = _get(responseData, riskConfig.DATA_PATH_USER_ID!, '') as string;
   const verifyUrl = _get(responseData, riskConfig.DATA_PATH_VERIFY_URL!);
@@ -35,13 +36,14 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
 
       // validators 表示用户可以选择的核身方式，一期只有 mfa，后续会加入 sms 以及 email
       if (validators.length > 0) {
-        newSubRiskType0 = validators[0].verifyType;
-        newSubRiskDetail = validators[0].verifyDetail || '';
+        newSubRiskType0 = validators[0].VerifyType;
+        newSubRiskDetail = validators[0].VerifyDetail || '';
       }
 
       return {
         risk: ERisk.NEW_SUB,
         accountId,
+        codeType,
         verifyType: newSubRiskType0,
         type: convertVerifyType(newSubRiskType0, riskConfig),
         detail: newSubRiskDetail
@@ -61,6 +63,6 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
     verifyType: oldMainRiskType0,
     type: convertVerifyType(oldMainRiskType0, riskConfig),
     detail: oldMainRiskDetail,
-    codeType
+    codeType: oldMainCodeType
   };
 }

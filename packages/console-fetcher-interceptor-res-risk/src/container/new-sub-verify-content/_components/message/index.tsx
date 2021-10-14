@@ -19,10 +19,15 @@ import Icon from '@alicloud/console-base-rc-icon';
 import Flex, {
   FlexProps
 } from '@alicloud/console-base-rc-flex';
+import Button, {
+  ButtonTheme,
+  ButtonSize
+} from '@alicloud/console-base-rc-button';
 
 import {
   EIconType
 } from '../../../../const';
+import intl from '../../../../intl';
 
 interface IIconProps {
   iconType: EIconType;
@@ -37,6 +42,8 @@ interface IErrorDivProps extends FlexProps {
 interface IProps extends IErrorDivProps {
   iconType: EIconType;
   message: string;
+  canU2FRetry?: boolean;
+  onRetryClick?: () => void;
 }
 
 const CssDivCommon = css`
@@ -113,13 +120,23 @@ export default function Message({
   iconType,
   noBackground,
   isSmallICon = false,
-  message
+  message,
+  canU2FRetry,
+  onRetryClick
 }: IProps): JSX.Element {
   switch (iconType) {
     case EIconType.error:
-      return <ScError noBackground={noBackground} align="center">
-        <ScIcon type={EIconType.error} iconType={EIconType.error} isSmallICon={isSmallICon} />
-        {message}
+      return <ScError noBackground={noBackground} align="center" justify="space-between">
+        <div>
+          <ScIcon type={EIconType.error} iconType={EIconType.error} isSmallICon={isSmallICon} />
+          {message}
+        </div>
+        {canU2FRetry ? <Button {...{
+          theme: ButtonTheme.PRIMARY,
+          size: ButtonSize.S,
+          label: intl('op:retry'),
+          onClick: onRetryClick
+        }} /> : null}
       </ScError>;
     case EIconType.notice:
       return <ScNotice align="center">

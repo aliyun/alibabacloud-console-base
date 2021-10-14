@@ -30,7 +30,8 @@ export default function VMfaBindForm(): JSX.Element {
   const {
     data: {
       subRiskInfo: {
-        accountId
+        accountId,
+        codeType
       }
     },
     updateData
@@ -46,6 +47,9 @@ export default function VMfaBindForm(): JSX.Element {
       TicketType: ticketType,
       AccountId: accountId,
       DeviceType: ESubMFADeviceType.VMFA,
+      Ext: JSON.stringify({
+        codeType: ''
+      }),
       Code1: inputCode1,
       Code2: stateCode2
     };
@@ -64,6 +68,9 @@ export default function VMfaBindForm(): JSX.Element {
       AccountId: accountId,
       TicketType: ticketType,
       DeviceType: ESubMFADeviceType.VMFA,
+      Ext: JSON.stringify({
+        codeType
+      }),
       Code1: stateCode1,
       Code2: inputCode2
     };
@@ -75,7 +82,7 @@ export default function VMfaBindForm(): JSX.Element {
       errorMessage: '',
       primaryButtonDisabled: !REG_MFA_CODE.test(inputCode2) || !REG_MFA_CODE.test(stateCode1)
     });
-  }, [accountId, stateCode1, updateData]);
+  }, [accountId, codeType, stateCode1, updateData]);
 
   const input1InnerRight = useMemo(() => {
     return <XIcon onClick={() => {

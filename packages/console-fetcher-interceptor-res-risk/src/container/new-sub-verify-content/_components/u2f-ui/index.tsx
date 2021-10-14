@@ -25,6 +25,8 @@ interface IProps {
   getU2fKey: boolean;
   title: string;
   errorMessage: string;
+  canU2FRetry?: boolean;
+  onRetryClick: () => void;
 }
 
 const ScFlex = styled(Flex)`
@@ -74,7 +76,9 @@ export default function U2fUi({
   u2fSupported,
   getU2fKey,
   title,
-  errorMessage
+  canU2FRetry,
+  errorMessage,
+  onRetryClick
 }: IProps): JSX.Element {
   const {
     u2fNotSupportedMsg
@@ -98,12 +102,14 @@ export default function U2fUi({
     if (!u2fSupported || errorMessage) {
       return <U2FMessage {...{
         iconType: EIconType.error,
-        message: !u2fSupported ? u2fNotSupportedMsg : errorMessage
+        message: !u2fSupported ? u2fNotSupportedMsg : errorMessage,
+        canU2FRetry,
+        onRetryClick
       }} />;
     }
 
     return getU2fMessage;
-  }, [u2fNotSupportedMsg, getU2fMessage, u2fSupported, errorMessage]);
+  }, [u2fSupported, errorMessage, canU2FRetry, onRetryClick, u2fNotSupportedMsg, getU2fMessage]);
 
   return <>
     {topMessage}

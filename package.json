@@ -30,7 +30,7 @@
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
     "lerna:publish:patch": "lerna publish patch --no-verify-access --no-verify-registry",
     "lerna:publish:minor": "lerna publish minor --no-verify-access --no-verify-registry",
-    "lerna:publish:prerelease": "lerna publish prerelease --no-verify-access --no-verify-registry",
+    "lerna:publish:prerelease": "lerna publish prerelease --no-verify-access --no-verify-registry --dis-tag alpha",
     "lerna:build:local": "lerna run prepublishOnly",
     "tnpm:sync": "lerna exec tnpm sync",
     "ncu:main": "ncu",

@@ -33,8 +33,10 @@ export default function U2FBind(): JSX.Element {
       errorMessage,
       getBindMfaInfoData,
       u2fTimeout,
+      canU2FRetry,
       subRiskInfo: {
-        accountId
+        accountId,
+        codeType
       }
     },
     updateData
@@ -51,7 +53,7 @@ export default function U2FBind(): JSX.Element {
   const u2fChallenge = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FChallenge', '') || '';
   const u2fVersion = _get(getBindMfaInfoData as IGetBindU2FInfoData, 'U2FVersion', '') || '';
 
-  const fetchData = useCallback(async () => {
+  const fetchU2FBindData = useCallback(async () => {
     if (isUnmounted()) {
       return;
     }
@@ -101,7 +103,10 @@ export default function U2FBind(): JSX.Element {
           U2FClientData: clientData,
           U2FRegistrationData: registrationData,
           U2FAppId: u2fAppId,
-          U2FVersion: u2fVersion
+          U2FVersion: u2fVersion,
+          Ext: JSON.stringify({
+            codeType
+          })
         }
       });
     } catch (error) {
@@ -109,19 +114,21 @@ export default function U2FBind(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [accountId, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
+  }, [accountId, codeType, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({
       primaryButtonDisabled: true
     });
-    fetchData();
-  }, [updateData, fetchData]);
+    fetchU2FBindData();
+  }, [updateData, fetchU2FBindData]);
 
   return <U2fUi {...{
     u2fSupported: stateU2FSupported,
     getU2fKey: stateGetU2fKey,
     title: intl('attr:u2f_bind_title'),
+    onRetryClick: fetchU2FBindData,
+    canU2FRetry,
     errorMessage
   }} />;
 }

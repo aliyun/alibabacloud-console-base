@@ -22,18 +22,19 @@ import {
 } from './data';
 
 export interface INewSubRiskValidators {
-  verifyType: string; // 用户验证类型
-  verifyDetail?: string; // 用户验证具体信息，若 verifyType === mfa，'true' 表示用户已绑定过 mfa， 'false' 表示用户未绑定过 mfa
+  VerifyType: string; // 用户验证类型
+  VerifyDetail?: string; // 用户验证具体信息，若 verifyType === mfa，'true' 表示用户已绑定过 mfa， 'false' 表示用户未绑定过 mfa
 }
 
 export interface IFetcherInterceptorConfig {
   // 从错误 data 中获取对应的信息
   DATA_PATH_VERIFY_TYPE?: string; // 如何从原始返回中获取（旧版）主账号的风控类型
   DATA_PATH_VERIFY_DETAIL?: string; // 如何从原始返回中获取（旧版）主账号风控展示信息（邮箱或手机）
-  DATA_PATH_VALIDATORS?: string; // 如何从原始返回中获取子账号的风控信息
-  DATA_PATH_VERIFY_CODE_TYPE?: string; // 请求验证码的接口需要它
-  DATA_PATH_VERIFY_URL?: string; // 主账号风控，如何从原始返回中获取集团会员平台的核身 URL，将嵌入在 iframe 里面
-  DATA_PATH_USER_ID?: string; // 子账号风控，如何从原始返回中中获取子账号 ID
+  DATA_PATH_VERIFY_CODE_TYPE?: string; // 如何从原始返回中获取 （旧版）主账号风控的风控码
+  DATA_PATH_VALIDATORS?: string; // 如何从原始返回中获取新版子账号的风控信息
+  DATA_PATH_VERIFY_URL?: string; // 新版主账号风控，如何从原始返回中获取集团会员平台的核身 URL，将嵌入在 iframe 里面
+  DATA_PATH_USER_ID?: string; // 新版子账号风控，如何从原始返回中中获取子账号 ID
+  DATA_PATH_NEW_VERIFY_CODE_TYPE?: string; // 新版子账号风控，如何从原始返回中获取子账号风控的风控码
   // 从返回的 fetcher config 中获取对应信息
   CONFIG_PATH_RISK_VERSION?: string; // 如何从原始返回的 config 中获取风控是新版还是旧版
   // 风控错误码
@@ -84,6 +85,7 @@ export interface IMainAccountRiskInfo {
 export interface ISubAccountRiskInfo {
   risk: ERisk.NEW_SUB;
   accountId: string; // 子账号 ID
+  codeType: string; // 风控类型
   verifyType: string; // 原始的风控验证方式
   type: EVerifyType; // 解析后的风控验证方式
   detail: string;
@@ -121,7 +123,8 @@ export interface INewSubAccountRisk {
   verifyMfaPayload?: TVerifyMfaPayload; // 验证 MFA 接口 /identity/verify 的 payload
   verifyMfaData?: IMfaData; // 验证 MFA 接口 /identity/verify 的返回 data
   primaryButtonDisabled?: boolean; // primary button 是否禁用
-  u2fTimeout?: number; // u2f 设备绑定/验证的超时时间
+  u2fTimeout?: number; // U2F 设备绑定/验证的超时时间
+  canU2FRetry?: boolean; // 验证/绑定 U2F 失败后，允许重新跟 U2F 设备交互 
 }
 
 /**

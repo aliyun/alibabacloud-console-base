@@ -207,7 +207,7 @@ export default async function RiskSubVerify({
             verifyCode: bindMfaData?.IvToken
           };
 
-          // 如果请求 BindMFA / Verify 失败，那么会去再次请求被风控的接口。此时无论请求成功或是失败，都会调用 close()方法来关闭弹窗
+          // 如果请求 BindMFA / Verify 成功，那么会去再次请求被风控的接口。
           request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
             body: verifyResult
           } : {
@@ -220,8 +220,20 @@ export default async function RiskSubVerify({
             unlock();
 
             if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
+              let errorMessage = intl('message:code_incorrect');
+              let canU2FRetry = false;
+
+              if (payload && ('U2FAppId' in payload)) { // payload 里面有 U2FAppId 字段（代表是绑定 U2F）
+                errorMessage = intl('message:incorrect_u2f_bind');
+                canU2FRetry = true;
+              } else if (payload && ('U2fSignatureData' in payload)) { // payload 里面有 U2fSignatureData 字段（代表是验证 U2F）
+                errorMessage = intl('messsage:incorrect_u2f_auth');
+                canU2FRetry = true;
+              }
+
               updateData({
-                errorMessage: intl('message:code_incorrect')
+                errorMessage,
+                canU2FRetry
               });
             } else {
               close(error, true);

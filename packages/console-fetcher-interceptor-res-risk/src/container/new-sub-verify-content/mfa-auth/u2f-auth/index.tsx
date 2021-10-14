@@ -31,8 +31,10 @@ export default function U2FAuth(): JSX.Element {
       errorMessage,
       getAuthMfaInfoData,
       u2fTimeout,
+      canU2FRetry,
       subRiskInfo: {
-        accountId
+        accountId,
+        codeType
       }
     },
     updateData
@@ -46,7 +48,7 @@ export default function U2FAuth(): JSX.Element {
   const challenge = _get(getAuthMfaInfoData as IGetAuthU2FInfoData, 'U2FChallenge', '');
   const u2fKeyHandle = _get(getAuthMfaInfoData as IGetAuthU2FInfoData, 'U2FKeyHandle', '');
   
-  const fetchData = useCallback(async () => {
+  const fetchU2FAuthData = useCallback(async () => {
     if (isUnmounted()) {
       return;
     }
@@ -79,7 +81,10 @@ export default function U2FAuth(): JSX.Element {
           VerifyType: EPayloadVerifyType.MFA,
           U2fSignatureData: signatureData,
           U2fKeyHandle: keyHandle,
-          U2fClientData: clientData
+          U2fClientData: clientData,
+          Ext: JSON.stringify({
+            codeType
+          })
         },
         primaryButtonDisabled: false
       });
@@ -88,19 +93,21 @@ export default function U2FAuth(): JSX.Element {
         errorMessage: (error as Error)?.message || ''
       });
     }
-  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, accountId, isUnmounted, updateData]);
+  }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, accountId, codeType, isUnmounted, updateData]);
 
   useEffect(() => {
     updateData({
       primaryButtonDisabled: true
     });
-    fetchData();
-  }, [updateData, fetchData]);
+    fetchU2FAuthData();
+  }, [updateData, fetchU2FAuthData]);
 
   return <U2fUi {...{
     u2fSupported: stateU2FSupported,
     getU2fKey: stateGetU2fKey,
     title: intl('attr:u2f_auth_title'),
+    onRetryClick: fetchU2FAuthData,
+    canU2FRetry,
     errorMessage
   }} />;
 }
