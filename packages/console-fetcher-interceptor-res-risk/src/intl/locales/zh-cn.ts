@@ -55,7 +55,7 @@ export default {
   'message:u2f_browser_not_support': '您的浏览器不支持 U2F 安全密钥或者浏览器版本过低。',
   'message:u2f_http_not_support': '基于 HTTP 协议的页面不支持 U2F 安全密钥。',
   'message:u2f_bind_confirm_tip': '允许查看您的安全密钥的品牌与型号。',
-  'message:u2f_get_key_cancel': '获取 U2F 安全密钥流程被终止，请返回上一步并重试。',
+  'message:u2f_get_key_cancel': '获取 U2F 安全密钥流程被终止，请重试。',
   'message:u2f_bind_get_key': '正在等待 U2F 安全密钥...',
   'message:u2f_bind_get_key_success': '获取 U2F 安全密钥成功。',
   'message:vmfa_bind_step1': '第一步：扫码绑定，或手动输入密钥。',

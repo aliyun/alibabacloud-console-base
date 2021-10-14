@@ -61,10 +61,12 @@ export default function U2FBind(): JSX.Element {
       return;
     }
 
-    // 当后端核身服务校验 U2F 安全密钥失败时，需要重新获取 U2F 安全密钥。这时需要把报错信息清空，才能展示获取 U2F 安全密钥的状态
+    // 当后端核身服务校验 U2F 安全密钥失败时，需要重新获取 U2F 安全密钥。这时需要把报错信息清空，才能展示获取 U2F 安全密钥的状态。
     updateData({
       errorMessage: ''
     });
+    // 状态需要置为正在读取
+    setStateGetU2fKey(true);
 
     try {
       const isU2FSupported = await u2fApi.isSupported();
@@ -86,13 +88,16 @@ export default function U2FBind(): JSX.Element {
       }, u2fTimeout);
 
       if (noPopUp) {
+        // 提示需要用户允许读取 U2F 安全密钥。FireFox 浏览器原生实现了这个弹窗，Chrome 浏览器需要手动弹出弹窗
         const permitted = await confirm(intl('message:u2f_bind_confirm_tip'));
-
+      
         setStateGetU2fKey(!permitted);
         
         if (!permitted) {
+          // 如果用户点击了拒绝，那么就无法读取 U2F 安全密钥信息，此时需要报错并允许用户重试
           updateData({
-            errorMessage: intl('message:u2f_get_key_cancel')
+            errorMessage: intl('message:u2f_get_key_cancel'),
+            canU2FRetry: true
           });
         } else {
           updateData({

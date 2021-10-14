@@ -131,6 +131,7 @@ export default function Message({
           <ScIcon type={EIconType.error} iconType={EIconType.error} isSmallICon={isSmallICon} />
           {message}
         </div>
+        {/* 绑定/验证 U2F 场景，当 U2F 安全密钥获取失败时，有重试的按钮 */}
         {canU2FRetry ? <Button {...{
           theme: ButtonTheme.PRIMARY,
           size: ButtonSize.S,

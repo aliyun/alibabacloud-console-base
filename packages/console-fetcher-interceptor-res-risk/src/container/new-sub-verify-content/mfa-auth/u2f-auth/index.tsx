@@ -60,6 +60,8 @@ export default function U2FAuth(): JSX.Element {
     updateData({
       errorMessage: ''
     });
+    // 状态需要置为正在读取
+    setStateGetU2fKey(true);
 
     try {
       const isU2FSupported = await u2fApi.isSupported();
