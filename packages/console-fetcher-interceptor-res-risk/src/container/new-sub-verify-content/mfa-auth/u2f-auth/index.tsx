@@ -44,7 +44,7 @@ export default function U2FAuth(): JSX.Element {
   } = useDialog<void, INewSubAccountRisk>();
 
   const [stateU2FSupported, setStateU2fSupported] = useState<boolean>(true);
-  const [stateGetU2fKey, setStateGetU2fKey] = useState<boolean>(true);
+  const [stateGetU2fAuthKey, setStateGetU2fAuthKey] = useState<boolean>(true);
 
   const version = _get(getAuthMfaInfoData as IGetAuthU2FInfoData, 'U2FVersion', '');
   const appId = _get(getAuthMfaInfoData as IGetAuthU2FInfoData, 'U2FAppId', '');
@@ -55,13 +55,6 @@ export default function U2FAuth(): JSX.Element {
     if (isUnmounted()) {
       return;
     }
-
-    // 当后端核身服务校验 U2F 安全密钥失败时，需要重新获取 U2F 安全密钥。这时需要把报错信息清空，才能展示获取 U2F 安全密钥的状态
-    updateData({
-      errorMessage: ''
-    });
-    // 状态需要置为正在读取
-    setStateGetU2fKey(true);
 
     try {
       const isU2FSupported = await u2fApi.isSupported();
@@ -83,7 +76,7 @@ export default function U2FAuth(): JSX.Element {
         keyHandle: u2fKeyHandle
       }, u2fTimeout);
 
-      setStateGetU2fKey(false);
+      setStateGetU2fAuthKey(false);
       updateData({
         verifyMfaPayload: {
           AccountId: accountId,
@@ -116,9 +109,18 @@ export default function U2FAuth(): JSX.Element {
 
   return <U2fUi {...{
     u2fSupported: stateU2FSupported,
-    getU2fKey: stateGetU2fKey,
+    getU2fKey: stateGetU2fAuthKey,
     title: intl('attr:u2f_auth_title'),
-    onRetryClick: fetchU2FAuthData,
+    onRetryClick: () => {
+      updateData({
+        errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态。
+        canU2FRetry: false // 点击重试之后需设置 canU2FRetry 为 false，不然 U2F 场景下正常的接口报错，Message 提示中也会带有重试的按钮
+      });
+      // 状态需要置为正在读取 U2F 验证密钥
+      setStateGetU2fAuthKey(true);
+      // 重新获取 U2F 验证密钥
+      fetchU2FAuthData();
+    },
     canU2FRetry,
     errorMessage
   }} />;

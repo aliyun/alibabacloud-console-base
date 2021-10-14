@@ -224,15 +224,12 @@ export default async function RiskSubVerify({
               let canU2FRetry = false; // 是否显示 U2F 重试按钮。
               let u2fPrimaryButtonDisabled = false;
 
-              // 如果核身服务对 U2F 安全密钥的验证失败了，那么获取 U2F 安全密钥是可以重试的。
-              if (payload && ('U2FAppId' in payload)) { // 绑定 U2F
-                errorMessage = intl('message:incorrect_u2f_bind');
-                canU2FRetry = true;
-                // 如果需要重新获取 U2F 安全密钥，那么确定按钮需要置灰。等到获取到了 U2F 安全密钥，才能点击确定提交 U2F 绑定/验证。
-                u2fPrimaryButtonDisabled = true;
-              } else if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F
+              // 只有在验证 U2F 的场景，重新请求被风控的接口报错的时候，才能允许重新获取 U2F 安全密钥。
+              // 如果是绑定的场景，U2F 其实已经绑定成功。如果重试会导致重复绑定 U2F，核身接口会报错
+              if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F
                 errorMessage = intl('messsage:incorrect_u2f_auth');
                 canU2FRetry = true;
+                // 如果需要重新获取 U2F 安全密钥，那么确定按钮需要置灰。等到获取到了 U2F 安全密钥，才能点击确定提交 U2F 绑定/验证。
                 u2fPrimaryButtonDisabled = true;
               }
 
