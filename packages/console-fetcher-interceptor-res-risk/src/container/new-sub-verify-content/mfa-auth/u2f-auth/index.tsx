@@ -106,7 +106,7 @@ export default function U2FAuth(): JSX.Element {
       primaryButtonDisabled: true
     });
 
-    // 如果用户是在绑定 U2F 后，请求被风控的接口出错跳到了 U2F 验证的场景，那么顶部会有错误信息以及重试按钮，需要点击重试按钮后才会获取 U2F 验证密钥
+    // 如果用户是在绑定 U2F 后，请求被风控的接口出错，从而跳到了 U2F 验证的场景，那么顶部会有错误信息以及重试按钮，需要点击重试按钮后才会调用 u2fApi.sign() 获取 U2F 验证密钥。
     if (!fromU2FBindtoAuth) {
       fetchU2FAuthData();
     }
