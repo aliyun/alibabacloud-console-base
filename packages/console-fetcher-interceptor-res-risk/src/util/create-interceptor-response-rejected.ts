@@ -111,7 +111,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
             mainRiskInfo: riskInfo,
             fetcherConfig,
             riskConfig
-          }).catch(err1 => {
+          }).catch(err1 => { // undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
             throw err1 ?? convertToRiskErrorCancelled(err);
           });
         }
@@ -184,7 +184,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           subRiskInfo: riskInfo,
           fetcherConfig,
           riskConfig
-        }).catch(err1 => { // err1 undefined 表示 cancelled
+        }).catch(err1 => { // err1 undefined 表示 cancelled, undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
           throw err1 ?? convertToRiskErrorCancelled(err);
         });
       }

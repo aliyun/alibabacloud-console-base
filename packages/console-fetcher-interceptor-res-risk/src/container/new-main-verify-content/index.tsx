@@ -1,4 +1,6 @@
 import React, {
+  useState,
+  useMemo,
   useCallback,
   useEffect
 } from 'react';
@@ -49,6 +51,9 @@ export default function Content(): JSX.Element {
     updateData
   } = useDialog<unknown, INewMainAccountRisk>();
 
+  // 如果没有 verifyUrl 或者 verifyUrl 是空字符串，那么不展示 iframe
+  const [stateShowIframe, setStateShowIframe] = useState<boolean>(!!verifyUrl);
+
   const getValidateToken = useCallback((event: MessageEvent): void => {
     try {
       // event.data 可能是 object 或者 Json String, 这会导致 decodeURIComponent(event.data) 的结果是 [object, object]，从而导致 JSON.parse 报错
@@ -64,7 +69,6 @@ export default function Content(): JSX.Element {
           verifyCode: ivToken
         };
         
-        // 主应用
         request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
           body: verifyResult
         } : {
@@ -77,8 +81,10 @@ export default function Content(): JSX.Element {
           unlock();
 
           if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
+            setStateShowIframe(false);
             updateData({
-              errorMessage: intl('message:code_incorrect')
+              errorMessage: intl('message:code_incorrect'),
+              hasCancelButton: true
             });
           } else {
             close(error, true);
@@ -91,6 +97,31 @@ export default function Content(): JSX.Element {
       });
     }
   }, [riskConfig, fetcherConfig, request, lock, unlock, close, updateData]);
+
+  const newMainRiskContent = useMemo((): JSX.Element => {
+    if (stateShowIframe) {
+      return <>
+        <iframe {...{
+          style: {
+          // 宽度设定 100% 会有横向的滚动条
+            width: '98%',
+            minHeight: 400,
+            paddingTop: 16
+          },
+          title: intl('title:main'),
+          src: verifyUrl
+        }} />
+        <ScError>
+          {errorMessage}
+        </ScError>
+      </>;
+    }
+  
+    return <AltWrap {...{
+      type: 'alert',
+      content: errorMessage || intl('message:new_main_verify_error')
+    }} />;
+  }, [stateShowIframe, errorMessage, verifyUrl]);
 
   useEffect(() => {
     if (!verifyUrl) {
@@ -106,22 +137,5 @@ export default function Content(): JSX.Element {
     };
   }, [verifyUrl, updateData, getValidateToken]);
 
-  return <>
-    {verifyUrl ? <iframe {...{
-      style: {
-      // 宽度设定 100% 会有横向的滚动条
-        width: '98%',
-        minHeight: 400,
-        paddingTop: 16
-      },
-      title: intl('title:main'),
-      src: verifyUrl
-    }} /> : <AltWrap {...{
-      type: 'alert',
-      content: intl('message:new_main_verify_error')
-    }} />}
-    <ScError>
-      {errorMessage}
-    </ScError>
-  </>;
+  return newMainRiskContent;
 }
