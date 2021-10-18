@@ -34,7 +34,7 @@
     "@alicloud/fetcher-demo-helpers": "^1.1.79",
     "@types/lodash": "^4.14.175",
     "@types/qs": "^6.9.7",
-    "@types/react": "^17.0.29",
+    "@types/react": "^17.0.30",
     "react": "^17.0.2",
     "typescript": "^4.4.4"
   },
