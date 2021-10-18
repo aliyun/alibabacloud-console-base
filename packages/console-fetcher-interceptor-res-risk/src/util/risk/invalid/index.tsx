@@ -28,6 +28,7 @@ export default function riskInvalid({
       label: intl('op:risk_invalid_go'),
       spm: 'add',
       href: urlSettings
-    }, intl('op:cancel')] : [intl('op:cancel')]
+    }, intl('op:cancel')] : [intl('op:cancel')],
+    undefinedAsReject: true
   });
 }

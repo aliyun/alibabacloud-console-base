@@ -68,13 +68,15 @@ export default async function RiskSubVerify({
   const buttonCancel = intl('op:cancel');
 
   const generateAuthMfaInfoFailDialog = (errMsg: string): Promise<unknown> => {
+    // 当获取用户绑定的 MFA 设备类型接口（URL_GET_MFA_INFO_TO_AUTH）失败时，直接调用 open 方法展示报错的 message。此时用户点击【取消】按钮或者右上角的 X 会关闭弹窗，调用 reject 方法。后续处理会走到 catch 逻辑
     return open<void>({
       title: intl('title:sub_default'),
       content: <AltWrap {...{
         type: 'alert',
         content: errMsg
       }} />,
-      buttons: [buttonCancel]
+      buttons: [buttonCancel],
+      undefinedAsReject: true // 关闭弹窗调用 reject 方法，而不是 resolve 方法
     });
   };
 
@@ -110,7 +112,10 @@ export default async function RiskSubVerify({
       return generateAuthMfaInfoFailDialog((error as Error).message);
     }
   }
-
+  
+  // 选择要绑定的 MFA 设备类型场景的【下一步】按钮。点击之后会：
+  // 1. 根据用户选择的 MFA 设备类型，调用 URL_GET_MFA_INFO_TO_BIND 接口得到虚拟 MFA 绑定或者 U2F 设备绑定要用到的参数；
+  // 2. 根据用户选择的 MFA 设备类型切换 UI。
   const buttonBindNext: DialogButtonProps<unknown, INewSubAccountRisk> = {
     label: intl('op:confirm'),
     primary: true,
@@ -163,6 +168,7 @@ export default async function RiskSubVerify({
     }
   };
 
+  // 绑定 VMFA 设备或者 U2F 设备的场景的【上一步】按钮，点击之后会回到选择 MFA 设备的场景。
   const buttonPreviousStep: DialogButtonProps<unknown, INewSubAccountRisk> = {
     label: intl('op:previous_step'),
     primary: false,
@@ -179,6 +185,7 @@ export default async function RiskSubVerify({
     }
   };
 
+  // 【确定】按钮
   const generateSubmitButton = (type: ESubmitType, primaryButtonDisabled: boolean): DialogButtonProps<unknown, INewSubAccountRisk> => {
     const url = type === ESubmitType.AUTH ? URL_MFA_AUTH : URL_MFA_BIND;
 
@@ -237,13 +244,13 @@ export default async function RiskSubVerify({
               let u2fPrimaryButtonDisabled = false;
               let bindFailObj = {};
 
-              // 验证 U2F 成功，但重新请求被风控的接口报错
+              // 验证 U2F 成功，但重新请求被风控的接口报错，此时顶部 Message 会展示具体错误信息，并且展示【重试】按钮让用户重新获取 U2F 密钥，走验证的逻辑
               if (payload && ('U2fSignatureData' in payload)) {
                 canU2FRetry = true;
-                // 如果需要重新获取 U2F 安全密钥，那么确定按钮需要置灰。等到获取到了 U2F 安全密钥，才能点击确定提交 U2F 绑定/验证。
+                // 重新获取 U2F 密钥，【确定】按钮需要置灰。等到获取到了 U2F 密钥，才能点击确定提交 U2F 绑定/验证。
                 u2fPrimaryButtonDisabled = true;
                 errorMessage = intl('message:incorrect_u2f_auth');
-              // 当绑定 U2F【成功】，但重新请求被风控的接口报错时，重试需要让用户走 U2F 验证。
+              // 当绑定 U2F 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
               } else if (payload && 'U2FAppId' in payload) {
                 canU2FRetry = true;
                 u2fPrimaryButtonDisabled = true;
@@ -341,6 +348,6 @@ export default async function RiskSubVerify({
           return [primaryButton, buttonCancel];
       }
     },
-    undefinedAsReject: true
+    undefinedAsReject: true // 点击取消或右上角的 X 会调用 reject 逻辑，后续处理会走到 catch 逻辑
   });
 }
