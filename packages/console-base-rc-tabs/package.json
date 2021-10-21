@@ -29,10 +29,10 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.32",
     "@alicloud/demo-rc-elements": "^1.3.69",
-    "@types/lodash": "^4.14.175",
+    "@types/lodash": "^4.14.176",
     "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
-    "styled-components": "^5.3.1",
+    "styled-components": "^5.3.3",
     "typescript": "^4.4.4"
   },
   "peerDependencies": {
