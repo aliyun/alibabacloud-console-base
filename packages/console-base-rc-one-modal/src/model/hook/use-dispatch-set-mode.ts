@@ -3,9 +3,7 @@ import {
 } from 'react';
 
 import {
-  EModalMode
-} from '../../const';
-import {
+  EModalMode,
   EAction
 } from '../const';
 

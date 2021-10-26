@@ -1,6 +1,6 @@
 import {
   EModalMode
-} from '../../const';
+} from '../const';
 
 import useMode from './use-mode';
 

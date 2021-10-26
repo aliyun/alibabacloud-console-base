@@ -4,7 +4,7 @@ import {
 
 import {
   EModalMode
-} from '../../const';
+} from '../const';
 
 import useModelProps from './_use-model-props';
 import useDispatchSetMode from './use-dispatch-set-mode';

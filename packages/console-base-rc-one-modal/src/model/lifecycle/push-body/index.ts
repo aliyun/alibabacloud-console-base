@@ -4,8 +4,11 @@ import {
 
 import {
   EModalMode
-} from '../../../const';
-import useRndState from '../../hook/use-rnd-state';
+} from '../../const';
+import {
+  useRndStateExtra,
+  useRndStateRect
+} from '../../hook';
 
 /**
  * PIN 模式下，需要对其他内容进行左推
@@ -49,9 +52,11 @@ function fireResize(): void {
 export default function PushBody(): null {
   const {
     mode,
-    visible,
+    visible
+  } = useRndStateExtra();
+  const {
     w
-  } = useRndState();
+  } = useRndStateRect();
   
   useEffect(() => {
     if (!visible || mode !== EModalMode.TO_THE_RIGHT_PINNED) {

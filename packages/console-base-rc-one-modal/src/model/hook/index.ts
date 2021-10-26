@@ -1,6 +1,7 @@
 export { default as useProps } from './_use-model-props';
 export { default as useMode } from './use-mode';
-export { default as useRndState } from './use-rnd-state';
+export { default as useRndStateExtra } from './use-rnd-state-extra';
+export { default as useRndStateRect } from './use-rnd-state-rect';
 export { default as useRndDragHandleClass } from './use-rnd-drag-handle-class';
 export { default as useRndResizeHandleStyles } from './use-rnd-resize-handle-styles';
 export { default as useRndDraggingDisabled } from './use-rnd-dragging-disabled';

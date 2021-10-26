@@ -3,7 +3,9 @@ import update from 'immutability-helper';
 import {
   IModelState
 } from '../types';
-import getWindowSize from '../../util/get-window-size';
+import {
+  getWindowSize
+} from '../util';
 
 /**
  * 浏览器窗口缩放的时候保持右下角位置不变、且大小不变

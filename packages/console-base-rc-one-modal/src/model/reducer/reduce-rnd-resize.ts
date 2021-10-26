@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 
 import {
   EModalMode
-} from '../../const';
+} from '../const';
 import {
   IModelState,
   IPayloadResize

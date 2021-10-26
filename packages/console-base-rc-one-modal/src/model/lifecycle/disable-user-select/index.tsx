@@ -3,7 +3,9 @@ import {
   createGlobalStyle
 } from 'styled-components';
 
-import useRndState from '../../hook/use-rnd-state';
+import {
+  useRndStateExtra
+} from '../../hook';
 
 const UserSelectNone = createGlobalStyle`
   body {
@@ -17,7 +19,7 @@ const UserSelectNone = createGlobalStyle`
 export default function DisableUserSelect(): JSX.Element | null {
   const {
     moving
-  } = useRndState();
+  } = useRndStateExtra();
   
   return moving ? <UserSelectNone /> : null;
 }

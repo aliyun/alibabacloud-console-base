@@ -9,12 +9,13 @@ import styled, {
 } from 'styled-components';
 
 import {
-  EModalMode,
   CLASS_J_RND_HANDLE,
   CLASS_J_RND_CANCEL
 } from '../../const';
 import {
-  useRndState,
+  ModalMode,
+  useRndStateExtra,
+  useRndStateRect,
   useRndResizeHandleStyles,
   useRndDraggingDisabled,
   useOnDragStop,
@@ -64,12 +65,14 @@ export default function TheRnd({
     moving,
     zIndex,
     minWidth,
-    minHeight,
+    minHeight
+  } = useRndStateExtra();
+  const {
     w,
     h,
     x,
     y
-  } = useRndState();
+  } = useRndStateRect();
   const draggingDisabled = useRndDraggingDisabled();
   
   const onResizeStart = useOnResizeStart();
@@ -81,12 +84,12 @@ export default function TheRnd({
   return <ScFixedWrapper {...{
     style: {
       visibility: visible ? 'visible' : 'hidden', // 不能用 display，有个 bug，transform 会变双倍..导致不可见 https://github.com/bokuweb/react-rnd/issues/711
-      zIndex: !visible || mode === EModalMode.MINIMIZED ? 0 : zIndex
+      zIndex: !visible || mode === ModalMode.MINIMIZED ? 0 : zIndex
     }
   }}>
     <ScRnd {...{
       'data-moving': moving ? 1 : 0,
-      'data-invisible': !visible || mode === EModalMode.MINIMIZED ? 1 : 0,
+      'data-invisible': !visible || mode === ModalMode.MINIMIZED ? 1 : 0,
       bounds: 'window',
       size: {
         width: w,

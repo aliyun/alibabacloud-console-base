@@ -1,8 +1,8 @@
 export { default } from './rc-container';
 
 export {
-  EModalMode as ModalMode
-} from './const';
+  ModalMode
+} from './model';
 
 export type {
   IPropsModal as ModalProps,

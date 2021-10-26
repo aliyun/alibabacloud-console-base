@@ -1,14 +1,19 @@
 import {
-  EModalMode,
   WIDTH_INITIAL,
   HEIGHT_INITIAL,
   POSITION_R_INITIAL,
   POSITION_B_INITIAL
 } from '../../const';
-import getWindowSize from '../../util/get-window-size';
 import {
   IModelState
 } from '../types';
+import {
+  getWindowSize
+} from '../util';
+
+import {
+  EModalMode
+} from './enum';
 
 const [W, H] = getWindowSize();
 

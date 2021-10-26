@@ -7,7 +7,7 @@ import {
 } from '../../const';
 import {
   useProps,
-  useRndState,
+  useRndStateRect,
   useRndDragHandleClass
 } from '../../model';
 
@@ -17,7 +17,7 @@ export default function Content(): JSX.Element {
   } = useProps();
   const {
     w
-  } = useRndState();
+  } = useRndStateRect();
   const dragHandleClass = useRndDragHandleClass();
   
   return <Tabs {...{

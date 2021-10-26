@@ -3,8 +3,8 @@ import {
 } from '@alicloud/console-base-rc-tabs';
 
 import {
-  EModalMode
-} from '../const';
+  ModalMode
+} from '../model';
 
 export type TModalTabs = Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller' | 'width'>;
 
@@ -13,7 +13,7 @@ export interface IPropsModal {
   tabs: TModalTabs;
   affix?: string | null | Element;
   // 长相
-  mode?: EModalMode;
+  mode?: ModalMode;
   visible?: boolean;
   zIndex?: number;
   minWidth?: number;
@@ -25,6 +25,6 @@ export interface IPropsModal {
   minimizable?: boolean;
   pinnable?: boolean; // 是否能在靠右模式下进一步挤压 body（给 padding-right）
   // 回调
-  onModeChange?(mode: EModalMode): void;
+  onModeChange?(mode: ModalMode): void;
   onClose?(): void;
 }
