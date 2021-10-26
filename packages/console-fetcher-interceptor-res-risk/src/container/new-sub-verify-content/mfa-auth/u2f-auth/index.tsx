@@ -101,6 +101,19 @@ export default function U2FAuth(): JSX.Element {
     }
   }, [appId, challenge, u2fKeyHandle, version, u2fTimeout, accountId, codeType, isUnmounted, updateData]);
 
+  const handleRetryClick = useCallback(() => {
+    updateData({
+      errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态。
+      canU2FRetry: false // U2F 场景下正常的接口报错，Message 提示中不带重试按钮
+    });
+
+    // 状态需要置为正在读取 U2F 安全密钥
+    setStateGetU2fAuthKey(true);
+    
+    // 重新获取 U2F 安全密钥
+    fetchU2FAuthData();
+  }, [updateData, fetchU2FAuthData]);
+
   useEffect(() => {
     updateData({
       primaryButtonDisabled: true
@@ -116,16 +129,7 @@ export default function U2FAuth(): JSX.Element {
     u2fSupported: stateU2FSupported,
     getU2fKey: stateGetU2fAuthKey,
     title: intl('attr:u2f_auth_title'),
-    onRetryClick: () => {
-      updateData({
-        errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态。
-        canU2FRetry: false // 点击重试之后需设置 canU2FRetry 为 false，不然 U2F 场景下正常的接口报错，Message 提示中也会带有重试的按钮
-      });
-      // 状态需要置为正在读取 U2F 验证密钥
-      setStateGetU2fAuthKey(true);
-      // 重新获取 U2F 验证密钥
-      fetchU2FAuthData();
-    },
+    onRetryClick: handleRetryClick,
     canU2FRetry,
     errorMessage
   }} />;

@@ -81,7 +81,7 @@ export default function U2FBind(): JSX.Element {
       }, u2fTimeout);
 
       if (noPopUp) {
-        // 提示需要用户允许读取 U2F 绑定密钥。FireFox 浏览器原生实现了这个弹窗，Chrome 浏览器需要手动弹出弹窗
+        // 提示需要用户允许读取 U2F 安全密钥。FireFox 浏览器原生实现了这个弹窗，Chrome 浏览器需要手动弹出弹窗
         const permitted = await confirm(intl('message:u2f_bind_confirm_tip'));
       
         setStateGetU2fBindKey(!permitted);
@@ -118,11 +118,24 @@ export default function U2FBind(): JSX.Element {
     } catch (error) {
       updateData({
         errorMessage: intlU2FError((error as IErrorU2f).metaData?.code) || '',
-        // 如果获取 U2F 绑定密钥失败，那么【重试】按钮也应该要展示，来重新获取 U2F 绑定密钥
+        // 如果获取 U2F 安全密钥失败，那么【重试】按钮也应该要展示，来重新获取 U2F 安全密钥
         canU2FRetry: true
       });
     }
   }, [accountId, codeType, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
+
+  const handleRetryClick = useCallback(() => {
+    updateData({
+      errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态。
+      canU2FRetry: false // 保证 U2F 场景下正常的接口报错，Message 提示中没有重试按钮
+    });
+
+    // 状态需要置为正在读取 U2F 安全密钥
+    setStateGetU2fBindKey(true);
+    
+    // 重新获取 U2F 安全密钥
+    fetchU2FBindData();
+  }, [updateData, fetchU2FBindData]);
 
   useEffect(() => {
     updateData({
@@ -135,16 +148,7 @@ export default function U2FBind(): JSX.Element {
     u2fSupported: stateU2FSupported,
     getU2fKey: stateU2FBindKey,
     title: intl('attr:u2f_bind_title'),
-    onRetryClick: () => {
-      updateData({
-        errorMessage: '', // 重新获取 U2F 绑定密钥时，需要把报错信息清空，才能展示获取 U2F 绑定密钥的状态。
-        canU2FRetry: false // 注意，点击重试之后需要清空 canU2FRetry，不然 U2F 场景下正常的接口报错，Message 提示中也会带有重试的按钮
-      });
-      // 状态需要置为正在读取 U2F 绑定密钥
-      setStateGetU2fBindKey(true);
-      // 重新获取 U2F 绑定密钥
-      fetchU2FBindData();
-    },
+    onRetryClick: handleRetryClick,
     canU2FRetry,
     errorMessage
   }} />;

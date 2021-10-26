@@ -68,7 +68,7 @@ export default async function RiskSubVerify({
   const buttonCancel = intl('op:cancel');
 
   const generateAuthMfaInfoFailDialog = (errMsg: string): Promise<unknown> => {
-    // 当获取用户绑定的 MFA 设备类型接口（URL_GET_MFA_INFO_TO_AUTH）失败时，直接调用 open 方法展示报错的 message。此时用户点击【取消】按钮或者右上角的 X 会关闭弹窗，调用 reject 方法。后续处理会走到 catch 逻辑
+    // 当获取用户绑定的 MFA 设备类型接口（URL_GET_MFA_INFO_TO_AUTH）失败时，直接调用 open 方法展示报错的 message。此时用户点击【取消】按钮或者右上角的 X 会关闭弹窗，调用 reject 方法，并被 riskNewSubVerify 的 catch 捕获。
     return open<void>({
       title: intl('title:sub_default'),
       content: <AltWrap {...{
@@ -76,7 +76,7 @@ export default async function RiskSubVerify({
         content: errMsg
       }} />,
       buttons: [buttonCancel],
-      undefinedAsReject: true // 关闭弹窗调用 reject 方法，而不是 resolve 方法
+      undefinedAsReject: true
     });
   };
 
@@ -239,19 +239,17 @@ export default async function RiskSubVerify({
             unlock();
 
             if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
-              let errorMessage = intl('message:code_incorrect');
               let canU2FRetry = false; // 是否显示 U2F 重试按钮。
               let u2fPrimaryButtonDisabled = false;
+              let errorMessage = intl('message:code_incorrect');
               let bindFailObj = {};
 
-              // 验证 U2F 成功，但重新请求被风控的接口报错，此时顶部 Message 会展示具体错误信息，并且展示【重试】按钮让用户重新获取 U2F 密钥，走验证的逻辑
-              if (payload && ('U2fSignatureData' in payload)) {
+              if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F 成功，但重新请求被风控的接口报错。
                 canU2FRetry = true;
                 // 重新获取 U2F 密钥，【确定】按钮需要置灰。等到获取到了 U2F 密钥，才能点击确定提交 U2F 绑定/验证。
                 u2fPrimaryButtonDisabled = true;
                 errorMessage = intl('message:incorrect_u2f_auth');
-              // 当绑定 U2F 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
-              } else if (payload && 'U2FAppId' in payload) {
+              } else if (payload && 'U2FAppId' in payload) { // 当绑定 U2F 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
                 canU2FRetry = true;
                 u2fPrimaryButtonDisabled = true;
                 errorMessage = intl('message:incorrect_u2f_bind');
@@ -288,7 +286,7 @@ export default async function RiskSubVerify({
         });
         unlock();
 
-        // 如果请求 BindMFA/Verify 失败，那么会更新错误信息，并且 return false 阻止弹窗关闭
+        // return false 阻止弹窗关闭
         return false;
       }
     });

@@ -26,7 +26,7 @@ export default {
   'message:code_incorrect': '確認コードが正しくありません。もう一度入力してください。',
   'message:verify_cancelled': '確認はユーザーによってキャンセルされました。',
   'message:no_get_code_url': '確認コードのURLが設定されていないことを確認し、開発に連絡してください。',
-
+  
   'op:previous_step': 'Previous',
   'op:retry': 'Retry',
   'attr:vmfa_auth_userName': 'UserName',
@@ -34,7 +34,7 @@ export default {
   'attr:vmfa_bind_code1': 'The First Security Code',
   'attr:vmfa_bind_code2': 'The Second Security Code',
   'attr:vmfa_bind_info_title': 'Authentication Information',
-  'attr:vmfa_bind_info_account': 'Account: ',
+  'attr:vmfa_bind_info_account': 'UserName: ',
   'attr:vmfa_bind_info_key': 'Key: ',
   'attr:u2f_insert': 'Insert the U2F security key into the USB port of the computer',
   'attr:u2f_click': 'Tap the button on the U2F security key',

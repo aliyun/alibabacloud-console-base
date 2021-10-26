@@ -34,7 +34,7 @@ export default {
   'attr:vmfa_bind_code1': '第一组校验码',
   'attr:vmfa_bind_code2': '第二组校验码',
   'attr:vmfa_bind_info_title': '身份验证信息',
-  'attr:vmfa_bind_info_account': '账号：',
+  'attr:vmfa_bind_info_account': '用户名：',
   'attr:vmfa_bind_info_key': '密钥：',
   'attr:u2f_insert': '将 U2F 安全密钥插入计算机的 USB 端口',
   'attr:u2f_click': '点击 U2F 安全密钥上的按钮',
@@ -47,7 +47,7 @@ export default {
   'title:sub_u2f_bind': '绑定 U2F 安全密钥',
   'title:sub_vmfa_auth': '验证虚拟 MFA 设备',
   'title:sub_u2f_auth': '验证 U2F 安全密钥',
-  'title:sub_default': '子账号安全验证',
+  'title:sub_default': '子用户安全验证',
   'message:incorrect_u2f_bind': '安全验证失败，请重试。',
   'message:incorrect_u2f_auth': '验证 U2F 安全密钥失败，请重新获取 U2F 安全密钥信息，并提交验证。',
   'message:u2f_get_key_fail': '获取 U2F 安全密钥失败，请重试。',
@@ -64,7 +64,7 @@ export default {
   'message:vmfa_input_empty_tip': '校验码不能为空。',
   'message:mfa_choose_vmfa': '您需要在手机上准备好 MFA 应用程序。',
   'message:mfa_choose_u2f': 'YubiKey 或任何其他兼容的 U2F 设备。',
-  'message:mfa_choose_tip': '子账号在进行敏感操作时需要进行安全验证，您需要通过下列方式绑定 MFA 设备。',
+  'message:mfa_choose_tip': '子用户在进行敏感操作时需要进行安全验证，您需要通过下列方式绑定 MFA 设备。',
   'message:new_main_verify_error': '安全验证服务发生未知错误，请重试。',
   'message:sub_invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
 为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`
