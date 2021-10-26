@@ -27,6 +27,9 @@ export type TModelAction = {
 } | {
   type: EAction.RND_RESIZE;
   payload: IPayloadResize;
+} | {
+  type: EAction.SET_WINDOW_SCROLLBAR_WIDTH;
+  payload: number;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;
@@ -40,6 +43,7 @@ export interface IModelState {
   x2: number; // 浏览器可视区域右下角 x
   y2: number; // 浏览器可视区域右下角 y
   pinnedWidth: number; // 靠右模式下只能可以调整宽度，<=0 表示自动
+  windowScrollbarWidth: number; // 浏览器窗口的滚轴宽度，需要监测
   dragging: boolean;
   resizing: number;
 }

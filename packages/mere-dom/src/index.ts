@@ -1,5 +1,7 @@
 export { default as getFixedRect } from './util/get-fixed-rect';
 export { default as getScrollbarWidth } from './util/get-scrollbar-width';
+export { default as getScrollbarWidthOfSystem } from './util/get-scrollbar-width-of-system';
+export { default as getScrollbarWidthOfWindow } from './util/get-scrollbar-width-of-window';
 export { default as find } from './util/find';
 export { default as loadAssets } from './util/load-assets';
 export { default as addClass } from './util/add-class';

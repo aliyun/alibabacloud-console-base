@@ -6,6 +6,7 @@ import {
 export default function getRectForModePinned({
   x2,
   y2,
+  windowScrollbarWidth,
   pinnedWidth
 }: IModelState, propPinnedWidth: number): IRndStateRect {
   const w = Math.min(pinnedWidth > 0 ? pinnedWidth : propPinnedWidth, x2);
@@ -13,7 +14,7 @@ export default function getRectForModePinned({
   return {
     w,
     h: y2,
-    x: x2 > w ? x2 - w : 0,
+    x: (x2 > w ? x2 - w : 0) - windowScrollbarWidth,
     y: 0
   };
 }

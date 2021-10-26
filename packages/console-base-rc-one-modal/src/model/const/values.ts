@@ -26,6 +26,7 @@ export const DEFAULT_CONTEXT_STATE: IModelState = {
   x2: W,
   y2: H,
   pinnedWidth: -1,
+  windowScrollbarWidth: 0,
   resizing: -1,
   dragging: false
 };

@@ -19,13 +19,12 @@ import useModelState from './_use-model-state';
 import useMode from './use-mode';
 
 export default function useRndStateRect(): IRndStateRect {
-  const props = useModelProps();
-  const state = useModelState();
-  const mode = useMode();
   const {
     affix,
     pinnedWidth
-  } = props;
+  } = useModelProps();
+  const state = useModelState();
+  const mode = useMode();
   
   return useMemo<IRndStateRect>((): IRndStateRect => {
     switch (mode) {
