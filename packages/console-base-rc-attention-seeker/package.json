@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme": "^1.3.90",
-    "@alicloud/mere-dom": "^1.1.62",
+    "@alicloud/mere-dom": "^1.1.63",
     "immutability-helper": "^3.1.1"
   },
   "scripts": {
