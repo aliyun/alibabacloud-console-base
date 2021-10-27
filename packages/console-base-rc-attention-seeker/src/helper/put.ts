@@ -1,6 +1,6 @@
 import {
   IAttentionSeekerOptions
-} from '../types';
+} from '../model';
 
 import {
   putItem,

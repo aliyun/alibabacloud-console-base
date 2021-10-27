@@ -5,7 +5,7 @@ import {
   Z_INDEX_BACKDROP
 } from '../../const';
 import {
-  useHandleClickBackdrop
+  useHandleCloseOnBackdropClick
 } from '../../model';
 
 const ScAttentionSeekerMask = styled.div`
@@ -21,7 +21,7 @@ const ScAttentionSeekerMask = styled.div`
 `;
 
 export default function Backdrop(): JSX.Element {
-  const handleBackdropClick = useHandleClickBackdrop();
+  const handleCloseOnBackdropClick = useHandleCloseOnBackdropClick();
   
-  return <ScAttentionSeekerMask onClick={handleBackdropClick} />;
+  return <ScAttentionSeekerMask onClick={handleCloseOnBackdropClick} />;
 }

@@ -4,7 +4,9 @@ import {
 } from 'react-dom';
 
 import AttentionSeeker from '../rc-container';
-import getSoloHolder from '../util/get-solo-holder';
+import {
+  getSoloHolder
+} from '../util';
 
 import {
   get

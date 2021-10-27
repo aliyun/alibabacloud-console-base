@@ -10,6 +10,7 @@ import {
   LongArticle,
   Button
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import {
   prepend,
@@ -28,6 +29,7 @@ const ScFixed = styled.div`
 const ScTheDiv = styled.div`
   padding: 20px;
   width: 400px;
+  border-radius: 12px;
   background: #0064c8;
   color: #fff;
   text-align: center;
@@ -67,6 +69,7 @@ export default function DemoDefault(): JSX.Element {
   }, []);
   
   return <>
+    <ThemeSwitcher />
     <H1>@alicloud/console-base-rc-attention-seeker</H1>
     <Button onClick={handleStrongAttention}>the strong</Button>
     <Button onClick={handleDivAttention}>the div</Button>

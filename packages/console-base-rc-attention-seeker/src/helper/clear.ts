@@ -1,4 +1,6 @@
-import removeSoloHolder from '../util/remove-solo-holder';
+import {
+  removeSoloHolder
+} from '../util';
 
 import {
   removeAll

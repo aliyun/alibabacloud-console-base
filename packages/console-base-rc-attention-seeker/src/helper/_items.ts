@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import {
   IAttentionSeekerItem,
   IAttentionSeekerOptions
-} from '../types';
+} from '../model';
 
 let ITEMS: IAttentionSeekerItem[] = [];
 

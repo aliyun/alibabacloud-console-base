@@ -1,0 +1,1 @@
+export { default as getElementRectStyle } from './get-element-rect-style';

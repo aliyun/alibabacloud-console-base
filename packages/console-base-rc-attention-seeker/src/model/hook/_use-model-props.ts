@@ -3,17 +3,17 @@ import {
 } from 'react';
 
 import {
-  IPropsAttentionSeeker
-} from '../../types';
+  IModelProps
+} from '../types';
 
 import useModelContext from './_use-model-context';
 
-const DEFAULT_PROPS: IPropsAttentionSeeker = {
+const DEFAULT_PROPS: IModelProps = {
   items: [],
   timestamp: 0
 };
 
-export default function useProps(): IPropsAttentionSeeker {
+export default function useModelProps(): IModelProps {
   const {
     props
   } = useModelContext();

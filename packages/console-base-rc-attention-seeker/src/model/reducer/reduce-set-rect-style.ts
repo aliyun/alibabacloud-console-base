@@ -5,9 +5,9 @@ import {
   IModelState
 } from '../types';
 
-export default function reduceSetIndex(state: IModelState, payload: IRect): IModelState {
+export default function reduceSetRectStyle(state: IModelState, payload: IRect): IModelState {
   return update(state, {
-    rect: {
+    rectStyle: {
       $merge: payload
     }
   });

@@ -3,11 +3,11 @@ import {
 } from 'react';
 
 import {
-  useHandleRefreshRect
+  useHandleRefreshRectStyle
 } from '../../hook';
 
 export default function CalcRect(): null {
-  const handleRefreshRect = useHandleRefreshRect();
+  const handleRefreshRect = useHandleRefreshRectStyle();
   
   useEffect(handleRefreshRect, [handleRefreshRect]);
   

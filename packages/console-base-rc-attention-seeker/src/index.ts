@@ -5,5 +5,5 @@ export { default as refresh } from './helper/refresh';
 export { default as clear } from './helper/clear';
 
 export type {
-  IPropsAttentionSeeker as AttentionSeekerProps
-} from './types';
+  IModelProps as AttentionSeekerProps
+} from './model';
