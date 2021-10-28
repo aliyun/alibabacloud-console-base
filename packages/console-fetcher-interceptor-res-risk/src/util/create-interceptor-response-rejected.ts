@@ -31,7 +31,7 @@ import {
 } from './error';
 
 /**
- * 根据业务错误 code 为基础的 fetcher 添加风控流程
+ * 根据业务错误 code 为基础的 fetcher 添加风控流程（老版本主账号风控）
  * 
  * --------------------------------------------------------------------
  *            +-------------------+
@@ -122,7 +122,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           type
         } = riskInfo;
 
-        const newSubRisk = risk === ERisk.NEW_SUB;
+        const newSubRisk = risk === ERisk.NEW_SUB; // 是不是新版子账号风控
         
         switch (type) {
           case EVerifyType.NONE:
@@ -184,7 +184,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           subRiskInfo: riskInfo,
           fetcherConfig,
           riskConfig
-        }).catch(err1 => { // err1 undefined 表示 cancelled, undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
+        }).catch(err1 => { // err1 undefined 表示 cancelled，undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
           throw err1 ?? convertToRiskErrorCancelled(err);
         });
       }

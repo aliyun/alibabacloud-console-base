@@ -1,7 +1,7 @@
+import _get from 'lodash/get';
 import React from 'react';
 import QRCode from 'qrcode.react';
 import styled from 'styled-components';
-import _get from 'lodash/get';
 
 import {
   useDialog

@@ -9,15 +9,13 @@ import {
 } from '@alicloud/fetcher';
 import {
   open,
-  DialogButtonProps,
-  AltWrap
+  DialogButtonProps
 } from '@alicloud/console-base-rc-dialog';
 
 import {
   IFetcherInterceptorConfig,
   ISubAccountRiskInfo,
   INewSubAccountRisk,
-  TGetAuthMfaInfoData,
   TGetBindMfaInfoData,
   IMfaData
 } from '../../../../types';
@@ -27,7 +25,8 @@ import {
 } from '../../../../const';
 import intl from '../../../../intl';
 import Content from '../../../../container/new-sub-verify-content';
-import getTicketType from '../../../get-ticket-type';
+import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
+import getAuthMfaInfo from '../../../get-auth-mfa-info';
 
 interface IParams {
   request: FetcherFnRequest;
@@ -40,8 +39,6 @@ enum ESubmitType {
   BIND,
   AUTH
 }
-
-const ticketType = getTicketType();
 
 export default async function RiskSubVerify({
   request,
@@ -67,38 +64,14 @@ export default async function RiskSubVerify({
   const isUnbind = detail === 'false';
   const buttonCancel = intl('op:cancel');
 
-  const generateAuthMfaInfoFailDialog = (errMsg: string): Promise<unknown> => {
-    // 当获取用户绑定的 MFA 设备类型接口（URL_GET_MFA_INFO_TO_AUTH）失败时，直接调用 open 方法展示报错的 message。此时用户点击【取消】按钮或者右上角的 X 会关闭弹窗，调用 reject 方法，并被 riskNewSubVerify 的 catch 捕获。
-    return open<void>({
-      title: intl('title:sub_default'),
-      content: <AltWrap {...{
-        type: 'alert',
-        content: errMsg
-      }} />,
-      buttons: [buttonCancel],
-      undefinedAsReject: true
-    });
-  };
-
-  const getAuthMfaInfo = async (): Promise<TGetAuthMfaInfoData> => {
-    const authMfaInfo = await request<TGetAuthMfaInfoData>({
-      method: REQUEST_METHOD,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      url: URL_GET_MFA_INFO_TO_AUTH,
-      body: {
-        AccountId: accountId,
-        TicketType: ticketType
-      }
-    });
-
-    return authMfaInfo;
-  };
-
   if (!isUnbind) { // 如果用户已经绑定了 MFA ，需要获取绑定的 MFA 设备的具体类型
     try {
-      const authMfaInfo = await getAuthMfaInfo();
+      const authMfaInfo = await getAuthMfaInfo({
+        request,
+        accountId,
+        requestMethod: REQUEST_METHOD,
+        getMfaInfoToAuthUrl: URL_GET_MFA_INFO_TO_AUTH
+      });
       
       initialGetAuthMfaInfoData = authMfaInfo;
 
@@ -256,7 +229,12 @@ export default async function RiskSubVerify({
 
                 // 获取 U2F 验证的数据
                 try {
-                  const authMfaInfo = await getAuthMfaInfo();
+                  const authMfaInfo = await getAuthMfaInfo({
+                    request,
+                    accountId,
+                    requestMethod: REQUEST_METHOD,
+                    getMfaInfoToAuthUrl: URL_GET_MFA_INFO_TO_AUTH
+                  });
 
                   bindFailObj = {
                     step: EStep.U2F_AUTH,

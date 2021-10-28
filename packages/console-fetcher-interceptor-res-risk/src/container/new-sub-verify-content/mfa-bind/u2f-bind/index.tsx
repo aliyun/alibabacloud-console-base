@@ -1,9 +1,9 @@
+import _get from 'lodash/get';
 import React, {
   useState,
   useCallback,
   useEffect
 } from 'react';
-import _get from 'lodash/get';
 
 import {
   useDialog,

@@ -1,12 +1,13 @@
+import _isUndefined from 'lodash/isUndefined';
 import React, {
   useState,
   useMemo,
+  useCallback,
   ReactNode,
   ChangeEvent,
   InputHTMLAttributes
 } from 'react';
 import styled from 'styled-components';
-import _isUndefined from 'lodash/isUndefined';
 
 import {
   mixinTextPrimary,
@@ -38,7 +39,7 @@ export default function Radio({
 }: IRadioProps): JSX.Element {
   const [stateChecked, setStateChecked] = useState<boolean>(checked || false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
     const currentChecked = e.target.checked;
 
     if (_isUndefined(checked)) {
@@ -46,15 +47,11 @@ export default function Radio({
     }
 
     onChange && onChange(currentChecked, e);
-  };
+  }, [checked, onChange]);
 
   const checkedAttr = useMemo((): boolean => {
-    // 如果有 checked 属性，那么这个 radio 就是受控的，是否被选中由 checked 属性决定，反之，由 stateChecked 决定
-    if (_isUndefined(checked)) {
-      return stateChecked;
-    }
-
-    return checked;
+    // 如果有 checked 属性，那么这个 radio 就是受控的，是否被选中由 checked 属性决定。反之，由 stateChecked 决定
+    return checked ?? stateChecked;
   }, [checked, stateChecked]);
 
   return <ScLabel>

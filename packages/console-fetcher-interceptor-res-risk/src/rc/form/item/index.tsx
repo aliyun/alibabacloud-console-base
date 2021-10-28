@@ -29,20 +29,20 @@ const ScItem = styled.div`
 const ScLabel = styled.div<IScLableProps>`
   padding-right: 16px;
   box-sizing: border-box;
-  ${props => {
+  width: ${props => {
     if (props.labelWidth) {
-      return `width: ${props.labelWidth};`;
+      return `${props.labelWidth};`;
     }
 
-    return 'width: 160px;';
-  }}
-  ${props => {
+    return '160px;';
+  }};
+  text-align: ${props => {
     if (props.textAlign) {
-      return `text-align: ${props.textAlign};`;
+      return `${props.textAlign};`;
     }
 
-    return 'text-align: right;';
-  }}
+    return 'right;';
+  }};
   ${mixinTextSecondary}
 `;
 

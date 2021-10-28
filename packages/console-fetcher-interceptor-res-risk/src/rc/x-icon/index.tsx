@@ -1,24 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Icon, {
-  IconProps
-} from '@alicloud/console-base-rc-icon';
+import Button, {
+  ButtonTheme,
+  ButtonSize,
+  ButtonProps
+} from '@alicloud/console-base-rc-button';
 
-interface IProps extends Omit<IconProps, 'type'> {
-  onClick: () => void;
+interface IProps extends ButtonProps {
+  onClick(): void;
 }
 
-const ScIcon = styled(Icon)`
+const ScButton = styled(Button)`
   cursor: pointer;
+  padding: 0;
 `;
 
 export default function XIcon({
   onClick,
   ...props
 }: IProps): JSX.Element {
-  return <ScIcon {...{
-    type: 'x',
+  return <ScButton {...{
+    theme: ButtonTheme.NONE,
+    size: ButtonSize.XS,
+    iconLeft: 'x',
     onClick,
     ...props
   }} />;

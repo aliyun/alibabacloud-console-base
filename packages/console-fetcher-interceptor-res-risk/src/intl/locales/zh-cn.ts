@@ -47,7 +47,7 @@ export default {
   'title:sub_u2f_bind': '绑定 U2F 安全密钥',
   'title:sub_vmfa_auth': '验证虚拟 MFA 设备',
   'title:sub_u2f_auth': '验证 U2F 安全密钥',
-  'title:sub_default': '子用户安全验证',
+  'title:sub_default': '安全验证',
   'message:incorrect_u2f_bind': '安全验证失败，请重试。',
   'message:incorrect_u2f_auth': '验证 U2F 安全密钥失败，请重新获取 U2F 安全密钥信息，并提交验证。',
   'message:u2f_get_key_fail': '获取 U2F 安全密钥失败，请重试。',
