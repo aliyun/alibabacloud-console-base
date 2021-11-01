@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-attention-seeker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "ConsoleBase 组件 - 寻求用户关注",
   "license": "MIT",
   "sideEffects": false,

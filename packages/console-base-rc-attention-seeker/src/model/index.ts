@@ -2,7 +2,7 @@ export { default } from './provider';
 
 export * from './hook';
 
-export {
+export type {
   IAttentionSeekerOptions,
   IAttentionSeekerItem,
   IModelProps
