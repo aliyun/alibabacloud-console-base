@@ -20,6 +20,8 @@ function getMode(type: IPropsCodeViewer['type']): string | undefined {
     case 'css':
     case 'less':
       return 'text/x-less';
+    case 'markdown':
+      return 'text/markdown';
     default:
       break;
   }
@@ -33,9 +35,9 @@ export default function CodeViewer({
 }: IPropsCodeViewer): JSX.Element {
   return <CodeMirror {...{
     conf: {
-      ...conf,
+      readOnly: true,
       mode: getMode(type),
-      readOnly: true
+      ...conf
     },
     ...props,
     value: typeof children === 'string' ? children : 'Error: children should be a string value'

@@ -8,7 +8,31 @@ Plugins built-in:
 * [micromark-extension-gfm] - support [GFM] out of the box
 * [micromark-extension-directive] - well, you might have to write some code to make it work
 
-Other plugins NOT yet usable.
+Other plugins, e.g. [micromark-extension-math](https://github.com/micromark/micromark-extension-math), you have to install it yourself and put it into `props.extraExtensions`:
+
+```typescript jsx
+import React from 'react';
+import {
+  math,
+  mathHtml
+} from 'micromark-extension-math';
+
+import Markdown, {
+  MarkdownExtension
+} from '@alicloud/rc-markdown';
+
+const extraExtensions: MarkdownExtension[] = [{
+  syntax: math(),
+  html: mathHtml()
+}];
+
+export default function MyMarkdown(): JSX.Element {
+  return <Markdown {...{
+    source: __YOUR_MARKDOWN_DOCUMENT_IN_STRING_FORMAT__,
+    extraExtensions
+  }} />;
+}
+```
 
 # WHY 🙈
 
@@ -46,12 +70,12 @@ export default function MyMarkdown(): JSX.Element {
 import React from 'react';
 
 import Markdown, {
-  MarkdownDirectivePluginOptions,
-  MicromarkDirective
+  MicromarkDirective,
+  MarkdownExtensionDirectiveHtmlOptions
 } from '@alicloud/rc-markdown';
 
 // remember to make it static, do NOT put it inside render
-const directiveOptions: MarkdownDirectivePluginOptions = {
+const directiveOptions: MarkdownExtensionDirectiveHtmlOptions = {
   abbr(d: MicromarkDirective) {
     if (d.type !== 'textDirective') {
       return false;
@@ -83,7 +107,7 @@ export default function MyMarkdown(): JSX.Element {
 
 This package ships with no styles at all.
 
-Use `@alicloud/console-base-rc-markdown` you want to have a _beautiful_ look (with CSS var).
+Use `@alicloud/console-base-rc-markdown` you want to have a _beautiful_ look (with CSS var), or maybe you can warp with your own styling code.
 
 # Useful Links ✨
 

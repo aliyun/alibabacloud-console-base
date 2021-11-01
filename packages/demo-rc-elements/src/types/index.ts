@@ -7,7 +7,7 @@ import {
 } from '@alicloud/rc-codemirror';
 
 export interface IPropsCodeViewer extends CodeMirrorProps {
-  type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'text';
+  type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'markdown' | 'text';
   children?: string;
 }
 
