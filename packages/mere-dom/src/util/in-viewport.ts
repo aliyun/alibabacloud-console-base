@@ -4,6 +4,8 @@ import {
 } from '../types';
 
 import find from './find';
+import getViewportHeight from './get-viewport-height';
+import getViewportWidth from './get-viewport-width';
 
 /**
  * if element is visible in the current viewport
@@ -21,8 +23,6 @@ export default function inViewport(selector: TSelector, parent?: TParent): boole
     bottom,
     right
   } = el.getBoundingClientRect();
-  const viewportH = window.innerHeight || document.documentElement.clientHeight;
-  const viewportW = window.innerWidth || document.documentElement.clientWidth;
-
-  return top >= 0 && left >= 0 && bottom <= viewportH && right <= viewportW;
+  
+  return top >= 0 && left >= 0 && bottom <= getViewportHeight() && right <= getViewportWidth();
 }

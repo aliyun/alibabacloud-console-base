@@ -1,4 +1,6 @@
 export { default as getFixedRect } from './util/get-fixed-rect';
+export { default as getViewportHeight } from './util/get-viewport-height';
+export { default as getViewportWidth } from './util/get-viewport-width';
 export { default as getScrollbarWidth } from './util/get-scrollbar-width';
 export { default as getScrollbarWidthOfSystem } from './util/get-scrollbar-width-of-system';
 export { default as getScrollbarWidthOfWindow } from './util/get-scrollbar-width-of-window';

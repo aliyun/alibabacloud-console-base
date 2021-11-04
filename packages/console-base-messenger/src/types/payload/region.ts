@@ -5,6 +5,7 @@ export interface IPayloadRegion {
 }
 
 export interface IPayloadRegionGroup {
+  key: string;
   name: string;
   regions: IPayloadRegion[];
 }
