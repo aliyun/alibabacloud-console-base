@@ -25,9 +25,11 @@ I think you are ~~sexy~~ gorgeous.
 * [ ] to do
 * [x] done
 
-## Footnotes
+## Footnote
 
-Nope
+A note[^1]
+
+[^1]: Big note.
 
 ## Heading IDs
 

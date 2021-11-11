@@ -69,3 +69,24 @@ Lift($L$) can be determined by Lift Coefficient ($C_L$) like the following equat
 $$
 L = \\frac{1}{2} \\rho v^2 S C_L
 $$`;
+
+export const VARIABLES = `# 自定义扩展
+
+可以通过 console 看扩展是如何运作的。
+
+> 代码采自 micromark 上的一个例子 https://github.com/micromark/micromark#creating-a-micromark-extension
+> 对该例子提供的代码做了 TS 化，及常量引用（原先是硬编码）。
+
+Hello, {planet}!
+
+**strong** _em_
+
+[Link](https://github.com)
+
+\`\`\`html
+<script>
+window.whatever = you like;
+</script>
+\`\`\`
+
+{pla\\}net} and {pla&#x7d;net}.`;

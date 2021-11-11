@@ -17,7 +17,7 @@ const extraExtensions: MarkdownExtension[] = [{
   html: mathHtml()
 }];
 
-export default function DemoExtraExtensions(): JSX.Element {
+export default function DemoExtensionMath(): JSX.Element {
   return <Demo {...{
     source: MATH,
     extraExtensions

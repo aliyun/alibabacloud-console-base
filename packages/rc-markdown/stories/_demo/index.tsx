@@ -15,8 +15,10 @@ import {
 
 import Markdown, {
   MarkdownProps,
+  MarkdownCompileOptions,
   MarkdownDirective,
-  MarkdownExtensionDirectiveHtmlOptions
+  MarkdownExtensionDirectiveHtmlOptions,
+  compileIntoHtml
 } from '../../src';
 
 const ScViewAndCode = styled.div`
@@ -59,24 +61,38 @@ export default function Demo({
   ...props
 }: IProps): JSX.Element {
   const [stateSource, setStateSource] = useState<string>(source);
+  const [stateHtmlSource, setStateHtmlSource] = useState<boolean>(false);
   const [stateApplyStyle, setStateApplyStyle] = useState<boolean>(true);
   const [stateAllowDangerousHtml, setStateAllowDangerousHtml] = useState<boolean>(false);
   const [stateGfmEnabled, setStateGfmEnabled] = useState<boolean>(true);
   const [stateDirectiveEnabled, setStateDirectiveEnabled] = useState<boolean>(true);
-  const jsxMarkdown = <Markdown {...{
-    source: stateSource,
+  const compileOptions: MarkdownCompileOptions = {
     allowDangerousHtml: stateAllowDangerousHtml,
     plugins: {
       gfm: stateGfmEnabled,
       directive: stateDirectiveEnabled ? directiveOptions : undefined
     },
     ...props
+  };
+  
+  const jsxMarkdown = stateHtmlSource ? <CodeViewer {...{
+    type: 'html'
+  }}>{compileIntoHtml(stateSource, compileOptions)}</CodeViewer> : <Markdown {...{
+    source: stateSource,
+    ...compileOptions
   }} />;
   
   return <>
     <H1>调戏 <span role="img" aria-label="tx">🙈</span></H1>
     <div>
-      apply style:
+      展示 HTML 源码:
+      <InputSwitch {...{
+        value: stateHtmlSource,
+        onChange: setStateHtmlSource
+      }} />
+    </div>
+    <div>
+      加样式:
       <InputSwitch {...{
         value: stateApplyStyle,
         onChange: setStateApplyStyle

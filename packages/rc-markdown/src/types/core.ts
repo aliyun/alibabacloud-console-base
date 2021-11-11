@@ -31,15 +31,15 @@ export interface IMarkdownPlugins {
   directive?: MarkdownExtensionDirectiveHtmlOptions;
 }
 
-export interface IMarkdownOptions {
+export interface IMarkdownCompileOptions {
   allowDangerousHtml?: boolean;
   /**
-   * pre defined extensions
+   * predefined extensions
    */
   plugins?: IMarkdownPlugins;
   extraExtensions?: IMarkdownExtension[];
 }
 
-export interface IPropsMarkdown extends IMarkdownOptions {
+export interface IPropsMarkdown extends IMarkdownCompileOptions {
   source: string;
 }

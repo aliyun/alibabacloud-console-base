@@ -6,7 +6,7 @@ import {
   MarkdownExtensionSyntax,
   MarkdownExtensionHtml,
   IMarkdownExtension,
-  IMarkdownOptions
+  IMarkdownCompileOptions
 } from '../types';
 import {
   pluginGfm,
@@ -23,7 +23,7 @@ export default function compileIntoHtml(source: string, {
     directive
   } = {},
   extraExtensions
-}: IMarkdownOptions): string {
+}: IMarkdownCompileOptions): string {
   const extensions: MarkdownExtensionSyntax[] = [];
   const htmlExtensions: MarkdownExtensionHtml[] = [];
   

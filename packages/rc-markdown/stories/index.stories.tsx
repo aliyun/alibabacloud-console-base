@@ -13,7 +13,8 @@ import DemoCommon from './demo-common';
 import DemoGfm from './demo-gfm';
 import DemoDirective from './demo-directive';
 import DemoHeadings from './demo-headings';
-import DemoExtraExtensions from './demo-extra-extensions';
+import DemoExtensionMath from './demo-extension-math';
+import DemoExtensionVariables from './demo-extension-variables';
 
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
@@ -22,4 +23,5 @@ storiesOf(pkgInfo.name, module)
     .add('gfm', () => <DemoGfm />)
     .add('directive', () => <DemoDirective />)
     .add('headings', () => <DemoHeadings />)
-    .add('extra-extensions', () => <DemoExtraExtensions />);
+    .add('extension-math', () => <DemoExtensionMath />)
+    .add('extension-variables', () => <DemoExtensionVariables />);
