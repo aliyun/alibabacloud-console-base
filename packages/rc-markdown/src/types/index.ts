@@ -29,6 +29,10 @@ export interface IPropsMarkdown {
   source: string;
   allowDangerousHtml?: boolean;
   plugins?: IPropsMarkdownPlugins;
+  /**
+   * 有时候要插 micromark 的编译过程（写 extension）非常困难...先用它吧
+   */
+  processHtml?(html: string): string;
 }
 
 export type {

@@ -16,7 +16,8 @@ import {
 export default function Rc({
   source,
   allowDangerousHtml,
-  plugins = {}
+  plugins = {},
+  processHtml
 }: IPropsMarkdown): JSX.Element | null {
   if (!source) {
     return null;
@@ -47,7 +48,7 @@ export default function Rc({
   
   return <div {...{
     dangerouslySetInnerHTML: {
-      __html: html
+      __html: processHtml ? processHtml(html) : html
     }
   }} />;
 }
