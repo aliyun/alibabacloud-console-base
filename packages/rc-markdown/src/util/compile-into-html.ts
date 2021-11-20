@@ -22,7 +22,8 @@ export default function compileIntoHtml(source: string, {
     gfm,
     directive
   } = {},
-  extraExtensions
+  extraExtensions,
+  processHtml
 }: IMarkdownCompileOptions): string {
   const extensions: MarkdownExtensionSyntax[] = [];
   const htmlExtensions: MarkdownExtensionHtml[] = [];
@@ -44,9 +45,11 @@ export default function compileIntoHtml(source: string, {
     extraExtensions.forEach(putExtensions);
   }
   
-  return micromark(source, {
+  const html = micromark(source, {
     allowDangerousHtml,
     extensions,
     htmlExtensions
   });
+  
+  return processHtml ? processHtml(html) : html;
 }

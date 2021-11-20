@@ -5,7 +5,7 @@ import {
 import {
   useProps,
   useHandleRefreshRectStyle
-} from '../../hook';
+} from '../../../model';
 
 /**
  * 组件会使用 ResizeObserver 对 DOM 变化进行监听并修正错位，然有时它会失效（比如仅仅修改 padding 不会触发），

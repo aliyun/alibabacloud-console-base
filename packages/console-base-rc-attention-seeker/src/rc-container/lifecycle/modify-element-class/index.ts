@@ -13,7 +13,7 @@ import {
 } from '../../../const';
 import {
   useAttentionElement
-} from '../../hook';
+} from '../../../model';
 
 /**
  * 高亮展示引导块（其实就是把它的 z-index 设置成比 mask 的高）

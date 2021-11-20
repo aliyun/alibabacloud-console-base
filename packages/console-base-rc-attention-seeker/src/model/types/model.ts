@@ -22,6 +22,7 @@ export interface IModelProps {
 export interface IModelState {
   index: number;
   rectStyle: IRectStyle;
+  domBackdrop: HTMLDivElement | null;
 }
 
 export type TModelAction = {
@@ -30,6 +31,9 @@ export type TModelAction = {
 } | {
   type: EAction.SET_RECT_STYLE;
   payload: IRectStyle;
+} | {
+  type: EAction.SET_DOM_BACKDROP;
+  payload: HTMLDivElement | null;
 };
 
 export interface IModelReducer {

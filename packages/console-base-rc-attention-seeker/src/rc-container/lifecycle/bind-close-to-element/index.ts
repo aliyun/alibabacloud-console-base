@@ -5,7 +5,7 @@ import {
 import {
   useAttentionElement,
   useHandleCloseOnElementMousedown
-} from '../../hook';
+} from '../../../model';
 
 export default function ObserveElementResize(): null {
   const attentionElement = useAttentionElement();

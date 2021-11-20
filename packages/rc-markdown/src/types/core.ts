@@ -38,6 +38,10 @@ export interface IMarkdownCompileOptions {
    */
   plugins?: IMarkdownPlugins;
   extraExtensions?: IMarkdownExtension[];
+  /**
+   * 有时候要插 micromark 的编译过程（写 extension）非常困难...先用它吧
+   */
+  processHtml?(html: string): string;
 }
 
 export interface IPropsMarkdown extends IMarkdownCompileOptions {

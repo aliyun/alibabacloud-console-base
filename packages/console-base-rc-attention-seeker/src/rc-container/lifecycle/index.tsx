@@ -4,7 +4,7 @@ import ModifyElementClass from './modify-element-class';
 import CalcRect from './calc-rect';
 import BindCloseToElement from './bind-close-to-element';
 import WatchTimestamp from './watch-timestamp';
-import ObserveElementResize from './observe-element-resize';
+import ObserveResize from './observe-resize';
 
 export default function Lifecycle(): JSX.Element {
   return <>
@@ -12,6 +12,6 @@ export default function Lifecycle(): JSX.Element {
     <CalcRect />
     <BindCloseToElement />
     <WatchTimestamp />
-    <ObserveElementResize />
+    <ObserveResize />
   </>;
 }

@@ -4,7 +4,7 @@ import {
 
 import {
   useHandleRefreshRectStyle
-} from '../../hook';
+} from '../../../model';
 
 export default function CalcRect(): null {
   const handleRefreshRect = useHandleRefreshRectStyle();
