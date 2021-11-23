@@ -120,7 +120,7 @@ export default function VMfaBindForm(): JSX.Element {
     <Form {...{
       items: [{
         label: intl('attr:vmfa_bind_code1'),
-        labelWidth: '150px',
+        labelWidth: 150,
         labelTextAlign: 'center',
         content: <VmfaInput {...{
           value: stateCode1,
@@ -131,7 +131,7 @@ export default function VMfaBindForm(): JSX.Element {
         }} />
       }, {
         label: intl('attr:vmfa_bind_code2'),
-        labelWidth: '150px',
+        labelWidth: 150,
         labelTextAlign: 'center',
         content: <VmfaInput {...{
           value: stateCode2,

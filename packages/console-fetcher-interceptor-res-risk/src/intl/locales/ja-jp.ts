@@ -42,6 +42,8 @@ export default {
   'attr:u2f_bind_title': '以下の手順に従って、U2Fセキュリティキーをバインドしてください',
   'attr:mfa_choose_vmfa': '仮想MFAデバイス',
   'attr:mfa_choose_u2f': 'U2Fセキュリティキー',
+  'attr:mfa_show_secret': 'キーを表示',
+  'attr:mfa_hide_secret': '隠しキー',
   'title:main': '安全性の検証',
   'title:sub_vmfa_bind': '仮想MFAデバイスをバインドする',
   'title:sub_u2f_bind': 'U2Fセキュリティキーをバインドする',

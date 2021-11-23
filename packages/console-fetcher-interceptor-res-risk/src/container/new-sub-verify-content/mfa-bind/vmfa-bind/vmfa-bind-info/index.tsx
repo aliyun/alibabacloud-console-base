@@ -1,5 +1,7 @@
 import _get from 'lodash/get';
-import React from 'react';
+import React, {
+  useState
+} from 'react';
 import QRCode from 'qrcode.react';
 import styled from 'styled-components';
 
@@ -15,6 +17,9 @@ import {
   mixinBorderTertiary
 } from '@alicloud/console-base-theme';
 import Flex from '@alicloud/console-base-rc-flex';
+import Button, {
+  ButtonTheme
+} from '@alicloud/console-base-rc-button';
 
 import {
   IGetBindVMfaInfoData,
@@ -80,6 +85,7 @@ export default function VMfaBindInfo(): JSX.Element {
       getBindMfaInfoData
     }
   } = useDialog<void, INewSubAccountRisk>();
+  const [stateShowSecret, setStateShowSecret] = useState<boolean>(false);
 
   const qrCodeUri = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'QRCodeUri', '') || '';
   const targetMfaDeviceSecret = _get(getBindMfaInfoData as IGetBindVMfaInfoData, 'TargetMfaDeviceSecret', '') || '';
@@ -100,7 +106,15 @@ export default function VMfaBindInfo(): JSX.Element {
         </ScManualContentDiv>
         <ScManualContentDiv needTopPadding>
           <ScSpan>{intl('attr:vmfa_bind_info_key')}</ScSpan>
-          <CopyIt text={targetMfaDeviceSecret} />
+          {stateShowSecret ? <CopyIt text={targetMfaDeviceSecret} /> : null}
+          <Button {...{
+            component: 'span',
+            theme: ButtonTheme.TEXT_PRIMARY,
+            label: stateShowSecret ? intl('attr:mfa_hide_secret') : intl('attr:mfa_show_secret'),
+            onClick: () => {
+              setStateShowSecret(prevState => !prevState);
+            }
+          }} />
         </ScManualContentDiv>
       </ScManualContentWrap>
     </div>

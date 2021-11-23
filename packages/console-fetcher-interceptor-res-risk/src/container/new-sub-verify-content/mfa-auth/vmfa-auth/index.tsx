@@ -117,12 +117,12 @@ export default function VMfaAuth(): JSX.Element {
       <Form {...{
         items: [{
           label: intl('attr:vmfa_auth_userName'),
-          labelWidth: '100px',
+          labelWidth: 100,
           labelTextAlign: 'center',
           content: <strong>{userPrincipalName}</strong>
         }, {
           label: intl('attr:vmfa_auth_code'),
-          labelWidth: '100px',
+          labelWidth: 100,
           labelTextAlign: 'center',
           content: <VmfaInput {...{
             value: stateCode,

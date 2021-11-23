@@ -11,7 +11,7 @@ import {
 } from '../_types';
 
 interface IScLableProps {
-  labelWidth?: string;
+  labelWidth?: number;
   textAlign?: string;
 }
 
@@ -29,20 +29,8 @@ const ScItem = styled.div`
 const ScLabel = styled.div<IScLableProps>`
   padding-right: 16px;
   box-sizing: border-box;
-  width: ${props => {
-    if (props.labelWidth) {
-      return `${props.labelWidth};`;
-    }
-
-    return '160px;';
-  }};
-  text-align: ${props => {
-    if (props.textAlign) {
-      return `${props.textAlign};`;
-    }
-
-    return 'right;';
-  }};
+  width: ${props => (props.labelWidth || 160)}px;
+  text-align: ${props => (props.textAlign || 'right')};
   ${mixinTextSecondary}
 `;
 

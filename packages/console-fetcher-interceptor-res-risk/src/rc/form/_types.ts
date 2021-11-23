@@ -1,5 +1,5 @@
 export interface IFormItem {
-  labelWidth?: string;
+  labelWidth?: number;
   labelTextAlign?: string;
   key?: string;
   label?: string | JSX.Element;
