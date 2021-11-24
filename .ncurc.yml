@@ -3,3 +3,5 @@ dep: dev,prod
 reject:
 - 'eslint' # react-hooks 在 8 下不 work
 - 'stylelint' # 14 不行
+- 'stylelint-config-standard'
+- 'stylelint-order'
