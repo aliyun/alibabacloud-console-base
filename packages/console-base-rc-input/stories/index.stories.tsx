@@ -9,9 +9,7 @@ import {
 import pkgInfo from '../package.json';
 
 import DemoDefault from './demo-default';
-import DemoSearch from './demo-search';
 
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
-    .add('default', () => <DemoDefault />)
-    .add('search', () => <DemoSearch />);
+    .add('default', () => <DemoDefault />);

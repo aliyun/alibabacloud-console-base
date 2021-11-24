@@ -3,6 +3,7 @@
 !.*ignore
 !.*rc
 !.*rc.*
+!.husky
 *.log*
 .npmrc
 

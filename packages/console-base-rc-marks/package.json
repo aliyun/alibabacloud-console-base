@@ -32,7 +32,7 @@
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.89",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.42",
-    "@types/react": "^17.0.35",
+    "@types/react": "^17.0.36",
     "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
     "styled-components": "^5.3.3",

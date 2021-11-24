@@ -7,16 +7,21 @@
   "devDependencies": {
     "@alicloud/eslint-config": "^1.5.3",
     "@alicloud/stylelint-config": "^1.0.23",
-    "@types/react": "^17.0.35",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@types/react": "^17.0.36",
     "@types/react-dom": "^17.0.11",
     "eslint": "^7.32.0",
+    "husky": "^7.0.4",
     "lerna": "^4.0.0",
+    "lint-staged": "^12.1.2",
     "npm-check-updates": "^12.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "stylelint": "^13.13.1"
   },
   "scripts": {
+    "prepare": "husky install",
     "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
     "boot:packages": "lerna run prepublishOnly",
     "clean": "rm -rf node_modules",
@@ -36,5 +41,9 @@
     "ncu:main": "ncu",
     "ncu:packages": "lerna exec --no-bail -- ncu --timeout 120000",
     "ncu:full": "npm run ncu && npm run ncu:packages"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint",
+    "*.{js,ts,tsx,less}": "stylelint"
   }
 }
