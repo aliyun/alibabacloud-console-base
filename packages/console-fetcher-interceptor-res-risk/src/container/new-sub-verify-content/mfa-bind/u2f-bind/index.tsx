@@ -116,17 +116,20 @@ export default function U2FBind(): JSX.Element {
         }
       });
     } catch (error) {
-      updateData({
-        errorMessage: intlU2FError((error as IErrorU2f).metaData?.code) || '',
-        // 如果获取 U2F 安全密钥失败，那么【重试】按钮也应该要展示，来重新获取 U2F 安全密钥
-        canU2FRetry: true
-      });
+      // 如果是点击上一步回到 MFA 设备选择页面，再点击浏览器的禁止读取 U2F，那么顶部提示不应该展示错误信息
+      if (!isUnmounted()) {
+        updateData({
+          errorMessage: intlU2FError((error as IErrorU2f).metaData?.code) || '',
+          // 如果获取 U2F 安全密钥失败，那么【重试】按钮也应该要展示，来重新获取 U2F 安全密钥
+          canU2FRetry: true
+        });
+      }
     }
   }, [accountId, codeType, u2fAppId, u2fVersion, u2fChallenge, noPopUp, u2fTimeout, isUnmounted, updateData]);
 
   const handleRetryClick = useCallback(() => {
     updateData({
-      errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态。
+      errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态
       canU2FRetry: false // 保证 U2F 场景下正常的接口报错，Message 提示中没有重试按钮
     });
 
