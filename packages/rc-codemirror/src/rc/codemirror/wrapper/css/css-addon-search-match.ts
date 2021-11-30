@@ -3,11 +3,13 @@ import {
 } from 'styled-components';
 
 // codemirror/addon/search/matchesonscrollbar.css
-export default css`.CodeMirror-search-match {
-  background: gold;
-  border-top: 1px solid orange;
-  border-bottom: 1px solid orange;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  opacity: .5;
-}`;
+export default css`
+  /* stylelint-disable selector-class-pattern */
+  .CodeMirror-search-match {
+    opacity: 0.5;
+    border-top: 1px solid #ffa500;
+    border-bottom: 1px solid #ffa500;
+    box-sizing: border-box;
+    background: #ffd700;
+  }
+`;

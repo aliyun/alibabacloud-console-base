@@ -25,23 +25,23 @@ const CSS_FORM_CONTROL_OVERRIDE_TEXTAREA = css`
   padding: 4px 8px;
   width: 100%;
   min-height: 100px;
-  resize: vertical;
   line-height: 1.8;
+  resize: vertical;
 `;
 
 const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
-  background-color: ${FORM_CONTROL_BGC};
   border-radius: 4px;
+  background-color: ${FORM_CONTROL_BGC};
   min-width: 60px;
   
   &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: ${FORM_CONTROL_BGC_HOVER};
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   
   &:active {
-    background-color: ${FORM_CONTROL_BGC_ACTIVE};
     box-shadow: none;
+    background-color: ${FORM_CONTROL_BGC_ACTIVE};
   }
   
   &:focus {
@@ -52,10 +52,10 @@ const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
   &[disabled]:hover,
   &[disabled]:active,
   &[disabled]:focus {
-    color: ${FORM_CONTROL_FGC_DISABLED};
     border-color: ${FORM_CONTROL_BDC_DISABLED};
     box-shadow: none;
     background-color: ${FORM_CONTROL_BGC_DISABLED};
+    color: ${FORM_CONTROL_FGC_DISABLED};
   }
 `;
 
@@ -76,7 +76,7 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
   code {
     padding: 0 4px;
     border-radius: 2px;
-    background-color: rgba(0,0,0,0.04);
+    background-color: rgba(0, 0, 0, 0.04);
     color: #39f;
   }
   
@@ -132,9 +132,9 @@ export const CSS_FORM_CONTROL_BASE = css`
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
-    color: ${FORM_CONTROL_FGC_DISABLED};
     border-color: ${FORM_CONTROL_BDC_DISABLED};
     background-color: ${FORM_CONTROL_BGC_DISABLED};
+    color: ${FORM_CONTROL_FGC_DISABLED};
   }
 `;
 

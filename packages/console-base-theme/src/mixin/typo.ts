@@ -102,6 +102,7 @@ export const mixinTypoEllipsis = css`
 `;
 
 export const mixinTypoEllipsisLines = css<IPropsEllipsisLines>`
+  /* stylelint-disable */
   display: -webkit-box;
   line-height: ${props => props.lineHeight}px;
   overflow: hidden;

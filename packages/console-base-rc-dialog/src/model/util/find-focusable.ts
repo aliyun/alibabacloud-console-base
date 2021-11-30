@@ -1,23 +1,8 @@
 import _filter from 'lodash/filter';
 
-/**
- * 元素是否「不」可见（本身或祖先元素）
- */
-function isInvisible(el: HTMLElement | null): boolean {
-  while (el) {
-    if (el === document.body || el === document.documentElement) {
-      break;
-    }
-    
-    if (el.style.display === 'none' || el.style.visibility === 'hidden' || el.style.opacity === '0' || el.getAttribute('type') === 'hidden') {
-      return true;
-    }
-    
-    el = el.parentElement; // eslint-disable-line no-param-reassign
-  }
-  
-  return false;
-}
+import {
+  isVisible
+} from '@alicloud/mere-dom';
 
 /**
  * 是否操作元素（按钮、链接）- 其实 input type="button|submit|reset" 也算，但不推荐那么玩，是按钮就应该是 button
@@ -52,7 +37,7 @@ function autoSort(v1: HTMLElement, v2: HTMLElement): number { // 输入框优先
  * 元素是否可以获取焦点
  */
 function canFocus(el: HTMLElement): boolean {
-  if (isInvisible(el)) {
+  if (!isVisible(el)) {
     return false;
   }
   

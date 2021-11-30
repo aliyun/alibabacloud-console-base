@@ -36,28 +36,29 @@ const ScDockButton = styled(Button)`
     display: block;
     position: absolute;
     left: ${STRIPE_LEFT}px;
+    background: #fff;
     width: ${STRIPE_WIDTH}px;
     height: ${STRIPE_HEIGHT}px;
-    background: #fff;
     transition: all 0.3s ease-out;
     
     &:first-child {
       top: ${STRIPE_TOP1}px;
-      transform-origin: left center;
       transform: rotate(0);
+      transform-origin: left center;
     }
     
     &:nth-child(2) {
-      top: ${STRIPE_TOP2}px;;
+      top: ${STRIPE_TOP2}px;
     }
     
     &:nth-child(3) {
-      top: ${STRIPE_TOP3}px;;
-      transform-origin: left center;
+      top: ${STRIPE_TOP3}px;
       transform: rotate(0);
+      transform-origin: left center;
     }
   }
   
+  /* stylelint-disable order/order */
   ${props => (props.active ? css`
     span {
       left: ${STRIPE_LEFT_ACTIVE}px;
@@ -76,6 +77,7 @@ const ScDockButton = styled(Button)`
     }
   ` : null)}
   
+  /* stylelint-disable declaration-empty-line-before */
   ${mixinTopNavButtonDarkFix}
 `;
 

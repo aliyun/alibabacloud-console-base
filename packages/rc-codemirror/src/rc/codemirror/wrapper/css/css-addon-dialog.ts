@@ -3,29 +3,39 @@ import {
 } from 'styled-components';
 
 // codemirror/addon/dialog/dialog.css
-export default css`.CodeMirror-dialog {
-  position: absolute;
-  left: 0; right: 0;
-  background: inherit;
-  z-index: 15;
-  padding: .1em .8em;
-  overflow: hidden;
-  color: inherit;
-}
-.CodeMirror-dialog-top {
-  border-bottom: 1px solid #eee;
-  top: 0;
-}
-.CodeMirror-dialog-bottom {
-  border-top: 1px solid #eee;
-  bottom: 0;
-}
-.CodeMirror-dialog input {
-  border: none;
-  outline: none;
-  background: transparent;
-  width: 20em;
-  color: inherit;
-  font-family: monospace;
-}
-.CodeMirror-dialog button { font-size: 70%; }`;
+export default css`
+  /* stylelint-disable selector-class-pattern */
+  .CodeMirror-dialog {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 15;
+    padding: 0.1em 0.8em;
+    background: inherit;
+    overflow: hidden;
+    color: inherit;
+    
+    input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 20em;
+      font-family: monospace;
+      color: inherit;
+    }
+    
+    button {
+      font-size: 70%;
+    }
+  }
+  
+  .CodeMirror-dialog-top {
+    top: 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .CodeMirror-dialog-bottom {
+    bottom: 0;
+    border-top: 1px solid #eee;
+  }
+`;

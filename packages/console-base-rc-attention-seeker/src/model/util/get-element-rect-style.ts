@@ -29,7 +29,7 @@ function computedBorderRadius(el: HTMLElement): IRectStyleRadius {
       borderBottomLeftRadius,
       borderBottomRightRadius
     } = window.getComputedStyle(el);
-  
+    
     return {
       borderTopLeftRadius,
       borderTopRightRadius,

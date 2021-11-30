@@ -246,14 +246,15 @@ export default styled.article`
     td {
       ${mixinBorderTertiary}
     }
-    
+  
+    /* stylelint-disable no-duplicate-selectors */
     th,
     td {
       padding: 8px 12px;
+      border-top-width: 0;
       font-size: 0.95em;
       text-align: left;
       color: inherit;
-      border-top-width: 0;
       
       &:first-child {
         border-left-width: 0;

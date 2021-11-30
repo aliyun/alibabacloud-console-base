@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme-color": "^1.1.83",
-    "@alicloud/mere-dom": "^1.2.1"
+    "@alicloud/mere-dom": "^1.2.2"
   },
   "scripts": {
     "start": "breezr start-storybook",

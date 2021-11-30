@@ -42,7 +42,7 @@ const ScTopNaV = styled(Flex)<IScPropsTopNav>`
   ${props => (props.fixed ? mixinShadowMDown : mixinShadowM)}
   
   .theme-dark & {
-    box-shadow: 0 1px 0 0 rgba(255,255,255,0.16), 0 4px 8px 0 rgba(0,0,0,0.32);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.16), 0 4px 8px 0 rgba(0, 0, 0, 0.32);
   }
 `;
 

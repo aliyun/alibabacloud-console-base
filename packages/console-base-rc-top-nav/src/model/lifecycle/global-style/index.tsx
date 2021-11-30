@@ -12,6 +12,7 @@ import {
 import toggleBodyClass from '../../../util/toggle-body-class';
 
 const GlobalStyleHasTopNav = createGlobalStyle`
+  /* stylelint-disable selector-class-pattern */
   body.hasTopbar {
     margin-top: 0;
     padding-top: ${SIZE.HEIGHT_TOP_NAV}px !important;

@@ -51,6 +51,7 @@ const cssSlide = css<IScDialogProps>`
   bottom: 0;
   transform: translateX(${props => (props.active ? '0' : '100%')});
   
+  /* stylelint-disable selector-class-pattern */
   .hasTopbar & {
     top: ${SIZE.HEIGHT_TOP_NAV}px;
   }

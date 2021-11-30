@@ -32,8 +32,8 @@ const ScErrorTag = styled.span<IPropsScErrorTag>`
   display: inline-block;
   margin-right: 4px;
   padding: 2px 4px;
-  background-color: ${props => getTagBgc(props.type)};
   border-radius: 2px;
+  background-color: ${props => getTagBgc(props.type)};
   line-height: 1.2;
   
   &:after {

@@ -84,15 +84,15 @@ const ScIcon = styled(Icon)`
 const ScTitle = styled.h5`
   margin: 0 0 12px 0;
   padding: 0;
-  font-size: 16px;
   line-height: ${ICON_SIZE}px;
+  font-size: 16px;
   ${mixinTextPrimary}
   ${mixinTypoLineWrap}
 `;
 
 const ScContent = styled.div`
-  font-size: 14px;
   line-height: 22px;
+  font-size: 14px;
   ${mixinTextSecondary}
   ${mixinTypoLineWrap}
 `;
