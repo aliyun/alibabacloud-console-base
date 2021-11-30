@@ -75,7 +75,7 @@ module.exports = {
     'selector-pseudo-element-colon-notation': 'single',
     'string-quotes': 'single',
     'time-min-milliseconds': 100,
-    'unit-blacklist': ['pt'],
+    'unit-disallowed-list': ['pt'],
     'value-keyword-case': 'lower',
     'value-list-comma-newline-before': 'never-multi-line',
     'value-no-vendor-prefix': true,
