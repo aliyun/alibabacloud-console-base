@@ -5,6 +5,9 @@ import {
   AltWrap
 } from '@alicloud/console-base-rc-dialog';
 
+import {
+  slsRiskInvalid
+} from '../../sls';
 import intl from '../../../intl';
 
 interface IProps {
@@ -18,6 +21,8 @@ export default function riskInvalid({
   message,
   urlSettings
 }: IProps): Promise<void> {
+  slsRiskInvalid();
+
   return open<void>({
     title: newSubRisk ? intl('title:sub_default') : intl('op:risk_invalid'),
     content: <AltWrap {...{

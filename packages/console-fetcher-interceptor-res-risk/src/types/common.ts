@@ -33,6 +33,8 @@ export interface IFetcherInterceptorConfig {
   DATA_PATH_VERIFY_CODE_TYPE?: string; // 如何从原始返回中获取 （旧版）主账号风控的风控码
   DATA_PATH_VALIDATORS?: string; // 如何从原始返回中获取新版子账号的风控信息
   DATA_PATH_VERIFY_URL?: string; // 新版主账号风控，如何从原始返回中获取集团会员平台的核身 URL，将嵌入在 iframe 里面
+  DATA_PATH_NEW_VERIFY_TYPE?: string; // 新版主账号风控，如何从原始返回中获取主账号风控类型
+  DATA_PATH_NEW_VERIFY_DETAIL?: string; // 新版主账号风控，如何从原始返回中获取主账号风控详情
   DATA_PATH_USER_ID?: string; // 新版子账号风控，如何从原始返回中中获取子账号 ID
   DATA_PATH_NEW_VERIFY_CODE_TYPE?: string; // 新版子账号风控，如何从原始返回中获取子账号风控的风控码
   // 从返回的 fetcher config 中获取对应信息
@@ -48,10 +50,12 @@ export interface IFetcherInterceptorConfig {
   // URL 设置
   URL_SEND_CODE?: string; // 必须设置，发送验证码接口地址（默认的好像就是这个地址）
   URL_SETTINGS?: string; // 设置用户风控验证方式地址
+  // 子账号 MFA 核身相关接口
   URL_GET_MFA_INFO_TO_BIND?: string; // 获取绑定 MFA 所需信息的接口
   URL_MFA_BIND?: string; // 绑定 MFA 设备的接口
   URL_GET_MFA_INFO_TO_AUTH?: string; // 获取验证 MFA 所需信息的接口
   URL_MFA_AUTH?: string; // 验证 MFA 设备的接口
+  URL_SKIP_BIND_MFA?: string; // 灰度期间，允许用户跳过绑定 MFA
   // 发送验证码后的冷却时间
   COOLING_AFTER_SENT?: number; // 发送验证码成功后的冷却时间（秒）
   COOLING_AFTER_SEND_FAIL?: number; // 发送验证码失败后的冷却时间（秒）
@@ -76,7 +80,11 @@ export interface IOldMainRiskInfo {
  */
 export interface IMainAccountRiskInfo {
   risk: ERisk.NEW_MAIN;
-  verifyUrl: string;
+  accountId: string; // 主账号 ID
+  codeType: string; // 风控 code
+  verifyType: string; // 风控类型
+  verifyDetail: string; // 风控核验详情
+  verifyUrl: string; // 集团会员平台核身 URL
 }
 
 /**
@@ -89,6 +97,7 @@ export interface ISubAccountRiskInfo {
   verifyType: string; // 原始的风控验证方式
   type: EVerifyType; // 解析后的风控验证方式
   detail: string;
+  validators: INewSubRiskValidators[];
 }
 
 export type TRiskInfo = IOldMainRiskInfo | ISubAccountRiskInfo | IMainAccountRiskInfo;

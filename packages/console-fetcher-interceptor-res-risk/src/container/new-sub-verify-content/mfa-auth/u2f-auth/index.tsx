@@ -18,9 +18,13 @@ import {
   INewSubAccountRisk
 } from '../../../../types';
 import {
+  EStep,
   EPayloadVerifyType
 } from '../../../../const';
 import intl from '../../../../intl';
+import {
+  slsU2FError
+} from '../../../../util/sls';
 import getTicketType from '../../../../util/get-ticket-type';
 import intlU2FError from '../../../../util/intl-u2f-error';
 import U2fUi from '../../_components/u2f-ui';
@@ -63,6 +67,12 @@ export default function U2FAuth(): JSX.Element {
       setStateU2fSupported(isU2FSupported);
 
       if (!isU2FSupported) {
+        slsU2FError({
+          accountId,
+          status: EStep.U2F_AUTH,
+          u2fNotSupported: true
+        });
+
         return;
       }
 
@@ -93,8 +103,18 @@ export default function U2FAuth(): JSX.Element {
         primaryButtonDisabled: false
       });
     } catch (error) {
+      const u2fErrorCode = (error as IErrorU2f).metaData?.code;
+      const u2fErrorMsg = intlU2FError(u2fErrorCode) || '';
+
+      slsU2FError({
+        accountId,
+        u2fErrorCode,
+        status: EStep.U2F_AUTH,
+        errorMessage: u2fErrorMsg
+      });
+
       updateData({
-        errorMessage: intlU2FError((error as IErrorU2f).metaData?.code) || '',
+        errorMessage: u2fErrorMsg,
         // 如果获取 U2F 安全密钥失败，那么【重试】按钮也应该要展示，来重新获取 U2F 安全密钥
         canU2FRetry: true
       });

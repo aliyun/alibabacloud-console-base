@@ -24,7 +24,8 @@ intercept(fetcher1, {
   URL_MFA_BIND: '/identity/bindMFA',
   URL_MFA_AUTH: '/identity/verify',
   URL_GET_MFA_INFO_TO_BIND: '/identity/getMfaInfoToBind',
-  URL_GET_MFA_INFO_TO_AUTH: '/identity/getMfaInfoToAuth'
+  URL_GET_MFA_INFO_TO_AUTH: '/identity/getMfaInfoToAuth',
+  URL_SKIP_BIND_MFA: '/identity/skip'
 });
 
 export {

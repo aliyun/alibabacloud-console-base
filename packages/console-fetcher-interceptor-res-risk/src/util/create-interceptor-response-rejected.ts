@@ -12,8 +12,8 @@ import {
   IFetcherInterceptorConfig
 } from '../types';
 import {
-  EVerifyType,
   ERisk,
+  EVerifyType,
   DEFAULT_RISK_CONFIG
 } from '../const';
 import intl from '../intl';
@@ -29,6 +29,9 @@ import {
   convertToRiskErrorInvalid,
   convertToRiskErrorCancelled
 } from './error';
+import {
+  slsRiskStartUp
+} from './sls';
 
 /**
  * 根据业务错误 code 为基础的 fetcher 添加风控流程（老版本主账号风控）
@@ -106,6 +109,10 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
 
         // 新版主账号风控
         if (riskInfo.risk === ERisk.NEW_MAIN) {
+          slsRiskStartUp({
+            riskType: ERisk.NEW_MAIN
+          });
+
           return riskNewMainVerify({
             request,
             mainRiskInfo: riskInfo,
@@ -165,6 +172,10 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
 
         // 旧版主账号风控
         if (risk === ERisk.OLD_MAIN) {
+          slsRiskStartUp({
+            riskType: ERisk.OLD_MAIN
+          });
+
           if (_get(fetcherConfig, 'body.verifyCode') || _get(fetcherConfig, 'params.verifyCode')) {
             throw err;
           }
@@ -178,6 +189,10 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
             throw err1 ?? convertToRiskErrorCancelled(err);
           });
         }
+
+        slsRiskStartUp({
+          riskType: ERisk.NEW_SUB
+        });
 
         return riskNewSubVerify({
           request,

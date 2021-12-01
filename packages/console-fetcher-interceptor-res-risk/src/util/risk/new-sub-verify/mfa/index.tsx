@@ -1,44 +1,29 @@
 import React from 'react';
 
 import {
-  FetcherError,
-  FetcherConfig,
-  FetcherFnRequest,
-  canHaveBody,
-  mergeConfig
-} from '@alicloud/fetcher';
-import {
   open,
   DialogButtonProps
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IFetcherInterceptorConfig,
-  ISubAccountRiskInfo,
   INewSubAccountRisk,
-  TGetBindMfaInfoData,
-  IMfaData
+  TGetBindMfaInfoData
 } from '../../../../types';
 import {
-  ESubMFADeviceType,
-  EStep
+  EStep,
+  ESubMFADeviceType
 } from '../../../../const';
 import intl from '../../../../intl';
 import Content from '../../../../container/new-sub-verify-content';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
 
-interface IParams {
-  request: FetcherFnRequest;
-  fetcherConfig: FetcherConfig;
-  riskConfig: IFetcherInterceptorConfig;
-  subRiskInfo: ISubAccountRiskInfo;
-}
-
-enum ESubmitType {
-  BIND,
-  AUTH
-}
+import {
+  IParams,
+  ESubmitType
+} from './_type';
+import generateSubmitButtonFn from './generateSubmitButton';
+import generateSkipBindMfaButtonFn from './generateSkipBindMfaButton';
 
 export default async function RiskSubVerify({
   request,
@@ -46,23 +31,42 @@ export default async function RiskSubVerify({
   riskConfig,
   subRiskInfo
 }: IParams): Promise<unknown> {
-  let initialStep: EStep = EStep.MFA_CHOOSE;
+  let initialStep = EStep.MFA_CHOOSE;
   let initialGetAuthMfaInfoData;
 
   const {
     detail,
-    accountId
+    accountId,
+    codeType,
+    verifyType,
+    validators
   } = subRiskInfo;
   const {
     REQUEST_METHOD,
     URL_GET_MFA_INFO_TO_BIND,
     URL_GET_MFA_INFO_TO_AUTH,
-    URL_MFA_BIND,
-    URL_MFA_AUTH,
     U2F_TIMEOUT
   } = riskConfig;
   const isUnbind = detail === 'false';
   const buttonCancel = intl('op:cancel');
+
+  const generateSubmitButton = generateSubmitButtonFn({
+    request,
+    accountId,
+    verifyType,
+    validators,
+    riskConfig,
+    fetcherConfig
+  });
+
+  const generateSkipBindMfaButton = generateSkipBindMfaButtonFn({
+    request,
+    accountId,
+    verifyType,
+    codeType,
+    riskConfig,
+    fetcherConfig
+  });
 
   if (!isUnbind) { // 如果用户已经绑定了 MFA ，需要获取绑定的 MFA 设备的具体类型
     try {
@@ -81,8 +85,10 @@ export default async function RiskSubVerify({
         initialStep = EStep.VMFA_AUTH;
       }
     } catch (error: unknown) {
+      const errorMessage = (error as Error).message;
+
       // 当获取用户绑定的 U2F 信息失败时，直接弹出错误弹窗
-      return generateAuthMfaInfoFailDialog((error as Error).message);
+      return generateAuthMfaInfoFailDialog(errorMessage);
     }
   }
   
@@ -158,118 +164,6 @@ export default async function RiskSubVerify({
     }
   };
 
-  // 【确定】按钮
-  const generateSubmitButton = (type: ESubmitType, primaryButtonDisabled: boolean): DialogButtonProps<unknown, INewSubAccountRisk> => {
-    const url = type === ESubmitType.AUTH ? URL_MFA_AUTH : URL_MFA_BIND;
-
-    return ({
-      label: intl('op:confirm'),
-      primary: true,
-      disabled: primaryButtonDisabled,
-      onClick({
-        data,
-        lock,
-        unlock,
-        updateData,
-        close
-      }) {
-        lock(true);
-        updateData({
-          errorMessage: ''
-        });
-
-        const {
-          bindMfaPayload,
-          verifyMfaPayload
-        } = data;
-
-        const payload = type === ESubmitType.AUTH ? verifyMfaPayload : bindMfaPayload;
-
-        request<IMfaData>({
-          method: REQUEST_METHOD,
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          url,
-          body: {
-            ...payload
-          }
-        }).then(bindMfaData => {
-          const verifyResult = {
-            verifyCode: bindMfaData?.IvToken
-          };
-
-          // 如果请求 BindMFA / Verify 成功，那么会去再次请求被风控的接口。
-          request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
-            body: verifyResult
-          } : {
-            params: verifyResult
-          })).then(result => {
-            unlock();
-
-            close(result);
-          }, async (error: FetcherError) => {
-            unlock();
-
-            if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
-              let canU2FRetry = false; // 是否显示 U2F 重试按钮。
-              let u2fPrimaryButtonDisabled = false;
-              let errorMessage = intl('message:code_incorrect');
-              let bindFailObj = {};
-
-              if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F 成功，但重新请求被风控的接口报错。
-                canU2FRetry = true;
-                // 重新获取 U2F 密钥，【确定】按钮需要置灰。等到获取到了 U2F 密钥，才能点击确定提交 U2F 绑定/验证。
-                u2fPrimaryButtonDisabled = true;
-                errorMessage = intl('message:incorrect_u2f_auth');
-              } else if (payload && 'U2FAppId' in payload) { // 当绑定 U2F 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
-                canU2FRetry = true;
-                u2fPrimaryButtonDisabled = true;
-                errorMessage = intl('message:incorrect_u2f_bind');
-
-                // 获取 U2F 验证的数据
-                try {
-                  const authMfaInfo = await getAuthMfaInfo({
-                    request,
-                    accountId,
-                    requestMethod: REQUEST_METHOD,
-                    getMfaInfoToAuthUrl: URL_GET_MFA_INFO_TO_AUTH
-                  });
-
-                  bindFailObj = {
-                    step: EStep.U2F_AUTH,
-                    getAuthMfaInfoData: authMfaInfo,
-                    fromU2FBindtoAuth: true
-                  };
-                } catch (getAuthMfaInfoError: unknown) {
-                  // 当获取用户绑定的 U2F 信息失败时，直接弹出错误弹窗
-                  return generateAuthMfaInfoFailDialog((getAuthMfaInfoError as Error).message);
-                }
-              }
-
-              updateData({
-                errorMessage,
-                canU2FRetry,
-                primaryButtonDisabled: u2fPrimaryButtonDisabled,
-                ...bindFailObj
-              });
-            } else {
-              close(error, true);
-            }
-          });
-        }).catch(err => {
-          updateData({
-            errorMessage: err?.message || ''
-          });
-        });
-        unlock();
-
-        // return false 阻止弹窗关闭
-        return false;
-      }
-    });
-  };
-
   return open<unknown, INewSubAccountRisk>({
     title: (data: INewSubAccountRisk) => {
       const {
@@ -303,6 +197,7 @@ export default async function RiskSubVerify({
     content: <Content />,
     buttons: (data: INewSubAccountRisk) => {
       const primaryButtonDisabled = data.primaryButtonDisabled || false;
+      const skipBindMfaButton = generateSkipBindMfaButton();
       let primaryButton;
 
       switch (data.step) {
@@ -312,7 +207,7 @@ export default async function RiskSubVerify({
             disabled: primaryButtonDisabled
           };
 
-          return [primaryButton, buttonCancel];
+          return [primaryButton, skipBindMfaButton, buttonCancel];
         case EStep.U2F_BIND:
         case EStep.VMFA_BIND:
           primaryButton = generateSubmitButton(ESubmitType.BIND, primaryButtonDisabled);

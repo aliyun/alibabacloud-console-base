@@ -20,9 +20,15 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  ESlsResultType
+} from '../../const';
+import {
   INewMainAccountRisk
 } from '../../types';
 import intl from '../../intl';
+import {
+  slsNewMainRisk
+} from '../../util/sls';
 
 interface IJson {
   type?: string;
@@ -41,9 +47,7 @@ export default function Content(): JSX.Element {
       fetcherConfig,
       riskConfig,
       errorMessage,
-      mainRiskInfo: {
-        verifyUrl
-      }
+      mainRiskInfo
     },
     lock,
     unlock,
@@ -52,7 +56,7 @@ export default function Content(): JSX.Element {
   } = useDialog<unknown, INewMainAccountRisk>();
 
   // 如果没有 verifyUrl 或者 verifyUrl 是空字符串，那么不展示 iframe
-  const [stateShowIframe, setStateShowIframe] = useState<boolean>(!!verifyUrl);
+  const [stateShowIframe, setStateShowIframe] = useState<boolean>(!!(mainRiskInfo.verifyUrl));
 
   const getValidateToken = useCallback((event: MessageEvent): void => {
     try {
@@ -66,6 +70,7 @@ export default function Content(): JSX.Element {
         lock(true);
 
         const verifyResult = {
+          verifyType: mainRiskInfo.verifyType || '',
           verifyCode: ivToken
         };
         
@@ -76,9 +81,21 @@ export default function Content(): JSX.Element {
         })).then(result => {
           unlock();
 
+          slsNewMainRisk({
+            ...mainRiskInfo,
+            slsResultType: ESlsResultType.SUCCESS
+          });
+
           close(result);
         }, (error: FetcherError) => {
           unlock();
+          
+          slsNewMainRisk({
+            ...mainRiskInfo,
+            slsResultType: ESlsResultType.FAIL,
+            errorMessage: error.message,
+            errorCode: error.code
+          });
 
           if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
             setStateShowIframe(false);
@@ -92,11 +109,19 @@ export default function Content(): JSX.Element {
         });
       }
     } catch (error) {
+      const errMsg = (error as Error).message || '';
+
+      slsNewMainRisk({
+        ...mainRiskInfo,
+        slsResultType: ESlsResultType.FAIL,
+        errorMessage: errMsg
+      });
+
       updateData({
-        errorMessage: (error as Error).message || ''
+        errorMessage: errMsg
       });
     }
-  }, [riskConfig, fetcherConfig, request, lock, unlock, close, updateData]);
+  }, [mainRiskInfo, riskConfig, fetcherConfig, request, lock, unlock, close, updateData]);
 
   const newMainRiskContent = useMemo((): JSX.Element => {
     if (stateShowIframe) {
@@ -105,11 +130,12 @@ export default function Content(): JSX.Element {
           style: {
           // 宽度设定 100% 会有横向的滚动条
             width: '98%',
-            minHeight: 400,
-            paddingTop: 16
+            border: 0,
+            paddingTop: 16,
+            minHeight: 400
           },
           title: intl('title:main'),
-          src: verifyUrl
+          src: mainRiskInfo.verifyUrl
         }} />
         <ScError>
           {errorMessage}
@@ -121,12 +147,17 @@ export default function Content(): JSX.Element {
       type: 'alert',
       content: errorMessage || intl('message:new_main_verify_error')
     }} />;
-  }, [stateShowIframe, errorMessage, verifyUrl]);
+  }, [stateShowIframe, errorMessage, mainRiskInfo.verifyUrl]);
 
   useEffect(() => {
-    if (!verifyUrl) {
+    if (!mainRiskInfo.verifyUrl) {
       updateData({
         hasCancelButton: true
+      });
+
+      slsNewMainRisk({
+        ...mainRiskInfo,
+        slsResultType: ESlsResultType.FAIL
       });
     }
 
@@ -135,7 +166,7 @@ export default function Content(): JSX.Element {
     return () => {
       window.removeEventListener('message', getValidateToken);
     };
-  }, [verifyUrl, updateData, getValidateToken]);
+  }, [mainRiskInfo, updateData, getValidateToken]);
 
   return newMainRiskContent;
 }

@@ -37,4 +37,10 @@ export default function fetcherDemoInterceptorMockVerifyCodeUrl(config: IDemoCon
       url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-auth-mfa'
     };
   }
+
+  if (config.url === '/identity/skip') {
+    return {
+      url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-skip-bind-mfa'
+    };
+  }
 }

@@ -29,6 +29,7 @@ export default {
   
   'op:previous_step': '前',
   'op:retry': 'リトライ',
+  'op:skip': 'スキップ',
   'attr:vmfa_auth_userName': 'ユーザー名',
   'attr:vmfa_auth_code': '検証コード',
   'attr:vmfa_bind_code1': '確認コードの最初のセット',

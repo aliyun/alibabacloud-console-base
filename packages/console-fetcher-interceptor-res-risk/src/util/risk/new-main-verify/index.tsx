@@ -15,7 +15,6 @@ import {
 } from '../../../types';
 import intl from '../../../intl';
 import Content from '../../../container/new-main-verify-content';
-
 interface IParams {
   request: FetcherFnRequest;
   fetcherConfig: FetcherConfig;
@@ -33,7 +32,7 @@ export default function RiskMainVerify({
 
   return open<unknown, INewMainAccountRisk>({
     title: intl('title:main'),
-    size: 'l',
+    size: 'm',
     data: {
       request,
       fetcherConfig,

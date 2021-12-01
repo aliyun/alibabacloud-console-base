@@ -29,6 +29,7 @@ export default {
 
   'op:previous_step': '上一步',
   'op:retry': '重試',
+  'op:skip': '跳過',
   'attr:vmfa_auth_userName': '用戶名',
   'attr:vmfa_auth_code': '校驗碼',
   'attr:vmfa_bind_code1': '第一組校驗碼',

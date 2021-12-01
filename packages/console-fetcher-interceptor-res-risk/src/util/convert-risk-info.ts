@@ -24,6 +24,8 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
   const codeType = _get(responseData, riskConfig.DATA_PATH_NEW_VERIFY_CODE_TYPE!, '') as string;
   const riskVersion = _get(fetcherConfig, riskConfig.CONFIG_PATH_RISK_VERSION!, '') as string;
   const accountId = _get(responseData, riskConfig.DATA_PATH_USER_ID!, '') as string;
+  const newMainVerifyType: string = _get(responseData, riskConfig.DATA_PATH_NEW_VERIFY_TYPE!) as string;
+  const newMainVerifyDetail: string = _get(responseData, riskConfig.DATA_PATH_NEW_VERIFY_DETAIL!) as string;
   const verifyUrl = _get(responseData, riskConfig.DATA_PATH_VERIFY_URL!);
   const validators: INewSubRiskValidators[] = _get(responseData, riskConfig.DATA_PATH_VALIDATORS!, []);
 
@@ -46,13 +48,18 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
         codeType,
         verifyType: newSubRiskType0,
         type: convertVerifyType(newSubRiskType0, riskConfig),
-        detail: newSubRiskDetail
+        detail: newSubRiskDetail,
+        validators
       };
     }
 
     // 新版主账号风控
     return {
       risk: ERisk.NEW_MAIN,
+      accountId,
+      codeType,
+      verifyType: newMainVerifyType,
+      verifyDetail: newMainVerifyDetail,
       verifyUrl
     };
   }

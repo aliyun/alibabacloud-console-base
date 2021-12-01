@@ -22,9 +22,9 @@ export enum EVerifyType {
  * 区分新旧风控，以及新版风控中的主/子账号风控
  */
 export enum ERisk {
-  OLD_MAIN, // 旧版主账号风控
-  NEW_MAIN, // 新版主账号风控
-  NEW_SUB // 新版子账号风控
+  OLD_MAIN = 'old_main', // 旧版主账号风控
+  NEW_MAIN = 'new_main', // 新版主账号风控
+  NEW_SUB = 'new_sub' // 新版子账号风控
 }
 
 /**
@@ -63,6 +63,28 @@ export enum EIconType {
   warning = 'alert-circle-fill'
 }
 
+export enum ESlsResultType {
+  SUCCESS = 'success',
+  FAIL = 'fail',
+  SKIP_BIND_SUCCESS = 'skip_bind_success',
+  SKIP_BIND_FAIL = 'skip_bind_fail'
+}
+
+/**
+ * 埋点列表
+ */
+export enum ESlsTopic {
+  RISK_STARTUP = 'risk_startup', // 展示正常风控弹窗，包括旧版主账号风控以及新版主子账号风控
+  RISK_FORBIDDEN = 'risk_forbidden', // 不合法的风控 code 的弹窗提示
+  RISK_INVALID = 'risk_invalid', // 无效的风控 code 的弹窗提示
+  NEW_MAIN_RISK = 'new_main_risk', // 新版主账号风控
+  SUB_RISK = 'sub_risk', // 新版子账号风控
+  SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过 MFA 绑定
+  SUB_BIND_MFA = 'sub_bind_mfa', // 新版子账号风控 - 正常绑定 MFA 设备
+  SUB_AUTH_MFA = 'sub_auth_mfa', // 新版子账号风控 - 正常验证 MFA 设备
+  U2F_ERROR = 'u2f_error' // 新版子账号风控 - u2f 报错埋点
+}
+
 /**
  * 风控设置
  */
@@ -75,6 +97,8 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   DATA_PATH_USER_ID: 'data.AliyunIdkp',
   DATA_PATH_NEW_VERIFY_CODE_TYPE: 'data.CodeType',
   DATA_PATH_VERIFY_URL: 'data.VerifyURL',
+  DATA_PATH_NEW_VERIFY_TYPE: 'data.VerifyType',
+  DATA_PATH_NEW_VERIFY_DETAIL: 'data.VerifyDetail',
   CONFIG_PATH_RISK_VERSION: 'body.riskVersion',
   // 风控错误码
   CODE_NEED_VERIFY: 'FoundRiskAndDoubleConfirm',
@@ -92,6 +116,7 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   URL_MFA_AUTH: '//identity.aliyun.com/identity/verify',
   URL_GET_MFA_INFO_TO_BIND: '//identity.aliyun.com/identity/getMfaInfoToBind',
   URL_GET_MFA_INFO_TO_AUTH: '//identity.aliyun.com/identity/getMfaInfoToAuth',
+  URL_SKIP_BIND_MFA: '//identity.aliyun.com/identity/skip',
   // 旧版主账号风控冷却/超时时间设置 (单位：秒)
   COOLING_AFTER_SENT: 60,
   COOLING_AFTER_SEND_FAIL: 10,

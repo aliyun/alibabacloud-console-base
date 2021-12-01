@@ -29,6 +29,7 @@ To protect your account, set a verification method.`,
 
   'op:previous_step': 'Previous',
   'op:retry': 'Retry',
+  'op:skip': 'Skip',
   'attr:vmfa_auth_userName': 'UserName',
   'attr:vmfa_auth_code': 'Verification Code',
   'attr:vmfa_bind_code1': 'The First Security Code',

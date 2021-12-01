@@ -19,9 +19,13 @@ import {
   INewSubAccountRisk
 } from '../../../../types';
 import {
+  EStep,
   ESubMFADeviceType
 } from '../../../../const';
 import intl from '../../../../intl';
+import {
+  slsU2FError
+} from '../../../../util/sls';
 import getU2FStateMessage from '../../../../util/get-u2f-state-message';
 import getTicketType from '../../../../util/get-ticket-type';
 import intlU2FError from '../../../../util/intl-u2f-error';
@@ -67,6 +71,12 @@ export default function U2FBind(): JSX.Element {
       setStateU2fSupported(isU2FSupported);
 
       if (!isU2FSupported) {
+        slsU2FError({
+          accountId,
+          status: EStep.U2F_BIND,
+          u2fNotSupported: true
+        });
+
         return;
       }
 
@@ -116,10 +126,20 @@ export default function U2FBind(): JSX.Element {
         }
       });
     } catch (error) {
+      const u2fErrorCode = (error as IErrorU2f).metaData?.code;
+      const u2fErrorMsg = intlU2FError(u2fErrorCode) || '';
+
+      slsU2FError({
+        accountId,
+        u2fErrorCode,
+        status: EStep.U2F_BIND,
+        errorMessage: u2fErrorMsg
+      });
+      
       // 如果是点击上一步回到 MFA 设备选择页面，再点击浏览器的禁止读取 U2F，那么顶部提示不应该展示错误信息
       if (!isUnmounted()) {
         updateData({
-          errorMessage: intlU2FError((error as IErrorU2f).metaData?.code) || '',
+          errorMessage: u2fErrorMsg,
           // 如果获取 U2F 安全密钥失败，那么【重试】按钮也应该要展示，来重新获取 U2F 安全密钥
           canU2FRetry: true
         });
