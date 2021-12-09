@@ -12,9 +12,15 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
+  ESlsResultType
+} from '../../../const';
+import {
   IOldMainAccountRisk
 } from '../../../types';
 import intl from '../../../intl';
+import {
+  slsOldMainRiskSendCode
+} from '../../../util/sls';
 
 interface ISendCodeReturn { // 发送验证码的返回，需要我们在再次发请求的时候带入
   requestId: string;
@@ -57,14 +63,34 @@ export default function Generate(): JSX.Element {
           verifyType,
           codeType
         }
-      }).then(data => updateData({
-        requestId: data?.requestId || ''
-      }));
+      }).then(data => {
+        const requestId = data?.requestId || '';
+
+        updateData({
+          requestId
+        });
+
+        slsOldMainRiskSendCode({
+          codeType,
+          verifyType,
+          slsResultType: ESlsResultType.SUCCESS,
+          sendCodeRequestId: requestId
+        });
+      });
       
       setStateCooling(Math.round(COOLING_AFTER_SENT!));
     } catch (err) {
+      const errorMessage = (err as Error)?.message || '';
+
       updateData({
-        errorMessage: (err as Error)?.message || ''
+        errorMessage
+      });
+
+      slsOldMainRiskSendCode({
+        codeType,
+        verifyType,
+        errorMessage,
+        slsResultType: ESlsResultType.FAIL
       });
       
       setStateCooling(Math.round(COOLING_AFTER_SEND_FAIL!));

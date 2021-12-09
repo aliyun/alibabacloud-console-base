@@ -13,6 +13,9 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  ESlsResultType
+} from '../../../const';
+import {
   IFetcherInterceptorConfig,
   IOldMainRiskInfo,
   IOldMainAccountRisk
@@ -21,6 +24,9 @@ import intl from '../../../intl';
 import {
   intlVerifyTitle
 } from '../../intl-verify';
+import {
+  slsOldMainRisk
+} from '../../sls';
 import Content from '../../../container/old-main-verify-content';
 
 interface IParams {
@@ -60,6 +66,14 @@ export default function OldMainAccountVerify({
         verifyCode: data.code,
         requestId: data.requestId
       };
+
+      const slsParams = {
+        verifyType: riskInfo.verifyType,
+        detail: riskInfo.detail,
+        codeType: riskInfo.codeType,
+        sendCodeRequestId: data.requestId,
+        verifyCode: data.code
+      };
       
       request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
         body: verifyResult
@@ -67,10 +81,22 @@ export default function OldMainAccountVerify({
         params: verifyResult
       })).then(result => {
         unlock();
+
+        slsOldMainRisk({
+          ...slsParams,
+          slsResultType: ESlsResultType.SUCCESS
+        });
         
         close(result);
       }, (err: FetcherError) => {
         unlock();
+
+        slsOldMainRisk({
+          ...slsParams,
+          slsResultType: ESlsResultType.FAIL,
+          errorMessage: err.message,
+          errorCode: err.code
+        });
         
         if (err.code === riskConfig.CODE_INVALID_INPUT || err.code === riskConfig.CODE_NEED_VERIFY) { // 虽然后边这个错误码几乎不可能存在，但为了代码的健壮性，还是加上这个判读
           updateData({

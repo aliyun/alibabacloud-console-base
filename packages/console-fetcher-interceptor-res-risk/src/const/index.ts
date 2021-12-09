@@ -77,12 +77,14 @@ export enum ESlsTopic {
   RISK_STARTUP = 'risk_startup', // 展示正常风控弹窗，包括旧版主账号风控以及新版主子账号风控
   RISK_FORBIDDEN = 'risk_forbidden', // 不合法的风控 code 的弹窗提示
   RISK_INVALID = 'risk_invalid', // 无效的风控 code 的弹窗提示
+  OLD_MAIN_RISK = 'old_main_risk', // 旧版主账号风控
   NEW_MAIN_RISK = 'new_main_risk', // 新版主账号风控
   SUB_RISK = 'sub_risk', // 新版子账号风控
   SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过 MFA 绑定
   SUB_BIND_MFA = 'sub_bind_mfa', // 新版子账号风控 - 正常绑定 MFA 设备
   SUB_AUTH_MFA = 'sub_auth_mfa', // 新版子账号风控 - 正常验证 MFA 设备
-  U2F_ERROR = 'u2f_error' // 新版子账号风控 - u2f 报错埋点
+  U2F_ERROR = 'u2f_error', // 新版子账号风控 - u2f 报错埋点
+  OLD_MAIN_RISK_SEND_CODE ='old_main_risk_send_code' // 旧版主账号风控 - 发送验证码
 }
 
 /**

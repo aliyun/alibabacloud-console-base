@@ -26,6 +26,7 @@ import {
   INewMainAccountRisk
 } from '../../types';
 import intl from '../../intl';
+import isValidJson from '../../util/is-valid-json';
 import {
   slsNewMainRisk
 } from '../../util/sls';
@@ -60,13 +61,14 @@ export default function Content(): JSX.Element {
 
   const getValidateToken = useCallback((event: MessageEvent): void => {
     try {
-      // event.data 可能是 object 或者 Json String, 这会导致 decodeURIComponent(event.data) 的结果是 [object, object]，从而导致 JSON.parse 报错
-      const json: IJson = typeof (event.data) === 'object' ? event.data : JSON.parse(decodeURIComponent(event.data));
+      // 为了防止 JSON.parse 报错，需要先判断 decodeURIComponent(event.data) 是不是合法的 JSON 字符串
+      const json: IJson = isValidJson(decodeURIComponent(event.data)) ? JSON.parse(decodeURIComponent(event.data)) : event.data;
       const {
+        type,
         ivToken
       } = json;
 
-      if (json.type === 'iframevalid' && ivToken) {
+      if (type === 'iframevalid' && ivToken) {
         lock(true);
 
         const verifyResult = {
