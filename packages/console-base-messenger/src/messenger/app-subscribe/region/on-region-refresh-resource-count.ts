@@ -1,7 +1,9 @@
 import {
   EMessageBroadcastByConsoleBase
 } from '../../../const';
-import subscribeByApp from '../../../util/subscribe-by-app';
+import {
+  subscribeByApp
+} from '../../../util';
 import setRegionResourceCount from '../../app-broadcast/region/set-region-resource-count';
 
 /**

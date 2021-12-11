@@ -1,10 +1,10 @@
-import subscribeByApp from '../../../util/subscribe-by-app';
 import {
   EToolkitTypeShort
 } from '../../../const';
 import {
+  subscribeByApp,
   composeToolkitTypeWithId
-} from '../../../util/compose-toolkit-type';
+} from '../../../util';
 
 /**
  * 某工具的「激活」时的回调

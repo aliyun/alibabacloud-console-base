@@ -4,7 +4,9 @@ import {
 import {
   EMessageBroadcastByConsoleBase
 } from '../../../const';
-import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
+import {
+  broadcastByConsoleBase
+} from '../../../util';
 
 /**
  * 微教程内部元素 :tutor-action[label]{value=xx} 点击后需要通知应用

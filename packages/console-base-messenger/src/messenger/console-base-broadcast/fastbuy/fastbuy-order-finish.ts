@@ -4,7 +4,9 @@ import {
 import {
   EMessageBroadcastByConsoleBase
 } from '../../../const';
-import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
+import {
+  broadcastByConsoleBase
+} from '../../../util';
 
 /**
  * Fastbuy 完成支付

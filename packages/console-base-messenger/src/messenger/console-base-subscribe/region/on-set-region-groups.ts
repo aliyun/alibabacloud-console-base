@@ -4,7 +4,9 @@ import {
 import {
   EMessageBroadcastByApp
 } from '../../../const';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
+import {
+  subscribeByConsoleBase
+} from '../../../util';
 
 /**
  * console-base 响应设置地域分组列表

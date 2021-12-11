@@ -1,7 +1,9 @@
 import {
   EMessageBroadcastByConsoleBase
 } from '../../const';
-import subscribeByApp from '../../util/subscribe-by-app';
+import {
+  subscribeByApp
+} from '../../util';
 
 /**
  * 主题切换时的回调

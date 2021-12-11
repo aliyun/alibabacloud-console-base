@@ -2,7 +2,9 @@ import {
   useEffect
 } from 'react';
 
-import pushStack from '../../util/push-stack';
+import {
+  pushStack
+} from '../../util';
 import {
   useStateId,
   useDialogStackItem

@@ -1,8 +1,10 @@
 import {
   EToolkitTypeShort
 } from '../../../const';
-import composeToolkitType from '../../../util/compose-toolkit-type';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
+import {
+  composeToolkitType,
+  subscribeByConsoleBase
+} from '../../../util';
 
 /**
  * console-base 响应动态移除某工具

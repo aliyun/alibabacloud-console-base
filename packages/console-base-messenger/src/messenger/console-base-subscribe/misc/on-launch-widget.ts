@@ -6,7 +6,7 @@ import {
 } from '../../../const';
 import {
   subscribePromiseByConsoleBase
-} from '../../../util/subscribe-by-console-base';
+} from '../../../util';
 
 /**
  * console-base 响应 Widget 唤起

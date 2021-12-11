@@ -1,8 +1,10 @@
 import {
   EToolkitTypeShort
 } from '../../../const';
-import composeToolkitType from '../../../util/compose-toolkit-type';
-import broadcastByApp from '../../../util/broadcast-by-app';
+import {
+  composeToolkitType,
+  broadcastByApp
+} from '../../../util';
 
 const ATTR_NAME = 'data-console-base-toolkit-go-top';
 let index = 0;

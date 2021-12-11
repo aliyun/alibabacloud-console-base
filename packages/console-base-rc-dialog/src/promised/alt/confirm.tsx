@@ -8,7 +8,9 @@ import {
   COMMON_PROPS_SYS_DIALOG
 } from '../../const';
 import intl from '../../intl';
-import buildPropsForPromise from '../../util/build-props-for-promise';
+import {
+  buildPropsForPromise
+} from '../../util';
 import AltWrap from '../../rc/alt-wrap';
 import open from '../open';
 

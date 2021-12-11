@@ -25,7 +25,11 @@ export enum EMessageBroadcastByApp {
   // 交互式教程
   TUTOR_REGISTER = 'app_2_console_base:tutor/register',
   TUTOR_OPEN = 'app_2_console_base:tutor/open',
-  TUTOR_CLOSE = 'app_2_console_base:tutor/close'
+  TUTOR_CLOSE = 'app_2_console_base:tutor/close',
+  // 微文档浏览器传送门
+  MICRO_BROWSER_PORTAL_CREATED = 'app_2_console_base:micro_browser_portal/created',
+  MICRO_BROWSER_PORTAL_REMOVED = 'app_2_console_base:micro_browser_portal/removed',
+  MICRO_BROWSER_PORTAL_TOGGLE_VISIBLE = 'app_2_console_base:micro_browser_portal/toggle_visible'
 }
 
 /**

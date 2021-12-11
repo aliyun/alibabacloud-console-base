@@ -2,9 +2,9 @@ import {
   EToolkitTypeShort
 } from '../../../const';
 import {
-  composeToolkitTypeWithId
-} from '../../../util/compose-toolkit-type';
-import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
+  composeToolkitTypeWithId,
+  broadcastByConsoleBase
+} from '../../../util';
 
 /**
  * 通知控制台应用：某工具被点击

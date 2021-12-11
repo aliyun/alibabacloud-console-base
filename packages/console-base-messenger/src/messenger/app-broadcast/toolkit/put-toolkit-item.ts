@@ -8,8 +8,10 @@ import {
 import {
   EToolkitTypeShort
 } from '../../../const';
-import composeToolkitType from '../../../util/compose-toolkit-type';
-import broadcastByApp from '../../../util/broadcast-by-app';
+import {
+  composeToolkitType,
+  broadcastByApp
+} from '../../../util';
 
 /**
  * Toolkit 添加或修改一个工具

@@ -7,7 +7,9 @@ import {
   IModelReducer,
   IModelProviderProps
 } from '../types';
-import getDefaultContextState from '../util/get-default-context-state';
+import {
+  getDefaultContextState
+} from '../util';
 import reducer from '../reducer';
 import Lifecycle from '../lifecycle';
 

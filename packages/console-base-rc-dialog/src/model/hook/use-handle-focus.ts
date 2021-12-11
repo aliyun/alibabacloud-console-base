@@ -4,7 +4,7 @@ import {
 
 import {
   focusDialog
-} from '../util/push-stack';
+} from '../util';
 
 import useRefContent from './use-ref-content';
 import useRefDialog from './use-ref-dialog';

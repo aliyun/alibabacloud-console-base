@@ -2,7 +2,9 @@ import {
   useCallback
 } from 'react';
 
-import detectFusionOverlay from '../../util/detect-fusion-overlay';
+import {
+  detectFusionOverlay
+} from '../../util';
 
 import useModelProps from './_use-model-props';
 import useHandleClose from './use-handle-close';

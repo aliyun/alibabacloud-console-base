@@ -4,7 +4,9 @@ import {
 import {
   EMessageBroadcastByConsoleBase
 } from '../../../const';
-import subscribeByApp from '../../../util/subscribe-by-app';
+import {
+  subscribeByApp
+} from '../../../util';
 
 export default function onTutorDismiss(fn: (id: string, done: boolean) => void): () => void {
   return subscribeByApp<IPayloadTutorDismiss>(EMessageBroadcastByConsoleBase.TUTOR_DISMISS, payload => {

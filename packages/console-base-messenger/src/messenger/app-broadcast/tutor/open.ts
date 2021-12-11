@@ -1,10 +1,12 @@
 import {
+  IPayloadTutorOpen
+} from '../../../types';
+import {
   EMessageBroadcastByApp
 } from '../../../const';
 import {
-  IPayloadTutorOpen
-} from '../../../types';
-import broadcastByApp from '../../../util/broadcast-by-app';
+  broadcastByApp
+} from '../../../util';
 
 /**
  * 打开教程（到第几步）

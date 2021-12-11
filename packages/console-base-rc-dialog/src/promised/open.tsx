@@ -6,7 +6,9 @@ import {
 import {
   EDialogMode
 } from '../const';
-import buildPropsForPromise from '../util/build-props-for-promise';
+import {
+  buildPropsForPromise
+} from '../util';
 
 import openIndirect from './open-indirect';
 

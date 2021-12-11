@@ -1,7 +1,9 @@
 import {
   EMessageBroadcastByApp
 } from '../../../const';
-import broadcastByApp from '../../../util/broadcast-by-app';
+import {
+  broadcastByApp
+} from '../../../util';
 
 /**
  * 通知修改当前选择的资源组

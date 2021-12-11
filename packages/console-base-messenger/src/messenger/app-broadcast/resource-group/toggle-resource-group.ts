@@ -1,7 +1,9 @@
 import {
   EMessageBroadcastByApp
 } from '../../../const';
-import broadcastByApp from '../../../util/broadcast-by-app';
+import {
+  broadcastByApp
+} from '../../../util';
 
 /**
  * 展示或隐藏资源组

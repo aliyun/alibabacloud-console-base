@@ -29,12 +29,12 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.42",
     "@alicloud/demo-rc-elements": "^1.3.69",
-    "@types/lodash": "^4.14.177",
-    "@types/react": "^17.0.36",
-    "@types/styled-components": "^5.1.15",
+    "@types/lodash": "^4.14.178",
+    "@types/react": "^17.0.37",
+    "@types/styled-components": "^5.1.17",
     "react": "^17.0.2",
     "styled-components": "^5.3.3",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.3"
   },
   "peerDependencies": {
     "react": ">=16.8",
@@ -43,7 +43,7 @@
   "dependencies": {
     "@alicloud/console-base-rc-beacon": "^1.0.37",
     "@alicloud/console-base-rc-button": "^1.1.104",
-    "@alicloud/console-base-rc-dropdown": "^1.2.96",
+    "@alicloud/console-base-rc-dropdown": "^1.2.97",
     "@alicloud/console-base-rc-flex": "^1.1.58",
     "@alicloud/console-base-rc-icon": "^1.4.80",
     "@alicloud/console-base-theme": "^1.3.90",

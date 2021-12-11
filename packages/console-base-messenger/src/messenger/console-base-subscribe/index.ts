@@ -19,6 +19,9 @@ import onToolkitRemove from './toolkit/on-toolkit-remove';
 import onRegisterTutor from './tutor/on-register';
 import onOpenTutor from './tutor/on-open';
 import onCloseTutor from './tutor/on-close';
+import onMicroBrowserPortalCreated from './micro-browser-portal/on-created';
+import onMicroBrowserPortalRemoved from './micro-browser-portal/on-removed';
+import onMicroBrowserPortalToggleVisible from './micro-browser-portal/on-toggle-visibie';
 
 /* --------------------------------------------- *
  * console-base 必须实现这里所有事件的处理
@@ -46,5 +49,8 @@ export default {
   onToolkitRemove,
   onRegisterTutor,
   onOpenTutor,
-  onCloseTutor
+  onCloseTutor,
+  onMicroBrowserPortalCreated,
+  onMicroBrowserPortalRemoved,
+  onMicroBrowserPortalToggleVisible
 };

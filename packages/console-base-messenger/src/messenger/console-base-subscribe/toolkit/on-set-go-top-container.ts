@@ -1,8 +1,10 @@
 import {
   EToolkitTypeShort
 } from '../../../const';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
-import composeToolkitType from '../../../util/compose-toolkit-type';
+import {
+  composeToolkitType,
+  subscribeByConsoleBase
+} from '../../../util';
 
 /**
  * 响应设置工具组的「返回顶部」容器

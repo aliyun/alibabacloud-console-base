@@ -4,7 +4,9 @@ import {
 import {
   EMessageBroadcastByConsoleBase
 } from '../../../const';
-import subscribeByApp from '../../../util/subscribe-by-app';
+import {
+  subscribeByApp
+} from '../../../util';
 
 /**
  * 微教程内部元素 :tutor-action[label]{value=xx} 点击后的事件注册

@@ -4,7 +4,9 @@ import {
 import {
   EMessageBroadcastByConsoleBase
 } from '../../../const';
-import subscribeByApp from '../../../util/subscribe-by-app';
+import {
+  subscribeByApp
+} from '../../../util';
 
 /**
  * 资源组切换时的回调

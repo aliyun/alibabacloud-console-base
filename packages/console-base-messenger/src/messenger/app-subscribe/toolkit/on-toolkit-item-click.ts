@@ -1,10 +1,10 @@
-import subscribeByApp from '../../../util/subscribe-by-app';
 import {
   EToolkitTypeShort
 } from '../../../const';
 import {
-  composeToolkitTypeWithId
-} from '../../../util/compose-toolkit-type';
+  composeToolkitTypeWithId,
+  subscribeByApp
+} from '../../../util';
 
 /**
  * 某工具的「点击」的回调

@@ -11,7 +11,9 @@ import {
   TStringOrJSX,
   TDialogData
 } from '../types';
-import buildPropsForPromise from '../util/build-props-for-promise';
+import {
+  buildPropsForPromise
+} from '../util';
 import WithProvider from '../rc-container';
 
 /**
@@ -114,6 +116,7 @@ export default function openIndirect<T = void, D = TDialogData>(contentOrProps?:
       close = null;
     };
     
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dialogProps!.onClose = close;
     

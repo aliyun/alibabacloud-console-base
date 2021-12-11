@@ -19,6 +19,9 @@ import removeToolkitItem from './toolkit/remove-toolkit-item';
 import registerTutor from './tutor/register';
 import openTutor from './tutor/open';
 import closeTutor from './tutor/close';
+import microBrowserPortalCreated from './micro-browser-portal/created';
+import microBrowserPortalRemoved from './micro-browser-portal/removed';
+import microBrowserPortalToggleVisible from './micro-browser-portal/toggle-visible';
 
 /* --------------------------------------------- *
  * 控制台调用
@@ -46,5 +49,8 @@ export default {
   removeToolkitItem,
   registerTutor,
   openTutor,
-  closeTutor
+  closeTutor,
+  microBrowserPortalCreated,
+  microBrowserPortalRemoved,
+  microBrowserPortalToggleVisible
 };

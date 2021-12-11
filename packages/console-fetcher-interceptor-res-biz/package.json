@@ -30,9 +30,9 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.42",
     "@alicloud/demo-rc-elements": "^1.3.69",
     "@alicloud/fetcher-demo-helpers": "^1.1.80",
-    "@types/react": "^17.0.36",
+    "@types/react": "^17.0.37",
     "react": "^17.0.2",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.3"
   },
   "dependencies": {
     "@alicloud/fetcher": "^1.1.83"

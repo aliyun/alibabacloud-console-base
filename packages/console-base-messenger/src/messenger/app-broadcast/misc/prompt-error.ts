@@ -3,7 +3,7 @@ import {
 } from '../../../const';
 import {
   broadcastPromiseByApp
-} from '../../../util/broadcast-by-app';
+} from '../../../util';
 
 /**
  * 错误提示

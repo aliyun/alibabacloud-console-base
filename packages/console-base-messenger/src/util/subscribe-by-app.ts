@@ -6,9 +6,10 @@ import {
 import {
   EMessageBroadcastByConsoleBase
 } from '../const';
+
 import {
   slsSubscribeByApp
-} from '../util/sls';
+} from './sls';
 
 /**
  * 应用订阅消息，需要记录日志

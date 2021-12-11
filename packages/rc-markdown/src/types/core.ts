@@ -44,6 +44,7 @@ export interface IMarkdownCompileOptions {
   processHtml?(html: string): string;
 }
 
+// TODO compile options as options and make the component article with SC possibility
 export interface IPropsMarkdown extends IMarkdownCompileOptions {
   source: string;
 }

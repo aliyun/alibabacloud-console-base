@@ -1,7 +1,9 @@
 import {
   EMessageBroadcastByApp
 } from '../../../const';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
+import {
+  subscribeByConsoleBase
+} from '../../../util';
 
 /**
  * console-base 响应设置当前选中的资源组

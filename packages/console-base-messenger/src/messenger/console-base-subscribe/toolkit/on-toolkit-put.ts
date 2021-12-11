@@ -8,8 +8,10 @@ import {
 import {
   EToolkitTypeShort
 } from '../../../const';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
-import composeToolkitType from '../../../util/compose-toolkit-type';
+import {
+  composeToolkitType,
+  subscribeByConsoleBase
+} from '../../../util';
 
 /**
  * console-base 响应动态添加或修改某工具

@@ -47,6 +47,7 @@ export default function Knobs({
   onChange
 }: IProps): null {
   const title = text('title', 'this is a title');
+  const titleExtra = text('titleExtra', '');
   const content = text('content', 'this is content which can be JSX.Element or anything legal');
   const buttons = array('buttons', ['yes', 'no']);
   const mode = optional<EDialogMode>({
@@ -76,6 +77,7 @@ export default function Knobs({
   
   const props = useMemo(() => omitUndefined({
     title,
+    titleExtra,
     content,
     buttons,
     mode,
@@ -88,6 +90,7 @@ export default function Knobs({
     zIndexBackdrop
   }), [
     title,
+    titleExtra,
     content,
     buttons,
     mode,

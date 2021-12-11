@@ -4,7 +4,9 @@ import {
 import {
   EMessageBroadcastByConsoleBase
 } from '../../../const';
-import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
+import {
+  broadcastByConsoleBase
+} from '../../../util';
 
 /**
  * 通知控制台应用：用户选择新的区域

@@ -87,10 +87,11 @@ export enum EIconType {
   dytns = 'e6e8', // 号码百科
   dyvms = 'e782', // 语音服务
   eais = 'e68e', // 弹性加速计算实例
+  ebs = 'e605', // 块存储 Elastic Block Storage
   eci = 'e8db', // 弹性容器实例
   ecs = 'e606', // 云服务器
   ecsgpu = 'e707', // 阿里云图形工作站
-  edas = 'e631', // 企业级分布式应用服务 EDAS
+  edas = 'e631', // 企业级分布式应用服务 Enterprise Distributed Application Service
   eds = 'e7d2', // 弹性云桌面
   ehpc = 'e7b1', // 弹性高性能计算
   elasticsearch = 'e80f', // 阿里云 Elasticsearch

@@ -8,9 +8,10 @@ import {
   EMessageBroadcastByApp,
   EMessageBroadcastByConsoleBase
 } from '../const';
+
 import {
   slsBroadcastByApp
-} from '../util/sls';
+} from './sls';
 
 /**
  * 为了避免控制台调用 forApp.xx 的时候，console-base 还没有 ready 而导致事件被忽略，需要增加一个全局变量
