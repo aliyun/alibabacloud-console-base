@@ -72,6 +72,12 @@ export default function generateSubmitButtonFn({
           getMfaInfoToAuthUrl: riskConfig.URL_GET_MFA_INFO_TO_AUTH
         });
 
+        slsSubRiskGetMfaAuthInfo({
+          accountId,
+          fromBindU2FSuccess: true,
+          slsResultType: ESlsResultType.SUCCESS
+        });
+
         return {
           step: EStep.U2F_AUTH, // 走 U2F 验证
           canU2FRetry: true,
@@ -171,11 +177,6 @@ export default function generateSubmitButtonFn({
 
                 updateData({
                   ...dataForUpdate
-                });
-
-                slsSubRiskGetMfaAuthInfo({
-                  accountId,
-                  slsResultType: ESlsResultType.SUCCESS
                 });
               } catch (getAuthMfaInfoError: unknown) {
                 const getAuthInfoErrorMessage = (getAuthMfaInfoError as Error).message;
