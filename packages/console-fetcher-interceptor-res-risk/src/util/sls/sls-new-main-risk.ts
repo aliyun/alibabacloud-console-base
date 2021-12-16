@@ -14,8 +14,6 @@ interface IProps extends Omit<IMainAccountRiskInfo, 'risk'> {
   errorCode?: string;
 }
 
-export default function slsNewMainRisk({
-  ...mainRiskProps
-}: IProps): void {
+export default function slsNewMainRisk(mainRiskProps: IProps): void {
   sls(ESlsTopic.NEW_MAIN_RISK, mainRiskProps);
 }

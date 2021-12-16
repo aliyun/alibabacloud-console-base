@@ -27,7 +27,7 @@ export default function slsSubRiskBindMfa({
     slsResultType,
     validators,
     accountId: payload?.AccountId,
-    deviceType: 'AuthCode' in payload ? ESubMFADeviceType.VMFA : ESubMFADeviceType.VMFA,
+    deviceType: 'AuthCode' in payload ? ESubMFADeviceType.VMFA : ESubMFADeviceType.U2F,
     ...restProps
   });
 }

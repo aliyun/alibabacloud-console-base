@@ -80,10 +80,11 @@ export enum ESlsTopic {
   OLD_MAIN_RISK = 'old_main_risk', // 旧版主账号风控
   NEW_MAIN_RISK = 'new_main_risk', // 新版主账号风控
   SUB_RISK = 'sub_risk', // 新版子账号风控
-  SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过 MFA 绑定
-  SUB_BIND_MFA = 'sub_bind_mfa', // 新版子账号风控 - 正常绑定 MFA 设备
-  SUB_AUTH_MFA = 'sub_auth_mfa', // 新版子账号风控 - 正常验证 MFA 设备
   U2F_ERROR = 'u2f_error', // 新版子账号风控 - u2f 报错埋点
+  SUB_BIND_MFA = 'sub_bind_mfa', // 新版子账号风控 - 正常绑定 MFA 设备
+  SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过 MFA 绑定
+  SUB_AUTH_MFA = 'sub_auth_mfa', // 新版子账号风控 - 正常验证 MFA 设备
+  SUB_GET_AUTH_INFO = 'sub_get_mfa_auth_info', // 新版子账号风控 - 获取绑定的 MFA 设备信息
   OLD_MAIN_RISK_SEND_CODE ='old_main_risk_send_code' // 旧版主账号风控 - 发送验证码
 }
 

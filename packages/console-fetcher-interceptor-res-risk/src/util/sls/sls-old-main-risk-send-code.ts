@@ -14,8 +14,6 @@ interface IProps {
   errorCode?: string;
 }
 
-export default function slsOldMainRiskSendCode({
-  ...oldMainRiskSendCodeProps
-}: IProps): void {
+export default function slsOldMainRiskSendCode(oldMainRiskSendCodeProps: IProps): void {
   sls(ESlsTopic.OLD_MAIN_RISK_SEND_CODE, oldMainRiskSendCodeProps);
 }

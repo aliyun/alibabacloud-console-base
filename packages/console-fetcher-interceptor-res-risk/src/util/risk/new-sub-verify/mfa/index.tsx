@@ -11,12 +11,16 @@ import {
 } from '../../../../types';
 import {
   EStep,
+  ESlsResultType,
   ESubMFADeviceType
 } from '../../../../const';
 import intl from '../../../../intl';
 import Content from '../../../../container/new-sub-verify-content';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
+import {
+  slsSubRiskGetMfaAuthInfo
+} from '../../../sls';
 
 import {
   IParams,
@@ -76,7 +80,7 @@ export default async function RiskSubVerify({
         requestMethod: REQUEST_METHOD,
         getMfaInfoToAuthUrl: URL_GET_MFA_INFO_TO_AUTH
       });
-      
+
       initialGetAuthMfaInfoData = authMfaInfo;
 
       if (authMfaInfo.DeviceType === ESubMFADeviceType.U2F) {
@@ -84,8 +88,19 @@ export default async function RiskSubVerify({
       } else {
         initialStep = EStep.VMFA_AUTH;
       }
+
+      slsSubRiskGetMfaAuthInfo({
+        accountId,
+        slsResultType: ESlsResultType.SUCCESS
+      });
     } catch (error: unknown) {
       const errorMessage = (error as Error).message;
+
+      slsSubRiskGetMfaAuthInfo({
+        accountId,
+        errorMessage,
+        slsResultType: ESlsResultType.FAIL
+      });
 
       // 当获取用户绑定的 U2F 信息失败时，直接弹出错误弹窗
       return generateAuthMfaInfoFailDialog(errorMessage);

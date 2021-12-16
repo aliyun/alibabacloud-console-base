@@ -23,7 +23,8 @@ import intl from '../../../../intl';
 import {
   slsSubRisk,
   slsSubRiskAuthMfa,
-  slsSubRiskBindMfa
+  slsSubRiskBindMfa,
+  slsSubRiskGetMfaAuthInfo
 } from '../../../sls';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
@@ -171,8 +172,20 @@ export default function generateSubmitButtonFn({
                 updateData({
                   ...dataForUpdate
                 });
+
+                slsSubRiskGetMfaAuthInfo({
+                  accountId,
+                  slsResultType: ESlsResultType.SUCCESS
+                });
               } catch (getAuthMfaInfoError: unknown) {
                 const getAuthInfoErrorMessage = (getAuthMfaInfoError as Error).message;
+
+                slsSubRiskGetMfaAuthInfo({
+                  accountId,
+                  fromBindU2FSuccess: true,
+                  errorMessage: getAuthInfoErrorMessage,
+                  slsResultType: ESlsResultType.FAIL
+                });
 
                 // 获取用户绑定的 U2F 信息失败时，直接弹出错误弹窗
                 return generateAuthMfaInfoFailDialog(getAuthInfoErrorMessage);

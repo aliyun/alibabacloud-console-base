@@ -12,10 +12,6 @@ interface IProps {
   errorMessage?: string;
 }
 
-export default function slsSubRisk({
-  ...subRiskProps
-}: IProps): void {
-  sls(ESlsTopic.SUB_RISK, {
-    ...subRiskProps
-  });
+export default function slsSubRisk(subRiskProps: IProps): void {
+  sls(ESlsTopic.SUB_RISK, subRiskProps);
 }

@@ -11,11 +11,7 @@ interface IProps {
   errorMessage?: string;
 }
 
-export default function slsSkipBindMfa({
-  ...skipBindMfaProps
-}: IProps): void {
-  sls(ESlsTopic.SKIP_BIND_MFA, {
-    ...skipBindMfaProps
-  });
+export default function slsSkipBindMfa(skipBindMfaProps: IProps): void {
+  sls(ESlsTopic.SKIP_BIND_MFA, skipBindMfaProps);
 }
 
