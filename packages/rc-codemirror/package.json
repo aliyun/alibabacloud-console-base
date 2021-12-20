@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@types/codemirror": "^5.60.5",
-    "codemirror": "^5.64.0",
+    "codemirror": "^5.65.0",
     "lodash": "^4.17.21"
   },
   "scripts": {
