@@ -1,6 +1,6 @@
 // 工具的 label 定制属性
 export interface ISettingsToolkitItemLabel {
-  icon?: 'survey' | 'qr' | 'dingding'; // 预设的图标（问卷、二维码、钉钉），考虑的是特别通用的场景
+  icon?: 'survey' | 'qr' | 'dingding' | 'labs'; // 预设的图标（问卷、二维码、钉钉），考虑的是特别通用的场景
   html?: string; // 如果字符串或预设 icon 不能适用你的场景，可以自定义 HTML（优先级大于 `text`）
   text?: string; // 纯文字，推荐 4 个以内（有有限的自适应）
 }
@@ -20,6 +20,7 @@ export interface ISettingsToolkitItem {
   id: string; // 自定义工具的 ID，必需，否则不展示，且交互时也需要它
   label?: string | ISettingsToolkitItemLabel;
   tooltip?: string | ISettingsToolkitItemTooltip;
+  mark?: 'new' | 'hot';
   href?: string; // 链接，有的话按钮将默认是一个可导航的外跳链接
   target?: string; // 链接的 target 属性，默认自动对外部链接使用 target="_blank"
   unread?: number; // 「未读数」，将在工具按钮右上角展示一个小红点（点击后清空）
