@@ -7,12 +7,12 @@ import {
 } from '@alicloud/typescript-missing-helpers';
 
 import {
-  IPropsTabs
-} from '../../types';
+  IModelProps
+} from '../types';
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IPropsTabs, 'width' | 'contentPadding'>;
+type TModelProps = RequiredSelected<IModelProps, 'width' | 'contentPadding'>;
 
 const DEFAULT_PROPS: TModelProps = {
   tabs: [],

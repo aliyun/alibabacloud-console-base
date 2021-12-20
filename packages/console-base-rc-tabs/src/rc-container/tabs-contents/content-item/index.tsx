@@ -2,24 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  TContentPadding,
-  IPropsTab
-} from '../../../types';
-import {
+  ModelPropsTab,
+  TabContentPadding,
   useProps,
   useActiveTab
 } from '../../../model';
 
 interface IProps {
-  tab: IPropsTab;
+  tab: ModelPropsTab;
 }
 
 interface IScPropsNavItem {
   active: boolean;
-  padding: TContentPadding;
+  padding: TabContentPadding;
 }
 
-function getContentPadding(contentPadding: TContentPadding): string {
+function getContentPadding(contentPadding: TabContentPadding): string {
   switch (contentPadding) {
     case 'top':
       return '12px 0 0 0';
@@ -46,12 +44,14 @@ export default function ContentItem({
   const active = activeTab === tab;
   const {
     content,
-    contentPadding = contentPaddingInProps
+    contentPadding = contentPaddingInProps,
+    contentAttr
   } = tab;
   
   return <ScContentItem {...{
     active,
-    padding: contentPadding
+    padding: contentPadding,
+    ...contentAttr
   }}>
     {content}
   </ScContentItem>;

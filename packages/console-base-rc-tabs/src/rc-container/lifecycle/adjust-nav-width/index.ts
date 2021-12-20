@@ -4,7 +4,7 @@ import {
 
 import {
   useHandleAdjustNavWidth
-} from '../../hook';
+} from '../../../model';
 
 export default function AdjustNavWidth(): null {
   const handleAdjustNavWidth = useHandleAdjustNavWidth();

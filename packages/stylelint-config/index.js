@@ -1,7 +1,7 @@
 'use strict';
 
-// lowercase-single-dashed-names-only-0
-const namingPattern = /^-?[a-z0-9]+(-[a-z0-9]+)*$/;
+// lowercase-single-dashed-names-only-0，also bypass styled-components placeholder
+const namingPattern = /^-?[a-z0-9]+(-[a-z0-9]+)*$|\$dummyValue/;
 
 module.exports = {
   extends: [

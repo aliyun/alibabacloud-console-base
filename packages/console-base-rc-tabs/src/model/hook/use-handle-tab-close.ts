@@ -4,8 +4,8 @@ import {
 } from 'react';
 
 import {
-  IPropsTab
-} from '../../types';
+  IModelPropsTab
+} from '../types';
 
 import useModelProps from './_use-model-props';
 import useVisibleTabs from './use-visible-tabs';
@@ -13,7 +13,7 @@ import useActiveKey from './use-active-key';
 import useActiveTab from './use-active-tab';
 import useHandleTabActivate from './use-handle-tab-activate';
 
-export default function useHandleTabClose(): (tab: IPropsTab) => void {
+export default function useHandleTabClose(): (tab: IModelPropsTab) => void {
   const {
     tabs,
     onTabClose
@@ -23,10 +23,10 @@ export default function useHandleTabClose(): (tab: IPropsTab) => void {
   const activeTab = useActiveTab();
   const handleTabActivate = useHandleTabActivate();
   
-  return useCallback((tab: IPropsTab): void => {
+  return useCallback((tab: IModelPropsTab): void => {
     const activeIndex = visibleTabs.indexOf(activeTab);
     const closeIndex = visibleTabs.indexOf(tab);
-    let nextActiveTab: IPropsTab | null = activeTab;
+    let nextActiveTab: IModelPropsTab | null = activeTab;
     let nextActiveIndex: number = activeIndex;
     
     /**

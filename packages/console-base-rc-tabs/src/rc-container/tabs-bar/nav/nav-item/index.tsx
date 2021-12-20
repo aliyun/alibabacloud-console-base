@@ -3,9 +3,7 @@ import React, {
 } from 'react';
 
 import {
-  IPropsTab
-} from '../../../../types';
-import {
+  ModelPropsTab,
   useProps,
   useHandleTabClose,
   useHandleTabActivate,
@@ -14,7 +12,7 @@ import {
 import TabItem from '../../../../rc/tab-item';
 
 interface IProps {
-  tab: IPropsTab;
+  tab: ModelPropsTab;
   index: number;
 }
 

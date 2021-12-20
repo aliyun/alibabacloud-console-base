@@ -1,6 +1,6 @@
 import {
-  IPropsTab
-} from '../../types';
+  IModelPropsTab
+} from '../types';
 
 import useVisibleTabs from './use-visible-tabs';
 import useActiveKey from './use-active-key';
@@ -8,7 +8,7 @@ import useActiveKey from './use-active-key';
 /**
  * 当前激活的 tab
  */
-export default function useActiveTab(): IPropsTab {
+export default function useActiveTab(): IModelPropsTab {
   const visibleTabs = useVisibleTabs();
   const activeKey = useActiveKey();
   

@@ -27,15 +27,15 @@
   "devDependencies": {
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.89",
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.42",
+    "@alicloud/console-toolkit-preset-component": "^1.2.45",
     "@alicloud/demo-rc-elements": "^1.3.69",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
-    "@types/styled-components": "^5.1.17",
+    "@types/styled-components": "^5.1.18",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.3",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.4"
   },
   "peerDependencies": {
     "react": ">=16.8",

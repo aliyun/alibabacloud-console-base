@@ -1,6 +1,6 @@
 export { default } from './rc-container';
 
 export type {
-  IPropsTabs as TabsProps,
-  IPropsTab as TabProps
-} from './types';
+  ModelProps as TabsProps,
+  ModelPropsTab as TabProps
+} from './model';

@@ -34,6 +34,7 @@ const TABS: TabProps[] = [{
   key: 'long-article',
   title: '长文',
   content: <LongArticle />,
+  order: 123, // 将放在后边
   closable: true
 }, {
   key: 'hbr',
@@ -44,7 +45,7 @@ const TABS: TabProps[] = [{
   key: 'long-title',
   title: '标题很长长长长长长长长长长长长长长长长长长长长长长长长长长长',
   content: <>123123123</>,
-  visible: false,
+  visible: true,
   closable: true
 }, {
   title: 'Never Visible',
