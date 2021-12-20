@@ -14,7 +14,9 @@ import {
   IErrorQueueItem
 } from '../../types';
 import intl from '../../intl';
-import convertErrorDetailKvList from '../../util/convert-error-detail-kv-list';
+import {
+  convertErrorDetailKvList
+} from '../../util';
 
 import KvList from './kv-list';
 

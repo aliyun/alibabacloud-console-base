@@ -11,14 +11,14 @@ import {
   TErrorPromptArgExtra
 } from '../types';
 import intl from '../intl';
-import convertToQueueItem from '../util/convert-to-queue-item';
 import {
+  convertToQueueItem,
   getSoloQueue,
   getSoloDialogIndirect,
   setSoloDialogIndirect,
   pushSoloQueue,
   resolveSolo
-} from '../util/the-solo';
+} from '../util';
 
 import DialogContent from './dialog-content';
 

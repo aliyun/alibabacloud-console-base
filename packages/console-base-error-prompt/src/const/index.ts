@@ -1,4 +1,6 @@
-import hasParamInUrl from '../util/has-param-in-url';
+import {
+  hasParamInUrl
+} from '../util';
 
 export const ERROR_NAME_WILL_IGNORE = 'ErrorPromptWillIgnore';
 

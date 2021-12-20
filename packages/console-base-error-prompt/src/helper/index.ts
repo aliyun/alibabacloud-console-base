@@ -1,0 +1,1 @@
+export { default as createErrorToIgnore } from './create-error-to-ignore';

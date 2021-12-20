@@ -49,6 +49,7 @@ const ScK = styled.div`
 
 const ScV = styled.div`
   flex: 1;
+  overflow: hidden;
   ${mixinTypoLineWrap}
 `;
 
