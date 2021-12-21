@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  pushStack
+  stackPush
 } from '../util';
 
 import useStateId from './use-state-id';
@@ -16,5 +16,5 @@ export default function useHandlePushStack(): () => void {
   const dialogId = useStateId();
   const dialogStackItem = useDialogStackItem();
   
-  return useCallback(() => pushStack(dialogId, dialogStackItem), [dialogId, dialogStackItem]);
+  return useCallback(() => stackPush(dialogId, dialogStackItem), [dialogId, dialogStackItem]);
 }

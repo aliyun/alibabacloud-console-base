@@ -16,6 +16,7 @@ export { default as useDispatchUnlock } from './use-dispatch-unlock';
 export { default as useDispatchUpdateWindowHeight } from './use-dispatch-update-window-height';
 export { default as useHandlePushStack } from './use-handle-push-stack';
 export { default as useHandleFocus } from './use-handle-focus';
+export { default as useHandleFocusBack } from './use-handle-focus-back';
 export { default as useHandleCloseWithValue } from './use-handle-close-with-value';
 export { default as useHandleClose } from './use-handle-close';
 export { default as useDialog } from './use-dialog';

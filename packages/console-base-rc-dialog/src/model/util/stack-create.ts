@@ -1,20 +1,18 @@
 import _map from 'lodash/map';
 import _forEach from 'lodash/forEach';
 
-export interface IStack<T> {
-  put(id: string, item: T): number;
-  remove(id: string): number;
-  get(k: string | number): T | undefined;
-  each(fn: (v: T, k: string) => void): void;
-}
+import {
+  IStack,
+  IDialogStackItem
+} from '../types';
 
-export default function createStack<T>(): IStack<T> {
-  const STACK: Record<string, T> = {};
+export default function stackCreate(): IStack {
+  const STACK: Record<string, IDialogStackItem> = {};
   
   /**
    * 放入一个元素，返回变更后的长度，如果 id 已存在，则替换它并返回 -1，否则返回变更后的个数（> 0）。
    */
-  function put(id: string, o: T): number {
+  function put(id: string, o: IDialogStackItem): number {
     const existed = !!STACK[id];
     
     STACK[id] = o;
@@ -44,14 +42,14 @@ export default function createStack<T>(): IStack<T> {
   /**
    * 遍历方法
    */
-  function each(fn: (v: T, k: string) => void): void {
+  function each(fn: (v: IDialogStackItem, k: string) => void): void {
     _forEach(STACK, fn);
   }
   
   /**
    * 获取元素
    */
-  function get(k: string | number): T | undefined {
+  function get(k: string | number): IDialogStackItem | undefined {
     return STACK[k];
   }
   

@@ -36,6 +36,7 @@ export default function buildPropsForPromise<R = void, D = TDialogData>(
   const props = fromContentOrProps<R, D>(contentOrProps);
   
   return {
+    prevFocus: document.activeElement,
     ...defaultProps, // 默认的 props 可以被传覆盖
     ...props,
     ...fixedProps // 固定的 props 不能被覆盖

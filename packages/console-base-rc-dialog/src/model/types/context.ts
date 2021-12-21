@@ -19,17 +19,6 @@ import {
   TModelDispatch
 } from './action';
 
-export interface IDialogStackItem {
-  backdrop: boolean;
-  zIndex: number;
-  zIndexBackdrop: number;
-  domDialog: HTMLDivElement | null;
-  domDialogContent: HTMLDivElement | null;
-  dispatchSetZIndex(zIndex: number): void;
-  dispatchCloseOnEsc(): boolean | void;
-  dispatchCloseOnExternal(): void;
-}
-
 export interface IModelReducer {
   (state: IModelState, action: TModelAction): IModelState;
 }
