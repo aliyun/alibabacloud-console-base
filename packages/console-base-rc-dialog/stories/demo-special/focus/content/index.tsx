@@ -1,14 +1,53 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {
   P,
   Button
 } from '@alicloud/demo-rc-elements';
+import {
+  mixinInputReset,
+  mixinInputBg,
+  mixinInputBorder,
+  mixinInputText,
+  mixinInputTextHover,
+  mixinInputBgHover,
+  mixinInputBorderHover,
+  mixinInputTextFocus,
+  mixinInputBgFocus,
+  mixinInputBorderFocus
+} from '@alicloud/console-base-theme';
 
 import {
   open,
   useDialog
 } from '../../../../src';
+
+const ScContent = styled.div`
+  input[type=text],
+  input[type=number],
+  input[type=search],
+  textarea {
+    padding: 4px;
+    line-height: 2;
+    ${mixinInputReset}
+    ${mixinInputText}
+    ${mixinInputBg}
+    ${mixinInputBorder}
+    
+    &:hover {
+      ${mixinInputTextHover}
+      ${mixinInputBgHover}
+      ${mixinInputBorderHover}
+    }
+    
+    &:focus {
+      ${mixinInputTextFocus}
+      ${mixinInputBgFocus}
+      ${mixinInputBorderFocus}
+    }
+  }
+`;
 
 function openAnother(): void {
   open({
@@ -25,12 +64,22 @@ export default function Content(): JSX.Element {
     focus
   } = useDialog();
   
-  return <div>
-    <P>
-      内容中有 <a href="//www.aliyun.com">链接</a>、<input type="radio" />、<input type="checkbox" />、<input type="number" />、<button>按钮</button>、<textarea placeholder="textarea" />、<input type="text" />、<select>
+  return <ScContent>
+    <div>
+      <a href="//www.aliyun.com">链接</a>
+      <input type="text" />
+      <input type="number" />
+      <input type="search" />
+      <input type="color" />
+      <input type="radio" />
+      <input type="checkbox" />
+      <textarea placeholder="textarea" />
+      <select>
         <option value="">nothing</option>
-      </select>、<input type="color" />、<input type="search" />，等元素。
-    </P>
+      </select>
+      <button>按钮</button>
+    </div>
+    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
     <P>也有 <strong tabIndex={0}>带 tabIndex</strong> 的元素。</P>
     <P>默认表单输入元素优先得到焦点。</P>
     <P>
@@ -38,5 +87,5 @@ export default function Content(): JSX.Element {
       <Button onClick={openAnother}>open another</Button>
     </P>
     <Button onClick={focus}>重置焦点（可用于当内容组件异步产生变化之后）</Button>
-  </div>;
+  </ScContent>;
 }

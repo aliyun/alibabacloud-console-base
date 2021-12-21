@@ -19,10 +19,9 @@ import {
 import {
   useProps,
   useRefDialog,
-  useDialogWidth,
-  useDialogZIndex,
   useRefDialogContent,
-  useStateActive
+  useStateActive,
+  useDialogStyle
 } from '../../model';
 
 import Header from './header';
@@ -101,9 +100,8 @@ export default function DialogUi(): JSX.Element {
   } = useProps();
   const refDialog = useRefDialog();
   const refDialogContent = useRefDialogContent();
-  const width = useDialogWidth();
   const active = useStateActive();
-  const zIndex = useDialogZIndex();
+  const style = useDialogStyle();
   
   return <ScDialog {...{
     ref: refDialog,
@@ -113,10 +111,7 @@ export default function DialogUi(): JSX.Element {
     tabIndex: 0,
     mode: mode as EDialogMode,
     active,
-    style: {
-      zIndex,
-      width
-    }
+    style
   }}>
     <Header />
     <Content ref={refDialogContent} />

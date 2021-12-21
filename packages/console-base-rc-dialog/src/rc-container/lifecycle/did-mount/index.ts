@@ -6,8 +6,7 @@ import {
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
-  useDispatchSetActive,
-  useHandleFocus
+  useDispatchSetActive
 } from '../../../model';
 
 /**
@@ -16,7 +15,6 @@ import {
 export default function DidMount(): null {
   const isUnmounted = useIsUnmounted();
   const dispatchToggleActive = useDispatchSetActive();
-  const handleFocus = useHandleFocus();
   const [stateDidMount, setStateDidMount] = useState<boolean>(false);
   
   useEffect(() => {
@@ -29,10 +27,9 @@ export default function DidMount(): null {
         }
         
         dispatchToggleActive(true);
-        handleFocus();
       }, 10);
     }
-  }, [stateDidMount, isUnmounted, dispatchToggleActive, handleFocus]);
+  }, [stateDidMount, isUnmounted, dispatchToggleActive]);
   
   return null;
 }
