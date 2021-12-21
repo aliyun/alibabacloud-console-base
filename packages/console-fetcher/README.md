@@ -28,17 +28,19 @@ fetcher.callInnerApi<T = void, P>(product: string, action: string, params: P): P
 fetcher.callContainerApi<T = void, P>(product: string, action: string, params: P): Promsie<T>;
 ```
 
-如果你需要对风控做自定义，或者在接口出错时通过 SLS 上报错误日志，可以通过 `createFetcher` 创建一个 fetcher，创建出来的 fetcher 和开箱即用的长相一模一样：
+如果你需要对风控做自定义，或者在接口出错时通过 SLS 上报错误日志，可以通过 `createFetcher` 创建一个 fetcher，创建出来的 fetcher 和开箱即用的长相一模一样。
+console-fetcher 默认走新版风控，可以通过传入第三个参数 useOldRisk 为 true 来走老版本风控
 
 ```typescript
 import {
   createFetcher
 } from '@alicloud/console-fetcher';
 
+// 走老版本风控
 cosnt fetcher = createFetcher(undefined, {
   riskConfig,
   slsConfig
-});
+}, true);
 ```
 
 具体请看 `build/types` 下的详细类型声明。

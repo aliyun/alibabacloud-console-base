@@ -51,7 +51,7 @@ export default {
   'title:sub_vmfa_auth': '仮想MFAデバイスを確認するe',
   'title:sub_u2f_auth': 'U2Fセキュリティキーを確認する',
   'title:sub_default': 'サブユーザーのセキュリティ検証',
-  'message:incorrect_u2f_bind': 'セキュリティ検証に失敗しました。もう一度やり直してください。',
+  'message:incorrect_mfa_bind': 'セキュリティ検証に失敗しました。もう一度やり直してください。',
   'message:incorrect_u2f_auth': 'U2Fセキュリティキーの確認に失敗しました。U2Fセキュリティキー情報を再度取得して、確認のために送信してください。',
   'message:u2f_get_key_fail': 'U2Fセキュリティキーの取得に失敗しました。再試行してください。',
   'message:u2f_get_key_timeout': 'U2Fセキュリティキーの取得がタイムアウトしました。もう一度やり直してください。',

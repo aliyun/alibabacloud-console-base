@@ -51,7 +51,7 @@ export default {
   'title:sub_vmfa_auth': '驗證虛擬 MFA 設備',
   'title:sub_u2f_auth': '驗證 U2F 安全密鑰',
   'title:sub_default': '安全驗證',
-  'message:incorrect_u2f_bind': '安全驗證失敗，請重試。',
+  'message:incorrect_mfa_bind': '安全驗證失敗，請重試。',
   'message:incorrect_u2f_auth': '驗證 U2F 安全密鑰失敗，請重新獲取 U2F 安全密鑰信息，並提交驗證。',
   'message:u2f_get_key_fail': '獲取 U2F 安全密鑰失敗，請重試。',
   'message:u2f_get_key_timeout': '獲取 U2F 安全密鑰超時，請重試。',

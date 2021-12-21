@@ -24,7 +24,7 @@ import {
   slsSubRisk,
   slsSubRiskAuthMfa,
   slsSubRiskBindMfa,
-  slsSubRiskGetMfaAuthInfo
+  slsSubRiskGetMfaAInfo
 } from '../../../sls';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
@@ -63,7 +63,7 @@ export default function generateSubmitButtonFn({
         };
       }
       
-      if (payload && 'U2FAppId' in payload) { // 当绑定 U2F 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
+      if (payload && ('U2FAppId' in payload || 'Code1' in payload)) { // 当绑定 MFA 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
         // 获取 U2F 验证的数据
         const authMfaInfo = await getAuthMfaInfo({
           request,
@@ -72,19 +72,31 @@ export default function generateSubmitButtonFn({
           getMfaInfoToAuthUrl: riskConfig.URL_GET_MFA_INFO_TO_AUTH
         });
 
-        slsSubRiskGetMfaAuthInfo({
+        slsSubRiskGetMfaAInfo({
           accountId,
-          fromBindU2FSuccess: true,
+          url: riskConfig.URL_GET_MFA_INFO_TO_AUTH!,
+          getMfaInfoScene: 'auth',
+          fromBindMFASuccess: true,
           slsResultType: ESlsResultType.SUCCESS
         });
 
+        if ('U2FAppId' in payload) { // 绑定 U2F 成功
+          return {
+            step: EStep.U2F_AUTH, // 走 U2F 验证
+            canU2FRetry: true,
+            primaryButtonDisabled: true,
+            errorMessage: intl('message:incorrect_mfa_bind'),
+            getAuthMfaInfoData: authMfaInfo,
+            fromU2FBindtoAuth: true
+          };
+        }
+
+        // 绑定 VMFA 成功
         return {
-          step: EStep.U2F_AUTH, // 走 U2F 验证
-          canU2FRetry: true,
+          step: EStep.VMFA_AUTH,
           primaryButtonDisabled: true,
-          errorMessage: intl('message:incorrect_u2f_bind'),
-          getAuthMfaInfoData: authMfaInfo,
-          fromU2FBindtoAuth: true
+          errorMessage: intl('message:incorrect_mfa_bind'),
+          getAuthMfaInfoData: authMfaInfo
         };
       }
 
@@ -181,9 +193,11 @@ export default function generateSubmitButtonFn({
               } catch (getAuthMfaInfoError: unknown) {
                 const getAuthInfoErrorMessage = (getAuthMfaInfoError as Error).message;
 
-                slsSubRiskGetMfaAuthInfo({
+                slsSubRiskGetMfaAInfo({
                   accountId,
-                  fromBindU2FSuccess: true,
+                  url: riskConfig.URL_GET_MFA_INFO_TO_AUTH!,
+                  getMfaInfoScene: 'auth',
+                  fromBindMFASuccess: true,
                   errorMessage: getAuthInfoErrorMessage,
                   slsResultType: ESlsResultType.FAIL
                 });

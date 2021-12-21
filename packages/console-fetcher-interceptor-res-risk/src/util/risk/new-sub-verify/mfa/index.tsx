@@ -19,7 +19,7 @@ import Content from '../../../../container/new-sub-verify-content';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
 import {
-  slsSubRiskGetMfaAuthInfo
+  slsSubRiskGetMfaAInfo
 } from '../../../sls';
 
 import {
@@ -89,16 +89,20 @@ export default async function RiskSubVerify({
         initialStep = EStep.VMFA_AUTH;
       }
 
-      slsSubRiskGetMfaAuthInfo({
+      slsSubRiskGetMfaAInfo({
         accountId,
+        url: URL_GET_MFA_INFO_TO_AUTH!,
+        getMfaInfoScene: 'auth',
         slsResultType: ESlsResultType.SUCCESS
       });
     } catch (error: unknown) {
       const errorMessage = (error as Error).message;
 
-      slsSubRiskGetMfaAuthInfo({
+      slsSubRiskGetMfaAInfo({
         accountId,
         errorMessage,
+        url: URL_GET_MFA_INFO_TO_AUTH!,
+        getMfaInfoScene: 'auth',
         slsResultType: ESlsResultType.FAIL
       });
 
@@ -139,6 +143,13 @@ export default async function RiskSubVerify({
         }
       }).then(getBindMfaInfoData => {
         unlock();
+
+        slsSubRiskGetMfaAInfo({
+          accountId,
+          url: URL_GET_MFA_INFO_TO_BIND!,
+          getMfaInfoScene: 'bind',
+          slsResultType: ESlsResultType.SUCCESS
+        });
         
         if (getBindMfaInfoData.QRCodeUri !== null) { // VMFA
           updateData({
@@ -152,9 +163,17 @@ export default async function RiskSubVerify({
           });
         }
       }).catch(error => {
+        const getMfaBindInfoErrorMessage = error?.message || '';
+
         unlock();
+        slsSubRiskGetMfaAInfo({
+          accountId,
+          url: URL_GET_MFA_INFO_TO_BIND!,
+          getMfaInfoScene: 'bind',
+          slsResultType: ESlsResultType.FAIL
+        });
         updateData({
-          errorMessage: error?.message || ''
+          errorMessage: getMfaBindInfoErrorMessage
         });
       });
 
