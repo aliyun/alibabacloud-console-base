@@ -18,6 +18,8 @@ export interface IModelState<R = void, D = TDialogData> {
    * 模拟 did mount
    */
   mounted: boolean;
+  domDialog: HTMLDivElement | null;
+  domDialogContent: HTMLDivElement | null;
   /**
    * 需要通过它触发 CSS 动画
    */

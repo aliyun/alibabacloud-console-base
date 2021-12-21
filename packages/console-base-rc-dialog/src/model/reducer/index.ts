@@ -7,6 +7,8 @@ import {
 } from '../const';
 
 import reduceDidMount from './reduce-did-mount';
+import reduceSetDomDialog from './reduce-set-dom-dialog';
+import reduceSetDomDialogContent from './reduce-set-dom-dialog-content';
 import reduceSetActive from './reduce-set-active';
 import reduceSetZIndex from './reduce-set-z-index';
 import reduceLock from './reduce-lock';
@@ -20,6 +22,10 @@ export default function reducer(state: IModelState, action: TModelAction): IMode
   switch (action.type) {
     case EAction.DID_MOUNT:
       return reduceDidMount(state);
+    case EAction.SET_DOM_DIALOG:
+      return reduceSetDomDialog(state, action.payload);
+    case EAction.SET_DOM_DIALOG_CONTENT:
+      return reduceSetDomDialogContent(state, action.payload);
     case EAction.SET_ACTIVE:
       return reduceSetActive(state, action.payload);
     case EAction.SET_Z_INDEX:

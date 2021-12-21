@@ -3,20 +3,21 @@ import {
 } from '../types';
 
 import useModelProps from './_use-model-props';
-import useRefDialog from './use-ref-dialog';
-import useRefContent from './use-ref-content';
+import useModelState from './_use-model-state';
 import useDispatchSetZIndex from './use-dispatch-set-z-index';
 import useHandleCloseOnEsc from './use-handle-close-on-ecs';
 import useHandleCloseOnExternal from './use-handle-close-on-external';
 
 export default function useDialogStackItem(): IDialogStackItem {
-  const refDialog = useRefDialog();
-  const refContent = useRefContent();
   const {
     backdrop,
     zIndex,
     zIndexBackdrop
   } = useModelProps();
+  const {
+    domDialog,
+    domDialogContent
+  } = useModelState();
   const dispatchSetZIndex = useDispatchSetZIndex();
   const dispatchCloseOnEsc = useHandleCloseOnEsc();
   const dispatchCloseOnExternal = useHandleCloseOnExternal();
@@ -25,8 +26,8 @@ export default function useDialogStackItem(): IDialogStackItem {
     backdrop,
     zIndex,
     zIndexBackdrop,
-    domDialog: refDialog.current,
-    domDialogContent: refContent.current,
+    domDialog,
+    domDialogContent,
     dispatchSetZIndex,
     dispatchCloseOnEsc,
     dispatchCloseOnExternal

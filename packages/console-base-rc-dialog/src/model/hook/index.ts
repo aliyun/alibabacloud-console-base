@@ -1,6 +1,6 @@
 export { default as useProps } from './_use-model-props';
 export { default as useRefDialog } from './use-ref-dialog';
-export { default as useRefContent } from './use-ref-content';
+export { default as useRefDialogContent } from './use-ref-dialog-content';
 export { default as useStateId } from './use-state-id';
 export { default as useStateActive } from './use-state-active';
 export { default as useStateLocked } from './use-state-locked';

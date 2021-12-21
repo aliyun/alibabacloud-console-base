@@ -21,7 +21,7 @@ import {
   useRefDialog,
   useDialogWidth,
   useDialogZIndex,
-  useRefContent,
+  useRefDialogContent,
   useStateActive
 } from '../../model';
 
@@ -100,7 +100,7 @@ export default function DialogUi(): JSX.Element {
     closable
   } = useProps();
   const refDialog = useRefDialog();
-  const refContent = useRefContent();
+  const refDialogContent = useRefDialogContent();
   const width = useDialogWidth();
   const active = useStateActive();
   const zIndex = useDialogZIndex();
@@ -119,7 +119,7 @@ export default function DialogUi(): JSX.Element {
     }
   }}>
     <Header />
-    <Content ref={refContent} />
+    <Content ref={refDialogContent} />
     <Footer />
     {closable ? <X /> : null}
   </ScDialog>;

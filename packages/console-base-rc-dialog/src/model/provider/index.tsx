@@ -1,6 +1,5 @@
 import React, {
-  useReducer,
-  useRef
+  useReducer
 } from 'react';
 
 import {
@@ -18,15 +17,11 @@ export default function Provider({
   props,
   children
 }: IModelProviderProps): JSX.Element {
-  const refDialog = useRef<HTMLDivElement>(null); // 指向 dialog 本身节点
-  const refContent = useRef<HTMLDivElement>(null); // 指向 dialog 内容节点
   const [state, dispatch] = useReducer<IModelReducer>(reducer, getDefaultContextState(props.data));
   
   return <Context.Provider value={{
     props,
     state,
-    refDialog,
-    refContent,
     dispatch
   }}>
     {children}

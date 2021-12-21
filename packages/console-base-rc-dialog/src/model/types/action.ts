@@ -12,6 +12,9 @@ import {
 export type TModelAction = {
   type: EAction.DID_MOUNT | EAction.UNLOCK | EAction.UPDATE_WINDOW_HEIGHT | EAction.FORCE_UPDATE;
 } | {
+  type: EAction.SET_DOM_DIALOG | EAction.SET_DOM_DIALOG_CONTENT;
+  payload: HTMLDivElement | null;
+} | {
   type: EAction.SET_Z_INDEX;
   payload: number;
 } | {
