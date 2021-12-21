@@ -11,7 +11,6 @@ import {
   getDefaultContextState
 } from '../util';
 import reducer from '../reducer';
-import Lifecycle from '../lifecycle';
 
 import Context from './_context';
 
@@ -30,7 +29,6 @@ export default function Provider({
     refContent,
     dispatch
   }}>
-    <Lifecycle />
     {children}
   </Context.Provider>;
 }

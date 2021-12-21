@@ -7,7 +7,7 @@ import {
 } from '../const';
 
 import reduceDidMount from './reduce-did-mount';
-import reduceActive from './reduce-active';
+import reduceSetActive from './reduce-set-active';
 import reduceSetZIndex from './reduce-set-z-index';
 import reduceLock from './reduce-lock';
 import reduceUnlock from './reduce-unlock';
@@ -20,10 +20,8 @@ export default function reducer(state: IModelState, action: TModelAction): IMode
   switch (action.type) {
     case EAction.DID_MOUNT:
       return reduceDidMount(state);
-    case EAction.ACTIVATE:
-      return reduceActive(state, true);
-    case EAction.DEACTIVATE:
-      return reduceActive(state, false);
+    case EAction.SET_ACTIVE:
+      return reduceSetActive(state, action.payload);
     case EAction.SET_Z_INDEX:
       return reduceSetZIndex(state, action.payload);
     case EAction.LOCK:

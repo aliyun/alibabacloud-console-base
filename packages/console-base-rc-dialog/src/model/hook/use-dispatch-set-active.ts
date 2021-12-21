@@ -8,10 +8,11 @@ import {
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchUpdateWindowHeight(): () => void {
+export default function useDispatchSetActive(): (payload: boolean) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback(() => dispatch({
-    type: EAction.UPDATE_WINDOW_HEIGHT
+  return useCallback((payload: boolean) => dispatch({
+    type: EAction.SET_ACTIVE,
+    payload
   }), [dispatch]);
 }

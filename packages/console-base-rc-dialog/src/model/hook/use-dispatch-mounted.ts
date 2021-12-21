@@ -3,13 +3,15 @@ import {
 } from 'react';
 
 import {
-  actionDidMount
-} from '../action';
+  EAction
+} from '../const';
 
 import useModelDispatch from './_use-model-dispatch';
 
 export default function useDispatchMounted(): () => void {
   const dispatch = useModelDispatch();
   
-  return useCallback(() => dispatch(actionDidMount()), [dispatch]);
+  return useCallback(() => dispatch({
+    type: EAction.DID_MOUNT
+  }), [dispatch]);
 }

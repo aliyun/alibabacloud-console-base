@@ -3,13 +3,16 @@ import {
 } from 'react';
 
 import {
-  actionSetZIndex
-} from '../action';
+  EAction
+} from '../const';
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchSetZIndex(): (zIndex: number) => void {
+export default function useDispatchSetZIndex(): (payload: number) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((zIndex: number) => dispatch(actionSetZIndex(zIndex)), [dispatch]);
+  return useCallback((payload: number) => dispatch({
+    type: EAction.SET_Z_INDEX,
+    payload
+  }), [dispatch]);
 }

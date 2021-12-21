@@ -1,7 +1,6 @@
 export enum EAction {
   DID_MOUNT,
-  ACTIVATE,
-  DEACTIVATE,
+  SET_ACTIVE,
   LOCK,
   UNLOCK,
   UPDATE_PROPS,

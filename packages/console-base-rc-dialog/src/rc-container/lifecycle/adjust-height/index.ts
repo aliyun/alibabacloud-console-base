@@ -4,7 +4,7 @@ import {
 
 import {
   useDispatchUpdateWindowHeight
-} from '../../hook';
+} from '../../../model';
 
 /**
  * 监听 window resize
