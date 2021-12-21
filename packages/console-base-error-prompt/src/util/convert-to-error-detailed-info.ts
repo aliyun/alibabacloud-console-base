@@ -36,24 +36,24 @@ function getDetails(err?: IErrorWithConfig): IErrorDetails | undefined {
 }
 
 /**
- * 把错误 `o: TErrorPromptArg` 转化成 IErrorDetailedInfo，这个方法会被暴露到外部
+ * 把错误 `error: TErrorPromptArg` 转化成 IErrorDetailedInfo，这个方法会被暴露到外部
  */
-export default function convertToErrorDetailedInfo(o: TErrorPromptArg): IErrorPlain {
+export default function convertToErrorDetailedInfo(error: TErrorPromptArg): IErrorPlain {
   const info: IErrorPlain = {
     name: '',
     message: ''
   };
   
-  if (_isString(o) || isValidElement(o)) {
-    info.message = o as string;
+  if (_isString(error) || isValidElement(error)) {
+    info.message = error as string;
   } else {
-    info.name = o.name || info.name;
-    info.requestId = o.requestId;
-    info.code = o.code;
-    info.title = o.title;
-    info.message = o.message;
-    info.stack = o.stack;
-    info.details = o.details || getDetails(o as IErrorWithConfig);
+    info.name = error.name || info.name;
+    info.requestId = error.requestId;
+    info.code = error.code;
+    info.title = error.title;
+    info.message = error.message;
+    info.stack = error.stack;
+    info.details = error.details || getDetails(error as IErrorWithConfig);
   }
   
   return info as IErrorPlain;

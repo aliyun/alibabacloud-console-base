@@ -31,8 +31,8 @@ interface IPropsScDetails {
 const ScKvList = styled.ul<IPropsScDetails>`
   margin: 8px 0 0 0;
   padding: 0;
-  max-height: ${props => (props.folded ? '0' : '1000px')};
-  overflow: hidden;
+  max-height: ${props => (props.folded ? '0' : '400px')};
+  overflow: auto;
   list-style: none;
   font-size: 0.95em;
   transition: all 0.3s ease-out;

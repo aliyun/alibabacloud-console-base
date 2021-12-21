@@ -1,20 +1,18 @@
 export { default } from './rc-container';
+
 export {
+  EDialogMode as DialogMode,
+  EDialogSize as DialogSize,
+  // TODO 删除以下
   EDialogMode,
   EDialogSize
 } from './const';
-export {
-  default as open,
-  slide,
-  slideUp
-} from './promised/open';
-export { default as alert } from './promised/alt/alert';
-export { default as confirm } from './promised/alt/confirm';
-export { default as prompt } from './promised/alt/prompt';
-export { default as openIndirect } from './promised/open-indirect';
+
+export * from './promised';
+
 export { default as AltWrap } from './rc/alt-wrap';
+
 export {
-  Context as DialogContext, // 用于外部不可用 hooks 的场景
   useDialog
 } from './model';
 

@@ -10,8 +10,8 @@ export interface IErrorDetails {
   [k: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export type TErrorArg = undefined | null | string | ReactElement | Error | IErrorDetails;
+export type TErrorArg = undefined | null | string | ReactElement | Error | Record<string, unknown>;
 
 export interface IProps {
-  onPrompt(error: TErrorArg): Promise<void>;
+  onPrompt(errors: TErrorArg[]): void;
 }

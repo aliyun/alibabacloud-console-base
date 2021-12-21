@@ -16,12 +16,6 @@ import createError from '../../util/create-error';
 import createErrorNeedLogin from '../../util/create-error-need-login';
 import createErrorTokenExpired from '../../util/create-error-token-expired';
 
-let i = 1;
-
-function consoleShouldAlwaysFire(): void {
-  console.info('promise resolved ', i++);
-}
-
 export default function MergingTest({
   onPrompt
 }: IProps): JSX.Element {
@@ -32,19 +26,13 @@ export default function MergingTest({
     });
     
     // 虽然这里只出一个 dialog 的内容，但 console 11 22 33 都有
-    onPrompt(err).then(consoleShouldAlwaysFire);
-    onPrompt(err).then(consoleShouldAlwaysFire);
-    onPrompt(err).then(consoleShouldAlwaysFire);
+    onPrompt([err, err, err]);
   }, [onPrompt]);
   const handleTestNeedLogin = useCallback(() => {
-    onPrompt(createErrorNeedLogin()).then(consoleShouldAlwaysFire);
-    onPrompt(createErrorNeedLogin()).then(consoleShouldAlwaysFire);
-    onPrompt(createErrorNeedLogin()).then(consoleShouldAlwaysFire);
+    onPrompt([createErrorNeedLogin(), createErrorNeedLogin(), createErrorNeedLogin()]);
   }, [onPrompt]);
   const handleTestTokenExpired = useCallback(() => {
-    onPrompt(createErrorTokenExpired()).then(consoleShouldAlwaysFire);
-    onPrompt(createErrorTokenExpired()).then(consoleShouldAlwaysFire);
-    onPrompt(createErrorTokenExpired()).then(consoleShouldAlwaysFire);
+    onPrompt([createErrorTokenExpired(), createErrorTokenExpired(), createErrorTokenExpired()]);
   }, [onPrompt]);
   
   return <>

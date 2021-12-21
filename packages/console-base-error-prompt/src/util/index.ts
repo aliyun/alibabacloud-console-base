@@ -8,3 +8,4 @@ export { default as parseParams } from './parse-params';
 export { default as shouldIgnore } from './should-ignore';
 export { default as toDisplayValue } from './to-display-value';
 export { default as renderObject } from './render-object';
+export { default as getDialogProps } from './get-dialog-props';

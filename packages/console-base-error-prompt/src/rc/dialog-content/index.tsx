@@ -13,8 +13,8 @@ import {
   IErrorQueueItem,
   IErrorDialogData
 } from '../../types';
-import ErrorMessage from '../../rc/error-message';
-import ErrorDetails from '../../rc/error-details';
+import ErrorMessage from '../error-message';
+import ErrorDetails from '../error-details';
 
 interface IProps {
   queue: IErrorQueueItem[];

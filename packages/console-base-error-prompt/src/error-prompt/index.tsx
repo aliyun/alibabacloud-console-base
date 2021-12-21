@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  EDialogSize,
   openIndirect
 } from '@alicloud/console-base-rc-dialog';
 
@@ -10,31 +9,30 @@ import {
   TErrorPromptArg,
   TErrorPromptArgExtra
 } from '../types';
-import intl from '../intl';
 import {
   convertToQueueItem,
   getSoloQueue,
   getSoloDialogIndirect,
   setSoloDialogIndirect,
   pushSoloQueue,
-  resolveSolo
+  resolveSolo,
+  getDialogProps
 } from '../util';
-
-import DialogContent from './dialog-content';
+import DialogContent from '../rc/dialog-content';
 
 const queue = getSoloQueue(); // 永远指向一个对象
 
 /**
  * 错误弹窗
  * 
- * `o` 可以是：
+ * `error` 可以是：
  *    1. 字符串、JSX 会被当作 message
  *    2. Error 实例，里边可以有 details 对象包含要展示的信息
  *    3. plain object
  * `extra` 用于自定义
  */
-export default async function errorPrompt(o?: TErrorPromptArg, extra?: TErrorPromptArgExtra): Promise<void> {
-  const queueItem = convertToQueueItem(o, extra);
+export default async function errorPrompt(error?: TErrorPromptArg, extra?: TErrorPromptArgExtra): Promise<void> {
+  const queueItem = convertToQueueItem(error, extra);
   
   if (!queueItem) {
     return;
@@ -55,33 +53,11 @@ export default async function errorPrompt(o?: TErrorPromptArg, extra?: TErrorPro
     dialogIndirect.renderUpdate({
       content: dialogContent
     });
-
+    
     return errorPromise;
   }
   
-  dialogIndirect = openIndirect<void, IErrorDialogData>({
-    className: 'J-console-base-error-prompt', // TODO 临时对外的样式钩子（J），供复写纵向位置（ESC 的需求，等 dialog 整体调整完毕可以去掉并通知 ESC）
-    data: {
-      page: 1
-    },
-    content: dialogContent,
-    buttons: (data: IErrorDialogData) => {
-      const {
-        button
-      } = queue[data.page - 1];
-      const buttons = [];
-      
-      if (button) {
-        buttons.push(button);
-      }
-      
-      buttons.push(intl('op:close'));
-      
-      return buttons;
-    },
-    size: EDialogSize.S,
-    undefinedAsReject: false
-  });
+  dialogIndirect = openIndirect<void, IErrorDialogData>(getDialogProps(queue, dialogContent));
   
   setSoloDialogIndirect(dialogIndirect);
   

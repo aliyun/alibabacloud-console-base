@@ -27,9 +27,8 @@ export default function ChooseNTest({
   const [stateErrors, setStateErrors] = useState<TErrorArg[]>([]);
   const handleClear = useCallback(() => setStateErrors([]), [setStateErrors]);
   const handleAlertErrors = useCallback(() => {
-    stateErrors.forEach(onPrompt);
-    handleClear();
-  }, [onPrompt, stateErrors, handleClear]);
+    onPrompt(stateErrors);
+  }, [onPrompt, stateErrors]);
   
   return <>
     <H1>选择错误，模拟单个或多个错误的场景</H1>

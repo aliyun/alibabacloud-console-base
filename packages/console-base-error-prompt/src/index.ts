@@ -1,9 +1,11 @@
 export { default } from './error-prompt';
 
+export { default as ErrorPrompt } from './rc/error-prompt';
+
+export * from './helper';
 export {
   convertToErrorDetailedInfo
 } from './util';
-export * from './helper';
 
 export type {
   TErrorPromptArg as ErrorPromptArg,
