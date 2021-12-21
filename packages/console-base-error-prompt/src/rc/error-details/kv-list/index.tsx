@@ -1,4 +1,3 @@
-import _map from 'lodash/map';
 import _isString from 'lodash/isString';
 import _isPlainObject from 'lodash/isPlainObject';
 import React, {
@@ -7,7 +6,6 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  mixinTextPrimary,
   mixinTextTertiary,
   mixinTypoLineWrap
 } from '@alicloud/console-base-theme';
@@ -16,6 +14,10 @@ import CopyIt from '@alicloud/console-base-rc-copy-it';
 import {
   IErrorDetailKV
 } from '../../../types';
+import {
+  renderObject,
+  toDisplayValue
+} from '../../../util';
 
 interface IProps {
   items: IErrorDetailKV[];
@@ -52,30 +54,6 @@ const ScV = styled.div`
   overflow: hidden;
   ${mixinTypoLineWrap}
 `;
-
-const ScStrong = styled.strong`
-  font-weight: 600;
-  ${mixinTextPrimary}
-  
-  &:after {
-    content: ' = ';
-  }
-`;
-
-function toDisplayValue(v: unknown): string {
-  try {
-    return JSON.stringify(v);
-  } catch (err) {
-    return '!JSON.stringify - ERROR!';
-  }
-}
-
-function renderObject(o: Record<string, unknown>): JSX.Element {
-  return <>{_map(o, (v, k) => <div key={k}>
-    <ScStrong>{k}</ScStrong>
-    <span>{toDisplayValue(v)}</span>
-  </div>)}</>;
-}
 
 export default function KvList({
   items,
