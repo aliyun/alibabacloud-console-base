@@ -9,12 +9,12 @@ import {
   IConsoleFetcherInterceptorOptions
 } from '../types';
 
-export default (config?: FetcherConfig, interceptorOptions: IConsoleFetcherInterceptorOptions = {}, useOldRisk?: boolean): Fetcher => {
+export default (config?: FetcherConfig, interceptorOptions: IConsoleFetcherInterceptorOptions = {}, useNewRisk?: boolean): Fetcher => {
   let configBody: FetcherConfig['body'] = config?.body;
 
-  if (typeof config?.body !== 'string') {
+  if (useNewRisk && typeof config?.body !== 'string') {
     configBody = {
-      riskVersion: useOldRisk ? '1.0' : '2.0', // 通过第三个参数来控制是否使用老版本的风控
+      riskVersion: '2.0', // 通过第三个参数来控制是否使用新版本的风控
       ...config?.body
     };
   }

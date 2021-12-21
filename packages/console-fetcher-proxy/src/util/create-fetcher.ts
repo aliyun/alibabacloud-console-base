@@ -7,8 +7,8 @@ import {
 
 import intercept from './intercept';
 
-export default function createFetcher(config?: FetcherConfig, interceptorOptions?: FetcherInterceptorOptions): Fetcher {
-  const fetcher = createFetcher0(config, interceptorOptions);
+export default function createFetcher(config?: FetcherConfig, interceptorOptions?: FetcherInterceptorOptions, useNewRisk?: boolean): Fetcher {
+  const fetcher = createFetcher0(config, interceptorOptions, useNewRisk);
   
   intercept(fetcher);
   
