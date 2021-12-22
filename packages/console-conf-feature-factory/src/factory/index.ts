@@ -1,5 +1,4 @@
 import _isString from 'lodash/isString';
-import _forEach from 'lodash/forEach';
 
 import mixedBlackWhitelistChecker from '@alicloud/mixed-black-whitelist-checker';
 
@@ -9,13 +8,14 @@ import {
   IFnConfFeature,
   ICheckItem
 } from '../types';
+import {
+  getCheckItems
+} from '../util';
 
 /**
- * 这是一个工厂方法，用于生成一个方法来检查 feature 是否可用
+ * 这是一个工厂方法，用于生成一个方法来检查 feature 是否可用，FEATURE_CONF 和 GRAY_CONF 需要调用者传入，原因如下：
  *
- * 这里的 FEATURE_CONF 和 GRAY_CONF 需要调用者传入，因为：
- *
- * 1. 可降低代码耦合
+ * 1. 降低代码耦合
  * 2. 用户明确知道全局变量（或其他途径获取到的数据）的来路和去向
  * 3. 控制台的输出方式有所不同
  * 4. 方便单元测试
@@ -86,54 +86,24 @@ export default function factory<K extends string = string>(FEATURE_CONF: Record<
     }
     
     const {
-      status = true,
-      attribute: {
-        regions = [],
-        customAttrs = {}
-      } = {}
+      status = true
     } = featureConf;
     
     if (!status) {
       return false;
     }
     
-    const attributesToCheck: ICheckItem[] = [];
+    const attributes: IFeatureCheckAttributes = _isString(arg) ? {
+      region: arg
+    } : arg || {};
+    const checkItems: ICheckItem[] = getCheckItems(featureConf, attributes);
     
-    if (_isString(arg)) {
-      attributesToCheck.push({
-        value: arg,
-        mixedList: regions
-      });
-    } else {
-      _forEach(arg, (v, k) => {
-        if (!v) {
-          return;
-        }
-        
-        if (k === 'region') { // region 还是判断 regions
-          attributesToCheck.push({
-            value: v,
-            mixedList: regions
-          });
-        } else { // 其他的从 customAttrs 中取数据
-          const attr: string = customAttrs[k];
-          
-          if (attr) {
-            attributesToCheck.push({
-              value: v,
-              mixedList: attr.split(/[\n,]/)
-            });
-          }
-        }
-      });
-    }
-    
-    if (!attributesToCheck.length) {
+    if (!checkItems.length) {
       return true;
     }
     
-    for (let i = 0; i < attributesToCheck.length; i++) {
-      if (!mixedBlackWhitelistChecker(attributesToCheck[i].value, attributesToCheck[i].mixedList)) { // 有一个是 false 就返回 false
+    for (let i = 0; i < checkItems.length; i++) {
+      if (!mixedBlackWhitelistChecker(checkItems[i].value, checkItems[i].mixedList)) { // 有一个是 false 就返回 false
         return false;
       }
     }
