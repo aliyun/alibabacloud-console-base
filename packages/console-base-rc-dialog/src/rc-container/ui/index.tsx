@@ -30,7 +30,6 @@ import Footer from './footer';
 import X from './x';
 
 interface IScDialogProps {
-  mode?: EDialogMode;
   active: boolean;
 }
 
@@ -49,11 +48,6 @@ const cssSlide = css<IScDialogProps>`
   right: 0;
   bottom: 0;
   transform: translateX(${props => (props.active ? '0' : '100%')});
-  
-  /* stylelint-disable selector-class-pattern */
-  .hasTopbar & {
-    top: ${SIZE.HEIGHT_TOP_NAV}px;
-  }
 `;
 
 const cssSlideUp = css<IScDialogProps>`
@@ -77,16 +71,23 @@ const ScDialog = styled.div<IScDialogProps>`
   ${mixinBgPrimary}
   ${mixinBorderTertiary}
   ${mixinShadowL}
-  ${props => {
-    switch (props.mode) {
-      case EDialogMode.SLIDE:
-        return cssSlide;
-      case EDialogMode.SLIDE_UP:
-        return cssSlideUp;
-      default:
-        return cssNormal;
+  
+  /* stylelint-disable */
+  &[data-dialog-mode=${EDialogMode.SLIDE}] {
+    ${cssSlide}
+    
+    .hasTopbar & {
+      top: ${SIZE.HEIGHT_TOP_NAV}px;
     }
-  }}
+  }
+  
+  &[data-dialog-mode=${EDialogMode.SLIDE_UP}] {
+    ${cssSlideUp}
+  }
+  
+  &[data-dialog-mode=${EDialogMode.NORMAL}] {
+    ${cssNormal}
+  }
 `;
 
 /**
@@ -105,13 +106,13 @@ export default function DialogUi(): JSX.Element {
   
   return <ScDialog {...{
     ref: refDialog,
-    'aria-modal': true,
-    role: 'dialog',
     className,
     tabIndex: 0,
-    mode: mode as EDialogMode,
     active,
-    style
+    style,
+    role: 'dialog',
+    'aria-modal': true,
+    'data-dialog-mode': mode || EDialogMode.NORMAL // 用于样式钩子
   }}>
     <Header />
     <Content ref={refDialogContent} />
