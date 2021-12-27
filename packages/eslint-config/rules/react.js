@@ -2,14 +2,14 @@
 module.exports = {
   'react/display-name': 1,
   'react/jsx-curly-brace-presence': ['error', {
-    'props': 'never',
-    'children': 'never'
+    props: 'never',
+    children: 'never'
   }],
   'react/jsx-curly-newline': ['error', 'never'],
   'react/jsx-curly-spacing': ['error', {
-    'when': 'never',
-    'children': {
-      'when': 'never'
+    when: 'never',
+    children: {
+      when: 'never'
     }
   }],
   'react/jsx-wrap-multilines': ['off'],
@@ -51,5 +51,11 @@ module.exports = {
       'render',
       '/^_?render.+$/'
     ]
-  }]
+  }],
+  /**
+   * 默认的 warn 没法被 lint-staged 拦截，容易出问题，升级为 error
+   * 
+   * @link https://reactjs.org/docs/hooks-rules.html
+   */
+  'react-hooks/exhaustive-deps': 'error'
 };
