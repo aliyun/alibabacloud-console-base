@@ -13,3 +13,14 @@ export interface IPayloadRegionGroup {
 export interface IPayloadRegionOnChange extends IPayloadRegion {
   correctedFrom?: string;
 }
+
+export interface IPayloadRegionProps {
+  regions?: IPayloadRegion[];
+  regionId?: string;
+  resourceCount?: Record<string, number>;
+  legacyRegionIds?: string[];
+  visible?: boolean;
+  readOnly?: boolean;
+  noFlag?: boolean;
+  noGroup?: boolean;
+}

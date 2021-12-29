@@ -1,7 +1,12 @@
-import appBroadcast from './messenger/app-broadcast';
-import appSubscribe from './messenger/app-subscribe';
-import consoleBaseBroadcast from './messenger/console-base-broadcast';
-import consoleBaseSubscribe from './messenger/console-base-subscribe';
+import * as appBroadcast from './messenger/app-broadcast';
+import * as appSubscribe from './messenger/app-subscribe';
+import * as consoleBaseBroadcast from './messenger/console-base-broadcast';
+import * as consoleBaseSubscribe from './messenger/console-base-subscribe';
+
+export * from './messenger/app-broadcast';
+export * from './messenger/app-subscribe';
+export * from './messenger/console-base-broadcast';
+export * from './messenger/console-base-subscribe';
 
 /**
  * 给控制台使用
@@ -46,6 +51,7 @@ export type {
   IPayloadLaunchTutorial as MessengerTutorial,
   // TODO 废弃上边的
   IPayloadRegion as MessengerPayloadRegion,
+  IPayloadRegionProps as MessengerPayloadRegionProps,
   IPayloadRegionOnChange as MessengerPayloadRegionOnChange,
   IPayloadRegionGroup as MessengerPayloadRegionGroup,
   IPayloadResourceGroup as MessengerPayloadResourceGroup,
