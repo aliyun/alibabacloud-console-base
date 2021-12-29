@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-risk",
-  "version": "2.0.0-alpha.10",
+  "version": "2.0.0-alpha.11",
   "description": "@alicloud/console-fetcher 响应拦截 - 风控处理",
   "license": "MIT",
   "sideEffects": false,
