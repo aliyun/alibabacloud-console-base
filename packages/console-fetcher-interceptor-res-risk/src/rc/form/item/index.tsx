@@ -36,6 +36,7 @@ const ScLabel = styled.div<IScLableProps>`
 
 const ScContent = styled.div`
   flex: 1;
+  word-break: break-all;
 `;
 
 export default function Item({
