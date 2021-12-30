@@ -21,7 +21,7 @@ export default function DemoFormControl(): JSX.Element {
     <InputText placeholder="InputText - disabled" disabled />
     <InputText placeholder="InputText - block" block />
     <InputTextarea placeholder="InputTextarea" />
-    <InputSwitch />
+    <InputSwitch label="label as a prop" />
     <CheckboxGroup<number> {...{
       label: 'number',
       items: [{

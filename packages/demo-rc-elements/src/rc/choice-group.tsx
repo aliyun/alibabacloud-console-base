@@ -21,7 +21,7 @@ const ScChoiceGroup = styled.div`
 
 const ScGroupLabel = styled.label`
   display: inline-block;
-  margin-right: 0.5em;
+  margin-right: 8px;
   color: #333;
 `;
 
@@ -37,7 +37,7 @@ const ScChoice = styled.label`
 `;
 
 const ScChoiceLabel = styled.span`
-  margin-left: 0.25em;
+  margin-left: 8px;
 `;
 
 interface IPropsForChoiceGroup<T, V> extends Omit<IPropsChoiceGroup<T, V>, 'defaultValue'> {
@@ -137,6 +137,7 @@ export function RadioGroup<T = string>({
     return null;
   }
   
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return <ChoiceGroup<T> {...{
     label,

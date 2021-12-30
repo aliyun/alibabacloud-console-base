@@ -43,5 +43,8 @@ export type {
   IPropsFlex100HBF as Flex100HBFProps
 } from './types';
 export type {
+  InputSwitchProps
+} from './rc/input-switch';
+export type {
   InputJsonObjectProps
 } from './rc/input-json-object';
