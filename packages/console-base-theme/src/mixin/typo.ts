@@ -18,7 +18,8 @@ import {
   mixinTextTertiary
 } from './text';
 import {
-  mixinBgSecondary
+  mixinBgSecondary,
+  mixinBgSecondaryFade
 } from './bg';
 import {
   mixinBorderTertiary,
@@ -61,8 +62,7 @@ export const mixinTypoCode = css`
   padding: 2px 4px;
   border-radius: 2px;
   ${mixinTextCode}
-  ${mixinBgSecondary}
-  ${mixinBorderTertiary}
+  ${mixinBgSecondaryFade}
 `;
 
 export const mixinTypoKbd = css`
