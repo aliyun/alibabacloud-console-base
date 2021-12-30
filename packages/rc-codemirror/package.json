@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/rc-codemirror",
-  "version": "1.0.31",
+  "version": "1.0.33",
   "description": "CodeMirror@5 的 React 封装",
   "license": "MIT",
   "sideEffects": false,

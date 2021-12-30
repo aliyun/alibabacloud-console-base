@@ -1,31 +1,13 @@
 import React from 'react';
 
-import CodeMirror from '@alicloud/rc-codemirror';
+import CodeMirror, {
+  determineMimeType
+} from '@alicloud/rc-codemirror';
 
 import {
   IPropsCodeViewer,
   IPropsCodeViewerSimple
 } from '../types';
-
-function getMode(type: IPropsCodeViewer['type']): string | undefined {
-  switch (type) {
-    case 'json':
-      return 'application/json';
-    case 'js':
-      return 'application/javascript';
-    case 'ts':
-      return 'application/typescript';
-    case 'html':
-      return 'text/html';
-    case 'css':
-    case 'less':
-      return 'text/x-less';
-    case 'markdown':
-      return 'text/markdown';
-    default:
-      break;
-  }
-}
 
 export default function CodeViewer({
   conf,
@@ -36,7 +18,7 @@ export default function CodeViewer({
   return <CodeMirror {...{
     conf: {
       readOnly: true,
-      mode: getMode(type),
+      mode: determineMimeType(type || ''),
       ...conf
     },
     ...props,

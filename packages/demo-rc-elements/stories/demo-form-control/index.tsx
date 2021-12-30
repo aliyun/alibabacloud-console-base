@@ -7,7 +7,8 @@ import {
   InputTextarea,
   InputSwitch,
   CheckboxGroup,
-  RadioGroup, Button
+  RadioGroup,
+  Button
 } from '../../src';
 
 export default function DemoFormControl(): JSX.Element {
