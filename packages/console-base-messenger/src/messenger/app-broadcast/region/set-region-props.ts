@@ -9,7 +9,7 @@ import {
 } from '../../../util';
 
 /**
- * 推荐以后使用这个一次性搞定所有 props
+ * 覆盖 Region 组件 props
  */
 export default function setRegionProps(payload: IPayloadRegionProps): void {
   broadcastByApp<IPayloadRegionProps>(EMessageBroadcastByApp.REGION_SET_PROPS, payload);

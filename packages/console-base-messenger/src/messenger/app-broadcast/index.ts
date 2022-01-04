@@ -11,6 +11,7 @@ export { default as armsError } from './misc/arms-error';
 export { default as launchTutorial } from './misc/launch-tutorial';
 export { default as launchWidget } from './misc/launch-widget';
 export { default as setRegionProps } from './region/set-region-props';
+export { default as mergeRegionProps } from './region/merge-region-props';
 export { default as toggleRegion } from './region/toggle-region';
 export { default as toggleRegionGlobal } from './region/toggle-region-global';
 export { default as setRegionId } from './region/set-region-id';

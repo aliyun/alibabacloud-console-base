@@ -12,7 +12,8 @@ export enum EMessageBroadcastByApp {
   LAUNCH_WIDGET = 'app_2_console_base:launch_widget',
   ARMS_ERROR = 'app_2_console_base:arms/error',
   // 地域选择器
-  REGION_SET_PROPS = 'app_2_console_base:region/set_props', // 可以一次性推送 props
+  REGION_SET_PROPS = 'app_2_console_base:region/set_props', // 覆盖 props
+  REGION_MERGE_PROPS = 'app_2_console_base:region/merge_props', // 合并 props（适合需要单点更新的场景）
   REGION_TOGGLE = 'app_2_console_base:region/toggle',
   REGION_TOGGLE_GLOBAL = 'app_2_console_base:region/toggle_global',
   REGION_SET_ID = 'app_2_console_base:region/set_id',

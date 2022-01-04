@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-error-prompt-proxy",
-  "version": "1.4.44",
-  "description": "ConsoleBase 错误弹窗器（集中代理）",
+  "name": "@alicloud/console-base-rc-messenger-region",
+  "version": "1.0.0",
+  "description": "ConsoleBase 组件 - 对 region messenger 的组件化封装，提升开发体验",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-error-prompt-proxy",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-rc-messenger-region",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -21,14 +21,13 @@
   },
   "keywords": [
     "console-base",
-    "error-prompt",
-    "proxy"
+    "rc",
+    "messenger",
+    "region"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-error-prompt": "^1.1.33",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.49",
-    "@alicloud/demo-rc-elements": "^1.4.3",
     "@types/react": "^17.0.38",
     "react": "^17.0.2",
     "typescript": "^4.5.4"
@@ -37,8 +36,6 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-error-prompt": "^1.5.0",
-    "@alicloud/console-base-global": "^1.1.98",
     "@alicloud/console-base-messenger": "^1.5.1"
   },
   "scripts": {
@@ -51,6 +48,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": "e575919bb3e5dc36f28501101c18cf0d7cee2488"
+  }
 }

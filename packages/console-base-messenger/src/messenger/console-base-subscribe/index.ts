@@ -11,6 +11,7 @@ export { default as onArmsError } from './misc/on-arms-error';
 export { default as onLaunchTutorial } from './misc/on-launch-tutorial';
 export { default as onLaunchWidget } from './misc/on-launch-widget';
 export { default as onSetRegionProps } from './region/on-set-region-props';
+export { default as onMergeRegionProps } from './region/on-merge-region-props';
 export { default as onToggleRegion } from './region/on-toggle-region';
 export { default as onToggleRegionGlobal } from './region/on-toggle-region-global';
 export { default as onSetRegionId } from './region/on-set-region-id';
