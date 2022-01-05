@@ -5,11 +5,11 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
-  IPropsTopNavButtonDropdownItem
-} from '../../../types';
+  ModelPropsButtonDropdownItem
+} from '../../../model';
 
 interface IProps {
-  items: IPropsTopNavButtonDropdownItem[];
+  items: ModelPropsButtonDropdownItem[];
 }
 
 /**
@@ -24,7 +24,7 @@ export default function NavButtonItems({
       label,
       href,
       onClick
-    }: IPropsTopNavButtonDropdownItem): JSX.Element => <Button {...{
+    }: ModelPropsButtonDropdownItem): JSX.Element => <Button {...{
       key,
       spm: key as string,
       theme: ButtonTheme.MENU,

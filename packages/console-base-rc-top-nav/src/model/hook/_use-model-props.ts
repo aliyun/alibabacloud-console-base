@@ -8,7 +8,7 @@ import {
 
 import {
   IPropsTopNav
-} from '../../types';
+} from '../types';
 
 import useModelContext from './_use-model-context';
 

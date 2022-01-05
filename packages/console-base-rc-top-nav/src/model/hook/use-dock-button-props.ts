@@ -6,7 +6,9 @@ import {
   ButtonProps
 } from '@alicloud/console-base-rc-button';
 
-import hasNoActionPoint from '../../util/has-no-action-point';
+import {
+  hasNoActionPoint
+} from '../../util';
 
 import useModelProps from './_use-model-props';
 import useDockActive from './use-dock-active';

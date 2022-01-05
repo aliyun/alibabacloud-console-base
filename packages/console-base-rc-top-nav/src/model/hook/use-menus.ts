@@ -4,9 +4,11 @@ import {
 
 import {
   IPropsTopNavButton
-} from '../../types';
-import buildMenuLanguage from '../../util/build-menu-language';
-import buildMenuAccount from '../../util/build-menu-account';
+} from '../types';
+import {
+  buildMenuLanguage,
+  buildMenuAccount
+} from '../../util';
 
 import useModelProps from './_use-model-props';
 import useHandleMenuDropdownVisibleChange from './use-handle-menu-dropdown-visible-change';

@@ -11,16 +11,18 @@ import Beacon, {
 } from '@alicloud/console-base-rc-beacon';
 
 import {
-  IPropsTopNavButton
-} from '../../types';
-import parseDropdownItems from '../../util/parse-dropdown-items';
-import hasNoActionPoint from '../../util/has-no-action-point';
+  ModelPropsButton
+} from '../../model';
+import {
+  parseDropdownItems,
+  hasNoActionPoint
+} from '../../util';
 
 import NavButton from './nav-button';
 import NavButtonLabel from './nav-button-label';
 import NavButtonItems from './nav-button-items';
 
-interface IProps extends Omit<IPropsTopNavButton, 'key'> {
+interface IProps extends Omit<ModelPropsButton, 'key'> {
   spm: string;
 }
 

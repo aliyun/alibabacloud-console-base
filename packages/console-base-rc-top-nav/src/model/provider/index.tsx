@@ -12,7 +12,6 @@ import {
   DEFAULT_CONTEXT_STATE
 } from '../const';
 import reducer from '../reducer';
-import Lifecycle from '../lifecycle';
 
 import Context from './_context';
 
@@ -29,7 +28,6 @@ export default function Provider({
     isUnmounted,
     dispatch
   }}>
-    <Lifecycle />
     {children}
   </Context.Provider>;
 }

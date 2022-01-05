@@ -1,17 +1,19 @@
 import React from 'react';
 
-import useModelProps from '../hook/_use-model-props';
+import {
+  useProps
+} from '../../model';
 
-import GlobalStyle from './global-style';
+import GlobalStyleForFixed from './global-style-for-fixed';
 import ClearDockActiveTimer from './clear-dock-active-timer';
 
 export default function Lifecycle(): JSX.Element | null {
   const {
     fixed
-  } = useModelProps();
+  } = useProps();
   
   return <>
-    {fixed ? <GlobalStyle /> : null}
+    {fixed ? <GlobalStyleForFixed /> : null}
     <ClearDockActiveTimer />
   </>;
 }

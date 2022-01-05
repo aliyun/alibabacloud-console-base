@@ -1,15 +1,15 @@
 import React from 'react';
 
 import {
-  IPropsTopNavButton,
-  IPropsTopNavAccount
-} from '../types';
-import {
   DEFAULT_ACCOUNT_AVATAR
 } from '../const';
 import Avatar from '../rc/avatar';
+import {
+  ModelPropsButton,
+  ModelPropsAccount
+} from '../model';
 
-export default function buildMenuAccount(account: IPropsTopNavAccount | null = {}): IPropsTopNavButton | null {
+export default function buildMenuAccount(account: ModelPropsAccount | null = {}): ModelPropsButton | null {
   if (!account) {
     return null;
   }

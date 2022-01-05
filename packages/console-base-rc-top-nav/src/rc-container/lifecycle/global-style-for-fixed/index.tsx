@@ -9,7 +9,9 @@ import {
   SIZE
 } from '@alicloud/console-base-theme';
 
-import toggleBodyClass from '../../../util/toggle-body-class';
+import {
+  toggleBodyClass
+} from '../../../util';
 
 const GlobalStyleHasTopNav = createGlobalStyle`
   /* stylelint-disable selector-class-pattern */
@@ -19,7 +21,7 @@ const GlobalStyleHasTopNav = createGlobalStyle`
   }
 `;
 
-export default function GlobalStyle(): JSX.Element {
+export default function GlobalStyleForFixed(): JSX.Element {
   useEffect(() => {
     toggleBodyClass();
     
