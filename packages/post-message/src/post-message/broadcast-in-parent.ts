@@ -1,4 +1,6 @@
-import { win } from './_the-message';
+import {
+  win
+} from './_the-message';
 
 /**
  * 去父窗口进行广播

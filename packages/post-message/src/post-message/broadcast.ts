@@ -1,4 +1,6 @@
-import { win } from './_the-message';
+import {
+  win
+} from './_the-message';
 
 /**
  * 广播消息，当传入的对象 payload 不是 plain 对象的时候（如 Error、function、DOMElement、JSX 等），这里会报错
