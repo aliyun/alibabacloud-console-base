@@ -80,5 +80,6 @@ export function pullFromReceivers(receivers: TReceivers, type: string, fn: IAnyC
 
 export {
   MAP_RECEIVERS,
-  MAP_RECEIVERS_ONCE
+  MAP_RECEIVERS_ONCE,
+  win
 };
