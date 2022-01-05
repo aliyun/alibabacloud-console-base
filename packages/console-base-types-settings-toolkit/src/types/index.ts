@@ -1,6 +1,6 @@
 // 工具的 label 定制属性
 export interface ISettingsToolkitItemLabel {
-  icon?: 'survey' | 'qr' | 'dingding' | 'labs'; // 预设的图标（问卷、二维码、钉钉），考虑的是特别通用的场景
+  icon?: 'survey' | 'qr' | 'dingding' | 'edu'; // 预设的图标（问卷、二维码、钉钉），考虑的是特别通用的场景
   html?: string; // 如果字符串或预设 icon 不能适用你的场景，可以自定义 HTML（优先级大于 `text`）
   text?: string; // 纯文字，推荐 4 个以内（有有限的自适应）
 }

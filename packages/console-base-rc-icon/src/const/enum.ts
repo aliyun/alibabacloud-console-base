@@ -41,6 +41,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'toolkit-feedback' = 'e666', // 反馈
   'toolkit-qr' = 'e640', // QR
   'toolkit-survey' = 'e606', // 问卷
+  'toolkit-edu' = 'e66d', // 实验室
   'toolkit-version-new' = 'e62e', // 尝试新版
   'toolkit-version-old' = 'e72f', // 返回旧版
   // 常用
@@ -69,7 +70,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'face-smile' = 'e7f9', // 笑脸
   'global' = 'e70d', // 全球 - 用于 @alicloud/console-base-wd-region
   'go-top' = 'e694', // 回到顶部
-  'labs' = 'e88e', // 实验室
   'lights-on' = 'e664', // 主题 - 亮
   'lights-off' = 'e665', // 主题 - 暗
   'menu-all' = 'e6e3', // 菜单（九宫格）
