@@ -3,43 +3,21 @@ import React, {
 } from 'react';
 
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import {
+  Button
+} from '@alicloud/demo-rc-elements';
 
 import Tooltip from '../../src';
-import Knobs, {
-  KnobProps
-} from '../knobs';
-
-function onConfig(): void {
-  // eslint-disable-next-line no-console
-  console.info('fake onConfig');
-}
-
-function onClose(): void {
-  // eslint-disable-next-line no-console
-  console.info('fake onClose');
-}
 
 export default function DemoDefault(): JSX.Element {
-  const [stateTooltipProps, setStateTooltipProps] = useState<KnobProps>({
-    content: ''
-  });
-  const {
-    close,
-    config,
-    ...tooltipProps
-  } = stateTooltipProps;
+  const [stateDomButton, setStateDomButton] = useState<HTMLElement | null>(null);
   
   return <>
     <ThemeSwitcher />
-    <Knobs onChange={setStateTooltipProps} />
+    <Button ref={setStateDomButton}>i button</Button>
     <Tooltip {...{
-      ...tooltipProps,
-      style: {
-        top: 120,
-        left: 120
-      },
-      onConfig: config ? onConfig : undefined,
-      onClose: close ? onClose : undefined
+      trigger: stateDomButton,
+      content: 'i tooltip'
     }} />
   </>;
 }

@@ -6,5 +6,5 @@ export {
 } from './const';
 
 export type {
-  IPropsTooltip as TooltipProps
+  IPropsRcTooltip as TooltipProps
 } from './types';

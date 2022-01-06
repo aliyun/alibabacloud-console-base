@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  IPropsTooltipActions
+  IPropsRcTooltipEvents
 } from '../../../types';
 import {
   ACTION_OFFSET
@@ -18,7 +18,7 @@ const ScTooltipActions = styled.div`
 export default function TooltipActions({
   onConfig,
   onClose
-}: IPropsTooltipActions): JSX.Element | null {
+}: IPropsRcTooltipEvents): JSX.Element | null {
   if (!onConfig && !onClose) {
     return null;
   }

@@ -2,6 +2,9 @@ import React, {
   CSSProperties
 } from 'react';
 import styled from 'styled-components';
+import {
+  CSSTransition
+} from 'react-transition-group';
 
 import {
   mixinBorderRadiusXs,
@@ -9,7 +12,7 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  IPropsTooltip
+  IPropsRcTooltip
 } from '../../types';
 import {
   ACTION_OFFSET,
@@ -35,10 +38,16 @@ const ScTooltip = styled.div<IPropsScTooltip>`
   padding: 8px 16px;
   box-sizing: border-box;
   font-size: 12px;
-  transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 200ms;
   ${mixinShadowLDown}
   ${mixinBorderRadiusXs}
   ${props => getTooltipCssColors(props.theme)}
+
+  &.enter,
+  &.exit-active {
+    opacity: 0.33;
+    transform: scale(0.95);
+  }
 `;
 
 /**
@@ -48,6 +57,7 @@ export default function Tooltip({
   style,
   title,
   content,
+  visible,
   placement = ETooltipPlacement.TOP,
   theme = ETooltipTheme.NORMAL,
   arrow = true,
@@ -55,7 +65,7 @@ export default function Tooltip({
   onConfig,
   onClose,
   ...props
-}: IPropsTooltip): JSX.Element {
+}: IPropsRcTooltip): JSX.Element {
   const finalStyle: CSSProperties = {
     ...style
   };
@@ -70,21 +80,30 @@ export default function Tooltip({
     finalStyle.paddingRight = ACTION_OFFSET * 2 + ACTION_SIZE * (onConfig && onClose ? 2 : 1);
   }
   
-  return <ScTooltip {...{
-    placement,
-    theme,
-    ...props,
-    style: finalStyle
+  return <CSSTransition {...{
+    in: visible,
+    unmountOnExit: true,
+    timeout: {
+      enter: 16,
+      exit: 200
+    }
   }}>
-    {title ? <TooltipTitle>{title}</TooltipTitle> : null}
-    {content}
-    {arrow ? <TooltipArrow {...{
+    <ScTooltip {...{
       placement,
-      theme
-    }} /> : null}
-    <TooltipActions {...{
-      onConfig,
-      onClose
-    }} />
-  </ScTooltip>;
+      theme,
+      ...props,
+      style: finalStyle
+    }}>
+      {title ? <TooltipTitle>{title}</TooltipTitle> : null}
+      {content}
+      {arrow ? <TooltipArrow {...{
+        placement,
+        theme
+      }} /> : null}
+      <TooltipActions {...{
+        onConfig,
+        onClose
+      }} />
+    </ScTooltip>
+  </CSSTransition>;
 }

@@ -10,7 +10,7 @@ import {
 /**
  * 提供标准化的操作按钮，如果有其他的需求，可能需要放在 content 里自己维护
  */
-export interface IPropsTooltipActions {
+export interface IPropsRcTooltipEvents {
   /**
    * 将提供右上角 齿轮 按钮
    */
@@ -21,7 +21,7 @@ export interface IPropsTooltipActions {
   onClose?(): void;
 }
 
-export interface IPropsTooltip extends Omit<HTMLAttributes<HTMLDivElement>, 'title'>, IPropsTooltipActions {
+export interface IPropsRcTooltip extends Omit<HTMLAttributes<HTMLDivElement>, 'title'>, IPropsRcTooltipEvents {
   title?: string | JSX.Element;
   content: string | JSX.Element;
   theme?: ETooltipTheme;

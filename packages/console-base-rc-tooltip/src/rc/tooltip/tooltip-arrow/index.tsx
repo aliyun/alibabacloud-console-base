@@ -46,7 +46,7 @@ const ScTooltipArrow = styled.span<IProps>`
   width: ${ARROW_SIZE}px;
   height: ${ARROW_SIZE}px;
   transform: rotate(${props => getRotateDegree(props.placement)}deg);
-  transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 200ms;
   ${props => getTooltipArrowCssPosition(props.placement)}
   ${props => getTooltipArrowCssColor(props.theme)}
 `;
