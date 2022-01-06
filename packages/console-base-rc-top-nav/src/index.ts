@@ -13,6 +13,7 @@ export type {
   ModelPropsButtonDropdownItem as TopNavButtonDropdownItemProps,
   ModelPropsDock as TopNavDockProps,
   ModelPropsLogo as TopNavLogoProps,
+  ModelPropsHelp as TopNavHelpProps,
   ModelPropsLanguage as TopNavLanguageProps,
   ModelPropsLanguageItem as TopNavLanguageItemProps,
   ModelPropsAccount as TopNavAccountProps

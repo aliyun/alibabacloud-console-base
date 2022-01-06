@@ -22,6 +22,16 @@ const ScHome = styled(Button)`
   ${mixinTopNavButtonDarkFix}
 `;
 
+function onLanguageChange(id: string): void {
+  // eslint-disable-next-line no-console
+  console.info(`lang changed -> ${id}`);
+}
+
+function onMenuDropdown(key: string): void {
+  // eslint-disable-next-line no-console
+  console.info('dropdown!', key);
+}
+
 export default function DemoDefault(): JSX.Element {
   const [stateRemoved, setStateRemoved] = useState<boolean>(false);
   const [stateActive, setStateActive] = useState<boolean>(false);
@@ -87,12 +97,6 @@ export default function DemoDefault(): JSX.Element {
         },
         href: '/cart'
       }, {
-        key: 'help',
-        label: {
-          icon: 'help-circle'
-        },
-        href: '/help'
-      }, {
         key: 'theme',
         label: {
           icon: 'lights-on'
@@ -105,6 +109,10 @@ export default function DemoDefault(): JSX.Element {
         },
         force: true
       }],
+      help: {
+        href: '/help',
+        title: '帮助文档'
+      },
       language: {
         current: 'zh-CN',
         items: [{
@@ -124,9 +132,7 @@ export default function DemoDefault(): JSX.Element {
           name: '日本语',
           nameShort: '日'
         }],
-        onChange(id) {
-          console.info(`lang changed -> ${id}`);
-        }
+        onChange: onLanguageChange
       },
       account: {
         href: '/account',
@@ -153,9 +159,7 @@ export default function DemoDefault(): JSX.Element {
         <div style={{ color: 'purple' }}>R1</div>
         <div style={{ color: 'pink' }}>R2</div>
       </>,
-      onMenuDropdown(key: string) {
-        console.info('dropdown!', key);
-      }
+      onMenuDropdown
     }} />}
     <H1>吊顶</H1>
     <ButtonForDemo onClick={handleToggleRemoved}>移除 / 加入</ButtonForDemo>

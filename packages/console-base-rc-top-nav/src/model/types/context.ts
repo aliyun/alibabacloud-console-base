@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  IPropsTopNav
+  IModelProps
 } from './props';
 import {
   IModelState
@@ -18,12 +18,12 @@ export interface IModelReducer {
 }
 
 export interface IModelProviderProps {
-  props: IPropsTopNav;
+  props: IModelProps;
   children: ReactNode;
 }
 
 export interface IModelContext {
-  props: IPropsTopNav;
+  props: IModelProps;
   state: IModelState;
   isUnmounted(): boolean;
   dispatch: TModelDispatch;

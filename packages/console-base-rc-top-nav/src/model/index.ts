@@ -3,13 +3,14 @@ export { default } from './provider';
 export * from './hook';
 
 export type {
-  IPropsTopNav as ModelProps,
-  IPropsTopNavButton as ModelPropsButton,
-  IPropsTopNavButtonDropdown as ModelPropsButtonDropdown,
-  IPropsTopNavButtonDropdownItem as ModelPropsButtonDropdownItem,
-  IPropsTopNavDock as ModelPropsDock,
-  IPropsTopNavLogo as ModelPropsLogo,
-  IPropsTopNavLanguage as ModelPropsLanguage,
-  IPropsTopNavLanguageItem as ModelPropsLanguageItem,
-  IPropsTopNavAccount as ModelPropsAccount
+  IModelProps as ModelProps,
+  IModelPropsButton as ModelPropsButton,
+  IModelPropsButtonDropdown as ModelPropsButtonDropdown,
+  IModelPropsButtonDropdownItem as ModelPropsButtonDropdownItem,
+  IModelPropsDock as ModelPropsDock,
+  IModelPropsLogo as ModelPropsLogo,
+  IModelPropsHelp as ModelPropsHelp,
+  IModelPropsLanguage as ModelPropsLanguage,
+  IModelPropsLanguageItem as ModelPropsLanguageItem,
+  IModelPropsAccount as ModelPropsAccount
 } from './types';
