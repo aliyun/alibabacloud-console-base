@@ -7,7 +7,6 @@
 export { default as ready } from './ready';
 export { default as themeChange } from './theme-change';
 export { default as regionChange } from './region/region-change';
-export { default as regionRefreshResourceCount } from './region/region-refresh-resource-count';
 export { default as resourceGroupDataLoaded } from './resource-group/resource-group-data-loaded';
 export { default as resourceGroupChange } from './resource-group/resource-group-change';
 export { default as toolkitToolClicked } from './toolkit/toolkit-tool-clicked';

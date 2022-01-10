@@ -7,7 +7,6 @@
 export { default as onReady } from './on-ready';
 export { default as onThemeChange } from './on-theme-change';
 export { default as onRegionChange } from './region/on-region-change';
-export { default as onRegionRefreshResourceCount } from './region/on-region-refresh-resource-count';
 export { default as onResourceGroupDataLoaded } from './resource-group/on-resource-group-data-loaded';
 export { default as onResourceGroupChange } from './resource-group/on-resource-group-change';
 export { default as onToolkitItemClick } from './toolkit/on-toolkit-item-click';

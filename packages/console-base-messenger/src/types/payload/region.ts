@@ -15,6 +15,7 @@ export interface IPayloadRegionOnChange extends IPayloadRegion {
 }
 
 export interface IPayloadRegionProps {
+  global?: boolean;
   regions?: IPayloadRegion[];
   regionId?: string;
   resourceCount?: Record<string, number>;

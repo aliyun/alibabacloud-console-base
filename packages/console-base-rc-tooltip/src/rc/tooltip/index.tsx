@@ -15,7 +15,7 @@ import {
   IPropsRcTooltip
 } from '../../types';
 import {
-  ACTION_OFFSET,
+  ACTION_OFFSET_FROM_RIGHT,
   ACTION_SIZE,
   ETooltipPlacement,
   ETooltipTheme
@@ -25,6 +25,7 @@ import {
 } from '../../util';
 
 import TooltipTitle from './tooltip-title';
+import TooltipContent from './tooltip-content';
 import TooltipArrow from './tooltip-arrow';
 import TooltipActions from './tooltip-actions';
 
@@ -69,15 +70,16 @@ export default function Tooltip({
   const finalStyle: CSSProperties = {
     ...style
   };
-  
-  if (width && width > 0) {
-    finalStyle.width = width;
-  } else {
-    finalStyle.whiteSpace = 'nowrap';
-  }
+  const contentStyle: CSSProperties = width && width > 0 ? {
+    width
+  } : {
+    whiteSpace: 'nowrap'
+  };
   
   if (onConfig || onClose) {
-    finalStyle.paddingRight = ACTION_OFFSET * 2 + ACTION_SIZE * (onConfig && onClose ? 2 : 1);
+    const n = onConfig && onClose ? 2 : 1;
+    
+    finalStyle.paddingRight = ACTION_OFFSET_FROM_RIGHT * 2 + ACTION_SIZE * n;
   }
   
   return <CSSTransition {...{
@@ -95,7 +97,7 @@ export default function Tooltip({
       style: finalStyle
     }}>
       {title ? <TooltipTitle>{title}</TooltipTitle> : null}
-      {content}
+      <TooltipContent style={contentStyle}>{content}</TooltipContent>
       {arrow ? <TooltipArrow {...{
         placement,
         theme

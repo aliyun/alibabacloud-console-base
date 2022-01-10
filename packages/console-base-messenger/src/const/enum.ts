@@ -44,7 +44,6 @@ export enum EMessageBroadcastByConsoleBase {
   READY = 'console_base_2_app:ready',
   // 地域选择器
   REGION_CHANGE = 'console_base_2_app:region/change',
-  REGION_REFRESH_RESOURCE_COUNT = 'console_base_2_app:region/refresh_resource_count',
   // 资源组选择器
   RESOURCE_GROUP_DATA_LOADED = 'app_2_console_base:resource_group/data_loaded', // FIXME 前缀写错了...
   RESOURCE_GROUP_CHANGE = 'app_2_console_base:resource_group/change', // FIXME 前缀写错了...

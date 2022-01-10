@@ -5,14 +5,15 @@ import {
   IPropsRcTooltipEvents
 } from '../../../types';
 import {
-  ACTION_OFFSET
+  ACTION_OFFSET_FROM_TOP,
+  ACTION_OFFSET_FROM_RIGHT
 } from '../../../const';
 import IconButton from '../../icon-button';
 
 const ScTooltipActions = styled.div`
   position: absolute;
-  top: ${ACTION_OFFSET}px;
-  right: ${ACTION_OFFSET}px;
+  top: ${ACTION_OFFSET_FROM_TOP}px;
+  right: ${ACTION_OFFSET_FROM_RIGHT}px;
 `;
 
 export default function TooltipActions({
