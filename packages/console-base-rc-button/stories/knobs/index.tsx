@@ -5,11 +5,12 @@ import {
 import {
   text,
   boolean,
-  select
+  select,
+  optionsKnob
 } from '@storybook/addon-knobs';
 
 import {
-  IconType
+  EIconType
 } from '@alicloud/console-base-rc-icon';
 
 import {
@@ -57,20 +58,24 @@ export default function Knobs({
   const label = text('props.label', 'button label', EGroup.CONTENT);
   const title = text('props.title', '', EGroup.CONTENT);
   const iconLeft = optional({
-    value: text('props.iconLeft', '', EGroup.CONTENT),
+    value: select('props.iconLeft', Object.keys(EIconType), 'loading', EGroup.CONTENT),
     inUse: boolean('启用 props.iconLeft', false, EGroup.CONTENT)
   });
   const iconRight = optional({
-    value: text('props.iconRight', '', EGroup.CONTENT),
+    value: select('props.iconRight', Object.keys(EIconType), 'loading', EGroup.CONTENT),
     inUse: boolean('启用 props.iconRight', false, EGroup.CONTENT)
   });
   
   const theme = optional<ButtonTheme>({
-    value: select<ButtonTheme>('props.theme', Object.values(ButtonTheme), ButtonTheme.PRIMARY, EGroup.LOOK),
+    value: optionsKnob<ButtonTheme>('props.theme', ButtonTheme, ButtonTheme.PRIMARY, {
+      display: 'inline-radio'
+    }, EGroup.LOOK),
     inUse: boolean('启用 props.theme', true, EGroup.LOOK)
   });
   const size = optional<ButtonSize>({
-    value: select<ButtonSize>('props.size', Object.values(ButtonSize), ButtonSize.M, EGroup.LOOK),
+    value: optionsKnob<ButtonSize>('props.size', ButtonSize, ButtonSize.M, {
+      display: 'inline-radio'
+    }, EGroup.LOOK),
     inUse: boolean('启用 props.size', false, EGroup.LOOK)
   });
   const block = boolean('props.block', false, EGroup.LOOK);
@@ -88,8 +93,8 @@ export default function Knobs({
     component,
     label,
     title,
-    iconLeft: iconLeft as IconType,
-    iconRight: iconRight as IconType,
+    iconLeft,
+    iconRight,
     href,
     target,
     spm,

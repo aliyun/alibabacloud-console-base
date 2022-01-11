@@ -21,7 +21,7 @@ export interface IPayloadRegionProps {
   resourceCount?: Record<string, number>;
   legacyRegionIds?: string[];
   visible?: boolean;
-  readOnly?: boolean;
+  disabled?: boolean;
   noFlag?: boolean;
   noGroup?: boolean;
 }

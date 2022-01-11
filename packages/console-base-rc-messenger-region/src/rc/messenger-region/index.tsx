@@ -19,7 +19,7 @@ export default function MessengerRegion({
   legacyRegionIds,
   global,
   visible = true, // 使用此组件意味着 visible 必须受控
-  readOnly,
+  disabled,
   noFlag,
   noGroup,
   onChange
@@ -31,10 +31,10 @@ export default function MessengerRegion({
     legacyRegionIds,
     global,
     visible,
-    readOnly,
+    disabled,
     noFlag,
     noGroup
-  }), [global, regions, regionId, resourceCount, legacyRegionIds, visible, readOnly, noFlag, noGroup]);
+  }), [global, regions, regionId, resourceCount, legacyRegionIds, visible, disabled, noFlag, noGroup]);
   
   useEffect(() => { // 卸载当前组件，Region 隐藏
     return () => mergeRegionProps({

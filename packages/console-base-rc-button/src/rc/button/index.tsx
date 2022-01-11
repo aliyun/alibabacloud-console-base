@@ -19,18 +19,20 @@ import {
 import {
   EButtonTheme
 } from '../../const';
-import mixinCommon from '../../util/mixin/common';
-import mixinBorder from '../../util/mixin/border';
-import mixinTextAlign from '../../util/mixin/text-align';
-import mixinBlock from '../../util/mixin/block';
-import mixinEllipsis from '../../util/mixin/ellipsis';
-import mixinSize from '../../util/mixin/size';
-import mixinTheme from '../../util/mixin/theme';
-import mixinShadow from '../../util/mixin/shadow';
-import mixinCursor from '../../util/mixin/cursor';
-import getHrefTarget from '../../util/get-href-target';
-import getTitle from '../../util/get-title';
-import renderIcon from '../../util/render-icon';
+import {
+  mixinCommon,
+  mixinBorder,
+  mixinTextAlign,
+  mixinBlock,
+  mixinEllipsis,
+  mixinSize,
+  mixinTheme,
+  mixinShadow,
+  mixinCursor,
+  getHrefTarget,
+  getTitle,
+  renderIcon
+} from '../../util';
 
 const ScButton = styled(ButtonBase)<IButtonPropsForSc>`
   ${mixinCommon}
@@ -53,6 +55,10 @@ const ScInner = styled.span`
 const ScInnerIcon = styled.span`
   margin: 0 8px 0 4px;
   font-size: 1.1em;
+  
+  i {
+    display: block;
+  }
   
   &:first-child {
     margin-left: 0;
@@ -123,7 +129,7 @@ function Button({
   }
   
   return <ScButton {...{
-    ref: ref as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    ref,
     as,
     ...propsForSc,
     'data-spm-click': `gostr=/aliyun;locaid=d${spm}`

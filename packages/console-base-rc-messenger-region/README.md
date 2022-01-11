@@ -52,7 +52,7 @@ export default function MessengerRegion(): JSX.Element {
     // legacyRegionIds, // string[]
     // 长相
     // visible, // boolean 是否可见，不传即为可见（因为既然你已经用了此组件）
-    // readOnly, // boolean 是否只读，可在应用详情页上开启
+    // disabled, // boolean 是否禁用，可在应用详情页上开启
     // global, // boolean 展示成「全球」
     // noFlag, // boolean 不展示地域旗帜（除非必要，不推荐设置，开启此选项需报备）
     // noGroup, // boolean 不对地域进行分组（除非必要，不推荐设置，开启此选项需报备）
