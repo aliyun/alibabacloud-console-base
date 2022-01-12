@@ -43,7 +43,7 @@
   "dependencies": {
     "@alicloud/console-base-rc-beacon": "^1.0.37",
     "@alicloud/console-base-rc-button": "^1.1.105",
-    "@alicloud/console-base-rc-dropdown": "^1.2.97",
+    "@alicloud/console-base-rc-dropdown": "^1.3.1",
     "@alicloud/console-base-rc-flex": "^1.1.58",
     "@alicloud/console-base-rc-icon": "^1.4.88",
     "@alicloud/console-base-theme": "^1.3.91",

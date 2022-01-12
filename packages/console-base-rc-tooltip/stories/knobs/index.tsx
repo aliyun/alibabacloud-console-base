@@ -16,7 +16,6 @@ import {
 
 interface IKnobProps extends TooltipProps {
   config?: boolean;
-  close?: boolean;
 }
 
 interface IProps {
@@ -52,20 +51,21 @@ export default function Knobs({
   const title = text('props.title', 'Tooltip Title');
   const content = text('props.content', 'Tooltip content - must');
   const theme = optional<TooltipTheme>({
-    value: optionsKnob<TooltipTheme>('props.theme', TooltipTheme, TooltipTheme.NORMAL, {
+    value: optionsKnob<TooltipTheme>('props.theme', TooltipTheme, TooltipTheme.ACCENT, {
       display: 'inline-radio'
     }),
     inUse: boolean('启用 props.theme', true)
   });
   const placement = optional<TooltipPlacement>({
-    value: optionsKnob<TooltipPlacement>('props.placement', TooltipPlacement, TooltipPlacement.TOP, {
+    value: optionsKnob<TooltipPlacement>('props.placement', TooltipPlacement, TooltipPlacement.TOP_LEFT, {
       display: 'inline-radio'
     }),
     inUse: boolean('启用 props.placement', true)
   });
   const arrow = boolean('props.arrow', true);
-  const config = boolean('+ onConfig', false);
-  const close = boolean('+ onClose', false);
+  const closable = boolean('props.closable', true);
+  const autoClose = boolean('props.autoClose', false);
+  const config = boolean('+ onConfig', true);
   
   const props = useMemo(() => omitUndefined({
     title,
@@ -73,16 +73,18 @@ export default function Knobs({
     theme,
     placement,
     arrow,
-    config,
-    close
+    closable,
+    autoClose,
+    config
   }), [
     title,
     content,
     theme,
     placement,
     arrow,
-    config,
-    close
+    closable,
+    autoClose,
+    config
   ]);
   
   useEffect(() => onChange(props), [onChange, props]);

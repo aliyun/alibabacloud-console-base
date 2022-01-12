@@ -11,6 +11,7 @@ import useDropVisible from './use-drop-visible';
 
 export default function useHandleSetVisible(): (payload: boolean) => void {
   const {
+    disabled,
     onVisibleChange
   } = useModelProps();
   const {
@@ -26,7 +27,7 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
       window.clearTimeout(visibleTimer);
     }
     
-    if (visible === payload) {
+    if (disabled || visible === payload) {
       return;
     }
     
@@ -44,5 +45,5 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
     }, 200);
     
     dispatchToggleVisibleTimer(timer);
-  }, [visible, visibleTimer, isUnmounted, onVisibleChange, dispatchSetVisible, dispatchToggleVisibleTimer]);
+  }, [disabled, visible, visibleTimer, isUnmounted, onVisibleChange, dispatchSetVisible, dispatchToggleVisibleTimer]);
 }

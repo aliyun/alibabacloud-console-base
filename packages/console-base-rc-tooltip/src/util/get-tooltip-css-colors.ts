@@ -1,12 +1,39 @@
 import {
-  FlattenSimpleInterpolation
+  FlattenSimpleInterpolation,
+  css
 } from 'styled-components';
 
 import {
-  ETooltipTheme,
-  CSS_COLORS_TOOLTIP
-} from '../const';
+  mixinBgPrimary,
+  mixinBgAccent,
+  mixinBgInverse,
+  mixinBorderPrimary,
+  mixinTextSecondary,
+  mixinTextWhite,
+  mixinTextInverse
+} from '@alicloud/console-base-theme';
 
-export default function getTooltipCssColors(theme: ETooltipTheme): FlattenSimpleInterpolation | null {
+import {
+  TooltipTheme
+} from '../model';
+
+const CSS_COLORS_TOOLTIP = {
+  [TooltipTheme.NORMAL]: css`
+  ${mixinBgPrimary}
+  ${mixinBorderPrimary}
+  ${mixinTextSecondary}
+`,
+  [TooltipTheme.ACCENT]: css`
+  ${mixinBgAccent}
+  ${mixinTextWhite}
+`,
+  [TooltipTheme.INVERSE]: css`
+  opacity: 0.8;
+  ${mixinBgInverse}
+  ${mixinTextInverse}
+`
+};
+
+export default function getTooltipCssColors(theme: TooltipTheme): FlattenSimpleInterpolation | null {
   return CSS_COLORS_TOOLTIP[theme] || null;
 }

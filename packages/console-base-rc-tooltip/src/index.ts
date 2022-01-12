@@ -1,10 +1,10 @@
-export { default } from './rc/tooltip';
+export { default } from './rc-container';
 
 export {
-  ETooltipTheme as TooltipTheme,
-  ETooltipPlacement as TooltipPlacement
-} from './const';
+  TooltipTheme,
+  TooltipPlacement
+} from './model';
 
 export type {
-  IPropsRcTooltip as TooltipProps
-} from './types';
+  ModelProps as TooltipProps
+} from './model';

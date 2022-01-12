@@ -7,7 +7,7 @@ import Model, {
 import Ui from './ui';
 import Lifecycle from './lifecycle';
 
-// TODO 还用不了
+// TODO 单纯用组件，自己定位是可以的，但要结合 trigger 还不行
 // 参考
 // https://github.com/floating-ui/floating-ui - https://popper.js.org/
 // https://github.com/mohsinulhaq/react-popper-tooltip

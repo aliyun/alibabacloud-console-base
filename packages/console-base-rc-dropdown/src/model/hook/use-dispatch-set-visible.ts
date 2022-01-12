@@ -3,13 +3,16 @@ import {
 } from 'react';
 
 import {
-  actionSetVisible
-} from '../action';
+  EAction
+} from '../types';
 
 import useModelDispatch from './_use-model-dispatch';
 
 export default function useDispatchSetVisible(): (payload: boolean) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: boolean): void => dispatch(actionSetVisible(payload)), [dispatch]);
+  return useCallback((payload: boolean): void => dispatch({
+    type: EAction.SET_VISIBLE,
+    payload
+  }), [dispatch]);
 }

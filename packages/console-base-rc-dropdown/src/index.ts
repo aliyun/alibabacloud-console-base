@@ -5,5 +5,5 @@ export {
 } from './model';
 
 export type {
-  IPropsDropdown as DropdownProps
-} from './types';
+  ModelProps as DropdownProps
+} from './model';

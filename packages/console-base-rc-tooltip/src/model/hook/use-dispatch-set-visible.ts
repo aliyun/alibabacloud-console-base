@@ -4,7 +4,7 @@ import {
 
 import {
   EAction
-} from '../const';
+} from '../types';
 
 import useModelDispatch from './_use-model-dispatch';
 

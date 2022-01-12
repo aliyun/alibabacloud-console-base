@@ -7,12 +7,12 @@ import {
 } from '@alicloud/typescript-missing-helpers';
 
 import {
-  IPropsDropdown
-} from '../../types';
+  IModelProps
+} from '../types';
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IPropsDropdown, 'dropContainer' | 'zIndex' | 'offset'>;
+type TModelProps = RequiredSelected<IModelProps, 'dropContainer' | 'zIndex' | 'offset'>;
 
 export default function useProps(): TModelProps {
   const {

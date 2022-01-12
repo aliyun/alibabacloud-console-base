@@ -3,5 +3,6 @@ import {
 } from '../types';
 
 export const DEFAULT_CONTEXT_STATE: IModelState = {
-  visible: false
+  visible: false,
+  autoCloseTick: 0
 };

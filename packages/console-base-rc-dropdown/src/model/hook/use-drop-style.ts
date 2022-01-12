@@ -7,8 +7,8 @@ import {
 } from '@alicloud/mere-dom';
 
 import useModelProps from './_use-model-props';
-import useRefDropdown from './use-ref-dropdown';
-import useRefDrop from './use-ref-drop';
+import useDomDropdown from './use-dom-dropdown';
+import useDomDrop from './use-dom-drop';
 import useDropVisible from './use-drop-visible';
 
 /**
@@ -24,8 +24,8 @@ export default function useDropStyle(): CSSProperties {
     offset,
     dropContainer
   } = useModelProps();
-  const refDropdown = useRefDropdown();
-  const refDrop = useRefDrop();
+  const domDropdown = useDomDropdown();
+  const domDrop = useDomDrop();
   const dropVisible = useDropVisible();
   
   const alignIsRight = align === 'right';
@@ -50,14 +50,14 @@ export default function useDropStyle(): CSSProperties {
   // compute position
   if (dropContainer === 'body') {
     if (dropVisible) {
-      const rect = getFixedRect(refDropdown.current);
+      const rect = getFixedRect(domDropdown);
       
       if (rect) {
         style.top = rect.top + rect.height + offsetY;
         
         if (alignIsRight) {
-          if (refDrop.current) {
-            style.left = rect.left + rect.width - refDrop.current.getBoundingClientRect().width - offsetX;
+          if (domDrop) {
+            style.left = rect.left + rect.width - domDrop.getBoundingClientRect().width - offsetX;
           }
         } else {
           style.left = rect.left + offsetX;

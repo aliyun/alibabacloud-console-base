@@ -4,14 +4,12 @@ import styled, {
 } from 'styled-components';
 
 import {
-  TBodyPadding
-} from '../../../../types';
-import {
+  ModelProps,
   useProps
 } from '../../../../model';
 
 interface IPropsScDropBody {
-  bodyPadding?: TBodyPadding;
+  bodyPadding?: ModelProps['bodyPadding'];
 }
 
 const ScDropBody = styled.div<IPropsScDropBody>`

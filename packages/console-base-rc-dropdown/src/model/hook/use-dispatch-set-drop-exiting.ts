@@ -3,13 +3,16 @@ import {
 } from 'react';
 
 import {
-  actionSetDropExiting
-} from '../action';
+  EAction
+} from '../types';
 
 import useModelDispatch from './_use-model-dispatch';
 
 export default function useDispatchSetDropExiting(): (payload: boolean) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: boolean): void => dispatch(actionSetDropExiting(payload)), [dispatch]);
+  return useCallback((payload: boolean): void => dispatch({
+    type: EAction.SET_DROP_EXITING,
+    payload
+  }), [dispatch]);
 }

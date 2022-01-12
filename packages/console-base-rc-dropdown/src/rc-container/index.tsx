@@ -1,14 +1,15 @@
 import React from 'react';
 
-import {
-  IPropsDropdown
-} from '../types';
-import Provider from '../model';
+import Provider, {
+  ModelProps
+} from '../model';
 
 import Ui from './ui';
+import Lifecycle from './lifecycle';
 
-export default function WithProvider(props: IPropsDropdown): JSX.Element {
+export default function WithProvider(props: ModelProps): JSX.Element {
   return <Provider props={props}>
     <Ui />
+    <Lifecycle />
   </Provider>;
 }

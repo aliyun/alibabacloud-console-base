@@ -17,5 +17,4 @@ export interface IModelValue {
   props: IModelProps;
   state: IModelState;
   dispatch: TModelDispatch;
-  isUnmounted(): boolean;
 }

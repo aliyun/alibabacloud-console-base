@@ -3,8 +3,6 @@ import React, {
   useReducer
 } from 'react';
 
-import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
-
 import {
   IModelProps,
   IModelReducer
@@ -25,14 +23,12 @@ export default function Provider({
   props,
   children
 }: IProps): JSX.Element {
-  const isUnmounted = useIsUnmounted();
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
   return <Context.Provider value={{
     props,
     state,
-    dispatch,
-    isUnmounted
+    dispatch
   }}>
     {children}
   </Context.Provider>;
