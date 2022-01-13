@@ -43,7 +43,7 @@
     "@alicloud/fetcher-jsonp": "^1.1.81",
     "@alicloud/json-stringify-ordered": "^1.1.80",
     "lodash": "^4.17.21",
-    "qs": "^6.10.2"
+    "qs": "^6.10.3"
   },
   "scripts": {
     "start": "breezr start-storybook",
