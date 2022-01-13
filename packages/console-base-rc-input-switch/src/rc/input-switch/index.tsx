@@ -56,6 +56,7 @@ const ScInputSwitch = styled(ButtonBase)<IScProps>`
   border-radius: ${HEIGHT_SWITCH}px;
   width: ${WIDTH_SWITCH}px;
   height: ${HEIGHT_SWITCH}px;
+  vertical-align: middle;
   ${getBg}
   
   &:after {

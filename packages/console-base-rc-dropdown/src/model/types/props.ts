@@ -1,3 +1,7 @@
+import {
+  HTMLAttributes
+} from 'react';
+
 export interface IPropsTheDrop {
   header?: string | JSX.Element;
   body?: string | JSX.Element;
@@ -12,7 +16,7 @@ export interface IPropsTheDrop {
   dropContainer?: 'inside' | 'body';
 }
 
-export interface IModelProps extends IPropsTheDrop {
+export interface IModelProps extends IPropsTheDrop, HTMLAttributes<HTMLDivElement> {
   trigger: string | JSX.Element;
   block?: boolean; // 默认为 inline-block
   disabled?: boolean;

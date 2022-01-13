@@ -19,9 +19,11 @@ export default function DemoDefault(): JSX.Element {
       value: stateValue,
       onChange: setStateValue
     }} />
+    one
     <InputSwitch {...{
       disabled: true,
       value: stateValue
     }} />
+    two
   </>;
 }

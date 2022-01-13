@@ -22,6 +22,8 @@ const ScDropdown = styled.div<IPropsScDropdown>`
 
 export default function Dropdown(): JSX.Element {
   const {
+    className,
+    style,
     block
   } = useProps();
   const refDropdown = useRefDropdown();
@@ -29,6 +31,8 @@ export default function Dropdown(): JSX.Element {
   const handleMouseLeave = useHandleDropdownMouseLeave();
   
   return <ScDropdown {...{
+    className,
+    style,
     ref: refDropdown,
     block,
     onMouseEnter: handleMouseEnter,
