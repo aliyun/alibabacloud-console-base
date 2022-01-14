@@ -10,6 +10,8 @@ export { default as toggleTopNav } from './misc/toggle-top-nav';
 export { default as armsError } from './misc/arms-error';
 export { default as launchTutorial } from './misc/launch-tutorial';
 export { default as launchWidget } from './misc/launch-widget';
+
+// region
 export { default as setRegionProps } from './region/set-region-props';
 export { default as mergeRegionProps } from './region/merge-region-props';
 export { default as toggleRegion } from './region/toggle-region';
@@ -18,15 +20,25 @@ export { default as setRegionId } from './region/set-region-id';
 export { default as setRegions } from './region/set-regions';
 export { default as setRegionGroups } from './region/set-region-groups';
 export { default as setRegionResourceCount } from './region/set-region-resource-count';
+
+// resource group
+export { default as setResourceGroupProps } from './resource-group/set-resource-group-props';
+export { default as mergeResourceGroupProps } from './resource-group/merge-resource-group-props';
 export { default as toggleResourceGroup } from './resource-group/toggle-resource-group';
 export { default as setResourceGroupId } from './resource-group/set-resource-group-id';
 export { default as setResourceGroupResourceCount } from './resource-group/set-resource-group-resource-count';
+
+// toolkit
 export { default as setGoTopContainer } from './toolkit/set-go-top-container';
 export { default as putToolkitItem } from './toolkit/put-toolkit-item';
 export { default as removeToolkitItem } from './toolkit/remove-toolkit-item';
+
+// tutor
 export { default as registerTutor } from './tutor/register';
 export { default as openTutor } from './tutor/open';
 export { default as closeTutor } from './tutor/close';
+
+// micro-browser-portal
 export { default as microBrowserPortalCreated } from './micro-browser-portal/created';
 export { default as microBrowserPortalRemoved } from './micro-browser-portal/removed';
 export { default as microBrowserPortalToggleVisible } from './micro-browser-portal/toggle-visible';

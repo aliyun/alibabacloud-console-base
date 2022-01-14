@@ -3,7 +3,7 @@
 
 ConsoleBase 组件 - 对 region messenger 的组件化封装，提升开发体验
 
-让控制台应用项操作本地组件一样，控制顶栏中的全局组件。
+让控制台应用项操作本地组件一样，控制顶栏中的全局地域选择器组件。
 
 # INSTALL
 
@@ -14,13 +14,28 @@ npm  i -S @alicloud/console-base-rc-messenger-region
 # USAGE
 
 ```typescript jsx
+import React, {
+  useState
+} from 'react';
+
 import MessengerRegion from '@alicloud/console-base-rc-messenger-region';
 
-export default function MessengerRegion(): JSX.Element {
-  // 你至少要设置 regionId，并通过 onChange 对其进行回填
+export default function MyMessengerRegion(): JSX.Element {
+  // 默认 regionId 可以为空，也可以设置应用下支持的某个值
+  // **注意**：
+  // 
+  // 1. 你也可以把值记录在应用的顶层 state 中，不一定需要 useState，但一定要有个地方记它
+  // 2. 当路由中有 regionId 的话，需要设过来
+  // 3. 这里只是一个例子，根据应用自己的需要修改
+  const [stateRegionId, setStateRegionId] = useState<string>('');
+  const handleRegionChange = useCallback(regionId => {
+    setStateRegionId(regionId);
+    // 这里写跳转路由逻辑
+  }, []);
+  
   return <MessengerRegion {...{
     // 数据
-    regionId, // string 「半」受控的 regionId，需要通过 onChange 进行回填
+    regionId: stateRegionId, // string 「半」受控的 regionId，需要通过 onChange 进行回填
     // /**
     //  * 当前业务支持的 region 列表
     //  * - 如果不传入，表示由组件自行加载数据（极力不推荐）
@@ -50,14 +65,14 @@ export default function MessengerRegion(): JSX.Element {
     //  * - ['cn-*', '!cn-xx'] 支持所有的 cn region，但不包括 cn-xx
     //  */
     // legacyRegionIds, // string[]
-    // 长相
+    // 展示
     // visible, // boolean 是否可见，不传即为可见（因为既然你已经用了此组件）
     // disabled, // boolean 是否禁用，可在应用详情页上开启
     // global, // boolean 展示成「全球」
     // noFlag, // boolean 不展示地域旗帜（除非必要，不推荐设置，开启此选项需报备）
     // noGroup, // boolean 不对地域进行分组（除非必要，不推荐设置，开启此选项需报备）
     // 事件
-    // onChange // (regionId: string, regionName: string, correctedFrom?: string) => void
+    onChange: setStateRegionId // (regionId: string, regionName: string, correctedFrom?: string) => void
   }} />;
 }
 ```

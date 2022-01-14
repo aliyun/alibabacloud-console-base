@@ -29,6 +29,21 @@ export {
 } from './const';
 
 export type {
+  IPayloadRegion as MessengerPayloadRegion,
+  IPayloadRegionProps as MessengerPayloadRegionProps,
+  IPayloadRegionOnChange as MessengerPayloadRegionOnChange,
+  IPayloadRegionGroup as MessengerPayloadRegionGroup,
+  IPayloadResourceGroup as MessengerPayloadResourceGroup,
+  IPayloadResourceGroupProps as MessengerPayloadResourceGroupProps,
+  IPayloadLaunchTutorial as MessengerPayloadTutorial,
+  IPayloadTutorRegister as MessengerPayloadTutorRegister,
+  IPayloadTutorOpen as MessengerPayloadTutorOpen,
+  IPayloadTutorStepChange as MessengerPayloadTutorStepChange,
+  IPayloadTutorDismiss as MessengerPayloadTutorDismiss
+} from './types';
+
+// TODO 废弃下面的
+export type {
   /**
    * @deprecated MessengerPayloadRegion
    */
@@ -48,16 +63,5 @@ export type {
   /**
    * @deprecated MessengerPayloadTutorial
    */
-  IPayloadLaunchTutorial as MessengerTutorial,
-  // TODO 废弃上边的
-  IPayloadRegion as MessengerPayloadRegion,
-  IPayloadRegionProps as MessengerPayloadRegionProps,
-  IPayloadRegionOnChange as MessengerPayloadRegionOnChange,
-  IPayloadRegionGroup as MessengerPayloadRegionGroup,
-  IPayloadResourceGroup as MessengerPayloadResourceGroup,
-  IPayloadLaunchTutorial as MessengerPayloadTutorial,
-  IPayloadTutorRegister as MessengerPayloadTutorRegister,
-  IPayloadTutorOpen as MessengerPayloadTutorOpen,
-  IPayloadTutorStepChange as MessengerPayloadTutorStepChange,
-  IPayloadTutorDismiss as MessengerPayloadTutorDismiss
+  IPayloadLaunchTutorial as MessengerTutorial
 } from './types';

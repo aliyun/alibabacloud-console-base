@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-messenger-region",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "ConsoleBase 组件 - 对 region messenger 的组件化封装，提升开发体验",
   "license": "MIT",
   "sideEffects": false,
@@ -36,7 +36,8 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger": "^1.6.1"
+    "@alicloud/console-base-log-sls": "^1.2.31",
+    "@alicloud/console-base-messenger": "^1.7.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

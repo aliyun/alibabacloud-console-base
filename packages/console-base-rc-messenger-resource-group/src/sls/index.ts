@@ -1,0 +1,1 @@
+export { default as slsCreated } from './sls-created';

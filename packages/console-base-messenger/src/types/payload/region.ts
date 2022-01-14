@@ -15,13 +15,16 @@ export interface IPayloadRegionOnChange extends IPayloadRegion {
 }
 
 export interface IPayloadRegionProps {
-  global?: boolean;
-  regions?: IPayloadRegion[];
+  // 数据
   regionId?: string;
+  regionIdDefault?: string;
+  regions?: IPayloadRegion[];
   resourceCount?: Record<string, number>;
   legacyRegionIds?: string[];
+  // 展示
   visible?: boolean;
   disabled?: boolean;
+  global?: boolean;
   noFlag?: boolean;
   noGroup?: boolean;
 }

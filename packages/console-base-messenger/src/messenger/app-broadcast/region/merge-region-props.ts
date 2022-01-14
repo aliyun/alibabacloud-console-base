@@ -9,7 +9,7 @@ import {
 } from '../../../util';
 
 /**
- * 合并 Region 组件 props
+ * 合并组件 props
  */
 export default function mergeRegionProps(payload: IPayloadRegionProps): void {
   broadcastByApp<IPayloadRegionProps>(EMessageBroadcastByApp.REGION_MERGE_PROPS, payload);

@@ -21,6 +21,8 @@ export enum EMessageBroadcastByApp {
   REGION_SET_REGION_GROUPS = 'app_2_console_base:region/set_region_groups',
   REGION_SET_RESOURCE_COUNT = 'app_2_console_base:region/set_resource_count',
   // 资源组选择器
+  RESOURCE_GROUP_SET_PROPS = 'app_2_console_base:resource_group/set_props', // 覆盖 props
+  RESOURCE_GROUP_MERGE_PROPS = 'app_2_console_base:resource_group/merge_props', // 合并 props（适合需要单点更新的场景）
   RESOURCE_GROUP_TOGGLE = 'app_2_console_base:resource_group/toggle',
   RESOURCE_GROUP_SET_ID = 'app_2_console_base:resource_group/set_id',
   RESOURCE_GROUP_SET_RESOURCE_COUNT = 'app_2_console_base:resource_group/set_resource_count',

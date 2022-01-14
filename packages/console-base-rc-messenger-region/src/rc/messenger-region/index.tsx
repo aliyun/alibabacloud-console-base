@@ -10,6 +10,9 @@ import {
 import {
   IPropsMessengerRegion
 } from '../../types';
+import {
+  slsCreated
+} from '../../sls';
 import MessengerRegionEvents from '../messenger-region-events';
 
 export default function MessengerRegion({
@@ -23,7 +26,7 @@ export default function MessengerRegion({
   noFlag,
   noGroup,
   onChange
-}: IPropsMessengerRegion): JSX.Element {
+}: IPropsMessengerRegion): JSX.Element | null {
   useEffect(() => setRegionProps({
     regions,
     regionId,
@@ -36,13 +39,15 @@ export default function MessengerRegion({
     noGroup
   }), [global, regions, regionId, resourceCount, legacyRegionIds, visible, disabled, noFlag, noGroup]);
   
-  useEffect(() => { // 卸载当前组件，Region 隐藏
-    return () => mergeRegionProps({
+  useEffect(() => {
+    slsCreated(); // 初始化记录日志
+    
+    return () => mergeRegionProps({ // 卸载当前组件，隐藏
       visible: false
     });
   }, []);
   
-  return <MessengerRegionEvents {...{
+  return onChange ? <MessengerRegionEvents {...{
     onChange
-  }} />;
+  }} /> : null;
 }
