@@ -46,7 +46,11 @@ module.exports = {
     args: 'after-used',
     ignoreRestSiblings: true
   }],
-  '@typescript-eslint/no-extra-parens': 'error',
+  '@typescript-eslint/no-extra-parens': ['error', 'all', {
+    // 和 no-confusing-arrow 冲突
+    // https://github.com/eslint/eslint/issues/6196
+    enforceForArrowConditionals: false
+  }],
   // typescript-only rules
   '@typescript-eslint/type-annotation-spacing': ['error'],
   '@typescript-eslint/member-delimiter-style': ['error', {
