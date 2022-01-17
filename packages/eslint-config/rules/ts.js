@@ -6,17 +6,19 @@ module.exports = {
    * 
    * disable eslint base rules so that corresponding @typescript-eslint/xx rules can work without problem
    * 
-   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md#how-to-use
-   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md#rule-changes
-   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md#how-to-use
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md
    * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
-   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md#how-to-use
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
+   * - https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extra-parens.md
    */
   indent: 'off',
   'comma-dangle': 'off',
   'no-shadow': 'off',
   'no-use-before-define': 'off',
   'no-unused-vars': 'off',
+  'no-extra-parens': 'off',
   // now the @typescript-eslint rules
   '@typescript-eslint/indent': ['error', 2, {
     SwitchCase: 1,
@@ -44,6 +46,7 @@ module.exports = {
     args: 'after-used',
     ignoreRestSiblings: true
   }],
+  '@typescript-eslint/no-extra-parens': 'error',
   // typescript-only rules
   '@typescript-eslint/type-annotation-spacing': ['error'],
   '@typescript-eslint/member-delimiter-style': ['error', {

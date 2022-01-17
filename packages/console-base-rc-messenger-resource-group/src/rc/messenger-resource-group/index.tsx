@@ -29,7 +29,7 @@ export default function MessengerResourceGroup({
     visible,
     disabled,
     noDefault
-  }), [visible, disabled, noDefault, resourceGroupId, resourceCount]);
+  }), [resourceGroupId, resourceCount, visible, disabled, noDefault]);
   
   useEffect(() => {
     slsCreated(); // 初始化记录日志

@@ -10,6 +10,8 @@ export { default as onToggleTopNav } from './misc/on-toggle-top-nav';
 export { default as onArmsError } from './misc/on-arms-error';
 export { default as onLaunchTutorial } from './misc/on-launch-tutorial';
 export { default as onLaunchWidget } from './misc/on-launch-widget';
+
+// region
 export { default as onSetRegionProps } from './region/on-set-region-props';
 export { default as onMergeRegionProps } from './region/on-merge-region-props';
 export { default as onToggleRegion } from './region/on-toggle-region';
@@ -18,15 +20,25 @@ export { default as onSetRegionId } from './region/on-set-region-id';
 export { default as onSetRegions } from './region/on-set-regions';
 export { default as onSetRegionGroups } from './region/on-set-region-groups';
 export { default as onSetRegionResourceCount } from './region/on-set-region-resource-count';
+
+// resource group
+export { default as onMergeResourceGroupProps } from './resource-group/on-merge-resource-group-props';
+export { default as onSetResourceGroupProps } from './resource-group/on-set-resource-group-props';
 export { default as onToggleResourceGroup } from './resource-group/on-toggle-resource-group';
 export { default as onSetResourceGroupId } from './resource-group/on-set-resource-group-id';
 export { default as onSetResourceGroupResourceCount } from './resource-group/on-set-resource-group-resource-count';
+
+// toolkit
 export { default as onSetGoTopContainer } from './toolkit/on-set-go-top-container';
 export { default as onToolkitPut } from './toolkit/on-toolkit-put';
 export { default as onToolkitRemove } from './toolkit/on-toolkit-remove';
+
+// tutor
 export { default as onRegisterTutor } from './tutor/on-register';
 export { default as onOpenTutor } from './tutor/on-open';
 export { default as onCloseTutor } from './tutor/on-close';
+
+// micro-browser-portal
 export { default as onMicroBrowserPortalCreated } from './micro-browser-portal/on-created';
 export { default as onMicroBrowserPortalRemoved } from './micro-browser-portal/on-removed';
 export { default as onMicroBrowserPortalToggleVisible } from './micro-browser-portal/on-toggle-visibie';

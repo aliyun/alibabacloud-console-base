@@ -16,28 +16,30 @@ import {
 import MessengerRegionEvents from '../messenger-region-events';
 
 export default function MessengerRegion({
-  regions,
   regionId,
+  regionIdDefault,
+  regions,
   resourceCount,
   legacyRegionIds,
-  global,
   visible = true, // 使用此组件意味着 visible 必须受控
   disabled,
+  global,
   noFlag,
   noGroup,
   onChange
 }: IPropsMessengerRegion): JSX.Element | null {
   useEffect(() => setRegionProps({
-    regions,
     regionId,
+    regionIdDefault,
+    regions,
     resourceCount,
     legacyRegionIds,
-    global,
     visible,
     disabled,
+    global,
     noFlag,
     noGroup
-  }), [global, regions, regionId, resourceCount, legacyRegionIds, visible, disabled, noFlag, noGroup]);
+  }), [regionId, regionIdDefault, regions, resourceCount, legacyRegionIds, visible, disabled, global, noFlag, noGroup]);
   
   useEffect(() => {
     slsCreated(); // 初始化记录日志
