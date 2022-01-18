@@ -3,6 +3,7 @@ import React, {
   useCallback
 } from 'react';
 import styled from 'styled-components';
+import update from 'immutability-helper';
 
 import {
   ChoiceItem,
@@ -14,6 +15,9 @@ import {
   Flex100HBF
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import {
+  TabProps
+} from '@alicloud/console-base-rc-tabs';
 
 import OneModal, {
   ModalMode,
@@ -49,14 +53,18 @@ const ScMinimizedTray = styled.div`
 `;
 
 const DEFAULT_PAGES: ModalTab[] = [{
+  key: 'default-1',
   title: '哥特之皇 Lacrimosa',
   content: <LongArticle />
 }, {
+  key: 'default-2',
   title: 'Flex 上中下',
   content: <Flex100HBF />
 }, {
+  key: 'default-3',
   title: '测试用例长长长长长长长长长长长长长长长长长长长长长长长长长长长',
-  content: <>123123123</>
+  content: <>123123123</>,
+  closable: true
 }];
 
 const MODE_CHOICES: ChoiceItem<ModalMode>[] = Object.keys(ModalMode).map((k): ChoiceItem<ModalMode> => ({
@@ -69,20 +77,34 @@ export default function DemoDefault(): JSX.Element {
   const [stateMode, setStateMode] = useState<ModalMode | undefined>(undefined);
   const [stateVisible, setStateVisible] = useState<boolean>(true);
   
+  const handleTabClose = useCallback((tab: TabProps) => {
+    const index = stateTabs.findIndex(v => v.key && v.key === tab.key);
+    
+    if (index >= 0) {
+      setStateTabs(update(stateTabs, {
+        $splice: [[index, 1]]
+      }));
+    }
+  }, [stateTabs, setStateTabs]);
   const handleAdd = useCallback(() => {
-    setStateTabs([...stateTabs, {
-      key: `${Date.now()}`,
-      title: new Date().toISOString(),
-      content: <>{new Date().toString()}</>,
-      closable: true
-    }]);
+    const key = new Date().toISOString();
+    
+    setStateTabs(update(stateTabs, {
+      $push: [{
+        key,
+        title: key,
+        content: <>{new Date().toString()}</>,
+        closable: true
+      }]
+    }));
   }, [stateTabs, setStateTabs]);
   
   return <>
     <ThemeSwitcher />
     <OneModal {...{
       tabs: {
-        tabs: stateTabs
+        tabs: stateTabs,
+        onTabClose: handleTabClose
       },
       affix: '#the-minimize-to-node-for-demo',
       mode: stateMode,
@@ -97,12 +119,11 @@ export default function DemoDefault(): JSX.Element {
       value: stateMode,
       onChange: setStateMode
     }} />
-    <label>
-      <InputSwitch {...{
-        value: stateVisible,
-        onChange: setStateVisible
-      }} /> visible
-    </label>
+    <InputSwitch {...{
+      label: 'visible',
+      value: stateVisible,
+      onChange: setStateVisible
+    }} />
     <div>
       <LoadConsoleBase />
       <Button onClick={handleAdd}>ADD</Button>

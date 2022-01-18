@@ -1,7 +1,9 @@
-import React from 'react';
+import {
+  useEffectAdjustNavWidth
+} from '../../model';
 
-import AdjustNavWidth from './adjust-nav-width';
-
-export default function Lifecycle(): JSX.Element {
-  return <AdjustNavWidth />;
+export default function Lifecycle(): null {
+  useEffectAdjustNavWidth();
+  
+  return null;
 }

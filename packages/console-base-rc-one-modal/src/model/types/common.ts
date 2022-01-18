@@ -1,6 +1,6 @@
 import {
   EModalMode
-} from '../const';
+} from '../enum';
 
 export interface IRndStateRect {
   w: number;

@@ -3,8 +3,8 @@ import {
 } from 'react';
 
 import {
-  actionRefreshWindowSize
-} from '../action';
+  EAction
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
@@ -14,5 +14,7 @@ import useModelDispatch from './_use-model-dispatch';
 export default function useDispatchRefreshWindowSize(): () => void {
   const dispatch = useModelDispatch();
   
-  return useCallback(() => dispatch(actionRefreshWindowSize()), [dispatch]);
+  return useCallback(() => dispatch({
+    type: EAction.REFRESH_WINDOW_SIZE
+  }), [dispatch]);
 }

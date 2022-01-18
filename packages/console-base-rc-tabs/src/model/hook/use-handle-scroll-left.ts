@@ -2,16 +2,16 @@ import {
   useCallback
 } from 'react';
 
-import useRefTabs from './use-ref-tabs';
+import useDomTabs from './use-dom-tabs';
 import useHandleScrollBy from './use-handle-scroll-by';
 
 export default function useHandleScrollLeft(): () => void {
-  const refTabs = useRefTabs();
+  const domTabs = useDomTabs();
   const handleScrollBy = useHandleScrollBy();
   
   return useCallback((): void => {
-    if (refTabs.current) {
-      handleScrollBy(refTabs.current.offsetWidth);
+    if (domTabs) {
+      handleScrollBy(domTabs.offsetWidth);
     }
-  }, [refTabs, handleScrollBy]);
+  }, [domTabs, handleScrollBy]);
 }

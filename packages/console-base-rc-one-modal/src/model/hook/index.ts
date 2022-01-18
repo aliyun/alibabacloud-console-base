@@ -15,3 +15,5 @@ export { default as useOnResizeStart } from './use-on-resize-start';
 export { default as useOnResize } from './use-on-resize';
 export { default as useOnResizeStop } from './use-on-resize-stop';
 export { default as useHandleDragBarDoubleClick } from './use-handle-drag-bar-double-click';
+export { default as useEffectObserveDocumentResize } from './use-effect-observe-document-resize';
+export { default as useEffectPushBody } from './use-effect-push-body';

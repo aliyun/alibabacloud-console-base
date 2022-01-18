@@ -5,9 +5,9 @@ export {
 } from './model';
 
 export type {
-  IPropsModal as ModalProps,
-  TModalTabs as ModalTabs
-} from './types';
+  ModelProps as ModalProps,
+  ModelPropsTabs as ModalTabs
+} from './model';
 
 export type {
   TabProps as ModalTab

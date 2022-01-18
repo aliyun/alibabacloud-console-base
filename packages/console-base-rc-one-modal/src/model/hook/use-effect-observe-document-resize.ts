@@ -3,13 +3,13 @@ import {
   useEffect
 } from 'react';
 
-import useHandleWindowResize from '../../hook/use-handle-window-resize';
+import useHandleWindowResize from './use-handle-window-resize';
 
 /**
  * document 的滚轴可能时有时无，需要监测
  * 窗口变化需要调整位置和大小等
  */
-export default function ObserveBodyResize(): null {
+export default function useEffectObserveDocumentResize(): void {
   const handleWindowResize = useHandleWindowResize();
   const resizeObserver = useMemo(() => {
     // https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
@@ -36,6 +36,4 @@ export default function ObserveBodyResize(): null {
       resizeObserver.disconnect();
     };
   }, [resizeObserver, handleWindowResize]);
-  
-  return null;
 }

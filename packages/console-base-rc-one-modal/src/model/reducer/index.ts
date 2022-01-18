@@ -4,7 +4,7 @@ import {
 } from '../types';
 import {
   EAction
-} from '../const';
+} from '../enum';
 
 import reduceChangeMode from './reduce-change-mode';
 import reduceRndDragStart from './reduce-rnd-drag-start';

@@ -17,8 +17,8 @@ const ScNav = styled.nav`
 `;
 
 export default function Nav(): JSX.Element {
-  const visibleTabs = useVisibleTabs();
   const refNav = useRefNav();
+  const visibleTabs = useVisibleTabs();
   const navOffset = useStateNavOffset();
   
   return <ScNav {...{

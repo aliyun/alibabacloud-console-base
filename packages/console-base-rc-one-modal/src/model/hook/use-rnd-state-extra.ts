@@ -7,7 +7,7 @@ import {
 } from '../types';
 import {
   EModalMode
-} from '../const';
+} from '../enum';
 
 import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';

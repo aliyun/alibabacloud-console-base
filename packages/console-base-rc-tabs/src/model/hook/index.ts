@@ -1,12 +1,14 @@
 export { default as useProps } from './_use-model-props';
-export { default as useRefTabs } from './use-ref-tabs';
-export { default as useRefNav } from './use-ref-nav';
+export { default as useDomTabs } from './use-dom-tabs';
+export { default as useDomNav } from './use-dom-nav';
+export { default as useRefTabs } from './use-dispatch-set-dom-tabs';
+export { default as useRefNav } from './use-dispatch-set-dom-nav';
 export { default as useVisibleTabs } from './use-visible-tabs';
 export { default as useStateNavOffset } from './use-state-nav-offset';
 export { default as useStateNavOffsetMax } from './use-state-nav-offset-max';
 export { default as useActiveTab } from './use-active-tab';
-export { default as useHandleAdjustNavWidth } from './use-handle-adjust-nav-width';
 export { default as useHandleScrollLeft } from './use-handle-scroll-left';
 export { default as useHandleScrollRight } from './use-handle-scroll-right';
 export { default as useHandleTabClose } from './use-handle-tab-close';
 export { default as useHandleTabActivate } from './use-handle-tab-activate';
+export { default as useEffectAdjustNavWidth } from './use-effect-adjust-nav-width';

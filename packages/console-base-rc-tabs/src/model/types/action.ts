@@ -4,9 +4,12 @@ import {
 
 import {
   EAction
-} from '../const';
+} from '../enum';
 
 export type TModelAction = {
+  type: EAction.SET_DOM_TABS | EAction.SET_DOM_NAV;
+  payload: HTMLDivElement | null;
+} | {
   type: EAction.ACTIVATE_TAB;
   payload: string | number;
 } | {

@@ -8,11 +8,11 @@ import {
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchUpdateNavOffsetMax(): (payload: number) => void {
+export default function useDispatchSetDomTabs(): (payload: HTMLDivElement | null) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: number): void => dispatch({
-    type: EAction.UPDATE_NAV_OFFSET_MAX,
+  return useCallback((payload: HTMLDivElement | null): void => dispatch({
+    type: EAction.SET_DOM_TABS,
     payload
   }), [dispatch]);
 }

@@ -1,5 +1,4 @@
 import React, {
-  useRef,
   useReducer,
   useMemo
 } from 'react';
@@ -20,17 +19,13 @@ export default function Provider({
   props,
   children
 }: IModelProviderProps): JSX.Element {
-  const refTabs = useRef<HTMLDivElement>(null);
-  const refNav = useRef<HTMLDivElement>(null);
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   
   const contextValue: IModelContext = useMemo(() => ({
     props,
     state,
-    refTabs,
-    refNav,
     dispatch
-  }), [props, state, refTabs, refNav, dispatch]);
+  }), [props, state, dispatch]);
   
   return <Context.Provider value={contextValue}>
     {children}

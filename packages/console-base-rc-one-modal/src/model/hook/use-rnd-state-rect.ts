@@ -4,7 +4,7 @@ import {
 
 import {
   EModalMode
-} from '../const';
+} from '../enum';
 import {
   IRndStateRect
 } from '../types';

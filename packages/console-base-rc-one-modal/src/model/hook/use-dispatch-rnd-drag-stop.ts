@@ -3,8 +3,8 @@ import {
 } from 'react';
 
 import {
-  actionRndDragStop
-} from '../action';
+  EAction
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
@@ -14,5 +14,11 @@ import useModelDispatch from './_use-model-dispatch';
 export default function useDispatchRndDragStop(): (x: number, y: number) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((x: number, y: number) => dispatch(actionRndDragStop(x, y)), [dispatch]);
+  return useCallback((x: number, y: number) => dispatch({
+    type: EAction.RND_DRAG_STOP,
+    payload: {
+      x,
+      y
+    }
+  }), [dispatch]);
 }

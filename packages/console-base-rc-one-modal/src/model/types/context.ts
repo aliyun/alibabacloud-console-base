@@ -17,7 +17,7 @@ export interface IModelReducer {
   (state: IModelState, action: TModelAction): IModelState;
 }
 
-export interface IModelProviderProps {
+export interface IModelProviderPros {
   props: IModelProps;
   children: ReactNode;
 }

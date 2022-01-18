@@ -5,15 +5,14 @@ import {
   POSITION_B_INITIAL
 } from '../../const';
 import {
+  EModalMode
+} from '../enum';
+import {
   IModelState
 } from '../types';
 import {
   getWindowSize
 } from '../util';
-
-import {
-  EModalMode
-} from './enum';
 
 const [W, H] = getWindowSize();
 

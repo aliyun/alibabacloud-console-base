@@ -3,15 +3,18 @@ import {
   createPortal
 } from 'react-dom';
 
-import {
-  IPropsModal
-} from '../types';
-import Provider from '../model';
+import Provider, {
+  ModelProps
+} from '../model';
 
 import Ui from './ui';
+import Lifecycle from './lifecycle';
+import SmoothMoving from './smooth-moving';
 
-export default function WithProvider(props: IPropsModal): JSX.Element {
+export default function WithProvider(props: ModelProps): JSX.Element {
   return createPortal(<Provider props={props}>
     <Ui />
+    <Lifecycle />
+    <SmoothMoving />
   </Provider>, document.body);
 }
