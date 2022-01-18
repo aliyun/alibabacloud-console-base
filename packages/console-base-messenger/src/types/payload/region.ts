@@ -25,6 +25,5 @@ export interface IPayloadRegionProps {
   visible?: boolean;
   disabled?: boolean;
   global?: boolean;
-  noFlag?: boolean;
   noGroup?: boolean;
 }

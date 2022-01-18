@@ -24,7 +24,6 @@ export default function MessengerRegion({
   visible = true, // 使用此组件意味着 visible 必须受控
   disabled,
   global,
-  noFlag,
   noGroup,
   onChange
 }: IPropsMessengerRegion): JSX.Element | null {
@@ -37,9 +36,8 @@ export default function MessengerRegion({
     visible,
     disabled,
     global,
-    noFlag,
     noGroup
-  }), [regionId, regionIdDefault, regions, resourceCount, legacyRegionIds, visible, disabled, global, noFlag, noGroup]);
+  }), [regionId, regionIdDefault, regions, resourceCount, legacyRegionIds, visible, disabled, global, noGroup]);
   
   useEffect(() => {
     slsCreated(); // 初始化记录日志
