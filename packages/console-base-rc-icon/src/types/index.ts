@@ -4,7 +4,7 @@ import {
 
 import {
   EIconType
-} from '../const';
+} from '../enum';
 
 export type TIconType = keyof typeof EIconType; // export in case that anyone wants type casting
 

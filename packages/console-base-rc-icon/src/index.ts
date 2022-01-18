@@ -2,7 +2,7 @@ export { default } from './rc';
 
 export {
   EIconType
-} from './const';
+} from './enum';
 
 export type {
   TIconType as IconType,

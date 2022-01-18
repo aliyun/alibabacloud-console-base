@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export enum EIconType { // 注意这里的 key 用于组件的对外 props，不要随意修改，且保持小写
   // logo
   'logo-aliyun' = 'e605', // [-]
@@ -70,13 +69,14 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'empty' = 'e655', // 空
   'face-cry' = 'e7f8', // 哭脸
   'face-smile' = 'e7f9', // 笑脸
-  'global' = 'e70d', // 全球 - 用于 @alicloud/console-base-wd-region
+  'global' = 'e70d', // 全球
   'go-top' = 'e694', // 回到顶部
   'lights-on' = 'e664', // 主题 - 亮
   'lights-off' = 'e665', // 主题 - 暗
   'menu-all' = 'e6e3', // 菜单（九宫格）
   'notice' = 'e887', // 通知（铃铛）
   'pin' = 'e79e', // 固定
+  'region' = 'e65b', // 地域
   'star-hollow' = 'e609', // 空心的星
   'star' = 'e611', // 星（收藏）
   'stick-right' = 'e657', // 面板 - 固定到右侧

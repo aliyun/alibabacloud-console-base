@@ -10,12 +10,12 @@ import {
 } from '@alicloud/iconfont-helper';
 
 import {
+  EIconType
+} from '../enum';
+import {
   IPropsIconPure,
   IPropsIcon
 } from '../types';
-import {
-  EIconType
-} from '../const';
 
 function getCode(props: IPropsIconPure): string {
   const code = EIconType[props.type];
@@ -23,8 +23,8 @@ function getCode(props: IPropsIconPure): string {
   return code ? `\\${code}` : '';
 }
 
-// https://at.alicdn.com/t/font_1256165_l4etmn0e3fb.css
-const fontFamily = injectIconFont('1256165', 'l4etmn0e3fb');
+// https://at.alicdn.com/t/font_1256165_vbx52dmhygq.css
+const fontFamily = injectIconFont('1256165', 'vbx52dmhygq');
 
 const kfRotate = keyframes`
   0% {
