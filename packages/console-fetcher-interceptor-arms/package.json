@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@alicloud/arms": "^1.1.80",
-    "@alicloud/fetcher": "^1.1.83"
+    "@alicloud/fetcher": "^1.2.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

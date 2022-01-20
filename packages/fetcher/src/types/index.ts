@@ -175,8 +175,10 @@ export interface IFnFetcherRequest<C extends IFetcherConfig = IFetcherConfig> {
  * ```
  */
 export interface IFnFetcherJsonp<C extends IFetcherConfig = IFetcherConfig> {
-  <T = void, P = void>(url: string, params?: P): Promise<T>;
-  <T = void, P = void>(options: TFetcherOptionsForQuickJsonp<C>, url: string, params?: P): Promise<T>;
+  <T = void>(url: string): Promise<T>;
+  <T = void, P = unknown>(url: string, params: P): Promise<T>;
+  <T = void>(options: TFetcherOptionsForQuickJsonp<C>, url: string): Promise<T>;
+  <T = void, P = unknown>(options: TFetcherOptionsForQuickJsonp<C>, url: string, params: P): Promise<T>;
 }
 
 /**
@@ -194,8 +196,10 @@ export interface IFnFetcherJsonp<C extends IFetcherConfig = IFetcherConfig> {
  * ```
  */
 export interface IFnFetcherGetAlike<C extends IFetcherConfig = IFetcherConfig> {
-  <T = void, P = void>(url: string, params?: P): Promise<T>;
-  <T = void, P = void>(options: TFetcherOptionsForQuickFn<C>, url: string, params?: P): Promise<T>;
+  <T = void>(url: string): Promise<T>;
+  <T = void, P = unknown>(url: string, params: P): Promise<T>;
+  <T = void>(options: TFetcherOptionsForQuickFn<C>, url: string): Promise<T>;
+  <T = void, P = unknown>(options: TFetcherOptionsForQuickFn<C>, url: string, params: P): Promise<T>;
 }
 
 /**
@@ -214,8 +218,12 @@ export interface IFnFetcherGetAlike<C extends IFetcherConfig = IFetcherConfig> {
  * ```
  */
 export interface IFnFetcherPostAlike<C extends IFetcherConfig = IFetcherConfig> {
-  <T = void, B = void, P = void>(url: string, body?: B, params?: P): Promise<T>;
-  <T = void, B = void, P = void>(options: TFetcherOptionsForQuickFn<C>, url: string, body?: B, params?: P): Promise<T>;
+  <T = void>(url: string): Promise<T>;
+  <T = void, B = unknown>(url: string, body: B): Promise<T>;
+  <T = void, B = unknown, P = unknown>(url: string, body: B, params: P): Promise<T>;
+  <T = void>(options: TFetcherOptionsForQuickFn<C>, url: string): Promise<T>;
+  <T = void, B = unknown>(options: TFetcherOptionsForQuickFn<C>, url: string, body: B): Promise<T>;
+  <T = void, B = unknown, P = unknown>(options: TFetcherOptionsForQuickFn<C>, url: string, body: B, params: P): Promise<T>;
 }
 
 export type TFetcherInterceptRequestReturn<C extends IFetcherConfig = IFetcherConfig> = void | Partial<C> | Promise<void | Partial<C>>
@@ -240,7 +248,7 @@ export interface IFnInterceptResponseFulfilled<C extends IFetcherConfig = IFetch
 /**
  * response error interceptor 方法类型
  */
-export interface IFnInterceptResponseRejected<C extends IFetcherConfig = IFetcherConfig, T = any> {
+export interface IFnInterceptResponseRejected<C extends IFetcherConfig = IFetcherConfig, T = any> { // eslint-disable-line @typescript-eslint/no-explicit-any
   (error: IFetcherError, fetcherConfig: C, fetcherResponse: IFetcherResponse<T> | undefined, fetcherRequest: IFnFetcherRequest<C>): T;
 }
 
