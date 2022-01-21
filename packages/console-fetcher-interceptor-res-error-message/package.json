@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.2.83",
-    "@alicloud/fetcher": "^1.2.0"
+    "@alicloud/fetcher": "^1.2.1"
   },
   "scripts": {
     "start": "breezr start-storybook",

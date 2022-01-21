@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@alicloud/console-logger-sls": "^1.2.31",
-    "@alicloud/fetcher": "^1.2.0"
+    "@alicloud/fetcher": "^1.2.1"
   },
   "scripts": {
     "start": "breezr start-storybook",
