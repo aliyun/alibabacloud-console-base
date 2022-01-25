@@ -4,7 +4,7 @@ import {
   IModelState
 } from '../types';
 
-export default function reduceActivateTab(state: IModelState, payload: string | number): IModelState {
+export default function reduceSetActiveTabKey(state: IModelState, payload: string): IModelState {
   return update(state, {
     activeKey: {
       $set: payload

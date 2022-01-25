@@ -8,11 +8,11 @@ import {
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchActivateTab(): (payload: string | number) => void {
+export default function useDispatchSetActiveTabKey(): (payload: string) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: string | number): void => dispatch({
-    type: EAction.ACTIVATE_TAB,
+  return useCallback((payload: string): void => dispatch({
+    type: EAction.SET_ACTIVE_TAB_KEY,
     payload
   }), [dispatch]);
 }

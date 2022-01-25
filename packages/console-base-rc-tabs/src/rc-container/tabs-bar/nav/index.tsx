@@ -27,10 +27,9 @@ export default function Nav(): JSX.Element {
       transform: `translate(${navOffset}px, 0)`
     }
   }}>
-    {visibleTabs.map((v, i): JSX.Element | null => <NavItem {...{
-      key: v.key || i,
-      tab: v,
-      index: i
+    {visibleTabs.map((v): JSX.Element | null => <NavItem {...{
+      key: v.key,
+      tab: v
     }} />)}
   </ScNav>;
 }

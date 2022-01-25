@@ -16,6 +16,8 @@ import {
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Tabs, {
+  TabsTheme,
+  TabsProps,
   TabProps
 } from '../../src';
 
@@ -48,6 +50,7 @@ const TABS: TabProps[] = [{
   visible: true,
   closable: true
 }, {
+  key: 'never-visible',
   title: 'Never Visible',
   content: <>Never Visible</>,
   visible: false
@@ -86,8 +89,11 @@ let addIndex = 0;
 function generateTabForAdd(): TabProps {
   addIndex += 1;
   
+  const key = `add-${addIndex}`;
+  
   return {
-    title: `add-${addIndex}`,
+    key,
+    title: key,
     content: new Date().toString(),
     closable: true
   };
@@ -95,7 +101,8 @@ function generateTabForAdd(): TabProps {
 
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
-  const [stateActiveTab, setStateActiveTab] = useState<string | number>('hbr');
+  const [stateTheme, setStateTheme] = useState<TabsTheme | undefined>();
+  const [stateActiveTab, setStateActiveTab] = useState<string>('hbr');
   const [stateWidth, setStateWidth] = useState<string>('M');
   const [stateHeight, setStateHeight] = useState<string>('M');
   const width = getWidth(stateWidth);
@@ -105,9 +112,12 @@ export default function DemoDefault(): JSX.Element {
     $push: [generateTabForAdd()]
   })), [stateTabs, setStateTabs]);
   
-  const handleTabClose = useCallback((_tab: TabProps, toTabs: TabProps[]) => setStateTabs(toTabs), [setStateTabs]);
+  const handleTabClose = useCallback((_tab: TabProps, toTabs: TabProps[]) => {
+    setStateTabs(toTabs);
+  }, [setStateTabs]);
   
-  const tabsProps = {
+  const tabsProps: TabsProps = {
+    theme: stateTheme,
     tabs: stateTabs,
     activeKey: stateActiveTab,
     width,
@@ -120,6 +130,18 @@ export default function DemoDefault(): JSX.Element {
       <ThemeSwitcher />
       <Button onClick={handleAdd}>Add Tab</Button>
       <Hr />
+      <RadioGroup<TabsTheme> {...{
+        label: 'props.theme',
+        items: [{
+          label: 'plain',
+          value: TabsTheme.PLAIN
+        }, {
+          label: 'inverse',
+          value: TabsTheme.INVERSE
+        }],
+        value: stateTheme,
+        onChange: setStateTheme
+      }} />
       <RadioGroup {...{
         label: '容器宽度',
         items: [{

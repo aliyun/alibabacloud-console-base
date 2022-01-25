@@ -1,7 +1,7 @@
-import _without from 'lodash/without';
 import {
   useCallback
 } from 'react';
+import update from 'immutability-helper';
 
 import {
   IModelPropsTab
@@ -9,7 +9,6 @@ import {
 
 import useModelProps from './_use-model-props';
 import useVisibleTabs from './use-visible-tabs';
-import useActiveKey from './use-active-key';
 import useActiveTab from './use-active-tab';
 import useHandleTabActivate from './use-handle-tab-activate';
 
@@ -19,15 +18,13 @@ export default function useHandleTabClose(): (tab: IModelPropsTab) => void {
     onTabClose
   } = useModelProps();
   const visibleTabs = useVisibleTabs();
-  const activeKey = useActiveKey();
   const activeTab = useActiveTab();
   const handleTabActivate = useHandleTabActivate();
   
   return useCallback((tab: IModelPropsTab): void => {
-    const activeIndex = visibleTabs.indexOf(activeTab);
+    const activeIndex = activeTab ? visibleTabs.indexOf(activeTab) : -1;
     const closeIndex = visibleTabs.indexOf(tab);
     let nextActiveTab: IModelPropsTab | null = activeTab;
-    let nextActiveIndex: number = activeIndex;
     
     /**
      * 调整关闭后的 active，从关闭 tab 与 active 之间的关系看：
@@ -42,32 +39,26 @@ export default function useHandleTabClose(): (tab: IModelPropsTab) => void {
      * 3. 关闭的在当前 active 之右 - closeIndex > activeIndex
      *    → 不需要调整
      */
-    if (closeIndex === activeIndex) { // 关闭当前选中 tab，需要指定下一个选中 tab
+    if (tab === activeTab) { // 关闭当前选中 tab，需要指定下一个选中 tab
       if (visibleTabs.length === 1) { // 关闭仅剩的可见 tab
         nextActiveTab = null;
-        nextActiveIndex = -1;
       } else if (activeIndex === visibleTabs.length - 1) { // 关闭最右
         nextActiveTab = visibleTabs[activeIndex - 1];
-        nextActiveIndex = activeIndex - 1;
       } else {
         nextActiveTab = visibleTabs[activeIndex + 1];
-        nextActiveIndex = activeIndex; // 不变
       }
-    } else if (closeIndex < activeIndex && typeof activeKey === 'number') {
-      nextActiveIndex = activeIndex - 1;
+    } else if (closeIndex < activeIndex) {
       nextActiveTab = activeTab;
     } // closeIndex > activeIndex 不需要调整
     
     if (onTabClose) {
-      onTabClose(tab, _without(tabs, tab), tabs);
+      onTabClose(tab, update(tabs, {
+        $splice: [[closeIndex, 1]]
+      }), tabs);
     }
     
-    if (nextActiveTab !== activeTab || nextActiveIndex !== activeIndex) {
-      if (nextActiveTab) {
-        handleTabActivate(nextActiveTab.key || nextActiveIndex);
-      } else {
-        handleTabActivate('');
-      }
+    if (nextActiveTab !== activeTab) {
+      handleTabActivate(nextActiveTab);
     }
-  }, [visibleTabs, activeTab, activeKey, onTabClose, tabs, handleTabActivate]);
+  }, [visibleTabs, activeTab, onTabClose, tabs, handleTabActivate]);
 }

@@ -30,7 +30,7 @@ function getContentPadding(contentPadding: TabContentPadding): string {
 
 const ScContentItem = styled.div<IScPropsNavItem>`
   display: ${props => (props.active ? 'block' : 'none')};
-  padding: ${props => (getContentPadding(props.padding))};
+  padding: ${props => getContentPadding(props.padding)};
   height: 100%;
 `;
 
@@ -40,8 +40,7 @@ export default function ContentItem({
   const {
     contentPadding: contentPaddingInProps
   } = useProps();
-  const activeTab = useActiveTab();
-  const active = activeTab === tab;
+  const active = useActiveTab() === tab;
   const {
     content,
     contentPadding = contentPaddingInProps,

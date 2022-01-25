@@ -1,11 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
+
+import {
+  mixinBorderTertiaryBottom
+} from '@alicloud/console-base-theme';
 
 import {
   HEIGHT_TAB_BAR,
   BGC_TAB_BAR
 } from '../../const';
 import {
+  TabsTheme,
   useProps,
   useStateNavOffsetMax
 } from '../../model';
@@ -14,22 +21,39 @@ import Nav from './nav';
 import Scroller from './scroller';
 
 const ScTabsBar = styled.div`
+  display: flex;
+  align-items: flex-end;
   position: relative;
-  background-color: ${BGC_TAB_BAR};
   width: 100%;
   height: ${HEIGHT_TAB_BAR}px;
-  overflow: hidden;
-  color: #fff;
+  ${props => {
+    switch (props.theme) {
+      case TabsTheme.INVERSE:
+        return css`
+          background-color: ${BGC_TAB_BAR};
+        `;
+      default:
+        return mixinBorderTertiaryBottom;
+    }
+  }}
 `;
 
-export default function TabBar(): JSX.Element {
+const ScTabsBarNavWrapper = styled.div`
+  flex: 1;
+  overflow: hidden;
+`;
+
+export default function TabsBar(): JSX.Element {
   const {
+    theme,
     classNameForTabBar
   } = useProps();
   const navOffsetMax = useStateNavOffsetMax();
   
-  return <ScTabsBar className={classNameForTabBar}>
-    <Nav />
+  return <ScTabsBar theme={theme} className={classNameForTabBar}>
+    <ScTabsBarNavWrapper>
+      <Nav />
+    </ScTabsBarNavWrapper>
     {navOffsetMax < 0 ? <Scroller /> : null}
   </ScTabsBar>;
 }

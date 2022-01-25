@@ -16,7 +16,7 @@ import {
   SIZE_CONTROL_BUTTON
 } from '../../const';
 
-interface IProps extends ButtonProps {
+interface IProps extends Omit<ButtonProps, 'theme' | 'size' | 'cursor'> {
   light?: boolean;
 }
 

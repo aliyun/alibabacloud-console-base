@@ -2,20 +2,26 @@ import {
   useCallback
 } from 'react';
 
-import useModelProps from './_use-model-props';
-import useDispatchActivateTab from './use-dispatch-activate-tab';
+import {
+  IModelPropsTab
+} from '../types';
 
-export default function useHandleTabActivate(): (key: string | number) => void {
+import useModelProps from './_use-model-props';
+import useDispatchSetActiveTabKey from './use-dispatch-set-active-tab-key';
+
+export default function useHandleTabActivate(): (tab: IModelPropsTab | null) => void {
   const {
     onChange
   } = useModelProps();
-  const dispatchActivateTab = useDispatchActivateTab();
+  const dispatchSetActiveTabKey = useDispatchSetActiveTabKey();
   
-  return useCallback((key: string | number): void => {
-    dispatchActivateTab(key);
+  return useCallback((tab: IModelPropsTab | null): void => {
+    const activeKey = tab ? tab.key : '';
+    
+    dispatchSetActiveTabKey(activeKey);
     
     if (onChange) {
-      onChange(key);
+      onChange(activeKey);
     }
-  }, [dispatchActivateTab, onChange]);
+  }, [dispatchSetActiveTabKey, onChange]);
 }

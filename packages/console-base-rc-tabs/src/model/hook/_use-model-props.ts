@@ -7,26 +7,40 @@ import {
 } from '@alicloud/typescript-missing-helpers';
 
 import {
+  ETabsTheme
+} from '../enum';
+import {
   IModelProps
 } from '../types';
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IModelProps, 'width' | 'contentPadding'>;
+interface ISafeProps extends RequiredSelected<IModelProps, 'theme' | 'width' | 'contentPadding'> {}
 
-const DEFAULT_PROPS: TModelProps = {
-  tabs: [],
-  contentPadding: 'top',
-  width: -1
-};
-
-export default function useModelProps(): TModelProps {
+export default function useModelProps(): ISafeProps {
   const {
     props
   } = useModelContext();
   
-  return useMemo((): TModelProps => ({
-    ...DEFAULT_PROPS,
-    ...props
-  }), [props]);
+  return useMemo((): ISafeProps => {
+    const {
+      theme = ETabsTheme.PLAIN,
+      contentPadding = 'top',
+      width = -1,
+      ...rest
+    } = props;
+    
+    const safeProps: ISafeProps = {
+      theme,
+      contentPadding,
+      width,
+      ...rest
+    };
+    
+    if (!safeProps.tabs) {
+      safeProps.tabs = [];
+    }
+    
+    return safeProps;
+  }, [props]);
 }

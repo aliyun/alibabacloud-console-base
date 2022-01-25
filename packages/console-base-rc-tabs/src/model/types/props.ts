@@ -1,3 +1,7 @@
+import {
+  ETabsTheme
+} from '../enum';
+
 /**
  * 内容区域留白
  *
@@ -8,7 +12,7 @@
 export type TContentPadding = 'none' | 'top' | 'around';
 
 export interface IModelPropsTab {
-  key?: string;
+  key: string;
   title: string | JSX.Element;
   content: string | JSX.Element | null;
   contentAttr?: {
@@ -34,13 +38,14 @@ export interface IModelPropsTab {
 
 export interface IModelProps {
   tabs: IModelPropsTab[];
+  theme?: ETabsTheme;
   contentPadding?: TContentPadding;
   width?: number; // 仅用于通知宽度变化
   classNameForTabBar?: string; // 为了让外部可以有个钩子
   classNameForTabItem?: string; // 为了让外部可以有个钩子
   classNameForTabScroller?: string; // 为了让外部可以有个钩子
-  activeKey?: string | number;
-  defaultActiveKey?: string | number;
-  onChange?(key: string | number): void;
+  activeKey?: string;
+  defaultActiveKey?: string;
+  onChange?(key: string): void;
   onTabClose?(tab: IModelPropsTab, toTabs: IModelPropsTab[], fromTabs: IModelPropsTab[]): void;
 }

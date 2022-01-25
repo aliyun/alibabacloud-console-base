@@ -36,7 +36,7 @@ export default function useEffectAdjustNavWidth(): void {
     const widthOfTabs = width > 0 ? width : domTabs.offsetWidth; // 容器有 transition 的情况下，width 变化不会立马影响 tabs 的实际宽度
     const widthOfNav = domNav.offsetWidth;
     
-    const activeIndex = visibleTabs.indexOf(activeTab);
+    const activeIndex = activeTab ? visibleTabs.indexOf(activeTab) : -1;
     let activeOffset = 0;
     
     for (let i = 0; i < activeIndex; i++) {

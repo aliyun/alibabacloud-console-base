@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Tabs from '@alicloud/console-base-rc-tabs';
+import Tabs, {
+  TabsTheme
+} from '@alicloud/console-base-rc-tabs';
 
 import {
   CLASS_J_RND_CANCEL
@@ -22,6 +24,7 @@ export default function Content(): JSX.Element {
   
   return <Tabs {...{
     ...tabs,
+    theme: TabsTheme.INVERSE,
     contentPadding: 'none',
     classNameForTabBar: dragHandleClass,
     classNameForTabItem: CLASS_J_RND_CANCEL,

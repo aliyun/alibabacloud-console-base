@@ -16,7 +16,7 @@ interface IProps {
 }
 
 const ScAlertIcon = styled(Icon)<IProps>`
-  margin-right: 12px;
+  margin-right: 8px;
   font-size: 14px;
   ${props => getIconColor(props.theme)}
 `;

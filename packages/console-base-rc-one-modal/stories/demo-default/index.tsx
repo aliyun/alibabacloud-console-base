@@ -77,15 +77,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateMode, setStateMode] = useState<ModalMode | undefined>(undefined);
   const [stateVisible, setStateVisible] = useState<boolean>(true);
   
-  const handleTabClose = useCallback((tab: TabProps) => {
-    const index = stateTabs.findIndex(v => v.key && v.key === tab.key);
-    
-    if (index >= 0) {
-      setStateTabs(update(stateTabs, {
-        $splice: [[index, 1]]
-      }));
-    }
-  }, [stateTabs, setStateTabs]);
+  const handleTabClose = useCallback((_tab: TabProps, toTabs: TabProps[]) => setStateTabs(toTabs), [setStateTabs]);
   const handleAdd = useCallback(() => {
     const key = new Date().toISOString();
     

@@ -1,6 +1,5 @@
 export { default as useProps } from './_use-model-props';
 export { default as useDomTabs } from './use-dom-tabs';
-export { default as useDomNav } from './use-dom-nav';
 export { default as useRefTabs } from './use-dispatch-set-dom-tabs';
 export { default as useRefNav } from './use-dispatch-set-dom-nav';
 export { default as useVisibleTabs } from './use-visible-tabs';
