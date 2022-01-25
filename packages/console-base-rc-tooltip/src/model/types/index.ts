@@ -1,4 +1,3 @@
-export * from './enum';
 export * from './props';
 export * from './state';
 export * from './action';

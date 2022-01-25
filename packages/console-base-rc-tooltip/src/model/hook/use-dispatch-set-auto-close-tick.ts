@@ -4,7 +4,7 @@ import {
 
 import {
   EAction
-} from '../types';
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 

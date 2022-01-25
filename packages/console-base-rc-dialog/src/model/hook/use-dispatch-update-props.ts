@@ -8,7 +8,7 @@ import {
 } from '../../types';
 import {
   EAction
-} from '../const';
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 

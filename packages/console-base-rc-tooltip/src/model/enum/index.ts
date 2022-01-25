@@ -1,3 +1,8 @@
+export enum EAction {
+  SET_VISIBLE,
+  SET_AUTO_CLOSE_TICK
+}
+
 export enum ETooltipTheme {
   NORMAL = 'normal',
   ACCENT = 'accent',

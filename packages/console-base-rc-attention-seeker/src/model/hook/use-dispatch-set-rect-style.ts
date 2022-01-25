@@ -3,11 +3,11 @@ import {
 } from 'react';
 
 import {
+  EAction
+} from '../enum';
+import {
   IRectStyle
 } from '../types';
-import {
-  EAction
-} from '../const';
 
 import useModelDispatch from './_use-model-dispatch';
 

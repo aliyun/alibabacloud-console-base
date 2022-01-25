@@ -1,5 +1,7 @@
 import {
-  EAction,
+  EAction
+} from '../enum';
+import {
   IModelState,
   TModelAction
 } from '../types';

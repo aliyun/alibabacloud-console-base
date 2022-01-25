@@ -2,10 +2,9 @@ import {
   Dispatch
 } from 'react';
 
-export enum EAction {
-  SET_VISIBLE,
-  SET_AUTO_CLOSE_TICK
-}
+import {
+  EAction
+} from '../enum';
 
 export type TModelAction = {
   type: EAction.SET_VISIBLE;

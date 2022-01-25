@@ -4,7 +4,7 @@ import {
 } from '../types';
 import {
   EAction
-} from '../const';
+} from '../enum';
 
 import reduceDidMount from './reduce-did-mount';
 import reduceSetDomDialog from './reduce-set-dom-dialog';

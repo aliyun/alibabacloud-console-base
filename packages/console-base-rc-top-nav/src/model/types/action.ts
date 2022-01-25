@@ -4,7 +4,7 @@ import {
 
 import {
   EAction
-} from '../const';
+} from '../enum';
 
 export type TModelAction = {
   type: EAction.SET_DOCK_ACTIVE;

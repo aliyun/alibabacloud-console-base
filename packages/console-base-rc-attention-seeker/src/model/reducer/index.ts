@@ -1,10 +1,10 @@
 import {
+  EAction
+} from '../enum';
+import {
   IModelState,
   TModelAction
 } from '../types';
-import {
-  EAction
-} from '../const';
 
 import reduceSetIndex from './reduce-set-index';
 import reduceSetRectStyle from './reduce-set-rect-style';

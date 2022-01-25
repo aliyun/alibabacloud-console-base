@@ -9,7 +9,7 @@ import {
 import {
   ETooltipTheme,
   ETooltipPlacement
-} from './enum';
+} from '../enum';
 
 /**
  * 提供标准化的操作按钮，如果有其他的需求，可能需要放在 content 里自己维护

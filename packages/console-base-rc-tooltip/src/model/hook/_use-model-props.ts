@@ -4,7 +4,9 @@ import {
 
 import {
   ETooltipPlacement,
-  ETooltipTheme,
+  ETooltipTheme
+} from '../enum';
+import {
   IModelPropsSafe
 } from '../types';
 

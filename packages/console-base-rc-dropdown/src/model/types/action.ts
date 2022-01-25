@@ -2,13 +2,9 @@ import {
   Dispatch
 } from 'react';
 
-export enum EAction {
-  SET_DOM_DROPDOWN,
-  SET_DOM_DROP,
-  SET_VISIBLE,
-  SET_VISIBLE_TIMER,
-  SET_DROP_EXITING
-}
+import {
+  EAction
+} from '../enum';
 
 export type TModelAction = {
   type: EAction.SET_DOM_DROPDOWN | EAction.SET_DOM_DROP;

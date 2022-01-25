@@ -1,6 +1,6 @@
 import {
   EDialogFocusHow
-} from '../const';
+} from '../enum';
 
 import stackFindTopmost from './stack-find-topmost';
 import trapFocus from './trap-focus';

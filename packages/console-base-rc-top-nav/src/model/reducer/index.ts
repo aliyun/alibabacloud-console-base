@@ -1,10 +1,10 @@
 import {
+  EAction
+} from '../enum';
+import {
   IModelState,
   TModelAction
 } from '../types';
-import {
-  EAction
-} from '../const';
 
 import reduceSetDockActive from './reduce-set-dock-active';
 import reduceSetDockActiveByHoverTimestamp from './reduce-set-dock-active-by-hover-timestamp';

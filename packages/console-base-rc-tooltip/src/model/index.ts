@@ -5,7 +5,7 @@ export * from './hook';
 export {
   ETooltipTheme as TooltipTheme,
   ETooltipPlacement as TooltipPlacement
-} from './types';
+} from './enum';
 
 export type {
   IModelProps as ModelProps

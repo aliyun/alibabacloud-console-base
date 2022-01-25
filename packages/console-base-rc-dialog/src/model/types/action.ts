@@ -4,7 +4,7 @@ import {
 
 import {
   EAction
-} from '../const';
+} from '../enum';
 import {
   IDialogPropsMutable
 } from '../../types';

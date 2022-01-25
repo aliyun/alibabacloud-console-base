@@ -1,6 +1,6 @@
 import {
   EDialogFocusHow
-} from '../const';
+} from '../enum';
 
 import getNextElementToFocus from './get-next-element-to-focus';
 

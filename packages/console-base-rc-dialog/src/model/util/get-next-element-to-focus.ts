@@ -4,7 +4,7 @@ import {
 
 import {
   EDialogFocusHow
-} from '../const';
+} from '../enum';
 
 /**
  * 获取下一个要 focus 的元素
