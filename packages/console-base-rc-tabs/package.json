@@ -29,7 +29,6 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.52",
     "@alicloud/demo-rc-elements": "^1.4.4",
-    "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.38",
     "@types/styled-components": "^5.1.21",
     "react": "^17.0.2",
@@ -47,8 +46,7 @@
     "@alicloud/console-base-theme": "^1.3.91",
     "@alicloud/console-base-theme-sc-base": "^1.1.93",
     "@alicloud/typescript-missing-helpers": "^1.1.55",
-    "immutability-helper": "^3.1.1",
-    "lodash": "^4.17.21"
+    "immutability-helper": "^3.1.1"
   },
   "scripts": {
     "start": "breezr start-storybook",
