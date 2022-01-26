@@ -17,7 +17,7 @@ interface IProps {
 
 export default function slsSubRiskGetMfaInfo(getMfaAuthInfoProps: IProps): void {
   sls(ESlsTopic.SUB_GET_MFA_INFO, {
-    fromBindU2FSuccess: false,
+    getMfaInfoAfterBindSuccess: false,
     ...getMfaAuthInfoProps
   });
 }

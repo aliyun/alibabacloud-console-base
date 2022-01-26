@@ -138,7 +138,7 @@ export default function Message({
         </ScMessageDiv>
         {/* 绑定/验证 U2F 场景，当 U2F 安全密钥获取失败时，有重试的按钮 */}
         {showU2FRetryButton ? <Button {...{
-          theme: ButtonTheme.PRIMARY,
+          theme: ButtonTheme.TEXT_PRIMARY,
           size: ButtonSize.S,
           label: intl('op:retry'),
           onClick: onRetryClick

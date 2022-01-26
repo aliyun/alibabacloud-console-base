@@ -66,7 +66,10 @@ export default function U2FBind(): JSX.Element {
       },
       challenge: infoData.U2FChallenge,
       excludeCredentials: [],
-      timeout: u2fTimeout
+      timeout: u2fTimeout,
+      authenticatorSelection: {
+        authenticatorAttachment: 'cross-platform'
+      }
     };
   }, [u2fTimeout]);
 
@@ -76,6 +79,11 @@ export default function U2FBind(): JSX.Element {
     }
     
     if (!getBindMfaInfoData || getBindMfaInfoData?.DeviceType === ESubMFADeviceType.VMFA) {
+      slsU2FError({
+        accountId,
+        status: EStep.U2F_BIND,
+        errorMessage: intl('message:get_u2f_key_params_error')
+      });
       updateData({
         errorMessage: intl('message:get_u2f_key_params_error'),
         showU2FRetryButton: false
@@ -93,6 +101,11 @@ export default function U2FBind(): JSX.Element {
         updateData({
           errorMessage: intl('message:u2f_browser_not_support'),
           showU2FRetryButton: false
+        });
+        slsU2FError({
+          accountId,
+          status: EStep.U2F_BIND,
+          errorMessage: intl('message:u2f_browser_not_support')
         });
 
         return;

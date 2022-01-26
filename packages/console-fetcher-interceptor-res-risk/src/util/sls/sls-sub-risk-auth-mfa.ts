@@ -17,7 +17,7 @@ interface IProps {
   errorMessage?: string;
 }
 
-export default function slsSubRiskBindMfa({
+export default function slsSubRiskAuthMfa({
   slsResultType,
   validators,
   payload,
