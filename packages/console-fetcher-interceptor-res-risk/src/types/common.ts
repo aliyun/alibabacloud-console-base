@@ -10,7 +10,7 @@ import {
 } from '../const';
 
 import {
-  IGetBindMfaInfoPayload,
+  TGetBindMfaInfoPayload,
   TBindMfaPayload,
   IGetAuthMfaInfoPayload,
   TVerifyMfaPayload
@@ -123,7 +123,7 @@ export interface INewSubAccountRisk {
   requestId: string;
   errorMessage: string;
   step?: EStep;
-  getBindMfaInfoPayload?: IGetBindMfaInfoPayload; // 获取 MFA 绑定信息的接口 /identity/getMfaInfoToBind 的 payload
+  getBindMfaInfoPayload?: TGetBindMfaInfoPayload; // 获取 MFA 绑定信息的接口 /identity/getMfaInfoToBind 的 payload
   getBindMfaInfoData?: TGetBindMfaInfoData; // 获取 MFA 绑定信息的接口 /identity/getMfaInfoToBind 的返回 data
   bindMfaPayload?: TBindMfaPayload; // 绑定 MFA 接口 /identity/bindMFA 的 payload
   bindMfaData?: IMfaData; // 绑定 MFA 接口 /identity/bindMFA 的返回 data
@@ -133,8 +133,8 @@ export interface INewSubAccountRisk {
   verifyMfaData?: IMfaData; // 验证 MFA 接口 /identity/verify 的返回 data
   primaryButtonDisabled?: boolean; // primary button 是否禁用
   u2fTimeout?: number; // U2F 设备绑定/验证的超时时间
-  canU2FRetry?: boolean; // 验证/绑定 U2F 失败后，允许重新跟 U2F 设备交互
-  fromU2FBindtoAuth?: boolean; // 在 U2F 验证场景中，是不是由 U2F 绑定成功，但是重新请求被风控的接口后跳转过来的
+  showU2FRetryButton?: boolean; // 验证或者绑定 U2F 失败后，允许重新获取安全密钥
+  fromBindU2FtoAuthU2F?: boolean; // 在 U2F 验证场景中，是不是由 U2F 绑定成功，但是重新请求被风控的接口后跳转过来的
 }
 
 /**

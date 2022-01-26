@@ -17,7 +17,6 @@ import {
   EIconType
 } from '../../../../const';
 import intl from '../../../../intl';
-import getU2FStateMessage from '../../../../util/get-u2f-state-message';
 import U2FMessage from '../message';
 
 interface IProps {
@@ -25,7 +24,7 @@ interface IProps {
   getU2fKey: boolean;
   title: string;
   errorMessage: string;
-  canU2FRetry?: boolean;
+  showU2FRetryButton?: boolean;
   onRetryClick: () => void;
 }
 
@@ -76,14 +75,10 @@ export default function U2fUi({
   u2fSupported,
   getU2fKey,
   title,
-  canU2FRetry,
+  showU2FRetryButton,
   errorMessage,
   onRetryClick
 }: IProps): JSX.Element {
-  const {
-    u2fNotSupportedMsg
-  } = getU2FStateMessage;
-
   const getU2fMessage = useMemo((): JSX.Element => {
     if (getU2fKey) {
       return <U2FMessage {...{
@@ -102,14 +97,14 @@ export default function U2fUi({
     if (!u2fSupported || errorMessage) {
       return <U2FMessage {...{
         iconType: EIconType.error,
-        message: !u2fSupported ? u2fNotSupportedMsg : errorMessage,
-        canU2FRetry,
+        message: errorMessage,
+        showU2FRetryButton,
         onRetryClick
       }} />;
     }
 
     return getU2fMessage;
-  }, [u2fSupported, errorMessage, canU2FRetry, onRetryClick, u2fNotSupportedMsg, getU2fMessage]);
+  }, [u2fSupported, errorMessage, showU2FRetryButton, onRetryClick, getU2fMessage]);
 
   return <>
     {topMessage}

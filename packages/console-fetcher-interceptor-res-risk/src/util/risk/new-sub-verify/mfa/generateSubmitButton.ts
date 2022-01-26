@@ -24,7 +24,7 @@ import {
   slsSubRisk,
   slsSubRiskAuthMfa,
   slsSubRiskBindMfa,
-  slsSubRiskGetMfaAInfo
+  slsSubRiskGetMfaInfo
 } from '../../../sls';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
@@ -39,7 +39,7 @@ interface IProps extends Pick<ISubAccountRiskInfo, 'verifyType' | 'validators'>,
   accountId: string;
 }
 
-interface IDataForUpdate extends Pick<INewSubAccountRisk, 'canU2FRetry' | 'primaryButtonDisabled' | 'errorMessage' | 'step' | 'getAuthMfaInfoData' | 'fromU2FBindtoAuth'> {}
+interface IDataForAuthAfterBindFail extends Pick<INewSubAccountRisk, 'showU2FRetryButton' | 'primaryButtonDisabled' | 'errorMessage' | 'step' | 'getAuthMfaInfoData' | 'fromBindU2FtoAuthU2F'> {}
 
 export default function generateSubmitButtonFn({
   request,
@@ -54,16 +54,16 @@ export default function generateSubmitButtonFn({
     const url = isAuth ? riskConfig.URL_MFA_AUTH : riskConfig.URL_MFA_BIND;
 
     // 在绑定 / 验证 U2F 设备的场景，如果重新请求被风控的接口失败，顶部提示条要有重试的按钮来重新获取 U2F 安全密钥
-    const getDataForUpdate = async (payload?: TBindMfaPayload | TVerifyMfaPayload): Promise<IDataForUpdate> => {
-      if (payload && ('U2fSignatureData' in payload)) { // 验证 U2F 成功，但重新请求被风控的接口报错。
+    const getDataForAuthAfterBindFail = async (payload?: TBindMfaPayload | TVerifyMfaPayload): Promise<IDataForAuthAfterBindFail> => {
+      if (payload && ('AuthenticatorData' in payload)) { // 验证 U2F 成功，但重新请求被风控的接口报错。
         return {
-          canU2FRetry: true,
+          showU2FRetryButton: true,
           primaryButtonDisabled: true,
           errorMessage: intl('message:incorrect_u2f_auth')
         };
       }
       
-      if (payload && ('U2FAppId' in payload || 'Code1' in payload)) { // 当绑定 MFA 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
+      if (payload && ('AttestationObject' in payload || 'Code1' in payload)) { // 当绑定 MFA 成功，但重新请求被风控的接口报错时，点击【重试】需要让用户走 U2F 验证。
         // 获取 U2F 验证的数据
         const authMfaInfo = await getAuthMfaInfo({
           request,
@@ -72,22 +72,22 @@ export default function generateSubmitButtonFn({
           getMfaInfoToAuthUrl: riskConfig.URL_GET_MFA_INFO_TO_AUTH
         });
 
-        slsSubRiskGetMfaAInfo({
+        slsSubRiskGetMfaInfo({
           accountId,
+          value: 'auth',
           url: riskConfig.URL_GET_MFA_INFO_TO_AUTH!,
-          getMfaInfoScene: 'auth',
-          fromBindMFASuccess: true,
+          getMfaInfoAfterBindSuccess: true,
           slsResultType: ESlsResultType.SUCCESS
         });
 
-        if ('U2FAppId' in payload) { // 绑定 U2F 成功
+        if ('AttestationObject' in payload) { // 绑定 U2F 成功
           return {
             step: EStep.U2F_AUTH, // 走 U2F 验证
-            canU2FRetry: true,
+            showU2FRetryButton: true,
             primaryButtonDisabled: true,
             errorMessage: intl('message:incorrect_mfa_bind'),
             getAuthMfaInfoData: authMfaInfo,
-            fromU2FBindtoAuth: true
+            fromBindU2FtoAuthU2F: true
           };
         }
 
@@ -101,7 +101,7 @@ export default function generateSubmitButtonFn({
       }
 
       return {
-        canU2FRetry: false,
+        showU2FRetryButton: false,
         primaryButtonDisabled: false,
         errorMessage: intl('message:code_incorrect')
       };
@@ -185,19 +185,19 @@ export default function generateSubmitButtonFn({
   
             if (error.code === riskConfig.CODE_INVALID_INPUT || error.code === riskConfig.CODE_NEED_VERIFY) {
               try {
-                const dataForUpdate = await getDataForUpdate(payload);
+                const dataForAuthAfterBindFail = await getDataForAuthAfterBindFail(payload);
 
                 updateData({
-                  ...dataForUpdate
+                  ...dataForAuthAfterBindFail
                 });
               } catch (getAuthMfaInfoError: unknown) {
                 const getAuthInfoErrorMessage = (getAuthMfaInfoError as Error).message;
 
-                slsSubRiskGetMfaAInfo({
+                slsSubRiskGetMfaInfo({
                   accountId,
+                  value: 'auth',
                   url: riskConfig.URL_GET_MFA_INFO_TO_AUTH!,
-                  getMfaInfoScene: 'auth',
-                  fromBindMFASuccess: true,
+                  getMfaInfoAfterBindSuccess: true,
                   errorMessage: getAuthInfoErrorMessage,
                   slsResultType: ESlsResultType.FAIL
                 });

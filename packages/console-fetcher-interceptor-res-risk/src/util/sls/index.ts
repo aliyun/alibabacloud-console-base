@@ -8,5 +8,5 @@ export { default as slsSubRisk } from './sls-sub-risk';
 export { default as slsSkipBindMfa } from './sls-skip-bind-mfa';
 export { default as slsSubRiskAuthMfa } from './sls-sub-risk-auth-mfa';
 export { default as slsSubRiskBindMfa } from './sls-sub-risk-bind-mfa';
-export { default as slsSubRiskGetMfaAInfo } from './sls-sub-risk-get-mfa-info';
+export { default as slsSubRiskGetMfaInfo } from './sls-sub-risk-get-mfa-info';
 export { default as slsOldMainRiskSendCode } from './sls-old-main-risk-send-code';

@@ -4,6 +4,7 @@ import React, {
   useEffect
 } from 'react';
 import styled from 'styled-components';
+import { browserSupportsWebauthn } from '@simplewebauthn/browser';
 
 import {
   useDialog
@@ -16,7 +17,6 @@ import {
 import Flex, {
   FlexProps
 } from '@alicloud/console-base-rc-flex';
-import u2fApi from '@alicloud/u2f-api';
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
@@ -31,7 +31,6 @@ import {
 import intl from '../../../intl';
 import Radio from '../../../rc/radio';
 import getTicketType from '../../../util/get-ticket-type';
-import getU2fStateMessage from '../../../util/get-u2f-state-message';
 import Message from '../_components/message';
 
 interface IScItemProps extends FlexProps {
@@ -75,9 +74,6 @@ const ScItem = styled(Flex)<IScItemProps>`
 `;
 
 const ticketType = getTicketType();
-const {
-  u2fNotSupportedMsg
-} = getU2fStateMessage;
 
 export default function MfaChoose(): JSX.Element {
   const isUnmounted = useIsUnmounted();
@@ -94,7 +90,7 @@ export default function MfaChoose(): JSX.Element {
   const [stateRadioChecked, setStateRadioChecked] = useState<EStep.VMFA_BIND | EStep.U2F_BIND>(EStep.VMFA_BIND);
   const [stateU2FSupported, setStateU2FSupported] = useState<boolean>(true);
 
-  const haneleVmfaRadioClick = useCallback((): void => {
+  const handleVMfaRadioClick = useCallback((): void => {
     if (stateRadioChecked === EStep.VMFA_BIND) {
       return;
     }
@@ -119,15 +115,20 @@ export default function MfaChoose(): JSX.Element {
       getBindMfaInfoPayload: {
         AccountId: accountId,
         TicketType: ticketType,
+        U2FVersion: 'WebAuthn',
         DeviceType: ESubMFADeviceType.U2F
       }
     });
   }, [accountId, stateRadioChecked, stateU2FSupported, updateData]);
 
   useEffect(() => {
+    const supportWebAuhtn = browserSupportsWebauthn();
+
     if (isUnmounted()) {
       return;
     }
+
+    setStateU2FSupported(supportWebAuhtn);
 
     // 由于默认的 MFA 设备类型是 VMFA，因此默认的 getBindMfaInfoPayload 也是 VMFA 类型的
     updateData({
@@ -136,10 +137,6 @@ export default function MfaChoose(): JSX.Element {
         TicketType: ticketType,
         DeviceType: ESubMFADeviceType.VMFA
       }
-    });
-    
-    u2fApi.isSupported().then(isU2FSupported => {
-      setStateU2FSupported(isU2FSupported);
     });
   }, [accountId, isUnmounted, updateData]);
 
@@ -151,7 +148,7 @@ export default function MfaChoose(): JSX.Element {
     <ScItem {...{
       align: 'center',
       justify: 'space-between',
-      onClick: haneleVmfaRadioClick
+      onClick: handleVMfaRadioClick
     }}>
       <div>
         <Radio {...{
@@ -178,7 +175,7 @@ export default function MfaChoose(): JSX.Element {
           noBackground: true,
           isSmallICon: true,
           iconType: EIconType.error,
-          message: u2fNotSupportedMsg
+          message: intl('message:u2f_browser_not_support')
         }} /> : null}
         <Flex>
           <Radio {...{

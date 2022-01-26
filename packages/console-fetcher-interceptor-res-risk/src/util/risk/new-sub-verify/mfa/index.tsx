@@ -7,19 +7,20 @@ import {
 
 import {
   INewSubAccountRisk,
-  TGetBindMfaInfoData
+  IGetBindMfaInfoResponse
 } from '../../../../types';
 import {
   EStep,
   ESlsResultType,
-  ESubMFADeviceType
+  ESubMFADeviceType,
+  WEBAUTHN_KEY_TYPE
 } from '../../../../const';
 import intl from '../../../../intl';
 import Content from '../../../../container/new-sub-verify-content';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
 import {
-  slsSubRiskGetMfaAInfo
+  slsSubRiskGetMfaInfo
 } from '../../../sls';
 
 import {
@@ -89,20 +90,20 @@ export default async function RiskSubVerify({
         initialStep = EStep.VMFA_AUTH;
       }
 
-      slsSubRiskGetMfaAInfo({
+      slsSubRiskGetMfaInfo({
         accountId,
+        value: 'auth',
         url: URL_GET_MFA_INFO_TO_AUTH!,
-        getMfaInfoScene: 'auth',
         slsResultType: ESlsResultType.SUCCESS
       });
     } catch (error: unknown) {
       const errorMessage = (error as Error).message;
 
-      slsSubRiskGetMfaAInfo({
+      slsSubRiskGetMfaInfo({
         accountId,
         errorMessage,
+        value: 'auth',
         url: URL_GET_MFA_INFO_TO_AUTH!,
-        getMfaInfoScene: 'auth',
         slsResultType: ESlsResultType.FAIL
       });
 
@@ -132,7 +133,7 @@ export default async function RiskSubVerify({
         getBindMfaInfoPayload
       } = data;
       
-      request<TGetBindMfaInfoData>({
+      request<IGetBindMfaInfoResponse>({
         method: REQUEST_METHOD,
         headers: {
           'Content-Type': 'application/json'
@@ -141,35 +142,48 @@ export default async function RiskSubVerify({
         body: {
           ...getBindMfaInfoPayload
         }
-      }).then(getBindMfaInfoData => {
+      }).then(getBindMfaInfoResponse => {
         unlock();
 
-        slsSubRiskGetMfaAInfo({
+        slsSubRiskGetMfaInfo({
           accountId,
+          value: 'bind',
           url: URL_GET_MFA_INFO_TO_BIND!,
-          getMfaInfoScene: 'bind',
           slsResultType: ESlsResultType.SUCCESS
         });
         
-        if (getBindMfaInfoData.QRCodeUri !== null) { // VMFA
+        if (getBindMfaInfoResponse.QRCodeUri !== null) { // VMFA
           updateData({
             step: EStep.VMFA_BIND,
-            getBindMfaInfoData
+            getBindMfaInfoData: {
+              DeviceType: ESubMFADeviceType.VMFA,
+              QRCodeUri: getBindMfaInfoResponse.QRCodeUri,
+              TargetMfaDeviceSecret: getBindMfaInfoResponse.TargetMfaDeviceSecret || '',
+              TargetUserPrincipalName: getBindMfaInfoResponse.TargetUserPrincipalName
+            }
           });
         } else {
           updateData({
             step: EStep.U2F_BIND,
-            getBindMfaInfoData
+            getBindMfaInfoData: {
+              DeviceType: ESubMFADeviceType.U2F,
+              RpId: getBindMfaInfoResponse.RpId || '',
+              PubKeyCreType: getBindMfaInfoResponse.PubKeyCreType || WEBAUTHN_KEY_TYPE,
+              PubKeyCreAlg: getBindMfaInfoResponse.PubKeyCreAlg || '-7',
+              U2FChallenge: getBindMfaInfoResponse.U2FChallenge || '',
+              UserIdEncrypted: getBindMfaInfoResponse.UserIdEncrypted || '',
+              TargetUserPrincipalName: getBindMfaInfoResponse.TargetUserPrincipalName
+            }
           });
         }
       }).catch(error => {
         const getMfaBindInfoErrorMessage = error?.message || '';
 
         unlock();
-        slsSubRiskGetMfaAInfo({
+        slsSubRiskGetMfaInfo({
           accountId,
+          value: 'bind',
           url: URL_GET_MFA_INFO_TO_BIND!,
-          getMfaInfoScene: 'bind',
           slsResultType: ESlsResultType.FAIL
         });
         updateData({

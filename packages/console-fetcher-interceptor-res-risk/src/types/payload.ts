@@ -13,10 +13,17 @@ export interface IExt {
   Ext: string;
 }
 
-// 接口 /identity/getMfaInfoToBind 的 payload
-export interface IGetBindMfaInfoPayload extends IMfaSharedPayload {
-  DeviceType: ESubMFADeviceType;
+// 接口 /identity/getMfaInfoToBind 的 payload - VMFA 类型
+export interface IGetBindVMfaInfoPayload extends IMfaSharedPayload {
+  DeviceType: ESubMFADeviceType.VMFA;
 }
+
+export interface IGetBindU2FInfoPayload extends IMfaSharedPayload {
+  DeviceType: ESubMFADeviceType.U2F;
+  U2FVersion: 'WebAuthn';
+}
+
+export type TGetBindMfaInfoPayload = IGetBindVMfaInfoPayload | IGetBindU2FInfoPayload;
 
 // 接口 /identity/bindMFA 的 payload
 export interface IBindVMfaPayload extends IExt, IMfaSharedPayload {
@@ -27,10 +34,9 @@ export interface IBindVMfaPayload extends IExt, IMfaSharedPayload {
 
 export interface IBindU2FPayload extends IExt, IMfaSharedPayload {
   DeviceType: ESubMFADeviceType.U2F;
-  U2FAppId: string;
-  U2FVersion: string;
-  U2FRegistrationData: string;
-  U2FClientData: string;
+  U2FVersion: 'WebAuthn';
+  ClientDataJSON: string;
+  AttestationObject: string;
 }
 
 export type TBindMfaPayload = IBindVMfaPayload | IBindU2FPayload;
@@ -48,9 +54,10 @@ export interface IVerifyVMfaPayload extends IVerifyMfaSharedPayload {
 }
 
 export interface IVerifyU2FPayload extends IVerifyMfaSharedPayload {
-  U2fSignatureData: string; // u2f 签名数据
-  U2fKeyHandle: string; // u2f Handle
-  U2fClientData: string; // u2f 客户端数据
+  CredentialId: string;
+  AuthenticatorData: string;
+  ClientDataJSON: string;
+  Signature: string;
 }
 
 export type TVerifyMfaPayload = IVerifyVMfaPayload | IVerifyU2FPayload;

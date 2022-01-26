@@ -37,12 +37,12 @@ interface IIconProps {
 interface IErrorDivProps extends FlexProps {
   noBackground?: boolean;
   isSmallICon?: boolean;
+  widthPercent?: number;
 }
-
 interface IProps extends IErrorDivProps {
   iconType: EIconType;
   message: string;
-  canU2FRetry?: boolean;
+  showU2FRetryButton?: boolean;
   onRetryClick?: () => void;
 }
 
@@ -56,6 +56,10 @@ const CssDivTip = css`
   margin-bottom: 8px;
 `;
 
+const ScMessageDiv = styled.div`
+  width: 90%;
+`;
+
 const ScNotice = styled(Flex)`
    ${CssDivCommon}
    ${mixinBgInfoTint}
@@ -63,6 +67,7 @@ const ScNotice = styled(Flex)`
 `;
 
 const ScError = styled(Flex)<IErrorDivProps>`
+  word-break: break-all;
   ${props => {
     if (props.noBackground) {
       return CssDivTip;
@@ -121,18 +126,18 @@ export default function Message({
   noBackground,
   isSmallICon = false,
   message,
-  canU2FRetry,
+  showU2FRetryButton,
   onRetryClick
 }: IProps): JSX.Element {
   switch (iconType) {
     case EIconType.error:
       return <ScError noBackground={noBackground} align="center" justify="space-between">
-        <div>
+        <ScMessageDiv>
           <ScIcon type={EIconType.error} iconType={EIconType.error} isSmallICon={isSmallICon} />
           {message}
-        </div>
+        </ScMessageDiv>
         {/* 绑定/验证 U2F 场景，当 U2F 安全密钥获取失败时，有重试的按钮 */}
-        {canU2FRetry ? <Button {...{
+        {showU2FRetryButton ? <Button {...{
           theme: ButtonTheme.PRIMARY,
           size: ButtonSize.S,
           label: intl('op:retry'),

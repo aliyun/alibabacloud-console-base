@@ -71,7 +71,7 @@ export enum ESlsResultType {
 }
 
 /**
- * 埋点列表
+ * 埋点 Topic 列表
  */
 export enum ESlsTopic {
   RISK_STARTUP = 'risk_startup', // 展示正常风控弹窗，包括旧版主账号风控以及新版主子账号风控
@@ -81,10 +81,10 @@ export enum ESlsTopic {
   NEW_MAIN_RISK = 'new_main_risk', // 新版主账号风控
   SUB_RISK = 'sub_risk', // 新版子账号风控
   U2F_ERROR = 'u2f_error', // 新版子账号风控 - u2f 报错埋点
-  SUB_BIND_MFA = 'sub_bind_mfa', // 新版子账号风控 - 正常绑定 MFA 设备
-  SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过 MFA 绑定
   SUB_AUTH_MFA = 'sub_auth_mfa', // 新版子账号风控 - 正常验证 MFA 设备
-  SUB_GET_AUTH_INFO = 'sub_get_mfa_auth_info', // 新版子账号风控 - 获取绑定的 MFA 设备信息
+  SUB_BIND_MFA = 'sub_bind_mfa', // 新版子账号风控 - 正常绑定 MFA 设备
+  SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过绑定 MFA 
+  SUB_GET_MFA_INFO = 'sub_get_mfa_info', // 新版子账号风控 - 获取验证 MFA 设备信息
   OLD_MAIN_RISK_SEND_CODE ='old_main_risk_send_code' // 旧版主账号风控 - 发送验证码
 }
 
@@ -120,11 +120,11 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   URL_GET_MFA_INFO_TO_BIND: '//identity.aliyun.com/identity/getMfaInfoToBind',
   URL_GET_MFA_INFO_TO_AUTH: '//identity.aliyun.com/identity/getMfaInfoToAuth',
   URL_SKIP_BIND_MFA: '//identity.aliyun.com/identity/skip',
-  // 旧版主账号风控冷却/超时时间设置 (单位：秒)
+  // 旧版主账号风控冷却/超时时间设置（单位：秒）
   COOLING_AFTER_SENT: 60,
   COOLING_AFTER_SEND_FAIL: 10,
-  // U2F 超时时间
-  U2F_TIMEOUT: 180,
+  // U2F 超时时间（单位：浩渺）
+  U2F_TIMEOUT: 180000,
   // 其他
   REQUEST_METHOD: 'POST'
 };
@@ -144,3 +144,5 @@ export const SvgUrls = {
   VMFA_ICON_GREY: 'https://img.alicdn.com/imgextra/i1/O1CN01JabR2128pLi0tVEDE_!!6000000007981-55-tps-123-123.svg',
   VMFA_ICON_WHITE: 'https://img.alicdn.com/imgextra/i1/O1CN01RoiIfD1wtg3vK02Fk_!!6000000006366-55-tps-123-123.svg'
 };
+
+export const WEBAUTHN_KEY_TYPE = 'public-key';
