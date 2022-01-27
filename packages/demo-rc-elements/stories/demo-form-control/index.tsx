@@ -14,12 +14,12 @@ import {
 export default function DemoFormControl(): JSX.Element {
   return <>
     <H1>表单元素</H1>
-    <Button>一个 Button</Button>
-    <Button disabled>一个 disabled Button</Button>
     <InputNumber placeholder="InputNumber" />
     <InputText placeholder="InputText" />
     <InputText placeholder="InputText - disabled" disabled />
     <InputText placeholder="InputText - block" block />
+    <Button>一个 Button</Button>
+    <Button disabled>一个 disabled Button</Button>
     <InputTextarea placeholder="InputTextarea" />
     <InputSwitch label="label as a prop" />
     <InputSwitch label="disabled" disabled />

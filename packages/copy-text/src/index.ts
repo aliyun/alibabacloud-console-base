@@ -1,46 +1,55 @@
-const COMMAND = 'copy';
+import {
+  createTextarea
+} from './util';
 
-/**
- * 传建一个临时的 textarea 用于执行复制命令
- */
-function createTextarea(text: string): HTMLTextAreaElement {
-  const textarea = document.createElement('textarea');
-  
-  textarea.style.position = 'fixed';
-  textarea.style.top = '0';
-  textarea.style.left = '0';
-  textarea.style.clip = 'rect(0, 0, 0, 0)';
-  textarea.style.width = '0';
-  textarea.style.height = '0';
-  textarea.style.lineHeight = '0';
-  textarea.style.opacity = '0';
-  textarea.value = text;
-  
-  document.body.appendChild(textarea);
-  
-  return textarea;
-}
+const COMMAND = 'copy';
 
 // check document FOR SSR
 export const COPY_SUPPORTED = typeof document !== 'undefined' && document.queryCommandSupported(COMMAND);
 
 export default function copyText(text = ''): boolean {
+  const lastActiveElement = document.activeElement;
+  
   if (!COPY_SUPPORTED) {
     return false;
   }
   
   const textarea = createTextarea(text);
-  
-  textarea.value = text;
-  textarea.select();
+  let result: boolean;
   
   try {
-    document.execCommand(COMMAND);
+    textarea.value = text;
+    textarea.select();
     
-    return true;
+    result = document.execCommand(COMMAND);
+    
+    /**
+     * Safari （到目前最新的版本 15.2 都有）下兼容性问题：
+     * 
+     * 1. select 可以运行，但无法真正选中文字
+     * 2. 因此 execCommand 返回 false
+     * 
+     * 解决的办法是用 setSelectionRange 重新选一次
+     */
+    if (!result) {
+      textarea.setSelectionRange(0, text.length);
+      
+      result = document.execCommand(COMMAND);
+    }
   } catch (err) {
-    return false;
-  } finally {
-    textarea.parentNode?.removeChild(textarea);
+    result = false;
   }
+  
+  textarea.parentNode?.removeChild(textarea);
+  
+  // 把夺取过来的焦点归还给 lastActiveElement，但不能确定其是否存在或可见，必须 try-catch
+  try {
+    if (lastActiveElement) {
+      (lastActiveElement as HTMLElement).focus();
+    }
+  } catch (err2) {
+    // ignore
+  }
+  
+  return result;
 }

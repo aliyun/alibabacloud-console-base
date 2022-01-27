@@ -44,10 +44,6 @@ const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
     background-color: ${FORM_CONTROL_BGC_ACTIVE};
   }
   
-  &:focus {
-    border-color: ${FORM_CONTROL_BDC_ACTIVE};
-  }
-  
   &[disabled],
   &[disabled]:hover,
   &[disabled]:active,
@@ -115,6 +111,11 @@ export const CSS_FORM_CONTROL_BASE = css`
   font-size: 11px;
   transition: all 0.3s ease-in-out;
   ${CSS_FONT_FAMILY}
+
+  &:focus {
+    border-color: ${FORM_CONTROL_BDC_FOCUS};
+    outline: none;
+  }
   
   &:hover {
     border-color: ${FORM_CONTROL_BDC_HOVER};
@@ -122,11 +123,6 @@ export const CSS_FORM_CONTROL_BASE = css`
   
   &:active {
     border-color: ${FORM_CONTROL_BDC_ACTIVE};
-  }
-  
-  &:focus {
-    border-color: ${FORM_CONTROL_BDC_FOCUS};
-    outline: none;
   }
   
   &[disabled],
