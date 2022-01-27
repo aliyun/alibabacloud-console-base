@@ -3,15 +3,15 @@ import {
 } from 'styled-components';
 
 import {
-  mixinInputBgHover,
-  mixinInputBorderHover
+  mixinInputBg,
+  mixinInputBorder
 } from '@alicloud/console-base-theme';
 
 import {
   IPropsScInput
-} from '../../types';
+} from '../types';
 
 export default css<IPropsScInput>`
-  ${mixinInputBgHover}
-  ${props => (props.borderless ? null : mixinInputBorderHover)}
+  ${mixinInputBg}
+  ${props => (props.borderless ? null : mixinInputBorder)}
 `;

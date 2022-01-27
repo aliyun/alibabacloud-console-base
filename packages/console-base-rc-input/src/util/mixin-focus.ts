@@ -10,7 +10,7 @@ import {
 
 import {
   IPropsScInput
-} from '../../types';
+} from '../types';
 
 export default css<IPropsScInput>`
   ${mixinInputBgFocus}

@@ -16,13 +16,15 @@ import {
   IProps,
   IPropsScInput
 } from '../../types';
-import mixinDisabled from '../../util/mixin/disabled';
-import mixinNormal from '../../util/mixin/normal';
-import mixinHover from '../../util/mixin/hover';
-import mixinFocus from '../../util/mixin/focus';
-import mixinShadow from '../../util/mixin/shadow';
-import mixinTheRealInput from '../../util/mixin/the-real-input';
-import renderInner from '../../util/render-inner';
+import {
+  mixinDisabled,
+  mixinNormal,
+  mixinHover,
+  mixinFocus,
+  mixinShadow,
+  mixinTheRealInput,
+  renderInner
+} from '../../util';
 
 const INNER_HEIGHT_PX = `${SIZE.HEIGHT_FORM_CONTROL_M - 2}px`;
 

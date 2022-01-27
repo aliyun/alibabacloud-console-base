@@ -12,7 +12,7 @@ import {
 
 import {
   IPropsScInput
-} from '../../types';
+} from '../types';
 
 const INNER_HEIGHT_PX = `${SIZE.HEIGHT_FORM_CONTROL_M - 2}px`;
 

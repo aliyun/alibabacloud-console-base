@@ -8,7 +8,7 @@ import {
 
 import {
   IPropsScInput
-} from '../../types';
+} from '../types';
 
 function needShadow(props: IPropsScInput): boolean {
   return !props.disabled && !props.borderless && (props.focused || props.hovered);
