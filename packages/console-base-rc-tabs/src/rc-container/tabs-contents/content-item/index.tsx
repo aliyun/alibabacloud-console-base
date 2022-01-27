@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  getContentPadding
+} from '../../../util';
+import {
   ModelPropsTab,
   TabContentPadding,
   useProps,
@@ -17,20 +20,10 @@ interface IScPropsNavItem {
   padding: TabContentPadding;
 }
 
-function getContentPadding(contentPadding: TabContentPadding): string {
-  switch (contentPadding) {
-    case 'top':
-      return '12px 0 0 0';
-    case 'around':
-      return '12px';
-    default:
-      return '0';
-  }
-}
-
 const ScContentItem = styled.div<IScPropsNavItem>`
   display: ${props => (props.active ? 'block' : 'none')};
   padding: ${props => getContentPadding(props.padding)};
+  box-sizing: border-box;
   height: 100%;
 `;
 

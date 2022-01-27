@@ -47,9 +47,10 @@ module.exports = {
     ignoreRestSiblings: true
   }],
   '@typescript-eslint/no-extra-parens': ['error', 'all', {
-    // 和 no-confusing-arrow 冲突
-    // https://github.com/eslint/eslint/issues/6196
-    enforceForArrowConditionals: false
+    // 和 no-confusing-arrow 冲突 → https://eslint.org/docs/rules/no-extra-parens#enforceforarrowconditionals
+    enforceForArrowConditionals: false,
+    // 和 no-mixed-operators 冲突 → https://eslint.org/docs/rules/no-extra-parens#nestedbinaryexpressions
+    nestedBinaryExpressions: false
   }],
   // typescript-only rules
   '@typescript-eslint/type-annotation-spacing': ['error'],

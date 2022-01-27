@@ -12,5 +12,6 @@ export const BGC_TAB_ACTIVE = '#fff';
 export const BGC_TAB_ACTIVE_DARK = '#000';
 
 export const FGC_TAB_IDLE = 'rgba(255, 255, 255, 0.65)';
+export const FGC_TAB_IDLE_HOVER = '#fff';
 export const FGC_TAB_ACTIVE = '#333';
 export const FGC_TAB_ACTIVE_DARK = '#fff';

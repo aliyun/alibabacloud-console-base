@@ -2,13 +2,11 @@ import React, {
   useCallback
 } from 'react';
 import styled, {
-  FlattenSimpleInterpolation,
-  css
+  FlattenSimpleInterpolation
 } from 'styled-components';
 
 import {
-  mixinTypoEllipsis,
-  mixinTextAccent
+  mixinTypoEllipsis
 } from '@alicloud/console-base-theme';
 import {
   ButtonBase
@@ -16,14 +14,12 @@ import {
 
 import {
   HEIGHT_TAB,
-  BGC_TAB_ACTIVE_DARK,
-  BGC_TAB_ACTIVE,
-  BGC_TAB_IDLE,
-  FGC_TAB_IDLE,
-  FGC_TAB_ACTIVE,
-  FGC_TAB_ACTIVE_DARK,
   MAX_WIDTH_TAB,
-  MIN_WIDTH_TAB
+  MIN_WIDTH_TAB,
+  CSS_TAB_BUTTON_THEME_INVERSE_ACTIVE,
+  CSS_TAB_BUTTON_THEME_INVERSE_NORMAL,
+  CSS_TAB_BUTTON_THEME_PLAIN_NORMAL,
+  CSS_TAB_BUTTON_THEME_PLAIN_ACTIVE
 } from '../../../../../const';
 import {
   TabsTheme,
@@ -46,20 +42,9 @@ interface IScProps {
 function getCssTab(props: IScProps): FlattenSimpleInterpolation | null {
   switch (props.tabsTheme) {
     case TabsTheme.INVERSE:
-      return props['data-active'] ? css`
-  background-color: ${BGC_TAB_ACTIVE};
-  color: ${FGC_TAB_ACTIVE};
-  
-  .theme-dark && {
-    background-color: ${BGC_TAB_ACTIVE_DARK};
-    color: ${FGC_TAB_ACTIVE_DARK};
-  }
-` : css`
-  background-color: ${BGC_TAB_IDLE};
-  color: ${FGC_TAB_IDLE};
-`;
+      return props['data-active'] ? CSS_TAB_BUTTON_THEME_INVERSE_ACTIVE : CSS_TAB_BUTTON_THEME_INVERSE_NORMAL;
     default:
-      return props['data-active'] ? mixinTextAccent : null;
+      return props['data-active'] ? CSS_TAB_BUTTON_THEME_PLAIN_ACTIVE : CSS_TAB_BUTTON_THEME_PLAIN_NORMAL;
   }
 }
 
@@ -70,7 +55,6 @@ const ScTabButton = styled(ButtonBase)<IScProps>`
   min-width: ${MIN_WIDTH_TAB}px;
   max-width: ${MAX_WIDTH_TAB}px;
   height: ${HEIGHT_TAB}px;
-  cursor: default;
   ${mixinTypoEllipsis}
   ${getCssTab}
 `;

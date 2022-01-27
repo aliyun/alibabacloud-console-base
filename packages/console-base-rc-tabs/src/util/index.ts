@@ -1,0 +1,1 @@
+export { default as getContentPadding } from './get-content-padding';
