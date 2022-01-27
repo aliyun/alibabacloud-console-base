@@ -56,6 +56,7 @@ export default function U2FAuth(): JSX.Element {
   const getWebAuthnPublicKey = useCallback((mfaInfo: IGetAuthU2FV2InfoData | IGetAuthU2FWebAuthnInfoData): PublicKeyCredentialRequestOptionsJSON => {
     if (mfaInfo.U2FVersion === 'U2F_V2') {
       return {
+        timeout: u2fTimeout,
         challenge: mfaInfo.U2FChallenge,
         allowCredentials: [{
           type: WEBAUTHN_KEY_TYPE,
@@ -64,20 +65,19 @@ export default function U2FAuth(): JSX.Element {
         }],
         extensions: {
           appid: mfaInfo.U2FAppId
-        },
-        timeout: u2fTimeout
+        }
       };
     }
 
     return {
+      timeout: u2fTimeout,
       challenge: mfaInfo.U2FChallenge,
       allowCredentials: [{
         type: WEBAUTHN_KEY_TYPE,
         id: mfaInfo.CredentialId,
         transports: ['usb']
       }],
-      rpId: mfaInfo.RpId,
-      timeout: u2fTimeout
+      rpId: mfaInfo.RpId
     };
   }, [u2fTimeout]);
 

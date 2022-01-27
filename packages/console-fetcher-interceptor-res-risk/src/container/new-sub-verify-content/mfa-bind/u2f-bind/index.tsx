@@ -51,6 +51,10 @@ export default function U2FBind(): JSX.Element {
 
   const getBindWebAuthnPublicKey = useCallback((infoData: IGetBindU2FInfoData): PublicKeyCredentialCreationOptionsJSON => {
     return {
+      timeout: u2fTimeout,
+      attestation: 'direct',
+      excludeCredentials: [],
+      challenge: infoData.U2FChallenge,
       pubKeyCredParams: [{
         type: infoData.PubKeyCreType as PublicKeyCredentialType,
         alg: Number(infoData.PubKeyCreAlg)
@@ -64,9 +68,6 @@ export default function U2FBind(): JSX.Element {
         displayName: infoData.TargetUserPrincipalName,
         id: infoData.UserIdEncrypted
       },
-      challenge: infoData.U2FChallenge,
-      excludeCredentials: [],
-      timeout: u2fTimeout,
       authenticatorSelection: {
         authenticatorAttachment: 'cross-platform'
       }
