@@ -3,11 +3,11 @@ import styled from 'styled-components';
 
 import {
   getCssPadding
-} from '../../../../util';
+} from '../../../util';
 import {
   ModelProps,
   useProps
-} from '../../../../model';
+} from '../../../model';
 
 interface IScProps {
   padding?: ModelProps['bodyPadding'];

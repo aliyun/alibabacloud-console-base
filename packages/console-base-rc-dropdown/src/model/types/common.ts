@@ -1,1 +1,1 @@
-export type TPadding = 'both' | 'top' | 'bottom' | 'none';
+export type TPadding = 'none' | 'all' | 'both' | 'top' | 'bottom';

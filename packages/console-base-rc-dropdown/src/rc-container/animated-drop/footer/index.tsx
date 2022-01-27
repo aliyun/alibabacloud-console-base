@@ -8,11 +8,11 @@ import {
 
 import {
   getCssPadding
-} from '../../../../util';
+} from '../../../util';
 import {
   ModelProps,
   useProps
-} from '../../../../model';
+} from '../../../model';
 
 interface IScProps {
   bg?: boolean;
@@ -30,11 +30,13 @@ export default function Footer(): JSX.Element | null {
   const {
     footer,
     footerBg,
-    footerDivider
+    footerDivider,
+    footerPadding
   } = useProps();
   
   return footer ? <ScFooter {...{
     bg: footerBg,
-    divider: footerDivider
+    divider: footerDivider,
+    padding: footerPadding
   }}>{footer}</ScFooter> : null;
 }

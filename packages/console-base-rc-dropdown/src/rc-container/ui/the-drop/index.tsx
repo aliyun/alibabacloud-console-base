@@ -8,7 +8,7 @@ import {
 import {
   useProps
 } from '../../../model';
-import AnimatedDrop from '../animated-drop';
+import AnimatedDrop from '../../animated-drop';
 
 export default function TheDrop(): JSX.Element | ReactPortal {
   const {

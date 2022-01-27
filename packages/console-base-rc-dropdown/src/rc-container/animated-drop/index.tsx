@@ -20,7 +20,7 @@ import {
   useHandleDropExit,
   useHandleDropExitDone,
   useRefDrop
-} from '../../../model';
+} from '../../model';
 
 import Header from './header';
 import Body from './body';

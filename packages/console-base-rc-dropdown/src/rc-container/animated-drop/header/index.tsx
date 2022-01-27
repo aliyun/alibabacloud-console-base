@@ -8,11 +8,11 @@ import {
 
 import {
   getCssPadding
-} from '../../../../util';
+} from '../../../util';
 import {
   ModelProps,
   useProps
-} from '../../../../model';
+} from '../../../model';
 
 interface IScProps {
   bg?: boolean;
@@ -30,11 +30,13 @@ export default function Header(): JSX.Element | null {
   const {
     header,
     headerBg,
-    headerDivider
+    headerDivider,
+    headerPadding
   } = useProps();
   
   return header ? <ScHeader {...{
     bg: headerBg,
-    divider: headerDivider
+    divider: headerDivider,
+    padding: headerPadding
   }}>{header}</ScHeader> : null;
 }
