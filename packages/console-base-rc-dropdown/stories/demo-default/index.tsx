@@ -27,16 +27,22 @@ const ScTriggerJsx = styled.div`
 const DROPDOWN_PROPS: Record<string, unknown> = {
   '/triggerAsJsx': true,
   trigger: 'this is trigger',
+  header: 'header',
   body: 'this is body',
-  '/header': 'header',
-  '/footer': 'footer',
+  footer: 'footer',
   '/align': 'right', // 'left' | 'right'
   '/width': 300, // number | string
   '/minWidth': 200, // number | string
   '/maxWidth': 400, // number | string
   '/zIndex': 1234, // number
   '/offset': [20, 20],
+  '/headerBg': true,
+  '/headerDivider': true,
+  '/headerPadding': 'bottom', // 'both' | 'top' | 'bottom' | 'none'
   '/bodyPadding': 'top', // 'both' | 'top' | 'bottom' | 'none'
+  '/footerBg': true,
+  '/footerDivider': true,
+  '/footerPadding': 'top', // 'both' | 'top' | 'bottom' | 'none'
   '/dropContainer': 'body', // 'inside' | 'body'
   '/block': true,
   '/disabled': true,

@@ -1,36 +1,20 @@
 import React from 'react';
-import styled, {
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
+import {
+  getCssPadding
+} from '../../../../util';
 import {
   ModelProps,
   useProps
 } from '../../../../model';
 
-interface IPropsScDropBody {
-  bodyPadding?: ModelProps['bodyPadding'];
+interface IScProps {
+  padding?: ModelProps['bodyPadding'];
 }
 
-const ScDropBody = styled.div<IPropsScDropBody>`
-  ${props => {
-    switch (props.bodyPadding) {
-      case 'none':
-        return null;
-      case 'top':
-        return css`
-          padding-top: 8px;
-        `;
-      case 'bottom':
-        return css`
-          padding-bottom: 8px;
-        `;
-      default:
-        return css`
-          padding: 8px 0;
-        `;
-    }
-  }};
+const ScBody = styled.div<IScProps>`
+  ${props => getCssPadding(props.padding)}
 `;
 
 export default function Body(): JSX.Element {
@@ -39,5 +23,5 @@ export default function Body(): JSX.Element {
     bodyPadding
   } = useProps();
   
-  return <ScDropBody bodyPadding={bodyPadding}>{body}</ScDropBody>;
+  return <ScBody padding={bodyPadding}>{body}</ScBody>;
 }

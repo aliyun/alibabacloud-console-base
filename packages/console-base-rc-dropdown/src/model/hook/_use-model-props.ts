@@ -19,10 +19,21 @@ export default function useProps(): TModelProps {
     props
   } = useModelContext();
   
-  return useMemo((): TModelProps => ({
-    dropContainer: 'inside',
-    zIndex: 10,
-    offset: [0, 0],
-    ...props
-  }), [props]);
+  return useMemo((): TModelProps => {
+    const {
+      dropContainer = 'inside',
+      zIndex = 10,
+      offset = [0, 0],
+      bodyPadding = 'both',
+      ...rest
+    } = props;
+    
+    return {
+      dropContainer,
+      zIndex,
+      offset,
+      bodyPadding,
+      ...rest
+    };
+  }, [props]);
 }

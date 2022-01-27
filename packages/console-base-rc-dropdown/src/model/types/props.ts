@@ -2,17 +2,48 @@ import {
   HTMLAttributes
 } from 'react';
 
+import {
+  TPadding
+} from './common';
+
 export interface IPropsTheDrop {
-  header?: string | JSX.Element;
-  body?: string | JSX.Element;
-  footer?: string | JSX.Element;
+  header?: JSX.Element | string | null;
+  body?: JSX.Element | string | null;
+  footer?: JSX.Element | string | null;
   align?: 'left' | 'right';
   width?: number | string;
   minWidth?: number | string;
   maxWidth?: number | string;
   zIndex?: number;
   offset?: [number, number];
-  bodyPadding?: 'both' | 'top' | 'bottom' | 'none';
+  /**
+   * 是否加 header 背景
+   */
+  headerBg?: boolean;
+  /**
+   * 是否加 header 下边框
+   */
+  headerDivider?: boolean;
+  /**
+   * header 上下 padding
+   */
+  headerPadding?: TPadding;
+  /**
+   * body 上下 padding
+   */
+  bodyPadding?: TPadding;
+  /**
+   * 是否加 header 背景
+   */
+  footerBg?: boolean;
+  /**
+   * 是否加 footer 上边框
+   */
+  footerDivider?: boolean;
+  /**
+   * header 上下 padding
+   */
+  footerPadding?: TPadding;
   dropContainer?: 'inside' | 'body';
 }
 

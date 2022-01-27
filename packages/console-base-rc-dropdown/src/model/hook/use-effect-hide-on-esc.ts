@@ -2,12 +2,10 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useDropVisible,
-  useHandleDocKeydown
-} from '../../../model';
+import useDropVisible from './use-drop-visible';
+import useHandleDocKeydown from './use-handle-doc-keydown';
 
-export default function OnDocKeydown(): null {
+export default function useEffectHideOnEsc(): void {
   const dropVisible = useDropVisible();
   const handleDocKeydown = useHandleDocKeydown();
   
@@ -18,6 +16,4 @@ export default function OnDocKeydown(): null {
       return () => document.removeEventListener('keydown', handleDocKeydown, true);
     }
   }, [dropVisible, handleDocKeydown]);
-  
-  return null;
 }

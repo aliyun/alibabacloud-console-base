@@ -7,7 +7,8 @@ export { default as useHandleDropExit } from './use-handle-drop-exit';
 export { default as useHandleDropExitDone } from './use-handle-drop-exit-done';
 export { default as useHandleDropdownMouseEnter } from './use-handle-dropdown-mouse-enter';
 export { default as useHandleDropdownMouseLeave } from './use-handle-dropdown-mouse-leave';
-export { default as useHandleDocKeydown } from './use-handle-doc-keydown';
-export { default as useHandleHideWhenDisabled } from './use-handle-hide-when-disabled';
+// effects
+export { default as useEffectHideWhenDisabled } from './use-effect-hide-when-disabled';
+export { default as useEffectHideOnEsc } from './use-effect-hide-on-esc';
 // for content only
 export { default as useDropdown } from './use-dropdown';
