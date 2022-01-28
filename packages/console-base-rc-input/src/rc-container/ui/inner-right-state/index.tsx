@@ -8,10 +8,13 @@ import {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  useProps
+  useProps,
+  useValue,
+  useHandleClear
 } from '../../../model';
 import {
-  ScInnerRight
+  ScInnerRight,
+  ScInputClearButton
 } from '../../../sc';
 
 const ScIconSuccess = styled(Icon)`
@@ -23,9 +26,16 @@ const ScIconError = styled(Icon)`
 
 export default function InnerRightState(): JSX.Element | null {
   const {
-    state
+    state,
+    hasClear
   } = useProps();
+  const value = useValue();
+  const handleClear = useHandleClear();
   let jsx: JSX.Element | undefined;
+  
+  if (!value) {
+    return null;
+  }
   
   switch (state) {
     case 'loading':
@@ -41,7 +51,13 @@ export default function InnerRightState(): JSX.Element | null {
       
       break;
     default:
-      return null;
+      if (hasClear) {
+        jsx = <ScInputClearButton onClick={handleClear}>
+          <Icon type="error-circle-fill" />
+        </ScInputClearButton>;
+      }
+      
+      break;
   }
   
   return jsx ? <ScInnerRight>{jsx}</ScInnerRight> : null;

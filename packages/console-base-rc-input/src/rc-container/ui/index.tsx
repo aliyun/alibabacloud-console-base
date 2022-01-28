@@ -12,7 +12,6 @@ import ScInput from '../../sc/input';
 import InnerLeft from './inner-left';
 import TheInput from './the-input';
 import InnerRight from './inner-right';
-import InnerRightClear from './inner-right-clear';
 import InnerRightState from './inner-right-state';
 
 export default function Ui(): JSX.Element {
@@ -48,7 +47,6 @@ export default function Ui(): JSX.Element {
     <InnerLeft />
     <TheInput />
     <InnerRight />
-    <InnerRightClear />
     <InnerRightState />
   </ScInput>;
 }
