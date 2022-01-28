@@ -5,7 +5,7 @@ import {
 import {
   TInner,
   TFnInner
-} from '../types';
+} from '../model';
 
 export default function renderInner(inner: TInner | TFnInner | undefined, focused: boolean, hovered: boolean): TInner | null {
   if (!inner) {

@@ -1,6 +1,6 @@
-export { default } from './rc/input';
-export { default as SearchInput } from './rc/search-input';
+export { default } from './rc-container';
+export { default as SearchInput } from './search-input';
 
 export type {
-  IProps as InputProps
-} from './types';
+  ModelProps as InputProps
+} from './model';

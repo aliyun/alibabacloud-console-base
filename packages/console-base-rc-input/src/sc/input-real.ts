@@ -1,9 +1,10 @@
-import {
+import styled, {
   css
 } from 'styled-components';
 
 import {
   SIZE,
+  mixinInputReset,
   mixinInputTextDisabled,
   mixinInputText,
   mixinInputTextHover,
@@ -11,12 +12,13 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
+  INNER_HEIGHT_PX
+} from '../const';
+import {
   IPropsScInput
-} from '../types';
+} from '../model';
 
-const INNER_HEIGHT_PX = `${SIZE.HEIGHT_FORM_CONTROL_M - 2}px`;
-
-export default css<IPropsScInput>`
+const cssInputReal = css<IPropsScInput>`
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;
   border: 0;
   width: 100%;
@@ -38,4 +40,9 @@ export default css<IPropsScInput>`
     
     return mixinInputText;
   }}
+`;
+
+export default styled.input<IPropsScInput>`
+  ${mixinInputReset}
+  ${cssInputReal}
 `;

@@ -8,9 +8,9 @@ import {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  IProps
-} from '../../types';
-import Input from '../input';
+  ModelProps
+} from '../model';
+import Input from '../rc-container';
 
 interface IPropsScIcon {
   highlighted?: boolean;
@@ -25,7 +25,7 @@ function renderIcon(focused: boolean, hovered: boolean): JSX.Element {
   return <ScIcon type="search" highlighted={focused || hovered} />;
 }
 
-export default function SearchInput(props: IProps): JSX.Element {
+export default function SearchInput(props: ModelProps): JSX.Element {
   return <Input {...{
     round: true,
     theme: 'brand',

@@ -1,5 +1,6 @@
 import {
   InputHTMLAttributes,
+  MouseEvent,
   ChangeEvent
 } from 'react';
 
@@ -15,13 +16,20 @@ export interface IPropsLook {
    * 默认的 focus 的样式比较重（主要是 border，用它可以弱化）
    */
   weakFocusStyle?: boolean;
+  hasClear?: boolean;
+  /**
+   * 加载状态
+   */
+  state?: 'loading' | 'success' | 'error';
 }
 
-export interface IProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onMouseEnter' | 'onMouseLeave' | 'onChange'>, IPropsLook {
+export interface IModelProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onMouseEnter' | 'onMouseLeave' | 'defaultValue' | 'onChange'>, IPropsLook {
+  value?: string;
+  defaultValue?: string;
   innerLeft?: TInner | TFnInner;
   innerRight?: TInner | TFnInner;
-  onMouseEnter?(): void;
-  onMouseLeave?(): void;
+  onMouseEnter?(e: MouseEvent): void;
+  onMouseLeave?(e: MouseEvent): void;
   onChange?(value: string, e?: ChangeEvent<HTMLInputElement>): void;
 }
 
