@@ -9,6 +9,7 @@ import {
   Hr,
   Button,
   RadioGroup,
+  InputText,
   InputSwitch,
   LongArticle,
   Flex100HBF,
@@ -133,6 +134,12 @@ export default function DemoDefault(): JSX.Element {
       <ThemeSwitcher />
       <Button onClick={handleAdd}>Add Tab</Button>
       <Hr />
+      <div>
+        props.activeKey: <InputText {...{
+          value: stateActiveTab,
+          onChange: setStateActiveTab
+        }} />
+      </div>
       <InputSwitch {...{
         label: 'props.noContent',
         value: stateNoContent,
