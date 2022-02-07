@@ -9,6 +9,7 @@ import {
   Hr,
   Button,
   RadioGroup,
+  InputSwitch,
   LongArticle,
   Flex100HBF,
   PreJson
@@ -101,6 +102,7 @@ function generateTabForAdd(): TabProps {
 
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
+  const [stateNoContent, setStateNoContent] = useState<boolean>(false);
   const [stateTheme, setStateTheme] = useState<TabsTheme | undefined>();
   const [stateActiveTab, setStateActiveTab] = useState<string>('hbr');
   const [stateWidth, setStateWidth] = useState<string>('M');
@@ -117,8 +119,9 @@ export default function DemoDefault(): JSX.Element {
   }, [setStateTabs]);
   
   const tabsProps: TabsProps = {
-    theme: stateTheme,
     tabs: stateTabs,
+    theme: stateTheme,
+    noContent: stateNoContent,
     activeKey: stateActiveTab,
     width,
     onTabClose: handleTabClose,
@@ -130,6 +133,11 @@ export default function DemoDefault(): JSX.Element {
       <ThemeSwitcher />
       <Button onClick={handleAdd}>Add Tab</Button>
       <Hr />
+      <InputSwitch {...{
+        label: 'props.noContent',
+        value: stateNoContent,
+        onChange: setStateNoContent
+      }} />
       <RadioGroup<TabsTheme> {...{
         label: 'props.theme',
         items: [{

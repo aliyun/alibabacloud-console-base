@@ -8,20 +8,21 @@ import {
 import ContentItem from './content-item';
 
 // 需要 overflow，否则会被内容撑到很大
-const ScContents = styled.div`
+const ScTabsContents = styled.div`
   flex: 1;
   overflow: auto;
 `;
 
-export default function TabsContents(): JSX.Element {
+export default function TabsContents(): JSX.Element | null {
   const {
-    tabs
+    tabs,
+    noContent
   } = useProps();
   
-  return <ScContents>
+  return noContent ? null : <ScTabsContents>
     {tabs.map((v, i) => <ContentItem {...{
       key: v.key || i,
       tab: v
     }} />)}
-  </ScContents>;
+  </ScTabsContents>;
 }

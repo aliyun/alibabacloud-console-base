@@ -5,9 +5,7 @@ import {
 import {
   IModelContext
 } from '../types';
-import {
-  Context
-} from '../provider';
+import Context from '../context';
 
 export default function useModelContext(): IModelContext {
   return useContext(Context)!;
