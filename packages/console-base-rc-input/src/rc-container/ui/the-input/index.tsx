@@ -27,9 +27,14 @@ export default function TheInput(): JSX.Element {
     className,
     style,
     hasClear,
-    state,
+    status,
     onMouseEnter,
     onMouseLeave,
+    onFocus,
+    onBlur,
+    onChange,
+    onFocusedChange,
+    onHoveredChange,
     // 以上属性或是容器扩展，或被接管，剔除
     ...props
   } = useProps();

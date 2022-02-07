@@ -45,7 +45,7 @@ export default function Knobs({
     hasClear,
     innerLeft,
     innerRight,
-    state: state as InputProps['state']
+    state: state as InputProps['status']
   }), [
     placeholder,
     disabled,

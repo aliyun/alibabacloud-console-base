@@ -24,9 +24,9 @@ const ScIconError = styled(Icon)`
   ${mixinTextError}
 `;
 
-export default function InnerRightState(): JSX.Element | null {
+export default function InnerRightStatus(): JSX.Element | null {
   const {
-    state,
+    status,
     hasClear
   } = useProps();
   const value = useValue();
@@ -37,7 +37,7 @@ export default function InnerRightState(): JSX.Element | null {
     return null;
   }
   
-  switch (state) {
+  switch (status) {
     case 'loading':
       jsx = <Icon type="loading" />;
       

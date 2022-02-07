@@ -8,7 +8,8 @@ import useDispatchSetHovered from './use-dispatch-set-hovered';
 
 export default function useHandleMouseEnter(): (e: MouseEvent) => void {
   const {
-    onMouseEnter
+    onMouseEnter,
+    onHoveredChange
   } = useModelProps();
   const dispatchSetHovered = useDispatchSetHovered();
   
@@ -18,5 +19,9 @@ export default function useHandleMouseEnter(): (e: MouseEvent) => void {
     if (onMouseEnter) {
       onMouseEnter(e);
     }
-  }, [onMouseEnter, dispatchSetHovered]);
+  
+    if (onHoveredChange) {
+      onHoveredChange(true);
+    }
+  }, [onHoveredChange, onMouseEnter, dispatchSetHovered]);
 }

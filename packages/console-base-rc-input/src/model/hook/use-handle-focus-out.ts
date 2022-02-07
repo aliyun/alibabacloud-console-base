@@ -8,15 +8,20 @@ import useDispatchSetFocused from './use-dispatch-set-focused';
 
 export default function useHandleFocusOut(): (e: FocusEvent<HTMLInputElement>) => void {
   const {
-    onBlur
+    onBlur,
+    onFocusedChange
   } = useModelProps();
   const dispatchSetFocused = useDispatchSetFocused();
   
   return useCallback((e: FocusEvent<HTMLInputElement>) => {
     dispatchSetFocused(false);
-    
+  
     if (onBlur) {
       onBlur(e);
     }
-  }, [onBlur, dispatchSetFocused]);
+  
+    if (onFocusedChange) {
+      onFocusedChange(false);
+    }
+  }, [onBlur, onFocusedChange, dispatchSetFocused]);
 }

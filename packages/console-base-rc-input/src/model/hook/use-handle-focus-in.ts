@@ -8,7 +8,8 @@ import useDispatchSetFocused from './use-dispatch-set-focused';
 
 export default function useHandleFocusIn(): (e: FocusEvent<HTMLInputElement>) => void {
   const {
-    onFocus
+    onFocus,
+    onFocusedChange
   } = useModelProps();
   const dispatchSetFocused = useDispatchSetFocused();
   
@@ -18,5 +19,9 @@ export default function useHandleFocusIn(): (e: FocusEvent<HTMLInputElement>) =>
     if (onFocus) {
       onFocus(e);
     }
-  }, [onFocus, dispatchSetFocused]);
+    
+    if (onFocusedChange) {
+      onFocusedChange(true);
+    }
+  }, [onFocus, onFocusedChange, dispatchSetFocused]);
 }

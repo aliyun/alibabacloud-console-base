@@ -13,6 +13,10 @@ const ScInnerExtra = styled.span`
   height: ${INNER_HEIGHT_PX};
   line-height: ${INNER_HEIGHT_PX};
   ${mixinTextTertiary}
+  
+  i {
+    vertical-align: middle;
+  }
 `;
 
 export const ScInnerLeft = styled(ScInnerExtra)`
