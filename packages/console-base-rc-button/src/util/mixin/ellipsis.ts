@@ -12,7 +12,7 @@ import {
 } from '../../types';
 import {
   EButtonTheme
-} from '../../const';
+} from '../../enum';
 
 const THEMES_NEED_ELLIPSIS: EButtonTheme[] = [
   EButtonTheme.MENU

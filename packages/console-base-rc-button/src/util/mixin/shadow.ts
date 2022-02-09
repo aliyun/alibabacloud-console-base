@@ -11,7 +11,7 @@ import {
 } from '../../types';
 import {
   EButtonTheme
-} from '../../const';
+} from '../../enum';
 
 const THEMES_NEED_SHADOW: EButtonTheme[] = [
   EButtonTheme.DANGER,

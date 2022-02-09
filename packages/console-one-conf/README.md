@@ -90,13 +90,13 @@ const link3 = confLink('some_link_with_{id}', { // ...{id}... → ...{hello worl
 
 ## 国际化中的渠道链接
 
-可以把输出的 LINK 作为默认的国际化插值，比如使用 @alicloud/wind-x-intl 的场景。
+可以把输出的 LINK 作为默认的国际化插值，比如使用 @ali/wind-x-intl 的场景。
 
 ```typescript
 import CONF, {
   LINK
 } from '@alicloud/xx-conf';
-import windXIntl from '@alicloud/wind-x-intl';
+import windXIntl from '@ali/wind-x-intl';
 
 import messages from './messages';
 

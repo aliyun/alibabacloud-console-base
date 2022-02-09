@@ -20,16 +20,17 @@ export default function Knobs({
   onChange
 }: IProps): null {
   const page0 = number('props.page', 1);
-  const pagInUse = boolean('启用 props.page', true);
+  const pagInUse = boolean('启用 props.page', false);
   const pageSize0 = number('props.pageSize', 10);
   const pageSizInUse = boolean('启用 props.pageSize', true);
   const total0 = number('props.total', 123);
   const totalInUse = boolean('启用 props.total', true);
   
   const theme = optionsKnob<PaginationProps['theme']>('props.theme', {
-    simplest: 'simplest',
-    simple: 'simple'
-  }, 'simple', {
+    full: 'full',
+    simple: 'simple',
+    simplest: 'simplest'
+  }, 'full', {
     display: 'inline-radio'
   });
   const align = optionsKnob<PaginationProps['align']>('props.align', {

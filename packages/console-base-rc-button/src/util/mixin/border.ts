@@ -8,7 +8,7 @@ import {
 import {
   EButtonSize,
   EButtonTheme
-} from '../../const';
+} from '../../enum';
 
 const THEMES_NEED_BORDER: EButtonTheme[] = [
   EButtonTheme.DANGER,

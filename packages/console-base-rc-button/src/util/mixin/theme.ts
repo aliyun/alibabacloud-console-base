@@ -75,7 +75,7 @@ import {
 } from '../../types';
 import {
   EButtonTheme
-} from '../../const';
+} from '../../enum';
 
 const MAPPING_DISABLED: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.NONE]: null,

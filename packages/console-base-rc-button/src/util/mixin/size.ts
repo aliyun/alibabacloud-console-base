@@ -17,7 +17,7 @@ import {
 import {
   EButtonSize,
   EButtonTheme
-} from '../../const';
+} from '../../enum';
 
 const MAPPING: Record<EButtonSize, FlattenSimpleInterpolation | null> = {
   [EButtonSize.NONE]: null,
@@ -42,7 +42,7 @@ function getSize(props: IButtonPropsForSc): EButtonSize {
     return props.size;
   }
   
-  return (props.theme && THEMES_DEFAULT_SIZE_NONE.includes(props.theme)) ? EButtonSize.NONE : EButtonSize.M;
+  return props.theme && THEMES_DEFAULT_SIZE_NONE.includes(props.theme) ? EButtonSize.NONE : EButtonSize.M;
 }
 
 export default css<IButtonPropsForSc>`

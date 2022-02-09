@@ -7,7 +7,7 @@ import {
 } from '../../types';
 import {
   EButtonTheme
-} from '../../const';
+} from '../../enum';
 
 const THEMES_BLOCK: EButtonTheme[] = [
   EButtonTheme.MENU

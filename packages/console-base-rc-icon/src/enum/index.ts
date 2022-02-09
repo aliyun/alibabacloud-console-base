@@ -48,6 +48,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'plus' = 'e659', // +
   'minus' = 'e768', // -
   'x' = 'e61d', // x
+  'ellipsis' = 'e74f', // ...
   'config' = 'e612', // 配置（齿轮）
   'preference' = 'e6b5', // 偏好设置
   'refresh' = 'e6c1', // 刷新

@@ -10,7 +10,7 @@ import {
 import {
   EButtonTheme,
   EButtonSize
-} from '../const';
+} from '../enum';
 
 export interface IButtonPropsForSc extends ButtonHTMLAttributes<HTMLElement>, Omit<AnchorHTMLAttributes<HTMLElement>, 'type'> {
   theme?: EButtonTheme;
@@ -29,6 +29,7 @@ export interface IButtonPropsForSc extends ButtonHTMLAttributes<HTMLElement>, Om
   ellipsis?: boolean;
   loading?: boolean;
   active?: boolean; // 将状态锁定在 active
+  iconSpacing?: 'no' | 'small'; // 定义 iconLeft、iconRight 与 label 之间的间距，默认 8，small 为 4，no 为 0
   [dataName: `data-${string}`]: unknown;
 }
 

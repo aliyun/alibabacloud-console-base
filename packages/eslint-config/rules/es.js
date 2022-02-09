@@ -117,8 +117,12 @@ module.exports = {
     prev: '*',
     next: ['case', 'default']
   }],
+  /**
+   * https://eslint.org/docs/rules/no-multiple-empty-lines
+   */
   'no-multiple-empty-lines': ['error', {
     max: 1,
-    maxEOF: 1
+    maxBOF: 0,
+    maxEOF: 0
   }]
 };

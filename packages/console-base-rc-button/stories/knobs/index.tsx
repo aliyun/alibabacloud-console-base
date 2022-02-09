@@ -39,8 +39,8 @@ function optional<T>({
   return inUse ? value : undefined;
 }
 
-function omitUndefined(o: any): ButtonProps {
-  const props = {} as any;
+function omitUndefined(o: Record<string, unknown>): ButtonProps {
+  const props: Record<string, unknown> = {};
   
   for (const k in o) {
     // eslint-disable-next-line no-prototype-builtins
@@ -64,6 +64,15 @@ export default function Knobs({
   const iconRight = optional({
     value: select('props.iconRight', Object.keys(EIconType), 'loading', EGroup.CONTENT),
     inUse: boolean('启用 props.iconRight', false, EGroup.CONTENT)
+  });
+  const iconSpacing = optional({
+    value: optionsKnob<ButtonProps['iconSpacing']>('props.iconSpacing', {
+      small: 'small',
+      no: 'no'
+    }, 'small', {
+      display: 'inline-radio'
+    }, EGroup.LOOK),
+    inUse: boolean('启用 props.iconSpacing', false, EGroup.LOOK)
   });
   
   const theme = optional<ButtonTheme>({
@@ -95,6 +104,7 @@ export default function Knobs({
     title,
     iconLeft,
     iconRight,
+    iconSpacing,
     href,
     target,
     spm,
@@ -111,6 +121,7 @@ export default function Knobs({
     title,
     iconLeft,
     iconRight,
+    iconSpacing,
     href,
     target,
     spm,

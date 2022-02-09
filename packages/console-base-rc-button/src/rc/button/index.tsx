@@ -18,7 +18,7 @@ import {
 } from '../../types';
 import {
   EButtonTheme
-} from '../../const';
+} from '../../enum';
 import {
   mixinCommon,
   mixinBorder,
@@ -33,6 +33,21 @@ import {
   getTitle,
   renderIcon
 } from '../../util';
+
+interface IScPropsInnerIcon {
+  spacing?: IButtonPropsForSc['iconSpacing'];
+}
+
+function getIconSpacing(props: IScPropsInnerIcon): number {
+  switch (props.spacing) {
+    case 'no':
+      return 0;
+    case 'small':
+      return 4;
+    default:
+      return 8;
+  }
+}
 
 const ScButton = styled(ButtonBase)<IButtonPropsForSc>`
   ${mixinCommon}
@@ -52,9 +67,9 @@ const ScInner = styled.span`
   align-items: center;
 `;
 
-const ScInnerIcon = styled.span`
-  margin: 0 8px 0 4px;
-  font-size: 1.1em;
+// display block 可以居中对齐
+const ScInnerIcon = styled.span<IScPropsInnerIcon>`
+  margin: 0 ${getIconSpacing}px;
   
   i {
     display: block;
@@ -79,9 +94,10 @@ function Button({
   size, // 默认有大小，可以通过设置 'none' 取消大小，取消大小之后就是 text button
   label,
   title,
+  children,
   iconLeft,
   iconRight,
-  children,
+  iconSpacing,
   loading,
   active,
   disabled,
@@ -110,9 +126,15 @@ function Button({
   
   if (jsxIconLeft || jsxIconRight) {
     jsxInner = <ScInner>
-      {jsxIconLeft ? <ScInnerIcon className={classNameForIconLeft}>{jsxIconLeft}</ScInnerIcon> : null}
+      {jsxIconLeft ? <ScInnerIcon {...{
+        className: classNameForIconLeft,
+        spacing: iconSpacing
+      }}>{jsxIconLeft}</ScInnerIcon> : null}
       {jsxInner ? <ScInnerLabel>{jsxInner}</ScInnerLabel> : null}
-      {jsxIconRight ? <ScInnerIcon className={classNameForIconRight}>{jsxIconRight}</ScInnerIcon> : null}
+      {jsxIconRight ? <ScInnerIcon {...{
+        className: classNameForIconRight,
+        spacing: iconSpacing
+      }}>{jsxIconRight}</ScInnerIcon> : null}
     </ScInner>;
   }
   
