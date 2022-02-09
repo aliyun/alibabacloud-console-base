@@ -11,10 +11,10 @@ import usePages from './use-pages';
 
 export default function usePageList(): TPage[] {
   const {
-    limit
+    maxPageButton
   } = useModelProps();
   const page = usePage();
   const pages = usePages();
   
-  return generatePageList(page, pages, limit);
+  return generatePageList(page, pages, maxPageButton);
 }

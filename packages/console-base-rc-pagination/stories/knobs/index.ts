@@ -16,45 +16,81 @@ interface IProps {
   onChange(props: PaginationProps): void;
 }
 
+function optional<T>({
+  value,
+  inUse
+}: {
+  value: T;
+  inUse: boolean;
+}): T | undefined {
+  return inUse ? value : undefined;
+}
+
+function omitUndefined(o: Record<string, unknown>): PaginationProps {
+  const props: Record<string, unknown> = {};
+  
+  for (const k in o) {
+    // eslint-disable-next-line no-prototype-builtins
+    if (o.hasOwnProperty(k) && o[k] !== undefined) {
+      props[k] = o[k];
+    }
+  }
+  
+  return props as PaginationProps;
+}
+
 export default function Knobs({
   onChange
 }: IProps): null {
-  const page0 = number('props.page', 1);
-  const pagInUse = boolean('启用 props.page', false);
-  const pageSize0 = number('props.pageSize', 10);
-  const pageSizInUse = boolean('启用 props.pageSize', true);
-  const total0 = number('props.total', 123);
-  const totalInUse = boolean('启用 props.total', true);
-  
-  const theme = optionsKnob<PaginationProps['theme']>('props.theme', {
-    full: 'full',
-    simple: 'simple',
-    simplest: 'simplest'
-  }, 'full', {
-    display: 'inline-radio'
+  const total = optional<number>({
+    value: number('props.total', 1234),
+    inUse: boolean('启用 props.total', true)
   });
-  const align = optionsKnob<PaginationProps['align']>('props.align', {
-    left: 'left',
-    center: 'center',
-    right: 'right'
-  }, 'left', {
-    display: 'inline-radio'
+  const page = optional<number>({
+    value: number('props.page', 1),
+    inUse: boolean('启用 props.page', false)
+  });
+  const pageSize = optional<number>({
+    value: number('props.pageSize', 20),
+    inUse: boolean('启用 props.pageSize', true)
+  });
+  const totalLimit = optional<number>({
+    value: number('props.totalLimit', 1000),
+    inUse: boolean('启用 props.totalLimit', false)
+  });
+  const theme = optional<PaginationProps['theme']>({
+    value: optionsKnob<PaginationProps['theme']>('props.theme', {
+      full: 'full',
+      simple: 'simple',
+      simplest: 'simplest'
+    }, 'full', {
+      display: 'inline-radio'
+    }),
+    inUse: boolean('启用 props.theme', true)
+  });
+  const align = optional<PaginationProps['align']>({
+    value: optionsKnob<PaginationProps['align']>('props.align', {
+      left: 'left',
+      center: 'center',
+      right: 'right'
+    }, 'left', {
+      display: 'inline-radio'
+    }),
+    inUse: boolean('启用 props.align', true)
   });
   
-  const page = pagInUse ? page0 : undefined;
-  const pageSize = pageSizInUse ? pageSize0 : undefined;
-  const total = totalInUse ? total0 : undefined;
-  
-  const props: PaginationProps = useMemo((): PaginationProps => ({
+  const props: PaginationProps = useMemo((): PaginationProps => omitUndefined({
+    total,
     page,
     pageSize,
-    total,
+    totalLimit,
     theme,
     align
   }), [
+    total,
     page,
     pageSize,
-    total,
+    totalLimit,
     theme,
     align
   ]);

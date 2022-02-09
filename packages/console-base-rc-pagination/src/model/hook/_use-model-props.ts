@@ -12,7 +12,7 @@ import {
 
 import useModelContext from './_use-model-context';
 
-interface IModelPropsSafe extends RequiredSelected<IModelProps, 'limit' | 'theme' | 'hideWhenOne'> {}
+interface IModelPropsSafe extends RequiredSelected<IModelProps, 'maxPageButton' | 'theme' | 'hideWhenOne'> {}
 
 export default function useModelProps(): IModelPropsSafe {
   const {
@@ -21,14 +21,14 @@ export default function useModelProps(): IModelPropsSafe {
   
   return useMemo((): IModelPropsSafe => {
     const {
-      limit = 5,
+      maxPageButton = 5,
       theme = 'full',
       hideWhenOne = true,
       ...rest
     } = props;
     
     return {
-      limit,
+      maxPageButton,
       theme,
       hideWhenOne,
       ...rest

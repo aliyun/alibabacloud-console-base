@@ -2,10 +2,10 @@ import {
   TPage
 } from '../types';
 
-export default function generatePageList(page: number, pages: number, limit: number): TPage[] {
+export default function generatePageList(page: number, pages: number, maxPageButton: number): TPage[] {
   const arr: TPage[] = [];
   
-  if (pages <= limit) {
+  if (pages <= maxPageButton) {
     for (let i = 1; i <= pages; i++) {
       arr.push(i);
     }
@@ -16,7 +16,7 @@ export default function generatePageList(page: number, pages: number, limit: num
   arr.push(1);
   
   // 除去第一页，最后一页以及当前页，剩下的页数
-  const othersCount = limit - 3;
+  const othersCount = maxPageButton - 3;
   const halfCount = Math.round(othersCount / 2);
   let start;
   let end;

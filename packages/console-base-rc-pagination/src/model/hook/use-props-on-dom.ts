@@ -18,9 +18,10 @@ export default function usePropsOnDom(): IPropsOnDom {
       total,
       page,
       pageSize,
+      totalLimit,
       align,
       theme,
-      limit,
+      maxPageButton,
       hideWhenOne,
       onChange,
       ...rest
