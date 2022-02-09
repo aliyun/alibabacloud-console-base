@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import {
   ModelProps,
+  useProps,
   usePropsOnDom
 } from '../../model';
 import {
@@ -24,9 +25,12 @@ const ScPagination = styled.div<IPropsScPagination>`
 `;
 
 export default function Pagination(): JSX.Element {
+  const {
+    align
+  } = useProps();
   const props = usePropsOnDom();
   
-  return <ScPagination {...props}>
+  return <ScPagination {...props} align={align}>
     <ButtonPrev />
     <Paging />
     <ButtonNext />
