@@ -13,5 +13,5 @@ export interface IModelProps extends IPropsOnDom {
    */
   limit?: number;
   hideWhenOne?: boolean;
-  onChange?(p: number): void;
+  onChange?(n: number): void;
 }

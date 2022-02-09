@@ -21,20 +21,13 @@ export default function useModelProps(): IModelPropsSafe {
   
   return useMemo((): IModelPropsSafe => {
     const {
-      page, // 不要默认
-      pageSize,
-      total,
       limit = 5,
       theme = 'full',
       hideWhenOne = true,
-      onChange,
       ...rest
     } = props;
     
     return {
-      page,
-      pageSize,
-      total,
       limit,
       theme,
       hideWhenOne,
