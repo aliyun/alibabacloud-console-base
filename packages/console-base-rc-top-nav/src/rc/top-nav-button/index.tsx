@@ -78,6 +78,7 @@ export default function TopNavButton({
     header,
     body,
     footer,
+    footerDivider,
     ...dropdownProps
   } = dropdown;
   const [itemsInBody, itemsInFooter] = parseDropdownItems(items);
@@ -104,6 +105,7 @@ export default function TopNavButton({
     align: 'right',
     offset: [0, -10],
     bodyPadding: itemsInFooter.length ? 'top' : undefined,
+    footerDivider: footerDivider ?? itemsInFooter.length > 0,
     ...dropdownProps,
     trigger: jsxButton,
     header,

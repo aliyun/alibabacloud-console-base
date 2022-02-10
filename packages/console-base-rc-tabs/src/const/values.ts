@@ -2,7 +2,7 @@ export const WIDTH_SCROLLER_BUTTON = 24;
 export const HEIGHT_TAB_BAR = 36;
 export const HEIGHT_TAB = 32;
 export const TAB_TOP_SPACE = HEIGHT_TAB_BAR - HEIGHT_TAB;
-export const MIN_WIDTH_TAB = 80;
+export const MIN_WIDTH_TAB = 60;
 export const MAX_WIDTH_TAB = 200;
 export const SIZE_CONTROL_BUTTON = 18;
 
