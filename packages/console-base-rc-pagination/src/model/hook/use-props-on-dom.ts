@@ -18,11 +18,12 @@ export default function usePropsOnDom(): IPropsOnDom {
       total,
       page,
       pageSize,
-      totalLimit,
-      align,
       theme,
-      maxPageButton,
+      align,
       hideWhenOne,
+      noText,
+      totalLimit,
+      maxPageButton,
       onChange,
       ...rest
     } = props;
