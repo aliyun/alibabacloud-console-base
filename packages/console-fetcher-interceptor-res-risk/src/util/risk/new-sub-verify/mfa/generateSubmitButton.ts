@@ -9,7 +9,7 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IMfaData,
+  ITokenVerifyData,
   INewSubAccountRisk,
   TBindMfaPayload,
   TVerifyMfaPayload,
@@ -130,7 +130,7 @@ export default function generateSubmitButtonFn({
   
         const payload = isAuth ? verifyMfaPayload : bindMfaPayload;
   
-        request<IMfaData>({
+        request<ITokenVerifyData>({
           method: riskConfig.REQUEST_METHOD,
           headers: {
             'Content-Type': 'application/json'

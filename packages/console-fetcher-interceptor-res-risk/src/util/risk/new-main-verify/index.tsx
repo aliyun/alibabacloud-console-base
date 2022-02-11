@@ -22,7 +22,7 @@ interface IParams {
   mainRiskInfo: IMainAccountRiskInfo;
 }
 
-export default function RiskMainVerify({
+export default function riskNewMainVerify({
   request,
   fetcherConfig,
   riskConfig,

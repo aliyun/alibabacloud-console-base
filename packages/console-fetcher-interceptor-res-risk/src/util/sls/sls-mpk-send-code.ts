@@ -9,11 +9,13 @@ import {
 } from './_type';
 
 interface IProps extends ISlsCommon {
+  isMpk: boolean;
+  useOldSendVerify: boolean;
   verifyType: string;
   codeType: string;
   sendCodeRequestId?: string;
 }
 
-export default function slsOldMainRiskSendCode(oldMainRiskSendCodeProps: IProps): void {
-  sls(ESlsTopic.OLD_MAIN_RISK_SEND_CODE, oldMainRiskSendCodeProps);
+export default function slsMpkSendCode(mpkSendCodeProps: IProps): void {
+  sls(ESlsTopic.MPK_SEND_CODE, mpkSendCodeProps);
 }

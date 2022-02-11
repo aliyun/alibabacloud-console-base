@@ -1,5 +1,5 @@
 import {
-  EPayloadVerifyType,
+  EAccountType,
   ESubMFADeviceType
 } from '../const';
 
@@ -45,15 +45,15 @@ export type TBindMfaPayload = IBindVMfaPayload | IBindU2FPayload;
 export interface IGetAuthMfaInfoPayload extends IMfaSharedPayload {}
 
 // 接口 /identity/verify 的 payload
-export interface IVerifyMfaSharedPayload extends IExt, IMfaSharedPayload {
-  VerifyType: EPayloadVerifyType;
+export interface IVerifySharedPayload extends IExt, IMfaSharedPayload {
+  VerifyType: string;
 }
 
-export interface IVerifyVMfaPayload extends IVerifyMfaSharedPayload {
+export interface IVerifyVMfaPayload extends IVerifySharedPayload {
   AuthCode: string; // vmfa 6位数验证码
 }
 
-export interface IVerifyU2FPayload extends IVerifyMfaSharedPayload {
+export interface IVerifyU2FPayload extends IVerifySharedPayload {
   CredentialId: string;
   AuthenticatorData: string;
   ClientDataJSON: string;
@@ -61,6 +61,11 @@ export interface IVerifyU2FPayload extends IVerifyMfaSharedPayload {
 }
 
 export type TVerifyMfaPayload = IVerifyVMfaPayload | IVerifyU2FPayload;
+
+export interface IVerifyMpkPayload extends IVerifySharedPayload {
+  IdType: EAccountType;
+  RiskRequestId: string;
+}
 
 // 接口 /identity/skip 的 payload
 export interface ISkipBindMfaPayload extends IMfaSharedPayload, IExt {}

@@ -21,8 +21,9 @@ import intl from '../intl';
 import riskForbidden from './risk/forbidden';
 import riskInvalid from './risk/invalid';
 import riskOldMainVerify from './risk/old-main-verify';
-import riskNewSubVerify from './risk/new-sub-verify/mfa';
+import riskMpkVerify from './risk/mpk-verify';
 import riskNewMainVerify from './risk/new-main-verify';
+import riskNewSubVerifyMfa from './risk/new-sub-verify/mfa';
 import convertRiskInfo from './convert-risk-info';
 import {
   convertToRiskErrorForbidden,
@@ -155,11 +156,11 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           case EVerifyType.SMS:
           case EVerifyType.EMAIL:
             // 旧版主账号风控手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
-            if (risk === ERisk.OLD_MAIN && !riskInfo.detail) {
+            if (risk !== ERisk.NEW_SUB && !riskInfo.detail) {
               await riskInvalid({
                 newSubRisk: false,
                 message: intl('message:invalid_unknown!lines'),
-                urlSettings: riskConfig.URL_SETTINGS
+                urlSettings: risk === ERisk.OLD_MAIN ? riskConfig.URL_SETTINGS : ''
               });
               
               throw convertToRiskErrorInvalid(err);
@@ -190,11 +191,28 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           });
         }
 
+        // 新版轻量级虚商风控
+        if (risk === ERisk.MPK) {
+          slsRiskStartUp({
+            riskType: ERisk.MPK
+          });
+
+          return riskMpkVerify({
+            request,
+            fetcherConfig,
+            riskInfo,
+            riskConfig
+          }).catch(err1 => { // err1 undefined 表示 cancelled
+            throw err1 ?? convertToRiskErrorCancelled(err);
+          });
+        }
+
+        // 新版子账号风控
         slsRiskStartUp({
           riskType: ERisk.NEW_SUB
         });
 
-        return riskNewSubVerify({
+        return riskNewSubVerifyMfa({
           request,
           subRiskInfo: riskInfo,
           fetcherConfig,

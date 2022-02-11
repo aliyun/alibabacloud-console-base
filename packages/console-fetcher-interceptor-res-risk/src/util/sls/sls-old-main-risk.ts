@@ -1,19 +1,19 @@
 import sls from '@alicloud/console-base-log-sls';
 
 import {
-  ESlsTopic,
-  ESlsResultType
+  ESlsTopic
 } from '../../const';
 import {
   IOldMainRiskInfo
 } from '../../types';
 
-interface IProps extends Omit<IOldMainRiskInfo, 'risk' | 'type'>{
-  slsResultType: ESlsResultType;
-  sendCodeRequestId: string;
+import {
+  ISlsCommon
+} from './_type';
+
+interface IProps extends Pick<IOldMainRiskInfo, 'verifyType' | 'detail' | 'codeType'>, ISlsCommon {
   verifyCode: string;
-  errorMessage?: string;
-  errorCode?: string;
+  sendCodeRequestId: string;
 }
 
 export default function slsOldMainRisk(oldMainRiskProps: IProps): void {

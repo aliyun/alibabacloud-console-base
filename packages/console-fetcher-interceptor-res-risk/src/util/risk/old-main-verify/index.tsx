@@ -39,7 +39,7 @@ interface IParams {
 /**
  * 风控 - 二次验证（SMS + EMAIL + MFA）
  */
-export default function OldMainAccountVerify({
+export default function riskOldMainVerify({
   request,
   fetcherConfig,
   riskInfo,
@@ -94,8 +94,8 @@ export default function OldMainAccountVerify({
         slsOldMainRisk({
           ...slsParams,
           slsResultType: ESlsResultType.FAIL,
-          errorMessage: err.message,
-          errorCode: err.code
+          errorCode: err.code,
+          errorMessage: err.message
         });
         
         if (err.code === riskConfig.CODE_INVALID_INPUT || err.code === riskConfig.CODE_NEED_VERIFY) { // 虽然后边这个错误码几乎不可能存在，但为了代码的健壮性，还是加上这个判读

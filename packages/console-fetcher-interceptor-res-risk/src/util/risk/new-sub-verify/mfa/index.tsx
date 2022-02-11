@@ -30,7 +30,7 @@ import {
 import generateSubmitButtonFn from './generateSubmitButton';
 import generateSkipBindMfaButtonFn from './generateSkipBindMfaButton';
 
-export default async function RiskSubVerify({
+export default async function riskNewSubVerifyMfa({
   request,
   fetcherConfig,
   riskConfig,

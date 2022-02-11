@@ -2,7 +2,6 @@ import sls from '@alicloud/console-base-log-sls';
 
 import {
   ESlsTopic,
-  ESlsResultType,
   ESubMFADeviceType
 } from '../../const';
 import {
@@ -10,11 +9,13 @@ import {
   TVerifyMfaPayload
 } from '../../types';
 
-interface IProps {
-  slsResultType: ESlsResultType;
+import {
+  ISlsCommon
+} from './_type';
+
+interface IProps extends ISlsCommon {
   validators: INewSubRiskValidators[];
   payload: TVerifyMfaPayload;
-  errorMessage?: string;
 }
 
 export default function slsSubRiskAuthMfa({

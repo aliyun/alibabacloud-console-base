@@ -9,7 +9,7 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IMfaData,
+  ITokenVerifyData,
   INewSubAccountRisk,
   ISkipBindMfaPayload
 } from '../../../../types';
@@ -63,7 +63,7 @@ export default function generateSkipBindMfaButton({
         })
       };
 
-      request<IMfaData>({
+      request<ITokenVerifyData>({
         method: riskConfig.REQUEST_METHOD,
         headers: {
           'Content-Type': 'application/json'

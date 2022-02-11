@@ -1,14 +1,15 @@
 import sls from '@alicloud/console-base-log-sls';
 
 import {
-  ESlsTopic,
-  ESlsResultType
+  ESlsTopic
 } from '../../const';
 
-interface IProps {
-  slsResultType: ESlsResultType;
+import {
+  ISlsCommon
+} from './_type';
+
+interface IProps extends ISlsCommon {
   accountId: string;
-  errorMessage?: string;
 }
 
 export default function slsSkipBindMfa(skipBindMfaProps: IProps): void {

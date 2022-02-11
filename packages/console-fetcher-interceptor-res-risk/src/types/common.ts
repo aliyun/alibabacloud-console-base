@@ -17,7 +17,7 @@ import {
 } from './payload';
 import {
   TGetBindMfaInfoData,
-  IMfaData,
+  ITokenVerifyData,
   TGetAuthMfaInfoData
 } from './data';
 
@@ -26,13 +26,20 @@ export interface INewSubRiskValidators {
   VerifyDetail?: string; // 用户验证具体信息，若 verifyType === mfa，'true' 表示用户已绑定过 mfa， 'false' 表示用户未绑定过 mfa
 }
 
+export interface INewMainRiskExtend {
+  isMpk: boolean; // 是否是虚商
+  useOldVersion: boolean; // 对于虚商类型的账号，是否使用 /risk/sendVerifyMessage.json 来发送验证码（降级情况）
+}
+
 export interface IFetcherInterceptorConfig {
   // 从错误 data 中获取对应的信息
   DATA_PATH_VERIFY_TYPE?: string; // 如何从原始返回中获取（旧版）主账号的风控类型
   DATA_PATH_VERIFY_DETAIL?: string; // 如何从原始返回中获取（旧版）主账号风控展示信息（邮箱或手机）
   DATA_PATH_VERIFY_CODE_TYPE?: string; // 如何从原始返回中获取 （旧版）主账号风控的风控码
   DATA_PATH_VALIDATORS?: string; // 如何从原始返回中获取新版子账号的风控信息
+  DATA_PATH_ACCOUNT_TYPE?: string; // 如何从原始返回中获取账号类型
   DATA_PATH_VERIFY_URL?: string; // 新版主账号风控，如何从原始返回中获取集团会员平台的核身 URL，将嵌入在 iframe 里面
+  DATA_PATH_NEW_EXTEND?: string;
   DATA_PATH_NEW_VERIFY_TYPE?: string; // 新版主账号风控，如何从原始返回中获取主账号风控类型
   DATA_PATH_NEW_VERIFY_DETAIL?: string; // 新版主账号风控，如何从原始返回中获取主账号风控详情
   DATA_PATH_USER_ID?: string; // 新版子账号风控，如何从原始返回中中获取子账号 ID
@@ -56,6 +63,7 @@ export interface IFetcherInterceptorConfig {
   URL_GET_MFA_INFO_TO_AUTH?: string; // 获取验证 MFA 所需信息的接口
   URL_MFA_AUTH?: string; // 验证 MFA 设备的接口
   URL_SKIP_BIND_MFA?: string; // 灰度期间，允许用户跳过绑定 MFA
+  URL_MPK_SEND_CODE?: string;
   // 发送验证码后的冷却时间
   COOLING_AFTER_SENT?: number; // 发送验证码成功后的冷却时间（秒）
   COOLING_AFTER_SEND_FAIL?: number; // 发送验证码失败后的冷却时间（秒）
@@ -73,6 +81,16 @@ export interface IOldMainRiskInfo {
   verifyType: string; // 原始的 verifyType，通过 IRiskConfig.DATA_PATH_VERIFY_TYPE 从错误返回的 data 中获取
   detail: string;
   codeType: string;
+}
+
+/**
+ * 轻量级虚商风控参数
+ */
+export interface IMpkRiskInfo extends Omit<IOldMainRiskInfo, 'risk'> {
+  risk: ERisk.MPK;
+  isMpk: boolean;
+  accountId: string; // 用户 ID，轻量级虚商场景下调用 /identity/send 发送验证码会用到
+  useOldSendVerify: boolean;
 }
 
 /**
@@ -100,7 +118,7 @@ export interface ISubAccountRiskInfo {
   validators: INewSubRiskValidators[];
 }
 
-export type TRiskInfo = IOldMainRiskInfo | ISubAccountRiskInfo | IMainAccountRiskInfo;
+export type TRiskInfo = IOldMainRiskInfo | IMpkRiskInfo | ISubAccountRiskInfo | IMainAccountRiskInfo;
 
 /**
  * 旧版主账号风控 - 弹窗的数据类型
@@ -115,6 +133,13 @@ export interface IOldMainAccountRisk {
 }
 
 /**
+ * 轻量级虚商 - 弹窗类型
+ */
+export interface IMpkRisk extends Omit<IOldMainAccountRisk, 'riskInfo'> {
+  riskInfo: IMpkRiskInfo;
+}
+
+/**
  * 子账号风控 - MFA 类型的弹窗的数据类型
  */
 export interface INewSubAccountRisk {
@@ -126,11 +151,11 @@ export interface INewSubAccountRisk {
   getBindMfaInfoPayload?: TGetBindMfaInfoPayload; // 获取 MFA 绑定信息的接口 /identity/getMfaInfoToBind 的 payload
   getBindMfaInfoData?: TGetBindMfaInfoData; // 获取 MFA 绑定信息的接口 /identity/getMfaInfoToBind 的返回 data
   bindMfaPayload?: TBindMfaPayload; // 绑定 MFA 接口 /identity/bindMFA 的 payload
-  bindMfaData?: IMfaData; // 绑定 MFA 接口 /identity/bindMFA 的返回 data
+  bindMfaData?: ITokenVerifyData; // 绑定 MFA 接口 /identity/bindMFA 的返回 data
   getAuthMfaInfoPayload?: IGetAuthMfaInfoPayload; // 获取 MFA 验证信息的接口 /identity/getMfaInfoToAuth 的 payload
   getAuthMfaInfoData?: TGetAuthMfaInfoData; // 获取 MFA 验证信息的接口 /identity/getMfaInfoToAuth 的返回 data
   verifyMfaPayload?: TVerifyMfaPayload; // 验证 MFA 接口 /identity/verify 的 payload
-  verifyMfaData?: IMfaData; // 验证 MFA 接口 /identity/verify 的返回 data
+  verifyMfaData?: ITokenVerifyData; // 验证 MFA 接口 /identity/verify 的返回 data
   primaryButtonDisabled?: boolean; // primary button 是否禁用
   u2fTimeout?: number; // U2F 设备绑定/验证的超时时间
   showU2FRetryButton?: boolean; // 验证或者绑定 U2F 失败后，允许重新获取安全密钥

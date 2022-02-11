@@ -1,19 +1,20 @@
 import sls from '@alicloud/console-base-log-sls';
 
 import {
-  ESlsTopic,
-  ESlsResultType
+  ESlsTopic
 } from '../../const';
 import {
   INewSubRiskValidators,
   TBindMfaPayload
 } from '../../types';
 
-interface IProps {
-  slsResultType: ESlsResultType;
+import {
+  ISlsCommon
+} from './_type';
+
+interface IProps extends ISlsCommon {
   validators: INewSubRiskValidators[];
   payload: TBindMfaPayload;
-  errorMessage?: string;
 }
 
 export default function slsSubRiskBindMfa({

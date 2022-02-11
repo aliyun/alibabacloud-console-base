@@ -1,6 +1,7 @@
 export { default as slsRiskStartUp } from './sls-risk-startup';
 export { default as slsRiskForbidden } from './sls-risk-forbidden';
 export { default as slsRiskInvalid } from './sls-risk-invalid';
+export { default as slsMpkRisk } from './sls-mpk-risk';
 export { default as slsNewMainRisk } from './sls-new-main-risk';
 export { default as slsOldMainRisk } from './sls-old-main-risk';
 export { default as slsU2FError } from './sls-u2f-error';
@@ -9,4 +10,6 @@ export { default as slsSkipBindMfa } from './sls-skip-bind-mfa';
 export { default as slsSubRiskAuthMfa } from './sls-sub-risk-auth-mfa';
 export { default as slsSubRiskBindMfa } from './sls-sub-risk-bind-mfa';
 export { default as slsSubRiskGetMfaInfo } from './sls-sub-risk-get-mfa-info';
+export { default as slsVerifyMpk } from './sls-verify-mpk';
+export { default as slsMpkSendCode } from './sls-mpk-send-code';
 export { default as slsOldMainRiskSendCode } from './sls-old-main-risk-send-code';

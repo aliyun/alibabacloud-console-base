@@ -58,6 +58,6 @@ export interface IGetAuthU2FWebAuthnInfoData extends ITargetUserPrincipalName {
 export type TGetAuthMfaInfoData = IGetAuthVMfaInfoData | IGetAuthU2FV2InfoData | IGetAuthU2FWebAuthnInfoData;
 
 // 接口 /identity/bindMFA，/identity/verify，/identity/skip 的返回 data
-export interface IMfaData {
+export interface ITokenVerifyData {
   IvToken: string;
 }

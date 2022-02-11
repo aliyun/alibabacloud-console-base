@@ -22,6 +22,7 @@ export enum EVerifyType {
  * 区分新旧风控，以及新版风控中的主/子账号风控
  */
 export enum ERisk {
+  MPK = 'mpk', // 轻量级虚商风控
   OLD_MAIN = 'old_main', // 旧版主账号风控
   NEW_MAIN = 'new_main', // 新版主账号风控
   NEW_SUB = 'new_sub' // 新版子账号风控
@@ -40,6 +41,14 @@ export enum EPayloadVerifyType {
 export enum ESubMFADeviceType {
   VMFA = 'VMFA',
   U2F = 'U2F'
+}
+
+/**
+ * 发送验证码接口 /identity/send 要传的账号类型，主要供主账号轻量级虚商，以及预留给子账号短信/邮箱验证风控方式使用
+ */
+export enum EAccountType {
+  MAIN = 'idkp',
+  SUB = 'subidkp'
 }
 
 /**
@@ -77,6 +86,7 @@ export enum ESlsTopic {
   RISK_STARTUP = 'risk_startup', // 展示正常风控弹窗，包括旧版主账号风控以及新版主子账号风控
   RISK_FORBIDDEN = 'risk_forbidden', // 不合法的风控 code 的弹窗提示
   RISK_INVALID = 'risk_invalid', // 无效的风控 code 的弹窗提示
+  MPK_RISK = 'mpk_risk', // 轻量级虚商风控
   OLD_MAIN_RISK = 'old_main_risk', // 旧版主账号风控
   NEW_MAIN_RISK = 'new_main_risk', // 新版主账号风控
   SUB_RISK = 'sub_risk', // 新版子账号风控
@@ -85,7 +95,9 @@ export enum ESlsTopic {
   SUB_BIND_MFA = 'sub_bind_mfa', // 新版子账号风控 - 正常绑定 MFA 设备
   SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过绑定 MFA 
   SUB_GET_MFA_INFO = 'sub_get_mfa_info', // 新版子账号风控 - 获取验证 MFA 设备信息
-  OLD_MAIN_RISK_SEND_CODE ='old_main_risk_send_code' // 旧版主账号风控 - 发送验证码
+  OLD_MAIN_RISK_SEND_CODE ='old_main_risk_send_code', // 旧版主账号风控 - 发送验证码
+  MPK_VERIFY = 'mpk_verify', // 新版风控的轻量级虚商场景 - 验证验证码接口
+  MPK_SEND_CODE = 'mpk_send_code' // 新版风控的轻量级虚商场景 - 发送验证码
 }
 
 /**
@@ -99,7 +111,9 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   DATA_PATH_VALIDATORS: 'data.Validators.Validator',
   DATA_PATH_USER_ID: 'data.AliyunIdkp',
   DATA_PATH_NEW_VERIFY_CODE_TYPE: 'data.CodeType',
+  DATA_PATH_ACCOUNT_TYPE: 'data.AccountType',
   DATA_PATH_VERIFY_URL: 'data.VerifyURL',
+  DATA_PATH_NEW_EXTEND: 'data.Extend',
   DATA_PATH_NEW_VERIFY_TYPE: 'data.VerifyType',
   DATA_PATH_NEW_VERIFY_DETAIL: 'data.VerifyDetail',
   CONFIG_PATH_RISK_VERSION: 'body.riskVersion',
@@ -120,7 +134,8 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   URL_GET_MFA_INFO_TO_BIND: '//identity.aliyun.com/identity/getMfaInfoToBind',
   URL_GET_MFA_INFO_TO_AUTH: '//identity.aliyun.com/identity/getMfaInfoToAuth',
   URL_SKIP_BIND_MFA: '//identity.aliyun.com/identity/skip',
-  // 旧版主账号风控冷却/超时时间设置（单位：秒）
+  URL_MPK_SEND_CODE: '//identity.aliyun.com/identity/send',
+  // 旧版主账号风控冷却/超时时间设置 (单位：秒)
   COOLING_AFTER_SENT: 60,
   COOLING_AFTER_SEND_FAIL: 10,
   // U2F 超时时间（单位：浩渺）
