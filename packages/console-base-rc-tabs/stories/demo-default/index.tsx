@@ -124,7 +124,6 @@ export default function DemoDefault(): JSX.Element {
     theme: stateTheme,
     noContent: stateNoContent,
     activeKey: stateActiveTab,
-    width,
     onTabClose: handleTabClose,
     onChange: setStateActiveTab
   };

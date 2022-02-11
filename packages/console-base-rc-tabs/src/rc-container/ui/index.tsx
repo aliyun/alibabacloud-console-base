@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  useRefTabs
+  useRefUi
 } from '../../model';
 import TabsBar from '../tabs-bar';
 import TabsContents from '../tabs-contents';
 
-const ScTabs = styled.div`
+const ScUi = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -15,10 +15,10 @@ const ScTabs = styled.div`
 `;
 
 export default function Ui(): JSX.Element | null {
-  const refTabs = useRefTabs();
+  const refUi = useRefUi();
   
-  return <ScTabs ref={refTabs}>
+  return <ScUi ref={refUi}>
     <TabsBar />
     <TabsContents />
-  </ScTabs>;
+  </ScUi>;
 }

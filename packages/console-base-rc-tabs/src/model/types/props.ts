@@ -17,7 +17,6 @@ export interface IModelProps {
   activeKey?: string;
   defaultActiveKey?: string;
   theme?: ETabsTheme;
-  width?: number; // 仅用于通知宽度变化 TODO 去掉它
   classNameForTabBar?: string; // 为了让外部可以有个钩子
   classNameForTabItem?: string; // 为了让外部可以有个钩子
   classNameForTabScroller?: string; // 为了让外部可以有个钩子

@@ -15,7 +15,7 @@ import {
 
 import useModelContext from './_use-model-context';
 
-interface ISafeProps extends RequiredSelected<IModelProps, 'theme' | 'width' | 'contentPadding'> {}
+interface ISafeProps extends RequiredSelected<IModelProps, 'theme' | 'contentPadding'> {}
 
 export default function useModelProps(): ISafeProps {
   const {
@@ -26,14 +26,12 @@ export default function useModelProps(): ISafeProps {
     const {
       theme = ETabsTheme.PLAIN,
       contentPadding = 'top',
-      width = -1,
       ...rest
     } = props;
     
     const safeProps: ISafeProps = {
       theme,
       contentPadding,
-      width,
       ...rest
     };
     

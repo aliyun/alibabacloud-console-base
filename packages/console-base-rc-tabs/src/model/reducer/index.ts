@@ -6,24 +6,27 @@ import {
   TModelAction
 } from '../types';
 
-import reduceSetDomTabs from './reduce-set-dom-tabs';
+import reduceSetDomUi from './reduce-set-dom-ui';
 import reduceSetDomNav from './reduce-set-dom-nav';
 import reduceSetActiveTabKey from './reduce-set-active-tab-key';
-import reduceNavOffsetMax from './reduce-nav-offset-max';
-import reduceNavOffset from './reduce-nav-offset';
+import reduceSetWidth from './reduce-set-width';
+import reduceSetNavOffset from './reduce-set-nav-offset';
+import reduceSetNavOffsetMax from './reduce-set-nav-offset-max';
 
 export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
-    case EAction.SET_DOM_TABS:
-      return reduceSetDomTabs(state, action.payload);
+    case EAction.SET_DOM_UI:
+      return reduceSetDomUi(state, action.payload);
     case EAction.SET_DOM_NAV:
       return reduceSetDomNav(state, action.payload);
     case EAction.SET_ACTIVE_TAB_KEY:
       return reduceSetActiveTabKey(state, action.payload);
-    case EAction.UPDATE_NAV_OFFSET_MAX:
-      return reduceNavOffsetMax(state, action.payload);
-    case EAction.UPDATE_NAV_OFFSET:
-      return reduceNavOffset(state, action.payload);
+    case EAction.SET_WIDTH:
+      return reduceSetWidth(state, action.payload);
+    case EAction.SET_NAV_OFFSET:
+      return reduceSetNavOffset(state, action.payload);
+    case EAction.SET_NAV_OFFSET_MAX:
+      return reduceSetNavOffsetMax(state, action.payload);
     default:
       return state;
   }

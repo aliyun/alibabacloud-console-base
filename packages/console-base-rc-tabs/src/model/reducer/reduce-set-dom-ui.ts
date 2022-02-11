@@ -4,9 +4,9 @@ import {
   IModelState
 } from '../types';
 
-export default function reduceSetDomTabs(state: IModelState, payload: HTMLDivElement | null): IModelState {
+export default function reduceSetDomUi(state: IModelState, payload: HTMLDivElement | null): IModelState {
   return update(state, {
-    domTabs: {
+    domUi: {
       $set: payload
     }
   });

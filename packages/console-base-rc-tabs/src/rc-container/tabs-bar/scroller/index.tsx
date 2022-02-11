@@ -1,19 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Icon from '@alicloud/console-base-rc-icon';
-
 import {
   HEIGHT_TAB
 } from '../../../const';
 import {
-  useProps,
-  useStateNavOffset,
-  useStateNavOffsetMax,
-  useHandleScrollLeft,
-  useHandleScrollRight
+  useProps
 } from '../../../model';
-import ControlButton from '../../../rc/control-button';
+
+import ScrollerButton from './scroller-button';
 
 const ScScroller = styled.div`
   display: flex;
@@ -29,23 +24,9 @@ export default function Scroller(): JSX.Element {
     theme,
     classNameForTabScroller
   } = useProps();
-  const navOffset = useStateNavOffset();
-  const navOffsetMax = useStateNavOffsetMax();
-  const handleScrollLeft = useHandleScrollLeft();
-  const handleScrollRight = useHandleScrollRight();
   
   return <ScScroller theme={theme} className={classNameForTabScroller}>
-    <ControlButton {...{
-      disabled: navOffset >= 0,
-      spm: 'prev',
-      label: <Icon type="angle-left" />,
-      onClick: handleScrollLeft
-    }} />
-    <ControlButton {...{
-      disabled: navOffset <= navOffsetMax,
-      spm: 'next',
-      label: <Icon type="angle-right" />,
-      onClick: handleScrollRight
-    }} />
+    <ScrollerButton prev />
+    <ScrollerButton />
   </ScScroller>;
 }
