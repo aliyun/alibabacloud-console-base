@@ -9,7 +9,6 @@ import {
 } from '../../const';
 import {
   useProps,
-  useRndStateRect,
   useRndDragHandleClass
 } from '../../model';
 
@@ -17,9 +16,6 @@ export default function Content(): JSX.Element {
   const {
     tabs
   } = useProps();
-  const {
-    w
-  } = useRndStateRect();
   const dragHandleClass = useRndDragHandleClass();
   
   return <Tabs {...{
@@ -28,7 +24,6 @@ export default function Content(): JSX.Element {
     contentPadding: 'none',
     classNameForTabBar: dragHandleClass,
     classNameForTabItem: CLASS_J_RND_CANCEL,
-    classNameForTabScroller: CLASS_J_RND_CANCEL,
-    width: w // 通知宽度变化
+    classNameForTabScroller: CLASS_J_RND_CANCEL
   }} />;
 }
