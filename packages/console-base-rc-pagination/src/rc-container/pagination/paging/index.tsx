@@ -1,16 +1,14 @@
 import React from 'react';
 
 import {
-  useProps
+  useTheme
 } from '../../../model';
 
 import PageInfo from './page-info';
 import PageList from './page-list';
 
 export default function Paging(): JSX.Element {
-  const {
-    theme
-  } = useProps();
+  const theme = useTheme();
   
   return theme === 'full' ? <PageList /> : <PageInfo />;
 }

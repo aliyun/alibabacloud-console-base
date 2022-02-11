@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {
   usePageList
@@ -7,10 +8,15 @@ import {
 import PageButton from './page-button';
 import PageEllipsis from './page-ellipsis';
 
+const ScPageList = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export default function PageList(): JSX.Element {
   const pageList = usePageList();
   
-  return <div>
+  return <ScPageList>
     {pageList.map((v, i) => {
       if (typeof v === 'number') {
         return <PageButton key={`page-${v}`} n={v} />;
@@ -18,5 +24,5 @@ export default function PageList(): JSX.Element {
       
       return <PageEllipsis key={`ellipsis-${i}`} />; // eslint-disable-line react/no-array-index-key
     })}
-  </div>;
+  </ScPageList>;
 }

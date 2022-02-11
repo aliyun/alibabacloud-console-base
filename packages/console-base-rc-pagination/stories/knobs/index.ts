@@ -78,6 +78,10 @@ export default function Knobs({
     }),
     inUse: boolean('启用 props.align', true)
   });
+  const noText = optional<boolean>({
+    value: boolean('props.noText', true),
+    inUse: boolean('启用 props.noText', false)
+  });
   
   const props: PaginationProps = useMemo((): PaginationProps => omitUndefined({
     total,
@@ -85,14 +89,16 @@ export default function Knobs({
     pageSize,
     totalLimit,
     theme,
-    align
+    align,
+    noText
   }), [
     total,
     page,
     pageSize,
     totalLimit,
     theme,
-    align
+    align,
+    noText
   ]);
   
   useEffect(() => onChange(props), [onChange, props]);

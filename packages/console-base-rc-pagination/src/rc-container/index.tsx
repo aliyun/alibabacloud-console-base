@@ -5,9 +5,11 @@ import Model, {
 } from '../model';
 
 import Ui from './ui';
+import Lifecycle from './lifecycle';
 
 export default function WithProvider(props: ModelProps): JSX.Element {
   return <Model props={props}>
     <Ui />
+    <Lifecycle />
   </Model>;
 }

@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import {
   ModelProps,
   useProps,
-  usePropsOnDom
+  usePropsOnDom,
+  useRefUi
 } from '../../model';
 import {
   getStyleValueJustify
 } from '../../util';
 
-import ButtonPrev from './button-prev';
-import ButtonNext from './button-next';
+import ButtonPrevNext from './button-prev-next';
 import Paging from './paging';
 
 interface IPropsScPagination {
@@ -29,10 +29,11 @@ export default function Pagination(): JSX.Element {
     align
   } = useProps();
   const props = usePropsOnDom();
+  const refUi = useRefUi();
   
-  return <ScPagination {...props} align={align}>
-    <ButtonPrev />
+  return <ScPagination {...props} align={align} ref={refUi}>
+    <ButtonPrevNext prev />
     <Paging />
-    <ButtonNext />
+    <ButtonPrevNext />
   </ScPagination>;
 }
