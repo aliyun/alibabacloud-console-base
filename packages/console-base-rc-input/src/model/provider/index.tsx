@@ -11,8 +11,7 @@ import {
   DEFAULT_CONTEXT_STATE
 } from '../const';
 import reducer from '../reducer';
-
-import Context from './_context';
+import Context from '../context';
 
 interface IProps {
   props: IModelProps;
@@ -33,7 +32,3 @@ export default function Provider({
     {children}
   </Context.Provider>;
 }
-
-export {
-  Context
-};

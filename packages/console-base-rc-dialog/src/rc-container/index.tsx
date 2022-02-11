@@ -8,9 +8,7 @@ import {
 import {
   IDialogProps
 } from '../types';
-import {
-  Provider
-} from '../model';
+import Provider from '../model';
 
 import Ui from './ui';
 import Lifecycle from './lifecycle';

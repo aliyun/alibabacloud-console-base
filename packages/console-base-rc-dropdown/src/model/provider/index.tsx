@@ -12,8 +12,7 @@ import {
   DEFAULT_STATE
 } from '../const';
 import reducer from '../reducer';
-
-import Context from './_context';
+import Context from '../context';
 
 export default function Provider({
   props,
@@ -31,7 +30,3 @@ export default function Provider({
     {children}
   </Context.Provider>;
 }
-
-export {
-  Context
-};
