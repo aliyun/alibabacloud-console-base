@@ -8,7 +8,7 @@ export { default as P } from './rc/p';
 export { default as List } from './rc/list';
 export { default as Hr } from './rc/hr';
 
-// form controls
+/* form controls */
 export { default as Button } from './rc/button';
 export { default as InputText } from './rc/input-text';
 export { default as InputNumber } from './rc/input-number';
@@ -20,17 +20,20 @@ export {
   RadioGroup
 } from './rc/choice-group';
 
-// display
+/* display */
 export { default as PreJson } from './rc/pre-json';
 export { default as PrePromise } from './rc/pre-promise';
 export { default as CodeViewer } from './rc/code-viewer';
 export * from './rc/code-viewer';
 
-// 容器
+/* 组件测试 */
+export { default as PropsNCode } from './rc/props-n-code';
+
+/* 容器 */
 export { default as Flex } from './rc/flex';
 export { default as Flex100HBF } from './rc/flex-100hbf';
 
-// placeholders
+/* placeholders */
 export { default as LongArticle } from './rc/long-article';
 
 export type {

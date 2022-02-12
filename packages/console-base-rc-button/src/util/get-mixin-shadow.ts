@@ -1,5 +1,5 @@
 import {
-  css
+  FlattenSimpleInterpolation
 } from 'styled-components';
 
 import {
@@ -7,11 +7,9 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  IButtonPropsForSc
-} from '../../types';
-import {
-  EButtonTheme
-} from '../../enum';
+  EButtonTheme,
+  IModelProps
+} from '../model';
 
 const THEMES_NEED_SHADOW: EButtonTheme[] = [
   EButtonTheme.DANGER,
@@ -21,14 +19,14 @@ const THEMES_NEED_SHADOW: EButtonTheme[] = [
   EButtonTheme.BRAND_SECONDARY
 ];
 
-function needShadow(props: IButtonPropsForSc): boolean {
+export default function getMixinShadow(props: IModelProps): FlattenSimpleInterpolation | null {
   if (props.noShadow || props.disabled || props.loading || props.active) {
-    return false;
+    return null;
   }
   
-  return props.theme ? THEMES_NEED_SHADOW.includes(props.theme) : false;
+  if (props.theme && THEMES_NEED_SHADOW.includes(props.theme)) {
+    return mixinButtonShadow;
+  }
+  
+  return null;
 }
-
-export default css<IButtonPropsForSc>`
-  ${props => (needShadow(props) ? mixinButtonShadow : null)}
-`;

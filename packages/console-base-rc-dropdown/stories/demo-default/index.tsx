@@ -2,15 +2,9 @@ import React, {
   useState
 } from 'react';
 import styled from 'styled-components';
-import {
-  stringify
-} from 'json5';
 
 import {
-  H2,
-  InputJsonObject,
-  Flex,
-  CodeViewerJs
+  PropsNCode
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
@@ -24,12 +18,16 @@ const ScTriggerJsx = styled.div`
   color: #f00;
 `;
 
-const DROPDOWN_PROPS: Record<string, unknown> = {
-  '/triggerAsJsx': true,
+const dropdownProps: DropdownProps = {
   trigger: 'this is trigger',
   header: 'header',
   body: 'this is body',
-  footer: 'footer',
+  footer: 'footer'
+};
+
+const DEFAULT_PROPS: Record<string, unknown> = {
+  '/triggerAsJsx': true,
+  ...dropdownProps,
   '/align': 'right', // 'left' | 'right'
   '/width': 300, // number | string
   '/minWidth': 200, // number | string
@@ -49,61 +47,29 @@ const DROPDOWN_PROPS: Record<string, unknown> = {
   '/visible': false
 };
 
-function generateCode(regionProps: unknown): string {
-  return `import Dropdown, {
-  DropdownProps
-} from '@alicloud/console-base-rc-dropdown';
-
-const PROPS: DropdownProps = ${stringify(regionProps, (k, v) => {
-    if (k.startsWith('/')) {
-      return undefined;
-    }
-    
-    return v;
-  }, 2)};
-
-export default function MyDropdown(): JSX.Element {
-  return <Dropdown {...PROPS} />;
-}`;
-}
-
-function generateProps(o0: Record<string, unknown>): DropdownProps {
-  const o: Record<string, unknown> = {};
+function processProps(props: DropdownProps, o0: Record<string, unknown>): void {
+  const trigger: string = o0.trigger as string || 'trigger is a must';
   
-  Object.keys(o0).forEach(v => {
-    if (!v.startsWith('/') && v !== 'triggerAsJSX' && v !== 'trigger') {
-      o[v] = o0[v];
-    }
-  });
-  const trigger: string = (o0.trigger as string) || 'trigger is a must';
-  
-  o.trigger = o0.triggerAsJsx ? <ScTriggerJsx>{trigger}</ScTriggerJsx> : trigger;
-  
-  return o as unknown as DropdownProps;
+  props.trigger = o0.triggerAsJsx ? <ScTriggerJsx>{trigger}</ScTriggerJsx> : trigger;
 }
 
 export default function DemoDefault(): JSX.Element {
-  const [stateProps, setStateProps] = useState<Record<string, unknown>>(DROPDOWN_PROPS);
+  const [stateProps, setStateProps] = useState<DropdownProps>(dropdownProps);
   
   return <>
     <ThemeSwitcher />
     <div>
       This text is to make the dropdown not stick to the left of the window. → <Dropdown {...{
-        ...generateProps(stateProps)
+        ...stateProps
       }} />
     </div>
-    <Flex ratio={[2, 3]}>
-      <>
-        <H2>PROPS</H2>
-        <InputJsonObject {...{
-          value: stateProps,
-          onChange: setStateProps
-        }} />
-      </>
-      <>
-        <H2>对应的代码</H2>
-        <CodeViewerJs>{generateCode(stateProps)}</CodeViewerJs>
-      </>
-    </Flex>
+    <PropsNCode<DropdownProps> {...{
+      componentName: 'Dropdown',
+      componentPropsName: 'DropdownProps',
+      componentPackageName: '@alicloud/console-base-rc-dropdown',
+      defaultProps: DEFAULT_PROPS,
+      processProps,
+      onChange: setStateProps
+    }} />
   </>;
 }

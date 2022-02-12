@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/demo-rc-elements",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "description": "专用于 demo 的元素，为了好看和方便，切不可用于生产",
   "license": "MIT",
   "sideEffects": false,
@@ -40,7 +40,8 @@
   },
   "dependencies": {
     "@alicloud/rc-codemirror": "^1.0.33",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "json5": "^2.2.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

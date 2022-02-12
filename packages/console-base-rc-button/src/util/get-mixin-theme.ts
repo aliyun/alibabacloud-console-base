@@ -1,6 +1,5 @@
 import {
-  FlattenSimpleInterpolation,
-  css
+  FlattenSimpleInterpolation
 } from 'styled-components';
 
 import {
@@ -71,11 +70,9 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  IButtonPropsForSc
-} from '../../types';
-import {
-  EButtonTheme
-} from '../../enum';
+  EButtonTheme,
+  IModelProps
+} from '../model';
 
 const MAPPING_DISABLED: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.NONE]: null,
@@ -158,7 +155,7 @@ const MAPPING: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.TEXT_BRAND_SECONDARY]: mixinButtonTextBrandSecondary
 };
 
-function getThemeMixin(props: IButtonPropsForSc): FlattenSimpleInterpolation | null {
+export default function getMixinTheme(props: Partial<IModelProps>): FlattenSimpleInterpolation | null {
   if (props.disabled) {
     return (props.theme ? MAPPING_DISABLED[props.theme] : null) || mixinButtonTextTertiaryStateDisabled;
   }
@@ -173,7 +170,3 @@ function getThemeMixin(props: IButtonPropsForSc): FlattenSimpleInterpolation | n
   
   return props.theme ? MAPPING[props.theme] : null;
 }
-
-export default css<IButtonPropsForSc>`
-  ${getThemeMixin}
-`;

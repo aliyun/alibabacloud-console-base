@@ -1,10 +1,10 @@
-export { default } from './rc/button';
+export { default } from './rc-container';
 
 export {
   EButtonTheme as ButtonTheme,
   EButtonSize as ButtonSize
-} from './enum';
+} from './model';
 
 export type {
-  IButtonProps as ButtonProps
-} from './types';
+  IModelProps as ButtonProps
+} from './model';

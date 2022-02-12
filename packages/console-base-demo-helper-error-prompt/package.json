@@ -40,7 +40,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/demo-rc-elements": "^1.4.5"
+    "@alicloud/demo-rc-elements": "^1.5.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

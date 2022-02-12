@@ -1,6 +1,5 @@
 import {
-  FlattenSimpleInterpolation,
-  css
+  FlattenSimpleInterpolation
 } from 'styled-components';
 
 import {
@@ -12,12 +11,10 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  IButtonPropsForSc
-} from '../../types';
-import {
   EButtonSize,
-  EButtonTheme
-} from '../../enum';
+  EButtonTheme,
+  IModelProps
+} from '../model';
 
 const MAPPING: Record<EButtonSize, FlattenSimpleInterpolation | null> = {
   [EButtonSize.NONE]: null,
@@ -37,14 +34,10 @@ const THEMES_DEFAULT_SIZE_NONE = [
   EButtonTheme.TEXT_BRAND_SECONDARY
 ];
 
-function getSize(props: IButtonPropsForSc): EButtonSize {
+export default function getMixinSize(props: IModelProps): FlattenSimpleInterpolation | null {
   if (props.size) {
-    return props.size;
+    return MAPPING[props.size];
   }
   
-  return props.theme && THEMES_DEFAULT_SIZE_NONE.includes(props.theme) ? EButtonSize.NONE : EButtonSize.M;
+  return MAPPING[props.theme && THEMES_DEFAULT_SIZE_NONE.includes(props.theme) ? EButtonSize.NONE : EButtonSize.M];
 }
-
-export default css<IButtonPropsForSc>`
-  ${props => MAPPING[getSize(props)]}
-`;
