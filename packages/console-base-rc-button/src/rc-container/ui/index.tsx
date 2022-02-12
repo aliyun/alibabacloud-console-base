@@ -14,14 +14,32 @@ import {
   isBlock,
   isBorderless,
   getStyleTextAlign,
-  getStyleBorderRadius,
-  getStyleCursor,
   getMixinTheme,
   getMixinSize,
   getMixinShadow
 } from '../../util';
 import ButtonIcon from '../button-icon';
 import ButtonLabel from '../button-label';
+
+function getStyleBorderRadius(props: Partial<IModelProps>): string {
+  if (isBorderless(props) || !props.borderRadius) {
+    return '0';
+  }
+  
+  return props.borderRadius === 'full' ? '100px' : '2px';
+}
+
+function getStyleCursor(props: Partial<IModelProps>): string {
+  if (props.disabled) {
+    return 'not-allowed';
+  }
+  
+  if (props.loading) {
+    return 'default';
+  }
+  
+  return props.cursor || 'pointer';
+}
 
 const ScButton = styled(ButtonBase)<Partial<IModelProps>>`
   display: ${props => (isBlock(props) ? 'flex' : 'inline-flex')};
