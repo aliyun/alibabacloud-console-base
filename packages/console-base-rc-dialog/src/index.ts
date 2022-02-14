@@ -23,7 +23,7 @@ export type {
   IDialogPropsPrompt as DialogPropsPrompt,
   IDialogButtonProps as DialogButtonProps,
   IDialogIndirectPromise as DialogIndirectPromise,
-  IAlertExtra as AlertExtra,
-  IConfirmExtra as ConfirmExtra,
-  IPromptExtra as PromptExtra
+  IAltAlertExtra as AlertExtra,
+  IAltConfirmExtra as ConfirmExtra,
+  IAltPromptExtra as PromptExtra
 } from './types';

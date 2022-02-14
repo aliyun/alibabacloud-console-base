@@ -2,10 +2,11 @@ import React from 'react';
 
 import {
   IDialogPropsPrompt,
-  IPromptExtra
+  IAltPromptExtra
 } from '../../types';
 import {
-  COMMON_PROPS_SYS_DIALOG
+  SYS_DIALOG_PROPS_FIXED,
+  SYS_DIALOG_PROPS_DEFAULT
 } from '../../const';
 import intl from '../../intl';
 import {
@@ -20,7 +21,7 @@ import PromptContent, {
 /**
  * 系统 window.prompt 的替代
  */
-export default function prompt(props?: IDialogPropsPrompt<IDataPrompt>, extra: IPromptExtra = {}): Promise<string> {
+export default function prompt(props?: IDialogPropsPrompt<IDataPrompt>, extra: IAltPromptExtra = {}): Promise<string> {
   return open<string, IDataPrompt>(buildPropsForPromise<string, IDataPrompt>(props, {
     content: <PromptContent />,
     buttons: [{
@@ -31,6 +32,6 @@ export default function prompt(props?: IDialogPropsPrompt<IDataPrompt>, extra: I
       spm: 'cancel',
       label: extra.cancel || intl('op:cancel')
     }],
-    ...COMMON_PROPS_SYS_DIALOG
-  })).then((result: string) => (result === undefined ? '' : result));
+    ...SYS_DIALOG_PROPS_FIXED
+  }, SYS_DIALOG_PROPS_DEFAULT)).then((result: string) => (result === undefined ? '' : result));
 }

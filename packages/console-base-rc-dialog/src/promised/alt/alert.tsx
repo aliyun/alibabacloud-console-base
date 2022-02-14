@@ -2,10 +2,11 @@ import React from 'react';
 
 import {
   IDialogPropsAlert,
-  IAlertExtra
+  IAltAlertExtra
 } from '../../types';
 import {
-  COMMON_PROPS_SYS_DIALOG
+  SYS_DIALOG_PROPS_FIXED,
+  SYS_DIALOG_PROPS_DEFAULT
 } from '../../const';
 import intl from '../../intl';
 import {
@@ -31,15 +32,15 @@ import open from '../open';
  * await alert(...);
  * ```
  */
-export default function alert(contentOrProps: string | JSX.Element | IDialogPropsAlert, extra: IAlertExtra = {}): Promise<void> {
+export default function alert(contentOrProps: string | JSX.Element | IDialogPropsAlert, extra: IAltAlertExtra = {}): Promise<void> {
   const promiseProps = buildPropsForPromise(contentOrProps, {
     buttons: [{
       spm: 'ok',
       label: extra.ok || intl('op:ok'),
       primary: true
     }],
-    ...COMMON_PROPS_SYS_DIALOG
-  });
+    ...SYS_DIALOG_PROPS_FIXED
+  }, SYS_DIALOG_PROPS_DEFAULT);
   
   promiseProps.content = <AltWrap {...{
     type: extra.type || 'alert',

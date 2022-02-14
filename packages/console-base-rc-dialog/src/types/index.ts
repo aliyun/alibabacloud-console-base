@@ -100,7 +100,7 @@ export interface IDialogPropsMutable<T = void, D = TDialogData> extends Omit<IDi
 /**
  * 用于 alert/confirm/prompt 的 props
  */
-export type TDialogPropsForAlts<T = void, D = TDialogData> = Omit<IDialogProps<T, D>, 'content' | 'buttons' | 'mode' | 'backdrop' | 'esc' | 'zIndex' | 'zIndexBackdrop'>;
+export type TDialogPropsForAlts<T = void, D = TDialogData> = Omit<IDialogProps<T, D>, 'content' | 'buttons' | 'mode' | 'backdrop' | 'zIndex' | 'zIndexBackdrop'>;
 
 export interface IDialogPropsAlert extends Omit<TDialogPropsForAlts, 'data'> {
   title?: TStringOrJSX;
@@ -122,20 +122,20 @@ export interface IDialogIndirectPromise<T = void, D = TDialogData> {
   promise: Promise<T>;
 }
 
-export interface IAlertExtra {
-  /**
-   * 自定义按钮文字
-   */
-  ok?: string;
+export interface IAltAlertExtra {
   /**
    * 图标选择
    */
   type?: 'alert' | 'info' | 'success' | 'error';
+  /**
+   * 自定义按钮文字
+   */
+  ok?: string;
 }
 
-export interface IConfirmExtra {
+export interface IAltConfirmExtra {
   ok?: string;
   cancel?: string;
 }
 
-export interface IPromptExtra extends IConfirmExtra {}
+export interface IAltPromptExtra extends IAltConfirmExtra {}
