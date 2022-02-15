@@ -25,6 +25,5 @@ export interface IModelProviderProps {
 export interface IModelContext {
   props: IModelProps;
   state: IModelState;
-  isUnmounted(): boolean;
   dispatch: TModelDispatch;
 }

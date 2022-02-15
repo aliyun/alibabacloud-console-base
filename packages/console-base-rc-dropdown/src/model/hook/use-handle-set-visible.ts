@@ -3,7 +3,6 @@ import {
 } from 'react';
 
 import useModelProps from './_use-model-props';
-import useModelIsUnmounted from './_use-model-is-unmounted';
 import useModelState from './_use-model-state';
 import useDispatchSetVisibleTimer from './use-dispatch-set-visible-timer';
 import useDispatchSetVisible from './use-dispatch-set-visible';
@@ -17,7 +16,6 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
   const {
     visibleTimer
   } = useModelState();
-  const isUnmounted = useModelIsUnmounted();
   const visible = useDropVisible();
   const dispatchToggleVisibleTimer = useDispatchSetVisibleTimer();
   const dispatchSetVisible = useDispatchSetVisible();
@@ -32,10 +30,6 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
     }
     
     const timer = window.setTimeout(() => {
-      if (isUnmounted()) {
-        return;
-      }
-      
       dispatchSetVisible(payload);
       dispatchToggleVisibleTimer(null);
       
@@ -45,5 +39,5 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
     }, 200);
     
     dispatchToggleVisibleTimer(timer);
-  }, [disabled, visible, visibleTimer, isUnmounted, onVisibleChange, dispatchSetVisible, dispatchToggleVisibleTimer]);
+  }, [disabled, visible, visibleTimer, onVisibleChange, dispatchSetVisible, dispatchToggleVisibleTimer]);
 }

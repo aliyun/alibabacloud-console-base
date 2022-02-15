@@ -20,7 +20,6 @@ export interface IModelReducer {
 export interface IModelContext {
   props: IModelProps;
   state: IModelState;
-  isUnmounted(): boolean;
   dispatch: TModelDispatch;
 }
 
