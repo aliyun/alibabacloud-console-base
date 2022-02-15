@@ -5,14 +5,14 @@ import {
 } from '../../const';
 
 import {
-  ISlsCommon
+  ISlsCommonProps
 } from './_type';
 
-interface IProps extends ISlsCommon {
+interface IProps extends ISlsCommonProps {
   isMpk: boolean;
+  codeType: string; // 风控类型
+  verifyType: string; // 验证类型
   useOldSendVerify: boolean;
-  verifyType: string;
-  codeType: string;
   sendCodeRequestId?: string;
 }
 

@@ -8,10 +8,10 @@ import {
 } from '../../types';
 
 import {
-  ISlsCommon
+  ISlsCommonProps
 } from './_type';
 
-interface IProps extends Omit<IMainAccountRiskInfo, 'risk'>, ISlsCommon {}
+interface IProps extends Omit<IMainAccountRiskInfo, 'risk'>, ISlsCommonProps {}
 
 export default function slsNewMainRisk(mainRiskProps: IProps): void {
   sls(ESlsTopic.NEW_MAIN_RISK, mainRiskProps);

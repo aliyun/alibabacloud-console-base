@@ -116,13 +116,15 @@ export default function Generate(): JSX.Element {
         codeType
       })
     } : codeAndVerifyParams;
+    const requestHeader = useMpkSendCodeApi ? { headers: { 'Content-Type': 'application/json' } } : {}; // 调用 /identity/send 接口时，Content-Type 要设置为 application/json
     
     try {
       // 这里用当前的 fetcher
       await request<ISendCodeReturn>({
         method: REQUEST_METHOD,
-        url: useMpkSendCodeApi ? URL_MPK_SEND_CODE : URL_SEND_CODE, // 如果是新版的虚商（isMpk），并且不走降级方案，使用新的发送验证码的接口（URL_MPK_SEND_CODE）
-        body: requestBody
+        url: useMpkSendCodeApi ? URL_MPK_SEND_CODE : URL_SEND_CODE, // 如果是新版的虚商（isMpk），并且不走降级方案，使用新的发送验证码的接口
+        body: requestBody,
+        ...requestHeader
       }).then(data => {
         const requestId = data?.requestId || '';
 

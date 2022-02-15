@@ -34,7 +34,7 @@ import {
   slsMpkRisk
 } from '../../sls';
 import getTicketType from '../../get-ticket-type';
-import Content from '../../../container/old-main-verify-content';
+import Content from '../../../container/old-main-or-mpk-verify-content';
 
 const ticketType = getTicketType();
 

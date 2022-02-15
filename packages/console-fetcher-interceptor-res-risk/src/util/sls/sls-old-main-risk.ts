@@ -8,10 +8,10 @@ import {
 } from '../../types';
 
 import {
-  ISlsCommon
+  ISlsCommonProps
 } from './_type';
 
-interface IProps extends Pick<IOldMainRiskInfo, 'verifyType' | 'detail' | 'codeType'>, ISlsCommon {
+interface IProps extends Pick<IOldMainRiskInfo, 'verifyType' | 'detail' | 'codeType'>, ISlsCommonProps {
   verifyCode: string;
   sendCodeRequestId: string;
 }

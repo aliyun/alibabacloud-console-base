@@ -5,10 +5,10 @@ import {
 } from '../../const';
 
 import {
-  ISlsCommon
+  ISlsCommonProps
 } from './_type';
 
-interface IProps extends ISlsCommon {
+interface IProps extends ISlsCommonProps {
   verifyType: string;
   codeType: string;
   sendCodeRequestId?: string;

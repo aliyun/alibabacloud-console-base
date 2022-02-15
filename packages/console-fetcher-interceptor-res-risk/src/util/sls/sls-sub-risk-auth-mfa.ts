@@ -10,10 +10,10 @@ import {
 } from '../../types';
 
 import {
-  ISlsCommon
+  ISlsCommonProps
 } from './_type';
 
-interface IProps extends ISlsCommon {
+interface IProps extends ISlsCommonProps {
   validators: INewSubRiskValidators[];
   payload: TVerifyMfaPayload;
 }

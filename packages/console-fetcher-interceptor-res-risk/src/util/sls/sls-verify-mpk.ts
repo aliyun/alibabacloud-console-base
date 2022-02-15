@@ -8,10 +8,10 @@ import {
 } from '../../types';
 
 import {
-  ISlsCommon
+  ISlsCommonProps
 } from './_type';
 
-interface IProps extends Omit<IMpkRiskInfo, 'risk' | 'type'>, ISlsCommon {
+interface IProps extends Omit<IMpkRiskInfo, 'risk' | 'type'>, ISlsCommonProps {
   verifyCode: string;
   sendCodeRequestId: string;
   errorMessage?: string;

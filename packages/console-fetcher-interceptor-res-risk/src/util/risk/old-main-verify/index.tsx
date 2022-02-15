@@ -27,7 +27,7 @@ import {
 import {
   slsOldMainRisk
 } from '../../sls';
-import Content from '../../../container/old-main-verify-content';
+import Content from '../../../container/old-main-or-mpk-verify-content';
 
 interface IParams {
   request: FetcherFnRequest;

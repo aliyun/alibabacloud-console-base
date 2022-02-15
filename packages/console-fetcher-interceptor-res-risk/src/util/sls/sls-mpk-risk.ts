@@ -8,10 +8,10 @@ import {
 } from '../../types';
 
 import {
-  ISlsCommon
+  ISlsCommonProps
 } from './_type';
 
-interface IProps extends Pick<IMpkRiskInfo, 'isMpk' | 'accountId' | 'useOldSendVerify'>, ISlsCommon{}
+interface IProps extends Pick<IMpkRiskInfo, 'isMpk' | 'accountId' | 'useOldSendVerify'>, ISlsCommonProps{}
 
 export default function slsMpkRisk(mpkRiskProps: IProps): void {
   sls(ESlsTopic.MPK_RISK, mpkRiskProps);

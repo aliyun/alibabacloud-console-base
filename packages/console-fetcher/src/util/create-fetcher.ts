@@ -20,7 +20,6 @@ export default (config?: FetcherConfig, interceptorOptions: IConsoleFetcherInter
   }
 
   const fetcher: Fetcher = createFetcher<FetcherConfig>({
-    credentials: 'include', // 请求核身服务的接口会跨域
     ...config,
     body: configBody
   }, interceptorOptions);

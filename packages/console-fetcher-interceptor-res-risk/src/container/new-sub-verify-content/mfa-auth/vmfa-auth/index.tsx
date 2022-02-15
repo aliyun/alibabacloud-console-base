@@ -33,7 +33,7 @@ import getTicketType from '../../../../util/get-ticket-type';
 import getInputError from '../../../../util/get-input-error';
 
 const ScFormWrapper = styled.div`
-  padding: 16px;
+  padding: 12px 0px;
   position: relative;
   overflow: hidden;
   ${mixinBgSecondary}
