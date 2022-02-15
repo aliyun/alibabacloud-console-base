@@ -20,6 +20,7 @@ export { default as setRegionId } from './region/set-region-id';
 export { default as setRegions } from './region/set-regions';
 export { default as setRegionGroups } from './region/set-region-groups';
 export { default as setRegionResourceCount } from './region/set-region-resource-count';
+export { default as setRegionOuCommodityCode } from './region/set-region-ou-commodity-code';
 
 // resource group
 export { default as setResourceGroupProps } from './resource-group/set-resource-group-props';

@@ -4,33 +4,43 @@
  * 前缀 `app_2_console_base:`
  */
 export enum EMessageBroadcastByApp {
-  // 杂项
+  /* 杂项 */
   PROMPT_ERROR = 'app_2_console_base:prompt_error',
   FETCHER_REQUEST = 'app_2_console_base:fetcher_request',
   TOGGLE_TOP_NAV = 'app_2_console_base:top_nav/toggle',
   LAUNCH_TUTORIAL = 'app_2_console_base:launch_tutorial',
   LAUNCH_WIDGET = 'app_2_console_base:launch_widget',
   ARMS_ERROR = 'app_2_console_base:arms/error',
-  // 地域选择器
-  REGION_SET_PROPS = 'app_2_console_base:region/set_props', // 覆盖 props
-  REGION_MERGE_PROPS = 'app_2_console_base:region/merge_props', // 合并 props（适合需要单点更新的场景）
+  /* 地域选择器 */
+  /**
+   * 覆盖 props
+   */
+  REGION_SET_PROPS = 'app_2_console_base:region/set_props',
+  /**
+   * 合并 props（适合需要单点更新的场景）
+   */
+  REGION_MERGE_PROPS = 'app_2_console_base:region/merge_props',
   REGION_TOGGLE = 'app_2_console_base:region/toggle',
   REGION_TOGGLE_GLOBAL = 'app_2_console_base:region/toggle_global',
   REGION_SET_ID = 'app_2_console_base:region/set_id',
   REGION_SET_REGIONS = 'app_2_console_base:region/set_regions',
   REGION_SET_REGION_GROUPS = 'app_2_console_base:region/set_region_groups',
   REGION_SET_RESOURCE_COUNT = 'app_2_console_base:region/set_resource_count',
-  // 资源组选择器
+  /**
+   * 设置 OU 探测需要的可选「商品码」参数
+   */
+  REGION_SET_OU_COMMODITY_CODE = 'app_2_console_base:region/set_ou_commodity_code',
+  /* 资源组选择器 */
   RESOURCE_GROUP_SET_PROPS = 'app_2_console_base:resource_group/set_props', // 覆盖 props
   RESOURCE_GROUP_MERGE_PROPS = 'app_2_console_base:resource_group/merge_props', // 合并 props（适合需要单点更新的场景）
   RESOURCE_GROUP_TOGGLE = 'app_2_console_base:resource_group/toggle',
   RESOURCE_GROUP_SET_ID = 'app_2_console_base:resource_group/set_id',
   RESOURCE_GROUP_SET_RESOURCE_COUNT = 'app_2_console_base:resource_group/set_resource_count',
-  // 交互式教程
+  /* 交互式教程 */
   TUTOR_REGISTER = 'app_2_console_base:tutor/register',
   TUTOR_OPEN = 'app_2_console_base:tutor/open',
   TUTOR_CLOSE = 'app_2_console_base:tutor/close',
-  // 微文档浏览器传送门
+  /* 微浏览器传送门 */
   MICRO_BROWSER_PORTAL_CREATED = 'app_2_console_base:micro_browser_portal/created',
   MICRO_BROWSER_PORTAL_REMOVED = 'app_2_console_base:micro_browser_portal/removed',
   MICRO_BROWSER_PORTAL_TOGGLE_VISIBLE = 'app_2_console_base:micro_browser_portal/toggle_visible'
