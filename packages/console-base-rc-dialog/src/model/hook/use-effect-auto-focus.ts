@@ -2,16 +2,12 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useHandleFocus
-} from '../../../model';
+import useHandleFocus from './use-handle-focus';
 
-export default function AutoFocus(): null {
+export default function useEffectAutoFocus(): void {
   const handleFocus = useHandleFocus();
   
   useEffect(() => {
     handleFocus();
   }, [handleFocus]);
-  
-  return null;
 }

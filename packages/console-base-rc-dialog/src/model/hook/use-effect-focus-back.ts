@@ -2,16 +2,12 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useHandleFocusBack
-} from '../../../model';
+import useHandleFocusBack from './use-handle-focus-back';
 
-export default function FocusBack(): null {
+export default function useEffectFocusBack(): void {
   const handleFocusBack = useHandleFocusBack();
   
   useEffect(() => {
     return () => handleFocusBack();
   }, [handleFocusBack]);
-  
-  return null;
 }

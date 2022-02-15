@@ -2,17 +2,13 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useHandlePushStack
-} from '../../../model';
+import useHandlePushStack from './use-handle-push-stack';
 
 /**
  * 全局性事件托管
  */
-export default function Stack(): null {
+export default function useEffectPushStack(): void {
   const handlePushStack = useHandlePushStack();
   
   useEffect(() => handlePushStack(), [handlePushStack]);
-  
-  return null;
 }

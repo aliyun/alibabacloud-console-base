@@ -1,6 +1,4 @@
-import React, {
-  useEffect
-} from 'react';
+import React from 'react';
 import {
   createGlobalStyle
 } from 'styled-components';
@@ -10,8 +8,8 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  toggleBodyClass
-} from '../../../util';
+  useProps
+} from '../../model';
 
 const GlobalStyleHasTopNav = createGlobalStyle`
   /* stylelint-disable selector-class-pattern */
@@ -21,12 +19,10 @@ const GlobalStyleHasTopNav = createGlobalStyle`
   }
 `;
 
-export default function GlobalStyleForFixed(): JSX.Element {
-  useEffect(() => {
-    toggleBodyClass();
-    
-    return () => toggleBodyClass(false);
-  }, []);
+export default function GlobalStyleForFixed(): JSX.Element | null {
+  const {
+    fixed
+  } = useProps();
   
-  return <GlobalStyleHasTopNav />;
+  return fixed ? <GlobalStyleHasTopNav /> : null;
 }

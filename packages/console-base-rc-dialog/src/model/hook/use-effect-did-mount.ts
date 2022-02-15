@@ -5,14 +5,10 @@ import {
 
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
-import {
-  useDispatchSetActive
-} from '../../../model';
+import useDispatchSetActive from './use-dispatch-set-active';
 
-/**
- * mimic componentDidMount
- */
-export default function DidMount(): null {
+// TODO use transition-group
+export default function useEffectDidMount(): void {
   const isUnmounted = useIsUnmounted();
   const dispatchToggleActive = useDispatchSetActive();
   const [stateDidMount, setStateDidMount] = useState<boolean>(false);
@@ -30,6 +26,4 @@ export default function DidMount(): null {
       }, 10);
     }
   }, [stateDidMount, isUnmounted, dispatchToggleActive]);
-  
-  return null;
 }

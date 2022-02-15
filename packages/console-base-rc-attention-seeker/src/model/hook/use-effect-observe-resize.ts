@@ -3,18 +3,16 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useAttentionElement,
-  useDomBackdrop,
-  useHandleRefreshRectStyle
-} from '../../../model';
+import useDomBackdrop from './use-dom-backdrop';
+import useAttentionElement from './use-attention-element';
+import useHandleRefreshRectStyle from './use-handle-refresh-rect-style';
 
 /**
  * 监听元素的变化，同时监听 backdrop 的变化，以自动修正位置、大小
  */
-export default function ObserveResize(): null {
-  const attentionElement = useAttentionElement();
+export default function useEffectObserveResize(): void {
   const domBackdrop = useDomBackdrop();
+  const attentionElement = useAttentionElement();
   const handleRefreshRectStyle = useHandleRefreshRectStyle();
   
   const resizeObserver = useMemo((): ResizeObserver | null => {
@@ -66,6 +64,4 @@ export default function ObserveResize(): null {
     
     return () => window.removeEventListener('resize', handleRefreshRectStyle);
   }, [attentionElement, domBackdrop, handleRefreshRectStyle, resizeObserver]);
-  
-  return null;
 }

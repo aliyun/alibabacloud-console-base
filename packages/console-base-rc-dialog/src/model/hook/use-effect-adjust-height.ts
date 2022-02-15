@@ -2,21 +2,17 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useDispatchUpdateWindowHeight
-} from '../../../model';
+import useDispatchUpdateWindowHeight from './use-dispatch-update-window-height';
 
 /**
  * 监听 window resize
  */
-export default function AdjustHeight(): null {
+export default function useEffectAdjustHeight(): void {
   const dispatchUpdateWindowHeight = useDispatchUpdateWindowHeight();
   
   useEffect(() => {
     window.addEventListener('resize', dispatchUpdateWindowHeight);
-
+    
     return () => window.removeEventListener('resize', dispatchUpdateWindowHeight);
   }, [dispatchUpdateWindowHeight]);
-  
-  return null;
 }

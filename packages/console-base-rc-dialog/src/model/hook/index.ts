@@ -10,13 +10,17 @@ export { default as useDialogStyle } from './use-dialog-style';
 export { default as useDialogButtons } from './use-dialog-buttons';
 export { default as useDialogMaxContentHeight } from './use-dialog-max-content-height';
 export { default as useDispatchMounted } from './use-dispatch-mounted';
-export { default as useDispatchSetActive } from './use-dispatch-set-active';
 export { default as useDispatchLock } from './use-dispatch-lock';
 export { default as useDispatchUnlock } from './use-dispatch-unlock';
-export { default as useDispatchUpdateWindowHeight } from './use-dispatch-update-window-height';
-export { default as useHandlePushStack } from './use-handle-push-stack';
+// handlers
 export { default as useHandleFocus } from './use-handle-focus';
-export { default as useHandleFocusBack } from './use-handle-focus-back';
 export { default as useHandleCloseWithValue } from './use-handle-close-with-value';
 export { default as useHandleClose } from './use-handle-close';
+// effects
+export { default as useEffectPushStack } from './use-effect-push-stack';
+export { default as useEffectDidMount } from './use-effect-did-mount';
+export { default as useEffectAutoFocus } from './use-effect-auto-focus';
+export { default as useEffectAdjustHeight } from './use-effect-adjust-height';
+export { default as useEffectFocusBack } from './use-effect-focus-back';
+// for content
 export { default as useDialog } from './use-dialog';

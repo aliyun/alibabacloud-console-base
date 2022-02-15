@@ -2,12 +2,10 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useAttentionElement,
-  useHandleCloseOnElementMousedown
-} from '../../../model';
+import useAttentionElement from './use-attention-element';
+import useHandleCloseOnElementMousedown from './use-handle-close-on-element-mousedown';
 
-export default function ObserveElementResize(): null {
+export default function useEffectBindCloseToElement(): void {
   const attentionElement = useAttentionElement();
   const handleCloseOnElementMousedown = useHandleCloseOnElementMousedown();
   
@@ -15,11 +13,9 @@ export default function ObserveElementResize(): null {
     if (!attentionElement) {
       return;
     }
-  
+    
     attentionElement.addEventListener('mousedown', handleCloseOnElementMousedown, true);
     
     return () => attentionElement.removeEventListener('mousedown', handleCloseOnElementMousedown, true);
   }, [attentionElement, handleCloseOnElementMousedown]);
-  
-  return null;
 }

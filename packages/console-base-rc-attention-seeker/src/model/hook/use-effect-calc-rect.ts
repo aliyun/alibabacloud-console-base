@@ -2,14 +2,10 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useHandleRefreshRectStyle
-} from '../../../model';
+import useHandleRefreshRectStyle from './use-handle-refresh-rect-style';
 
-export default function CalcRect(): null {
+export default function useEffectCalcRect(): void {
   const handleRefreshRect = useHandleRefreshRectStyle();
   
   useEffect(handleRefreshRect, [handleRefreshRect]);
-  
-  return null;
 }

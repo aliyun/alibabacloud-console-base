@@ -2,16 +2,12 @@ import {
   useEffect
 } from 'react';
 
-import {
-  useHandleClearDockActiveTimer
-} from '../../../model';
+import useHandleClearDockActiveTimer from './use-handle-clear-dock-active-timer';
 
-export default function ClearDockActiveTimer(): null {
+export default function useEffectClearDockActivateTimer(): void {
   const handleClearDockActiveTimer = useHandleClearDockActiveTimer();
   
   useEffect(() => {
     return () => handleClearDockActiveTimer();
   }, [handleClearDockActiveTimer]);
-  
-  return null;
 }
