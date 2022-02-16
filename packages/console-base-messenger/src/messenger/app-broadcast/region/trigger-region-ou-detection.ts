@@ -8,6 +8,14 @@ import {
   broadcastByApp
 } from '../../../util';
 
-export default function triggerRegionOuDetection(payload: IPayloadRegionTriggerOuDetection): void {
-  broadcastByApp<IPayloadRegionTriggerOuDetection>(EMessageBroadcastByApp.REGION_TRIGGER_OU_DETECTION, payload);
+export default function triggerRegionOuDetection(regionId: string, regionName: string, commodityCode?: string): void {
+  if (!regionId || !regionName) {
+    return;
+  }
+  
+  broadcastByApp<IPayloadRegionTriggerOuDetection>(EMessageBroadcastByApp.REGION_TRIGGER_OU_DETECTION, {
+    regionId,
+    regionName,
+    commodityCode
+  });
 }

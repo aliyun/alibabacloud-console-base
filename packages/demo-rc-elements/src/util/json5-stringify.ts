@@ -30,7 +30,8 @@ export default function json5Stringify(o: unknown): string {
   }
   
   try {
-    return stringify(o, replacer, 2);
+    // json5 stringify 在有 space 的时候一定加 comma dangle 但没有去掉的参数 and i really hate comma dangle..
+    return stringify(o, replacer, 2).replace(/,(\n\s*[}\]])/g, '$1');
   } catch (err) {
     return `[ERROR] ${(err as Error).message}`;
   }
