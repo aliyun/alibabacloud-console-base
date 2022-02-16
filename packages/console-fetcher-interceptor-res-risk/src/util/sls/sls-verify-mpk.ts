@@ -12,7 +12,7 @@ import {
 } from './_type';
 
 interface IProps extends Omit<IMpkRiskInfo, 'risk' | 'type'>, ISlsCommonProps {
-  verifyCode: string;
+  authCode: string;
   sendCodeRequestId: string;
   errorMessage?: string;
   errorCode?: string;

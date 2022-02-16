@@ -34,30 +34,33 @@ interface ISendCodeReturn { // 发送验证码的返回，需要我们在再次�
 interface IMpkProps {
   isMpk: boolean; // 是否是轻量级虚商
   accountId: string;
-  useOldSendVerify: boolean; // 轻量级虚商是否调用 /risk/sendVerifyMessage.json 发送验证码（降级情况）
+  mpkIsDowngrade: boolean; // 轻量级虚商是否调用 /risk/sendVerifyMessage.json 发送验证码（降级情况）
   useMpkSendCodeApi: boolean; // 轻量级虚商是否调用新接口 /identity/send 发送验证码
 }
 
 const getMpkSetting = (riskInfo: IMpkRiskInfo | IOldMainRiskInfo): IMpkProps => {
+  const {
+    mpkIsDowngrade
+  } = riskInfo;
+
   if (riskInfo.risk === ERisk.MPK) {
     const {
-      isMpk,
-      useOldSendVerify
+      isMpk
     } = riskInfo;
 
     return {
       isMpk,
-      useOldSendVerify,
+      mpkIsDowngrade,
       accountId: riskInfo.accountId,
-      useMpkSendCodeApi: isMpk && !useOldSendVerify
+      useMpkSendCodeApi: isMpk && !mpkIsDowngrade
     };
   }
 
   // 非轻量级虚商的旧版主账号风控，一定调用 /risk/sendVerifyMessage.json 发送验证码
   return {
+    mpkIsDowngrade,
     isMpk: false,
     accountId: '',
-    useOldSendVerify: false,
     useMpkSendCodeApi: false
   };
 };
@@ -72,7 +75,7 @@ export default function Generate(): JSX.Element {
       riskInfo,
       riskConfig: {
         URL_SEND_CODE,
-        URL_MPK_SEND_CODE,
+        URL_SUB_OR_MPK_SEND_CODE,
         COOLING_AFTER_SENT,
         COOLING_AFTER_SEND_FAIL,
         REQUEST_METHOD
@@ -92,7 +95,7 @@ export default function Generate(): JSX.Element {
   const {
     isMpk,
     accountId,
-    useOldSendVerify,
+    mpkIsDowngrade,
     useMpkSendCodeApi
   } = getMpkSetting(riskInfo);
   
@@ -103,7 +106,7 @@ export default function Generate(): JSX.Element {
   const mpkSlsParams = {
     ...codeAndVerifyParams,
     isMpk,
-    useOldSendVerify
+    mpkIsDowngrade
   };
   const handleClick = async (): Promise<void> => {
     lock();
@@ -122,7 +125,7 @@ export default function Generate(): JSX.Element {
       // 这里用当前的 fetcher
       await request<ISendCodeReturn>({
         method: REQUEST_METHOD,
-        url: useMpkSendCodeApi ? URL_MPK_SEND_CODE : URL_SEND_CODE, // 如果是新版的虚商（isMpk），并且不走降级方案，使用新的发送验证码的接口
+        url: useMpkSendCodeApi ? URL_SUB_OR_MPK_SEND_CODE : URL_SEND_CODE, // 如果是新版的虚商（isMpk），并且不走降级方案，使用新的发送验证码的接口
         body: requestBody,
         ...requestHeader
       }).then(data => {
@@ -141,6 +144,7 @@ export default function Generate(): JSX.Element {
         } else {
           slsOldMainRiskSendCode({
             ...codeAndVerifyParams,
+            mpkIsDowngrade,
             slsResultType: ESlsResultType.SUCCESS,
             sendCodeRequestId: requestId
           });
@@ -165,6 +169,7 @@ export default function Generate(): JSX.Element {
         slsOldMainRiskSendCode({
           ...codeAndVerifyParams,
           errorMessage,
+          mpkIsDowngrade,
           slsResultType: ESlsResultType.FAIL
         });
       }

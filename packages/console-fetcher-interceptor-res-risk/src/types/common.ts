@@ -27,8 +27,8 @@ export interface INewSubRiskValidators {
 }
 
 export interface INewMainRiskExtend {
-  isMpk: boolean; // 是否是虚商
-  useOldVersion: boolean; // 对于虚商类型的账号，是否使用 /risk/sendVerifyMessage.json 来发送验证码（降级情况）
+  isMpk: string; // 是否是虚商
+  useOldVersion: string; // 对于虚商类型的账号，是否使用 /risk/sendVerifyMessage.json 来发送验证码（降级情况）
 }
 
 export interface IFetcherInterceptorConfig {
@@ -58,16 +58,16 @@ export interface IFetcherInterceptorConfig {
   URL_SEND_CODE?: string; // 必须设置，发送验证码接口地址（默认的好像就是这个地址）
   URL_SETTINGS?: string; // 设置用户风控验证方式地址
   // 子账号 MFA 核身相关接口
-  URL_GET_MFA_INFO_TO_BIND?: string; // 获取绑定 MFA 所需信息的接口
+  URL_VERIFY?: string; // 验证子账号/新版轻量级虚商风控 code 的接口
   URL_MFA_BIND?: string; // 绑定 MFA 设备的接口
   URL_GET_MFA_INFO_TO_AUTH?: string; // 获取验证 MFA 所需信息的接口
-  URL_MFA_AUTH?: string; // 验证 MFA 设备的接口
+  URL_GET_MFA_INFO_TO_BIND?: string; // 获取绑定 MFA 所需信息的接口
   URL_SKIP_BIND_MFA?: string; // 灰度期间，允许用户跳过绑定 MFA
-  URL_MPK_SEND_CODE?: string;
+  URL_SUB_OR_MPK_SEND_CODE?: string; // 新版子账号/新版轻量级虚商风控发送手机/邮箱验证码的接口
   // 发送验证码后的冷却时间
   COOLING_AFTER_SENT?: number; // 发送验证码成功后的冷却时间（秒）
   COOLING_AFTER_SEND_FAIL?: number; // 发送验证码失败后的冷却时间（秒）
-  U2F_TIMEOUT?: number; // U2F 设备的超时时间
+  U2F_TIMEOUT?: number; // U2F 设备的超时时间（毫秒）
   // 其他
   REQUEST_METHOD?: 'POST' | 'GET';
 }
@@ -81,6 +81,7 @@ export interface IOldMainRiskInfo {
   verifyType: string; // 原始的 verifyType，通过 IRiskConfig.DATA_PATH_VERIFY_TYPE 从错误返回的 data 中获取
   detail: string;
   codeType: string;
+  mpkIsDowngrade: boolean;
 }
 
 /**
@@ -89,8 +90,8 @@ export interface IOldMainRiskInfo {
 export interface IMpkRiskInfo extends Omit<IOldMainRiskInfo, 'risk'> {
   risk: ERisk.MPK;
   isMpk: boolean;
-  accountId: string; // 用户 ID，轻量级虚商场景下调用 /identity/send 发送验证码会用到
-  useOldSendVerify: boolean;
+  accountId: string;
+  mpkIsDowngrade: boolean; // 轻量级虚商是否降级
 }
 
 /**

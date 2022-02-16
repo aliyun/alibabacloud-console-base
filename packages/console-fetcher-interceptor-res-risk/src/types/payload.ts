@@ -63,6 +63,7 @@ export interface IVerifyU2FPayload extends IVerifySharedPayload {
 export type TVerifyMfaPayload = IVerifyVMfaPayload | IVerifyU2FPayload;
 
 export interface IVerifyMpkPayload extends IVerifySharedPayload {
+  AuthCode: string; // 6位数字验证码
   IdType: EAccountType;
   RiskRequestId: string;
 }

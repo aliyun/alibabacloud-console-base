@@ -129,16 +129,16 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   URL_SEND_CODE: '/risk/sendVerifyMessage.json',
   URL_SETTINGS: '//account.console.aliyun.com/#/secure',
   // 新版子账号风控 URL
+  URL_VERIFY: '//identity.aliyun.com/identity/verify',
   URL_MFA_BIND: '//identity.aliyun.com/identity/bindMFA',
-  URL_MFA_AUTH: '//identity.aliyun.com/identity/verify',
   URL_GET_MFA_INFO_TO_BIND: '//identity.aliyun.com/identity/getMfaInfoToBind',
   URL_GET_MFA_INFO_TO_AUTH: '//identity.aliyun.com/identity/getMfaInfoToAuth',
   URL_SKIP_BIND_MFA: '//identity.aliyun.com/identity/skip',
-  URL_MPK_SEND_CODE: '//identity.aliyun.com/identity/send',
+  URL_SUB_OR_MPK_SEND_CODE: '//identity.aliyun.com/identity/send',
   // 旧版主账号风控冷却/超时时间设置 (单位：秒)
   COOLING_AFTER_SENT: 60,
   COOLING_AFTER_SEND_FAIL: 10,
-  // U2F 超时时间（单位：浩渺）
+  // U2F 超时时间（单位：毫秒）
   U2F_TIMEOUT: 180000,
   // 其他
   REQUEST_METHOD: 'POST'

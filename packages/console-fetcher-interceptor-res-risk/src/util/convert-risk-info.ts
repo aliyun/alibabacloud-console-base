@@ -15,7 +15,23 @@ import {
   ERisk
 } from '../const';
 
-import convertVerifyType from './convert-veriy-type';
+import convertVerifyType from './convert-verify-type';
+
+const getIsMpk = (isMpk: string | undefined): boolean => {
+  if (!isMpk) {
+    return false; // 兜底值是非 MPK
+  }
+
+  return isMpk === 'true';
+};
+
+const getMpkIsDowngrade = (useOldVersion: string | undefined): boolean => {
+  if (!useOldVersion) {
+    return true; // 兜底值是走降级链路
+  }
+
+  return useOldVersion === 'true';
+};
 
 export default function convertRiskInfo(responseData: unknown, riskConfig: IFetcherInterceptorConfig, fetcherConfig: FetcherConfig): TRiskInfo {
   // 从 fetcherConfig 中读到的风控版本控制参数
@@ -33,22 +49,34 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
   const newMainVerifyDetail = _get(responseData, riskConfig.DATA_PATH_NEW_VERIFY_DETAIL!) as string; // 新版主账号风控的 verifyDetail
   const verifyUrl = _get(responseData, riskConfig.DATA_PATH_VERIFY_URL!); // 新版主账号风控的 verifyUrl
   // 新版风控中轻量级虚商的判断
-  const extendIsMpk = mpkExtend?.isMpk ?? false; // 识别是否是轻量级虚商
-  const extendUseOldVersion = mpkExtend?.useOldVersion ?? true; // 识别在虚商场景下，是否降级走老版本链路，调用 /risk/sendVerifyMessage.json 发送验证码
-  const mpkUseIdentifyService = extendIsMpk && !extendUseOldVersion;
+  const isMpk = getIsMpk(mpkExtend?.isMpk); // 识别是否是轻量级虚商
+  const mpkIsDowngrade = getMpkIsDowngrade(mpkExtend?.useOldVersion); // 识别在虚商场景下，是否降级走老链路
+  const mpkUseIdentityService = isMpk && !mpkIsDowngrade;
 
-  if (riskVersion === '2.0') { // 走新版链路的判断标志
-    // 轻量级虚商风控
-    if (mpkUseIdentifyService) {
+  if (riskVersion === '2.0') { // 新版链路
+    if (isMpk) {
+      // 轻量级虚商的新链路
+      if (mpkUseIdentityService) {
+        return {
+          isMpk,
+          accountId,
+          mpkIsDowngrade,
+          risk: ERisk.MPK,
+          type: convertVerifyType(newMainVerifyType, riskConfig),
+          detail: newMainVerifyDetail,
+          codeType: newCodeType,
+          verifyType: newMainVerifyType
+        };
+      }
+      
+      // 轻量级虚商的降级链路
       return {
-        accountId,
-        risk: ERisk.MPK,
-        isMpk: extendIsMpk,
+        risk: ERisk.OLD_MAIN,
+        verifyType: newMainVerifyType,
         type: convertVerifyType(newMainVerifyType, riskConfig),
         detail: newMainVerifyDetail,
         codeType: newCodeType,
-        verifyType: newMainVerifyType,
-        useOldSendVerify: extendUseOldVersion
+        mpkIsDowngrade: true
       };
     }
 
@@ -85,12 +113,13 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
     };
   }
 
-  // 旧版主账号风控，以及降级到旧版本的轻量级虚商
+  // 旧版主账号风控
   return {
     risk: ERisk.OLD_MAIN,
     verifyType: oldMainRiskType0,
     type: convertVerifyType(oldMainRiskType0, riskConfig),
     detail: oldMainRiskDetail,
-    codeType: oldMainCodeType
+    codeType: oldMainCodeType,
+    mpkIsDowngrade: false
   };
 }

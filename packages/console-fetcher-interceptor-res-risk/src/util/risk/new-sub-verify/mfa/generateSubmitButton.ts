@@ -51,7 +51,7 @@ export default function generateSubmitButtonFn({
 }: IProps) {
   return (type: ESubmitType, primaryButtonDisabled: boolean): DialogButtonProps<unknown, INewSubAccountRisk> => {
     const isAuth = type === ESubmitType.AUTH;
-    const url = isAuth ? riskConfig.URL_MFA_AUTH : riskConfig.URL_MFA_BIND;
+    const url = isAuth ? riskConfig.URL_VERIFY : riskConfig.URL_MFA_BIND;
 
     // 在绑定 / 验证 U2F 设备的场景，如果重新请求被风控的接口失败，顶部提示条要有重试的按钮来重新获取 U2F 安全密钥
     const getDataForAuthAfterBindFail = async (payload?: TBindMfaPayload | TVerifyMfaPayload): Promise<IDataForAuthAfterBindFail> => {

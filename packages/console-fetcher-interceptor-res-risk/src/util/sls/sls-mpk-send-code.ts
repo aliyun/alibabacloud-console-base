@@ -12,7 +12,7 @@ interface IProps extends ISlsCommonProps {
   isMpk: boolean;
   codeType: string; // 风控类型
   verifyType: string; // 验证类型
-  useOldSendVerify: boolean;
+  mpkIsDowngrade: boolean;
   sendCodeRequestId?: string;
 }
 

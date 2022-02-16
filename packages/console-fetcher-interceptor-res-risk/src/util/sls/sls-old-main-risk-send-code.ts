@@ -9,8 +9,9 @@ import {
 } from './_type';
 
 interface IProps extends ISlsCommonProps {
-  verifyType: string;
   codeType: string;
+  verifyType: string;
+  mpkIsDowngrade: boolean;
   sendCodeRequestId?: string;
 }
 

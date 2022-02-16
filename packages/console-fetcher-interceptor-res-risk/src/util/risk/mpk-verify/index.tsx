@@ -74,16 +74,17 @@ export default function riskMpkVerify({
         code,
         requestId
       } = data;
-      const mpkRiskSlsParams = _pick(riskInfo, ['isMpk', 'accountId', 'useOldSendVerify']);
       const verifyMpkSlsParams = {
         ..._omit(riskInfo, ['type', 'risk']),
-        sendCodeRequestId: requestId,
-        verifyCode: code
+        authCode: code,
+        sendCodeRequestId: requestId
       };
+      const mpkRiskSlsParams = _pick(riskInfo, ['isMpk', 'accountId', 'mpkIsDowngrade']);
       const verifyMpkBody: IVerifyMpkPayload = {
-        TicketType: ticketType,
-        VerifyType: riskInfo.verifyType,
+        AuthCode: code,
         AccountId: riskInfo.accountId,
+        VerifyType: riskInfo.verifyType,
+        TicketType: ticketType,
         IdType: EAccountType.MAIN,
         RiskRequestId: requestId,
         Ext: JSON.stringify({
@@ -97,7 +98,7 @@ export default function riskMpkVerify({
         headers: {
           'Content-Type': 'application/json'
         },
-        url: riskConfig.URL_MFA_AUTH,
+        url: riskConfig.URL_VERIFY,
         body: {
           ...verifyMpkBody
         }
