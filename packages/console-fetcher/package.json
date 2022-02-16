@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher",
-  "version": "2.0.0-alpha.17",
+  "version": "2.0.0-alpha.18",
   "description": "控制台 fetcher",
   "license": "MIT",
   "sideEffects": false,
@@ -26,14 +26,14 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.30",
-    "@alicloud/fetcher-demo-helpers": "^1.1.79-alpha.3",
+    "@alicloud/fetcher-demo-helpers": "^1.1.79-alpha.4",
     "@types/react": "^17.0.28",
     "react": "^17.0.2",
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@alicloud/console-fetcher-basic": "^1.5.61-alpha.3",
-    "@alicloud/console-fetcher-interceptor-res-risk": "^2.0.0-alpha.16"
+    "@alicloud/console-fetcher-basic": "^1.5.61-alpha.4",
+    "@alicloud/console-fetcher-interceptor-res-risk": "^2.0.0-alpha.17"
   },
   "scripts": {
     "start": "breezr start-storybook",
