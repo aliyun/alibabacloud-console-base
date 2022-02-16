@@ -7,7 +7,7 @@ import {
 import {
   EMessageBroadcastByApp,
   EMessageBroadcastByConsoleBase
-} from '../const';
+} from '../enum';
 
 import {
   slsBroadcastByApp

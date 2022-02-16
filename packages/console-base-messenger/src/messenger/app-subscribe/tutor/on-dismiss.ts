@@ -1,9 +1,9 @@
 import {
+  EMessageBroadcastByConsoleBase
+} from '../../../enum';
+import {
   IPayloadTutorDismiss
 } from '../../../types';
-import {
-  EMessageBroadcastByConsoleBase
-} from '../../../const';
 import {
   subscribeByApp
 } from '../../../util';

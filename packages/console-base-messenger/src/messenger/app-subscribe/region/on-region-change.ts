@@ -1,9 +1,9 @@
 import {
+  EMessageBroadcastByConsoleBase
+} from '../../../enum';
+import {
   IPayloadRegionOnChange
 } from '../../../types';
-import {
-  EMessageBroadcastByConsoleBase
-} from '../../../const';
 import {
   subscribeByApp
 } from '../../../util';

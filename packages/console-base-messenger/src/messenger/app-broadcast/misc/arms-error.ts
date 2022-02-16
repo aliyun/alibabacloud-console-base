@@ -3,7 +3,7 @@ import {
 } from '../../../types';
 import {
   EMessageBroadcastByApp
-} from '../../../const';
+} from '../../../enum';
 import {
   broadcastByApp
 } from '../../../util';

@@ -1,6 +1,6 @@
 import {
   EMessageBroadcastByConsoleBase
-} from '../../const';
+} from '../../enum';
 import {
   broadcastByConsoleBase
 } from '../../util';

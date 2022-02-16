@@ -1,6 +1,6 @@
 import {
   EMessageBroadcastByConsoleBase
-} from '../../const';
+} from '../../enum';
 import {
   subscribeOnceByApp
 } from '../../util';

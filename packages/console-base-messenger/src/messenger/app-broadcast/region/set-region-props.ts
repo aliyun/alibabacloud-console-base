@@ -1,9 +1,9 @@
 import {
+  EMessageBroadcastByApp
+} from '../../../enum';
+import {
   IPayloadRegionProps
 } from '../../../types';
-import {
-  EMessageBroadcastByApp
-} from '../../../const';
 import {
   broadcastByApp
 } from '../../../util';

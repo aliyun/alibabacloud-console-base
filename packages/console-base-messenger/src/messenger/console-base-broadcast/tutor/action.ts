@@ -1,9 +1,9 @@
 import {
+  EMessageBroadcastByConsoleBase
+} from '../../../enum';
+import {
   IPayloadTutorClick
 } from '../../../types';
-import {
-  EMessageBroadcastByConsoleBase
-} from '../../../const';
 import {
   broadcastByConsoleBase
 } from '../../../util';

@@ -1,6 +1,6 @@
 import {
   EToolkitTypeShort
-} from '../../../const';
+} from '../../../enum';
 import {
   composeToolkitTypeWithId,
   broadcastByConsoleBase

@@ -5,7 +5,7 @@ import {
 
 import {
   EMessageBroadcastByConsoleBase
-} from '../const';
+} from '../enum';
 
 import {
   slsSubscribeByApp

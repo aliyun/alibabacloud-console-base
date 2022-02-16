@@ -26,7 +26,7 @@ export const forConsoleBase = {
 
 export {
   EToolkitIdSystem
-} from './const';
+} from './enum';
 
 export type {
   IPayloadRegion as MessengerPayloadRegion,

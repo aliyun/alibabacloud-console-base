@@ -3,11 +3,11 @@ import {
 } from '@alicloud/console-base-types-settings-toolkit';
 
 import {
+  EToolkitTypeShort
+} from '../../../enum';
+import {
   IPayloadPutTool
 } from '../../../types';
-import {
-  EToolkitTypeShort
-} from '../../../const';
 import {
   composeToolkitType,
   broadcastByApp

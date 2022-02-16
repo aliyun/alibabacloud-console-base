@@ -27,3 +27,12 @@ export interface IPayloadRegionProps {
   global?: boolean;
   noGroup?: boolean;
 }
+
+/**
+ * 应用主动触发地域的 OU 探测时，必需传地域的 id 和名称，可选传商品码
+ */
+export interface IPayloadRegionTriggerOuDetection {
+  regionId: string;
+  regionName: string;
+  commodityCode?: string;
+}

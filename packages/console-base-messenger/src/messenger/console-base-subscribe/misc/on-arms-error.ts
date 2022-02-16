@@ -1,9 +1,9 @@
 import {
+  EMessageBroadcastByApp
+} from '../../../enum';
+import {
   IPayloadArmsError
 } from '../../../types';
-import {
-  EMessageBroadcastByApp
-} from '../../../const';
 import {
   subscribeByConsoleBase
 } from '../../../util';

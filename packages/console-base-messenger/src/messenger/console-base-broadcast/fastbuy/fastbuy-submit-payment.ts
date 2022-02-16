@@ -1,9 +1,9 @@
 import {
+  EMessageBroadcastByConsoleBase
+} from '../../../enum';
+import {
   IPayloadFastbuy
 } from '../../../types';
-import {
-  EMessageBroadcastByConsoleBase
-} from '../../../const';
 import {
   broadcastByConsoleBase
 } from '../../../util';

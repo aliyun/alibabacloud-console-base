@@ -1,9 +1,9 @@
 import {
+  EMessageBroadcastByApp
+} from '../../../enum';
+import {
   IPayloadMicroBrowserPortalCreated
 } from '../../../types';
-import {
-  EMessageBroadcastByApp
-} from '../../../const';
 import {
   subscribePromiseByConsoleBase
 } from '../../../util';

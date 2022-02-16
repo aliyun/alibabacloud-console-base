@@ -4,7 +4,7 @@ import {
 
 import {
   EMessageBroadcastByConsoleBase
-} from '../const';
+} from '../enum';
 
 /**
  * ConsoleBase 发消息，仅限定 type，不需要记录日志

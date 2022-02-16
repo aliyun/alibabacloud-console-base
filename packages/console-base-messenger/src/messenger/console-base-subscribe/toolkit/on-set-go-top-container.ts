@@ -1,6 +1,6 @@
 import {
   EToolkitTypeShort
-} from '../../../const';
+} from '../../../enum';
 import {
   composeToolkitType,
   subscribeByConsoleBase
@@ -12,4 +12,3 @@ import {
 export default function onSetGoTopContainer(fn: (payload: string) => void): () => void {
   return subscribeByConsoleBase<string>(composeToolkitType(EToolkitTypeShort.SET_GO_TOP_CONTAINER), fn);
 }
-

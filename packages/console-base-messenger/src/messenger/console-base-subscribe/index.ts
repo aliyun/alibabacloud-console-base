@@ -21,6 +21,7 @@ export { default as onSetRegions } from './region/on-set-regions';
 export { default as onSetRegionGroups } from './region/on-set-region-groups';
 export { default as onSetRegionResourceCount } from './region/on-set-region-resource-count';
 export { default as onSetRegionOuCommodityCode } from './region/on-set-region-ou-commodity-code';
+export { default as onTriggerRegionOuDetection } from './region/on-trigger-region-ou-detection';
 
 // resource group
 export { default as onMergeResourceGroupProps } from './resource-group/on-merge-resource-group-props';

@@ -5,7 +5,7 @@ import {
 
 import {
   EMessageBroadcastByApp
-} from '../const';
+} from '../enum';
 
 /**
  * ConsoleBase 订阅消息，仅限定 type，不需要记录日志
