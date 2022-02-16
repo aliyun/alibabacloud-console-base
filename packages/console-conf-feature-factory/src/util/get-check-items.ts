@@ -1,16 +1,15 @@
 import _forEach from 'lodash/forEach';
 
-import CONF_LOCALE from '@alicloud/console-base-conf-locale';
-
 import {
   ICheckItem,
-  IFeatureCheckAttributes,
   IFeatureItem
 } from '../types';
 
 import convertCustomAttr from './convert-custom-attr';
+import buildCheckAttributes from './build-check-attributes';
 
-export default function getCheckItems(featureConf: IFeatureItem, attributes: IFeatureCheckAttributes): ICheckItem[] {
+export default function getCheckItems(featureConf: IFeatureItem, arg?: string | Record<string, string>, defaultCheckAttributes?: Record<string, string>): ICheckItem[] {
+  const attributes = buildCheckAttributes(arg, defaultCheckAttributes);
   const {
     attribute: {
       regions = [],
@@ -50,9 +49,6 @@ export default function getCheckItems(featureConf: IFeatureItem, attributes: IFe
         break;
     }
   });
-  
-  // 自动添加对 locale 的判断
-  pushItemByCustom(CONF_LOCALE.LOCALE, '$locale'); // 在 Viper 中约定的自定义属性为 $locale
   
   return checkItems;
 }

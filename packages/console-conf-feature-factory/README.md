@@ -113,7 +113,7 @@ const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, { // 关心 region
 interface IFnConfFeature<K = string> {
   (key: K): boolean;
   (key: K, region: string): boolean;
-  (key: K, attributes: IFeatureCheckAttributes): boolean;
+  (key: K, attributes: Record<string, string>): boolean;
 }
 ```
 
