@@ -10,7 +10,7 @@ import {
 import {
   EDialogMode,
   EDialogSize
-} from '../const';
+} from '../enum';
 
 export type TStringOrJSX = string | JSX.Element;
 

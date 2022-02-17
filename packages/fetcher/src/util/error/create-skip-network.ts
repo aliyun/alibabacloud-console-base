@@ -1,10 +1,10 @@
 import {
+  EErrorSpecial
+} from '../../enum';
+import {
   IFetcherConfig,
   IFetcherErrorSpecial
 } from '../../types';
-import {
-  EErrorSpecial
-} from '../../const';
 
 /**
  * 创建一个特殊的错误，它将被用于请求拦截器中，如果请求拦截器抛出此错误，则请求不会被执行，余下的拦截器将**都**不会被执行。

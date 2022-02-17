@@ -1,13 +1,13 @@
 import qs from 'qs';
 
 import {
+  EGlMode
+} from '../enum';
+import {
   TParams,
   TMethod,
   IWin
 } from '../types';
-import {
-  EGlMode
-} from '../const';
 
 /**
  * 承接 `window.goldlog.record(logKey, mode, params, method)`，不要直接依赖全局对象。

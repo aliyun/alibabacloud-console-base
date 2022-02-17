@@ -4,7 +4,7 @@ import {
 
 import {
   EMarkType
-} from '../const';
+} from '../enum';
 
 export interface IPropsMark extends HTMLAttributes<HTMLSpanElement> {
   align?: 'left' | 'center' | 'right';

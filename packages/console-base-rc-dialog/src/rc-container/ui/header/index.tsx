@@ -13,7 +13,7 @@ import {
 
 import {
   EDialogMode
-} from '../../../const';
+} from '../../../enum';
 import {
   useProps,
   useDialogTitle,

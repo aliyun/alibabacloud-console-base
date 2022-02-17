@@ -4,7 +4,7 @@ import {
 } from '../../types';
 import {
   EDialogLockState
-} from '../../const';
+} from '../../enum';
 
 /**
  * Dialog 的

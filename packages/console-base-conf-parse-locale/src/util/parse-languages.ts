@@ -1,5 +1,7 @@
 import {
-  ELanguage,
+  ELanguage
+} from '../enum';
+import {
   LANGUAGES_ALL
 } from '../const';
 

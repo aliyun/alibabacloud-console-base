@@ -10,12 +10,12 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
+  EDialogMode
+} from '../../enum';
+import {
   IDialogProps,
   TDialogData
 } from '../../types';
-import {
-  EDialogMode
-} from '../../const';
 
 import useModelContext from './_use-model-context';
 import useModelState from './_use-model-state';

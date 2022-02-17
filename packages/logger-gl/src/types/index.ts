@@ -1,6 +1,6 @@
 import {
   EGlMode
-} from '../const';
+} from '../enum';
 
 export type TMethod = 'GET' | 'POST';
 export type TParams = Record<string, unknown>;

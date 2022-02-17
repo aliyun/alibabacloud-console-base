@@ -11,7 +11,7 @@ import {
 
 import {
   EErrorSpecial
-} from '../const';
+} from '../enum';
 
 type TQuickMethodConfigExclusion = 'url' | 'method';
 

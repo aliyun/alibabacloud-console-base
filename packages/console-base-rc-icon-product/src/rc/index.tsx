@@ -12,7 +12,7 @@ import {
 } from '../types';
 import {
   EIconType
-} from '../const';
+} from '../enum';
 
 interface IPropsScI {
   code: string;

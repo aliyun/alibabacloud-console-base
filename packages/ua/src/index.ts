@@ -13,7 +13,7 @@ export {
 export {
   EOsType as OsType,
   EBrowserType as BrowserType
-} from './const';
+} from './enum';
 
 export type {
   Ua

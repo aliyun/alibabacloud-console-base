@@ -1,5 +1,7 @@
 import {
-  ETypeLine,
+  ETypeLine
+} from '../enum';
+import {
   REG_OL,
   REG_UL,
   REG_HR

@@ -1,6 +1,6 @@
 import {
   EMarkType
-} from '../const';
+} from '../enum';
 import intl from '../intl';
 
 export default function getLabel(type: EMarkType): string {

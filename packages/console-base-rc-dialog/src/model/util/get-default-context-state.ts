@@ -1,9 +1,9 @@
 import {
+  EDialogLockState
+} from '../../enum';
+import {
   IModelState
 } from '../types';
-import {
-  EDialogLockState
-} from '../../const';
 
 let idIncrementer = 0;
 

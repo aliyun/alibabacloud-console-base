@@ -3,12 +3,11 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
+  EDialogMode
+} from '../enum';
+import {
   IDialogProps
 } from '../types';
-
-import {
-  EDialogMode
-} from './enum';
 
 /**
  * 系统级 Dialog 共享的 props（不可覆盖），需要将这些 props 从类型中 omit 掉

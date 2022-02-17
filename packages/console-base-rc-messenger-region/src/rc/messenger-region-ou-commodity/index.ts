@@ -16,7 +16,11 @@ interface IProps {
 export default function MessengerRegionOuCommodity({
   commodityCode
 }: IProps): null {
-  useEffect(() => setRegionOuCommodityCode(commodityCode), [commodityCode]);
+  useEffect(() => {
+    setRegionOuCommodityCode(commodityCode);
+    
+    return () => setRegionOuCommodityCode(''); // 卸载置空
+  }, [commodityCode]);
   
   return null;
 }

@@ -13,7 +13,7 @@ import Button, {
 import {
   EDialogMode,
   EDialogLockState
-} from '../../../const';
+} from '../../../enum';
 import intl from '../../../intl';
 import {
   useStateLocked,

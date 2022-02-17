@@ -1,7 +1,7 @@
 export enum EDialogMode {
   NORMAL = 'normal',
   SLIDE = 'slide',
-  SLIDE_UP = 'slide_up',
+  SLIDE_UP = 'slide_up'
 }
 
 export enum EDialogSize {

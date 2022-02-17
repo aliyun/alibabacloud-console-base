@@ -1,11 +1,11 @@
 import {
+  EDialogMode
+} from '../enum';
+import {
   TDialogData,
   TStringOrJSX,
   IDialogProps
 } from '../types';
-import {
-  EDialogMode
-} from '../const';
 import {
   buildPropsForPromise
 } from '../util';

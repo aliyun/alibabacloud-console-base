@@ -2,7 +2,9 @@ import ONE_CONF from '@alicloud/console-one-config';
 
 import {
   ELanguage,
-  ELocale,
+  ELocale
+} from '../enum';
+import {
   LOCALE_MAP_BY_LANGUAGE
 } from '../const';
 

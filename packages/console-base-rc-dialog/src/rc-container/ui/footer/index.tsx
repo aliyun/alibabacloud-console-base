@@ -9,11 +9,11 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
+  EDialogMode
+} from '../../../enum';
+import {
   IDialogButtonProps
 } from '../../../types';
-import {
-  EDialogMode
-} from '../../../const';
 import {
   useProps,
   useDialogButtons

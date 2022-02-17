@@ -1,6 +1,6 @@
 import {
   EBrowserType
-} from '../const';
+} from '../enum';
 
 /**
  * Opera、Safari 会用 Version/xx 来表示浏览器的版本

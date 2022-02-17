@@ -1,11 +1,11 @@
 import ONE_CONF from '@alicloud/console-one-config';
 
 import {
+  EEnv
+} from '../enum';
+import {
   IWin
 } from '../types';
-import {
-  EEnv
-} from '../const';
 
 /**
  * 获取当前运行的环境（线上 → 预发 → 日常 → 本地开发）

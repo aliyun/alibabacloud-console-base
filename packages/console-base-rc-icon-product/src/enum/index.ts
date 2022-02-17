@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export enum EIconType {
   _ = 'e600', // 兜底阿里云图标【-】
   acms = 'e636', // 应用配置管理

@@ -1,7 +1,7 @@
 import {
   ELanguage,
   ELocale
-} from './enum';
+} from '../enum';
 
 export const COOKIE_KEY = 'aliyun_lang';
 

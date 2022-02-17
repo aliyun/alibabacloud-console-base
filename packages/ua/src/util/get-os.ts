@@ -1,6 +1,6 @@
 import {
   EOsType
-} from '../const';
+} from '../enum';
 
 // Windows 的标识一般是「Windows NT x.y」，这里把 x.y 映射成耳熟能详的 Windows 版本
 const WINDOWS_NT_TO_VERSION: Record<string, string> = {

@@ -2,11 +2,11 @@
 import React from 'react';
 
 import {
+  ETypeLine
+} from '../../enum';
+import {
   IPropsLines
 } from '../../types';
-import {
-  ETypeLine
-} from '../../const';
 import makeHtmlProps from '../../util/make-html-props';
 
 export default function Lines({

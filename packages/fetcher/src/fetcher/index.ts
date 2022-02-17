@@ -1,4 +1,7 @@
 import {
+  EErrorSpecial
+} from '../enum';
+import {
   TFnVoid,
   IFetcherConfig,
   IFetcherResponse,
@@ -10,9 +13,6 @@ import {
   TArgsForInterceptResponse,
   IFetcherErrorSpecial
 } from '../types';
-import {
-  EErrorSpecial
-} from '../const';
 import fetchX from '../util/fetch-x';
 import mergeConfig from '../util/merge-config';
 import convertError from '../util/error/convert';
@@ -123,14 +123,17 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
     const unsorted: IQueueItem<IFnInterceptRequest<C>>[] = [...this._interceptorQueueForRequest];
     
     if (fetcherConfig.additionalInterceptorsForRequest) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       fetcherConfig.additionalInterceptorsForRequest.forEach(v => unsorted.push(parseInterceptorQueueItemForRequest<C>(v as TArgsForInterceptRequest<C>)));
     }
     
     return [
       requestInterceptorFirst as unknown as IFnInterceptRequest<C>,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       ...filterAndSort<IFnInterceptRequest<C>>(unsorted).map(v => v.fulfilledFn),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       requestInterceptorLast as unknown as IFnInterceptRequest<C>
     ];
@@ -143,6 +146,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
       fetcherConfig.additionalInterceptorsForResponse.forEach(v => unsorted.push(parseInterceptorQueueItemForResponse<C>(v as TArgsForInterceptResponse<C>)));
     }
     
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return filterAndSort<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>(unsorted).map(v => [v.fulfilledFn, v.rejectedFn]);
   }
@@ -157,6 +161,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
       promise = promise.then((configLastMerged: C) => { // 上一次 merge 完的结果
         // 利用前置 Promise，不管 fn 返回是否 Promise 都可以在一个运行空间获取到 configLastMerged 和 configToMerge
         // configToMerge 是 fn 计算后得到的结果，可能为空；也可能是 Promise
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return Promise.resolve().then(() => fn(configLastMerged, this._handleRequest)).then((configToMerge: Partial<C>) => mergeConfig(configLastMerged, configToMerge));
       });

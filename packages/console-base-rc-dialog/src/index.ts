@@ -2,11 +2,8 @@ export { default } from './rc-container';
 
 export {
   EDialogMode as DialogMode,
-  EDialogSize as DialogSize,
-  // TODO 删除以下
-  EDialogMode,
-  EDialogSize
-} from './const';
+  EDialogSize as DialogSize
+} from './enum';
 
 export * from './promised';
 

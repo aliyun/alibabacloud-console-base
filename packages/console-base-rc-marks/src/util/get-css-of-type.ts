@@ -14,7 +14,7 @@ import {
 
 import {
   EMarkType
-} from '../const';
+} from '../enum';
 
 const CSS_NEW = css`
   letter-spacing: 2px;
