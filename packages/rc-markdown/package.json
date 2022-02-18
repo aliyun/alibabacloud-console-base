@@ -30,8 +30,10 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.53",
     "@alicloud/demo-rc-elements": "^1.5.1",
     "@types/react": "^17.0.39",
+    "@types/styled-components": "^5.1.23",
     "micromark-extension-math": "^2.0.2",
     "react": "^17.0.2",
+    "styled-components": "^5.3.3",
     "typescript": "^4.5.5"
   },
   "peerDependencies": {
