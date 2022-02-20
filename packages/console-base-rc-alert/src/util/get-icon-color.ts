@@ -10,22 +10,22 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  EAlertTheme
-} from '../enum';
+  AlertTheme
+} from '../model';
 
-export default function getIconColor(theme: EAlertTheme): FlattenSimpleInterpolation | null {
+export default function getIconColor(theme: AlertTheme): FlattenSimpleInterpolation | null {
   switch (theme) {
-    case EAlertTheme.HELP:
+    case AlertTheme.HELP:
       return null;
-    case EAlertTheme.INFO:
+    case AlertTheme.INFO:
       return mixinTextInfo;
-    case EAlertTheme.SUCCESS:
+    case AlertTheme.SUCCESS:
       return mixinTextSuccess;
-    case EAlertTheme.WARNING:
+    case AlertTheme.WARNING:
       return mixinTextWarning;
-    case EAlertTheme.ERROR:
+    case AlertTheme.ERROR:
       return mixinTextError;
-    case EAlertTheme.LOADING:
+    case AlertTheme.LOADING:
       return null;
     default:
       return null;

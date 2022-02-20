@@ -12,29 +12,29 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  EAlertTheme
-} from '../enum';
+  AlertTheme
+} from '../model';
 
-export default function getCssBd(theme: EAlertTheme, toast?: boolean): FlattenSimpleInterpolation | null {
-  if (toast) {
-    switch (theme) {
-      case EAlertTheme.HELP:
-        return mixinBorderHelpLeft;
-      case EAlertTheme.INFO:
-        return mixinBorderInfoLeft;
-      case EAlertTheme.SUCCESS:
-        return mixinBorderSuccessLeft;
-      case EAlertTheme.WARNING:
-        return mixinBorderWarningLeft;
-      case EAlertTheme.ERROR:
-        return mixinBorderErrorLeft;
-      // case EAlertTheme.LOADING:
-      default:
-        return css`
-          border-left: 4px solid transparent;
-        `;
-    }
+export default function getCssBd(theme: AlertTheme, toast?: boolean): FlattenSimpleInterpolation | null {
+  if (!toast) {
+    return null;
   }
   
-  return null;
+  switch (theme) {
+    case AlertTheme.HELP:
+      return mixinBorderHelpLeft;
+    case AlertTheme.INFO:
+      return mixinBorderInfoLeft;
+    case AlertTheme.SUCCESS:
+      return mixinBorderSuccessLeft;
+    case AlertTheme.WARNING:
+      return mixinBorderWarningLeft;
+    case AlertTheme.ERROR:
+      return mixinBorderErrorLeft;
+    // case AlertTheme.LOADING:
+    default:
+      return css`
+        border-left: 4px solid transparent;
+      `;
+  }
 }

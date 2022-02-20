@@ -1,3 +1,7 @@
+export enum EAction {
+  SET_VISIBLE
+}
+
 export enum EAlertTheme {
   HELP = 'help',
   INFO = 'info',

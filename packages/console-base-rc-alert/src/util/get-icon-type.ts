@@ -3,22 +3,22 @@ import {
 } from '@alicloud/console-base-rc-icon';
 
 import {
-  EAlertTheme
-} from '../enum';
+  AlertTheme
+} from '../model';
 
-export default function getIconType(theme: EAlertTheme): IconType | null {
+export default function getIconType(theme: AlertTheme): IconType | null {
   switch (theme) {
-    case EAlertTheme.HELP:
+    case AlertTheme.HELP:
       return 'help-circle';
-    case EAlertTheme.INFO:
+    case AlertTheme.INFO:
       return 'info-circle';
-    case EAlertTheme.SUCCESS:
+    case AlertTheme.SUCCESS:
       return 'success-circle';
-    case EAlertTheme.WARNING:
+    case AlertTheme.WARNING:
       return 'alert-circle';
-    case EAlertTheme.ERROR:
+    case AlertTheme.ERROR:
       return 'error-circle';
-    case EAlertTheme.LOADING:
+    case AlertTheme.LOADING:
       return 'loading';
     default:
       return null;

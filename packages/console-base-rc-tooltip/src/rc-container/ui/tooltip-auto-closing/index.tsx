@@ -9,7 +9,7 @@ import {
 
 const ScTooltipAutoClosing = styled.div`
   opacity: 0.66;
-  margin-top: 8px;
+  margin-top: 4px;
   font-size: 0.85em;
 `;
 

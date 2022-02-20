@@ -4,26 +4,28 @@ import styled from 'styled-components';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  EAlertTheme
-} from '../../../enum';
-import {
   getIconColor,
   getIconType
-} from '../../../util';
+} from '../../util';
+import {
+  AlertTheme,
+  useProps
+} from '../../model';
 
-interface IProps {
-  theme: EAlertTheme;
+interface IScProps {
+  theme: AlertTheme;
 }
 
-const ScAlertIcon = styled(Icon)<IProps>`
+const ScAlertIcon = styled(Icon)<IScProps>`
   margin-right: 8px;
   font-size: 14px;
   ${props => getIconColor(props.theme)}
 `;
 
-export default function AlertIcon({
-  theme
-}: IProps): JSX.Element | null {
+export default function AlertIcon(): JSX.Element | null {
+  const [{
+    theme
+  }] = useProps();
   const iconType = getIconType(theme);
   
   return iconType ? <ScAlertIcon theme={theme} type={iconType} /> : null;

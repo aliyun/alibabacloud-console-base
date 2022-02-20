@@ -12,26 +12,26 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  EAlertTheme
-} from '../enum';
+  AlertTheme
+} from '../model';
 
-export default function getCssBg(theme: EAlertTheme, toast?: boolean): FlattenSimpleInterpolation | null {
+export default function getCssBg(theme: AlertTheme, toast?: boolean): FlattenSimpleInterpolation | null {
   if (toast) {
     return mixinBgPrimary;
   }
   
   switch (theme) {
-    case EAlertTheme.HELP:
+    case AlertTheme.HELP:
       return mixinBgHelpTintFade;
-    case EAlertTheme.INFO:
+    case AlertTheme.INFO:
       return mixinBgInfoTintFade;
-    case EAlertTheme.SUCCESS:
+    case AlertTheme.SUCCESS:
       return mixinBgSuccessTintFade;
-    case EAlertTheme.WARNING:
+    case AlertTheme.WARNING:
       return mixinBgWarningTintFade;
-    case EAlertTheme.ERROR:
+    case AlertTheme.ERROR:
       return mixinBgErrorTintFade;
-    case EAlertTheme.LOADING:
+    case AlertTheme.LOADING:
       return mixinBgPrimary;
     default:
       return null;

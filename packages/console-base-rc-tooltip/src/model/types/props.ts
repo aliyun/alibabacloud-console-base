@@ -35,7 +35,7 @@ export interface IModelProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
    */
   closable?: boolean;
   /**
-   * 在 visible 之后自动开始倒计时，单位秒，如果是 true 则用默认的 5s
+   * 在 visible 之后自动开始倒计时关闭，单位秒，如果是 true 则用默认的 5s
    */
   autoClose?: boolean | number;
 }

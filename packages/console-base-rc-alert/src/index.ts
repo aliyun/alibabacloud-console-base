@@ -1,9 +1,9 @@
-export { default } from './rc/alert';
+export { default } from './rc-container';
 
 export {
-  EAlertTheme as AlertTheme
-} from './enum';
+  AlertTheme
+} from './model';
 
 export type {
-  IProps as AlertProps
-} from './types';
+  ModelProps as AlertProps
+} from './model';
