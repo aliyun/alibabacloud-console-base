@@ -1,21 +1,14 @@
-import React, {
-  ReactNode
-} from 'react';
+import React from 'react';
 
 import {
-  IModelProps
+  IPropsProvider
 } from '../types';
 import Context from '../context';
-
-interface IProps {
-  props: IModelProps;
-  children: ReactNode;
-}
 
 export default function Provider({
   props,
   children
-}: IProps): JSX.Element {
+}: IPropsProvider): JSX.Element {
   return <Context.Provider value={{
     props
   }}>

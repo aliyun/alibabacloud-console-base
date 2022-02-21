@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+  Ref,
+  forwardRef
+} from 'react';
 
 import Model, {
   IModelProps
@@ -6,8 +9,10 @@ import Model, {
 
 import Ui from './ui';
 
-export default function WithProvider(props: IModelProps): JSX.Element {
+function WithProvider(props: IModelProps, ref: Ref<HTMLDivElement>): JSX.Element {
   return <Model props={props}>
-    <Ui />
+    <Ui ref={ref} />
   </Model>;
 }
+
+export default forwardRef(WithProvider);

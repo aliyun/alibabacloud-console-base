@@ -1,7 +1,5 @@
 import {
-  IModelProps
+  IPropsProvider
 } from './props';
 
-export interface IModelValue {
-  props: IModelProps;
-}
+export interface IModelValue extends Omit<IPropsProvider, 'children'> {}

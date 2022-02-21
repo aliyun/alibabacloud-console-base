@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+  Ref,
+  forwardRef
+} from 'react';
 import styled from 'styled-components';
 
 import {
@@ -70,7 +73,7 @@ const ScButton = styled(ButtonBase)<Partial<IModelProps>>`
   ${getMixinShadow}
 `;
 
-export default function Ui(): JSX.Element {
+function Ui(_props: unknown, ref: Ref<HTMLDivElement>): JSX.Element {
   const {
     label,
     iconLeft,
@@ -93,6 +96,7 @@ export default function Ui(): JSX.Element {
   const jsxLabel = label || children; // label prior to children
   
   return <ScButton {...{
+    ref,
     as: component,
     theme,
     size,
@@ -112,3 +116,5 @@ export default function Ui(): JSX.Element {
     </ScInner> : jsxLabel}
   </ScButton>;
 }
+
+export default forwardRef(Ui);

@@ -48,6 +48,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateProps, setStateProps] = useState<ButtonProps>({
     spm: ''
   });
+  const [stateDom, setStateDom] = useState<HTMLElement | null>(null);
   
   return <>
     <ThemeSwitcher />
@@ -59,6 +60,15 @@ export default function DemoDefault(): JSX.Element {
       componentPackageName: '@alicloud/console-base-rc-button',
       defaultProps: DEFAULT_PROPS,
       onChange: setStateProps
+    }} />
+    <H2>Ref Works Right</H2>
+    <Button {...{
+      ref: setStateDom,
+      label: 'ref shall work right',
+      theme: ButtonTheme.PRIMARY,
+      onClick() {
+        console.info(stateDom);
+      }
     }} />
     <H2>All Themes</H2>
     {Object.entries(ButtonTheme).map(([k, v]) => {

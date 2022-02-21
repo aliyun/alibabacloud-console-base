@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.2.83",
-    "@alicloud/console-base-rc-button": "^1.3.2",
+    "@alicloud/console-base-rc-button": "^1.3.3",
     "@alicloud/console-base-rc-icon": "^1.5.0",
     "@alicloud/console-base-theme": "^1.4.0",
     "@alicloud/copy-text": "^1.2.1",
