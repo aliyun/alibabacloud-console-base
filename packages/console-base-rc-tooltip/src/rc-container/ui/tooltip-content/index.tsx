@@ -12,10 +12,10 @@ const ScTooltipContent = styled.div`
 `;
 
 export default function TooltipContent(): JSX.Element {
-  const {
+  const [{
     content,
     width
-  } = useProps();
+  }] = useProps();
   
   const contentStyle: CSSProperties = width && width > 0 ? {
     width

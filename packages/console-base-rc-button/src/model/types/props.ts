@@ -18,9 +18,9 @@ import {
 } from './common';
 
 export interface IPropsDom extends ButtonHTMLAttributes<HTMLElement> {
-  [dataName: `data-${string}`]: unknown;
   href?: string;
   target?: HTMLAttributeAnchorTarget;
+  [dataName: `data-${string}`]: unknown;
 }
 
 export interface IPropsCustom {

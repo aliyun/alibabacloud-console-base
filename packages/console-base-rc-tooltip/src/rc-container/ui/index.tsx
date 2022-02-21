@@ -1,6 +1,4 @@
-import React, {
-  CSSProperties
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {
   CSSTransition
@@ -11,10 +9,6 @@ import {
   mixinShadowLDown
 } from '@alicloud/console-base-theme';
 
-import {
-  ACTION_OFFSET_FROM_RIGHT,
-  ACTION_SIZE
-} from '../../const';
 import {
   getTooltipCssColors,
   getTooltipCssMargin
@@ -56,26 +50,12 @@ const ScTooltip = styled.div<IPropsScTooltip>`
 `;
 
 export default function Tooltip(): JSX.Element {
-  const {
-    style,
+  const [{
     visible,
     placement,
     theme,
-    arrow,
-    closable,
-    onConfig,
-    className
-  } = useProps();
-  
-  const finalStyle: CSSProperties = {
-    ...style
-  };
-  
-  if (closable || onConfig) {
-    const n = closable && onConfig ? 2 : 1;
-    
-    finalStyle.paddingRight = ACTION_OFFSET_FROM_RIGHT * 2 + ACTION_SIZE * n;
-  }
+    arrow
+  }, propsDom] = useProps();
   
   return <CSSTransition {...{
     in: visible,
@@ -89,8 +69,7 @@ export default function Tooltip(): JSX.Element {
       arrow,
       placement,
       theme,
-      className,
-      style: finalStyle
+      ...propsDom
     }}>
       <TooltipTitle />
       <TooltipContent />

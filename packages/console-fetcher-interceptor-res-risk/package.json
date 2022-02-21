@@ -47,7 +47,7 @@
     "@alicloud/console-base-rc-dialog": "^1.4.5",
     "@alicloud/console-base-rc-flex": "^1.1.58",
     "@alicloud/console-base-rc-input": "^1.2.3",
-    "@alicloud/console-base-theme": "^1.3.91",
+    "@alicloud/console-base-theme": "^1.4.0",
     "@alicloud/fetcher": "^1.2.1",
     "lodash": "^4.17.21"
   },

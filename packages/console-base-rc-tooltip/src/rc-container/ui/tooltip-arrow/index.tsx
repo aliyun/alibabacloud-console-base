@@ -33,11 +33,11 @@ const ScTooltipArrow = styled.span<IScProps>`
 `;
 
 export default function TooltipArrow(): JSX.Element | null {
-  const {
+  const [{
     arrow,
     theme,
     placement
-  } = useProps();
+  }] = useProps();
   
   return arrow ? <ScTooltipArrow {...{
     theme,

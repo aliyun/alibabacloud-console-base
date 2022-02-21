@@ -53,6 +53,10 @@ export enum EMessageBroadcastByApp {
   TUTOR_OPEN = 'app_2_console_base:tutor/open',
   TUTOR_CLOSE = 'app_2_console_base:tutor/close',
   /* ********************************************
+   * 微偏好
+   ******************************************* */
+  MICRO_PREF_TOGGLE = 'app_2_console_base:micro_pref/toggle',
+  /* ********************************************
    * 微浏览器传送门
    ******************************************* */
   MICRO_BROWSER_PORTAL_CREATED = 'app_2_console_base:micro_browser_portal/created',

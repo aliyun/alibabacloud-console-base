@@ -44,6 +44,9 @@ export interface IPropsTheDrop {
    * header 上下 padding
    */
   footerPadding?: TPadding;
+  /**
+   * 下拉框放哪里，默认放在组件下，当 z-index 无法逾越时，可以放在 body 下
+   */
   dropContainer?: 'inside' | 'body';
 }
 

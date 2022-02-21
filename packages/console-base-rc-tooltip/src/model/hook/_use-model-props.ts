@@ -1,29 +1,50 @@
 import {
+  CSSProperties,
   useMemo
 } from 'react';
 
+import {
+  RequiredSelected
+} from '@alicloud/typescript-missing-helpers';
+
+import {
+  ACTION_OFFSET_FROM_RIGHT,
+  ACTION_SIZE
+} from '../../const';
 import {
   ETooltipPlacement,
   ETooltipTheme
 } from '../enum';
 import {
-  IModelPropsSafe
+  IPropsCustom,
+  IPropsDom
 } from '../types';
 
 import useModelContext from './_use-model-context';
 
-export default function useModelProps(): IModelPropsSafe {
+interface IModelPropsSafe extends RequiredSelected<Omit<IPropsCustom, 'autoClose'>, 'placement' | 'theme' | 'arrow'> {
+  autoClose: number;
+}
+
+export default function useModelProps(): [IModelPropsSafe, IPropsDom] {
   const {
     props
   } = useModelContext();
   
-  return useMemo((): IModelPropsSafe => {
+  return useMemo((): [IModelPropsSafe, IPropsDom] => {
     const {
+      title,
+      content,
       theme = ETooltipTheme.NORMAL,
       placement = ETooltipPlacement.TOP,
+      width,
       arrow = true,
+      visible,
+      closable,
       autoClose = 0,
-      ...rest
+      onConfig,
+      onVisibleChange,
+      ...propsDom
     } = props;
     let autoCloseSeconds = 0;
     
@@ -36,13 +57,31 @@ export default function useModelProps(): IModelPropsSafe {
         autoCloseSeconds = n; // 保证正整数
       }
     }
+  
+    const finalStyle: CSSProperties = {
+      ...propsDom.style
+    };
+  
+    if (closable || onConfig) {
+      const n = closable && onConfig ? 2 : 1;
+      
+      finalStyle.paddingRight = ACTION_OFFSET_FROM_RIGHT * 2 + ACTION_SIZE * n;
+    }
     
-    return {
+    propsDom.style = finalStyle;
+    
+    return [{
+      title,
+      content,
       theme,
       placement,
+      width,
       arrow,
-      ...rest,
-      autoClose: autoCloseSeconds
-    };
+      visible,
+      closable,
+      autoClose: autoCloseSeconds,
+      onConfig,
+      onVisibleChange
+    }, propsDom];
   }, [props]);
 }

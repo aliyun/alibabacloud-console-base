@@ -14,9 +14,9 @@ const ScTooltipAutoClosing = styled.div`
 `;
 
 export default function TooltipAutoClosing(): JSX.Element | null {
-  const {
+  const [{
     autoClose
-  } = useProps();
+  }] = useProps();
   const autoCloseTick = useAutoCloseTick();
   
   return autoClose ? <ScTooltipAutoClosing>{intl('phrase:auto_closing_in_{n}_seconds', {

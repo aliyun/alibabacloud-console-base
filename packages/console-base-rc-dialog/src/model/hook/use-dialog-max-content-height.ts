@@ -1,6 +1,6 @@
 import {
   EDialogMode
-} from '../..';
+} from '../../enum';
 
 import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';

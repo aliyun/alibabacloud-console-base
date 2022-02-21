@@ -12,9 +12,9 @@ const ScTooltipTitle = styled.header`
 `;
 
 export default function TooltipTitle(): JSX.Element | null {
-  const {
+  const [{
     title
-  } = useProps();
+  }] = useProps();
   
   return title ? <ScTooltipTitle>{title}</ScTooltipTitle> : null;
 }

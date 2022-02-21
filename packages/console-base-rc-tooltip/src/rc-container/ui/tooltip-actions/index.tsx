@@ -21,10 +21,10 @@ const ScTooltipActions = styled.div`
 `;
 
 export default function TooltipActions(): JSX.Element | null {
-  const {
+  const [{
     closable,
     onConfig
-  } = useProps();
+  }] = useProps();
   const handleClose = useHandleClose();
   const handleConfig = useHandleConfig();
   

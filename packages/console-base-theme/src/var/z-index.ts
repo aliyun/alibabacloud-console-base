@@ -1,6 +1,7 @@
 export default {
   TOP_NAV: 999, // 全局吊顶
   TOOLKIT: 99, // 全局工具
+  MICRO_BROWSER: 1200, // 微浏览器
   
   // dialog 主体
   DIALOG_SLIDE: 200, // 侧拉抽屉

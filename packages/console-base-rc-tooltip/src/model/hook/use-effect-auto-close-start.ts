@@ -10,9 +10,9 @@ import useDispatchSetAutoCloseTick from './use-dispatch-set-auto-close-tick';
  * 当 visible 变成 true，且有 autoClose 的时候开始倒计时
  */
 export default function useEffectAutoCloseStart(): void {
-  const {
+  const [{
     autoClose
-  } = useModelProps();
+  }] = useModelProps();
   const visible = useVisible();
   const dispatchSetAutoCloseTick = useDispatchSetAutoCloseTick();
   
