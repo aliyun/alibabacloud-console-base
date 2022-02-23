@@ -12,7 +12,6 @@ export interface IPropsCustom {
   content: string | JSX.Element;
   theme?: ETooltipTheme;
   placement?: ETooltipPlacement;
-  width?: number;
   arrow?: boolean;
   visible?: boolean;
   /**
@@ -23,6 +22,14 @@ export interface IPropsCustom {
    * 在 visible 之后自动开始倒计时关闭，单位秒，如果是 true 则用默认的 5s
    */
   autoClose?: boolean | number;
+  /**
+   * 当 autoCloseKey 发生变化时，可以重新倒计时
+   */
+  autoCloseKey?: string;
+  /**
+   * 是否展示自动关闭倒计时
+   */
+  autoCloseCounter?: boolean;
   /**
    * 将提供右上角 齿轮 按钮
    */

@@ -8,15 +8,12 @@ import React, {
 } from 'react';
 
 import CodeMirror, {
-  CodeMirrorProps,
   determineMimeType
 } from '@alicloud/rc-codemirror';
 
-interface IPropsInputJsonObject<T> extends Omit<CodeMirrorProps, 'conf' | 'value' | 'onChange'> {
-  value?: T;
-  arrayMode?: boolean; // 默认从传入的 value 算
-  onChange?(value: T): void;
-}
+import {
+  IPropsInputJsonObject
+} from '../../types';
 
 const mode = determineMimeType('json');
 
@@ -97,7 +94,3 @@ export default function InputJsonObject<T extends object>({
     onChange: handleChange
   }} />;
 }
-
-export type {
-  IPropsInputJsonObject as InputJsonObjectProps
-};

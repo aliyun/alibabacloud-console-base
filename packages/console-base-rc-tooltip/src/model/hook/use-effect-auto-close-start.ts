@@ -11,7 +11,8 @@ import useDispatchSetAutoCloseTick from './use-dispatch-set-auto-close-tick';
  */
 export default function useEffectAutoCloseStart(): void {
   const [{
-    autoClose
+    autoClose,
+    autoCloseKey // 用于重置
   }] = useModelProps();
   const visible = useVisible();
   const dispatchSetAutoCloseTick = useDispatchSetAutoCloseTick();
@@ -20,5 +21,5 @@ export default function useEffectAutoCloseStart(): void {
     if (visible && autoClose) {
       dispatchSetAutoCloseTick(autoClose);
     }
-  }, [visible, autoClose, dispatchSetAutoCloseTick]);
+  }, [visible, autoClose, autoCloseKey, dispatchSetAutoCloseTick]);
 }

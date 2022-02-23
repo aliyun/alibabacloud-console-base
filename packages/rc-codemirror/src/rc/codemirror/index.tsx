@@ -56,9 +56,7 @@ export default function CodeMirror({
     
     setStateDisplayValue(newValue);
     
-    if (onChange) {
-      onChange(convertValue(newValue, convertValueFromDisplay));
-    }
+    onChange?.(convertValue(newValue, convertValueFromDisplay));
   }, [convertValueFromDisplay, onChange]);
   
   useEffect(() => {

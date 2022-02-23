@@ -15,13 +15,7 @@ export default function useHandleMouseEnter(): (e: MouseEvent) => void {
   
   return useCallback((e: MouseEvent) => {
     dispatchSetHovered(true);
-    
-    if (onMouseEnter) {
-      onMouseEnter(e);
-    }
-  
-    if (onHoveredChange) {
-      onHoveredChange(true);
-    }
+    onMouseEnter?.(e);
+    onHoveredChange?.(true);
   }, [onHoveredChange, onMouseEnter, dispatchSetHovered]);
 }

@@ -13,9 +13,6 @@ export default function useHandleSetVisible(): (visible: boolean) => void {
   
   return useCallback((visible: boolean): void => {
     dispatchSetVisible(visible);
-    
-    if (onVisibleChange) {
-      onVisibleChange(visible);
-    }
+    onVisibleChange?.(visible);
   }, [onVisibleChange, dispatchSetVisible]);
 }

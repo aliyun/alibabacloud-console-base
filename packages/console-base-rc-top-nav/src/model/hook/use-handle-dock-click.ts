@@ -34,8 +34,6 @@ export default function useHandleDockClick(): (e: MouseEvent<HTMLElement>) => vo
       handleDockActiveChange(true);
     }
     
-    if (onClick) {
-      onClick(e);
-    }
+    onClick?.(e);
   }, [onClick, dockActive, dockActiveByHoverTimestamp, dispatchSetDockActiveByHoverTimestamp, handleDockActiveChange]);
 }

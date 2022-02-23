@@ -27,6 +27,7 @@ interface IRgba {
 interface IProps {
   rgbaMode?: boolean;
   value?: IRgba;
+  
   onChange?(value: IRgba, color: string): void;
 }
 
@@ -61,10 +62,7 @@ export default function InputColor({
     };
     
     setStateValue(newValue);
-    
-    if (onChange) {
-      onChange(newValue, computeColor(newValue));
-    }
+    onChange?.(newValue, computeColor(newValue));
   }, [onChange, computeColor, stateValue]);
   const finalValue: IRgba = value ?? stateValue;
   const finalColorString = computeColor(finalValue);
@@ -81,23 +79,27 @@ export default function InputColor({
     a: n
   }), [handleValueChange]);
   const handleCompleteChange = useCallback((completeColorString: string) => {
-    const {
-      red: r,
-      green: g,
-      blue: b,
-      alpha: a
-    } = parseToRgb(completeColorString) as unknown as { red: number; green: number; blue: number; alpha: number; }; // 它的定义有问题
-    const o: IRgba = {
-      r,
-      g,
-      b
-    };
-    
-    if (rgbaMode) {
-      o.a = a || 1;
+    try {
+      const {
+        red: r,
+        green: g,
+        blue: b,
+        alpha: a
+      } = parseToRgb(completeColorString) as unknown as { red: number; green: number; blue: number; alpha: number; }; // 它的定义有问题
+      const o: IRgba = {
+        r,
+        g,
+        b
+      };
+      
+      if (rgbaMode) {
+        o.a = a || 1;
+      }
+      
+      handleValueChange(o);
+    } catch (err) {
+      // ignore
     }
-    
-    handleValueChange(o);
   }, [handleValueChange, rgbaMode]);
   
   return <ScColor style={{

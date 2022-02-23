@@ -51,11 +51,9 @@ export default function useHandleTabClose(): (tab: IModelPropsTab) => void {
       nextActiveTab = activeTab;
     } // closeIndex > activeIndex 不需要调整
     
-    if (onTabClose) {
-      onTabClose(tab, update(tabs, {
-        $splice: [[closeIndex, 1]]
-      }), tabs);
-    }
+    onTabClose?.(tab, update(tabs, {
+      $splice: [[closeIndex, 1]]
+    }), tabs);
     
     if (nextActiveTab !== activeTab) {
       handleTabActivate(nextActiveTab);

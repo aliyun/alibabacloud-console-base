@@ -35,6 +35,9 @@ const ScTooltip = styled.div<IPropsScTooltip>`
   position: absolute;
   padding: 8px 16px;
   box-sizing: border-box;
+  width: max-content;
+  min-width: 120px;
+  max-width: 400px;
   font-size: 12px;
   transition: all ease-in-out 250ms;
   ${mixinShadowLDown}

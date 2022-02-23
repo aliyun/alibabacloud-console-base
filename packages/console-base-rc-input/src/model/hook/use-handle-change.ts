@@ -18,9 +18,6 @@ export default function useHandleChange(): (e: ChangeEvent<HTMLInputElement>) =>
     } = e.target;
     
     dispatchSetValue(value);
-    
-    if (onChange) {
-      onChange(value, e);
-    }
+    onChange?.(value, e);
   }, [onChange, dispatchSetValue]);
 }

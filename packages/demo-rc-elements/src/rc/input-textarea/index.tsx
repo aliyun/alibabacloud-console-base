@@ -1,5 +1,4 @@
 import React, {
-  TextareaHTMLAttributes,
   ChangeEvent,
   Ref,
   forwardRef,
@@ -8,25 +7,22 @@ import React, {
 import styled from 'styled-components';
 
 import {
+  IPropsInputTextarea
+} from '../../types';
+import {
   CSS_FORM_CONTROL_INPUT_TEXTAREA
-} from '../const';
+} from '../../const';
 
 const ScInputTextarea = styled.textarea`
   ${CSS_FORM_CONTROL_INPUT_TEXTAREA}
 `;
-
-interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
-  onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
-}
 
 function InputTextarea({
   onChange,
   ...props
 }: IPropsInputTextarea, ref: Ref<HTMLTextAreaElement>): JSX.Element {
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
-    if (onChange) {
-      onChange(e.target.value, e);
-    }
+    onChange?.(e.target.value, e);
   }, [onChange]);
   
   return <ScInputTextarea {...{

@@ -15,13 +15,7 @@ export default function useHandleFocusOut(): (e: FocusEvent<HTMLInputElement>) =
   
   return useCallback((e: FocusEvent<HTMLInputElement>) => {
     dispatchSetFocused(false);
-  
-    if (onBlur) {
-      onBlur(e);
-    }
-  
-    if (onFocusedChange) {
-      onFocusedChange(false);
-    }
+    onBlur?.(e);
+    onFocusedChange?.(false);
   }, [onBlur, onFocusedChange, dispatchSetFocused]);
 }

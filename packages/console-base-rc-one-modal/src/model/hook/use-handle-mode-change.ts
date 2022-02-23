@@ -17,9 +17,6 @@ export default function useHandleModeChange(): (mode: EModalMode) => void {
   
   return useCallback((mode: EModalMode) => {
     dispatchSetMode(mode);
-    
-    if (onModeChange) {
-      onModeChange(mode);
-    }
+    onModeChange?.(mode);
   }, [onModeChange, dispatchSetMode]);
 }

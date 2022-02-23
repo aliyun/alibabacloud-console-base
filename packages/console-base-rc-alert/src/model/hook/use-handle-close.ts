@@ -14,8 +14,6 @@ export default function useHandleClose(): () => void {
   return useCallback(() => {
     dispatchSetVisible(false);
     
-    if (onVisibleChange) {
-      onVisibleChange(false);
-    }
+    onVisibleChange?.(false);
   }, [dispatchSetVisible, onVisibleChange]);
 }

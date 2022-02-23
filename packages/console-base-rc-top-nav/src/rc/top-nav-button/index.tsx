@@ -61,17 +61,11 @@ export default function TopNavButton({
   const [stateHovered, setStateHovered] = useState<boolean>(false);
   const handleMouseEnter = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     setStateHovered(true);
-    
-    if (onMouseEnter) {
-      onMouseEnter(e);
-    }
+    onMouseEnter?.(e);
   }, [onMouseEnter]);
   const handleMouseLeave = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     setStateHovered(false);
-    
-    if (onMouseLeave) {
-      onMouseLeave(e);
-    }
+    onMouseLeave?.(e);
   }, [onMouseLeave]);
   const {
     items = [],

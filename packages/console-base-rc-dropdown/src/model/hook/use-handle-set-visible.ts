@@ -32,10 +32,7 @@ export default function useHandleSetVisible(): (payload: boolean) => void {
     const timer = window.setTimeout(() => {
       dispatchSetVisible(payload);
       dispatchToggleVisibleTimer(null);
-      
-      if (onVisibleChange) {
-        onVisibleChange(payload);
-      }
+      onVisibleChange?.(payload);
     }, 200);
     
     dispatchToggleVisibleTimer(timer);

@@ -1,5 +1,4 @@
 import React, {
-  InputHTMLAttributes,
   ChangeEvent,
   Ref,
   forwardRef,
@@ -8,20 +7,17 @@ import React, {
 import styled from 'styled-components';
 
 import {
+  IPropsInputNumber
+} from '../../types';
+import {
   CSS_FORM_CONTROL_INPUT_BASE
-} from '../const';
-
-interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'defaultValue' | 'onChange'> {
-  value?: number;
-  defaultValue?: number;
-  onChange?(value: number | undefined, e: ChangeEvent<HTMLInputElement>): void;
-}
+} from '../../const';
 
 const ScInputNumber = styled.input`
   ${CSS_FORM_CONTROL_INPUT_BASE}
 `;
 
-function number2string(n?: number): string | undefined {
+function number2string(n?: number | string): string | undefined {
   if (typeof n === 'undefined') {
     return undefined;
   }
@@ -42,9 +38,7 @@ function InputNumber({
   ...props
 }: IPropsInputNumber, ref: Ref<HTMLInputElement>): JSX.Element {
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(string2number(e.target.value), e);
-    }
+    onChange?.(string2number(e.target.value), e);
   }, [onChange]);
   
   return <ScInputNumber {...{

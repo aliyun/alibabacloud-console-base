@@ -18,9 +18,6 @@ export default function useHandleDockMouseLeave(): (e: MouseEvent<HTMLElement>) 
   
   return useCallback((e: MouseEvent<HTMLElement>): void => {
     dispatchSetDockHoverActiveTimer(null); // lifecycle 会清理未完成的 timeout
-    
-    if (onMouseLeave) {
-      onMouseLeave(e);
-    }
+    onMouseLeave?.(e);
   }, [onMouseLeave, dispatchSetDockHoverActiveTimer]);
 }

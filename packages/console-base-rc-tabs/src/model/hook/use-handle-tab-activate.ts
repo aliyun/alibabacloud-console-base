@@ -19,9 +19,6 @@ export default function useHandleTabActivate(): (tab: IModelPropsTab | null) => 
     const activeKey = tab ? tab.key : '';
     
     dispatchSetActiveTabKey(activeKey);
-    
-    if (onChange) {
-      onChange(activeKey);
-    }
+    onChange?.(activeKey);
   }, [dispatchSetActiveTabKey, onChange]);
 }

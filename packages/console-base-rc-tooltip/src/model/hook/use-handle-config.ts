@@ -12,10 +12,7 @@ export default function useHandleConfig(): () => void {
   const handleClose = useHandleClose();
   
   return useCallback((): void => {
-    if (onConfig) {
-      onConfig();
-    }
-    
+    onConfig?.();
     handleClose();
   }, [onConfig, handleClose]);
 }

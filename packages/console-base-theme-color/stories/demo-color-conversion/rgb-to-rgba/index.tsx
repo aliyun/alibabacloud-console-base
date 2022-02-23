@@ -95,4 +95,3 @@ export default function RgbToRgba(): JSX.Element {
     </ScColorMix>
   </>;
 }
-

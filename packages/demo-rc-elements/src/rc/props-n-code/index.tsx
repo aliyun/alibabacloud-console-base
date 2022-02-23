@@ -71,9 +71,7 @@ export default function My${componentName}(): JSX.Element {
   }, [componentName, componentPackageName, componentPropsName, processProps, stateProps]);
   
   useEffect(() => {
-    if (onChange) {
-      onChange(generateProps<P>(stateProps, processProps));
-    }
+    onChange?.(generateProps<P>(stateProps, processProps));
   }, [onChange, stateProps, processProps]);
   
   return <Flex>

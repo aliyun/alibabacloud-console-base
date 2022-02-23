@@ -17,10 +17,7 @@ export default function useHandleClear(): () => void {
   
   return useCallback((): void => {
     dispatchSetValue('');
-    
-    if (onChange) {
-      onChange('');
-    }
+    onChange?.('');
     
     if (domInput) {
       try {

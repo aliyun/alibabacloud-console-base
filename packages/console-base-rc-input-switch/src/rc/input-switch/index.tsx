@@ -86,10 +86,7 @@ export default function InputSwitch({
     const nextValue = !finalValue;
     
     setStateValue(nextValue);
-    
-    if (onChange) {
-      onChange(nextValue);
-    }
+    onChange?.(nextValue);
   }, [onChange, finalValue, setStateValue]);
   
   return <ScInputSwitch {...{

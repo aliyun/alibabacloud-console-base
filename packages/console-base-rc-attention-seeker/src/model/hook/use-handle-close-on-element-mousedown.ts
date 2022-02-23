@@ -10,8 +10,6 @@ export default function useHandleCloseOnElementMousedown(): () => void {
   } = useModelProps();
   
   return useCallback(() => {
-    if (onClose) {
-      onClose('element');
-    }
+    onClose?.('element');
   }, [onClose]);
 }

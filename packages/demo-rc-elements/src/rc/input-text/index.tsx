@@ -1,5 +1,4 @@
 import React, {
-  InputHTMLAttributes,
   ChangeEvent,
   Ref,
   forwardRef,
@@ -10,16 +9,14 @@ import styled, {
 } from 'styled-components';
 
 import {
+  IPropsInputText
+} from '../../types';
+import {
   CSS_FORM_CONTROL_INPUT_BASE
-} from '../const';
+} from '../../const';
 
 interface IScInput {
   block: 0 | 1;
-}
-
-interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
-  block?: boolean;
-  onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
 }
 
 const ScInputText = styled.input<IScInput>`
@@ -37,9 +34,7 @@ function InputText({
   ...props
 }: IPropsInputText, ref: Ref<HTMLInputElement>): JSX.Element {
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(e.target.value, e);
-    }
+    onChange?.(e.target.value, e);
   }, [onChange]);
   
   return <ScInputText {...{

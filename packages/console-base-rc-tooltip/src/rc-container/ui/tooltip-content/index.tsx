@@ -1,5 +1,4 @@
 import React, {
-  CSSProperties
 } from 'react';
 import styled from 'styled-components';
 
@@ -13,15 +12,8 @@ const ScTooltipContent = styled.div`
 
 export default function TooltipContent(): JSX.Element {
   const [{
-    content,
-    width
+    content
   }] = useProps();
   
-  const contentStyle: CSSProperties = width && width > 0 ? {
-    width
-  } : {
-    whiteSpace: 'nowrap'
-  };
-  
-  return <ScTooltipContent style={contentStyle}>{content}</ScTooltipContent>;
+  return <ScTooltipContent>{content}</ScTooltipContent>;
 }

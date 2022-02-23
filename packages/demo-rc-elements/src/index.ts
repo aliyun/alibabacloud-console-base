@@ -43,11 +43,10 @@ export type {
   IChoiceItem as ChoiceItem,
   TPropsCheckboxGroup as CheckboxGroupProps,
   TPropsRadioGroup as RadioGroupProps,
-  IPropsFlex100HBF as Flex100HBFProps
+  IPropsFlex100HBF as Flex100HBFProps,
+  IPropsInputText as InputTextProps,
+  IPropsInputTextarea as InputTextareaProps,
+  IPropsInputNumber as InputNumberProps,
+  IPropsInputSwitch as InputSwitchProps,
+  IPropsInputJsonObject as InputJsonObjectProps
 } from './types';
-export type {
-  InputSwitchProps
-} from './rc/input-switch';
-export type {
-  InputJsonObjectProps
-} from './rc/input-json-object';

@@ -15,13 +15,7 @@ export default function useHandleFocusIn(): (e: FocusEvent<HTMLInputElement>) =>
   
   return useCallback((e: FocusEvent<HTMLInputElement>) => {
     dispatchSetFocused(true);
-    
-    if (onFocus) {
-      onFocus(e);
-    }
-    
-    if (onFocusedChange) {
-      onFocusedChange(true);
-    }
+    onFocus?.(e);
+    onFocusedChange?.(true);
   }, [onFocus, onFocusedChange, dispatchSetFocused]);
 }

@@ -33,8 +33,6 @@ export default function useHandleDockMouseEnter(): (e: MouseEvent<HTMLElement>) 
       dispatchSetDockHoverActiveTimer(timer);
     }
     
-    if (onMouseEnter) {
-      onMouseEnter(e);
-    }
+    onMouseEnter?.(e);
   }, [dockActive, onMouseEnter, dispatchSetDockHoverActiveTimer, dispatchSetDockActiveByHoverTimestamp, handleDockActiveChange]);
 }

@@ -45,9 +45,6 @@ export default function useHandlePage(): (value: number | '+1' | '-1') => void {
     }
     
     dispatchSetPage(pageNew);
-    
-    if (onChange) {
-      onChange(pageNew);
-    }
+    onChange?.(pageNew);
   }, [page, pages, onChange, dispatchSetPage]);
 }

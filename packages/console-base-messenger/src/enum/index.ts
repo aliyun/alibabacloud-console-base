@@ -99,7 +99,11 @@ export enum EMessageBroadcastByConsoleBase {
    ******************************************* */
   TUTOR_STEP_CHANGE = 'console_base_2_app:tutor/step-change',
   TUTOR_ACTION = 'console_base_2_app:tutor/action',
-  TUTOR_DISMISS = 'console_base_2_app:tutor/dismiss'
+  TUTOR_DISMISS = 'console_base_2_app:tutor/dismiss',
+  /* ********************************************
+   * 微偏好
+   ******************************************* */
+  MICRO_PREF_UPDATED = 'console_base_2_app:micro_pref/updated'
 }
 
 export enum EToolkitTypeShort {

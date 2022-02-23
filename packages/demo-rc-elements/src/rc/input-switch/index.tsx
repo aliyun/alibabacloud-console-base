@@ -1,5 +1,6 @@
 import React, {
-  ButtonHTMLAttributes,
+  Ref,
+  forwardRef,
   useState,
   useCallback
 } from 'react';
@@ -8,12 +9,9 @@ import styled, {
   css
 } from 'styled-components';
 
-interface IPropsInputSwitch extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'defaultValue' | 'aria-checked' | 'role' | 'onClick' | 'onChange'> {
-  label?: string | JSX.Element;
-  value?: boolean;
-  defaultValue?: boolean;
-  onChange?(value: boolean): void;
-}
+import {
+  IPropsInputSwitch
+} from '../../types';
 
 const HEIGHT_SWITCH = 18;
 const WIDTH_SWITCH = HEIGHT_SWITCH * 2 - 4;
@@ -81,14 +79,14 @@ const ScInputSwitchLabel = styled.label`
   color: #777;
 `;
 
-export default function InputSwitch({
+function InputSwitch({
   value,
   defaultValue = false,
   label,
   disabled,
   onChange,
   ...props
-}: IPropsInputSwitch): JSX.Element {
+}: IPropsInputSwitch, ref: Ref<HTMLButtonElement>): JSX.Element {
   const [stateValue, setStateValue] = useState<boolean>(defaultValue);
   const finalValue = value ?? stateValue;
   
@@ -97,13 +95,12 @@ export default function InputSwitch({
     
     setStateValue(nextValue);
     
-    if (onChange) {
-      onChange(nextValue);
-    }
+    onChange?.(nextValue);
   }, [onChange, finalValue, setStateValue]);
   
   return <ScInputSwitch>
     <ScInputSwitchButton {...{
+      ref,
       ...props,
       disabled,
       role: 'switch',
@@ -114,7 +111,4 @@ export default function InputSwitch({
   </ScInputSwitch>;
 }
 
-export type {
-  IPropsInputSwitch as InputSwitchProps
-};
-
+export default forwardRef(InputSwitch);

@@ -21,10 +21,7 @@ export default function useDropdown(): IContextForContent {
   const dispatchToggleVisible = useDispatchSetVisible();
   const handleToggleVisible = useCallback((payload: boolean) => {
     dispatchToggleVisible(payload);
-  
-    if (onVisibleChange) {
-      onVisibleChange(payload);
-    }
+    onVisibleChange?.(payload);
   }, [onVisibleChange, dispatchToggleVisible]);
   const showDrop = useCallback(() => handleToggleVisible(true), [handleToggleVisible]);
   const hideDrop = useCallback(() => handleToggleVisible(false), [handleToggleVisible]);

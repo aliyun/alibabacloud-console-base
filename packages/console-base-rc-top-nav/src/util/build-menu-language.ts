@@ -18,7 +18,7 @@ export default function buildMenuLanguage(lang?: ModelPropsLanguage | null): Mod
   
   return {
     key: 'lang',
-    label: currentLang ? (currentLang.nameShort || currentLang.name) : {
+    label: currentLang ? currentLang.nameShort || currentLang.name : {
       icon: 'lang'
     },
     dropdown: {
@@ -34,9 +34,7 @@ export default function buildMenuLanguage(lang?: ModelPropsLanguage | null): Mod
           key: id,
           label: name,
           onClick(): void {
-            if (onChange) {
-              onChange(id);
-            }
+            onChange?.(id);
           }
         });
         

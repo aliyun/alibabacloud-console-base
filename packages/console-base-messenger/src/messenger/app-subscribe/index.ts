@@ -20,3 +20,4 @@ export { default as onFastbuyOrderFinish } from './fastbuy/on-fastbuy-order-fini
 export { default as onTutorStepChange } from './tutor/on-step-change';
 export { default as onTutorAction } from './tutor/on-action';
 export { default as onTutorDismiss } from './tutor/on-dismiss';
+export { default as onMicroPrefUpdated } from './micro-pref/on-micro-pref-updated';

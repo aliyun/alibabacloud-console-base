@@ -15,13 +15,7 @@ export default function useHandleMouseLeave(): (e: MouseEvent) => void {
   
   return useCallback((e: MouseEvent) => {
     dispatchSetHovered(false);
-  
-    if (onMouseLeave) {
-      onMouseLeave(e);
-    }
-  
-    if (onHoveredChange) {
-      onHoveredChange(false);
-    }
+    onMouseLeave?.(e);
+    onHoveredChange?.(false);
   }, [onMouseLeave, onHoveredChange, dispatchSetHovered]);
 }

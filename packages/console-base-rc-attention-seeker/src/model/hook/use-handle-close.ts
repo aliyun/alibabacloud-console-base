@@ -14,8 +14,6 @@ export default function useHandleClose(): (source: TCloseSource) => void {
   } = useModelProps();
   
   return useCallback((source: TCloseSource) => {
-    if (onClose) {
-      onClose(source);
-    }
+    onClose?.(source);
   }, [onClose]);
 }

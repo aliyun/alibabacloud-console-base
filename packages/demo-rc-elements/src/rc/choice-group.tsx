@@ -79,9 +79,7 @@ function ChoiceGroup<T, V = T>({
     
     setStateValue(newValue);
     
-    if (onChange) {
-      onChange(newValue);
-    }
+    onChange?.(newValue);
   }, [getValueOnChange, stateValue, onChange]);
   
   useEffect(() => {

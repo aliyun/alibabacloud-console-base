@@ -28,7 +28,7 @@
     "@alicloud/console-base-demo-helper-error-prompt": "^1.1.33",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.53",
-    "@alicloud/demo-rc-elements": "^1.5.1",
+    "@alicloud/demo-rc-elements": "^1.5.2",
     "@types/react": "^17.0.39",
     "react": "^17.0.2",
     "typescript": "^4.5.5"
@@ -39,7 +39,7 @@
   "dependencies": {
     "@alicloud/console-base-error-prompt": "^1.5.1",
     "@alicloud/console-base-global": "^1.1.98",
-    "@alicloud/console-base-messenger": "^1.7.8"
+    "@alicloud/console-base-messenger": "^1.7.9"
   },
   "scripts": {
     "start": "breezr start-storybook",

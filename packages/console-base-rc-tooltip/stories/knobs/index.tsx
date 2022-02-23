@@ -49,7 +49,7 @@ export default function Knobs({
   onChange
 }: IProps): null {
   const title = text('props.title', 'Tooltip Title');
-  const content = text('props.content', 'Tooltip content - must');
+  const content = text('props.content', 'Tooltip content - must - Nothing lasts forever, even cold November rain..');
   const theme = optional<TooltipTheme>({
     value: optionsKnob<TooltipTheme>('props.theme', TooltipTheme, TooltipTheme.ACCENT, {
       display: 'inline-radio'
@@ -65,6 +65,8 @@ export default function Knobs({
   const arrow = boolean('props.arrow', true);
   const closable = boolean('props.closable', true);
   const autoClose = boolean('props.autoClose', false);
+  const autoCloseKey = text('props.autoCloseKey', 'AUTO_CLOSE_KEY_1');
+  const autoCloseCounter = boolean('props.autoCloseCounter', true);
   const config = boolean('+ onConfig', true);
   
   const props = useMemo(() => omitUndefined({
@@ -75,6 +77,8 @@ export default function Knobs({
     arrow,
     closable,
     autoClose,
+    autoCloseKey,
+    autoCloseCounter,
     config
   }), [
     title,
@@ -84,6 +88,8 @@ export default function Knobs({
     arrow,
     closable,
     autoClose,
+    autoCloseKey,
+    autoCloseCounter,
     config
   ]);
   
