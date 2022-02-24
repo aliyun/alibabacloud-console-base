@@ -35,7 +35,6 @@ export type {
   IPayloadRegionGroup as MessengerPayloadRegionGroup,
   IPayloadResourceGroup as MessengerPayloadResourceGroup,
   IPayloadResourceGroupProps as MessengerPayloadResourceGroupProps,
-  IPayloadLaunchTutorial as MessengerPayloadTutorial,
   IPayloadTutorRegister as MessengerPayloadTutorRegister,
   IPayloadTutorOpen as MessengerPayloadTutorOpen,
   IPayloadTutorStepChange as MessengerPayloadTutorStepChange,
@@ -59,9 +58,5 @@ export type {
   /**
    * @deprecated MessengerPayloadResourceGroup
    */
-  IPayloadResourceGroup as MessengerResourceGroup,
-  /**
-   * @deprecated MessengerPayloadTutorial
-   */
-  IPayloadLaunchTutorial as MessengerTutorial
+  IPayloadResourceGroup as MessengerResourceGroup
 } from './types';

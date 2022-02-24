@@ -38,9 +38,7 @@ function generateProps<P>(o0: Record<string, unknown>, processProps?: IFnProcess
   
   const props = o as unknown as P;
   
-  if (processProps) {
-    processProps(props, o0);
-  }
+  processProps?.(props, o0);
   
   return props;
 }

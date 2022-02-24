@@ -7,7 +7,6 @@ export { default as promptError } from './misc/prompt-error';
 export { default as fetcherRequest } from './misc/fetcher-request';
 export { default as toggleTopNav } from './misc/toggle-top-nav';
 export { default as armsError } from './misc/arms-error';
-export { default as launchTutorial } from './misc/launch-tutorial';
 export { default as launchWidget } from './misc/launch-widget';
 
 /* ********************************************

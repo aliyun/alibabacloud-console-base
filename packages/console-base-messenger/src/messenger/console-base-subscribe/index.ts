@@ -8,7 +8,6 @@ export { default as onPromptError } from './misc/on-prompt-error';
 export { default as onFetcherRequest } from './misc/on-fetcher-request';
 export { default as onToggleTopNav } from './misc/on-toggle-top-nav';
 export { default as onArmsError } from './misc/on-arms-error';
-export { default as onLaunchTutorial } from './misc/on-launch-tutorial';
 export { default as onLaunchWidget } from './misc/on-launch-widget';
 
 /* ********************************************

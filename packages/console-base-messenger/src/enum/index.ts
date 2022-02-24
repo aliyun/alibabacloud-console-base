@@ -10,7 +10,6 @@ export enum EMessageBroadcastByApp {
   PROMPT_ERROR = 'app_2_console_base:prompt_error',
   FETCHER_REQUEST = 'app_2_console_base:fetcher_request',
   TOGGLE_TOP_NAV = 'app_2_console_base:top_nav/toggle',
-  LAUNCH_TUTORIAL = 'app_2_console_base:launch_tutorial',
   LAUNCH_WIDGET = 'app_2_console_base:launch_widget',
   ARMS_ERROR = 'app_2_console_base:arms/error',
   /* ********************************************
