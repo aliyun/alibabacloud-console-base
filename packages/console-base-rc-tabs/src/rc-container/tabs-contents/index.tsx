@@ -13,13 +13,12 @@ const ScTabsContents = styled.div`
   overflow: auto;
 `;
 
-export default function TabsContents(): JSX.Element | null {
+export default function TabsContents(): JSX.Element {
   const {
-    tabs,
-    noContent
+    tabs
   } = useProps();
   
-  return noContent ? null : <ScTabsContents>
+  return <ScTabsContents>
     {tabs.map((v, i) => <ContentItem {...{
       key: v.key || i,
       tab: v

@@ -52,8 +52,8 @@ export default {
   HEIGHT_TOP_NAV: 50, // 顶栏高度
   
   // 表单控件（按钮、输入框）的高度梯度
-  HEIGHT_FORM_CONTROL_XS: 20,
-  HEIGHT_FORM_CONTROL_S: 24, // 对标 xconsole 的 small
+  HEIGHT_FORM_CONTROL_XS: 24, // 对标 xconsole 的 small
+  HEIGHT_FORM_CONTROL_S: 28,
   HEIGHT_FORM_CONTROL_M: 32, // 对标 xconsole 的 medium
   HEIGHT_FORM_CONTROL_L: 36, // 对标 xconsole 的 large
   HEIGHT_FORM_CONTROL_XL: 40,
