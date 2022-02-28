@@ -29,7 +29,7 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.53",
     "@alicloud/demo-rc-elements": "^1.5.2",
     "@alicloud/fetcher-demo-helpers": "^1.1.80",
-    "@types/lodash": "^4.14.178",
+    "@types/lodash": "^4.14.179",
     "@types/react": "^17.0.39",
     "react": "^17.0.2",
     "typescript": "^4.5.5"
