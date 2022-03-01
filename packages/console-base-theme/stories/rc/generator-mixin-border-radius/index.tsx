@@ -5,7 +5,9 @@ import {
   CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeMixinBorderRadius from '../../util/generate-code-mixin-border-radius';
+import {
+  generateCodeMixinBorderRadius
+} from '../../util';
 
 export default function GeneratorMixinBorderRadius(): JSX.Element {
   return <>

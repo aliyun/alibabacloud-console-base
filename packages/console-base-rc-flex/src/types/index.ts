@@ -8,3 +8,7 @@ export interface IProps extends HTMLAttributes<HTMLDivElement> {
   align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
   justify?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 }
+
+export interface IPropsItem extends HTMLAttributes<HTMLDivElement> {
+  n?: number;
+}

@@ -17,7 +17,7 @@ const ScFlex = styled.div`
   display: flex;
 `;
 const ScFlexItem = styled.div<IScPropsItem>`
-  flex: ${props => (props.n || 1)};
+  flex: ${props => props.n || 1};
 `;
 
 /**

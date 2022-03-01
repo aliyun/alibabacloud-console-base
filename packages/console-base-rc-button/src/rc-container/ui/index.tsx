@@ -24,7 +24,8 @@ import {
   getMixinSize,
   getMixinShadow
 } from '../../util';
-import ButtonIcon from '../button-icon';
+import ButtonIconLeft from '../button-icon-left';
+import ButtonIconRight from '../button-icon-right';
 
 // 当有 iconLeft iconRight loading 时对内容的包裹
 const ScInner = styled.span`
@@ -110,9 +111,9 @@ function Ui(_props: unknown, ref: Ref<HTMLDivElement>): JSX.Element {
     ...propsDom
   }}>
     {iconLeft || iconRight || loading ? <ScInner>
-      <ButtonIcon left />
+      <ButtonIconLeft />
       {jsxLabel ? <ScInnerLabel>{jsxLabel}</ScInnerLabel> : null}
-      <ButtonIcon />
+      <ButtonIconRight />
     </ScInner> : jsxLabel}
   </ScButton>;
 }

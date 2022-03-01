@@ -5,3 +5,4 @@ export { default as getStyleIconSpacing } from './get-style-icon-spacing';
 export { default as getMixinTheme } from './get-mixin-theme';
 export { default as getMixinSize } from './get-mixin-size';
 export { default as getMixinShadow } from './get-mixin-shadow';
+export { default as renderIcon } from './render-icon';

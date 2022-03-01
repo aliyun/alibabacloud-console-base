@@ -23,8 +23,8 @@ function getCode(props: IPropsIconPure): string {
   return code ? `\\${code}` : '';
 }
 
-// https://at.alicdn.com/t/font_1256165_ac1wvnpg3f5.css
-const fontFamily = injectIconFont('1256165', 'ac1wvnpg3f5');
+// https://at.alicdn.com/t/font_1256165_f4etc6lu5vl.css
+const fontFamily = injectIconFont('1256165', 'f4etc6lu5vl');
 
 const kfRotate = keyframes`
   0% {

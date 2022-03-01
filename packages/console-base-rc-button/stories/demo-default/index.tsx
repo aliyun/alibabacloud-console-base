@@ -78,5 +78,29 @@ export default function DemoDefault(): JSX.Element {
         label: v
       }} />;
     })}
+    <H2>Alignment with Icon</H2>
+    <Button {...{
+      iconLeft: ' ',
+      textAlign: 'left',
+      label: 'icon left NONE'
+    }} />
+    <br />
+    <Button {...{
+      iconLeft: 'x',
+      textAlign: 'left',
+      label: 'icon left x'
+    }} />
+    <br />
+    <Button {...{
+      iconLeft: 'check',
+      textAlign: 'left',
+      label: 'icon left check'
+    }} />
+    <br />
+    <Button {...{
+      iconLeft: 'config',
+      textAlign: 'left',
+      label: 'icon left config'
+    }} />
   </>;
 }

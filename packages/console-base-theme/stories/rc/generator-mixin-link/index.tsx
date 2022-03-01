@@ -5,7 +5,9 @@ import {
   CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeMixinLink from '../../util/generate-code-mixin-link';
+import {
+  generateCodeMixinLink
+} from '../../util';
 
 export default function GeneratorMixinLink(): JSX.Element {
   return <>

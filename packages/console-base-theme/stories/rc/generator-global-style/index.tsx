@@ -5,7 +5,9 @@ import {
   CodeViewerTs
 } from '@alicloud/demo-rc-elements';
 
-import generateCodeGlobalStyle from '../../util/generate-code-global-style';
+import {
+  generateCodeGlobalStyle
+} from '../../util';
 
 export default function GeneratorGlobalStyle(): JSX.Element {
   return <>

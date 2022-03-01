@@ -10,6 +10,7 @@ import pkgInfo from '../package.json';
 
 import GeneratorGlobalStyle from './rc/generator-global-style';
 import GeneratorLess from './rc/generator-less';
+import GeneratorMixinReset from './rc/generator-mixin-reset';
 import GeneratorMixinText from './rc/generator-mixin-text';
 import GeneratorMixinBg from './rc/generator-mixin-bg';
 import GeneratorMixinBorder from './rc/generator-mixin-border';
@@ -35,6 +36,7 @@ storiesOf(pkgInfo.name, module)
     .add('default', () => <div>这不仅仅是一个 demo！还是代码生成器 <span role="img" aria-label="factory">🏭</span>。</div>)
     .add('gen-global-style', () => <GeneratorGlobalStyle />)
     .add('gen-less', () => <GeneratorLess />)
+    .add('gen-mixin-reset', () => <GeneratorMixinReset />)
     .add('gen-mixin-text', () => <GeneratorMixinText />)
     .add('gen-mixin-bg', () => <GeneratorMixinBg />)
     .add('gen-mixin-border', () => <GeneratorMixinBorder />)

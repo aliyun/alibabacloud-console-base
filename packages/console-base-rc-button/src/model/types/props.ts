@@ -40,9 +40,13 @@ export interface IPropsCustom {
    */
   loading?: boolean;
   /**
-   * 左侧 Icon，如果是 string（IconType），则使用 @alicloud/console-base-rc-icon
+   * 左侧 Icon
+   * 
+   * 1. 如果是一个空格，则渲染一个占位（为保持图标在视觉上的垂直对齐）
+   * 2. 如果是 string（IconType），则使用 @alicloud/console-base-rc-icon
+   * 3. 如果是 JSX 那就是 JSX
    */
-  iconLeft?: IconType | JSX.Element;
+  iconLeft?: ' ' | IconType | JSX.Element;
   /**
    * 右侧 Icon，类上
    */
