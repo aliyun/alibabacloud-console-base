@@ -1,6 +1,9 @@
 import {
   IFetcherInterceptorConfig
 } from '../types';
+import getIdentityServiceApiDomain from '../util/get-identity-service-api-domain';
+
+const identityServiceApiDomain = getIdentityServiceApiDomain();
 
 // 处理过了的风控错误，业务 UI 层无需再对其进行报错视图，忽略即可（但对于数据层来说还是一种错误）
 export const ERROR_RISK_FORBIDDEN = 'FetcherErrorRiskForbidden'; // 风控说「你无法继续」 - 有 UI 对用户提示
@@ -129,12 +132,12 @@ export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = {
   URL_SEND_CODE: '/risk/sendVerifyMessage.json',
   URL_SETTINGS: '//account.console.aliyun.com/#/secure',
   // 新版子账号风控 URL
-  URL_VERIFY: '//identity.aliyun.com/identity/verify',
-  URL_MFA_BIND: '//identity.aliyun.com/identity/bindMFA',
-  URL_GET_MFA_INFO_TO_BIND: '//identity.aliyun.com/identity/getMfaInfoToBind',
-  URL_GET_MFA_INFO_TO_AUTH: '//identity.aliyun.com/identity/getMfaInfoToAuth',
-  URL_SKIP_BIND_MFA: '//identity.aliyun.com/identity/skip',
-  URL_SUB_OR_MPK_SEND_CODE: '//identity.aliyun.com/identity/send',
+  URL_VERIFY: `//${identityServiceApiDomain}/identity/verify`,
+  URL_MFA_BIND: `//${identityServiceApiDomain}/identity/bindMFA`,
+  URL_GET_MFA_INFO_TO_BIND: `//${identityServiceApiDomain}/identity/getMfaInfoToBind`,
+  URL_GET_MFA_INFO_TO_AUTH: `//${identityServiceApiDomain}/identity/getMfaInfoToAuth`,
+  URL_SKIP_BIND_MFA: `//${identityServiceApiDomain}/identity/skip`,
+  URL_SUB_OR_MPK_SEND_CODE: `//${identityServiceApiDomain}/identity/send`,
   // 旧版主账号风控冷却/超时时间设置 (单位：秒)
   COOLING_AFTER_SENT: 60,
   COOLING_AFTER_SEND_FAIL: 10,

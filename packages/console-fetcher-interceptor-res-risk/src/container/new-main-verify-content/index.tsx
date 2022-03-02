@@ -134,7 +134,8 @@ export default function Content(): JSX.Element {
             width: '98%',
             border: 0,
             paddingTop: 16,
-            minHeight: 400
+            overflowY: 'auto',
+            minHeight: mainRiskInfo.verifyType === 'ga' ? 400 : 240 // 虚拟 MFA 验证高度需要设置较高的高度
           },
           title: intl('title:main'),
           src: mainRiskInfo.verifyUrl
@@ -149,7 +150,7 @@ export default function Content(): JSX.Element {
       type: 'alert',
       content: errorMessage || intl('message:new_main_verify_error')
     }} />;
-  }, [stateShowIframe, errorMessage, mainRiskInfo.verifyUrl]);
+  }, [stateShowIframe, errorMessage, mainRiskInfo.verifyUrl, mainRiskInfo.verifyType]);
 
   useEffect(() => {
     if (!mainRiskInfo.verifyUrl) {

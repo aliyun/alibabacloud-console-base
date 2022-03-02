@@ -34,6 +34,13 @@ export interface IWindow {
   um?: {
     getToken(): string;
   };
+  /**
+   * 通过 UA_Opt 获取 collina 或者通过 um 获取 umid，都会在绑定 绑定 g.alicdn.com host 时存在问题，因此需要增加通过从 RISK_INFO 获取 collina 和 umid 的方式作为兜底逻辑 
+   */
+  RISK_INFO?: {
+    UMID: string;
+    GETUA(): string;
+  };
 }
 
 export interface IFetcherConfigExtra {
