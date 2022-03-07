@@ -7,7 +7,7 @@ import {
   mixinBgPrimary,
   mixinBgAccent,
   mixinBgInverse,
-  mixinBorderPrimary,
+  mixinBorderTertiary,
   mixinTextSecondary,
   mixinTextWhite,
   mixinTextInverse
@@ -20,7 +20,7 @@ import {
 const CSS_COLORS_TOOLTIP = {
   [TooltipTheme.NORMAL]: css`
   ${mixinBgPrimary}
-  ${mixinBorderPrimary}
+  ${mixinBorderTertiary}
   ${mixinTextSecondary}
 `,
   [TooltipTheme.ACCENT]: css`

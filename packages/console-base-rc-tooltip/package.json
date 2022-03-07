@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-tooltip",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "ConsoleBase 组件 - Tooltip",
   "license": "MIT",
   "sideEffects": false,

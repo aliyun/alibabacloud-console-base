@@ -24,7 +24,7 @@ function onConfig(): void {
 const ScFakeTriggerWrapper = styled.div`
   position: absolute;
   top: 200px;
-  left: 200px;
+  left: 320px;
   background-color: #c0f;
   width: 200px;
   height: 40px;
@@ -33,7 +33,8 @@ const ScFakeTriggerWrapper = styled.div`
 const STYLE: Record<TooltipPlacement, CSSProperties> = {
   [TooltipPlacement.TOP]: {
     bottom: '100%',
-    left: '50%'
+    left: '50%',
+    transform: 'translateX(-50%)'
   },
   [TooltipPlacement.TOP_LEFT]: {
     bottom: '100%',
@@ -45,7 +46,8 @@ const STYLE: Record<TooltipPlacement, CSSProperties> = {
   },
   [TooltipPlacement.BOTTOM]: {
     top: '100%',
-    left: '50%'
+    left: '50%',
+    transform: 'translateX(-50%)'
   },
   [TooltipPlacement.BOTTOM_LEFT]: {
     top: '100%',
@@ -57,7 +59,8 @@ const STYLE: Record<TooltipPlacement, CSSProperties> = {
   },
   [TooltipPlacement.LEFT]: {
     right: '100%',
-    top: '50%'
+    top: '50%',
+    transform: 'translateY(-50%)'
   },
   [TooltipPlacement.LEFT_TOP]: {
     right: '100%',
@@ -69,7 +72,8 @@ const STYLE: Record<TooltipPlacement, CSSProperties> = {
   },
   [TooltipPlacement.RIGHT]: {
     left: '100%',
-    top: '50%'
+    top: '50%',
+    transform: 'translateY(-50%)'
   },
   [TooltipPlacement.RIGHT_TOP]: {
     left: '100%',

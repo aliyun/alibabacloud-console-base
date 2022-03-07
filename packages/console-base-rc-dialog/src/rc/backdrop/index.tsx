@@ -21,7 +21,7 @@ const ScBackdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  ${mixinBgBackdrop};
+  ${mixinBgBackdrop}
 `;
 
 function getBackdropGateWay(): HTMLDivElement {
@@ -64,4 +64,3 @@ export function removeBackdrop(): void {
     // 那就不 remove 也没事
   }
 }
-
