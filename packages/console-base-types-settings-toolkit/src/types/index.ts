@@ -13,6 +13,10 @@ export interface ISettingsToolkitItemTooltip {
   // 由于 DOM 层级的关系，tooltip 的宽度没法自适应（当 content 为文本时）...只好默认不折行；如果展示太宽，
   // 可以设定一个固定的宽度，有固定宽度的将会折行
   width?: number;
+  /**
+   * 默认可见，注意为避免长期干扰用户，使用者必须打开 closable，并使用 messenger 的 onToolkitTooltipClose 监听关闭事件，在关闭事件中记录用户已关闭并不再继续设置 defaultVisible
+   */
+  defaultVisible?: boolean;
   closable?: boolean; // 是否可关闭（会添加 X 按钮）
 }
 

@@ -14,6 +14,7 @@ export interface IPropsCustom {
   placement?: ETooltipPlacement;
   arrow?: boolean;
   visible?: boolean;
+  defaultVisible?: boolean;
   /**
    * 将提供右上角 X 按钮
    */
@@ -34,7 +35,10 @@ export interface IPropsCustom {
    * 将提供右上角 齿轮 按钮
    */
   onConfig?(): void;
-  onVisibleChange?(visible: boolean): void;
+  /**
+   * closable 为 true 时，点击 X 的回调
+   */
+  onClose?(): void;
 }
 
 export interface IPropsDom extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {}

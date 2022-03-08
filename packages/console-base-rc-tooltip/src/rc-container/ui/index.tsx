@@ -16,7 +16,8 @@ import {
 import {
   TooltipPlacement,
   TooltipTheme,
-  useProps
+  useProps,
+  useVisible
 } from '../../model';
 
 import TooltipTitle from './tooltip-title';
@@ -54,11 +55,11 @@ const ScTooltip = styled.div<IPropsScTooltip>`
 
 export default function Tooltip(): JSX.Element {
   const [{
-    visible,
     placement,
     theme,
     arrow
   }, propsDom] = useProps();
+  const visible = useVisible();
   
   return <CSSTransition {...{
     in: visible,

@@ -12,6 +12,7 @@ export enum EMessageBroadcastByApp {
   TOGGLE_TOP_NAV = 'app_2_console_base:top_nav/toggle',
   LAUNCH_WIDGET = 'app_2_console_base:launch_widget',
   ARMS_ERROR = 'app_2_console_base:arms/error',
+  SET_PRODUCT_ID = 'app_2_console_base:set_product_id',
   /* ********************************************
    * 地域选择器
    ******************************************* */
@@ -111,7 +112,8 @@ export enum EToolkitTypeShort {
   REMOVE = 'remove', // 移除工具
   TOOL_CLICKED = 'tool:clicked',
   TOOL_ACTIVATED = 'tool:activated',
-  TOOL_DEACTIVATED = 'tool:deactivated'
+  TOOL_DEACTIVATED = 'tool:deactivated',
+  TOOL_TOOLTIP_CLOSE = 'tool:tooltip_close'
 }
 
 // 预设的工具 ID

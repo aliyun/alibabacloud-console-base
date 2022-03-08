@@ -3,11 +3,12 @@ import useModelState from './_use-model-state';
 
 export default function useVisible(): boolean {
   const [{
-    visible: visibleInProps
+    visible: visibleInProps,
+    defaultVisible
   }] = useModelProps();
   const {
     visible: visibleInState
   } = useModelState();
   
-  return visibleInProps ?? visibleInState;
+  return visibleInProps ?? visibleInState ?? defaultVisible;
 }

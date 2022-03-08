@@ -1,12 +1,12 @@
 import React, {
   CSSProperties,
-  useState
+  useState,
+  useCallback
 } from 'react';
 import styled from 'styled-components';
 
 import {
-  P,
-  InputSwitch
+  P
 } from '@alicloud/demo-rc-elements';
 
 import Tooltip, {
@@ -86,10 +86,19 @@ const STYLE: Record<TooltipPlacement, CSSProperties> = {
 };
 
 export default function DemoNoTrigger(): JSX.Element {
-  const [stateVisible, setStateVisible] = useState<boolean>(true);
+  const [stateVisible, setStateVisible] = useState<boolean>();
   const [stateTooltipProps, setStateTooltipProps] = useState<KnobProps>({
     content: ''
   });
+  const handleTriggerMouseEnter = useCallback(() => {
+    setStateVisible(true);
+  }, [setStateVisible]);
+  const handleTriggerMouseLeave = useCallback(() => {
+    setStateVisible(false);
+  }, [setStateVisible]);
+  const handleClose = useCallback(() => {
+    setStateVisible(false);
+  }, [setStateVisible]);
   
   const {
     config,
@@ -99,18 +108,17 @@ export default function DemoNoTrigger(): JSX.Element {
   return <>
     <P>目前没有配合 trigger 的功能，只能使用者定位</P>
     <Knobs onChange={setStateTooltipProps} />
-    <InputSwitch {...{
-      label: 'visible',
-      value: stateVisible,
-      onChange: setStateVisible
-    }} />
-    <ScFakeTriggerWrapper>
+    <ScFakeTriggerWrapper {...{
+      onMouseEnter: handleTriggerMouseEnter,
+      onMouseLeave: handleTriggerMouseLeave
+    }}>
       <Tooltip {...{
         ...tooltipProps,
         visible: stateVisible,
+        defaultVisible: true,
         style: STYLE[tooltipProps.placement || TooltipPlacement.TOP],
         onConfig: config ? onConfig : undefined,
-        onVisibleChange: setStateVisible
+        onClose: handleClose
       }} />
     </ScFakeTriggerWrapper>
   </>;

@@ -22,7 +22,7 @@ import {
 
 import useModelContext from './_use-model-context';
 
-interface IModelPropsSafe extends RequiredSelected<Omit<IPropsCustom, 'autoClose'>, 'placement' | 'theme' | 'arrow' | 'autoCloseKey' | 'autoCloseCounter'> {
+interface IModelPropsSafe extends RequiredSelected<Omit<IPropsCustom, 'autoClose'>, 'placement' | 'theme' | 'arrow' | 'defaultVisible' | 'autoCloseKey' | 'autoCloseCounter'> {
   autoClose: number;
 }
 
@@ -39,12 +39,13 @@ export default function useModelProps(): [IModelPropsSafe, IPropsDom] {
       placement = ETooltipPlacement.TOP,
       arrow = true,
       visible,
+      defaultVisible = false,
       closable,
       autoClose = 0,
       autoCloseKey = '',
       autoCloseCounter = true,
       onConfig,
-      onVisibleChange,
+      onClose,
       ...propsDom
     } = props;
     let autoCloseSeconds = 0;
@@ -78,12 +79,13 @@ export default function useModelProps(): [IModelPropsSafe, IPropsDom] {
       placement,
       arrow,
       visible,
+      defaultVisible,
       closable,
       autoClose: autoCloseSeconds,
       autoCloseKey,
       autoCloseCounter,
       onConfig,
-      onVisibleChange
+      onClose
     }, propsDom];
   }, [props]);
 }

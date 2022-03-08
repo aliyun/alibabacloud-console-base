@@ -4,6 +4,7 @@
  * 响应控制台对 console-base-broadcast 下对应的方法
  * --------------------------------------------- */
 
+export { default as onSetProductId } from './misc/on-set-product-id';
 export { default as onPromptError } from './misc/on-prompt-error';
 export { default as onFetcherRequest } from './misc/on-fetcher-request';
 export { default as onToggleTopNav } from './misc/on-toggle-top-nav';

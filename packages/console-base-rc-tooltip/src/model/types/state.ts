@@ -1,4 +1,4 @@
 export interface IModelState {
-  visible: boolean;
+  visible?: boolean;
   autoCloseTick: number;
 }
