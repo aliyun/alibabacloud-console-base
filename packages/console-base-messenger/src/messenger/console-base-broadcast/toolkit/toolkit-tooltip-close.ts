@@ -2,7 +2,7 @@ import {
   EToolkitTypeShort
 } from '../../../enum';
 import {
-  composeToolkitType,
+  composeToolkitTypeWithId,
   broadcastByConsoleBase
 } from '../../../util';
 
@@ -10,5 +10,5 @@ import {
  * 通知控制台应用：某工具的 Tooltip 被关闭
  */
 export default function toolkitTooltipClose(id: string): void {
-  broadcastByConsoleBase(composeToolkitType(EToolkitTypeShort.TOOL_TOOLTIP_CLOSE), id);
+  broadcastByConsoleBase(composeToolkitTypeWithId(EToolkitTypeShort.TOOL_TOOLTIP_CLOSE, id));
 }
