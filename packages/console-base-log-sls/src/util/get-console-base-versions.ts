@@ -8,7 +8,7 @@ const REG_CONSOLE_BASE_INDEX = /\.alicdn\.com\/aliyun\/console-base\/(\d+\.\d+\.
 /**
  * 获取加载器版本和实际加载的 console-base CDN 文件的版本
  */
-export default function getVersions(): [string[], string[]] {
+export default function getConsoleBaseVersions(): [string[], string[]] {
   if (typeof document === 'undefined') { // for SSR
     return [[], []];
   }

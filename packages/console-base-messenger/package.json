@@ -31,7 +31,7 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
-    "@alicloud/console-base-log-sls": "^1.2.31",
+    "@alicloud/console-base-log-sls": "^1.3.0",
     "@alicloud/console-base-types-settings-toolkit": "^1.2.1",
     "@alicloud/post-message": "^1.2.23"
   },
