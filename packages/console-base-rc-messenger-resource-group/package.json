@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-log-sls": "^1.2.31",
-    "@alicloud/console-base-messenger": "^1.8.0"
+    "@alicloud/console-base-messenger": "^1.9.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
