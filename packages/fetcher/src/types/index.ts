@@ -62,7 +62,7 @@ export interface IFetcherConfig extends Omit<FetchOptions, 'method' | 'headers' 
    */
   urlBase?: string;
   /**
-   * 是否在 url 上拼接 `_cache_busting_` 参数
+   * 是否在 url 上拼接 `_cache_busting_` 参数，只有 JSONP 请求的默认 urlCacheBusting 为 true
    */
   urlCacheBusting?: boolean;
   /**
