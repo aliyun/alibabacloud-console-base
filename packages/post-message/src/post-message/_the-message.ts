@@ -14,7 +14,7 @@ function getWindow(): Window {
    * 「Content Security Policy: The page’s settings blocked the loading of a resource at eval (“script-src”).」
    */
   try {
-    return (new Function('', 'return window'))() as Window; // eslint-disable-line no-new-func
+    return new Function('', 'return window')() as Window; // eslint-disable-line no-new-func
   } catch (e) {
     return window;
   }

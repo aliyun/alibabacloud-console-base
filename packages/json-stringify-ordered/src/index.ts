@@ -29,7 +29,7 @@ export default function jsonStringifyOrdered(o: unknown, opts: IOpts | IFnCompar
   const seen: unknown[] = [];
   
   function stringify(parent: unknown, key: string | number, node: any, level: number): string | undefined { // eslint-disable-line @typescript-eslint/no-explicit-any
-    const indent = space ? (`\n${new Array(level + 1).join(space)}`) : '';
+    const indent = space ? `\n${new Array(level + 1).join(space)}` : '';
     const colonSeparator = space ? ': ' : ':';
     
     if (node && node.toJSON && typeof node.toJSON === 'function') {

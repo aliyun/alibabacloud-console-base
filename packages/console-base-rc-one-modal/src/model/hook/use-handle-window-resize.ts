@@ -16,5 +16,5 @@ export default function useHandleWindowResize(): () => void {
   return useCallback(() => {
     dispatchRefreshWindowSize();
     dispatchSetWindowScrollbarWidth(getScrollbarWidthOfWindow());
-  }, [dispatchSetWindowScrollbarWidth]);
+  }, [dispatchRefreshWindowSize, dispatchSetWindowScrollbarWidth]);
 }

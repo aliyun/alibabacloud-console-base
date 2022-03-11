@@ -138,4 +138,3 @@ export const mixinLinkBrandSecondary = css`
     color: var(--cb-color-link-brand-secondary-active, ${COLOR.LINK_BRAND_SECONDARY_ACTIVE});
   }
 `;
-

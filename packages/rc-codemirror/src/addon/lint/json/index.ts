@@ -21,6 +21,7 @@ codeMirror.registerHelper('lint', 'json', (text: string): Annotation[] => {
     return found;
   }
   
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   parser.parseError = function(message: string, hash: IHash) {
     const {

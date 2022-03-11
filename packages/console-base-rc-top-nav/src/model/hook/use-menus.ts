@@ -29,7 +29,7 @@ export default function useMenus(): IModelPropsButton[] {
     const menuAccount = buildMenuAccount(account);
   
     return [
-      ...(menus || []),
+      ...menus || [],
       menuHelp,
       menuLang,
       menuAccount

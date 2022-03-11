@@ -44,7 +44,7 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
    */
   function checkIfIgnore(sampling?: number, onceKey?: string): boolean {
     // onBeforeSend 阻止发送
-    if ((onBeforeSend && onBeforeSend(factoryOptions) === false)) { // 不能 simplify to !onBeforeSend(factoryOptions)
+    if (onBeforeSend && onBeforeSend(factoryOptions) === false) { // 不能 simplify to !onBeforeSend(factoryOptions)
       return true;
     }
     
@@ -82,7 +82,7 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
       __topic__: topic,
       GROUP: group,
       ...getSystemParams(),
-      ...(typeof defaultParams === 'function' ? defaultParams() : defaultParams),
+      ...typeof defaultParams === 'function' ? defaultParams() : defaultParams,
       ...info
     };
     
