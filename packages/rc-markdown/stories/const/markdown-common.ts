@@ -129,19 +129,21 @@ You can add __strong__ or *em* or _**strong and em**_ in your content.
 
 \`\`\`js
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import Markdown from '@alicloud/rc-markdown';
 
-React.render(<Markdown source="# Your markdown here" />, document.getElementById('content'));
+ReactDOM.render(<Markdown source="# Your markdown here" />, document.getElementById('content'));
 \`\`\`
 
 Or indent 4 spaces to make a code block:
 
     import React from 'react';
+    import ReactDOM from 'react-dom';
     
     import Markdown from '@alicloud/rc-markdown';
     
-    React.render(<Markdown source="# Your markdown here" />, document.getElementById('content'));
+    ReactDOM.render(<Markdown source="# Your markdown here" />, document.getElementById('content'));
 
 # Image
 

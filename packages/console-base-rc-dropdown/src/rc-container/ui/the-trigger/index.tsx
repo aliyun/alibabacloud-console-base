@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  isValidElement
+} from 'react';
 
 import {
   useProps
@@ -9,5 +11,5 @@ export default function TheTrigger(): JSX.Element {
     trigger
   } = useProps();
   
-  return React.isValidElement(trigger) ? trigger : <span>{trigger}</span>;
+  return isValidElement(trigger) ? trigger : <span>{trigger}</span>;
 }

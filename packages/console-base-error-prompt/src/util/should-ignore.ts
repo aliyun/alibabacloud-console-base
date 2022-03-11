@@ -1,4 +1,10 @@
+import _isString from 'lodash/isString';
 import {
+  isValidElement
+} from 'react';
+
+import {
+  IError,
   TErrorPromptArg
 } from '../types';
 import {
@@ -21,7 +27,18 @@ export default function shouldIgnore(o?: TErrorPromptArg): o is undefined {
     return true;
   }
   
-  const name: string = (o as any).name || ''; // eslint-disable-line @typescript-eslint/no-explicit-any
+  if (_isString(o) || isValidElement(o)) {
+    return false;
+  }
+  
+  // 对象或 Error 实例
+  const err: IError = o as IError;
+  
+  if (!err.message || !err.code) {
+    return true;
+  }
+  
+  const name: string = err.name || '';
   
   return ERROR_NAMES_IGNORE_LIST.includes(name);
 }

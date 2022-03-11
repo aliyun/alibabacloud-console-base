@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  isValidElement
+} from 'react';
 import styled from 'styled-components';
 
 import {
@@ -64,7 +66,7 @@ export default function renderErrorLabel(error: TErrorArg): JSX.Element {
     </>;
   }
 
-  if (React.isValidElement(error)) {
+  if (isValidElement(error)) {
     return <>
       <ScErrorTag type="X" />
       JSX

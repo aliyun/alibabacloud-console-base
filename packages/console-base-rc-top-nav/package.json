@@ -30,7 +30,7 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.54",
     "@alicloud/demo-rc-elements": "^1.5.2",
     "@types/lodash": "^4.14.179",
-    "@types/react": "^17.0.39",
+    "@types/react": "^17.0.40",
     "@types/styled-components": "^5.1.24",
     "react": "^17.0.2",
     "styled-components": "^5.3.3",

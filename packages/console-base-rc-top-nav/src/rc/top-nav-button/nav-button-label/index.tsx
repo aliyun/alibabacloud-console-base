@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  isValidElement
+} from 'react';
 import styled from 'styled-components';
 
 import {
@@ -46,7 +48,7 @@ const ScIndicatorNumber = styled.strong`
 export default function NavButtonLabel({
   label
 }: IProps): JSX.Element {
-  if (React.isValidElement(label)) {
+  if (isValidElement(label)) {
     return label;
   }
   
