@@ -30,7 +30,7 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.54",
     "@alicloud/demo-rc-elements": "^1.5.2",
     "@alicloud/fetcher-demo-helpers": "^1.1.80",
-    "@types/lodash": "^4.14.179",
+    "@types/lodash": "^4.14.180",
     "@types/react": "^17.0.40",
     "@types/styled-components": "^5.1.24",
     "react": "^17.0.2",
@@ -47,7 +47,7 @@
     "@alicloud/console-base-rc-dialog": "^1.4.5",
     "@alicloud/console-base-rc-flex": "^1.2.0",
     "@alicloud/console-base-rc-input": "^1.2.3",
-    "@alicloud/console-base-theme": "^1.4.2",
+    "@alicloud/console-base-theme": "^1.4.3",
     "@alicloud/fetcher": "^1.2.2",
     "lodash": "^4.17.21"
   },

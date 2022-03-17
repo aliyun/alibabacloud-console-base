@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.54",
-    "@types/lodash": "^4.14.179",
+    "@types/lodash": "^4.14.180",
     "@types/react": "^17.0.40",
     "@types/styled-components": "^5.1.24",
     "react": "^17.0.2",
@@ -39,7 +39,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.4.2",
+    "@alicloud/console-base-theme": "^1.4.3",
     "lodash": "^4.17.21"
   },
   "scripts": {

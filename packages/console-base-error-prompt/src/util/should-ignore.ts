@@ -34,7 +34,7 @@ export default function shouldIgnore(o?: TErrorPromptArg): o is undefined {
   // 对象或 Error 实例
   const err: IError = o as IError;
   
-  if (!err.message || !err.code) {
+  if (!err.message && !err.code) { // 既没有 code 又没有 message 的不展示
     return true;
   }
   

@@ -5,6 +5,7 @@ import {
 } from 'react-transition-group';
 
 import {
+  Z_INDEX,
   mixinBorderRadiusXs,
   mixinShadowLDown
 } from '@alicloud/console-base-theme';
@@ -34,6 +35,7 @@ interface IPropsScTooltip {
 
 const ScTooltip = styled.div<IPropsScTooltip>`
   position: absolute;
+  z-index: ${Z_INDEX.POPUP};
   padding: 8px 16px;
   box-sizing: border-box;
   width: max-content;

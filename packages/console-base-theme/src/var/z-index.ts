@@ -3,6 +3,10 @@ export default {
   TOOLKIT: 99, // 全局工具
   MICRO_BROWSER: 1200, // 微浏览器
   
+  // 浮层（dropdown、tooltip 等）
+  POPUP: 10, // inline 的时候
+  POPUP_GLOBAL: 1001, // 全局（在 body 下）的时候
+  
   // dialog 主体
   DIALOG_SLIDE: 200, // 侧拉抽屉
   DIALOG_NORMAL: 1001, // 一般模态窗
