@@ -13,10 +13,10 @@ import {
 
 import {
   createFetcherErrorSkipNetwork
-} from '../../../src';
+} from '../../src';
 import {
   fetcher1
-} from '../../fetcher';
+} from '../fetcher';
 
 const {
   get,
@@ -74,14 +74,26 @@ function testPostJson(): Promise<unknown> {
   }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
 }
 
-export default function OtherTests(): JSX.Element {
+function testAbort(): Promise<unknown> {
+  const abortController = new AbortController();
+  
+  setTimeout(() => abortController.abort(), 36);
+  
+  return get({
+    signal: abortController.signal
+  }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
+}
+
+export default function DemoFeatures(): JSX.Element {
   const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);
   const handleTestNormal = useCallback(() => setStatePromise(testNormal()), [setStatePromise]);
   const handleTestPriority = useCallback(() => setStatePromise(testPriority()), [setStatePromise]);
   const handleTestSkipNetwork = useCallback(() => setStatePromise(testSkipNetwork()), [setStatePromise]);
+  const handleTestPostJson = useCallback(() => setStatePromise(testPostJson()), [setStatePromise]);
+  const handleTestAbort = useCallback(() => setStatePromise(testAbort()), [setStatePromise]);
   
   return <>
-    <H1>利用临时拦截器</H1>
+    <H1>临时拦截器</H1>
     <P>可以通过 <code>additionalInterceptorsForRequest</code> 添加临时的拦截器，它只影响当前的请求。</P>
     <List ordered>
       <span>默认的临时拦截器会在 <em>预设</em> 拦截器（如果没有指定优先级）之后执行，优先级的默认值为 10</span>
@@ -91,7 +103,8 @@ export default function OtherTests(): JSX.Element {
     <Button onClick={handleTestNormal}>testNormal</Button>
     <Button onClick={handleTestPriority}>testPriority</Button>
     <Button onClick={handleTestSkipNetwork}>testSkipNetwork</Button>
-    <Button onClick={testPostJson}>testPostJson</Button>
+    <Button onClick={handleTestPostJson}>testPostJson</Button>
+    <Button onClick={handleTestAbort}>testAbort</Button>
     <PrePromise promise={statePromise} />
   </>;
 }

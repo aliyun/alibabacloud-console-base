@@ -43,5 +43,6 @@ export default function convertError<C extends IFetcherConfig = IFetcherConfig>(
       break;
   }
   
+  // 所以 AbortError 的名字依然是 AbortError
   return error;
 }

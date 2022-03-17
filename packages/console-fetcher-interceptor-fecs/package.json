@@ -39,7 +39,7 @@
     "@alicloud/console-one-config": "^1.1.83",
     "@alicloud/cookie": "^1.1.81",
     "@alicloud/fetcher": "^1.2.2",
-    "@alicloud/fetcher-fetch": "^1.2.80"
+    "@alicloud/fetcher-fetch": "^1.3.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

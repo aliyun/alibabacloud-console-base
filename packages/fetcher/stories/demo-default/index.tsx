@@ -9,14 +9,9 @@ import {
   fetcher1
 } from '../fetcher';
 
-import OtherTests from './other-tests';
-
 export default function DemoDefault(): JSX.Element {
-  return <>
-    <FetcherDemoRcFetchers {...{
-      fetcher0,
-      fetcher1
-    }} />
-    <OtherTests />
-  </>;
+  return <FetcherDemoRcFetchers {...{
+    fetcher0,
+    fetcher1
+  }} />;
 }

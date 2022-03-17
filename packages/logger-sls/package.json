@@ -34,7 +34,7 @@
     "typescript": "^4.6.2"
   },
   "dependencies": {
-    "@alicloud/fetcher-fetch": "^1.2.80",
+    "@alicloud/fetcher-fetch": "^1.3.0",
     "@alicloud/ua": "^1.1.80",
     "lodash": "^4.17.21"
   },

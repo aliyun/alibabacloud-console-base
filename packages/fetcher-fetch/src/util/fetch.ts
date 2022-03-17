@@ -40,7 +40,9 @@ export default function(url: string, {
 }: IFetchOptions = {}): Promise<Response> {
   const fetch = window.fetch || unfetch as unknown as WindowOrWorkerGlobalScope['fetch'];
   const promise = fetch(url, fetchOptions as RequestInit).catch(err => {
-    if (err.name === EFetchError.TIMEOUT) {
+    // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
+    // https://javascript.info/fetch-abort
+    if (err.name === 'AbortError' || err.name === EFetchError.TIMEOUT) {
       throw err;
     }
     

@@ -26,6 +26,14 @@ fetch(url, {
 }).then(response => response.json());
 ```
 
+# throws
+
+抛错 `error.name` 说明：
+
+* AbortError - 原生
+* EFetchTimeout - 超时（前端模拟）
+* EFetchNetwork - 网络错误，如浏览器刷新（未到业务层）
+
 [fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 [unfetch]: https://github.com/developit/unfetch
 [whatwg-fetch]: https://github.com/github/fetch

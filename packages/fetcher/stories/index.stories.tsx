@@ -9,7 +9,9 @@ import {
 import pkgInfo from '../package.json';
 
 import DemoDefault from './demo-default';
+import DemoFeatures from './demo-features';
 
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
-    .add('default', () => <DemoDefault />);
+    .add('default', () => <DemoDefault />)
+    .add('features', () => <DemoFeatures />);
