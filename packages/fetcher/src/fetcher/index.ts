@@ -108,7 +108,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   /**
    * 传递给 interceptor，这样在 interceptor 内部有需要的话可以通过它加上 fetcherConfig 进行重新请求
    */
-  private _handleRequest = <T = void>(fetcherConfig: C): Promise<T> => this.request<T>(fetcherConfig);
+  private _handleRequest = (fetcherConfig: C): Promise<any> => this.request<any>(fetcherConfig);
   
   constructor(fetcherConfig?: C) {
     this._defaultConfig = {

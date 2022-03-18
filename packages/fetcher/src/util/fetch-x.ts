@@ -25,6 +25,7 @@ export default async function fetchX<T = void, C extends IFetcherConfig = IFetch
     charset,
     jsonpCallback,
     jsonpCallbackFunction,
+    signal,
     ...options
   } = fetcherConfig;
   const fetchUrl = buildUrl(fetcherConfig);
@@ -34,12 +35,14 @@ export default async function fetchX<T = void, C extends IFetcherConfig = IFetch
       timeout: fetcherConfig.timeout,
       charset,
       jsonpCallback,
-      jsonpCallbackFunction
+      jsonpCallbackFunction,
+      signal
     }).then(response => convertResponseFromJsonp<T>(response));
   }
   
   const fetchOptions: FetchOptions = {
     method,
+    signal,
     ...options
   };
   

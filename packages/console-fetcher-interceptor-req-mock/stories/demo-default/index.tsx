@@ -16,11 +16,11 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <H1>利用 oneapi.alibaba-inc.com 对非 OneConsole 接口进行 mock</H1>
     <FetcherDemoRcFetchers {...{
-      urls: [
-        '/boshit/success',
-        '/oss/ajax/bucket/list.json',
-        '/ram/ListGroups.json' // 实际上是 ram_next
-      ],
+      urls: {
+        SUCCESS: '/boshit/success',
+        OSS_AJAX_BUCKET_LIST: '/oss/ajax/bucket/list.json',
+        RAM_LIST_GROUPS: '/ram/ListGroups.json' // 实际上是 ram_next
+      },
       fetcher0,
       fetcher1
     }} />

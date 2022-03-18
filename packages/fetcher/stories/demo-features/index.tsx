@@ -20,7 +20,8 @@ import {
 
 const {
   get,
-  post
+  post,
+  jsonp
 } = fetcher1;
 
 const paramsInOptions = {
@@ -74,14 +75,34 @@ function testPostJson(): Promise<unknown> {
   }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
 }
 
-function testAbort(): Promise<unknown> {
+function getAbortSignal(): AbortSignal | null {
+  if (!window.AbortController) { // IE 不行
+    return null;
+  }
+  
   const abortController = new AbortController();
   
   setTimeout(() => abortController.abort(), 36);
   
+  return abortController.signal;
+}
+
+function testAbortGet(): Promise<unknown> {
   return get({
-    signal: abortController.signal
+    signal: getAbortSignal()
   }, 'https://oneapi.alibaba-inc.com/mock/boshit/success', params);
+}
+
+function testAbortPost(): Promise<unknown> {
+  return post({
+    signal: getAbortSignal()
+  }, 'https://oneapi.alibaba-inc.com/mock/boshit/success');
+}
+
+function testAbortJsonp(): Promise<unknown> {
+  return jsonp({
+    signal: getAbortSignal()
+  }, 'https://oneapi.alibaba-inc.com/mock/boshit/success');
 }
 
 export default function DemoFeatures(): JSX.Element {
@@ -90,7 +111,9 @@ export default function DemoFeatures(): JSX.Element {
   const handleTestPriority = useCallback(() => setStatePromise(testPriority()), [setStatePromise]);
   const handleTestSkipNetwork = useCallback(() => setStatePromise(testSkipNetwork()), [setStatePromise]);
   const handleTestPostJson = useCallback(() => setStatePromise(testPostJson()), [setStatePromise]);
-  const handleTestAbort = useCallback(() => setStatePromise(testAbort()), [setStatePromise]);
+  const handleTestAbortGet = useCallback(() => setStatePromise(testAbortGet()), [setStatePromise]);
+  const handleTestAbortPost = useCallback(() => setStatePromise(testAbortPost()), [setStatePromise]);
+  const handleTestAbortJsonp = useCallback(() => setStatePromise(testAbortJsonp()), [setStatePromise]);
   
   return <>
     <H1>临时拦截器</H1>
@@ -104,7 +127,9 @@ export default function DemoFeatures(): JSX.Element {
     <Button onClick={handleTestPriority}>testPriority</Button>
     <Button onClick={handleTestSkipNetwork}>testSkipNetwork</Button>
     <Button onClick={handleTestPostJson}>testPostJson</Button>
-    <Button onClick={handleTestAbort}>testAbort</Button>
+    <Button onClick={handleTestAbortGet}>testAbortGet</Button>
+    <Button onClick={handleTestAbortPost}>testAbortPost</Button>
+    <Button onClick={handleTestAbortJsonp}>testAbortJsonp</Button>
     <PrePromise promise={statePromise} />
   </>;
 }

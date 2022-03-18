@@ -4,8 +4,19 @@
 export interface IJsonpOptions {
   timeout?: number;
   charset?: string;
-  jsonpCallback?: string; // 与服务端的参数名协议，告诉服务端，当你接收到参数名为此配置值的时候，需要返回 JSONP 格式
-  jsonpCallbackFunction?: string; // 通常 jsonpCallback 配置值对应的方法是自动创建的，它会放在 window 下，如果你需要自己指定方法，可以用它，但必须自己保证可以通过 `window[此配置值]` 访问到它
+  /**
+   * 与服务端的参数名协议，告诉服务端，当你接收到参数名为此配置值的时候，需要返回 JSONP 格式，默认为 callback
+   */
+  jsonpCallback?: string;
+  /**
+   * 通常 jsonpCallback 配置值对应的方法是自动创建的，它会放在 window 下，如果你需要自己指定方法，可以用它，
+   * 但必须自己保证可以通过 `window[此配置值]` 访问到它
+   */
+  jsonpCallbackFunction?: string;
+  /**
+   * 让 JSONP 得以 abort，和 fetch 类型一致
+   */
+  signal?: AbortSignal | null;
 }
 
 /**
@@ -22,7 +33,7 @@ export interface IJsonpOptions {
  * - json(): Promise<any>;
  */
 export interface IJsonpResponse<T = void> {
-  ok: boolean;
+  ok: true;
   url: string;
   json(): Promise<T>; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

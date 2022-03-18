@@ -151,7 +151,7 @@ export type TFetcherOptionsForQuickJsonp<C extends IFetcherConfig = IFetcherConf
 /**
  * 其他便捷方法，如果第一个参数为对象，则为 options
  */
-export type TFetcherOptionsForQuickFn<C extends IFetcherConfig = IFetcherConfig> = Omit<C, TQuickMethodConfigExclusion | keyof JsonpOptions>;
+export type TFetcherOptionsForQuickFn<C extends IFetcherConfig = IFetcherConfig> = Omit<C, TQuickMethodConfigExclusion | 'charset'| 'jsonpCallback' | 'jsonpCallbackFunction'>;
 
 /**
  * 执行请求的方法定义

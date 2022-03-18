@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-jsonp",
-  "version": "1.1.81",
+  "version": "1.2.1",
   "description": "fetcher 的底层 jsonp 实现，可独立使用",
   "license": "MIT",
   "sideEffects": false,
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.54",
+    "@alicloud/demo-rc-elements": "^1.5.2",
     "@alicloud/fetcher-demo-helpers": "^1.1.80",
     "@types/react": "^17.0.40",
     "react": "^17.0.2",

@@ -18,7 +18,7 @@ import RequestWithConfig from '../request-with-config';
 
 interface IProps {
   title?: string | JSX.Element;
-  urls?: string[];
+  urls?: Record<string, string>;
   defaultConfig?: IDemoConfig;
   fetcher0: IDemoHelperFetcher;
   fetcher1: IDemoHelperFetcher;

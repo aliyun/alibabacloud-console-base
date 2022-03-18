@@ -17,7 +17,7 @@ import {
 } from '../../const';
 
 interface IProps {
-  urls?: string[];
+  urls?: Record<string, string>;
   defaults?: Partial<IDemoConfig>;
   onChange(config: IDemoConfig): void;
 }
