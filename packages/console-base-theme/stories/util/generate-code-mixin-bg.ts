@@ -18,7 +18,7 @@ import buildCssCode from './build-css-code';
 // 生成 mixin/bg.ts 的代码
 export default function generateCodeMixinBg(): string {
   const generator: ICodeGenerator = {
-    generator: 'generator-code-mixin-bg',
+    generator: 'generate-code-mixin-bg',
     begin: CODE_BEGIN_BG
   };
   

@@ -18,7 +18,7 @@ import buildCssCode from './build-css-code';
 // 生成 mixin/border-radius.ts 的代码
 export default function generateCodeMixinBorderRadius(): string {
   const generator: ICodeGenerator = {
-    generator: 'generator-code-mixin-border-radius',
+    generator: 'generate-code-mixin-border-radius',
     begin: CODE_BEGIN_ORDER_RADIUS
   };
   

@@ -38,7 +38,7 @@ const SIZES = { // 注意每一个有末尾是空格
 // 生成 mixin/shadow.ts 的代码
 export default function generateCodeMixinShadow(): string {
   const generator: ICodeGenerator = {
-    generator: 'generator-code-mixin-shadow',
+    generator: 'generate-code-mixin-shadow',
     begin: CODE_BEGIN_SHADOW
   };
   

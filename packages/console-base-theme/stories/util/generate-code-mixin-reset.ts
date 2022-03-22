@@ -65,7 +65,7 @@ export const mixinButtonReset = css\`
 // 生成 mixin/reset.ts
 export default function generateCodeMixinInput(): string {
   const generator: ICodeGenerator = {
-    generator: 'generator-code-mixin-reset',
+    generator: 'generate-code-mixin-reset',
     begin: CODE_BEGIN_RESET
   };
   
