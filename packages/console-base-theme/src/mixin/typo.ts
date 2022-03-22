@@ -31,6 +31,12 @@ export const mixinTypoFontFamilyBase = css`
   font-family: var(--cb-typo-font-family-base, ${TYPO.FONT_FAMILY_BASE});
 `;
 
+// 日文专属
+export const mixinTypoFontFamilyBaseJa = css`
+  font-family: ${TYPO.FONT_FAMILY_BASE_JA};
+  font-family: var(--cb-typo-font-family-base-ja, ${TYPO.FONT_FAMILY_BASE_JA});
+`;
+
 export const mixinTypoFontFamilyMono = css`
   font-family: ${TYPO.FONT_FAMILY_MONOSPACE};
   font-family: var(--cb-typo-font-family-monospace, ${TYPO.FONT_FAMILY_MONOSPACE});
