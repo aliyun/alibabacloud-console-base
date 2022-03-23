@@ -40,8 +40,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.4.3",
-    "@alicloud/console-base-theme-sc-base": "^1.2.0"
+    "@alicloud/console-base-theme": "^1.4.4",
+    "@alicloud/console-base-theme-sc-base": "^1.2.1"
   },
   "scripts": {
     "start": "breezr start-storybook",

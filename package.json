@@ -44,6 +44,6 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint",
-    "*.{js_,ts_,tsx_,less_}": "stylelint"
+    "*.{js,ts,tsx,less}": "stylelint"
   }
 }
