@@ -41,7 +41,7 @@ function getBg(props: IScProps): FlattenSimpleInterpolation {
   return props['aria-checked'] ? mixinBgSuccess : mixinBgHelp; // TODO 更好的定义
 }
 
-function getKnowPosition(props: IScProps): FlattenSimpleInterpolation {
+function getKnobPosition(props: IScProps): FlattenSimpleInterpolation {
   return props['aria-checked'] ? css`
     left: 100%;
     transform: translateX(-100%);
@@ -50,13 +50,18 @@ function getKnowPosition(props: IScProps): FlattenSimpleInterpolation {
   `;
 }
 
+const ScInputSwitchWrap = styled.span`
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+`;
+
 const ScInputSwitch = styled(ButtonBase)<IScProps>`
   position: relative;
   border: ${SPACING_INNER}px solid transparent;
   border-radius: ${HEIGHT_SWITCH}px;
   width: ${WIDTH_SWITCH}px;
   height: ${HEIGHT_SWITCH}px;
-  vertical-align: middle;
   ${getBg}
   
   &:after {
@@ -69,11 +74,16 @@ const ScInputSwitch = styled(ButtonBase)<IScProps>`
     transition: all linear 160ms;
     ${mixinBgWhite}
     ${mixinShadowSDown}
-    ${getKnowPosition}
+    ${getKnobPosition}
   }
 `;
 
+const ScInputSwitchLabel = styled.label`
+  margin-left: 8px;
+`;
+
 export default function InputSwitch({
+  label,
   value,
   disabled,
   onChange,
@@ -89,11 +99,13 @@ export default function InputSwitch({
     onChange?.(nextValue);
   }, [onChange, finalValue, setStateValue]);
   
-  return <ScInputSwitch {...{
-    ...props,
-    disabled,
-    role: 'switch',
-    'aria-checked': finalValue,
-    onClick: handleClick
-  }} />;
+  return <ScInputSwitchWrap {...props}>
+    <ScInputSwitch {...{
+      disabled,
+      role: 'switch',
+      'aria-checked': finalValue,
+      onClick: handleClick
+    }} />
+    {label ? <ScInputSwitchLabel onClick={disabled ? undefined : handleClick}>{label}</ScInputSwitchLabel> : null}
+  </ScInputSwitchWrap>;
 }

@@ -26,11 +26,11 @@
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.54",
+    "@alicloud/console-toolkit-preset-component": "^1.2.55",
     "@alicloud/demo-rc-elements": "^1.5.2",
-    "@types/react": "^17.0.40",
+    "@types/react": "^17.0.43",
     "react": "^17.0.2",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.3"
   },
   "peerDependencies": {
     "react": ">=16.8"

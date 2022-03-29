@@ -16,14 +16,15 @@ export default function DemoDefault(): JSX.Element {
     <ThemeSwitcher />
     <H1>InputSwitch 测试</H1>
     <InputSwitch {...{
+      label: 'one',
       value: stateValue,
       onChange: setStateValue
     }} />
-    one
     <InputSwitch {...{
+      label: 'two',
       disabled: true,
-      value: stateValue
+      value: stateValue,
+      onChange: setStateValue
     }} />
-    two
   </>;
 }
