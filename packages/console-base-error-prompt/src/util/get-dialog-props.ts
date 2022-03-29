@@ -1,4 +1,7 @@
 import {
+  Z_INDEX
+} from '@alicloud/console-base-theme';
+import {
   DialogSize,
   DialogProps
 } from '@alicloud/console-base-rc-dialog';
@@ -31,6 +34,8 @@ export default function getDialogProps(queue: IErrorQueueItem[], content: JSX.El
       return buttons;
     },
     size: DialogSize.S,
+    zIndex: Z_INDEX.DIALOG_SYS,
+    zIndexBackdrop: Z_INDEX.BACKDROP_SYS,
     undefinedAsReject: false
   };
 }
