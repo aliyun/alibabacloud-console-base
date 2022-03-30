@@ -42,6 +42,11 @@ export { default as onToolkitPut } from './toolkit/on-toolkit-put';
 export { default as onToolkitRemove } from './toolkit/on-toolkit-remove';
 
 /* ********************************************
+ * 微文档
+ ******************************************* */
+export { default as onOpenHelp } from './help/on-open-help';
+
+/* ********************************************
  * 微教程
  ******************************************* */
 export { default as onRegisterTutor } from './tutor/on-register';

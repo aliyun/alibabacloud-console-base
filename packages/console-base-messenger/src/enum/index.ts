@@ -47,6 +47,10 @@ export enum EMessageBroadcastByApp {
   RESOURCE_GROUP_SET_ID = 'app_2_console_base:resource_group/set_id',
   RESOURCE_GROUP_SET_RESOURCE_COUNT = 'app_2_console_base:resource_group/set_resource_count',
   /* ********************************************
+   * 微文档
+   ******************************************* */
+  HELP_OPEN = 'app_2_console_base:help/open',
+  /* ********************************************
    * 微教程
    ******************************************* */
   TUTOR_REGISTER = 'app_2_console_base:tutor/register',
