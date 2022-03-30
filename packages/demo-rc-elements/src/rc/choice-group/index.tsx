@@ -13,7 +13,7 @@ import {
   TPropsCheckboxGroup,
   TPropsRadioGroup,
   IPropsChoiceGroup
-} from '../types';
+} from '../../types';
 
 const ScChoiceGroup = styled.div`
   line-height: 2;

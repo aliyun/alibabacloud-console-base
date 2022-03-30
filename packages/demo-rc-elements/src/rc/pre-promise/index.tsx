@@ -6,9 +6,8 @@ import styled from 'styled-components';
 
 import {
   IPropsPrePromise
-} from '../types';
-
-import PreJson from './pre-json';
+} from '../../types';
+import PreJson from '../pre-json';
 
 enum ELoading {
   IDLE,

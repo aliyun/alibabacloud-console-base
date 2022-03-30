@@ -4,15 +4,15 @@ import React, {
   useEffect
 } from 'react';
 
+import {
+  json5Stringify
+} from '../../util';
 import Flex from '../flex';
 import {
   H2
 } from '../h1234';
 import InputJsonObject from '../input-json-object';
-import {
-  CodeViewerJs
-} from '../code-viewer';
-import { json5Stringify } from '../../util';
+import CodeViewerJs from '../code-viewer-js';
 
 interface IFnProcessProps<P> {
   (props: P, o: Record<string, unknown>): void;

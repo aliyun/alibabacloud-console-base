@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -48,8 +47,8 @@ const ScLyrics = styled.div`
 `;
 
 /**
- * 
- * 
+ *
+ *
  * 网易云音乐 URL
  * 1. 原 URL http://music.163.com/#/song?id=1352879122 找到 ID
  * 2. 组装 http://music.163.com/song/media/outer/url?id={ID}.mp3
@@ -62,7 +61,7 @@ const MUSIC_URL = 'https://music.163.com/song/media/outer/url?id=1352879122.mp3'
 export default function LongArticle(): JSX.Element {
   return <ScLongArticle>
     <audio controls src={MUSIC_URL}>
-      https://music.163.com/song?id=1352879122
+      <track kind="captions" src={MUSIC_URL} />
     </audio>
     <h1>Ich Verlasse Heut&#39; Dein Herz</h1>
     <h2>歌手：Lacrimosa</h2>

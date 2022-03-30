@@ -11,10 +11,10 @@ import styled, {
 
 import {
   IPropsList
-} from '../types';
+} from '../../types';
 import {
   CSS_BLOCK_LEVEL_ELEMENT
-} from '../const';
+} from '../../const';
 
 const cssList = css`
   padding-left: 3em;

@@ -2,11 +2,8 @@ import React from 'react';
 
 import {
   json5Stringify
-} from '../util';
-
-import {
-  CodeViewerJson
-} from './code-viewer';
+} from '../../util';
+import CodeViewerJson from '../code-viewer-json';
 
 interface IProps {
   o: unknown;

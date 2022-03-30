@@ -24,7 +24,11 @@ export {
 export { default as PreJson } from './rc/pre-json';
 export { default as PrePromise } from './rc/pre-promise';
 export { default as CodeViewer } from './rc/code-viewer';
-export * from './rc/code-viewer';
+export { default as CodeViewerHtml } from './rc/code-viewer-html';
+export { default as CodeViewerJs } from './rc/code-viewer-js';
+export { default as CodeViewerJson } from './rc/code-viewer-json';
+export { default as CodeViewerTs } from './rc/code-viewer-ts';
+export { default as CodeViewerLess } from './rc/code-viewer-less';
 
 /* 组件测试 */
 export { default as PropsNCode } from './rc/props-n-code';

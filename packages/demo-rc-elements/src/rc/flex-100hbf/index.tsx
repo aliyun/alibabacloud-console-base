@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
   IPropsFlex100HBF
-} from '../types';
+} from '../../types';
 
 const ScFlexHBF = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ const VIDEO_SRC = '//cloud.video.taobao.com/play/u/2228430214/p/1/e/6/t/1/228097
 
 function DefaultBody(): JSX.Element {
   return <video src={VIDEO_SRC} controls>
-    <track kind="captions" srcLang="en" label={VIDEO_SRC} />
+    <track kind="captions" srcLang="en" label={VIDEO_SRC} src={VIDEO_SRC} />
     Your Browser does NOT support video.
   </video>;
 }

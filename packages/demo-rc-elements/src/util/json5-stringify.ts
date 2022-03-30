@@ -7,15 +7,15 @@ import {
 
 function replacer(k: string, val: unknown): unknown {
   if (typeof val === 'function') {
-    return `✨ FUNCTION ${val.toString()}`;
+    return `✨ ${val.toString().replace(/\n\s*/g, ' ')}`;
   }
   
   if (val instanceof RegExp) {
-    return `✨ REGEXP ${val.toString()}`;
+    return `✨ #RegExp# ${val.toString()}`;
   }
   
   if (isValidElement(val as string)) {
-    return '# JSX #';
+    return '✨ #JSX#';
   }
   
   return val;
