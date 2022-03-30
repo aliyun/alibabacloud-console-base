@@ -3,6 +3,7 @@ import {
 } from 'styled-components';
 
 import {
+  FORM_CONTROLPADDING_HORIZONTAL,
   FORM_CONTROL_BDC,
   FORM_CONTROL_HEIGHT,
   FORM_CONTROL_BDC_HOVER,
@@ -17,12 +18,12 @@ import {
 } from './values';
 
 const CSS_FORM_CONTROL_OVERRIDE_INPUT = css`
-  padding: 0 8px;
+  padding: 0 ${FORM_CONTROLPADDING_HORIZONTAL}px;
 `;
 
 const CSS_FORM_CONTROL_OVERRIDE_TEXTAREA = css`
   display: block;
-  padding: 4px 8px;
+  padding: 4px ${FORM_CONTROLPADDING_HORIZONTAL}px;
   width: 100%;
   min-height: 100px;
   line-height: 1.8;
@@ -103,7 +104,7 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
 `;
 
 export const CSS_FORM_CONTROL_BASE = css`
-  padding: 0 12px;
+  padding: 0 ${FORM_CONTROLPADDING_HORIZONTAL}px;
   border: 1px solid ${FORM_CONTROL_BDC};
   box-sizing: border-box;
   outline: none;

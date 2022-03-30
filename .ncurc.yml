@@ -1,6 +1,8 @@
 upgrade: true
 dep: dev,prod
 reject:
+- 'react' # 先不升级 18
+- 'react-dom' # 先不升级 18
 - 'eslint' # react-hooks 在 8 下不 work
 - 'stylelint' # 14 不行
 - 'stylelint-config-standard'

@@ -14,6 +14,8 @@ import {
 } from '../../const';
 
 const ScInputNumber = styled.input`
+  min-width: 120px;
+  max-width: 100%;
   ${CSS_FORM_CONTROL_INPUT_BASE}
 `;
 

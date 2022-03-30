@@ -76,7 +76,6 @@ const ScInputSwitchButton = styled.button<IScProps>`
 
 const ScInputSwitchLabel = styled.label`
   margin-left: 8px;
-  color: #777;
 `;
 
 function InputSwitch({
