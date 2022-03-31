@@ -9,7 +9,7 @@ import {
 export default function createErrorToIgnore(): Error {
   const err = new Error();
   
-  err.name = ERROR_NAME_WILL_IGNORE;
+  err.name = ERROR_NAME_WILL_IGNORE; // 已经可以不需要了 但还是放着吧 无伤大雅
   
   return err;
 }

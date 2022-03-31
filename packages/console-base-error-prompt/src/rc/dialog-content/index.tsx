@@ -21,7 +21,7 @@ interface IProps {
 }
 
 const ScPagination = styled(Pagination)`
-  margin-top: 1.2em;
+  margin-top: 8px;
 `;
 
 export default function DialogContent({

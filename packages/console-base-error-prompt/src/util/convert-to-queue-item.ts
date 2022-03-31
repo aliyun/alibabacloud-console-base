@@ -22,7 +22,7 @@ function parseExtra(error: IErrorPlain, extra?: IErrorPromptExtra | IFnErrorProm
 /**
  * 把错误 `o?: TErrorPromptArg` 转化成 IErrorQueueItem
  */
-export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra): IErrorQueueItem | null {
+export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra, detailedMode?: boolean): IErrorQueueItem | null {
   if (shouldIgnore(o)) {
     return null;
   }
@@ -33,7 +33,7 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
     title = error.title,
     message = error.message,
     button
-  }: IErrorPromptExtra = parseExtra(error, extra);
+  } = parseExtra(error, extra);
   
   if (specialExtra) {
     title = specialExtra.title || title;
@@ -46,6 +46,7 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
     message,
     error,
     button,
+    detailedMode,
     resolve: _noop // 由主方法负责填充成正式的 resolve 方法
   };
 }

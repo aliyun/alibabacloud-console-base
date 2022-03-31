@@ -16,7 +16,7 @@ import parseParams from './parse-params';
 /**
  * 把错误对象转成 `{k0, k, v}` 对象数组，保证某些字段的顺序
  */
-export default function convertErrorDetailKvList(error: IErrorPlain): IErrorDetailKV[] {
+export default function convertErrorDetailKvList(error: IErrorPlain, detailedMode = DETAILED_MODE): IErrorDetailKV[] {
   const kvList: IErrorDetailKV[] = [];
   
   function pushInfo(v: unknown, k0: string, k: string): void {
@@ -34,7 +34,7 @@ export default function convertErrorDetailKvList(error: IErrorPlain): IErrorDeta
   pushInfo(error.code, 'code', intl('attr:code'));
   pushInfo(error.requestId, 'requestId', intl('attr:request_id'));
   
-  if (DETAILED_MODE) {
+  if (detailedMode) {
     // 对 details.params 和 details.body 有良好的展示
     _forEach(error.details, (v, k) => {
       pushInfo(k === 'params' || k === 'body' ? parseParams(v) : v, `detail.${k}`, _snakeCase(k).toUpperCase());

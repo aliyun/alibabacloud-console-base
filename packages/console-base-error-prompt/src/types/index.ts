@@ -73,6 +73,7 @@ export type TErrorPromptArgExtra = IErrorPromptExtra | IFnErrorPromptExtra;
 
 export interface IErrorQueueItem extends RequiredBut<IErrorPromptExtra, 'button'> {
   error: IErrorPlain;
+  detailedMode?: boolean;
   resolve(): void;
 }
 
