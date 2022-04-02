@@ -2,7 +2,7 @@ import {
   IFetcherConfig,
   IFetcherError,
   IFetcherErrorExtendedInfo
-} from '../../types';
+} from '../types';
 
 /**
  * 创建 FetcherError 它一定得有 config 属性

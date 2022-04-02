@@ -1,7 +1,9 @@
 import {
   IFetcherConfig
 } from '../../types';
-import generateConfigId from '../../util/gnerate-config-id';
+import {
+  generateConfigId
+} from '../../util';
 
 /**
  * 默认的第一个 request 拦截器

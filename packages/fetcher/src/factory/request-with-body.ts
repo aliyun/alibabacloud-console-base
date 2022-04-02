@@ -4,8 +4,9 @@ import {
   TFetcherOptionsForQuickFn
 } from '../types';
 import Fetcher from '../fetcher';
-
-import mergeConfig from './merge-config';
+import {
+  mergeConfig
+} from '../util';
 
 /**
  * 用于执行带 body 的请求，对应点 method 有 'POST' / 'PUT' / 'PATCH'

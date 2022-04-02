@@ -3,8 +3,9 @@ import _forEach from 'lodash/forEach';
 import {
   IFetcherConfig
 } from '../types';
-import normalizeHeaders from '../util/normalize-headers';
-import mergeParams from '../util/merge-params';
+
+import normalizeHeaders from './normalize-headers';
+import mergeParams from './merge-params';
 
 /**
  * 将多个 fetcherConfig 进行合并

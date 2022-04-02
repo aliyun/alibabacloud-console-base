@@ -13,9 +13,11 @@ import {
   TArgsForInterceptResponse,
   IFetcherErrorSpecial
 } from '../types';
-import fetchX from '../util/fetch-x';
-import mergeConfig from '../util/merge-config';
-import convertError from '../util/error/convert';
+import {
+  fetchX,
+  mergeConfig,
+  convertError
+} from '../util';
 import requestInterceptorFirst from '../interceptors/request/first';
 import requestInterceptorLast from '../interceptors/request/last';
 

@@ -8,11 +8,11 @@ import {
 import {
   IFetcherConfig,
   IFetcherError
-} from '../../types';
+} from '../types';
 import {
   ERROR_NETWORK,
   ERROR_TIMEOUT
-} from '../../const';
+} from '../const';
 
 /**
  * 将错误类型转成 IFetcherError，填入 config，并把 @alicloud/fetcher-fetch 和 @alicloud/fetcher-jsonp 的错误 name 转成 @alicloud/fetcher 的
