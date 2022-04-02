@@ -1,7 +1,6 @@
 import React, {
   useState,
-  useCallback,
-  useEffect
+  useCallback
 } from 'react';
 
 import {
@@ -13,29 +12,21 @@ import {
   InputText
 } from '@alicloud/demo-rc-elements';
 
-import dataUserAkList from './data/user-ak-list';
-import dataUserAkLeakList from './data/user-ak-leak-list';
-import dataConsolebenchProducts from './data/consolebench-products';
-import dataConsolebenchProductsMy from './data/consolebench-products-my';
+import {
+  dataUserAkList,
+  dataUserAkLeakList,
+  dataConsoleBenchProducts,
+  dataConsoleBenchProductsMy
+} from './data';
 
 export default function ConsoleApiTest(): JSX.Element {
-  const [stateUser, setStateUser] = useState<string>('jianchun.wang.1@boshit.onaliyun.com');
+  const [stateUser, setStateUser] = useState<string>('stonehenge@flyinhighwj.onaliyun.com');
   const [statePromise, setStatePromise] = useState<Promise<unknown> | null>(null);
-  const [statePromise2, setStatePromise2] = useState<Promise<unknown> | null>(null);
-  const [statePromise3, setStatePromise3] = useState<Promise<unknown> | null>(null);
-  const [statePromise4, setStatePromise4] = useState<Promise<unknown> | null>(null);
   
   const handleFetch = useCallback(() => setStatePromise(dataUserAkList(stateUser)), [stateUser, setStatePromise]);
-  const handleFetch2 = useCallback(() => setStatePromise2(dataUserAkLeakList()), [setStatePromise2]);
-  const handleFetch3 = useCallback(() => setStatePromise3(dataConsolebenchProducts()), [setStatePromise3]);
-  const handleFetch4 = useCallback(() => setStatePromise4(dataConsolebenchProductsMy()), [setStatePromise4]);
-  
-  useEffect(() => {
-    handleFetch();
-    handleFetch2();
-    handleFetch3();
-    handleFetch4();
-  }, [handleFetch, handleFetch2, handleFetch3, handleFetch4]);
+  const handleFetch2 = useCallback(() => setStatePromise(dataUserAkLeakList()), [setStatePromise]);
+  const handleFetch3 = useCallback(() => setStatePromise(dataConsoleBenchProducts()), [setStatePromise]);
+  const handleFetch4 = useCallback(() => setStatePromise(dataConsoleBenchProductsMy()), [setStatePromise]);
   
   return <>
     <H1>RAM User AK 接口</H1>
@@ -51,13 +42,10 @@ export default function ConsoleApiTest(): JSX.Element {
       }} />
     </div>
     <div>对应 RAM 地址：<a href={`//ram.console.aliyun.com/users/${stateUser.split('@')[0]}`} target="_blank">{stateUser}</a></div>
-    <Button onClick={handleFetch}>fetch</Button>
-    <Button onClick={handleFetch2}>fetch2</Button>
-    <Button onClick={handleFetch3}>fetch3</Button>
-    <Button onClick={handleFetch4}>fetch4</Button>
+    <Button onClick={handleFetch}>dataUserAkList</Button>
+    <Button onClick={handleFetch2}>dataUserAkLeakList</Button>
+    <Button onClick={handleFetch3}>dataConsoleBenchProducts</Button>
+    <Button onClick={handleFetch4}>dataConsoleBenchProductsMy</Button>
     <PrePromise promise={statePromise} />
-    <PrePromise promise={statePromise2} />
-    <PrePromise promise={statePromise3} />
-    <PrePromise promise={statePromise4} />
   </>;
 }

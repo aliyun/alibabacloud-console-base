@@ -23,6 +23,7 @@ import {
 import getAutoMultiError from './get-auto-multi-error';
 
 interface IFnResolve {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (value: any): void;
 }
 

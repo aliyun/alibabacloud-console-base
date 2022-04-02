@@ -14,7 +14,7 @@ export default fetcher;
 
 export {
   ERROR_BIZ,
-  createFetcher
+  createFetcher // 覆盖 @alicloud/fetcher 的 createFetcher
 };
 
 export type {

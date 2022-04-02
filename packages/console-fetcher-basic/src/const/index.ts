@@ -1,9 +1,6 @@
-export enum ETypeApi {
-  OPEN,
-  INNER,
-  CONTAINER,
-  OPEN_MULTI // OneConsole 只支持 openAPI 的 multi 方式
-}
+import {
+  ETypeApi
+} from '../enum';
 
 export const API_URL_MAP: Record<ETypeApi, string> = {
   [ETypeApi.OPEN]: '/data/api.json',

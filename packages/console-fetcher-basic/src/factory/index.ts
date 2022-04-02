@@ -12,16 +12,18 @@ import interceptArms from '@alicloud/console-fetcher-interceptor-arms';
 import interceptSls from '@alicloud/console-fetcher-interceptor-sls';
 
 import {
+  ETypeApi
+} from '../enum';
+import {
   IConsoleFetcher,
   IConsoleFetcherConfig,
-  IConsoleFetcherInterceptorOptions
+  IConsoleFetcherInterceptorOptions,
+  IFnConsoleApiWithProduct
 } from '../types';
-import {
-  ETypeApi
-} from '../const';
 
 import createApi from './create-api';
 import createApiAutoMulti from './create-api-auto-multi';
+import createApiWithProduct from './create-api-with-product';
 
 export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> => {
   const {
@@ -43,16 +45,24 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
     interceptSls(fetcher, slsConfig);
   }
   
-  const callOpenApi = createApi(fetcher, ETypeApi.OPEN);
+  const callMultiOpenApi = createApi(fetcher, ETypeApi.OPEN_MULTI);
+  const callOpenApi0 = createApi(fetcher, ETypeApi.OPEN);
+  const callOpenApi = createApiAutoMulti(callOpenApi0, callMultiOpenApi);
   const callInnerApi = createApi(fetcher, ETypeApi.INNER);
   const callContainerApi = createApi(fetcher, ETypeApi.CONTAINER);
-  const callMultiOpenApi = createApi(fetcher, ETypeApi.OPEN_MULTI);
+  
+  const createCallOpenApiWithProduct = (product: string): IFnConsoleApiWithProduct => createApiWithProduct(callOpenApi, product);
+  const createCallInnerApiWithProduct = (product: string): IFnConsoleApiWithProduct => createApiWithProduct(callInnerApi, product);
+  const createCallContainerApiWithProduct = (product: string): IFnConsoleApiWithProduct => createApiWithProduct(callContainerApi, product);
   
   return {
     ...(fetcher as unknown as Fetcher<C>),
-    callOpenApi: createApiAutoMulti(callOpenApi, callMultiOpenApi),
+    callOpenApi,
     callInnerApi,
     callContainerApi,
-    callMultiOpenApi
+    callMultiOpenApi,
+    createCallOpenApiWithProduct,
+    createCallInnerApiWithProduct,
+    createCallContainerApiWithProduct
   };
 };

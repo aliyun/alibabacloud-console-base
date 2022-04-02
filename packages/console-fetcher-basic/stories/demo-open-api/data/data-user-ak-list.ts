@@ -1,8 +1,5 @@
-import {
-  fetcher1
-} from '../../fetcher';
-
-import dataUserAkLastUsed from './user-ak-last-used';
+import callOpenApiWithIms from './_call-open-api-with-ims';
+import dataUserAkLastUsed from './data-user-ak-last-used';
 import fixDate from './_fix-data';
 
 interface IParams {
@@ -36,7 +33,7 @@ export default async function dataUserAkList(upn: string): Promise<IDataUserAk[]
     AccessKeys: {
       AccessKey
     }
-  } = await fetcher1.callOpenApi<IShitty, IParams>('ims', 'ListAccessKeys', {
+  } = await callOpenApiWithIms<IShitty, IParams>('ListAccessKeys', {
     UserPrincipalName: upn
   });
   

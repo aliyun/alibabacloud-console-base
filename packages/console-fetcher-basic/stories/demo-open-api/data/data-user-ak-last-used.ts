@@ -1,7 +1,4 @@
-import {
-  fetcher1
-} from '../../fetcher';
-
+import callOpenApiWithIms from './_call-open-api-with-ims';
 import fixDate from './_fix-data';
 
 interface IParams {
@@ -17,9 +14,8 @@ interface IShitty {
 }
 
 export default function dataUserAkLastUsed(upn: string, ak: string): Promise<Date | null> {
-  return fetcher1.callOpenApi<IShitty, IParams>('ims', 'GetAccessKeyLastUsed', {
+  return callOpenApiWithIms<IShitty, IParams>('GetAccessKeyLastUsed', {
     UserPrincipalName: upn,
     UserAccessKeyId: ak
   }).then(shitty => fixDate(shitty.AccessKeyLastUsed.LastUsedDate));
 }
-

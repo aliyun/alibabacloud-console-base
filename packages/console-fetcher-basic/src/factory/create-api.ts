@@ -3,7 +3,9 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  ETypeApi,
+  ETypeApi
+} from '../enum';
+import {
   MULTI_TYPES
 } from '../const';
 import {
@@ -14,9 +16,11 @@ import {
   TConsoleApiMultiResult,
   IFnConsoleApiMulti
 } from '../types';
-import getApiUrl from '../util/get-api-url';
-import callApi from '../util/call-api';
-import callApiMulti from '../util/call-api-multi';
+import {
+  getApiUrl,
+  callApi,
+  callApiMulti
+} from '../util';
 
 function createApi(fetcher: Fetcher<IConsoleFetcherConfig>, type: ETypeApi.OPEN | ETypeApi.INNER | ETypeApi.CONTAINER): IFnConsoleApi;
 function createApi(fetcher: Fetcher<IConsoleFetcherConfig>, type: ETypeApi.OPEN_MULTI): IFnConsoleApiMulti;
