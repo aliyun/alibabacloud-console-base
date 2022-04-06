@@ -41,19 +41,18 @@ module.exports = {
    */
   '@typescript-eslint/naming-convention': ['error', {
     selector: 'variable',
-    format: ['strictCamelCase', 'UPPER_CASE']
+    format: ['strictCamelCase', 'StrictPascalCase', 'UPPER_CASE']
   }, {
     selector: 'parameter',
     format: ['strictCamelCase'],
     leadingUnderscore: 'allow'
+  }, { // allow anything in destructured properties
+    selector: ['variable', 'parameter'],
+    modifiers: ['destructured'],
+    format: null
   }, {
     selector: 'typeLike',
     format: ['StrictPascalCase']
-  }, {
-    selector: 'memberLike',
-    modifiers: ['private'],
-    format: ['strictCamelCase'],
-    leadingUnderscore: 'allow'
   }, {
     selector: 'enum',
     format: ['StrictPascalCase'],
@@ -66,6 +65,11 @@ module.exports = {
     selector: 'typeAlias',
     format: ['StrictPascalCase'],
     prefix: ['T']
+  }, {
+    selector: 'memberLike',
+    modifiers: ['private'],
+    format: ['strictCamelCase'],
+    leadingUnderscore: 'allow'
   }, {
     selector: 'enumMember',
     format: ['StrictPascalCase', 'UPPER_CASE'],
