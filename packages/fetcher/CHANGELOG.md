@@ -1,6 +1,10 @@
 HISTORY
 ===
 
+# 1.4.0 2022/04/07 @驳是
+
+* FEAT 增加 `inspectInterceptors` 主要用于开发期间查看
+
 # 1.3.0 2022/03/17 @驳是
 
 * FEAT 新增 helper `preventEscCancelling`

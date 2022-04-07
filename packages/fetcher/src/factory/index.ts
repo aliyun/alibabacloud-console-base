@@ -21,6 +21,7 @@ export default function createFetcher<C extends IFetcherConfig = IFetcherConfig>
   const interceptResponse = fetcher.interceptResponse.bind(fetcher);
   const sealInterceptors = fetcher.sealInterceptors.bind(fetcher);
   const request = fetcher.request.bind(fetcher);
+  const inspectInterceptors = fetcher.inspectInterceptors.bind(fetcher);
   
   // 便捷方法
   const jsonp = <T = void, P = void>(...args: TArgsForJsonp<C, P>): Promise<T> => requestWithNoBody<C, T, P>(fetcher, 'JSONP', args);
@@ -40,6 +41,7 @@ export default function createFetcher<C extends IFetcherConfig = IFetcherConfig>
     delete: deleteFn,
     post,
     put,
-    patch
+    patch,
+    inspectInterceptors
   };
 }

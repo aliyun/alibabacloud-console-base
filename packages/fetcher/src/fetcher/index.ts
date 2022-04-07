@@ -3,6 +3,7 @@ import {
 } from '../enum';
 import {
   TFnVoid,
+  IInterceptorQueueItem,
   IFetcherConfig,
   IFetcherResponse,
   IFetcherError,
@@ -16,75 +17,14 @@ import {
 import {
   fetchX,
   mergeConfig,
-  convertError
+  convertError,
+  parseInterceptorQueueItemForRequest,
+  parseInterceptorQueueItemForResponse,
+  queueInterceptor,
+  filterAndSortInterceptors
 } from '../util';
 import requestInterceptorFirst from '../interceptors/request/first';
 import requestInterceptorLast from '../interceptors/request/last';
-
-interface IQueueItem<F = void, R = void> {
-  priority?: number;
-  fulfilledFn?: F;
-  rejectedFn?: R;
-}
-
-function parseInterceptorQueueItemForRequest<C extends IFetcherConfig>(args: TArgsForInterceptRequest<C>): IQueueItem<IFnInterceptRequest<C>> {
-  let item: IQueueItem<IFnInterceptRequest<C>>;
-  
-  if (typeof args[0] === 'number') {
-    item = {
-      priority: args[0],
-      fulfilledFn: args[1]
-    };
-  } else {
-    item = {
-      fulfilledFn: args[0]
-    };
-  }
-  
-  return item;
-}
-
-function parseInterceptorQueueItemForResponse<C extends IFetcherConfig>(args: TArgsForInterceptResponse<C>): IQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>> {
-  let item: IQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>;
-  
-  if (typeof args[0] === 'number') {
-    item = {
-      priority: args[0],
-      fulfilledFn: args[1],
-      rejectedFn: args[2]
-    };
-  } else {
-    item = {
-      fulfilledFn: args[0],
-      rejectedFn: args[1] as IFnInterceptResponseRejected<C>
-    };
-  }
-  
-  return item;
-}
-
-function queueInterceptor<T>(interceptorQueue: T[], item: T): TFnVoid {
-  interceptorQueue.push(item);
-  
-  return () => {
-    const index = interceptorQueue.indexOf(item);
-    
-    if (index >= 0) {
-      interceptorQueue.splice(index, 1);
-    }
-  };
-}
-
-/**
- * 对拦截器进行排序，默认的 priority 是 10，如果想靠前，指定 priority 小于 10，大于等于 10 将靠后
- */
-function filterAndSort<F = void, R = void>(unsorted: IQueueItem<F, R>[]): IQueueItem<F, R>[] {
-  return unsorted.filter(v => v && (v.fulfilledFn || v.rejectedFn)).sort(({
-    priority: pri1 = 10
-  }, {
-    priority: pri2 = 10
-  }): number => pri1 - pri2);
-}
 
 /**
  * 一个允许添加 request 和 response 拦截器的 Fetcher 类，有些类似 axios，但有所不同：
@@ -103,9 +43,9 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   
   private _interceptorResponseSealed = false;
   
-  private _interceptorQueueForRequest: IQueueItem<IFnInterceptRequest<C>>[] = [];
+  private _interceptorQueueForRequest: IInterceptorQueueItem<IFnInterceptRequest<C>>[] = [];
   
-  private _interceptorQueueForResponse: IQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>[] = [];
+  private _interceptorQueueForResponse: IInterceptorQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>[] = [];
   
   /**
    * 传递给 interceptor，这样在 interceptor 内部有需要的话可以通过它加上 fetcherConfig 进行重新请求
@@ -122,7 +62,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
    * 获取此次调用需要用到的所有请求拦截器，且拦截器的顺序按指定顺序
    */
   private _getInterceptorsForRequest(fetcherConfig: C): IFnInterceptRequest<C>[] {
-    const unsorted: IQueueItem<IFnInterceptRequest<C>>[] = [...this._interceptorQueueForRequest];
+    const unsorted: IInterceptorQueueItem<IFnInterceptRequest<C>>[] = [...this._interceptorQueueForRequest];
     
     if (fetcherConfig.additionalInterceptorsForRequest) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -134,7 +74,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
       requestInterceptorFirst as unknown as IFnInterceptRequest<C>,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      ...filterAndSort<IFnInterceptRequest<C>>(unsorted).map(v => v.fulfilledFn),
+      ...filterAndSortInterceptors<IFnInterceptRequest<C>>(unsorted).map(v => v.fulfilledFn),
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       requestInterceptorLast as unknown as IFnInterceptRequest<C>
@@ -142,7 +82,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   }
   
   private _getInterceptorsForResponse(fetcherConfig: C): [IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>][] {
-    const unsorted: IQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>[] = [...this._interceptorQueueForResponse];
+    const unsorted: IInterceptorQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>[] = [...this._interceptorQueueForResponse];
     
     if (fetcherConfig.additionalInterceptorsForResponse) {
       fetcherConfig.additionalInterceptorsForResponse.forEach(v => unsorted.push(parseInterceptorQueueItemForResponse<C>(v as TArgsForInterceptResponse<C>)));
@@ -150,7 +90,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
     
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    return filterAndSort<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>(unsorted).map(v => [v.fulfilledFn, v.rejectedFn]);
+    return filterAndSortInterceptors<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>(unsorted).map(v => [v.fulfilledFn, v.rejectedFn]);
   }
   
   /**
@@ -265,7 +205,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
       throw new Error('[Fetcher#interceptRequest] Cannot add more interceptors. You need to unseal it first.');
     }
     
-    return queueInterceptor<IQueueItem<IFnInterceptRequest<C>>>(this._interceptorQueueForRequest, parseInterceptorQueueItemForRequest<C>(args));
+    return queueInterceptor<IInterceptorQueueItem<IFnInterceptRequest<C>>>(this._interceptorQueueForRequest, parseInterceptorQueueItemForRequest<C>(args));
   }
   
   interceptResponse(fulfilledFn?: IFnInterceptResponseFulfilled<C>, rejectedFn?: IFnInterceptResponseRejected<C>): TFnVoid;
@@ -280,7 +220,7 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
       throw new Error('[Fetcher#interceptResponse] Cannot add more interceptors. You need to unseal it first.');
     }
     
-    return queueInterceptor<IQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>>(this._interceptorQueueForResponse, parseInterceptorQueueItemForResponse<C>(args));
+    return queueInterceptor<IInterceptorQueueItem<IFnInterceptResponseFulfilled<C>, IFnInterceptResponseRejected<C>>>(this._interceptorQueueForResponse, parseInterceptorQueueItemForResponse<C>(args));
   }
   
   /**
@@ -289,5 +229,16 @@ export default class Fetcher<C extends IFetcherConfig = IFetcherConfig> {
   sealInterceptors(requestSealed = true, responseSealed = true): void {
     this._interceptorRequestSealed = requestSealed;
     this._interceptorResponseSealed = responseSealed;
+  }
+  
+  /**
+   * 供本地 debug 查看
+   */
+  inspectInterceptors(): void {
+    // eslint-disable-next-line no-console
+    console.info({
+      request: this._interceptorQueueForRequest,
+      response: this._interceptorQueueForResponse
+    });
   }
 }
