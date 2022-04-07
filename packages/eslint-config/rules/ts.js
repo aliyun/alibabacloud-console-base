@@ -78,7 +78,17 @@ module.exports = {
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md
    */
-  '@typescript-eslint/comma-dangle': ['error'],
+  '@typescript-eslint/comma-dangle': ['error', {
+    arrays: 'never',
+    objects: 'never',
+    imports: 'never',
+    exports: 'never',
+    functions: 'never',
+    // ts only
+    enums: 'never',
+    generics: 'never',
+    tuples: 'never'
+  }],
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-before-blocks.md
    */

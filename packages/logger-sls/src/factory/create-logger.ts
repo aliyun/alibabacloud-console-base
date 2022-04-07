@@ -2,8 +2,9 @@ import {
   IFactoryOptions,
   ILogOptionsQuick,
   ILogOptions,
+  ILogInfo,
   IFnLog,
-  IFnLogQuick, ILogInfo
+  IFnLogQuick
 } from '../types';
 import getSystemParams from '../util/get-system-params';
 import logPipe from '../util/log-pipe';
@@ -61,6 +62,10 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     return false;
   }
   
+  function sls(topic: string): void;
+  function sls(topic: string, info: undefined | null, options?: ILogOptions): void;
+  function sls<I>(topic: string, info: I, options?: ILogOptions): void;
+  
   function sls<I = void>(topic: string, info?: I, {
     group = 'LOG',
     sampling = factorySampling,
@@ -94,7 +99,7 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
   }
   
   function creteQuickFn(group: string): IFnLogQuick {
-    return <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void => sls<I>(topic, info, {
+    return (topic: string, info?: unknown, options?: ILogOptionsQuick): void => sls(topic, info, {
       ...options,
       group
     });

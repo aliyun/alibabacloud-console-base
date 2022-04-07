@@ -20,12 +20,12 @@ function convertError(err: Error): Record<string, unknown> {
   return plainError;
 }
 
-function normalizeObject(o: Error | Record<string, unknown>): Record<string, unknown> {
+function normalizeObject<T extends object>(o: T): Record<string, unknown> {
   if (_isError(o)) {
     return convertError(o);
   }
   
-  return o;
+  return o as Record<string, unknown>;
 }
 
 /**
@@ -39,7 +39,7 @@ function normalizeObject(o: Error | Record<string, unknown>): Record<string, unk
  * }
  * ```
  */
-export default function flattenObject(o: Error | Record<string, unknown>, prefix?: string, depth = 3): Record<string, unknown> {
+export default function flattenObject<T extends object>(o: T, prefix?: string, depth = 3): Record<string, unknown> {
   const result: Record<string, unknown> = {};
 
   function generateKey(parentPaths: string[], k: string): string {
