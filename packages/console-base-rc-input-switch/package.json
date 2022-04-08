@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-input-switch",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "ConsoleBase 组件 - InputSwitch",
   "license": "MIT",
   "sideEffects": false,
@@ -41,7 +41,8 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme": "^1.4.4",
-    "@alicloud/console-base-theme-sc-base": "^1.2.3"
+    "@alicloud/console-base-theme-sc-base": "^1.2.3",
+    "@alicloud/react-hook-controllable-value": "^1.0.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

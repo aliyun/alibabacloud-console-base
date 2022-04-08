@@ -1,5 +1,4 @@
 import React, {
-  useState,
   useCallback
 } from 'react';
 import styled, {
@@ -17,6 +16,7 @@ import {
 import {
   ButtonBase
 } from '@alicloud/console-base-theme-sc-base';
+import useControllableValue from '@alicloud/react-hook-controllable-value';
 
 import {
   IPropsInputSwitch
@@ -85,25 +85,19 @@ const ScInputSwitchLabel = styled.label`
 export default function InputSwitch({
   label,
   value,
+  defaultValue,
   disabled,
   onChange,
   ...props
 }: IPropsInputSwitch): JSX.Element {
-  const [stateValue, setStateValue] = useState<boolean>(false);
-  const finalValue = value ?? stateValue;
-  
-  const handleClick = useCallback(() => {
-    const nextValue = !finalValue;
-    
-    setStateValue(nextValue);
-    onChange?.(nextValue);
-  }, [onChange, finalValue, setStateValue]);
+  const [controllableValue, setControllableValue] = useControllableValue(false, value, defaultValue, onChange);
+  const handleClick = useCallback(() => setControllableValue(!controllableValue), [controllableValue, setControllableValue]);
   
   return <ScInputSwitchWrap {...props}>
     <ScInputSwitch {...{
       disabled,
       role: 'switch',
-      'aria-checked': finalValue,
+      'aria-checked': controllableValue,
       onClick: handleClick
     }} />
     {label ? <ScInputSwitchLabel onClick={disabled ? undefined : handleClick}>{label}</ScInputSwitchLabel> : null}
