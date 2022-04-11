@@ -73,7 +73,11 @@ module.exports = {
   }, {
     selector: 'enumMember',
     format: ['StrictPascalCase', 'UPPER_CASE'],
-    leadingUnderscore: 'allow'
+    leadingUnderscore: 'allow',
+    filter: {
+      regex: '__',
+      match: false
+    }
   }],
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md

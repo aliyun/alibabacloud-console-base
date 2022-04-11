@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@alicloud/rc-codemirror": "^1.0.33",
+    "@alicloud/react-hook-controllable-value": "^1.0.0",
     "lodash": "^4.17.21",
     "json5": "^2.2.1"
   },
