@@ -1,11 +1,11 @@
 import {
-  TStringOrJSX
+  TStringOrJsx
 } from '../../types';
 
 import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
 
-export default function useDialogTitleExtra(): TStringOrJSX | undefined {
+export default function useDialogTitleExtra(): TStringOrJsx | undefined {
   const {
     titleExtra
   } = useModelProps();

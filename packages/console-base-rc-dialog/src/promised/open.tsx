@@ -3,7 +3,7 @@ import {
 } from '../enum';
 import {
   TDialogData,
-  TStringOrJSX,
+  TStringOrJsx,
   IDialogProps
 } from '../types';
 import {
@@ -13,12 +13,12 @@ import {
 import openIndirect from './open-indirect';
 
 interface IFnOpen {
-  (content?: TStringOrJSX): Promise<void>;
+  (content?: TStringOrJsx): Promise<void>;
   <T = void, D = TDialogData>(props: IDialogProps<T, D>): Promise<T>;
 }
 
 interface IFnOpenWithMode {
-  (content?: TStringOrJSX): Promise<void>;
+  (content?: TStringOrJsx): Promise<void>;
   <T = void, D = TDialogData>(props: Omit<IDialogProps<T, D>, 'mode'>): Promise<T>;
 }
 
@@ -41,7 +41,7 @@ interface IFnOpenWithMode {
  * }).then(...);
  * ```
  */
-const open: IFnOpen = function<T = void, D = TDialogData>(contentOrProps?: TStringOrJSX | IDialogProps<T, D>): Promise<T> {
+const open: IFnOpen = function<T = void, D = TDialogData>(contentOrProps?: TStringOrJsx | IDialogProps<T, D>): Promise<T> {
   return openIndirect<T, D>(contentOrProps).promise;
 };
 
@@ -50,7 +50,7 @@ export default open;
 /**
  * open 的快捷方式：以抽屉模式打开一个 Dialog
  */
-export const slide: IFnOpenWithMode = function<T = void, D = TDialogData>(contentOrProps?: TStringOrJSX | IDialogProps<T, D>): Promise<T> {
+export const slide: IFnOpenWithMode = function<T = void, D = TDialogData>(contentOrProps?: TStringOrJsx | IDialogProps<T, D>): Promise<T> {
   return open<T, D>(buildPropsForPromise<T, D>(contentOrProps, {
     mode: EDialogMode.SLIDE
   }, {
@@ -61,7 +61,7 @@ export const slide: IFnOpenWithMode = function<T = void, D = TDialogData>(conten
 /**
  * open 的快捷方式：以抽屉模式打开一个 Dialog
  */
-export const slideUp: IFnOpenWithMode = function<T = void, D = TDialogData>(contentOrProps?: TStringOrJSX | IDialogProps<T, D>): Promise<T> {
+export const slideUp: IFnOpenWithMode = function<T = void, D = TDialogData>(contentOrProps?: TStringOrJsx | IDialogProps<T, D>): Promise<T> {
   return open<T, D>(buildPropsForPromise<T, D>(contentOrProps, {
     mode: EDialogMode.SLIDE_UP
   }));

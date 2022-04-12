@@ -45,7 +45,7 @@ export default function confirm(contentOrProps?: string | JSX.Element | IDialogP
   }, SYS_DIALOG_PROPS_DEFAULT);
   
   promiseProps.content = <AltWrap {...{
-    type: 'confirm',
+    type: extra.type || 'confirm',
     title: promiseProps.title as IDialogPropsConfirm['title'],
     content: promiseProps.content
   }} />;

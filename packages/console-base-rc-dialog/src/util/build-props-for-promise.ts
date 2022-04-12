@@ -5,13 +5,13 @@ import {
 import {
   IDialogProps,
   TDialogData,
-  TStringOrJSX
+  TStringOrJsx
 } from '../types';
 
 /**
  * 为了使用上的便利性，你可以仅传入内容（string 或 JSX.Element），这个方法是判断并返回 `{ content }` 对象
  */
-function fromContentOrProps<R = void, D = TDialogData>(contentOrProps?: TStringOrJSX | IDialogProps<R, D>): IDialogProps<R, D> {
+function fromContentOrProps<R = void, D = TDialogData>(contentOrProps?: TStringOrJsx | IDialogProps<R, D>): IDialogProps<R, D> {
   if (!contentOrProps) {
     return {};
   }
@@ -29,7 +29,7 @@ function fromContentOrProps<R = void, D = TDialogData>(contentOrProps?: TStringO
  * promise dialog 需要的 props
  */
 export default function buildPropsForPromise<R = void, D = TDialogData>(
-    contentOrProps?: TStringOrJSX | IDialogProps<R, D>,
+    contentOrProps?: TStringOrJsx | IDialogProps<R, D>,
     fixedProps?: IDialogProps<R, D>,
     defaultProps?: IDialogProps<R, D>
 ): IDialogProps<R, D> {

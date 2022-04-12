@@ -18,18 +18,17 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  TStringOrJSX
+  TStringOrJsx,
+  TDialogAltIconType
 } from '../../types';
 
-type TType = 'info' | 'alert' | 'success' | 'error' | 'confirm';
-
 interface IProps {
-  type?: TType;
-  title?: TStringOrJSX;
-  content?: TStringOrJSX;
+  type?: TDialogAltIconType;
+  title?: TStringOrJsx;
+  content?: TStringOrJsx;
 }
 
-function getIconType(type?: TType): IconType {
+function getIconType(type?: TDialogAltIconType): IconType {
   switch (type) {
     case 'info':
       return 'info-circle-fill';

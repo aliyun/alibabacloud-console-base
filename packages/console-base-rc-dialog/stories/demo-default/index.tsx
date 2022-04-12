@@ -71,6 +71,16 @@ export default function DemoDefault(): JSX.Element {
       onClick: () => confirm(stateProps as unknown as DialogPropsConfirm).then(console.info)
     }}>confirm</Button>
     <Button {...{
+      onClick: () => confirm(stateProps as unknown as DialogPropsConfirm, {
+        type: 'alert'
+      }).then(console.info)
+    }}>confirm - alert</Button>
+    <Button {...{
+      onClick: () => confirm(stateProps as unknown as DialogPropsConfirm, {
+        type: 'error'
+      }).then(console.info)
+    }}>confirm - error</Button>
+    <Button {...{
       onClick: () => prompt(stateProps as unknown as DialogPropsPrompt<any>).then(console.info)
     }}>prompt</Button>
     <PreJson o={stateProps} />

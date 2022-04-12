@@ -12,18 +12,18 @@ import {
 import Input from '@alicloud/console-base-rc-input';
 
 import {
-  EDialogMode,
-  EDialogSize,
+  DialogMode,
+  DialogSize,
   useDialog
 } from '../../../../src';
 
-type TMode = undefined | EDialogMode;
-type TSize = undefined | EDialogSize;
+type TMode = undefined | DialogMode;
+type TSize = undefined | DialogSize;
 
 const modeItems: ChoiceItem<TMode>[] = [{
   value: undefined,
   label: 'undefined'
-}, ...Object.values<EDialogMode>(EDialogMode).map(v => ({
+}, ...Object.values<DialogMode>(DialogMode).map(v => ({
   value: v,
   label: v
 }))];
@@ -31,7 +31,7 @@ const modeItems: ChoiceItem<TMode>[] = [{
 const sizeItems: ChoiceItem<TSize>[] = [{
   value: undefined,
   label: 'undefined'
-}, ...Object.values<EDialogSize>(EDialogSize).map(v => ({
+}, ...Object.values<DialogSize>(DialogSize).map(v => ({
   value: v,
   label: v
 }))];
@@ -40,8 +40,8 @@ export default function Content(): JSX.Element {
   const {
     update
   } = useDialog();
-  const [stateMode, setStateMode] = useState<EDialogMode | undefined>(undefined);
-  const [stateSize, setStateSize] = useState<EDialogSize | undefined>(undefined);
+  const [stateMode, setStateMode] = useState<DialogMode | undefined>(undefined);
+  const [stateSize, setStateSize] = useState<DialogSize | undefined>(undefined);
   
   const handleUpdateTitle = useCallback((value: string) => {
     update({
@@ -55,14 +55,14 @@ export default function Content(): JSX.Element {
     });
   }, [update]);
   
-  const handleUpdateMode = useCallback((mode: undefined | EDialogMode) => {
+  const handleUpdateMode = useCallback((mode: undefined | DialogMode) => {
     setStateMode(mode);
     update({
       mode
     });
   }, [update]);
   
-  const handleUpdateSize = useCallback((size: undefined | EDialogSize) => {
+  const handleUpdateSize = useCallback((size: undefined | DialogSize) => {
     setStateSize(size);
     update({
       size
