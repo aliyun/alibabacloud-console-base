@@ -5,3 +5,4 @@ reject:
 - 'micromark-extension-directive' # ^1.4.0 → 2.0.0 TODO
 - 'micromark-extension-gfm' # 0.3.3 → 1.0.0 TODO
 - 'eslint' # react-hooks 在 8 下不 work
+- 'stylelint' # 14 不行

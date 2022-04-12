@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import {
   mixinTypoEllipsis
@@ -11,10 +13,12 @@ import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   HEIGHT_TAB,
+  BGC_TAB_ACTIVE_DARK,
   BGC_TAB_ACTIVE,
   BGC_TAB_IDLE,
-  FGC_TAB_ACTIVE,
   FGC_TAB_IDLE,
+  FGC_TAB_ACTIVE,
+  FGC_TAB_ACTIVE_DARK,
   MAX_WIDTH_TAB,
   MIN_WIDTH_TAB,
   TAB_TOP_SPACE
@@ -39,13 +43,10 @@ const ScTabItem = styled.div<IScProps>`
     content: '';
     position: absolute;
     top: 30%;
-    right: 0;
     opacity: ${props => (props['data-active'] ? 0 : 1)};
-    z-index: 1;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 100%);
     width: 1px;
     height: 40%;
-    font-size: 16px;
     transition: all linear 200ms;
   }
   
@@ -60,12 +61,22 @@ const ScTab = styled(ButtonBase)<IScProps>`
   padding: 0 ${props => (props['data-closable'] ? 28 : 8)}px 0 8px;
   border: 0;
   border-radius: 4px 4px 0 0;
-  background-color: ${props => (props['data-active'] ? BGC_TAB_ACTIVE : BGC_TAB_IDLE)};
   min-width: ${MIN_WIDTH_TAB}px;
   max-width: ${MAX_WIDTH_TAB}px;
   height: ${HEIGHT_TAB}px;
   cursor: default;
-  color: ${props => (props['data-active'] ? FGC_TAB_ACTIVE : FGC_TAB_IDLE)};
+  ${props => (props['data-active'] ? css`
+    background-color: ${BGC_TAB_ACTIVE};
+    color: ${FGC_TAB_ACTIVE};
+    
+    .theme-dark && {
+      background-color: ${BGC_TAB_ACTIVE_DARK};
+      color: ${FGC_TAB_ACTIVE_DARK};
+    }
+  ` : css`
+    background-color: ${BGC_TAB_IDLE};
+    color: ${FGC_TAB_IDLE};
+  `)}
   ${mixinTypoEllipsis}
 `;
 

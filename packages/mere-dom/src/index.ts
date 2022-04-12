@@ -1,3 +1,5 @@
+export { default as getFixedRect } from './util/get-fixed-rect';
+export { default as getScrollbarWidth } from './util/get-scrollbar-width';
 export { default as find } from './util/find';
 export { default as loadAssets } from './util/load-assets';
 export { default as addClass } from './util/add-class';
@@ -5,7 +7,6 @@ export { default as removeClass } from './util/remove-class';
 export { default as remove } from './util/remove';
 export { default as replaceWith } from './util/replace-with';
 export { default as wrap } from './util/wrap';
-export { default as getFixedRect } from './util/get-fixed-rect';
 export { default as inViewport } from './util/in-viewport';
 export { default as scrollIntoView } from './util/scroll-into-view';
 export { default as scrollTo } from './util/scroll-to';

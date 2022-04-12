@@ -91,18 +91,31 @@ module.exports = {
       parameters: 2
     }
   }],
+  /**
+   * https://eslint.org/docs/rules/padding-line-between-statements
+   *
+   * eslint-config-ali 禁用了它..
+   */
   'padding-line-between-statements': ['error', {
     blankLine: 'always',
-    prev: ['const', 'let', 'var', 'if', 'for', 'while', 'switch', 'try'],
+    prev: ['const', 'let', 'var', 'block', 'block-like'],
     next: '*'
+  }, {
+    blankLine: 'always',
+    prev: '*',
+    next: ['return', 'throw', 'break', 'continue', 'block', 'block-like', 'export']
   }, {
     blankLine: 'any',
     prev: ['const', 'let', 'var'],
     next: ['const', 'let', 'var']
   }, {
-    blankLine: 'always',
+    blankLine: 'any',
+    prev: ['export'],
+    next: ['export']
+  }, {
+    blankLine: 'never',
     prev: '*',
-    next: ['return', 'throw', 'break', 'continue', 'if', 'for', 'while', 'switch', 'try']
+    next: ['case', 'default']
   }],
   'no-multiple-empty-lines': ['error', {
     max: 1,

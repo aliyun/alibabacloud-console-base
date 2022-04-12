@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-attention-seeker",
-  "version": "1.1.90",
+  "version": "1.1.92",
   "description": "ConsoleBase 组件 - 寻求用户关注",
   "license": "MIT",
   "sideEffects": false,
@@ -26,15 +26,15 @@
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.30",
-    "@alicloud/demo-rc-elements": "^1.3.67",
-    "@types/react": "^17.0.28",
-    "@types/react-dom": "^17.0.9",
+    "@alicloud/console-toolkit-preset-component": "^1.2.32",
+    "@alicloud/demo-rc-elements": "^1.3.69",
+    "@types/react": "^17.0.32",
+    "@types/react-dom": "^17.0.10",
     "@types/styled-components": "^5.1.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.3.1",
-    "typescript": "^4.4.3"
+    "styled-components": "^5.3.3",
+    "typescript": "^4.4.4"
   },
   "peerDependencies": {
     "react": ">=16.8",
@@ -42,8 +42,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.3.88",
-    "@alicloud/mere-dom": "^1.1.60",
+    "@alicloud/console-base-theme": "^1.3.90",
+    "@alicloud/mere-dom": "^1.1.63",
     "immutability-helper": "^3.1.1"
   },
   "scripts": {

@@ -8,7 +8,6 @@ import {
   mixinTextDanger,
   mixinTextAccent,
   mixinBgDanger,
-  mixinBgWhite,
   mixinBorderDangerColor,
   mixinBorderAccentColor
 } from '@alicloud/console-base-theme';
@@ -18,7 +17,6 @@ import {
 } from '../const';
 
 const CSS_NEW = css`
-  font-weight: 600;
   letter-spacing: 2px;
   ${mixinTextWhite}
   ${mixinBgDanger}
