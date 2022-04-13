@@ -41,7 +41,11 @@ module.exports = {
    */
   '@typescript-eslint/naming-convention': ['error', {
     selector: 'variable',
-    format: ['strictCamelCase', 'StrictPascalCase', 'UPPER_CASE']
+    format: ['strictCamelCase', 'StrictPascalCase', 'UPPER_CASE'],
+    filter: {
+      regex: '[A-Z\\d]__[A-Z\\d]',
+      match: false
+    }
   }, {
     selector: 'parameter',
     format: ['strictCamelCase'],
@@ -75,7 +79,7 @@ module.exports = {
     format: ['StrictPascalCase', 'UPPER_CASE'],
     leadingUnderscore: 'allow',
     filter: {
-      regex: '__',
+      regex: '[A-Z\\d]__[A-Z\\d]',
       match: false
     }
   }],

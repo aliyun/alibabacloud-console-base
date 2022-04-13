@@ -1,7 +1,6 @@
 import React, {
   useState
 } from 'react';
-import styled from 'styled-components';
 
 import {
   ArticleBase
@@ -9,6 +8,7 @@ import {
 import {
   H1,
   H2,
+  Flex,
   InputSwitch,
   CodeViewer
 } from '@alicloud/demo-rc-elements';
@@ -20,13 +20,6 @@ import Markdown, {
   MarkdownExtensionDirectiveHtmlOptions,
   compileIntoHtml
 } from '../../src';
-
-const ScViewAndCode = styled.div`
-  display: flex;
-`;
-const ScViewAndCodeContent = styled.div`
-  flex: 1;
-`;
 
 interface IProps extends Omit<MarkdownProps, 'allowDangerousHtml' | 'plugins'> {}
 
@@ -119,12 +112,12 @@ export default function Demo({
         onChange: setStateDirectiveEnabled
       }} />
     </div>
-    <ScViewAndCode>
-      <ScViewAndCodeContent>
+    <Flex>
+      <>
         <H2><span role="img" aria-label="mwa">💋</span> 展示</H2>
         {stateApplyStyle ? <ArticleBase>{jsxMarkdown}</ArticleBase> : jsxMarkdown}
-      </ScViewAndCodeContent>
-      <ScViewAndCodeContent>
+      </>
+      <>
         <H2><span role="img" aria-label="code">Ⓜ️</span> 代码</H2>
         <CodeViewer {...{
           conf: {
@@ -133,7 +126,7 @@ export default function Demo({
           type: 'markdown',
           onChange: setStateSource
         }}>{stateSource}</CodeViewer>
-      </ScViewAndCodeContent>
-    </ScViewAndCode>
+      </>
+    </Flex>
   </>;
 }
