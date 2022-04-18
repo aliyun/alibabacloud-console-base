@@ -22,6 +22,7 @@ interface IItem {
 
 interface IProps {
   items?: IItem[];
+  detailedMode?: boolean;
   onClose(): void; // 因为是组件式调用，必须设置 onClose
 }
 
@@ -30,17 +31,18 @@ interface IProps {
  */
 export default function ErrorPrompt({
   items,
+  detailedMode,
   onClose
 }: IProps): JSX.Element | null {
   const queue: IErrorQueueItem[] = useMemo((): IErrorQueueItem[] => (items || []).reduce((result: IErrorQueueItem[], v) => {
-    const queueItem = convertToQueueItem(v.error, v.extra);
+    const queueItem = convertToQueueItem(v.error, v.extra, detailedMode);
     
     if (queueItem) {
       result.push(queueItem);
     }
     
     return result;
-  }, []), [items]);
+  }, []), [items, detailedMode]);
   
   if (!queue.length) {
     return null;
