@@ -35,7 +35,7 @@ function getJsonFromString(str: string): Record<string, unknown> | null {
   return null;
 }
 
-function getMerger(enabled: boolean, key: string): FetcherMergerOptions | true | undefined {
+function getMerger(enabled: boolean, key: string): FetcherMergerOptions | boolean {
   if (enabled) {
     if (key) {
       return {
@@ -46,7 +46,7 @@ function getMerger(enabled: boolean, key: string): FetcherMergerOptions | true |
     return true;
   }
   
-  return undefined;
+  return false;
 }
 
 function cleanJson(o: unknown): string | undefined {
@@ -124,7 +124,7 @@ export default function DemoDefault(): JSX.Element {
         label: 'merger enabled',
         value: stateMergerEnabled,
         onChange: setStateMergerEnabled
-      }} /> merger enabled
+      }} />
       <br />
       merger.key <InputText {...{
         placeholder: 'merger.key',

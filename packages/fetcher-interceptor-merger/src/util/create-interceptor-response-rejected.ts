@@ -7,7 +7,9 @@ import {
   IFetcherConfigExtendedForResponse
 } from '../types';
 
-import mergerReject from './merger/reject';
+import {
+  mergerReject
+} from './merger';
 
 export default function createInterceptorResponseRejected(): FetcherFnInterceptResponseRejected<IFetcherConfigExtendedForResponse> {
   return (err: FetcherError, {

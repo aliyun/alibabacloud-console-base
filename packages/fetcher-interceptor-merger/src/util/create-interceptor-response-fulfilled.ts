@@ -8,7 +8,9 @@ import {
   IFetcherConfigExtendedForResponse
 } from '../types';
 
-import mergerResolve from './merger/resolve';
+import {
+  mergerResolve
+} from './merger';
 
 export default function createInterceptorResponseFulfilled(): FetcherFnInterceptResponseFulfilled<IFetcherConfigExtendedForResponse> {
   return (data: unknown, {

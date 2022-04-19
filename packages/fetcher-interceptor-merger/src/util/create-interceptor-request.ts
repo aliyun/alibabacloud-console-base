@@ -9,8 +9,10 @@ import {
 } from '../types';
 
 import parseOptions from './parse-options';
-import mergerAdd from './merger/add';
-import mergerGet from './merger/get';
+import {
+  mergerGet,
+  mergerAdd
+} from './merger';
 
 export default function createInterceptorRequest(): FetcherFnInterceptRequest<IFetcherConfigExtended> {
   return (fetcherConfig: IFetcherConfigExtended): FetcherInterceptRequestReturn<IFetcherConfigExtended> => {
