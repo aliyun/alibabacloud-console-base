@@ -26,10 +26,10 @@
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.55",
+    "@alicloud/console-toolkit-preset-component": "^1.2.56",
     "@alicloud/demo-rc-elements": "^1.5.4",
     "@alicloud/fetcher-demo-helpers": "^1.1.80",
-    "@types/lodash": "^4.14.181",
+    "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.43",
     "react": "^17.0.2",
     "typescript": "^4.6.3"
@@ -43,7 +43,7 @@
     "@alicloud/console-fetcher-interceptor-sls": "^1.1.92",
     "@alicloud/fetcher": "^1.4.1",
     "@alicloud/fetcher-interceptor-cache-local": "^1.1.57",
-    "@alicloud/fetcher-interceptor-merger": "^1.0.73",
+    "@alicloud/fetcher-interceptor-merger": "^1.1.0",
     "lodash": "^4.17.21"
   },
   "scripts": {

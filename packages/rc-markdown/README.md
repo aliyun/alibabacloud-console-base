@@ -107,7 +107,7 @@ export default function MyMarkdown(): JSX.Element {
 
 This package ships with no styles at all.
 
-Use `@alicloud/console-base-rc-markdown` you want to have a _beautiful_ look (with CSS var), or maybe you can warp with your own styling code.
+Use `@alicloud/console-base-rc-markdown` you want to have a _beautiful_ look (with CSS var), or maybe you can wrap with your own styling code.
 
 # Useful Links ✨
 

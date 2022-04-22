@@ -30,9 +30,9 @@
   "devDependencies": {
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.89",
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.55",
+    "@alicloud/console-toolkit-preset-component": "^1.2.56",
     "@alicloud/demo-rc-elements": "^1.5.4",
-    "@types/lodash": "^4.14.181",
+    "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/styled-components": "^5.1.25",
