@@ -14,8 +14,7 @@ import {
 } from './shadow';
 
 export const mixinButtonShadow = css`
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinShadowLDown}
   }
   
@@ -134,8 +133,7 @@ export const mixinButtonDanger = css`
     ${mixinButtonDangerColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonDangerStateHover}
   }
   
@@ -223,8 +221,7 @@ export const mixinButtonMenu = css`
     ${mixinButtonMenuColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonMenuStateHover}
   }
   
@@ -312,8 +309,7 @@ export const mixinButtonPrimary = css`
     ${mixinButtonPrimaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonPrimaryStateHover}
   }
   
@@ -401,8 +397,7 @@ export const mixinButtonSecondary = css`
     ${mixinButtonSecondaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonSecondaryStateHover}
   }
   
@@ -490,8 +485,7 @@ export const mixinButtonSecondaryAlt = css`
     ${mixinButtonSecondaryAltColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonSecondaryAltStateHover}
   }
   
@@ -579,8 +573,7 @@ export const mixinButtonTertiary = css`
     ${mixinButtonTertiaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonTertiaryStateHover}
   }
   
@@ -668,8 +661,7 @@ export const mixinButtonTertiaryAlt = css`
     ${mixinButtonTertiaryAltColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonTertiaryAltStateHover}
   }
   
@@ -757,8 +749,7 @@ export const mixinButtonBrandPrimary = css`
     ${mixinButtonBrandPrimaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonBrandPrimaryStateHover}
   }
   
@@ -846,8 +837,7 @@ export const mixinButtonBrandSecondary = css`
     ${mixinButtonBrandSecondaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonBrandSecondaryStateHover}
   }
   
@@ -935,8 +925,7 @@ export const mixinButtonBrandSecondaryAlt = css`
     ${mixinButtonBrandSecondaryAltColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonBrandSecondaryAltStateHover}
   }
   
@@ -1024,8 +1013,7 @@ export const mixinButtonBrandTertiary = css`
     ${mixinButtonBrandTertiaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonBrandTertiaryStateHover}
   }
   
@@ -1113,8 +1101,7 @@ export const mixinButtonTextPrimary = css`
     ${mixinButtonTextPrimaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonTextPrimaryStateHover}
   }
   
@@ -1202,8 +1189,7 @@ export const mixinButtonTextSecondary = css`
     ${mixinButtonTextSecondaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonTextSecondaryStateHover}
   }
   
@@ -1291,8 +1277,7 @@ export const mixinButtonTextTertiary = css`
     ${mixinButtonTextTertiaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonTextTertiaryStateHover}
   }
   
@@ -1380,8 +1365,7 @@ export const mixinButtonTextBrandPrimary = css`
     ${mixinButtonTextBrandPrimaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonTextBrandPrimaryStateHover}
   }
   
@@ -1469,8 +1453,7 @@ export const mixinButtonTextBrandSecondary = css`
     ${mixinButtonTextBrandSecondaryColorStateNormal}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     ${mixinButtonTextBrandSecondaryStateHover}
   }
   

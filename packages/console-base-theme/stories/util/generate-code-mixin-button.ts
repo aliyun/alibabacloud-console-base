@@ -105,8 +105,7 @@ function buildCodeMixinButtonFull(theme: string): string {
     \${${buildMixinButtonPartStateName(theme, EButtonPart.COLOR, EButtonState.NORMAL)}}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     \${${buildMixinButtonStateName(theme, EButtonState.HOVER)}}
   }
   

@@ -39,7 +39,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.4.4",
+    "@alicloud/console-base-theme": "^1.4.5",
     "lodash": "^4.17.21"
   },
   "scripts": {
