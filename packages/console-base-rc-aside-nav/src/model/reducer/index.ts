@@ -6,12 +6,12 @@ import {
   TModelAction
 } from '../types';
 
-import reduceSetVisible from './reduce-set-visible';
+import reduceSetCollapsed from './reduce-set-collapsed';
 
 export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
-    case EAction.SET_VISIBLE:
-      return reduceSetVisible(state, action.payload);
+    case EAction.SET_COLLAPSED:
+      return reduceSetCollapsed(state, action.payload);
     default:
       return state;
   }

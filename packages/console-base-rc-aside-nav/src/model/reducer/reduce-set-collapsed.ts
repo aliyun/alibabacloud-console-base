@@ -4,9 +4,9 @@ import {
   IModelState
 } from '../types';
 
-export default function reduceSetVisible(state: IModelState, payload: boolean): IModelState {
+export default function reduceSetCollapsed(state: IModelState, payload: boolean): IModelState {
   return update(state, {
-    visible: {
+    collapsed: {
       $set: payload
     }
   });

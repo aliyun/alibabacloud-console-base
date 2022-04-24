@@ -18,6 +18,10 @@ import {
   NAV
 } from '../const';
 
+interface IScAside {
+  collapsed?: boolean;
+}
+
 const GlobalStyle = createGlobalStyle`
   html,
   body {
@@ -30,7 +34,7 @@ const ScSite = styled.div`
   height: 100vh;
 `;
 
-const ScSiteSide = styled.aside`
+const ScAide = styled.aside<IScAside>`
   position: relative;
   width: 220px;
 `;
@@ -47,14 +51,20 @@ type TKey = keyof typeof NAV;
 
 export default function DemoDefault(): JSX.Element {
   const [stateNavKey, setStateNavKey] = useState<TKey>('VIPER');
+  const [stateCollapsed, setStateCollapsed] = useState(false);
   const [stateUpperLevel, setStateUpperLevel] = useState(false);
   const navProps = NAV[stateNavKey];
   
   return <ScSite>
     <GlobalStyle />
-    <ScSiteSide>
-      <AsideNav {...navProps} upperHref={stateUpperLevel ? '#/back-to-upper-level' : undefined} />
-    </ScSiteSide>
+    <ScAide collapsed={stateCollapsed}>
+      <AsideNav {...{
+        ...navProps,
+        collapsed: stateCollapsed,
+        upperHref: stateUpperLevel ? '#/back-to-upper-level' : undefined,
+        onToggleCollapsed: setStateCollapsed
+      }} />
+    </ScAide>
     <ScSiteMain>
       <H1>{pkgInfo.name}@{pkgInfo.version}</H1>
       <P>{pkgInfo.description}</P>
@@ -65,6 +75,11 @@ export default function DemoDefault(): JSX.Element {
           value: v as TKey
         })),
         onChange: setStateNavKey
+      }} />
+      <InputSwitch {...{
+        label: 'props.collapsed',
+        value: stateCollapsed,
+        onChange: setStateCollapsed
       }} />
       <InputSwitch {...{
         label: 'UpperLevel',

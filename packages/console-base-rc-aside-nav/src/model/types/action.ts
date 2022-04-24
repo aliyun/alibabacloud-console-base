@@ -7,7 +7,7 @@ import {
 } from '../enum';
 
 export type TModelAction = {
-  type: EAction.SET_VISIBLE;
+  type: EAction.SET_COLLAPSED;
   payload: boolean;
 };
 

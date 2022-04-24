@@ -1,3 +1,3 @@
 export enum EAction {
-  SET_VISIBLE
+  SET_COLLAPSED
 }

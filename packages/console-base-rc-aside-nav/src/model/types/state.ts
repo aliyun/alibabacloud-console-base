@@ -1,3 +1,3 @@
 export interface IModelState {
-  visible: boolean;
+  collapsed: boolean;
 }

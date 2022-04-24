@@ -21,6 +21,10 @@ export interface IModelProps {
    */
   itemsInFooter?: (INavItemInFooterProps | null)[];
   /**
+   * 通过 onToggleCollapsed 实现受控
+   */
+  collapsed?: boolean;
+  /**
    * 是否默认展开所有子项目
    * 
    * 默认：true
@@ -32,4 +36,8 @@ export interface IModelProps {
    * 默认：true
    */
   unfoldedFirst?: boolean;
+  /**
+   * 是否展示推入按钮
+   */
+  onToggleCollapsed?(collapsed: boolean): void;
 }
