@@ -4,6 +4,7 @@ import styled, {
 } from 'styled-components';
 
 import {
+  mixinBgPrimary,
   mixinBorderPrimaryRight,
   mixinShadowMRight
 } from '@alicloud/console-base-theme';
@@ -28,6 +29,8 @@ const ScUi = styled.div<IScProps>`
   height: 100%;
   transform: translateX(${props => (props.collapsed ? '-100%' : '0')});
   transition: all linear 200ms;
+  ${mixinBgPrimary}
+  ${mixinBorderPrimaryRight}
   ${props => {
     if (props.collapsed) {
       return css`
@@ -35,7 +38,6 @@ const ScUi = styled.div<IScProps>`
       `;
     }
   }}
-  ${mixinBorderPrimaryRight}
   
   &:hover {
     ${mixinShadowMRight}

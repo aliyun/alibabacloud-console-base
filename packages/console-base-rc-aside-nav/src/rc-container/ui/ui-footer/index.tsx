@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  mixinBorderTertiaryTop
+  mixinBorderPrimaryTop
 } from '@alicloud/console-base-theme';
 
 import {
@@ -10,8 +10,10 @@ import {
 } from '../../../model';
 import NavItemInFooter from '../../nav-item-in-footer';
 
-const ScFooter = styled.div`
-  ${mixinBorderTertiaryTop}
+// 必须 overflow:hidden 否则 collapsed 状态会侧漏
+const ScFooter = styled.footer`
+  overflow: hidden;
+  ${mixinBorderPrimaryTop}
 `;
 
 export default function UiFooter(): JSX.Element | null {

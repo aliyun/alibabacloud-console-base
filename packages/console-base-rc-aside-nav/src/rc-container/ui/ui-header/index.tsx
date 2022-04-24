@@ -24,6 +24,10 @@ const cssCommon = css`
   padding: 0 ${SPACING_SIDE}px;
   height: ${HEIGHT_HEADER}px;
   line-height: ${HEIGHT_HEADER}px;
+`;
+
+const ScHeader = styled.header`
+  overflow: hidden;
   font-size: 14px;
   font-weight: 600;
   ${mixinTextPrimary}
@@ -31,9 +35,8 @@ const cssCommon = css`
 
 const ScTitle = styled.div`
   padding: 0 ${SPACING_SIDE}px;
-  overflow: hidden;
-  ${mixinTypoEllipsis}
   ${cssCommon}
+  ${mixinTypoEllipsis}
 `;
 
 const ScToUpperLevel = styled(Button)`
@@ -51,10 +54,12 @@ export default function UiHeader(): JSX.Element {
     upperHref
   } = useProps();
   
-  return upperHref ? <ScToUpperLevel {...{
-    label: <ScIcon type="angle-left" />,
-    theme: ButtonTheme.TEXT_TERTIARY,
-    textAlign: 'center',
-    href: upperHref
-  }} /> : <ScTitle>{title}</ScTitle>;
+  return <ScHeader>
+    {upperHref ? <ScToUpperLevel {...{
+      label: <ScIcon type="angle-left" />,
+      theme: ButtonTheme.TEXT_TERTIARY,
+      textAlign: 'center',
+      href: upperHref
+    }} /> : <ScTitle title={typeof title === 'string' ? title : undefined}>{title}</ScTitle>}
+  </ScHeader>;
 }

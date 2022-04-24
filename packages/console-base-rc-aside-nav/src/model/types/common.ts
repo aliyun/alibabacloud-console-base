@@ -7,7 +7,7 @@ export type TNavItemMark = 'external' | 'new' | 'beta-public' | 'beta' | 'alpha'
 export type TSubItemsUnfolded = boolean | 'fist' | 'first-level';
 
 export interface INavItemPropsBase extends Omit<ButtonProps, 'iconLeft' | 'iconRight'> {
-  key?: string;
+  key: string;
   icon?: JSX.Element;
   mark?: TNavItemMark;
 }

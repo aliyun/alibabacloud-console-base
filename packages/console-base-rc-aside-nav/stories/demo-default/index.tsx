@@ -11,6 +11,7 @@ import {
   RadioGroup,
   InputSwitch
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import pkgInfo from '../../package.json';
 import AsideNav from '../../src';
@@ -36,7 +37,8 @@ const ScSite = styled.div`
 
 const ScAide = styled.aside<IScAside>`
   position: relative;
-  width: 220px;
+  width: ${props => (props.collapsed ? 0 : 220)}px;
+  transition: all linear 200ms;
 `;
 
 const ScSiteMain = styled.main`
@@ -66,6 +68,7 @@ export default function DemoDefault(): JSX.Element {
       }} />
     </ScAide>
     <ScSiteMain>
+      <ThemeSwitcher />
       <H1>{pkgInfo.name}@{pkgInfo.version}</H1>
       <P>{pkgInfo.description}</P>
       <RadioGroup<TKey> {...{

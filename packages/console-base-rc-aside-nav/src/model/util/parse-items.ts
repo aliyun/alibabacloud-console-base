@@ -12,7 +12,7 @@ import isItemInteractive from './is-item-interactive';
 export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded): (INavItemPropsParsed | '-')[] {
   const itemsParsed: (INavItemPropsParsed | '-')[] = [];
   let lastIsDivider = true; // 用于 '-' 掐头
-  let fistSub = true;
+  let firstSub = true;
   
   function parseNavItem(o: INavItemProps, indent = 0): INavItemPropsParsed | null {
     const itemParsed = {
@@ -46,7 +46,7 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
           
           break;
         case 'fist':
-          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? fistSub;
+          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? firstSub;
           
           break;
         case 'first-level':
@@ -57,9 +57,9 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
           break;
       }
       
-      fistSub = false;
+      firstSub = false;
     }
-  
+    
     if (!itemParsed.subItems.length && !isItemInteractive(itemParsed)) {
       return null;
     }
