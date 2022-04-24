@@ -7,6 +7,7 @@ import {
 } from '../enum';
 
 export interface IPropsMark extends HTMLAttributes<HTMLSpanElement> {
+  hollow?: boolean;
   align?: 'left' | 'center' | 'right';
   component?: 'sup' | 'sub' | 'span';
 }

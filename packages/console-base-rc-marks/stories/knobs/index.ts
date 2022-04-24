@@ -24,13 +24,16 @@ export default function Knobs({
   const align0 = select<'left' | 'center' | 'right'>('props.align', ['left', 'center', 'right'], 'center');
   const alignInUse = boolean('启用 props.align', false);
   const align = alignInUse ? align0 : undefined;
+  const hollow = boolean('props.hollow', false);
   
   const props: Partial<MarkProps> = useMemo((): Partial<MarkProps> => ({
     component,
-    align
+    align,
+    hollow
   }), [
     component,
-    align
+    align,
+    hollow
   ]);
   
   useEffect(() => onChange(props), [onChange, props]);

@@ -218,6 +218,7 @@ module.exports = {
       'font-size',
       'font-weight',
       'font-style',
+      'font-variant',
       'font-smoothing',
       'vertical-align',
       'text-align',
