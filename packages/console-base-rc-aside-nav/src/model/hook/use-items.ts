@@ -14,9 +14,8 @@ import useModelProps from './_use-model-props';
 export default function useItems(): (INavItemPropsParsed | '-')[] {
   const {
     items,
-    unfoldedAll,
-    unfoldedFirst
+    subItemsUnfolded
   } = useModelProps();
   
-  return useMemo(() => parseItems(items, unfoldedAll, unfoldedFirst), [items, unfoldedAll, unfoldedFirst]);
+  return useMemo(() => parseItems(items, subItemsUnfolded), [items, subItemsUnfolded]);
 }

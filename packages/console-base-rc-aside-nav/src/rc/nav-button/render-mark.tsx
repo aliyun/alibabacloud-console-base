@@ -18,7 +18,7 @@ export default function renderMark(mark: INavItemProps['mark']): JSX.Element | u
       return <NavItemIconRight type="external" />;
     case 'new':
       return <New />;
-    case 'publicBeta':
+    case 'beta-public':
       return <PublicBeta />;
     case 'beta':
       return <Beta />;

@@ -12,7 +12,7 @@ import {
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IModelProps, 'unfoldedAll' | 'unfoldedFirst'>;
+type TModelProps = RequiredSelected<IModelProps, 'subItemsUnfolded'>;
 
 export default function useModelProps(): TModelProps {
   const {
@@ -21,14 +21,12 @@ export default function useModelProps(): TModelProps {
   
   return useMemo(() => {
     const {
-      unfoldedAll = true,
-      unfoldedFirst = true,
+      subItemsUnfolded = true,
       ...rest
     } = props;
     
     return {
-      unfoldedAll,
-      unfoldedFirst,
+      subItemsUnfolded,
       ...rest
     };
   }, [props]);

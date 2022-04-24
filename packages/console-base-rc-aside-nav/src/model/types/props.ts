@@ -1,6 +1,7 @@
 import {
   TNavItem,
-  INavItemInFooterProps
+  INavItemInFooterProps,
+  TSubItemsUnfolded
 } from './common';
 
 export interface IModelProps {
@@ -13,6 +14,19 @@ export interface IModelProps {
    */
   upperHref?: string;
   /**
+   * 通过 onToggleCollapsed 实现受控
+   */
+  collapsed?: boolean;
+  /**
+   * 菜单子项展开方式
+   * 
+   * - true 全部展开（默认）
+   * - false 都不展开
+   * - 'fist' 仅展开第一个带子项的
+   * - 'first-level' 展开所有第一级（不展开第二级）
+   */
+  subItemsUnfolded?: TSubItemsUnfolded;
+  /**
    * 菜单配置
    */
   items: TNavItem[];
@@ -20,22 +34,6 @@ export interface IModelProps {
    * 菜单底部内容，只适合静态链接
    */
   itemsInFooter?: (INavItemInFooterProps | null)[];
-  /**
-   * 通过 onToggleCollapsed 实现受控
-   */
-  collapsed?: boolean;
-  /**
-   * 是否默认展开所有子项目
-   * 
-   * 默认：true
-   * 
-   * 当为 false 的时候，将默认自动展开第一个带子项菜单，可以通过 unfoldedFirst 调配
-   */
-  unfoldedAll?: boolean;
-  /**
-   * 默认：true
-   */
-  unfoldedFirst?: boolean;
   /**
    * 是否展示推入按钮
    */

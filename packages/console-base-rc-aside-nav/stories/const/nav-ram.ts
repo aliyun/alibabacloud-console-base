@@ -38,7 +38,7 @@ const NAV: AsideNavProps = {
   }, '-', {
     label: 'OAuth 应用用管理',
     href: '#/oauth',
-    mark: 'publicBeta'
+    mark: 'beta-public'
   }, {
     label: '多账号权限管理',
     href: '//cloudsso.console.aliyun.com'

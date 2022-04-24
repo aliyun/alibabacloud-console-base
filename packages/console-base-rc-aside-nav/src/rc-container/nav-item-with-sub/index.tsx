@@ -16,7 +16,7 @@ export default function NavItemWithSub(props: INavItemPropsParsed): JSX.Element 
   return <>
     <NavItem {...{
       ...props,
-      iconRight: <NavItemIconRight type="angle-up" rotate={stateUnfolded ? 0 : 180} />,
+      iconRight: <NavItemIconRight type="angle-right" rotate={stateUnfolded ? 90 : 0} />,
       onClick: handleToggleUnfolded
     }} />
     <div style={{

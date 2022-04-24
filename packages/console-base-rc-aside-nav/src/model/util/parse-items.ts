@@ -1,4 +1,5 @@
 import {
+  TSubItemsUnfolded,
   INavItemProps,
   INavItemPropsParsed,
   TNavItem
@@ -8,10 +9,10 @@ import getItemKey from './get-item-key';
 import getItemMark from './get-item-mark';
 import isItemInteractive from './is-item-interactive';
 
-export default function parseItems(items: TNavItem[], allUnfolded: boolean, fistUnfolded: boolean): (INavItemPropsParsed | '-')[] {
+export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded): (INavItemPropsParsed | '-')[] {
   const itemsParsed: (INavItemPropsParsed | '-')[] = [];
   let lastIsDivider = true; // 用于 '-' 掐头
-  let firstSubPassed = false;
+  let fistSub = true;
   
   function parseNavItem(o: INavItemProps, indent = 0): INavItemPropsParsed | null {
     const itemParsed = {
@@ -35,15 +36,28 @@ export default function parseItems(items: TNavItem[], allUnfolded: boolean, fist
     };
     
     if (itemParsed.subItems.length) {
-      if (allUnfolded) {
-        itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? true;
-      } else if (!firstSubPassed) {
-        itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? fistUnfolded;
+      switch (subItemsUnfolded) {
+        case true:
+          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? true;
+          
+          break;
+        case false:
+          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? false;
+          
+          break;
+        case 'fist':
+          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? fistSub;
+          
+          break;
+        case 'first-level':
+          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? indent < 1;
+          
+          break;
+        default:
+          break;
       }
       
-      if (!firstSubPassed) {
-        firstSubPassed = true;
-      }
+      fistSub = false;
     }
   
     if (!itemParsed.subItems.length && !isItemInteractive(itemParsed)) {
