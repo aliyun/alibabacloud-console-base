@@ -8,6 +8,7 @@ import {
 import getItemKey from './get-item-key';
 import getItemMark from './get-item-mark';
 import isItemInteractive from './is-item-interactive';
+import hasSelectedSubItem from './has-selected-sub-item';
 
 export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded): (INavItemPropsParsed | '-')[] {
   const itemsParsed: (INavItemPropsParsed | '-')[] = [];
@@ -62,6 +63,11 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
     
     if (!itemParsed.subItems.length && !isItemInteractive(itemParsed)) {
       return null;
+    }
+  
+    // 本身未展开，但其下有选中的菜单，则打开该菜单（保证选中的默认可见）
+    if (!itemParsed.subItemsUnfolded && itemParsed.subItems.length) {
+      itemParsed.subItemsUnfolded = hasSelectedSubItem(itemParsed);
     }
     
     return itemParsed;

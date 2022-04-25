@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-aside-nav",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ConsoleBase 组件 - 应用侧边栏导航",
   "license": "MIT",
   "sideEffects": false,
