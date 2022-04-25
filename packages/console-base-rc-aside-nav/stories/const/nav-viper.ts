@@ -24,7 +24,8 @@ const NAV: AsideNavProps = {
     }, {
       key: 'tutor',
       label: '微教程',
-      href: '#/tutor'
+      href: '#/tutor',
+      mark: 'new'
     }, {
       key: 'others',
       label: '其他',
