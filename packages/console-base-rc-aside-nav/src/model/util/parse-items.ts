@@ -1,8 +1,9 @@
 import {
   TSubItemsUnfolded,
   INavItemProps,
-  INavItemPropsParsed,
-  TNavItem
+  IParsedItem,
+  TNavItem,
+  TParsedItemOrDivider
 } from '../types';
 
 import getItemKey from './get-item-key';
@@ -10,26 +11,35 @@ import getItemMark from './get-item-mark';
 import isItemInteractive from './is-item-interactive';
 import hasSelectedSubItem from './has-selected-sub-item';
 
-export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded): (INavItemPropsParsed | '-')[] {
-  const itemsParsed: (INavItemPropsParsed | '-')[] = [];
+export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded): TParsedItemOrDivider[] {
+  const itemsParsed: TParsedItemOrDivider[] = [];
   let lastIsDivider = true; // 用于 '-' 掐头
   let firstSub = true;
   
-  function parseNavItem(o: INavItemProps, indent = 0): INavItemPropsParsed | null {
-    const itemParsed = {
+  function parseNavItem(o: INavItemProps, indent = 0): IParsedItem | null {
+    const itemParsed: IParsedItem = {
       ...o,
       key: getItemKey(o),
+      divider: undefined,
       mark: getItemMark(o),
       indent,
-      subItems: o.subItems?.reduce((result: INavItemPropsParsed[], v) => {
-        if (!v || typeof v !== 'object') {
+      subItems: o.subItems?.reduce((result: TParsedItemOrDivider[], v, i) => {
+        if (!v) {
           return result;
         }
         
-        const o2 = parseNavItem(v, indent + 1);
-        
-        if (o2) {
-          result.push(o2);
+        if (v === '-') {
+          result.push({
+            key: `divider-${i}`,
+            divider: true,
+            indent: indent + 1
+          });
+        } else {
+          const o2 = parseNavItem(v, indent + 1);
+          
+          if (o2) {
+            result.push(o2);
+          }
         }
         
         return result;
@@ -65,7 +75,7 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
       return null;
     }
   
-    // 本身未展开，但其下有选中的菜单，则打开该菜单（保证选中的默认可见）
+    // 本身未展开，但其下有选中的菜单，则默认打开该菜单（保证选中的默认可见）
     if (!itemParsed.subItemsUnfolded && itemParsed.subItems.length) {
       itemParsed.subItemsUnfolded = hasSelectedSubItem(itemParsed);
     }
@@ -73,8 +83,8 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
     return itemParsed;
   }
   
-  // 对 separator 进行去重和掐头去尾
-  items.forEach(v => {
+  // 对 divider 进行去重和掐头去尾
+  items.forEach((v, i) => {
     if (!v) {
       return;
     }
@@ -82,7 +92,11 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
     if (v === '-') {
       if (!lastIsDivider) {
         lastIsDivider = true;
-        itemsParsed.push(v);
+        itemsParsed.push({
+          key: `divider-${i}`,
+          divider: true,
+          indent: 0
+        });
       }
     } else {
       const o = parseNavItem(v);
@@ -95,7 +109,7 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
   });
   
   // '-' 去尾
-  if (itemsParsed[itemsParsed.length - 1] === '-') {
+  if (itemsParsed[itemsParsed.length - 1].divider) {
     itemsParsed.pop();
   }
   

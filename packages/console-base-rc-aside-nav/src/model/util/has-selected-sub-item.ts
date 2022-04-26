@@ -1,14 +1,14 @@
 import {
-  INavItemPropsParsed
+  TParsedItemOrDivider
 } from '../types';
 
-export default function hasSelectedSubItem(item: INavItemPropsParsed): boolean {
-  if (!item.subItems.length) {
+export default function hasSelectedSubItem(item: TParsedItemOrDivider): boolean {
+  if (item.divider || !item.subItems.length) {
     return false;
   }
   
   return item.subItems.some(v => {
-    if (v.selected) {
+    if (!v.divider && v.selected) {
       return true;
     }
     

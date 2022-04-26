@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  INavItemInFooterPropsParsed
+  IParsedItemInFooter
 } from '../types';
 import {
   parseItemsInFooter
@@ -11,7 +11,7 @@ import {
 
 import useModelProps from './_use-model-props';
 
-export default function useItemsInFooter(): INavItemInFooterPropsParsed[] {
+export default function useItemsInFooter(): IParsedItemInFooter[] {
   const {
     itemsInFooter
   } = useModelProps();

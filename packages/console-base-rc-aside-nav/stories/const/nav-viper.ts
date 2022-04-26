@@ -10,6 +10,10 @@ const NAV: AsideNavProps = {
     label: '概览',
     href: '#/dashboard'
   }, {
+    key: 'app',
+    label: '应用管理',
+    href: '#/app'
+  }, {
     key: 'product',
     label: '产品管理',
     href: '#/product'
@@ -17,30 +21,22 @@ const NAV: AsideNavProps = {
     key: 'dev',
     label: '控制台开发',
     subItems: [{
-      key: 'app',
-      label: '应用管理',
-      href: '#/app'
-    }, {
       key: 'tutor',
       label: '微教程',
       href: '#/tutor',
       mark: 'new'
+    }, '-', {
+      key: 'ros',
+      label: 'ROS 模板',
+      href: '#/ros'
     }, {
-      key: 'others',
-      label: '其他',
-      subItems: [{
-        key: 'ros',
-        label: 'ROS 模板',
-        href: '#/ros'
-      }, {
-        key: 'medusa',
-        label: '美杜莎发布',
-        href: '#/medusa'
-      }, {
-        key: 'scene',
-        label: '场景模板',
-        href: '#/scene'
-      }]
+      key: 'medusa',
+      label: '美杜莎发布',
+      href: '#/medusa'
+    }, {
+      key: 'scene',
+      label: '场景模板',
+      href: '#/scene'
     }],
     subItemsUnfolded: true
   }, '-', {

@@ -1,14 +1,14 @@
 import {
   INavItemInFooterProps,
-  INavItemInFooterPropsParsed
+  IParsedItemInFooter
 } from '../types';
 
 import getItemKey from './get-item-key';
 import getItemMark from './get-item-mark';
 import isItemInteractive from './is-item-interactive';
 
-export default function parseItemsInFooter(items?: (INavItemInFooterProps | null)[]): INavItemInFooterPropsParsed[] {
-  return items?.reduce((result: INavItemInFooterPropsParsed[], v) => {
+export default function parseItemsInFooter(items?: (INavItemInFooterProps | null)[]): IParsedItemInFooter[] {
+  return items?.reduce((result: IParsedItemInFooter[], v) => {
     if (v && isItemInteractive(v)) {
       result.push({
         ...v,

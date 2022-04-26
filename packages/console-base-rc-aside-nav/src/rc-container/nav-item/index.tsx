@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  INavItemPropsParsed
+  IParsedItem
 } from '../../model';
 import {
   HEIGHT_MENU_ITEM
@@ -14,7 +14,7 @@ const ScNavItem = styled(NavButton)`
   line-height: ${HEIGHT_MENU_ITEM}px;
 `;
 
-export default function NavItem(props: INavItemPropsParsed): JSX.Element {
+export default function NavItem(props: IParsedItem): JSX.Element {
   const {
     subItems, // 这里忽略
     icon,

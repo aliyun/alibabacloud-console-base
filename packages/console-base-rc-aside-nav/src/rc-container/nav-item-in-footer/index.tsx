@@ -9,7 +9,7 @@ import {
   HEIGHT_MENU_ITEM_IN_FOOTER
 } from '../../const';
 import {
-  INavItemInFooterPropsParsed
+  IParsedItemInFooter
 } from '../../model';
 import NavButton from '../../rc/nav-button';
 
@@ -23,7 +23,7 @@ const ScNavItemInFooter = styled(NavButton)`
   }
 `;
 
-export default function NavItemInFooter(props: INavItemInFooterPropsParsed): JSX.Element {
+export default function NavItemInFooter(props: IParsedItemInFooter): JSX.Element {
   const {
     icon,
     ...buttonProps

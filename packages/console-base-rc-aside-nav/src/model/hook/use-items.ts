@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  INavItemPropsParsed
+  TParsedItemOrDivider
 } from '../types';
 import {
   parseItems
@@ -11,7 +11,7 @@ import {
 
 import useModelProps from './_use-model-props';
 
-export default function useItems(): (INavItemPropsParsed | '-')[] {
+export default function useItems(): TParsedItemOrDivider[] {
   const {
     items,
     subItemsUnfolded

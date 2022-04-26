@@ -11,6 +11,7 @@ export type {
   TNavItemMark,
   INavItemProps,
   TNavItem,
-  INavItemPropsParsed,
-  INavItemInFooterPropsParsed
+  IParsedItem,
+  TParsedItemOrDivider,
+  IParsedItemInFooter
 } from './types';

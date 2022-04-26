@@ -9,10 +9,12 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  INavItemPropsParsed,
+  IParsedItem,
+  TParsedItemOrDivider,
   hasSelectedSubItem
 } from '../../model';
 import NavItemIconRight from '../../rc/nav-item-icon-right';
+import NavDivider from '../../rc/nav-divider';
 import NavItem from '../nav-item';
 
 interface IScProps {
@@ -25,7 +27,22 @@ const ScNavItemParent = styled(NavItem)<IScProps>`
   }
 `;
 
-export default function NavItemWithSub(props: INavItemPropsParsed): JSX.Element {
+function renderItemOrDividerList(list: TParsedItemOrDivider[]): JSX.Element[] {
+  return list.map(v => {
+    if (v.divider) {
+      return <NavDivider key={v.key} indent={v.indent} />;
+    }
+    
+    if (v.subItems.length) {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      return <NavItemWithSub {...v} />;
+    }
+    
+    return <NavItem {...v} />;
+  });
+}
+
+function NavItemWithSub(props: IParsedItem): JSX.Element {
   const [stateUnfolded, setStateUnfolded] = useState(props.subItemsUnfolded);
   const handleToggleUnfolded = useCallback(() => setStateUnfolded(!stateUnfolded), [stateUnfolded, setStateUnfolded]);
   
@@ -39,13 +56,13 @@ export default function NavItemWithSub(props: INavItemPropsParsed): JSX.Element 
     <div style={{
       display: stateUnfolded ? 'block' : 'none'
     }}>
-      {props.subItems.map((v, i) => {
-        if (v.subItems.length) {
-          return <NavItemWithSub {...v} key={v.key || `sub-${i}`} />;
-        }
-        
-        return <NavItem {...v} key={v.key || `item-${i}`} />;
-      })}
+      {renderItemOrDividerList(props.subItems)}
     </div>
   </>;
 }
+
+export default NavItemWithSub;
+
+export {
+  renderItemOrDividerList
+};

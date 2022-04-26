@@ -14,7 +14,7 @@ export interface INavItemPropsBase extends Omit<ButtonProps, 'iconLeft' | 'iconR
 
 export interface INavItemProps extends INavItemPropsBase {
   selected?: boolean;
-  subItems?: (INavItemProps | null)[];
+  subItems?: (INavItemProps | '-' | null)[];
   /**
    * 默认展开子项目，非受控，序列中的第一个带子项的将自动展开，覆盖顶级 props 指定的行为
    */
@@ -25,9 +25,19 @@ export interface INavItemInFooterProps extends INavItemPropsBase {}
 
 export type TNavItem = INavItemProps | '-' | null;
 
-export interface INavItemPropsParsed extends INavItemProps {
+// 解析后的类型
+export interface IParsedDivider {
+  key: string;
+  divider: true;
   indent: number;
-  subItems: INavItemPropsParsed[];
 }
 
-export interface INavItemInFooterPropsParsed extends INavItemInFooterProps {}
+export interface IParsedItem extends Omit<INavItemProps, 'subItems'> {
+  divider: undefined;
+  indent: number;
+  subItems: (IParsedItem | IParsedDivider)[];
+}
+
+export type TParsedItemOrDivider = IParsedItem | IParsedDivider;
+
+export interface IParsedItemInFooter extends INavItemInFooterProps {}
