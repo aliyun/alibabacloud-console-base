@@ -2,20 +2,37 @@ import React, {
   useState,
   useCallback
 } from 'react';
+import styled from 'styled-components';
 
 import {
-  INavItemPropsParsed
+  mixinBgAccent
+} from '@alicloud/console-base-theme';
+
+import {
+  INavItemPropsParsed,
+  hasSelectedSubItem
 } from '../../model';
 import NavItemIconRight from '../../rc/nav-item-icon-right';
 import NavItem from '../nav-item';
+
+interface IScProps {
+  semiSelected: boolean;
+}
+
+const ScNavItemParent = styled(NavItem)<IScProps>`
+  &:after {
+    ${props => (props.semiSelected ? mixinBgAccent : null)}
+  }
+`;
 
 export default function NavItemWithSub(props: INavItemPropsParsed): JSX.Element {
   const [stateUnfolded, setStateUnfolded] = useState(props.subItemsUnfolded);
   const handleToggleUnfolded = useCallback(() => setStateUnfolded(!stateUnfolded), [stateUnfolded, setStateUnfolded]);
   
   return <>
-    <NavItem {...{
+    <ScNavItemParent {...{
       ...props,
+      semiSelected: !props.selected && !stateUnfolded && hasSelectedSubItem(props),
       iconRight: <NavItemIconRight type="angle-right" rotate={stateUnfolded ? 90 : 0} />,
       onClick: handleToggleUnfolded
     }} />

@@ -31,7 +31,6 @@ interface IProps extends Omit<ButtonProps, 'theme'> {
 const ScNavButton = styled(Button)<IProps>`
   display: block;
   position: relative;
-  border-right-width: 2px;
   ${props => css`
     padding: 0 ${SPACING_SIDE}px 0 ${SPACING_SIDE + SPACING_INDENT * (props.indent || 0)}px;
   `};
@@ -39,15 +38,19 @@ const ScNavButton = styled(Button)<IProps>`
     ${mixinBgSecondaryFade}
     
     &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 2px;
       ${mixinBgAccent}
     }
   ` : null)}
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2px;
+    transition: background-color linear 250ms;
+  }
   
   i {
     font-size: 14px;

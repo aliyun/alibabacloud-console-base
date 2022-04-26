@@ -8,8 +8,7 @@ const NAV: AsideNavProps = {
   items: [{
     key: 'dashboard',
     label: '概览',
-    href: '#/dashboard',
-    selected: true
+    href: '#/dashboard'
   }, {
     key: 'product',
     label: '产品管理',
@@ -37,14 +36,6 @@ const NAV: AsideNavProps = {
         key: 'medusa',
         label: '美杜莎发布',
         href: '#/medusa'
-      }, {
-        key: 'domain-rule',
-        label: '域名规则',
-        href: '#/domain-rule'
-      }, {
-        key: 'domain-offline',
-        label: '域名下线',
-        href: '#/domain-offline'
       }, {
         key: 'scene',
         label: '场景模板',
@@ -76,7 +67,7 @@ const NAV: AsideNavProps = {
       label: 'API 配置',
       subItems: [{
         key: 'apis_fecs',
-        label: 'FECS 白名单', // 在「稳定性」下，移过来
+        label: 'FECS 白名单',
         href: '#/apis/fecs'
       }, {
         key: 'apis_endpoint',
@@ -110,7 +101,8 @@ const NAV: AsideNavProps = {
       }, {
         key: 'sls/console-base',
         label: 'ConsoleBase',
-        href: '#/sls/console-base'
+        href: '#/sls/console-base',
+        selected: true
       }, {
         key: 'sls/viper',
         label: 'Viper',
@@ -168,7 +160,7 @@ const NAV: AsideNavProps = {
       mark: 'new'
     }, {
       key: 'mobile_snippet',
-      label: 'Snippet 管理',
+      label: '移动端 Snippet 管理',
       href: '#/mobile/snippet'
     }]
   }, '-', {
@@ -221,6 +213,14 @@ const NAV: AsideNavProps = {
         key: 'stability/smart-routing',
         label: '智能路由',
         href: '#/stability/smart-routing'
+      }, {
+        key: 'domain-rule',
+        label: '域名规则',
+        href: '#/stability/domain-rule'
+      }, {
+        key: 'domain-offline',
+        label: '域名下线',
+        href: '#/stability/domain-offline'
       }, {
         key: 'stability/inspection',
         label: '巡检系统',
