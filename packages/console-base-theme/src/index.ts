@@ -5,8 +5,9 @@ import {
 export * from './var';
 export * from './mixin';
 
-export { default as ThemeStyleLight } from './theme-style-light';
-export { default as ThemeStyleDark } from './theme-style-dark';
+export { default as ThemeStyleLight } from './global-style-theme-light';
+export { default as ThemeStyleDark } from './global-style-theme-dark';
+export { default as GlobalStyleFontFamilyForJa } from './global-style-font-family-for-ja';
 export {
   toggleBodyClass
 } from './util';

@@ -328,6 +328,7 @@ export default function createThemeGlobalStyle({
       --cb-color-button-text-brand-secondary-bg-disabled: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BG_DISABLED};
       --cb-color-button-text-brand-secondary-border-disabled: ${COLOR.BUTTON_TEXT_BRAND_SECONDARY_BORDER_DISABLED};
       --cb-typo-font-family-base: ${TYPO.FONT_FAMILY_BASE};
+      --cb-typo-font-family-base-ja: ${TYPO.FONT_FAMILY_BASE_JA};
       --cb-typo-font-family-monospace: ${TYPO.FONT_FAMILY_MONOSPACE};
       --cb-size-border-radius-xs: ${SIZE.BORDER_RADIUS_XS}px;
       --cb-size-border-radius-s: ${SIZE.BORDER_RADIUS_S}px;

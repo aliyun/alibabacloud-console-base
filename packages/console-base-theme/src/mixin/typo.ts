@@ -26,15 +26,20 @@ import {
   mixinBorderTertiaryColor
 } from './border';
 
-export const mixinTypoFontFamilyBase = css`
-  font-family: ${TYPO.FONT_FAMILY_BASE};
-  font-family: var(--cb-typo-font-family-base, ${TYPO.FONT_FAMILY_BASE});
-`;
-
 // 日文专属
 export const mixinTypoFontFamilyBaseJa = css`
   font-family: ${TYPO.FONT_FAMILY_BASE_JA};
   font-family: var(--cb-typo-font-family-base-ja, ${TYPO.FONT_FAMILY_BASE_JA});
+`;
+
+// lang-ja 是 console-base 注入到 body 的 className，虽然有些耦合，但比较实用
+export const mixinTypoFontFamilyBase = css`
+  font-family: ${TYPO.FONT_FAMILY_BASE};
+  font-family: var(--cb-typo-font-family-base, ${TYPO.FONT_FAMILY_BASE});
+  
+  body.lang-ja & {
+    ${mixinTypoFontFamilyBaseJa}
+  }
 `;
 
 export const mixinTypoFontFamilyMono = css`
@@ -42,16 +47,11 @@ export const mixinTypoFontFamilyMono = css`
   font-family: var(--cb-typo-font-family-monospace, ${TYPO.FONT_FAMILY_MONOSPACE});
 `;
 
-// lang-ja 是 console-base 注入到 body 的 className，虽然有些耦合，但比较实用
 export const mixinTypoFontBase = css`
   line-height: 1.5;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   ${mixinTypoFontFamilyBase}
-  
-  body.lang-ja & {
-    ${mixinTypoFontFamilyBaseJa}
-  }
 `;
 
 export const mixinTypoStrong = css`
