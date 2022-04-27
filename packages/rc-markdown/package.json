@@ -25,7 +25,7 @@
     "micromark"
   ],
   "devDependencies": {
-    "@alicloud/console-base-theme-sc-base": "^1.2.3",
+    "@alicloud/console-base-theme-sc-base": "^1.2.4",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.56",
     "@alicloud/demo-rc-elements": "^1.5.4",

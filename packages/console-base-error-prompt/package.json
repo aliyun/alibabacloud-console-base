@@ -48,7 +48,7 @@
     "@alicloud/console-base-rc-dialog": "^1.5.0",
     "@alicloud/console-base-rc-icon": "^1.5.1",
     "@alicloud/console-base-rc-pagination": "^1.2.6",
-    "@alicloud/console-base-theme": "^1.4.5",
+    "@alicloud/console-base-theme": "^1.4.6",
     "@alicloud/typescript-missing-helpers": "^1.1.55",
     "lodash": "^4.17.21",
     "qs": "^6.10.3"

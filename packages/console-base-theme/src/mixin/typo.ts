@@ -42,11 +42,16 @@ export const mixinTypoFontFamilyMono = css`
   font-family: var(--cb-typo-font-family-monospace, ${TYPO.FONT_FAMILY_MONOSPACE});
 `;
 
+// lang-ja 是 console-base 注入到 body 的 className，虽然有些耦合，但比较实用
 export const mixinTypoFontBase = css`
   line-height: 1.5;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   ${mixinTypoFontFamilyBase}
+  
+  body.lang-ja & {
+    ${mixinTypoFontFamilyBaseJa}
+  }
 `;
 
 export const mixinTypoStrong = css`
