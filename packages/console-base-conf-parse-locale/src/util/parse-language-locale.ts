@@ -25,13 +25,6 @@ export default function parseLanguageLocale(): [ELanguage, ELocale] {
     ];
   }
   
-  // 阿里云官网中国站有很多子域名，如 market、partner、cn、developer、talk 等等等等，特点是仅支持中文...
-  const arr = /(\w+)\.aliyun\.com/.exec(location.host);
-  
-  if (arr && arr[1] !== 'console') {
-    return [ELanguage.ZH, ELocale.ZH];
-  }
-  
   let lang = cookieGetLanguage() || ELanguage.ZH;
   let locale = LOCALE_MAP_BY_LANGUAGE[lang];
   
