@@ -33,7 +33,7 @@
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "styled-components": "^5.3.5",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "styled-components": ">=5"
