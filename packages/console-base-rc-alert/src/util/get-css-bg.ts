@@ -4,11 +4,11 @@ import {
 
 import {
   mixinBgPrimary,
-  mixinBgHelpTintFade,
-  mixinBgInfoTintFade,
-  mixinBgSuccessTintFade,
-  mixinBgWarningTintFade,
-  mixinBgErrorTintFade
+  mixinBgHelpTint,
+  mixinBgInfoTint,
+  mixinBgSuccessTint,
+  mixinBgWarningTint,
+  mixinBgErrorTint
 } from '@alicloud/console-base-theme';
 
 import {
@@ -22,15 +22,15 @@ export default function getCssBg(theme: AlertTheme, toast?: boolean): FlattenSim
   
   switch (theme) {
     case AlertTheme.HELP:
-      return mixinBgHelpTintFade;
+      return mixinBgHelpTint;
     case AlertTheme.INFO:
-      return mixinBgInfoTintFade;
+      return mixinBgInfoTint;
     case AlertTheme.SUCCESS:
-      return mixinBgSuccessTintFade;
+      return mixinBgSuccessTint;
     case AlertTheme.WARNING:
-      return mixinBgWarningTintFade;
+      return mixinBgWarningTint;
     case AlertTheme.ERROR:
-      return mixinBgErrorTintFade;
+      return mixinBgErrorTint;
     case AlertTheme.LOADING:
       return mixinBgPrimary;
     default:
