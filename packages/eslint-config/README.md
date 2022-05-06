@@ -1,5 +1,4 @@
-@alicloud/eslint-config
-=====================
+# @alicloud/eslint-config
 
 > 继承 [eslint-config-ali](https://www.npmjs.com/package/eslint-config-ali) 的 eslint 配置。
 
@@ -17,19 +16,19 @@
 * `eslint-plugin-react`
 * `eslint-plugin-react-hooks`
 
-# INSTALL
+## INSTALL
 
-```sh
+```shell
 tnpm i -D eslint @alicloud/eslint-config
 ```
 
-# USE
+## Usage
 
-## `.eslintrc`
+### `.eslintrc`
 
 在你的项目根目录下新建 `.eslintrc`，内容如下：
 
-## es5 项目
+### es5 项目
 
 ```json
 {
@@ -39,7 +38,7 @@ tnpm i -D eslint @alicloud/eslint-config
 }
 ```
 
-## es6 项目
+### es6 项目
 
 默认 parser 为 `@babel/eslint-parser` 已安装。
 
@@ -51,7 +50,7 @@ tnpm i -D eslint @alicloud/eslint-config
 }
 ```
 
-## react 项目
+### react 项目
 
 默认 parser 为 `@babel/eslint-parser` 已安装。
 
@@ -63,7 +62,7 @@ tnpm i -D eslint @alicloud/eslint-config
 }
 ```
 
-## ts / tsx 项目
+### ts / tsx 项目
 
 默认 parser 为 `@typescript-eslint/parser` 已安装。
 
@@ -83,7 +82,7 @@ tnpm i -D eslint @alicloud/eslint-config
 }
 ```
 
-## `.eslintignore` 推荐
+### `.eslintignore` 推荐
 
 ```ignore
 # common
@@ -96,7 +95,7 @@ build/
 coverage/
 ```
 
-## npm script
+### npm script
 
 在 `package.json` 里的 `"scripts"` 里添加 `lint` 命令：
 
@@ -112,7 +111,7 @@ coverage/
 
 在项目根目录下执行 `yarn lint` 或 `npm run lint` 查看结果。
 
-# IDE Support
+### IDE Support
 
 * [VsCode](https://github.com/Microsoft/vscode-eslint)
 * [WebStorm](https://www.jetbrains.com/help/webstorm/eslint.html#ws_js_linters_eslint_install_and_configure)

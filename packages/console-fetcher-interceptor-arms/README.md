@@ -1,5 +1,4 @@
-@alicloud/console-fetcher-interceptor-arms
-===
+# @alicloud/console-fetcher-interceptor-arms
 
 `@alicloud/fetcher` 对响应的拦截，ARMS 日志主动上报。
 
@@ -32,7 +31,7 @@
 </script>
 ```
 
-# 文档
+## 文档
 
 * ARMS 接入：<https://yuque.antfin-inc.com/console/fzmkgr/smqpr2>
 * ARMS 主动上报日志：<https://yuque.antfin-inc.com/retcode/arms-retcode/api>

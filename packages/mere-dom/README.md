@@ -1,5 +1,4 @@
-@alicloud/mere-dom
-===
+# @alicloud/mere-dom
 
 一个极简的 DOM 工具（不考虑做大）。
 

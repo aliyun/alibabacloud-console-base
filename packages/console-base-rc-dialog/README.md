@@ -1,15 +1,14 @@
-@alicloud/console-base-rc-dialog
-===
+# @alicloud/console-base-rc-dialog
 
 > might be the most simple-but-powerful react dialog for now...
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-base-rc-dialog -S
 ```
 
-# API
+## APIs
 
 ## 作为组件使用（不太推荐）
 

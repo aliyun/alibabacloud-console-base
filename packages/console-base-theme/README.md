@@ -1,5 +1,4 @@
-@alicloud/console-base-theme
-===
+# @alicloud/console-base-theme
 
 * [关于 CSS Variable 的实践研究](doc/reserch.md)
 * [设计标注 - Fusion](https://fusion.alibaba-inc.com/pc/component/tokens)
@@ -10,7 +9,7 @@
 
 控制台主题
 
-# Usage
+## Usage
 
 ```js
 import {

@@ -1,5 +1,4 @@
-@alicloud/fetcher-jsonp
-===
+# @alicloud/fetcher-jsonp
 
 > `@alicloud/fetcher` 的底层 Promise 比较「纯」的 jsonp 实现，可以单独使用，返回为封装过的 `JsonResponse` 而非直接的数据。
 
@@ -7,13 +6,13 @@
 
 `url` 需要使用者来拼接参数（跟原生的 fetch 类似）。
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/fetcher-jsonp -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import jsonp, {
@@ -30,7 +29,7 @@ jsonp(url, {
 });
 ```
 
-# 如何 abort
+## 如何 abort
 
 参考 <https://javascript.info/fetch-abort> <https://developer.mozilla.org/en-US/docs/Web/API/AbortController>
 

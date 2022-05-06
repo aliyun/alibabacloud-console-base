@@ -4,7 +4,7 @@ ConsoleBase 用的一个极简极简的国际化（仅仅是做语言解析）
 
 ## INSTALL
 
-```bash
+```shell
 tnpm i @alicloud/console-base-intl-factory-basic -S
 ```
 

@@ -1,9 +1,8 @@
-@alicloud/dom-event-hijacker
-===
+# @alicloud/dom-event-hijacker
 
 全局或局部的事件劫持器
 
-# 安装
+## INSTALL
 
 ```bash
 tnpm i -S  @alicloud/dom-event-hijacker

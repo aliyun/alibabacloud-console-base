@@ -4,7 +4,7 @@
 
 ## INSTALL
 
-```bash
+```shell
 tnpm i @alicloud/console-fetcher-interceptor-res-biz @alicloud/console-fetcher-interceptor-res-risk -S
 ```
 

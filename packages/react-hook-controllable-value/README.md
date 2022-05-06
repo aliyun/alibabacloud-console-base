@@ -1,5 +1,4 @@
-@alicloud/react-hook-controllable-value
-===
+# @alicloud/react-hook-controllable-value
 
 「可受控」组件 HOOK，跟值及回调在组件的 props 中的名称没有关系。
 
@@ -12,7 +11,7 @@ import useControllableValue, {
 * `useControllableValue` 受控组件 hook，适用任何类型
 * `useControllableValueSoftTrim` 受控且软 trim 组件 hook，仅针对 `string` 类型
 
-# WHY
+## Why
 
 往往我们在实现受控组件的时候，需要考虑的量有：
 
@@ -32,7 +31,7 @@ Hook `useControllableValue` 可以把这些变数进行优雅整合，避免写�
 
 另外，对于字符串类型的输入，在输入的时候直接 `trim` 是非常不好的体验，因为那会让用户输入不了任何形式的空白字符，所以这里提供了 `useControllableValueSoftTrim` 来解决此类问题。
 
-# 利用 `useControllableValue` 实现一个「可受控」组件
+## 利用 `useControllableValue` 实现一个「可受控」组件
 
 ```typescript tsx
 import React from 'react';
@@ -64,7 +63,7 @@ export default function MyInput({
 }
 ```
 
-# 利用 `useControllableValueSoftTrim` 实现软 trim
+## 利用 `useControllableValueSoftTrim` 实现软 trim
 
 ```typescript tsx
 import React, {

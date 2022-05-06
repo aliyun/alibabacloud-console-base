@@ -1,15 +1,14 @@
-@alicloud/console-base-conf-account
-===
+# @alicloud/console-base-conf-account
 
 ConsoleBase CONF.ACCOUNT
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-base-conf-account -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import CONF_ACCOUNT, {

@@ -1,15 +1,14 @@
-@alicloud/console-base-conf-parse-env
-===
+# @alicloud/console-base-conf-parse-env
 
 ConsoleBase CONF.ENV parse
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-base-conf-parse-env -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import parseEnv from '@alicloud/console-base-conf-parse-env';

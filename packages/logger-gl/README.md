@@ -1,23 +1,22 @@
-@alicloud/logger-gl
-===
+# @alicloud/logger-gl
 
 封装黄金令箭，简化黄金令箭的使用。
 
 申请黄金令箭，去这里：<http://log.alibaba-inc.com/track/index.htm#/apply/gold>。
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/logger-gl -S
 ```
 
-# API
+## APIs
 
-## `log(logKey: string, mode?: EGlMode, params?: TParams, method: TMethod = 'GET')`
+### `log(logKey: string, mode?: EGlMode, params?: TParams, method: TMethod = 'GET')`
 
 黄金令箭页面上有个功能叫「生成埋点代码」，会给出以下代码样例，这里的 `log` 方法是对这些代码样例的简单封装，唯一的差别是 `params` 只允许传对象而不是字符串（这里会做编码）。
 
-```
+```typescript
 import {
   EGlMode,
   log
@@ -33,7 +32,7 @@ log('/....', EGlMode.CLICK, {
 }, 'POST');
 ```
 
-## `createLogger<P>(options: IOptions)`
+### `createLogger<P>(options: IOptions)`
 
 其中 `IOptions` 定义如下：
 
@@ -68,7 +67,7 @@ interface IOptions {
 
 新建黄金令箭时，需要提供三个配置，层级如下：
 
-```
+```text
 业务（bizCode）
   └─ 业务场景（scene）
      └─ 黄金令箭（glKey）

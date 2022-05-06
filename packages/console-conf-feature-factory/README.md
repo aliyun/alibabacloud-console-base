@@ -1,15 +1,16 @@
-@alicloud/console-conf-feature-factory
-===
+# @alicloud/console-conf-feature-factory
 
 控制台配置平台 Viper - 功能开关/灰度 - 工厂方法
 
 > 💥 OneConsole 控制台可以使用 `@alicloud/console-one-conf`，它整合了 OneConsole 下
+>
 > * `window.ALIYUN_CONSOLE_CONFIG` 这个全局对象的类型定义和纠正
 > * `confFeature()` 利用 `@alicloud/console-conf-feature-factory` 标准化了功能开关加灰度的使用
 > * `confLinkGen()` 标准化了渠道链接的使用方式，在 TS 下可以对传入的 key 做类型约束（需要传入默认的所有链接兜底），避免漏写和写错
+>
 > 墙裂推荐 OneConsole 的控制台直接使用 `@alicloud/console-one-conf` 而不是这个 `@alicloud/console-conf-feature-factory`
 
-# WHY
+## Why
 
 [新版 viper](https://vipernew.aliyun-inc.com) 提供了「渠道功能开关」配置，支持对开关增加用户类型和区域黑白名单的配置，并且提供了「功能灰度」配置。
 
@@ -22,7 +23,7 @@
 
 这里提供的是一个「生产方法」，因为不能确定功能开关是如何透传至前端的。
 
-## 功能开关
+### 功能开关
 
 功能开关在页面的输出是这样的 JSON 对象（OneConsole 下对应的是 `window.ALIYUN_CONSOLE_CONFIG.CHANNEL_FEATURE_STATUS`）：
 
@@ -39,7 +40,7 @@
 }
 ```
 
-## 功能灰度
+### 功能灰度
 
 > 吐槽：OneConsole 的数据吐出命名方式真的是令人呸服...
 
@@ -52,14 +53,14 @@
 }
 ```
 
-## 开关 + 灰度的判断逻辑
+### 开关 + 灰度的判断逻辑
 
 1. 如果功能开关和灰度都没有配置，则 `true`
 2. 如果仅配置了灰度，则返回灰度值
 3. 如果都配置，且开关和灰度其中之一为 `false`，返回 `false`
 4. 如果开关状态为 `true`，灰度未配置或也为 `true`，需要判断 region 或额外属性，它们的判断逻辑是一样的都是混合黑白名单
 
-# EXAMPLE
+## Example
 
 自定义项目的 `conf/feature` 模块，如 `src/conf/feature.js`：
 
@@ -87,12 +88,17 @@ import confFeature, {
 // ...
 
 // 进行判断
-const FEATURE_WHAT_OP_AVAILABLE = confFeature(EFeature.WHAT_OP); // 不关心 region 或其他属性
-const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, region); // 关心 region，传入的 region 只会在有 regions 配置的情况下有效（否则跟不传效果一样）
-const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, { // 关心其他属性
+
+// 不关心 region 或其他属性
+const FEATURE_WHAT_OP_AVAILABLE = confFeature(EFeature.WHAT_OP);
+// 关心 region，传入的 region 只会在有 regions 配置的情况下有效（否则跟不传效果一样）
+const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, region);
+// 关心其他属性
+const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, {
   attr1
 });
-const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, { // 关心 region 和 其他属性，传入的 region 只会在有 regions 配置的情况下有效（否则跟不传效果一样）
+// 关心 region 和 其他属性，传入的 region 只会在有 regions 配置的情况下有效（否则跟不传效果一样）
+const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, {
   region,
   attr1
 });
@@ -100,7 +106,7 @@ const FEATURE_XX_OP_AVAILABLE = confFeature(EFeature.WHAT_OP, { // 关心 region
 // ...
 ```
 
-# API
+## APIs
 
 `confFeatureFactory` 的函数签名为 `function confFeatureFactory(FEATURE_CONF: Record<string, IFeatureItem> = {}, GRAY_CONF: Record<string, boolean> = {}): IFnConfFeatureCC`：
 

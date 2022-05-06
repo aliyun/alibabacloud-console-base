@@ -1,13 +1,12 @@
-@alicloud/console-conf-link-factory
-===
+# @alicloud/console-conf-link-factory
 
 渠道链接标准生产工厂
 
 注意：OneConsole 应用请直接使用 `@alicloud/console-one-conf`
 
-# 如何使用
+## Usage
 
-## 创建 `confLink` 方法
+### 创建 `confLink` 方法
 
 ```typescript
 import confLinkFactory from '@alicloud/console-conf-link-factory';
@@ -25,7 +24,7 @@ export default confLinkFactory(defaultLink);
 2. 即使没有 viper 的输出，你的应用也是完整可运行的
 3. 你大可不必一定在 Viper 上写全部的链接（当然写全更好）
 
-## 使用 `confLink` 方法
+### 使用 `confLink` 方法
 
 ```typescript
 import confLink from 'path-to-conf-link';
@@ -37,7 +36,7 @@ const link2 = confLink('xxx:yyy_{id}', {
 });
 ```
 
-# 最佳实践
+## 最佳实践
 
 * 在应用中有一份完整的链接兜底
 * 链接的 `key` 遵循 `snake_case`，如果有 `namespace` 的概念，可以考加两条下划线如 `namespace__xx_yy`

@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-icon
-===
+# @alicloud/console-base-rc-icon
 
-# Usage
+## Usage
 
 ```typescript jsx
 import Icon from '@alicloud/console-base-rc-icon';

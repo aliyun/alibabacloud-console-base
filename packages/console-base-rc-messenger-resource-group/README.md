@@ -1,17 +1,16 @@
-@alicloud/console-base-rc-messenger-resource-group
-===
+# @alicloud/console-base-rc-messenger-resource-group
 
 ConsoleBase 组件 - 对 resource group messenger 的组件化封装，提升开发体验
 
 让控制台应用项操作本地组件一样，控制顶栏中的全局资源组选择器组件。
 
-# INSTALL
+## INSTALL
 
-```bash
+```shell
 npm  i -S @alicloud/console-base-rc-messenger-resource-group
 ```
 
-# USAGE
+## Usage
 
 ```typescript jsx
 import React, {

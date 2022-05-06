@@ -1,9 +1,8 @@
-@alicloud/console-base-rc-copy-it
-===
+# @alicloud/console-base-rc-copy-it
 
 一个简单 Copy 组件
 
-# Usage
+## Usage
 
 ```js
 import CopyIt from '@alicloud/console-base-rc-copy-it';

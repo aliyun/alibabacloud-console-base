@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-input
-===
+# @alicloud/console-base-rc-input
 
-# Usage
+## Usage
 
 ```js
 import Input from '@alicloud/console-base-rc-input';

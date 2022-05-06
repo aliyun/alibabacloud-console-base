@@ -1,5 +1,4 @@
-@alicloud/typescript-missing-helpers
-===
+# @alicloud/typescript-missing-helpers
 
 Supplements to TypeScript type helpers.
 
@@ -16,7 +15,7 @@ import {
 } from '@alicloud/typescript-missing-helpers';
 ```
 
-# PartialPick
+## PartialPick
 
 Pick properties defined by K from T make them optional.
 
@@ -44,7 +43,7 @@ const o5: Alt = { c: true };
 const o6: Alt = { d: new Date };
 ```
 
-# RequiredPick
+## RequiredPick
 
 Pick properties defined by K from T make them required.
 
@@ -71,7 +70,7 @@ const o4: Alt = {}; // missing a, b
 const o5: Alt = { a: '', b: 1, c: true }; // unknown property c
 ```
 
-# PartialSelected
+## PartialSelected
 
 Make properties defined by K in T optional, the rest untouched.
 
@@ -102,7 +101,7 @@ const o6: Alt = { a: '', b: 1 }; // missing c
 const o7: Alt = { a: '', b: 1, c: true, d: new Date(), e: null }; // e does not exist
 ```
 
-# RequiredSelected
+## RequiredSelected
 
 Make properties defined by K in T required, the rest untouched.
 
@@ -131,7 +130,7 @@ const o4: Alt = { a: '', b: 1, d: new Date() }; // missing c
 const o5: Alt = { a: '', b: 1, c: false, e: null }; // unknown e
 ```
 
-# PartialUnselected
+## PartialUnselected
 
 Properties defined by K in T untouched, the rest made optional.
 
@@ -158,7 +157,7 @@ const o2: Alt = { a: '', b: 1, c: false };
 const o3: Alt = { a: '', c: false }; // missing b
 ```
 
-# RequiredUnselected
+## RequiredUnselected
 
 Properties defined by K in T untouched, the rest made required.
 
@@ -188,7 +187,7 @@ const o5: Alt = { a: '', b: 1 }; // missing c, d
 const o6: Alt = { a: '', b: 1, c: false }; // missing d
 ```
 
-# PartialBut
+## PartialBut
 
 Properties defined by K in T required, the rest made optional.
 
@@ -220,7 +219,7 @@ const o7: Alt = { a: '' }; // missing b
 const o8: Alt = { }; // missing a, b
 ```
 
-# RequiredBut
+## RequiredBut
 
 Properties defined by K in T optional, the rest made required.
 

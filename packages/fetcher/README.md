@@ -16,7 +16,7 @@
 
 ## INSTALL
 
-```bash
+```shell
 tnpm i @alicloud/fetcher -S
 ```
 

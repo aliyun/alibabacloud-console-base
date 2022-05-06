@@ -1,17 +1,16 @@
-@alicloud/console-base-rc-messenger-region
-===
+# @alicloud/console-base-rc-messenger-region
 
 ConsoleBase 组件 - 对 region messenger 的组件化封装，提升开发体验
 
 让控制台应用项操作本地组件一样，控制顶栏中的全局地域选择器组件。
 
-# INSTALL
+## INSTALL
 
-```bash
+```shell
 npm  i -S @alicloud/console-base-rc-messenger-region
 ```
 
-# USAGE
+## Usage
 
 ```typescript jsx
 import React, {

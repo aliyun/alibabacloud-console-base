@@ -4,7 +4,7 @@
 
 ## INSTALL
 
-```bash
+```shell
 tnpm i @alicloud/console-base-messenger -S
 ```
 

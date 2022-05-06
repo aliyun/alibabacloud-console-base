@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-input-switch
-===
+# @alicloud/console-base-rc-input-switch
 
-# Usage
+## Usage
 
 ```js
 import InputSwitch from '@alicloud/console-base-rc-input-switch';

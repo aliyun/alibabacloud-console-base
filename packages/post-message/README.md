@@ -1,17 +1,16 @@
-@alicloud/post-message
-===
+# @alicloud/post-message
 
 封装 postMessage 相关，有可以将 postMessage 转化成 Promise 的方法。
 
 注意：需要使用者自己保证 Promise。
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/post-message -S
 ```
 
-# USAGE
+## Usage
 
 ```typescript
 import {
@@ -36,7 +35,7 @@ function receiver(payload: T) {
 const unsubscribe = subscribe<T>(message, receiver); // 适时地使用 unsubscribe 注销
 ```
 
-# API
+## APIs
 
 ```typescript
 /**

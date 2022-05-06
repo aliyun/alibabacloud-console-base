@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-dropdown
-===
+# @alicloud/console-base-rc-dropdown
 
-# Usage
+## Usage
 
 ```js
 import Dropdown from '@alicloud/console-base-rc-dropdown';
@@ -9,7 +8,7 @@ import Dropdown from '@alicloud/console-base-rc-dropdown';
 <Dropdown {...props} />;
 ```
 
-# API
+## APIs
 
 props
 

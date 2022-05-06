@@ -9,7 +9,7 @@
 
 ## INSTALL
 
-```bash
+```shell
 tnpm i @alicloud/console-base-log-sls -S
 ```
 

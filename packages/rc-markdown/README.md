@@ -1,5 +1,4 @@
-@alicloud/rc-markdown
-===
+# @alicloud/rc-markdown
 
 > Yet another react wrapper of markdown parse based on [micromark].
 
@@ -34,7 +33,7 @@ export default function MyMarkdown(): JSX.Element {
 }
 ```
 
-# WHY 🙈
+## Why 🙈
 
 I used to use [react-markdown], however it has these defects:
 
@@ -42,13 +41,14 @@ I used to use [react-markdown], however it has these defects:
 2. The bug <https://github.com/remarkjs/react-markdown/issues/460> which lives quite a long time makes it impossible to use HTML...
 3. I tried to use [remark-directive] plugin, and... it is way too complex...
 
-That's why I have to say goodbye to the [world’s most popular Markdown parser](https://www.npmtrends.com/remark-parse-vs-marked-vs-markdown-it) and say Hi to the [**smallest** CommonMark compliant markdown parser](https://github.com/micromark/micromark).
+That's why I have to say goodbye to the [world’s most popular Markdown parser](https://www.npmtrends.com/remark-parse-vs-marked-vs-markdown-it) and
+say Hi to the [**smallest** CommonMark compliant markdown parser](https://github.com/micromark/micromark).
 
 However, [micromark] has its own problems - the typings are NOT well-defined, I have to do quite a lot of diggings and hacking.
 
 So far so good, cheers 🎉.
 
-# Usage 💥
+## Usage 💥
 
 ## Basic
 
@@ -103,13 +103,13 @@ export default function MyMarkdown(): JSX.Element {
 }
 ```
 
-# Styles? 🔥
+## Styles 🔥
 
 This package ships with no styles at all.
 
 Use `@alicloud/console-base-rc-markdown` you want to have a _beautiful_ look (with CSS var), or maybe you can wrap with your own styling code.
 
-# Useful Links ✨
+## Useful Links ✨
 
 * [Markdown](https://daringfireball.net/projects/markdown)
 * [CommonMark]

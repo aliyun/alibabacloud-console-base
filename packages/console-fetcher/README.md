@@ -7,7 +7,7 @@
 
 ## INSTALL
 
-```bash
+```shell
 tnpm i @alicloud/console-fetcher -S
 ```
 

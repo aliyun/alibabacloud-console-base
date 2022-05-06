@@ -1,13 +1,12 @@
-@alicloud/console-base-rc-loading
-===
+# @alicloud/console-base-rc-loading
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-base-rc-loading -S
 ```
 
-# Usage
+## Usage
 
 ```typescript jsx
 import Loading from '@alicloud/console-base-rc-loading';

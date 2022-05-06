@@ -1,5 +1,4 @@
-@alicloud/console-fetcher-interceptor-req-security
-===
+# @alicloud/console-fetcher-interceptor-req-security
 
 * 发送请求前，在 body 中塞入额外的安全信息 `collina` + `umid` + `sec_token`
 * 扩展 `FetcherConfig` 增加 `getCollina(): string` + `getUmid(): string` + `getSecToken(): string` 三个可选方法
@@ -12,7 +11,7 @@
 `umid` | 不知道干啥的 | 通过 `window.um.getToken()` 获取，`window.um` 来自 `um.js`，`um.js` 由应用主动写到页面
 `sec_token` | 判断登录有效性 | 应用写到 HTML 的一个常量，OneConsole 有固定的方案，非 OneConsole 需要自行指定
 
-# 对 `@alicloud/fetcher` 的 `FetcherConfig` 的扩展
+## 对 `@alicloud/fetcher` 的 `FetcherConfig` 的扩展
 
 可以在 config 对象上传入新增参数：
 
@@ -24,13 +23,13 @@ interface FetcherConfigExtra {
 }
 ```
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-fetcher-interceptor-req-security -S
 ```
 
-# 使用
+## Usage
 
 ```typescript
 import createFetcher, {
@@ -55,14 +54,15 @@ intercept(fetcher);
 export default fetcher;
 ```
 
-# 如何覆盖默认
+## 如何覆盖默认
 
 > 注意：
+>
 > 1. 不建议覆盖 ￿`getCollina`，因为这里的实现可以说是通用的
 > 2. 不建议覆盖 `getUmid`，因为这里的实现可以说是通用的
 > 3. 非 OneConsole 的话，才有可能需要 `getSecToken`
 
-## 方法 1 - 创建实例时传入默认值
+### 方法 1 - 创建实例时传入默认值
 
 假设 `:` 是你项目下 `src` 的 alias。
 
@@ -96,7 +96,7 @@ intercept(fetcher);
 export default fetcher;
 ```
 
-## 方法 2 - 调用的时候传入覆盖
+### 方法 2 - 调用的时候传入覆盖
 
 ```typescript
 import fetcher from ':/util/fetcher'; // 假设这是你项目下的 fetcher 文件路径
