@@ -1,5 +1,4 @@
-@alicloud/console-fetcher-proxy
-===
+# @alicloud/console-fetcher-proxy
 
 注意：这个包**只能**是控制台应用使用的，ConsoleBase 不会用到它。
 

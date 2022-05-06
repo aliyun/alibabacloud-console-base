@@ -1,5 +1,4 @@
-@alicloud/console-fetcher-basic
-===
+# @alicloud/console-fetcher-basic
 
 > 控制台请求基础包，无风控，仅对一般性错误做国际化，对业务错误进行封装。
 
@@ -16,19 +15,19 @@
 
 有风控需求，且应用是 react 的请使用 `@alicloud/console-fetcher`。
 
-# 输出
+## 输出
 
 跟 `@alicloud/fetcher` 一致，除了：
 
 1. 扩展了 `Fetcher`，新增 API 方法
-    * `callInnerApi`
-    * `callContainerApi`
-    * `callOpenApi`
-    * `callMultiOpenApi`
+  1.1 `callInnerApi`
+  1.2 `callContainerApi`
+  1.3 `callOpenApi`
+  1.4 `callMultiOpenApi`
 2. 扩展了 `FetcherConfig`
 3. 新增 API 类型输出
-    * `FetcherConsoleApiOptions`
-    * `FetcherFnOpenApi`
-    * `FetcherFnInnerApi`
-    * `FetcherFnContainerApi`
-    * `FetcherFnOpenApiMulti`
+  3.1 `FetcherConsoleApiOptions`
+  3.2 `FetcherFnOpenApi`
+  3.3 `FetcherFnInnerApi`
+  3.4 `FetcherFnContainerApi`
+  3.5 `FetcherFnOpenApiMulti`

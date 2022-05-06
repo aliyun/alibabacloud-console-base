@@ -1,11 +1,10 @@
-@alicloud/console-base-rc-top-nav
-===
+# @alicloud/console-base-rc-top-nav
 
 > 具体看 types 下的类型说明。
 
 例子：
 
-```typescript jsx
+```typescript tsx
 <TopNav {...{
   id: 'fuck',
   dock: {
