@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-attention-seeker
-===
+# @alicloud/console-base-rc-attention-seeker
 
-# Usage
+## Usage
 
 一般不建议直接用组件的形式调用，而是通过 append、prepend、refresh、clear 等方法。
 
@@ -30,26 +29,26 @@ export default function PickMe(): JSX.Element {
 }
 ```
 
-# API
+## API
 
 TODO 目前没有上一个下一个...
 
-## default export - 组件
+### default export - 组件
 
 基本用不到
 
-## `append(element: HTMLElement, options?: IAttentionSeekerOptions): () => void;`
+### `append(element: HTMLElement, options?: IAttentionSeekerOptions): () => void;`
 
 将元素添加到元素列表，返回解除的无参回调函数可用于 useEffect。
 
-## `prepend(element: HTMLElement, options?: IAttentionSeekerOptions): () => void`
+### `prepend(element: HTMLElement, options?: IAttentionSeekerOptions): () => void`
 
 将元素添加到元素列表（如果希望添加后立即高亮，用它），返回解除的无参回调函数可用于 useEffect。
 
-## `clear(): void`
+### `clear(): void`
 
 清除所有元素。
 
-## `refresh(): void`
+### `refresh(): void`
 
 刷新（基本应该用不到了）。

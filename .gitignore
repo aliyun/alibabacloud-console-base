@@ -1,6 +1,7 @@
 # common
 .*
 !.*ignore
+!.*.yml
 !.*rc
 !.*rc.*
 !.husky

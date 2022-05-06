@@ -1,15 +1,14 @@
-@alicloud/console-base-rc-aside-menu
-===
+# @alicloud/console-base-rc-aside-menu
 
-# TODO
+## TODO
 
 * 工具条
-  - search
-  - toggle unfold all
+  + search
+  + toggle unfold all
 
-# Usage
+## Usage
 
-```js
+```typescript
 import AsideMenu from '@alicloud/console-rc-aside-menu';
 
 <AsideMenu {...{

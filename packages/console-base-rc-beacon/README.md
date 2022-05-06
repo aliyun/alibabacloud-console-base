@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-beacon
-===
+# @alicloud/console-base-rc-beacon
 
-# Usage
+## Usage
 
 ```typescript tsx
 import Beacon from '@alicloud/console-base-rc-beacon';

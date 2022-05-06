@@ -15,6 +15,7 @@
     "husky": "^7.0.4",
     "lerna": "^4.0.0",
     "lint-staged": "^12.4.1",
+    "markdownlint-cli2": "^0.4.0",
     "npm-check-updates": "^12.5.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -30,6 +31,7 @@
     "clean:tag:local": "git tag -l \"@alicloud/*\" | xargs -n 1 git tag -d",
     "lint": "eslint packages/**/src/ --ext js,ts,tsx",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:md": "markdownlint-cli2 **/*.md #node_modules",
     "lerna:boot": "lerna bootstrap --hoist",
     "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
@@ -44,6 +46,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint",
-    "*.{js,ts,tsx,less}": "stylelint"
+    "*.{js,ts,tsx,less}": "stylelint",
+    "*.md": "markdownlint-cli2"
   }
 }

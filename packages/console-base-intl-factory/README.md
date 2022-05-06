@@ -1,17 +1,16 @@
-@alicloud/console-base-intl-factory
-===
+# @alicloud/console-base-intl-factory
 
 `@alicloud/console-base-intl-factory-basic` 上的扩展，标准化带 HTML 及换行的输出样式。
 
 这个包会额外要求引入 React，如果只是需要纯文本的国际化，请使用 `@alicloud/console-base-intl-factory-basic`。
 
-# INSTALL
+## INSTALL
 
-```
+```bash
 tnpm i @alicloud/console-base-intl-factory -S
 ```
 
-# API
+## API
 
 ```typescript
 export default (messagesMap: Record<string, Record<string, string>>, options?: IntlFactoryOptions) => <V extends {} = {}, T = string>(id: string, values?: V, instructionsExtra?: IntlInstructions) => T;
@@ -28,7 +27,7 @@ interface IntlInstructions {
 }
 ```
 
-# USAGE
+## USAGE
 
 ## 定义你自己的 `intl`
 
