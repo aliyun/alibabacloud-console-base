@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-proxy",
-  "version": "1.4.81",
+  "version": "1.5.0",
   "description": "控制台 fetcher 代理",
   "license": "MIT",
   "sideEffects": false,
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-global": "^1.2.1",
-    "@alicloud/console-base-messenger": "^1.10.0",
+    "@alicloud/console-base-messenger": "^1.11.0",
     "@alicloud/console-fetcher": "^1.5.76"
   },
   "scripts": {
