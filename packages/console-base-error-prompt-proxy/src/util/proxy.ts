@@ -21,8 +21,8 @@ interface IMessengerPayload {
 }
 
 /**
- * 对 @alicloud/console-base-error-prompt 的调用转接为 @alicloud/console-base-messenger 的 forApp.promptError
- * forApp.promptError 的将由 forConsoleBase.onPromptError 最终进行处理
+ * 对 @alicloud/console-base-error-prompt 的调用转接为 @alicloud/console-base-messenger 的 promptError
+ * 并由 onPromptError 最终进行处理
  */
 export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra | ErrorPromptExtraFn, detailedMode?: boolean): Promise<void> {
   if (!getProxyErrorPrompt()) {

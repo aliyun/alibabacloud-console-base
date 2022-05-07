@@ -1,12 +1,13 @@
 import {
+  broadcastPromiseByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   IPayloadLaunchWidget
 } from '../../../types';
 import {
   EMessageBroadcastByApp
 } from '../../../enum';
-import {
-  broadcastPromiseByApp
-} from '../../../util';
 
 /**
  * 唤起 widget，并返回 Promise，需要传入 Widget 的 id + version + props，并通过 extra 传递更多的信息

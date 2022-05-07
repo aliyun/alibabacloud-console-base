@@ -1,9 +1,12 @@
 import {
+  broadcastByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EToolkitTypeShort
 } from '../../../enum';
 import {
-  composeToolkitTypeWithId,
-  broadcastByConsoleBase
+  composeToolkitTypeWithId
 } from '../../../util';
 
 /**

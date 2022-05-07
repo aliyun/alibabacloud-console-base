@@ -1,6 +1,9 @@
 import {
   SettingsToolkitItem
 } from '@alicloud/console-base-types-settings-toolkit';
+import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
 
 import {
   EToolkitTypeShort
@@ -9,8 +12,7 @@ import {
   IPayloadPutTool
 } from '../../../types';
 import {
-  composeToolkitType,
-  broadcastByApp
+  composeToolkitType
 } from '../../../util';
 
 /**

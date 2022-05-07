@@ -1,9 +1,10 @@
 import {
+  subscribeByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
-import {
-  subscribeByConsoleBase
-} from '../../../util';
 
 export default function onRemoved(fn: (portalKey: string) => void): () => void {
   return subscribeByConsoleBase<string>(EMessageBroadcastByApp.MICRO_BROWSER_PORTAL_REMOVED, portalKey => {

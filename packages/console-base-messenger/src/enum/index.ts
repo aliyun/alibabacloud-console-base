@@ -75,10 +75,6 @@ export enum EMessageBroadcastByApp {
  */
 export enum EMessageBroadcastByConsoleBase {
   /* ********************************************
-   * 杂项
-   ******************************************* */
-  READY = 'console_base_2_app:ready',
-  /* ********************************************
    * 地域选择器
    ******************************************* */
   REGION_CHANGE = 'console_base_2_app:region/change',

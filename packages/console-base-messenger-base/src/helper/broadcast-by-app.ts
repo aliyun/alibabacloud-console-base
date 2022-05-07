@@ -16,7 +16,7 @@ interface IWin extends Window {
 }
 
 /**
- * 为了避免控制台调用 forApp.xx 的时候，console-base 还没有 ready 而导致事件被忽略，需要增加一个全局变量
+ * 为了避免控制台调用 messenger 事件的时候，console-base 还没有 ready 而导致事件被忽略，需要增加一个全局变量
  * 之所以用全局变量是因为，一个页面上可能存在多份 `@alicloud/console-base-messenger-base`，其中一份是 console-base 自身安装的，
  * 另外的则可能是控制台应用或者是 widget 安装的。
  * 

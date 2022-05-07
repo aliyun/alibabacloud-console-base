@@ -1,9 +1,10 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
-import {
-  broadcastByApp
-} from '../../../util';
 
 /**
  * 展示或隐藏区域选择器

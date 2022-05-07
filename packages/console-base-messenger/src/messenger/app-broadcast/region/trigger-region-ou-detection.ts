@@ -1,12 +1,13 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
 import {
   IPayloadRegionTriggerOuDetection
 } from '../../../types';
-import {
-  broadcastByApp
-} from '../../../util';
 
 export default function triggerRegionOuDetection(regionId: string, regionName: string, commodityCode?: string): void {
   if (!regionId || !regionName) {

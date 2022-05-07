@@ -4,7 +4,6 @@
  * 响应 console-base-broadcast 下对应的方法
  * --------------------------------------------- */
 
-export { default as onReady } from './on-ready';
 export { default as onThemeChange } from './on-theme-change';
 
 /* ********************************************

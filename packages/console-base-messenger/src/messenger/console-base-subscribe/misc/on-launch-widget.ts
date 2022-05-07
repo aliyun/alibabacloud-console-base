@@ -1,12 +1,13 @@
 import {
+  subscribePromiseByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
 import {
   IPayloadLaunchWidget
 } from '../../../types';
-import {
-  subscribePromiseByConsoleBase
-} from '../../../util';
 
 /**
  * console-base 响应 Widget 唤起

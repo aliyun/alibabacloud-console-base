@@ -1,9 +1,10 @@
 import {
+  broadcastPromiseByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
-import {
-  broadcastPromiseByApp
-} from '../../../util';
 
 /**
  * fetcher 请求

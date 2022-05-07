@@ -1,12 +1,13 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
 import {
   IPayloadRegionGroup
 } from '../../../types';
-import {
-  broadcastByApp
-} from '../../../util';
 
 /**
  * 动态修改可用地域分组列表

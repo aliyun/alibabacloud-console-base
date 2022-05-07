@@ -1,9 +1,12 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EToolkitTypeShort
 } from '../../../enum';
 import {
-  composeToolkitType,
-  broadcastByApp
+  composeToolkitType
 } from '../../../util';
 
 const ATTR_NAME = 'data-console-base-toolkit-go-top';

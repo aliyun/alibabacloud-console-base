@@ -1,12 +1,13 @@
 import {
+  broadcastByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByConsoleBase
 } from '../../../enum';
 import {
   IPayloadRegionOnChange
 } from '../../../types';
-import {
-  broadcastByConsoleBase
-} from '../../../util';
 
 /**
  * 通知控制台应用：用户选择新的区域

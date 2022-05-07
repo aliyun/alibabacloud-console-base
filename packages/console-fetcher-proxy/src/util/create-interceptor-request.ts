@@ -5,7 +5,7 @@ import {
   createFetcherErrorSkipNetwork
 } from '@alicloud/console-fetcher';
 import {
-  forApp
+  fetcherRequest
 } from '@alicloud/console-base-messenger';
 import {
   getProxyFetcher
@@ -20,7 +20,7 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<Fe
     let result: Promise<unknown>;
     
     try { // postMessage 可能抛错
-      result = forApp.fetcherRequest(fetcherConfig);
+      result = fetcherRequest(fetcherConfig);
     } catch (err) { // 抛错表明 message 的 payload 中含有无法序列化的数据
       // TODO log
       return; // 将继续正常的请求流程

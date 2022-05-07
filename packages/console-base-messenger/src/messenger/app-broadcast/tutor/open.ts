@@ -1,12 +1,13 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
 import {
   IPayloadTutorOpen
 } from '../../../types';
-import {
-  broadcastByApp
-} from '../../../util';
 
 /**
  * 打开教程（到第几步）

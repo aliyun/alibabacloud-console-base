@@ -4,7 +4,6 @@
  * 由 app-subscribe 下的方法响应
  * --------------------------------------------- */
 
-export { default as ready } from './ready';
 export { default as themeChange } from './theme-change';
 /* ********************************************
  * 地域选择器

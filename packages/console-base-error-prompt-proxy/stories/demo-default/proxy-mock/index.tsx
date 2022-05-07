@@ -9,7 +9,9 @@ import {
   setProxyErrorPrompt
 } from '@alicloud/console-base-global';
 import {
-  forConsoleBase
+  forApp,
+  ready,
+  onPromptError
 } from '@alicloud/console-base-messenger';
 import errorPrompt, {
   ErrorDetailedInfo,
@@ -25,8 +27,8 @@ interface IMessengerPayload {
   extra?: ErrorPromptExtra;
 }
 
-setGlobalVar();
-forConsoleBase.ready();
+setGlobalVar(forApp);
+ready();
 
 export default function ProxyMock(): JSX.Element {
   const [stateProxyMocked, setStateProxyMocked] = useState<boolean>(true);
@@ -35,7 +37,7 @@ export default function ProxyMock(): JSX.Element {
   // 这里的逻辑实际上就是 console-base-plugin-error-prompt 的实现
   useEffect(() => setProxyErrorPrompt(stateProxyMocked), [stateProxyMocked]);
   
-  useEffect(() => forConsoleBase.onPromptError<IMessengerPayload>(async (o): Promise<void> => {
+  useEffect(() => onPromptError<IMessengerPayload>(async (o): Promise<void> => {
     if (!o) {
       return;
     }

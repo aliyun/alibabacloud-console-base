@@ -1,12 +1,13 @@
 import {
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByConsoleBase
 } from '../../../enum';
 import {
   IPayloadMicroPrefUpdated
 } from '../../../types';
-import {
-  subscribeByApp
-} from '../../../util';
 
 export default function onMicroPrefUpdated<T = unknown>(fn: (key: string, value: T, valueOld: T) => void): () => void {
   return subscribeByApp<IPayloadMicroPrefUpdated<T>>(EMessageBroadcastByConsoleBase.MICRO_PREF_UPDATED, payload => {

@@ -1,9 +1,10 @@
 import {
+  broadcastByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByConsoleBase
 } from '../../enum';
-import {
-  broadcastByConsoleBase
-} from '../../util';
 
 /**
  * 通知控制台应用：主题已切换

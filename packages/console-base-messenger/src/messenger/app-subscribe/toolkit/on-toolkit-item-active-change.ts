@@ -1,8 +1,11 @@
 import {
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EToolkitTypeShort
 } from '../../../enum';
 import {
-  subscribeByApp,
   composeToolkitTypeWithId
 } from '../../../util';
 

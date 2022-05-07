@@ -30,6 +30,7 @@
     "clean:tag:remote": "git tag -l \"@alicloud/*\" | xargs -n 1 git push --delete origin",
     "clean:tag:local": "git tag -l \"@alicloud/*\" | xargs -n 1 git tag -d",
     "lint": "eslint packages/**/src/ --ext js,ts,tsx",
+    "lint2": "eslint packages/console-base-messenger/src/ --ext js,ts,tsx --fix",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
     "lint:md": "markdownlint-cli2 **/*.md #node_modules",
     "lerna:boot": "lerna bootstrap --hoist",

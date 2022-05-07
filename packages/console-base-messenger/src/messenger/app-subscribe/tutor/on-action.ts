@@ -1,12 +1,13 @@
 import {
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByConsoleBase
 } from '../../../enum';
 import {
   IPayloadTutorClick
 } from '../../../types';
-import {
-  subscribeByApp
-} from '../../../util';
 
 /**
  * 微教程内部元素 :tutor-action[label]{value=xx} 点击后的事件注册

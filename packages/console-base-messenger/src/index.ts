@@ -1,3 +1,8 @@
+import {
+  ready,
+  onReady
+} from '@alicloud/console-base-messenger-base';
+
 import * as appBroadcast from './messenger/app-broadcast';
 import * as appSubscribe from './messenger/app-subscribe';
 import * as consoleBaseBroadcast from './messenger/console-base-broadcast';
@@ -8,12 +13,18 @@ export * from './messenger/app-subscribe';
 export * from './messenger/console-base-broadcast';
 export * from './messenger/console-base-subscribe';
 
+export {
+  ready,
+  onReady
+};
+
 /**
  * 给控制台使用
  */
 export const forApp = {
   ...appBroadcast,
-  ...appSubscribe
+  ...appSubscribe,
+  onReady
 };
 
 /**
@@ -21,7 +32,8 @@ export const forApp = {
  */
 export const forConsoleBase = {
   ...consoleBaseBroadcast,
-  ...consoleBaseSubscribe
+  ...consoleBaseSubscribe,
+  ready
 };
 
 export {

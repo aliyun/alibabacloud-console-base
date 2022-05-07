@@ -1,12 +1,13 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
 import {
   IPayloadResourceGroupProps
 } from '../../../types';
-import {
-  broadcastByApp
-} from '../../../util';
 
 /**
  * 覆盖组件 props

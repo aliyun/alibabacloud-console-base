@@ -1,9 +1,10 @@
 import {
+  subscribePromiseByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
-import {
-  subscribePromiseByConsoleBase
-} from '../../../util';
 
 /**
  * console-base 响应错误弹窗

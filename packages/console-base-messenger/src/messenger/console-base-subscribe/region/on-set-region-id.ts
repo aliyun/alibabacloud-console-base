@@ -1,9 +1,10 @@
 import {
+  subscribeByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
 } from '../../../enum';
-import {
-  subscribeByConsoleBase
-} from '../../../util';
 
 /**
  * console-base 响应设置地域 ID

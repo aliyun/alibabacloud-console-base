@@ -1,12 +1,13 @@
 import {
+  broadcastByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByConsoleBase
 } from '../../../enum';
 import {
   IPayloadResourceGroup
 } from '../../../types';
-import {
-  broadcastByConsoleBase
-} from '../../../util';
 
 /**
  * 通知控制台应用：用户选择新的资源组（null 表示「全部资源组」）

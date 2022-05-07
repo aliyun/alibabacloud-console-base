@@ -1,12 +1,13 @@
 import {
+  broadcastPromiseByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   IPayloadMicroBrowserPortalCreated
 } from '../../../types';
 import {
   EMessageBroadcastByApp
 } from '../../../enum';
-import {
-  broadcastPromiseByApp
-} from '../../../util';
 
 export default function created(portalKey: string, title: string): Promise<HTMLDivElement> {
   return broadcastPromiseByApp<string, IPayloadMicroBrowserPortalCreated>(EMessageBroadcastByApp.MICRO_BROWSER_PORTAL_CREATED, {
