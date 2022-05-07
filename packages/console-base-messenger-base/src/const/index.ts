@@ -1,0 +1,1 @@
+export const READY = 'console_base_2_app:ready';
