@@ -16,11 +16,11 @@ import Input from '@alicloud/console-base-rc-input';
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
+  EVerifyType
+} from '../../../../enum';
+import {
   IRiskVerifyDialogData
 } from '../../../../types';
-import {
-  EVerifyType
-} from '../../../../const';
 import intl from '../../../../intl';
 import Form from '../../../../rc/form';
 import {

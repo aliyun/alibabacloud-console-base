@@ -4,7 +4,7 @@ import {
 
 import {
   EVerifyType
-} from '../const';
+} from '../enum';
 
 export interface IRiskInfo {
   type: EVerifyType; // 解析后的类型

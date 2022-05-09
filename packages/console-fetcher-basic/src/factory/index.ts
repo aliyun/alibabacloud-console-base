@@ -51,9 +51,9 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
   const callInnerApi = createApi(fetcher, ETypeApi.INNER);
   const callContainerApi = createApi(fetcher, ETypeApi.CONTAINER);
   
-  const createCallOpenApiWithProduct = (product: string): IFnConsoleApiWithProduct => createApiWithProduct(callOpenApi, product);
-  const createCallInnerApiWithProduct = (product: string): IFnConsoleApiWithProduct => createApiWithProduct(callInnerApi, product);
-  const createCallContainerApiWithProduct = (product: string): IFnConsoleApiWithProduct => createApiWithProduct(callContainerApi, product);
+  const createCallOpenApiWithProduct = <D>(product: string, defaultParams?: D): IFnConsoleApiWithProduct => createApiWithProduct<D>(callOpenApi, product, defaultParams);
+  const createCallInnerApiWithProduct = <D>(product: string, defaultParams?: D): IFnConsoleApiWithProduct => createApiWithProduct<D>(callInnerApi, product, defaultParams);
+  const createCallContainerApiWithProduct = <D>(product: string, defaultParams?: D): IFnConsoleApiWithProduct => createApiWithProduct<D>(callContainerApi, product, defaultParams);
   
   return {
     ...(fetcher as unknown as Fetcher<C>),

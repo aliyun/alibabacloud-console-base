@@ -7,17 +7,6 @@ export const ERROR_RISK_FORBIDDEN = 'FetcherErrorRiskForbidden'; // 风控说「
 export const ERROR_RISK_INVALID = 'FetcherErrorRiskInvalid'; // 风控验证设置无效，需用户进行设置 - 有 UI 对用户提示
 export const ERROR_RISK_CANCELLED = 'FetcherErrorRiskCancelled'; // 用户取消风控验证
 
-/**
- * 这里内部使用的二次验证类型，跟数据解耦
- */
-export enum EVerifyType {
-  SMS = 'sms',
-  EMAIL = 'email',
-  MFA = 'mfa',
-  NONE = 'NONE', // 没有
-  UNKNOWN = 'UNKNOWN' // 有，但不支持
-}
-
 export const DEFAULT_RISK_CONFIG: Required<IFetcherInterceptorConfig> = { // 风控设置
   DATA_PATH_VERIFY_TYPE: 'data.verifyType',
   DATA_PATH_VERIFY_DETAIL: 'data.verifyDetail',

@@ -107,14 +107,19 @@ export interface IFnConsoleApiMulti {
   (product: string, actions: IConsoleApiMultiAction[], options?: IConsoleApiOptions): Promise<TConsoleApiMultiResult>;
 }
 
+export interface IFnCreateCallApiWithProduct {
+  (product: string): IFnConsoleApiWithProduct;
+  <D>(product: string, defaultPrams: D): IFnConsoleApiWithProduct;
+}
+
 export interface IConsoleApis {
   callOpenApi: IFnConsoleApi;
   callInnerApi: IFnConsoleApi;
   callContainerApi: IFnConsoleApi;
   callMultiOpenApi: IFnConsoleApiMulti;
-  createCallOpenApiWithProduct(product: string): IFnConsoleApiWithProduct;
-  createCallInnerApiWithProduct(product: string): IFnConsoleApiWithProduct;
-  createCallContainerApiWithProduct(product: string): IFnConsoleApiWithProduct;
+  createCallOpenApiWithProduct: IFnCreateCallApiWithProduct;
+  createCallInnerApiWithProduct: IFnCreateCallApiWithProduct;
+  createCallContainerApiWithProduct: IFnCreateCallApiWithProduct;
 }
 
 export interface IConsoleFetcher<C extends IConsoleFetcherConfig = IConsoleFetcherConfig> extends Fetcher<C>, IConsoleApis {}

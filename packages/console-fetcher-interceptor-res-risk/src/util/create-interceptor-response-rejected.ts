@@ -9,10 +9,12 @@ import {
 } from '@alicloud/fetcher';
 
 import {
+  EVerifyType
+} from '../enum';
+import {
   IFetcherInterceptorConfig
 } from '../types';
 import {
-  EVerifyType,
   DEFAULT_RISK_CONFIG
 } from '../const';
 import intl from '../intl';

@@ -1,9 +1,9 @@
 import {
+  EVerifyType
+} from '../enum';
+import {
   IFetcherInterceptorConfig
 } from '../types';
-import {
-  EVerifyType
-} from '../const';
 
 export default function convertVerifyType(type0: string, riskConfig: IFetcherInterceptorConfig): EVerifyType {
   switch (type0) {

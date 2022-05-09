@@ -1,6 +1,6 @@
 import {
   EVerifyType
-} from '../const';
+} from '../enum';
 import intl from '../intl';
 
 export function intlVerifyTitle(type: EVerifyType): string {
