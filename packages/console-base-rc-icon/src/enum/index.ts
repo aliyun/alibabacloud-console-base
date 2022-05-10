@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export enum EIconType { // 注意这里的 key 用于组件的对外 props，不要随意修改，且保持小写
   // logo
   'logo-aliyun' = 'e605', // [-]
@@ -66,6 +67,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   // 其他
   'apps' = 'e60e', // 应用（负数）
   'app' = 'e603', // 应用（单个）
+  'app-mobile' = 'e61b', // 手机应用（下载）
   'dingding' = 'e881', // 钉钉
   'drag' = 'e6e1', // 拖拽
   'empty' = 'e655', // 空

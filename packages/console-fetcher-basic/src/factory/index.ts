@@ -15,15 +15,17 @@ import {
   ETypeApi
 } from '../enum';
 import {
+  IConsoleApiOptions,
   IConsoleFetcher,
   IConsoleFetcherConfig,
   IConsoleFetcherInterceptorOptions,
   IFnConsoleApiWithProduct
 } from '../types';
-
-import createApi from './create-api';
-import createApiAutoMulti from './create-api-auto-multi';
-import createApiWithProduct from './create-api-with-product';
+import {
+  createApi,
+  createApiAutoMulti,
+  createApiWithProduct
+} from '../util';
 
 export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> => {
   const {
@@ -51,9 +53,15 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
   const callInnerApi = createApi(fetcher, ETypeApi.INNER);
   const callContainerApi = createApi(fetcher, ETypeApi.CONTAINER);
   
-  const createCallOpenApiWithProduct = <D>(product: string, defaultParams?: D): IFnConsoleApiWithProduct => createApiWithProduct<D>(callOpenApi, product, defaultParams);
-  const createCallInnerApiWithProduct = <D>(product: string, defaultParams?: D): IFnConsoleApiWithProduct => createApiWithProduct<D>(callInnerApi, product, defaultParams);
-  const createCallContainerApiWithProduct = <D>(product: string, defaultParams?: D): IFnConsoleApiWithProduct => createApiWithProduct<D>(callContainerApi, product, defaultParams);
+  const createCallOpenApiWithProduct = function<D>(product: string, defaultParams?: D, defaultOptions?: IConsoleApiOptions): IFnConsoleApiWithProduct {
+    return createApiWithProduct<D>(callOpenApi, product, defaultParams, defaultOptions);
+  };
+  const createCallInnerApiWithProduct = function<D>(product: string, defaultParams?: D, defaultOptions?: IConsoleApiOptions): IFnConsoleApiWithProduct {
+    return createApiWithProduct<D>(callInnerApi, product, defaultParams, defaultOptions);
+  };
+  const createCallContainerApiWithProduct = function<D>(product: string, defaultParams?: D, defaultOptions?: IConsoleApiOptions): IFnConsoleApiWithProduct {
+    return createApiWithProduct<D>(callContainerApi, product, defaultParams, defaultOptions);
+  };
   
   return {
     ...(fetcher as unknown as Fetcher<C>),

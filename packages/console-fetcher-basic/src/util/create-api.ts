@@ -16,11 +16,10 @@ import {
   TConsoleApiMultiResult,
   IFnConsoleApiMulti
 } from '../types';
-import {
-  getApiUrl,
-  callApi,
-  callApiMulti
-} from '../util';
+
+import getApiUrl from './get-api-url';
+import callApiMulti from './call-api-multi';
+import callApi from './call-api';
 
 function createApi(fetcher: Fetcher<IConsoleFetcherConfig>, type: ETypeApi.OPEN | ETypeApi.INNER | ETypeApi.CONTAINER): IFnConsoleApi;
 function createApi(fetcher: Fetcher<IConsoleFetcherConfig>, type: ETypeApi.OPEN_MULTI): IFnConsoleApiMulti;
