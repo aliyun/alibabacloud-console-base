@@ -1,9 +1,8 @@
-@alicloud/console-base-rc-marks
-===
+# @alicloud/console-base-rc-marks
 
 NEW / HOT / UPDATE / ALPHA / BETA / 公测中 标记
 
-# Usage
+## Usage
 
 ```js
 import {

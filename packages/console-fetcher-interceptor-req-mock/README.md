@@ -1,21 +1,18 @@
-@alicloud/console-fetcher-interceptor-req-mock
-===
+# @alicloud/console-fetcher-interceptor-req-mock
 
 利用 oneapi.alibaba-inc.com 对 OneConsole 及非 OneConsole 的接口进行 mock。
 
-# 如何使用
-
 注意：此代码虽然体积很小，但也绝不应该被打包到生产代码中去。
 
-## 安装
+## Install
 
-安装到 `dev-dependencies` 里，而不是 `dependencies`。
-
-```
+```shell
 tnpm i @alicloud/console-fetcher-interceptor-req-mock -D
 ```
 
-## 使用
+注意是安装到 `dev-dependencies` 里，而不是 `dependencies`。
+
+## Usage
 
 在你的 demo 代码里...
 

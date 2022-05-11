@@ -6,7 +6,7 @@ import {
 } from '../../const';
 import {
   useRect,
-  useHandleClickSandwichUpper
+  useHandleCloseOnSandwichUpperClick
 } from '../../model';
 
 const ScSandwichUpper = styled.div`
@@ -17,7 +17,7 @@ const ScSandwichUpper = styled.div`
 
 export default function SandwichUpper(): JSX.Element {
   const rect = useRect();
-  const handleClickSandwichUpper = useHandleClickSandwichUpper();
-  
-  return <ScSandwichUpper style={rect} onClick={handleClickSandwichUpper} />;
+  const handleCloseOnSandwichUpperClick = useHandleCloseOnSandwichUpperClick();
+
+  return <ScSandwichUpper style={rect} onMouseDown={handleCloseOnSandwichUpperClick} />;
 }

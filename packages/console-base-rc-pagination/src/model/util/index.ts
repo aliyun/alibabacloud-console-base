@@ -1,0 +1,1 @@
+export { default as generatePageList } from './generate-page-list';

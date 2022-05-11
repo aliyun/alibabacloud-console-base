@@ -3,13 +3,13 @@ import {
 } from 'react';
 
 import {
+  EDialogLockState
+} from '../enum';
+import {
   IDialogButtonProps,
   TDialogButton,
   TDialogData
 } from '../types';
-import {
-  EDialogLockState
-} from '../const';
 
 /**
  * 为了方便使用，button 被设计为可以传入 string | JSX.Element | IDialogButtonProps，但最终使用的时候还是要转成 IDialogButtonProps

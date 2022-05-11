@@ -1,15 +1,19 @@
 import {
   SettingsToolkitItem
 } from '@alicloud/console-base-types-settings-toolkit';
+import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
 
+import {
+  EToolkitTypeShort
+} from '../../../enum';
 import {
   IPayloadPutTool
 } from '../../../types';
 import {
-  EToolkitTypeShort
-} from '../../../const';
-import composeToolkitType from '../../../util/compose-toolkit-type';
-import broadcastByApp from '../../../util/broadcast-by-app';
+  composeToolkitType
+} from '../../../util';
 
 /**
  * Toolkit 添加或修改一个工具

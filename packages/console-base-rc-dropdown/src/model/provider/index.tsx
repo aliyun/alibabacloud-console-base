@@ -1,44 +1,40 @@
 import React, {
   useReducer,
-  useRef
+  useCallback
 } from 'react';
 
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
-  IModelReducer,
-  IModelProviderProps
+  IModelProviderProps,
+  TModelAction,
+  IModelReducer
 } from '../types';
 import {
   DEFAULT_STATE
 } from '../const';
 import reducer from '../reducer';
-import Lifecycle from '../lifecycle';
-
-import Context from './_context';
+import Context from '../context';
 
 export default function Provider({
   props,
   children
 }: IModelProviderProps): JSX.Element {
-  const refDropdown = useRef<HTMLDivElement | null>(null);
-  const refDrop = useRef<HTMLDivElement | null>(null);
-  const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_STATE);
   const isUnmounted = useIsUnmounted();
+  const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_STATE);
+  const safeDispatch = useCallback((action: TModelAction) => { // 不必再担心异步回调 dispatch 可能发生的错误
+    if (isUnmounted()) {
+      return;
+    }
+    
+    dispatch(action);
+  }, [isUnmounted, dispatch]);
   
   return <Context.Provider value={{
     props,
     state,
-    refDropdown,
-    refDrop,
-    isUnmounted,
-    dispatch
+    dispatch: safeDispatch
   }}>
-    <Lifecycle />
     {children}
   </Context.Provider>;
 }
-
-export {
-  Context
-};

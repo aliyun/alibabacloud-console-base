@@ -9,10 +9,10 @@ import {
   MarkProps,
   New,
   Hot,
-  Update,
-  Alpha,
+  PublicBeta,
   Beta,
-  PublicBeta
+  Alpha,
+  Update
 } from '../../src';
 import Knobs from '../knobs';
 
@@ -30,12 +30,20 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <Knobs onChange={setStateProps} />
+    <div>
+      <New {...stateProps} />
+      <Hot {...stateProps} />
+      <PublicBeta {...stateProps} />
+      <Beta {...stateProps} />
+      <Alpha {...stateProps} />
+      <Update {...stateProps} />
+    </div>
     <div>New<New {...stateProps} />New</div>
     <div>Hot<Hot {...stateProps} />Hot</div>
-    <div>Update<Update {...stateProps} />Update</div>
-    <div>Alpha<Alpha {...stateProps} />Alpha</div>
-    <div>Beta<Beta {...stateProps} />Beta</div>
     <div>Public Beta<PublicBeta {...stateProps} />Public Beta</div>
+    <div>Beta<Beta {...stateProps} />Beta</div>
+    <div>Alpha<Alpha {...stateProps} />Alpha</div>
+    <div>Update<Update {...stateProps} />Update</div>
   
     <ScNew />
   </>;

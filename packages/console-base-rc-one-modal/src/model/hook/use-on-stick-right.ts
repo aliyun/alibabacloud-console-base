@@ -4,7 +4,7 @@ import {
 
 import {
   EModalMode
-} from '../../const';
+} from '../enum';
 
 import useHandleModeChange from './use-handle-mode-change';
 import useStickRightActive from './use-stick-right-active';

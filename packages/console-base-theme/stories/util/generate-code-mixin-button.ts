@@ -105,8 +105,7 @@ function buildCodeMixinButtonFull(theme: string): string {
     \${${buildMixinButtonPartStateName(theme, EButtonPart.COLOR, EButtonState.NORMAL)}}
   }
   
-  &:hover,
-  &:focus {
+  &:hover {
     \${${buildMixinButtonStateName(theme, EButtonState.HOVER)}}
   }
   
@@ -123,7 +122,7 @@ function buildCodeMixinButtonFull(theme: string): string {
 // 生成 mixin/button.ts
 export default function generateCodeMixinButton(): string {
   const generator: ICodeGenerator = {
-    generator: 'generator-code-mixin-button',
+    generator: 'generate-code-mixin-button',
     begin: CODE_BEGIN_TS_BUTTON
   };
   

@@ -3,12 +3,12 @@ import React, {
   useCallback,
   useEffect
 } from 'react';
-import styled from 'styled-components';
 
 import {
   H1,
   PrePromise,
   Button,
+  Flex,
   InputText,
   InputNumber,
   InputTextarea,
@@ -21,15 +21,6 @@ import {
 } from '../../src';
 import fetcher from '../fetcher';
 import CacheStorage from '../cache-storage';
-
-const ScFlex = styled.div`
-  display: flex;
-  
-  pre {
-    flex: 1;
-    width: 100%;
-  }
-`;
 
 function getJsonFromString(str: string): Record<string, unknown> | null {
   try {
@@ -122,43 +113,43 @@ export default function DemoSpecial(): JSX.Element {
   return <>
     <H1>场景测试</H1>
     <div>
-      method <InputText {...{
+      method = <InputText {...{
         placeholder: 'method',
         value: stateMethod,
         onChange: setStateMethod
       }} />
-    </div>
-    <div>
-      url <InputText {...{
+      <br />
+      url = <InputText {...{
         placeholder: 'url',
         value: stateUrl,
         onChange: setStateUrl
       }} />
-    </div>
-    <label>
+      <br />
       <InputSwitch {...{
+        label: 'cache local enabled',
         value: stateCacheLocalEnabled,
         onChange: setStateCacheLocalEnabled
-      }} /> cache local enabled
-    </label>
-    &nbsp; → &nbsp;
-    cacheLocal.key <InputText {...{
-      placeholder: 'cacheLocal.key',
-      value: stateCacheLocalKey,
-      onChange: setStateCacheLocalKey
-    }} />
-    cacheLocal.ttl <InputNumber {...{
-      placeholder: 'cacheLocal.ttl',
-      value: stateCacheLocalTtl,
-      onChange: setStateCacheLocalTtl
-    }} />
-    <label>
+      }} />
+      <br />
+      cacheLocal.key <InputText {...{
+        placeholder: 'cacheLocal.key',
+        value: stateCacheLocalKey,
+        onChange: setStateCacheLocalKey
+      }} />
+      <br />
+      cacheLocal.ttl <InputNumber {...{
+        placeholder: 'cacheLocal.ttl',
+        value: stateCacheLocalTtl,
+        onChange: setStateCacheLocalTtl
+      }} />
+      <br />
       <InputSwitch {...{
+        label: 'cacheLocal.overwrite',
         value: stateCacheLocalOverwrite,
         onChange: setStateCacheLocalOverwrite
-      }} /> cacheLocal.overwrite
-    </label>
-    <ScFlex>
+      }} />
+    </div>
+    <Flex>
       <InputTextarea {...{
         placeholder: 'params',
         onChange: handleParamChange
@@ -167,12 +158,12 @@ export default function DemoSpecial(): JSX.Element {
         placeholder: 'body',
         onChange: handleBodyChange
       }} />
-    </ScFlex>
+    </Flex>
     <Button onClick={handleFetchX3}>fetch x3</Button>
-    <ScFlex>
+    <Flex>
       <CodeViewerTs>{stateJsCode}</CodeViewerTs>
       <PrePromise promise={statePromise} />
-    </ScFlex>
+    </Flex>
     <CacheStorage />
   </>;
 }

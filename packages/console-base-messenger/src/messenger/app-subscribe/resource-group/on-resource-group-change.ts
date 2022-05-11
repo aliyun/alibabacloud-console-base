@@ -1,10 +1,13 @@
 import {
-  IPayloadResourceGroup
-} from '../../../types';
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
 import {
   EMessageBroadcastByConsoleBase
-} from '../../../const';
-import subscribeByApp from '../../../util/subscribe-by-app';
+} from '../../../enum';
+import {
+  IPayloadResourceGroup
+} from '../../../types';
 
 /**
  * 资源组切换时的回调

@@ -17,10 +17,7 @@ export default function useHandleDocKeydown(): (e: KeyboardEvent) => void {
     switch (e.key) {
       case 'Escape':
         dispatchToggleVisible(false);
-        
-        if (onEsc) {
-          onEsc();
-        }
+        onEsc?.();
         
         break;
       case 'ArrowDown':

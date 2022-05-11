@@ -1,0 +1,1 @@
+export { default as getSlsOptions } from './get-sls-options';

@@ -26,12 +26,12 @@ function fallbackFormat(d: Date, format = 'YYYY-MM-DD HH:mm:ss'): string {
   let pattern = format;
   
   if (/(Y+)/.test(pattern)) {
-    pattern = pattern.replace(RegExp.$1, (`${d.getFullYear()}`).substr(4 - RegExp.$1.length));
+    pattern = pattern.replace(RegExp.$1, `${d.getFullYear()}`.substring(4 - RegExp.$1.length));
   }
   
   _forEach(o, (v: number, k: string) => {
     if (new RegExp(`(${k})`).test(pattern)) {
-      pattern = pattern.replace(RegExp.$1, RegExp.$1.length === 1 ? `${v}` : (`00${v}`).substring((`${v}`).length));
+      pattern = pattern.replace(RegExp.$1, RegExp.$1.length === 1 ? `${v}` : `00${v}`.substring(`${v}`.length));
     }
   });
   

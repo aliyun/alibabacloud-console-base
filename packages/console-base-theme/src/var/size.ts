@@ -18,9 +18,9 @@ export default {
   
   // 表单字体
   FONT_SIZE_FORM_CONTROL_XS: 12,
-  FONT_SIZE_FORM_CONTROL_S: 12, // 对标 xconsole 的 small
-  FONT_SIZE_FORM_CONTROL_M: 12, // 对标 xconsole 的 medium
-  FONT_SIZE_FORM_CONTROL_L: 14, // 对标 xconsole 的 large
+  FONT_SIZE_FORM_CONTROL_S: 12, // 对标 XConsole 的 small
+  FONT_SIZE_FORM_CONTROL_M: 12, // 对标 XConsole 的 medium
+  FONT_SIZE_FORM_CONTROL_L: 14, // 对标 XConsole 的 large
   FONT_SIZE_FORM_CONTROL_XL: 16,
   
   /* *************************
@@ -52,10 +52,10 @@ export default {
   HEIGHT_TOP_NAV: 50, // 顶栏高度
   
   // 表单控件（按钮、输入框）的高度梯度
-  HEIGHT_FORM_CONTROL_XS: 20,
-  HEIGHT_FORM_CONTROL_S: 24, // 对标 xconsole 的 small
-  HEIGHT_FORM_CONTROL_M: 32, // 对标 xconsole 的 medium
-  HEIGHT_FORM_CONTROL_L: 36, // 对标 xconsole 的 large
+  HEIGHT_FORM_CONTROL_XS: 24, // 对标 XConsole 的 small
+  HEIGHT_FORM_CONTROL_S: 28,
+  HEIGHT_FORM_CONTROL_M: 32, // 对标 XConsole 的 medium
+  HEIGHT_FORM_CONTROL_L: 36, // 对标 XConsole 的 large
   HEIGHT_FORM_CONTROL_XL: 40,
   
   HEIGHT_DIALOG_SLIDE_HEADER: 60,

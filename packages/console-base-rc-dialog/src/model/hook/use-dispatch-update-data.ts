@@ -6,13 +6,16 @@ import {
   TDialogData
 } from '../../types';
 import {
-  actionUpdateData
-} from '../action';
+  EAction
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchUpdateData<D = TDialogData>(): (data: Partial<D>) => void {
+export default function useDispatchUpdateData<D = TDialogData>(): (payload: Partial<D>) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((data: Partial<D>) => dispatch(actionUpdateData<D>(data)), [dispatch]);
+  return useCallback((payload: Partial<D>) => dispatch({
+    type: EAction.UPDATE_DATA,
+    payload
+  }), [dispatch]);
 }

@@ -1,10 +1,15 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
-} from '../../../const';
-import broadcastByApp from '../../../util/broadcast-by-app';
+} from '../../../enum';
 
 /**
  * 展示或隐藏区域选择器
+ * 
+ * @deprecated
  */
 export default function toggleRegion(payload = true): void {
   broadcastByApp<boolean>(EMessageBroadcastByApp.REGION_TOGGLE, payload);

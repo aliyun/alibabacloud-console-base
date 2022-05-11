@@ -1,4 +1,3 @@
-@alicloud/json-stringify-ordered
-===
+# @alicloud/json-stringify-ordered
 
 stable json stringify

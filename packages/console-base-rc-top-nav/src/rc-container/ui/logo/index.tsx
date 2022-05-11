@@ -18,18 +18,18 @@ const FONT_SIZE = 18;
 const ScLogo = styled(Button)`
   position: relative;
   padding: 0 12px;
-  font-size: ${FONT_SIZE}px;
   height: ${SIZE.HEIGHT_TOP_NAV}px;
   line-height: ${SIZE.HEIGHT_TOP_NAV}px;
+  font-size: ${FONT_SIZE}px;
   
   &:after {
     content: '';
     position: absolute;
     top: ${(SIZE.HEIGHT_TOP_NAV - FONT_SIZE) / 2}px;
     right: 0;
+    background-color: #ddd;
     width: 1px;
     height: ${FONT_SIZE}px;
-    background-color: #ddd;
   }
   
   .theme-dark & {

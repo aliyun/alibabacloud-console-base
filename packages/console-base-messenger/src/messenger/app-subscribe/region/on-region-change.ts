@@ -1,10 +1,13 @@
 import {
-  IPayloadRegionOnChange
-} from '../../../types';
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
 import {
   EMessageBroadcastByConsoleBase
-} from '../../../const';
-import subscribeByApp from '../../../util/subscribe-by-app';
+} from '../../../enum';
+import {
+  IPayloadRegionOnChange
+} from '../../../types';
 
 /**
  * 地域切换时的回调

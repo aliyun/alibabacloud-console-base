@@ -7,7 +7,7 @@ import {
 } from '../const';
 
 import normalizeHeaderKey from './normalize-header-key';
-import createFetcherError from './error/create';
+import createFetcherError from './create-fetcher-error';
 
 export default async function convertResponseFromFetch<T = void, C extends IFetcherConfig = IFetcherConfig>(response: Response, fetcherConfig: C): Promise<IFetcherResponse<T>> {
   const headers: Record<string, string> = {};

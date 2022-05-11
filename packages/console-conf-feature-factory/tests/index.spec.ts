@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 /* global describe, test, expect */
 import pkgInfo from '../package.json';
 import confFeatureFactory from '../src';
@@ -255,6 +258,79 @@ describe(pkgInfo.name, () => {
       expect(confFeatureWithGray(EFeature.WITH_CUSTOM_ATTRIBUTES, {
         list: 'fuck'
       })).toBe(true);
+    });
+  });
+  
+  describe('locale', () => {
+    enum EFeatureLocale {
+      NO_LOCALE_1 = 'no_locale_1',
+      NO_LOCALE_2 = 'no_locale_2',
+      NO_LOCALE_3 = 'no_locale_3',
+      WITH_LOCALE_ZH_CN_1 = 'with_locale_zh_cn_1',
+      WITH_LOCALE_ZH_CN_2 = 'WITH_LOCALE_ZH_CN_2',
+      WITH_LOCALE_3 = 'with_locale_3'
+    }
+    
+    // status 都是 true
+    const FEATURE_CONF = {
+      [EFeatureLocale.NO_LOCALE_1]: {
+        status: true
+      },
+      [EFeatureLocale.NO_LOCALE_2]: {
+        status: true,
+        attribute: {
+          customAttrs: {}
+        }
+      },
+      [EFeatureLocale.NO_LOCALE_3]: {
+        status: true,
+        attribute: {
+          customAttrs: {
+            $locale: ''
+          }
+        }
+      },
+      [EFeatureLocale.WITH_LOCALE_ZH_CN_1]: {
+        status: true,
+        attribute: {
+          customAttrs: {
+            $locale: 'zh-CN'
+          }
+        }
+      },
+      [EFeatureLocale.WITH_LOCALE_ZH_CN_2]: {
+        status: true,
+        attribute: {
+          customAttrs: {
+            $locale: 'en-US,zh-CN'
+          }
+        }
+      },
+      [EFeatureLocale.WITH_LOCALE_3]: {
+        status: true,
+        attribute: {
+          customAttrs: {
+            $locale: 'en-US,ja-JP'
+          }
+        }
+      }
+    };
+    const confFeature = confFeatureFactory<EFeatureLocale>(FEATURE_CONF);
+    
+    // custom attributes
+    test('no $locale in custom attr, return true', () => {
+      expect(confFeature(EFeatureLocale.NO_LOCALE_1)).toBe(true);
+      expect(confFeature(EFeatureLocale.NO_LOCALE_2)).toBe(true);
+      expect(confFeature(EFeatureLocale.NO_LOCALE_3)).toBe(true);
+    });
+    
+    test('with locale zh-CN', () => { // test 下只有 zh-CN
+      expect(confFeature(EFeatureLocale.WITH_LOCALE_ZH_CN_1)).toBe(true);
+      expect(confFeature(EFeatureLocale.WITH_LOCALE_ZH_CN_2)).toBe(true);
+    });
+    
+    test('with locale not zh-CN', () => {
+      expect(confFeature(EFeatureLocale.WITH_LOCALE_3)).toBe(false);
     });
   });
 });

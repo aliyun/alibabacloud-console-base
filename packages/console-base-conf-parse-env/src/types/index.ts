@@ -1,6 +1,6 @@
 import {
   EEnv
-} from '../const';
+} from '../enum';
 
 export interface IWin extends Window {
   ALIYUN_ECS_CONSOLE_CONFIG?: {

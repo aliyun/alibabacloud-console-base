@@ -17,8 +17,8 @@ const ScNav = styled.nav`
 `;
 
 export default function Nav(): JSX.Element {
-  const visibleTabs = useVisibleTabs();
   const refNav = useRefNav();
+  const visibleTabs = useVisibleTabs();
   const navOffset = useStateNavOffset();
   
   return <ScNav {...{
@@ -27,10 +27,9 @@ export default function Nav(): JSX.Element {
       transform: `translate(${navOffset}px, 0)`
     }
   }}>
-    {visibleTabs.map((v, i): JSX.Element | null => <NavItem {...{
-      key: v.key || i,
-      tab: v,
-      index: i
+    {visibleTabs.map((v): JSX.Element | null => <NavItem {...{
+      key: v.key,
+      tab: v
     }} />)}
   </ScNav>;
 }

@@ -5,6 +5,7 @@ import React, {
 import styled from 'styled-components';
 
 import {
+  mixinLinkPrimary,
   mixinTypoEm,
   mixinTypoCode
 } from '@alicloud/console-base-theme';
@@ -18,6 +19,10 @@ interface IProps {
 }
 
 const ScErrorMessage = styled.div`
+  a {
+    ${mixinLinkPrimary}
+  }
+  
   em {
     ${mixinTypoEm}
   }

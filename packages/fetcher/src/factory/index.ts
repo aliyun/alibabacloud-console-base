@@ -6,8 +6,9 @@ import {
   TArgsForPost
 } from '../types';
 import Fetcher from '../fetcher';
-import requestWithNoBody from '../util/request-with-no-body';
-import requestWithBody from '../util/request-with-body';
+
+import requestWithNoBody from './request-with-no-body';
+import requestWithBody from './request-with-body';
 
 /**
  * 这里会创建 Fetcher 实例，但不会直接把实例返回，因为那样的话用起来会不舒服（方法无法脱离实例进行调用），
@@ -20,6 +21,7 @@ export default function createFetcher<C extends IFetcherConfig = IFetcherConfig>
   const interceptResponse = fetcher.interceptResponse.bind(fetcher);
   const sealInterceptors = fetcher.sealInterceptors.bind(fetcher);
   const request = fetcher.request.bind(fetcher);
+  const inspectInterceptors = fetcher.inspectInterceptors.bind(fetcher);
   
   // 便捷方法
   const jsonp = <T = void, P = void>(...args: TArgsForJsonp<C, P>): Promise<T> => requestWithNoBody<C, T, P>(fetcher, 'JSONP', args);
@@ -39,6 +41,7 @@ export default function createFetcher<C extends IFetcherConfig = IFetcherConfig>
     delete: deleteFn,
     post,
     put,
-    patch
+    patch,
+    inspectInterceptors
   };
 }

@@ -1,8 +1,10 @@
 import {
+  ETypeLine
+} from '../enum';
+import {
   ILineGroup
 } from '../types';
 import {
-  ETypeLine,
   REG_OL,
   REG_UL
 } from '../const';

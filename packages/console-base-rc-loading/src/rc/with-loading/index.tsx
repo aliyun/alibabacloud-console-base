@@ -4,11 +4,11 @@ import React, {
 } from 'react';
 
 import {
+  ELoadingStatus
+} from '../../enum';
+import {
   IPropsWithLoading
 } from '../../types';
-import {
-  ELoadingStatus
-} from '../../const';
 import Loading from '../loading';
 
 export default function WithLoading<T>({

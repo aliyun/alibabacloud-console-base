@@ -1,0 +1,1 @@
+export { default as renderInner } from './render-inner';

@@ -1,8 +1,13 @@
 import {
+  subscribeByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EToolkitTypeShort
-} from '../../../const';
-import composeToolkitType from '../../../util/compose-toolkit-type';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
+} from '../../../enum';
+import {
+  composeToolkitType
+} from '../../../util';
 
 /**
  * console-base 响应动态移除某工具

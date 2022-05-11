@@ -1,2 +1,2 @@
-export { default as gfm } from './gfm';
-export { default as directive } from './directive';
+export { default as pluginGfm } from './plugin-gfm';
+export { default as pluginDirective } from './plugin-directive';

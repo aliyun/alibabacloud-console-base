@@ -11,11 +11,16 @@ import {
   useDialog
 } from '../../../../src';
 
+interface IData {
+  input1: string;
+  input2: string;
+}
+
 export default function Content(): JSX.Element {
   const {
     data,
     updateData
-  } = useDialog();
+  } = useDialog<void, IData>();
   const handleInput1Change = useCallback(value => {
     updateData({
       input1: value

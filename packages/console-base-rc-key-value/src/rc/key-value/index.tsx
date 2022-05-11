@@ -18,7 +18,6 @@ interface IPropsScItemV {
   wrapValue?: boolean;
 }
 
-const ScKeyValue = styled.div``;
 const ScItem = styled.div`
   display: flex;
   margin: 4px 0;
@@ -48,7 +47,7 @@ export default function KeyValue({
     return null;
   }
   
-  return <ScKeyValue {...props}>
+  return <div {...props}>
     {arr.map(({
       key,
       k,
@@ -59,5 +58,5 @@ export default function KeyValue({
       <ScItemK>{k}</ScItemK>
       <ScItemV wrapValue={wrapValue}>{v}</ScItemV>
     </ScItem>)}
-  </ScKeyValue>;
+  </div>;
 }

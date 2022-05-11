@@ -7,13 +7,6 @@ export interface IPayloadArmsError {
   name?: string;
 }
 
-export interface IPayloadLaunchTutorial { // will be deprecated soon
-  title?: string;
-  contents: string[];
-  width?: number;
-  step?: number;
-}
-
 export interface IPayloadLaunchWidget<P = void, E = void> {
   id: string;
   version: string;

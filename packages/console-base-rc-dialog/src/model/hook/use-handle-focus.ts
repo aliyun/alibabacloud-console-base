@@ -4,14 +4,19 @@ import {
 
 import {
   focusDialog
-} from '../util/push-stack';
+} from '../util';
 
-import useRefContent from './use-ref-content';
-import useRefDialog from './use-ref-dialog';
+import useModelState from './_use-model-state';
 
 export default function useHandleFocus(): () => void {
-  const refContent = useRefContent();
-  const refDialog = useRefDialog();
+  const {
+    domDialog,
+    domDialogContent
+  } = useModelState();
   
-  return useCallback((): void => focusDialog(refDialog.current!, refContent.current!), [refDialog, refContent]);
+  return useCallback((): void => {
+    if (domDialog && domDialogContent) {
+      focusDialog(domDialog, domDialogContent);
+    }
+  }, [domDialog, domDialogContent]);
 }

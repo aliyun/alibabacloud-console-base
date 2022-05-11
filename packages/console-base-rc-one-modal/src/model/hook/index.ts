@@ -1,6 +1,7 @@
 export { default as useProps } from './_use-model-props';
 export { default as useMode } from './use-mode';
-export { default as useRndState } from './use-rnd-state';
+export { default as useRndStateExtra } from './use-rnd-state-extra';
+export { default as useRndStateRect } from './use-rnd-state-rect';
 export { default as useRndDragHandleClass } from './use-rnd-drag-handle-class';
 export { default as useRndResizeHandleStyles } from './use-rnd-resize-handle-styles';
 export { default as useRndDraggingDisabled } from './use-rnd-dragging-disabled';
@@ -14,3 +15,5 @@ export { default as useOnResizeStart } from './use-on-resize-start';
 export { default as useOnResize } from './use-on-resize';
 export { default as useOnResizeStop } from './use-on-resize-stop';
 export { default as useHandleDragBarDoubleClick } from './use-handle-drag-bar-double-click';
+export { default as useEffectObserveDocumentResize } from './use-effect-observe-document-resize';
+export { default as useEffectPushBody } from './use-effect-push-body';

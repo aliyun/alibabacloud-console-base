@@ -1,5 +1,5 @@
-export { default } from './rc/pagination';
+export { default } from './rc-container';
 
 export type {
-  IPropsPagination as PaginationProps
-} from './types';
+  ModelProps as PaginationProps
+} from './model';

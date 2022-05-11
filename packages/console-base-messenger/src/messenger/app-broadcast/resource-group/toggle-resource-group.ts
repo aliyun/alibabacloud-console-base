@@ -1,10 +1,15 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
-} from '../../../const';
-import broadcastByApp from '../../../util/broadcast-by-app';
+} from '../../../enum';
 
 /**
  * 展示或隐藏资源组
+ * 
+ * @deprecated
  */
 export default function toggleResourceGroup(payload = true): void {
   broadcastByApp<boolean>(EMessageBroadcastByApp.RESOURCE_GROUP_TOGGLE, payload);

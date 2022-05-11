@@ -6,12 +6,20 @@ import {
 import find from './find';
 import inViewport from './in-viewport';
 
+interface IOptions extends ScrollIntoViewOptions {
+  parent?: TParent;
+}
+
 /**
  * 基本都支持
  * 
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
  */
-export default function scrollIntoView(selector: TSelector, parent?: TParent): void {
+export default function scrollIntoView(selector: TSelector, {
+  parent,
+  behavior = 'smooth', // default 'auto'
+  ...options
+}: IOptions = {}): void {
   const [el] = find(selector, parent);
   
   if (!el || inViewport(el)) {
@@ -20,8 +28,8 @@ export default function scrollIntoView(selector: TSelector, parent?: TParent): v
   
   try {
     el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
+      behavior,
+      ...options
     });
   } catch (err) {
     // ignore

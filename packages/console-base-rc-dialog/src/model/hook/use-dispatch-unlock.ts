@@ -3,13 +3,15 @@ import {
 } from 'react';
 
 import {
-  actionUnlock
-} from '../action';
+  EAction
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
 export default function useDispatchUnlock(): () => void {
   const dispatch = useModelDispatch();
   
-  return useCallback(() => dispatch(actionUnlock()), [dispatch]);
+  return useCallback(() => dispatch({
+    type: EAction.UNLOCK
+  }), [dispatch]);
 }

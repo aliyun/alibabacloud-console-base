@@ -1,0 +1,1 @@
+export { default as getCssPadding } from './get-css-padding';

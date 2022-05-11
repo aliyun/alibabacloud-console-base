@@ -1,7 +1,7 @@
 'use strict';
 
-// lowercase-single-dashed-names-only-0
-const namingPattern = /^-?[a-z0-9]+(-[a-z0-9]+)*$/;
+// lowercase-single-dashed-names-only-0，also bypass styled-components placeholder
+const namingPattern = /^-?[a-z0-9]+(-[a-z0-9]+)*$|\$dummyValue/;
 
 module.exports = {
   extends: [
@@ -75,7 +75,7 @@ module.exports = {
     'selector-pseudo-element-colon-notation': 'single',
     'string-quotes': 'single',
     'time-min-milliseconds': 100,
-    'unit-blacklist': ['pt'],
+    'unit-disallowed-list': ['pt'],
     'value-keyword-case': 'lower',
     'value-list-comma-newline-before': 'never-multi-line',
     'value-no-vendor-prefix': true,
@@ -218,6 +218,7 @@ module.exports = {
       'font-size',
       'font-weight',
       'font-style',
+      'font-variant',
       'font-smoothing',
       'vertical-align',
       'text-align',

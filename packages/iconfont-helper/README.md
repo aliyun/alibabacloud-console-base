@@ -1,15 +1,14 @@
-@alicloud/iconfont-helper
-===
+# @alicloud/iconfont-helper
 
 > <https://www.iconfont.cn> 辅助，用于注入 iconfont 或 webfont 并返回对应的 font 名，是写组件的好帮手
 
-# 使用 injectIconFont
+## 使用 injectIconFont
 
-## 定义 Icon 组件
+### 定义 Icon 组件
 
 你需要去 <https://www.iconfont.cn/manage/index?manage_type=myprojects> 新建或选择一个 iconfont 项目，它会有一个固定不变的 id 和跟当前内容有关的 hash，并且在它生成的 CSS 里有一份 Base64，都可以拿来，比如：
 
-![](https://img.alicdn.com/imgextra/i3/O1CN01xQMgKp1syThmNp0Db_!!6000000005835-2-tps-1920-1048.png)
+![Code Example](https://img.alicdn.com/imgextra/i3/O1CN01xQMgKp1syThmNp0Db_!!6000000005835-2-tps-1920-1048.png)
 
 注意以下代码比较紧凑，实际写的时候，应该拆到 types、enum、util 以减小主题文件的复杂度。
 
@@ -65,7 +64,7 @@ export type {
 };
 ```
 
-## 使用 Icon 组件
+### 使用 Icon 组件
 
 ```typescript jsx
 import React from 'react';
@@ -79,7 +78,7 @@ import Icon from '...'; // 应用内部的或你把它发布成包
 <Icon type="ali88" />
 ```
 
-# 使用 WebFont 字体
+### 使用 WebFont 字体
 
 WebFont 可以让你的页面展现一些设计师希望的「美妙」字体（尤其是中文字体）。
 
@@ -89,13 +88,13 @@ iconfont 网站提供了 [webfont](https://www.iconfont.cn/webfont) 的功能，
 
 假设，设计师要展示这样的文案：
 
-![](https://img.alicdn.com/imgextra/i1/O1CN01KKpw4f1mkqDbsPutl_!!6000000004993-2-tps-852-82.png)
+![WebFont Example](https://img.alicdn.com/imgextra/i1/O1CN01KKpw4f1mkqDbsPutl_!!6000000004993-2-tps-852-82.png)
 
-## 定义 WebFont 组件
+### 定义 WebFont 组件
 
 你这么做：
 
-![](https://img.alicdn.com/imgextra/i2/O1CN01Ml8SDd238ggwXhb9E_!!6000000007211-2-tps-905-556.png)
+![Copy Id](https://img.alicdn.com/imgextra/i2/O1CN01Ml8SDd238ggwXhb9E_!!6000000007211-2-tps-905-556.png)
 
 ```typescript jsx
 import React from 'react';
@@ -117,7 +116,7 @@ export default function MengziKongzi(): JSX.Element {
 }
 ```
 
-## 使用 WebFont 组件
+### 使用 WebFont 组件
 
 ```typescript jsx
 import React from 'react';

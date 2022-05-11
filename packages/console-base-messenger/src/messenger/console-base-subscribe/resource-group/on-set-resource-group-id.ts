@@ -1,7 +1,10 @@
 import {
+  subscribeByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
-} from '../../../const';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
+} from '../../../enum';
 
 /**
  * console-base 响应设置当前选中的资源组

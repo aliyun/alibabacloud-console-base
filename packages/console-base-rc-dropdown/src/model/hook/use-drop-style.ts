@@ -1,5 +1,6 @@
 import {
-  CSSProperties
+  CSSProperties,
+  useMemo
 } from 'react';
 
 import {
@@ -7,9 +8,8 @@ import {
 } from '@alicloud/mere-dom';
 
 import useModelProps from './_use-model-props';
-import useRefDropdown from './use-ref-dropdown';
-import useRefDrop from './use-ref-drop';
-import useDropVisible from './use-drop-visible';
+import useDomDropdown from './use-dom-dropdown';
+import useDomDrop from './use-dom-drop';
 
 /**
  * 计算 zIndex、top、left/right 等信息
@@ -24,59 +24,58 @@ export default function useDropStyle(): CSSProperties {
     offset,
     dropContainer
   } = useModelProps();
-  const refDropdown = useRefDropdown();
-  const refDrop = useRefDrop();
-  const dropVisible = useDropVisible();
+  const domDropdown = useDomDropdown();
+  const domDrop = useDomDrop();
   
   const alignIsRight = align === 'right';
   const [offsetX = 0, offsetY = 0] = offset;
   
-  const style: CSSProperties = {
-    zIndex
-  };
+  return useMemo(() => {
+    const style: CSSProperties = {
+      zIndex
+    };
   
-  if (width) {
-    style.width = width;
-  }
+    if (width) {
+      style.width = width;
+    }
   
-  if (minWidth) {
-    style.minWidth = minWidth;
-  }
+    if (minWidth) {
+      style.minWidth = minWidth;
+    }
   
-  if (maxWidth) {
-    style.maxWidth = maxWidth;
-  }
+    if (maxWidth) {
+      style.maxWidth = maxWidth;
+    }
   
-  // compute position
-  if (dropContainer === 'body') {
-    if (dropVisible) {
-      const rect = getFixedRect(refDropdown.current);
+    // compute position
+    if (dropContainer === 'body') {
+      const rect = getFixedRect(domDropdown);
       
       if (rect) {
         style.top = rect.top + rect.height + offsetY;
         
         if (alignIsRight) {
-          if (refDrop.current) {
-            style.left = rect.left + rect.width - refDrop.current.getBoundingClientRect().width - offsetX;
+          if (domDrop) {
+            style.left = rect.left + rect.width - domDrop.getBoundingClientRect().width - offsetX;
           }
         } else {
           style.left = rect.left + offsetX;
         }
       }
-    }
-  } else {
-    style.top = '100%';
-    
-    if (alignIsRight) {
-      style.right = offsetX;
     } else {
-      style.left = offsetX;
+      style.top = '100%';
+    
+      if (alignIsRight) {
+        style.right = offsetX;
+      } else {
+        style.left = offsetX;
+      }
+      
+      if (offsetY) {
+        style.marginTop = offsetY;
+      }
     }
     
-    if (offsetY) {
-      style.marginTop = offsetY;
-    }
-  }
-  
-  return style;
+    return style;
+  }, [alignIsRight, domDrop, domDropdown, dropContainer, maxWidth, minWidth, offsetX, offsetY, width, zIndex]);
 }

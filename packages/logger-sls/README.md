@@ -1,16 +1,15 @@
-@alicloud/logger-sls
-===
+# @alicloud/logger-sls
 
 > 阿里云日志服务 SLS Web Tracking 日志记录方法的工厂，以及工厂的工厂。
 > 工厂是因为，SLS 要求必须要有 `project` 及对应的 `endpoint` 和 `logstore`，每个业务的这些值无法统一。
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/logger-sls -S
 ```
 
-# API
+## APIs
 
 ```typescript
 export default function createLogger(options: FactoryOptions): LogFn;
@@ -67,7 +66,7 @@ interface FactoryOptions {
 1. 使用 `createLogger` 创建自己的专属 log 方法，直接在项目中使用
 2. 使用 `createLoggerFactory` 创建带更多默认参数的 `createLogger` 方法（通常你需要封成一个 npm 包）
 
-# 创建专属 SLS Logger
+## 创建专属 SLS Logger
 
 对于一个项目，一般你只需要一个 log 方法。不要在使用的地方进行创建，你需要一个唯一的实例。
 
@@ -103,15 +102,15 @@ export default createLogger(options);
 `BROWSER_VERSION` | 当前浏览器版本 | 使用 `@alicloud/ua`
 `IN_IFRAME` | 是否为被 iframe 的页面，`window !== window.top` | 只需计算一次
 `TIME` | 当前的 `Date.now()` | 日志在前端生成的时间，一般在它真正发送之前，因为日志为了页面性能考量，会有延时跟合并发送的机制
-`REFERRER` | `document.referrer` | 
+`REFERRER` | `document.referrer` |
 `LOCATION_HOST` | 域名 `window.location.host` |
-`LOCATION_PATHNAME` | `window.location.pathName` | 
+`LOCATION_PATHNAME` | `window.location.pathName` |
 `LOCATION_SEARCH` | `window.location.search` | 去掉 `?`
 `LOCATION_HASH` | `window.location.hash` | 去掉 `#`
 `GROUP` | 日志分组，`DEBUG | LOG | INFO | WARN | ERROR | FATAL | BIZ | 自定义` | 默认 `LOG`
 `TOPIC` | `__topic__` 的复制 | 多个日志请求并发，会有个 `__topic__0`（合并 topic） 和 `__topic__`（真正），然，控制台检索的时候无法通过 `__topic__` 检索到，我认为这是设计上的 bug，但他们不改，只好新增一个
 
-# 创建一个带更多默认参数的工厂
+## 创建一个带更多默认参数的工厂
 
 针对特定的场景（比如阿里云控制台体系），需要记录用户相关的信息，这个时候，你需要一个新的 `createLogger`，你可以封装特定的 npm 包，如 `@alicloud/console-logger-sls`，它的输出可能是这样的：
 
@@ -137,7 +136,7 @@ export default createLoggerFactory(getDefaultParams);
 
 而使用者跟直接是用 `createLogger` 一样，不同的是，默认参数中会多出 `userId` 等参数。
 
-# log 方法
+## log 方法
 
 无论通过 `createLogger` 直接得到的 log 方法，还是通过 `createLoggerFactory` 间接得到的 `log`，它们签名是一样的：
 
@@ -158,7 +157,7 @@ export interface LogFn {
 }
 ```
 
-## 使用 log 方法
+### 使用 log 方法
 
 > 注意 `log.log` 等价于 `log`，除了 `log.log` 的 `GROUP` 是写死的外。
 

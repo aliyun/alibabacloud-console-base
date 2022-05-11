@@ -17,7 +17,7 @@ import createErrorTokenExpired from './create-error-token-expired';
 import createErrorRamForbidden from './create-error-ram-forbidden';
 
 export default function createErrors(): TErrorArg[] {
-  return [undefined, null, '字符串 as Error', <H3>JSX as Error</H3>, {
+  return [undefined, null, '', {}, new Error(), '字符串 as Error', <H3>JSX as Error</H3>, {
     message: 'Message 里有 HTML，请 <a href="//www.aliyun.com" target="_blank">登录</a> 或者 <em>不登录</em>，一切 <code>都随你...</code>。'
   }, {
     url: 'any url',

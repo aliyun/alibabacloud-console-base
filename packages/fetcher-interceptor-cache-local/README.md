@@ -1,5 +1,4 @@
-@alicloud/fetcher-interceptor-cache-local
-===
+# @alicloud/fetcher-interceptor-cache-local
 
 > `@alicloud/fetcher` 的本地缓存拦截器
 
@@ -7,7 +6,7 @@
 
 它主要是请求拦截器，但也会拦截响应（为了获取数据），所以顺序上需要放在对响应数据提取的拦截器之后。
 
-# 新增 config
+## 新增 config
 
 ```typescript
 interface ICacheLocalOptions {

@@ -14,7 +14,9 @@ import {
   IErrorQueueItem
 } from '../../types';
 import intl from '../../intl';
-import convertErrorDetailKvList from '../../util/convert-error-detail-kv-list';
+import {
+  convertErrorDetailKvList
+} from '../../util';
 
 import KvList from './kv-list';
 
@@ -23,9 +25,9 @@ interface IProps {
 }
 
 const ScErrorDetails = styled.div`
-  margin-top: 8px;
-  font-size: 12px;
+  margin-top: 12px;
   line-height: 1.5;
+  font-size: 12px;
 `;
 
 const ScButtonToggle = styled(Button)`
@@ -34,12 +36,13 @@ const ScButtonToggle = styled(Button)`
 
 export default function ErrorDetails({
   queueItem: {
-    error
+    error,
+    detailedMode
   }
 }: IProps): JSX.Element | null {
-  const [stateFolded, setStateFolded] = useState<boolean>(true);
+  const [stateFolded, setStateFolded] = useState<boolean>(false);
   const handleToggleFolded = useCallback(() => setStateFolded(!stateFolded), [stateFolded, setStateFolded]);
-  const kvList: IErrorDetailKV[] = convertErrorDetailKvList(error);
+  const kvList: IErrorDetailKV[] = convertErrorDetailKvList(error, detailedMode);
   
   if (!kvList.length) {
     return null;

@@ -15,14 +15,13 @@ import {
 
 import {
   EDialogMode
-} from '../../const';
+} from '../../enum';
 import {
   useProps,
   useRefDialog,
-  useDialogWidth,
-  useDialogZIndex,
-  useRefContent,
-  useStateActive
+  useRefDialogContent,
+  useStateActive,
+  useDialogStyle
 } from '../../model';
 
 import Header from './header';
@@ -31,7 +30,6 @@ import Footer from './footer';
 import X from './x';
 
 interface IScDialogProps {
-  mode?: EDialogMode;
   active: boolean;
 }
 
@@ -50,10 +48,6 @@ const cssSlide = css<IScDialogProps>`
   right: 0;
   bottom: 0;
   transform: translateX(${props => (props.active ? '0' : '100%')});
-  
-  .hasTopbar & {
-    top: ${SIZE.HEIGHT_TOP_NAV}px;
-  }
 `;
 
 const cssSlideUp = css<IScDialogProps>`
@@ -77,16 +71,23 @@ const ScDialog = styled.div<IScDialogProps>`
   ${mixinBgPrimary}
   ${mixinBorderTertiary}
   ${mixinShadowL}
-  ${props => {
-    switch (props.mode) {
-      case EDialogMode.SLIDE:
-        return cssSlide;
-      case EDialogMode.SLIDE_UP:
-        return cssSlideUp;
-      default:
-        return cssNormal;
+  
+  /* stylelint-disable */
+  &[data-dialog-mode=${EDialogMode.SLIDE}] {
+    ${cssSlide}
+    
+    .hasTopbar & {
+      top: ${SIZE.HEIGHT_TOP_NAV}px;
     }
-  }}
+  }
+  
+  &[data-dialog-mode=${EDialogMode.SLIDE_UP}] {
+    ${cssSlideUp}
+  }
+  
+  &[data-dialog-mode=${EDialogMode.NORMAL}] {
+    ${cssNormal}
+  }
 `;
 
 /**
@@ -99,26 +100,22 @@ export default function DialogUi(): JSX.Element {
     closable
   } = useProps();
   const refDialog = useRefDialog();
-  const refContent = useRefContent();
-  const width = useDialogWidth();
+  const refDialogContent = useRefDialogContent();
   const active = useStateActive();
-  const zIndex = useDialogZIndex();
+  const style = useDialogStyle();
   
   return <ScDialog {...{
     ref: refDialog,
-    'aria-modal': true,
-    role: 'dialog',
     className,
     tabIndex: 0,
-    mode: mode as EDialogMode,
     active,
-    style: {
-      zIndex,
-      width
-    }
+    style,
+    role: 'dialog',
+    'aria-modal': true,
+    'data-dialog-mode': mode || EDialogMode.NORMAL // 用于样式钩子
   }}>
     <Header />
-    <Content ref={refContent} />
+    <Content ref={refDialogContent} />
     <Footer />
     {closable ? <X /> : null}
   </ScDialog>;

@@ -1,10 +1,13 @@
 import {
-  IPayloadArmsError
-} from '../../../types';
+  subscribeByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
 import {
   EMessageBroadcastByApp
-} from '../../../const';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
+} from '../../../enum';
+import {
+  IPayloadArmsError
+} from '../../../types';
 
 export default function onArmsError(fn: (payload: IPayloadArmsError) => void): () => void {
   return subscribeByConsoleBase<IPayloadArmsError>(EMessageBroadcastByApp.ARMS_ERROR, fn);

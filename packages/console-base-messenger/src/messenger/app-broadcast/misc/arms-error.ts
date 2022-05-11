@@ -1,10 +1,13 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   IPayloadArmsError
 } from '../../../types';
 import {
   EMessageBroadcastByApp
-} from '../../../const';
-import broadcastByApp from '../../../util/broadcast-by-app';
+} from '../../../enum';
 
 /**
  * 通过 messenger 调用 arms 的 error

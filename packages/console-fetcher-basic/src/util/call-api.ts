@@ -11,13 +11,7 @@ import {
 import buildApiUrlWithDebug from './build-api-url-with-debug';
 import fillBodyAndGetRestOptions from './fill-body-and-get-rest-options';
 
-export default function callApi<T = void, P = void>(
-    fetcher: Fetcher<IConsoleFetcherConfig>,
-    url: string,
-    product: string, action: string,
-    params?: P,
-    options?: IConsoleApiOptions
-): Promise<T> {
+export default function callApi<T = void, P = void>(fetcher: Fetcher<IConsoleFetcherConfig>, url: string, product: string, action: string, params?: P, options?: IConsoleApiOptions): Promise<T> {
   const body: IConsoleApiBody = {
     product,
     action

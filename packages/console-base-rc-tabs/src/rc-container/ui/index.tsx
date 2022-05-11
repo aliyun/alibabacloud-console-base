@@ -2,23 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  useRefTabs
+  useProps,
+  useRefUi
 } from '../../model';
 import TabsBar from '../tabs-bar';
 import TabsContents from '../tabs-contents';
 
-const ScTabs = styled.div`
+interface IScPropsNoContent {
+  noContent?: boolean;
+}
+
+const ScUi = styled.div<IScPropsNoContent>`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: ${props => (props.noContent ? 'auto' : '100%')};
   font-size: 12px;
 `;
 
-export default function Ui(): JSX.Element | null {
-  const refTabs = useRefTabs();
+export default function Ui(): JSX.Element {
+  const {
+    noContent
+  } = useProps();
+  const refUi = useRefUi();
   
-  return <ScTabs ref={refTabs}>
+  return <ScUi ref={refUi} noContent={noContent}>
     <TabsBar />
-    <TabsContents />
-  </ScTabs>;
+    {noContent ? null : <TabsContents />}
+  </ScUi>;
 }

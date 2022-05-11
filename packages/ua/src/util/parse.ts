@@ -1,7 +1,7 @@
 import {
   EOsType,
   EBrowserType
-} from '../const';
+} from '../enum';
 
 import getOs from './get-os';
 import getBrowser from './get-browser';

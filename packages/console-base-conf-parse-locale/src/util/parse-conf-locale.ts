@@ -1,9 +1,11 @@
 import {
+  ELanguage
+} from '../enum';
+import {
   IConfLocale,
   IWin
 } from '../types';
 import {
-  ELanguage,
   LOCALE_MAP_BY_LANGUAGE
 } from '../const';
 

@@ -1,12 +1,12 @@
 import ONE_CONF from '@alicloud/console-one-config';
 
 import {
+  EEnv
+} from '../enum';
+import {
   IWin,
   IConfEnv
 } from '../types';
-import {
-  EEnv
-} from '../const';
 
 import getEnv from './get-env';
 import getSite from './get-site';

@@ -1,4 +1,10 @@
+import _isString from 'lodash/isString';
 import {
+  isValidElement
+} from 'react';
+
+import {
+  IError,
   TErrorPromptArg
 } from '../types';
 import {
@@ -8,6 +14,7 @@ import {
 // 需要忽略的 error 的 name 列表，硬编码，不想依赖 @alicloud/console-fetcher 的输出
 const ERROR_NAMES_IGNORE_LIST = [
   ERROR_NAME_WILL_IGNORE,
+  'AbortError', // 通过 AbortController 进行 abort 的忽略 
   'FetcherErrorRiskForbidden',
   'FetcherErrorRiskInvalid',
   'FetcherErrorRiskCancelled'
@@ -21,7 +28,18 @@ export default function shouldIgnore(o?: TErrorPromptArg): o is undefined {
     return true;
   }
   
-  const name: string = (o as any).name || ''; // eslint-disable-line @typescript-eslint/no-explicit-any
+  if (_isString(o) || isValidElement(o)) {
+    return false;
+  }
+  
+  // 对象或 Error 实例
+  const err: IError = o as IError;
+  
+  if (!err.message && !err.code) { // 既没有 code 又没有 message 的不展示
+    return true;
+  }
+  
+  const name: string = err.name || '';
   
   return ERROR_NAMES_IGNORE_LIST.includes(name);
 }

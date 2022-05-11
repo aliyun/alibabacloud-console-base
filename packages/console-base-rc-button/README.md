@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-button
-===
+# @alicloud/console-base-rc-button
 
-# Usage
+## Usage
 
 ```typescript jsx
 import Button from '@alicloud/console-base-rc-button';
@@ -9,13 +8,13 @@ import Button from '@alicloud/console-base-rc-button';
 <Button {...props} />
 ```
 
-# API
+## API
 
 TODO
 
-# preset
+## Preset
 
 name | 背景色 | 前景色 | 边框色 | 阴影
-`primary` | ACCENT | 
-`secondary` | 
-`tertiary` | 
+`primary` | ACCENT |
+`secondary` |
+`tertiary` |

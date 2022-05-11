@@ -3,13 +3,15 @@ import {
 } from 'react';
 
 import {
-  actionForceUpdate
-} from '../action';
+  EAction
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
 export default function useDispatchForceUpdate(): () => void {
   const dispatch = useModelDispatch();
   
-  return useCallback(() => dispatch(actionForceUpdate()), [dispatch]);
+  return useCallback(() => dispatch({
+    type: EAction.FORCE_UPDATE
+  }), [dispatch]);
 }

@@ -1,16 +1,17 @@
 import React from 'react';
 
-import {
-  IPropsAttentionSeeker
-} from '../types';
-import Model from '../model';
-import GlobalStyle from '../rc/global-style';
+import Model, {
+  IModelProps
+} from '../model';
 
+import GlobalStyle from './global-style';
 import Ui from './ui';
+import Lifecycle from './lifecycle';
 
-export default function WithProvider(props: IPropsAttentionSeeker): JSX.Element {
+export default function WithProvider(props: IModelProps): JSX.Element {
   return <Model props={props}>
     <GlobalStyle />
     <Ui />
+    <Lifecycle />
   </Model>;
 }

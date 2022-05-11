@@ -8,10 +8,12 @@ import {
 import {
   IDialogProps,
   IDialogIndirectPromise,
-  TStringOrJSX,
+  TStringOrJsx,
   TDialogData
 } from '../types';
-import buildPropsForPromise from '../util/build-props-for-promise';
+import {
+  buildPropsForPromise
+} from '../util';
 import WithProvider from '../rc-container';
 
 /**
@@ -63,7 +65,7 @@ import WithProvider from '../rc-container';
  * return somePromise;
  * ```
  */
-export default function openIndirect<T = void, D = TDialogData>(contentOrProps?: TStringOrJSX | IDialogProps<T, D>): IDialogIndirectPromise<T, D> {
+export default function openIndirect<T = void, D = TDialogData>(contentOrProps?: TStringOrJsx | IDialogProps<T, D>): IDialogIndirectPromise<T, D> {
   let dialogProps: IDialogProps<T, D> | null = buildPropsForPromise<T, D>(contentOrProps);
   let holder: HTMLDivElement | null = document.createElement('div'); // 只是一个 gateway 真实的 Dialog 并不会被渲染到它里边
   let close: ((result?: T, rejected?: boolean) => void) | null = _noop;
@@ -114,6 +116,7 @@ export default function openIndirect<T = void, D = TDialogData>(contentOrProps?:
       close = null;
     };
     
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dialogProps!.onClose = close;
     

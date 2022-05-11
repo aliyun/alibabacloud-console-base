@@ -2,7 +2,9 @@ import {
   useCallback
 } from 'react';
 
-import detectFusionOverlay from '../../util/detect-fusion-overlay';
+import {
+  detectFusionOverlay
+} from '../../util';
 
 import useModelProps from './_use-model-props';
 import useHandleClose from './use-handle-close';
@@ -26,7 +28,7 @@ export default function useHandleCloseOnEsc(): () => void {
     }
     
     // ESC 的时候优先关闭 fusion 的 overlay，如果有 fusion 的，则这边先不关
-    if ((esc === -1 || (closable && esc))) {
+    if (esc === -1 || (closable && esc)) {
       dispatchClose();
     }
   }, [esc, closable, dispatchClose]);

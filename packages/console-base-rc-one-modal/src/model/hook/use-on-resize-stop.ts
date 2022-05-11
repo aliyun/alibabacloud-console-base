@@ -5,13 +5,13 @@ import {
   RndResizeCallback
 } from 'react-rnd';
 
-import useRndState from './use-rnd-state';
+import useRndStateExtra from './use-rnd-state-extra';
 import useDispatchRndResize from './use-dispatch-rnd-resize';
 
 export default function useOnResizeStop(): RndResizeCallback {
   const {
     mode
-  } = useRndState();
+  } = useRndStateExtra();
   const dispatchRndResize = useDispatchRndResize();
   
   return useCallback((e, dir, ref, delta, newPosition) => dispatchRndResize({

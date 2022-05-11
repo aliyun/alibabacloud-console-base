@@ -1,6 +1,6 @@
 import {
   EDialogLockState
-} from '../../const';
+} from '../../enum';
 
 import useModelState from './_use-model-state';
 

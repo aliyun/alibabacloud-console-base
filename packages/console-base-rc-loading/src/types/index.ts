@@ -4,7 +4,7 @@ import {
 
 import {
   ELoadingStatus
-} from '../const';
+} from '../enum';
 
 interface IWithLoadingBase<T> {
   messageLoading?: string | JSX.Element;

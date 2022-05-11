@@ -92,11 +92,15 @@ export interface ILogOptions extends ILogOptionsQuick {
 }
 
 export interface IFnLogQuick {
-  <I = void>(topic: string, info?: I, options?: ILogOptionsQuick): void;
+  (topic: string): void;
+  (topic: string, info: undefined | null, options: ILogOptionsQuick): void;
+  <I>(topic: string, info: I, options?: ILogOptionsQuick): void;
 }
 
 export interface IFnLog {
-  <I= void>(topic: string, info?: I, options?: ILogOptions): void;
+  (topic: string): void;
+  (topic: string, info: undefined | null, options: ILogOptionsQuick): void;
+  <I>(topic: string, info: I, options?: ILogOptionsQuick): void;
   debug: IFnLogQuick;
   log: IFnLogQuick;
   info: IFnLogQuick;

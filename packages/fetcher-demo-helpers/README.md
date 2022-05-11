@@ -1,5 +1,4 @@
-@alicloud/fetcher-demo-helpers
-===
+# @alicloud/fetcher-demo-helpers
 
 fetcher 相关测试专用包
 

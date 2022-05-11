@@ -1,15 +1,14 @@
-@alicloud/console-base-intl-factory-basic
-===
+# @alicloud/console-base-intl-factory-basic
 
 ConsoleBase 用的一个极简极简的国际化（仅仅是做语言解析）
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-base-intl-factory-basic -S
 ```
 
-# USAGE
+## USAGE
 
 ## 定义你自己的 `intl`
 

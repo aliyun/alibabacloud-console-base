@@ -36,11 +36,11 @@ const HELP = '#777';
 // const SUCCESS = '#1e8e3e';
 // const WARNING = '#ffc440';
 // const ERROR = '#d93026';
-const HELP_TINT = '#333'; // TODO 这些 tint 色都不对...
-// const INFO_TINT = '#ebf4fb';
-// const SUCCESS_TINT = '#edfcf1';
-// const WARNING_TINT = '#fff7db';
-// const ERROR_TINT = '#fcefee';
+const HELP_TINT = '#333';
+const INFO_TINT = '#353e45';
+const SUCCESS_TINT = '#36453a';
+const WARNING_TINT = '#564e32';
+const ERROR_TINT = '#443736';
 const HELP_TINT_FADE = 'rgba(127,127,127,0.666667)';
 // const INFO_TINT_FADE = 'rgba(0,115,204,0.078431)';
 // const SUCCESS_TINT_FADE = 'rgba(0,212,57,0.070588)';
@@ -84,10 +84,10 @@ const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   // WARNING,
   // ERROR,
   HELP_TINT,
-  // INFO_TINT,
-  // SUCCESS_TINT,
-  // WARNING_TINT,
-  // ERROR_TINT,
+  INFO_TINT,
+  SUCCESS_TINT,
+  WARNING_TINT,
+  ERROR_TINT,
   HELP_TINT_FADE,
   // INFO_TINT_FADE,
   // SUCCESS_TINT_FADE,

@@ -1,15 +1,14 @@
-@alicloud/copy-text
-===
+# @alicloud/copy-text
 
 没有任何赘肉的复制文本的工具方法
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/copy-text -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import copyText from '@alicloud/copy-text';

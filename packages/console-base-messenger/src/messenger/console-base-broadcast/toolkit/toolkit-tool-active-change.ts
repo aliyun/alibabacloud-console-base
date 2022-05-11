@@ -1,10 +1,13 @@
 import {
+  broadcastByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EToolkitTypeShort
-} from '../../../const';
+} from '../../../enum';
 import {
   composeToolkitTypeWithId
-} from '../../../util/compose-toolkit-type';
-import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
+} from '../../../util';
 
 /**
  * 通知控制台应用：某工具被激活或取消激活

@@ -1,5 +1,4 @@
-@alicloud/rc-codemirror
-===
+# @alicloud/rc-codemirror
 
 CodeMirror 5 的 React 封装，适用于极简的场景。
 
@@ -17,25 +16,25 @@ CodeMirror 5 的 React 封装，适用于极简的场景。
 预加载以下 mode：
 
 * `codemirror/mode/javascript/javascript` 支持如下 `conf.mode`
-    - `text/javascript`
-    - `text/ecmascript`
-    - `application/javascript` 
-    - `application/x-javascript` 
-    - `application/ecmascript` 
-    - `application/json` 
-    - `application/x-json` 
-    - `application/manifest+json` 
-    - `application/ld+json` 
-    - `text/typescript` 
-    - `application/typescript` 
+  + `text/javascript`
+  + `text/ecmascript`
+  + `application/javascript`
+  + `application/x-javascript`
+  + `application/ecmascript`
+  + `application/json`
+  + `application/x-json`
+  + `application/manifest+json`
+  + `application/ld+json`
+  + `text/typescript`
+  + `application/typescript`
 * `codemirror/mode/css/css` 支持如下 `conf.mode`
-    - `text/css`
-    - `text/x-scss`
-    - `text/x-less`
-    - `text/x-gss`
+  + `text/css`
+  + `text/x-scss`
+  + `text/x-less`
+  + `text/x-gss`
 * `codemirror/mode/htmlmixed/htmlmixed` 支持如下 `conf.mode`
-    - `text/markdown`
-    - `text/x-markdown`
+  + `text/markdown`
+  + `text/x-markdown`
 
 预加载以下插件：
 

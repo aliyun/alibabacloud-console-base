@@ -1,19 +1,18 @@
-@alicloud/console-fetcher-interceptor-res-biz
-===
+# @alicloud/console-fetcher-interceptor-res-biz
 
 > `@alicloud/console-fetcher` 的响应拦截器，封装业务错误。
 
 * 扩展 `FetcherConfig` 增加可选方法（一般情况下不需要设置，除非非正常场景）
-    - `isSuccess(o: IBizJson): boolean`
-    - `getData(o: IBizJson): T`
-    - `getCode(o: IBizJson): string`
-    - `getRequestId(o: IBizJson): string`
-    - `getTitle(o: IBizJson): string`
-    - `getMessage(o: IBizJson): string`
+  + `isSuccess(o: IBizJson): boolean`
+  + `getData(o: IBizJson): T`
+  + `getCode(o: IBizJson): string`
+  + `getRequestId(o: IBizJson): string`
+  + `getTitle(o: IBizJson): string`
+  + `getMessage(o: IBizJson): string`
 
 阿里云控制台的 API 请求一般会以如下形式返回：
 
-```
+```typescript
 {
   code: string;
   requestId: string;
@@ -25,13 +24,13 @@
 
 其中 `code` 为 `'200'`（有些接口会是数字 `200`）的时候表示业务逻辑是成功的，这时候可以拿到 `data`；否则表示业务逻辑错误，这个时候可以拿到 `message`。
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-fetcher-interceptor-res-biz -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import createFetcher, {
@@ -52,9 +51,9 @@ intercept(fetcher);
 export default fetcher
 ```
 
-# 对 `@alicloud/fetcher` 的扩展
+## 对 `@alicloud/fetcher` 的扩展
 
-## FetcherConfig
+### FetcherConfig
 
 可以在 config 对象上传入新增参数：
 
@@ -91,13 +90,13 @@ interface FetcherConfigExtra {
 }
 ```
 
-## 错误名
+### 错误名
 
 `ERROR_BIZ = 'FetcherErrorBiz'`
 
-# 如何覆盖默认
+## 如何覆盖默认
 
-## 方法 1 - 创建实例时传入默认值
+### 方法 1 - 创建实例时传入默认值
 
 假设 `~` 是你项目下 `src` 的 alias。
 
@@ -129,7 +128,7 @@ intercept(fetcher);
 export default fetcher;
 ```
 
-## 方法 2 - 调用的时候传入覆盖
+### 方法 2 - 调用的时候传入覆盖
 
 ```typescript
 import fetcher from '~/util/fetcher'; // 假设这是你项目下的 fetcher 文件路径

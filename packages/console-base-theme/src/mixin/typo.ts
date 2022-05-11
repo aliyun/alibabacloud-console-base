@@ -18,16 +18,28 @@ import {
   mixinTextTertiary
 } from './text';
 import {
-  mixinBgSecondary
+  mixinBgSecondary,
+  mixinBgSecondaryFade
 } from './bg';
 import {
   mixinBorderTertiary,
   mixinBorderTertiaryColor
 } from './border';
 
+// 日文专属
+export const mixinTypoFontFamilyBaseJa = css`
+  font-family: ${TYPO.FONT_FAMILY_BASE_JA};
+  font-family: var(--cb-typo-font-family-base-ja, ${TYPO.FONT_FAMILY_BASE_JA});
+`;
+
+// lang-ja 是 console-base 注入到 body 的 className，虽然有些耦合，但比较实用
 export const mixinTypoFontFamilyBase = css`
   font-family: ${TYPO.FONT_FAMILY_BASE};
   font-family: var(--cb-typo-font-family-base, ${TYPO.FONT_FAMILY_BASE});
+  
+  body.lang-ja & {
+    ${mixinTypoFontFamilyBaseJa}
+  }
 `;
 
 export const mixinTypoFontFamilyMono = css`
@@ -61,8 +73,7 @@ export const mixinTypoCode = css`
   padding: 2px 4px;
   border-radius: 2px;
   ${mixinTextCode}
-  ${mixinBgSecondary}
-  ${mixinBorderTertiary}
+  ${mixinBgSecondaryFade}
 `;
 
 export const mixinTypoKbd = css`
@@ -102,6 +113,7 @@ export const mixinTypoEllipsis = css`
 `;
 
 export const mixinTypoEllipsisLines = css<IPropsEllipsisLines>`
+  /* stylelint-disable */
   display: -webkit-box;
   line-height: ${props => props.lineHeight}px;
   overflow: hidden;

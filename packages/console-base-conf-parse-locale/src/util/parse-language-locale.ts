@@ -2,7 +2,9 @@ import ONE_CONF from '@alicloud/console-one-config';
 
 import {
   ELanguage,
-  ELocale,
+  ELocale
+} from '../enum';
+import {
   LOCALE_MAP_BY_LANGUAGE
 } from '../const';
 
@@ -16,20 +18,19 @@ import cookieGetLanguage from './cookie-get-language';
  * 它只有 LOCALE 而且不标准（中文下是 zh、英文下是 en、日文是 ja、繁体还是 zh）
  */
 export default function parseLanguageLocale(): [ELanguage, ELocale] {
-  let lang: ELanguage;
-  let locale: ELocale;
-  
   if (ONE_CONF.ONE) { // OneConsole 的话，直接用
-    lang = ONE_CONF.LANG as ELanguage;
-    locale = ONE_CONF.LOCALE as ELocale;
-  } else {
-    lang = cookieGetLanguage() || ELanguage.ZH;
-    locale = LOCALE_MAP_BY_LANGUAGE[lang];
-    
-    if (!locale) {
-      lang = ELanguage.ZH;
-      locale = ELocale.ZH;
-    }
+    return [
+      ONE_CONF.LANG as ELanguage,
+      ONE_CONF.LOCALE as ELocale
+    ];
+  }
+  
+  let lang = cookieGetLanguage() || ELanguage.ZH;
+  let locale = LOCALE_MAP_BY_LANGUAGE[lang];
+  
+  if (!locale) {
+    lang = ELanguage.ZH;
+    locale = ELocale.ZH;
   }
   
   return [lang, locale];

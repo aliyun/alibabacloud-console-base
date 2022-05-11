@@ -13,6 +13,7 @@ const ScCustom = styled(Flex)`
 const ScCustomL = styled(ScCustom)`
   margin-right: 12px;
   
+  /* stylelint-disable selector-max-universal */
   > * {
     margin-left: 12px;
   }

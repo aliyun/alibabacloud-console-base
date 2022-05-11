@@ -1,9 +1,8 @@
-@alicloud/arms
-===
+# @alicloud/arms
 
 > 基于 CDN 形式的 ARMS 埋点的类型封装，及相关工具方法
 
-# WHY
+## Why
 
 1. 我用 CDN 的方式，不用 npm 包的方式
 2. 我需要类型，即使 npm 包也没有类型
@@ -11,7 +10,7 @@
 4. 我需要一个可以不用判断是否完成，不想知道 `pipe` 这个概念，直接调用
 5. 我需要统一和简化 `api()` 那个方法
 
-# 相关文档
+## 相关文档
 
 * [ARMS 前端监控](https://yuque.antfin-inc.com/retcode/arms-retcode/readme)
 * [ARMS SDK 配置项](https://yuque.antfin-inc.com/retcode/arms-retcode/ug62q7)

@@ -79,14 +79,23 @@ export interface IConsoleApiMultiAction {
  * call(Open/Inner/Container)API 的共同类型
  */
 export interface IFnConsoleApi {
-  <T = void, P = void>(product: string, action: string, param?: P, options?: IConsoleApiOptions): Promise<T>;
+  <T = void>(product: string, action: string, param?: undefined, options?: IConsoleApiOptions): Promise<T>;
+  <T, P>(product: string, action: string, param: P, options?: IConsoleApiOptions): Promise<T>;
+}
+
+/**
+ * product 明确的 API 方法，避免 product 的冗余
+ */
+export interface IFnConsoleApiWithProduct {
+  <T = void>(action: string, param?: undefined, options?: IConsoleApiOptions): Promise<T>;
+  <T, P>(action: string, param: P, options?: IConsoleApiOptions): Promise<T>;
 }
 
 /**
  * 并发 API 调用的返回，嗯... 是这样的：
  * 
  * 1. 不论内部成功与否，外层都是成功的，即 code === '200'
- * 2. 返回的 data 是一个对象，如果不指定 `customRequestKey` 则为数字，0 起步
+ * 2. 返回的 data 是一个对象（因此无法指定明确的类型），如果不指定 `customRequestKey` 则为数字，0 起步
  * 3. 如果某个接口调用成功，则它在 data 中对应的值是对应单独接口的 data（有 RequestId，和最外层的不一样）
  * 4. 如果某个接口调用失败，则它一定是业务失败，在 data 中对应的位置是一个大写开头属性的对象 IConsoleApiMultiError...
  * 5. 那末... 怎么判断是错误与否呢...因为理论上成功的 data 也是可以有 Code 等的，针对蠢设计只能用蠢逻辑.. 判断 Code 是否为字符串存在
@@ -103,6 +112,9 @@ export interface IConsoleApis {
   callInnerApi: IFnConsoleApi;
   callContainerApi: IFnConsoleApi;
   callMultiOpenApi: IFnConsoleApiMulti;
+  createCallOpenApiWithProduct(product: string): IFnConsoleApiWithProduct;
+  createCallInnerApiWithProduct(product: string): IFnConsoleApiWithProduct;
+  createCallContainerApiWithProduct(product: string): IFnConsoleApiWithProduct;
 }
 
 export interface IConsoleFetcher<C extends IConsoleFetcherConfig = IConsoleFetcherConfig> extends Fetcher<C>, IConsoleApis {}

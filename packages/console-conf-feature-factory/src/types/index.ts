@@ -1,12 +1,7 @@
-export interface IFeatureCheckAttributes {
-  // region?: string;
-  [k: string]: string;
-}
-
 export interface IFnConfFeature<K = string> {
   (key: K): boolean;
   (key: K, region: string): boolean;
-  (key: K, attributes: IFeatureCheckAttributes): boolean;
+  (key: K, attributes: Record<string, string>): boolean;
 }
 
 export interface IFeatureItem {

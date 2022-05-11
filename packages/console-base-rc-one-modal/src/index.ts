@@ -1,13 +1,13 @@
 export { default } from './rc-container';
 
 export {
-  EModalMode as ModalMode
-} from './const';
+  ModalMode
+} from './model';
 
 export type {
-  IPropsModal as ModalProps,
-  TModalTabs as ModalTabs
-} from './types';
+  ModelProps as ModalProps,
+  ModelPropsTabs as ModalTabs
+} from './model';
 
 export type {
   TabProps as ModalTab

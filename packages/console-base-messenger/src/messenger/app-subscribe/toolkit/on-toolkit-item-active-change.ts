@@ -1,10 +1,13 @@
-import subscribeByApp from '../../../util/subscribe-by-app';
+import {
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
 import {
   EToolkitTypeShort
-} from '../../../const';
+} from '../../../enum';
 import {
   composeToolkitTypeWithId
-} from '../../../util/compose-toolkit-type';
+} from '../../../util';
 
 /**
  * 某工具的「激活」时的回调

@@ -1,13 +1,12 @@
-@alicloud/console-base-error-prompt
-====
+# @alicloud/console-base-error-prompt
 
 TODO see in action
 
 > `@alicloud/error-prompt` 的进化版，不再依赖 wind 和 fusion，也不需要手动引样式和指定语言，更不再是一个工厂。
 
-# 使用
+## 使用
 
-## 一般用法
+### 一般用法
 
 ```tsx
 import errorPrompt from '@alicloud/console-base-error-prompt';
@@ -34,7 +33,7 @@ interface IErrorDetails {
 }
 ```
 
-## 自定义标题、按钮
+### 自定义标题、按钮
 
 有的时候，会根据 `code` 可能需要调整 `title` 和 `button`。
 
@@ -61,7 +60,7 @@ errorPrompt(error, ({ // 这里是解析后的对象，保证存在，但不保�
 });
 ```
 
-## 如何忽略错误
+### 如何忽略错误
 
 所谓「忽略」错误，是指虽然被接收，但不会弹窗。
 

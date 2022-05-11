@@ -74,6 +74,7 @@ export default function getPredefinedExtra(code?: string): IErrorPromptExtra | u
     case 'InvalidAction.NotFound':
     case 'ApiDefineNotExist':
       return API_NOT_EXIST;
+    case 'NoPermission':
     case 'Forbidden.RAM':
       return PERMISSION_DENIED;
     default:

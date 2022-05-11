@@ -1,14 +1,18 @@
 import {
-  EModalMode,
   WIDTH_INITIAL,
   HEIGHT_INITIAL,
   POSITION_R_INITIAL,
   POSITION_B_INITIAL
 } from '../../const';
-import getWindowSize from '../../util/get-window-size';
+import {
+  EModalMode
+} from '../enum';
 import {
   IModelState
 } from '../types';
+import {
+  getWindowSize
+} from '../util';
 
 const [W, H] = getWindowSize();
 
@@ -21,6 +25,7 @@ export const DEFAULT_CONTEXT_STATE: IModelState = {
   x2: W,
   y2: H,
   pinnedWidth: -1,
+  windowScrollbarWidth: 0,
   resizing: -1,
   dragging: false
 };

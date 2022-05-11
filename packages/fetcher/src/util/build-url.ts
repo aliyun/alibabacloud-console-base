@@ -17,10 +17,10 @@ import serializeParams from './serialize-params';
  * 这里，我们会将以上参数混合在一起，并生成一个新 URL
  */
 export default function buildUrl({
-  method,
+  method = 'GET',
   url = '',
   urlBase,
-  urlCacheBusting = /^(GET|JSONP)$/i.test(method || 'GET'), // 只有 GET 和 JSONP 请求的默认 urlCacheBusting 为 true
+  urlCacheBusting = /^JSONP$/i.test(method), // 只有 JSONP 请求的默认 urlCacheBusting 为 true
   params,
   paramsSerializeOptions = { // 默认 URL 参数序列化操作，qs 默认 a[0]=b&a[1]=c&a[2]=d，但我们需要 a=0&a=1&a=2
     indices: false

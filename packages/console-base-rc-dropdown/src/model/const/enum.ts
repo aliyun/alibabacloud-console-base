@@ -1,5 +1,0 @@
-export enum EAction {
-  SET_VISIBLE,
-  SET_VISIBLE_TIMER,
-  SET_DROP_EXITING
-}

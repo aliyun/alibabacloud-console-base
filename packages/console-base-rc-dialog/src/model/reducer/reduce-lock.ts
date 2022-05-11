@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 
 import {
   EDialogLockState
-} from '../../const';
+} from '../../enum';
 import {
   IModelState
 } from '../types';

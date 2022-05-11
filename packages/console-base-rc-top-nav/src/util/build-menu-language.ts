@@ -1,10 +1,10 @@
 import {
-  IPropsTopNavButton,
-  IPropsTopNavButtonDropdownItem,
-  IPropsTopNavLanguage
-} from '../types';
+  ModelPropsButton,
+  ModelPropsButtonDropdownItem,
+  ModelPropsLanguage
+} from '../model';
 
-export default function buildMenuLanguage(lang?: IPropsTopNavLanguage | null): IPropsTopNavButton | null {
+export default function buildMenuLanguage(lang?: ModelPropsLanguage | null): ModelPropsButton | null {
   if (!lang) {
     return null;
   }
@@ -18,11 +18,11 @@ export default function buildMenuLanguage(lang?: IPropsTopNavLanguage | null): I
   
   return {
     key: 'lang',
-    label: currentLang ? (currentLang.nameShort || currentLang.name) : {
+    label: currentLang ? currentLang.nameShort || currentLang.name : {
       icon: 'lang'
     },
     dropdown: {
-      items: items.reduce((result: IPropsTopNavButtonDropdownItem[], {
+      items: items.reduce((result: ModelPropsButtonDropdownItem[], {
         id,
         name
       }) => {
@@ -34,9 +34,7 @@ export default function buildMenuLanguage(lang?: IPropsTopNavLanguage | null): I
           key: id,
           label: name,
           onClick(): void {
-            if (onChange) {
-              onChange(id);
-            }
+            onChange?.(id);
           }
         });
         

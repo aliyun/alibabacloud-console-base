@@ -22,7 +22,7 @@ export default function DemoHook(): JSX.Element {
       trigger: <TheTrigger />,
       body: <TheDrop />
     }} />
-    <H2>visible controlled controlled</H2>
+    <H2>visible controlled</H2>
     <Dropdown {...{
       visible: stateVisible,
       trigger: <TheTrigger />,

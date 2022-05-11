@@ -1,10 +1,3 @@
-import Provider, {
-  Context
-} from './provider';
-
-export {
-  Provider,
-  Context
-};
+export { default } from './provider';
 
 export * from './hook';

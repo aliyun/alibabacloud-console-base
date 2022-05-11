@@ -18,4 +18,3 @@ export default function selectText(el: HTMLElement): void {
   selection.removeAllRanges();
   selection.addRange(range);
 }
-

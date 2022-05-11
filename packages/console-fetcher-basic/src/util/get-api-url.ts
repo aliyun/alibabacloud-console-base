@@ -1,5 +1,7 @@
 import {
-  ETypeApi,
+  ETypeApi
+} from '../enum';
+import {
   API_URL_MAP
 } from '../const';
 

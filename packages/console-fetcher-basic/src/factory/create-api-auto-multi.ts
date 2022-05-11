@@ -5,7 +5,9 @@ import {
   IFnConsoleApiMulti,
   IConsoleApiOptions
 } from '../types';
-import AutoMultiQueue from '../util/auto-multi-queue';
+import {
+  AutoMultiQueue
+} from '../util';
 
 /**
  * 对接口进行自动合并，当 product + region 相同的时候
@@ -37,7 +39,7 @@ export default function createApiAutoMulti(api: IFnConsoleApi, apiMulti: IFnCons
     return theQueue.push<T>(action, params);
   }
   
-  return function apiWithAutoMulti<T = void, P = void>(product: string, action: string, params?: P, {
+  return function apiWithAutoMulti<T = void, P = unknown>(product: string, action: string, params?: P, {
     autoMulti = true,
     region,
     ...options // roa 和其他 fetcher 参数
@@ -49,7 +51,7 @@ export default function createApiAutoMulti(api: IFnConsoleApi, apiMulti: IFnCons
      * 2. 带 roa 参数或其他自定义参数（我不知道 roa 参数有什么效用，实际运用也不多，所以不 auto，其他的任何参数也无法确认有任何副作用）
      */
     if (!autoMulti || !_isEmpty(options)) {
-      return api<T, P>(product, action, params, options);
+      return api(product, action, params, options);
     }
     
     return pushToQueue<T>(product, action, params, region);

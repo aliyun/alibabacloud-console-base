@@ -1,74 +1,106 @@
 import React, {
-  useState,
-  useCallback
+  useState
 } from 'react';
-import styled, {
-  createGlobalStyle
-} from 'styled-components';
+import styled from 'styled-components';
 
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 import {
-  H1,
+  H2,
   Hr,
-  P
+  PropsNCode
 } from '@alicloud/demo-rc-elements';
 
 import Button, {
+  ButtonSize,
   ButtonTheme,
   ButtonProps
 } from '../../src';
-import Knobs from '../knobs';
-
-const GlobalStyle = createGlobalStyle`
-  a:link {
-    color: #9eff70;
-  }
-  
-  a:visited {
-    color: #ff10f2;
-  }
-`;
 
 const ScButtonThemes = styled(Button)`
   margin: 2px;
 `;
 
+const DEFAULT_PROPS = {
+  '/component': 'span',
+  label: 'button label',
+  '/title': true,
+  '/href': '//www.aliyun.com',
+  '/target': '_top',
+  '/disabled': true,
+  '/loading': true,
+  '/iconLeft': 'x',
+  '/iconRight': 'refresh',
+  '/iconSpacing': 'small',
+  '/theme': ButtonTheme.PRIMARY,
+  '/size': ButtonSize.S,
+  '/textAlign': 'right',
+  '/cursor': 'default',
+  '/borderRadius': 'full',
+  '/noShadow': true,
+  '/block': true,
+  '/active': true,
+  '/spm': 'spm',
+  '/classNameForIconLeft': 'J_IconLeft',
+  '/classNameForIconRight': 'J_IconRight'
+};
+
 export default function DemoDefault(): JSX.Element {
-  const [stateInjectGlobalStyle, setStateInjectGlobalStyle] = useState<boolean>(false);
   const [stateProps, setStateProps] = useState<ButtonProps>({
     spm: ''
   });
-  
-  const handleToggleInjectGlobalStyle = useCallback(() => setStateInjectGlobalStyle(!stateInjectGlobalStyle), [stateInjectGlobalStyle, setStateInjectGlobalStyle]);
+  const [stateDom, setStateDom] = useState<HTMLElement | null>(null);
   
   return <>
     <ThemeSwitcher />
-    <Knobs onChange={setStateProps} />
-    <H1>Button 测试</H1>
-    <P>请使用 knobs 进行调戏 <span role="img" aria-label="play">🙈</span>，通过注入全局样式测试 <code>:link</code> <code>:visited</code> 对链接按钮样式的干扰</P>
-    {stateInjectGlobalStyle ? <GlobalStyle /> : null}
-    <Button {...{
-      spm: 'x',
-      onClick: handleToggleInjectGlobalStyle,
-      label: `inject global from ${stateInjectGlobalStyle} to ${!stateInjectGlobalStyle}`
-    }} />
-    <div>text around <Button {...stateProps} /> button <Button {...{
-      ...stateProps,
-      href: '//www.aliyun.com',
-      label: 'this button will stay an anchor'
-    }}>www.aliyun.com</Button></div>
     <Hr />
-    <ScButtonThemes {...{
-      ...stateProps,
-      label: 'default (no props.theme)'
+    <Button {...stateProps} />
+    <PropsNCode<ButtonProps> {...{
+      componentName: 'Button',
+      componentPropsName: 'ButtonProps',
+      componentPackageName: '@alicloud/console-base-rc-button',
+      defaultProps: DEFAULT_PROPS,
+      onChange: setStateProps
     }} />
+    <H2>Ref Works Right</H2>
+    <Button {...{
+      ref: setStateDom,
+      label: 'ref shall work right',
+      theme: ButtonTheme.PRIMARY,
+      onClick() {
+        console.info(stateDom);
+      }
+    }} />
+    <H2>All Themes</H2>
     {Object.entries(ButtonTheme).map(([k, v]) => {
       return <ScButtonThemes {...{
-        ...stateProps,
         key: k,
         theme: v,
         label: v
       }} />;
     })}
+    <H2>Alignment with Icon</H2>
+    <Button {...{
+      iconLeft: ' ',
+      textAlign: 'left',
+      label: 'icon left NONE'
+    }} />
+    <br />
+    <Button {...{
+      iconLeft: 'x',
+      textAlign: 'left',
+      label: 'icon left x'
+    }} />
+    <br />
+    <Button {...{
+      iconLeft: 'check',
+      textAlign: 'left',
+      label: 'icon left check'
+    }} />
+    <br />
+    <Button {...{
+      iconLeft: 'config',
+      textAlign: 'left',
+      label: 'icon left config'
+    }} />
   </>;
 }

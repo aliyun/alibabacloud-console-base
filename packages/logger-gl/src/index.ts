@@ -3,7 +3,7 @@ export { default as log } from './util/log';
 
 export {
   EGlMode
-} from './const';
+} from './enum';
 
 export type {
   IFactoryOptions as FactoryOptions

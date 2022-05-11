@@ -1,7 +1,10 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByApp
-} from '../../../const';
-import broadcastByApp from '../../../util/broadcast-by-app';
+} from '../../../enum';
 
 /**
  * 主动关闭教程

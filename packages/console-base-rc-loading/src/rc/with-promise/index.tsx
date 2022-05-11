@@ -6,12 +6,12 @@ import React, {
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 
 import {
+  ELoadingStatus
+} from '../../enum';
+import {
   IDataWithLoading,
   IPropsWithPromise
 } from '../../types';
-import {
-  ELoadingStatus
-} from '../../const';
 import WithLoading from '../with-loading';
 
 export default function WithPromise<T>({

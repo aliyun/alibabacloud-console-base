@@ -14,8 +14,6 @@ export default function useHandleMenuDropdownVisibleChange(): (visible: boolean,
       onMenuDropdown(key);
     }
     
-    if (onVisibleChange) {
-      onVisibleChange(visible);
-    }
+    onVisibleChange?.(visible);
   }, [onMenuDropdown]);
 }

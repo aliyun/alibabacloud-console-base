@@ -1,15 +1,14 @@
-@alicloud/cookie
-===
+# @alicloud/cookie
 
 yet... another 饼干的获取和操作工具
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/cookie -S
 ```
 
-# API
+## APIs
 
 ## getAllCookies
 

@@ -26,8 +26,8 @@ const cssHeading = css`
 
 export const H1 = styled.h1`
   background-color: #000;
-  font-size: 18px;
   line-height: 2;
+  font-size: 18px;
   color: #fff;
   ${cssHeading}
   
@@ -44,8 +44,8 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   background-color: #333;
-  font-size: 14px;
   line-height: 2.2;
+  font-size: 14px;
   color: #fff;
   ${cssHeading}
   
@@ -62,8 +62,8 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
   background-color: #eee;
-  font-size: 12px;
   line-height: 2.4;
+  font-size: 12px;
   ${cssHeading}
   
   .theme-dark & {
@@ -78,8 +78,8 @@ export const H3 = styled.h3`
 
 export const H4 = styled.h4`
   background-color: #eee;
-  font-size: 12px;
   line-height: 2;
+  font-size: 12px;
   ${cssHeading}
   
   .theme-dark & {

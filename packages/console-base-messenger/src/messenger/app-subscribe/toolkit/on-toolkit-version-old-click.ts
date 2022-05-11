@@ -1,6 +1,6 @@
 import {
   EToolkitIdSystem
-} from '../../../const';
+} from '../../../enum';
 
 import onToolkitItemClick from './on-toolkit-item-click';
 

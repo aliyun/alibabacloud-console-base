@@ -1,10 +1,13 @@
 import {
-  IPayloadFastbuy
-} from '../../../types';
+  broadcastByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
 import {
   EMessageBroadcastByConsoleBase
-} from '../../../const';
-import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
+} from '../../../enum';
+import {
+  IPayloadFastbuy
+} from '../../../types';
 
 /**
  * Fastbuy 完成支付

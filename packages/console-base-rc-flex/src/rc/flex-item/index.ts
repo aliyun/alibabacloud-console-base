@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
-export default styled.div`
-  flex: 1;
+import {
+  IPropsItem
+} from '../../types';
+
+export default styled.div<IPropsItem>`
+  flex: ${props => props.n || 1};
 `;

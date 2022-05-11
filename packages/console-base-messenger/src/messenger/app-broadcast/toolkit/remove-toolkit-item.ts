@@ -1,8 +1,13 @@
 import {
+  broadcastByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EToolkitTypeShort
-} from '../../../const';
-import composeToolkitType from '../../../util/compose-toolkit-type';
-import broadcastByApp from '../../../util/broadcast-by-app';
+} from '../../../enum';
+import {
+  composeToolkitType
+} from '../../../util';
 
 /**
  * 移除工具

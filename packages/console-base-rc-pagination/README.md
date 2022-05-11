@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-pagination
-===
+# @alicloud/console-base-rc-pagination
 
-# Usage
+## Usage
 
 ```typescript tsx
 import Pagination from '@alicloud/console-base-rc-pagination';

@@ -1,5 +1,4 @@
-@alicloud/console-fetcher-interceptor-res-error-message
-===
+# @alicloud/console-fetcher-interceptor-res-error-message
 
 > `@alicloud/fetcher` 响应错误拦截，国际化通用的错误的 message。
 
@@ -8,13 +7,13 @@
 * 仅对 **网络错误**、**网络超时**、**请求响应状态错误** 做国际化输出；
 * 没有额外 config 扩展
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-fetcher-interceptor-res-error-message -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import createFetcher, {

@@ -1,15 +1,14 @@
-@alicloud/console-base-conf-parse-account
-===
+# @alicloud/console-base-conf-parse-account
 
 ConsoleBase CONF.ACCOUNT parse
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-base-conf-parse-account -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import parseAccount from '@alicloud/console-base-conf-parse-account';

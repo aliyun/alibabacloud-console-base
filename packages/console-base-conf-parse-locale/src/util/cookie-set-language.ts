@@ -3,7 +3,9 @@ import {
 } from '@alicloud/cookie';
 
 import {
-  ELanguage,
+  ELanguage
+} from '../enum';
+import {
   COOKIE_KEY
 } from '../const';
 

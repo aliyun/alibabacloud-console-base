@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-breadcrumb
-===
+# @alicloud/console-base-rc-breadcrumb
 
-# Usage
+## Usage
 
 ```typescript tsx
 import Breadcrumb from '@alicloud/console-base-rc-breadcrumb';

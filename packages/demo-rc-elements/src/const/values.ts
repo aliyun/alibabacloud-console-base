@@ -1,7 +1,8 @@
 export const FORM_CONTROL_HEIGHT = 32;
+export const FORM_CONTROLPADDING_HORIZONTAL = 12;
 export const FORM_CONTROL_FGC_DISABLED = '#c0c6cc';
 export const FORM_CONTROL_BDC = '#ddd';
-export const FORM_CONTROL_BDC_HOVER = '#999';
+export const FORM_CONTROL_BDC_HOVER = '#aac';
 export const FORM_CONTROL_BDC_ACTIVE = '#999';
 export const FORM_CONTROL_BDC_FOCUS = '#66c';
 export const FORM_CONTROL_BDC_DISABLED = '#f0f1f3';

@@ -7,7 +7,9 @@ import {
   TDialogButton,
   TDialogData
 } from '../../types';
-import processButtons from '../../util/process-buttons';
+import {
+  processButtons
+} from '../../util';
 
 import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';

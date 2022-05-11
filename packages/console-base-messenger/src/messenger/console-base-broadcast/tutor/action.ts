@@ -1,10 +1,13 @@
 import {
-  IPayloadTutorClick
-} from '../../../types';
+  broadcastByConsoleBase
+} from '@alicloud/console-base-messenger-base';
+
 import {
   EMessageBroadcastByConsoleBase
-} from '../../../const';
-import broadcastByConsoleBase from '../../../util/broadcast-by-console-base';
+} from '../../../enum';
+import {
+  IPayloadTutorClick
+} from '../../../types';
 
 /**
  * 微教程内部元素 :tutor-action[label]{value=xx} 点击后需要通知应用

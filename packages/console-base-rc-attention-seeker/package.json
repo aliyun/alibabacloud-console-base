@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-attention-seeker",
-  "version": "1.1.92",
+  "version": "1.2.2",
   "description": "ConsoleBase 组件 - 寻求用户关注",
   "license": "MIT",
   "sideEffects": false,
@@ -22,19 +22,20 @@
   "keywords": [
     "console-base",
     "rc",
-    "breadcrumb"
+    "attention-seeker"
   ],
   "devDependencies": {
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.89",
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.32",
-    "@alicloud/demo-rc-elements": "^1.3.69",
-    "@types/react": "^17.0.32",
-    "@types/react-dom": "^17.0.10",
-    "@types/styled-components": "^5.1.15",
+    "@alicloud/console-toolkit-preset-component": "^1.2.56",
+    "@alicloud/demo-rc-elements": "^1.5.4",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
+    "@types/styled-components": "^5.1.25",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3",
-    "typescript": "^4.4.4"
+    "styled-components": "^5.3.5",
+    "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "react": ">=16.8",
@@ -42,8 +43,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.3.90",
-    "@alicloud/mere-dom": "^1.1.63",
+    "@alicloud/console-base-theme": "^1.5.0",
+    "@alicloud/mere-dom": "^1.3.1",
+    "@alicloud/react-hook-is-unmounted": "^1.1.55",
     "immutability-helper": "^3.1.1"
   },
   "scripts": {

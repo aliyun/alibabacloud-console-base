@@ -1,16 +1,15 @@
-@alicloud/storage-factory
-===
+# @alicloud/storage-factory
 
-# WHY
+## Why
 
 一个应用最好有自己的一个 storage 的主 key 作为其统一的 namespace 对 storage 下的字段进行管理，有如下好处：
 
-- 避免 localStorage / sessionStorage 的泛滥
-- 避免应用内取名冲突
-- 可以存取各种类型的数据，而不是需要转换过才能用的字符串
-- 不必担心出错
+* 避免 localStorage / sessionStorage 的泛滥
+* 避免应用内取名冲突
+* 可以存取各种类型的数据，而不是需要转换过才能用的字符串
+* 不必担心出错
 
-# API
+## APIs
 
 这是一个工厂方法，生产一个方法：
 
@@ -45,9 +44,9 @@ export interface IFnStorageSetter {
 }
 ```
 
-# EXAMPLE
+## Example
 
-1. 在应用下生产「唯一」的 storage 模块，比如 `util/storage.js`
+### 1. 在应用下生产「唯一」的 storage 模块，比如 `util/storage.js`
 
 ```js
 import storageFactory from '@alicloud/storage-factory';
@@ -58,7 +57,7 @@ export default storageFactory(`${app_name}@${user_id}`); // 最好能跟登录�
 export const session = storageFactory(`${app_name}@${user_id}`, true);
 ```
 
-2. 使用
+### 2. 使用
 
 ```js
 import storage from ':util/storage';

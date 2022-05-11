@@ -1,5 +1,4 @@
-@alicloud/mixed-black-whitelist-checker
-===
+# @alicloud/mixed-black-whitelist-checker
 
 混合黑白名单检查器
 

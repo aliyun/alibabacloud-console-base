@@ -8,9 +8,9 @@ import SandwichUpper from '../sandwich-upper';
 import SandwichBelow from '../sandwich-below';
 
 export default function Ui(): JSX.Element | null {
-  const element = useAttentionSeeker()?.element;
+  const attentionSeeker = useAttentionSeeker();
   
-  if (!element) {
+  if (!attentionSeeker) {
     return null;
   }
   
@@ -23,7 +23,7 @@ export default function Ui(): JSX.Element | null {
    * ---- Backdrop ---
    */
   return <>
-    <SandwichUpper />
+    {attentionSeeker.options?.protect ? <SandwichUpper /> : null}
     <SandwichBelow />
     <Backdrop />
   </>;

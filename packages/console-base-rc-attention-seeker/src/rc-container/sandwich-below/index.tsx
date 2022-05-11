@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  mixinBgWhite,
+  mixinBgPrimary,
   mixinShadowM
 } from '@alicloud/console-base-theme';
 
@@ -18,7 +18,7 @@ const ScSandwichBelow = styled.div`
   z-index: ${Z_INDEX_SANDWICH_BELOW};
   box-sizing: content-box;
   transition: all linear 200ms;
-  ${mixinBgWhite}
+  ${mixinBgPrimary}
   ${mixinShadowM}
 `;
 

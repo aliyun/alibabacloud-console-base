@@ -1,15 +1,14 @@
-@alicloud/base64
-===
+# @alicloud/base64
 
 Base64 编解码，在原生 `btoa`（Base64 编码） 和 `atob`（Base64 解码）的基础上，添加了 unicode 支持，并支持生成 URI 友好的 Base64 串。
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/base64 -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import {

@@ -3,8 +3,8 @@ import {
 } from 'react';
 
 import {
-  actionRndResizeStart
-} from '../action';
+  EAction
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
@@ -14,5 +14,7 @@ import useModelDispatch from './_use-model-dispatch';
 export default function useDispatchRndResizeStart(): () => void {
   const dispatch = useModelDispatch();
   
-  return useCallback(() => dispatch(actionRndResizeStart()), [dispatch]);
+  return useCallback(() => dispatch({
+    type: EAction.RND_RESIZE_START
+  }), [dispatch]);
 }

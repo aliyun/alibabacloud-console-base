@@ -1,10 +1,13 @@
 import {
-  IPayloadTutorDismiss
-} from '../../../types';
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
 import {
   EMessageBroadcastByConsoleBase
-} from '../../../const';
-import subscribeByApp from '../../../util/subscribe-by-app';
+} from '../../../enum';
+import {
+  IPayloadTutorDismiss
+} from '../../../types';
 
 export default function onTutorDismiss(fn: (id: string, done: boolean) => void): () => void {
   return subscribeByApp<IPayloadTutorDismiss>(EMessageBroadcastByConsoleBase.TUTOR_DISMISS, payload => {

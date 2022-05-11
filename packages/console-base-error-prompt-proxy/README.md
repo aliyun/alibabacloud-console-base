@@ -1,5 +1,4 @@
-@alicloud/console-base-error-prompt-proxy
-====
+# @alicloud/console-base-error-prompt-proxy
 
 注意：这个包**只能**是控制台应用使用的，ConsoleBase 不会用到它。
 

@@ -2,11 +2,9 @@ import React from 'react';
 
 import Icon from '@alicloud/console-base-rc-icon';
 
-import {
-  EModalMode
-} from '../../../const';
 import intl from '../../../intl';
 import {
+  ModalMode,
   useProps,
   useMode,
   useOnPin,
@@ -20,7 +18,7 @@ export default function ButtonPin(): JSX.Element | null {
   } = useProps();
   const mode = useMode();
   const visible = useStickRightActive();
-  const active = mode === EModalMode.TO_THE_RIGHT_PINNED;
+  const active = mode === ModalMode.TO_THE_RIGHT_PINNED;
   const onPin = useOnPin();
   
   return pinnable && visible ? <ControlButton {...{

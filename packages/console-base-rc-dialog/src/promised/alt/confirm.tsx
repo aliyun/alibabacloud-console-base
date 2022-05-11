@@ -2,13 +2,16 @@ import React from 'react';
 
 import {
   IDialogPropsConfirm,
-  IConfirmExtra
+  IAltConfirmExtra
 } from '../../types';
 import {
-  COMMON_PROPS_SYS_DIALOG
+  SYS_DIALOG_PROPS_FIXED,
+  SYS_DIALOG_PROPS_DEFAULT
 } from '../../const';
 import intl from '../../intl';
-import buildPropsForPromise from '../../util/build-props-for-promise';
+import {
+  buildPropsForPromise
+} from '../../util';
 import AltWrap from '../../rc/alt-wrap';
 import open from '../open';
 
@@ -28,7 +31,7 @@ import open from '../open';
  * const yes = await alert(...);
  * ```
  */
-export default function confirm(contentOrProps?: string | JSX.Element | IDialogPropsConfirm, extra: IConfirmExtra = {}): Promise<boolean> {
+export default function confirm(contentOrProps?: string | JSX.Element | IDialogPropsConfirm, extra: IAltConfirmExtra = {}): Promise<boolean> {
   const promiseProps = buildPropsForPromise<boolean>(contentOrProps, {
     buttons: [{
       spm: 'ok',
@@ -38,11 +41,11 @@ export default function confirm(contentOrProps?: string | JSX.Element | IDialogP
       spm: 'cancel',
       label: extra.cancel || intl('op:cancel')
     }],
-    ...COMMON_PROPS_SYS_DIALOG
-  });
+    ...SYS_DIALOG_PROPS_FIXED
+  }, SYS_DIALOG_PROPS_DEFAULT);
   
   promiseProps.content = <AltWrap {...{
-    type: 'confirm',
+    type: extra.type || 'confirm',
     title: promiseProps.title as IDialogPropsConfirm['title'],
     content: promiseProps.content
   }} />;

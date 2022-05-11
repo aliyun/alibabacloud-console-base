@@ -3,10 +3,10 @@ import React, {
   useCallback,
   useEffect
 } from 'react';
-import styled from 'styled-components';
 
 import {
   H1,
+  Flex,
   Button,
   InputText,
   InputTextarea,
@@ -20,15 +20,6 @@ import {
 } from '../../src';
 import fetcher from '../fetcher';
 import MergerStorage from '../merger-storage';
-
-const ScFlex = styled.div`
-  display: flex;
-  
-  pre {
-    flex: 1;
-    width: 100%;
-  }
-`;
 
 function getJsonFromString(str: string): Record<string, unknown> | null {
   try {
@@ -44,7 +35,7 @@ function getJsonFromString(str: string): Record<string, unknown> | null {
   return null;
 }
 
-function getMerger(enabled: boolean, key: string): FetcherMergerOptions | true | undefined {
+function getMerger(enabled: boolean, key: string): FetcherMergerOptions | boolean {
   if (enabled) {
     if (key) {
       return {
@@ -55,7 +46,7 @@ function getMerger(enabled: boolean, key: string): FetcherMergerOptions | true |
     return true;
   }
   
-  return undefined;
+  return false;
 }
 
 function cleanJson(o: unknown): string | undefined {
@@ -122,27 +113,26 @@ export default function DemoDefault(): JSX.Element {
         value: stateMethod,
         onChange: setStateMethod
       }} />
-    </div>
-    <div>
+      <br />
       url <InputText {...{
         placeholder: 'url',
         value: stateUrl,
         onChange: setStateUrl
       }} />
-    </div>
-    <label>
+      <br />
       <InputSwitch {...{
+        label: 'merger enabled',
         value: stateMergerEnabled,
         onChange: setStateMergerEnabled
-      }} /> merger enabled
-    </label>
-    &nbsp; → &nbsp;
-    merger.key <InputText {...{
-      placeholder: 'merger.key',
-      value: stateMergerKey,
-      onChange: setStateMergerKey
-    }} />
-    <ScFlex>
+      }} />
+      <br />
+      merger.key <InputText {...{
+        placeholder: 'merger.key',
+        value: stateMergerKey,
+        onChange: setStateMergerKey
+      }} />
+    </div>
+    <Flex>
       <InputTextarea {...{
         placeholder: 'params',
         onChange: handleParamsChange
@@ -151,12 +141,12 @@ export default function DemoDefault(): JSX.Element {
         placeholder: 'body',
         onChange: handleBodyChange
       }} />
-    </ScFlex>
+    </Flex>
     <Button onClick={handleFetchX3}>fetch x3</Button>
-    <ScFlex>
+    <Flex>
       <CodeViewerTs>{stateJsCode}</CodeViewerTs>
       <PrePromise promise={statePromise} />
-    </ScFlex>
+    </Flex>
     <MergerStorage />
   </>;
 }

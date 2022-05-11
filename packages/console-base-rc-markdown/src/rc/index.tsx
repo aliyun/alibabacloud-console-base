@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Markdown0, {
+import MarkdownNoStyle, {
   MarkdownProps
 } from '@alicloud/rc-markdown';
 import {
@@ -12,6 +12,6 @@ import {
  */
 export default function Markdown(props: MarkdownProps): JSX.Element {
   return <ArticleBase>
-    <Markdown0 {...props} />
+    <MarkdownNoStyle {...props} />
   </ArticleBase>;
 }

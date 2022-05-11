@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {
+  EMarkType
+} from '../../enum';
+import {
   IPropsMark
 } from '../../types';
-import {
-  EMarkType
-} from '../../const';
 import Mark from '../_base';
 
 export default function Alpha(props: IPropsMark): JSX.Element {

@@ -1,3 +1,7 @@
+import {
+  Z_INDEX
+} from '@alicloud/console-base-theme';
+
 export const WIDTH_INITIAL = 420; // 初始宽度
 export const HEIGHT_INITIAL = 680; // 初始高度
 export const POSITION_R_INITIAL = 60; // 初始窗口右边距
@@ -11,7 +15,7 @@ export const DEFAULT_VALUES = {
   MAX_HEIGHT: 20000,
   MAX_WIDTH_WHEN_PINNED: 800,
   PINNED_WIDTH: 528,
-  Z_INDEX: 1200
+  Z_INDEX: Z_INDEX.MICRO_BROWSER
 };
 
 export const HEIGHT_TOOLBAR = 16;

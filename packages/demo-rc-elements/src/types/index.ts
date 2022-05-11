@@ -1,5 +1,9 @@
 import {
-  HTMLAttributes
+  HTMLAttributes,
+  InputHTMLAttributes,
+  TextareaHTMLAttributes,
+  ButtonHTMLAttributes,
+  ChangeEvent
 } from 'react';
 
 import {
@@ -7,7 +11,7 @@ import {
 } from '@alicloud/rc-codemirror';
 
 export interface IPropsCodeViewer extends CodeMirrorProps {
-  type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'text';
+  type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'markdown' | 'text';
   children?: string;
 }
 
@@ -47,3 +51,31 @@ export interface IPropsFlex100HBF {
 export type TPropsCheckboxGroup<T> = IPropsChoiceGroup<T, T[]>;
 
 export type TPropsRadioGroup<T> = IPropsChoiceGroup<T, T>;
+
+export interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
+  block?: boolean;
+  onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
+}
+
+export interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
+  onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
+}
+
+export interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'defaultValue' | 'onChange'> {
+  value?: number;
+  defaultValue?: number;
+  onChange?(value: number | undefined, e: ChangeEvent<HTMLInputElement>): void;
+}
+
+export interface IPropsInputSwitch extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'defaultValue' | 'aria-checked' | 'role' | 'onClick' | 'onChange'> {
+  label?: string | JSX.Element;
+  value?: boolean;
+  defaultValue?: boolean;
+  onChange?(value: boolean): void;
+}
+
+export interface IPropsInputJsonObject<T> extends Omit<CodeMirrorProps, 'conf' | 'value' | 'onChange'> {
+  value?: T;
+  arrayMode?: boolean; // 默认从传入的 value 算
+  onChange?(value: T): void;
+}

@@ -1,15 +1,19 @@
 import {
   SettingsToolkitItem
 } from '@alicloud/console-base-types-settings-toolkit';
+import {
+  subscribeByConsoleBase
+} from '@alicloud/console-base-messenger-base';
 
+import {
+  EToolkitTypeShort
+} from '../../../enum';
 import {
   IPayloadPutTool
 } from '../../../types';
 import {
-  EToolkitTypeShort
-} from '../../../const';
-import subscribeByConsoleBase from '../../../util/subscribe-by-console-base';
-import composeToolkitType from '../../../util/compose-toolkit-type';
+  composeToolkitType
+} from '../../../util';
 
 /**
  * console-base 响应动态添加或修改某工具

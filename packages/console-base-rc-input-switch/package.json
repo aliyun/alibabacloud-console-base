@@ -1,0 +1,58 @@
+{
+  "name": "@alicloud/console-base-rc-input-switch",
+  "version": "0.2.1",
+  "description": "ConsoleBase 组件 - InputSwitch",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "build/cjs/index.js",
+  "module": "build/es/index.js",
+  "types": "build/types/index.d.ts",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-rc-input-switch",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "console-base",
+    "rc",
+    "input-switch"
+  ],
+  "devDependencies": {
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.1.89",
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.56",
+    "@alicloud/demo-rc-elements": "^1.5.4",
+    "@types/react": "^17.0.43",
+    "@types/styled-components": "^5.1.25",
+    "react": "^17.0.2",
+    "styled-components": "^5.3.5",
+    "typescript": "^4.6.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "styled-components": ">=5"
+  },
+  "dependencies": {
+    "@alicloud/console-base-theme": "^1.5.0",
+    "@alicloud/console-base-theme-sc-base": "^1.2.5",
+    "@alicloud/react-hook-controllable-value": "^1.0.0"
+  },
+  "scripts": {
+    "start": "breezr start-storybook",
+    "test": "breezr test:unit",
+    "build:esm": "breezr build --engine babel --es-module",
+    "build:cjs": "breezr build --engine babel",
+    "build:bundle": "breezr build --engine webpack",
+    "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
+    "clean": "rm -rf build",
+    "prepublishOnly": "yarn clean && yarn build"
+  }
+}

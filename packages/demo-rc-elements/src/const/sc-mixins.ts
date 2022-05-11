@@ -3,6 +3,7 @@ import {
 } from 'styled-components';
 
 import {
+  FORM_CONTROLPADDING_HORIZONTAL,
   FORM_CONTROL_BDC,
   FORM_CONTROL_HEIGHT,
   FORM_CONTROL_BDC_HOVER,
@@ -17,45 +18,41 @@ import {
 } from './values';
 
 const CSS_FORM_CONTROL_OVERRIDE_INPUT = css`
-  padding: 0 8px;
+  padding: 0 ${FORM_CONTROLPADDING_HORIZONTAL}px;
 `;
 
 const CSS_FORM_CONTROL_OVERRIDE_TEXTAREA = css`
   display: block;
-  padding: 4px 8px;
+  padding: 4px ${FORM_CONTROLPADDING_HORIZONTAL}px;
   width: 100%;
   min-height: 100px;
-  resize: vertical;
   line-height: 1.8;
+  resize: vertical;
 `;
 
 const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
-  background-color: ${FORM_CONTROL_BGC};
   border-radius: 4px;
+  background-color: ${FORM_CONTROL_BGC};
   min-width: 60px;
   
   &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: ${FORM_CONTROL_BGC_HOVER};
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
   
   &:active {
-    background-color: ${FORM_CONTROL_BGC_ACTIVE};
     box-shadow: none;
-  }
-  
-  &:focus {
-    border-color: ${FORM_CONTROL_BDC_ACTIVE};
+    background-color: ${FORM_CONTROL_BGC_ACTIVE};
   }
   
   &[disabled],
   &[disabled]:hover,
   &[disabled]:active,
   &[disabled]:focus {
-    color: ${FORM_CONTROL_FGC_DISABLED};
     border-color: ${FORM_CONTROL_BDC_DISABLED};
     box-shadow: none;
     background-color: ${FORM_CONTROL_BGC_DISABLED};
+    color: ${FORM_CONTROL_FGC_DISABLED};
   }
 `;
 
@@ -76,7 +73,7 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
   code {
     padding: 0 4px;
     border-radius: 2px;
-    background-color: rgba(0,0,0,0.04);
+    background-color: rgba(0, 0, 0, 0.04);
     color: #39f;
   }
   
@@ -107,7 +104,7 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
 `;
 
 export const CSS_FORM_CONTROL_BASE = css`
-  padding: 0 12px;
+  padding: 0 ${FORM_CONTROLPADDING_HORIZONTAL}px;
   border: 1px solid ${FORM_CONTROL_BDC};
   box-sizing: border-box;
   outline: none;
@@ -115,6 +112,11 @@ export const CSS_FORM_CONTROL_BASE = css`
   font-size: 11px;
   transition: all 0.3s ease-in-out;
   ${CSS_FONT_FAMILY}
+
+  &:focus {
+    border-color: ${FORM_CONTROL_BDC_FOCUS};
+    outline: none;
+  }
   
   &:hover {
     border-color: ${FORM_CONTROL_BDC_HOVER};
@@ -124,17 +126,12 @@ export const CSS_FORM_CONTROL_BASE = css`
     border-color: ${FORM_CONTROL_BDC_ACTIVE};
   }
   
-  &:focus {
-    border-color: ${FORM_CONTROL_BDC_FOCUS};
-    outline: none;
-  }
-  
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
-    color: ${FORM_CONTROL_FGC_DISABLED};
     border-color: ${FORM_CONTROL_BDC_DISABLED};
     background-color: ${FORM_CONTROL_BGC_DISABLED};
+    color: ${FORM_CONTROL_FGC_DISABLED};
   }
 `;
 

@@ -7,10 +7,13 @@ import {
   FONT_LINE_HEIGHT
 } from '../../../../const';
 
-export default css`.CodeMirror {
-  .CodeMirror-code {
-    font-family: 'Operator Mono', Consolas, Monaco, 'Courier New', monospace;
-    font-size: ${FONT_SIZE}px;
-    line-height: ${FONT_LINE_HEIGHT}px;
+export default css`
+  /* stylelint-disable selector-class-pattern */
+  .CodeMirror {
+    .CodeMirror-code {
+      line-height: ${FONT_LINE_HEIGHT}px;
+      font-family: 'Operator Mono', Consolas, Monaco, 'Courier New', monospace;
+      font-size: ${FONT_SIZE}px;
+    }
   }
-}`;
+`;

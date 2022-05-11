@@ -12,9 +12,7 @@ import {
   DEFAULT_CONTEXT_STATE
 } from '../const';
 import reducer from '../reducer';
-import Lifecycle from '../lifecycle';
-
-import Context from './_context';
+import Context from '../context';
 
 export default function Provider({
   props,
@@ -29,11 +27,6 @@ export default function Provider({
   }), [props, state, dispatch]);
   
   return <Context.Provider value={contextValue}>
-    <Lifecycle />
     {children}
   </Context.Provider>;
 }
-
-export {
-  Context
-};

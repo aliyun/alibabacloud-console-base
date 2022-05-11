@@ -12,13 +12,15 @@ export {
   ERROR_RESPONSE_STATUS,
   ERROR_RESPONSE_PARSE
 } from './const';
-export { default as createFetcherError } from './util/error/create';
-export { default as createFetcherErrorSkipNetwork } from './util/error/create-skip-network';
-export { default as buildUrl } from './util/build-url';
-export { default as canHaveBody } from './util/can-have-body';
-export { default as isCors } from './util/is-cors';
-export { default as mergeConfig } from './util/merge-config';
-export { default as extractProtocolHost } from './util/extract-protocol-host';
+export { // 这些也当 helper
+  createFetcherError,
+  buildUrl,
+  canHaveBody,
+  isCors,
+  mergeConfig,
+  extractProtocolHost
+} from './util';
+export * from './helper';
 
 export {
   createFetcher

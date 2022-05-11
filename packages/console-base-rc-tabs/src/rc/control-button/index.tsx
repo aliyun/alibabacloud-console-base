@@ -1,7 +1,5 @@
 import React from 'react';
-import styled, {
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
 import {
   mixinTextSecondary
@@ -16,9 +14,7 @@ import {
   SIZE_CONTROL_BUTTON
 } from '../../const';
 
-interface IProps extends ButtonProps {
-  light?: boolean;
-}
+interface IProps extends Omit<ButtonProps, 'theme' | 'size' | 'cursor'> {}
 
 function getOpacity({
   disabled
@@ -32,20 +28,16 @@ function getOpacity({
 
 const ScButton = styled(Button)<IProps>`
   opacity: ${props => getOpacity(props)};
+  border-radius: 2px;
   width: ${SIZE_CONTROL_BUTTON}px;
   height: ${SIZE_CONTROL_BUTTON}px;
+  ${mixinTextSecondary}
   
-  ${props => (props.light ? css`
-    color: #fff;
-  ` : css`
-    border-radius: 2px;
+  &:hover {
+    opacity: ${props => getOpacity(props, true)};
+    background: rgba(0, 0, 0, 0.05);
     ${mixinTextSecondary}
-    
-    &:hover {
-      background: rgba(0, 0, 0, 0.05);
-      ${mixinTextSecondary}
-    }
-  `)}
+  }
   
   i {
     font-size: 12px;
@@ -53,10 +45,6 @@ const ScButton = styled(Button)<IProps>`
     &:before {
       display: block;
     }
-  }
-  
-  &:hover {
-    opacity: ${props => getOpacity(props, true)};
   }
 `;
 

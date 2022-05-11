@@ -8,12 +8,20 @@ import {
 import {
   useProps
 } from '../../../model';
-import AnimatedDrop from '../animated-drop';
+import AnimatedDrop from '../../animated-drop';
 
 export default function TheDrop(): JSX.Element | ReactPortal {
   const {
     dropContainer
   } = useProps();
   
-  return dropContainer === 'body' ? createPortal(<AnimatedDrop />, document.body) : <AnimatedDrop />;
+  if (dropContainer === 'body') {
+    const body = typeof document === 'undefined' ? null : document.body; // for SSR
+    
+    if (body) {
+      return createPortal(<AnimatedDrop />, body);
+    }
+  }
+  
+  return <AnimatedDrop />;
 }

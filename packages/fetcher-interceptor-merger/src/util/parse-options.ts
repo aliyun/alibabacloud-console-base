@@ -5,9 +5,10 @@ import {
 
 export default function parseOptions({
   _id,
+  signal,
   merger = true
 }: IFetcherConfigExtended): IMergerOptionsParsed | null {
-  if (!merger) {
+  if (!merger || signal) { // 有 AbortSignal 则不可用 merge
     return null;
   }
   

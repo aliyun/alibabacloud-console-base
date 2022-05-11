@@ -4,7 +4,7 @@ import {
 
 import {
   EModalMode
-} from '../../const';
+} from '../enum';
 
 import useModelProps from './_use-model-props';
 import useDispatchSetMode from './use-dispatch-set-mode';
@@ -17,9 +17,6 @@ export default function useHandleModeChange(): (mode: EModalMode) => void {
   
   return useCallback((mode: EModalMode) => {
     dispatchSetMode(mode);
-    
-    if (onModeChange) {
-      onModeChange(mode);
-    }
+    onModeChange?.(mode);
   }, [onModeChange, dispatchSetMode]);
 }

@@ -1,15 +1,14 @@
-@alicloud/console-base-conf-parse-locale
-===
+# @alicloud/console-base-conf-parse-locale
 
 ConsoleBase CONF.LOCALE
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/console-base-conf-parse-locale -S
 ```
 
-# API
+## APIs
 
 ```typescript
 import CONF_LOCALE, {

@@ -2,37 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  TContentPadding,
-  IPropsTab
-} from '../../../types';
+  getContentPadding
+} from '../../../util';
 import {
+  ModelPropsTab,
+  TabContentPadding,
   useProps,
   useActiveTab
 } from '../../../model';
 
 interface IProps {
-  tab: IPropsTab;
+  tab: ModelPropsTab;
 }
 
 interface IScPropsNavItem {
   active: boolean;
-  padding: TContentPadding;
-}
-
-function getContentPadding(contentPadding: TContentPadding): string {
-  switch (contentPadding) {
-    case 'top':
-      return '12px 0 0 0';
-    case 'around':
-      return '12px';
-    default:
-      return '0';
-  }
+  padding: TabContentPadding;
 }
 
 const ScContentItem = styled.div<IScPropsNavItem>`
   display: ${props => (props.active ? 'block' : 'none')};
-  padding: ${props => (getContentPadding(props.padding))};
+  padding: ${props => getContentPadding(props.padding)};
+  box-sizing: border-box;
   height: 100%;
 `;
 
@@ -42,16 +33,17 @@ export default function ContentItem({
   const {
     contentPadding: contentPaddingInProps
   } = useProps();
-  const activeTab = useActiveTab();
-  const active = activeTab === tab;
+  const active = useActiveTab() === tab;
   const {
     content,
-    contentPadding = contentPaddingInProps
+    contentPadding = contentPaddingInProps,
+    contentAttr
   } = tab;
   
   return <ScContentItem {...{
     active,
-    padding: contentPadding
+    padding: contentPadding,
+    ...contentAttr
   }}>
     {content}
   </ScContentItem>;

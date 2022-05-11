@@ -1,6 +1,6 @@
 import {
   ETypeLine
-} from '../const';
+} from '../enum';
 
 export interface ILineGroup {
   type: ETypeLine;

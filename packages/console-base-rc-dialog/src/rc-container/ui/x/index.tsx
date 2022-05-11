@@ -11,18 +11,24 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
+  EDialogMode,
   EDialogLockState
-} from '../../../const';
+} from '../../../enum';
 import intl from '../../../intl';
 import {
   useStateLocked,
-  useHandleClose
+  useHandleClose,
+  useProps
 } from '../../../model';
 
+interface IScProps {
+  mode?: EDialogMode;
+}
+
 // z-index 用于保证在没有 header 的情况下不会被内容遮住
-const ScX = styled(Button)`
+const ScX = styled(Button)<IScProps>`
   position: absolute;
-  top: ${(SIZE.HEIGHT_DIALOG_SLIDE_HEADER - 16) / 2 - 2}px;
+  top: ${props => (props.mode === EDialogMode.NORMAL ? SIZE.PADDING_X_DIALOG : (SIZE.HEIGHT_DIALOG_SLIDE_HEADER - 24) / 2)}px;
   right: ${SIZE.PADDING_X_DIALOG}px;
   z-index: 1;
   width: 24px;
@@ -31,14 +37,17 @@ const ScX = styled(Button)`
 `;
 
 export default function X(): JSX.Element | null {
+  const {
+    mode
+  } = useProps();
   const locked = useStateLocked();
   const dispatchClose = useHandleClose();
   
   return <ScX {...{
-    'aria-label': intl('op:close'),
-    spm: 'x',
+    mode: mode as EDialogMode,
     label: <Icon type="x" />,
     title: intl('op:close'),
+    'aria-label': intl('op:close'),
     theme: ButtonTheme.TEXT_TERTIARY,
     size: ButtonSize.NONE,
     disabled: locked !== EDialogLockState.NO,

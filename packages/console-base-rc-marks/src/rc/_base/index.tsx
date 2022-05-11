@@ -14,19 +14,17 @@ import getCssOfAlign from '../../util/get-css-of-align';
 
 const ScMarkBase = styled.span`
   display: inline-block;
-  padding: 0 4px;
-  border-radius: 2px;
-  line-height: 1.4;
-  font-family: 'PingFang SC', 'Microsoft Yahei', Arial, sans-serif;
-  font-variant: small-caps;
-  font-size: 12px;
+  padding: 0 1px;
+  line-height: 1.2;
+  font-family: Arial, sans-serif;
+  font-size: 0.85em;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   ${mixinBorderTransparent}
 `;
 
 const ScMark = styled(ScMarkBase)<IPropsMarkWithType>`
-  ${props => getCssOfType(props.type)}
+  ${props => getCssOfType(props.type, props.hollow)}
   ${props => getCssOfAlign(props.align)}
 `;
 

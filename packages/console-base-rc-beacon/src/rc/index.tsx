@@ -16,8 +16,8 @@ import TheTip from './the-tip';
 
 const ScBeacon = styled(FontBase12)`
   position: absolute;
-  line-height: 1.5;
   z-index: 5;
+  line-height: 1.5;
 `;
 
 function stopEventBubbling(e: MouseEvent): void {

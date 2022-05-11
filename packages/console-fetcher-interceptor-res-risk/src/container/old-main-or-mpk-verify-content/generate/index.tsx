@@ -188,7 +188,11 @@ export default function Generate(): JSX.Element {
       timer = window.setTimeout(() => setStateCooling(stateCooling - 1), 1000);
     }
     
-    return () => (timer && clearTimeout(timer));
+    return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
   }, [stateCooling]);
   
   return <Button {...{

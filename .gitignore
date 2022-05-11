@@ -1,8 +1,10 @@
 # common
 .*
 !.*ignore
+!.*.yml
 !.*rc
 !.*rc.*
+!.husky
 *.log*
 .npmrc
 

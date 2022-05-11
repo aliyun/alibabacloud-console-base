@@ -11,8 +11,8 @@ import {
 } from '@storybook/addon-knobs';
 
 import {
-  EDialogMode,
-  EDialogSize,
+  DialogMode,
+  DialogSize,
   DialogProps
 } from '../../src';
 
@@ -47,16 +47,17 @@ export default function Knobs({
   onChange
 }: IProps): null {
   const title = text('title', 'this is a title');
+  const titleExtra = text('titleExtra', '');
   const content = text('content', 'this is content which can be JSX.Element or anything legal');
   const buttons = array('buttons', ['yes', 'no']);
-  const mode = optional<EDialogMode>({
-    value: optionsKnob<EDialogMode>('props.mode', EDialogMode, EDialogMode.SLIDE, {
+  const mode = optional<DialogMode>({
+    value: optionsKnob<DialogMode>('props.mode', DialogMode, DialogMode.SLIDE, {
       display: 'inline-radio'
     }),
     inUse: boolean('启用 props.mode', false)
   });
-  const size = optional<EDialogSize>({
-    value: optionsKnob<EDialogSize>('props.size', EDialogSize, EDialogSize.M, {
+  const size = optional<DialogSize>({
+    value: optionsKnob<DialogSize>('props.size', DialogSize, DialogSize.M, {
       display: 'inline-radio'
     }),
     inUse: boolean('启用 props.size', false)
@@ -76,6 +77,7 @@ export default function Knobs({
   
   const props = useMemo(() => omitUndefined({
     title,
+    titleExtra,
     content,
     buttons,
     mode,
@@ -88,6 +90,7 @@ export default function Knobs({
     zIndexBackdrop
   }), [
     title,
+    titleExtra,
     content,
     buttons,
     mode,

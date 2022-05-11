@@ -5,5 +5,5 @@ import {
 import useModelState from './_use-model-state';
 
 export default function useRect(): IRect {
-  return useModelState().rect;
+  return useModelState().rectStyle;
 }

@@ -1,7 +1,7 @@
 import {
   ELocale,
   ELanguage
-} from '../const';
+} from '../enum';
 
 export interface IWin extends Window {
   CONSOLE_BASE_SETTINGS?: {

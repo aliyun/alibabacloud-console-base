@@ -1,7 +1,10 @@
 import {
+  subscribeByApp
+} from '@alicloud/console-base-messenger-base';
+
+import {
   EMessageBroadcastByConsoleBase
-} from '../../const';
-import subscribeByApp from '../../util/subscribe-by-app';
+} from '../../enum';
 
 /**
  * 主题切换时的回调

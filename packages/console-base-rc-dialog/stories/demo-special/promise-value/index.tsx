@@ -12,7 +12,7 @@ import {
 
 import {
   DialogProps,
-  EDialogSize,
+  DialogSize,
   open,
   slide,
   slideUp
@@ -87,7 +87,7 @@ const props: DialogProps<any> = {
       return false;
     }
   }],
-  size: EDialogSize.L
+  size: DialogSize.L
 };
 
 export default function PromiseValue(): JSX.Element {

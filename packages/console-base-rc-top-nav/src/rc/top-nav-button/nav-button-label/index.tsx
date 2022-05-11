@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  isValidElement
+} from 'react';
 import styled from 'styled-components';
 
 import {
@@ -8,11 +10,11 @@ import {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  IPropsTopNavButton
-} from '../../../types';
+  ModelPropsButton
+} from '../../../model';
 
 interface IProps {
-  label: IPropsTopNavButton['label'];
+  label: ModelPropsButton['label'];
 }
 
 const ScButtonIcon = styled(Icon)`
@@ -46,7 +48,7 @@ const ScIndicatorNumber = styled.strong`
 export default function NavButtonLabel({
   label
 }: IProps): JSX.Element {
-  if (React.isValidElement(label)) {
+  if (isValidElement(label)) {
     return label;
   }
   

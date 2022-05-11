@@ -11,16 +11,18 @@ import Beacon, {
 } from '@alicloud/console-base-rc-beacon';
 
 import {
-  IPropsTopNavButton
-} from '../../types';
-import parseDropdownItems from '../../util/parse-dropdown-items';
-import hasNoActionPoint from '../../util/has-no-action-point';
+  ModelPropsButton
+} from '../../model';
+import {
+  parseDropdownItems,
+  hasNoActionPoint
+} from '../../util';
 
 import NavButton from './nav-button';
 import NavButtonLabel from './nav-button-label';
 import NavButtonItems from './nav-button-items';
 
-interface IProps extends Omit<IPropsTopNavButton, 'key'> {
+interface IProps extends Omit<ModelPropsButton, 'key'> {
   spm: string;
 }
 
@@ -59,23 +61,18 @@ export default function TopNavButton({
   const [stateHovered, setStateHovered] = useState<boolean>(false);
   const handleMouseEnter = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     setStateHovered(true);
-    
-    if (onMouseEnter) {
-      onMouseEnter(e);
-    }
+    onMouseEnter?.(e);
   }, [onMouseEnter]);
   const handleMouseLeave = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     setStateHovered(false);
-    
-    if (onMouseLeave) {
-      onMouseLeave(e);
-    }
+    onMouseLeave?.(e);
   }, [onMouseLeave]);
   const {
     items = [],
     header,
     body,
     footer,
+    footerDivider,
     ...dropdownProps
   } = dropdown;
   const [itemsInBody, itemsInFooter] = parseDropdownItems(items);
@@ -102,6 +99,7 @@ export default function TopNavButton({
     align: 'right',
     offset: [0, -10],
     bodyPadding: itemsInFooter.length ? 'top' : undefined,
+    footerDivider: footerDivider ?? itemsInFooter.length > 0,
     ...dropdownProps,
     trigger: jsxButton,
     header,

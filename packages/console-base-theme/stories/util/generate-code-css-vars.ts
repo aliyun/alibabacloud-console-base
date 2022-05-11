@@ -16,7 +16,7 @@ import buildCssVarName from './build-css-var-name';
 // 生成 doc/console-base.less 的代码（供 IDE 快速参考）
 export default function generateCodeCssVars(): string {
   const generator: ICodeGenerator = {
-    generator: 'generator-code-css-vars',
+    generator: 'generate-code-css-vars',
     begin: `// 仅做参考，且放在仓库里 IDE 可以有提示
 :root {`,
     end: '}',

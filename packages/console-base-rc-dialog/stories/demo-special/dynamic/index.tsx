@@ -10,7 +10,7 @@ import {
 
 import {
   DialogProps,
-  EDialogSize,
+  DialogSize,
   open,
   slide,
   slideUp
@@ -63,7 +63,7 @@ const props: DialogProps = {
       label: 'cancel'
     }];
   },
-  size: EDialogSize.L
+  size: DialogSize.L
 };
 
 export default function Dynamic(): JSX.Element {

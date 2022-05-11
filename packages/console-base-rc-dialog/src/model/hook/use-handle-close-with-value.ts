@@ -4,7 +4,7 @@ import {
 
 import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
-import useDispatchToggleActive from './use-dispatch-toggle-active';
+import useDispatchSetActive from './use-dispatch-set-active';
 
 /**
  * 关闭 Dialog，传入的参数 value 和 rejected 在 Dialog 场景下很有用
@@ -21,7 +21,7 @@ export default function useHandleCloseWithValue<T = void>(): (value?: T | Error,
     active
   } = useModelState();
   
-  const dispatchToggleActive = useDispatchToggleActive();
+  const dispatchToggleActive = useDispatchSetActive();
   
   return useCallback((value?: T | Error, rejected?: boolean): void => {
     if (locked || !active) {

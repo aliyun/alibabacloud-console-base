@@ -27,14 +27,13 @@ export default function ChooseNTest({
   const [stateErrors, setStateErrors] = useState<TErrorArg[]>([]);
   const handleClear = useCallback(() => setStateErrors([]), [setStateErrors]);
   const handleAlertErrors = useCallback(() => {
-    stateErrors.forEach(onPrompt);
-    handleClear();
-  }, [onPrompt, stateErrors, handleClear]);
+    onPrompt(stateErrors);
+  }, [onPrompt, stateErrors]);
   
   return <>
     <H1>选择错误，模拟单个或多个错误的场景</H1>
     <List>
-      <><code>undefined / null</code> 会被忽略</>
+      <><code>undefined / null</code> 空字符串、空对象以及空 <code>Error</code> 对象会被忽略</>
       <>JSX 无法通过 <code>postMessage</code> 传递（因此不会被 proxy）</>
     </List>
     <CheckboxGroup<TErrorArg> {...{

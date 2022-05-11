@@ -3,11 +3,11 @@ import {
 } from 'react';
 
 import {
+  EAction
+} from '../enum';
+import {
   IPayloadResize
 } from '../types';
-import {
-  actionRndResize
-} from '../action';
 
 import useModelDispatch from './_use-model-dispatch';
 
@@ -17,5 +17,8 @@ import useModelDispatch from './_use-model-dispatch';
 export default function useDispatchRndResize(): (payload: IPayloadResize) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: IPayloadResize) => dispatch(actionRndResize(payload)), [dispatch]);
+  return useCallback((payload: IPayloadResize) => dispatch({
+    type: EAction.RND_RESIZE,
+    payload
+  }), [dispatch]);
 }

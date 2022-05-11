@@ -1,5 +1,4 @@
-@alicloud/fetcher
-===
+# @alicloud/fetcher
 
 一个类似 axios 的带拦截器的请求包。
 
@@ -15,20 +14,20 @@
 8. axios 的实例貌似无法「封锁」，每个人都可以来干它，可能谁都不知道谁干了什么，这很容易造成问题
 9. 对 axios 不熟，以上说法可能有失偏颇
 
-# INSTALL
+## INSTALL
 
-```
+```shell
 tnpm i @alicloud/fetcher -S
 ```
 
-# Polyfill
+## Polyfill
 
 这里对浏览器的依赖主要有两个：[fetch] 和 [Promise]：
 
 * `fetch` 在依赖包 `@alicloud/fetcher-fetch` 中用 [unfetch] 做了 fallback，没有全局 polyfill，应用可自行选择，比如 [whatwg-fetch]
 * `Promise` 需要应用代码保证
 
-# API
+## API
 
 你可以直接用「开箱即用」的 fetcher：
 
@@ -75,13 +74,13 @@ sealInterceptors();
 export default fetcher;
 ```
 
-# 封装自己的工厂？
+## 封装自己的工厂？
 
 有的时候，你可能需要封装自己的工厂。
 
 假设，你封装的将作为一个 npm 包，那么你需要在你的包中最好能够输出这里的 **所有输出**（包括 type）。
 
-# 拦截器
+## 拦截器
 
 fetcher 拦截器的设计：
 
@@ -92,9 +91,9 @@ fetcher 拦截器的设计：
 5. response 不会被包裹
 6. 拦截器的最末一个参数是当前的 `Fetcher` 实例，你可以用它做一些其他的事情，但请保证不会无限循环
 
-## 创建拦截器最佳实践
+### 创建拦截器最佳实践
 
-### 不好的例子
+#### 不好的例子
 
 一般来说，拦截器可以单独写成 npm 包以便复用，但这个包它不应当有这样的想法：「嗯，调用我的人一定知道怎么使用我。」
 
@@ -138,7 +137,7 @@ fetcher.interceptResponse(undefined, interceptor); // 这里会造成困扰，�
 export default fetcher;
 ```
 
-### 好的例子
+#### 好的例子
 
 以上这么做并不是不对，而是不合适，给使用者造成困扰。而更合适的方式，是你告诉使用者：「嘿，把你的 Fetcher 实例给我，剩下的交给我。」
 
@@ -171,9 +170,9 @@ export default fetcher;
 * `FetcherConfigExtra` 是对 `@alicloud/fetcher` 的 `FetcherConfig` 的扩展，用于合适的地方做 `interface` 的 `extend`
 * `FetcherConfigExtended` 是扩展后的 `FetcherConfig`，一般不该被直接用到
 
-## 拦截器最佳实践
+### 拦截器最佳实践
 
-```
+```text
 src/
  ├── types/
  │   └── index.ts
@@ -186,7 +185,7 @@ src/
  └── index.ts
 ```
 
-### src/types/index.ts 范例
+#### src/types/index.ts 范例
 
 ```typescript
 import {
@@ -205,7 +204,7 @@ export interface IFetcherConfigExtra {
 export interface IFetcherConfigExtended extends FetcherConfig, IFetcherConfigExtra {}
 ```
 
-### src/util/create-interceptor-request.ts 范例
+#### src/util/create-interceptor-request.ts 范例
 
 ```typescript
 import {
@@ -227,7 +226,7 @@ export default function createInterceptorRequest(interceptorConfig: IFetcherInte
 }
 ```
 
-### src/util/create-interceptor-response-fulfilled.ts 范例
+#### src/util/create-interceptor-response-fulfilled.ts 范例
 
 ```typescript
 import {
@@ -274,7 +273,7 @@ export default function createInterceptorResponseRejected(interceptorConfig: IFe
 }
 ```
 
-### src/util/intercept.ts 范例
+#### src/util/intercept.ts 范例
 
 ```typescript
 import {

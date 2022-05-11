@@ -1,24 +1,26 @@
 export { default as useProps } from './_use-model-props';
 export { default as useRefDialog } from './use-ref-dialog';
-export { default as useRefContent } from './use-ref-content';
+export { default as useRefDialogContent } from './use-ref-dialog-content';
 export { default as useStateId } from './use-state-id';
 export { default as useStateActive } from './use-state-active';
 export { default as useStateLocked } from './use-state-locked';
 export { default as useDialogTitle } from './use-dialog-title';
+export { default as useDialogTitleExtra } from './use-dialog-title-extra';
+export { default as useDialogStyle } from './use-dialog-style';
 export { default as useDialogButtons } from './use-dialog-buttons';
-export { default as useDialogWidth } from './use-dialog-width';
-export { default as useDialogZIndex } from './use-dialog-z-index';
-export { default as useDialogStackItem } from './use-dialog-stack-item';
 export { default as useDialogMaxContentHeight } from './use-dialog-max-content-height';
 export { default as useDispatchMounted } from './use-dispatch-mounted';
-export { default as useDispatchToggleActive } from './use-dispatch-toggle-active';
-export { default as useDispatchUpdateProps } from './use-dispatch-update-props';
-export { default as useDispatchSetZIndex } from './use-dispatch-set-z-index';
 export { default as useDispatchLock } from './use-dispatch-lock';
 export { default as useDispatchUnlock } from './use-dispatch-unlock';
-export { default as useDispatchUpdateWindowHeight } from './use-dispatch-update-window-height';
+// handlers
 export { default as useHandleFocus } from './use-handle-focus';
-export { default as useHandleResetScrollTop } from './use-handle-reset-scroll-top';
 export { default as useHandleCloseWithValue } from './use-handle-close-with-value';
 export { default as useHandleClose } from './use-handle-close';
+// effects
+export { default as useEffectPushStack } from './use-effect-push-stack';
+export { default as useEffectDidMount } from './use-effect-did-mount';
+export { default as useEffectAutoFocus } from './use-effect-auto-focus';
+export { default as useEffectAdjustHeight } from './use-effect-adjust-height';
+export { default as useEffectFocusBack } from './use-effect-focus-back';
+// for content
 export { default as useDialog } from './use-dialog';

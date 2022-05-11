@@ -1,6 +1,11 @@
 export { default } from './rc-container';
 
+export {
+  TabsTheme
+} from './model';
+
 export type {
-  IPropsTabs as TabsProps,
-  IPropsTab as TabProps
-} from './types';
+  TabContentPadding,
+  ModelProps as TabsProps,
+  ModelPropsTab as TabProps
+} from './model';

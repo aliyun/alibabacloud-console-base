@@ -1,7 +1,6 @@
-@alicloud/console-base-rc-key-value
-===
+# @alicloud/console-base-rc-key-value
 
-# Usage
+## Usage
 
 ```js
 import KeyValue from '@alicloud/console-base-rc-key-value';

@@ -5,18 +5,24 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@alicloud/eslint-config": "^1.5.3",
-    "@alicloud/stylelint-config": "^1.0.23",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
+    "@alicloud/eslint-config": "^1.7.5",
+    "@alicloud/stylelint-config": "^1.0.26",
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@types/react": "^17.0.43",
+    "@types/react-dom": "^17.0.14",
     "eslint": "^7.32.0",
+    "husky": "^7.0.4",
     "lerna": "^4.0.0",
-    "npm-check-updates": "^11.8.5",
+    "lint-staged": "^12.4.1",
+    "markdownlint-cli2": "^0.4.0",
+    "npm-check-updates": "^12.5.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "stylelint": "^13.13.1"
   },
   "scripts": {
+    "prepare": "husky install",
     "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
     "boot:packages": "lerna run prepublishOnly",
     "clean": "rm -rf node_modules",
@@ -24,7 +30,9 @@
     "clean:tag:remote": "git tag -l \"@alicloud/*\" | xargs -n 1 git push --delete origin",
     "clean:tag:local": "git tag -l \"@alicloud/*\" | xargs -n 1 git tag -d",
     "lint": "eslint packages/**/src/ --ext js,ts,tsx",
+    "lint2": "eslint packages/console-base-messenger/src/ --ext js,ts,tsx --fix",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:md": "markdownlint-cli2 **/*.md #node_modules",
     "lerna:boot": "lerna bootstrap --hoist",
     "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish --no-verify-access --no-verify-registry",
@@ -36,5 +44,10 @@
     "ncu:main": "ncu",
     "ncu:packages": "lerna exec --no-bail -- ncu --timeout 120000",
     "ncu:full": "npm run ncu && npm run ncu:packages"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint",
+    "*.{js,ts,tsx,less}": "stylelint",
+    "*.md": "markdownlint-cli2"
   }
 }

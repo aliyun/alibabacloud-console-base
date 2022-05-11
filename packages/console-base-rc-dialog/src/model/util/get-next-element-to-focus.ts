@@ -1,8 +1,10 @@
 import {
-  EDialogFocusHow
-} from '../const';
+  findFocusable
+} from '@alicloud/mere-dom';
 
-import findFocusable from './find-focusable';
+import {
+  EDialogFocusHow
+} from '../enum';
 
 /**
  * 获取下一个要 focus 的元素

@@ -3,13 +3,16 @@ import {
 } from 'react';
 
 import {
-  actionLock
-} from '../action';
+  EAction
+} from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchLock(): (loading?: boolean) => void {
+export default function useDispatchLock(): (payload?: boolean) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((loading?: boolean) => dispatch(actionLock(loading)), [dispatch]);
+  return useCallback((payload?: boolean) => dispatch({
+    type: EAction.LOCK,
+    payload
+  }), [dispatch]);
 }

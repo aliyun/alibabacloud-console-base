@@ -5,24 +5,38 @@ import {
 import {
   RequiredSelected
 } from '@alicloud/typescript-missing-helpers';
+import {
+  Z_INDEX
+} from '@alicloud/console-base-theme';
 
 import {
-  IPropsDropdown
-} from '../../types';
+  IModelProps
+} from '../types';
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IPropsDropdown, 'dropContainer' | 'zIndex' | 'offset'>;
+type TModelProps = RequiredSelected<IModelProps, 'dropContainer' | 'zIndex' | 'offset'>;
 
 export default function useProps(): TModelProps {
   const {
     props
   } = useModelContext();
   
-  return useMemo((): TModelProps => ({
-    dropContainer: 'inside',
-    zIndex: 10,
-    offset: [0, 0],
-    ...props
-  }), [props]);
+  return useMemo((): TModelProps => {
+    const {
+      dropContainer = 'inside',
+      zIndex = Z_INDEX.POPUP,
+      offset = [0, 0],
+      bodyPadding = 'both',
+      ...rest
+    } = props;
+    
+    return {
+      dropContainer,
+      zIndex,
+      offset,
+      bodyPadding,
+      ...rest
+    };
+  }, [props]);
 }
