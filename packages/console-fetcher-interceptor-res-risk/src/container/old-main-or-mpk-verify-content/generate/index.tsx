@@ -14,7 +14,7 @@ import {
   ERisk,
   EAccountType,
   ESlsResultType
-} from '../../../const';
+} from '../../../enum';
 import {
   IMpkRisk,
   IMpkRiskInfo,

@@ -1,7 +1,7 @@
 import {
   EAccountType,
-  ESubMFADeviceType
-} from '../const';
+  ESubMfaDeviceType
+} from '../enum';
 
 export interface IMfaSharedPayload {
   TicketType: string; // mini = 虚商 其他 = 公有云
@@ -15,11 +15,11 @@ export interface IExt {
 
 // 接口 /identity/getMfaInfoToBind 的 payload - VMFA 类型
 export interface IGetBindVMfaInfoPayload extends IMfaSharedPayload {
-  DeviceType: ESubMFADeviceType.VMFA;
+  DeviceType: ESubMfaDeviceType.VMFA;
 }
 
 export interface IGetBindU2FInfoPayload extends IMfaSharedPayload {
-  DeviceType: ESubMFADeviceType.U2F;
+  DeviceType: ESubMfaDeviceType.U2F;
   U2FVersion: 'WebAuthn';
 }
 
@@ -27,13 +27,13 @@ export type TGetBindMfaInfoPayload = IGetBindVMfaInfoPayload | IGetBindU2FInfoPa
 
 // 接口 /identity/bindMFA 的 payload
 export interface IBindVMfaPayload extends IExt, IMfaSharedPayload {
-  DeviceType: ESubMFADeviceType.VMFA;
+  DeviceType: ESubMfaDeviceType.VMFA;
   Code1: string;
   Code2: string;
 }
 
 export interface IBindU2FPayload extends IExt, IMfaSharedPayload {
-  DeviceType: ESubMFADeviceType.U2F;
+  DeviceType: ESubMfaDeviceType.U2F;
   U2FVersion: 'WebAuthn';
   ClientDataJSON: string;
   AttestationObject: string;

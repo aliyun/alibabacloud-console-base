@@ -1,6 +1,6 @@
 import {
   ESlsResultType
-} from '../../const';
+} from '../../enum';
 
 export interface ISlsCommonProps {
   errorCode?: string;

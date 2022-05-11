@@ -15,7 +15,7 @@ import {
 } from '../../../../types';
 import {
   ESlsResultType
-} from '../../../../const';
+} from '../../../../enum';
 import intl from '../../../../intl';
 import getTicketType from '../../../get-ticket-type';
 import {

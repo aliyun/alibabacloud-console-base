@@ -14,8 +14,10 @@ import {
   INewSubAccountRisk
 } from '../../../../../types';
 import {
-  REG_MFA_CODE,
-  ESubMFADeviceType
+  ESubMfaDeviceType
+} from '../../../../../enum';
+import {
+  REG_MFA_CODE
 } from '../../../../../const';
 import intl from '../../../../../intl';
 import Form from '../../../../../rc/form';
@@ -46,7 +48,7 @@ export default function VMfaBindForm(): JSX.Element {
     const newBindMfaPayload: IBindVMfaPayload = {
       TicketType: ticketType,
       AccountId: accountId,
-      DeviceType: ESubMFADeviceType.VMFA,
+      DeviceType: ESubMfaDeviceType.VMFA,
       Ext: JSON.stringify({
         codeType: ''
       }),
@@ -67,7 +69,7 @@ export default function VMfaBindForm(): JSX.Element {
     const newBindMfaPayload: IBindVMfaPayload = {
       AccountId: accountId,
       TicketType: ticketType,
-      DeviceType: ESubMFADeviceType.VMFA,
+      DeviceType: ESubMfaDeviceType.VMFA,
       Ext: JSON.stringify({
         codeType
       }),

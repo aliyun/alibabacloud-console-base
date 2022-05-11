@@ -2,8 +2,8 @@ import sls from '@alicloud/console-base-log-sls';
 
 import {
   ESlsTopic,
-  ESubMFADeviceType
-} from '../../const';
+  ESubMfaDeviceType
+} from '../../enum';
 import {
   INewSubRiskValidators,
   TVerifyMfaPayload
@@ -28,7 +28,7 @@ export default function slsSubRiskAuthMfa({
     slsResultType,
     validators,
     accountId: payload?.AccountId,
-    deviceType: 'AuthCode' in payload ? ESubMFADeviceType.VMFA : ESubMFADeviceType.U2F,
+    deviceType: 'AuthCode' in payload ? ESubMfaDeviceType.VMFA : ESubMfaDeviceType.U2F,
     ...restProps
   });
 }

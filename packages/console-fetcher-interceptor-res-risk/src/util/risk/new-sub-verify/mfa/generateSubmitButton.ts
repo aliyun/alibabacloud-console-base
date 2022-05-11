@@ -18,7 +18,7 @@ import {
 import {
   EStep,
   ESlsResultType
-} from '../../../../const';
+} from '../../../../enum';
 import intl from '../../../../intl';
 import {
   slsSubRisk,
@@ -34,7 +34,7 @@ import {
   IParams
 } from './_type';
 
-interface IProps extends Pick<ISubAccountRiskInfo, 'verifyType' | 'validators'>, Pick<IParams, 'riskConfig' | 'fetcherConfig'>{
+interface IProps extends Pick<ISubAccountRiskInfo, 'verifyType' | 'validators'>, Pick<IParams, 'riskConfig' | 'fetcherConfig'> {
   request: FetcherFnRequest;
   accountId: string;
 }
@@ -107,7 +107,7 @@ export default function generateSubmitButtonFn({
       };
     };
   
-    return ({
+    return {
       label: intl('op:confirm'),
       primary: true,
       disabled: primaryButtonDisabled,
@@ -237,6 +237,6 @@ export default function generateSubmitButtonFn({
         // return false 阻止弹窗关闭
         return false;
       }
-    });
+    };
   };
 }

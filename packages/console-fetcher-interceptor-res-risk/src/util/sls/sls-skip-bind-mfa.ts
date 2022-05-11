@@ -2,7 +2,7 @@ import sls from '@alicloud/console-base-log-sls';
 
 import {
   ESlsTopic
-} from '../../const';
+} from '../../enum';
 
 import {
   ISlsCommonProps
@@ -15,4 +15,3 @@ interface IProps extends ISlsCommonProps {
 export default function slsSkipBindMfa(skipBindMfaProps: IProps): void {
   sls(ESlsTopic.SKIP_BIND_MFA, skipBindMfaProps);
 }
-

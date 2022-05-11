@@ -17,7 +17,7 @@ import {
 import {
   EAccountType,
   ESlsResultType
-} from '../../../const';
+} from '../../../enum';
 import {
   IFetcherInterceptorConfig,
   ITokenVerifyData,

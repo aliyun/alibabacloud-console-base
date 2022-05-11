@@ -24,9 +24,11 @@ import {
 } from '../../../types';
 import {
   EStep,
-  SvgUrls,
   EIconType,
-  ESubMFADeviceType
+  ESubMfaDeviceType
+} from '../../../enum';
+import {
+  SvgUrls
 } from '../../../const';
 import intl from '../../../intl';
 import Radio from '../../../rc/radio';
@@ -44,6 +46,7 @@ const ScDesc = styled.div`
 
 const ScItem = styled(Flex)<IScItemProps>`
   overflow-y: hidden;
+  padding-left: 16px;
   cursor: ${props => {
     if (props.disabled) {
       return 'not-allowed';
@@ -51,9 +54,8 @@ const ScItem = styled(Flex)<IScItemProps>`
 
     return 'pointer';
   }};
-  padding-left: 16px;
-  height: 100px;
   margin-top: ${props => props.marginTop || 0}px;
+  height: 100px;
   ${props => {
     if (props.disabled) {
       return mixinButtonSecondaryStateDisabled;
@@ -88,9 +90,9 @@ export default function MfaChoose(): JSX.Element {
   } = useDialog<void, INewSubAccountRisk>();
 
   const [stateRadioChecked, setStateRadioChecked] = useState<EStep.VMFA_BIND | EStep.U2F_BIND>(EStep.VMFA_BIND);
-  const [stateU2FSupported, setStateU2FSupported] = useState<boolean>(true);
+  const [stateU2fSupported, setStateU2fSupported] = useState<boolean>(true);
 
-  const handleVMfaRadioClick = useCallback((): void => {
+  const handleVmfaRadioClick = useCallback((): void => {
     if (stateRadioChecked === EStep.VMFA_BIND) {
       return;
     }
@@ -100,13 +102,13 @@ export default function MfaChoose(): JSX.Element {
       getBindMfaInfoPayload: {
         AccountId: accountId,
         TicketType: ticketType,
-        DeviceType: ESubMFADeviceType.VMFA
+        DeviceType: ESubMfaDeviceType.VMFA
       }
     });
   }, [accountId, stateRadioChecked, updateData]);
 
-  const handleU2FRadioCheck = useCallback((): void => {
-    if (stateRadioChecked === EStep.U2F_BIND || !stateU2FSupported) {
+  const handleU2fRadioCheck = useCallback((): void => {
+    if (stateRadioChecked === EStep.U2F_BIND || !stateU2fSupported) {
       return;
     }
 
@@ -116,10 +118,10 @@ export default function MfaChoose(): JSX.Element {
         AccountId: accountId,
         TicketType: ticketType,
         U2FVersion: 'WebAuthn',
-        DeviceType: ESubMFADeviceType.U2F
+        DeviceType: ESubMfaDeviceType.U2F
       }
     });
-  }, [accountId, stateRadioChecked, stateU2FSupported, updateData]);
+  }, [accountId, stateRadioChecked, stateU2fSupported, updateData]);
 
   useEffect(() => {
     const supportWebAuhtn = browserSupportsWebauthn();
@@ -128,27 +130,27 @@ export default function MfaChoose(): JSX.Element {
       return;
     }
 
-    setStateU2FSupported(supportWebAuhtn);
+    setStateU2fSupported(supportWebAuhtn);
 
     // 由于默认的 MFA 设备类型是 VMFA，因此默认的 getBindMfaInfoPayload 也是 VMFA 类型的
     updateData({
       getBindMfaInfoPayload: {
         AccountId: accountId,
         TicketType: ticketType,
-        DeviceType: ESubMFADeviceType.VMFA
+        DeviceType: ESubMfaDeviceType.VMFA
       }
     });
   }, [accountId, isUnmounted, updateData]);
 
   return <>
     <Message {...{
-      iconType: errorMessage ? EIconType.error : EIconType.warning,
+      iconType: errorMessage ? EIconType.ERROR : EIconType.WARNING,
       message: errorMessage || intl('message:mfa_choose_tip')
     }} />
     <ScItem {...{
       align: 'center',
       justify: 'space-between',
-      onClick: handleVMfaRadioClick
+      onClick: handleVmfaRadioClick
     }}>
       <div>
         <Radio {...{
@@ -165,22 +167,22 @@ export default function MfaChoose(): JSX.Element {
     </ScItem>
     <ScItem {...{
       marginTop: 20,
-      disabled: !stateU2FSupported,
+      disabled: !stateU2fSupported,
       align: 'center',
       justify: 'space-between',
-      onClick: handleU2FRadioCheck
+      onClick: handleU2fRadioCheck
     }}>
       <div>
-        {!stateU2FSupported ? <Message {...{
+        {!stateU2fSupported ? <Message {...{
           noBackground: true,
           isSmallICon: true,
-          iconType: EIconType.error,
+          iconType: EIconType.ERROR,
           message: intl('message:u2f_browser_not_support')
         }} /> : null}
         <Flex>
           <Radio {...{
             checked: stateRadioChecked === EStep.U2F_BIND,
-            disabled: !stateU2FSupported,
+            disabled: !stateU2fSupported,
             label: intl('attr:mfa_choose_u2f')
           }} />
         </Flex>

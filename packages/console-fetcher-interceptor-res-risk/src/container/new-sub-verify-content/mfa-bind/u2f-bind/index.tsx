@@ -19,8 +19,8 @@ import {
 } from '../../../../types';
 import {
   EStep,
-  ESubMFADeviceType
-} from '../../../../const';
+  ESubMfaDeviceType
+} from '../../../../enum';
 import intl from '../../../../intl';
 import {
   slsU2FError
@@ -74,12 +74,12 @@ export default function U2FBind(): JSX.Element {
     };
   }, [u2fTimeout]);
 
-  const fetchU2FBindData = useCallback(async () => {
+  const fetchU2fBindData = useCallback(async () => {
     if (isUnmounted()) {
       return;
     }
     
-    if (!getBindMfaInfoData || getBindMfaInfoData?.DeviceType === ESubMFADeviceType.VMFA) {
+    if (!getBindMfaInfoData || getBindMfaInfoData?.DeviceType === ESubMfaDeviceType.VMFA) {
       slsU2FError({
         accountId,
         status: EStep.U2F_BIND,
@@ -121,7 +121,7 @@ export default function U2FBind(): JSX.Element {
         bindMfaPayload: {
           AccountId: accountId,
           TicketType: ticketType,
-          DeviceType: ESubMFADeviceType.U2F,
+          DeviceType: ESubMfaDeviceType.U2F,
           U2FVersion: 'WebAuthn',
           AttestationObject: credential.response.attestationObject,
           ClientDataJSON: credential.response.clientDataJSON,
@@ -160,12 +160,12 @@ export default function U2FBind(): JSX.Element {
     setStateGetU2fBindKey(true);
     
     // 重新获取 U2F 安全密钥
-    fetchU2FBindData();
-  }, [updateData, fetchU2FBindData]);
+    fetchU2fBindData();
+  }, [updateData, fetchU2fBindData]);
 
   useEffect(() => {
-    fetchU2FBindData();
-  }, [updateData, fetchU2FBindData]);
+    fetchU2fBindData();
+  }, [updateData, fetchU2fBindData]);
 
   return <U2fUi {...{
     u2fSupported: stateU2FSupported,

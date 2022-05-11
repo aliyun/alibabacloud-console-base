@@ -13,8 +13,10 @@ import {
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
-  SvgUrls,
   EIconType
+} from '../../../../enum';
+import {
+  SvgUrls
 } from '../../../../const';
 import intl from '../../../../intl';
 import U2FMessage from '../message';
@@ -32,21 +34,21 @@ const ScFlex = styled(Flex)`
   margin-top: 12px;
 `;
 
-const ScU2FWrapper = styled.div`
-  padding: 16px;
+const ScU2fWrapper = styled.div`
   position: relative;
+  padding: 16px;
   overflow: hidden;
   ${mixinBorderSecondary}
   ${mixinBgSecondary}
 `;
 
-const ScU2FTitle = styled.div`
-  font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
+const ScU2fTitle = styled.div`
   margin-bottom: 16px;
+  font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
   ${mixinTextPrimary}
 `;
 
-const ScU2FDesc = styled.div`
+const ScU2fDesc = styled.div`
   margin-left: 12px;
   ${mixinTextSecondary}
 `;
@@ -55,8 +57,8 @@ const ScU2FDesc = styled.div`
 const ScSvgImgWrapper = styled.div`
   position: relative;
   width: 100px;
-  height: 0;
   padding-top: 100px;
+  height: 0;
 `;
 
 const SvgImg = styled.img`
@@ -65,10 +67,10 @@ const SvgImg = styled.img`
   left: 0;
 `;
 
-const ScU2FIcon = styled.img`
+const ScU2fIcon = styled.img`
   position: absolute;
-  bottom: -16px;
   right: -16px;
+  bottom: -16px;
 `;
 
 export default function U2fUi({
@@ -82,13 +84,13 @@ export default function U2fUi({
   const getU2fMessage = useMemo((): JSX.Element => {
     if (getU2fKey) {
       return <U2FMessage {...{
-        iconType: EIconType.notice,
+        iconType: EIconType.NOTICE,
         message: intl('message:u2f_bind_get_key')
       }} />;
     }
 
     return <U2FMessage {...{
-      iconType: EIconType.success,
+      iconType: EIconType.SUCCESS,
       message: intl('message:u2f_bind_get_key_success')
     }} />;
   }, [getU2fKey]);
@@ -96,7 +98,7 @@ export default function U2fUi({
   const topMessage = useMemo((): JSX.Element | null => {
     if (!u2fSupported || errorMessage) {
       return <U2FMessage {...{
-        iconType: EIconType.error,
+        iconType: EIconType.ERROR,
         message: errorMessage,
         showU2FRetryButton,
         onRetryClick
@@ -108,10 +110,10 @@ export default function U2fUi({
 
   return <>
     {topMessage}
-    <ScU2FWrapper>
-      <ScU2FTitle>
+    <ScU2fWrapper>
+      <ScU2fTitle>
         {title}
-      </ScU2FTitle>
+      </ScU2fTitle>
       <Flex align="center">
         <ScSvgImgWrapper>
           <SvgImg {...{
@@ -120,7 +122,7 @@ export default function U2fUi({
             alt: ''
           }} />
         </ScSvgImgWrapper>
-        <ScU2FDesc>{intl('attr:u2f_insert')}</ScU2FDesc>
+        <ScU2fDesc>{intl('attr:u2f_insert')}</ScU2fDesc>
       </Flex>
       <ScFlex align="center">
         <ScSvgImgWrapper>
@@ -130,13 +132,13 @@ export default function U2fUi({
             alt: ''
           }} />
         </ScSvgImgWrapper>
-        <ScU2FDesc>{intl('attr:u2f_click')}</ScU2FDesc>
+        <ScU2fDesc>{intl('attr:u2f_click')}</ScU2fDesc>
       </ScFlex>
-      <ScU2FIcon {...{
+      <ScU2fIcon {...{
         src: SvgUrls.U2F_ICON,
         width: 120,
         alt: ''
       }} />
-    </ScU2FWrapper>
+    </ScU2fWrapper>
   </>;
 }

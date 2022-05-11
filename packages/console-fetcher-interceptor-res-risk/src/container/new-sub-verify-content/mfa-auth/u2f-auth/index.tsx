@@ -20,8 +20,10 @@ import {
 } from '../../../../types';
 import {
   EStep,
-  ESubMFADeviceType,
-  EPayloadVerifyType,
+  ESubMfaDeviceType,
+  EPayloadVerifyType
+} from '../../../../enum';
+import {
   WEBAUTHN_KEY_TYPE
 } from '../../../../const';
 import intl from '../../../../intl';
@@ -81,8 +83,8 @@ export default function U2FAuth(): JSX.Element {
     };
   }, [u2fTimeout]);
 
-  const fetchU2FAuthData = useCallback(async () => {
-    if (!getAuthMfaInfoData || getAuthMfaInfoData?.DeviceType === ESubMFADeviceType.VMFA) {
+  const fetchU2fAuthData = useCallback(async () => {
+    if (!getAuthMfaInfoData || getAuthMfaInfoData?.DeviceType === ESubMfaDeviceType.VMFA) {
       updateData({
         errorMessage: intl('message:get_u2f_key_params_error'),
         showU2FRetryButton: false
@@ -166,8 +168,8 @@ export default function U2FAuth(): JSX.Element {
     setStateGetU2fAuthKeyLoading(true);
     
     // 重新获取 U2F 安全密钥
-    fetchU2FAuthData();
-  }, [updateData, fetchU2FAuthData]);
+    fetchU2fAuthData();
+  }, [updateData, fetchU2fAuthData]);
 
   useEffect(() => {
     updateData({
@@ -176,9 +178,9 @@ export default function U2FAuth(): JSX.Element {
 
     // 如果用户是在绑定 U2F 后，请求被风控的接口出错，从而跳到了 U2F 验证的场景，那么顶部会有错误信息以及重试按钮，需要点击重试按钮后才会去获取 U2F 验证密钥。
     if (!fromBindU2FtoAuthU2F) {
-      fetchU2FAuthData();
+      fetchU2fAuthData();
     }
-  }, [fromBindU2FtoAuthU2F, updateData, fetchU2FAuthData]);
+  }, [fromBindU2FtoAuthU2F, updateData, fetchU2fAuthData]);
 
   return <U2fUi {...{
     u2fSupported: stateU2FSupported,

@@ -26,7 +26,7 @@ import Button, {
 
 import {
   EIconType
-} from '../../../../const';
+} from '../../../../enum';
 import intl from '../../../../intl';
 
 interface IIconProps {
@@ -47,13 +47,13 @@ interface IProps extends IErrorDivProps {
 }
 
 const CssDivCommon = css`
-  padding: 8px 12px;
   margin-bottom: 16px;
+  padding: 8px 12px;
 `;
 
 const CssDivTip = css`
-  margin-left: 4px;
   margin-bottom: 8px;
+  margin-left: 4px;
 `;
 
 const ScMessageDiv = styled.div`
@@ -61,9 +61,9 @@ const ScMessageDiv = styled.div`
 `;
 
 const ScNotice = styled(Flex)`
-   ${CssDivCommon}
-   ${mixinBgInfoTint}
-   ${mixinTextInfo}
+  ${CssDivCommon}
+  ${mixinBgInfoTint}
+  ${mixinTextInfo}
 `;
 
 const ScError = styled(Flex)<IErrorDivProps>`
@@ -101,11 +101,11 @@ const ScIcon = styled(Icon)<IIconProps>`
   margin-right: 8px;
   ${props => {
     switch (props.iconType) {
-      case EIconType.error:
+      case EIconType.ERROR:
         return mixinTextError;
-      case EIconType.success:
+      case EIconType.SUCCESS:
         return mixinTextSuccess;
-      case EIconType.warning:
+      case EIconType.WARNING:
         return mixinTextWarning;
       default:
         return mixinTextInfo;
@@ -130,10 +130,10 @@ export default function Message({
   onRetryClick
 }: IProps): JSX.Element {
   switch (iconType) {
-    case EIconType.error:
+    case EIconType.ERROR:
       return <ScError noBackground={noBackground} align="center" justify="space-between">
         <ScMessageDiv>
-          <ScIcon type={EIconType.error} iconType={EIconType.error} isSmallICon={isSmallICon} />
+          <ScIcon type={EIconType.ERROR} iconType={EIconType.ERROR} isSmallICon={isSmallICon} />
           {message}
         </ScMessageDiv>
         {/* 绑定/验证 U2F 场景，当 U2F 安全密钥获取失败时，有重试的按钮 */}
@@ -144,19 +144,19 @@ export default function Message({
           onClick: onRetryClick
         }} /> : null}
       </ScError>;
-    case EIconType.notice:
+    case EIconType.NOTICE:
       return <ScNotice align="center">
-        <ScIcon type={EIconType.notice} iconType={EIconType.notice} />
+        <ScIcon type={EIconType.NOTICE} iconType={EIconType.NOTICE} />
         {message}
       </ScNotice>;
-    case EIconType.success:
+    case EIconType.SUCCESS:
       return <ScSuccess align="center">
-        <ScIcon type={EIconType.success} iconType={EIconType.success} />
+        <ScIcon type={EIconType.SUCCESS} iconType={EIconType.SUCCESS} />
         {message}
       </ScSuccess>;
     default:
       return <ScWarning align="center">
-        <ScIcon type={EIconType.warning} iconType={EIconType.warning} />
+        <ScIcon type={EIconType.WARNING} iconType={EIconType.WARNING} />
         {message}
       </ScWarning>;
   }

@@ -2,7 +2,7 @@ import sls from '@alicloud/console-base-log-sls';
 
 import {
   ESlsTopic
-} from '../../const';
+} from '../../enum';
 import {
   IMainAccountRiskInfo
 } from '../../types';

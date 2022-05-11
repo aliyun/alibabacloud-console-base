@@ -19,10 +19,12 @@ import {
   INewSubAccountRisk
 } from '../../../../types';
 import {
-  SvgUrls,
   EIconType,
-  REG_MFA_CODE,
   EPayloadVerifyType
+} from '../../../../enum';
+import {
+  SvgUrls,
+  REG_MFA_CODE
 } from '../../../../const';
 import intl from '../../../../intl';
 import Form from '../../../../rc/form';
@@ -110,7 +112,7 @@ export default function VMfaAuth(): JSX.Element {
 
   return <>
     {errorMessage ? <Message {...{
-      iconType: EIconType.error,
+      iconType: EIconType.ERROR,
       message: errorMessage
     }} /> : null}
     <ScFormWrapper>

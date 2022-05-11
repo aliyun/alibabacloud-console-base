@@ -13,7 +13,7 @@ import {
 
 import {
   EIconType
-} from '../../../../const';
+} from '../../../../enum';
 import {
   INewSubAccountRisk
 } from '../../../../types';
@@ -55,7 +55,7 @@ export default function VMfaBind(): JSX.Element {
 
   return <>
     {errorMessage ? <Message {...{
-      iconType: EIconType.error,
+      iconType: EIconType.ERROR,
       message: errorMessage
     }} /> : null}
     <ScWrapper>

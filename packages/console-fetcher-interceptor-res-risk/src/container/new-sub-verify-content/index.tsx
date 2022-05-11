@@ -9,7 +9,7 @@ import {
 } from '../../types';
 import {
   EStep
-} from '../../const';
+} from '../../enum';
 
 import {
   U2FAuth,

@@ -20,7 +20,7 @@ import {
 } from '../../types';
 import {
   EVerifyType
-} from '../../const';
+} from '../../enum';
 import intl from '../../intl';
 import Form from '../../rc/form';
 import {

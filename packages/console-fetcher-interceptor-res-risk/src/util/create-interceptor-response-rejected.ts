@@ -13,7 +13,9 @@ import {
 } from '../types';
 import {
   ERisk,
-  EVerifyType,
+  EVerifyType
+} from '../enum';
+import {
   DEFAULT_RISK_CONFIG
 } from '../const';
 import intl from '../intl';

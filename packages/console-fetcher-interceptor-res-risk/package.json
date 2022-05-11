@@ -58,7 +58,7 @@
     "@alicloud/fetcher": "^1.4.1",
     "@alicloud/react-hook-is-unmounted": "^1.1.55",
     "@simplewebauthn/browser": "^4.1.0",
-    "qrcode.react": "^1.0.1",
+    "qrcode.react": "^3.0.1",
     "lodash": "^4.17.21"
   },
   "scripts": {

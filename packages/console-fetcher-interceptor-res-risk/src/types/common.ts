@@ -5,9 +5,9 @@ import {
 
 import {
   EStep,
-  EVerifyType,
-  ERisk
-} from '../const';
+  ERisk,
+  EVerifyType
+} from '../enum';
 
 import {
   TGetBindMfaInfoPayload,

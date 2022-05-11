@@ -14,7 +14,7 @@ import {
 
 import {
   ESlsResultType
-} from '../../../const';
+} from '../../../enum';
 import {
   IFetcherInterceptorConfig,
   IOldMainRiskInfo,

@@ -13,7 +13,7 @@ import {
 } from '../types';
 import {
   ERisk
-} from '../const';
+} from '../enum';
 
 import convertVerifyType from './convert-verify-type';
 

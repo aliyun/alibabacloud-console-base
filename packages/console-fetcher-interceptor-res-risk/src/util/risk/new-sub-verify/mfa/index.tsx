@@ -12,7 +12,9 @@ import {
 import {
   EStep,
   ESlsResultType,
-  ESubMFADeviceType,
+  ESubMfaDeviceType
+} from '../../../../enum';
+import {
   WEBAUTHN_KEY_TYPE
 } from '../../../../const';
 import intl from '../../../../intl';
@@ -84,7 +86,7 @@ export default async function riskNewSubVerifyMfa({
 
       initialGetAuthMfaInfoData = authMfaInfo;
 
-      if (authMfaInfo.DeviceType === ESubMFADeviceType.U2F) {
+      if (authMfaInfo.DeviceType === ESubMfaDeviceType.U2F) {
         initialStep = EStep.U2F_AUTH;
       } else {
         initialStep = EStep.VMFA_AUTH;
@@ -156,7 +158,7 @@ export default async function riskNewSubVerifyMfa({
           updateData({
             step: EStep.VMFA_BIND,
             getBindMfaInfoData: {
-              DeviceType: ESubMFADeviceType.VMFA,
+              DeviceType: ESubMfaDeviceType.VMFA,
               QRCodeUri: getBindMfaInfoResponse.QRCodeUri,
               TargetMfaDeviceSecret: getBindMfaInfoResponse.TargetMfaDeviceSecret || '',
               TargetUserPrincipalName: getBindMfaInfoResponse.TargetUserPrincipalName
@@ -166,7 +168,7 @@ export default async function riskNewSubVerifyMfa({
           updateData({
             step: EStep.U2F_BIND,
             getBindMfaInfoData: {
-              DeviceType: ESubMFADeviceType.U2F,
+              DeviceType: ESubMfaDeviceType.U2F,
               RpId: getBindMfaInfoResponse.RpId || '',
               PubKeyCreType: getBindMfaInfoResponse.PubKeyCreType || WEBAUTHN_KEY_TYPE,
               PubKeyCreAlg: getBindMfaInfoResponse.PubKeyCreAlg || '-7',
