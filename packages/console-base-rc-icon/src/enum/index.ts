@@ -44,6 +44,10 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'toolkit-edu' = 'e66d', // 实验室
   'toolkit-version-new' = 'e62e', // 尝试新版
   'toolkit-version-old' = 'e72f', // 返回旧版
+  // 收藏、评分
+  'star-hollow' = 'e609',
+  'star-half' = 'e726',
+  'star' = 'e611',
   // 常用
   'home' = 'e88b', // 首页
   'plus' = 'e659', // +
@@ -81,8 +85,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'notice' = 'e887', // 通知（铃铛）
   'pin' = 'e79e', // 固定
   'region' = 'e65b', // 地域
-  'star-hollow' = 'e609', // 空心的星
-  'star' = 'e611', // 星（收藏）
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
   'resource-group' = 'e634' // 资源组
