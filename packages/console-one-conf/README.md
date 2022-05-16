@@ -30,7 +30,7 @@ import CONF, {
 } from '@alicloud/console-one-conf';
 
 enum EFeature {
-  ...
+  XX = 'xx'
 }
 
 const DEFAULT_LINK = { // 不要指定类型，也可以另外定义到某个文件中，它对使用 confLink 时的 key 校验很有用
@@ -99,26 +99,7 @@ import windXIntl from '@ali/wind-x-intl';
 
 import messages from './messages';
 
-const {
-  intl,
-  intlNumber,
-  intlCurrency,
-  intlPercentage,
-  intlDate,
-  intlConst,
-  intlChoices
-} = windXIntl(messages, CONF.LOCALE, {
+export default windXIntl(messages, CONF.LOCALE, {
   extraValues: LINK
 });
-
-export default intl;
-
-export {
-  intlNumber,
-  intlCurrency,
-  intlPercentage,
-  intlDate,
-  intlConst,
-  intlChoices
-};
 ```

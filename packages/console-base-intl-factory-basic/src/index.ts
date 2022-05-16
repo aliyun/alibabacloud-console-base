@@ -4,5 +4,5 @@ export type {
   TIntlMessagesMap as IntlMessagesMap,
   IIntlFactoryOptions as IntlFactoryOptions,
   IFnIntl as FnIntl,
-  TFnIntlDate as FnIntlDate
+  IFnIntlDate as FnIntlDate
 } from './types';
