@@ -252,7 +252,6 @@ export default styled.article`
     th,
     td {
       padding: 8px 12px;
-      border-top-width: 0;
       font-size: 0.95em;
       text-align: left;
       color: inherit;
