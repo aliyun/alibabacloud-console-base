@@ -1,5 +1,5 @@
 export { default } from './rc/key-value';
 
 export type {
-  IProps as KeyValueProps
+  IPropsKeyValue as KeyValueProps
 } from './types';

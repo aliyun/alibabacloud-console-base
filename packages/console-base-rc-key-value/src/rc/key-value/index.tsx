@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import {
   mixinTextPrimary,
@@ -9,25 +11,41 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  IItem,
-  IProps
+  IItemResolved,
+  IPropsKeyValue
 } from '../../types';
-import convertItems from '../../util/convert-items';
+import {
+  convertItems
+} from '../../util';
 
-interface IPropsScItemV {
+interface IPropsScKeyValue {
+  horizontal?: boolean;
+}
+
+interface IPropsScKeyValueItemV {
   wrapValue?: boolean;
 }
 
-const ScItem = styled.div`
-  display: flex;
-  margin: 4px 0;
-  ${mixinTextPrimary}
+const ScKeyValue = styled.div<IPropsScKeyValue>`
+  ${props => (props.horizontal ? css`
+    display: flex;
+    align-items: center;
+  ` : null)};
 `;
-const ScItemK = styled.div`
-  margin-right: 1em;
+const ScKeyValueItem = styled.div<IPropsScKeyValue>`
+  display: flex;
+  margin: 4px ${props => (props.horizontal ? 16 : 0)}px 4px 0;
+  ${mixinTextPrimary}
+  
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+const ScKeyValueItemK = styled.div`
+  margin-right: 8px;
   ${mixinTextTertiary}
 `;
-const ScItemV = styled.div<IPropsScItemV>`
+const ScKeyValueItemV = styled.div<IPropsScKeyValueItemV>`
   flex: 1;
   ${props => (props.wrapValue ? mixinTypoLineWrap : mixinTypoEllipsis)}
 `;
@@ -37,26 +55,28 @@ const ScItemV = styled.div<IPropsScItemV>`
  */
 export default function KeyValue({
   o,
+  horizontal,
   ignoreEmpty,
   wrapValue,
   ...props
-}: IProps): JSX.Element | null {
-  const arr: IItem[] = convertItems(o, ignoreEmpty);
+}: IPropsKeyValue): JSX.Element | null {
+  const items: IItemResolved[] = convertItems(o, ignoreEmpty);
   
-  if (!arr.length) {
+  if (!items.length) {
     return null;
   }
   
-  return <div {...props}>
-    {arr.map(({
+  return <ScKeyValue horizontal={horizontal} {...props}>
+    {items.map(({
       key,
       k,
       v
-    }, i) => <ScItem {...{
-      key: key || i
+    }, i) => <ScKeyValueItem {...{
+      key: key || i,
+      horizontal
     }}>
-      <ScItemK>{k}</ScItemK>
-      <ScItemV wrapValue={wrapValue}>{v}</ScItemV>
-    </ScItem>)}
-  </div>;
+      <ScKeyValueItemK>{k}</ScKeyValueItemK>
+      <ScKeyValueItemV wrapValue={wrapValue}>{v}</ScKeyValueItemV>
+    </ScKeyValueItem>)}
+  </ScKeyValue>;
 }

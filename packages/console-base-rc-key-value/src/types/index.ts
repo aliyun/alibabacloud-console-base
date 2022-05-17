@@ -3,20 +3,21 @@ import {
   ReactNode
 } from 'react';
 
-export interface IItem {
+export interface IItemResolved {
   key?: string;
   k: string | JSX.Element;
   v: ReactNode;
-  col?: 1 | 2 | 3;
-  vertical?: boolean;
 }
 
 export type TItems = {
   [k: string]: ReactNode;
-} | (IItem | null)[];
+} | (IItemResolved | null)[];
 
-export interface IProps extends HTMLAttributes<HTMLDivElement> {
+export interface IPropsKeyValue extends HTMLAttributes<HTMLDivElement> {
   o: TItems;
-  ignoreEmpty?: boolean; // 是否展示的时候去掉空的 value 项
-  wrapValue?: boolean; // 是否允许内容折行
+  horizontal?: boolean;
+  // 是否展示的时候去掉空的 value 项
+  ignoreEmpty?: boolean;
+  // 是否允许内容折行
+  wrapValue?: boolean;
 }
