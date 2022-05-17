@@ -68,6 +68,8 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'thumb-up' = 'e601', // 大拇指朝上
   'thumb-down' = 'e88d', // 大拇指朝下
   // 其他
+  'uv' = 'e6bf',
+  'time' = 'e729',
   'apps' = 'e60e', // 应用（负数）
   'app' = 'e603', // 应用（单个）
   'app-mobile' = 'e61b', // 手机应用（下载）

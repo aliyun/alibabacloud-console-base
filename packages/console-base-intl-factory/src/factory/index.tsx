@@ -60,6 +60,7 @@ export default function factory<O>(messagesMap: IntlMessagesMap<O>, {
     }} /> as unknown as T;
   };
   
+  intlMessage.intlNumber = intlBasic.intlNumber;
   intlMessage.intlDate = intlBasic.intlDate;
   
   return intlMessage;

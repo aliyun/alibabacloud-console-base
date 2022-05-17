@@ -1,5 +1,6 @@
 import {
   IntlFactoryOptions as IntlFactoryOptionsBasic,
+  FnIntlNumber,
   FnIntlDate
 } from '@alicloud/console-base-intl-factory-basic';
 
@@ -16,5 +17,6 @@ export interface IIntlFactoryOptions extends IntlFactoryOptionsBasic {
 
 export interface IFnIntl<O> {
   <V = void, T = string>(id: keyof O, values?: V, instructionsExtra?: IIntlInstructions): T;
+  intlNumber: FnIntlNumber;
   intlDate: FnIntlDate;
 }
