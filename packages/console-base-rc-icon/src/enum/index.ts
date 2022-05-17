@@ -46,7 +46,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'toolkit-version-old' = 'e72f', // 返回旧版
   // 收藏、评分
   'star-hollow' = 'e609',
-  'star-half' = 'e726',
   'star' = 'e611',
   // 常用
   'home' = 'e88b', // 首页
