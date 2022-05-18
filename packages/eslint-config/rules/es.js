@@ -1,6 +1,6 @@
 // es5/6 通用
 module.exports = {
-  /*
+  /**
    * 80 - 100 太小了
    */
   'max-len': ['warn', 200, 2, {
@@ -17,9 +17,29 @@ module.exports = {
    * 但这会导致不一致，且容易在增加代码的时候出错，所以全加
    */
   curly: ['error', 'all'],
-  /*
-   * 这条规则其实可以提高代码的可理解度，但 eslint-config-ali 把它关了
+  /**
+   * https://eslint.org/docs/rules/object-curly-newline
+   * 
+   * eslint-config-ali 设成了 off
+   */
+  'object-curly-newline': ['error', {
+    ObjectExpression: {
+      multiline: true,
+      minProperties: 1
+    },
+    ObjectPattern: {
+      multiline: true,
+      minProperties: 1
+    },
+    ImportDeclaration: 'always',
+    ExportDeclaration: {
+      consistent: true
+    }
+  }],
+  /**
    * https://eslint.org/docs/rules/no-else-return
+   * 
+   * 这条规则其实可以提高代码的可理解度，但 eslint-config-ali 把它关了
    */
   'no-else-return': ['warn', {
     allowElseIf: false
@@ -28,7 +48,7 @@ module.exports = {
    * 不认为现代的编译器还需要这个
    */
   'eol-last': 'off',
-  /*
+  /**
    * 不论 es5 还是 es6 都不要加额外的逗号，额外的逗号会产生代码风格上的歧义，比如一个对象在写成一行的时候可能如下：
    * 
    * ```
@@ -64,7 +84,7 @@ module.exports = {
     skipBlankLines: true,
     ignoreComments: true
   }],
-  /*
+  /**
    * anonymous: always -> never
    * 
    * https://eslint.org/docs/rules/space-before-function-paren
@@ -117,6 +137,12 @@ module.exports = {
     prev: '*',
     next: ['case', 'default']
   }],
+  /**
+   * https://eslint.org/docs/rules/padded-blocks
+   * 
+   * eslint-config-ali 的 level 是 warn
+   */
+  'padded-blocks': ['error', 'never'],
   /**
    * https://eslint.org/docs/rules/no-multiple-empty-lines
    */
