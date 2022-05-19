@@ -23,7 +23,7 @@ export default function DemoDefault(): JSX.Element {
     <div>
       <InputNumber {...{
         min: 0,
-        max: 3,
+        max: 5,
         value: stateValue,
         onChange: setStateValue
       }} />
@@ -44,6 +44,6 @@ export default function DemoDefault(): JSX.Element {
       readOnly: stateReadOnly,
       value: stateValue
       // onChange: setStateValue // TODO 未实现
-    }} />
+    }} /> should be middle aligned
   </>;
 }
