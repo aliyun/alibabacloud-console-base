@@ -1,7 +1,8 @@
 import React from 'react';
 
-import MarkdownNoStyle, {
-  MarkdownProps
+import {
+  MarkdownProps,
+  compileIntoHtml
 } from '@alicloud/rc-markdown';
 import {
   ArticleBase
@@ -10,8 +11,16 @@ import {
 /**
  * 带通用默认的样式的 Markdown
  */
-export default function Markdown(props: MarkdownProps): JSX.Element {
-  return <ArticleBase>
-    <MarkdownNoStyle {...props} />
-  </ArticleBase>;
+export default function Markdown({
+  source,
+  ...options
+}: MarkdownProps): JSX.Element | null {
+  if (!source) {
+    return null;
+  }
+  
+  // eslint-disable-next-line react/no-danger
+  return <ArticleBase dangerouslySetInnerHTML={{
+    __html: compileIntoHtml(source, options)
+  }} />;
 }
