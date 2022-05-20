@@ -4,8 +4,10 @@ import {
   TFnOnBeforeSend,
   IFnFactory
 } from '../types';
-import mergeDefaultParams from '../util/merge-default-params';
-import mergeOnBeforeSend from '../util/merge-on-before-send';
+import {
+  mergeDefaultParams,
+  mergeOnBeforeSend
+} from '../util';
 
 import createLogger from './create-logger';
 

@@ -45,10 +45,30 @@ module.exports = {
     allowElseIf: false
   }],
   /**
+   * https://eslint.org/docs/rules/no-console
+   * 
+   * 由 eslint-config-ali 的 warn 提升至 error
+   */
+  'no-console': 'error',
+  /**
+   * eslint-config-ali 把 props 设成了 true，然后加了 ignorePropertyModificationsFor 配置（在我看来 ignorePropertyModificationsFor 只能应用层级来配）
+   */
+  'no-param-reassign': ['warn', {
+    props: false
+  }],
+  'no-trailing-spaces': ['error', {
+    skipBlankLines: true,
+    ignoreComments: true
+  }],
+  /**
+   * https://eslint.org/docs/rules/eol-last
+   * 
    * 不认为现代的编译器还需要这个
    */
   'eol-last': 'off',
   /**
+   * https://eslint.org/docs/rules/comma-dangle
+   * 
    * 不论 es5 还是 es6 都不要加额外的逗号，额外的逗号会产生代码风格上的歧义，比如一个对象在写成一行的时候可能如下：
    * 
    * ```
@@ -70,19 +90,12 @@ module.exports = {
     'error',
     'never'
   ],
+  /**
+   * https://eslint.org/docs/rules/comma-spaing
+   */
   'comma-spacing': ['error', {
     before: false,
     after: true
-  }],
-  /**
-   * eslint-config-ali 把 props 设成了 true，然后加了 ignorePropertyModificationsFor 配置（在我看来 ignorePropertyModificationsFor 只能应用层级来陪）
-   */
-  'no-param-reassign': ['warn', {
-    props: false
-  }],
-  'no-trailing-spaces': ['error', {
-    skipBlankLines: true,
-    ignoreComments: true
   }],
   /**
    * anonymous: always -> never

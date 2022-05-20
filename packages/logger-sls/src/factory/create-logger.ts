@@ -6,8 +6,10 @@ import {
   IFnLog,
   IFnLogQuick
 } from '../types';
-import getSystemParams from '../util/get-system-params';
-import logPipe from '../util/log-pipe';
+import {
+  getSystemParams,
+  logPipe
+} from '../util';
 
 function getOnceKey(topic: string, once?: true | string): string | undefined {
   if (!once) {

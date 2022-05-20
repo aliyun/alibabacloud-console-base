@@ -43,7 +43,7 @@ const directiveOptions: MarkdownExtensionDirectiveHtmlOptions = {
     this.tag('</abbr>');
   },
   '*': function any(d: MarkdownDirective) {
-    console.info(d); // for inspection purpose only..
+    console.info(d); // eslint-disable-line no-console
     
     return false;
   }
@@ -78,36 +78,36 @@ export default function Demo({
   return <>
     <H1>调戏 <span role="img" aria-label="tx">🙈</span></H1>
     <div>
-      展示 HTML 源码:
       <InputSwitch {...{
+        label: '展示 HTML 源码',
         value: stateHtmlSource,
         onChange: setStateHtmlSource
       }} />
     </div>
     <div>
-      加样式:
       <InputSwitch {...{
+        label: '加样式（this component comes with NO style at all... it is for demo only）',
         value: stateApplyStyle,
         onChange: setStateApplyStyle
-      }} /> (this component comes with NO style at all... it is for demo only)
+      }} />
     </div>
     <div>
-      props.allowDangerousHtml:
       <InputSwitch {...{
+        label: 'props.allowDangerousHtml',
         value: stateAllowDangerousHtml,
         onChange: setStateAllowDangerousHtml
       }} />
     </div>
     <div>
-      props.plugins.gfm:
       <InputSwitch {...{
+        label: 'props.plugins.gfm',
         value: stateGfmEnabled,
         onChange: setStateGfmEnabled
       }} />
     </div>
     <div>
-      props.plugins.directive:
       <InputSwitch {...{
+        label: 'props.plugins.directive',
         value: stateDirectiveEnabled,
         onChange: setStateDirectiveEnabled
       }} />

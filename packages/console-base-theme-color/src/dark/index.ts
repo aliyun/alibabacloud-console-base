@@ -1,7 +1,9 @@
 import {
   IColorEssential
 } from '../types';
-import createThemeColor from '../util/create-theme-color';
+import {
+  createThemeColor
+} from '../util';
 
 // const TRANSPARENT = 'transparent';
 // const WHITE = '#fff';
