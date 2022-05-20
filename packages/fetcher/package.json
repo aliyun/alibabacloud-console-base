@@ -29,7 +29,7 @@
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.56",
+    "@alicloud/console-toolkit-preset-component": "^1.2.58",
     "@alicloud/demo-rc-elements": "^1.5.4",
     "@alicloud/fetcher-demo-helpers": "^1.1.80",
     "@types/lodash": "^4.14.182",
