@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   HtmlExtension
 } from 'micromark-util-types';

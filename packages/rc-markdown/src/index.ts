@@ -8,11 +8,25 @@ export {
 } from './util';
 
 export type {
+  CompileContext as MarkdownCompileContext,
+  Extension as MarkdownExtensionSyntax,
+  HtmlExtension as MarkdownExtensionHtml
+} from 'micromark-util-types';
+export type {
+  Options as MarkdownExtensionGfmSyntaxOptions,
+  HtmlOptions as MarkdownExtensionGfmHtmlOptions
+} from 'micromark-extension-gfm';
+export type {
+  HtmlOptions as MarkdownExtensionDirectiveHtmlOptions,
+  Handle as MarkdownExtensionDirectiveHandle
+} from 'micromark-extension-directive';
+export type {
+  Directive as MarkdownDirective
+} from 'micromark-extension-directive/lib/html';
+
+export type {
   IPropsMarkdown as MarkdownProps,
   IMarkdownCompileOptions as MarkdownCompileOptions,
   IMarkdownExtension as MarkdownExtension,
-  IMarkdownPlugins as MarkdownPlugins,
-  MarkdownDirective,
-  MarkdownExtensionDirectiveHandle,
-  MarkdownExtensionDirectiveHtmlOptions
+  IMarkdownPlugins as MarkdownPlugins
 } from './types';
