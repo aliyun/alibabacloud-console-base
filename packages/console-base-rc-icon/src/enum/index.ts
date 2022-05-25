@@ -37,8 +37,8 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   // 工具组
   'toolkit-api' = 'e740', // API Inspector
   'toolkit-contact' = 'e61f', // 联系我们
-  'toolkit-advisory' = 'e656', // 智能在线
-  'toolkit-feedback' = 'e666', // 反馈
+  'toolkit-advisory' = 'e656', // 联系我们 - 智能在线
+  'toolkit-connect' = 'e666', // 联系我们 - 聆听
   'toolkit-qr' = 'e640', // QR
   'toolkit-survey' = 'e606', // 问卷
   'toolkit-edu' = 'e66d', // 实验室
@@ -48,6 +48,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'star-hollow' = 'e609',
   'star' = 'e611',
   // 常用
+  'feedback' = 'e697',
   'home' = 'e88b', // 首页
   'plus' = 'e659', // +
   'minus' = 'e768', // -

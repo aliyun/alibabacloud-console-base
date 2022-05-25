@@ -115,12 +115,3 @@ export enum EToolkitTypeShort {
   TOOL_DEACTIVATED = 'tool:deactivated',
   TOOL_TOOLTIP_CLOSE = 'tool:tooltip_close'
 }
-
-// 预设的工具 ID
-export enum EToolkitIdSystem {
-  GO_TOP = 'tool:sys:go_top', // 回到顶部
-  CONTACT = 'tool:sys:contact', // 联系我们
-  API = 'tool:sys:api', // API Inspector
-  VERSION_NEW = 'tool:sys:version:new', // 尝试新版
-  VERSION_OLD = 'tool:sys:version:old' // 返回旧版
-}

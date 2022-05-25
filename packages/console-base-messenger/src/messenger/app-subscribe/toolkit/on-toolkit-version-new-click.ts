@@ -1,7 +1,3 @@
-import {
-  EToolkitIdSystem
-} from '../../../enum';
-
 import onToolkitItemClick from './on-toolkit-item-click';
 
 /**
@@ -10,5 +6,5 @@ import onToolkitItemClick from './on-toolkit-item-click';
  * 原 @ali/console-base-sdk-toolkit messenger.subscribeClickedVersionNew
  */
 export default function onToolkitVersionNewClick(fn: () => void): () => void {
-  return onToolkitItemClick(EToolkitIdSystem.VERSION_NEW, fn);
+  return onToolkitItemClick('tool:sys:version:new', fn); // TODO 定义得不好，硬掉
 }
