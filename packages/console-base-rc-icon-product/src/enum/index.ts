@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export enum EIconType {
   _ = 'e600', // 兜底阿里云图标【-】
   acms = 'e636', // 应用配置管理
@@ -202,6 +203,7 @@ export enum EIconType {
   sas = 'e749', // 云安全中心（态势感知）
   sca = 'e729', // 智能对话分析
   scdn = 'e628', // 安全加速 SCDN
+  schedulerx = 'e71a', // 分布式调度平台 SchedulerX
   sddp = 'e64c', // 敏感数据保护
   servicemesh = 'e666', // 服务网格
   sgw = 'e61b', // 云存储网关
