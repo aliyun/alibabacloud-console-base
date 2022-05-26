@@ -45,6 +45,7 @@ export enum EIconType {
   cms = 'e8b5',
   codepipeline = 'e78d', // CodePipeline
   companyreg = 'e91f', // 企业工商注册服务
+  computenest = 'e61d', // 计算巢服务
   config = 'e92f', // 配置审计
   cos = 'e702', // 容器服务，viper 上的名字是 cos，但 fecs 返回的结果却是 cs..
   cps = 'e71d', // 移动推送
@@ -98,6 +99,7 @@ export enum EIconType {
   emas = 'e607', // 移动研发平台
   emr = 'e778', // E-MapReduce
   ens = 'e83a', // 边缘节点服务 ENS
+  entconsole = 'e639', // 资源管理
   eprofile = 'e756', // 企业图谱
   ess = 'e609', // 弹性伸缩
   eventbridge = 'e67a', // 消息事件总线
@@ -112,6 +114,7 @@ export enum EIconType {
   gpdb = 'e62a', // 分析型数据库 PostgreSQL版
   gcs = 'e925', // 图计算服务 - Graph Compute Service
   governance = 'e6b2', // 云治理中心
+  grafana = 'ebb0', // Grafana 服务
   gts = 'e637', // 全局事务服务
   gws = 'e87d', // 图形工作站
   hbase = 'e78b', // 云数据库 HBase 版
@@ -170,6 +173,7 @@ export enum EIconType {
   npp = 'e8a3', // Node.js 性能平台
   oas = 'e789', // 归档存储
   oce = 'e739', // 云数据库 OceanBase
+  ocr = 'e8ce', // 文字识别
   odps = 'e75d', // MaxCompute
   ons = 'e632', // 消息队列 RocketMQ
   oos = 'e659', // 运维编排
@@ -184,11 +188,13 @@ export enum EIconType {
   polardb = 'e7b5', // 云数据库 POLARDB
   postgresql = 'e620', // 云数据库 RDS PostgreSQL 版
   portrait = 'e961', // 画像分析
+  privatelink = 'e626', // 私网连接
   prometheus = 'e689', // Prometheus 监控服务
   pts = 'e635', // 性能测试服务
   quickbi = 'e757', // Quick BI
   ram = 'e74a', // 访问控制
-  rdc = 'e699', // 云效
+  rdc = 'e699', // 云效 DevOps
+  yunxiao = 'e699', // 云效
   rds = 'e73a', // 云数据库 RDS 版
   rdsmysql = 'e86e', // 云数据库 RDS MySQL 版
   rdssqlserver = 'e871', // 云数据库 RDS SQL Server 版
@@ -214,7 +220,7 @@ export enum EIconType {
   snsu = 'e887', // 云通信网络加速
   spark = 'e679', // 数据洞察
   sppc = 'e74e', // 合作伙伴产品中心
-  stp = 'e613', // 共享流量包
+  flowbag = 'e613', // 共享流量包
   stream = 'e72c', // 实时计算
   swas = 'e7b4', // 轻量应用服务器
   trademark = 'e8c1', // 商标服务
