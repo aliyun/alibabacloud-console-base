@@ -1,6 +1,5 @@
 /* eslint-disable react/no-array-index-key */
 import React, {
-  ReactChild,
   Ref,
   Children,
   forwardRef
@@ -43,7 +42,7 @@ function List({
   const ListComponent = ordered ? ScOl : ScUl;
   
   return <ListComponent ref={ref} {...props}>
-    {Children.map(children as unknown as ReactChild[], (v: ReactChild, i): JSX.Element | null => <ScLi key={i}>{v}</ScLi>)}
+    {Children.map(children, (v, i): JSX.Element | null => <ScLi key={i}>{v as JSX.Element}</ScLi>)}
   </ListComponent>;
 }
 

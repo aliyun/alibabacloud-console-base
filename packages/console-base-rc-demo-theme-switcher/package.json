@@ -28,7 +28,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.58",
-    "@types/react": "^17.0.43",
+    "@types/react": "^17.0.45",
     "@types/styled-components": "^5.1.25",
     "react": "^17.0.2",
     "styled-components": "^5.3.5",

@@ -52,22 +52,22 @@ export type TPropsCheckboxGroup<T> = IPropsChoiceGroup<T, T[]>;
 
 export type TPropsRadioGroup<T> = IPropsChoiceGroup<T, T>;
 
-export interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> {
+export interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'type' | 'onChange'> {
   block?: boolean;
   onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
 }
 
-export interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
+export interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children' | 'onChange'> {
   onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
 }
 
-export interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'defaultValue' | 'onChange'> {
+export interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'type' | 'value' | 'defaultValue' | 'onChange'> {
   value?: number;
   defaultValue?: number;
   onChange?(value: number | undefined, e: ChangeEvent<HTMLInputElement>): void;
 }
 
-export interface IPropsInputSwitch extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'value' | 'defaultValue' | 'aria-checked' | 'role' | 'onClick' | 'onChange'> {
+export interface IPropsInputSwitch extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'value' | 'defaultValue' | 'aria-checked' | 'role' | 'onClick' | 'onChange'> {
   label?: string | JSX.Element;
   value?: boolean;
   defaultValue?: boolean;
