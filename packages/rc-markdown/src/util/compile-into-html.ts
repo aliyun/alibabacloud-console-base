@@ -26,7 +26,7 @@ export default function compileIntoHtml(source: string, {
   } = {},
   extraExtensions,
   processHtml
-}: IMarkdownCompileOptions): string {
+}: IMarkdownCompileOptions = {}): string {
   const extensions: Extension[] = [];
   const htmlExtensions: HtmlExtension[] = [];
   
