@@ -33,7 +33,7 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-parse-locale": "^1.0.47"
+    "@alicloud/console-base-conf-parse-locale": "^1.1.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

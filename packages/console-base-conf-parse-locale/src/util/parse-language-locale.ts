@@ -4,11 +4,9 @@ import {
   ELanguage,
   ELocale
 } from '../enum';
-import {
-  LOCALE_MAP_BY_LANGUAGE
-} from '../const';
 
 import cookieGetLanguage from './cookie-get-language';
+import fromLangToLocale from './from-lang-to-locale';
 
 /**
  * 不经过配置项修正的 language + locale，默认从 OneConsole 的配置项下拿，非 OneConsole 从 cookie 中取，
@@ -26,7 +24,7 @@ export default function parseLanguageLocale(): [ELanguage, ELocale] {
   }
   
   let lang = cookieGetLanguage() || ELanguage.ZH;
-  let locale = LOCALE_MAP_BY_LANGUAGE[lang];
+  let locale = fromLangToLocale(lang);
   
   if (!locale) {
     lang = ELanguage.ZH;
