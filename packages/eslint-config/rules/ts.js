@@ -14,7 +14,9 @@ module.exports = {
   'no-use-before-define': 'off',
   'no-unused-vars': 'off',
   'no-extra-parens': 'off',
-  // now the @typescript-eslint rules
+  /* ********************************
+   * 编码风格
+   ******************************** */
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
    */
@@ -32,6 +34,37 @@ module.exports = {
     FunctionDeclaration: {
       body: 1,
       parameters: 2
+    }
+  }],
+  /**
+   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md
+   */
+  '@typescript-eslint/comma-dangle': ['error', {
+    arrays: 'never',
+    objects: 'never',
+    imports: 'never',
+    exports: 'never',
+    functions: 'never',
+    // ts only
+    enums: 'never',
+    generics: 'never',
+    tuples: 'never'
+  }],
+  /**
+   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-before-blocks.md
+   */
+  '@typescript-eslint/space-before-blocks': ['error'],
+  /**
+   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/member-delimiter-style.md
+   */
+  '@typescript-eslint/member-delimiter-style': ['error', {
+    multiline: {
+      delimiter: 'semi',
+      requireLast: true
+    },
+    singleline: {
+      delimiter: 'semi',
+      requireLast: true
     }
   }],
   /**
@@ -83,24 +116,9 @@ module.exports = {
       match: false
     }
   }],
-  /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md
-   */
-  '@typescript-eslint/comma-dangle': ['error', {
-    arrays: 'never',
-    objects: 'never',
-    imports: 'never',
-    exports: 'never',
-    functions: 'never',
-    // ts only
-    enums: 'never',
-    generics: 'never',
-    tuples: 'never'
-  }],
-  /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-before-blocks.md
-   */
-  '@typescript-eslint/space-before-blocks': ['error'],
+  /* ********************************
+   * no- 系列
+   ******************************** */
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md
    */
@@ -128,36 +146,11 @@ module.exports = {
     // 和 no-mixed-operators 冲突 → https://eslint.org/docs/rules/no-extra-parens#nestedbinaryexpressions
     nestedBinaryExpressions: false
   }],
-  // typescript-only rules
-  /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
-   */
-  '@typescript-eslint/type-annotation-spacing': ['error'],
-  /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/member-delimiter-style.md
-   */
-  '@typescript-eslint/member-delimiter-style': ['error', {
-    multiline: {
-      delimiter: 'semi',
-      requireLast: true
-    },
-    singleline: {
-      delimiter: 'semi',
-      requireLast: true
-    }
-  }],
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/explicit-member-accessibility.md
    */
   '@typescript-eslint/explicit-member-accessibility': ['error', {
     accessibility: 'no-public'
-  }],
-  /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/explicit-function-return-type.md
-   */
-  '@typescript-eslint/explicit-function-return-type': ['warn', {
-    allowExpressions: true,
-    allowTypedFunctionExpressions: true
   }],
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-empty-interface.md
@@ -168,5 +161,30 @@ module.exports = {
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-non-null-assertion.md
    */
-  '@typescript-eslint/no-non-null-assertion': 'off'
+  '@typescript-eslint/no-non-null-assertion': 'warn',
+  /**
+   * https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
+   */
+  '@typescript-eslint/no-unnecessary-condition': 'error',
+  /* ********************************
+   * prefer- 系列
+   ******************************** */
+  /**
+   * https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-optional-chain.md
+   */
+  '@typescript-eslint/prefer-optional-chain': 'error',
+  /* ********************************
+   * 其他
+   ******************************** */
+  /**
+   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
+   */
+  '@typescript-eslint/type-annotation-spacing': ['error'],
+  /**
+   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/explicit-function-return-type.md
+   */
+  '@typescript-eslint/explicit-function-return-type': ['warn', {
+    allowExpressions: true,
+    allowTypedFunctionExpressions: true
+  }]
 };
