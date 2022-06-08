@@ -42,7 +42,7 @@ export interface IPropsChoiceGroup<T, V = T> {
   onChange?(value: V): void;
 }
 
-export interface IPropsFlex100HBF {
+export interface IPropsFlex100Hbf {
   header?: string | JSX.Element;
   body?: string | JSX.Element;
   footer?: string | JSX.Element;

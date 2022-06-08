@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  IPropsFlex100HBF
+  IPropsFlex100Hbf
 } from '../../types';
 
-const ScFlexHBF = styled.div`
+const ScFlexHbf = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -48,16 +48,16 @@ function DefaultBody(): JSX.Element {
 /**
  * Flex 100% 高度，上中下三部分
  */
-export default function Flex100HBF({
+export default function Flex100Hbf({
   header,
   body,
   footer
-}: IPropsFlex100HBF): JSX.Element {
-  return <ScFlexHBF>
+}: IPropsFlex100Hbf): JSX.Element {
+  return <ScFlexHbf>
     <ScHeader>{header || 'header'}</ScHeader>
     <ScBody>
       {body || <DefaultBody />}
     </ScBody>
     <ScFooter>{footer || 'footer'}</ScFooter>
-  </ScFlexHBF>;
+  </ScFlexHbf>;
 }

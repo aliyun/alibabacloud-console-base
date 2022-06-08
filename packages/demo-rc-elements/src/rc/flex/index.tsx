@@ -29,7 +29,7 @@ export default function Flex({
 }: IProps): JSX.Element {
   return <ScFlex>
     {Children.map(children, (v, i) => {
-      return v ? <ScFlexItem n={ratio[i]}>{v}</ScFlexItem> : null;
+      return v ? <ScFlexItem n={ratio[i]}>{v as JSX.Element}</ScFlexItem> : null;
     })}
   </ScFlex>;
 }

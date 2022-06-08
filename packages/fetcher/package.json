@@ -36,14 +36,14 @@
     "@types/qs": "^6.9.7",
     "@types/react": "^17.0.43",
     "react": "^17.0.2",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.3"
   },
   "dependencies": {
     "@alicloud/fetcher-fetch": "^1.3.0",
     "@alicloud/fetcher-jsonp": "^1.2.1",
     "@alicloud/json-stringify-ordered": "^1.1.80",
     "lodash": "^4.17.21",
-    "qs": "^6.10.3"
+    "qs": "^6.10.5"
   },
   "scripts": {
     "start": "breezr start-storybook",

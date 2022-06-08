@@ -47,7 +47,7 @@ export type {
   IChoiceItem as ChoiceItem,
   TPropsCheckboxGroup as CheckboxGroupProps,
   TPropsRadioGroup as RadioGroupProps,
-  IPropsFlex100HBF as Flex100HBFProps,
+  IPropsFlex100Hbf as Flex100HBFProps,
   IPropsInputText as InputTextProps,
   IPropsInputTextarea as InputTextareaProps,
   IPropsInputNumber as InputNumberProps,
