@@ -1,24 +1,14 @@
 import UA from '@alicloud/ua';
 
+import {
+  ISystemParams
+} from '../types';
+
 import getCleanLocationSearch from './get-clean-location-search';
 import getResolutionOfScreen from './get-resolution-of-screen';
 import getResolutionOfBrowser from './get-resolution-of-browser';
-
-interface ISystemParams {
-  TIME: number;
-  OS: string;
-  OS_VERSION: string;
-  BROWSER: string;
-  BROWSER_VERSION: string;
-  LOCATION_HOST: string;
-  LOCATION_PATHNAME: string;
-  LOCATION_SEARCH: string; // 去掉 `?`
-  LOCATION_HASH: string; // 去掉 `#`
-  RESOLUTION_SCREEN: string;
-  RESOLUTION_BROWSER: string;
-  REFERRER: string;
-  IN_IFRAME: boolean;
-}
+import getSpmA from './get-spm-a';
+import getSpmB from './get-spm-b';
 
 const IN_IFRAME: boolean = window !== window.top;
 
@@ -38,6 +28,8 @@ export default function getSystemParams(): ISystemParams {
     LOCATION_HASH: window.location.hash.substring(1),
     RESOLUTION_SCREEN: getResolutionOfScreen(),
     RESOLUTION_BROWSER: getResolutionOfBrowser(),
+    SPM_A: getSpmA(),
+    SPM_B: getSpmB(),
     IN_IFRAME,
     REFERRER: typeof document === 'undefined' ? 'SSR' : document.referrer
   };
