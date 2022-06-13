@@ -7,9 +7,16 @@ export interface IIntlFactoryOptions {
   localeDefault?: string;
 }
 
-export type TFnIntlDate = (date: Date | string | number, format?: TDateFormat) => string;
+export interface IFnIntlNumber {
+  (n: number | string, options?: Intl.NumberFormatOptions): string;
+}
+
+export interface IFnIntlDate {
+  (date: Date | string | number, format?: TDateFormat): string;
+}
 
 export interface IFnIntl<O> {
   <V = void>(id: keyof O, values?: V, escapeValues?: boolean): string;
-  intlDate: TFnIntlDate;
+  intlNumber: IFnIntlNumber;
+  intlDate: IFnIntlDate;
 }

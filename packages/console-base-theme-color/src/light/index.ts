@@ -1,3 +1,5 @@
-import createThemeColor from '../util/create-theme-color';
+import {
+  createThemeColor
+} from '../util';
 
 export default createThemeColor();

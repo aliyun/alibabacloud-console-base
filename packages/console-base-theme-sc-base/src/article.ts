@@ -125,19 +125,19 @@ export default styled.article`
   }
   
   h1 {
-    font-size: 2em;
+    font-size: 1.75em;
   }
   
   h2 {
-    font-size: 1.8em;
-  }
-  
-  h3 {
     font-size: 1.5em;
   }
   
-  h4 {
+  h3 {
     font-size: 1.2em;
+  }
+  
+  h4 {
+    font-size: 1em;
   }
   
   hr {
@@ -252,7 +252,6 @@ export default styled.article`
     th,
     td {
       padding: 8px 12px;
-      border-top-width: 0;
       font-size: 0.95em;
       text-align: left;
       color: inherit;

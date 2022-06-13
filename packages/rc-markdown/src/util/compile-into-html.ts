@@ -1,10 +1,12 @@
 import {
   micromark
 } from 'micromark';
+import {
+  Extension,
+  HtmlExtension
+} from 'micromark-util-types';
 
 import {
-  MarkdownExtensionSyntax,
-  MarkdownExtensionHtml,
   IMarkdownExtension,
   IMarkdownCompileOptions
 } from '../types';
@@ -25,8 +27,8 @@ export default function compileIntoHtml(source: string, {
   extraExtensions,
   processHtml
 }: IMarkdownCompileOptions): string {
-  const extensions: MarkdownExtensionSyntax[] = [];
-  const htmlExtensions: MarkdownExtensionHtml[] = [];
+  const extensions: Extension[] = [];
+  const htmlExtensions: HtmlExtension[] = [];
   
   function putExtensions(ex: IMarkdownExtension): void {
     extensions.push(ex.syntax);

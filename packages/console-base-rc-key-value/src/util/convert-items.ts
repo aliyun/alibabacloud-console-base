@@ -5,17 +5,18 @@ import {
 } from 'react';
 
 import {
-  IItem,
+  IItemResolved,
   TItems
 } from '../types';
 
-export default function convertItems(o: TItems, ignoreEmpty?: boolean): IItem[] {
+export default function convertItems(o: TItems, ignoreEmpty?: boolean): IItemResolved[] {
   if (!o) {
     return [];
   }
   
-  const arr: (IItem | null)[] = Array.isArray(o) ? o : _map(o, (v, k) => ({
-    k, v
+  const arr: (IItemResolved | null)[] = Array.isArray(o) ? o : _map(o, (v, k) => ({
+    k,
+    v
   })).map(kv => {
     if (!kv || typeof kv.v === 'function') {
       return null;
@@ -43,5 +44,5 @@ export default function convertItems(o: TItems, ignoreEmpty?: boolean): IItem[] 
     }
     
     return !(_isNil(v.v) && ignoreEmpty);
-  }) as IItem[];
+  }) as IItemResolved[];
 }

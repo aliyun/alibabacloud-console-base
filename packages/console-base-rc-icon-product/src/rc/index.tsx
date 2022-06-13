@@ -18,8 +18,8 @@ interface IPropsScI {
   code: string;
 }
 
-// https://at.alicdn.com/t/font_1323992_ebyk3c83z7c.css
-const fontFamily = injectIconFont('1323992', 'ebyk3c83z7c');
+// https://at.alicdn.com/t/font_1323992_ah283k4eqna.css
+const fontFamily = injectIconFont('1323992', 'ah283k4eqna');
 
 const ScI = styled(IconBase)<IPropsScI>`
   font-family: ${fontFamily} !important;

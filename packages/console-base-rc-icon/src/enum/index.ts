@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export enum EIconType { // 注意这里的 key 用于组件的对外 props，不要随意修改，且保持小写
   // logo
   'logo-aliyun' = 'e605', // [-]
@@ -36,14 +37,18 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   // 工具组
   'toolkit-api' = 'e740', // API Inspector
   'toolkit-contact' = 'e61f', // 联系我们
-  'toolkit-advisory' = 'e656', // 智能在线
-  'toolkit-feedback' = 'e666', // 反馈
+  'toolkit-advisory' = 'e656', // 联系我们 - 智能在线
+  'toolkit-connect' = 'e666', // 联系我们 - 聆听
   'toolkit-qr' = 'e640', // QR
   'toolkit-survey' = 'e606', // 问卷
   'toolkit-edu' = 'e66d', // 实验室
   'toolkit-version-new' = 'e62e', // 尝试新版
   'toolkit-version-old' = 'e72f', // 返回旧版
+  // 收藏、评分
+  'star-hollow' = 'e609',
+  'star' = 'e611',
   // 常用
+  'feedback' = 'e697',
   'home' = 'e88b', // 首页
   'plus' = 'e659', // +
   'minus' = 'e768', // -
@@ -64,8 +69,11 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'thumb-up' = 'e601', // 大拇指朝上
   'thumb-down' = 'e88d', // 大拇指朝下
   // 其他
+  'uv' = 'e6bf',
+  'time' = 'e729',
   'apps' = 'e60e', // 应用（负数）
   'app' = 'e603', // 应用（单个）
+  'app-mobile' = 'e61b', // 手机应用（下载）
   'dingding' = 'e881', // 钉钉
   'drag' = 'e6e1', // 拖拽
   'empty' = 'e655', // 空
@@ -79,8 +87,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'notice' = 'e887', // 通知（铃铛）
   'pin' = 'e79e', // 固定
   'region' = 'e65b', // 地域
-  'star-hollow' = 'e609', // 空心的星
-  'star' = 'e611', // 星（收藏）
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
   'resource-group' = 'e634' // 资源组

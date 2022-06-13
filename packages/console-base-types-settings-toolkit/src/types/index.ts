@@ -22,6 +22,7 @@ export interface ISettingsToolkitItemTooltip {
 
 export interface ISettingsToolkitItem {
   id: string; // 自定义工具的 ID，必需，否则不展示，且交互时也需要它
+  domId?: string; // id 仅用于交互，不会渲染到节点，如果需要渲染到节点，用这个
   label?: string | ISettingsToolkitItemLabel;
   tooltip?: string | ISettingsToolkitItemTooltip;
   mark?: 'new' | 'hot';

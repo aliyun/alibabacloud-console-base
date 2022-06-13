@@ -30,11 +30,11 @@ export default function DemoCacheAndMerger(): JSX.Element {
       cacheLocal: stateCacheLocal,
       merger: stateMerger
     }).then((o: unknown) => {
-      console.info(v, o);
+      console.info(v, o); // eslint-disable-line no-console
       
       return o;
     }, (err: Error) => {
-      console.info(v, err);
+      console.info(v, err); // eslint-disable-line no-console
       
       throw err;
     }))));
@@ -51,20 +51,18 @@ export default function DemoCacheAndMerger(): JSX.Element {
       }} />
     </div>
     <div>
-      <label>
-        <InputSwitch {...{
-          value: stateCacheLocal,
-          onChange: setStateCacheLocal
-        }} /> cacheLocal - 默认 false
-      </label>
+      <InputSwitch {...{
+        label: 'cacheLocal - 默认 false',
+        value: stateCacheLocal,
+        onChange: setStateCacheLocal
+      }} />
     </div>
     <div>
-      <label>
-        <InputSwitch {...{
-          value: stateMerger,
-          onChange: setStateMerger
-        }} />merger - 默认 true
-      </label>
+      <InputSwitch {...{
+        label: 'merger - 默认 true',
+        value: stateMerger,
+        onChange: setStateMerger
+      }} />
     </div>
     <Button onClick={handleFetch10Times}>fetch x10</Button>
     <PrePromise promise={statePromise} />

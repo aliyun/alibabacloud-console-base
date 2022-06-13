@@ -11,7 +11,7 @@ import {
 
 export default function GeneratorGlobalStyle(): JSX.Element {
   return <>
-    <H1>src/util/create-theme-global-style.ts</H1>
+    <H1>generateCodeGlobalStyle</H1>
     <CodeViewerTs>{generateCodeGlobalStyle()}</CodeViewerTs>
   </>;
 }

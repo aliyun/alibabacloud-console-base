@@ -5,9 +5,8 @@ import {
   IFnConsoleApiMulti,
   IConsoleApiOptions
 } from '../types';
-import {
-  AutoMultiQueue
-} from '../util';
+
+import AutoMultiQueue from './auto-multi-queue';
 
 /**
  * 对接口进行自动合并，当 product + region 相同的时候

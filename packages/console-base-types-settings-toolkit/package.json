@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-types-settings-toolkit",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "ConsoleBase 类型 - CONSOLE_BASE_SETTINGS.TOOLKIT",
   "license": "MIT",
   "sideEffects": false,
@@ -27,10 +27,10 @@
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.56",
+    "@alicloud/console-toolkit-preset-component": "^1.2.58",
     "@types/react": "^17.0.43",
     "react": "^17.0.2",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.2"
   },
   "scripts": {
     "start": "breezr start-storybook",

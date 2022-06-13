@@ -180,10 +180,8 @@ module.exports = {
       'border-bottom-right-radius',
       'border-collapse', // just for table
       'border-spacing', // just for table
-      
       'box-shadow',
       'box-sizing',
-      
       'outline',
       // Content dimensions and background and scrollbars
       'background',
@@ -245,7 +243,7 @@ module.exports = {
       'transition-timing-function',
       'transition-delay'
     ], {
-      unspecified: 'bottomAlphabetical'
+      unspecified: 'ignore' // 让 styled-components 的 mixin 可以按需要放置
     }]
   }
 };

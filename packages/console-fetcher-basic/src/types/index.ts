@@ -101,10 +101,16 @@ export interface IFnConsoleApiWithProduct {
  * 5. 那末... 怎么判断是错误与否呢...因为理论上成功的 data 也是可以有 Code 等的，针对蠢设计只能用蠢逻辑.. 判断 Code 是否为字符串存在
  * 
  * 所以，不建议直接手动调用 multi，因为那样的话，你需要人肉组装接口参数，人肉判断成功失败...
- * 好在 console-fetcher-basic 这里封装了自动 multi 的逻辑，你可以在任何时候直接调用单个的 openApi，或者放心使用 Promise.all 而不必担心性能问题。
+ * 好在 console-fetcher-basic 这里封装了自动 multi 的逻辑，你可以在任何时候直接调用单个的 OpenAPI，或者放心使用 Promise.all 而不必担心性能问题。
  */
 export interface IFnConsoleApiMulti {
   (product: string, actions: IConsoleApiMultiAction[], options?: IConsoleApiOptions): Promise<TConsoleApiMultiResult>;
+}
+
+export interface IFnCreateCallApiWithProduct {
+  (product: string): IFnConsoleApiWithProduct;
+  (product: string, _defaultPrams: undefined, defaultOptions?: IConsoleApiOptions): IFnConsoleApiWithProduct;
+  <D>(product: string, defaultPrams: D, defaultOptions?: IConsoleApiOptions): IFnConsoleApiWithProduct;
 }
 
 export interface IConsoleApis {
@@ -112,9 +118,9 @@ export interface IConsoleApis {
   callInnerApi: IFnConsoleApi;
   callContainerApi: IFnConsoleApi;
   callMultiOpenApi: IFnConsoleApiMulti;
-  createCallOpenApiWithProduct(product: string): IFnConsoleApiWithProduct;
-  createCallInnerApiWithProduct(product: string): IFnConsoleApiWithProduct;
-  createCallContainerApiWithProduct(product: string): IFnConsoleApiWithProduct;
+  createCallOpenApiWithProduct: IFnCreateCallApiWithProduct;
+  createCallInnerApiWithProduct: IFnCreateCallApiWithProduct;
+  createCallContainerApiWithProduct: IFnCreateCallApiWithProduct;
 }
 
 export interface IConsoleFetcher<C extends IConsoleFetcherConfig = IConsoleFetcherConfig> extends Fetcher<C>, IConsoleApis {}

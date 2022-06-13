@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt-proxy",
-  "version": "1.5.0",
+  "version": "1.5.2",
   "description": "ConsoleBase 错误弹窗器（集中代理）",
   "license": "MIT",
   "sideEffects": false,
@@ -27,11 +27,11 @@
   "devDependencies": {
     "@alicloud/console-base-demo-helper-error-prompt": "^1.1.33",
     "@alicloud/console-toolkit-cli": "^1.2.30",
-    "@alicloud/console-toolkit-preset-component": "^1.2.56",
+    "@alicloud/console-toolkit-preset-component": "^1.2.58",
     "@alicloud/demo-rc-elements": "^1.5.4",
     "@types/react": "^17.0.43",
     "react": "^17.0.2",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.2"
   },
   "peerDependencies": {
     "react": ">=16.8"
@@ -39,7 +39,7 @@
   "dependencies": {
     "@alicloud/console-base-error-prompt": "^1.6.1",
     "@alicloud/console-base-global": "^1.2.1",
-    "@alicloud/console-base-messenger": "^1.10.0"
+    "@alicloud/console-base-messenger": "^1.11.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

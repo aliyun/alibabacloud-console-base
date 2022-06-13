@@ -9,6 +9,7 @@ import {
   H1,
   P,
   RadioGroup,
+  InputText,
   InputSwitch
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
@@ -55,6 +56,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateNavKey, setStateNavKey] = useState<TKey>('VIPER');
   const [stateCollapsed, setStateCollapsed] = useState(false);
   const [stateUpperLevel, setStateUpperLevel] = useState(false);
+  const [stateUpperTitle, setStateUpperTitle] = useState('');
   const navProps = NAV[stateNavKey];
   
   return <ScSite>
@@ -62,8 +64,9 @@ export default function DemoDefault(): JSX.Element {
     <ScAide collapsed={stateCollapsed}>
       <AsideNav {...{
         ...navProps,
-        collapsed: stateCollapsed,
+        upperTitle: stateUpperTitle,
         upperHref: stateUpperLevel ? '#/back-to-upper-level' : undefined,
+        collapsed: stateCollapsed,
         onToggleCollapsed: setStateCollapsed
       }} />
     </ScAide>
@@ -88,6 +91,12 @@ export default function DemoDefault(): JSX.Element {
         label: 'UpperLevel',
         value: stateUpperLevel,
         onChange: setStateUpperLevel
+      }} />
+      <InputText {...{
+        placeholder: 'props.upperTitle',
+        disabled: !stateUpperLevel,
+        value: stateUpperTitle,
+        onChange: setStateUpperTitle
       }} />
     </ScSiteMain>
   </ScSite>;

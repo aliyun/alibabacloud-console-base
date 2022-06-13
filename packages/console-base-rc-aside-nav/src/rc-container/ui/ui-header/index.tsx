@@ -42,23 +42,25 @@ const ScTitle = styled.div`
 const ScToUpperLevel = styled(Button)`
   display: block;
   ${cssCommon}
-`;
-
-const ScIcon = styled(Icon)`
-  font-size: 20px;
+  
+  i {
+    font-size: 20px;
+  }
 `;
 
 export default function UiHeader(): JSX.Element {
   const {
     title,
+    upperTitle,
     upperHref
   } = useProps();
   
   return <ScHeader>
     {upperHref ? <ScToUpperLevel {...{
-      label: <ScIcon type="angle-left" />,
+      iconLeft: upperTitle ? 'angle-left' : undefined,
+      label: upperTitle || <Icon type="angle-left" />,
       theme: ButtonTheme.TEXT_TERTIARY,
-      textAlign: 'center',
+      textAlign: upperTitle ? 'left' : 'center',
       href: upperHref
     }} /> : <ScTitle title={typeof title === 'string' ? title : undefined}>{title}</ScTitle>}
   </ScHeader>;

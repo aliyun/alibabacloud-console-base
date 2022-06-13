@@ -10,6 +10,13 @@ export interface IModelProps {
    */
   title?: JSX.Element | string;
   /**
+   * 和 upperHref 一起使用，影响标题展示
+   * 
+   * - 不设置 upperTitle：居中展示，仅箭头
+   * - 设置 upperTitle：靠左展示，箭头 + 标题
+   */
+  upperTitle?: JSX.Element | string;
+  /**
    * 当有 upperHref 时表示进入到了内部菜单，会在顶栏替换掉 title 变成回退按钮
    */
   upperHref?: string;
