@@ -9,11 +9,12 @@ import {
 } from '@alicloud/fetcher';
 
 import {
-  EVerifyType
-} from '../enum';
-import {
   IFetcherInterceptorConfig
 } from '../types';
+import {
+  ERisk,
+  EVerifyType
+} from '../enum';
 import {
   DEFAULT_RISK_CONFIG
 } from '../const';
@@ -21,16 +22,22 @@ import intl from '../intl';
 
 import riskForbidden from './risk/forbidden';
 import riskInvalid from './risk/invalid';
-import riskVerify from './risk/verify';
+import riskOldMainVerify from './risk/old-main-verify';
+import riskMpkVerify from './risk/mpk-verify';
+import riskNewMainVerify from './risk/new-main-verify';
+import riskNewSubVerifyMfa from './risk/new-sub-verify/mfa';
 import convertRiskInfo from './convert-risk-info';
 import {
   convertToRiskErrorForbidden,
   convertToRiskErrorInvalid,
   convertToRiskErrorCancelled
 } from './error';
+import {
+  slsRiskStartUp
+} from './sls';
 
 /**
- * 根据业务错误 code 为基础的 fetcher 添加风控流程
+ * 根据业务错误 code 为基础的 fetcher 添加风控流程（老版本主账号风控）
  * 
  * --------------------------------------------------------------------
  *            +-------------------+
@@ -101,24 +108,62 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
         
         throw convertToRiskErrorForbidden(err);
       case riskConfig.CODE_NEED_VERIFY: { // 加花括号防止 eslint no-case-declarations
-        const riskInfo = convertRiskInfo(responseData, riskConfig);
+        const riskInfo = convertRiskInfo(responseData, riskConfig, fetcherConfig);
+
+        // 新版主账号风控
+        if (riskInfo.risk === ERisk.NEW_MAIN) {
+          slsRiskStartUp({
+            riskType: ERisk.NEW_MAIN
+          });
+
+          return riskNewMainVerify({
+            request,
+            mainRiskInfo: riskInfo,
+            fetcherConfig,
+            riskConfig
+          }).catch(err1 => { // undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
+            throw err1 ?? convertToRiskErrorCancelled(err);
+          });
+        }
+
+        const {
+          risk,
+          verifyType,
+          type
+        } = riskInfo;
+
+        const newSubRisk = risk === ERisk.NEW_SUB; // 是不是新版子账号风控
         
-        switch (riskInfo.type) {
+        switch (type) {
           case EVerifyType.NONE:
-            await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
+            await riskInvalid({
+              newSubRisk,
+              message: newSubRisk ? intl('message:new_main_verify_error') : intl('message:invalid_unknown!lines'),
+              urlSettings: newSubRisk ? riskConfig.URL_SETTINGS : ''
+            });
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.UNKNOWN:
-            await riskInvalid(intl('message:invalid_unsupported_{method}!html!lines', {
-              method: riskInfo.verifyType
-            }), riskConfig.URL_SETTINGS!);
+            await riskInvalid({
+              newSubRisk,
+              message: newSubRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
+                method: verifyType
+              }) : intl('message:invalid_unsupported_{method}!html!lines', {
+                method: verifyType
+              }),
+              urlSettings: newSubRisk ? riskConfig.URL_SETTINGS : ''
+            });
             
             throw convertToRiskErrorInvalid(err);
           case EVerifyType.SMS:
           case EVerifyType.EMAIL:
-            // 手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
-            if (!riskInfo.detail) {
-              await riskInvalid(intl('message:invalid_unknown!lines'), riskConfig.URL_SETTINGS!);
+            // 旧版主账号风控手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
+            if (risk !== ERisk.NEW_SUB && !riskInfo.detail) {
+              await riskInvalid({
+                newSubRisk: false,
+                message: intl('message:invalid_unknown!lines'),
+                urlSettings: risk === ERisk.OLD_MAIN ? riskConfig.URL_SETTINGS : ''
+              });
               
               throw convertToRiskErrorInvalid(err);
             }
@@ -127,17 +172,54 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           default: // EVerifyType.MFA
             break;
         }
-        
-        if (_get(fetcherConfig, 'body.verifyCode') || _get(fetcherConfig, 'params.verifyCode')) {
-          throw err;
+
+        // 旧版主账号风控
+        if (risk === ERisk.OLD_MAIN) {
+          slsRiskStartUp({
+            riskType: ERisk.OLD_MAIN
+          });
+
+          if (_get(fetcherConfig, 'body.verifyCode') || _get(fetcherConfig, 'params.verifyCode')) {
+            throw err;
+          }
+          
+          return riskOldMainVerify({
+            request,
+            fetcherConfig,
+            riskInfo,
+            riskConfig
+          }).catch(err1 => { // err1 undefined 表示 cancelled
+            throw err1 ?? convertToRiskErrorCancelled(err);
+          });
         }
-        
-        return riskVerify({
+
+        // 新版轻量级虚商风控
+        if (risk === ERisk.MPK) {
+          slsRiskStartUp({
+            riskType: ERisk.MPK
+          });
+
+          return riskMpkVerify({
+            request,
+            fetcherConfig,
+            riskInfo,
+            riskConfig
+          }).catch(err1 => { // err1 undefined 表示 cancelled
+            throw err1 ?? convertToRiskErrorCancelled(err);
+          });
+        }
+
+        // 新版子账号风控
+        slsRiskStartUp({
+          riskType: ERisk.NEW_SUB
+        });
+
+        return riskNewSubVerifyMfa({
           request,
+          subRiskInfo: riskInfo,
           fetcherConfig,
-          riskInfo,
           riskConfig
-        }).catch(err1 => { // err1 undefined 表示 cancelled
+        }).catch(err1 => { // err1 undefined 表示 cancelled，undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
           throw err1 ?? convertToRiskErrorCancelled(err);
         });
       }
