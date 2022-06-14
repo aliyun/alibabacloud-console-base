@@ -7,11 +7,12 @@
   "command": {
     "publish": {
       "npmClient": "npm",
-      "ignoreChanges": ["stories/**", "tests/**", "*.md"],
       "allowBranch": [
         "lerna/pub",
         "lerna/pub-prerelease"
-      ]
+      ],
+      "ignoreChanges": ["stories/**", "tests/**", "*.md"],
+      "message": "build: lerna publish"
     }
   },
   "version": "independent"
