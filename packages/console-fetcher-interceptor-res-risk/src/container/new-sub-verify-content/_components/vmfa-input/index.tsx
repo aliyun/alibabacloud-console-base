@@ -22,13 +22,7 @@ interface IProps extends IInputProps, InputProps {
 const ScInput = styled(Input)<IInputProps>`
   margin-right: 12px;
   width: ${props => props.widthPercent || 100}%;
-  ${props => {
-    if (props.isError) {
-      return mixinBorderError;
-    }
-
-    return '';
-  }}
+  ${props => (props.isError ? mixinBorderError : null)}
 `;
 
 const ScError = styled.div`
