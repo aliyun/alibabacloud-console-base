@@ -4,14 +4,14 @@ import {
 
 /**
  * 获取 umid 参数，控制台下通用
+ * 
+ * 注意：如果绑定 g.alicdn.com 的 host 会没有 getToken
  */
 export default function getUmid(): string | undefined {
   try {
     const win: IWindow = window as unknown as IWindow;
-    const umidFromGetToken = win.um.getToken(); // getToken 方法在绑定 g.alicdn.com 的 host 时不存在
-    const umidFromRiskInfo = win.RISK_INFO.UMID;
-
-    return umidFromGetToken || umidFromRiskInfo; // 优先取 getToken 的结果，理论上 umidFromGetToken 和 umidFromRiskInfo 的值是一样的
+    
+    return win.um.getToken();
   } catch (err) {
     return undefined;
   }

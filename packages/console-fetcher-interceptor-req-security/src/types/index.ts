@@ -19,8 +19,10 @@ export interface IWindow {
    * 依赖 https://acjs.aliyun.com/js/uab.js，由 t-engine 注入到 HTML，
    * 它下边会有一大堆的东西，然而我们仅仅感兴趣的只有这里列出的这些。
    * 然而通过浏览器访问它的时候，它已经被变成一个 script 标签的引用了，好在这些属性还在。
+   * 
+   * 假设存在，用的时候 try-catch
    */
-  UA_Opt?: {
+  UA_Opt: {
     LogVal: string;
     // Token: string;
     // reload(): void;
@@ -31,19 +33,10 @@ export interface IWindow {
    * 依赖 g.alicdn.com/security/umscript/___/um.js 注入（也有可能是 s.tbcdn.cn/g/security/umscript/___/um.js），
    * 脚本由控制台自己加，版本号可能是 2.1.4（截止到 2020/05/16 折行代码写下之时）
    * 
-   * 这里假设存在，用的时候 try-catch
+   * 假设存在，用的时候 try-catch
    */
   um: {
     getToken(): string;
-  };
-  /**
-   * 通过 UA_Opt 获取 collina 或者通过 um 获取 umid，都会在绑定 绑定 g.alicdn.com host 时存在问题，因此需要增加通过从 RISK_INFO 获取 collina 和 umid 的方式作为兜底逻辑
-   * 
-   * 这里假设存在，用的时候 try-catch
-   */
-  RISK_INFO: {
-    UMID: string;
-    GETUA(): string;
   };
 }
 
