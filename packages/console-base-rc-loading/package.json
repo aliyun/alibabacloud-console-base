@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-loading",
-  "version": "1.4.34",
+  "version": "1.4.35",
   "description": "ConsoleBase 组件 - 加载中 + 辅助方法",
   "license": "MIT",
   "sideEffects": false,
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.3.2",
-    "@alicloud/console-base-rc-icon": "^1.5.9",
+    "@alicloud/console-base-rc-icon": "^1.5.10",
     "@alicloud/console-base-theme": "^1.5.1",
     "@alicloud/react-hook-is-unmounted": "^1.1.56",
     "lodash": "^4.17.21"

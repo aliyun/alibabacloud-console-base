@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher",
-  "version": "1.5.77",
+  "version": "1.5.78",
   "description": "控制台 fetcher",
   "license": "MIT",
   "sideEffects": false,
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@alicloud/console-fetcher-basic": "^1.7.2",
-    "@alicloud/console-fetcher-interceptor-res-risk": "^1.1.115"
+    "@alicloud/console-fetcher-interceptor-res-risk": "^1.1.116"
   },
   "scripts": {
     "start": "breezr start-storybook",
