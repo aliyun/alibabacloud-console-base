@@ -160,7 +160,7 @@ export default function generateSubmitButtonFn({
             });
           }
           
-          // 如果请求 BindMFA / Verify 成功，那么会去再次请求被风控的接口。
+          // 如果请求 BindMFA / Verify 成功，那么会去再次请求被风控的接口
           request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
             body: verifyResult
           } : {

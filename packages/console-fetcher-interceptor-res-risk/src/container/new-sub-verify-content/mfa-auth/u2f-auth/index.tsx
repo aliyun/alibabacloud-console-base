@@ -164,7 +164,7 @@ export default function U2FAuth(): JSX.Element {
   
   const handleRetryClick = useCallback(() => {
     updateData({
-      errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态。
+      errorMessage: '', // 重新获取 U2F 安全密钥时，需要把报错信息清空，才能展示获取 U2F 安全密钥的状态
       showU2fRetryButton: false
     });
     
@@ -180,7 +180,7 @@ export default function U2FAuth(): JSX.Element {
       primaryButtonDisabled: true
     });
     
-    // 如果用户是在绑定 U2F 后，请求被风控的接口出错，从而跳到了 U2F 验证的场景，那么顶部会有错误信息以及重试按钮，需要点击重试按钮后才会去获取 U2F 验证密钥。
+    // 如果用户是在绑定 U2F 后，请求被风控的接口出错，从而跳到了 U2F 验证的场景，那么顶部会有错误信息以及重试按钮，需要点击重试按钮后才会去获取 U2F 验证密钥
     if (!fromBindU2FtoAuthU2F) {
       fetchU2fAuthData();
     }
