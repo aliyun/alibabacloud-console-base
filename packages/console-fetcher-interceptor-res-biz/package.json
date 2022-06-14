@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-biz",
-  "version": "1.1.84",
+  "version": "1.1.85-alpha.0",
   "description": "@alicloud/console-fetcher 响应拦截 - 业务层错误",
   "license": "MIT",
   "sideEffects": false,
@@ -29,13 +29,13 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.58",
     "@alicloud/demo-rc-elements": "^1.5.5",
-    "@alicloud/fetcher-demo-helpers": "^1.1.81",
+    "@alicloud/fetcher-demo-helpers": "^1.1.82-alpha.0",
     "@types/react": "^17.0.45",
     "react": "^17.0.2",
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@alicloud/fetcher": "^1.4.2"
+    "@alicloud/fetcher": "^1.4.3-alpha.0"
   },
   "scripts": {
     "start": "breezr start-storybook",
