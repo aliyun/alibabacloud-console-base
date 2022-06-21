@@ -13,34 +13,39 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  ESlsResultType
+} from '../../../enum';
+import {
   IFetcherInterceptorConfig,
-  IRiskInfo,
-  IRiskVerifyDialogData
+  IOldMainRiskInfo,
+  IDialogDataOldMainAccountRisk
 } from '../../../types';
 import intl from '../../../intl';
 import {
   intlVerifyTitle
 } from '../../intl-verify';
-
-import Content from './content';
+import {
+  slsOldMainRisk
+} from '../../sls';
+import Content from '../../../container/old-main-or-mpk-verify-content';
 
 interface IParams {
   request: FetcherFnRequest;
   fetcherConfig: FetcherConfig;
-  riskInfo: IRiskInfo;
+  riskInfo: IOldMainRiskInfo;
   riskConfig: IFetcherInterceptorConfig;
 }
 
 /**
  * 风控 - 二次验证（SMS + EMAIL + MFA）
  */
-export default ({
+export default function riskOldMainVerify({
   request,
   fetcherConfig,
   riskInfo,
   riskConfig
-}: IParams): Promise<unknown> => {
-  const buttonConfirm: DialogButtonProps<unknown, IRiskVerifyDialogData> = {
+}: IParams): Promise<unknown> {
+  const buttonConfirm: DialogButtonProps<unknown, IDialogDataOldMainAccountRisk> = {
     spm: 'confirm',
     disabled: true,
     label: intl('op:confirm'),
@@ -61,17 +66,47 @@ export default ({
         verifyCode: data.code,
         requestId: data.requestId
       };
+
+      const slsParams = {
+        verifyType: riskInfo.verifyType,
+        detail: riskInfo.detail,
+        codeType: riskInfo.codeType,
+        sendCodeRequestId: data.requestId,
+        verifyCode: data.code
+      };
       
       request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
-        body: verifyResult
+        body: {
+          ...verifyResult,
+          ...riskInfo.mpkIsDowngrade ? {
+            riskVersion: '1.0'
+          } : {} // 轻量级虚商的降级联路需要指定 riskVersion: '1.0' 来覆盖 riskVersion: '2.0'
+        }
       } : {
-        params: verifyResult
+        params: {
+          ...verifyResult,
+          ...riskInfo.mpkIsDowngrade ? {
+            riskVersion: '1.0'
+          } : {}
+        }
       })).then(result => {
         unlock();
+
+        slsOldMainRisk({
+          ...slsParams,
+          slsResultType: ESlsResultType.SUCCESS
+        });
         
         close(result);
       }, (err: FetcherError) => {
         unlock();
+
+        slsOldMainRisk({
+          ...slsParams,
+          slsResultType: ESlsResultType.FAIL,
+          errorCode: err.code,
+          errorMessage: err.message
+        });
         
         if (err.code === riskConfig.CODE_INVALID_INPUT || err.code === riskConfig.CODE_NEED_VERIFY) { // 虽然后边这个错误码几乎不可能存在，但为了代码的健壮性，还是加上这个判读
           updateData({
@@ -87,7 +122,7 @@ export default ({
   };
   const buttonCancel = intl('op:cancel');
   
-  return open<unknown, IRiskVerifyDialogData>({
+  return open<unknown, IDialogDataOldMainAccountRisk>({
     title: intlVerifyTitle(riskInfo.type),
     data: {
       request,
@@ -98,7 +133,7 @@ export default ({
       errorMessage: ''
     },
     content: <Content />,
-    buttons: (data: IRiskVerifyDialogData) => {
+    buttons: (data: IDialogDataOldMainAccountRisk) => {
       return [{
         ...buttonConfirm,
         disabled: !data.code
@@ -106,4 +141,4 @@ export default ({
     },
     undefinedAsReject: true
   });
-};
+}

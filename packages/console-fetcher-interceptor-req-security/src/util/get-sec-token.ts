@@ -7,5 +7,5 @@ import {
  * 不要用封装后的 OneConsole Config，那样对测试不好（也没有必要多一层依赖）
  */
 export default function getSecToken(): string | undefined {
-  return (window as IWindow).ALIYUN_CONSOLE_CONFIG?.SEC_TOKEN;
+  return (window as unknown as IWindow).ALIYUN_CONSOLE_CONFIG?.SEC_TOKEN;
 }

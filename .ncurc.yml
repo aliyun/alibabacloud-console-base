@@ -3,9 +3,10 @@ dep: dev,prod
 reject:
 - 'react' # 先不升级 18
 - 'react-dom' # 先不升级 18
-- 'codemirror' # TODO 升级 6
+- 'codemirror' # TODO 升级 5 → 6
 - '@types/react'
 - '@types/react-dom'
+- '@simplewebauthn/*' # TODO 升级 4 → 5
 - 'eslint' # react-hooks 在 8 下不 work
 - 'stylelint' # 14 不行
 - 'stylelint-config-standard'

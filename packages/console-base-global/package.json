@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-global",
-  "version": "1.2.2",
+  "version": "1.2.3-alpha.0",
   "description": "ConsoleBase 唯一官方指定全局变量... 的 API",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -40,5 +40,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "e575919bb3e5dc36f28501101c18cf0d7cee2488"
+  "gitHead": "00c0994663e07324a5004fe9464c5abb17d86218"
 }

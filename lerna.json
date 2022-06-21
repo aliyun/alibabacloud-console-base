@@ -9,7 +9,7 @@
       "npmClient": "npm",
       "allowBranch": [
         "lerna/pub",
-        "lerna/pub-prerelease"
+        "lerna/pub-*"
       ],
       "ignoreChanges": ["stories/**", "tests/**", "*.md"],
       "message": "build: lerna publish"
