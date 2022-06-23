@@ -1,5 +1,6 @@
 import {
-  IFetcherResponse, IFetcherConfig
+  IFetcherResponse,
+  IFetcherConfig
 } from '../types';
 import {
   ERROR_RESPONSE_STATUS,
@@ -12,7 +13,8 @@ import createFetcherError from './create-fetcher-error';
 export default async function convertResponseFromFetch<T = void, C extends IFetcherConfig = IFetcherConfig>(response: Response, fetcherConfig: C): Promise<IFetcherResponse<T>> {
   const headers: Record<string, string> = {};
   
-  if (typeof response.headers?.forEach === 'function') {
+  // IE 不行
+  if (typeof response.headers?.forEach === 'function') { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
     response.headers.forEach((v, k) => {
       headers[normalizeHeaderKey(k)] = v;
     });
@@ -40,6 +42,6 @@ export default async function convertResponseFromFetch<T = void, C extends IFetc
       data: await response.json() as T
     };
   } catch (err) { // 如果后端返回的不是 JSON，这里会报错「JSON.parse: unexpected character at line 1 column 1 of the JSON data」
-    throw createFetcherError(fetcherConfig, ERROR_RESPONSE_PARSE, (err as Error)?.message);
+    throw createFetcherError(fetcherConfig, ERROR_RESPONSE_PARSE, (err as Error | undefined)?.message);
   }
 }

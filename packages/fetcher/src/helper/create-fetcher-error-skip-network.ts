@@ -20,8 +20,8 @@ export default function createFetcherErrorSkipNetwork<T = void, C extends IFetch
   const error: IFetcherErrorSpecial<T> = new Error() as IFetcherErrorSpecial<T>;
   
   error.name = EErrorSpecial.SKIP_NETWORK; // Fetcher.request 中将用它来做判断
-  error.config = fetcherConfig;
   error.result = result;
+  error.config = fetcherConfig;
   
   return error;
 }
