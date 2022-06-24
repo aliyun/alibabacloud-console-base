@@ -25,19 +25,20 @@ export default function WithLoading<T>({
   renderEmpty,
   renderLoaded
 }: IPropsWithLoading<T>): JSX.Element | null {
-  const handleRenderError = useCallback((err: Error): JSX.Element => {
-    if (renderError) {
-      return renderError(err);
+  const handleRenderErrorDefault = useCallback((): JSX.Element => <Loading {...{
+    status: 'error',
+    message: retry ? messageErrorRetry : messageError,
+    retry
+  }} />, [messageError, messageErrorRetry, retry]);
+  const handleRenderError = useCallback((err: Error | undefined): JSX.Element => {
+    if (renderError) { // 自定义 renderError 必须传入 error 对象
+      return renderError(err, handleRenderErrorDefault);
     }
     
-    return <Loading {...{
-      status: 'error',
-      message: retry ? messageErrorRetry : messageError,
-      retry
-    }} />;
-  }, [messageError, messageErrorRetry, retry, renderError]);
+    return handleRenderErrorDefault();
+  }, [renderError, handleRenderErrorDefault]);
   const handleRenderSuccess = useCallback((): JSX.Element => {
-    if (!data || _isEmpty(data) || (isEmpty && isEmpty(data))) {
+    if (!data || _isEmpty(data) || isEmpty?.(data)) {
       if (renderEmpty) {
         return renderEmpty();
       }
@@ -55,7 +56,7 @@ export default function WithLoading<T>({
     case ELoadingStatus.IDLE:
       return null;
     case ELoadingStatus.ERROR:
-      return handleRenderError(error!);
+      return handleRenderError(error);
     case ELoadingStatus.SUCCESS:
       return handleRenderSuccess();
     default:

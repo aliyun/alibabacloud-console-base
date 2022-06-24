@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-loading",
-  "version": "1.5.0",
+  "version": "1.5.3",
   "description": "ConsoleBase 组件 - 加载中 + 辅助方法",
   "license": "MIT",
   "sideEffects": false,

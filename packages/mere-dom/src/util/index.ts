@@ -5,8 +5,11 @@ export { default as getViewportWidth } from './get-viewport-width';
 export { default as getScrollbarWidth } from './get-scrollbar-width';
 export { default as getScrollbarWidthOfSystem } from './get-scrollbar-width-of-system';
 export { default as getScrollbarWidthOfWindow } from './get-scrollbar-width-of-window';
+
 export { default as isVisible } from './is-visible';
 export { default as isFocusable } from './is-focusable';
+export { default as isContainedBy } from './is-contained-by';
+
 export { default as inViewport } from './in-viewport';
 export { default as find } from './find';
 export { default as findFocusable } from './find-focusable';

@@ -35,28 +35,22 @@ const cssLoading = css`
 `;
 
 const ScLoading = styled.div<IScPropsLoading>`
+  display: flex;
+  align-items: center;
   padding: 20px 8px;
   text-align: ${props => getTextAlign(props.align)};
   ${cssLoading}
 `;
 
 const ScLoadingInline = styled.span`
+  display: inline-flex;
+  align-items: center;
   ${cssLoading}
 `;
 
-const ScIconWrap = styled.span`
-  display: inline-block;
-  width: 2em;
-  vertical-align: top;
-  text-align: center;
-  
-  i {
-    font-size: 1.1em;
-  }
-`;
-
-const ScMessageWrap = styled.span`
-  display: inline-block;
+const ScIcon = styled(Icon)`
+  margin-right: 4px;
+  font-size: 1.1em;
 `;
 
 const ScButtonRetry = styled.button`
@@ -81,12 +75,12 @@ export default function Loading({
   
   switch (status) {
     case 'empty':
-      jsxIcon = <Icon type="empty" />;
+      jsxIcon = <ScIcon type="empty" />;
       jsxMessage = message ?? intl('phrase:empty');
       
       break;
     case 'error':
-      jsxIcon = <Icon type="alert-circle" />;
+      jsxIcon = <ScIcon type="alert-circle" />;
       jsxMessage = message ?? intl(retry ? 'phrase:failed_retry' : 'phrase:failed');
       
       if (retry) {
@@ -95,17 +89,17 @@ export default function Loading({
       
       break;
     default:
-      jsxIcon = <Icon type="loading" />;
+      jsxIcon = <ScIcon type="loading" />;
       jsxMessage = message ?? intl('phrase:loading');
       
       break;
   }
   
   return inline ? <ScLoadingInline {...props}>
-    <ScIconWrap>{jsxIcon}</ScIconWrap>
-    <ScMessageWrap>{jsxMessage}</ScMessageWrap>
+    {jsxIcon}
+    <span>{jsxMessage}</span>
   </ScLoadingInline> : <ScLoading align={align} {...props}>
-    <ScIconWrap>{jsxIcon}</ScIconWrap>
-    <ScMessageWrap>{jsxMessage}</ScMessageWrap>
+    {jsxIcon}
+    <span>{jsxMessage}</span>
   </ScLoading>;
 }

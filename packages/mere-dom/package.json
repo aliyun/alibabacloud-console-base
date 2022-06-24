@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/mere-dom",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Very tiny DOM utils",
   "license": "MIT",
   "sideEffects": false,

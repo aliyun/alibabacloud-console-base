@@ -13,7 +13,7 @@ interface IWithLoadingBase<T> {
   messageEmpty?: string | JSX.Element;
   retry?(): void;
   isEmpty?(data: T): boolean;
-  renderError?(err: Error): JSX.Element; // 如果 messageXx 等无法满足的情况，可以用它
+  renderError?(err: Error | undefined, renderErrorDefault: () => JSX.Element): JSX.Element; // 如果 messageXx 等无法满足的情况，可以用它
   renderEmpty?(): JSX.Element; // 如果 messageXx 等无法满足的情况，可以用它
   renderLoaded(data: T): JSX.Element;
 }
