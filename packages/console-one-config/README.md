@@ -45,7 +45,7 @@ STATIS_API: {
     code: '200'
   },
   d: {
-    code: 'fucked',
+    code: 'SomethingWrong',
     data: '即使有 data，但 code 是失败，也忽略',
     message: '...'
   }

@@ -12,11 +12,11 @@ export default function DemoDefault(): JSX.Element {
         label: 'Home',
         href: '/home'
       }, {
-        label: 'Fuck',
-        href: '/fuck'
+        label: 'Yuck',
+        href: '/yuck'
       }, {
-        label: 'You',
-        href: '/you'
+        label: 'Fou',
+        href: '/fou'
       }, {
         label: 'Any Time'
       }]

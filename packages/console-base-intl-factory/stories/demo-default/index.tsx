@@ -12,7 +12,7 @@ export default function DemoDefault(): JSX.Element {
     <div>{intl('demo.op.switch_locale')}</div>
     <div>{intl('hello:world')}</div>
     <div>{intl('hello:{user}', {
-      user: 'fucker boshit'
+      user: 'BoshiT'
     })}</div>
     <div>{intl('hello:{user}', {
       user: '<img src="https://img.alicdn.com/img/bao/uploaded/i4/i1/420284856/O1CN014LL5uV1lk5tuhG7PS_!!420284856-0-lubanu-s.jpg" />'

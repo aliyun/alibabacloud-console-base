@@ -1,6 +1,6 @@
 export default {
-  'phrase:loading': 'Chargement...',
-  'phrase:failed': 'Chargement raté',
-  'phrase:failed_retry': 'Chargement raté, réessayez',
-  'phrase:empty': 'Rien trouvé'
+  'message:loading': 'Chargement...',
+  'message:failed': 'Chargement raté.',
+  'message:failed_retry': 'Chargement raté, réessayez.',
+  'message:empty': 'Rien trouvé.'
 };

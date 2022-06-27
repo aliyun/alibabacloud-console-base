@@ -13,7 +13,7 @@ const sls = createLogger({
   logstore: 'nbtest',
   defaultParams() {
     return {
-      fuck: Date.now()
+      xx: Date.now()
     };
   }
 });

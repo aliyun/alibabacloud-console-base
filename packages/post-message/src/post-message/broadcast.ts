@@ -10,6 +10,7 @@ import {
 export default function broadcast<P = void>(type: string, payload?: P, targetOrigin: string = win.location.href): void {
   // postMessage 的兼容性已经很好了，见 https://caniuse.com/#search=postMessage
   // 不过还是要稍稍谨慎一些
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!win.postMessage) {
     return;
   }

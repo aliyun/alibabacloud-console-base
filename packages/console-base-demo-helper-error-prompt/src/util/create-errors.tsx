@@ -67,8 +67,8 @@ export default function createErrors(): TErrorArg[] {
       extra1: 'this is some extra info',
       extra0: 0,
       extra2: {
-        a: 'fuck1',
-        b: 'fuck2'
+        a: 'xx1',
+        b: 'xx2'
       },
       url: 'any url',
       extra3: false
@@ -77,7 +77,7 @@ export default function createErrors(): TErrorArg[] {
     code: 'CODE_WITH_OUT_MESSAGE',
     details: {
       method: 'GET',
-      url: '//get_api?fuck=true'
+      url: '//get_api?xx=true'
     },
     toString(): string {
       return '有 code 无 message 的错误，message 将 fallback 到 code';

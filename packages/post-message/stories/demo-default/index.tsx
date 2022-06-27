@@ -31,10 +31,10 @@ function broadcastPromiseTest(): void {
 }
 
 function broadcastPromiseTestError(): void {
-  broadcastPromise(TOPIC.TEST_PROMISE_ERROR).then(() => {
+  broadcastPromise(TOPIC.TEST_PROMISE_ERROR, undefined).then(() => {
     console.info('broadcastPromise return OK');
   }, err => {
-    console.info('broadcastPromise return failed', {err});
+    console.info('broadcastPromise return failed', err);
   });
 }
 
@@ -51,9 +51,10 @@ export default function DemoDefault(): JSX.Element {
   useEffect(() => subscribePromise<void, void>(TOPIC.TEST_PROMISE_ERROR, (): Promise<void> => {
     return new Promise((_resolve, reject) => {
       window.setTimeout(() => {
-        const err = new Error('fuck me');
+        const err = new Error('Something really stupid happened.');
         
-        err.name = 'FuckMe';
+        err.name = 'SomethingStupid';
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (err as any).anyInfo = {
           hell: 'hell',
           hello: {

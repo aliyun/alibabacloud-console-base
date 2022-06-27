@@ -6,7 +6,7 @@ export default createLogger({
   logstore: 'dev',
   defaultParams() {
     return {
-      fuck: Date.now()
+      xx: Date.now()
     };
   }
 });

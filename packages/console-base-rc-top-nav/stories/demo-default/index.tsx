@@ -105,7 +105,7 @@ export default function DemoDefault(): JSX.Element {
           icon: 'lights-off'
         },
         beacon: {
-          tip: 'You DONT know how I fucking hate widget... 🤧'
+          tip: 'You DONT know how I hate widget... 🤧'
         },
         force: true
       }],
@@ -141,7 +141,9 @@ export default function DemoDefault(): JSX.Element {
           minWidth: 300,
           maxWidth: 480,
           header: 'header',
-          body: <img alt="" src="https://img.alicdn.com/imgextra/i4/3265150369/O1CN01ePEY7G1Eb2lftCrqg_!!3265150369.jpg" style={{ maxWidth: '100%' }} />,
+          body: <img alt="" src="https://img.alicdn.com/imgextra/i4/3265150369/O1CN01ePEY7G1Eb2lftCrqg_!!3265150369.jpg" style={{
+            maxWidth: '100%'
+          }} />,
           footer: 'footer'
         }
       },
@@ -152,12 +154,20 @@ export default function DemoDefault(): JSX.Element {
           iconLeft: 'home',
           theme: ButtonTheme.TERTIARY_ALT
         }} />
-        <div style={{ color: 'red' }}>L1</div>
-        <div style={{ color: 'green' }}>L2</div>
+        <div style={{
+          color: 'red'
+        }}>L1</div>
+        <div style={{
+          color: 'green'
+        }}>L2</div>
       </>,
       customRight: <>
-        <div style={{ color: 'purple' }}>R1</div>
-        <div style={{ color: 'pink' }}>R2</div>
+        <div style={{
+          color: 'purple'
+        }}>R1</div>
+        <div style={{
+          color: 'pink'
+        }}>R2</div>
       </>,
       onMenuDropdown
     }} />}

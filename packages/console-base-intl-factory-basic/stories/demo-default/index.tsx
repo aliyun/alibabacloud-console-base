@@ -15,7 +15,7 @@ export default function DemoDefault(): JSX.Element {
     <P>{intl('demo.op.switch_locale')}</P>
     <P>{intl('hello:world')}</P>
     <P>{intl('hello:{user}', {
-      user: 'fucker boshit'
+      user: 'BoshiT'
     })}</P>
     <P>{intl('message!html')}</P>
     <P>{intl('message!html!lines')}</P>

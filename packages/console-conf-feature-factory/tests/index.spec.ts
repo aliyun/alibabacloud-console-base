@@ -119,7 +119,7 @@ describe(pkgInfo.name, () => {
           customAttrs: {
             attr1: '1',
             attr2: '22',
-            list: 'fuck,suck,duck,truck'
+            list: 'huck,shuck,duck,truck'
           }
         }
       }
@@ -253,10 +253,10 @@ describe(pkgInfo.name, () => {
       })).toBe(false);
       expect(confFeatureWithGray(EFeature.WITH_CUSTOM_ATTRIBUTES, {
         attr1: '1',
-        attrNotExist: 'fucking'
+        attrNotExist: 'attrNotExist'
       })).toBe(true);
       expect(confFeatureWithGray(EFeature.WITH_CUSTOM_ATTRIBUTES, {
-        list: 'fuck'
+        list: 'list'
       })).toBe(true);
     });
   });

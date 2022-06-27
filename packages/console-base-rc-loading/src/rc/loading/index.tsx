@@ -76,12 +76,12 @@ export default function Loading({
   switch (status) {
     case 'empty':
       jsxIcon = <ScIcon type="empty" />;
-      jsxMessage = message ?? intl('phrase:empty');
+      jsxMessage = message ?? intl('message:empty');
       
       break;
     case 'error':
       jsxIcon = <ScIcon type="alert-circle" />;
-      jsxMessage = message ?? intl(retry ? 'phrase:failed_retry' : 'phrase:failed');
+      jsxMessage = message ?? intl(retry ? 'message:failed_retry' : 'message:failed');
       
       if (retry) {
         jsxMessage = <ScButtonRetry onClick={retry}>{jsxMessage}</ScButtonRetry>;
@@ -90,7 +90,7 @@ export default function Loading({
       break;
     default:
       jsxIcon = <ScIcon type="loading" />;
-      jsxMessage = message ?? intl('phrase:loading');
+      jsxMessage = message ?? intl('message:loading');
       
       break;
   }

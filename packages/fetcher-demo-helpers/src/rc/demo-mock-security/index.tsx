@@ -28,7 +28,7 @@ interface IWin {
   ALIYUN_CONSOLE_CONFIG?: {
     SEC_TOKEN?: string;
   };
-  collina_fucking_by_boshit?: string;
+  collina_by_boshit?: string;
 }
 
 /**
@@ -39,7 +39,7 @@ export default function FetcherDemoRcMockSecurity(): JSX.Element {
     const win = window as IWin;
     
     if (!win.UA_Opt) {
-      const LOG_VAL = 'collina_fucking_by_boshit';
+      const LOG_VAL = 'collina_by_boshit';
       
       win.UA_Opt = {
         LogVal: LOG_VAL,

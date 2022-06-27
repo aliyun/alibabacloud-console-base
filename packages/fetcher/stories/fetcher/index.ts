@@ -10,7 +10,7 @@ const fetcher1 = createFetcher();
 
 fetcher1.interceptRequest(() => ({
   params: {
-    fuck: 'you'
+    yuck: 'fou'
   }
 }));
 

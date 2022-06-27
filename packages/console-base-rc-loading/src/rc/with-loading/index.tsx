@@ -30,6 +30,12 @@ export default function WithLoading<T>({
     message: retry ? messageErrorRetry : messageError,
     retry
   }} />, [messageError, messageErrorRetry, retry]);
+  const handleRenderEmptyDefault = useCallback((): JSX.Element => {
+    return <Loading {...{
+      status: 'empty',
+      message: messageEmpty
+    }} />;
+  }, [messageEmpty]);
   const handleRenderError = useCallback((err: Error | undefined): JSX.Element => {
     if (renderError) { // 自定义 renderError 必须传入 error 对象
       return renderError(err, handleRenderErrorDefault);
@@ -40,17 +46,14 @@ export default function WithLoading<T>({
   const handleRenderSuccess = useCallback((): JSX.Element => {
     if (!data || _isEmpty(data) || isEmpty?.(data)) {
       if (renderEmpty) {
-        return renderEmpty();
+        return renderEmpty(handleRenderEmptyDefault);
       }
       
-      return <Loading {...{
-        status: 'empty',
-        message: messageEmpty
-      }} />;
+      return handleRenderEmptyDefault();
     }
     
     return renderLoaded(data);
-  }, [data, messageEmpty, isEmpty, renderEmpty, renderLoaded]);
+  }, [data, isEmpty, renderLoaded, renderEmpty, handleRenderEmptyDefault]);
   
   switch (loading) {
     case ELoadingStatus.IDLE:

@@ -6,7 +6,7 @@
 
 ```typescript tsx
 <TopNav {...{
-  id: 'fuck',
+  id: 'you-might-not-need-id',
   dock: {
     onClick() {
       console.info('只有含 onXx 或 href 才可以展示');

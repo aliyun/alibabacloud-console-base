@@ -59,7 +59,7 @@
     "@alicloud/react-hook-is-unmounted": "^1.2.0",
     "@simplewebauthn/browser": "^4.1.0",
     "lodash": "^4.17.21",
-    "qrcode.react": "^3.0.2"
+    "qrcode.react": "^3.1.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

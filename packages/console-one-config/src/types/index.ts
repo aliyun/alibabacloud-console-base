@@ -75,7 +75,7 @@ export interface IShittyConsoleOneConfig {
   STATIC_API: Record<string, IShittyStaticApi>; // 项目配置 → 初始 API 调用
   RULE_CONFIG: Record<string, string>; // 项目配置 → 规则中心
   LABELS: Record<string, unknown[]>; // 项目配置 → 用户标签
-  USER_PREFERENCE: Record<string, Record<string, string>>; // 项目配置 → 用户偏好 e.g. `{ 'xx': { fuck: 'you' } }`
+  USER_PREFERENCE: Record<string, Record<string, string>>; // 项目配置 → 用户偏好 e.g. `{ 'xx': { yuck: 'fou' } }`
   NEW_VERSION: 'true' | 'false' | ''; // 项目配置 → 新旧版本切换
   // 以下可能是狗屎 💩
   // PORTAL_Id: 'OFFICIAL';
@@ -161,6 +161,6 @@ export interface IConsoleOneConfig {
   API_RESULT: Record<string, unknown>; // 项目配置 → 初始 API 调用，STATIC_API 剥出 data
   RULE_CONFIG: Record<string, string>; // 项目配置 → 规则中心
   LABELS: Record<string, unknown[]>; // 项目配置 → 用户标签
-  USER_PREFERENCE: Record<string, Record<string, string>>; // 项目配置 → 用户偏好 e.g. `{ 'xx': { fuck: 'you' } }`
+  USER_PREFERENCE: Record<string, Record<string, string>>; // 项目配置 → 用户偏好 e.g. `{ 'xx': { yuck: 'fou' } }`
   NEW_VERSION: boolean; // 项目配置 → 新旧版本切换
 }
