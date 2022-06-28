@@ -2,7 +2,7 @@ export interface IAnyCallback {
   (...args: any[]): void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export type TReceivers = Record<string, IAnyCallback[]>;
+export type TReceivers = Record<string, IAnyCallback[] | undefined>;
 
 /**
  * 以 promise 的形式广播事件的时候的 payload 包裹
