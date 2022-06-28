@@ -1,4 +1,7 @@
 import {
+  getWindow
+} from '@alicloud/sandbox-escape';
+import {
   broadcast,
   broadcastPromise,
   subscribeOnce
@@ -23,15 +26,17 @@ interface IWin extends Window {
  * TODO 换更好的方案
  */
 const CONSOLE_BASE_READY = '_console_base_ready_'; // 不要轻易改这个命名，因为它可能被页面上多份代码共用
+const win = getWindow<IWin>();
 
 let BROADCASTS_WHEN_NOT_READY: (() => void)[] | undefined;
 
-if (!(window as IWin)[CONSOLE_BASE_READY]) {
+if (!win[CONSOLE_BASE_READY]) {
   BROADCASTS_WHEN_NOT_READY = [];
   
   subscribeOnce(READY, () => {
-    (window as IWin)[CONSOLE_BASE_READY] = true;
+    win[CONSOLE_BASE_READY] = true;
     
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     BROADCASTS_WHEN_NOT_READY!.forEach(v => v());
     BROADCASTS_WHEN_NOT_READY = undefined; // 清除后便不会往它里边 push 了
   });
