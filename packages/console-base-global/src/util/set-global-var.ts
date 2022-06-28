@@ -1,4 +1,8 @@
 import {
+  getWindow
+} from '@alicloud/sandbox-escape';
+
+import {
   IWindowWithConsoleBase
 } from '../types';
 
@@ -31,5 +35,5 @@ export default function setGlobalVar(forApp: Record<string, unknown>): void {
    */
   globalVarLocal.forApp = forApp;
   
-  (window as IWindowWithConsoleBase).ConsoleBase = globalVarLocal;
+  getWindow<IWindowWithConsoleBase>().ConsoleBase = globalVarLocal;
 }

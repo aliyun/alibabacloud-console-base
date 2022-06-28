@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-error-prompt": "^1.7.1",
-    "@alicloud/console-base-global": "^1.3.1",
+    "@alicloud/console-base-global": "^1.3.2",
     "@alicloud/console-base-messenger": "^1.12.0"
   },
   "scripts": {
