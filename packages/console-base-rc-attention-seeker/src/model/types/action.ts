@@ -11,9 +11,6 @@ import {
 } from './common';
 
 export type TModelAction = {
-  type: EAction.SET_INDEX;
-  payload: number;
-} | {
   type: EAction.SET_RECT_STYLE;
   payload: IRectStyle;
 } | {

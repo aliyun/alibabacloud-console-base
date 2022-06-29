@@ -4,7 +4,8 @@ import {
 
 import {
   Z_INDEX_SANDWICH_MIDDLE,
-  CLASS_THE_ELEMENT
+  CLASS_THE_ELEMENT,
+  CLASS_PARENT_RESET
 } from '../../const';
 
 export default createGlobalStyle`
@@ -12,5 +13,9 @@ export default createGlobalStyle`
   .${CLASS_THE_ELEMENT} {
     position: relative;
     z-index: ${Z_INDEX_SANDWICH_MIDDLE};
+  }
+  
+  .${CLASS_PARENT_RESET} {
+    z-index: auto !important;
   }
 `;

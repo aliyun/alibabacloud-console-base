@@ -16,9 +16,5 @@ export default function useHandleRefreshRectStyle(): () => void {
   const attentionElement = useAttentionElement();
   const dispatchSetRect = useDispatchSetRectStyle();
   
-  return useCallback(() => {
-    const rectStyle = attentionElement ? getElementRectStyle(attentionElement) : DEFAULT_RECT;
-    
-    dispatchSetRect(rectStyle);
-  }, [attentionElement, dispatchSetRect]);
+  return useCallback(() => dispatchSetRect(attentionElement ? getElementRectStyle(attentionElement) : DEFAULT_RECT), [attentionElement, dispatchSetRect]);
 }

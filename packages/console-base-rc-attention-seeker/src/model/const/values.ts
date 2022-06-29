@@ -15,7 +15,6 @@ export const DEFAULT_RECT: IRectStyle = {
 };
 
 export const DEFAULT_MODEL_STATE: IModelState = {
-  index: 0,
   rectStyle: DEFAULT_RECT,
   domBackdrop: null
 };
