@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "ConsoleBase 错误弹窗器",
   "license": "MIT",
   "sideEffects": false,
@@ -48,7 +48,7 @@
     "@alicloud/console-base-rc-dialog": "^1.6.0",
     "@alicloud/console-base-rc-icon": "^1.6.0",
     "@alicloud/console-base-rc-pagination": "^1.3.0",
-    "@alicloud/console-base-theme": "^1.6.0",
+    "@alicloud/console-base-theme": "^1.6.1",
     "@alicloud/typescript-missing-helpers": "^1.2.0",
     "lodash": "^4.17.21",
     "qs": "^6.11.0"

@@ -43,7 +43,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.6.0",
+    "@alicloud/console-base-theme": "^1.6.1",
     "@alicloud/mere-dom": "^1.4.4",
     "@alicloud/react-hook-is-unmounted": "^1.2.0",
     "immutability-helper": "^3.1.1"

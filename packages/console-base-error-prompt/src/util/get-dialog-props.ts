@@ -34,8 +34,8 @@ export default function getDialogProps(queue: IErrorQueueItem[], content: JSX.El
       return buttons;
     },
     size: DialogSize.S,
-    zIndex: Z_INDEX.DIALOG_SYS,
-    zIndexBackdrop: Z_INDEX.BACKDROP_SYS,
+    zIndex: Z_INDEX.ERROR_PROMPT,
+    zIndexBackdrop: Z_INDEX.BACKDROP_ERROR_PROMPT,
     undefinedAsReject: false
   };
 }
