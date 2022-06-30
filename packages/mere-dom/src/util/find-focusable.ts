@@ -21,7 +21,7 @@ function autoSort(v1: HTMLElement, v2: HTMLElement): number { // 输入框优先
 /**
  * 获取容器内所有可以获取焦点的子节点
  */
-export default function findFocusable(container: Element, doSort?: boolean): HTMLElement[] {
+export default function findFocusable(container?: HTMLElement, doSort?: boolean): HTMLElement[] {
   const arr = container ? _filter(container.querySelectorAll<HTMLElement>('*'), isFocusable) : [];
   
   return doSort ? arr.sort(autoSort) : arr;

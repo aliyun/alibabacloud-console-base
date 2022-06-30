@@ -13,6 +13,7 @@ import getViewportWidth from './get-viewport-width';
 export default function inViewport(selector: TSelector, parent?: TParent): boolean {
   const [el] = find(selector, parent);
   
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!el) {
     return false;
   }
