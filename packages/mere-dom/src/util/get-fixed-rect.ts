@@ -20,6 +20,7 @@ interface IResult {
 export default function getFixedRect(selector: TSelector, parent?: TParent): IResult | null {
   const [el] = find(selector, parent);
   
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!el) {
     return null;
   }

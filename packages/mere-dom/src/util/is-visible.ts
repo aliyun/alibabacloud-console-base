@@ -6,7 +6,7 @@ function isElementInvisible(el: HTMLElement): boolean {
     opacity,
     width,
     height
-  } = window.getComputedStyle ? window.getComputedStyle(el) : el.style;
+  } = window.getComputedStyle ? window.getComputedStyle(el) : el.style; // eslint-disable-line @typescript-eslint/no-unnecessary-condition
   
   return display === 'none' || visibility === 'hidden' || opacity === '0' || width === '0px' || height === '0px';
 }

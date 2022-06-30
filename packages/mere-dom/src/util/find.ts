@@ -6,7 +6,7 @@ import {
 /**
  * 类似 jquery 的 find，只是返回的是数组
  */
-export default function find<E extends HTMLElement = HTMLElement>(selector: TSelector<E>, parent: TParent = document): E[] {
+export default function find<E extends Element = HTMLElement>(selector: TSelector<E>, parent: TParent = document): E[] {
   const arr: E[] = [];
   
   if (!selector) {

@@ -5,9 +5,7 @@ function getContainer(selector: string | HTMLElement | Window | null): Window | 
     return window;
   }
   
-  const [el] = find<HTMLElement>(selector as string | HTMLElement | null);
-  
-  return el || null;
+  return find<HTMLElement>(selector as string | HTMLElement | null)[0] || null;
 }
 
 function fallbackForDom(dom: HTMLElement, top?: number, left?: number): void {
@@ -21,10 +19,6 @@ function fallbackForDom(dom: HTMLElement, top?: number, left?: number): void {
 }
 
 export default function scrollTo(selector: string | HTMLElement | Window | null, options: ScrollToOptions): void {
-  if (!options) {
-    return;
-  }
-  
   const container = getContainer(selector);
   
   if (!container) {

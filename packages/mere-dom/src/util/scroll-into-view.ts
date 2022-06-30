@@ -22,6 +22,7 @@ export default function scrollIntoView(selector: TSelector, {
 }: IOptions = {}): void {
   const [el] = find(selector, parent);
   
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!el || inViewport(el)) {
     return;
   }
