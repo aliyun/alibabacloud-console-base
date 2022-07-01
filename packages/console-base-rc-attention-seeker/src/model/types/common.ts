@@ -3,29 +3,21 @@
  * 
  * - backdrop - 底影
  * - element - 元素本身
- * - upper - 元素上边的覆盖层（options.protect 为 true 时）
+ * - protector - 元素上边的覆盖层（options.protect 为 true 时）
  */
-export type TCloseSource = 'backdrop' | 'upper' | 'element';
+export type TCloseSource = 'backdrop' | 'protector' | 'element';
 
-export interface IRect {
+export interface IAttentionSeekerRect {
   top: number;
   left: number;
   width: number;
   height: number;
+  radius: number;
 }
-
-export interface IRectStyleRadius {
-  borderTopLeftRadius: string;
-  borderTopRightRadius: string;
-  borderBottomLeftRadius: string;
-  borderBottomRightRadius: string;
-}
-
-export interface IRectStyle extends IRect, IRectStyleRadius {}
 
 export interface IAttentionSeekerOptions {
   protect?: boolean; // 防止被点击
-  message?: string; // 暂时不用
+  // message?: string; // 暂时不用
 }
 
 export interface IAttentionSeekerItem {

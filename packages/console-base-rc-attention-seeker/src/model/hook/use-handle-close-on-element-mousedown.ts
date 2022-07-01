@@ -2,14 +2,12 @@ import {
   useCallback
 } from 'react';
 
-import useModelProps from './_use-model-props';
+import useHandleClose from './use-handle-close';
 
 export default function useHandleCloseOnElementMousedown(): () => void {
-  const {
-    onClose
-  } = useModelProps();
+  const handleClose = useHandleClose();
   
   return useCallback(() => {
-    onClose?.('element');
-  }, [onClose]);
+    handleClose('element');
+  }, [handleClose]);
 }

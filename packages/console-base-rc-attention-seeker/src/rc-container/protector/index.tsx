@@ -2,22 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  Z_INDEX_SANDWICH_UPPER
+  Z_INDEX_PROTECTOR
 } from '../../const';
 import {
   useRect,
-  useHandleCloseOnSandwichUpperClick
+  useHandleCloseOnProtectorClick
 } from '../../model';
 
 const ScSandwichUpper = styled.div`
   position: absolute;
-  z-index: ${Z_INDEX_SANDWICH_UPPER};
+  z-index: ${Z_INDEX_PROTECTOR};
   box-sizing: content-box;
 `;
 
-export default function SandwichUpper(): JSX.Element {
+export default function Protector(): JSX.Element {
   const rect = useRect();
-  const handleCloseOnSandwichUpperClick = useHandleCloseOnSandwichUpperClick();
+  const handleCloseOnSandwichUpperClick = useHandleCloseOnProtectorClick();
 
   return <ScSandwichUpper style={rect} onMouseDown={handleCloseOnSandwichUpperClick} />;
 }

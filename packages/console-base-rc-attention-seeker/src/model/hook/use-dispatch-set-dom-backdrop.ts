@@ -8,10 +8,10 @@ import {
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchSetDomBackdrop(): (payload: HTMLDivElement | null) => void {
+export default function useDispatchSetDomBackdrop(): (payload: HTMLOrSVGElement | null) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: HTMLDivElement | null): void => dispatch({
+  return useCallback((payload: HTMLOrSVGElement | null): void => dispatch({
     type: EAction.SET_DOM_BACKDROP,
     payload
   }), [dispatch]);

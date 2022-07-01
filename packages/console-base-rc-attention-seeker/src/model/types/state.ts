@@ -1,8 +1,8 @@
 import {
-  IRectStyle
+  IAttentionSeekerRect
 } from './common';
 
 export interface IModelState {
-  rectStyle: IRectStyle;
-  domBackdrop: HTMLDivElement | null;
+  rectStyle: IAttentionSeekerRect;
+  domBackdrop: HTMLOrSVGElement | null;
 }

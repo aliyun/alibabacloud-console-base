@@ -4,8 +4,7 @@ import {
   useAttentionSeeker
 } from '../../model';
 import Backdrop from '../backdrop';
-import SandwichUpper from '../sandwich-upper';
-import SandwichBelow from '../sandwich-below';
+import Protector from '../protector';
 
 export default function Ui(): JSX.Element | null {
   const attentionSeeker = useAttentionSeeker();
@@ -23,8 +22,7 @@ export default function Ui(): JSX.Element | null {
    * ---- Backdrop ---
    */
   return <>
-    {attentionSeeker.options?.protect ? <SandwichUpper /> : null}
-    <SandwichBelow />
+    {attentionSeeker.options?.protect ? <Protector /> : null}
     <Backdrop />
   </>;
 }

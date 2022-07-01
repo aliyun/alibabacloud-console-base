@@ -6,15 +6,15 @@ import {
   EAction
 } from '../enum';
 import {
-  IRectStyle
+  IAttentionSeekerRect
 } from '../types';
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchSetRectStyle(): (payload: IRectStyle) => void {
+export default function useDispatchSetRectStyle(): (payload: IAttentionSeekerRect) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: IRectStyle): void => dispatch({
+  return useCallback((payload: IAttentionSeekerRect): void => dispatch({
     type: EAction.SET_RECT_STYLE,
     payload
   }), [dispatch]);

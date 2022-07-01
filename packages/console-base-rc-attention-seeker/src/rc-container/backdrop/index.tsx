@@ -1,33 +1,45 @@
 import React from 'react';
+import {
+  createPortal
+} from 'react-dom';
 import styled from 'styled-components';
 
 import {
   Z_INDEX_BACKDROP
 } from '../../const';
 import {
-  useRefBackdrop,
-  useHandleCloseOnBackdropClick
+  useBackdropPath,
+  useHandleCloseOnBackdropClick,
+  useRefBackdrop
 } from '../../model';
 
-const ScAttentionSeekerMask = styled.div`
+const ScBackdrop = styled.svg`
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  opacity: 0.5;
   z-index: ${Z_INDEX_BACKDROP};
-  background-color: rgba(0, 0, 0, 0.25);
-  background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  
+  path {
+    pointer-events: all;
+  }
 `;
 
 export default function Backdrop(): JSX.Element {
   const refDomBackdrop = useRefBackdrop();
+  const backdropPath = useBackdropPath();
   const handleCloseOnBackdropClick = useHandleCloseOnBackdropClick();
   
-  return <ScAttentionSeekerMask {...{
+  return createPortal(<ScBackdrop {...{
     ref: refDomBackdrop,
     className: 'J_fixed_right_will_be_pushed_left',
     onClick: handleCloseOnBackdropClick
-  }} />;
+  }}>
+    <path d={backdropPath} />
+  </ScBackdrop>, document.body);
 }

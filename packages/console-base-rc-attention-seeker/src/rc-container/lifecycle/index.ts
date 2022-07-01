@@ -1,5 +1,5 @@
 import {
-  useEffectModifyElementClass,
+  useEffectScrollInToView,
   useEffectCalcRect,
   useEffectBindCloseToElement,
   useEffectWatchTimestamp,
@@ -7,7 +7,7 @@ import {
 } from '../../model';
 
 export default function Lifecycle(): null {
-  useEffectModifyElementClass();
+  useEffectScrollInToView();
   useEffectCalcRect();
   useEffectBindCloseToElement();
   useEffectWatchTimestamp();

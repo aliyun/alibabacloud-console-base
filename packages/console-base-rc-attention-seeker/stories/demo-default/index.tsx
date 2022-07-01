@@ -8,8 +8,9 @@ import styled from 'styled-components';
 import {
   H1,
   P,
-  LongArticle,
-  Button
+  Button,
+  InputSwitch,
+  LongArticle
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
@@ -33,8 +34,9 @@ const ScZIndex = styled(P)`
   z-index: 1;
 `;
 
-const ScTheDiv = styled.div`
+const ScBorderRadiusPx = styled.button`
   padding: 20px;
+  border: 0;
   border-radius: 12px;
   background: #0064c8;
   width: 400px;
@@ -42,82 +44,123 @@ const ScTheDiv = styled.div`
   color: #fff;
 `;
 
-const ScTheRound = styled.div`
-  border-radius: 50%;
-  background: #c80064;
-  width: 100px;
+const ScBorderRadiusPx2 = styled.button`
+  border: 0;
+  border-radius: 80px;
+  background: #00c864;
+  width: 200px;
   height: 100px;
   line-height: 100px;
   text-align: center;
   color: #fff;
 `;
 
+const ScBorderRadius50Percent = styled.button`
+  border: 0;
+  border-radius: 50%;
+  background: #c80064;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  color: #fff;
+`;
+
+const ScBorderRadius20Percent = styled.button`
+  border: 0;
+  border-radius: 20%;
+  background: #6400c8;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  color: #fff;
+`;
+
+function alertClick(): void {
+  // eslint-disable-next-line no-alert
+  alert('clicked!');
+}
+
 export default function DemoDefault(): JSX.Element {
+  const [stateProtect, setStateProtect] = useState(false);
   const [stateDomP, setStateDomP] = useState<HTMLElement | null>(null);
-  const [stateDomDiv, setStateDomDiv] = useState<HTMLElement | null>(null);
-  const [stateDomRound, setStateDomRound] = useState<HTMLElement | null>(null);
+  const [stateBorderRadiusPx, setStateBorderRadiusPx] = useState<HTMLElement | null>(null);
+  const [stateBorderRadiusPx2, setStateBorderRadiusPx2] = useState<HTMLElement | null>(null);
+  const [stateBorderRadius20Percent, setStateBorderRadius20Percent] = useState<HTMLElement | null>(null);
+  const [stateBorderRadius50Percent, setStateBorderRadius50Percent] = useState<HTMLElement | null>(null);
   const [stateDomStrong, setStateDomStrong] = useState<HTMLElement | null>(null);
   const [stateDomShallEscape, setStateDomShallEscape] = useState<HTMLElement | null>(null);
   const [stateDomButtonTop, setStateDomButtonTop] = useState<HTMLElement | null>(null);
   const [stateDomButtonBottom, setStateDomButtonBottom] = useState<HTMLElement | null>(null);
   
+  const handlePrepend = useCallback((dom: HTMLElement | null) => {
+    if (!dom) {
+      return;
+    }
+    
+    prepend(dom, stateProtect ? {
+      protect: stateProtect
+    } : undefined);
+  }, [stateProtect]);
   const handleAttentionP = useCallback(() => {
-    if (stateDomP) {
-      prepend(stateDomP);
-    }
-  }, [stateDomP]);
-  const handleAttentionDiv = useCallback(() => {
-    if (stateDomDiv) {
-      prepend(stateDomDiv);
-    }
-  }, [stateDomDiv]);
-  const handleAttentionRound = useCallback(() => {
-    if (stateDomRound) {
-      prepend(stateDomRound);
-    }
-  }, [stateDomRound]);
+    handlePrepend(stateDomP);
+  }, [stateDomP, handlePrepend]);
+  const handleAttentionBorderRadiusPx = useCallback(() => {
+    handlePrepend(stateBorderRadiusPx);
+  }, [stateBorderRadiusPx, handlePrepend]);
+  const handleAttentionBorderRadiusPx2 = useCallback(() => {
+    handlePrepend(stateBorderRadiusPx2);
+  }, [stateBorderRadiusPx2, handlePrepend]);
+  const handleAttentionBorderRadius20Percent = useCallback(() => {
+    handlePrepend(stateBorderRadius20Percent);
+  }, [stateBorderRadius20Percent, handlePrepend]);
+  const handleAttentionBorderRadius50Percent = useCallback(() => {
+    handlePrepend(stateBorderRadius50Percent);
+  }, [stateBorderRadius50Percent, handlePrepend]);
   const handleAttentionStrong = useCallback(() => {
-    if (stateDomStrong) {
-      prepend(stateDomStrong);
-    }
-  }, [stateDomStrong]);
+    handlePrepend(stateDomStrong);
+  }, [stateDomStrong, handlePrepend]);
   const handleAttentionShallEscape = useCallback(() => {
-    if (stateDomShallEscape) {
-      prepend(stateDomShallEscape);
-    }
-  }, [stateDomShallEscape]);
+    handlePrepend(stateDomShallEscape);
+  }, [stateDomShallEscape, handlePrepend]);
   const handleAttentionButtonTop = useCallback(() => {
-    if (stateDomButtonTop) {
-      prepend(stateDomButtonTop);
-    }
-  }, [stateDomButtonTop]);
+    handlePrepend(stateDomButtonTop);
+  }, [stateDomButtonTop, handlePrepend]);
   const handleAttentionButtonBottom = useCallback(() => {
-    if (stateDomButtonBottom) {
-      prepend(stateDomButtonBottom);
-    }
-  }, [stateDomButtonBottom]);
+    handlePrepend(stateDomButtonBottom);
+  }, [stateDomButtonBottom, handlePrepend]);
+  
+  const jsxButtons = <>
+    <Button onClick={handleAttentionP}>风云片段</Button>
+    <Button onClick={handleAttentionStrong}>成也风云，败也风云</Button>
+    <Button onClick={handleAttentionShallEscape}>无法逃离</Button>
+    <Button onClick={handleAttentionBorderRadiusPx}>radius: 12px</Button>
+    <Button onClick={handleAttentionBorderRadiusPx2}>radius: 80px</Button>
+    <Button onClick={handleAttentionBorderRadius20Percent}>radius: 20%</Button>
+    <Button onClick={handleAttentionBorderRadius50Percent}>radius: 50%</Button>
+  </>;
   
   return <>
     <ThemeSwitcher />
     <H1>@alicloud/console-base-rc-attention-seeker</H1>
-    <Button onClick={handleAttentionStrong}>the strong</Button>
-    <Button onClick={handleAttentionShallEscape}>shall escape parent z-index</Button>
-    <Button onClick={handleAttentionDiv}>the div</Button>
-    <Button onClick={handleAttentionRound}>the round</Button>
-    <Button onClick={handleAttentionP}>the p</Button>
+    <InputSwitch {...{
+      label: 'Protect!',
+      value: stateProtect,
+      onChange: setStateProtect
+    }} />
+    {jsxButtons}
     <Button ref={setStateDomButtonTop} onClick={handleAttentionButtonBottom}>scroll down to the button</Button>
     <ScFixed>
-      <Button onClick={handleAttentionStrong}>the strong</Button>
-      <Button onClick={handleAttentionShallEscape}>shall escape parent z-index</Button>
-      <Button onClick={handleAttentionDiv}>the div</Button>
-      <Button onClick={handleAttentionRound}>the round</Button>
-      <Button onClick={handleAttentionP}>the p</Button>
+      {jsxButtons}
       <Button onClick={clear}>clear</Button>
     </ScFixed>
-    <P ref={setStateDomP}>「金麟岂是池中物，一遇风云便化龙。九霄龙吟惊天变，风云际会浅水游。」这是泥菩萨给天下会帮主雄霸的四句批言，概括了他一生的命运。前两句「金麟岂是池中物，一遇风云便化龙」是指前半生雄霸的霸业尽得聂风和步惊云的帮助，因而完成。后两句「九霄龙吟惊天变，风云际会浅水游」则是指雄霸失败，亦是风云所致。所谓： <strong ref={setStateDomStrong}>成也风云，败也风云。</strong></P>
+    <P ref={setStateDomP}>「金麟岂是池中物，一遇风云便化龙。九霄龙吟惊天变，风云际会浅水游。」这是泥菩萨给天下会帮主雄霸的四句批言，概括了他一生的命运。前两句「金麟岂是池中物，一遇风云便化龙」是指前半生雄霸的霸业尽得聂风和步惊云的帮助，因而完成。后两句「九霄龙吟惊天变，风云际会浅水游」则是指雄霸失败，亦是风云所致。所谓：<strong ref={setStateDomStrong}>成也风云，败也风云</strong>。</P>
     <ScZIndex>父节点有 z-index 的情况，子元素 z-index <em ref={setStateDomShallEscape}>无法逃离</em> 父元素的 z-index。</ScZIndex>
-    <ScTheDiv ref={setStateDomDiv}>another div</ScTheDiv>
-    <ScTheRound ref={setStateDomRound}>i am round</ScTheRound>
+    <ScBorderRadiusPx ref={setStateBorderRadiusPx} onClick={alertClick}>radius: 12px</ScBorderRadiusPx>
+    <ScBorderRadiusPx2 ref={setStateBorderRadiusPx2} onClick={alertClick}>radius: 80px</ScBorderRadiusPx2>
+    <ScBorderRadius20Percent ref={setStateBorderRadius20Percent} onClick={alertClick}>radius: 20%</ScBorderRadius20Percent>
+    <ScBorderRadius50Percent ref={setStateBorderRadius50Percent} onClick={alertClick}>radius: 50%</ScBorderRadius50Percent>
     <LongArticle />
     <Button ref={setStateDomButtonBottom} onClick={handleAttentionButtonTop}>scroll up to the button</Button>
   </>;
