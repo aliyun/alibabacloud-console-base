@@ -58,6 +58,7 @@ export default function UiHeader(): JSX.Element {
   return <ScHeader>
     {upperHref ? <ScToUpperLevel {...{
       iconLeft: upperTitle ? 'angle-left' : undefined,
+      iconSpacing: 'small',
       label: upperTitle || <Icon type="angle-left" />,
       theme: ButtonTheme.TEXT_TERTIARY,
       textAlign: upperTitle ? 'left' : 'center',
