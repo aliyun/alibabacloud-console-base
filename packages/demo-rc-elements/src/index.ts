@@ -5,6 +5,7 @@ export {
   H4
 } from './rc/h1234';
 export { default as P } from './rc/p';
+export { default as Blockquote } from './rc/blockquote';
 export { default as List } from './rc/list';
 export { default as Hr } from './rc/hr';
 
