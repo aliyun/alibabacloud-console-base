@@ -18,7 +18,8 @@ interface IScProps {
 
 const ScAlertIcon = styled(Icon)<IScProps>`
   margin-right: 8px;
-  font-size: 14px;
+  line-height: 20px;
+  font-size: 16px;
   ${props => getIconColor(props.theme)}
 `;
 

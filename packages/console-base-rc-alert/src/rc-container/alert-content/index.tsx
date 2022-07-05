@@ -9,6 +9,11 @@ import {
   useProps
 } from '../../model';
 
+const ScAlertContent = styled.div`
+  flex: 1;
+  line-height: 20px;
+`;
+
 const ScAlertTitle = styled.div`
   margin-bottom: 4px;
   font-weight: 600;
@@ -21,8 +26,8 @@ export default function AlertContent(): JSX.Element {
     message
   }] = useProps();
   
-  return <div>
+  return <ScAlertContent>
     {title ? <ScAlertTitle>{title}</ScAlertTitle> : null}
     {message}
-  </div>;
+  </ScAlertContent>;
 }
