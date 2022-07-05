@@ -4,7 +4,7 @@ import {
 } from 'react';
 
 import {
-  getFixedRect
+  getRect
 } from '@alicloud/mere-dom';
 
 import useModelProps from './_use-model-props';
@@ -34,22 +34,22 @@ export default function useDropStyle(): CSSProperties {
     const style: CSSProperties = {
       zIndex
     };
-  
+    
     if (width) {
       style.width = width;
     }
-  
+    
     if (minWidth) {
       style.minWidth = minWidth;
     }
-  
+    
     if (maxWidth) {
       style.maxWidth = maxWidth;
     }
-  
+    
     // compute position
     if (dropContainer === 'body') {
-      const rect = getFixedRect(domDropdown);
+      const rect = domDropdown ? getRect(domDropdown, true) : null;
       
       if (rect) {
         style.top = rect.top + rect.height + offsetY;
@@ -64,7 +64,7 @@ export default function useDropStyle(): CSSProperties {
       }
     } else {
       style.top = '100%';
-    
+      
       if (alignIsRight) {
         style.right = offsetX;
       } else {

@@ -4,14 +4,13 @@ import styled, {
 
 import {
   BEACON_SIZE,
-  BEACON_SIZE_HALO,
   BEACON_COLOR,
   BEACON_COLOR_DARK,
   BACON_HALO_SCALE_MIN,
   BACON_HALO_SCALE_MAX
 } from '../../const';
 
-const beaconAnim = keyframes`
+const kfBeacon = keyframes`
   0% {
     opacity: 1;
     transform: scale(${BACON_HALO_SCALE_MIN});
@@ -55,7 +54,7 @@ export default styled.span`
   &:after {
     box-shadow: 0 0 2px 2px ${BEACON_COLOR};
     background-color: transparent;
-    animation: ${beaconAnim} 2s infinite linear;
+    animation: ${kfBeacon} 2s infinite linear;
   }
   
   .theme-dark & {
