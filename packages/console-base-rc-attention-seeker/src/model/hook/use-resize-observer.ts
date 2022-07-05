@@ -2,10 +2,10 @@ import {
   useMemo
 } from 'react';
 
-import useHandleRefreshRectStyle from './use-handle-refresh-rect-style';
+import useHandleRefreshAttentionRect from './use-handle-refresh-attention-rect';
 
 export default function useResizeObserver(): ResizeObserver | null {
-  const handleRefreshRectStyle = useHandleRefreshRectStyle();
+  const handleRefreshRectStyle = useHandleRefreshAttentionRect();
   
   return useMemo((): ResizeObserver | null => {
     // https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver

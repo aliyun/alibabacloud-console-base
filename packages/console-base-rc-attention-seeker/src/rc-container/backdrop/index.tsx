@@ -8,9 +8,9 @@ import {
   Z_INDEX_BACKDROP
 } from '../../const';
 import {
+  useRefBackdrop,
   useBackdropPath,
-  useHandleCloseOnBackdropClick,
-  useRefBackdrop
+  useHandleCloseOnBackdropClick
 } from '../../model';
 
 const ScBackdrop = styled.svg`
@@ -19,7 +19,7 @@ const ScBackdrop = styled.svg`
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.4;
   z-index: ${Z_INDEX_BACKDROP};
   width: 100vw;
   height: 100vh;
@@ -31,12 +31,12 @@ const ScBackdrop = styled.svg`
 `;
 
 export default function Backdrop(): JSX.Element {
-  const refDomBackdrop = useRefBackdrop();
+  const refBackdrop = useRefBackdrop();
   const backdropPath = useBackdropPath();
   const handleCloseOnBackdropClick = useHandleCloseOnBackdropClick();
   
   return createPortal(<ScBackdrop {...{
-    ref: refDomBackdrop,
+    ref: refBackdrop,
     className: 'J_fixed_right_will_be_pushed_left',
     onClick: handleCloseOnBackdropClick
   }}>

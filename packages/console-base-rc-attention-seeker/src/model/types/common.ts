@@ -7,7 +7,7 @@
  */
 export type TCloseSource = 'backdrop' | 'protector' | 'element';
 
-export interface IAttentionSeekerRect {
+export interface IAttentionRect {
   top: number;
   left: number;
   width: number;
@@ -20,7 +20,7 @@ export interface IAttentionSeekerOptions {
   // message?: string; // 暂时不用
 }
 
-export interface IAttentionSeekerItem {
+export interface IAttentionSeeker {
   element: HTMLElement;
   options?: IAttentionSeekerOptions;
 }

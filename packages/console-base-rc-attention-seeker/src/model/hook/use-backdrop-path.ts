@@ -1,24 +1,24 @@
-import useRect from './use-rect';
+import useModelState from './_use-model-state';
 
 export default function useBackdropPath(): string {
   const {
-    left: x,
-    top: y,
-    width,
-    height,
-    radius
-  } = useRect();
-  const {
-    innerWidth: X,
-    innerHeight: Y
-  } = window;
+    attentionRect: {
+      left: x,
+      top: y,
+      width,
+      height,
+      radius
+    },
+    viewportWidth,
+    viewportHeight
+  } = useModelState();
   
   // 关于 Path Commands https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#path_commands
-  return `M${X},${Y}\
+  return `M${viewportWidth},${viewportHeight}\
 H0\
 V0\
-H${X}\
-V${Y}\
+H${viewportWidth}\
+V${viewportHeight}\
 Z\
 M${x + radius},${y}\
 ${radius ? `a${radius},${radius},0,0,0-${radius},${radius}` : ''}\

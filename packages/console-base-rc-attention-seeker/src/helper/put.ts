@@ -3,17 +3,16 @@ import {
 } from '../model';
 
 import {
-  putItem,
-  pullItem
-} from './_items';
+  attentionItems
+} from './util';
 import refresh from './refresh';
 
 export default function put(element: HTMLElement, options?: IAttentionSeekerOptions, prependMode?: boolean): () => void {
-  putItem(element, options, prependMode);
+  attentionItems.addItem(element, options, prependMode);
   refresh();
   
-  return function pull(): void {
-    pullItem(element);
+  return (): void => {
+    attentionItems.removeItem(element);
     refresh();
   };
 }

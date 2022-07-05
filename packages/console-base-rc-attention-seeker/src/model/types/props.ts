@@ -1,10 +1,9 @@
 import {
-  IAttentionSeekerItem,
+  IAttentionSeeker,
   TCloseSource
 } from './common';
 
 export interface IModelProps {
-  items: IAttentionSeekerItem[];
-  timestamp?: number; // 用于强制 refresh
+  items: IAttentionSeeker[];
   onClose?(source: TCloseSource): void;
 }

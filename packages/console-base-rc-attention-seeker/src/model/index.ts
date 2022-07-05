@@ -4,6 +4,6 @@ export * from './hook';
 
 export type {
   IAttentionSeekerOptions,
-  IAttentionSeekerItem,
+  IAttentionSeeker,
   IModelProps
 } from './types';

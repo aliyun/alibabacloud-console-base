@@ -1,17 +1,9 @@
 import {
-  useEffectScrollInToView,
-  useEffectCalcRect,
-  useEffectBindCloseToElement,
-  useEffectWatchTimestamp,
-  useEffectObserveResize
+  useEffects
 } from '../../model';
 
 export default function Lifecycle(): null {
-  useEffectScrollInToView();
-  useEffectCalcRect();
-  useEffectBindCloseToElement();
-  useEffectWatchTimestamp();
-  useEffectObserveResize();
+  useEffects();
   
   return null;
 }

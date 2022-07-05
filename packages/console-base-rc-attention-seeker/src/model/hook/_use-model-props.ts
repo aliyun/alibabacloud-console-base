@@ -9,8 +9,7 @@ import {
 import useModelContext from './_use-model-context';
 
 const DEFAULT_PROPS: IModelProps = {
-  items: [],
-  timestamp: 0
+  items: []
 };
 
 export default function useModelProps(): IModelProps {

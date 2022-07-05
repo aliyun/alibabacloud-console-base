@@ -4,23 +4,21 @@ import {
 
 import useDomBackdrop from './use-dom-backdrop';
 import useAttentionElement from './use-attention-element';
-import useResizeObserver from './use-resize-observer';
-import useHandleRefreshRectStyle from './use-handle-refresh-rect-style';
+import useHandleWindowResize from './use-handle-window-resize';
 
 export default function useEffectObserveResizeOfWindow(): void {
   const domBackdrop = useDomBackdrop();
   const attentionElement = useAttentionElement();
-  const handleRefreshRectStyle = useHandleRefreshRectStyle();
-  
-  const resizeObserver = useResizeObserver();
+  const noWatch = !attentionElement || !domBackdrop;
+  const handleWindowResize = useHandleWindowResize();
   
   useEffect(() => {
-    if (!attentionElement || !domBackdrop || resizeObserver) {
+    if (noWatch) {
       return;
     }
     
-    window.addEventListener('resize', handleRefreshRectStyle);
+    window.addEventListener('resize', handleWindowResize);
     
-    return () => window.removeEventListener('resize', handleRefreshRectStyle);
-  }, [attentionElement, domBackdrop, handleRefreshRectStyle, resizeObserver]);
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, [noWatch, handleWindowResize]);
 }

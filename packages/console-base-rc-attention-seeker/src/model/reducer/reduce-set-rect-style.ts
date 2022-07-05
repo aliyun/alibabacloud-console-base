@@ -1,13 +1,13 @@
 import update from 'immutability-helper';
 
 import {
-  IAttentionSeekerRect,
+  IAttentionRect,
   IModelState
 } from '../types';
 
-export default function reduceSetRectStyle(state: IModelState, payload: IAttentionSeekerRect): IModelState {
+export default function reduceSetRectStyle(state: IModelState, payload: IAttentionRect): IModelState {
   return update(state, {
-    rectStyle: {
+    attentionRect: {
       $merge: payload
     }
   });

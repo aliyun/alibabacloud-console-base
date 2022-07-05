@@ -1,8 +1,10 @@
 import {
-  IAttentionSeekerRect
+  IAttentionRect
 } from './common';
 
 export interface IModelState {
-  rectStyle: IAttentionSeekerRect;
   domBackdrop: HTMLOrSVGElement | null;
+  attentionRect: IAttentionRect;
+  viewportWidth: number;
+  viewportHeight: number;
 }

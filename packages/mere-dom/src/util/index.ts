@@ -6,6 +6,7 @@ export { default as getFixedRect } from './get-fixed-rect';
 export { default as getViewportHeight } from './get-viewport-height';
 export { default as getViewportWidth } from './get-viewport-width';
 
+export { default as getComputedStyle } from './get-computed-style';
 export { default as getRect } from './get-rect';
 export { default as getViewport } from './get-viewport';
 export { default as getScrollbarWidth } from './get-scrollbar-width';

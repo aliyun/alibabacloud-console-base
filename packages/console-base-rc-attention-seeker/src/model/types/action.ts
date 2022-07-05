@@ -7,15 +7,17 @@ import {
 } from '../enum';
 
 import {
-  IAttentionSeekerRect
+  IAttentionRect
 } from './common';
 
 export type TModelAction = {
-  type: EAction.SET_RECT_STYLE;
-  payload: IAttentionSeekerRect;
-} | {
   type: EAction.SET_DOM_BACKDROP;
   payload: HTMLOrSVGElement | null;
+} | {
+  type: EAction.SET_ATTENTION_RECT;
+  payload: IAttentionRect;
+} | {
+  type: EAction.REFRESH_VIEWPORT;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;

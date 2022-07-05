@@ -1,12 +1,13 @@
+import getComputedStyle from './get-computed-style';
+
 function isElementInvisible(el: HTMLElement): boolean {
-  // https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle 支持性良好
   const {
     display,
     visibility,
     opacity,
     width,
     height
-  } = window.getComputedStyle ? window.getComputedStyle(el) : el.style; // eslint-disable-line @typescript-eslint/no-unnecessary-condition
+  } = getComputedStyle(el);
   
   return display === 'none' || visibility === 'hidden' || opacity === '0' || width === '0px' || height === '0px';
 }

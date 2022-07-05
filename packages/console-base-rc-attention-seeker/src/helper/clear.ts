@@ -1,12 +1,9 @@
 import {
+  attentionItems,
   removeSoloHolder
-} from '../util';
-
-import {
-  removeAll
-} from './_items';
+} from './util';
 
 export default function clear(): void {
-  removeAll();
+  attentionItems.clear();
   removeSoloHolder();
 }

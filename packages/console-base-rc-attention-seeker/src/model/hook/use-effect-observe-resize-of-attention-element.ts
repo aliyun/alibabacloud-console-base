@@ -6,7 +6,7 @@ import useAttentionElement from './use-attention-element';
 import useResizeObserver from './use-resize-observer';
 
 /**
- * 监听元素本身大小的变化，但 padding 的变化不会收到事件..
+ * 监听需关注元素本身大小的变化，但 padding 的变化不会收到事件..
  */
 export default function useEffectObserveResizeOfAttentionElement(): void {
   const attentionElement = useAttentionElement();
