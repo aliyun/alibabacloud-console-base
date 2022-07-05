@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-one-modal",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "ConsoleBase 组件 - 专用于文档组件的可拖拽、带标签的容器",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "modal"
   ],
   "devDependencies": {
-    "@alicloud/console-base-rc-demo-theme-switcher": "^1.2.0",
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.2.1",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.6.0",
+    "@alicloud/demo-rc-elements": "^1.6.1",
     "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.17",
     "@types/styled-components": "^5.1.25",
@@ -43,12 +43,12 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.4.0",
-    "@alicloud/console-base-rc-button": "^1.4.1",
-    "@alicloud/console-base-rc-icon": "^1.6.0",
-    "@alicloud/console-base-rc-tabs": "^1.5.0",
-    "@alicloud/console-base-theme": "^1.6.1",
-    "@alicloud/mere-dom": "^1.4.5",
+    "@alicloud/console-base-intl-factory-basic": "^1.4.1",
+    "@alicloud/console-base-rc-button": "^1.4.2",
+    "@alicloud/console-base-rc-icon": "^1.6.1",
+    "@alicloud/console-base-rc-tabs": "^1.5.1",
+    "@alicloud/console-base-theme": "^1.6.2",
+    "@alicloud/mere-dom": "^1.4.6",
     "@alicloud/typescript-missing-helpers": "^1.2.0",
     "react-rnd": "^10.3.7"
   },
