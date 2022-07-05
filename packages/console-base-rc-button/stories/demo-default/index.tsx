@@ -67,6 +67,7 @@ export default function DemoDefault(): JSX.Element {
       label: 'ref shall work right',
       theme: ButtonTheme.PRIMARY,
       onClick() {
+        // eslint-disable-next-line no-console
         console.info(stateDom);
       }
     }} />
@@ -78,7 +79,7 @@ export default function DemoDefault(): JSX.Element {
         label: v
       }} />;
     })}
-    <H2>Alignment with Icon</H2>
+    <H2>垂直对齐 IconLeft</H2>
     <Button {...{
       iconLeft: ' ',
       textAlign: 'left',
@@ -100,6 +101,21 @@ export default function DemoDefault(): JSX.Element {
     <Button {...{
       iconLeft: 'config',
       textAlign: 'left',
+      label: 'icon left config'
+    }} />
+    <H2>垂直对齐 IconRight</H2>
+    <Button {...{
+      iconRight: 'x',
+      label: 'icon left x'
+    }} />
+    <br />
+    <Button {...{
+      iconRight: 'check',
+      label: 'icon left check'
+    }} />
+    <br />
+    <Button {...{
+      iconRight: 'config',
       label: 'icon left config'
     }} />
   </>;

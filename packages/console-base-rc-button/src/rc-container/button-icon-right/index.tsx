@@ -1,23 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import {
-  IModelProps,
   usePropsCustom
 } from '../../model';
 import {
-  getStyleIconSpacing,
   renderIcon
 } from '../../util';
-
-const ScButtonIconRight = styled.span<Partial<IModelProps>>`
-  margin-left: ${getStyleIconSpacing}px;
-  text-align: right;
-  
-  &:first-child {
-    margin-left: 0;
-  }
-`;
+import ButtonIconWrapper from '../../rc/button-icon-wrapper';
 
 export default function ButtonIconRight(): JSX.Element | null {
   const {
@@ -27,8 +16,8 @@ export default function ButtonIconRight(): JSX.Element | null {
   } = usePropsCustom();
   const jsxIcon = renderIcon(iconRight);
   
-  return jsxIcon ? <ScButtonIconRight {...{
+  return jsxIcon ? <ButtonIconWrapper {...{
     className: classNameForIconRight,
     iconSpacing
-  }}>{jsxIcon}</ScButtonIconRight> : null;
+  }}>{jsxIcon}</ButtonIconWrapper> : null;
 }

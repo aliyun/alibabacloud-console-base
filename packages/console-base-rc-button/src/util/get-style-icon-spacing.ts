@@ -1,9 +1,9 @@
 import {
-  IModelProps
+  TIconSpacing
 } from '../model';
 
-export default function getStyleIconSpacing(props: Partial<IModelProps>): number {
-  switch (props.iconSpacing) {
+export default function getStyleIconSpacing(iconSpacing?: TIconSpacing): number {
+  switch (iconSpacing) {
     case 'no':
       return 0;
     case 'small':
