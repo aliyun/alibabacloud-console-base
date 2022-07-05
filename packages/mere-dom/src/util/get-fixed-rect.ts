@@ -16,6 +16,8 @@ interface IResult {
  * getBoundingClientRect 给出的 x/left、y/top 永远是相对于视窗原点的，如果我们需要拿到相对于文档原点的数据，需要加上 scrollTop/Left
  * 
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+ * 
+ * @deprecated use getRect
  */
 export default function getFixedRect(selector: TSelector, parent?: TParent): IResult | null {
   const [el] = find(selector, parent);
@@ -33,8 +35,8 @@ export default function getFixedRect(selector: TSelector, parent?: TParent): IRe
     width,
     height
   } = el.getBoundingClientRect();
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || 0;
+  const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  const scrollLeft = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft || 0;
   
   return {
     top: (y || top) + scrollTop,

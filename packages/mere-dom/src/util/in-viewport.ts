@@ -1,29 +1,20 @@
-import {
-  TSelector,
-  TParent
-} from '../types';
-
-import find from './find';
-import getViewportHeight from './get-viewport-height';
-import getViewportWidth from './get-viewport-width';
+import getRect from './get-rect';
+import getViewport from './get-viewport';
 
 /**
  * if element is visible in the current viewport
  */
-export default function inViewport(selector: TSelector, parent?: TParent): boolean {
-  const [el] = find(selector, parent);
-  
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!el) {
-    return false;
-  }
-  
+export default function inViewport(el: Element): boolean {
   const {
     top,
     left,
     bottom,
     right
-  } = el.getBoundingClientRect();
+  } = getRect(el);
+  const {
+    height,
+    width
+  } = getViewport();
   
-  return top >= 0 && left >= 0 && bottom <= getViewportHeight() && right <= getViewportWidth();
+  return top >= 0 && left >= 0 && bottom <= height && right <= width;
 }

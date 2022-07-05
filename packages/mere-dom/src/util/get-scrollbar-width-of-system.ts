@@ -13,7 +13,7 @@ function calculateSystemScrollbarWidth(): number {
   
   const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
   
-  outer.parentNode!.removeChild(outer);
+  outer.parentNode?.removeChild(outer);
   
   return scrollbarWidth < 0 ? 0 : scrollbarWidth;
 }

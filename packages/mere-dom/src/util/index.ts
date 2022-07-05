@@ -5,6 +5,9 @@ export { default as findFocusable } from './find-focusable';
 export { default as getFixedRect } from './get-fixed-rect';
 export { default as getViewportHeight } from './get-viewport-height';
 export { default as getViewportWidth } from './get-viewport-width';
+
+export { default as getRect } from './get-rect';
+export { default as getViewport } from './get-viewport';
 export { default as getScrollbarWidth } from './get-scrollbar-width';
 export { default as getScrollbarWidthOfSystem } from './get-scrollbar-width-of-system';
 export { default as getScrollbarWidthOfWindow } from './get-scrollbar-width-of-window';
@@ -22,6 +25,9 @@ export { default as wrap } from './wrap';
 
 export { default as scrollIntoView } from './scroll-into-view';
 export { default as scrollTo } from './scroll-to';
+
+export { default as htmlEscape } from './html-escape';
+export { default as htmlUnescape } from './html-unescape';
 
 export { default as selectText } from './select-text';
 export { default as traverseDfs } from './traverse-dfs';

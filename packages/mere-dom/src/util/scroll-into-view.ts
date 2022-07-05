@@ -1,38 +1,51 @@
 import {
-  TParent,
-  TSelector
+  IRect
 } from '../types';
 
-import find from './find';
 import inViewport from './in-viewport';
-
-interface IOptions extends ScrollIntoViewOptions {
-  parent?: TParent;
-}
+import getRect from './get-rect';
 
 /**
  * 基本都支持
  * 
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
  */
-export default function scrollIntoView(selector: TSelector, {
-  parent,
-  behavior = 'smooth', // default 'auto'
+export default async function scrollIntoView(el: Element, {
+  behavior = 'smooth', // default is 'auto'
   ...options
-}: IOptions = {}): void {
-  const [el] = find(selector, parent);
-  
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!el || inViewport(el)) {
+}: ScrollIntoViewOptions = {}): Promise<void> {
+  if (inViewport(el)) {
     return;
   }
   
-  try {
-    el.scrollIntoView({
-      behavior,
-      ...options
-    });
-  } catch (err) {
-    // ignore
-  }
+  return new Promise(resolve => {
+    let sameCount = 0;
+    let lastRect: IRect | null = null;
+    
+    function check(): void {
+      const rect = getRect(el);
+      
+      if (lastRect && lastRect.top === rect.top && lastRect.left === rect.left) {
+        if (sameCount++ > 2) { // if it's more than two frames
+          return resolve();
+        }
+      } else {
+        sameCount = 0;
+        lastRect = rect;
+      }
+      
+      requestAnimationFrame(check);
+    }
+    
+    try {
+      el.scrollIntoView({
+        behavior,
+        ...options
+      });
+      
+      requestAnimationFrame(check);
+    } catch (err) {
+      resolve();
+    }
+  });
 }
