@@ -4,7 +4,7 @@ import styled, {
 
 import {
   CSS_FONT_FAMILY
-} from '../const';
+} from '../../const';
 
 const cssHeading = css`
   position: relative;

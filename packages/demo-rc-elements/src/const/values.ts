@@ -1,5 +1,5 @@
 export const FORM_CONTROL_HEIGHT = 32;
-export const FORM_CONTROLPADDING_HORIZONTAL = 12;
+export const FORM_CONTROL_PADDING_HORIZONTAL = 12;
 export const FORM_CONTROL_FGC_DISABLED = '#c0c6cc';
 export const FORM_CONTROL_BDC = '#ddd';
 export const FORM_CONTROL_BDC_HOVER = '#aac';
@@ -10,3 +10,7 @@ export const FORM_CONTROL_BGC = '#f3f3f3';
 export const FORM_CONTROL_BGC_HOVER = '#f3f3f3';
 export const FORM_CONTROL_BGC_ACTIVE = '#f7f7f7';
 export const FORM_CONTROL_BGC_DISABLED = '#f0f1f3';
+
+export const TABLE_BGC_TH = '#eff3f8';
+export const TABLE_BGC_TD = '#fff';
+export const TABLE_BDC = '#e7e7e7';

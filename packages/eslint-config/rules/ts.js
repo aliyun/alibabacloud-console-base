@@ -165,7 +165,7 @@ module.exports = {
   /**
    * https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
    */
-  '@typescript-eslint/no-unnecessary-condition': 'error',
+  '@typescript-eslint/no-unnecessary-condition': 'warn',
   /* ********************************
    * prefer- 系列
    ******************************** */

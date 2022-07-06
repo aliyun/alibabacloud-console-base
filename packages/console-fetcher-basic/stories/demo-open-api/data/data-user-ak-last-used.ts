@@ -17,5 +17,10 @@ export default function dataUserAkLastUsed(upn: string, ak: string): Promise<Dat
   return callOpenApiWithIms<IShitty, IParams>('GetAccessKeyLastUsed', {
     UserPrincipalName: upn,
     UserAccessKeyId: ak
+  }, {
+    region: 'cn-hangzhou',
+    roa: {
+      fuck: 'you'
+    }
   }).then(shitty => fixDate(shitty.AccessKeyLastUsed.LastUsedDate));
 }

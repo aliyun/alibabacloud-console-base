@@ -10,6 +10,8 @@ import {
   CodeMirrorProps
 } from '@alicloud/rc-codemirror';
 
+export * from './table';
+
 export interface IPropsCodeViewer extends CodeMirrorProps {
   type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'markdown' | 'text';
   children?: string;
