@@ -10,6 +10,7 @@ module.exports = {
   camelcase: 'off', // → @typescript-eslint/naming-convention
   'comma-dangle': 'off',
   'space-before-blocks': 'off',
+  'space-infix-ops': 'off',
   'no-shadow': 'off',
   'no-use-before-define': 'off',
   'no-unused-vars': 'off',
@@ -54,6 +55,12 @@ module.exports = {
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-before-blocks.md
    */
   '@typescript-eslint/space-before-blocks': ['error'],
+  /**
+   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-infix-ops.md
+   */
+  '@typescript-eslint/space-infix-ops': ['error', {
+    int32Hint: false
+  }],
   /**
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/member-delimiter-style.md
    */
