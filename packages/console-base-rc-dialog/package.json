@@ -31,7 +31,7 @@
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.2.1",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.6.2",
+    "@alicloud/demo-rc-elements": "^1.6.3",
     "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.17",
