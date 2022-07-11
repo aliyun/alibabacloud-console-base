@@ -12,6 +12,7 @@ export { default as getViewport } from './get-viewport';
 export { default as getScrollbarWidth } from './get-scrollbar-width';
 export { default as getScrollbarWidthOfSystem } from './get-scrollbar-width-of-system';
 export { default as getScrollbarWidthOfWindow } from './get-scrollbar-width-of-window';
+export { default as getEventTarget } from './get-event-target';
 
 export { default as isVisible } from './is-visible';
 export { default as isFocusable } from './is-focusable';
