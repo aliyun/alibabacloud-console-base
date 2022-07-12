@@ -27,60 +27,6 @@ export default styled.article`
     ${mixinLinkPrimary}
   }
   
-  ul,
-  ol,
-  dl {
-    margin: 1em 0 0 1.75em;
-    padding: 0;
-    line-height: inherit;
-    font-size: inherit;
-    color: inherit;
-    
-    li {
-      margin: 0.5em 0;
-      list-style: inherit;
-    }
-  }
-  
-  ul {
-    list-style: disc outside;
-    
-    ul {
-      list-style-type: circle;
-      
-      ul {
-        list-style-type: disc;
-      }
-    }
-  }
-  
-  ol {
-    list-style: decimal outside;
-    
-    ol {
-      list-style-type: lower-roman;
-    }
-  }
-  
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  blockquote,
-  fieldset,
-  figure {
-    margin: 1em 0;
-    line-height: inherit;
-    font-size: inherit;
-    color: inherit;
-  }
-  
-  blockquote {
-    ${mixinTypoBlockquote}
-  }
-  
   em {
     ${mixinTypoEm}
   }
@@ -91,11 +37,6 @@ export default styled.article`
     &.clean {
       background-color: transparent;
     }
-  }
-  
-  pre,
-  code {
-    ${mixinTypoFontFamilyMono}
   }
   
   strong {
@@ -111,6 +52,67 @@ export default styled.article`
     display: block;
   }
   
+  ul,
+  ol,
+  dl {
+    padding: 0;
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+    
+    li {
+      margin: 0.5em 0;
+      list-style: inherit;
+    }
+  }
+  
+  ul {
+    list-style: disc inside;
+    
+    ul {
+      list-style-type: circle;
+      
+      ul {
+        list-style-type: disc;
+      }
+    }
+  }
+  
+  ol {
+    list-style: decimal inside;
+    
+    ol {
+      list-style-type: lower-roman;
+    }
+  }
+  
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  blockquote,
+  fieldset,
+  figure {
+    line-height: inherit;
+    font-size: inherit;
+    color: inherit;
+  }
+  
+  blockquote {
+    ${mixinTypoBlockquote}
+  }
+  
+  pre,
+  code {
+    ${mixinTypoFontFamilyMono}
+  }
+  
+  p {
+    word-break: break-word;
+  }
+  
   h1,
   h2,
   h3,
@@ -118,10 +120,6 @@ export default styled.article`
   h5 {
     font-weight: 600;
     ${mixinTextPrimary}
-    
-    &:first-child {
-      margin-top: 0;
-    }
   }
   
   h1 {
@@ -147,23 +145,6 @@ export default styled.article`
     ${mixinBorderSecondaryBottom}
   }
   
-  section {
-    margin: 2em 0 1em 0;
-  }
-  
-  p {
-    margin: 1em 0 1em 0;
-    word-break: break-word;
-    
-    &:first-child {
-      margin-top: 0;
-    }
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  
   dl {
     dt {
       margin-top: 16px;
@@ -177,7 +158,6 @@ export default styled.article`
   }
   
   pre {
-    margin: 0;
     padding: 16px;
     line-height: 1.6;
     overflow: auto;
@@ -274,13 +254,38 @@ export default styled.article`
         text-align: center;
       }
     }
+  }
+  
+  p,
+  section,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  ul,
+  ol,
+  dl,
+  li,
+  pre,
+  table,
+  blockquote,
+  fieldset,
+  figure {
+    margin: 1em 0;
     
-    ul {
-      li {
-        p {
-          margin: 0;
-        }
-      }
+    &:first-child {
+      margin-top: 0;
     }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  ul,
+  ol,
+  dl {
+    margin: 1em 0 1em 1em;
   }
 `;
