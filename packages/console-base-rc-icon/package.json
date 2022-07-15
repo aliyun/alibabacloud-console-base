@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-icon",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "ConsoleBase 组件 - 图标",
   "license": "MIT",
   "sideEffects": false,
