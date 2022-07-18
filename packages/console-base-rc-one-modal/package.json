@@ -48,7 +48,7 @@
     "@alicloud/console-base-rc-icon": "^1.6.2",
     "@alicloud/console-base-rc-tabs": "^1.5.1",
     "@alicloud/console-base-theme": "^1.6.2",
-    "@alicloud/mere-dom": "^1.4.7",
+    "@alicloud/mere-dom": "^1.4.8",
     "@alicloud/typescript-missing-helpers": "^1.2.0",
     "react-rnd": "^10.3.7"
   },
