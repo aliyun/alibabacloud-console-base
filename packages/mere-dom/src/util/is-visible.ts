@@ -1,15 +1,16 @@
 import getComputedStyle from './get-computed-style';
 
+/**
+ * 不对 width 和 height 进行判断，因为子元素全部会 fixed 或者 absolute 的话，父元素极有可能没有大小
+ */
 function isElementInvisible(el: HTMLElement): boolean {
   const {
     display,
     visibility,
-    opacity,
-    width,
-    height
+    opacity
   } = getComputedStyle(el);
   
-  return display === 'none' || visibility === 'hidden' || opacity === '0' || width === '0px' || height === '0px';
+  return display === 'none' || visibility === 'hidden' || opacity === '0';
 }
 
 /**
