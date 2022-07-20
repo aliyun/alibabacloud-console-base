@@ -6,7 +6,7 @@ import {
   EMarkType
 } from '../enum';
 
-export interface IPropsMark extends HTMLAttributes<HTMLSpanElement> {
+export interface IPropsMark extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
   hollow?: boolean;
   align?: 'left' | 'center' | 'right';
   component?: 'sup' | 'sub' | 'span';

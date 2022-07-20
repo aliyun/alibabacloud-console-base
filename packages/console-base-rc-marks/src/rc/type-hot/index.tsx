@@ -6,10 +6,10 @@ import {
 import {
   IPropsMark
 } from '../../types';
-import Mark from '../_base';
+import MarkByType from '../mark-by-type';
 
 export default function Hot(props: IPropsMark): JSX.Element {
-  return <Mark {...{
+  return <MarkByType {...{
     ...props,
     type: EMarkType.HOT
   }} />;
