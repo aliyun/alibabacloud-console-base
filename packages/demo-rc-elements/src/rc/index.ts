@@ -35,6 +35,7 @@ export { default as CodeViewerLess } from './code-viewer-less';
 export { default as PropsNCode } from './props-n-code';
 
 /* 容器 */
+export { default as Alert } from './alert';
 export { default as Table } from './table';
 export { default as Flex } from './flex';
 export { default as Flex100HBF } from './flex-100hbf';

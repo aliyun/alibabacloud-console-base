@@ -13,6 +13,7 @@ export type {
   IPropsInputNumber as InputNumberProps,
   IPropsInputSwitch as InputSwitchProps,
   IPropsInputJsonObject as InputJsonObjectProps,
+  IAlertProps as AlertProps,
   ITableProps as TableProps,
   TTableColumnProps as TableColumnProps
 } from './types';
