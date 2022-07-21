@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-messenger-resource-group",
-  "version": "1.1.1",
+  "version": "1.1.2-alpha.0",
   "description": "ConsoleBase 组件 - 对 resource group messenger 的组件化封装，提升开发体验",
   "license": "MIT",
   "sideEffects": false,
@@ -36,8 +36,8 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-log-sls": "^1.4.1",
-    "@alicloud/console-base-messenger": "^1.12.1"
+    "@alicloud/console-base-log-sls": "^1.4.2-alpha.0",
+    "@alicloud/console-base-messenger": "^1.12.2-alpha.0"
   },
   "scripts": {
     "start": "breezr start-storybook",
