@@ -50,7 +50,7 @@ const ScItem = styled(Flex)<IScItemProps>`
   margin-bottom: ${props => props.marginBottom || 0}px;
   padding-left: 16px;
   height: 100px;
-  overflow-y: auto;
+  overflow: hidden;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   ${props => (props.disabled ? mixinButtonSecondaryStateDisabled : mixinBorderSecondary)}
   
