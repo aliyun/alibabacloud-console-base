@@ -38,8 +38,8 @@ import getTicketType from '../../../util/get-ticket-type';
 import Message from '../_components/message';
 
 interface IScItemProps extends FlexProps {
-  marginTop?: number;
   disabled?: boolean;
+  marginBottom?: number;
 }
 
 const ScDesc = styled.div`
@@ -47,10 +47,10 @@ const ScDesc = styled.div`
 `;
 
 const ScItem = styled(Flex)<IScItemProps>`
-  margin-top: ${props => props.marginTop || 0}px;
+  margin-bottom: ${props => props.marginBottom || 0}px;
   padding-left: 16px;
   height: 100px;
-  overflow-y: hidden;
+  overflow-y: auto;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   ${props => (props.disabled ? mixinButtonSecondaryStateDisabled : mixinBorderSecondary)}
   
@@ -133,6 +133,7 @@ export default function MfaChoose(): JSX.Element {
     }} />
     <ScItem {...{
       align: 'center',
+      marginBottom: 20,
       justify: 'space-between',
       onClick: handleVmfaRadioClick
     }}>
@@ -148,6 +149,13 @@ export default function MfaChoose(): JSX.Element {
         width: 120
       }} />
     </ScItem>
+    {!stateU2fSupported ? <Message {...{
+      widthPercentage: 100,
+      noBackground: true,
+      isSmallICon: true,
+      iconType: EIconType.ERROR,
+      message: intl('message:u2f_browser_not_support')
+    }} /> : null}
     <ScItem {...{
       marginTop: 20,
       disabled: !stateU2fSupported,
@@ -156,19 +164,11 @@ export default function MfaChoose(): JSX.Element {
       onClick: handleU2fRadioCheck
     }}>
       <div>
-        {!stateU2fSupported ? <Message {...{
-          noBackground: true,
-          isSmallICon: true,
-          iconType: EIconType.ERROR,
-          message: intl('message:u2f_browser_not_support')
-        }} /> : null}
-        <Flex>
-          <Radio {...{
-            checked: stateRadioChecked === EStep.U2F_BIND,
-            disabled: !stateU2fSupported,
-            label: intl('op:mfa_choose_u2f')
-          }} />
-        </Flex>
+        <Radio {...{
+          checked: stateRadioChecked === EStep.U2F_BIND,
+          disabled: !stateU2fSupported,
+          label: intl('op:mfa_choose_u2f')
+        }} />
         <ScDesc>{intl('message:mfa_choose_u2f')}</ScDesc>
       </div>
       <img alt="" {...{

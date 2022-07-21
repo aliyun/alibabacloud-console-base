@@ -40,6 +40,7 @@ export default {
   'op:mfa_show_secret': '显示密钥',
   'op:mfa_hide_secret': '隐藏密钥',
   'op:resend_after_{n}s': '{n} 秒后重发',
+  'op:view_security_code': '查看安全码',
   'message:invalid_unknown!lines': `系统没有检测到验证方式。
 为了保障您的账户安全，请先设置验证方式。`,
   'message:invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
@@ -68,5 +69,6 @@ export default {
   'message:mfa_choose_tip': '子用户在进行敏感操作时需要进行安全验证，您需要通过下列方式绑定 MFA 设备。',
   'message:new_main_verify_error': '安全验证服务发生未知错误，请重试。',
   'message:sub_invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
-为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`
+为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`,
+  'message:update_app_tip_{url}!html': '阿里云 App 最新版提供了 MFA 验证码快速输入功能，请 <a href="{url}" target="_blank">升级 App</a>。'
 };

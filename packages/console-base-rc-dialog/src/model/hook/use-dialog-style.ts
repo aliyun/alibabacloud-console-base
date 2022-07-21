@@ -17,14 +17,16 @@ import useModelState from './_use-model-state';
 export default function useDialogStyle(): CSSProperties {
   const {
     mode,
-    size,
-    zIndex
+    zIndex,
+    size: size0
   } = useModelProps();
   const {
+    data,
     zIndex: zIndexInState
   } = useModelState();
-  
+    
   const modeIsSlide = mode === EDialogMode.SLIDE;
+  const size = typeof size0 === 'function' ? size0(data) : size0;
   
   function getWidth(): string | number {
     if (mode === EDialogMode.SLIDE_UP) {

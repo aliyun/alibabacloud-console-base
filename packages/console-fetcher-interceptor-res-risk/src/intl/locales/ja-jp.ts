@@ -40,6 +40,7 @@ export default {
   'op:mfa_show_secret': 'キーを表示',
   'op:mfa_hide_secret': '隠しキー',
   'op:resend_after_{n}s': '{n} 秒',
+  'op:view_security_code': 'セキュリティコードを表示する',
   'message:invalid_unknown!lines': `認証方法が見つかりませんでした。
 アカウントのセキュリティを保護するには、まず認証方法を設定します。`,
   'message:invalid_unsupported_{method}!html!lines': `確認方法 <code>{method}</code> が正しくありません。
@@ -68,5 +69,6 @@ export default {
   'message:mfa_choose_tip': 'サブユーザーは、機密性の高い操作を実行するときにセキュリティ検証を実行する必要があります。次の方法でMFAデバイスをバインドする必要があります。',
   'message:new_main_verify_error': 'セキュリティ検証サービスで不明なエラーが発生しました。再試行してください。',
   'message:sub_invalid_unsupported_{method}!html!lines': `システムは、検証メソッド <code>{method}</code> でエラーを検出しました。
-アカウントのセキュリティを保護するために、メインアカウントまたはRAM管理者に連絡して、RAMコンソールで確認方法を設定してください。`
+アカウントのセキュリティを保護するために、メインアカウントまたはRAM管理者に連絡して、RAMコンソールで確認方法を設定してください。`,
+  'message:update_app_tip_{url}!html': 'MFA 認証コードをクイック入力し、アプリをアップグレードしてください。<a href="{url}" target="_blank">今すぐアップグレード</a>。'
 };

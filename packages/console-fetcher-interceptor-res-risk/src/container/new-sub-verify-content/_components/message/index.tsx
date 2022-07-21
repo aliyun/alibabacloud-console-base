@@ -28,6 +28,7 @@ import {
   EIconType
 } from '../../../../enum';
 import intl from '../../../../intl';
+import aliyunAppVersion from '../../../../util/aliyun-app-version';
 
 interface IIconProps {
   iconType: EIconType;
@@ -37,28 +38,35 @@ interface IIconProps {
 interface IErrorDivProps extends FlexProps {
   noBackground?: boolean;
   isSmallICon?: boolean;
-  widthPercent?: number;
 }
 
-interface IProps extends IErrorDivProps {
+interface IErrorMessageDivProps {
+  widthPercentage?: number;
+}
+
+interface IProps extends IErrorDivProps, IErrorMessageDivProps {
   iconType: EIconType;
   message: string;
   showU2fRetryButton?: boolean;
   onRetryClick?: () => void;
 }
 
+const u2fRetryMessageWidthPercent = aliyunAppVersion ? 80 : 90;
+
 const CssDivCommon = css`
   margin-bottom: 16px;
   padding: 8px 12px;
+  word-break: break-word;
 `;
 
 const CssDivTip = css`
   margin-bottom: 8px;
   margin-left: 4px;
+  word-break: break-word;
 `;
 
-const ScMessageDiv = styled.div`
-  width: 90%;
+const ScErrorMessageDiv = styled.div<IErrorMessageDivProps>`
+  width: ${props => props.widthPercentage ?? u2fRetryMessageWidthPercent}%;
 `;
 
 const ScNotice = styled(Flex)`
@@ -105,20 +113,21 @@ const ScIcon = styled(Icon)<IIconProps>`
 
 // 通用的顶部提示 Message 组件
 export default function Message({
+  message,
   iconType,
   noBackground,
-  isSmallICon = false,
-  message,
+  widthPercentage,
   showU2fRetryButton,
+  isSmallICon = false,
   onRetryClick
 }: IProps): JSX.Element {
   switch (iconType) {
     case EIconType.ERROR:
       return <ScError noBackground={noBackground} align="center" justify="space-between">
-        <ScMessageDiv>
+        <ScErrorMessageDiv widthPercentage={widthPercentage}>
           <ScIcon type={EIconType.ERROR} iconType={EIconType.ERROR} isSmallICon={isSmallICon} />
           {message}
-        </ScMessageDiv>
+        </ScErrorMessageDiv>
         {showU2fRetryButton ? <Button {...{ // 绑定/验证 U2F 场景，当 U2F 安全密钥获取失败时，有重试的按钮
           theme: ButtonTheme.TEXT_PRIMARY,
           size: ButtonSize.S,
