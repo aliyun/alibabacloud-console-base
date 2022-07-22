@@ -24,7 +24,7 @@ export default function useDialogStyle(): CSSProperties {
     data,
     zIndex: zIndexInState
   } = useModelState();
-    
+  
   const modeIsSlide = mode === EDialogMode.SLIDE;
   const size = typeof size0 === 'function' ? size0(data) : size0;
   
@@ -32,7 +32,7 @@ export default function useDialogStyle(): CSSProperties {
     if (mode === EDialogMode.SLIDE_UP) {
       return 'auto';
     }
-  
+    
     if (typeof size === 'number') {
       return size;
     }
