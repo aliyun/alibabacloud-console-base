@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-proxy",
-  "version": "1.6.3-alpha.0",
+  "version": "1.6.3",
   "description": "控制台 fetcher 代理",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/fetcher-demo-helpers": "^1.2.1",
+    "@alicloud/fetcher-demo-helpers": "^1.2.2",
     "@types/react": "^17.0.45",
     "react": "^17.0.2",
     "styled-components": "^5.3.5",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-global": "^1.3.3",
-    "@alicloud/console-base-messenger": "^1.12.1",
+    "@alicloud/console-base-messenger": "^1.12.2",
     "@alicloud/console-fetcher": "alpha"
   },
   "scripts": {
