@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-marks",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "ConsoleBase 组件 - NEW、ALPHA、BETA 等小标签",
   "license": "MIT",
   "sideEffects": false,
