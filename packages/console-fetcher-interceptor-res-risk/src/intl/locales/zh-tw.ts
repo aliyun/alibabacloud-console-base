@@ -40,6 +40,7 @@ export default {
   'op:mfa_show_secret': '顯示密鑰',
   'op:mfa_hide_secret': '隱藏密鑰',
   'op:resend_after_{n}s': '{n} 秒後重發',
+  'op:view_security_code': '查看安全碼',
   'message:invalid_unknown!lines': `系統沒有檢測到驗證方式。
 為了保障您的賬戶安全，請先設置驗證方式。`,
   'message:invalid_unsupported_{method}!html!lines': `系統檢測到驗證方式 <code>{method}</code> 有誤。
@@ -68,5 +69,6 @@ export default {
   'message:mfa_choose_tip': '子用戶在進行敏感操作時需要進行安全驗證，您需要通過下列方式綁定 MFA 設備。',
   'message:new_main_verify_error': '安全驗證服務發生未知錯誤，請重試。',
   'message:sub_invalid_unsupported_{method}!html!lines': `系統檢測到驗證方式 <code>{method}</code> 有誤。
-為了保障您的賬戶安全，請先聯繫主賬號或 RAM 管理員在 RAM 控制台設置驗證方式。`
+為了保障您的賬戶安全，請先聯繫主賬號或 RAM 管理員在 RAM 控制台設置驗證方式。`,
+  'message:update_app_tip_{url}!html': '阿里雲 App 最新版提供了 MFA 驗證碼快速輸入功能，請 <a href="{url}" target="_blank">升級 App</a>。'
 };

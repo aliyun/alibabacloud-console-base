@@ -13,13 +13,16 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  ESlsResultType
-} from '../../../enum';
-import {
   IFetcherInterceptorConfig,
   IOldMainRiskInfo,
   IDialogDataOldMainAccountRisk
 } from '../../../types';
+import {
+  ESlsResultType
+} from '../../../enum';
+import {
+  defaultDialogSize
+} from '../../../const';
 import intl from '../../../intl';
 import {
   intlVerifyTitle
@@ -123,6 +126,7 @@ export default function riskOldMainVerify({
   const buttonCancel = intl('op:cancel');
   
   return open<unknown, IDialogDataOldMainAccountRisk>({
+    size: defaultDialogSize,
     title: intlVerifyTitle(riskInfo.type),
     data: {
       request,

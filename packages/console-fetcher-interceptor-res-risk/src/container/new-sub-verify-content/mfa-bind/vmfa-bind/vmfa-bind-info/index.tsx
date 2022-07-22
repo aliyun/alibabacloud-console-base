@@ -46,6 +46,10 @@ const ScQrCodeDiv = styled.div`
   text-align: center;
 `;
 
+const ScWrapper = styled.div`
+  flex: 1;
+`;
+
 const ScHeading = styled.div`
   margin-bottom: 12px;
   margin-left: 4px;
@@ -56,7 +60,6 @@ const ScHeading = styled.div`
 const ScManualContentWrap = styled.div`
   padding: 16px;
   box-sizing: border-box;
-  width: 350px;
   ${mixinBgWhite}
 `;
 
@@ -90,7 +93,7 @@ export default function VMfaBindInfo(): JSX.Element {
     <ScQrCodeDiv>
       <ScQrCodeWrap size={140} value={qrCodeUri} />
     </ScQrCodeDiv>
-    <div>
+    <ScWrapper>
       <ScHeading>{intl('attr:vmfa_bind_info_title')}</ScHeading>
       <ScManualContentWrap>
         <ScManualContentDiv needBottomPadding>
@@ -110,6 +113,6 @@ export default function VMfaBindInfo(): JSX.Element {
           }} />
         </ScManualContentDiv>
       </ScManualContentWrap>
-    </div>
+    </ScWrapper>
   </Flex>;
 }

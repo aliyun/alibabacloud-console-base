@@ -40,6 +40,7 @@ export default {
   'op:mfa_show_secret': 'Show Key',
   'op:mfa_hide_secret': 'Hide Key',
   'op:resend_after_{n}s': 'Resend in {n} Second(s)',
+  'op:view_security_code': 'View Security Code',
   'message:invalid_unknown!lines': `No verification method has been set.
 To protect your account, set a verification method.`,
   'message:invalid_unsupported_{method}!html!lines': `Verification method <code>{method}</code> is not supported.
@@ -68,5 +69,6 @@ To protect your account, set a verification method.`,
   'message:mfa_choose_tip': 'Security verification is required when performing sensitive operations. Please bind the MFA device in the following ways.',
   'message:new_main_verify_error': 'Unknown error occurred in the security verification service. Please try again.',
   'message:sub_invalid_unsupported_{method}!html!lines': `Verification method <code>{method}</code> is not supported.
-To protect your account, use your Alibaba Cloud account or the RAM user that has administrative rights to log on to the RAM console and reset the verification method.`
+To protect your account, use your Alibaba Cloud account or the RAM user that has administrative rights to log on to the RAM console and reset the verification method.`,
+  'message:update_app_tip_{url}!html': 'The latest Aliyun App provides MFA quick input functionality, <a href="{url}" target="_blank">Upgrade Now</a>.'
 };

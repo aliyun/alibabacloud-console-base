@@ -1,6 +1,7 @@
 import {
   IFetcherInterceptorConfig
 } from '../types';
+import aliyunAppVersion from '../util/aliyun-app-version';
 import getIdentityServiceApiDomain from '../util/get-identity-service-api-domain';
 
 const identityServiceApiDomain = getIdentityServiceApiDomain();
@@ -71,3 +72,27 @@ export const SvgUrls = {
 };
 
 export const WEBAUTHN_KEY_TYPE = 'public-key';
+
+export const defaultDialogSize = aliyunAppVersion ? 'xs' : 'm'; // 移动端阿里云 app 内的风控弹窗尺寸较小
+
+/**
+ * 封装的 WindVane 错误名称
+ */
+export const WINDVANE_ERROR_NAME = 'WindvaneError';
+
+/**
+ * WindVine 错误码
+ * - HY_NOT_IN_WINDVANE：不在 WindVane 运行环境下（此时 WindVane.isAvailable 为 false）
+ * - HY_NO_HANDLER：没有对应的 module 或 method
+ * - HY_USER_CANCELLED：填写 MFA 验证码时，用户点取消
+ */
+export const WINDVANE_ERROR_CODE = {
+  NOT_IN_WINDVANE: 'HY_NOT_IN_WINDVANE',
+  NO_HANDLER: 'HY_NO_HANDLER',
+  USER_CANCELLED: 'HY_USER_CANCELLED'
+};
+
+/**
+ * 阿里云 APP 下载链接
+ */
+export const ALIYUN_APP_DOWNLOAD_URL = 'https://download.app.aliyun.com/app/aliyunapp/download/home?ulinks_fallback=aliyun%3A%2F%2Fforward%2Fapp%3Ftarget_%3D%2Fram%2Fhome%26pluginId_%3D9';

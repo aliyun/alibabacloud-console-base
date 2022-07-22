@@ -8,6 +8,9 @@ import {
 import {
   slsRiskInvalid
 } from '../../sls';
+import {
+  defaultDialogSize
+} from '../../../const';
 import intl from '../../../intl';
 
 interface IProps {
@@ -24,6 +27,7 @@ export default function riskInvalid({
   slsRiskInvalid();
 
   return open<void>({
+    size: defaultDialogSize,
     title: newSubRisk ? intl('title:sub_default') : intl('op:risk_invalid'),
     content: <AltWrap {...{
       type: 'alert',

@@ -19,6 +19,7 @@ import {
   SvgUrls
 } from '../../../../const';
 import intl from '../../../../intl';
+import aliyunAppVersion from '../../../../util/aliyun-app-version';
 import U2FMessage from '../message';
 
 interface IProps {
@@ -29,6 +30,8 @@ interface IProps {
   showU2fRetryButton?: boolean;
   onRetryClick: () => void;
 }
+
+const u2fSvgImgSize = aliyunAppVersion ? 80 : 100;
 
 const ScFlex = styled(Flex)`
   margin-top: 12px;
@@ -56,8 +59,8 @@ const ScU2fDesc = styled.div`
 // 由于图片需要从 CDN 加载。为了防止屏幕抖动，先用空父元素的 padding 撑起来
 const ScSvgImgWrapper = styled.div`
   position: relative;
-  padding-top: 100px;
-  width: 100px;
+  padding-top: ${u2fSvgImgSize}px;
+  width: ${u2fSvgImgSize}px;
   height: 0;
 `;
 
@@ -117,9 +120,9 @@ export default function U2fUi({
       <Flex align="center">
         <ScSvgImgWrapper>
           <SvgImg {...{
-            src: SvgUrls.U2F_INSERT,
-            width: 100,
-            alt: ''
+            alt: '',
+            width: u2fSvgImgSize,
+            src: SvgUrls.U2F_INSERT
           }} />
         </ScSvgImgWrapper>
         <ScU2fDesc>{intl('attr:u2f_insert')}</ScU2fDesc>
@@ -127,18 +130,18 @@ export default function U2fUi({
       <ScFlex align="center">
         <ScSvgImgWrapper>
           <SvgImg {...{
-            src: SvgUrls.U2F_CLICK,
-            width: 100,
-            alt: ''
+            alt: '',
+            width: u2fSvgImgSize,
+            src: SvgUrls.U2F_CLICK
           }} />
         </ScSvgImgWrapper>
         <ScU2fDesc>{intl('attr:u2f_click')}</ScU2fDesc>
       </ScFlex>
-      <ScU2fIcon {...{
-        src: SvgUrls.U2F_ICON,
+      {aliyunAppVersion ? null : <ScU2fIcon {...{
+        alt: '',
         width: 120,
-        alt: ''
-      }} />
+        src: SvgUrls.U2F_ICON
+      }} />}
     </ScU2fWrapper>
   </>;
 }

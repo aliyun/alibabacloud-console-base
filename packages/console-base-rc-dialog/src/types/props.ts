@@ -77,7 +77,7 @@ export interface IDialogProps<T = void, D = TDialogData> extends Omit<HTMLAttrib
   content?: TStringOrJsx;
   /* --- 展示 --- */
   mode?: EDialogMode | 'normal' | 'slide';
-  size?: number | EDialogSize | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'auto' | 'almost-full' | 'full';
+  size?: TDynamicByData<number | EDialogSize | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'auto' | 'almost-full' | 'full', D>;
   classNameOnBody?: string;
   /* --- 行为 --- */
   backdrop?: boolean; // 是否需要背投
