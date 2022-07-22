@@ -8,39 +8,52 @@ import {
 import Input, {
   InputProps
 } from '@alicloud/console-base-rc-input';
+import Button, {
+  ButtonTheme
+} from '@alicloud/console-base-rc-button';
+import Flex from '@alicloud/console-base-rc-flex';
+
+import intl from '../../../../intl';
 
 interface IInputProps {
-  isError?: boolean;
-  widthPercent?: number;
+  is_error: boolean;
+  input_width_percent?: number;
 }
 
-interface IProps extends IInputProps, InputProps {
+interface IProps extends Omit<IInputProps, 'is_error'>, InputProps {
   value: string;
   errorMessage?: string;
+  onShowVmfaButtonClick?(): void;
 }
-
-const ScInput = styled(Input)<IInputProps>`
-  margin-right: 12px;
-  width: ${props => props.widthPercent || 100}%;
-  ${props => (props.isError ? mixinBorderError : null)}
-`;
 
 const ScError = styled.div`
   ${mixinTextError}
 `;
 
+const ScInputWrapper = styled.div`
+  width: 100%;
+`;
+
+const ScInput = styled(Input)<IInputProps>`
+  margin-right: 12px;
+  width: ${props => props.input_width_percent || 100}%;
+  ${props => (props.is_error ? mixinBorderError : null)}
+`;
+
 export default function VMFAInput({
-  value,
-  isError,
   errorMessage,
-  ...props
+  onShowVmfaButtonClick,
+  ...inputProps
 }: IProps): JSX.Element {
-  return <>
-    <ScInput {...{
-      value,
-      isError,
-      ...props
-    }} />
+  return <ScInputWrapper>
+    <Flex align="center">
+      <ScInput {...inputProps} is_error={Boolean(errorMessage)} />
+      {onShowVmfaButtonClick ? <Button {...{
+        theme: ButtonTheme.TEXT_PRIMARY,
+        label: intl('op:view_security_code'),
+        onClick: onShowVmfaButtonClick
+      }} /> : null}
+    </Flex>
     <ScError>{errorMessage}</ScError>
-  </>;
+  </ScInputWrapper>;
 }

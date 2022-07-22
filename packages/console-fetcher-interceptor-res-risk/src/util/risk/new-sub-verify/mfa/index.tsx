@@ -15,6 +15,7 @@ import {
   ESubMfaDeviceType
 } from '../../../../enum';
 import {
+  defaultDialogSize,
   WEBAUTHN_KEY_TYPE
 } from '../../../../const';
 import intl from '../../../../intl';
@@ -235,7 +236,13 @@ export default async function riskNewSubVerifyMfa({
           return intl('title:sub_default');
       }
     },
-    size: 'l',
+    size: () => {
+      if (isUnbind) {
+        return 'm'; // 绑定 MFA 设备需要较大的弹窗尺寸
+      }
+
+      return defaultDialogSize;
+    },
     data: {
       request,
       subRiskInfo,

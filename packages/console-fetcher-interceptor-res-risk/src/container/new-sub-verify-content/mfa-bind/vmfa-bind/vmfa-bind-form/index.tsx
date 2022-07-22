@@ -16,9 +16,6 @@ import {
 import {
   ESubMfaDeviceType
 } from '../../../../../enum';
-import {
-  REG_MFA_CODE
-} from '../../../../../const';
 import intl from '../../../../../intl';
 import Form from '../../../../../rc/form';
 import XIcon from '../../../../../rc/x-icon';
@@ -41,50 +38,20 @@ export default function VMfaBindForm(): JSX.Element {
 
   const [stateCode1, setStateCode1] = useState<string>('');
   const [stateCode2, setStateCode2] = useState<string>('');
-  const [stateInput1IsError, setStateInput1IsError] = useState<boolean>(false);
-  const [stateInput2IsError, setStateInput2IsError] = useState<boolean>(false);
+  const [stateInput1Error, setStateInput1Error] = useState<string>('');
+  const [stateInput2Error, setStateInput2Error] = useState<string>('');
+  const [stateInput1EverChanged, setStateInput1EverChanged] = useState<boolean>(false);
+  const [stateInput2EverChanged, setStateInput2EverChanged] = useState<boolean>(false);
 
   const handleCode1InputChange = useCallback(inputCode1 => {
-    const newBindMfaPayload: IPayloadBindVmfa = {
-      TicketType: ticketType,
-      AccountId: accountId,
-      DeviceType: ESubMfaDeviceType.VMFA,
-      Ext: JSON.stringify({
-        codeType: ''
-      }),
-      Code1: inputCode1,
-      Code2: stateCode2
-    };
-
     setStateCode1(inputCode1);
-    setStateInput1IsError(!REG_MFA_CODE.test(inputCode1));
-    updateData({
-      bindMfaPayload: newBindMfaPayload,
-      errorMessage: '',
-      primaryButtonDisabled: !REG_MFA_CODE.test(inputCode1) || !REG_MFA_CODE.test(stateCode2)
-    });
-  }, [accountId, stateCode2, updateData]);
+    setStateInput1EverChanged(true);
+  }, []);
 
   const handleCode2InputChange = useCallback(inputCode2 => {
-    const newBindMfaPayload: IPayloadBindVmfa = {
-      AccountId: accountId,
-      TicketType: ticketType,
-      DeviceType: ESubMfaDeviceType.VMFA,
-      Ext: JSON.stringify({
-        codeType
-      }),
-      Code1: stateCode1,
-      Code2: inputCode2
-    };
-
     setStateCode2(inputCode2);
-    setStateInput2IsError(!REG_MFA_CODE.test(inputCode2));
-    updateData({
-      bindMfaPayload: newBindMfaPayload,
-      errorMessage: '',
-      primaryButtonDisabled: !REG_MFA_CODE.test(inputCode2) || !REG_MFA_CODE.test(stateCode1)
-    });
-  }, [accountId, codeType, stateCode1, updateData]);
+    setStateInput2EverChanged(true);
+  }, []);
 
   const input1InnerRight = useMemo(() => {
     return <XIcon onClick={() => {
@@ -104,19 +71,35 @@ export default function VMfaBindForm(): JSX.Element {
     }} />;
   }, [updateData]);
 
-  const input1Error = useMemo((): string => {
-    return getInputError(stateCode1, stateInput1IsError);
-  }, [stateCode1, stateInput1IsError]);
-
-  const input2Error = useMemo((): string => {
-    return getInputError(stateCode2, stateInput2IsError);
-  }, [stateCode2, stateInput2IsError]);
-
   useEffect(() => {
+    const newBindMfaPayload: IPayloadBindVmfa = {
+      AccountId: accountId,
+      TicketType: ticketType,
+      DeviceType: ESubMfaDeviceType.VMFA,
+      Ext: JSON.stringify({
+        codeType
+      }),
+      Code1: stateCode1,
+      Code2: stateCode2
+    };
+    const input1Error = getInputError(stateCode1, stateInput1EverChanged);
+    const input2Error = getInputError(stateCode2, stateInput2EverChanged);
+    const primaryButtonDisabled = ((): boolean => {
+      if (!stateInput1EverChanged || !stateInput2EverChanged) {
+        return true;
+      }
+
+      return Boolean(input1Error) || Boolean(input2Error);
+    })();
+
+    setStateInput1Error(input1Error);
+    setStateInput2Error(input2Error);
     updateData({
-      primaryButtonDisabled: true
+      bindMfaPayload: newBindMfaPayload,
+      errorMessage: '',
+      primaryButtonDisabled
     });
-  }, [updateData]);
+  }, [accountId, codeType, stateCode1, stateCode2, stateInput1EverChanged, stateInput2EverChanged, updateData]);
   
   return <>
     <Form {...{
@@ -126,8 +109,7 @@ export default function VMfaBindForm(): JSX.Element {
         labelTextAlign: 'center',
         content: <VmfaInput {...{
           value: stateCode1,
-          isError: stateInput1IsError,
-          errorMessage: input1Error,
+          errorMessage: stateInput1Error,
           onChange: handleCode1InputChange,
           innerRight: input1InnerRight
         }} />
@@ -137,8 +119,7 @@ export default function VMfaBindForm(): JSX.Element {
         labelTextAlign: 'center',
         content: <VmfaInput {...{
           value: stateCode2,
-          isError: stateInput2IsError,
-          errorMessage: input2Error,
+          errorMessage: stateInput2Error,
           onChange: handleCode2InputChange,
           innerRight: input2InnerRight
         }} />

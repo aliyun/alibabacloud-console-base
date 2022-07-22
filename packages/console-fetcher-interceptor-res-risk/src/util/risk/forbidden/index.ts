@@ -5,6 +5,9 @@ import {
 import {
   slsRiskForbidden
 } from '../../sls';
+import {
+  defaultDialogSize
+} from '../../../const';
 import intl from '../../../intl';
 
 /**
@@ -14,6 +17,7 @@ export default (): Promise<void> => {
   slsRiskForbidden();
   
   return alert({
+    size: defaultDialogSize,
     title: intl('op:risk_forbidden'),
     content: intl('message:forbidden')
   }, {
