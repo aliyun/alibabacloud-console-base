@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-arms",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "@alicloud/console-fetcher ARMS 拦截",
   "license": "MIT",
   "sideEffects": false,
@@ -28,14 +28,14 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/fetcher-demo-helpers": "^1.2.2",
+    "@alicloud/fetcher-demo-helpers": "^1.2.3",
     "@types/react": "^17.0.45",
     "react": "^17.0.2",
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@alicloud/arms": "^1.2.2",
-    "@alicloud/fetcher": "^1.5.3"
+    "@alicloud/arms": "^1.2.3",
+    "@alicloud/fetcher": "^1.5.4"
   },
   "scripts": {
     "start": "breezr start-storybook",
