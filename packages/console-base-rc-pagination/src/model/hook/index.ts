@@ -13,5 +13,3 @@ export { default as useNoText } from './use-no-text';
 export { default as useHandlePage } from './use-handle-page';
 export { default as useHandlePageNext } from './use-handle-page-next';
 export { default as useHandlePagePrev } from './use-handle-page-prev';
-// effects
-export { default as useEffectResizeObserver } from './use-effect-resize-observer';

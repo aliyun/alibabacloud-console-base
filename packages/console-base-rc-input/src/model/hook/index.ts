@@ -11,6 +11,3 @@ export { default as useHandleFocusIn } from './use-handle-focus-in';
 export { default as useHandleFocusOut } from './use-handle-focus-out';
 export { default as useHandleChange } from './use-handle-change';
 export { default as useHandleClear } from './use-handle-clear';
-
-// effects
-export { default as useEffectFocusedChange } from './use-effect-focused-change';
