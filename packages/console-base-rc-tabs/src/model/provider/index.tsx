@@ -13,6 +13,7 @@ import {
 } from '../const';
 import reducer from '../reducer';
 import Context from '../context';
+import Lifecycle from '../lifecycle';
 
 export default function Provider({
   props,
@@ -28,5 +29,6 @@ export default function Provider({
   
   return <Context.Provider value={contextValue}>
     {children}
+    <Lifecycle />
   </Context.Provider>;
 }
