@@ -7,8 +7,8 @@ import Button, {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  useHandleClose,
-  useProps
+  useProps,
+  useHandleClose
 } from '../../model';
 
 const ACTION_SIZE = 16;

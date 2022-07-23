@@ -16,6 +16,7 @@ import {
 } from '../const';
 import reducer from '../reducer';
 import Context from '../context';
+import Lifecycle from '../lifecycle';
 
 interface IProps {
   props: IModelProps;
@@ -42,5 +43,6 @@ export default function Provider({
     dispatch: safeDispatch
   }}>
     {children}
+    <Lifecycle />
   </Context.Provider>;
 }

@@ -9,8 +9,8 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
-  useHandlePage,
-  usePage
+  usePage,
+  useHandlePage
 } from '../../../../../model';
 
 interface IProps {

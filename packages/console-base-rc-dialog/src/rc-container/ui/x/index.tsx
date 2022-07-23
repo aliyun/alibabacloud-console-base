@@ -16,9 +16,9 @@ import {
 } from '../../../enum';
 import intl from '../../../intl';
 import {
+  useProps,
   useStateLocked,
-  useHandleClose,
-  useProps
+  useHandleClose
 } from '../../../model';
 
 interface IScProps {

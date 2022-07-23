@@ -15,11 +15,11 @@ import {
 } from '@alicloud/console-base-theme-sc-base';
 
 import {
+  useRefDrop,
   useDropVisible,
   useDropStyle,
   useHandleDropExit,
-  useHandleDropExitDone,
-  useRefDrop
+  useHandleDropExitDone
 } from '../../model';
 
 import Header from './header';

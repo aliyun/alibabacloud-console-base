@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {
+  useProps,
+  useRefInput,
+  useValue,
   useHovered,
   useFocused,
   useHandleFocusIn,
   useHandleFocusOut,
-  useHandleChange,
-  useProps,
-  useValue,
-  useRefInput
+  useHandleChange
 } from '../../../model';
 import {
   ScInputWrapper,
