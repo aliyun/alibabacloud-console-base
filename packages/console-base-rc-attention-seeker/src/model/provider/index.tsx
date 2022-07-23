@@ -15,6 +15,7 @@ import {
 } from '../const';
 import reducer from '../reducer';
 import Context from '../context';
+import Lifecycle from '../lifecycle';
 
 export default function Provider({
   props,
@@ -36,5 +37,6 @@ export default function Provider({
     dispatch: safeDispatch
   }}>
     {children}
+    <Lifecycle />
   </Context.Provider>;
 }

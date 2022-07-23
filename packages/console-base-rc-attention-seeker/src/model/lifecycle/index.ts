@@ -1,6 +1,4 @@
-import {
-  useEffects
-} from '../../model';
+import useEffects from '../hook/use-effects';
 
 export default function Lifecycle(): null {
   useEffects();

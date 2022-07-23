@@ -6,5 +6,3 @@ export { default as useBackdropPath } from './use-backdrop-path';
 // handlers
 export { default as useHandleCloseOnProtectorClick } from './use-handle-close-on-protector-click';
 export { default as useHandleCloseOnBackdropClick } from './use-handle-close-on-backdrop-click';
-// effects
-export { default as useEffects } from './use-effects';
