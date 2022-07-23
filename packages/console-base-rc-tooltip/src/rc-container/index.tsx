@@ -5,7 +5,6 @@ import Model, {
 } from '../model';
 
 import Ui from './ui';
-import Lifecycle from './lifecycle';
 
 // TODO 单纯用组件，自己定位是可以的，但要结合 trigger 还不行
 // 参考
@@ -16,6 +15,5 @@ import Lifecycle from './lifecycle';
 export default function WithProvider(props: ModelProps): JSX.Element {
   return <Model props={props}>
     <Ui />
-    <Lifecycle />
   </Model>;
 }
