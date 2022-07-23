@@ -14,10 +14,6 @@ export interface IModelState<R = void, D = TDialogData> {
    * Dialog 生命周期的唯一标识
    */
   id: string;
-  /**
-   * 模拟 did mount
-   */
-  mounted: boolean;
   domDialog: HTMLDivElement | null;
   domDialogContent: HTMLDivElement | null;
   /**

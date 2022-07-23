@@ -1,5 +1,4 @@
 export enum EAction {
-  DID_MOUNT,
   SET_DOM_DIALOG,
   SET_DOM_DIALOG_CONTENT,
   SET_ACTIVE,

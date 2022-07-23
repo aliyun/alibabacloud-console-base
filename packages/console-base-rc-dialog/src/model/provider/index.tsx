@@ -11,6 +11,7 @@ import {
 } from '../util';
 import reducer from '../reducer';
 import Context from '../context';
+import Lifecycle from '../lifecycle';
 
 export default function Provider({
   props,
@@ -24,5 +25,6 @@ export default function Provider({
     dispatch
   }}>
     {children}
+    <Lifecycle />
   </Context.Provider>;
 }

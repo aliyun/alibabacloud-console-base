@@ -6,7 +6,6 @@ import {
   EAction
 } from '../enum';
 
-import reduceDidMount from './reduce-did-mount';
 import reduceSetDomDialog from './reduce-set-dom-dialog';
 import reduceSetDomDialogContent from './reduce-set-dom-dialog-content';
 import reduceSetActive from './reduce-set-active';
@@ -20,8 +19,6 @@ import reduceUpdateWindowHeight from './reduce-update-window-height';
 
 export default function reducer(state: IModelState, action: TModelAction): IModelState {
   switch (action.type) {
-    case EAction.DID_MOUNT:
-      return reduceDidMount(state);
     case EAction.SET_DOM_DIALOG:
       return reduceSetDomDialog(state, action.payload);
     case EAction.SET_DOM_DIALOG_CONTENT:
