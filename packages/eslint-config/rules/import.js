@@ -1,4 +1,23 @@
 module.exports = {
+  /**
+   * https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/namespace.md
+   * 
+   * 极慢，有个 ISSUE，先关了
+   * 
+   * https://github.com/import-js/eslint-plugin-import/issues/2340
+   */
+  'import/namespace': 0,
+  /**
+   * https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md
+   * 
+   * 极慢，有个 ISSUE，先关了
+   * 
+   * https://github.com/import-js/eslint-plugin-import/issues/2348
+   */
+  'import/no-cycle': [0, {
+    ignoreExternal: false,
+    maxDepth: 4
+  }],
   'import/exports-last': 1,
   'import/no-useless-path-segments': 1,
   'import/no-self-import': 'error',
