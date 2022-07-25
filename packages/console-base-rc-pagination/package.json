@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-pagination",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "ConsoleBase 组件 - 分页",
   "license": "MIT",
   "sideEffects": false,
