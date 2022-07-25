@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-alert",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "ConsoleBase 组件 - Alert",
   "license": "MIT",
   "sideEffects": false,
