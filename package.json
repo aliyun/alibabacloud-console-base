@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@alicloud/eslint-config": "^1.8.3",
+    "@alicloud/eslint-config": "^1.9.0",
     "@alicloud/stylelint-config": "^1.1.1",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
@@ -14,10 +14,10 @@
     "@types/styled-components": "^5.1.25",
     "eslint": "^8.20.0",
     "husky": "^8.0.1",
-    "lerna": "^5.1.8",
+    "lerna": "^5.2.0",
     "lint-staged": "^13.0.3",
     "markdownlint-cli2": "^0.4.0",
-    "npm-check-updates": "^15.3.4",
+    "npm-check-updates": "^16.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.5",
