@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@alicloud/eslint-config": "^1.9.0",
+    "@alicloud/eslint-config": "^1.10.0",
     "@alicloud/stylelint-config": "^1.1.1",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
