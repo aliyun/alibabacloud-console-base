@@ -20,11 +20,12 @@ import {
 function getCode(props: IPropsIconPure): string {
   const code = EIconType[props.type];
   
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   return code ? `\\${code}` : '';
 }
 
-// https://at.alicdn.com/t/font_1256165_eqje0thakik.css
-const fontFamily = injectIconFont('1256165', 'eqje0thakik');
+// https://at.alicdn.com/t/font_1256165_2fsnix7gzx3.css
+const fontFamily = injectIconFont('1256165', '2fsnix7gzx3');
 
 const kfRotate = keyframes`
   0% {
