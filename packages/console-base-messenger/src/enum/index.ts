@@ -16,23 +16,7 @@ export enum EMessageBroadcastByApp {
   /* ********************************************
    * 微文档
    ******************************************* */
-  HELP_OPEN = 'app_2_console_base:help/open',
-  /* ********************************************
-   * 微教程
-   ******************************************* */
-  TUTOR_REGISTER = 'app_2_console_base:tutor/register',
-  TUTOR_OPEN = 'app_2_console_base:tutor/open',
-  TUTOR_CLOSE = 'app_2_console_base:tutor/close',
-  /* ********************************************
-   * 微偏好
-   ******************************************* */
-  MICRO_PREF_TOGGLE = 'app_2_console_base:micro_pref/toggle',
-  /* ********************************************
-   * 微浏览器传送门
-   ******************************************* */
-  MICRO_BROWSER_PORTAL_CREATED = 'app_2_console_base:micro_browser_portal/created',
-  MICRO_BROWSER_PORTAL_REMOVED = 'app_2_console_base:micro_browser_portal/removed',
-  MICRO_BROWSER_PORTAL_TOGGLE_VISIBLE = 'app_2_console_base:micro_browser_portal/toggle_visible'
+  HELP_OPEN = 'app_2_console_base:help/open'
 }
 
 /**
@@ -51,17 +35,7 @@ export enum EMessageBroadcastByConsoleBase {
   FASTBUY_CLOSE = 'console_base_2_app:fastbuy/close',
   FASTBUY_BUY = 'console_base_2_app:fastbuy/buy',
   FASTBUY_SUBMIT_PAYMENT = 'console_base_2_app:fastbuy/submit_payment',
-  FASTBUY_ORDER_FINISH = 'console_base_2_app:fastbuy/order_finish',
-  /* ********************************************
-   * 微教程
-   ******************************************* */
-  TUTOR_STEP_CHANGE = 'console_base_2_app:tutor/step-change',
-  TUTOR_ACTION = 'console_base_2_app:tutor/action',
-  TUTOR_DISMISS = 'console_base_2_app:tutor/dismiss',
-  /* ********************************************
-   * 微偏好
-   ******************************************* */
-  MICRO_PREF_UPDATED = 'console_base_2_app:micro_pref/updated'
+  FASTBUY_ORDER_FINISH = 'console_base_2_app:fastbuy/order_finish'
 }
 
 export enum EToolkitTypeShort {

@@ -22,22 +22,3 @@ export { default as onToolkitRemove } from './toolkit/on-toolkit-remove';
  * 微文档
  ******************************************* */
 export { default as onOpenHelp } from './help/on-open-help';
-
-/* ********************************************
- * 微教程
- ******************************************* */
-export { default as onRegisterTutor } from './tutor/on-register';
-export { default as onOpenTutor } from './tutor/on-open';
-export { default as onCloseTutor } from './tutor/on-close';
-
-/* ********************************************
- * 微偏好
- ******************************************* */
-export { default as onToggleMicroPref } from './micro-pref/on-toggle';
-
-/* ********************************************
- * 微浏览器传送门
- ******************************************* */
-export { default as onMicroBrowserPortalCreated } from './micro-browser-portal/on-created';
-export { default as onMicroBrowserPortalRemoved } from './micro-browser-portal/on-removed';
-export { default as onMicroBrowserPortalToggleVisible } from './micro-browser-portal/on-toggle-visibie';

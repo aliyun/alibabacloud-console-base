@@ -1,7 +1,4 @@
-export * from './messenger/app-broadcast';
-export * from './messenger/app-subscribe';
-export * from './messenger/console-base-broadcast';
-export * from './messenger/console-base-subscribe';
+export * from './messenger';
 
 export {
   DATA_KEY_RESOURCE_GROUP_PORTAL

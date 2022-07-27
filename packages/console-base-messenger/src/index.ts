@@ -18,12 +18,23 @@ import {
   onResourceGroupChange,
   onResourceGroupDataLoaded
 } from '@alicloud/console-base-messenger-resource-group';
+import {
+  registerTutor,
+  openTutor,
+  closeTutor,
+  onTutorAction,
+  onTutorDismiss,
+  onTutorStepChange
+} from '@alicloud/console-base-messenger-tutor';
 
 import * as appBroadcast from './messenger/app-broadcast';
 import * as appSubscribe from './messenger/app-subscribe';
 
 export * from '@alicloud/console-base-messenger-region';
 export * from '@alicloud/console-base-messenger-resource-group';
+export * from '@alicloud/console-base-messenger-micro-browser-portal';
+export * from '@alicloud/console-base-messenger-pref';
+export * from '@alicloud/console-base-messenger-tutor';
 
 export * from './messenger/app-broadcast';
 export * from './messenger/app-subscribe';
@@ -57,12 +68,12 @@ export const forApp = {
   setResourceGroupId,
   setResourceGroupResourceCount,
   onResourceGroupChange,
-  onResourceGroupDataLoaded
+  onResourceGroupDataLoaded,
+  // tutor - 不再新增
+  registerTutor,
+  openTutor,
+  closeTutor,
+  onTutorAction,
+  onTutorDismiss,
+  onTutorStepChange
 };
-
-export type {
-  IPayloadTutorRegister as MessengerPayloadTutorRegister,
-  IPayloadTutorOpen as MessengerPayloadTutorOpen,
-  IPayloadTutorStepChange as MessengerPayloadTutorStepChange,
-  IPayloadTutorDismiss as MessengerPayloadTutorDismiss
-} from './types';

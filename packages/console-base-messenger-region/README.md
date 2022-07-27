@@ -1,3 +1,3 @@
 # @alicloud/console-base-messenger-region
 
-Region Messenger
+Messenger for Region

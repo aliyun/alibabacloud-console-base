@@ -20,15 +20,3 @@ export { default as fastbuyClose } from './fastbuy/fastbuy-close';
 export { default as fastbuyBuy } from './fastbuy/fastbuy-buy';
 export { default as fastbuySubmitPayment } from './fastbuy/fastbuy-submit-payment';
 export { default as fastbuyOrderFinish } from './fastbuy/fastbuy-order-finish';
-
-/* ********************************************
- * 微教程
- ******************************************* */
-export { default as tutorStepChange } from './tutor/step-change';
-export { default as tutorAction } from './tutor/action';
-export { default as tutorDismiss } from './tutor/dismiss';
-
-/* ********************************************
- * 微偏好
- ******************************************* */
-export { default as microPrefUpdated } from './micro-pref/micro-pref-updated';

@@ -22,15 +22,3 @@ export { default as onFastbuyClose } from './fastbuy/on-fastbuy-close';
 export { default as onFastbuyBuy } from './fastbuy/on-fastbuy-buy';
 export { default as onFastbuySubmitPayment } from './fastbuy/on-fastbuy-submit-payment';
 export { default as onFastbuyOrderFinish } from './fastbuy/on-fastbuy-order-finish';
-export { default as onTutorStepChange } from './tutor/on-step-change';
-
-/* ********************************************
- * 微教程
- ******************************************* */
-export { default as onTutorAction } from './tutor/on-action';
-export { default as onTutorDismiss } from './tutor/on-dismiss';
-
-/* ********************************************
- * 微偏好
- ******************************************* */
-export { default as onMicroPrefUpdated } from './micro-pref/on-micro-pref-updated';
