@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-copy-it",
-  "version": "1.2.3-alpha.0",
+  "version": "1.2.3",
   "description": "ConsoleBase 组件 - Copy It",
   "license": "MIT",
   "sideEffects": false,
@@ -43,8 +43,8 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.5.0",
-    "@alicloud/console-base-rc-button": "^1.5.3-alpha.0",
-    "@alicloud/console-base-rc-icon": "^1.7.4-alpha.0",
+    "@alicloud/console-base-rc-button": "^1.5.3",
+    "@alicloud/console-base-rc-icon": "^1.7.4",
     "@alicloud/console-base-theme": "^1.7.0",
     "@alicloud/copy-text": "^1.4.0",
     "react-transition-group": "^4.4.2"
