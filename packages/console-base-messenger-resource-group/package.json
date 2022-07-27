@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-resource-group",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.2-alpha.1",
   "description": "ConsoleBase 信使 - ResourceGroup",
   "license": "MIT",
   "sideEffects": false,

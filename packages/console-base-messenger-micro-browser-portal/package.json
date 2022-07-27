@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-micro-browser-portal",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "description": "ConsoleBase 信使 - MicroBrowserPortal",
   "license": "MIT",
   "sideEffects": false,
