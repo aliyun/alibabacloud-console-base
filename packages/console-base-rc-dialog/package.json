@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-dialog",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "ConsoleBase 组件 - Dialog",
   "license": "MIT",
   "sideEffects": false,
@@ -48,9 +48,9 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.5.0",
-    "@alicloud/console-base-rc-button": "^1.5.1",
-    "@alicloud/console-base-rc-icon": "^1.7.2",
-    "@alicloud/console-base-rc-input": "^1.4.3",
+    "@alicloud/console-base-rc-button": "^1.5.2",
+    "@alicloud/console-base-rc-icon": "^1.7.3",
+    "@alicloud/console-base-rc-input": "^1.4.4",
     "@alicloud/console-base-theme": "^1.7.0",
     "@alicloud/mere-dom": "^1.5.0",
     "@alicloud/react-hook-is-unmounted": "^1.2.0",
