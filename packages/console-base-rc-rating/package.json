@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-rating",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "ConsoleBase 组件 - Rating 评分",
   "license": "MIT",
   "sideEffects": false,
@@ -40,7 +40,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-icon": "^1.7.0",
+    "@alicloud/console-base-rc-icon": "^1.7.3",
     "@alicloud/console-base-theme": "^1.7.0",
     "@alicloud/console-base-theme-sc-base": "^1.4.0",
     "@alicloud/react-hook-controllable-value": "^1.1.0"
@@ -56,5 +56,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "4aebd18ed1ea9aab69357220cda2f5021d3c59cd"
+  "gitHead": "60fcafcefad8ae2ddbd2f91f6bd5eb7b3e99280a"
 }

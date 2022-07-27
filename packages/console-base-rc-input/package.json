@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-input",
-  "version": "1.4.2",
+  "version": "1.4.4",
   "description": "ConsoleBase 组件 - Input",
   "license": "MIT",
   "sideEffects": false,
@@ -40,7 +40,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-icon": "^1.7.0",
+    "@alicloud/console-base-rc-icon": "^1.7.3",
     "@alicloud/console-base-theme": "^1.7.0",
     "@alicloud/console-base-theme-sc-base": "^1.4.0"
   },
@@ -55,5 +55,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "efa9f69ffd0346487b5b269740febc9f6350dcda"
+  "gitHead": "60fcafcefad8ae2ddbd2f91f6bd5eb7b3e99280a"
 }
