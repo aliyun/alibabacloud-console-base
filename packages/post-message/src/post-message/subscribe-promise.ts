@@ -1,19 +1,25 @@
 import {
+  IFnUnsubscribe,
   IPayloadBroadcastPromise,
   IPayloadBroadcastPromiseBack
 } from '../types';
-import errorToPlain from '../util/error-to-plain';
+import {
+  errorToPlain
+} from '../util';
 
 import broadcast from './broadcast';
 import subscribe from './subscribe';
 
+function subscribePromise<T = void>(type: string, fn: () => T | Promise<T>): IFnUnsubscribe;
+function subscribePromise<T, P>(type: string, fn: (payload: P) => T | Promise<T>): IFnUnsubscribe;
+
 /**
  * 对 broadcastPromise 对应的 type 进行响应，这里关心的 payload 还是 broadcastPromise 所传入的 payload
  */
-export default function subscribePromise<T = void, P = void>(type: string, fn: (payload: P) => T | Promise<T>): () => void {
+function subscribePromise<T, P>(type: string, fn: (payload: P) => T | Promise<T>): IFnUnsubscribe {
   return subscribe<IPayloadBroadcastPromise<P>>(type, (payload: IPayloadBroadcastPromise<P>) => {
     // 得到的 payload 下有 _dismiss_ 参数才响应，否则 pass
-    if (!payload?._dismiss_) {
+    if (!payload?._dismiss_) { // eslint-disable-line @typescript-eslint/no-unnecessary-condition
       return;
     }
     
@@ -29,3 +35,5 @@ export default function subscribePromise<T = void, P = void>(type: string, fn: (
     });
   });
 }
+
+export default subscribePromise;

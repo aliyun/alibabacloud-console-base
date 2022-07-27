@@ -4,7 +4,7 @@ import {
 
 import {
   setRegionOuCommodityCode
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-region';
 
 interface IProps {
   commodityCode: string;

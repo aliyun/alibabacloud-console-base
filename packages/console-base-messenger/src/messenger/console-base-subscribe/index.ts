@@ -12,29 +12,6 @@ export { default as onArmsError } from './misc/on-arms-error';
 export { default as onLaunchWidget } from './misc/on-launch-widget';
 
 /* ********************************************
- * 地域选择器
- ******************************************* */
-export { default as onSetRegionProps } from './region/on-set-region-props';
-export { default as onMergeRegionProps } from './region/on-merge-region-props';
-export { default as onToggleRegion } from './region/on-toggle-region';
-export { default as onToggleRegionGlobal } from './region/on-toggle-region-global';
-export { default as onSetRegionId } from './region/on-set-region-id';
-export { default as onSetRegions } from './region/on-set-regions';
-export { default as onSetRegionGroups } from './region/on-set-region-groups';
-export { default as onSetRegionResourceCount } from './region/on-set-region-resource-count';
-export { default as onSetRegionOuCommodityCode } from './region/on-set-region-ou-commodity-code';
-export { default as onTriggerRegionOuDetection } from './region/on-trigger-region-ou-detection';
-
-/* ********************************************
- * 资源组选择器
- ******************************************* */
-export { default as onMergeResourceGroupProps } from './resource-group/on-merge-resource-group-props';
-export { default as onSetResourceGroupProps } from './resource-group/on-set-resource-group-props';
-export { default as onToggleResourceGroup } from './resource-group/on-toggle-resource-group';
-export { default as onSetResourceGroupId } from './resource-group/on-set-resource-group-id';
-export { default as onSetResourceGroupResourceCount } from './resource-group/on-set-resource-group-resource-count';
-
-/* ********************************************
  * 工具组
  ******************************************* */
 export { default as onSetGoTopContainer } from './toolkit/on-set-go-top-container';

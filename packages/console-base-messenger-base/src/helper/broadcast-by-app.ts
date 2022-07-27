@@ -42,34 +42,46 @@ if (!win[CONSOLE_BASE_READY]) {
   });
 }
 
-/**
- * 应用发消息，需要记录日志
- */
-export default function broadcastByApp<P = void>(type: string, payload?: P): void {
+function broadcastByApp(type: string): void;
+function broadcastByApp<P>(type: string, payload: P): void;
+
+function broadcastByApp<P = void>(type: string, payload?: P): void {
   if (BROADCASTS_WHEN_NOT_READY) {
     slsBroadcastByApp(type, payload, true);
     
-    BROADCASTS_WHEN_NOT_READY.push(() => broadcast<P>(type, payload));
+    BROADCASTS_WHEN_NOT_READY.push(() => broadcast(type, payload));
   } else {
     slsBroadcastByApp(type, payload);
     
-    broadcast<P>(type, payload);
+    broadcast(type, payload);
   }
 }
+
+function broadcastPromiseByApp<T = void>(type: string): Promise<T>;
+function broadcastPromiseByApp<T, P>(type: string, payload: P): Promise<T>;
 
 /**
  * 应用发 Promise 消息，需要记录日志
  */
-export function broadcastPromiseByApp<T = void, P = void>(type: string, payload: P): Promise<T> {
+function broadcastPromiseByApp<T = void, P = void>(type: string, payload?: P): Promise<T> {
   if (BROADCASTS_WHEN_NOT_READY) {
     slsBroadcastByApp(type, payload, true);
     
     return new Promise<T>((resolve, reject) => {
-      BROADCASTS_WHEN_NOT_READY?.push(() => broadcastPromise<T, P>(type, payload).then(resolve, reject));
+      BROADCASTS_WHEN_NOT_READY?.push(() => broadcastPromise<T, P | undefined>(type, payload).then(resolve, reject));
     });
   }
   
   slsBroadcastByApp(type, payload);
   
-  return broadcastPromise<T, P>(type, payload);
+  return broadcastPromise<T, P | undefined>(type, payload);
 }
+
+/**
+ * 应用发消息，需要记录日志
+ */
+export default broadcastByApp;
+
+export {
+  broadcastPromiseByApp
+};

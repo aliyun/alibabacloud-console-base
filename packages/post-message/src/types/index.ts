@@ -1,3 +1,10 @@
+export type TMessageData = {
+  type: string;
+} | {
+  type: string;
+  payload: unknown;
+};
+
 export interface IAnyCallback {
   (...args: any[]): void; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
@@ -18,4 +25,8 @@ export interface IPayloadBroadcastPromise<P = void> {
 export interface IPayloadBroadcastPromiseBack<T> {
   value?: T;
   error?: Record<string, unknown>; // 可能是 string、对象或 Error
+}
+
+export interface IFnUnsubscribe {
+  (): void;
 }

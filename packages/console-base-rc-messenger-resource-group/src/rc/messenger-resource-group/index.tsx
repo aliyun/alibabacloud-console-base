@@ -5,7 +5,7 @@ import React, {
 import {
   setResourceGroupProps,
   mergeResourceGroupProps
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-resource-group';
 
 import {
   IPropsMessengerResourceGroup
@@ -13,16 +13,18 @@ import {
 import {
   slsCreated
 } from '../../sls';
+import MessengerResourceGroupPortal from '../messenger-resource-group-portal';
 import MessengerResourceGroupEvents from '../messenger-resource-group-events';
 
 export default function MessengerResourceGroup({
+  portal,
   resourceGroupId,
   resourceCount,
   visible = true, // 使用此组件意味着 visible 必须受控
   disabled,
   noDefault,
   onChange
-}: IPropsMessengerResourceGroup): JSX.Element | null {
+}: IPropsMessengerResourceGroup): JSX.Element {
   useEffect(() => setResourceGroupProps({
     resourceGroupId,
     resourceCount,
@@ -39,7 +41,10 @@ export default function MessengerResourceGroup({
     });
   }, []);
   
-  return onChange ? <MessengerResourceGroupEvents {...{
-    onChange
-  }} /> : null;
+  return <>
+    {portal ? <MessengerResourceGroupPortal /> : null}
+    {onChange ? <MessengerResourceGroupEvents {...{
+      onChange
+    }} /> : null}
+  </>;
 }

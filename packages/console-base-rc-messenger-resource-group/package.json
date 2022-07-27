@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-log-sls": "^1.5.0",
-    "@alicloud/console-base-messenger": "^1.13.0"
+    "@alicloud/console-base-messenger-resource-group": "^0.0.1"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -49,6 +49,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": "4aebd18ed1ea9aab69357220cda2f5021d3c59cd"
+  }
 }

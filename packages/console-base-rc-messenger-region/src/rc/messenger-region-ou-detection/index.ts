@@ -4,7 +4,7 @@ import {
 
 import {
   triggerRegionOuDetection
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-region';
 
 interface IProps {
   regionId: string;

@@ -5,7 +5,7 @@ import {
 import {
   MessengerPayloadResourceGroup,
   onResourceGroupChange
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-resource-group';
 
 import {
   IPropsMessengerResourceGroupEvents

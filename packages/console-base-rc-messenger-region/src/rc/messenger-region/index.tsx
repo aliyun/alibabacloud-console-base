@@ -5,7 +5,7 @@ import React, {
 import {
   setRegionProps,
   mergeRegionProps
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-region';
 
 import {
   IPropsMessengerRegion
@@ -13,9 +13,11 @@ import {
 import {
   slsCreated
 } from '../../sls';
+import MessengerRegionPortal from '../messenger-region-portal';
 import MessengerRegionEvents from '../messenger-region-events';
 
 export default function MessengerRegion({
+  portal,
   regionId,
   regionIdDefault,
   regions,
@@ -26,7 +28,7 @@ export default function MessengerRegion({
   global,
   noGroup,
   onChange
-}: IPropsMessengerRegion): JSX.Element | null {
+}: IPropsMessengerRegion): JSX.Element {
   useEffect(() => setRegionProps({
     regionId,
     regionIdDefault,
@@ -47,7 +49,10 @@ export default function MessengerRegion({
     });
   }, []);
   
-  return onChange ? <MessengerRegionEvents {...{
-    onChange
-  }} /> : null;
+  return <>
+    {portal ? <MessengerRegionPortal /> : null}
+    {onChange ? <MessengerRegionEvents {...{
+      onChange
+    }} /> : null}
+  </>;
 }

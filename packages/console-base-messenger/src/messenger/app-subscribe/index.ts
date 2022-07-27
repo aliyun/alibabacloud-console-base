@@ -7,17 +7,6 @@
 export { default as onThemeChange } from './on-theme-change';
 
 /* ********************************************
- * 地域选择器
- ******************************************* */
-export { default as onRegionChange } from './region/on-region-change';
-
-/* ********************************************
- * 资源组选择器
- ******************************************* */
-export { default as onResourceGroupDataLoaded } from './resource-group/on-resource-group-data-loaded';
-export { default as onResourceGroupChange } from './resource-group/on-resource-group-change';
-
-/* ********************************************
  * 工具组
  ******************************************* */
 export { default as onToolkitItemClick } from './toolkit/on-toolkit-item-click';

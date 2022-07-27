@@ -4,7 +4,7 @@ import {
 
 import {
   onRegionChange
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-region';
 
 import {
   IPropsMessengerRegionEvents

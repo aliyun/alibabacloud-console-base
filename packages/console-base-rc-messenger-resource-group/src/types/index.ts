@@ -1,6 +1,6 @@
 import {
   MessengerPayloadResourceGroupProps
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-resource-group';
 
 export interface IPropsMessengerResourceGroupEvents {
   /**
@@ -9,4 +9,6 @@ export interface IPropsMessengerResourceGroupEvents {
   onChange?(id: string, name: string, defaultOne?: boolean): void;
 }
 
-export interface IPropsMessengerResourceGroup extends MessengerPayloadResourceGroupProps, IPropsMessengerResourceGroupEvents {}
+export interface IPropsMessengerResourceGroup extends MessengerPayloadResourceGroupProps, IPropsMessengerResourceGroupEvents {
+  portal?: boolean;
+}

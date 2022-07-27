@@ -12,7 +12,7 @@ npm  i -S @alicloud/console-base-rc-messenger-resource-group
 
 ## Usage
 
-```typescript jsx
+```tsx
 import React, {
   useState
 } from 'react';
