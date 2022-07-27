@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-pagination",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "description": "ConsoleBase 组件 - 分页",
   "license": "MIT",
   "sideEffects": false,
@@ -39,8 +39,8 @@
   },
   "dependencies": {
     "@alicloud/console-base-intl-factory-basic": "^1.5.0",
-    "@alicloud/console-base-rc-button": "^1.5.3",
-    "@alicloud/console-base-rc-icon": "^1.7.4",
+    "@alicloud/console-base-rc-button": "^1.6.0",
+    "@alicloud/console-base-rc-icon": "^1.8.0",
     "@alicloud/console-base-theme": "^1.7.0",
     "@alicloud/typescript-missing-helpers": "^1.2.0"
   },
