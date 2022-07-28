@@ -12,13 +12,6 @@ export { default as onArmsError } from './misc/on-arms-error';
 export { default as onLaunchWidget } from './misc/on-launch-widget';
 
 /* ********************************************
- * 工具组
- ******************************************* */
-export { default as onSetGoTopContainer } from './toolkit/on-set-go-top-container';
-export { default as onToolkitPut } from './toolkit/on-toolkit-put';
-export { default as onToolkitRemove } from './toolkit/on-toolkit-remove';
-
-/* ********************************************
  * 微文档
  ******************************************* */
 export { default as onOpenHelp } from './help/on-open-help';

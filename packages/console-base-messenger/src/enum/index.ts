@@ -37,13 +37,3 @@ export enum EMessageBroadcastByConsoleBase {
   FASTBUY_SUBMIT_PAYMENT = 'console_base_2_app:fastbuy/submit_payment',
   FASTBUY_ORDER_FINISH = 'console_base_2_app:fastbuy/order_finish'
 }
-
-export enum EToolkitTypeShort {
-  SET_GO_TOP_CONTAINER = 'go_top:set_container',
-  ADD = 'add', // 添加工具
-  REMOVE = 'remove', // 移除工具
-  TOOL_CLICKED = 'tool:clicked',
-  TOOL_ACTIVATED = 'tool:activated',
-  TOOL_DEACTIVATED = 'tool:deactivated',
-  TOOL_TOOLTIP_CLOSE = 'tool:tooltip_close'
-}

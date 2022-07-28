@@ -4,10 +4,10 @@ import {
 
 import {
   EToolkitTypeShort
-} from '../../../enum';
+} from '../../enum';
 import {
   composeToolkitTypeWithId
-} from '../../../util';
+} from '../../util';
 
 /**
  * 某工具的「激活」时的回调

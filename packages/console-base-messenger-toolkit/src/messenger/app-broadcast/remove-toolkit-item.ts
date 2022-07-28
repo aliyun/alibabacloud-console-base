@@ -4,10 +4,10 @@ import {
 
 import {
   EToolkitTypeShort
-} from '../../../enum';
+} from '../../enum';
 import {
   composeToolkitType
-} from '../../../util';
+} from '../../util';
 
 /**
  * 移除工具

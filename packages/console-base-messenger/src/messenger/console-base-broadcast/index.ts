@@ -7,13 +7,6 @@
 export { default as themeChange } from './theme-change';
 
 /* ********************************************
- * 工具组
- ******************************************* */
-export { default as toolkitToolClicked } from './toolkit/toolkit-tool-clicked';
-export { default as toolkitToolActiveChanged } from './toolkit/toolkit-tool-active-change';
-export { default as toolkitTooltipClose } from './toolkit/toolkit-tooltip-close';
-
-/* ********************************************
  * 微售卖
  ******************************************* */
 export { default as fastbuyClose } from './fastbuy/fastbuy-close';

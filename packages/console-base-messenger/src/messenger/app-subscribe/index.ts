@@ -7,15 +7,6 @@
 export { default as onThemeChange } from './on-theme-change';
 
 /* ********************************************
- * 工具组
- ******************************************* */
-export { default as onToolkitItemClick } from './toolkit/on-toolkit-item-click';
-export { default as onToolkitVersionNewClick } from './toolkit/on-toolkit-version-new-click';
-export { default as onToolkitVersionOldClick } from './toolkit/on-toolkit-version-old-click';
-export { default as onToolkitItemActiveChange } from './toolkit/on-toolkit-item-active-change';
-export { default as onToolkitTooltipClose } from './toolkit/on-toolkit-tooltip-close';
-
-/* ********************************************
  * 微售卖
  ******************************************* */
 export { default as onFastbuyClose } from './fastbuy/on-fastbuy-close';

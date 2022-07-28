@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-messenger",
-  "version": "1.14.0",
-  "description": "ConsoleBase 信使 - 与控制台应用之间的交互",
+  "name": "@alicloud/console-base-messenger-toolkit",
+  "version": "0.0.1",
+  "description": "ConsoleBase 信使 - Toolkit",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-messenger",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-messenger-toolkit",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -21,7 +21,8 @@
   },
   "keywords": [
     "console-base",
-    "messenger"
+    "messenger",
+    "toolkit"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
@@ -32,12 +33,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-messenger-base": "^1.3.0",
-    "@alicloud/console-base-messenger-micro-browser-portal": "^0.1.0",
-    "@alicloud/console-base-messenger-pref": "^0.1.0",
-    "@alicloud/console-base-messenger-region": "^0.1.0",
-    "@alicloud/console-base-messenger-resource-group": "^0.1.0",
-    "@alicloud/console-base-messenger-tutor": "^0.1.0",
-    "@alicloud/console-base-messenger-toolkit": "^0.0.1"
+    "@alicloud/console-base-types-settings-toolkit": "^1.3.0"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -49,6 +45,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:bundle && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": "4aebd18ed1ea9aab69357220cda2f5021d3c59cd"
+  }
 }

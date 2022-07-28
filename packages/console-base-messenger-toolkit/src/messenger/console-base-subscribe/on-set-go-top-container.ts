@@ -4,10 +4,10 @@ import {
 
 import {
   EToolkitTypeShort
-} from '../../../enum';
+} from '../../enum';
 import {
   composeToolkitType
-} from '../../../util';
+} from '../../util';
 
 /**
  * 响应设置工具组的「返回顶部」容器

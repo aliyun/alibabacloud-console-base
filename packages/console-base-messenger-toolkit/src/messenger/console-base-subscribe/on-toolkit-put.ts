@@ -7,13 +7,13 @@ import {
 
 import {
   EToolkitTypeShort
-} from '../../../enum';
+} from '../../enum';
 import {
   IPayloadPutTool
-} from '../../../types';
+} from '../../types';
 import {
   composeToolkitType
-} from '../../../util';
+} from '../../util';
 
 /**
  * console-base 响应动态添加或修改某工具

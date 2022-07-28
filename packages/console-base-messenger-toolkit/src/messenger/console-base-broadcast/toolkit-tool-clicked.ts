@@ -4,10 +4,10 @@ import {
 
 import {
   EToolkitTypeShort
-} from '../../../enum';
+} from '../../enum';
 import {
   composeToolkitTypeWithId
-} from '../../../util';
+} from '../../util';
 
 /**
  * 通知控制台应用：某工具被点击

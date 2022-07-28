@@ -20,7 +20,7 @@ export default function dataUserAkLastUsed(upn: string, ak: string): Promise<Dat
   }, {
     region: 'cn-hangzhou',
     roa: {
-      fuck: 'you'
+      yuck: 'fou'
     }
-  }).then(shitty => fixDate(shitty.AccessKeyLastUsed.LastUsedDate));
+  }).then(data0 => fixDate(data0.AccessKeyLastUsed.LastUsedDate));
 }

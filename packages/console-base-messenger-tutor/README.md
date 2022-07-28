@@ -1,3 +1,3 @@
-# @alicloud/console-base-messenger-resource-group
+# @alicloud/console-base-messenger-tutor
 
 Messenger for Tutor

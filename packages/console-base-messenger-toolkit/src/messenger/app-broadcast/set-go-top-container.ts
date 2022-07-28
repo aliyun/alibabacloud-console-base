@@ -4,10 +4,10 @@ import {
 
 import {
   EToolkitTypeShort
-} from '../../../enum';
+} from '../../enum';
 import {
   composeToolkitType
-} from '../../../util';
+} from '../../util';
 
 const ATTR_NAME = 'data-console-base-toolkit-go-top';
 let index = 0;
