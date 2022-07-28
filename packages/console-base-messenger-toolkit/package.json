@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-toolkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ConsoleBase 信使 - Toolkit",
   "license": "MIT",
   "sideEffects": false,

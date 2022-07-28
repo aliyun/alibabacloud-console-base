@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "description": "ConsoleBase 信使 - 与控制台应用之间的交互",
   "license": "MIT",
   "sideEffects": false,
@@ -36,8 +36,8 @@
     "@alicloud/console-base-messenger-pref": "^0.1.0",
     "@alicloud/console-base-messenger-region": "^0.1.0",
     "@alicloud/console-base-messenger-resource-group": "^0.1.0",
-    "@alicloud/console-base-messenger-tutor": "^0.1.0",
-    "@alicloud/console-base-messenger-toolkit": "^0.0.1"
+    "@alicloud/console-base-messenger-toolkit": "^0.0.2",
+    "@alicloud/console-base-messenger-tutor": "^0.1.0"
   },
   "scripts": {
     "start": "breezr start-storybook",
