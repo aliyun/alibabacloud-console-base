@@ -9,12 +9,8 @@ import {
   MESSAGE_TYPE_MICRO_PREF_UPDATED
 } from '../../const';
 
-export default function onMicroPrefUpdated<T = unknown>(fn: (key: string, value: T, valueOld: T) => void): () => void {
+export default function onMicroPrefUpdated<T = unknown>(fn: (key: string, value: T) => void): () => void {
   return subscribeByApp<IPayloadMicroPrefUpdated<T>>(MESSAGE_TYPE_MICRO_PREF_UPDATED, payload => {
-    if (!fn || !payload?.key) {
-      return;
-    }
-    
-    fn(payload.key, payload.value, payload.valueOld);
+    fn(payload.key, payload.value);
   });
 }
