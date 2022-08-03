@@ -1,1 +1,0 @@
-export { default as microPrefUpdated } from './micro-pref-updated';
