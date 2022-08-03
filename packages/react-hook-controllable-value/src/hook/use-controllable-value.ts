@@ -15,10 +15,10 @@ export default function useControllableValue<T = string>(finalDefault: T, value?
   const [stateValue, setStateValue] = useState<T>(value ?? defaultValue ?? finalDefault);
   const finalValue = value !== undefined ? value : stateValue;
   
-  const handleChange = useCallback((valueNew: T) => {
+  const handleChange = useCallback((valueNew: T = finalDefault) => {
     setStateValue(valueNew);
     onChange?.(valueNew);
-  }, [onChange]);
+  }, [onChange, finalDefault]);
   
   return [finalValue, handleChange];
 }

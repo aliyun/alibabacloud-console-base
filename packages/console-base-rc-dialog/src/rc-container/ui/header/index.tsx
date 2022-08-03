@@ -26,6 +26,7 @@ interface IScProps {
 
 const cssNormal = css`
   padding: ${SIZE.PADDING_X_DIALOG}px ${SIZE.PADDING_X_DIALOG * 2 + 8}px 0 ${SIZE.PADDING_X_DIALOG}px;
+  min-height: 48px;
 `;
 
 // slide 和 slide_up 共用
@@ -57,26 +58,17 @@ const ScTitleExtra = styled.div`
   ${mixinTextSecondary}
 `;
 
-export default function Header(): JSX.Element | null {
+export default function Header(): JSX.Element {
   const {
-    mode,
-    closable
+    mode
   } = useProps();
   const title = useDialogTitle();
   const titleExtra = useDialogTitleExtra();
-  let noHeader = false;
   
-  // SLIDE+ 模式下，既没有 title 有没有 X 才可以不展示整条 header
-  if (!title && !closable) {
-    noHeader = true;
-  } else if (!title) {
-    noHeader = mode === EDialogMode.NORMAL;
-  }
-  
-  return noHeader ? null : <ScHeader {...{
+  return <ScHeader {...{
     mode: mode as EDialogMode
   }}>
-    <ScTitle>{title}</ScTitle>
+    {title ? <ScTitle>{title}</ScTitle> : null}
     {titleExtra ? <ScTitleExtra>{titleExtra}</ScTitleExtra> : null}
   </ScHeader>;
 }

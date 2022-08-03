@@ -1,7 +1,7 @@
 {
   "name": "@alicloud/react-hook-is-unmounted",
-  "version": "1.2.0",
-  "description": "React Hook - 是否已被 unmount",
+  "version": "1.2.1",
+  "description": "React Hook - 是否已被 unmount 及衍生 hook",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",

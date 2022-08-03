@@ -28,7 +28,7 @@
     "@alicloud/console-base-rc-demo-theme-switcher": "^1.3.0",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.8.0",
+    "@alicloud/demo-rc-elements": "^1.8.1",
     "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.17",
     "@types/styled-components": "^5.1.25",
@@ -45,7 +45,7 @@
   "dependencies": {
     "@alicloud/console-base-theme": "^1.7.0",
     "@alicloud/mere-dom": "^1.5.0",
-    "@alicloud/react-hook-is-unmounted": "^1.2.0",
+    "@alicloud/react-hook-is-unmounted": "^1.2.1",
     "immutability-helper": "^3.1.1"
   },
   "scripts": {

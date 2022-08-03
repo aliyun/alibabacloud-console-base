@@ -11,6 +11,11 @@ const ScAlert = styled.div`
   padding: 10px 12px 10px 36px;
   background-color: rgba(0, 0, 0, 0.033);
   
+  header {
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  
   &:before {
     content: '';
     display: block;
@@ -73,7 +78,7 @@ export default function Alert({
   ...props
 }: IAlertProps): JSX.Element {
   return <ScAlert {...props} className={[className, `alert-${type}`].join(' ')}>
-    {title ? <strong>{title}</strong> : null}
+    {title ? <header>{title}</header> : null}
     {children}
   </ScAlert>;
 }

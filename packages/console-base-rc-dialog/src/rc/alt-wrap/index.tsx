@@ -63,7 +63,6 @@ const SPACING = 8;
 
 const ScAltWrap = styled.div`
   position: relative;
-  margin-top: 36px;
   padding: 0 ${SPACING * 2}px 0 ${ICON_SIZE + SPACING}px;
   min-height: ${ICON_SIZE + SPACING * 2}px;
 `;

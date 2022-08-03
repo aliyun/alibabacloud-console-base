@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/demo-rc-elements",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "专用于 demo 的元素，为了好看和方便，切不可用于生产",
   "license": "MIT",
   "sideEffects": false,
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@alicloud/rc-codemirror": "^1.1.1",
-    "@alicloud/react-hook-controllable-value": "^1.1.0",
+    "@alicloud/react-hook-controllable-value": "^1.1.1",
     "json5": "^2.2.1",
     "lodash": "^4.17.21"
   },
