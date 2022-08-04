@@ -17,9 +17,6 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  INNER_HEIGHT_PX
-} from '../const';
-import {
   IPropsScInput
 } from '../model';
 
@@ -59,8 +56,8 @@ export default styled.div<IPropsScInput>`
   position: relative;
   border: 1px solid transparent;
   border-radius: ${props => (props.round ? `${SIZE.HEIGHT_FORM_CONTROL_M}px` : 'none')};
-  height: ${INNER_HEIGHT_PX};
-  line-height: ${INNER_HEIGHT_PX};
+  box-sizing: border-box;
+  height: ${SIZE.HEIGHT_FORM_CONTROL_M}px;
   font-size: ${SIZE.FONT_SIZE_BODY}px;
   transition: all 0.3s ease-out;
   ${cssShadow}

@@ -7,7 +7,9 @@ import {
   useHandleMouseEnter,
   useHandleMouseLeave
 } from '../../model';
-import ScInput from '../../sc/input';
+import {
+  ScInput
+} from '../../sc';
 
 import InnerLeft from './inner-left';
 import TheInput from './the-input';

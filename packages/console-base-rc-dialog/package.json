@@ -50,7 +50,7 @@
     "@alicloud/console-base-intl-factory-basic": "^1.5.0",
     "@alicloud/console-base-rc-button": "^1.6.0",
     "@alicloud/console-base-rc-icon": "^1.8.0",
-    "@alicloud/console-base-rc-input": "^1.5.0",
+    "@alicloud/console-base-rc-input": "^1.5.1",
     "@alicloud/console-base-theme": "^1.7.0",
     "@alicloud/mere-dom": "^1.5.0",
     "@alicloud/react-hook-is-unmounted": "^1.2.1",
