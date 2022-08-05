@@ -80,6 +80,10 @@ module.exports = {
    * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md
    */
   '@typescript-eslint/naming-convention': ['error', {
+    selector: 'function',
+    format: ['strictCamelCase', 'StrictPascalCase'],
+    leadingUnderscore: 'allow'
+  }, {
     selector: 'variable',
     format: ['strictCamelCase', 'StrictPascalCase', 'UPPER_CASE'],
     filter: {
@@ -90,10 +94,6 @@ module.exports = {
     selector: 'parameter',
     format: ['strictCamelCase'],
     leadingUnderscore: 'allow'
-  }, { // allow anything in destructured properties
-    selector: ['variable', 'parameter'],
-    modifiers: ['destructured'],
-    format: null
   }, {
     selector: 'typeLike',
     format: ['StrictPascalCase']
@@ -122,6 +122,10 @@ module.exports = {
       regex: '[A-Z\\d]__[A-Z\\d]',
       match: false
     }
+  }, { // allow anything in destructured properties
+    selector: ['variable', 'parameter'],
+    modifiers: ['destructured'],
+    format: null
   }],
   /* ********************************
    * no- 系列

@@ -28,7 +28,7 @@ export default function Knobs({
   const hasClear = boolean('props.hasClear', false);
   const innerLeft = text('props.innerLeft', '');
   const innerRight = text('props.innerRight', '');
-  const state = radios('props.state', {
+  const status = radios('props.status', {
     loading: 'loading',
     success: 'success',
     error: 'error',
@@ -45,7 +45,7 @@ export default function Knobs({
     hasClear,
     innerLeft,
     innerRight,
-    state: state as InputProps['status']
+    status: status as InputProps['status']
   }), [
     placeholder,
     disabled,
@@ -56,7 +56,7 @@ export default function Knobs({
     hasClear,
     innerLeft,
     innerRight,
-    state
+    status
   ]);
   
   useEffect(() => onChange(props), [onChange, props]);
