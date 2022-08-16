@@ -1,43 +1,29 @@
 import React, {
-  Ref,
   forwardRef,
-  useState,
   useCallback
 } from 'react';
-import styled, {
-  FlattenSimpleInterpolation,
-  css
-} from 'styled-components';
+import styled from 'styled-components';
+
+import useControllableValue from '@alicloud/react-hook-controllable-value';
 
 import {
-  IPropsInputSwitch
+  TInputSwitchRef,
+  IInputSwitchProps
 } from '../../types';
-
-const HEIGHT_SWITCH = 18;
-const WIDTH_SWITCH = HEIGHT_SWITCH * 2 - 4;
-const SPACING_INNER = 2;
-const SIZE_KNOB = HEIGHT_SWITCH - SPACING_INNER * 2;
+import {
+  HEIGHT_SWITCH,
+  WIDTH_SWITCH,
+  SPACING_INNER,
+  SIZE_KNOB
+} from '../../const';
+import {
+  getStyledSwitchBg,
+  getStyledSwitchKnobPosition
+} from '../../util';
 
 interface IScProps {
   'aria-checked': boolean;
   disabled?: boolean;
-}
-
-function getBgColor(props: IScProps): string {
-  if (props.disabled) {
-    return '#ccc';
-  }
-  
-  return props['aria-checked'] ? '#090' : '#369';
-}
-
-function getKnowPosition(props: IScProps): FlattenSimpleInterpolation {
-  return props['aria-checked'] ? css`
-    left: 100%;
-    transform: translateX(-100%);
-  ` : css`
-    left: 0;
-  `;
 }
 
 const ScInputSwitch = styled.span`
@@ -54,11 +40,11 @@ const ScInputSwitchButton = styled.button<IScProps>`
   position: relative;
   border: ${SPACING_INNER}px solid transparent;
   border-radius: ${HEIGHT_SWITCH}px;
-  background-color: ${getBgColor};
   width: ${WIDTH_SWITCH}px;
   height: ${HEIGHT_SWITCH}px;
   line-height: 2;
   cursor: pointer;
+  ${getStyledSwitchBg}
   
   &:after {
     content: '';
@@ -70,7 +56,7 @@ const ScInputSwitchButton = styled.button<IScProps>`
     width: ${SIZE_KNOB}px;
     height: ${SIZE_KNOB}px;
     transition: all linear 160ms;
-    ${getKnowPosition}
+    ${getStyledSwitchKnobPosition}
   }
 `;
 
@@ -85,17 +71,9 @@ function InputSwitch({
   disabled,
   onChange,
   ...props
-}: IPropsInputSwitch, ref: Ref<HTMLButtonElement>): JSX.Element {
-  const [stateValue, setStateValue] = useState<boolean>(defaultValue);
-  const finalValue = value ?? stateValue;
-  
-  const handleClick = useCallback(() => {
-    const nextValue = !finalValue;
-    
-    setStateValue(nextValue);
-    
-    onChange?.(nextValue);
-  }, [onChange, finalValue, setStateValue]);
+}: IInputSwitchProps, ref: TInputSwitchRef): JSX.Element {
+  const [controllableValue, controllableOnChange] = useControllableValue<boolean>(false, value, defaultValue, onChange);
+  const handleClick = useCallback(() => controllableOnChange(!controllableValue), [controllableValue, controllableOnChange]);
   
   return <ScInputSwitch>
     <ScInputSwitchButton {...{
@@ -103,7 +81,7 @@ function InputSwitch({
       ...props,
       disabled,
       role: 'switch',
-      'aria-checked': finalValue,
+      'aria-checked': controllableValue,
       onClick: handleClick
     }} />
     {label ? <ScInputSwitchLabel onClick={disabled ? undefined : handleClick}>{label}</ScInputSwitchLabel> : null}

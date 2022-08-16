@@ -14,3 +14,8 @@ export const FORM_CONTROL_BGC_DISABLED = '#f0f1f3';
 export const TABLE_BGC_TH = '#eff3f8';
 export const TABLE_BGC_TD = '#fff';
 export const TABLE_BDC = '#e7e7e7';
+
+export const HEIGHT_SWITCH = 18;
+export const WIDTH_SWITCH = HEIGHT_SWITCH * 2 - 4;
+export const SPACING_INNER = 2;
+export const SIZE_KNOB = HEIGHT_SWITCH - SPACING_INNER * 2;

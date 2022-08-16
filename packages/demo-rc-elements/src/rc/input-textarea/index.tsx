@@ -1,12 +1,16 @@
 import React, {
   ChangeEvent,
-  Ref,
   forwardRef,
   useCallback
 } from 'react';
 import styled from 'styled-components';
 
 import {
+  useControllableValueSoftTrim
+} from '@alicloud/react-hook-controllable-value';
+
+import {
+  TInputTextAreaRef,
   IPropsInputTextarea
 } from '../../types';
 import {
@@ -18,16 +22,18 @@ const ScInputTextarea = styled.textarea`
 `;
 
 function InputTextarea({
+  value,
+  defaultValue,
   onChange,
   ...props
-}: IPropsInputTextarea, ref: Ref<HTMLTextAreaElement>): JSX.Element {
-  const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
-    onChange?.(e.target.value, e);
-  }, [onChange]);
+}: IPropsInputTextarea, ref: TInputTextAreaRef): JSX.Element {
+  const [controllableValue, controllableOnChange] = useControllableValueSoftTrim(true, value, defaultValue, onChange);
+  const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => controllableOnChange(e.target.value), [controllableOnChange]);
   
   return <ScInputTextarea {...{
     ...props,
     ref,
+    value: controllableValue,
     onChange: handleChange
   }} />;
 }

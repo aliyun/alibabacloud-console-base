@@ -17,6 +17,8 @@ const codeInputReset = `export const mixinInputReset = css\`
   transition: all ease-in-out 0.3s;
 
   &::placeholder {
+    font-size: 12px;
+    font-weight: 200;
 ${buildCssCode({
     attr: 'color',
     keys: ['COLOR', 'INPUT_PLACEHOLDER'],

@@ -1,9 +1,5 @@
 import {
-  HTMLAttributes,
-  InputHTMLAttributes,
-  TextareaHTMLAttributes,
-  ButtonHTMLAttributes,
-  ChangeEvent
+  HTMLAttributes
 } from 'react';
 
 import {
@@ -12,6 +8,9 @@ import {
 
 export * from './alert';
 export * from './table';
+export * from './input-text';
+export * from './input-number';
+export * from './input-switch';
 
 export interface IPropsCodeViewer extends CodeMirrorProps {
   type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'markdown' | 'text';
@@ -54,28 +53,6 @@ export interface IPropsFlex100Hbf {
 export type TPropsCheckboxGroup<T> = IPropsChoiceGroup<T, T[]>;
 
 export type TPropsRadioGroup<T> = IPropsChoiceGroup<T, T>;
-
-export interface IPropsInputText extends Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'type' | 'onChange'> {
-  block?: boolean;
-  onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
-}
-
-export interface IPropsInputTextarea extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'children' | 'onChange'> {
-  onChange?(value: string, e: ChangeEvent<HTMLTextAreaElement>): void;
-}
-
-export interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, 'children' | 'type' | 'value' | 'defaultValue' | 'onChange'> {
-  value?: number;
-  defaultValue?: number;
-  onChange?(value: number | undefined, e: ChangeEvent<HTMLInputElement>): void;
-}
-
-export interface IPropsInputSwitch extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'value' | 'defaultValue' | 'aria-checked' | 'role' | 'onClick' | 'onChange'> {
-  label?: string | JSX.Element;
-  value?: boolean;
-  defaultValue?: boolean;
-  onChange?(value: boolean): void;
-}
 
 export interface IPropsInputJsonObject<T> extends Omit<CodeMirrorProps, 'conf' | 'value' | 'onChange'> {
   value?: T;

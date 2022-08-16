@@ -16,6 +16,8 @@ export const mixinInputReset = css`
   transition: all ease-in-out 0.3s;
   
   &::placeholder {
+    font-size: 12px;
+    font-weight: 200;
     color: ${COLOR.INPUT_PLACEHOLDER};
     color: var(--cb-color-input-placeholder, ${COLOR.INPUT_PLACEHOLDER});
   }

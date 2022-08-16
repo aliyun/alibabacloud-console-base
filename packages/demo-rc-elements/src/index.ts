@@ -11,9 +11,11 @@ export type {
   IPropsInputText as InputTextProps,
   IPropsInputTextarea as InputTextareaProps,
   IPropsInputNumber as InputNumberProps,
-  IPropsInputSwitch as InputSwitchProps,
   IPropsInputJsonObject as InputJsonObjectProps,
   IAlertProps as AlertProps,
   ITableProps as TableProps,
-  TTableColumnProps as TableColumnProps
+  TTableColumnProps as TableColumnProps,
+  // input-switch
+  IInputSwitchProps as InputSwitchProps,
+  TInputSwitchRef as InputSwitchRef
 } from './types';

@@ -1,12 +1,14 @@
 import React, {
   ChangeEvent,
-  Ref,
   forwardRef,
   useCallback
 } from 'react';
 import styled from 'styled-components';
 
+import useControllableValue from '@alicloud/react-hook-controllable-value';
+
 import {
+  TInputNumberRef,
   IPropsInputNumber
 } from '../../types';
 import {
@@ -27,10 +29,10 @@ function number2string(n?: number | string): string | undefined {
   return typeof n === 'number' ? n.toString() : '';
 }
 
-function string2number(s?: string): number | undefined {
+function string2number(s?: string): number {
   const n = Number(s);
   
-  return isNaN(n) ? undefined : n;
+  return isNaN(n) ? 0 : n;
 }
 
 function InputNumber({
@@ -38,15 +40,15 @@ function InputNumber({
   defaultValue,
   onChange,
   ...props
-}: IPropsInputNumber, ref: Ref<HTMLInputElement>): JSX.Element {
+}: IPropsInputNumber, ref: TInputNumberRef): JSX.Element {
+  const [controllableValue, controllableOnChange] = useControllableValue<number>(0, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(string2number(e.target.value), e);
-  }, [onChange]);
+    controllableOnChange(string2number(e.target.value));
+  }, [controllableOnChange]);
   
   return <ScInputNumber {...{
     ...props,
-    value: number2string(value),
-    defaultValue: number2string(defaultValue),
+    value: number2string(controllableValue),
     type: 'number',
     ref,
     onChange: handleChange

@@ -1,6 +1,5 @@
 import React, {
   ChangeEvent,
-  Ref,
   forwardRef,
   useCallback
 } from 'react';
@@ -9,6 +8,11 @@ import styled, {
 } from 'styled-components';
 
 import {
+  useControllableValueSoftTrim
+} from '@alicloud/react-hook-controllable-value';
+
+import {
+  TInputTextRef,
   IPropsInputText
 } from '../../types';
 import {
@@ -32,15 +36,19 @@ const ScInputText = styled.input<IScInput>`
 
 function InputText({
   block,
+  value,
+  defaultValue,
   onChange,
   ...props
-}: IPropsInputText, ref: Ref<HTMLInputElement>): JSX.Element {
+}: IPropsInputText, ref: TInputTextRef): JSX.Element {
+  const [controllableValue, controllableOnChange] = useControllableValueSoftTrim(true, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e.target.value, e);
-  }, [onChange]);
+    controllableOnChange(e.target.value);
+  }, [controllableOnChange]);
   
   return <ScInputText {...{
     ...props,
+    value: controllableValue,
     block: block ? 1 : 0,
     type: 'text',
     ref,
