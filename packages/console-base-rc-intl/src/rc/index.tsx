@@ -4,11 +4,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  mixinTextTertiary,
   mixinBorderSecondaryBottom,
-  mixinTypoEm,
-  mixinTypoCode,
-  mixinTypoKbd
+  mixinTypoElementsInline
 } from '@alicloud/console-base-theme';
 
 import {
@@ -18,30 +15,6 @@ import makeHtmlProps from '../util/make-html-props';
 import parseLines from '../util/parse-lines';
 
 import Lines from './lines';
-
-// inline 元素样式，strong 只加粗不加色
-const cssInlineElements = css`
-  strong {
-    font-weight: 600;
-  }
-  
-  em {
-    ${mixinTypoEm}
-  }
-  
-  code {
-    ${mixinTypoCode}
-  }
-  
-  kbd {
-    ${mixinTypoKbd}
-  }
-  
-  small {
-    font-size: inherit;
-    ${mixinTextTertiary}
-  }
-`;
 
 // block 元素样式
 // p 的 min-height: 1px 是为了能让空行占高
@@ -98,13 +71,13 @@ const cssBlockElements = css`
 `;
 
 const ScSpan = styled.span`
-  ${cssInlineElements}
+  ${mixinTypoElementsInline}
 `;
 
 const ScDiv = styled.div`
   line-height: 1.6;
   
-  ${cssInlineElements}
+  ${mixinTypoElementsInline}
   ${cssBlockElements}
 `;
 
