@@ -14,6 +14,11 @@ import Input, {
 } from '../../src';
 import Knobs from '../knobs';
 
+function onChange(value: string): void {
+  // eslint-disable-next-line no-console
+  console.info(value);
+}
+
 export default function DemoDefault(): JSX.Element {
   const [stateProps, setStateProps] = useState<InputProps>({});
   
@@ -22,8 +27,13 @@ export default function DemoDefault(): JSX.Element {
     <H1>Input 测试</H1>
     <P>请使用 knobs 进行调戏 <span role="img" aria-label="play">🙈</span></P>
     <Knobs onChange={setStateProps} />
-    <Input {...stateProps} />
+    <Input {...{
+      ...stateProps,
+      onChange
+    }} />
     <H1>SearchInput</H1>
-    <SearchInput />
+    <SearchInput {...{
+      onChange
+    }} />
   </>;
 }
