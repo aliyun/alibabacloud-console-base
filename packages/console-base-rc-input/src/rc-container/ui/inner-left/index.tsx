@@ -1,15 +1,11 @@
 import React from 'react';
 
 import {
-  renderInner
-} from '../../../util';
-import {
   useProps,
-  useHovered,
   useFocused
 } from '../../../model';
 import {
-  ScInnerLeft
+  ScInputInnerLeft
 } from '../../../sc';
 
 export default function InnerLeft(): JSX.Element | null {
@@ -17,9 +13,6 @@ export default function InnerLeft(): JSX.Element | null {
     innerLeft
   } = useProps();
   const focused = useFocused();
-  const hovered = useHovered();
   
-  const jsx = renderInner(innerLeft, focused, hovered);
-  
-  return jsx ? <ScInnerLeft>{jsx}</ScInnerLeft> : null;
+  return innerLeft ? <ScInputInnerLeft focused={focused}>{innerLeft}</ScInputInnerLeft> : null;
 }

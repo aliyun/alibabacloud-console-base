@@ -13,7 +13,7 @@ import {
   useHandleClear
 } from '../../../model';
 import {
-  ScInnerRight,
+  ScInputInnerRight,
   ScInputClearButton
 } from '../../../sc';
 
@@ -60,5 +60,5 @@ export default function InnerRightStatus(): JSX.Element | null {
       break;
   }
   
-  return jsx ? <ScInnerRight>{jsx}</ScInnerRight> : null;
+  return jsx ? <ScInputInnerRight>{jsx}</ScInputInnerRight> : null;
 }

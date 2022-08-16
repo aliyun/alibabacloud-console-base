@@ -4,9 +4,6 @@ import {
   ChangeEvent
 } from 'react';
 
-export type TInner = string | JSX.Element;
-export type TFnInner = (focused: boolean, hovered: boolean) => TInner;
-
 export interface IPropsLook {
   theme?: 'normal' | 'brand';
   block?: boolean;
@@ -33,8 +30,8 @@ export interface IPropsLook {
 export interface IModelProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onMouseEnter' | 'onMouseLeave' | 'defaultValue' | 'onChange'>, IPropsLook {
   value?: string;
   defaultValue?: string;
-  innerLeft?: TInner | TFnInner;
-  innerRight?: TInner | TFnInner;
+  innerLeft?: string | JSX.Element;
+  innerRight?: string | JSX.Element;
   onMouseEnter?(e: MouseEvent): void;
   onMouseLeave?(e: MouseEvent): void;
   onChange?(value: string, e?: ChangeEvent<HTMLInputElement>): void;

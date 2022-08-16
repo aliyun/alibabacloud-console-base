@@ -15,14 +15,14 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  EIconType,
+  EPayloadVerifyType
+} from '../../../../enum';
+import {
   IWindvaneError,
   IPayloadVerifyVmfa,
   IDialogDataNewSubAccountRisk
 } from '../../../../types';
-import {
-  EIconType,
-  EPayloadVerifyType
-} from '../../../../enum';
 import {
   SvgUrls,
   WINDVANE_ERROR_CODE,
@@ -43,7 +43,7 @@ import {
 
 const ScFormWrapper = styled.div`
   position: relative;
-  padding: 12px 8px 12px 0px;
+  padding: 12px 8px 12px 0;
   overflow: hidden;
   ${mixinBgSecondary}
   ${mixinBorderSecondary}
@@ -57,7 +57,7 @@ const ScImg = styled.img`
 
 const ticketType = getTicketType();
 
-export default function VMfaAuth(): JSX.Element {
+export default function VmfaAuth(): JSX.Element {
   const {
     data: {
       subRiskInfo: {

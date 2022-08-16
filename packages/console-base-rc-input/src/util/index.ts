@@ -1,1 +1,2 @@
-export { default as renderInner } from './render-inner';
+export { default as getStyledBorder } from './get-styled-border';
+export { default as getStyledShadow } from './get-styled-shadow';

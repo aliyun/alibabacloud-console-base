@@ -1,16 +1,10 @@
 import React, {
   useCallback
 } from 'react';
-import styled, {
-  FlattenSimpleInterpolation,
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
 import {
   mixinBgWhite,
-  mixinBgHelp,
-  mixinBgSuccess,
-  mixinBgDisabled,
   mixinShadowSDown
 } from '@alicloud/console-base-theme';
 import {
@@ -27,27 +21,14 @@ import {
   SPACING_INNER,
   SIZE_KNOB
 } from '../../const';
+import {
+  getStyledBg,
+  getStyledKnobPosition
+} from '../../util';
 
 interface IScProps {
   'aria-checked': boolean;
   disabled?: boolean;
-}
-
-function getBg(props: IScProps): FlattenSimpleInterpolation {
-  if (props.disabled) {
-    return mixinBgDisabled;
-  }
-  
-  return props['aria-checked'] ? mixinBgSuccess : mixinBgHelp; // TODO 更好的定义
-}
-
-function getKnobPosition(props: IScProps): FlattenSimpleInterpolation {
-  return props['aria-checked'] ? css`
-    left: 100%;
-    transform: translateX(-100%);
-  ` : css`
-    left: 0;
-  `;
 }
 
 const ScInputSwitchWrap = styled.span`
@@ -62,7 +43,7 @@ const ScInputSwitch = styled(ButtonBase)<IScProps>`
   border-radius: ${HEIGHT_SWITCH}px;
   width: ${WIDTH_SWITCH}px;
   height: ${HEIGHT_SWITCH}px;
-  ${getBg}
+  ${getStyledBg}
   
   &:after {
     content: '';
@@ -74,7 +55,7 @@ const ScInputSwitch = styled(ButtonBase)<IScProps>`
     transition: all linear 160ms;
     ${mixinBgWhite}
     ${mixinShadowSDown}
-    ${getKnobPosition}
+    ${getStyledKnobPosition}
   }
 `;
 
