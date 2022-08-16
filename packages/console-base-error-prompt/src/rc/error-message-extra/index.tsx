@@ -11,9 +11,8 @@ interface IProps {
 
 export default function ErrorMessage({
   queueItem: {
-    message,
-    error
+    messageExtra
   }
 }: IProps): JSX.Element {
-  return <MessageMightBeDangerous message={message || error.code || 'n / a'} />;
+  return <MessageMightBeDangerous message={messageExtra} />;
 }

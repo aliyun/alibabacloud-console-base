@@ -9,7 +9,7 @@ import useControllableValue from '@alicloud/react-hook-controllable-value';
 
 import {
   TInputNumberRef,
-  IPropsInputNumber
+  IInputNumberProps
 } from '../../types';
 import {
   CSS_FORM_CONTROL_INPUT_BASE
@@ -40,7 +40,7 @@ function InputNumber({
   defaultValue,
   onChange,
   ...props
-}: IPropsInputNumber, ref: TInputNumberRef): JSX.Element {
+}: IInputNumberProps, ref: TInputNumberRef): JSX.Element {
   const [controllableValue, controllableOnChange] = useControllableValue<number>(0, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     controllableOnChange(string2number(e.target.value));

@@ -3,53 +3,27 @@ import styled from 'styled-components';
 import {
   mixinTypoFontBase,
   mixinTypoBlockquote,
-  mixinTypoEm,
-  mixinTypoCode,
   mixinTypoFontFamilyMono,
-  mixinTypoStrong,
-  mixinTypoKbd,
   mixinTextPrimary,
   mixinTextSecondary,
   mixinTextInverse,
-  mixinLinkPrimary,
   mixinBorderTertiary,
   mixinBgPrimary,
   mixinBgSecondary,
   mixinBgInverse,
-  mixinBorderSecondaryBottom
+  mixinBorderSecondaryBottom,
+  mixinTypoElementsInline
 } from '@alicloud/console-base-theme';
 
 export default styled.article`
   ${mixinTypoFontBase}
   ${mixinTextSecondary}
-  
-  a {
-    ${mixinLinkPrimary}
-  }
-  
-  em {
-    ${mixinTypoEm}
-  }
-  
+  ${mixinTypoElementsInline}
+
   code {
-    ${mixinTypoCode}
-    
     &.clean {
       background-color: transparent;
     }
-  }
-  
-  strong {
-    ${mixinTypoStrong}
-  }
-  
-  kbd {
-    ${mixinTypoKbd}
-  }
-  
-  br {
-    content: '';
-    display: block;
   }
   
   ul,
@@ -102,11 +76,6 @@ export default styled.article`
   
   blockquote {
     ${mixinTypoBlockquote}
-  }
-  
-  pre,
-  code {
-    ${mixinTypoFontFamilyMono}
   }
   
   p {
@@ -166,6 +135,7 @@ export default styled.article`
     word-break: break-word;
     ${mixinTextInverse}
     ${mixinBgInverse}
+    ${mixinTypoFontFamilyMono}
     
     code {
       padding: unset;
@@ -189,6 +159,7 @@ export default styled.article`
   }
   
   iframe {
+    display: block;
     border: 0;
     width: 100%;
     height: 1024px;

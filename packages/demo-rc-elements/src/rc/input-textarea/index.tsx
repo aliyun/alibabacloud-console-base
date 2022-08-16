@@ -11,7 +11,7 @@ import {
 
 import {
   TInputTextAreaRef,
-  IPropsInputTextarea
+  IInputTextareaProps
 } from '../../types';
 import {
   CSS_FORM_CONTROL_INPUT_TEXTAREA
@@ -26,7 +26,7 @@ function InputTextarea({
   defaultValue,
   onChange,
   ...props
-}: IPropsInputTextarea, ref: TInputTextAreaRef): JSX.Element {
+}: IInputTextareaProps, ref: TInputTextAreaRef): JSX.Element {
   const [controllableValue, controllableOnChange] = useControllableValueSoftTrim(true, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => controllableOnChange(e.target.value), [controllableOnChange]);
   

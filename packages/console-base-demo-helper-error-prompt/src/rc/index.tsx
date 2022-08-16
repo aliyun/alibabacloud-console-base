@@ -5,13 +5,13 @@ import {
 } from '../types';
 
 import MergingTest from './merging-test';
-import ChooseNTest from './chose-n-test';
+import ChooseToTest from './chose-to-test';
 
 export default function DemoHelperErrorPrompt({
   onPrompt
 }: IProps): JSX.Element {
   return <>
     <MergingTest onPrompt={onPrompt} />
-    <ChooseNTest onPrompt={onPrompt} />
+    <ChooseToTest onPrompt={onPrompt} />
   </>;
 }

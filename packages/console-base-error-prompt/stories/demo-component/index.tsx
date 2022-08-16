@@ -12,12 +12,14 @@ import {
   ErrorPrompt,
   ErrorPromptArg
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 export default function DemoDefault(): JSX.Element {
   const [stateErrors, setStateErrors] = useState<ErrorArg[]>([]);
   const onClose = useCallback(() => setStateErrors([]), []);
   
   return <>
+    <PkgInfo />
     <ThemeSwitcher />
     <DemoHelperErrorPrompt {...{
       onPrompt: setStateErrors

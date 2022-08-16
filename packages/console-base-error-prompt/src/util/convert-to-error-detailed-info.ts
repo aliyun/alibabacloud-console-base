@@ -56,5 +56,5 @@ export default function convertToErrorDetailedInfo(error: TErrorPromptArg): IErr
     info.details = error.details || getDetails(error as IErrorWithConfig);
   }
   
-  return info as IErrorPlain;
+  return info;
 }

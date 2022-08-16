@@ -1,5 +1,8 @@
 export { default } from './rc';
-export { default as ChooseNTest } from './rc/chose-n-test';
+
+export {
+  getErrorExtra
+} from './util';
 
 export type {
   TErrorArg as ErrorArg

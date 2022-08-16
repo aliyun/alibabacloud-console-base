@@ -11,4 +11,4 @@ interface IPropsFix {
 
 export type TInputNumberRef = ForwardedRef<HTMLInputElement>;
 
-export interface IPropsInputNumber extends Omit<InputHTMLAttributes<HTMLInputElement>, keyof IPropsFix | 'children' | 'type'>, IPropsFix {}
+export interface IInputNumberProps extends Omit<InputHTMLAttributes<HTMLInputElement>, keyof IPropsFix | 'children' | 'type'>, IPropsFix {}

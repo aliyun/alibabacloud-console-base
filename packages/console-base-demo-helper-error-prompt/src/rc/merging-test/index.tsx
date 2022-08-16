@@ -12,9 +12,11 @@ import {
 import {
   IProps
 } from '../../types';
-import createError from '../../util/create-error';
-import createErrorNeedLogin from '../../util/create-error-need-login';
-import createErrorTokenExpired from '../../util/create-error-token-expired';
+import {
+  createError,
+  createErrorNeedLogin,
+  createErrorTokenExpired
+} from '../../util';
 
 export default function MergingTest({
   onPrompt

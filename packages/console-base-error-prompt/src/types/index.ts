@@ -57,8 +57,18 @@ export type TErrorPromptArg = string | ReactElement | IError | IErrorPlain;
  * 但不能覆盖由 getPredefinedExtra 指定的这部分信息
  */
 export interface IErrorPromptExtra {
+  /**
+   * 覆盖 error.title
+   */
   title?: string;
+  /**
+   * 覆盖 error.message
+   */
   message?: string | ReactElement;
+  /**
+   * 信息自定义区，对 message 进行补充
+   */
+  messageExtra?: string | ReactElement;
   button?: string | DialogButtonProps<void, IErrorDialogData>;
 }
 
@@ -71,7 +81,7 @@ export interface IFnErrorPromptExtra {
 
 export type TErrorPromptArgExtra = IErrorPromptExtra | IFnErrorPromptExtra;
 
-export interface IErrorQueueItem extends RequiredBut<IErrorPromptExtra, 'button'> {
+export interface IErrorQueueItem extends RequiredBut<IErrorPromptExtra, 'messageExtra' | 'button'> {
   error: IErrorPlain;
   detailedMode?: boolean;
   resolve(): void;
@@ -82,7 +92,7 @@ export type TDialogIndirect = DialogIndirectPromise<void, IErrorDialogData>;
 /**
  * 展示用的 k-v 对
  */
-export interface IErrorDetailKV {
+export interface IErrorDetailKv {
   k0: string;
   k: string;
   v: unknown;

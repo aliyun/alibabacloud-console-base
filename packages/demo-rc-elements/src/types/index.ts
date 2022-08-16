@@ -6,11 +6,12 @@ import {
   CodeMirrorProps
 } from '@alicloud/rc-codemirror';
 
-export * from './alert';
-export * from './table';
 export * from './input-text';
 export * from './input-number';
 export * from './input-switch';
+export * from './table';
+export * from './alert';
+export * from './package-info';
 
 export interface IPropsCodeViewer extends CodeMirrorProps {
   type?: 'json' | 'js' | 'ts' | 'html' | 'css' | 'less' | 'markdown' | 'text';

@@ -4,7 +4,7 @@ import _snakeCase from 'lodash/snakeCase';
 
 import {
   IErrorPlain,
-  IErrorDetailKV
+  IErrorDetailKv
 } from '../types';
 import {
   DETAILED_MODE
@@ -16,8 +16,8 @@ import parseParams from './parse-params';
 /**
  * 把错误对象转成 `{k0, k, v}` 对象数组，保证某些字段的顺序
  */
-export default function convertErrorDetailKvList(error: IErrorPlain, detailedMode = DETAILED_MODE): IErrorDetailKV[] {
-  const kvList: IErrorDetailKV[] = [];
+export default function convertErrorDetailKvList(error: IErrorPlain, detailedMode = DETAILED_MODE): IErrorDetailKv[] {
+  const kvList: IErrorDetailKv[] = [];
   
   function pushInfo(v: unknown, k0: string, k: string): void {
     if (!v || _isFunction(v)) {

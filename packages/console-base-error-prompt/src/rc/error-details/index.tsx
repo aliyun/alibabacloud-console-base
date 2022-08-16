@@ -10,7 +10,7 @@ import Button, {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  IErrorDetailKV,
+  IErrorDetailKv,
   IErrorQueueItem
 } from '../../types';
 import intl from '../../intl';
@@ -42,7 +42,7 @@ export default function ErrorDetails({
 }: IProps): JSX.Element | null {
   const [stateFolded, setStateFolded] = useState<boolean>(false);
   const handleToggleFolded = useCallback(() => setStateFolded(!stateFolded), [stateFolded, setStateFolded]);
-  const kvList: IErrorDetailKV[] = convertErrorDetailKvList(error, detailedMode);
+  const kvList: IErrorDetailKv[] = convertErrorDetailKvList(error, detailedMode);
   
   if (!kvList.length) {
     return null;

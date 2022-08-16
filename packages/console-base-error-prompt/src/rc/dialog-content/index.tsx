@@ -14,6 +14,7 @@ import {
   IErrorDialogData
 } from '../../types';
 import ErrorMessage from '../error-message';
+import ErrorMessageExtra from '../error-message-extra';
 import ErrorDetails from '../error-details';
 
 interface IProps {
@@ -41,6 +42,7 @@ export default function DialogContent({
     title: queueItem.title,
     content: <>
       <ErrorMessage queueItem={queueItem} />
+      <ErrorMessageExtra queueItem={queueItem} />
       <ErrorDetails queueItem={queueItem} />
       <ScPagination {...{
         total: queue.length,

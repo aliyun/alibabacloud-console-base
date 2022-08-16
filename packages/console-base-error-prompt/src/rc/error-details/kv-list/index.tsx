@@ -12,7 +12,7 @@ import {
 import CopyIt from '@alicloud/console-base-rc-copy-it';
 
 import {
-  IErrorDetailKV
+  IErrorDetailKv
 } from '../../../types';
 import {
   renderObject,
@@ -20,7 +20,7 @@ import {
 } from '../../../util';
 
 interface IProps {
-  items: IErrorDetailKV[];
+  items: IErrorDetailKv[];
   folded: boolean;
 }
 
@@ -39,7 +39,7 @@ const ScKvList = styled.ul<IPropsScDetails>`
   ${mixinTextTertiary}
 `;
 
-const ScKV = styled.li`
+const ScKv = styled.li`
   display: flex;
   padding: 4px 0;
 `;
@@ -77,10 +77,10 @@ export default function KvList({
         displayValue = toDisplayValue(v);
       }
       
-      return <ScKV key={k0}>
+      return <ScKv key={k0}>
         <ScK>{k}</ScK>
         <ScV>{displayValue}</ScV>
-      </ScKV>;
+      </ScKv>;
     })}
   </ScKvList>;
 }

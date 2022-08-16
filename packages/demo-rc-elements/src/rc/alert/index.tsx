@@ -13,6 +13,8 @@ const ScAlert = styled.div`
   
   header {
     margin-bottom: 4px;
+    line-height: 1.5;
+    font-size: 1.1em;
     font-weight: 600;
   }
   

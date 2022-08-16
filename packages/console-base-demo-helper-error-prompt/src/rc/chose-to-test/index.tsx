@@ -16,12 +16,14 @@ import {
   IProps,
   TErrorArg
 } from '../../types';
-import renderErrorLabel from '../../util/render-error-label';
-import createErrors from '../../util/create-errors';
+import {
+  createErrors,
+  renderErrorLabel
+} from '../../util';
 
 const ERRORS = createErrors();
 
-export default function ChooseNTest({
+export default function ChooseToTest({
   onPrompt
 }: IProps): JSX.Element {
   const [stateErrors, setStateErrors] = useState<TErrorArg[]>([]);

@@ -13,7 +13,7 @@ import {
 
 import {
   TInputTextRef,
-  IPropsInputText
+  IInputTextProps
 } from '../../types';
 import {
   CSS_FORM_CONTROL_INPUT_BASE
@@ -40,7 +40,7 @@ function InputText({
   defaultValue,
   onChange,
   ...props
-}: IPropsInputText, ref: TInputTextRef): JSX.Element {
+}: IInputTextProps, ref: TInputTextRef): JSX.Element {
   const [controllableValue, controllableOnChange] = useControllableValueSoftTrim(true, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     controllableOnChange(e.target.value);

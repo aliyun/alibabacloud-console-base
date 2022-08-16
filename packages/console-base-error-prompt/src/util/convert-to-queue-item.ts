@@ -20,7 +20,7 @@ function parseExtra(error: IErrorPlain, extra?: IErrorPromptExtra | IFnErrorProm
 }
 
 /**
- * 把错误 `o?: TErrorPromptArg` 转化成 IErrorQueueItem
+ * 把错误 `o?: TErrorPromptArg` 和 extra 合并转化成 IErrorQueueItem
  */
 export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPromptExtra | IFnErrorPromptExtra, detailedMode?: boolean): IErrorQueueItem | null {
   if (shouldIgnore(o)) {
@@ -32,19 +32,22 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
   let {
     title = error.title,
     message = error.message,
+    messageExtra,
     button
   } = parseExtra(error, extra);
   
   if (specialExtra) {
     title = specialExtra.title || title;
     message = specialExtra.message || message;
+    messageExtra = specialExtra.messageExtra || messageExtra;
     button = specialExtra.button || button;
   }
   
   return {
+    error,
     title: title || defaultTitle,
     message,
-    error,
+    messageExtra,
     button,
     detailedMode,
     resolve: _noop // 由主方法负责填充成正式的 resolve 方法

@@ -1,3 +1,5 @@
+// 此文件手动编辑
+
 import {
   css
 } from 'styled-components';
@@ -17,6 +19,9 @@ import {
   mixinTextSecondary,
   mixinTextTertiary
 } from './text';
+import {
+  mixinLinkPrimary
+} from './link';
 import {
   mixinBgSecondary,
   mixinBgSecondaryFade
@@ -128,4 +133,45 @@ export const mixinTypoEllipsisLines = css<IPropsEllipsisLines>`
       height: ${h}px;
     `;
   }}
+`;
+
+/**
+ * 当某元素内部有各种 inline 元素需要有样式的时候，用它
+ */
+export const mixinTypoElementsInline = css`
+  a {
+    text-decoration: none;
+    ${mixinLinkPrimary}
+    
+    &:link:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  em {
+    ${mixinTypoEm}
+  }
+  
+  strong {
+    ${mixinTypoStrong}
+  }
+  
+  small {
+    font-size: inherit;
+    ${mixinTextTertiary}
+  }
+  
+  code {
+    ${mixinTypoCode}
+    ${mixinTypoFontFamilyMono}
+  }
+  
+  kbd {
+    ${mixinTypoKbd}
+  }
+  
+  br {
+    content: '';
+    display: block;
+  }
 `;
