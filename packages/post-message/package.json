@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/post-message",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "postMessage 封装，可以用成 Promise",
   "license": "MIT",
   "main": "build/cjs/index.js",
@@ -28,14 +28,14 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.8.1",
+    "@alicloud/demo-rc-elements": "^1.8.2",
     "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@alicloud/sandbox-escape": "^1.0.1",
+    "@alicloud/sandbox-escape": "^1.0.2",
     "lodash": "^4.17.21"
   },
   "scripts": {
