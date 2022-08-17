@@ -3,6 +3,7 @@ import React, {
   useCallback
 } from 'react';
 
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   InputText,
   PreJson
@@ -27,6 +28,7 @@ export default function DemoDefault(): JSX.Element {
   }, []);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <InputText {...{
       block: true,

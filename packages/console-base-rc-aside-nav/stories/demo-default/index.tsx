@@ -8,7 +8,7 @@ import {
   InputText,
   InputSwitch
 } from '@alicloud/demo-rc-elements';
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import AsideNav from '../../src';
 import PkgInfo from '../pkg-info';

@@ -1,1 +1,1 @@
-export { default } from './util/intercept';
+export { default } from './intercept';

@@ -10,13 +10,14 @@ import {
 import {
   ERROR_BIZ
 } from '../const';
-
-import isSuccess from './is-success';
-import getData from './get-data';
-import getCode from './get-code';
-import getTitle from './get-title';
-import getMessage from './get-message';
-import getRequestId from './get-request-id';
+import {
+  isSuccess,
+  getData,
+  getCode,
+  getTitle,
+  getMessage,
+  getRequestId
+} from '../util';
 
 /**
  * 请求到这里，说明服务端有返回，但业务上不一定是成功的。

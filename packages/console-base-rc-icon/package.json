@@ -25,6 +25,7 @@
     "icon"
   ],
   "devDependencies": {
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.0.0",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.9.1",

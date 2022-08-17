@@ -7,9 +7,11 @@ import {
   canHaveBody
 } from '@alicloud/fetcher';
 
-import isFecs from './is-fecs';
-import isRelativeOneApi from './is-relative-one-api';
-import cookieGetToken from './cookie-get-token';
+import {
+  isFecs,
+  isRelativeOneApi,
+  cookieGetToken
+} from '../util';
 
 // FECS 仅支持 .aliyun.com 或其对应日常
 const FECS_COMPATIBLE: boolean = (() => {

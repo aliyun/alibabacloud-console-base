@@ -7,7 +7,7 @@ import {
  * 
  * 注意：如果绑定 g.alicdn.com 的 host 会没有 getToken
  */
-export default function getUmid(): string | undefined {
+export default function defaultGetUmid(): string | undefined {
   try {
     const win: IWindow = window as unknown as IWindow;
     

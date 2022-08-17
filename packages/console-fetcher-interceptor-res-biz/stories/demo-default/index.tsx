@@ -3,6 +3,7 @@ import React from 'react';
 import {
   FetcherDemoRcFetchers
 } from '@alicloud/fetcher-demo-helpers';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import PkgInfo from '../pkg-info';
 import {
@@ -12,6 +13,7 @@ import {
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <FetcherDemoRcFetchers {...{
       fetcher0,

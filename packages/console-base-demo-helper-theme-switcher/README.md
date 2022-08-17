@@ -1,4 +1,4 @@
-# @alicloud/console-base-rc-demo-theme-switcher
+# @alicloud/console-base-demo-helper-theme-switcher
 
 > 具体看 types 下的类型说明。
 

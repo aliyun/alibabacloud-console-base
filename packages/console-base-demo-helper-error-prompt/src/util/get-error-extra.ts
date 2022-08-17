@@ -48,7 +48,7 @@ export default function getErrorExtra(error: IError): IResult | undefined {
       };
     case CODE_NEED_MESSAGE_EXTRA:
       return {
-        messageExtra: '业务需要针对特定的错误码增加额外的信息，这些信息是没法直接放到 message 中的。<a href="//www.aliyun.com" target="_blank">帮助文档</a>'
+        messageExtra: '业务需要针对特定的错误码增加额外的信息，这些信息可能没法直接放到 <code>message</code> 里。<a href="//www.aliyun.com" target="_blank">帮助文档</a>'
       };
     default:
       break;

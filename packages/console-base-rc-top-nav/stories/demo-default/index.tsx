@@ -8,7 +8,7 @@ import {
   H1,
   Button as ButtonForDemo
 } from '@alicloud/demo-rc-elements';
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   mixinTopNavButtonDarkFix
 } from '@alicloud/console-base-theme';

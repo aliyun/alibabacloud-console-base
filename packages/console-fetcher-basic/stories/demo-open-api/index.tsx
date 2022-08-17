@@ -11,6 +11,7 @@ import {
   PrePromise,
   InputText
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import PkgInfo from '../pkg-info';
 
@@ -31,6 +32,7 @@ export default function ConsoleApiTest(): JSX.Element {
   const handleFetch4 = useCallback(() => setStatePromise(dataConsoleBenchProductsMy()), [setStatePromise]);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>RAM User AK 接口</H1>
     <P>用于测试如下功能：</P>

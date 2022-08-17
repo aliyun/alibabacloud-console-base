@@ -3,6 +3,7 @@ import React, {
   useCallback
 } from 'react';
 
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   H1,
   P,
@@ -14,6 +15,7 @@ import {
 import {
   createFetcherErrorSkipNetwork
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import {
   fetcher1
 } from '../fetcher';
@@ -46,9 +48,11 @@ function testPriority(): Promise<unknown> {
     params: paramsInOptions,
     additionalInterceptorsForRequest: [
       [function() {
+        // eslint-disable-next-line no-console
         console.info(111);
       }],
       [2, function() {
+        // eslint-disable-next-line no-console
         console.info(222); // 在开始执行
       }]
     ]
@@ -116,6 +120,8 @@ export default function DemoFeatures(): JSX.Element {
   const handleTestAbortJsonp = useCallback(() => setStatePromise(testAbortJsonp()), [setStatePromise]);
   
   return <>
+    <ThemeSwitcher />
+    <PkgInfo />
     <H1>临时拦截器</H1>
     <P>可以通过 <code>additionalInterceptorsForRequest</code> 添加临时的拦截器，它只影响当前的请求。</P>
     <List ordered>

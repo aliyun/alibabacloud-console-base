@@ -14,7 +14,7 @@ import {
   LongArticle,
   Flex100HBF
 } from '@alicloud/demo-rc-elements';
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   TabProps
 } from '@alicloud/console-base-rc-tabs';

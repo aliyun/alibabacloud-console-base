@@ -49,7 +49,7 @@ export default function createInterceptorRequest({
     }
     
     if (fetcherConfig.url && REG_ONE_API.test(fetcherConfig.url)) {
-      const product = (fetcherConfig.body as IBodyWithProduct)?.product;
+      const product = (fetcherConfig.body as IBodyWithProduct | undefined)?.product;
       
       return product ? {
         url: `${MOCK_PREFIX}/oneconsole/data/${RegExp.$1 ? 'multiApi' : 'api'}.json`,

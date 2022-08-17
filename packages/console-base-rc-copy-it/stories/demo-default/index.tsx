@@ -7,6 +7,7 @@ import {
   Hr,
   Button
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import CopyIt from '../../src';
 import PkgInfo from '../pkg-info';
@@ -17,6 +18,7 @@ export default function DemoDefault(): JSX.Element {
   const handleRefreshText = useCallback(() => setStateText(new Date().toUTCString()), [setStateText]);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <CopyIt text={stateText} />
     <Hr />

@@ -7,7 +7,7 @@ import {
   mixinBgSuccessTintFade,
   mixinTextSecondary
 } from '@alicloud/console-base-theme';
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   RadioGroup
 } from '@alicloud/demo-rc-elements';

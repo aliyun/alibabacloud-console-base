@@ -13,9 +13,10 @@ import {
   ERROR_CODE_TOKEN_AFTER_REFRESH,
   ERROR_MESSAGE_TOKEN_AFTER_REFRESH
 } from '../const';
-
-import isFecs from './is-fecs';
-import refreshToken from './refresh-token';
+import {
+  isFecs,
+  refreshToken
+} from '../util';
 
 interface IFetcherConfig extends FetcherConfig {
   tokenRefreshed?: boolean;

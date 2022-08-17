@@ -37,9 +37,9 @@ function executeQueue(err?: Error): void {
     const queueItem = REFRESH_QUEUE.shift();
     
     if (err) {
-      queueItem && queueItem.reject && queueItem.reject(err);
+      queueItem?.reject?.(err);
     } else {
-      queueItem && queueItem.resolve && queueItem.resolve();
+      queueItem?.resolve?.();
     }
   }
 }

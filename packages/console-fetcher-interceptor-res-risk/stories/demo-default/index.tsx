@@ -3,10 +3,10 @@ import React from 'react';
 import {
   P
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   FetcherDemoRcFetchers
 } from '@alicloud/fetcher-demo-helpers';
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import PkgInfo from '../pkg-info';
 import {

@@ -12,9 +12,10 @@ import {
   IFetcherInterceptorConfig,
   ISlsInfo
 } from '../types';
-
-import removeSecParamsFromBody from './remove-sec-params-from-body';
-import shouldIgnoreError from './should-ignore-error';
+import {
+  removeSecParamsFromBody,
+  shouldIgnoreError
+} from '../util';
 
 interface IResponseData {
   requestId?: string;
@@ -36,20 +37,20 @@ export default function createInterceptorResponseRejected({
   
   const sls = createLogger(slsOptions);
   
-  return (err: FetcherError, fetcherConfig: FetcherConfig, response?: FetcherResponse<IResponseData>): void => {
+  return (err: FetcherError | undefined, fetcherConfig: FetcherConfig, response?: FetcherResponse<IResponseData | null>): void => {
     if (!err || shouldIgnoreError(err, shouldIgnore)) {
       throw err;
     }
     
     const slsParams: ISlsInfo = {
-      fetcherMethod: fetcherConfig.method!,
-      fetcherUrl: fetcherConfig.url!,
+      fetcherMethod: fetcherConfig.method,
+      fetcherUrl: fetcherConfig.url,
       fetcherUrlBase: fetcherConfig.urlBase,
       fetcherParams: fetcherConfig.params,
       fetcherBody: removeSecParamsFromBody(fetcherConfig.body),
-      errorName: err.name ?? '__no_name__',
-      errorCode: err.code ?? '__no_code__',
-      errorMessage: err.message ?? '__no_message__',
+      errorName: err.name || '__no_name__',
+      errorCode: err.code || '__no_code__',
+      errorMessage: err.message || '__no_message__',
       requestId: response?.data?.requestId,
       eagleEyeTraceId: response?.headers['Eagleeye-Traceid']
     };

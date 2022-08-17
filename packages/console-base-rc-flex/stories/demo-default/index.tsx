@@ -4,6 +4,8 @@ import {
   select
 } from '@storybook/addon-knobs';
 
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
+
 import Flex, {
   FlexProps
 } from '../../src';
@@ -19,6 +21,7 @@ export default function DemoDefault(): JSX.Element {
   const justify = select('justify', JUSTIFY_ITEMS, undefined) as FlexProps['justify'];
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <Flex {...{
       vertical,

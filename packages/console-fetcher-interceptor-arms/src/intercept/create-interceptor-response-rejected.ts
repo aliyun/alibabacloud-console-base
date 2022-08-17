@@ -8,8 +8,9 @@ import {
 import {
   IFetcherInterceptorConfig
 } from '../types';
-
-import logApi from './log-api';
+import {
+  logApi
+} from '../util';
 
 export default function createInterceptorResponseRejected(interceptorConfig?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected<FetcherConfig> {
   return (err: FetcherError, fetcherConfig: FetcherConfig, response?: FetcherResponse): void => {

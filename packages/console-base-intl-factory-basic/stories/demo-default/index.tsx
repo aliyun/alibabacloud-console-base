@@ -4,6 +4,7 @@ import {
   H1,
   P
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import PkgInfo from '../pkg-info';
 import intl, {
@@ -12,6 +13,7 @@ import intl, {
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>不会产出 HTML</H1>
     <P>{intl('demo.op.switch_locale')}</P>

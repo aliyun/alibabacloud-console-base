@@ -3,12 +3,14 @@ import React from 'react';
 import {
   H1
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import PkgInfo from '../pkg-info';
 import intl from '../_intl';
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>纯文本</H1>
     <div>{intl('demo.op.switch_locale')}</div>

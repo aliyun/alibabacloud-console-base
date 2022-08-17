@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-rc-demo-theme-switcher",
-  "version": "1.3.3",
+  "name": "@alicloud/console-base-demo-helper-theme-switcher",
+  "version": "1.0.0",
   "description": "ConsoleBase DEMO 专用组件 - 主题切换",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-rc-demo-theme-switcher",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-demo-helper-theme-switcher",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"

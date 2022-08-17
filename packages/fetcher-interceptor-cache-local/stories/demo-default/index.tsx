@@ -15,6 +15,7 @@ import {
   InputSwitch,
   CodeViewerTs
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import {
   FetcherCacheLocalOptions
@@ -112,6 +113,7 @@ export default function DemoSpecial(): JSX.Element {
   }, [stateBody, stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalOverwrite, stateCacheLocalTtl, stateMethod, stateParams, stateUrl]);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>场景测试</H1>
     <div>

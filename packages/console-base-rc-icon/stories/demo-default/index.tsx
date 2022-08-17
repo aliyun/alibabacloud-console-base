@@ -7,6 +7,7 @@ import {
   InputText,
   InputNumber
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import Icon, {
   IconType,
@@ -54,6 +55,7 @@ export default function DemoAll(): JSX.Element {
   const filteredTypes = filterTrimmed ? TYPES.filter(v => v.includes(filterTrimmed)) : TYPES;
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <InputText {...{
       placeholder: 'filter',

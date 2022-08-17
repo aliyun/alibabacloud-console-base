@@ -2,13 +2,13 @@ import fetcher0, {
   createFetcher
 } from '@alicloud/fetcher';
 
-import intercept, {
+import index, {
   FetcherConfigExtended
 } from '../../src';
 
 const fetcher1 = createFetcher<FetcherConfigExtended>();
 
-intercept(fetcher1);
+index(fetcher1);
 
 export {
   fetcher0,

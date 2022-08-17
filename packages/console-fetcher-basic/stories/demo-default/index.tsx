@@ -3,6 +3,7 @@ import React from 'react';
 import {
   H1
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   FetcherDemoRcMockSecurity,
   FetcherDemoRcMockArms,
@@ -19,6 +20,7 @@ import ConsoleApiTest from './console-api-test';
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>Mock</H1>
     <FetcherDemoRcMockSecurity />

@@ -6,6 +6,7 @@ import React, {
 import {
   ArticleBase
 } from '@alicloud/console-base-theme-sc-base';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   H1,
   H2,
@@ -78,6 +79,7 @@ export default function Demo({
   }} />;
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>调戏 <span role="img" aria-label="tx">🙈</span></H1>
     <div>

@@ -8,6 +8,7 @@ import {
   Button,
   PrePromise
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import PkgInfo from '../pkg-info';
 import {
@@ -84,6 +85,7 @@ export default function DemoOne(): JSX.Element {
   const handleCallMultiContainerApi = useCallback(() => setStatePromise(callMultiContainerApi()), [setStatePromise]);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <P>请看 console</P>
     <Button onClick={handleCallOpenApi}>callOpenApi</Button>

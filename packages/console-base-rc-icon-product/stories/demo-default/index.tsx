@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import {
   InputText
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import IconProduct, {
   EIconType,
@@ -393,6 +394,7 @@ export default function List(): JSX.Element {
   });
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <div>
       <InputText {...{

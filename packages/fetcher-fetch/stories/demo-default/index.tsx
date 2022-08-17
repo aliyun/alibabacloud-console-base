@@ -1,11 +1,13 @@
 import React from 'react';
 
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   FetcherDemoConfig,
   FetcherDemoRcRequest
 } from '@alicloud/fetcher-demo-helpers';
 
 import fetch from '../../src';
+import PkgInfo from '../pkg-info';
 
 function request({
   url = '',
@@ -15,7 +17,11 @@ function request({
 }
 
 export default function DemoDefault(): JSX.Element {
-  return <FetcherDemoRcRequest {...{
-    request
-  }} />;
+  return <>
+    <ThemeSwitcher />
+    <PkgInfo />
+    <FetcherDemoRcRequest {...{
+      request
+    }} />
+  </>;
 }

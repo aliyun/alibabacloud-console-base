@@ -4,12 +4,13 @@ import React, {
 } from 'react';
 
 import {
-  URLS
-} from '@alicloud/fetcher-demo-helpers';
-import {
   Button,
   PrePromise
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
+import {
+  URLS
+} from '@alicloud/fetcher-demo-helpers';
 
 import jsonp from '../../src';
 import PkgInfo from '../pkg-info';
@@ -46,6 +47,7 @@ export default function DemoAbort(): JSX.Element {
   const handleTest3 = useCallback(() => setStatePromise(testJsonpSuccessTimeoutAbort()), []);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <Button onClick={handleTest1}>失败：Abort 时间 → 成功时间 → 超时时间</Button>
     <Button onClick={handleTest2}>失败：超时时间 → Abort 时间 → 成功时间</Button>

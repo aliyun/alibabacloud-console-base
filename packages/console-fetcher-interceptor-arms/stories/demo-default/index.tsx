@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   FetcherDemoRcFetchers,
   FetcherDemoRcMockArms
@@ -13,6 +14,7 @@ import {
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <FetcherDemoRcMockArms />
     <FetcherDemoRcFetchers {...{

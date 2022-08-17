@@ -11,6 +11,7 @@ import {
   InputText,
   InputSwitch
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import PkgInfo from '../pkg-info';
 import {
@@ -42,6 +43,7 @@ export default function DemoCacheAndMerger(): JSX.Element {
   }, [stateCacheLocal, stateMerger, stateUrl]);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>测试 <code>cacheLocal</code>、<code>merger</code></H1>
     <P>仅测试 <code>cacheLocal</code> 和 <code>merger</code> 有没有开启的场景，不对具体的配置项做进一步的展开</P>

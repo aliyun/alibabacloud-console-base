@@ -14,6 +14,7 @@ import {
   PrePromise,
   CodeViewerTs
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import {
   FetcherMergerOptions
@@ -107,6 +108,7 @@ export default function DemoDefault(): JSX.Element {
   }, [stateBody, stateMergerEnabled, stateMergerKey, stateMethod, stateParams, stateUrl]);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <H1>场景测试</H1>
     <div>

@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   Hr,
   InputText,

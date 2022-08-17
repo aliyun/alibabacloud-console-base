@@ -5,7 +5,7 @@ import {
 /**
  * 获取 collina 参数
  */
-export default function getCollina(): string | undefined {
+export default function defaultGetCollina(): string | undefined {
   try {
     const win: IWindow = window as unknown as IWindow;
     

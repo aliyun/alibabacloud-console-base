@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import Markdown from '../../src';
 import PkgInfo from '../pkg-info';

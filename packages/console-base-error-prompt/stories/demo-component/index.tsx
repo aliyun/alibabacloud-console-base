@@ -3,7 +3,7 @@ import React, {
   useCallback
 } from 'react';
 
-import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import DemoHelperErrorPrompt, {
   ErrorArg
 } from '@alicloud/console-base-demo-helper-error-prompt';

@@ -4,6 +4,8 @@ import {
   boolean
 } from '@storybook/addon-knobs';
 
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
+
 import Rc from '../../src';
 import PkgInfo from '../pkg-info';
 
@@ -21,6 +23,7 @@ export default function DemoDefault(): JSX.Element {
   const wrapValue = boolean('props.wrapValue', false);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <Rc {...{
       o,

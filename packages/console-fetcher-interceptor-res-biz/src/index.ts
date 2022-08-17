@@ -1,4 +1,4 @@
-export { default } from './util/intercept';
+export { default } from './intercept';
 
 export {
   ERROR_BIZ

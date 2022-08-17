@@ -36,7 +36,7 @@ import {
 } from '@alicloud/console-fetcher';
 
 // 走新版本风控
-cosnt fetcher = createFetcher(undefined, {
+const fetcher = createFetcher(undefined, {
   riskConfig,
   slsConfig
 }, true);

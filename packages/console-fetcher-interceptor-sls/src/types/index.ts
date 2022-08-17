@@ -16,8 +16,8 @@ export interface IFetcherInterceptorConfig extends FactoryOptions {
 }
 
 export interface ISlsInfo {
-  fetcherMethod: string;
-  fetcherUrl: string;
+  fetcherMethod?: string;
+  fetcherUrl?: string;
   fetcherUrlBase?: string;
   fetcherParams?: unknown;
   fetcherBody?: unknown;

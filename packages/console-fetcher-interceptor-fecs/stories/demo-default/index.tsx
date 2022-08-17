@@ -12,6 +12,7 @@ import {
   Button,
   PrePromise
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   FetcherDemoRcFecsTip
 } from '@alicloud/fetcher-demo-helpers';
@@ -61,6 +62,7 @@ export default function DemoDefault(): JSX.Element {
   })), []);
   
   return <>
+    <ThemeSwitcher />
     <PkgInfo />
     <FetcherDemoRcFecsTip />
     <H1>如何测试</H1>
