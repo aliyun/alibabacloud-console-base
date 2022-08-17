@@ -8,10 +8,14 @@ import {
   fetcher0,
   fetcher1
 } from '../fetcher';
+import PkgInfo from '../pkg-info';
 
 export default function DemoDefault(): JSX.Element {
-  return <FetcherDemoRcFetchers {...{
-    fetcher0,
-    fetcher1
-  }} />;
+  return <>
+    <PkgInfo />
+    <FetcherDemoRcFetchers {...{
+      fetcher0,
+      fetcher1
+    }} />
+  </>;
 }

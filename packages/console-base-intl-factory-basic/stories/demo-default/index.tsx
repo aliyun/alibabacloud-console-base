@@ -5,12 +5,14 @@ import {
   P
 } from '@alicloud/demo-rc-elements';
 
+import PkgInfo from '../pkg-info';
 import intl, {
   intlDate
 } from '../_intl';
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <PkgInfo />
     <H1>不会产出 HTML</H1>
     <P>{intl('demo.op.switch_locale')}</P>
     <P>{intl('hello:world')}</P>

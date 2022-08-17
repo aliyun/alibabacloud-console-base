@@ -7,7 +7,7 @@ import errorPrompt, {
 } from '@alicloud/console-base-error-prompt';
 import {
   promptError
-} from '@alicloud/console-base-messenger';
+} from '@alicloud/console-base-messenger-error-prompt';
 import {
   getProxyErrorPrompt
 } from '@alicloud/console-base-global';

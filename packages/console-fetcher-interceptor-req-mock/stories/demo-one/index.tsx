@@ -4,12 +4,12 @@ import React, {
 } from 'react';
 
 import {
-  H1,
   P,
   Button,
   PrePromise
 } from '@alicloud/demo-rc-elements';
 
+import PkgInfo from '../pkg-info';
 import {
   fetcher1
 } from '../fetcher';
@@ -84,7 +84,7 @@ export default function DemoOne(): JSX.Element {
   const handleCallMultiContainerApi = useCallback(() => setStatePromise(callMultiContainerApi()), [setStatePromise]);
   
   return <>
-    <H1>利用 oneapi.alibaba-inc.com 对 OneConsole 接口进行 mock</H1>
+    <PkgInfo />
     <P>请看 console</P>
     <Button onClick={handleCallOpenApi}>callOpenApi</Button>
     <Button onClick={handleCallInnerApi}>callInnerApi</Button>

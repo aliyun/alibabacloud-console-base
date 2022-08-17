@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 import {
   H2,
-  Hr,
   PropsNCode
 } from '@alicloud/demo-rc-elements';
 
@@ -15,6 +14,7 @@ import Button, {
   ButtonTheme,
   ButtonProps
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScButtonThemes = styled(Button)`
   margin: 2px;
@@ -52,7 +52,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
-    <Hr />
+    <PkgInfo />
     <Button {...stateProps} />
     <PropsNCode<ButtonProps> {...{
       componentName: 'Button',

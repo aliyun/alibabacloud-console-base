@@ -19,6 +19,7 @@ import {
 import cookieGetToken from '../../src/util/cookie-get-token';
 import cookieSetToken from '../../src/util/cookie-set-token';
 import refreshToken from '../../src/util/refresh-token';
+import PkgInfo from '../pkg-info';
 import fetcher, {
   fetcherNoFecs
 } from '../fetcher';
@@ -35,7 +36,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateToken, setStateToken] = useState<string>(cookieGetToken());
   const [statePromisePost, setStatePromisePost] = useState<Promise<unknown> | null>(null);
   const [statePromiseGet, setStatePromiseGet] = useState<Promise<unknown> | null>(null);
-  const [statePromiseOpenAPI, setStatePromiseOpenAPI] = useState<Promise<unknown> | null>(null);
+  const [statePromiseOpenApi, setStatePromiseOpenApi] = useState<Promise<unknown> | null>(null);
   
   const handleClearToken = useCallback(() => {
     cookieSetToken('');
@@ -54,12 +55,13 @@ export default function DemoDefault(): JSX.Element {
     productIds: ['oss']
   })), []);
   const handleTestGet = useCallback(() => setStatePromiseGet(fetcher.get('/api/console-base/config')), []);
-  const handleTestOpenAPI = useCallback(() => setStatePromiseOpenAPI(fetcherNoFecs.post('/data/api.json', {
+  const handleTestOpenApi = useCallback(() => setStatePromiseOpenApi(fetcherNoFecs.post('/data/api.json', {
     product: 'slb',
     action: 'DescribeRegions'
   })), []);
   
   return <>
+    <PkgInfo />
     <FetcherDemoRcFecsTip />
     <H1>如何测试</H1>
     <List>
@@ -83,7 +85,7 @@ export default function DemoDefault(): JSX.Element {
     <P>同时很多个 refreshToken 仅会发送一个请求</P>
     <Button onClick={manyRefreshes}>一次性触发多次仅发一个请求</Button>
     <H2>OpenAPI 自动转接到 FECS（因为当前不是 OneConsole）</H2>
-    <Button onClick={handleTestOpenAPI}>OpenAPI</Button>
-    <PrePromise promise={statePromiseOpenAPI} />
+    <Button onClick={handleTestOpenApi}>OpenAPI</Button>
+    <PrePromise promise={statePromiseOpenApi} />
   </>;
 }

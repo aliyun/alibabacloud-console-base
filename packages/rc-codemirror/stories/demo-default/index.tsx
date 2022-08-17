@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 
 import CodeMirror from '../../src';
+import PkgInfo from '../pkg-info';
 
 const JSON_STR = JSON.stringify({
   title: 'I Am a Title',
@@ -15,11 +16,14 @@ const JSON_STR = JSON.stringify({
 export default function DemoDefault(): JSX.Element {
   const [stateValue, setStateValue] = useState<string>(JSON_STR);
   
-  return <CodeMirror {...{
-    conf: {
-      mode: 'application/json'
-    },
-    value: stateValue,
-    onChange: setStateValue
-  }} />;
+  return <>
+    <PkgInfo />
+    <CodeMirror {...{
+      conf: {
+        mode: 'application/json'
+      },
+      value: stateValue,
+      onChange: setStateValue
+    }} />
+  </>;
 }

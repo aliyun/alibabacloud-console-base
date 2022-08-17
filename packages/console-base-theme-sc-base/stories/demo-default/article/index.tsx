@@ -43,4 +43,3 @@ export default function DemoDefault(): JSX.Element {
     <p>CSS-in-JS is a pattern that allows you to write CSS styles inside your JavaScript.</p>
   </ArticleBase>;
 }
-

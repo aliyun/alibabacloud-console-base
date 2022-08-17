@@ -12,6 +12,7 @@ import UA, {
   Ua,
   parse
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 export default function DemoDefault(): JSX.Element {
   const [stateUa, setStateUa] = useState<Ua>(UA);
@@ -26,6 +27,7 @@ export default function DemoDefault(): JSX.Element {
   }, []);
   
   return <>
+    <PkgInfo />
     <InputText {...{
       block: true,
       placeholder: 'Paste ua string here',

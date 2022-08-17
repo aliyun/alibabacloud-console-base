@@ -12,6 +12,7 @@ import Icon, {
   IconType,
   EIconType
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const TYPES: IconType[] = Object.keys(EIconType) as IconType[];
 
@@ -53,6 +54,7 @@ export default function DemoAll(): JSX.Element {
   const filteredTypes = filterTrimmed ? TYPES.filter(v => v.includes(filterTrimmed)) : TYPES;
   
   return <>
+    <PkgInfo />
     <InputText {...{
       placeholder: 'filter',
       value: stateFilter,

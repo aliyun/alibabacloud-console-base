@@ -5,7 +5,8 @@ import styled, {
 
 import {
   mixinBorderSecondaryBottom,
-  mixinTypoElementsInline
+  mixinTypoElementsInline,
+  mixinTypoElementsList
 } from '@alicloud/console-base-theme';
 
 import {
@@ -26,11 +27,10 @@ const cssBlockElements = css`
     ${mixinBorderSecondaryBottom}
   }
   
-  p,
-  ul,
-  ol {
+  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    min-height: 1px;
     line-height: 1.5 !important;
     font-size: inherit;
     
@@ -42,32 +42,6 @@ const cssBlockElements = css`
       margin-bottom: 0;
     }
   }
-  
-  ul,
-  ol {
-    margin-left: 2em;
-    padding: 0;
-    
-    li {
-      margin-top: 2px;
-      
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-  
-  p {
-    min-height: 1px;
-  }
-  
-  ul {
-    list-style: disc outside;
-  }
-  
-  ol {
-    list-style: decimal outside;
-  }
 `;
 
 const ScSpan = styled.span`
@@ -78,6 +52,7 @@ const ScDiv = styled.div`
   line-height: 1.6;
   
   ${mixinTypoElementsInline}
+  ${mixinTypoElementsList}
   ${cssBlockElements}
 `;
 

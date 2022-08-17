@@ -7,6 +7,7 @@ import {
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Intl from '../../src';
+import PkgInfo from '../pkg-info';
 
 export default function DemoDefault(): JSX.Element {
   const textValue = text('text', `国际化应该有它标准的样式输出。
@@ -37,6 +38,7 @@ block 元素：p、ul、ol、hr（用三个短横线，效果如下）
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <Intl {...{
       text: textValue,
       html,

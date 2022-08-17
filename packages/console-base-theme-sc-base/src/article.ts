@@ -12,51 +12,19 @@ import {
   mixinBgSecondary,
   mixinBgInverse,
   mixinBorderSecondaryBottom,
-  mixinTypoElementsInline
+  mixinTypoElementsInline,
+  mixinTypoElementsList
 } from '@alicloud/console-base-theme';
 
 export default styled.article`
   ${mixinTypoFontBase}
   ${mixinTextSecondary}
   ${mixinTypoElementsInline}
+  ${mixinTypoElementsList}
 
   code {
     &.clean {
       background-color: transparent;
-    }
-  }
-  
-  ul,
-  ol,
-  dl {
-    padding: 0;
-    line-height: inherit;
-    font-size: inherit;
-    color: inherit;
-    
-    li {
-      margin: 0.5em 0;
-      list-style: inherit;
-    }
-  }
-  
-  ul {
-    list-style: disc inside;
-    
-    ul {
-      list-style-type: circle;
-      
-      ul {
-        list-style-type: disc;
-      }
-    }
-  }
-  
-  ol {
-    list-style: decimal inside;
-    
-    ol {
-      list-style-type: lower-roman;
     }
   }
   
@@ -112,18 +80,6 @@ export default styled.article`
     border: 0;
     height: 0;
     ${mixinBorderSecondaryBottom}
-  }
-  
-  dl {
-    dt {
-      margin-top: 16px;
-      padding: 0;
-      font-weight: 600;
-    }
-    
-    dd {
-      margin: 0 0 1em 0;
-    }
   }
   
   pre {
@@ -234,10 +190,6 @@ export default styled.article`
   h3,
   h4,
   h5,
-  ul,
-  ol,
-  dl,
-  li,
   pre,
   table,
   blockquote,
@@ -252,11 +204,5 @@ export default styled.article`
     &:last-child {
       margin-bottom: 0;
     }
-  }
-  
-  ul,
-  ol,
-  dl {
-    margin: 1em 0 1em 1em;
   }
 `;

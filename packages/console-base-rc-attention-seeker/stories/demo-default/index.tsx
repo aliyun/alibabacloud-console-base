@@ -6,23 +6,21 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  H1,
   H2,
   P,
   Hr,
   List,
-  Blockquote,
   Button,
   InputSwitch,
   LongArticle
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
-import pkgInfo from '../../package.json';
 import {
   prepend,
   clear
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScFixed = styled.div`
   position: fixed;
@@ -184,8 +182,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
-    <H1>{pkgInfo.name}@{pkgInfo.version}</H1>
-    <Blockquote>{pkgInfo.description}</Blockquote>
+    <PkgInfo />
     <InputSwitch {...{
       label: 'Protect!',
       value: stateProtect,

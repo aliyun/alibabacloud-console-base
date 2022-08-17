@@ -8,9 +8,10 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import IconProduct, {
-  IconProductType,
-  EIconType
+  EIconType,
+  IconProductType
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScMessage = styled.span`
   strong {
@@ -363,7 +364,7 @@ const PRODUCT_MAPPING: Record<string, string> = {
 
 export default function List(): JSX.Element {
   const [stateFilter, setStateFilter] = useState<string>('');
-  const filterUC = stateFilter.trim().toUpperCase();
+  const keyword = stateFilter.trim().toUpperCase();
   const typeSet = new Set<string>([...Object.keys(EIconType), ...Object.keys(PRODUCT_MAPPING)]);
   
   typeSet.delete('_'); // 不要
@@ -374,8 +375,8 @@ export default function List(): JSX.Element {
     
     return v1Upper > v2Upper ? 1 : -1;
   }) as IconProductType[];
-  const filteredTypes = filterUC ? typesAll.filter(v => {
-    return v.toUpperCase().includes(filterUC) || PRODUCT_MAPPING[v]?.toUpperCase().includes(filterUC);
+  const filteredTypes = keyword ? typesAll.filter(v => {
+    return v.toUpperCase().includes(keyword) || PRODUCT_MAPPING[v]?.toUpperCase().includes(keyword);
   }) : typesAll;
   let countOk = 0;
   let countNotProduct = 0; // 没图标的产品
@@ -392,6 +393,7 @@ export default function List(): JSX.Element {
   });
   
   return <>
+    <PkgInfo />
     <div>
       <InputText {...{
         placeholder: 'Filter by product code',

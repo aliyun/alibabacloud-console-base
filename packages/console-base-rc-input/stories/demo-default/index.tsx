@@ -12,6 +12,7 @@ import Input, {
   InputProps,
   SearchInput
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import Knobs from '../knobs';
 
 function onChange(value: string): void {
@@ -24,6 +25,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <H1>Input 测试</H1>
     <P>请使用 knobs 进行调戏 <span role="img" aria-label="play">🙈</span></P>
     <Knobs onChange={setStateProps} />

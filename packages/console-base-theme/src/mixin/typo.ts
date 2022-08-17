@@ -175,3 +175,63 @@ export const mixinTypoElementsInline = css`
     display: block;
   }
 `;
+
+/**
+ * 当某元素内部有 ul\ol\dl 元素需要有样式的时候，用它
+ */
+export const mixinTypoElementsList = css`
+  ul,
+  ol,
+  dl {
+    margin: 1em 0 1em 1em;
+    padding: 0;
+    line-height: 1.5 !important;
+    font-size: inherit;
+    color: inherit;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    li {
+      margin: 0.5em 0;
+      list-style: inherit;
+    }
+  }
+  
+  ul {
+    list-style: disc inside;
+    
+    ul {
+      list-style-type: circle;
+      
+      ul {
+        list-style-type: disc;
+      }
+    }
+  }
+  
+  ol {
+    list-style: decimal inside;
+    
+    ol {
+      list-style-type: lower-roman;
+    }
+  }
+  
+  dl {
+    dt {
+      margin-top: 1em;
+      padding: 0;
+      font-weight: 600;
+    }
+    
+    dd {
+      margin: 0 0 1em 0;
+    }
+  }
+`;

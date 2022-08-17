@@ -14,6 +14,7 @@ import {
   CodeViewer
 } from '@alicloud/demo-rc-elements';
 
+import PkgInfo from '../pkg-info';
 import Markdown, {
   MarkdownProps,
   MarkdownCompileOptions,
@@ -77,6 +78,7 @@ export default function Demo({
   }} />;
   
   return <>
+    <PkgInfo />
     <H1>调戏 <span role="img" aria-label="tx">🙈</span></H1>
     <div>
       <InputSwitch {...{

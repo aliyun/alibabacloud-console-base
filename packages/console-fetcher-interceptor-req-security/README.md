@@ -1,14 +1,16 @@
 # @alicloud/console-fetcher-interceptor-req-security
 
+> 在类 POST 请求的 body 中自动添加 `collina`、`sec_token`、`umid` 参数
+
 * 发送请求前，在 body 中塞入额外的安全信息 `collina` + `umid` + `sec_token`
 * 扩展 `FetcherConfig` 增加 `getCollina(): string` + `getUmid(): string` + `getSecToken(): string` 三个可选方法
 
 阿里云控制台的 API POST 类的请求 body 因安全要求，必须有以下参数：
 
 参数名 | 作用 | 来源
---- | --- | ---
+--- |--- | ---
 `collina` | 人机识别 | 通过 `window[window.UA_Opt.LogVal]` 获取，`window.UA_Opt` 来自 `uab.js`，`uab.js` 是 t-engine 自动注入的
-`umid` | 不知道干啥的 | 通过 `window.um.getToken()` 获取，`window.um` 来自 `um.js`，`um.js` 由应用主动写到页面
+`umid` | 风控需要 | 通过 `window.um.getToken()` 获取，`window.um` 来自 `um.js`，`um.js` 由应用主动写到页面
 `sec_token` | 判断登录有效性 | 应用写到 HTML 的一个常量，OneConsole 有固定的方案，非 OneConsole 需要自行指定
 
 ## 对 `@alicloud/fetcher` 的 `FetcherConfig` 的扩展

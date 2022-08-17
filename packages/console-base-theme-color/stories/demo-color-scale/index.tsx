@@ -166,7 +166,7 @@ function limitIndex(index: number, max: number): number {
 export default function DemoColorScale(): JSX.Element {
   const [stateThemeDark, setStateThemeDark] = useState<boolean>(false);
   const [stateSaturation, setStateSaturation] = useState<number>(100);
-  const [[stateI, stateJ], setStateIJ] = useState<[number, number]>([-1, -1]);
+  const [[stateI, stateJ], setStateIj] = useState<[number, number]>([-1, -1]);
   const handleKeydown = useCallback((e: KeyboardEvent): void => {
     if (stateI < 0 || stateJ < 0) {
       return;
@@ -199,7 +199,7 @@ export default function DemoColorScale(): JSX.Element {
     nextI = limitIndex(nextI, LIGHTNESS_LEVELS.length - 1);
     nextJ = limitIndex(nextJ, HUE_LEVELS.length - 1);
     
-    setStateIJ([nextI, nextJ]);
+    setStateIj([nextI, nextJ]);
   }, [stateI, stateJ]);
   const colorMatrix: IMatrixItem[] = useMemo((): IMatrixItem[] => {
     const arr: IMatrixItem[] = [];
@@ -273,9 +273,8 @@ export default function DemoColorScale(): JSX.Element {
           color: readableColor(value),
           backgroundColor: value
         },
-        onClick: () => setStateIJ([i, j])
+        onClick: () => setStateIj([i, j])
       }}>{COLOR_CORE === value ? '★' : null}</ScColorBlock>)}
     </ScColorGrid>
   </>;
 }
-

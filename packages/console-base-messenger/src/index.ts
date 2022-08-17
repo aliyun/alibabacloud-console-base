@@ -8,6 +8,7 @@ export * from '@alicloud/console-base-messenger-resource-group';
 export * from '@alicloud/console-base-messenger-toolkit';
 export * from '@alicloud/console-base-messenger-micro-browser-portal';
 export * from '@alicloud/console-base-messenger-tutor';
+export * from '@alicloud/console-base-messenger-error-prompt';
 
 export * from './messenger/app-broadcast';
 export * from './messenger/app-subscribe';

@@ -22,6 +22,7 @@ import Dialog, {
   confirm,
   prompt
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import Knobs from '../knobs';
 
 export default function DemoDefault(): JSX.Element {
@@ -30,6 +31,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <Knobs onChange={setStateProps} />
     <H1>基础用法</H1>
     <Button {...{

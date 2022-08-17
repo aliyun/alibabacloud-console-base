@@ -17,6 +17,7 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import TopNav from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScHome = styled(Button)`
   ${mixinTopNavButtonDarkFix}
@@ -48,6 +49,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     {stateRemoved ? null : <TopNav {...{
       // id: 'gave-the-top-nav-an-id-by-boshit',
       dock: {

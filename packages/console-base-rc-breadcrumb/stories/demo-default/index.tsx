@@ -3,10 +3,12 @@ import React from 'react';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Breadcrumb from '../../src';
+import PkgInfo from '../pkg-info';
 
 export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <Breadcrumb {...{
       items: [{
         label: 'Home',

@@ -6,8 +6,10 @@ import {
   H1,
   H2
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Dropdown from '../../src';
+import PkgInfo from '../pkg-info';
 
 import TheTrigger from './the-trigger';
 import TheDrop from './the-drop';
@@ -16,6 +18,8 @@ export default function DemoHook(): JSX.Element {
   const [stateVisible, setStateVisible] = useState<boolean>(false);
   
   return <>
+    <ThemeSwitcher />
+    <PkgInfo />
     <H1>利用 useDropdown</H1>
     <H2>visible not controlled</H2>
     <Dropdown {...{

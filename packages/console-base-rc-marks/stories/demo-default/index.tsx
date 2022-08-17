@@ -15,6 +15,7 @@ import {
   Alpha,
   Update
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import Knobs from '../knobs';
 
 const ScNew = styled(New)`
@@ -30,6 +31,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <Knobs onChange={setStateProps} />
     <div>
       <New {...stateProps} />

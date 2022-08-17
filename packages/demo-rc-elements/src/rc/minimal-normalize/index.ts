@@ -16,6 +16,11 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
   
+  ul,
+  ol {
+    list-style: none;
+  }
+  
   a:link {
     color: #369;
     

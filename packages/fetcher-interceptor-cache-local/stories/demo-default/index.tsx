@@ -19,6 +19,7 @@ import {
 import {
   FetcherCacheLocalOptions
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import fetcher from '../fetcher';
 import CacheStorage from '../cache-storage';
 
@@ -111,6 +112,7 @@ export default function DemoSpecial(): JSX.Element {
   }, [stateBody, stateCacheLocalEnabled, stateCacheLocalKey, stateCacheLocalOverwrite, stateCacheLocalTtl, stateMethod, stateParams, stateUrl]);
   
   return <>
+    <PkgInfo />
     <H1>场景测试</H1>
     <div>
       method = <InputText {...{

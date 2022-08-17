@@ -12,6 +12,7 @@ import {
 } from '@alicloud/demo-rc-elements';
 
 import jsonp from '../../src';
+import PkgInfo from '../pkg-info';
 
 // 失败 - 事件顺序：Abort 时间 → 成功时间 → 超时时间，所以一般会 Abort
 function testJsonpAbort(abortTime = 40, timeout = 2000): Promise<unknown> {
@@ -45,6 +46,7 @@ export default function DemoAbort(): JSX.Element {
   const handleTest3 = useCallback(() => setStatePromise(testJsonpSuccessTimeoutAbort()), []);
   
   return <>
+    <PkgInfo />
     <Button onClick={handleTest1}>失败：Abort 时间 → 成功时间 → 超时时间</Button>
     <Button onClick={handleTest2}>失败：超时时间 → Abort 时间 → 成功时间</Button>
     <Button onClick={handleTest3}>成功：成功时间 → 超时时间 → Abort 时间</Button>

@@ -15,6 +15,7 @@ import {
 import Beacon, {
   BeaconProps
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScNeedBeacon = styled.div`
   position: absolute;
@@ -71,6 +72,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <RadioGroup {...{
       label: 'tipAlign',
       items: TIP_ALIGN_DATA_SOURCE,

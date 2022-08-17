@@ -14,6 +14,7 @@ import {
 import Alert, {
   AlertTheme
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScAlert = styled(Alert)`
   margin: 16px 4px;
@@ -30,15 +31,17 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
-    title = <InputText {...{
-      value: stateTitle,
-      onChange: setStateTitle
-    }} />
-    message = <InputText {...{
-      value: stateMessage,
-      onChange: setStateMessage
-    }} />
-    <br />
+    <PkgInfo />
+    <div>
+      title = <InputText {...{
+        value: stateTitle,
+        onChange: setStateTitle
+      }} />
+      message = <InputText {...{
+        value: stateMessage,
+        onChange: setStateMessage
+      }} />
+    </div>
     <InputSwitch {...{
       label: 'props.visible',
       value: stateVisible,

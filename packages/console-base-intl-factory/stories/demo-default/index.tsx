@@ -4,10 +4,12 @@ import {
   H1
 } from '@alicloud/demo-rc-elements';
 
+import PkgInfo from '../pkg-info';
 import intl from '../_intl';
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <PkgInfo />
     <H1>纯文本</H1>
     <div>{intl('demo.op.switch_locale')}</div>
     <div>{intl('hello:world')}</div>

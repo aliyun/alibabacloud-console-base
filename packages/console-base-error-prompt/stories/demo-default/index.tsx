@@ -17,8 +17,8 @@ function alertError(errors: ErrorArg[]): void {
 
 export default function DemoDefault(): JSX.Element {
   return <>
-    <PkgInfo />
     <ThemeSwitcher />
+    <PkgInfo />
     <DemoHelperErrorPrompt {...{
       onPrompt: alertError
     }} />

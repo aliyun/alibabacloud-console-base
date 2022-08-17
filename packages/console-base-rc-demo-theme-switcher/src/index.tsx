@@ -2,7 +2,7 @@ import React, {
   useState,
   useEffect
 } from 'react';
-import {
+import styled, {
   createGlobalStyle
 } from 'styled-components';
 
@@ -18,6 +18,10 @@ import {
   mixinTextPrimary,
   toggleBodyClass
 } from '@alicloud/console-base-theme';
+
+const ScDiv = styled.div`
+  margin-bottom: 16px;
+`;
 
 const DarkAll = createGlobalStyle`
   html {
@@ -40,7 +44,7 @@ export default function ThemeSwitcher(): JSX.Element {
   const [stateNormalize, setStateNormalize] = useState<boolean>(true);
   const [stateDark, setStateDark] = useState<boolean>(false);
   
-  return <>
+  return <ScDiv>
     <H1>Theme Switcher</H1>
     <InputSwitch {...{
       label: '全局样式 ⛱',
@@ -58,5 +62,5 @@ export default function ThemeSwitcher(): JSX.Element {
       <ToggleDemoThemeDark />
       <ThemeStyleDark />
     </> : <ThemeStyleLight />}
-  </>;
+  </ScDiv>;
 }

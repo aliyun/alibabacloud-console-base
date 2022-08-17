@@ -5,6 +5,7 @@ import {
 } from '@storybook/addon-knobs';
 
 import Rc from '../../src';
+import PkgInfo from '../pkg-info';
 
 const POEM = '古诗一首';
 
@@ -19,10 +20,13 @@ export default function DemoDefault(): JSX.Element {
   const ignoreEmpty = boolean('props.ignoreEmpty', false);
   const wrapValue = boolean('props.wrapValue', false);
   
-  return <Rc {...{
-    o,
-    horizontal,
-    ignoreEmpty,
-    wrapValue
-  }} />;
+  return <>
+    <PkgInfo />
+    <Rc {...{
+      o,
+      horizontal,
+      ignoreEmpty,
+      wrapValue
+    }} />
+  </>;
 }

@@ -9,6 +9,7 @@ import {
   FetcherDemoRcFetchers
 } from '@alicloud/fetcher-demo-helpers';
 
+import PkgInfo from '../pkg-info';
 import {
   fetcher0,
   fetcher1
@@ -18,6 +19,7 @@ import ConsoleApiTest from './console-api-test';
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <PkgInfo />
     <H1>Mock</H1>
     <FetcherDemoRcMockSecurity />
     <FetcherDemoRcMockArms />

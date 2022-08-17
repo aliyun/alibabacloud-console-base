@@ -23,6 +23,7 @@ import OneModal, {
   ModalMode,
   ModalTab
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import LoadConsoleBase from '../load-console-base';
 
 const ScMinimizedTray = styled.div`
@@ -93,6 +94,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <OneModal {...{
       tabs: {
         tabs: stateTabs,

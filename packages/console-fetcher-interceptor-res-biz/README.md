@@ -1,6 +1,7 @@
 # @alicloud/console-fetcher-interceptor-res-biz
 
 > `@alicloud/console-fetcher` 的响应拦截器，封装业务错误。
+> 阿里云的数据接口规范：code + data。code 为 200（通常是字符串）的时候业务成功，需要返回 data，否则失败，抛错。
 
 * 扩展 `FetcherConfig` 增加可选方法（一般情况下不需要设置，除非非正常场景）
   + `isSuccess(o: IBizJson): boolean`

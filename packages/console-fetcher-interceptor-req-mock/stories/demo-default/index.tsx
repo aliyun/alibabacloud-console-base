@@ -3,10 +3,8 @@ import React from 'react';
 import {
   FetcherDemoRcFetchers
 } from '@alicloud/fetcher-demo-helpers';
-import {
-  H1
-} from '@alicloud/demo-rc-elements';
 
+import PkgInfo from '../pkg-info';
 import {
   fetcher0,
   fetcher1
@@ -14,7 +12,7 @@ import {
 
 export default function DemoDefault(): JSX.Element {
   return <>
-    <H1>利用 oneapi.alibaba-inc.com 对非 OneConsole 接口进行 mock</H1>
+    <PkgInfo />
     <FetcherDemoRcFetchers {...{
       urls: {
         SUCCESS: '/boshit/success',

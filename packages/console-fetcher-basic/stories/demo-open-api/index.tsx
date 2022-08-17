@@ -12,6 +12,8 @@ import {
   InputText
 } from '@alicloud/demo-rc-elements';
 
+import PkgInfo from '../pkg-info';
+
 import {
   dataUserAkList,
   dataUserAkLeakList,
@@ -29,6 +31,7 @@ export default function ConsoleApiTest(): JSX.Element {
   const handleFetch4 = useCallback(() => setStatePromise(dataConsoleBenchProductsMy()), [setStatePromise]);
   
   return <>
+    <PkgInfo />
     <H1>RAM User AK 接口</H1>
     <P>用于测试如下功能：</P>
     <List ordered>
@@ -41,7 +44,7 @@ export default function ConsoleApiTest(): JSX.Element {
         onChange: setStateUser
       }} />
     </div>
-    <div>对应 RAM 地址：<a href={`//ram.console.aliyun.com/users/${stateUser.split('@')[0]}`} target="_blank">{stateUser}</a></div>
+    <div>对应 RAM 地址：<a href={`//ram.console.aliyun.com/users/${stateUser.split('@')[0]}`} target="_blank" rel="noopener noreferrer">{stateUser}</a></div>
     <Button onClick={handleFetch}>dataUserAkList</Button>
     <Button onClick={handleFetch2}>dataUserAkLeakList</Button>
     <Button onClick={handleFetch3}>dataConsoleBenchProducts</Button>

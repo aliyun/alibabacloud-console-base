@@ -22,6 +22,7 @@ import Tabs, {
   TabsProps,
   TabProps
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScDemo = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ const ScDemo = styled.div`
 const ScDemoL = styled.div`
   flex: 1;
 `;
-const ScDemoLR = styled.div`
+const ScDemoLr = styled.div`
   border: 4px solid rgba(0, 0, 0, 0.33);
   width: 600px;
 `;
@@ -131,6 +132,7 @@ export default function DemoDefault(): JSX.Element {
   return <ScDemo>
     <ScDemoL>
       <ThemeSwitcher />
+      <PkgInfo />
       <Button onClick={handleAdd}>Add Tab</Button>
       <Hr />
       <div>
@@ -200,11 +202,11 @@ export default function DemoDefault(): JSX.Element {
       }} />
       <PreJson o={tabsProps} />
     </ScDemoL>
-    <ScDemoLR style={{
+    <ScDemoLr style={{
       width,
       height
     }}>
       <Tabs {...tabsProps} />
-    </ScDemoLR>
+    </ScDemoLr>
   </ScDemo>;
 }

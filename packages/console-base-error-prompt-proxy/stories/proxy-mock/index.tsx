@@ -1,6 +1,5 @@
 import React, {
   useState,
-  useCallback,
   useEffect
 } from 'react';
 
@@ -18,8 +17,7 @@ import errorPrompt, {
   ErrorPromptExtra
 } from '@alicloud/console-base-error-prompt';
 import {
-  H1,
-  Button
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 
 interface IMessengerPayload {
@@ -32,7 +30,6 @@ ready();
 
 export default function ProxyMock(): JSX.Element {
   const [stateProxyMocked, setStateProxyMocked] = useState<boolean>(true);
-  const handleToggleProxyMocked = useCallback(() => setStateProxyMocked(!stateProxyMocked), [stateProxyMocked, setStateProxyMocked]);
   
   // 这里的逻辑实际上就是 console-base-plugin-error-prompt 的实现
   useEffect(() => setProxyErrorPrompt(stateProxyMocked), [stateProxyMocked]);
@@ -48,10 +45,9 @@ export default function ProxyMock(): JSX.Element {
     });
   }), []);
   
-  return <>
-    <H1>测试专用的 proxy 实现</H1>
-    <Button {...{
-      onClick: handleToggleProxyMocked
-    }}>mock proxy {stateProxyMocked ? 'ON' : 'OFF'}</Button>
-  </>;
+  return <InputSwitch {...{
+    label: '测试专用的 proxy 实现',
+    value: stateProxyMocked,
+    onChange: setStateProxyMocked
+  }} />;
 }

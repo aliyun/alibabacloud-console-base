@@ -1,21 +1,17 @@
 import React, {
   useState
 } from 'react';
-import styled, {
-  createGlobalStyle
-} from 'styled-components';
+import styled from 'styled-components';
 
 import {
-  H1,
-  P,
   RadioGroup,
   InputText,
   InputSwitch
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
-import pkgInfo from '../../package.json';
 import AsideNav from '../../src';
+import PkgInfo from '../pkg-info';
 import {
   NAV
 } from '../const';
@@ -23,13 +19,6 @@ import {
 interface IScAside {
   collapsed?: boolean;
 }
-
-const GlobalStyle = createGlobalStyle`
-  html,
-  body {
-    margin: 0;
-  }
-`;
 
 const ScSite = styled.div`
   display: flex;
@@ -60,7 +49,6 @@ export default function DemoDefault(): JSX.Element {
   const navProps = NAV[stateNavKey];
   
   return <ScSite>
-    <GlobalStyle />
     <ScAide collapsed={stateCollapsed}>
       <AsideNav {...{
         ...navProps,
@@ -72,8 +60,7 @@ export default function DemoDefault(): JSX.Element {
     </ScAide>
     <ScSiteMain>
       <ThemeSwitcher />
-      <H1>{pkgInfo.name}@{pkgInfo.version}</H1>
-      <P>{pkgInfo.description}</P>
+      <PkgInfo />
       <RadioGroup<TKey> {...{
         value: stateNavKey,
         items: Object.keys(NAV).map(v => ({

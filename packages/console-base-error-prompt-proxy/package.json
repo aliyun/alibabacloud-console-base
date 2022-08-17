@@ -25,6 +25,7 @@
     "proxy"
   ],
   "devDependencies": {
+    "@alicloud/console-base-rc-demo-theme-switcher": "^1.3.2",
     "@alicloud/console-base-demo-helper-error-prompt": "^1.3.2",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
@@ -39,7 +40,7 @@
   "dependencies": {
     "@alicloud/console-base-error-prompt": "^1.9.2",
     "@alicloud/console-base-global": "^1.3.4",
-    "@alicloud/console-base-messenger": "^1.15.2"
+    "@alicloud/console-base-messenger-error-prompt": "^1.0.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

@@ -11,6 +11,7 @@ import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 import Dropdown, {
   DropdownProps
 } from '../../src';
+import PkgInfo from '../pkg-info';
 
 const ScTriggerJsx = styled.div`
   padding: 8px;
@@ -58,6 +59,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
+    <PkgInfo />
     <div>
       This text is to make the dropdown not stick to the left of the window. → <Dropdown {...{
         ...stateProps

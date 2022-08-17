@@ -6,6 +6,7 @@ import {
 } from '@alicloud/fetcher-demo-helpers';
 
 import jsonp from '../../src';
+import PkgInfo from '../pkg-info';
 
 function testWithFetch({
   url,
@@ -17,7 +18,10 @@ function testWithFetch({
 }
 
 export default function DemoDefault(): JSX.Element {
-  return <FetcherDemoRcRequest {...{
-    request: testWithFetch
-  }} />;
+  return <>
+    <PkgInfo />
+    <FetcherDemoRcRequest {...{
+      request: testWithFetch
+    }} />
+  </>;
 }

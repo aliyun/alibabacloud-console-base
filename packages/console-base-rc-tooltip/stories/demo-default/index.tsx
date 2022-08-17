@@ -8,10 +8,12 @@ import styled from 'styled-components';
 import {
   P
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 
 import Tooltip, {
   TooltipPlacement
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import Knobs, {
   KnobProps
 } from '../knobs';
@@ -106,6 +108,8 @@ export default function DemoNoTrigger(): JSX.Element {
   } = stateTooltipProps;
   
   return <>
+    <ThemeSwitcher />
+    <PkgInfo />
     <P>目前没有配合 trigger 的功能，只能使用者定位</P>
     <Knobs onChange={setStateTooltipProps} />
     <ScFakeTriggerWrapper {...{

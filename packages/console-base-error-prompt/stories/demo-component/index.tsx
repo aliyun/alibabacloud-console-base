@@ -19,8 +19,8 @@ export default function DemoDefault(): JSX.Element {
   const onClose = useCallback(() => setStateErrors([]), []);
   
   return <>
-    <PkgInfo />
     <ThemeSwitcher />
+    <PkgInfo />
     <DemoHelperErrorPrompt {...{
       onPrompt: setStateErrors
     }} />

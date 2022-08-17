@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 import DemoHelperErrorPrompt, {
   ErrorArg,
   getErrorExtra
@@ -8,8 +9,8 @@ import DemoHelperErrorPrompt, {
 import errorPrompt, {
   ErrorPromptArg
 } from '../../src';
-
-import ProxyMock from './proxy-mock';
+import PkgInfo from '../pkg-info';
+import ProxyMock from '../proxy-mock';
 
 function alertError(errors: ErrorArg[]): void {
   errors.forEach(err => errorPrompt(err as ErrorPromptArg, getErrorExtra));
@@ -17,6 +18,8 @@ function alertError(errors: ErrorArg[]): void {
 
 export default function DemoDefault(): JSX.Element {
   return <>
+    <ThemeSwitcher />
+    <PkgInfo />
     <ProxyMock />
     <DemoHelperErrorPrompt {...{
       onPrompt: alertError

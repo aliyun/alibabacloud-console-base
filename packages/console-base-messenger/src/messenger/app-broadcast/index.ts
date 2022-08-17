@@ -5,7 +5,6 @@
  * --------------------------------------------- */
 
 export { default as setProductId } from './misc/set-product-id';
-export { default as promptError } from './misc/prompt-error';
 export { default as fetcherRequest } from './misc/fetcher-request';
 export { default as toggleTopNav } from './misc/toggle-top-nav';
 export { default as armsError } from './misc/arms-error';

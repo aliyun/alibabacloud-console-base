@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 
 import CodeMirror from '../../src';
+import PkgInfo from '../pkg-info';
 
 const HTML = `<!DOCTYPE html>
 <html lang="en">
@@ -54,11 +55,14 @@ const HTML = `<!DOCTYPE html>
 export default function DemoHtml(): JSX.Element {
   const [stateValue, setStateValue] = useState<string>(HTML);
 
-  return <CodeMirror {...{
-    conf: {
-      mode: 'text/html'
-    },
-    value: stateValue,
-    onChange: setStateValue
-  }} />;
+  return <>
+    <PkgInfo />
+    <CodeMirror {...{
+      conf: {
+        mode: 'text/html'
+      },
+      value: stateValue,
+      onChange: setStateValue
+    }} />
+  </>;
 }

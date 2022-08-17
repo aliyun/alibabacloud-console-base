@@ -4,12 +4,11 @@ import React, {
 
 import ThemeSwitcher from '@alicloud/console-base-rc-demo-theme-switcher';
 import {
-  H1,
   InputNumber,
   InputSwitch
 } from '@alicloud/demo-rc-elements';
 
-import pkgInfo from '../../package.json';
+import PkgInfo from '../pkg-info';
 import Rating from '../../src';
 
 export default function DemoDefault(): JSX.Element {
@@ -19,7 +18,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <ThemeSwitcher />
-    <H1>{pkgInfo.name}@{pkgInfo.version} TODO 暂时只读</H1>
+    <PkgInfo />
     <div>
       <InputNumber {...{
         min: 0,

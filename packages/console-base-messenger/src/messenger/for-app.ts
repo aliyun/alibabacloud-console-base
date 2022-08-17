@@ -35,6 +35,9 @@ import {
   onTutorDismiss,
   onTutorStepChange
 } from '@alicloud/console-base-messenger-tutor';
+import {
+  promptError
+} from '@alicloud/console-base-messenger-error-prompt';
 
 import * as appBroadcast from './app-broadcast';
 import * as appSubscribe from './app-subscribe';
@@ -77,5 +80,7 @@ export default {
   closeTutor,
   onTutorAction,
   onTutorDismiss,
-  onTutorStepChange
+  onTutorStepChange,
+  // error prompt
+  promptError
 };

@@ -13,6 +13,7 @@ import Loading, {
   LoadingProps,
   WithPromise
 } from '../../src';
+import PkgInfo from '../pkg-info';
 import Knobs from '../knobs';
 
 function randomPromise(): Promise<number[]> {
@@ -35,12 +36,13 @@ export default function DemoDefault(): JSX.Element {
   
   const handleRandomPromise = useCallback(() => setStatePromise(randomPromise()), [setStatePromise]);
   const renderLoaded = useCallback((result: number[]) => <div>
-    {result.map(v => <span>item - {v}</span>)}
+    {result.map(v => <span key={v}>item - {v}</span>)}
   </div>, []);
   
   return <>
-    <Knobs onChange={setStateProps} />
     <ThemeSwitcher />
+    <PkgInfo />
+    <Knobs onChange={setStateProps} />
     <H1>Loading - 调整 knobs 看效果</H1>
     <Loading {...stateProps} />
     <H1>WithLoading</H1>
