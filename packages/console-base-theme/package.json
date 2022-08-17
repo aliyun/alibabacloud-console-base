@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "控制台主题 - 基于 css variable 和 styled-components",
   "license": "MIT",
   "sideEffects": false,
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.9.0",
+    "@alicloud/demo-rc-elements": "^1.9.1",
     "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
@@ -39,7 +39,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme-color": "^1.4.2",
+    "@alicloud/console-base-theme-color": "^1.4.3",
     "@alicloud/mere-dom": "^1.5.1"
   },
   "scripts": {
