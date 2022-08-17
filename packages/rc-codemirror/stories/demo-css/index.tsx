@@ -2,8 +2,6 @@ import React, {
   useState
 } from 'react';
 
-import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
-
 import CodeMirror from '../../src';
 import PkgInfo from '../pkg-info';
 
@@ -22,7 +20,6 @@ export default function DemoCss(): JSX.Element {
   const [stateValue, setStateValue] = useState<string>(CSS);
   
   return <>
-    <ThemeSwitcher />
     <PkgInfo />
     <CodeMirror {...{
       conf: {
