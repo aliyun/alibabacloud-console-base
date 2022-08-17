@@ -52,7 +52,7 @@
     "ncu:full": "npm run ncu && npm run ncu:packages"
   },
   "lint-staged": {
-    
+    "*.{js,ts,tsx}": "eslint",
     "*.{js,ts,tsx,less}": "stylelint",
     "*.md": "markdownlint-cli2"
   }
