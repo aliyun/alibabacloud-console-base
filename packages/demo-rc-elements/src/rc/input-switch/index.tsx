@@ -29,7 +29,12 @@ interface IScProps {
 const ScInputSwitch = styled.span`
   display: inline-flex;
   align-items: center;
-  margin-right: 12px;
+  margin: 0 12px;
+  vertical-align: middle;
+  
+  &:first-child {
+    margin-left: 0;
+  }
   
   &:last-child {
     margin-right: 0;

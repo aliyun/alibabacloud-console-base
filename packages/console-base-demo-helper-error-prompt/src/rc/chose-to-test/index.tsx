@@ -7,6 +7,7 @@ import {
   H1,
   List,
   Hr,
+  InputSwitch,
   CheckboxGroup,
   Button,
   PreJson
@@ -27,10 +28,15 @@ export default function ChooseToTest({
   onPrompt
 }: IProps): JSX.Element {
   const [stateErrors, setStateErrors] = useState<TErrorArg[]>([]);
+  const [stateAutoClear, setStateAutoClear] = useState(true);
   const handleClear = useCallback(() => setStateErrors([]), [setStateErrors]);
   const handleAlertErrors = useCallback(() => {
     onPrompt(stateErrors);
-  }, [onPrompt, stateErrors]);
+    
+    if (stateAutoClear) {
+      handleClear();
+    }
+  }, [stateErrors, stateAutoClear, onPrompt, handleClear]);
   
   return <>
     <H1>选择错误，模拟单个或多个错误的场景</H1>
@@ -50,11 +56,16 @@ export default function ChooseToTest({
     <Button {...{
       disabled: !stateErrors.length,
       onClick: handleAlertErrors
-    }}>error prompt ({stateErrors.length})</Button>
+    }}>ErrorPrompt ({stateErrors.length})</Button>
     <Button {...{
       disabled: !stateErrors.length,
       onClick: handleClear
-    }}>clear</Button>
+    }}>清除</Button>
+    <InputSwitch {...{
+      label: '自动清除',
+      value: stateAutoClear,
+      onChange: setStateAutoClear
+    }} />
     <PreJson o={stateErrors} />
   </>;
 }
