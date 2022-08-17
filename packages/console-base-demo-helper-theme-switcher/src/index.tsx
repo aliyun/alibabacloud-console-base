@@ -1,10 +1,7 @@
 import React, {
-  useState,
-  useEffect
+  useState
 } from 'react';
-import styled, {
-  createGlobalStyle
-} from 'styled-components';
+import styled from 'styled-components';
 
 import {
   MinimalNormalize,
@@ -13,32 +10,17 @@ import {
 } from '@alicloud/demo-rc-elements';
 import {
   ThemeStyleLight,
-  ThemeStyleDark,
-  mixinBgPrimary,
-  mixinTextPrimary,
-  toggleBodyClass
+  ThemeStyleDark
 } from '@alicloud/console-base-theme';
+
+import {
+  DarkHtml,
+  DarkBodyClass
+} from './rc';
 
 const ScDiv = styled.div`
   margin-bottom: 16px;
 `;
-
-const DarkAll = createGlobalStyle`
-  html {
-    ${mixinBgPrimary}
-    ${mixinTextPrimary}
-  }
-`;
-
-function ToggleDemoThemeDark(): null {
-  useEffect(() => {
-    toggleBodyClass(true);
-    
-    return () => toggleBodyClass(false);
-  }, []);
-  
-  return null;
-}
 
 export default function ThemeSwitcher(): JSX.Element {
   const [stateNormalize, setStateNormalize] = useState<boolean>(true);
@@ -58,8 +40,8 @@ export default function ThemeSwitcher(): JSX.Element {
     }} />
     {stateNormalize ? <MinimalNormalize /> : null}
     {stateDark ? <>
-      <DarkAll />
-      <ToggleDemoThemeDark />
+      <DarkHtml />
+      <DarkBodyClass />
       <ThemeStyleDark />
     </> : <ThemeStyleLight />}
   </ScDiv>;

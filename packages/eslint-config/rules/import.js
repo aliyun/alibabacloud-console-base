@@ -18,9 +18,9 @@ module.exports = {
     ignoreExternal: false,
     maxDepth: 4
   }],
-  'import/exports-last': 1,
   'import/no-useless-path-segments': 1,
   'import/no-self-import': 'error',
+  'import/exports-last': 1,
   'import/order': ['error', {
     groups: [
       'builtin',
