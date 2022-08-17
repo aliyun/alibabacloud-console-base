@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-fetch",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "@alicloud/fetcher 的底层 fetch 实现，可独立使用",
   "license": "MIT",
   "sideEffects": false,
@@ -24,10 +24,10 @@
     "fetch"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.0.1",
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.0.2",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/fetcher-demo-helpers": "^1.3.4",
+    "@alicloud/fetcher-demo-helpers": "^1.3.5",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
     "typescript": "^4.7.4"

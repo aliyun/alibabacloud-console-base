@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-pagination",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "ConsoleBase 组件 - 分页",
   "license": "MIT",
   "sideEffects": false,
@@ -25,7 +25,7 @@
     "pagination"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.0.1",
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.0.2",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@types/react": "^17.0.48",
@@ -39,10 +39,10 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory-basic": "^1.5.4",
-    "@alicloud/console-base-rc-button": "^1.6.4",
-    "@alicloud/console-base-rc-icon": "^1.8.4",
-    "@alicloud/console-base-theme": "^1.7.4",
+    "@alicloud/console-base-intl-factory-basic": "^1.5.5",
+    "@alicloud/console-base-rc-button": "^1.6.5",
+    "@alicloud/console-base-rc-icon": "^1.8.5",
+    "@alicloud/console-base-theme": "^1.7.5",
     "@alicloud/typescript-missing-helpers": "^1.2.1"
   },
   "scripts": {
