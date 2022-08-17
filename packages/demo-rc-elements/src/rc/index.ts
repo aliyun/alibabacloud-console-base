@@ -1,3 +1,5 @@
+export { default as MinimalNormalize } from './minimal-normalize';
+/* block elements */
 export {
   H1,
   H2,
@@ -22,6 +24,7 @@ export {
 } from './choice-group';
 
 /* display */
+export { default as RainbowText } from './rainbow-text';
 export { default as PreJson } from './pre-json';
 export { default as PrePromise } from './pre-promise';
 export { default as CodeViewer } from './code-viewer';

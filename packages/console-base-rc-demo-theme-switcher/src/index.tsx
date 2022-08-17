@@ -7,9 +7,9 @@ import {
 } from 'styled-components';
 
 import {
+  MinimalNormalize,
   H1,
-  ChoiceItem,
-  RadioGroup
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 import {
   ThemeStyleLight,
@@ -18,19 +18,6 @@ import {
   mixinTextPrimary,
   toggleBodyClass
 } from '@alicloud/console-base-theme';
-
-enum ETheme {
-  LIGHT,
-  DARK
-}
-
-const choices: ChoiceItem<ETheme>[] = [{
-  value: ETheme.LIGHT,
-  label: 'Light'
-}, {
-  value: ETheme.DARK,
-  label: 'Dark'
-}];
 
 const DarkAll = createGlobalStyle`
   html {
@@ -50,16 +37,23 @@ function ToggleDemoThemeDark(): null {
 }
 
 export default function ThemeSwitcher(): JSX.Element {
-  const [stateTheme, setStateTheme] = useState<ETheme>(ETheme.LIGHT);
+  const [stateNormalize, setStateNormalize] = useState<boolean>(true);
+  const [stateDark, setStateDark] = useState<boolean>(false);
   
   return <>
     <H1>Theme Switcher</H1>
-    <RadioGroup<ETheme> {...{
-      value: stateTheme,
-      items: choices,
-      onChange: setStateTheme
+    <InputSwitch {...{
+      label: '全局样式 ⛱',
+      value: stateNormalize,
+      onChange: setStateNormalize
     }} />
-    {stateTheme === ETheme.DARK ? <>
+    <InputSwitch {...{
+      label: 'Dark Side 🕋',
+      value: stateDark,
+      onChange: setStateDark
+    }} />
+    {stateNormalize ? <MinimalNormalize /> : null}
+    {stateDark ? <>
       <DarkAll />
       <ToggleDemoThemeDark />
       <ThemeStyleDark />
