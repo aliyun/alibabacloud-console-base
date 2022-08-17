@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-rating",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ConsoleBase 组件 - Rating 评分",
   "license": "MIT",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "rating"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.0.0",
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.0.1",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.9.1",
+    "@alicloud/demo-rc-elements": "^1.9.2",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
@@ -40,9 +40,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-icon": "^1.8.3",
-    "@alicloud/console-base-theme": "^1.7.3",
-    "@alicloud/console-base-theme-sc-base": "^1.4.3",
+    "@alicloud/console-base-rc-icon": "^1.8.4",
+    "@alicloud/console-base-theme": "^1.7.4",
+    "@alicloud/console-base-theme-sc-base": "^1.4.4",
     "@alicloud/react-hook-controllable-value": "^1.1.2"
   },
   "scripts": {
