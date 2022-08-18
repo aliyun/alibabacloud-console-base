@@ -12,5 +12,5 @@ export default function getRequestId(json: IBizJson, getter?: TGetRequestId): st
     return (json as any)[getter] as string; // eslint-disable-line @typescript-eslint/no-explicit-any
   }
   
-  return json.requestId;
+  return json.requestId; // default
 }

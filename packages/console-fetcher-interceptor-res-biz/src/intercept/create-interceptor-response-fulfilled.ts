@@ -1,6 +1,5 @@
 import {
-  FetcherFnInterceptResponseFulfilled,
-  createFetcherError
+  FetcherFnInterceptResponseFulfilled
 } from '@alicloud/fetcher';
 
 import {
@@ -8,15 +7,9 @@ import {
   IFetcherConfigExtended
 } from '../types';
 import {
-  ERROR_BIZ
-} from '../const';
-import {
   isSuccess,
   getData,
-  getCode,
-  getTitle,
-  getMessage,
-  getRequestId
+  createFetcherErrorBiz
 } from '../util';
 
 /**
@@ -31,13 +24,6 @@ export default function createInterceptorResponseFulfilled(): FetcherFnIntercept
       return getData(json, fetcherConfig.getData);
     }
     
-    const code: string = getCode(json, fetcherConfig.getCode) || '__UNKNOWN__';
-    const message: string = getMessage(json, fetcherConfig.getMessage) || code;
-    
-    throw createFetcherError<IFetcherConfigExtended>(fetcherConfig, ERROR_BIZ, message, {
-      code,
-      title: getTitle(json, fetcherConfig.getTitle),
-      requestId: getRequestId(json, fetcherConfig.getRequestId)
-    });
+    throw createFetcherErrorBiz(json, fetcherConfig);
   };
 }

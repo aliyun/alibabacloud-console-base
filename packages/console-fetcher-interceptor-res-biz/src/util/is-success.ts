@@ -12,5 +12,5 @@ export default function isSuccess(json: IBizJson, successChecker?: TIsSuccess): 
     return successChecker(json);
   }
   
-  return Number(json.code) === 200; // 有些接口的 code 是数字，这边统一兼容一下吧
+  return Number(json.code) === 200; // default，有些接口的 code 是数字，这边统一兼容一下吧
 }

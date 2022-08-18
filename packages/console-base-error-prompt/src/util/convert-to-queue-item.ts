@@ -10,7 +10,7 @@ import {
 import intl from '../intl';
 
 import shouldIgnore from './should-ignore';
-import convertToErrorDetailedInfo from './convert-to-error-detailed-info';
+import convertToErrorPlain from './convert-to-error-plain';
 import getPredefinedExtra from './get-predefined-extra';
 
 const defaultTitle = intl('title:normal');
@@ -27,7 +27,7 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
     return null;
   }
   
-  const error = convertToErrorDetailedInfo(o);
+  const error = convertToErrorPlain(o);
   const specialExtra = getPredefinedExtra(error.code);
   let {
     title = error.title,

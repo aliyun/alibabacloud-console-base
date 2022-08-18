@@ -28,16 +28,18 @@ export default function ThemeSwitcher(): JSX.Element {
   
   return <ScDiv>
     <H1>Theme Switcher</H1>
-    <InputSwitch {...{
-      label: '全局样式 ⛱',
-      value: stateNormalize,
-      onChange: setStateNormalize
-    }} />
-    <InputSwitch {...{
-      label: 'Dark Side 🕋',
-      value: stateDark,
-      onChange: setStateDark
-    }} />
+    <div>
+      <InputSwitch {...{
+        label: '全局样式 ⛱',
+        value: stateNormalize,
+        onChange: setStateNormalize
+      }} />
+      <InputSwitch {...{
+        label: 'Dark Side 🕋',
+        value: stateDark,
+        onChange: setStateDark
+      }} />
+    </div>
     {stateNormalize ? <MinimalNormalize /> : null}
     {stateDark ? <>
       <DarkHtml />

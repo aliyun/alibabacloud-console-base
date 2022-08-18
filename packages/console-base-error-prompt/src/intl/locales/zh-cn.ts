@@ -1,6 +1,18 @@
 export default {
   'attr:code': '错误码',
   'attr:request_id': '请求 ID',
+  'attr:auth_action': '鉴权操作',
+  'attr:auth_resource': '操作资源',
+  'attr:auth_user': '操作主体',
+  'attr:auth_user_type': '账号类型',
+  'attr:auth_user_type:ram': 'RAM 用户',
+  'attr:auth_user_type:sts': 'RAM 角色',
+  'attr:auth_user_name': '账号名称',
+  'attr:auth_user_id': '账号 ID',
+  'attr:auth_policy_type': '权限策略',
+  'attr:auth_type': '权限判定',
+  'attr:auth_type:explicit': '显式拒绝',
+  'attr:auth_type:implicit': '隐式权限不足',
   'op:close': '关闭',
   'op:cancel': '取消',
   'op:sign_in': '登录',
@@ -13,6 +25,6 @@ export default {
   'title:permission_denied': '没有权限',
   'message:sign_in': '当前会话已过期，请重新登录。',
   'message:token_expired': '当前令牌已失效，请刷新页面。',
-  'message:permission_denied': '当前操作未被授权，请联系主账号进行授权后再执行操作。',
+  'message:permission_denied': '当前操作未被授权，请联系管理员授权。',
   'message:api_not_exist': '请求的接口不存在，请联系阿里云客服。'
 };

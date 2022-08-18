@@ -124,7 +124,6 @@ export default (err: FetcherError, fetcherConfig: FetcherConfig, fetcher: Fetche
 使用者需要对你的 interceptor 十分了解才能用它，像这样：
 
 ```typescript
-// interceptor-package/src/index.ts
 import createFetcher, {
   Fetcher
 } from '@alicloud/fetcher';

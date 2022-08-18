@@ -12,5 +12,5 @@ export default function getTitle(json: IBizJson, getter?: TGetTitle): string | u
     return (json as any)[getter] as string; // eslint-disable-line @typescript-eslint/no-explicit-any
   }
   
-  return json.title;
+  return json.title; // default
 }

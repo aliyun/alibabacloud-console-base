@@ -4,7 +4,7 @@ export { default as ErrorPrompt } from './rc/error-prompt';
 
 export * from './helper';
 export {
-  convertToErrorDetailedInfo
+  convertToErrorPlain
 } from './util';
 
 export type {

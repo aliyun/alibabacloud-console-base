@@ -12,5 +12,5 @@ export default function getMessage(json: IBizJson, getter?: TGetMessage): string
     return (json as any)[getter] as string; // eslint-disable-line @typescript-eslint/no-explicit-any
   }
   
-  return json.message;
+  return json.message; // default
 }

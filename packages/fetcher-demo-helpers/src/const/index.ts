@@ -1,17 +1,11 @@
 const MOCK_PREFIX = 'https://oneapi.alibaba-inc.com/mock/boshit';
 
-export enum ELoadingStatus {
-  IDLE,
-  LOADING,
-  SUCCESS,
-  ERROR
-}
-
 export const URLS = {
   SUCCESS: `${MOCK_PREFIX}/success`,
   SUCCESS_PARAM_SHALL_BE_MERGED_TRUE: `${MOCK_PREFIX}/success?param_shall_be_merged=true`,
   SUCCESS_CUSTOM: `${MOCK_PREFIX}/success-custom`,
   RISK: `${MOCK_PREFIX}/risk`,
+  RAM_FORBIDDEN: `${MOCK_PREFIX}/ram-forbidden`,
   FAIL: `${MOCK_PREFIX}/fail`,
   FAIL_CUSTOM: `${MOCK_PREFIX}/fail-custom`,
   TIMEOUT: `${MOCK_PREFIX}/timeout`,

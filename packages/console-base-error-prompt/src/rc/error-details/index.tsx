@@ -1,6 +1,7 @@
 import React, {
   useState,
-  useCallback
+  useCallback,
+  useMemo
 } from 'react';
 import styled from 'styled-components';
 
@@ -42,7 +43,7 @@ export default function ErrorDetails({
 }: IProps): JSX.Element | null {
   const [stateFolded, setStateFolded] = useState<boolean>(false);
   const handleToggleFolded = useCallback(() => setStateFolded(!stateFolded), [stateFolded, setStateFolded]);
-  const kvList: IErrorDetailKv[] = convertErrorDetailKvList(error, detailedMode);
+  const kvList: IErrorDetailKv[] = useMemo(() => convertErrorDetailKvList(error, detailedMode), [error, detailedMode]);
   
   if (!kvList.length) {
     return null;

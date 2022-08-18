@@ -1,6 +1,18 @@
 export default {
   'attr:code': '錯誤碼',
   'attr:request_id': '請求 ID',
+  'attr:auth_action': '鑑權操作',
+  'attr:auth_resource': '操作資源',
+  'attr:auth_user': '操作主體',
+  'attr:auth_user_type': '賬號類型',
+  'attr:auth_user_type:ram': 'RAM 用戶',
+  'attr:auth_user_type:sts': 'RAM 角色',
+  'attr:auth_user_name': '賬號名稱',
+  'attr:auth_user_id': '賬號 ID',
+  'attr:auth_policy_type': '權限策略',
+  'attr:auth_type': '權限判定',
+  'attr:auth_type:explicit': '顯式拒絕',
+  'attr:auth_type:implicit': '隱式權限不足',
   'op:close': '關閉',
   'op:cancel': '取消',
   'op:sign_in': '登錄',
@@ -13,6 +25,6 @@ export default {
   'title:permission_denied': '沒有權限',
   'message:sign_in': '當前會話已過期，請重新登錄。',
   'message:token_expired': '當前令牌已失效，請刷新頁面。',
-  'message:permission_denied': '當前操作未被授權，請聯繫主賬號進行授權後再執行操作。',
+  'message:permission_denied': '當前操作未被授權，請聯繫管理員授權。',
   'message:api_not_exist': '請求的接口不存在，請聯繫阿里雲客服。'
 };

@@ -12,5 +12,5 @@ export default function getData(json: IBizJson, getter?: TGetData): any { // esl
     return (json as any)[getter]; // eslint-disable-line @typescript-eslint/no-explicit-any
   }
   
-  return json.data;
+  return json.data; // default
 }

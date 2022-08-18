@@ -21,6 +21,7 @@ import createError from './create-error';
 import createErrorNeedLogin from './create-error-need-login';
 import createErrorTokenExpired from './create-error-token-expired';
 import createErrorRamForbidden from './create-error-ram-forbidden';
+import createErrorRamForbiddenWithAuthDetails from './create-error-ram-forbidden-with-auth-details';
 
 export default function createErrors(): TErrorArg[] {
   return [{ // 被忽略的 error
@@ -62,6 +63,7 @@ export default function createErrors(): TErrorArg[] {
   createErrorTokenExpired(),
   createErrorRamForbidden(true),
   createErrorRamForbidden(),
+  createErrorRamForbiddenWithAuthDetails(),
   // 其他 code
   createError({
     code: CODE_NEED_LOGIN_UR_SYS,

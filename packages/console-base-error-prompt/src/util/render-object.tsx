@@ -4,23 +4,22 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  mixinTextPrimary
+  mixinTextSecondary
 } from '@alicloud/console-base-theme';
 
 import toDisplayValue from './to-display-value';
 
 const ScStrong = styled.strong`
+  display: inline-block;
+  margin-right: 8px;
+  min-width: 48px;
   font-weight: 600;
-  ${mixinTextPrimary}
-  
-  &:after {
-    content: ' = ';
-  }
+  ${mixinTextSecondary}
 `;
 
 export default function renderObject(o: Record<string, unknown>): JSX.Element {
   return <>{_map(o, (v, k) => <div key={k}>
     <ScStrong>{k}</ScStrong>
-    <span>{toDisplayValue(v)}</span>
+    <span>{typeof v === 'string' ? v : toDisplayValue(v)}</span>
   </div>)}</>;
 }

@@ -1,6 +1,18 @@
 export default {
   'attr:code': 'Error Code',
   'attr:request_id': 'Request ID',
+  'attr:auth_action': 'Auth Action',
+  'attr:auth_resource': 'Operation Resource',
+  'attr:auth_user': 'Operation Principal',
+  'attr:auth_user_type': 'Account Type',
+  'attr:auth_user_type:ram': 'RAM User',
+  'attr:auth_user_type:sts': 'RAM Role',
+  'attr:auth_user_name': 'Account Name',
+  'attr:auth_user_id': 'Account ID',
+  'attr:auth_policy_type': 'Auth Policy',
+  'attr:auth_type': 'Auth Determination',
+  'attr:auth_type:explicit': 'Explicit Deny',
+  'attr:auth_type:implicit': 'Implicit Deny',
   'op:close': 'Close',
   'op:cancel': 'Cancel',
   'op:sign_in': 'Sign In',
@@ -13,6 +25,6 @@ export default {
   'title:permission_denied': 'Permission Denied',
   'message:sign_in': 'Current session has timed out, please sign in.',
   'message:token_expired': 'Current token has expired, please reload the page.',
-  'message:permission_denied': 'You are not authorized to perform this operation. Contact the account owner for authorization and try again.',
+  'message:permission_denied': 'You are not authorized to perform this action. Please contact your administrator to authorize via RAM.',
   'message:api_not_exist': 'Requested API does not exist, please contact Alibaba Cloud service.'
 };
