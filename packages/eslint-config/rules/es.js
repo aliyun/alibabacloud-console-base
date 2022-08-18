@@ -51,6 +51,12 @@ module.exports = {
    */
   'no-console': 'error',
   /**
+   * https://eslint.org/docs/rules/no-alert
+   *
+   * 由 eslint-config-ali 的 warn 提升至 error
+   */
+  'no-alert': 'error',
+  /**
    * eslint-config-ali 把 props 设成了 true，然后加了 ignorePropertyModificationsFor 配置（在我看来 ignorePropertyModificationsFor 只能应用层级来配）
    */
   'no-param-reassign': ['warn', {
