@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/logger-gl",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "黄金令箭封装",
   "license": "MIT",
   "sideEffects": false,

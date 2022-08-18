@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-toolkit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ConsoleBase 信使 - Toolkit",
   "license": "MIT",
   "sideEffects": false,
@@ -32,8 +32,8 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-base": "^1.3.5",
-    "@alicloud/console-base-types-settings-toolkit": "^1.3.1"
+    "@alicloud/console-base-messenger-base": "^1.3.6",
+    "@alicloud/console-base-types-settings-toolkit": "^1.3.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
