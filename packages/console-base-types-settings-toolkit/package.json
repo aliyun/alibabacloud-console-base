@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-types-settings-toolkit",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "ConsoleBase 类型 - CONSOLE_BASE_SETTINGS.TOOLKIT",
   "license": "MIT",
   "sideEffects": false,
