@@ -31,7 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
     "eslint-config-ali": "^14.0.1",
-    "eslint-import-resolver-typescript": "^3.4.1",
+    "eslint-import-resolver-typescript": "^3.4.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-lodash": "^7.4.0",
@@ -41,5 +41,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "gitHead": "2b397d4d728efc969a3e6f79b30a497f6b93c382"
+  "gitHead": "1dbc6e703f6ad1f6faea21a54d1ba4a5eda416c5"
 }
