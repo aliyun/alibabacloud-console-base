@@ -31,7 +31,7 @@ export default function convertToErrorPlain(error: TErrorPromptArg): IErrorPlain
     o.message = error.message;
     o.stack = error.stack;
     o.details = error.details || getErrorDetails(error as IFetcherErrorMimic);
-    o.detailsAuth = getErrorDetailsAuth(error as IFetcherErrorMimic);
+    o.detailsAuth = error.detailsAuth || getErrorDetailsAuth(error as IFetcherErrorMimic);
   }
   
   return o;

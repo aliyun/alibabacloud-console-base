@@ -37,8 +37,8 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
   
   try { // postMessage 可能抛错
     return promptError<IMessengerPayload>({
-      error: pruneForMessage<ErrorDetailedInfo>(errorInfo) as Error, // FIXME
-      extra: pruneForMessage<ErrorPromptExtra>(typeof extra === 'function' ? extra(errorInfo) || {} : extra),
+      error: pruneForMessage<ErrorDetailedInfo>(errorInfo),
+      extra: extra ? pruneForMessage<ErrorPromptExtra>(typeof extra === 'function' ? extra(errorInfo) || {} : extra) : undefined,
       detailedMode
     });
   } catch (err) { // 抛错表明 message 的 payload 中含有无法序列化的数据
