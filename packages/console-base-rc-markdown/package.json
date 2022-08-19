@@ -36,7 +36,7 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-theme-sc-base": "^1.5.0",
+    "@alicloud/console-base-theme-sc-base": "^1.5.1",
     "@alicloud/rc-markdown": "^2.3.0"
   },
   "scripts": {

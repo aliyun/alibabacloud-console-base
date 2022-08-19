@@ -153,7 +153,7 @@ export const mixinTypoElementsInline = css`
   }
   
   strong {
-    ${mixinTypoStrong}
+    font-weight: 600;
   }
   
   small {

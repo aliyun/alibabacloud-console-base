@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "控制台主题 - 基于 css variable 和 styled-components",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +27,7 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.10.0",
-    "@types/lodash": "^4.14.183",
+    "@types/lodash": "^4.14.184",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "lodash": "^4.17.21",

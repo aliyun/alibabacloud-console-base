@@ -21,7 +21,11 @@ export default styled.article`
   ${mixinTextSecondary}
   ${mixinTypoElementsInline}
   ${mixinTypoElementsList}
-
+  
+  strong {
+    ${mixinTextPrimary}
+  }
+  
   code {
     &.clean {
       background-color: transparent;
