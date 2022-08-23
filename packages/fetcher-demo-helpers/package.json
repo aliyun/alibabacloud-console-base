@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@alicloud/arms": "^1.4.0",
-    "@alicloud/demo-rc-elements": "^1.10.0"
+    "@alicloud/demo-rc-elements": "^1.10.1"
   },
   "scripts": {
     "start": "breezr start-storybook",
