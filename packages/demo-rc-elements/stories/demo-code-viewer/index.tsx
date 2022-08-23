@@ -8,6 +8,7 @@ import {
   CodeViewerTs,
   CodeViewerLess
 } from '../../src';
+import Shared from '../_shared';
 
 const CODE_HTML = `<!DOCTYPE html>
 <html lang="en">
@@ -131,6 +132,7 @@ const CODE_LESS = `/* Based on https://github.com/dempfi/ayu */
 
 export default function DemoCodeViewer(): JSX.Element {
   return <>
+    <Shared />
     <H1>HTML</H1>
     <CodeViewerHtml>{CODE_HTML}</CodeViewerHtml>
     <H1>JSON</H1>

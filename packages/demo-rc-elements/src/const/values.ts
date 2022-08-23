@@ -12,8 +12,11 @@ export const FORM_CONTROL_BGC_ACTIVE = '#f7f7f7';
 export const FORM_CONTROL_BGC_DISABLED = '#f0f1f3';
 
 export const TABLE_BGC_TH = '#eff3f8';
+export const TABLE_BGC_TH_DARK = '#666';
 export const TABLE_BGC_TD = '#fff';
+export const TABLE_BGC_TD_DARK = '#333';
 export const TABLE_BDC = '#e7e7e7';
+export const TABLE_BDC_DARK = '#444';
 
 export const HEIGHT_SWITCH = 18;
 export const WIDTH_SWITCH = HEIGHT_SWITCH * 2 - 4;

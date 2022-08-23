@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 import {
-  TABLE_BGC_TD,
   TABLE_BGC_TH,
-  TABLE_BDC
+  TABLE_BGC_TH_DARK,
+  TABLE_BGC_TD,
+  TABLE_BGC_TD_DARK,
+  TABLE_BDC,
+  TABLE_BDC_DARK
 } from '../../const';
 
 export default styled.table`
@@ -20,11 +23,19 @@ export default styled.table`
   
   tr {
     background-color: ${TABLE_BGC_TD};
+    
+    .theme-dark & {
+      background-color: ${TABLE_BGC_TD_DARK};
+    }
   }
   
   thead {
     tr {
       background-color: ${TABLE_BGC_TH};
+      
+      .theme-dark & {
+        background-color: ${TABLE_BGC_TH_DARK};
+      }
     }
   }
   
@@ -35,6 +46,10 @@ export default styled.table`
     font-size: 0.95em;
     text-align: left;
     color: inherit;
+    
+    .theme-dark & {
+      border-color: ${TABLE_BDC_DARK};
+    }
     
     &:first-child {
       border-left-width: 0;

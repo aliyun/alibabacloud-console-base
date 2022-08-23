@@ -4,6 +4,7 @@ import {
   Table,
   TableColumnProps
 } from '../../src';
+import Shared from '../_shared';
 
 interface IData {
   id: string;
@@ -28,8 +29,11 @@ const dataSource: IData[] = [{
 }];
 
 export default function DemoTable(): JSX.Element {
-  return <Table<IData> {...{
-    dataSource,
-    columns
-  }} />;
+  return <>
+    <Shared />
+    <Table<IData> {...{
+      dataSource,
+      columns
+    }} />
+  </>;
 }

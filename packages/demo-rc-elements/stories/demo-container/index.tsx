@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {
   Flex
 } from '../../src';
+import Shared from '../_shared';
 
 const ScRed = styled.div`
   padding: 12px;
@@ -37,8 +38,11 @@ function Item({
 }
 
 export default function DemoContainer(): JSX.Element {
-  return <Flex ratio={[2, 1]}>
-    <Item theme="red" height={200} value="Red" />
-    <Item theme="blue" height={200} value="Blue" />
-  </Flex>;
+  return <>
+    <Shared />
+    <Flex ratio={[2, 1]}>
+      <Item theme="red" height={200} value="Red" />
+      <Item theme="blue" height={200} value="Blue" />
+    </Flex>
+  </>;
 }

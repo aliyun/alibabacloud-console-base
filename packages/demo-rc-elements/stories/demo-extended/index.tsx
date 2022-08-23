@@ -11,6 +11,7 @@ import {
   PrePromise,
   List
 } from '../../src';
+import Shared from '../_shared';
 
 const TEST_JSON = {
   str: 'hello world',
@@ -40,6 +41,7 @@ export default function DemoExtended(): JSX.Element {
   const handleRandomPromise = useCallback(() => setStatePromise(randomPromise()), [setStatePromise]);
   
   return <>
+    <Shared />
     <H1>非原生元素</H1>
     <H2>便于书写</H2>
     <List>

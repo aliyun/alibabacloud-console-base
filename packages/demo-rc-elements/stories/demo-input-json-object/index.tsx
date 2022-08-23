@@ -7,6 +7,7 @@ import React, {
 import {
   InputJsonObject
 } from '../../src';
+import Shared from '../_shared';
 
 interface IValue {
   attr: string;
@@ -28,8 +29,11 @@ export default function DemoInputJsonObject(): JSX.Element {
     }), 3000);
   }, []);
   
-  return <InputJsonObject {...{
-    value: stateValue,
-    onChange: handleChange
-  }} />;
+  return <>
+    <Shared />
+    <InputJsonObject {...{
+      value: stateValue,
+      onChange: handleChange
+    }} />
+  </>;
 }

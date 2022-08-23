@@ -6,9 +6,11 @@ import {
   Flex100HBF,
   LongArticle
 } from '../../src';
+import Shared from '../_shared';
 
 export default function DemoSpecial(): JSX.Element {
   return <>
+    <Shared />
     <H1>特殊用途</H1>
     <H2>LongArticle - 为了撑高</H2>
     <LongArticle />

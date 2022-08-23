@@ -10,9 +10,11 @@ import {
   RadioGroup,
   Button
 } from '../../src';
+import Shared from '../_shared';
 
 export default function DemoFormControl(): JSX.Element {
   return <>
+    <Shared />
     <H1>表单元素</H1>
     <InputNumber placeholder="InputNumber" />
     <InputText placeholder="InputText" />
