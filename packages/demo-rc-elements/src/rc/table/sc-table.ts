@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
 import {
-  TABLE_BGC_TH,
-  TABLE_BGC_TH_DARK,
-  TABLE_BGC_TD,
-  TABLE_BGC_TD_DARK,
-  TABLE_BDC,
-  TABLE_BDC_DARK
+  COLOR_TABLE,
+  COLOR_TABLE_DARK
 } from '../../const';
 
 export default styled.table`
@@ -22,19 +18,19 @@ export default styled.table`
   }
   
   tr {
-    background-color: ${TABLE_BGC_TD};
+    background-color: ${COLOR_TABLE.BGC_TD};
     
     .theme-dark & {
-      background-color: ${TABLE_BGC_TD_DARK};
+      background-color: ${COLOR_TABLE_DARK.BGC_TD};
     }
   }
   
   thead {
     tr {
-      background-color: ${TABLE_BGC_TH};
+      background-color: ${COLOR_TABLE.BGC_TH};
       
       .theme-dark & {
-        background-color: ${TABLE_BGC_TH_DARK};
+        background-color: ${COLOR_TABLE_DARK.BGC_TH};
       }
     }
   }
@@ -42,13 +38,13 @@ export default styled.table`
   th,
   td {
     padding: 6px 12px;
-    border: 1px solid ${TABLE_BDC};
+    border: 1px solid ${COLOR_TABLE.BDC};
     font-size: 0.95em;
     text-align: left;
     color: inherit;
     
     .theme-dark & {
-      border-color: ${TABLE_BDC_DARK};
+      border-color: ${COLOR_TABLE_DARK.BDC};
     }
     
     &:first-child {

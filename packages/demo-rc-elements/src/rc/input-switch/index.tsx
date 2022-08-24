@@ -11,10 +11,10 @@ import {
   IInputSwitchProps
 } from '../../types';
 import {
-  HEIGHT_SWITCH,
-  WIDTH_SWITCH,
-  SPACING_INNER,
-  SIZE_KNOB
+  HEIGHT_INPUT_SWITCH,
+  WIDTH_INPUT_SWITCH,
+  SPACING_INPUT_SWITCH_INNER,
+  SIZE_INPUT_SWITCH_KNOB
 } from '../../const';
 import {
   getStyledSwitchBg,
@@ -43,10 +43,10 @@ const ScInputSwitch = styled.span`
 
 const ScInputSwitchButton = styled.button<IScProps>`
   position: relative;
-  border: ${SPACING_INNER}px solid transparent;
-  border-radius: ${HEIGHT_SWITCH}px;
-  width: ${WIDTH_SWITCH}px;
-  height: ${HEIGHT_SWITCH}px;
+  border: ${SPACING_INPUT_SWITCH_INNER}px solid transparent;
+  border-radius: ${HEIGHT_INPUT_SWITCH}px;
+  width: ${WIDTH_INPUT_SWITCH}px;
+  height: ${HEIGHT_INPUT_SWITCH}px;
   line-height: 2;
   cursor: pointer;
   ${getStyledSwitchBg}
@@ -58,8 +58,8 @@ const ScInputSwitchButton = styled.button<IScProps>`
     border-radius: 50%;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
     background-color: #fff;
-    width: ${SIZE_KNOB}px;
-    height: ${SIZE_KNOB}px;
+    width: ${SIZE_INPUT_SWITCH_KNOB}px;
+    height: ${SIZE_INPUT_SWITCH_KNOB}px;
     transition: all linear 160ms;
     ${getStyledSwitchKnobPosition}
   }

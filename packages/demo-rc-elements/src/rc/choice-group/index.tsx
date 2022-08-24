@@ -22,7 +22,6 @@ const ScChoiceGroup = styled.div`
 const ScGroupLabel = styled.label`
   display: inline-block;
   margin-right: 8px;
-  color: #333;
 `;
 
 const ScChoice = styled.label`
@@ -30,10 +29,6 @@ const ScChoice = styled.label`
   margin-right: 1.6em;
   color: #777;
   transition: color 0.3s ease-in-out;
-  
-  &:hover {
-    color: #333;
-  }
 `;
 
 const ScChoiceLabel = styled.span`

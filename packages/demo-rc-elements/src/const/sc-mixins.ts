@@ -3,27 +3,21 @@ import {
 } from 'styled-components';
 
 import {
-  FORM_CONTROL_PADDING_HORIZONTAL,
-  FORM_CONTROL_BDC,
-  FORM_CONTROL_HEIGHT,
-  FORM_CONTROL_BDC_HOVER,
-  FORM_CONTROL_BDC_ACTIVE,
-  FORM_CONTROL_BDC_FOCUS,
-  FORM_CONTROL_BDC_DISABLED,
-  FORM_CONTROL_BGC,
-  FORM_CONTROL_BGC_HOVER,
-  FORM_CONTROL_BGC_ACTIVE,
-  FORM_CONTROL_BGC_DISABLED,
-  FORM_CONTROL_FGC_DISABLED
+  COLOR_FORM_CONTROL,
+  COLOR_FORM_CONTROL_DARK
+} from './color-rc';
+import {
+  PADDING_FORM_CONTROL_HORIZONTAL,
+  HEIGHT_FORM_CONTROL
 } from './values';
 
 const CSS_FORM_CONTROL_OVERRIDE_INPUT = css`
-  padding: 0 ${FORM_CONTROL_PADDING_HORIZONTAL}px;
+  padding: 0 ${PADDING_FORM_CONTROL_HORIZONTAL}px;
 `;
 
 const CSS_FORM_CONTROL_OVERRIDE_TEXTAREA = css`
   display: block;
-  padding: 4px ${FORM_CONTROL_PADDING_HORIZONTAL}px;
+  padding: 4px ${PADDING_FORM_CONTROL_HORIZONTAL}px;
   width: 100%;
   min-height: 100px;
   line-height: 1.8;
@@ -32,27 +26,45 @@ const CSS_FORM_CONTROL_OVERRIDE_TEXTAREA = css`
 
 const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
   border-radius: 4px;
-  background-color: ${FORM_CONTROL_BGC};
+  background-color: ${COLOR_FORM_CONTROL.BGC};
   min-width: 60px;
+  
+  .theme-dark & {
+    background-color: ${COLOR_FORM_CONTROL_DARK.BGC};
+  }
   
   &:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: ${FORM_CONTROL_BGC_HOVER};
+    background-color: ${COLOR_FORM_CONTROL.BGC_HOVER};
+    
+    .theme-dark & {
+      background-color: ${COLOR_FORM_CONTROL_DARK.BGC_HOVER};
+    }
   }
   
   &:active {
     box-shadow: none;
-    background-color: ${FORM_CONTROL_BGC_ACTIVE};
+    background-color: ${COLOR_FORM_CONTROL.BGC_ACTIVE};
+    
+    .theme-dark & {
+      background-color: ${COLOR_FORM_CONTROL_DARK.BGC_ACTIVE};
+    }
   }
   
   &[disabled],
   &[disabled]:hover,
   &[disabled]:active,
   &[disabled]:focus {
-    border-color: ${FORM_CONTROL_BDC_DISABLED};
+    border-color: ${COLOR_FORM_CONTROL.BDC_DISABLED};
     box-shadow: none;
-    background-color: ${FORM_CONTROL_BGC_DISABLED};
-    color: ${FORM_CONTROL_FGC_DISABLED};
+    background-color: ${COLOR_FORM_CONTROL.BGC_DISABLED};
+    color: ${COLOR_FORM_CONTROL.FGC_DISABLED};
+    
+    .theme-dark & {
+      border-color: ${COLOR_FORM_CONTROL_DARK.BDC_DISABLED};
+      background-color: ${COLOR_FORM_CONTROL_DARK.BGC_DISABLED};
+      color: ${COLOR_FORM_CONTROL_DARK.FGC_DISABLED};
+    }
   }
 `;
 
@@ -104,34 +116,58 @@ export const CSS_BLOCK_LEVEL_ELEMENT = css`
 `;
 
 export const CSS_FORM_CONTROL_BASE = css`
-  padding: 0 ${FORM_CONTROL_PADDING_HORIZONTAL}px;
-  border: 1px solid ${FORM_CONTROL_BDC};
+  padding: 0 ${PADDING_FORM_CONTROL_HORIZONTAL}px;
+  border: 1px solid ${COLOR_FORM_CONTROL.BDC};
   box-sizing: border-box;
   outline: none;
-  line-height: ${FORM_CONTROL_HEIGHT}px;
+  line-height: ${HEIGHT_FORM_CONTROL}px;
   font-size: 11px;
+  color: ${COLOR_FORM_CONTROL.FGC};
   transition: all 0.3s ease-in-out;
   ${CSS_FONT_FAMILY}
 
-  &:focus {
-    border-color: ${FORM_CONTROL_BDC_FOCUS};
-    outline: none;
+  .theme-dark & {
+    border-color: ${COLOR_FORM_CONTROL_DARK.BDC};
+    color: ${COLOR_FORM_CONTROL_DARK.FGC};
   }
-  
+
   &:hover {
-    border-color: ${FORM_CONTROL_BDC_HOVER};
+    border-color: ${COLOR_FORM_CONTROL.BDC_HOVER};
+    
+    .theme-dark & {
+      border-color: ${COLOR_FORM_CONTROL_DARK.BDC_HOVER};
+    }
+  }
+
+  &:focus {
+    border-color: ${COLOR_FORM_CONTROL.BDC_FOCUS};
+    outline: none;
+    
+    .theme-dark & {
+      border-color: ${COLOR_FORM_CONTROL_DARK.BDC_FOCUS};
+    }
   }
   
   &:active {
-    border-color: ${FORM_CONTROL_BDC_ACTIVE};
+    border-color: ${COLOR_FORM_CONTROL.BDC_ACTIVE};
+    
+    .theme-dark & {
+      border-color: ${COLOR_FORM_CONTROL_DARK.BDC_ACTIVE};
+    }
   }
   
   &[disabled],
   &[disabled]:hover,
   &[disabled]:focus {
-    border-color: ${FORM_CONTROL_BDC_DISABLED};
-    background-color: ${FORM_CONTROL_BGC_DISABLED};
-    color: ${FORM_CONTROL_FGC_DISABLED};
+    border-color: ${COLOR_FORM_CONTROL.BDC_DISABLED};
+    background-color: ${COLOR_FORM_CONTROL.BGC_DISABLED};
+    color: ${COLOR_FORM_CONTROL.FGC_DISABLED};
+    
+    .theme-dark & {
+      border-color: ${COLOR_FORM_CONTROL_DARK.BDC_DISABLED};
+      background-color: ${COLOR_FORM_CONTROL_DARK.BGC_DISABLED};
+      color: ${COLOR_FORM_CONTROL_DARK.FGC_DISABLED};
+    }
   }
 `;
 
