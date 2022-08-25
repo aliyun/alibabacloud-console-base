@@ -38,7 +38,7 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-error-prompt": "^1.10.0",
+    "@alicloud/console-base-error-prompt": "^1.10.1",
     "@alicloud/console-base-global": "^1.4.0",
     "@alicloud/console-base-messenger-error-prompt": "^1.1.0"
   },
