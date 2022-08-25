@@ -1,5 +1,6 @@
 upgrade: true
 dep: dev,prod
+format: group
 reject:
 - '@types/react'
 - '@types/react-dom'

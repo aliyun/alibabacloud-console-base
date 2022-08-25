@@ -26,5 +26,6 @@ export type {
   // alert
   IAlertProps as AlertProps,
   // package-info
+  IPackageInfoContent as PackageInfoContent,
   IPackageInfoProps as PackageInfoProps
 } from './types';
