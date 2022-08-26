@@ -1,5 +1,8 @@
-export { default } from './util/intercept';
+import {
+  intercept
+} from './util';
 
+export default intercept;
 export {
   ERROR_RISK_FORBIDDEN,
   ERROR_RISK_INVALID,

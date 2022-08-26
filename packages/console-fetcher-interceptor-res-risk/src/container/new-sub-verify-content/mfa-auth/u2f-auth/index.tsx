@@ -27,16 +27,14 @@ import {
   EPayloadVerifyType
 } from '../../../../enum';
 import {
+  TICKET_TYPE,
   WEBAUTHN_KEY_TYPE
 } from '../../../../const';
 import intl from '../../../../intl';
 import {
   slsU2fError
-} from '../../../../util/sls';
-import getTicketType from '../../../../util/get-ticket-type';
+} from '../../../../sls';
 import U2fUi from '../../_components/u2f-ui';
-
-const ticketType = getTicketType();
 
 export default function U2FAuth(): JSX.Element {
   const isUnmounted = useIsUnmounted();
@@ -133,7 +131,7 @@ export default function U2FAuth(): JSX.Element {
       updateData({
         verifyMfaPayload: {
           AccountId: accountId,
-          TicketType: ticketType,
+          TicketType: TICKET_TYPE,
           VerifyType: EPayloadVerifyType.MFA,
           Signature: credential.response.signature,
           CredentialId: credential.id,

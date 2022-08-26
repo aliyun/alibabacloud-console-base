@@ -6,10 +6,9 @@ import {
   TGetAuthMfaInfoData,
   IFetcherInterceptorConfig
 } from '../types';
-
-import getTicketType from './get-ticket-type';
-
-const ticketType = getTicketType();
+import {
+  TICKET_TYPE
+} from '../const';
 
 interface IProps {
   request: FetcherFnRequest;
@@ -32,7 +31,7 @@ export default async function getAuthMfaInfo({
     url: getMfaInfoToAuthUrl,
     body: {
       AccountId: accountId,
-      TicketType: ticketType
+      TicketType: TICKET_TYPE
     }
   });
 

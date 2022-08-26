@@ -3,11 +3,11 @@ import sls from '@alicloud/console-base-log-sls';
 import {
   ESlsTopic,
   ESubMfaDeviceType
-} from '../../enum';
+} from '../enum';
 import {
   INewSubRiskValidators,
   TPayloadVerifyMfa
-} from '../../types';
+} from '../types';
 
 import {
   ISlsCommonProps

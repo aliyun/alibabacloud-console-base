@@ -3,7 +3,7 @@ import sls from '@alicloud/console-base-log-sls';
 import {
   EStep,
   ESlsTopic
-} from '../../enum';
+} from '../enum';
 
 interface IProps {
   accountId: string;

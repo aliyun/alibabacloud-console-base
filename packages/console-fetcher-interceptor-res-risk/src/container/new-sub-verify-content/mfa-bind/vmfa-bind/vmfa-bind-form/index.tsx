@@ -16,14 +16,16 @@ import {
 import {
   ESubMfaDeviceType
 } from '../../../../../enum';
+import {
+  TICKET_TYPE
+} from '../../../../../const';
 import intl from '../../../../../intl';
 import Form from '../../../../../rc/form';
 import XIcon from '../../../../../rc/x-icon';
 import VmfaInput from '../../../_components/vmfa-input';
-import getTicketType from '../../../../../util/get-ticket-type';
-import getInputError from '../../../../../util/get-input-error';
-
-const ticketType = getTicketType();
+import {
+  getInputError
+} from '../../../../../util';
 
 export default function VMfaBindForm(): JSX.Element {
   const {
@@ -74,7 +76,7 @@ export default function VMfaBindForm(): JSX.Element {
   useEffect(() => {
     const newBindMfaPayload: IPayloadBindVmfa = {
       AccountId: accountId,
-      TicketType: ticketType,
+      TicketType: TICKET_TYPE,
       DeviceType: ESubMfaDeviceType.VMFA,
       Ext: JSON.stringify({
         codeType

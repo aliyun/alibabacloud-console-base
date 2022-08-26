@@ -15,7 +15,7 @@ import {
   ESubMfaDeviceType
 } from '../../../../enum';
 import {
-  defaultDialogSize,
+  DEFAUT_DIALOG_SIZE,
   WEBAUTHN_KEY_TYPE
 } from '../../../../const';
 import intl from '../../../../intl';
@@ -24,7 +24,7 @@ import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
 import {
   slsSubRiskGetMfaInfo
-} from '../../../sls';
+} from '../../../../sls';
 
 import {
   IParams,
@@ -241,7 +241,7 @@ export default async function riskNewSubVerifyMfa({
         return 'm'; // 绑定 MFA 设备需要较大的弹窗尺寸
       }
 
-      return defaultDialogSize;
+      return DEFAUT_DIALOG_SIZE;
     },
     data: {
       request,
