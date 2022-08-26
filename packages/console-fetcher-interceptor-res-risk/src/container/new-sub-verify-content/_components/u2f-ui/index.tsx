@@ -16,10 +16,10 @@ import {
   EIconType
 } from '../../../../enum';
 import {
-  SvgUrls
+  SVG_URLS,
+  ALIYUN_APP_VERSION
 } from '../../../../const';
 import intl from '../../../../intl';
-import aliyunAppVersion from '../../../../util/aliyun-app-version';
 import U2FMessage from '../message';
 
 interface IProps {
@@ -31,7 +31,7 @@ interface IProps {
   onRetryClick: () => void;
 }
 
-const u2fSvgImgSize = aliyunAppVersion ? 80 : 100;
+const u2fSvgImgSize = ALIYUN_APP_VERSION ? 80 : 100;
 
 const ScFlex = styled(Flex)`
   margin-top: 12px;
@@ -122,7 +122,7 @@ export default function U2fUi({
           <SvgImg {...{
             alt: '',
             width: u2fSvgImgSize,
-            src: SvgUrls.U2F_INSERT
+            src: SVG_URLS.U2F_INSERT
           }} />
         </ScSvgImgWrapper>
         <ScU2fDesc>{intl('attr:u2f_insert')}</ScU2fDesc>
@@ -132,15 +132,15 @@ export default function U2fUi({
           <SvgImg {...{
             alt: '',
             width: u2fSvgImgSize,
-            src: SvgUrls.U2F_CLICK
+            src: SVG_URLS.U2F_CLICK
           }} />
         </ScSvgImgWrapper>
         <ScU2fDesc>{intl('attr:u2f_click')}</ScU2fDesc>
       </ScFlex>
-      {aliyunAppVersion ? null : <ScU2fIcon {...{
+      {ALIYUN_APP_VERSION ? null : <ScU2fIcon {...{
         alt: '',
         width: 120,
-        src: SvgUrls.U2F_ICON
+        src: SVG_URLS.U2F_ICON
       }} />}
     </ScU2fWrapper>
   </>;

@@ -24,14 +24,14 @@ import {
   EStep,
   ESubMfaDeviceType
 } from '../../../../enum';
+import {
+  TICKET_TYPE
+} from '../../../../const';
 import intl from '../../../../intl';
 import {
   slsU2fError
-} from '../../../../util/sls';
-import getTicketType from '../../../../util/get-ticket-type';
+} from '../../../../sls';
 import U2fUi from '../../_components/u2f-ui';
-
-const ticketType = getTicketType();
 
 export default function U2FBind(): JSX.Element {
   const isUnmounted = useIsUnmounted();
@@ -122,7 +122,7 @@ export default function U2FBind(): JSX.Element {
       updateData({
         bindMfaPayload: {
           AccountId: accountId,
-          TicketType: ticketType,
+          TicketType: TICKET_TYPE,
           DeviceType: ESubMfaDeviceType.U2F,
           U2FVersion: 'WebAuthn',
           AttestationObject: credential.response.attestationObject,

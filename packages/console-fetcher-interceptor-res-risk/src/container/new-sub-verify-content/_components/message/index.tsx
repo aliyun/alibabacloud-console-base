@@ -27,8 +27,10 @@ import Button, {
 import {
   EIconType
 } from '../../../../enum';
+import {
+  ALIYUN_APP_VERSION
+} from '../../../../const';
 import intl from '../../../../intl';
-import aliyunAppVersion from '../../../../util/aliyun-app-version';
 
 interface IIconProps {
   iconType: EIconType;
@@ -51,7 +53,7 @@ interface IProps extends IErrorDivProps, IErrorMessageDivProps {
   onRetryClick?: () => void;
 }
 
-const u2fRetryMessageWidthPercent = aliyunAppVersion ? 80 : 90;
+const u2fRetryMessageWidthPercent = ALIYUN_APP_VERSION ? 80 : 90;
 
 const CssDivCommon = css`
   margin-bottom: 16px;

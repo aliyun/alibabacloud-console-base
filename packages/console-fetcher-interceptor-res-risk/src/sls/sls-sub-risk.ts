@@ -3,7 +3,7 @@ import sls from '@alicloud/console-base-log-sls';
 import {
   ESlsTopic,
   ESlsResultType
-} from '../../enum';
+} from '../enum';
 
 interface IProps {
   slsResultType: ESlsResultType;

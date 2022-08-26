@@ -30,11 +30,11 @@ import {
   ESubMfaDeviceType
 } from '../../../enum';
 import {
-  SvgUrls
+  SVG_URLS,
+  TICKET_TYPE
 } from '../../../const';
 import intl from '../../../intl';
 import Radio from '../../../rc/radio';
-import getTicketType from '../../../util/get-ticket-type';
 import Message from '../_components/message';
 
 interface IScItemProps extends FlexProps {
@@ -58,8 +58,6 @@ const ScItem = styled(Flex)<IScItemProps>`
     ${props => (props.disabled ? null : mixinBgInfoTint)}
   }
 `;
-
-const ticketType = getTicketType();
 
 export default function MfaChoose(): JSX.Element {
   const isUnmounted = useIsUnmounted();
@@ -85,7 +83,7 @@ export default function MfaChoose(): JSX.Element {
     updateData({
       getBindMfaInfoPayload: {
         AccountId: accountId,
-        TicketType: ticketType,
+        TicketType: TICKET_TYPE,
         DeviceType: ESubMfaDeviceType.VMFA
       }
     });
@@ -100,7 +98,7 @@ export default function MfaChoose(): JSX.Element {
     updateData({
       getBindMfaInfoPayload: {
         AccountId: accountId,
-        TicketType: ticketType,
+        TicketType: TICKET_TYPE,
         U2FVersion: 'WebAuthn',
         DeviceType: ESubMfaDeviceType.U2F
       }
@@ -120,7 +118,7 @@ export default function MfaChoose(): JSX.Element {
     updateData({
       getBindMfaInfoPayload: {
         AccountId: accountId,
-        TicketType: ticketType,
+        TicketType: TICKET_TYPE,
         DeviceType: ESubMfaDeviceType.VMFA
       }
     });
@@ -145,7 +143,7 @@ export default function MfaChoose(): JSX.Element {
         <ScDesc>{intl('message:mfa_choose_vmfa')}</ScDesc>
       </div>
       <img alt="" {...{
-        src: SvgUrls.U2F_ICON,
+        src: SVG_URLS.U2F_ICON,
         width: 120
       }} />
     </ScItem>
@@ -172,7 +170,7 @@ export default function MfaChoose(): JSX.Element {
         <ScDesc>{intl('message:mfa_choose_u2f')}</ScDesc>
       </div>
       <img alt="" {...{
-        src: SvgUrls.VMFA_ICON_GREY,
+        src: SVG_URLS.VMFA_ICON_GREY,
         width: 120
       }} />
     </ScItem>

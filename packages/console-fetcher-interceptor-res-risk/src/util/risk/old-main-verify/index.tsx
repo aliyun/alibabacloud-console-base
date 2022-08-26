@@ -21,7 +21,7 @@ import {
   ESlsResultType
 } from '../../../enum';
 import {
-  defaultDialogSize
+  DEFAUT_DIALOG_SIZE
 } from '../../../const';
 import intl from '../../../intl';
 import {
@@ -29,7 +29,7 @@ import {
 } from '../../intl-verify';
 import {
   slsOldMainRisk
-} from '../../sls';
+} from '../../../sls';
 import Content from '../../../container/old-main-or-mpk-verify-content';
 
 interface IParams {
@@ -126,7 +126,7 @@ export default function riskOldMainVerify({
   const buttonCancel = intl('op:cancel');
   
   return open<unknown, IDialogDataOldMainAccountRisk>({
-    size: defaultDialogSize,
+    size: DEFAUT_DIALOG_SIZE,
     title: intlVerifyTitle(riskInfo.type),
     data: {
       request,

@@ -6,9 +6,9 @@ import {
   IWindvaneError0
 } from '../../types';
 import {
+  ALIYUN_APP_VERSION,
   WINDVANE_ERROR_CODE
 } from '../../const';
-import aliyunAppVersion from '../aliyun-app-version';
 
 import WindVane from './get-windvane';
 import createWindvaneError from './create-windvane-error';
@@ -22,7 +22,7 @@ const APP_MIN_VERSION = /android/i.test(navigator.userAgent) ? '4.21.0' : '4.20.
  * 调用 Aliyun 应用的 APP，封装错误为真正的错误对象
  */
 export default function _callAliyun<T = void, P = void>(method: string, params?: P): Promise<T> {
-  if (!WindVane || compare(aliyunAppVersion, APP_MIN_VERSION, '<=')) {
+  if (!WindVane || compare(ALIYUN_APP_VERSION, APP_MIN_VERSION, '<=')) {
     throw createWindvaneError({
       ret: WINDVANE_ERROR_CODE.NO_HANDLER
     });

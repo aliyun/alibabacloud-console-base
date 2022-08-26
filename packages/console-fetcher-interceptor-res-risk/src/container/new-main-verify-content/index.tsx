@@ -6,6 +6,9 @@ import React, {
 import styled from 'styled-components';
 
 import {
+  getWindow
+} from '@alicloud/sandbox-escape';
+import {
   FetcherError,
   canHaveBody,
   mergeConfig
@@ -25,10 +28,12 @@ import {
   IDialogDataNewMainAccountRisk
 } from '../../types';
 import intl from '../../intl';
-import isValidJson from '../../util/is-valid-json';
+import {
+  isValidJson
+} from '../../util';
 import {
   slsNewMainRisk
-} from '../../util/sls';
+} from '../../sls';
 
 interface IJson {
   type?: string;
@@ -39,6 +44,8 @@ const ScError = styled.div`
   margin-top: 8px;
   ${mixinTextError}
 `;
+
+const win = getWindow();
 
 export default function Content(): JSX.Element {
   const {
@@ -136,10 +143,10 @@ export default function Content(): JSX.Element {
       });
     }
     
-    window.addEventListener('message', getValidateToken);
+    win.addEventListener('message', getValidateToken);
     
     return () => {
-      window.removeEventListener('message', getValidateToken);
+      win.removeEventListener('message', getValidateToken);
     };
   }, [mainRiskInfo, updateData, getValidateToken]);
   

@@ -14,20 +14,20 @@ import {
   IPayloadSkipBindMfa
 } from '../../../../types';
 import {
+  TICKET_TYPE
+} from '../../../../const';
+import {
   ESlsResultType
 } from '../../../../enum';
 import intl from '../../../../intl';
-import getTicketType from '../../../get-ticket-type';
 import {
   slsSkipBindMfa,
   slsSubRisk
-} from '../../../sls';
+} from '../../../../sls';
 
 import {
   IParams
 } from './_type';
-
-const ticketType = getTicketType();
 
 interface IProps extends Pick<IParams, 'fetcherConfig' | 'riskConfig'> {
   request: FetcherFnRequest;
@@ -57,7 +57,7 @@ export default function generateSkipBindMfaButton({
 
       const skipBindMfaPayload: IPayloadSkipBindMfa = {
         AccountId: accountId,
-        TicketType: ticketType,
+        TicketType: TICKET_TYPE,
         Ext: JSON.stringify({
           codeType
         })

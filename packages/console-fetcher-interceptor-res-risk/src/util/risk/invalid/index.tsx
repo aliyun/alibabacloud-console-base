@@ -7,9 +7,9 @@ import {
 
 import {
   slsRiskInvalid
-} from '../../sls';
+} from '../../../sls';
 import {
-  defaultDialogSize
+  DEFAUT_DIALOG_SIZE
 } from '../../../const';
 import intl from '../../../intl';
 
@@ -27,7 +27,7 @@ export default function riskInvalid({
   slsRiskInvalid();
 
   return open<void>({
-    size: defaultDialogSize,
+    size: DEFAUT_DIALOG_SIZE,
     title: newSubRisk ? intl('title:sub_default') : intl('op:risk_invalid'),
     content: <AltWrap {...{
       type: 'alert',

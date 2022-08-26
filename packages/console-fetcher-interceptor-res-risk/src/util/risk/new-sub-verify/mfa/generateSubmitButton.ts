@@ -25,7 +25,7 @@ import {
   slsSubRiskAuthMfa,
   slsSubRiskBindMfa,
   slsSubRiskGetMfaInfo
-} from '../../../sls';
+} from '../../../../sls';
 import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
 import getAuthMfaInfo from '../../../get-auth-mfa-info';
 

@@ -25,7 +25,7 @@ import intl from '../../../intl';
 import {
   slsMpkSendCode,
   slsOldMainRiskSendCode
-} from '../../../util/sls';
+} from '../../../sls';
 
 interface ISendCodeReturn { // 发送验证码的返回，需要我们在再次发请求的时候带入
   requestId: string;

@@ -2,7 +2,7 @@ import sls from '@alicloud/console-base-log-sls';
 
 import {
   ESlsTopic
-} from '../../enum';
+} from '../enum';
 
 import {
   ISlsCommonProps
