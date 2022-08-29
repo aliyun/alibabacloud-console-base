@@ -15,16 +15,19 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  EAccountType,
-  ESlsResultType
-} from '../../../enum';
-import {
   IFetcherInterceptorConfig,
   ITokenVerifyData,
   IMpkRisk,
   IMpkRiskInfo,
   IPayloadVerifyMpk
 } from '../../../types';
+import {
+  EAccountType,
+  ESlsResultType
+} from '../../../enum';
+import {
+  TICKET_TYPE
+} from '../../../const';
 import intl from '../../../intl';
 import {
   intlVerifyTitle
@@ -32,11 +35,8 @@ import {
 import {
   slsVerifyMpk,
   slsMpkRisk
-} from '../../sls';
-import getTicketType from '../../get-ticket-type';
+} from '../../../sls';
 import Content from '../../../container/old-main-or-mpk-verify-content';
-
-const ticketType = getTicketType();
 
 interface IParams {
   request: FetcherFnRequest;
@@ -84,7 +84,7 @@ export default function riskMpkVerify({
         AuthCode: code,
         AccountId: riskInfo.accountId,
         VerifyType: riskInfo.verifyType,
-        TicketType: ticketType,
+        TicketType: TICKET_TYPE,
         IdType: EAccountType.MAIN,
         RiskRequestId: requestId,
         Ext: JSON.stringify({

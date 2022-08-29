@@ -34,7 +34,7 @@ import {
 } from './error';
 import {
   slsRiskStartUp
-} from './sls';
+} from '../sls';
 
 /**
  * 根据业务错误 code 为基础的 fetcher 添加风控流程（老版本主账号风控）

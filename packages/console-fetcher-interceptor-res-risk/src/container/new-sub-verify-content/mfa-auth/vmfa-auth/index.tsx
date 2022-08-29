@@ -24,7 +24,9 @@ import {
   IDialogDataNewSubAccountRisk
 } from '../../../../types';
 import {
-  SvgUrls,
+  SVG_URLS,
+  TICKET_TYPE,
+  ALIYUN_APP_VERSION,
   WINDVANE_ERROR_CODE,
   ALIYUN_APP_DOWNLOAD_URL
 } from '../../../../const';
@@ -33,13 +35,11 @@ import Form from '../../../../rc/form';
 import XIcon from '../../../../rc/x-icon';
 import Message from '../../_components/message';
 import VmfaInput from '../../_components/vmfa-input';
-import aliyunAppVersion from '../../../../util/aliyun-app-version';
-import getTicketType from '../../../../util/get-ticket-type';
-import getInputError from '../../../../util/get-input-error';
 import {
+  getInputError,
   windVaneAvailable,
   getVmfaCodeFromWindVane
-} from '../../../../util/windvane';
+} from '../../../../util';
 
 const ScFormWrapper = styled.div`
   position: relative;
@@ -54,8 +54,6 @@ const ScImg = styled.img`
   right: -16px;
   bottom: -16px;
 `;
-
-const ticketType = getTicketType();
 
 export default function VmfaAuth(): JSX.Element {
   const {
@@ -121,7 +119,7 @@ export default function VmfaAuth(): JSX.Element {
   useEffect(() => {
     const verifyMfaPayload: IPayloadVerifyVmfa = {
       AccountId: accountId,
-      TicketType: ticketType,
+      TicketType: TICKET_TYPE,
       VerifyType: EPayloadVerifyType.MFA,
       Ext: JSON.stringify({
         codeType
@@ -151,12 +149,12 @@ export default function VmfaAuth(): JSX.Element {
       <Form {...{
         items: [{
           label: intl('attr:vmfa_auth_userName'),
-          labelWidth: aliyunAppVersion ? 70 : 100,
+          labelWidth: ALIYUN_APP_VERSION ? 70 : 100,
           labelTextAlign: 'center',
           content: <strong>{userPrincipalName}</strong>
         }, {
           label: intl('attr:vmfa_auth_code'),
-          labelWidth: aliyunAppVersion ? 70 : 100,
+          labelWidth: ALIYUN_APP_VERSION ? 70 : 100,
           labelTextAlign: 'center',
           content: <VmfaInput {...{
             value: stateVmfaCode,
@@ -172,7 +170,7 @@ export default function VmfaAuth(): JSX.Element {
       {windVaneGetVmfaApiAvailable ? null : <ScImg {...{
         alt: '',
         width: 80,
-        src: SvgUrls.VMFA_ICON_WHITE
+        src: SVG_URLS.VMFA_ICON_WHITE
       }} />}
     </ScFormWrapper>
   </>;

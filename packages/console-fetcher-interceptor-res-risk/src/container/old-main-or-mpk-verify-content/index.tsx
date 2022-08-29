@@ -22,6 +22,7 @@ import {
   IDialogDataOldMainAccountRisk
 } from '../../types';
 import {
+  ALIYUN_APP_VERSION,
   WINDVANE_ERROR_CODE,
   ALIYUN_APP_DOWNLOAD_URL
 } from '../../const';
@@ -30,15 +31,12 @@ import {
 } from '../../enum';
 import intl from '../../intl';
 import Form from '../../rc/form';
-import aliyunAppVersion from '../../util/aliyun-app-version';
 import {
   intlVerifyLabel,
-  intlVerifySetting
-} from '../../util/intl-verify';
-import {
+  intlVerifySetting,
   windVaneAvailable,
   getVmfaCodeFromWindVane
-} from '../../util/windvane';
+} from '../../util';
 
 import Generate from './generate';
 
@@ -76,7 +74,7 @@ export default function Content(): JSX.Element {
   const [stateInputFocused, setStateInputFocused] = useState<boolean>(false);
   const [stateWindvaneNoHandler, setStateWindvaneNoHandler] = useState<boolean>(false);
 
-  const labelWidth = aliyunAppVersion ? 125 : 160; // APP 内的 label 长度要短
+  const labelWidth = ALIYUN_APP_VERSION ? 125 : 160; // APP 内的 label 长度要短
   const handleInputChange = useCallback(value => {
     const trimmedValue = value.trim();
 
