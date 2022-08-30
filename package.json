@@ -7,21 +7,22 @@
   "devDependencies": {
     "@alicloud/eslint-config": "^1.12.1",
     "@alicloud/stylelint-config": "^1.2.0",
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@types/react": "^17.0.48",
     "@types/react-dom": "^17.0.17",
     "@types/styled-components": "^5.1.26",
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
     "husky": "^8.0.1",
     "lerna": "^5.4.3",
     "lint-staged": "^13.0.3",
     "markdownlint-cli2": "^0.5.1",
-    "npm-check-updates": "^16.0.5",
+    "npm-check-updates": "^16.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.5",
-    "stylelint": "^13.13.1"
+    "stylelint": "^13.13.1",
+    "ts-node": "^10.9.1"
   },
   "resolutions": {
     "@types/react": "^17.0.48",

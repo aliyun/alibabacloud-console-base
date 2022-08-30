@@ -30,7 +30,7 @@
     "@alicloud/fetcher-demo-helpers": "^1.4.0",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   },
   "dependencies": {
     "unfetch": "^4.2.0"
