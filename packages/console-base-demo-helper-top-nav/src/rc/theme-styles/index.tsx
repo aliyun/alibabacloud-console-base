@@ -2,14 +2,9 @@ import React, {
   useState,
   useCallback
 } from 'react';
-import {
-  createGlobalStyle
-} from 'styled-components';
 
 import {
-  mixinTypoFontBase
-} from '@alicloud/console-base-theme';
-import {
+  MinimalNormalize,
   RainbowText
 } from '@alicloud/demo-rc-elements';
 import {
@@ -18,25 +13,6 @@ import {
 
 import intl from '../../intl';
 import TopNavRightItem from '../top-nav-right-item';
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    font-size: 12px;
-    ${mixinTypoFontBase}
-  }
-  
-  a:link {
-    color: #369;
-    
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  
-  a:visited {
-    color: #63f;
-  }
-`;
 
 export default function ThemeStyles(): JSX.Element {
   const [stateOn, setStateOn] = useState<boolean>(true);
@@ -51,8 +27,6 @@ export default function ThemeStyles(): JSX.Element {
       }} />,
       tip: intl(stateOn ? 'theme:message:styles_clear!html!lines' : 'theme:message:styles!html!lines')
     }} />
-    {stateOn ? <>
-      <GlobalStyle />
-    </> : null}
+    {stateOn ? <MinimalNormalize /> : null}
   </>;
 }

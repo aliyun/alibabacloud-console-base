@@ -30,6 +30,6 @@ export default createGlobalStyle`
   }
   
   a:visited {
-    color: #63f;
+    color: #b8860b;
   }
 `;

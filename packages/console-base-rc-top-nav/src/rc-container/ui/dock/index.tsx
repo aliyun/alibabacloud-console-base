@@ -1,6 +1,8 @@
 import React from 'react';
 
-import DockButton from '../../../rc/dock-button';
+import {
+  DockButton
+} from '../../../rc';
 import {
   useDockButtonProps
 } from '../../../model';

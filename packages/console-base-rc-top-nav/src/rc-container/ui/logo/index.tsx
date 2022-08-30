@@ -8,7 +8,9 @@ import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 
-import IconAliyun from '../../../rc/icon-aliyun';
+import {
+  IconAliyun
+} from '../../../rc';
 import {
   useProps
 } from '../../../model';

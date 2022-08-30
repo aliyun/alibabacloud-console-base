@@ -23,33 +23,31 @@ export default function useMenus(): IModelPropsButton[] {
   } = useModelProps();
   const handleMenuDropdownVisibleChange = useHandleMenuDropdownVisibleChange();
   
-  return useMemo((): IModelPropsButton[] => {
-    const menuHelp = buildMenuHelp(help);
-    const menuLang = buildMenuLanguage(language);
-    const menuAccount = buildMenuAccount(account);
-  
-    return [
-      ...menus || [],
-      menuHelp,
-      menuLang,
-      menuAccount
-    ].filter(v => v).map(v => {
-      const {
-        key,
-        dropdown
-      } = v!;
-      
-      if (dropdown && key) {
-        return {
-          ...v,
-          dropdown: {
-            ...dropdown,
-            onVisibleChange: visible => handleMenuDropdownVisibleChange(visible, dropdown.onVisibleChange, key)
-          }
-        };
-      }
-      
-      return v;
-    }) as IModelPropsButton[];
-  }, [help, language, account, menus, handleMenuDropdownVisibleChange]);
+  return useMemo((): IModelPropsButton[] => [
+    ...menus || [],
+    buildMenuHelp(help),
+    buildMenuLanguage(language),
+    buildMenuAccount(account)
+  ].reduce((result: IModelPropsButton[], v) => {
+    if (!v) {
+      return result;
+    }
+    
+    const {
+      key,
+      dropdown
+    } = v;
+    
+    if (dropdown && key) {
+      result.push({
+        ...v,
+        dropdown: {
+          ...dropdown,
+          onVisibleChange: visible => handleMenuDropdownVisibleChange(visible, dropdown.onVisibleChange, key)
+        }
+      });
+    }
+    
+    return result;
+  }, []), [help, language, account, menus, handleMenuDropdownVisibleChange]);
 }

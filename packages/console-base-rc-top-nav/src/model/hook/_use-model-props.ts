@@ -12,7 +12,7 @@ import {
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IModelProps, 'fixed' | 'menus' | 'account'>;
+type TModelProps = RequiredSelected<IModelProps, 'fixed' | 'menus'>;
 
 export default function useModelProps(): TModelProps {
   const {
@@ -23,7 +23,7 @@ export default function useModelProps(): TModelProps {
     const {
       menus = [],
       fixed = true,
-      account = {},
+      account,
       ...rest
     } = props;
     

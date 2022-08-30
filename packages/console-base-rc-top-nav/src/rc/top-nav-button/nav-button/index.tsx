@@ -4,12 +4,18 @@ import styled, {
 } from 'styled-components';
 
 import {
-  SIZE
+  SIZE,
+  mixinBorderTertiaryLeft,
+  mixinBgSecondary
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonProps,
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
+
+import {
+  CLASS_ACCOUNT_BUTTON
+} from '../../../const';
 
 interface IProps extends Omit<ButtonProps, 'theme'> {
   responsive?: boolean;
@@ -29,6 +35,15 @@ const ScNavButton = styled(Button)<IProps>`
       padding: 0 6px;
     }
   ` : null)};
+  
+  /* stylelint-disable selector-class-pattern */
+  &.${CLASS_ACCOUNT_BUTTON} {
+    ${mixinBorderTertiaryLeft}
+    
+    &:hover {
+      ${mixinBgSecondary}
+    }
+  }
   
   img {
     display: inline;

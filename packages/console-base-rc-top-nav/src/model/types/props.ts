@@ -69,8 +69,10 @@ export interface IModelPropsLanguage {
 }
 
 export interface IModelPropsAccount extends IModelPropsButton {
-  defaultAvatar?: string; // 默认「默认头像」是 ET 大脑
   avatar?: string; // 当前用户头像
+  defaultAvatar?: string; // 默认「默认头像」是 ET 大脑
+  infoPrimary?: string; // 头像左边展示的主要信息
+  infoSecondary?: string; // 头像左边展示的次要信息
 }
 
 export interface IModelProps extends HTMLAttributes<HTMLDivElement> {

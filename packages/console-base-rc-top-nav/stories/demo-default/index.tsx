@@ -51,14 +51,12 @@ export default function DemoDefault(): JSX.Element {
     <ThemeSwitcher />
     <PkgInfo />
     {stateRemoved ? null : <TopNav {...{
-      // id: 'gave-the-top-nav-an-id-by-boshit',
       dock: {
         active: stateActive,
         onActiveChange: handleActiveChange // 只有含 onXx 或 href 才可以展示
       },
       logo: {
         href: '/'
-        // label: <img src="https://img.alicdn.com/imgextra/i4/2424298091/O1CN01WdxL9p29djBt2X6a5_!!2424298091.jpg" alt="" />
       },
       menus: [{
         key: 'f-y',
@@ -89,7 +87,17 @@ export default function DemoDefault(): JSX.Element {
           countAsDot: true
         },
         dropdown: {
-          header: '站内消息'
+          header: '站内消息',
+          headerBg: true,
+          headerPadding: 'all',
+          body: <>
+            <div>消息 111</div>
+            <div>消息 2222</div>
+            <div>消息 33333</div>
+            <div>消息 444444</div>
+            <div>消息 5555555</div>
+          </>,
+          bodyPadding: 'all'
         }
       }, {
         key: 'cart',
@@ -138,15 +146,27 @@ export default function DemoDefault(): JSX.Element {
       },
       account: {
         href: '/account',
-        avatar: 'https://img.alicdn.com/imgextra/i3/2228361831/O1CN01E9EAfp1POdoYo8idF_!!2228361831.jpg',
+        infoPrimary: 'boshit@jianchun.wang',
+        infoSecondary: 'VIP 用户',
+        // avatar: 'https://img.alicdn.com/imgextra/i3/2228361831/O1CN01E9EAfp1POdoYo8idF_!!2228361831.jpg',
         dropdown: {
           minWidth: 300,
           maxWidth: 480,
-          header: 'header',
-          body: <img alt="" src="https://img.alicdn.com/imgextra/i4/3265150369/O1CN01ePEY7G1Eb2lftCrqg_!!3265150369.jpg" style={{
-            maxWidth: '100%'
-          }} />,
-          footer: 'footer'
+          header: <>
+            header - 非必需
+          </>,
+          headerBg: true,
+          headerDivider: true,
+          headerPadding: 'all',
+          body: <div>
+            body
+          </div>,
+          bodyPadding: 'all',
+          footer: <>
+            footer - 非必需
+          </>,
+          footerDivider: true,
+          footerPadding: 'all'
         }
       },
       customLeft: <>

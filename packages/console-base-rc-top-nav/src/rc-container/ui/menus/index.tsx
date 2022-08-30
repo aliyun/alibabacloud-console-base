@@ -2,7 +2,9 @@ import React from 'react';
 
 import Flex from '@alicloud/console-base-rc-flex';
 
-import TopNavButton from '../../../rc/top-nav-button';
+import {
+  TopNavButton
+} from '../../../rc';
 import {
   useMenus
 } from '../../../model';
@@ -14,11 +16,9 @@ export default function Menus(): JSX.Element {
     {menus.map(({
       key,
       ...props
-    }, i): JSX.Element => {
-      return <TopNavButton key={key || i} {...{
-        spm: key || '',
-        ...props
-      }} />;
-    })}
+    }, i): JSX.Element => <TopNavButton key={key || i} {...{
+      spm: key || '',
+      ...props
+    }} />)}
   </Flex>;
 }
