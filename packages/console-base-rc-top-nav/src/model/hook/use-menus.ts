@@ -46,6 +46,8 @@ export default function useMenus(): IModelPropsButton[] {
           onVisibleChange: visible => handleMenuDropdownVisibleChange(visible, dropdown.onVisibleChange, key)
         }
       });
+    } else {
+      result.push(v);
     }
     
     return result;

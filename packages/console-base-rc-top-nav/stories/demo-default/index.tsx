@@ -59,7 +59,16 @@ export default function DemoDefault(): JSX.Element {
         href: '/'
       },
       menus: [{
-        key: 'f-y',
+        key: 'menu-useless',
+        // force: true
+        // href: 'xx',
+        // onClick() {},
+        // dropdown: {
+        //   body: '12345'
+        // },
+        label: '没有 href / onClick / dropdown / force = 被忽略'
+      }, {
+        key: 'menu-f-y',
         label: '费用',
         href: '/f-y',
         dropdown: {
@@ -72,15 +81,15 @@ export default function DemoDefault(): JSX.Element {
           }]
         }
       }, {
-        key: 'g-d',
+        key: 'menu-g-d',
         label: '工单',
         href: '/g-d'
       }, {
-        key: 'b-a',
+        key: 'menu-b-a',
         label: '备案',
         href: '/b-a'
       }, {
-        key: 'news',
+        key: 'menu-news',
         label: {
           icon: 'notice',
           count: 123,
@@ -100,14 +109,14 @@ export default function DemoDefault(): JSX.Element {
           bodyPadding: 'all'
         }
       }, {
-        key: 'cart',
+        key: 'menu-cart',
         label: {
           icon: 'cart',
           count: 123
         },
         href: '/cart'
       }, {
-        key: 'theme',
+        key: 'menu-theme',
         label: {
           icon: 'lights-on'
         },
