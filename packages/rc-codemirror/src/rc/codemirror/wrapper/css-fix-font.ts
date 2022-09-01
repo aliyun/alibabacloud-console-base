@@ -5,7 +5,7 @@ import {
 import {
   FONT_SIZE,
   FONT_LINE_HEIGHT
-} from '../../../../const';
+} from '../../../const';
 
 export default css`
   /* stylelint-disable selector-class-pattern */

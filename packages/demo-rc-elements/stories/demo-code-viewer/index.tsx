@@ -6,7 +6,8 @@ import {
   CodeViewerJson,
   CodeViewerJs,
   CodeViewerTs,
-  CodeViewerLess
+  CodeViewerLess,
+  CodeViewerMarkdown
 } from '../../src';
 import Shared from '../_shared';
 
@@ -130,6 +131,21 @@ const CODE_LESS = `/* Based on https://github.com/dempfi/ayu */
   color: white !important;
 }`;
 
+const CODE_MARKDOWN = `Markdown
+===
+
+## 标题
+
+段落
+
+* 列表 1
+* 列表 2
+
+![图片](//fdsafdas.com/jj)
+
+[](//fdsafdas.com/jj)
+`;
+
 export default function DemoCodeViewer(): JSX.Element {
   return <>
     <Shared />
@@ -143,5 +159,7 @@ export default function DemoCodeViewer(): JSX.Element {
     <CodeViewerTs>{CODE_TS}</CodeViewerTs>
     <H1>CSS / LESS</H1>
     <CodeViewerLess>{CODE_LESS}</CodeViewerLess>
+    <H1>Markdwon</H1>
+    <CodeViewerMarkdown>{CODE_MARKDOWN}</CodeViewerMarkdown>
   </>;
 }

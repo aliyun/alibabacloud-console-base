@@ -33,6 +33,7 @@ export { default as CodeViewerJs } from './code-viewer-js';
 export { default as CodeViewerJson } from './code-viewer-json';
 export { default as CodeViewerTs } from './code-viewer-ts';
 export { default as CodeViewerLess } from './code-viewer-less';
+export { default as CodeViewerMarkdown } from './code-viewer-markdown';
 export { default as PackageInfo } from './package-info';
 
 /* 组件测试 */

@@ -14,6 +14,7 @@ export default function determineMimeType(type: string): string | undefined {
     case 'css':
     case 'less':
       return 'text/x-less';
+    case 'md':
     case 'markdown':
       return 'text/markdown';
     default:

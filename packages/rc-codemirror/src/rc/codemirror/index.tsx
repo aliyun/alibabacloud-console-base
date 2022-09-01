@@ -14,8 +14,10 @@ import {
   IFnConvertValue,
   IPropsCodeMirror
 } from '../../types';
-import createEditor from '../../util/create-editor';
-import computeScrollHeight from '../../util/compute-scroll-height';
+import {
+  createEditor,
+  computeScrollHeight
+} from '../../util';
 
 import Wrapper from './wrapper';
 
