@@ -4,12 +4,15 @@ import styled from 'styled-components';
 import {
   IAlertProps
 } from '../../types';
+import {
+  CSS_BLOCK_LEVEL_ELEMENT
+} from '../../const';
 
 const ScAlert = styled.div`
   position: relative;
-  margin: 8px 0;
   padding: 10px 12px 10px 36px;
   background-color: rgba(0, 0, 0, 0.033);
+  ${CSS_BLOCK_LEVEL_ELEMENT}
   
   header {
     margin-bottom: 4px;

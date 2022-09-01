@@ -38,6 +38,7 @@ const ScNavButton = styled(Button)<IProps>`
   
   /* stylelint-disable selector-class-pattern */
   &.${CLASS_ACCOUNT_BUTTON} {
+    cursor: default;
     ${mixinBorderTertiaryLeft}
     
     &:hover {

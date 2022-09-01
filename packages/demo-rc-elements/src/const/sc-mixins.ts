@@ -72,6 +72,9 @@ export const CSS_FONT_FAMILY = css`
   font-family: 'PingFang SC', 'Hiragino Sans GB', Helvetica, Arial, sans-serif;
 `;
 
+/**
+ * 对 block 元素极其内部的 inline 元素增加统一的样式
+ */
 export const CSS_BLOCK_LEVEL_ELEMENT = css`
   margin: 1em 0 0.5em 0;
   line-height: 1.5;

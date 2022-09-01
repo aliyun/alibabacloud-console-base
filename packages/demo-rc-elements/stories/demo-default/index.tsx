@@ -5,7 +5,6 @@ import {
   H2,
   H3,
   H4,
-  P,
   Hr
 } from '../../src';
 import Shared from '../_shared';
@@ -19,6 +18,5 @@ export default function DemoDefault(): JSX.Element {
     <H4>4 级标题</H4>
     <Hr />
     <H3>P / Pre / Hr / Button / InputText / InputTextArea</H3>
-    <P>一个 P，这里的 <strong>strong</strong>、<code>code</code>、<kbd>kbd</kbd>、<em>em</em> 会有些样式。</P>
   </>;
 }

@@ -5,11 +5,9 @@ import React, {
 
 import {
   H1,
-  H2,
   Button,
   PreJson,
-  PrePromise,
-  List
+  PrePromise
 } from '../../src';
 import Shared from '../_shared';
 
@@ -42,24 +40,9 @@ export default function DemoExtended(): JSX.Element {
   
   return <>
     <Shared />
-    <H1>非原生元素</H1>
-    <H2>便于书写</H2>
-    <List>
-      <>丽丽一上床</>
-      <>意思有空日</>
-      <>优化十八禁</>
-      <>充分草于是</>
-      <span>这里的 <strong>strong</strong>、<code>code</code>、<kbd>kbd</kbd>、<em>em</em> 会有些样式</span>
-    </List>
-    <List ordered>
-      <>丽丽一上床</>
-      <>意思有空日</>
-      <>优化十八禁</>
-      <>充分草于是</>
-      <span>这里的 <strong>strong</strong>、<code>code</code>、<kbd>kbd</kbd>、<em>em</em> 会有些样式</span>
-    </List>
-    <H2>PreJson / PrePromise</H2>
+    <H1>PreJson</H1>
     <PreJson o={TEST_JSON} />
+    <H1>PrePromise</H1>
     <Button onClick={handleRandomPromise}>random promise</Button>
     <PrePromise promise={statePromise} />
   </>;

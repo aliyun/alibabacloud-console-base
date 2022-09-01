@@ -32,10 +32,12 @@ const ScInfo = styled.div`
   max-width: 100px;
 `;
 const ScInfoPrimary = styled.div`
+  line-height: ${SIZE_AVATAR * 0.5 + 6}px;
   ${mixinTypoEllipsis}
   ${mixinTextPrimary}
 `;
 const ScInfoSecondary = styled.div`
+  font-size: 0.9em;
   ${mixinTypoEllipsis}
   ${mixinTextTertiary}
 `;
