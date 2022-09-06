@@ -157,7 +157,7 @@ export default function DemoDefault(): JSX.Element {
         href: '/account',
         infoPrimary: 'boshit@jianchun.wang',
         infoSecondary: 'VIP 用户',
-        // avatar: 'https://img.alicdn.com/imgextra/i3/2228361831/O1CN01E9EAfp1POdoYo8idF_!!2228361831.jpg',
+        avatar: 'https://lh3.googleusercontent.com/ogw/AOh-ky0pQwAomFprqff9aA9y52ngd1tTi-9h2Y7qGJpDO8k=s64-c-mo',
         dropdown: {
           minWidth: 300,
           maxWidth: 480,

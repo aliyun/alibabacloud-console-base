@@ -29,7 +29,7 @@ const ScAccountDisplay = styled(Flex)`
 const ScInfo = styled.div`
   flex: 1;
   margin-right: 8px;
-  max-width: 100px;
+  max-width: 80px;
 `;
 const ScInfoPrimary = styled.div`
   line-height: ${SIZE_AVATAR * 0.5 + 6}px;
