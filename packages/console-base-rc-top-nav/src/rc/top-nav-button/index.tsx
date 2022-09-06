@@ -97,7 +97,7 @@ export default function TopNavButton({
   
   return wrapWithBeacon(<Dropdown {...{
     align: 'right',
-    offset: [0, -10],
+    offset: [0, -4],
     bodyPadding: itemsInFooter.length ? 'top' : undefined,
     footerDivider: footerDivider ?? itemsInFooter.length > 0,
     ...dropdownProps,

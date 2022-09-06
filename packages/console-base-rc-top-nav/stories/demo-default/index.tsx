@@ -6,7 +6,8 @@ import styled from 'styled-components';
 
 import {
   H1,
-  Button as ButtonForDemo
+  Button as ButtonForDemo,
+  InputText
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
@@ -36,6 +37,8 @@ function onMenuDropdown(key: string): void {
 export default function DemoDefault(): JSX.Element {
   const [stateRemoved, setStateRemoved] = useState<boolean>(false);
   const [stateActive, setStateActive] = useState<boolean>(false);
+  const [stateAccountInfoPrimary, setStateAccountInfoPrimary] = useState('boshit@jianchun.wang');
+  const [stateAccountInfoSecondary, setStateAccountInfoSecondary] = useState('VIP 用户');
   
   const handleToggleRemoved = useCallback(() => {
     setStateRemoved(!stateRemoved);
@@ -155,8 +158,8 @@ export default function DemoDefault(): JSX.Element {
       },
       account: {
         href: '/account',
-        infoPrimary: 'boshit@jianchun.wang',
-        infoSecondary: 'VIP 用户',
+        infoPrimary: stateAccountInfoPrimary,
+        infoSecondary: stateAccountInfoSecondary,
         avatar: 'https://lh3.googleusercontent.com/ogw/AOh-ky0pQwAomFprqff9aA9y52ngd1tTi-9h2Y7qGJpDO8k=s64-c-mo',
         dropdown: {
           minWidth: 300,
@@ -203,6 +206,15 @@ export default function DemoDefault(): JSX.Element {
       onMenuDropdown
     }} />}
     <H1>吊顶</H1>
+    AccountInfo = <InputText {...{
+      value: stateAccountInfoPrimary,
+      onChange: setStateAccountInfoPrimary
+    }} />
+    <InputText {...{
+      value: stateAccountInfoSecondary,
+      onChange: setStateAccountInfoSecondary
+    }} />
+    <br />
     <ButtonForDemo onClick={handleToggleRemoved}>移除 / 加入</ButtonForDemo>
   </>;
 }

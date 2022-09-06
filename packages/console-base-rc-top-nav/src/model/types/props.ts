@@ -73,6 +73,8 @@ export interface IModelPropsAccount extends IModelPropsButton {
   defaultAvatar?: string; // 默认「默认头像」是 ET 大脑
   infoPrimary?: string; // 头像左边展示的主要信息
   infoSecondary?: string; // 头像左边展示的次要信息
+  infoWidthMin?: number; // 覆盖默认信息的最小宽度 40
+  infoWidthMax?: number; // 覆盖默认信息的最大宽度 80
 }
 
 export interface IModelProps extends HTMLAttributes<HTMLDivElement> {

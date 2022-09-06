@@ -22,6 +22,8 @@ export default function buildMenuAccount(account: ModelPropsAccount | null = nul
     defaultAvatar,
     infoPrimary,
     infoSecondary,
+    infoWidthMin,
+    infoWidthMax,
     href,
     ...restProps
   } = account;
@@ -36,6 +38,8 @@ export default function buildMenuAccount(account: ModelPropsAccount | null = nul
       avatar: avatar || defaultAvatar || DEFAULT_ACCOUNT_AVATAR,
       infoPrimary,
       infoSecondary,
+      infoWidthMin,
+      infoWidthMax,
       href
     }} />
   };

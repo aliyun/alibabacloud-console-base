@@ -18,6 +18,8 @@ interface IProps {
   avatar: string;
   infoPrimary?: string;
   infoSecondary?: string;
+  infoWidthMin?: number;
+  infoWidthMax?: number;
   href?: string;
 }
 
@@ -29,6 +31,7 @@ const ScAccountDisplay = styled(Flex)`
 const ScInfo = styled.div`
   flex: 1;
   margin-right: 8px;
+  min-width: 40px;
   max-width: 80px;
 `;
 const ScInfoPrimary = styled.div`
@@ -46,10 +49,15 @@ export default function AccountDisplay({
   avatar,
   infoPrimary,
   infoSecondary,
+  infoWidthMin,
+  infoWidthMax,
   href
 }: IProps): JSX.Element {
   return <ScAccountDisplay align="center">
-    <ScInfo>
+    <ScInfo style={{
+      minWidth: infoWidthMin,
+      maxWidth: infoWidthMax
+    }}>
       <ScInfoPrimary title={infoPrimary}>{infoPrimary}</ScInfoPrimary>
       <ScInfoSecondary>{infoSecondary}</ScInfoSecondary>
     </ScInfo>
