@@ -22,8 +22,8 @@ interface IScProps {
 }
 
 const ScItem = styled.div<IScProps>`
-  ${props => props.extra}
   ${props => props.mixin}
+  ${props => props.extra}
 `;
 
 export default function MixinElements({
@@ -40,6 +40,10 @@ export default function MixinElements({
   }, {}), [reg, regNot]);
   
   return <>
-    {_map(THE_MIXIN_MAP, (v, k) => <ScItem extra={extra} key={k} mixin={v}>{k}</ScItem>)}
+    {_map(THE_MIXIN_MAP, (v, k) => <ScItem key={k} extra={extra} mixin={v}>{k}</ScItem>)}
   </>;
 }
+
+export {
+  ScItem as MixinElement
+};

@@ -183,7 +183,7 @@ export const mixinTypoElementsList = css`
   ul,
   ol,
   dl {
-    margin: 1em 0 1em 1em;
+    margin: 1em 0 1em 2em;
     padding: 0;
     line-height: 1.5 !important;
     font-size: inherit;
@@ -204,7 +204,7 @@ export const mixinTypoElementsList = css`
   }
   
   ul {
-    list-style: disc inside;
+    list-style: disc outside;
     
     ul {
       list-style-type: circle;
@@ -216,7 +216,7 @@ export const mixinTypoElementsList = css`
   }
   
   ol {
-    list-style: decimal inside;
+    list-style: decimal outside;
     
     ol {
       list-style-type: lower-roman;
