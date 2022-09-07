@@ -8,6 +8,7 @@ reject:
 - 'codemirror' # TODO 升级 5 → 6
 - 'react' # 先不升级 18
 - 'react-dom' # 先不升级 18
+- 'eslint' # 暂时停留在 8.22.0 23 在 webstorm 下报错 
 - 'stylelint' # 14 不行
 - 'stylelint-config-standard'
 - 'stylelint-order'

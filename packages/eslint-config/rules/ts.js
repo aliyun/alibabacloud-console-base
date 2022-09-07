@@ -2,7 +2,7 @@ module.exports = {
   /**
    * TS rules
    * 
-   * @link https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules
+   * @link https://typescript-eslint.io/rules
    * 
    * disable eslint base rules so that corresponding @typescript-eslint/xx rules can work without problem
    */
@@ -19,7 +19,7 @@ module.exports = {
    * 编码风格
    ******************************** */
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
+   * @link https://typescript-eslint.io/rules/indent
    */
   '@typescript-eslint/indent': ['error', 2, {
     SwitchCase: 1,
@@ -38,7 +38,7 @@ module.exports = {
     }
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/comma-dangle.md
+   * @link https://typescript-eslint.io/rules/comma-dangle
    */
   '@typescript-eslint/comma-dangle': ['error', {
     arrays: 'never',
@@ -52,17 +52,17 @@ module.exports = {
     tuples: 'never'
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-before-blocks.md
+   * @link https://typescript-eslint.io/rules/space-before-blocks
    */
   '@typescript-eslint/space-before-blocks': ['error'],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/space-infix-ops.md
+   * @link https://typescript-eslint.io/rules/space-infix-ops
    */
   '@typescript-eslint/space-infix-ops': ['error', {
     int32Hint: false
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/member-delimiter-style.md
+   * @link https://typescript-eslint.io/rules/member-delimiter-style
    */
   '@typescript-eslint/member-delimiter-style': ['error', {
     multiline: {
@@ -77,7 +77,7 @@ module.exports = {
   /**
    * eslint-config-ali 关了这个...
    *
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md
+   * @link https://typescript-eslint.io/rules/naming-convention
    */
   '@typescript-eslint/naming-convention': ['error', {
     selector: 'function',
@@ -131,17 +131,17 @@ module.exports = {
    * no- 系列
    ******************************** */
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md
+   * @link https://typescript-eslint.io/rules/no-shadow
    */
   '@typescript-eslint/no-shadow': ['error'],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
+   * @link https://typescript-eslint.io/rules/no-use-before-define
    */
   '@typescript-eslint/no-use-before-define': ['error', {
     ignoreTypeReferences: false
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
+   * @link https://typescript-eslint.io/rules/no-unused-vars
    */
   '@typescript-eslint/no-unused-vars': ['error', {
     vars: 'all',
@@ -149,7 +149,7 @@ module.exports = {
     ignoreRestSiblings: true
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extra-parens.md
+   * @link https://typescript-eslint.io/rules/no-extra-parens
    */
   '@typescript-eslint/no-extra-parens': ['error', 'all', {
     // 和 no-confusing-arrow 冲突 → https://eslint.org/docs/rules/no-extra-parens#enforceforarrowconditionals
@@ -158,41 +158,41 @@ module.exports = {
     nestedBinaryExpressions: false
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/explicit-member-accessibility.md
+   * @link https://typescript-eslint.io/rules/explicit-member-accessibility
    */
   '@typescript-eslint/explicit-member-accessibility': ['error', {
     accessibility: 'no-public'
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-empty-interface.md
+   * @link https://typescript-eslint.io/rules/no-empty-interface
    */
   '@typescript-eslint/no-empty-interface': ['error', {
     allowSingleExtends: true
   }],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-non-null-assertion.md
+   * @link https://typescript-eslint.io/rules/no-non-null-assertion
    */
   '@typescript-eslint/no-non-null-assertion': 'warn',
   /**
-   * https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md
+   * https://typescript-eslint.io/rules/no-unnecessary-condition
    */
   '@typescript-eslint/no-unnecessary-condition': 'warn',
   /* ********************************
    * prefer- 系列
    ******************************** */
   /**
-   * https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/prefer-optional-chain.md
+   * https://typescript-eslint.io/rules/prefer-optional-chain
    */
   '@typescript-eslint/prefer-optional-chain': 'error',
   /* ********************************
    * 其他
    ******************************** */
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/type-annotation-spacing.md
+   * @link https://typescript-eslint.io/rules/type-annotation-spacing
    */
   '@typescript-eslint/type-annotation-spacing': ['error'],
   /**
-   * @link https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/explicit-function-return-type.md
+   * @link https://typescript-eslint.io/rules/explicit-function-return-type
    */
   '@typescript-eslint/explicit-function-return-type': ['warn', {
     allowExpressions: true,
