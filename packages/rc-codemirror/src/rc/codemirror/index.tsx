@@ -15,8 +15,11 @@ import {
   IPropsCodeMirror
 } from '../../types';
 import {
-  createEditor,
-  computeScrollHeight
+  DEFAULT_LINE_MIN,
+  DEFAULT_LINE_MAX
+} from '../../const';
+import {
+  createEditor
 } from '../../util';
 
 import Wrapper from './wrapper';
@@ -42,8 +45,8 @@ export default function CodeMirror({
   conf,
   convertValueToDisplay,
   convertValueFromDisplay,
-  minLines = 6,
-  maxLines = 30,
+  linesMin = DEFAULT_LINE_MIN,
+  linesMax = DEFAULT_LINE_MAX,
   value = '',
   onChange,
   ...props
@@ -103,7 +106,7 @@ export default function CodeMirror({
   
   return <Wrapper ref={setStateEditorDom} {...{
     ...props,
-    minHeight: computeScrollHeight(minLines),
-    maxHeight: computeScrollHeight(maxLines)
+    linesMin,
+    linesMax
   }} />;
 }

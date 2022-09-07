@@ -19,11 +19,14 @@ export interface IFnConvertValue {
   (value: string): string;
 }
 
-export interface IPropsCodeMirror extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface ILinesMinMax {
+  linesMin?: number;
+  linesMax?: number;
+}
+
+export interface IPropsCodeMirror extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>, ILinesMinMax {
   conf?: ICodeMirrorConf;
   value?: string;
-  minLines?: number;
-  maxLines?: number;
   convertValueToDisplay?: IFnConvertValue; // 输入转换
   convertValueFromDisplay?: IFnConvertValue; // 输出转换
   onChange?(value: string): void;
