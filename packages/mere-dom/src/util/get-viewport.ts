@@ -13,14 +13,14 @@ export default function getViewport(): IViewport {
   let width;
   let height;
   
-  try {
+  if (window.visualViewport) {
     ({
       pageTop: scrollTop,
       pageLeft: scrollLeft,
       width,
       height
     } = window.visualViewport);
-  } catch (err) {
+  } else {
     width = window.innerWidth || document.documentElement.clientWidth;
     height = window.innerHeight || document.documentElement.clientHeight;
     scrollTop = window.scrollY || document.documentElement.scrollTop;

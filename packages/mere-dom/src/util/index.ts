@@ -19,6 +19,7 @@ export { default as isFocusable } from './is-focusable';
 export { default as isContainedBy } from './is-contained-by';
 export { default as inViewport } from './in-viewport';
 
+export { default as hasClass } from './has-class';
 export { default as addClass } from './add-class';
 export { default as removeClass } from './remove-class';
 export { default as remove } from './remove';
