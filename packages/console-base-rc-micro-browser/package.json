@@ -1,7 +1,7 @@
 {
-  "name": "@alicloud/console-base-rc-one-modal",
-  "version": "1.8.0",
-  "description": "ConsoleBase 组件 - 专用于文档组件的可拖拽、带标签的容器",
+  "name": "@alicloud/console-base-rc-micro-browser",
+  "version": "1.0.0",
+  "description": "ConsoleBase 组件 - 页签微浏览器",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
@@ -19,11 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "rc",
-    "modal"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.0",
     "@alicloud/console-toolkit-cli": "^1.2.30",

@@ -6,7 +6,7 @@ import {
   EModalMode
 } from '../enum';
 
-export type IModelPropsTabs = Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller' | 'width'>;
+export interface IModelPropsTabs extends Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller' | 'width'> {}
 
 export interface IModelProps {
   // 内容

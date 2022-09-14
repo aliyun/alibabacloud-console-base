@@ -48,7 +48,7 @@ const ScMinimizedTray = styled.div`
   }
   
   &:before {
-    content: 'FUCK';
+    content: 'Tray';
     font-size: 0.8em;
   }
 `;
