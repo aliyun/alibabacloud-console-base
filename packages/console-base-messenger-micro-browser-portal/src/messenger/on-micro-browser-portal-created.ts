@@ -9,11 +9,6 @@ import {
   MESSAGE_TYPE_MICRO_BROWSER_PORTAL_CREATED
 } from '../const';
 
-function onMicroBrowserPortalCreated(fn: (portalKey: string, title: string) => string): () => void;
-function onMicroBrowserPortalCreated<P>(fn: (portalKey: string, title: string, extraProps: P) => string): () => void;
-
-function onMicroBrowserPortalCreated<P = undefined>(fn: (portalKey: string, title: string, extraProps?: P) => string): () => void {
-  return subscribePromiseByConsoleBase<string, IPayloadMicroBrowserPortalCreated>(MESSAGE_TYPE_MICRO_BROWSER_PORTAL_CREATED, payload => fn(payload.portalKey, payload.title));
+export default function onMicroBrowserPortalCreated<P>(fn: (portalKey: string, title: string, extra?: P) => string): () => void {
+  return subscribePromiseByConsoleBase<string, IPayloadMicroBrowserPortalCreated<P>>(MESSAGE_TYPE_MICRO_BROWSER_PORTAL_CREATED, payload => fn(payload.portalKey, payload.title, payload.extra));
 }
-
-export default onMicroBrowserPortalCreated;

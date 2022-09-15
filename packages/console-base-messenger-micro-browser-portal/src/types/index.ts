@@ -1,7 +1,7 @@
-export interface IPayloadMicroBrowserPortalCreated<P = undefined> {
+export interface IPayloadMicroBrowserPortalCreated<E = unknown> {
   portalKey: string;
   title: string;
-  extraProps?: P;
+  extra?: E;
 }
 
 export interface IPayloadMicroBrowserPortalToggleVisible {
