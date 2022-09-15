@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
   BGC_TOOLBAR,
-  HEIGHT_TOOLBAR
+  HEIGHT_DRAG_BAR
 } from '../../const';
 import {
   useRndDragHandleClass,
@@ -20,7 +20,7 @@ const ScToolbar = styled.div`
   padding: 0 4px;
   box-sizing: border-box;
   background-color: ${BGC_TOOLBAR};
-  height: ${HEIGHT_TOOLBAR}px;
+  height: ${HEIGHT_DRAG_BAR}px;
   color: #fff;
 `;
 

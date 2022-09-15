@@ -1,6 +1,6 @@
 import {
   CLASS_J_RND_HANDLE
-} from '../../const';
+} from '../const';
 
 import useRndDraggingDisabled from './use-rnd-dragging-disabled';
 

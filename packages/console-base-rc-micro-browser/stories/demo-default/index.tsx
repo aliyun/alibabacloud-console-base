@@ -76,7 +76,8 @@ const MODE_CHOICES: ChoiceItem<MicroBrowserMode>[] = Object.keys(MicroBrowserMod
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState(DEFAULT_PAGES);
   const [stateMode, setStateMode] = useState<MicroBrowserMode | undefined>(undefined);
-  const [stateVisible, setStateVisible] = useState<boolean>(true);
+  const [stateMinimizable, setStateMinimizable] = useState(false);
+  const [stateVisible, setStateVisible] = useState(true);
   
   const handleTabClose = useCallback((_tab: TabProps, toTabs: TabProps[]) => setStateTabs(toTabs), [setStateTabs]);
   const handleAdd = useCallback(() => {
@@ -101,13 +102,18 @@ export default function DemoDefault(): JSX.Element {
         tabs: stateTabs,
         onTabClose: handleTabClose
       },
-      widthMin: 320,
-      // widthMax: 100,
-      heightMin: 100,
-      // heightMax: 100,
-      widthMinPinned: 100,
+      // widthDefault: 400,
+      // widthMin: 200,
+      // widthMax: 600,
+      // heightDefault: 200,
+      // heightMin: 100,
+      // heightMax: 320,
+      // widthDefaultPinned: 560,
+      // widthMinPinned: 200,
+      // widthMaxPinned: 800,
       affix: '#the-minimize-to-node-for-demo',
       visible: stateVisible,
+      minimizable: stateMinimizable,
       onModeChange: setStateMode,
       onClose: () => setStateVisible(false)
     }} />
@@ -119,9 +125,14 @@ export default function DemoDefault(): JSX.Element {
       onChange: setStateMode
     }} />
     <InputSwitch {...{
-      label: 'visible',
+      label: 'props.visible',
       value: stateVisible,
       onChange: setStateVisible
+    }} />
+    <InputSwitch {...{
+      label: 'props.minimizable',
+      value: stateMinimizable,
+      onChange: setStateMinimizable
     }} />
     <div>
       <LoadConsoleBase />

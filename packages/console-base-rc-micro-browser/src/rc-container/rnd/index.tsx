@@ -9,23 +9,20 @@ import styled, {
 } from 'styled-components';
 
 import {
-  CLASS_J_RND_HANDLE,
-  CLASS_J_RND_CANCEL
-} from '../../const';
-import {
   EMicroBrowserMode,
+  CLASS_J_RND_HANDLE,
+  CLASS_J_RND_CANCEL,
   useMode,
   useMoving,
+  useZIndex,
   useRndRectX,
   useRndRectY,
   useRndRectW,
   useRndRectH,
   useRndResizeHandleStyles,
   useRndDraggingDisabled,
-  useRndSizeWidthMin,
-  useRndSizeHeightMin,
-  useRndSizeWidthMax,
-  useRndSizeHeightMax,
+  useRndSizeWidthRange,
+  useRndSizeHeightRange,
   useHandleRndDragStop,
   useHandleRndResize,
   useHandleRndResizeStop,
@@ -68,20 +65,18 @@ export default function TheRnd({
   children
 }: IProps): JSX.Element {
   const {
-    visible,
-    zIndex
+    visible
   } = useProps();
   const mode = useMode();
   const moving = useMoving();
+  const zIndex = useZIndex();
   const resizeHandleStyles = useRndResizeHandleStyles();
   const x = useRndRectX();
   const y = useRndRectY();
   const w = useRndRectW();
   const h = useRndRectH();
-  const minWidth = useRndSizeWidthMin();
-  const minHeight = useRndSizeHeightMin();
-  const maxWidth = useRndSizeWidthMax();
-  const maxHeight = useRndSizeHeightMax();
+  const [minWidth, maxWidth] = useRndSizeWidthRange();
+  const [minHeight, maxHeight] = useRndSizeHeightRange();
   const draggingDisabled = useRndDraggingDisabled();
   const handleRndDragStart = useHandleRndDragStart();
   const handleRndDragStop = useHandleRndDragStop();
@@ -92,7 +87,7 @@ export default function TheRnd({
   return <ScFixedWrapper {...{
     style: {
       visibility: visible ? 'visible' : 'hidden', // 不能用 display，有个 bug，transform 会变双倍..导致不可见 https://github.com/bokuweb/react-rnd/issues/711
-      zIndex: !visible || mode === EMicroBrowserMode.MINIMIZED ? 0 : zIndex
+      zIndex
     }
   }}>
     <ScRnd {...{

@@ -1,6 +1,6 @@
 export * from './util';
 
-export {
+export type {
   IViewport as MereDomViewport,
   IRect as MereDomRect
 } from './types';

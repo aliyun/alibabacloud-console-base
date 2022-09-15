@@ -5,9 +5,7 @@ import Tabs, {
 } from '@alicloud/console-base-rc-tabs';
 
 import {
-  CLASS_J_RND_CANCEL
-} from '../../const';
-import {
+  CLASS_J_RND_CANCEL,
   useProps,
   useRndDragHandleClass
 } from '../../model';

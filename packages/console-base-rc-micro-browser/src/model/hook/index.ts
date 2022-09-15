@@ -2,6 +2,7 @@ export { default as useProps } from './_use-model-props';
 
 export { default as useMode } from './use-mode';
 export { default as useMoving } from './use-moving';
+export { default as useZIndex } from './use-z-index';
 export { default as useRndRectX } from './use-rnd-rect-x';
 export { default as useRndRectY } from './use-rnd-rect-y';
 export { default as useRndRectW } from './use-rnd-rect-w';
@@ -9,10 +10,8 @@ export { default as useRndRectH } from './use-rnd-rect-h';
 export { default as useRndDragHandleClass } from './use-rnd-drag-handle-class';
 export { default as useRndResizeHandleStyles } from './use-rnd-resize-handle-styles';
 export { default as useRndDraggingDisabled } from './use-rnd-dragging-disabled';
-export { default as useRndSizeWidthMin } from './use-rnd-size-width-min';
-export { default as useRndSizeWidthMax } from './use-rnd-size-width-max';
-export { default as useRndSizeHeightMin } from './use-rnd-size-height-min';
-export { default as useRndSizeHeightMax } from './use-rnd-size-height-max';
+export { default as useRndSizeWidthRange } from './use-rnd-size-width-range';
+export { default as useRndSizeHeightRange } from './use-rnd-size-height-range';
 export { default as useStickRightActive } from './use-stick-right-active';
 
 // handlers
