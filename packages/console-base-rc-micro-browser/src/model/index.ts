@@ -14,5 +14,6 @@ export * from './hook';
 export type {
   IModelProps,
   ITabsProps,
-  ITabsItemProps
+  ITabsItemProps,
+  ISizeConfig
 } from './types';
