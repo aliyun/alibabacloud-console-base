@@ -3,15 +3,15 @@ import {
 } from 'react';
 
 import {
-  EModalMode
+  EMicroBrowserMode
 } from '../enum';
 
 import useHandleModeChange from './use-handle-mode-change';
 import useStickRightActive from './use-stick-right-active';
 
-export default function useOnStickRight(): () => void {
+export default function useHandleStickRight(): () => void {
   const handleModeChange = useHandleModeChange();
   const active = useStickRightActive();
   
-  return useCallback(() => handleModeChange(active ? EModalMode.FREE : EModalMode.TO_THE_RIGHT), [active, handleModeChange]);
+  return useCallback(() => handleModeChange(active ? EMicroBrowserMode.FREE : EMicroBrowserMode.TO_THE_RIGHT), [active, handleModeChange]);
 }

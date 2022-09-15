@@ -1,14 +1,11 @@
 export { default } from './rc-container';
 
 export {
-  ModalMode
+  EMicroBrowserMode as MicroBrowserMode
 } from './model';
 
 export type {
-  ModelProps as ModalProps,
-  ModelPropsTabs as ModalTabs
+  IModelProps as MicroBrowserProps,
+  ITabsProps as MicroBrowserTabsProps,
+  ITabsItemProps as MicroBrowserTabsItemProps
 } from './model';
-
-export type {
-  TabProps as ModalTab
-} from '@alicloud/console-base-rc-tabs';

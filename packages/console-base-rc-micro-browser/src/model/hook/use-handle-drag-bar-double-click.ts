@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  EModalMode
+  EMicroBrowserMode
 } from '../enum';
 
 import useMode from './use-mode';
@@ -15,13 +15,13 @@ export default function useHandleDragBarDoubleClick(): () => void {
   
   return useCallback(() => {
     switch (mode) {
-      case EModalMode.FREE:
-        handleModeChange(EModalMode.TO_THE_RIGHT);
+      case EMicroBrowserMode.FREE:
+        handleModeChange(EMicroBrowserMode.TO_THE_RIGHT);
         
         break;
-      case EModalMode.TO_THE_RIGHT:
-      case EModalMode.TO_THE_RIGHT_PINNED:
-        handleModeChange(EModalMode.FREE);
+      case EMicroBrowserMode.TO_THE_RIGHT:
+      case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
+        handleModeChange(EMicroBrowserMode.FREE);
         
         break;
       default:

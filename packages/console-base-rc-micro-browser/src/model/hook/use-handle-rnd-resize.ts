@@ -5,21 +5,19 @@ import {
   RndResizeCallback
 } from 'react-rnd';
 
-import useRndStateExtra from './use-rnd-state-extra';
+import useMode from './use-mode';
 import useDispatchRndResize from './use-dispatch-rnd-resize';
 
-export default function useOnResizeStop(): RndResizeCallback {
-  const {
-    mode
-  } = useRndStateExtra();
+export default function useHandleRndResize(stopped?: boolean): RndResizeCallback {
+  const mode = useMode();
   const dispatchRndResize = useDispatchRndResize();
   
   return useCallback((e, dir, ref, delta, newPosition) => dispatchRndResize({
     mode,
-    w: ref.offsetWidth,
-    h: ref.offsetHeight,
     x: newPosition.x,
     y: newPosition.y,
-    stopped: true
-  }), [mode, dispatchRndResize]);
+    w: ref.offsetWidth,
+    h: ref.offsetHeight,
+    stopped
+  }), [mode, stopped, dispatchRndResize]);
 }

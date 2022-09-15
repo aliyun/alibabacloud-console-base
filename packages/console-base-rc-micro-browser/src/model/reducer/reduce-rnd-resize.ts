@@ -1,7 +1,7 @@
 import update from 'immutability-helper';
 
 import {
-  EModalMode
+  EMicroBrowserMode
 } from '../enum';
 import {
   IModelState,
@@ -19,22 +19,22 @@ export default function reduceRndResize(state: IModelState, {
   const resizing = stopped ? -1 : state.resizing + 1;
   
   switch (mode) {
-    case EModalMode.FREE:
+    case EMicroBrowserMode.FREE:
       return update(state, {
         $merge: {
           resizing,
-          x,
-          y,
+          width: w,
+          height: h,
           x1: x + w,
           y1: y + h
         }
       });
-    case EModalMode.TO_THE_RIGHT:
-    case EModalMode.TO_THE_RIGHT_PINNED:
+    case EMicroBrowserMode.TO_THE_RIGHT:
+    case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
       return update(state, {
         $merge: {
           resizing,
-          pinnedWidth: w
+          widthPinned: w
         }
       });
     default:

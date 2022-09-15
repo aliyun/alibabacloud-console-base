@@ -4,13 +4,13 @@ import {
 } from 'react-dom';
 
 import Provider, {
-  ModelProps
+  IModelProps
 } from '../model';
 
 import Ui from './ui';
 import SmoothMoving from './smooth-moving';
 
-export default function WithProvider(props: ModelProps): JSX.Element {
+export default function WithProvider(props: IModelProps): JSX.Element {
   return createPortal(<Provider props={props}>
     <Ui />
     <SmoothMoving />

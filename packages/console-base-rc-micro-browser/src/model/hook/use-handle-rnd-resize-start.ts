@@ -1,5 +1,5 @@
 import useDispatchRndResizeStart from './use-dispatch-rnd-resize-start';
 
-export default function useOnResizeStart(): () => void {
+export default function useHandleRndResizeStart(): () => void {
   return useDispatchRndResizeStart();
 }

@@ -19,9 +19,9 @@ import {
   TabProps
 } from '@alicloud/console-base-rc-tabs';
 
-import OneModal, {
-  ModalMode,
-  ModalTab
+import MicroBrowser, {
+  MicroBrowserMode,
+  MicroBrowserTabsItemProps
 } from '../../src';
 import PkgInfo from '../pkg-info';
 import LoadConsoleBase from '../load-console-base';
@@ -53,7 +53,7 @@ const ScMinimizedTray = styled.div`
   }
 `;
 
-const DEFAULT_PAGES: ModalTab[] = [{
+const DEFAULT_PAGES: MicroBrowserTabsItemProps[] = [{
   key: 'default-1',
   title: '哥特之皇 Lacrimosa',
   content: <LongArticle />
@@ -68,14 +68,14 @@ const DEFAULT_PAGES: ModalTab[] = [{
   closable: true
 }];
 
-const MODE_CHOICES: ChoiceItem<ModalMode>[] = Object.keys(ModalMode).map((k): ChoiceItem<ModalMode> => ({
+const MODE_CHOICES: ChoiceItem<MicroBrowserMode>[] = Object.keys(MicroBrowserMode).map((k): ChoiceItem<MicroBrowserMode> => ({
   label: k,
-  value: ModalMode[k as keyof typeof ModalMode]
+  value: MicroBrowserMode[k as keyof typeof MicroBrowserMode]
 }));
 
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState(DEFAULT_PAGES);
-  const [stateMode, setStateMode] = useState<ModalMode | undefined>(undefined);
+  const [stateMode, setStateMode] = useState<MicroBrowserMode | undefined>(undefined);
   const [stateVisible, setStateVisible] = useState<boolean>(true);
   
   const handleTabClose = useCallback((_tab: TabProps, toTabs: TabProps[]) => setStateTabs(toTabs), [setStateTabs]);
@@ -95,19 +95,24 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <PkgInfo />
-    <OneModal {...{
+    <MicroBrowser {...{
+      mode: stateMode,
       tabs: {
         tabs: stateTabs,
         onTabClose: handleTabClose
       },
+      widthMin: 320,
+      // widthMax: 100,
+      heightMin: 100,
+      // heightMax: 100,
+      widthMinPinned: 100,
       affix: '#the-minimize-to-node-for-demo',
-      mode: stateMode,
       visible: stateVisible,
       onModeChange: setStateMode,
       onClose: () => setStateVisible(false)
     }} />
     <H1>props</H1>
-    <RadioGroup<ModalMode> {...{
+    <RadioGroup<MicroBrowserMode> {...{
       label: 'props.mode',
       items: MODE_CHOICES,
       value: stateMode,

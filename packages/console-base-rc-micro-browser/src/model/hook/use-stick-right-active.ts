@@ -1,5 +1,5 @@
 import {
-  EModalMode
+  EMicroBrowserMode
 } from '../enum';
 
 import useMode from './use-mode';
@@ -7,5 +7,5 @@ import useMode from './use-mode';
 export default function useStickRightActive(): boolean {
   const mode = useMode();
   
-  return mode === EModalMode.TO_THE_RIGHT || mode === EModalMode.TO_THE_RIGHT_PINNED;
+  return mode === EMicroBrowserMode.TO_THE_RIGHT || mode === EMicroBrowserMode.TO_THE_RIGHT_PINNED;
 }

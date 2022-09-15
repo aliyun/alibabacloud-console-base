@@ -1,13 +1,13 @@
 import update from 'immutability-helper';
 
 import {
-  EModalMode
+  EMicroBrowserMode
 } from '../enum';
 import {
   IModelState
 } from '../types';
 
-export default function reduceChangeMode(state: IModelState, payload: EModalMode): IModelState {
+export default function reduceChangeMode(state: IModelState, payload: EMicroBrowserMode): IModelState {
   return update(state, {
     mode: {
       $set: payload

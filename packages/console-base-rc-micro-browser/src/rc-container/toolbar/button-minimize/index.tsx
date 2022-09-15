@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import intl from '../../../intl';
 import {
   useProps,
-  useOnMinimize
+  useHandleMinimize
 } from '../../../model';
 import ControlButton from '../../../rc/control-button';
 
@@ -22,7 +22,7 @@ export default function ButtonMinimize(): JSX.Element | null {
   const {
     minimizable
   } = useProps();
-  const onMinimize = useOnMinimize();
+  const onMinimize = useHandleMinimize();
   
   return minimizable ? <ControlButton {...{
     spm: 'min',

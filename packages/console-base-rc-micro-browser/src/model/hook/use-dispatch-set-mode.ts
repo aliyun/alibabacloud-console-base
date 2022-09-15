@@ -3,16 +3,16 @@ import {
 } from 'react';
 
 import {
-  EModalMode,
+  EMicroBrowserMode,
   EAction
 } from '../enum';
 
 import useModelDispatch from './_use-model-dispatch';
 
-export default function useDispatchSetMode(): (payload: EModalMode) => void {
+export default function useDispatchSetMode(): (payload: EMicroBrowserMode) => void {
   const dispatch = useModelDispatch();
   
-  return useCallback((payload: EModalMode) => dispatch({
+  return useCallback((payload: EMicroBrowserMode) => dispatch({
     type: EAction.SET_MODE,
     payload
   }), [dispatch]);

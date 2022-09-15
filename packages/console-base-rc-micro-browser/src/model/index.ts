@@ -1,12 +1,13 @@
 export { default } from './provider';
 
 export {
-  EModalMode as ModalMode
+  EMicroBrowserMode
 } from './enum';
 
 export * from './hook';
 
 export type {
-  IModelProps as ModelProps,
-  IModelPropsTabs as ModelPropsTabs
+  IModelProps,
+  ITabsProps,
+  ITabsItemProps
 } from './types';

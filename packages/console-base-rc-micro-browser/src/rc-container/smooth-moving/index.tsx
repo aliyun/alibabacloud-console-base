@@ -4,7 +4,7 @@ import {
 } from 'styled-components';
 
 import {
-  useRndStateExtra
+  useMoving
 } from '../../model';
 
 const StyleForSmoothMoving = createGlobalStyle`
@@ -24,9 +24,5 @@ const StyleForSmoothMoving = createGlobalStyle`
  * 2. 让 iframe 鼠标穿透，以免经常无法拖动
  */
 export default function SmoothMoving(): JSX.Element | null {
-  const {
-    moving
-  } = useRndStateExtra();
-  
-  return moving ? <StyleForSmoothMoving /> : null;
+  return useMoving() ? <StyleForSmoothMoving /> : null;
 }

@@ -3,14 +3,15 @@ import {
 } from 'react';
 
 import {
-  EModalMode
+  EMicroBrowserMode
 } from '../enum';
 import {
   createStylePushBody
 } from '../util';
 
-import useRndStateExtra from './use-rnd-state-extra';
-import useRndStateRect from './use-rnd-state-rect';
+import useModelProps from './_use-model-props';
+import useMode from './use-mode';
+import useRndRectW from './use-rnd-rect-w';
 
 /**
  * home 有绝对定位布局，它通过监听 resize 进行布局刷新
@@ -28,15 +29,13 @@ function fireResize(): void {
  */
 export default function useEffectPushBody(): void {
   const {
-    mode,
     visible
-  } = useRndStateExtra();
-  const {
-    w
-  } = useRndStateRect();
+  } = useModelProps();
+  const mode = useMode();
+  const w = useRndRectW();
   
   useEffect(() => {
-    if (!visible || mode !== EModalMode.TO_THE_RIGHT_PINNED) {
+    if (!visible || mode !== EMicroBrowserMode.TO_THE_RIGHT_PINNED) {
       return;
     }
     

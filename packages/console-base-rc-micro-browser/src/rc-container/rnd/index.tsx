@@ -13,16 +13,25 @@ import {
   CLASS_J_RND_CANCEL
 } from '../../const';
 import {
-  ModalMode,
-  useRndStateExtra,
-  useRndStateRect,
+  EMicroBrowserMode,
+  useMode,
+  useMoving,
+  useRndRectX,
+  useRndRectY,
+  useRndRectW,
+  useRndRectH,
   useRndResizeHandleStyles,
   useRndDraggingDisabled,
-  useOnDragStop,
-  useOnResize,
-  useOnResizeStop,
-  useOnDragStart,
-  useOnResizeStart
+  useRndSizeWidthMin,
+  useRndSizeHeightMin,
+  useRndSizeWidthMax,
+  useRndSizeHeightMax,
+  useHandleRndDragStop,
+  useHandleRndResize,
+  useHandleRndResizeStop,
+  useHandleRndDragStart,
+  useHandleRndResizeStart,
+  useProps
 } from '../../model';
 
 interface IProps {
@@ -58,38 +67,37 @@ const ScRnd = styled(Rnd)`
 export default function TheRnd({
   children
 }: IProps): JSX.Element {
-  const resizeHandleStyles = useRndResizeHandleStyles();
   const {
-    mode,
     visible,
-    moving,
-    zIndex,
-    minWidth,
-    minHeight
-  } = useRndStateExtra();
-  const {
-    w,
-    h,
-    x,
-    y
-  } = useRndStateRect();
+    zIndex
+  } = useProps();
+  const mode = useMode();
+  const moving = useMoving();
+  const resizeHandleStyles = useRndResizeHandleStyles();
+  const x = useRndRectX();
+  const y = useRndRectY();
+  const w = useRndRectW();
+  const h = useRndRectH();
+  const minWidth = useRndSizeWidthMin();
+  const minHeight = useRndSizeHeightMin();
+  const maxWidth = useRndSizeWidthMax();
+  const maxHeight = useRndSizeHeightMax();
   const draggingDisabled = useRndDraggingDisabled();
-  
-  const onResizeStart = useOnResizeStart();
-  const onDragStart = useOnDragStart();
-  const onDragStop = useOnDragStop();
-  const onResize = useOnResize();
-  const onResizeStop = useOnResizeStop();
+  const handleRndDragStart = useHandleRndDragStart();
+  const handleRndDragStop = useHandleRndDragStop();
+  const handleRndResizeStart = useHandleRndResizeStart();
+  const handleRndResize = useHandleRndResize();
+  const handleRndResizeStop = useHandleRndResizeStop();
   
   return <ScFixedWrapper {...{
     style: {
       visibility: visible ? 'visible' : 'hidden', // 不能用 display，有个 bug，transform 会变双倍..导致不可见 https://github.com/bokuweb/react-rnd/issues/711
-      zIndex: !visible || mode === ModalMode.MINIMIZED ? 0 : zIndex
+      zIndex: !visible || mode === EMicroBrowserMode.MINIMIZED ? 0 : zIndex
     }
   }}>
     <ScRnd {...{
       'data-moving': moving ? 1 : 0,
-      'data-invisible': !visible || mode === ModalMode.MINIMIZED ? 1 : 0,
+      'data-invisible': !visible || mode === EMicroBrowserMode.MINIMIZED ? 1 : 0,
       bounds: 'window',
       size: {
         width: w,
@@ -101,15 +109,17 @@ export default function TheRnd({
       },
       minWidth,
       minHeight,
+      maxWidth,
+      maxHeight,
       resizeHandleStyles,
       dragHandleClassName: CLASS_J_RND_HANDLE,
       cancel: `.${CLASS_J_RND_CANCEL}`,
       disableDragging: draggingDisabled,
-      onDragStart,
-      onDragStop,
-      onResizeStart,
-      onResize,
-      onResizeStop
+      onDragStart: handleRndDragStart,
+      onDragStop: handleRndDragStop,
+      onResizeStart: handleRndResizeStart,
+      onResize: handleRndResize,
+      onResizeStop: handleRndResizeStop
     }}>{children}</ScRnd>
   </ScFixedWrapper>;
 }

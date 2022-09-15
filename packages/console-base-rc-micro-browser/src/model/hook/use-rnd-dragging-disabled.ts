@@ -1,5 +1,5 @@
 import {
-  EModalMode
+  EMicroBrowserMode
 } from '../enum';
 
 import useMode from './use-mode';
@@ -7,5 +7,5 @@ import useMode from './use-mode';
 export default function useRndDraggingDisabled(): boolean {
   const mode = useMode();
   
-  return mode !== EModalMode.FREE;
+  return mode !== EMicroBrowserMode.FREE;
 }
