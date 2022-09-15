@@ -53,9 +53,9 @@ export interface ISizeConfig {
   heightDefault?: number;
 }
 
-export interface ITabsProps extends Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller' | 'width'> {}
-
 export interface ITabsItemProps extends TabProps {}
+
+export interface ITabsProps extends Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller'> {}
 
 export interface IPayloadDrag extends IPayloadRndDragResize {}
 

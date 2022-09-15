@@ -1,27 +1,13 @@
 import React from 'react';
 
-import Tabs, {
-  TabsTheme
-} from '@alicloud/console-base-rc-tabs';
+import Tabs from '@alicloud/console-base-rc-tabs';
 
 import {
-  CLASS_J_RND_CANCEL,
-  useProps,
-  useRndDragHandleClass
+  useTabsProps
 } from '../../model';
 
 export default function Content(): JSX.Element {
-  const {
-    tabs
-  } = useProps();
-  const dragHandleClass = useRndDragHandleClass();
+  const tabsProps = useTabsProps();
   
-  return <Tabs {...{
-    ...tabs,
-    theme: TabsTheme.INVERSE,
-    contentPadding: 'none',
-    classNameForTabBar: dragHandleClass,
-    classNameForTabItem: CLASS_J_RND_CANCEL,
-    classNameForTabScroller: CLASS_J_RND_CANCEL
-  }} />;
+  return <Tabs {...tabsProps} />;
 }

@@ -11,6 +11,7 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "noUncheckedIndexedAccess": true,
     "declaration": true,
     "skipLibCheck": true,
     "sourceMap": true,

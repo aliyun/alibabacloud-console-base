@@ -13,6 +13,7 @@ export { default as useRndDraggingDisabled } from './use-rnd-dragging-disabled';
 export { default as useRndSizeWidthRange } from './use-rnd-size-width-range';
 export { default as useRndSizeHeightRange } from './use-rnd-size-height-range';
 export { default as useStickRightActive } from './use-stick-right-active';
+export { default as useTabsProps } from './use-tabs-props';
 
 // handlers
 export { default as useHandleMinimize } from './use-handle-minimize';

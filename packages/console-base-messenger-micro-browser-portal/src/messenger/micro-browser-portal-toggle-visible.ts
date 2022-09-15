@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadMicroBrowserPortalToggleVisible
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_MICRO_BROWSER_PORTAL_TOGGLE_VISIBLE
-} from '../../const';
+} from '../const';
 
 export default function microBrowserPortalToggleVisible(portalKey: string, visible = true): void {
   return broadcastByApp<IPayloadMicroBrowserPortalToggleVisible>(MESSAGE_TYPE_MICRO_BROWSER_PORTAL_TOGGLE_VISIBLE, {

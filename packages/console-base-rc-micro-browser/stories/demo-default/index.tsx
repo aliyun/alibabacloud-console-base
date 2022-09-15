@@ -53,7 +53,7 @@ const ScMinimizedTray = styled.div`
   }
 `;
 
-const DEFAULT_PAGES: MicroBrowserTabsItemProps[] = [{
+const TAB_ITEMS: MicroBrowserTabsItemProps[] = [{
   key: 'default-1',
   title: '哥特之皇 Lacrimosa',
   content: <LongArticle />
@@ -74,7 +74,7 @@ const MODE_CHOICES: ChoiceItem<MicroBrowserMode>[] = Object.keys(MicroBrowserMod
 }));
 
 export default function DemoDefault(): JSX.Element {
-  const [stateTabs, setStateTabs] = useState(DEFAULT_PAGES);
+  const [stateTabs, setStateTabs] = useState<MicroBrowserTabsItemProps[]>(TAB_ITEMS);
   const [stateMode, setStateMode] = useState<MicroBrowserMode | undefined>(undefined);
   const [stateMinimizable, setStateMinimizable] = useState(false);
   const [stateVisible, setStateVisible] = useState(true);

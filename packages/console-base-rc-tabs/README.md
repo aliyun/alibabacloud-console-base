@@ -12,7 +12,6 @@ import Tabs from '@alicloud/console-base-rc-tabs';
   classNameForTabBar,
   classNameForTabItem,
   classNameForTabScroller,
-  width,
   activeTab,
   defaultActiveTab,
   onTabActivate,
