@@ -6,7 +6,6 @@ export {
 export * from '@alicloud/console-base-messenger-region';
 export * from '@alicloud/console-base-messenger-resource-group';
 export * from '@alicloud/console-base-messenger-toolkit';
-export * from '@alicloud/console-base-messenger-micro-browser-portal';
 export * from '@alicloud/console-base-messenger-tutor';
 export * from '@alicloud/console-base-messenger-error-prompt';
 
