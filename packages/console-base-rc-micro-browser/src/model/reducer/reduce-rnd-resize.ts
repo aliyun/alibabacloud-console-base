@@ -8,25 +8,18 @@ import {
   IPayloadResize
 } from '../types';
 
-export default function reduceRndResize(state: IModelState, {
-  mode,
-  x,
-  y,
-  w,
-  h,
-  stopped
-}: IPayloadResize): IModelState {
-  const resizing = stopped ? -1 : state.resizing + 1;
+export default function reduceRndResize(state: IModelState, payload: IPayloadResize): IModelState {
+  const resizing = payload.stopped ? -1 : state.resizing + 1;
   
-  switch (mode) {
+  switch (payload.mode) {
     case EMicroBrowserMode.FREE:
       return update(state, {
         $merge: {
           resizing,
-          width: w,
-          height: h,
-          x1: x + w,
-          y1: y + h
+          width: payload.w,
+          height: payload.h,
+          right: state.viewportW - (payload.x + payload.w),
+          bottom: state.viewportH - (payload.y + payload.h)
         }
       });
     case EMicroBrowserMode.TO_THE_RIGHT:
@@ -34,7 +27,7 @@ export default function reduceRndResize(state: IModelState, {
       return update(state, {
         $merge: {
           resizing,
-          widthPinned: w
+          widthPinned: payload.w
         }
       });
     default:

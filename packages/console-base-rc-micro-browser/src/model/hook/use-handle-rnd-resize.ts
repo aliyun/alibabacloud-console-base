@@ -12,12 +12,14 @@ export default function useHandleRndResize(stopped?: boolean): RndResizeCallback
   const mode = useMode();
   const dispatchRndResize = useDispatchRndResize();
   
-  return useCallback((e, dir, ref, delta, newPosition) => dispatchRndResize({
-    mode,
-    x: newPosition.x,
-    y: newPosition.y,
-    w: ref.offsetWidth,
-    h: ref.offsetHeight,
-    stopped
-  }), [mode, stopped, dispatchRndResize]);
+  return useCallback((_e, _dir, ref, _delta, newPosition) => {
+    dispatchRndResize({
+      mode,
+      x: newPosition.x,
+      y: newPosition.y,
+      w: ref.offsetWidth,
+      h: ref.offsetHeight,
+      stopped
+    });
+  }, [mode, stopped, dispatchRndResize]);
 }

@@ -1,13 +1,10 @@
 import {
-  MicroBrowserSizeConfig
-} from '@alicloud/console-base-rc-micro-browser';
-
-import {
+  IMicroBrowserPortalSizeConfig,
   IMicroBrowserPortalUpdateInfo
 } from './common';
 
 export interface ISubscribeMicroBrowserPortalCreated {
-  (portalKey: string, title: string, sizeConfig?: MicroBrowserSizeConfig): string;
+  (portalKey: string, title: string, sizeConfig?: IMicroBrowserPortalSizeConfig): string;
 }
 
 export interface ISubscribeMicroBrowserPortalRemoved {

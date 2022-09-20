@@ -6,7 +6,8 @@ import {
   EMicroBrowserMode
 } from '../enum';
 import {
-  IModelState
+  IModelState,
+  ISizeAndPosition
 } from '../types';
 
 const viewport = getViewport();
@@ -28,15 +29,19 @@ export const HEIGHT_MIN = 400;
 export const CLASS_J_RND_HANDLE = 'J_console_base_rc_one_modal_rnd_handle';
 export const CLASS_J_RND_CANCEL = 'J_console_base_rc_one_modal_rnd_cancel';
 
-export const DEFAULT_CONTEXT_STATE: IModelState = {
-  mode: EMicroBrowserMode.FREE,
+export const DEFAULT_SIZE_AND_POSITION: ISizeAndPosition = {
   width: -1,
   widthPinned: -1,
   height: -1,
-  x1: viewport.width - 60,
-  y1: viewport.height - 60,
-  x2: viewport.width,
-  y2: viewport.height,
+  right: 60,
+  bottom: 60
+};
+
+export const DEFAULT_CONTEXT_STATE: IModelState = {
+  mode: EMicroBrowserMode.FREE,
+  ...DEFAULT_SIZE_AND_POSITION,
+  viewportW: viewport.width,
+  viewportH: viewport.height,
   windowScrollbarWidth: 0,
   resizing: -1,
   dragging: false

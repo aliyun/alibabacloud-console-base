@@ -1,11 +1,9 @@
 import {
   broadcastPromiseByApp
 } from '@alicloud/console-base-messenger-base';
-import {
-  MicroBrowserSizeConfig
-} from '@alicloud/console-base-rc-micro-browser';
 
 import {
+  IMicroBrowserPortalSizeConfig,
   IPayloadMicroBrowserPortalCreated
 } from '../types';
 import {
@@ -22,7 +20,7 @@ import {
  * 
  * 由此，完成一个通过将事件封装成 Promise 和 createPortal 将任意 React 组件（可以和 MicroBrowser 不在同一个应用）渲染到 MicroBrowser 的逻辑
  */
-export default function microBrowserPortalCreated(portalKey: string, title: string, sizeConfig?: MicroBrowserSizeConfig): Promise<HTMLDivElement> {
+export default function microBrowserPortalCreated(portalKey: string, title: string, sizeConfig?: IMicroBrowserPortalSizeConfig): Promise<HTMLDivElement> {
   return broadcastPromiseByApp<string, IPayloadMicroBrowserPortalCreated>(MESSAGE_TYPE_MICRO_BROWSER_PORTAL_CREATED, {
     portalKey,
     title,

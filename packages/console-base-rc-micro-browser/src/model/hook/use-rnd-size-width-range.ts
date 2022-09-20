@@ -22,17 +22,17 @@ export default function useRndSizeWidthRange(): [number, number] {
     widthMaxPinned
   } = useModelProps();
   const {
-    x2
+    viewportW
   } = useModelState();
   const mode = useMode();
   
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
-      return [0, x2];
+      return [0, viewportW];
     case EMicroBrowserMode.TO_THE_RIGHT:
     case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
-      return numberRange(getLegalNumber(WIDTH_MIN_PINNED, widthMinPinned), getLegalNumber(x2, widthMaxPinned));
+      return numberRange(getLegalNumber(WIDTH_MIN_PINNED, widthMinPinned), getLegalNumber(viewportW, widthMaxPinned));
     default:
-      return numberRange(getLegalNumber(WIDTH_MIN, widthMin), getLegalNumber(x2, widthMax));
+      return numberRange(getLegalNumber(WIDTH_MIN, widthMin), getLegalNumber(viewportW, widthMax));
   }
 }

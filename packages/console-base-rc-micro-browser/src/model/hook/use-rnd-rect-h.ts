@@ -25,7 +25,7 @@ export default function useRndRectH(): number {
   } = useModelProps();
   const {
     height,
-    y2
+    viewportH
   } = useModelState();
   const mode = useMode();
   const affixRect = useAffixRect();
@@ -36,7 +36,7 @@ export default function useRndRectH(): number {
       return makeNumberInRange(affixRect?.height ?? HEIGHT_DEFAULT_MINIMIZED, heightRange);
     case EMicroBrowserMode.TO_THE_RIGHT:
     case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
-      return y2;
+      return viewportH;
     default:
       return makeNumberInRange(getLegalNumber(HEIGHT_DEFAULT, height, heightDefault), heightRange);
   }

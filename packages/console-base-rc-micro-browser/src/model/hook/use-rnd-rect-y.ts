@@ -12,8 +12,8 @@ import useRndRectH from './use-rnd-rect-h';
  */
 export default function useRndRectY(): number {
   const {
-    y1,
-    y2
+    bottom,
+    viewportH
   } = useModelState();
   const mode = useMode();
   const affixRect = useAffixRect();
@@ -21,11 +21,11 @@ export default function useRndRectY(): number {
   
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
-      return affixRect?.top ?? y2;
+      return affixRect?.top ?? viewportH;
     case EMicroBrowserMode.TO_THE_RIGHT:
     case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
       return 0;
     default:
-      return Math.max(y1 - h, 0);
+      return Math.max(viewportH - bottom - h, 0);
   }
 }

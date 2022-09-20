@@ -20,17 +20,17 @@ export default function useRndSizeHeightRange(): [number, number] {
     heightMin
   } = useModelProps();
   const {
-    y2
+    viewportH
   } = useModelState();
   const mode = useMode();
   
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
-      return [0, y2];
+      return [0, viewportH];
     case EMicroBrowserMode.TO_THE_RIGHT:
     case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
-      return [y2, y2];
+      return [viewportH, viewportH];
     default:
-      return numberRange(getLegalNumber(HEIGHT_MIN, heightMin) + HEIGHT_TOOL_BAR, getLegalNumber(y2, heightMax));
+      return numberRange(getLegalNumber(HEIGHT_MIN, heightMin) + HEIGHT_TOOL_BAR, getLegalNumber(viewportH, heightMax));
   }
 }

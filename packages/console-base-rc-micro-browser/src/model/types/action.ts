@@ -13,7 +13,7 @@ import {
 } from './common';
 
 export type TModelAction = {
-  type: EAction.REFRESH_WINDOW_SIZE | EAction.RND_RESIZE_START | EAction.RND_DRAG_START;
+  type: EAction.REFRESH_WINDOW_SIZE | EAction.RND_RESIZE_START | EAction.RND_DRAG_START | EAction.RESET;
 } | {
   type: EAction.SET_MODE;
   payload: EMicroBrowserMode;

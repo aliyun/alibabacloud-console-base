@@ -14,6 +14,9 @@ interface IPayloadRndDragResize {
   h: number;
 }
 
+/**
+ * props 中跟 RND 大小有关的配置
+ */
 export interface ISizeConfig {
   /**
    * FREE 模式下，内容区的最小宽度
@@ -51,6 +54,35 @@ export interface ISizeConfig {
    * FREE 模式下，默认宽度，当 state 中没有记录的高度时
    */
   heightDefault?: number;
+}
+
+/**
+ * state 中决定 RND 最终大小和位置的相关数据
+ */
+export interface ISizeAndPosition {
+  /**
+   * 当 ≤ 0，fallback 到 props.widthDefault
+   */
+  width: number;
+  /**
+   * 当 ≤ 0，fallback 到 props.heightDefault
+   */
+  height: number;
+  /**
+   * 靠右模式下只能可以调整宽度，当 ≤ 0，fallback 到 props.widthPinnedDefault
+   */
+  widthPinned: number;
+  /**
+   * RND 右下角 x
+   */
+  /**
+   * 距浏览器可视区域右侧距离
+   */
+  right: number;
+  /**
+   * 距浏览器可视区域底部距离
+   */
+  bottom: number;
 }
 
 export interface ITabsItemProps extends TabProps {}

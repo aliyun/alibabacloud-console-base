@@ -7,7 +7,7 @@ import {
   IModelState
 } from '../types';
 
-export default function reduceChangeMode(state: IModelState, payload: EMicroBrowserMode): IModelState {
+export default function reduceSetMode(state: IModelState, payload: EMicroBrowserMode): IModelState {
   return update(state, {
     mode: {
       $set: payload
