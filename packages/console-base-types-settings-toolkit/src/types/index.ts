@@ -33,6 +33,7 @@ export interface ISettingsToolkitItem {
   doActive?: boolean; // 是否点击之后，按钮保持激活（按下）状态，需要通过 @alicloud/console-base-messenger 进行交互
   active?: boolean; // 是否处于 active 状态，仅在 doActive 的时候有效
   fixed?: boolean; // 是否不可被收起
+  [dataName: `data-${string}`]: unknown;
 }
 
 export interface ISettingsToolkit {

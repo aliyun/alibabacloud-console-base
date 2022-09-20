@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-messenger-base": "^1.4.1",
-    "@alicloud/console-base-types-settings-toolkit": "^1.4.1"
+    "@alicloud/console-base-types-settings-toolkit": "^1.4.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
