@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-flex",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "ConsoleBase 组件 - Flex",
   "license": "MIT",
   "sideEffects": false,
@@ -38,6 +38,9 @@
   "peerDependencies": {
     "react": ">=16.8",
     "styled-components": ">=5"
+  },
+  "dependencies": {
+    "@alicloud/console-base-theme": "^1.8.2"
   },
   "scripts": {
     "start": "breezr start-storybook",

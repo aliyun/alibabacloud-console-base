@@ -11,4 +11,5 @@ export interface IProps extends HTMLAttributes<HTMLDivElement> {
 
 export interface IPropsItem extends HTMLAttributes<HTMLDivElement> {
   n?: number;
+  ellipsis?: boolean;
 }

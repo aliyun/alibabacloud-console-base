@@ -15,8 +15,10 @@ const THEMES_NEED_SHADOW: EButtonTheme[] = [
   EButtonTheme.DANGER,
   EButtonTheme.PRIMARY,
   EButtonTheme.SECONDARY,
+  EButtonTheme.SECONDARY_ALT,
   EButtonTheme.BRAND_PRIMARY,
-  EButtonTheme.BRAND_SECONDARY
+  EButtonTheme.BRAND_SECONDARY,
+  EButtonTheme.BRAND_SECONDARY_ALT
 ];
 
 export default function getMixinShadow(props: IModelProps): FlattenSimpleInterpolation | null {
