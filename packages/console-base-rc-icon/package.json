@@ -32,8 +32,8 @@
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
-    "styled-components": "^5.3.5",
-    "typescript": "^4.8.3"
+    "styled-components": "^5.3.6",
+    "typescript": "^4.8.4"
   },
   "peerDependencies": {
     "react": ">=16.8",
