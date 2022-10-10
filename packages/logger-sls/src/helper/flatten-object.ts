@@ -39,13 +39,13 @@ function normalizeObject<T extends object>(o: T): Record<string, unknown> {
  * }
  * ```
  */
-export default function flattenObject<T extends object>(o: T, prefix?: string, depth = 3): Record<string, unknown> {
+export default function flattenObject<T extends object>(o: T, path?: string, depth = 3): Record<string, unknown> {
   const result: Record<string, unknown> = {};
 
   function generateKey(parentPaths: string[], k: string): string {
     const key = [...parentPaths, k].join('.');
     
-    return prefix ? `${prefix}.${key}` : key;
+    return path ? `${path}.${key}` : key;
   }
 
   function loop(currentObj: Record<string, unknown>, parentPaths: string[]): void {

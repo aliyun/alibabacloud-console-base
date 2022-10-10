@@ -36,6 +36,7 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     apiVersion,
     sampling: factorySampling,
     delay: factoryDelay,
+    topicPrefix,
     defaultParams,
     onBeforeSend
   } = factoryOptions;
@@ -75,7 +76,8 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     once,
     instant
   }: ILogOptions = {}): void {
-    const onceKey: string | undefined = getOnceKey(topic, once);
+    const finalTopic = topicPrefix ? `${topicPrefix}${topic}` : topic;
+    const onceKey: string | undefined = getOnceKey(finalTopic, once);
     
     if (checkIfIgnore(sampling, onceKey)) {
       return;
@@ -86,7 +88,7 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     }
     
     const logInfo: ILogInfo = {
-      __topic__: topic,
+      __topic__: finalTopic,
       GROUP: group,
       ...getSystemParams(),
       ...typeof defaultParams === 'function' ? defaultParams() : defaultParams,
@@ -94,9 +96,9 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     };
     
     if (!instant && typeof delay === 'number' && delay > 0) {
-      setTimeout(() => pipe(topic, logInfo), delay);
+      setTimeout(() => pipe(finalTopic, logInfo), delay);
     } else {
-      pipe(topic, logInfo, instant);
+      pipe(finalTopic, logInfo, instant);
     }
   }
   

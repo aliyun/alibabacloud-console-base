@@ -2,7 +2,7 @@
   "name": "@alicloud/console-base",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages*/*"
   ],
   "devDependencies": {
     "@alicloud/eslint-config": "^1.12.1",

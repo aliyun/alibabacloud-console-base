@@ -22,10 +22,10 @@
     "outDir": "dist"
   },
   "include": [
-    "packages/**/*.ts",
-    "packages/**/*.js",
-    "packages/**/src",
-    "packages/**/stories",
-    "packages/**/tests"
+    "packages*/**/*.ts",
+    "packages*/**/*.js",
+    "packages*/**/src",
+    "packages*/**/stories",
+    "packages*/**/tests"
   ]
 }

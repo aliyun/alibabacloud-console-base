@@ -36,7 +36,7 @@
     "@alicloud/console-base-conf-account": "^1.5.0",
     "@alicloud/console-base-conf-env": "^1.6.0",
     "@alicloud/console-base-conf-locale": "^1.8.0",
-    "@alicloud/logger-sls": "^1.10.0"
+    "@alicloud/logger-sls": "^1.11.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

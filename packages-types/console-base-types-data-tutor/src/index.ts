@@ -1,0 +1,9 @@
+export type {
+  ITutorStep as TutorStep
+} from './common';
+export type {
+  IDataTutorDetail as DataTutorDetail
+} from './data';
+export type {
+  IApiDataTutorDetail as ApiDataTutorDetail
+} from './api';

@@ -1,0 +1,1 @@
+export { default as composeTutorFollowParams } from './compose-tutor-follow-params';
