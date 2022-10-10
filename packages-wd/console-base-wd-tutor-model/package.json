@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-plugin-model-tutor",
-  "version": "0.2.0",
-  "description": "ConsoleBase 插件 - 微教程 Model",
+  "name": "@alicloud/console-base-wd-tutor-model",
+  "version": "0.1.0",
+  "description": "ConsoleBase 全功能组件微教程的 Model",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-plugin-model-tutor",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-wd-tutor-model",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -19,11 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "model",
-    "tutor"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
