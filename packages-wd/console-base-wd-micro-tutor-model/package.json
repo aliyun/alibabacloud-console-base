@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-wd-tutor-model",
-  "version": "0.1.0",
+  "name": "@alicloud/console-base-wd-micro-tutor-model",
+  "version": "0.2.0",
   "description": "ConsoleBase 全功能组件微教程的 Model",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-wd-tutor-model",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-wd-micro-tutor-model",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"

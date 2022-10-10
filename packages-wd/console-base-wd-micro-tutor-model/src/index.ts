@@ -7,5 +7,5 @@ export * from './helper';
 export * from './hook';
 
 export type {
-  IModelProps as PluginModelTutorProps
+  IModelProps as MicroTutorModelProps
 } from './types';

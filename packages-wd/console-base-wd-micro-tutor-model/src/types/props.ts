@@ -1,4 +1,8 @@
 import {
+  ReactNode
+} from 'react';
+
+import {
   MessengerPayloadTutorRegister
 } from '@alicloud/console-base-messenger-tutor';
 import {
@@ -16,4 +20,8 @@ export interface IModelProps {
   registerLegacy?: Record<string, MessengerPayloadTutorRegister>; // TODO 等 SMC 改掉...
   onOpen?(id: string, step: number): void;
   onClose?(): void;
+}
+
+export interface IModelProviderProps extends IModelProps {
+  children: ReactNode;
 }
