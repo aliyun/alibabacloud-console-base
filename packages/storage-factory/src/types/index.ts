@@ -13,7 +13,7 @@ export interface IFnStorageClearer {
 }
 
 export interface IFnStorageSetter {
-  <T extends NonNullable<unknown> = unknown>(key: string, value: T): void;
+  <T extends NonNullable<unknown>>(key: string, value: T): void;
 }
 
 export type TFnStorage = IFnStorageGetAll & IFnStorageGetter & IFnStorageClearer & IFnStorageSetter;
