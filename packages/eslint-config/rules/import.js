@@ -6,7 +6,7 @@ module.exports = {
    * 
    * https://github.com/import-js/eslint-plugin-import/issues/2340
    */
-  'import/namespace': 0,
+  'import/namespace': 'error',
   /**
    * https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md
    * 
@@ -14,7 +14,7 @@ module.exports = {
    * 
    * https://github.com/import-js/eslint-plugin-import/issues/2348
    */
-  'import/no-cycle': [0, {
+  'import/no-cycle': ['error', {
     ignoreExternal: false,
     maxDepth: 4
   }],

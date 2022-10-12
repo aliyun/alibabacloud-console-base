@@ -14,10 +14,10 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "^8.25.0",
     "husky": "^8.0.1",
-    "lerna": "^5.6.1",
+    "lerna": "^5.6.2",
     "lint-staged": "^13.0.3",
     "markdownlint-cli2": "^0.5.1",
-    "npm-check-updates": "^16.3.9",
+    "npm-check-updates": "^16.3.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.6",
@@ -33,10 +33,10 @@
     "boot": "yarn clean && yarn install && rm yarn.lock && lerna link",
     "boot:packages": "lerna run prepublishOnly",
     "clean": "rm -rf node_modules",
-    "clean:lock": "rm -f packages/**/package-lock.json",
+    "clean:lock": "rm -f packages*/**/package-lock.json",
     "clean:tag:remote": "git tag -l \"@alicloud/*\" | xargs -n 1 git push --delete origin",
     "clean:tag:local": "git tag -l \"@alicloud/*\" | xargs -n 1 git tag -d",
-    "lint": "eslint packages/**/src/ --ext js,ts,tsx",
+    "lint": "eslint packages*/**/src/ --ext js,ts,tsx",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
     "lint:md": "markdownlint-cli2 **/*.md #node_modules",
     "lerna:boot": "lerna bootstrap --hoist",
@@ -52,7 +52,7 @@
     "ncu:full": "npm run ncu && npm run ncu:packages"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint",
+    
     "*.{js,ts,tsx,less}": "stylelint",
     "*.md": "markdownlint-cli2"
   }

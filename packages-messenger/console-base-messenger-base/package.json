@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-messenger-tutor",
-  "version": "1.1.0",
-  "description": "ConsoleBase 信使 - Tutor",
+  "name": "@alicloud/console-base-messenger-base",
+  "version": "1.4.1",
+  "description": "ConsoleBase 信使 - 基础",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-messenger/console-base-messenger-tutor",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-messenger/console-base-messenger-base",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -21,8 +21,7 @@
   },
   "keywords": [
     "console-base",
-    "messenger",
-    "tutor"
+    "messenger-base"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
@@ -32,7 +31,9 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-base": "^1.4.1"
+    "@alicloud/console-base-log-sls": "^1.6.0",
+    "@alicloud/post-message": "^1.6.0",
+    "@alicloud/sandbox-escape": "^1.1.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

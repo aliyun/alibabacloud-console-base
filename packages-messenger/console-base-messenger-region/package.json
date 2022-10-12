@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-messenger-tutor",
+  "name": "@alicloud/console-base-messenger-region",
   "version": "1.1.0",
-  "description": "ConsoleBase 信使 - Tutor",
+  "description": "ConsoleBase 信使 - Region",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-messenger/console-base-messenger-tutor",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-messenger/console-base-messenger-region",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -22,7 +22,7 @@
   "keywords": [
     "console-base",
     "messenger",
-    "tutor"
+    "region"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
