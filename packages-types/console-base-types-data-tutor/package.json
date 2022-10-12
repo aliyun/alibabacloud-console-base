@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-types-data-tutor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ConsoleBase 类型 - 微教程数据",
   "license": "MIT",
   "sideEffects": false,
