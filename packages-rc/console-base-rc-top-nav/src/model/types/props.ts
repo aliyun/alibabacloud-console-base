@@ -78,6 +78,10 @@ export interface IModelPropsAccount extends IModelPropsButton {
 }
 
 export interface IModelProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * 包裹顶部栏的 DOM 元素
+   */
+  container?: HTMLElement | null;
   fixed?: boolean;
   dock?: IModelPropsDock | null; // 程序坞
   logo?: IModelPropsLogo | null;

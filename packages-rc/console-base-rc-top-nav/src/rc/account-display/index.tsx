@@ -53,11 +53,11 @@ export default function AccountDisplay({
   infoWidthMax,
   href
 }: IProps): JSX.Element {
-  return <ScAccountDisplay align="center">
-    <ScInfo style={{
-      minWidth: infoWidthMin,
-      maxWidth: infoWidthMax
-    }}>
+  return <ScAccountDisplay align="center" style={{
+    minWidth: infoWidthMin ? infoWidthMin + SIZE_AVATAR : infoWidthMin,
+    maxWidth: infoWidthMax ? infoWidthMax + SIZE_AVATAR : infoWidthMax
+  }}>
+    <ScInfo>
       <ScInfoPrimary title={infoPrimary}>{infoPrimary}</ScInfoPrimary>
       <ScInfoSecondary>{infoSecondary}</ScInfoSecondary>
     </ScInfo>

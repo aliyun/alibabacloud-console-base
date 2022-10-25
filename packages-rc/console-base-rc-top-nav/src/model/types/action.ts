@@ -15,6 +15,9 @@ export type TModelAction = {
 } | {
   type: EAction.SET_DOCK_HOVER_ACTIVE_TIMER;
   payload: number | null;
+} | {
+  type: EAction.SET_LOGO_STATE;
+  payload: boolean;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;

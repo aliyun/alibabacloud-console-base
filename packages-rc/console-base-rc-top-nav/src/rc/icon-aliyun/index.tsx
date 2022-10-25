@@ -6,6 +6,10 @@ import CONF_LOCALE, {
   ELanguage
 } from '@alicloud/console-base-conf-locale';
 
+import {
+  useVisibleLogo
+} from '../../model';
+
 const ScIconHolder = styled.span`
   i:nth-child(2) {
     margin-left: 4px;
@@ -19,8 +23,10 @@ const ScIconHolder = styled.span`
 `;
 
 export default function IconAliyun(): JSX.Element {
+  const visibleLogo = useVisibleLogo();
+
   return <ScIconHolder>
     <Icon type="logo-aliyun" />
-    <Icon type={CONF_LOCALE.LANGUAGE === ELanguage.ZH ? 'logo-aliyun-word-cn' : 'logo-aliyun-word-en'} />
+    {visibleLogo ? <Icon type={CONF_LOCALE.LANGUAGE === ELanguage.ZH ? 'logo-aliyun-word-cn' : 'logo-aliyun-word-en'} /> : null}
   </ScIconHolder>;
 }

@@ -52,7 +52,7 @@ export default function Ui(): JSX.Element {
     className,
     fixed
   } = useProps();
-  
+
   return <ScTopNaV {...{
     'data-spm': 'top-nav',
     id,

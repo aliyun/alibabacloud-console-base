@@ -11,4 +11,8 @@ export interface IModelState {
    * dock 鼠标移上去后，如果为非 active 状态，则一定时间后自动触发 active
    */
   dockHoverActiveTimer: number | null;
+  /**
+   * 控制是否展示 Logo 旁的文字
+   */
+  dockLogoState: boolean;
 }
