@@ -2,6 +2,7 @@ export interface IPayloadResourceGroup {
   id: string;
   name: string;
   defaultOne?: boolean;
+  payload?: string;
 }
 
 export interface IPayloadResourceGroupProps {
