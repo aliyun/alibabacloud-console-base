@@ -1,6 +1,7 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
+  "version": "independent",
   "command": {
     "publish": {
       "npmClient": "npm",
@@ -11,6 +12,5 @@
       "ignoreChanges": ["stories/**", "tests/**", "*.md"],
       "message": "build: lerna publish"
     }
-  },
-  "version": "independent"
+  }
 }
