@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadResourceGroup
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_CHANGE
-} from '../../const';
+} from '../const';
 
 /**
  * 通知控制台应用：用户选择新的资源组（null 表示「全部资源组」）

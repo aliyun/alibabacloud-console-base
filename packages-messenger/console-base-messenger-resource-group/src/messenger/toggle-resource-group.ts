@@ -4,7 +4,7 @@ import {
 
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_TOGGLE
-} from '../../const';
+} from '../const';
 
 /**
  * 展示或隐藏资源组

@@ -21,9 +21,9 @@ export default function MessengerResourceGroupEvents({
 }: IProps): null {
   useEffect(() => onResourceGroupChange((payload: MessengerPayloadResourceGroup | null) => {
     if (payload) {
-      onChange(payload.id, payload.name, payload.defaultOne);
+      onChange(payload.id, payload.displayName, payload.name);
     } else { // 切换到「全部资源组」
-      onChange('', '');
+      onChange('', '', '');
     }
   }), [onChange]);
   

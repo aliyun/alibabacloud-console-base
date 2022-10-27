@@ -30,7 +30,7 @@ export default function MyMessengerResourceGroup(): JSX.Element {
   const handleResourceGroupChange = useCallback(resurceGroupId => {
     setStateResourceGroupId(resurceGroupId);
     // 这里写跳转路由逻辑
-  }, []);
+  }, [setStateResourceGroupId]);
   
   return <MessengerResourceGroup {...{
     // 数据
@@ -41,7 +41,7 @@ export default function MyMessengerResourceGroup(): JSX.Element {
     // disabled, // boolean
     // noDefault, // boolean
     // 事件
-    // onChange // (id: string, name: string, defaultOne?: string) => void
+    // onChange // (id: string, displayName: string, name: string) => void
   }} />;
 }
 ```

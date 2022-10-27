@@ -4,7 +4,7 @@ import {
 
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_SET_RESOURCE_COUNT
-} from '../../const';
+} from '../const';
 
 /**
  * 动态设置各资源组下的资源数

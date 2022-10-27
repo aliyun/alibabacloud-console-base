@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadResourceGroupProps
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_SET_PROPS
-} from '../../const';
+} from '../const';
 
 export default function onSetResourceGroupProps(fn: (payload: IPayloadResourceGroupProps) => void): () => void {
   return subscribeByConsoleBase<IPayloadResourceGroupProps>(MESSAGE_TYPE_RESOURCE_GROUP_SET_PROPS, fn);

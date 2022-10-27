@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadResourceGroup
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_DATA_LOADED
-} from '../../const';
+} from '../const';
 
 /**
  * 资源组数据加载完成时的回调

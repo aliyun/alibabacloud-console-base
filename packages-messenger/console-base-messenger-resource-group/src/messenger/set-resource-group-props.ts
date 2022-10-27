@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadResourceGroupProps
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_SET_PROPS
-} from '../../const';
+} from '../const';
 
 /**
  * 覆盖组件 props

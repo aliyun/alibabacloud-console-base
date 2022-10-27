@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadResourceGroupProps
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_MERGE_PROPS
-} from '../../const';
+} from '../const';
 
 /**
  * 合并组件 props

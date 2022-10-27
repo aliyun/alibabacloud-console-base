@@ -4,7 +4,7 @@ import {
 
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_SET_RESOURCE_COUNT
-} from '../../const';
+} from '../const';
 
 /**
  * console-base 响应设置当前选中的资源组

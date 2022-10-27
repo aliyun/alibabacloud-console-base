@@ -4,7 +4,7 @@ import {
 
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_SET_ID
-} from '../../const';
+} from '../const';
 
 /**
  * 通知修改当前选择的资源组

@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadResourceGroup
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_CHANGE
-} from '../../const';
+} from '../const';
 
 /**
  * 资源组切换时的回调

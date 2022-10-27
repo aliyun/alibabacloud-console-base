@@ -4,7 +4,7 @@ import {
 
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_TOGGLE
-} from '../../const';
+} from '../const';
 
 /**
  * console-base 响应隐藏/展示资源组选择器

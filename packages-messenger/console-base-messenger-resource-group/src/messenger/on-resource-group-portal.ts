@@ -5,7 +5,7 @@ import {
 import {
   DATA_KEY_RESOURCE_GROUP_PORTAL,
   MESSAGE_TYPE_RESOURCE_GROUP_PORTAL
-} from '../../const';
+} from '../const';
 
 export default function onResourceGroupPortal(fn: (el: HTMLElement | null) => void): () => void {
   return subscribeByConsoleBase(MESSAGE_TYPE_RESOURCE_GROUP_PORTAL, () => {

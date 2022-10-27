@@ -4,10 +4,10 @@ import {
 
 import {
   IPayloadResourceGroup
-} from '../../types';
+} from '../types';
 import {
   MESSAGE_TYPE_RESOURCE_GROUP_DATA_LOADED
-} from '../../const';
+} from '../const';
 
 /**
  * 通知控制台应用：资源组组件数据加载完成

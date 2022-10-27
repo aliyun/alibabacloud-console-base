@@ -1,7 +1,7 @@
-export interface IPayloadResourceGroup {
+export interface IPayloadResourceGroup { // TODO mv to types package
   id: string;
   name: string;
-  defaultOne?: boolean;
+  displayName: string;
 }
 
 export interface IPayloadResourceGroupProps {
