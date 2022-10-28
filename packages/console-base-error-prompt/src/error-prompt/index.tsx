@@ -10,13 +10,13 @@ import {
   TErrorPromptArgExtra
 } from '../types';
 import {
-  convertToQueueItem,
-  getSoloQueue,
-  getSoloDialogIndirect,
   setSoloDialogIndirect,
+  getSoloDialogIndirect,
+  getSoloQueue,
+  getDialogProps,
+  convertToQueueItem,
   pushSoloQueue,
-  resolveSolo,
-  getDialogProps
+  resolveSolo
 } from '../util';
 import DialogContent from '../rc/dialog-content';
 

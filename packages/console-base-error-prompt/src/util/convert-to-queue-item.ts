@@ -28,7 +28,7 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
   }
   
   const error = convertToErrorPlain(o);
-  const specialExtra = getPredefinedExtra(error.code);
+  const predefinedExtra = getPredefinedExtra(error.code);
   let {
     title = error.title,
     message = error.message,
@@ -36,11 +36,11 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
     button
   } = parseExtra(error, extra);
   
-  if (specialExtra) {
-    title = specialExtra.title || title;
-    message = specialExtra.message || message;
-    messageExtra = specialExtra.messageExtra || messageExtra;
-    button = specialExtra.button || button;
+  if (predefinedExtra) {
+    title = predefinedExtra.title || title;
+    message = predefinedExtra.message || message;
+    messageExtra = predefinedExtra.messageExtra || messageExtra;
+    button = predefinedExtra.button || button;
   }
   
   return {

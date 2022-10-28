@@ -11,7 +11,7 @@ import {
 function fakeLogin(): void {
   alert({
     title: '模拟登录',
-    content: '正常的登录，只需要 window.reload 即可，这里为了 demo 效果，假装了一个无刷登录。'
+    content: '正常的登录只需要 window.reload 即可，这里为了 demo 效果，假装了一个无刷登录。'
   });
 }
 
