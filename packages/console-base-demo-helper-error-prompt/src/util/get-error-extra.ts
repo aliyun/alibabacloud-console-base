@@ -1,19 +1,10 @@
 import {
-  alert
-} from '@alicloud/console-base-rc-dialog';
-
-import {
   CODE_NEED_LOGIN_UR_SYS,
   CODE_NEED_LOGIN_FAKE,
   CODE_NEED_MESSAGE_EXTRA
 } from '../const';
 
-function fakeLogin(): void {
-  alert({
-    title: '模拟登录',
-    content: '正常的登录只需要 window.reload 即可，这里为了 demo 效果，假装了一个无刷登录。'
-  });
-}
+import fakeLogin from './fake-login';
 
 interface IError {
   code?: string;
@@ -34,7 +25,7 @@ export default function getErrorExtra(error: IError): IResult | undefined {
       return {
         title: '你妹登录呢',
         button: {
-          label: '唉，登录吧',
+          label: 'Fake Login',
           onClick: fakeLogin
         }
       };
@@ -42,8 +33,7 @@ export default function getErrorExtra(error: IError): IResult | undefined {
       return {
         title: '请君登录',
         button: {
-          label: '客官，您又来啦？',
-          onClick: fakeLogin
+          label: '客官，您又来啦？'
         }
       };
     case CODE_NEED_MESSAGE_EXTRA:

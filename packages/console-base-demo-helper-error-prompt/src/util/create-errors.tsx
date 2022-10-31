@@ -67,11 +67,10 @@ export default function createErrors(): TErrorArg[] {
   // 其他 code
   createError({
     code: CODE_NEED_LOGIN_UR_SYS,
-    message: '登录失效（非官方）NOT_SIGNED_IN.YOUR_SIS'
+    message: '登录失效（非官方）NOT_SIGNED_IN.YOUR_SIS，有 <code>extra.button.onClick</code> 无法被 proxy'
   }), createError({
     code: CODE_NEED_LOGIN_FAKE,
-    title: '登录失效（非官方）NOT_SIGNED_IN.FAKE',
-    message: '复杂的对象... and title in Error',
+    message: '登录失效（非官方）NOT_SIGNED_IN.FAKE（有 <code>extra.button</code> 但可以被 proxy）',
     details: {
       url: 'some URL',
       URL: 'some URL 2',

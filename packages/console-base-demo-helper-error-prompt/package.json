@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-demo-helper-error-prompt",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "ConsoleBase Demo Helper for Error Prompt",
   "license": "MIT",
   "sideEffects": false,
@@ -40,6 +40,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
+    "@alicloud/console-base-intl-factory": "^1.6.2",
     "@alicloud/console-base-rc-dialog": "^1.9.2",
     "@alicloud/demo-rc-elements": "^1.10.8"
   },

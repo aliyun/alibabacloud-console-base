@@ -51,6 +51,8 @@ const cssSlide = css<IScDialogProps>`
 `;
 
 const cssSlideUp = css<IScDialogProps>`
+  display: flex;
+  flex-direction: column;
   right: 0;
   bottom: 0;
   left: 0;

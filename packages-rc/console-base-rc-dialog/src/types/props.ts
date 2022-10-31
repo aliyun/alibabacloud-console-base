@@ -76,7 +76,7 @@ export interface IDialogProps<T = void, D = TDialogData> extends Omit<HTMLAttrib
   buttons?: TDynamicByData<TDialogButton<T, D>[], D>;
   content?: TStringOrJsx;
   /* --- 展示 --- */
-  mode?: EDialogMode | 'normal' | 'slide';
+  mode?: EDialogMode | 'normal' | 'slide' | 'slide_up';
   size?: TDynamicByData<number | EDialogSize | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'auto' | 'almost-full' | 'full', D>;
   classNameOnBody?: string;
   /* --- 行为 --- */
