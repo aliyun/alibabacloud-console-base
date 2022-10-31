@@ -1,4 +1,7 @@
-export { default } from './rc';
+export {
+  default,
+  RainbowTextWithTooltip
+} from './rc';
 
 export type {
   IDemoHelperTopNavProps as DemoHelperTopNavProps

@@ -1,6 +1,8 @@
 import React from 'react';
 
-import DemoHelperTopNav from '../../src';
+import DemoHelperTopNav, {
+  RainbowTextWithTooltip
+} from '../../src';
 import pkgInfo from '../../package.json';
 
 export default function DemoDefault(): JSX.Element {
@@ -10,6 +12,12 @@ export default function DemoDefault(): JSX.Element {
       label: 'right 1',
       tip: 'hello'
     }]}>
+      <RainbowTextWithTooltip {...{
+        label: 'Rainbow',
+        tip: <>
+          Tip Content
+        </>
+      }} />
       <div>child 1</div>
       <div>child 2</div>
     </DemoHelperTopNav>

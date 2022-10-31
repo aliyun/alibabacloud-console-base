@@ -10,11 +10,14 @@ import {
   TopNavProps
 } from '@alicloud/console-base-rc-top-nav';
 
-export interface IDemoHelperRightItemProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'onMouseEnter' | 'onMouseLeave'> {
+export interface IDemoHelperRainbowTextWithTooltip extends Omit<HTMLAttributes<HTMLSpanElement>, 'onMouseEnter' | 'onMouseLeave'> {
   label: string | JSX.Element;
   tip: string | JSX.Element;
   tipWidth?: number;
+  tipAlignRight?: boolean;
 }
+
+export interface IDemoHelperRightItemProps extends Omit<IDemoHelperRainbowTextWithTooltip, 'tipAlignRight'> {}
 
 export interface IRightItemWithKey extends IDemoHelperRightItemProps {
   key: string | number;
