@@ -4,6 +4,6 @@ export {
   slide,
   slideUp
 } from './open';
-export { default as alert } from './alt/alert';
-export { default as confirm } from './alt/confirm';
-export { default as prompt } from './alt/prompt';
+export { default as alert } from './alert';
+export { default as confirm } from './confirm';
+export { default as prompt } from './prompt';

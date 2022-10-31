@@ -7,7 +7,9 @@ export {
 
 export * from './promised';
 
-export { default as AltWrap } from './rc/alt-wrap';
+export {
+  AltWrap
+} from './rc';
 
 export {
   useDialog

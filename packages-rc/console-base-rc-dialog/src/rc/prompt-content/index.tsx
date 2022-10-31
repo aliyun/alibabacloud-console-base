@@ -6,16 +6,15 @@ import styled from 'styled-components';
 import Input from '@alicloud/console-base-rc-input';
 
 import {
+  IDataPrompt
+} from '../../types';
+import {
   useDialog
-} from '../../../model';
+} from '../../model';
 
 const ScPromptContent = styled.div`
   padding-top: 24px;
 `;
-
-export interface IDataPrompt {
-  value: string;
-}
 
 /**
  * prompt dialog 的内容

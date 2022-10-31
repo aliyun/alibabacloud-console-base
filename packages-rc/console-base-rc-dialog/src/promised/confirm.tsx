@@ -3,17 +3,20 @@ import React from 'react';
 import {
   IDialogPropsConfirm,
   IAltConfirmExtra
-} from '../../types';
+} from '../types';
 import {
   SYS_DIALOG_PROPS_FIXED,
   SYS_DIALOG_PROPS_DEFAULT
-} from '../../const';
-import intl from '../../intl';
+} from '../const';
+import intl from '../intl';
 import {
   buildPropsForPromise
-} from '../../util';
-import AltWrap from '../../rc/alt-wrap';
-import open from '../open';
+} from '../util';
+import {
+  AltWrap
+} from '../rc';
+
+import open from './open';
 
 /**
  * 系统 window.confirm 的替代

@@ -1,7 +1,7 @@
 import {
   showBackdrop,
   removeBackdrop
-} from '../../rc/backdrop';
+} from '../../rc';
 
 import stackGet from './stack-get';
 import stackFindTopmost from './stack-find-topmost';
@@ -9,7 +9,7 @@ import stackFindTopmost from './stack-find-topmost';
 /**
  * 处理背投和 z-index
  */
-export default function doBackdropAndZIndex(): void {
+export default function doBackdropAndZIndex(): void { // eslint-disable-line @typescript-eslint/naming-convention
   const topmost = stackFindTopmost();
   
   if (!topmost) {

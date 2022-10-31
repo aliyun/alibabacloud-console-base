@@ -2,21 +2,22 @@ import React from 'react';
 
 import {
   IDialogPropsPrompt,
-  IAltPromptExtra
-} from '../../types';
+  IAltPromptExtra,
+  IDataPrompt
+} from '../types';
 import {
   SYS_DIALOG_PROPS_FIXED,
   SYS_DIALOG_PROPS_DEFAULT
-} from '../../const';
-import intl from '../../intl';
+} from '../const';
+import intl from '../intl';
 import {
   buildPropsForPromise
-} from '../../util';
-import open from '../open';
+} from '../util';
+import {
+  PromptContent
+} from '../rc';
 
-import PromptContent, {
-  IDataPrompt
-} from './prompt-content';
+import open from './open';
 
 /**
  * 系统 window.prompt 的替代
