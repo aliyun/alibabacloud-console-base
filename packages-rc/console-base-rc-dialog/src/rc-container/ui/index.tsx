@@ -14,7 +14,8 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  EDialogMode
+  EDialogMode,
+  EDialogSize
 } from '../../enum';
 import {
   useProps,
@@ -85,6 +86,14 @@ const ScDialog = styled.div<IScDialogProps>`
   
   &[data-dialog-mode=${EDialogMode.SLIDE_UP}] {
     ${cssSlideUp}
+    
+    &[data-dialog-size=${EDialogSize.FULL}] {
+      top: 0;
+      
+      .hasTopbar & {
+        top: ${SIZE.HEIGHT_TOP_NAV}px;
+      }
+    }
   }
   
   &[data-dialog-mode=${EDialogMode.NORMAL}] {
@@ -99,6 +108,7 @@ export default function DialogUi(): JSX.Element {
   const {
     className,
     mode,
+    size,
     closable
   } = useProps();
   const refDialog = useRefDialog();
@@ -114,7 +124,9 @@ export default function DialogUi(): JSX.Element {
     style,
     role: 'dialog',
     'aria-modal': true,
-    'data-dialog-mode': mode || EDialogMode.NORMAL // 用于样式钩子
+    // 以下用于样式钩子
+    'data-dialog-mode': mode,
+    'data-dialog-size': typeof size === 'string' ? size : undefined
   }}>
     <Header />
     <Content ref={refDialogContent} />
