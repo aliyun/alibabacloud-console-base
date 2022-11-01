@@ -29,7 +29,7 @@
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.2",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.8",
+    "@alicloud/demo-rc-elements": "^1.10.9",
     "@alicloud/fetcher-demo-helpers": "^1.4.2",
     "@simplewebauthn/typescript-types": "^4.0.0",
     "@types/lodash": "^4.14.187",

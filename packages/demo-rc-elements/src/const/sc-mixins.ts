@@ -28,6 +28,7 @@ const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
   border-radius: 4px;
   background-color: ${COLOR_FORM_CONTROL.BGC};
   min-width: 60px;
+  cursor: pointer;
   
   .theme-dark & {
     background-color: ${COLOR_FORM_CONTROL_DARK.BGC};
@@ -58,6 +59,7 @@ const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
     border-color: ${COLOR_FORM_CONTROL.BDC_DISABLED};
     box-shadow: none;
     background-color: ${COLOR_FORM_CONTROL.BGC_DISABLED};
+    cursor: default;
     color: ${COLOR_FORM_CONTROL.FGC_DISABLED};
     
     .theme-dark & {

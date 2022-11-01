@@ -26,8 +26,8 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.8",
-    "@types/lodash": "^4.14.186",
+    "@alicloud/demo-rc-elements": "^1.10.9",
+    "@types/lodash": "^4.14.187",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "lodash": "^4.17.21",
