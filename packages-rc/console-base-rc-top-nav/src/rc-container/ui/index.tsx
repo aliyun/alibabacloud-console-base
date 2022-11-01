@@ -57,7 +57,7 @@ export default function Ui(): JSX.Element {
     'data-spm': 'top-nav',
     id,
     align: 'center',
-    className: `${className || ''} J_fixed_right_will_be_pushed_left`.trim(), // 注意：和 one-modal 中有耦合，可以忍
+    className: `${className || ''} J_fixed_right_will_be_pushed_left`.trim(), // 注意：和 micro-browser 有耦合，可以忍
     fixed: fixed ? 1 : 0
   }}>
     <Flex align="center">

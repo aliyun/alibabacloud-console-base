@@ -28,7 +28,6 @@ const ScContent = styled.div<Partial<IDialogProps>>`
 
 function Content(props: IProps, ref: Ref<HTMLDivElement>): JSX.Element {
   const {
-    mode,
     classNameOnBody,
     content
   } = useProps();
@@ -36,12 +35,11 @@ function Content(props: IProps, ref: Ref<HTMLDivElement>): JSX.Element {
   
   return <ScContent {...{
     ...props,
+    ref,
     style: maxHeight > 0 ? {
       maxHeight
     } : undefined,
-    className: classNameOnBody,
-    ref,
-    mode
+    className: classNameOnBody
   }}>{content}</ScContent>;
 }
 

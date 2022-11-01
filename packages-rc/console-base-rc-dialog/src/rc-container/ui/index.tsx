@@ -22,6 +22,8 @@ import {
   useRefDialog,
   useRefDialogContent,
   useStateActive,
+  useDialogMode,
+  useDialogSize,
   useDialogStyle
 } from '../../model';
 
@@ -107,13 +109,13 @@ const ScDialog = styled.div<IScDialogProps>`
 export default function DialogUi(): JSX.Element {
   const {
     className,
-    mode,
-    size,
     closable
   } = useProps();
   const refDialog = useRefDialog();
   const refDialogContent = useRefDialogContent();
   const active = useStateActive();
+  const dialogMode = useDialogMode();
+  const dialogSize = useDialogSize();
   const style = useDialogStyle();
   
   return <ScDialog {...{
@@ -125,8 +127,8 @@ export default function DialogUi(): JSX.Element {
     role: 'dialog',
     'aria-modal': true,
     // 以下用于样式钩子
-    'data-dialog-mode': mode,
-    'data-dialog-size': typeof size === 'string' ? size : undefined
+    'data-dialog-mode': dialogMode,
+    'data-dialog-size': typeof dialogSize === 'string' ? dialogSize : undefined
   }}>
     <Header />
     <Content ref={refDialogContent} />

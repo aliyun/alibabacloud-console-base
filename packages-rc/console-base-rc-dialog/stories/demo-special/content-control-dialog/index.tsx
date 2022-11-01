@@ -19,7 +19,7 @@ const props = {
   buttons: ['好的', '不好']
 };
 
-export default function DemoSpecial(): JSX.Element {
+export default function ContentControlDialog(): JSX.Element {
   return <>
     <H1>测试内容控制 Dialog</H1>
     <Button {...{

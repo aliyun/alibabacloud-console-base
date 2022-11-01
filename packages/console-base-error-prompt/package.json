@@ -46,7 +46,7 @@
     "@alicloud/console-base-intl-factory-basic": "^1.6.2",
     "@alicloud/console-base-rc-button": "^1.7.3",
     "@alicloud/console-base-rc-copy-it": "^1.4.2",
-    "@alicloud/console-base-rc-dialog": "^1.9.3",
+    "@alicloud/console-base-rc-dialog": "^1.9.5",
     "@alicloud/console-base-rc-icon": "^1.9.2",
     "@alicloud/console-base-rc-pagination": "^1.6.2",
     "@alicloud/console-base-theme": "^1.8.4",

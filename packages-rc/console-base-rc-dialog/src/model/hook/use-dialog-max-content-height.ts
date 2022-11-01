@@ -2,21 +2,19 @@ import {
   EDialogMode
 } from '../../enum';
 
-import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
+import useDialogMode from './use-dialog-mode';
 
 /**
  * Normal 模式下需要对内容区域限高
  */
 export default function useDialogMaxContentHeight(): number {
   const {
-    mode
-  } = useModelProps();
-  const {
     windowHeight
   } = useModelState();
+  const dialogMode = useDialogMode();
   
-  if (mode === EDialogMode.SLIDE || mode === EDialogMode.SLIDE_UP) {
+  if (dialogMode === EDialogMode.SLIDE || dialogMode === EDialogMode.SLIDE_UP) {
     return -1;
   }
   

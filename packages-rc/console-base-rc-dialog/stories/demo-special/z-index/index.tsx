@@ -18,6 +18,7 @@ import {
 
 import DialogContent from './dialog-content';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export default function ZIndex(): JSX.Element {
   const [stateConsoleBase, setStateConsoleBase] = useState<boolean>(false);
   

@@ -15,13 +15,13 @@ import {
   EDialogMode
 } from '../../../enum';
 import {
-  useProps,
+  useDialogMode,
   useDialogTitle,
   useDialogTitleExtra
 } from '../../../model';
 
 interface IScProps {
-  mode?: EDialogMode;
+  $mode?: EDialogMode;
 }
 
 const cssNormal = css`
@@ -41,34 +41,39 @@ const ScHeader = styled.header<IScProps>`
   align-items: center;
   position: relative;
   box-sizing: border-box;
-  line-height: 24px;
-  ${props => (props.mode !== EDialogMode.NORMAL ? cssSlide : cssNormal)}
+  ${props => (props.$mode !== EDialogMode.NORMAL ? cssSlide : cssNormal)}
 `;
-
-const ScTitle = styled.h4`
+const ScTitle = styled.h4<IScProps>`
+  display: flex;
   flex: 1;
+  align-items: center;
   margin: 0;
   padding: 0;
   font-size: 16px;
   font-weight: 400;
   ${mixinTextPrimary}
   ${mixinTypoEllipsis}
+  
+  ${props => (props.$mode !== EDialogMode.NORMAL ? css`
+    height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;
+    line-height: ${SIZE.HEIGHT_DIALOG_SLIDE_HEADER}px;
+  ` : null)}
 `;
 const ScTitleExtra = styled.div`
   ${mixinTextSecondary}
 `;
 
 export default function Header(): JSX.Element {
-  const {
-    mode
-  } = useProps();
-  const title = useDialogTitle();
-  const titleExtra = useDialogTitleExtra();
+  const dialogMode = useDialogMode();
+  const dialogTitle = useDialogTitle();
+  const dialogTitleExtra = useDialogTitleExtra();
   
   return <ScHeader {...{
-    mode: mode as EDialogMode
+    $mode: dialogMode
   }}>
-    {title ? <ScTitle>{title}</ScTitle> : null}
-    {titleExtra ? <ScTitleExtra>{titleExtra}</ScTitleExtra> : null}
+    <ScTitle {...{
+      $mode: dialogMode
+    }}>{dialogTitle}</ScTitle>
+    {dialogTitleExtra ? <ScTitleExtra>{dialogTitleExtra}</ScTitleExtra> : null}
   </ScHeader>;
 }

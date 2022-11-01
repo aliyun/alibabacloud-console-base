@@ -5,6 +5,7 @@ import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import PkgInfo from '../pkg-info';
 
 import ZIndex from './z-index';
+import HeaderFlex from './header-flex';
 import ContentControlDialog from './content-control-dialog';
 import Update from './update';
 import LongContent from './long-content';
@@ -19,6 +20,7 @@ export default function DemoSpecial(): JSX.Element {
     <ThemeSwitcher />
     <PkgInfo />
     <ZIndex />
+    <HeaderFlex />
     <ContentControlDialog />
     <Update />
     <LongContent />

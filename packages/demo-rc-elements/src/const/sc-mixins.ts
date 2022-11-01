@@ -34,7 +34,7 @@ const CSS_FORM_CONTROL_OVERRIDE_BUTTON = css`
   }
   
   &:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: ${COLOR_FORM_CONTROL.BGC_HOVER};
     
     .theme-dark & {

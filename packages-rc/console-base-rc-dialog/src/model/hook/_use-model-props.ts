@@ -55,7 +55,7 @@ export default function useModelProps<T = void, D = TDialogData>(): TModelProps<
     }
     
     if (modeIsSlide) {
-      finalProps.className = `${finalProps.className || ''} J_fixed_right_will_be_pushed_left`.trim(); // 注意：和 one-modal 中有耦合，可以忍
+      finalProps.className = `${finalProps.className || ''} J_fixed_right_will_be_pushed_left`.trim(); // 注意：和 micro-browser 有耦合，可以忍
     }
     
     return finalProps;

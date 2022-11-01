@@ -15,14 +15,14 @@ import {
   IDialogButtonProps
 } from '../../../types';
 import {
-  useProps,
+  useDialogMode,
   useDialogButtons
 } from '../../../model';
 
 import FooterButton from './button';
 
 interface IScProps {
-  mode?: EDialogMode;
+  $mode?: EDialogMode;
 }
 
 const cssCommon = css`
@@ -48,17 +48,15 @@ const cssSlide = css`
 
 const ScFooter = styled.footer<IScProps>`
   ${cssCommon}
-  ${props => (props.mode === EDialogMode.SLIDE ? cssSlide : cssNormal)}
+  ${props => (props.$mode === EDialogMode.SLIDE ? cssSlide : cssNormal)}
 `;
 
 export default function Footer(): JSX.Element | null {
-  const {
-    mode
-  } = useProps();
+  const dialogMode = useDialogMode();
   const buttons: IDialogButtonProps[] = useDialogButtons();
   
   return buttons.length ? <ScFooter {...{
-    mode: mode as EDialogMode
+    $mode: dialogMode
   }}>
     {buttons.map((v, i): JSX.Element => <FooterButton key={v.spm || i} {...v} />)}
   </ScFooter> : null;

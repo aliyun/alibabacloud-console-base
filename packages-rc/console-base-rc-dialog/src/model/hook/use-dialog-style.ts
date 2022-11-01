@@ -12,25 +12,25 @@ import {
 
 import useModelProps from './_use-model-props';
 import useModelState from './_use-model-state';
+import useDialogMode from './use-dialog-mode';
+import useDialogSize from './use-dialog-size';
 
 export default function useDialogStyle(): CSSProperties {
   const {
-    mode,
-    zIndex,
-    size: size0
+    zIndex
   } = useModelProps();
   const {
-    data,
     zIndex: zIndexInState
   } = useModelState();
+  const dialogMode = useDialogMode();
+  const dialogSize = useDialogSize();
   
-  const size = typeof size0 === 'function' ? size0(data) : size0;
   const style: CSSProperties = {
     zIndex: zIndexInState > 0 ? zIndexInState : zIndex,
-    width: getDialogSizeWidth(mode as EDialogMode, size as number | EDialogSize) // TODO 放 useModelProps 中确定类型
+    width: getDialogSizeWidth(dialogMode, dialogSize)
   };
   
-  if (mode === EDialogMode.SLIDE && size === EDialogSize.ALMOST_FULL) {
+  if (dialogMode === EDialogMode.SLIDE && dialogSize === EDialogSize.ALMOST_FULL) {
     style.left = 200;
   }
   
