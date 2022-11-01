@@ -16,7 +16,7 @@ export default function useDialogMaxContentHeight(): number {
     windowHeight
   } = useModelState();
   
-  if (mode === EDialogMode.SLIDE) {
+  if (mode === EDialogMode.SLIDE || mode === EDialogMode.SLIDE_UP) {
     return -1;
   }
   
