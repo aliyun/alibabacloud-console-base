@@ -1,0 +1,1 @@
+export const MESSAGE_TYPE_OPEN_URL = 'app_2_console_base:open_url';
