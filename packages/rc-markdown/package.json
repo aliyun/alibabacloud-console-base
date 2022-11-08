@@ -42,6 +42,7 @@
     "micromark": "^3.1.0",
     "micromark-extension-directive": "^2.1.1",
     "micromark-extension-gfm": "^2.0.1",
+    "micromark-util-symbol": "^1.0.1",
     "micromark-util-types": "^1.0.2"
   },
   "scripts": {

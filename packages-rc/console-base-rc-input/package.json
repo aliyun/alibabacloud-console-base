@@ -43,7 +43,8 @@
     "@alicloud/console-base-rc-icon": "^1.9.2",
     "@alicloud/console-base-theme": "^1.8.4",
     "@alicloud/console-base-theme-sc-base": "^1.5.3",
-    "@alicloud/react-hook-controllable-value": "^1.2.2"
+    "@alicloud/react-hook-controllable-value": "^1.2.2",
+    "immutability-helper": "^3.1.1"
   },
   "scripts": {
     "start": "breezr start-storybook",
