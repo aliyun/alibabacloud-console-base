@@ -1,10 +1,8 @@
 import {
   alert
 } from '@alicloud/console-base-rc-dialog';
+import sls from '@alicloud/console-base-log-sls';
 
-import {
-  slsRiskForbidden
-} from '../../../sls';
 import {
   DEFAUT_DIALOG_SIZE
 } from '../../../const';
@@ -14,7 +12,7 @@ import intl from '../../../intl';
  * 风控 - 操作中止
  */
 export default (): Promise<void> => {
-  slsRiskForbidden();
+  sls('risk_forbidden');
   
   return alert({
     size: DEFAUT_DIALOG_SIZE,
