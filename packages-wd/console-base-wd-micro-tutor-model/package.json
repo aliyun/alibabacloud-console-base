@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-wd-micro-tutor-model",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ConsoleBase 全功能组件微教程的 Model",
   "license": "MIT",
   "sideEffects": false,
@@ -28,11 +28,11 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-tutor": "^1.1.3",
-    "@alicloud/console-base-rc-loading": "^1.8.3",
+    "@alicloud/console-base-messenger-tutor": "^1.1.4",
+    "@alicloud/console-base-rc-loading": "^1.8.4",
     "@alicloud/console-base-types-data-tutor": "^0.1.2",
-    "@alicloud/console-logger-sls": "^1.5.3",
-    "@alicloud/dom-event-hijacker": "^2.3.3",
+    "@alicloud/console-logger-sls": "^1.5.4",
+    "@alicloud/dom-event-hijacker": "^2.3.4",
     "@alicloud/react-hook-is-unmounted": "^1.3.2",
     "immutability-helper": "^3.1.1"
   },
