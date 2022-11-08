@@ -1,13 +1,19 @@
 import {
+  ERROR_RISK_FORBIDDEN,
+  ERROR_RISK_INVALID,
+  ERROR_RISK_CANCELLED
+} from '@alicloud/console-fetcher-risk-prompt';
+
+import {
   intercept
 } from './util';
 
-export default intercept;
 export {
   ERROR_RISK_FORBIDDEN,
   ERROR_RISK_INVALID,
   ERROR_RISK_CANCELLED
-} from './const';
+};
+export default intercept;
 
 export type {
   IFetcherInterceptorConfig as FetcherInterceptorConfig

@@ -1,12 +1,9 @@
-import {
+import type {
   FetcherError
 } from '@alicloud/fetcher';
-
 import {
-  ERROR_RISK_FORBIDDEN,
-  ERROR_RISK_INVALID,
-  ERROR_RISK_CANCELLED
-} from '../const';
+  ERROR_RISK_FORBIDDEN
+} from '@alicloud/console-fetcher-risk-prompt';
 
 function convertToRiskError(err: FetcherError, name: string): FetcherError {
   err.name = name;
@@ -17,12 +14,4 @@ function convertToRiskError(err: FetcherError, name: string): FetcherError {
 
 export function convertToRiskErrorForbidden(err: FetcherError): FetcherError {
   return convertToRiskError(err, ERROR_RISK_FORBIDDEN);
-}
-
-export function convertToRiskErrorInvalid(err: FetcherError): FetcherError {
-  return convertToRiskError(err, ERROR_RISK_INVALID);
-}
-
-export function convertToRiskErrorCancelled(err: FetcherError): FetcherError {
-  return convertToRiskError(err, ERROR_RISK_CANCELLED);
 }

@@ -1,40 +1,28 @@
-import _get from 'lodash/get';
-
 import {
+  canHaveBody,
+  mergeConfig,
   FetcherConfig,
   FetcherResponse,
   FetcherError,
   FetcherFnRequest,
   FetcherFnInterceptResponseRejected
 } from '@alicloud/fetcher';
+import fetcherRiskPrompt, {
+  convertMpkSetting,
+  type RiskResponse
+} from '@alicloud/console-fetcher-risk-prompt';
 
 import {
   IFetcherInterceptorConfig
 } from '../types';
 import {
-  ERisk,
-  EVerifyType
-} from '../enum';
-import {
   DEFAULT_RISK_CONFIG
 } from '../const';
-import intl from '../intl';
 
 import riskForbidden from './risk/forbidden';
-import riskInvalid from './risk/invalid';
-import riskOldMainVerify from './risk/old-main-verify';
-import riskMpkVerify from './risk/mpk-verify';
-import riskNewMainVerify from './risk/new-main-verify';
-import riskNewSubVerifyMfa from './risk/new-sub-verify/mfa';
-import convertRiskInfo from './convert-risk-info';
 import {
-  convertToRiskErrorForbidden,
-  convertToRiskErrorInvalid,
-  convertToRiskErrorCancelled
+  convertToRiskErrorForbidden
 } from './error';
-import {
-  slsRiskStartUp
-} from '../sls';
 
 /**
  * 根据业务错误 code 为基础的 fetcher 添加风控流程（老版本主账号风控）
@@ -96,132 +84,61 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
     ...o
   };
   
-  return async (err: FetcherError, fetcherConfig: FetcherConfig, response: FetcherResponse | undefined, request: FetcherFnRequest): Promise<unknown> => {
+  return async (err: FetcherError, fetcherConfig: FetcherConfig, response: FetcherResponse<Record<string, unknown>> | undefined, request: FetcherFnRequest): Promise<unknown> => {
     const {
       code
     } = err;
-    const responseData = response?.data;
     
     switch (code) {
       case riskConfig.CODE_FORBIDDEN:
         await riskForbidden();
         
         throw convertToRiskErrorForbidden(err);
-      case riskConfig.CODE_NEED_VERIFY: { // 加花括号防止 eslint no-case-declarations
-        const riskInfo = convertRiskInfo(responseData, riskConfig, fetcherConfig);
+      case riskConfig.CODE_NEED_VERIFY: {
+        const riskResponse = ((): RiskResponse => {
+          if (typeof response?.data === 'object') {
+            if ('data' in response.data) {
+              return (response.data.data) as RiskResponse;
+            }
+          }
 
-        // 新版主账号风控
-        if (riskInfo.risk === ERisk.NEW_MAIN) {
-          slsRiskStartUp({
-            riskType: ERisk.NEW_MAIN
-          });
-
-          return riskNewMainVerify({
-            request,
-            mainRiskInfo: riskInfo,
-            fetcherConfig,
-            riskConfig
-          }).catch(err1 => { // undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
-            throw err1 ?? convertToRiskErrorCancelled(err);
-          });
-        }
+          return {};
+        })();
 
         const {
-          risk,
-          verifyType,
-          type
-        } = riskInfo;
+          isMpk,
+          mpkIsDowngrade
+        } = convertMpkSetting(riskResponse.Extend);
 
-        const newSubRisk = risk === ERisk.NEW_SUB; // 是不是新版子账号风控
-        
-        switch (type) {
-          case EVerifyType.NONE:
-            await riskInvalid({
-              newSubRisk,
-              message: newSubRisk ? intl('message:new_main_verify_error') : intl('message:invalid_unknown!lines'),
-              urlSettings: newSubRisk ? riskConfig.URL_SETTINGS : ''
-            });
-            
-            throw convertToRiskErrorInvalid(err);
-          case EVerifyType.UNKNOWN:
-            await riskInvalid({
-              newSubRisk,
-              message: newSubRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
-                method: verifyType
-              }) : intl('message:invalid_unsupported_{method}!html!lines', {
-                method: verifyType
-              }),
-              urlSettings: newSubRisk ? riskConfig.URL_SETTINGS : ''
-            });
-            
-            throw convertToRiskErrorInvalid(err);
-          case EVerifyType.SMS:
-          case EVerifyType.EMAIL:
-            // 旧版主账号风控手机/邮箱验证必须要有 detail，且一定要有 GET_VERIFY_CODE 设置
-            if (risk !== ERisk.NEW_SUB && !riskInfo.detail) {
-              await riskInvalid({
-                newSubRisk: false,
-                message: intl('message:invalid_unknown!lines'),
-                urlSettings: risk === ERisk.OLD_MAIN ? riskConfig.URL_SETTINGS : ''
-              });
-              
-              throw convertToRiskErrorInvalid(err);
-            }
-            
-            break;
-          default: // EVerifyType.MFA
-            break;
-        }
-
-        // 旧版主账号风控
-        if (risk === ERisk.OLD_MAIN) {
-          slsRiskStartUp({
-            riskType: ERisk.OLD_MAIN
-          });
-
-          if (_get(fetcherConfig, 'body.verifyCode') || _get(fetcherConfig, 'params.verifyCode')) {
-            throw err;
+        const newRisk = ((): boolean | undefined => {
+          if (fetcherConfig.body && typeof fetcherConfig.body === 'object') {
+            return fetcherConfig.body.riskVersion === '2.0';
           }
-          
-          return riskOldMainVerify({
-            request,
-            fetcherConfig,
-            riskInfo,
-            riskConfig
-          }).catch(err1 => { // err1 undefined 表示 cancelled
-            throw err1 ?? convertToRiskErrorCancelled(err);
-          });
-        }
+        })();
 
-        // 新版轻量级虚商风控
-        if (risk === ERisk.MPK) {
-          slsRiskStartUp({
-            riskType: ERisk.MPK
-          });
-
-          return riskMpkVerify({
-            request,
-            fetcherConfig,
-            riskInfo,
-            riskConfig
-          }).catch(err1 => { // err1 undefined 表示 cancelled
-            throw err1 ?? convertToRiskErrorCancelled(err);
-          });
-        }
-
-        // 新版子账号风控
-        slsRiskStartUp({
-          riskType: ERisk.NEW_SUB
+        const verifyResult = await fetcherRiskPrompt({
+          newRisk,
+          error: err,
+          riskResponse
         });
 
-        return riskNewSubVerifyMfa({
-          request,
-          subRiskInfo: riskInfo,
-          fetcherConfig,
-          riskConfig
-        }).catch(err1 => { // err1 undefined 表示 cancelled，undefinedAsReject 会走到这个逻辑，从而抛出 convertToRiskErrorCancelled 后的错误
-          throw err1 ?? convertToRiskErrorCancelled(err);
-        });
+        const requestResponse = await request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
+          body: {
+            ...verifyResult,
+            ...isMpk && mpkIsDowngrade ? {
+              riskVersion: '1.0'
+            } : {} // 轻量级虚商的降级联路需要指定 riskVersion: '1.0' 来覆盖 riskVersion: '2.0'
+          }
+        } : {
+          params: {
+            ...verifyResult,
+            ...isMpk && mpkIsDowngrade ? {
+              riskVersion: '1.0'
+            } : {}
+          }
+        }));
+
+        return requestResponse;
       }
       default:
         throw err;
