@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-demo-helper-error-prompt",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "ConsoleBase Demo Helper for Error Prompt",
   "license": "MIT",
   "sideEffects": false,
@@ -39,9 +39,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory": "^1.6.4",
-    "@alicloud/console-base-rc-dialog": "^1.9.7",
-    "@alicloud/demo-rc-elements": "^1.10.11"
+    "@alicloud/console-base-intl-factory": "^1.6.5",
+    "@alicloud/console-base-rc-dialog": "^1.9.8",
+    "@alicloud/demo-rc-elements": "^1.10.12"
   },
   "scripts": {
     "start": "breezr start-storybook",

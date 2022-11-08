@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-base",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "ConsoleBase 信使 - 基础",
   "license": "MIT",
   "sideEffects": false,
@@ -31,9 +31,9 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@alicloud/console-base-log-sls": "^1.6.4",
-    "@alicloud/post-message": "^1.6.4",
-    "@alicloud/sandbox-escape": "^1.1.4"
+    "@alicloud/console-base-log-sls": "^1.6.5",
+    "@alicloud/post-message": "^1.6.5",
+    "@alicloud/sandbox-escape": "^1.1.5"
   },
   "scripts": {
     "start": "breezr start-storybook",
