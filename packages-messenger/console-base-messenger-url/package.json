@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-url",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ConsoleBase 信使 - 通用 - URL 相关",
   "license": "MIT",
   "sideEffects": false,
@@ -28,7 +28,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-base": "^1.4.6"
+    "@alicloud/console-base-messenger-base": "^1.4.7"
   },
   "scripts": {
     "start": "breezr start-storybook",
