@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 
 import CodeMirror from '../../src';
-import PkgInfo from '../pkg-info';
 
 const MARKDOWN = `## Headings
 
@@ -125,14 +124,11 @@ React.render(<Markdown source="# Your markdown here" />, document.getElementById
 export default function DemoHtml(): JSX.Element {
   const [stateValue, setStateValue] = useState<string>(MARKDOWN);
   
-  return <>
-    <PkgInfo />
-    <CodeMirror {...{
-      conf: {
-        mode: 'text/markdown'
-      },
-      value: stateValue,
-      onChange: setStateValue
-    }} />
-  </>;
+  return <CodeMirror {...{
+    conf: {
+      mode: 'text/markdown'
+    },
+    value: stateValue,
+    onChange: setStateValue
+  }} />;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/rc-markdown",
-  "version": "2.3.2",
+  "version": "2.3.6",
   "description": "React wrapped Markdown based on micromark",
   "license": "MIT",
   "sideEffects": false,
@@ -25,11 +25,11 @@
     "micromark"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.2",
-    "@alicloud/console-base-theme-sc-base": "^1.5.3",
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.6",
+    "@alicloud/console-base-theme-sc-base": "^1.5.7",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.9",
+    "@alicloud/demo-rc-elements": "^1.10.13",
     "@types/react": "^17.0.48",
     "micromark-extension-math": "^2.0.2",
     "react": "^17.0.2",
@@ -42,6 +42,7 @@
     "micromark": "^3.1.0",
     "micromark-extension-directive": "^2.1.1",
     "micromark-extension-gfm": "^2.0.1",
+    "micromark-util-symbol": "^1.0.1",
     "micromark-util-types": "^1.0.2"
   },
   "scripts": {
@@ -55,5 +56,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
+  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
 }

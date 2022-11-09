@@ -79,16 +79,16 @@ export interface IConsoleApiMultiAction {
  * call(Open/Inner/Container)API 的共同类型
  */
 export interface IFnConsoleApi {
-  <T = void>(product: string, action: string, param?: undefined, options?: IConsoleApiOptions): Promise<T>;
-  <T, P>(product: string, action: string, param: P, options?: IConsoleApiOptions): Promise<T>;
+  <T = void>(product: string, action: string, params?: undefined, options?: IConsoleApiOptions): Promise<T>;
+  <T, P>(product: string, action: string, params: P, options?: IConsoleApiOptions): Promise<T>;
 }
 
 /**
  * product 明确的 API 方法，避免 product 的冗余
  */
 export interface IFnConsoleApiWithProduct {
-  <T = void>(action: string, param?: undefined, options?: IConsoleApiOptions): Promise<T>;
-  <T, P>(action: string, param: P, options?: IConsoleApiOptions): Promise<T>;
+  <T = void>(action: string, params?: undefined, options?: IConsoleApiOptions): Promise<T>;
+  <T, P>(action: string, params: P, options?: IConsoleApiOptions): Promise<T>;
 }
 
 /**

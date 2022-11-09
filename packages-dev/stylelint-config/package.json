@@ -1,0 +1,39 @@
+{
+  "name": "@alicloud/stylelint-config",
+  "version": "1.2.2",
+  "description": "Shareable stylelint configuration",
+  "license": "MIT",
+  "main": "index.js",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-dev/stylelint-config",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "stylelint",
+    "config"
+  ],
+  "devDependencies": {
+    "stylelint": "^13.13.1"
+  },
+  "peerDependencies": {
+    "stylelint": ">=13"
+  },
+  "dependencies": {
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^4.1.0",
+    "stylelint-processor-styled-components": "^1.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
+}

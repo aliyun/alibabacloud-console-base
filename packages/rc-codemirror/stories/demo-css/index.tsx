@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 
 import CodeMirror from '../../src';
-import PkgInfo from '../pkg-info';
 
 const CSS = `#tag-selector {
   position: absolute;
@@ -19,14 +18,11 @@ const CSS = `#tag-selector {
 export default function DemoCss(): JSX.Element {
   const [stateValue, setStateValue] = useState<string>(CSS);
   
-  return <>
-    <PkgInfo />
-    <CodeMirror {...{
-      conf: {
-        mode: 'text/css'
-      },
-      value: stateValue,
-      onChange: setStateValue
-    }} />
-  </>;
+  return <CodeMirror {...{
+    conf: {
+      mode: 'text/css'
+    },
+    value: stateValue,
+    onChange: setStateValue
+  }} />;
 }
