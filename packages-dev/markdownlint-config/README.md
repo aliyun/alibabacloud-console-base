@@ -1,4 +1,4 @@
-# @alicloud/markdown-config
+# @alicloud/markdownlint-config
 
 ## Install
 
@@ -8,7 +8,7 @@ yarn add -D markdownlint-cli2 @alicloud/markdownlint-config
 
 ## Usage
 
-Create file `.markdownlint.yml` with content below:
+In your `.markdownlint.yml`:
 
 ```yaml
 extends: "@alicloud/markdownlint-config/index.yml"

@@ -1,0 +1,57 @@
+{
+  "name": "@alicloud/console-base-theme",
+  "version": "1.8.8",
+  "description": "控制台主题 - 基于 css variable 和 styled-components",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "build/cjs/index.js",
+  "module": "build/es/index.js",
+  "types": "build/types/index.d.ts",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-theme/console-base-theme",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "console-base",
+    "theme"
+  ],
+  "devDependencies": {
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.61",
+    "@alicloud/demo-rc-elements": "^1.10.13",
+    "@types/lodash": "^4.14.188",
+    "@types/react": "^17.0.48",
+    "@types/styled-components": "^5.1.26",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "styled-components": "^5.3.6",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "styled-components": ">=5"
+  },
+  "dependencies": {
+    "@alicloud/console-base-theme-color": "^1.5.6",
+    "@alicloud/mere-dom": "^1.6.9"
+  },
+  "scripts": {
+    "start": "breezr start-storybook",
+    "test": "breezr test:unit",
+    "build:esm": "breezr build --engine babel --es-module",
+    "build:cjs": "breezr build --engine babel",
+    "build:bundle": "breezr build --engine webpack",
+    "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
+    "clean": "rm -rf build",
+    "prepublishOnly": "yarn clean && yarn build"
+  },
+  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
+}

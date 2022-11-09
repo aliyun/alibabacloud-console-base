@@ -7,7 +7,9 @@ import {
 import {
   HEIGHT_MENU_ITEM
 } from '../../const';
-import NavButton from '../../rc/nav-button';
+import {
+  NavButton
+} from '../../rc';
 
 const ScNavItem = styled(NavButton)`
   height: ${HEIGHT_MENU_ITEM}px;
