@@ -1,3 +1,8 @@
+// 风控错误码
+export const CODE_NEED_VERIFY = 'FoundRiskAndDoubleConfirm';
+export const CODE_FORBIDDEN = 'FoundRiskAndTip';
+export const CODE_INVALID_INPUT = 'verifyCodeInvalid';
+
 // 处理过了的风控错误，业务 UI 层无需再对其进行报错视图，忽略即可（但对于数据层来说还是一种错误）
 export const ERROR_RISK_FORBIDDEN = 'FetcherErrorRiskForbidden'; // 风控说「你无法继续」 - 有 UI 对用户提示
 export const ERROR_RISK_INVALID = 'FetcherErrorRiskInvalid'; // 风控验证设置无效，需用户进行设置 - 有 UI 对用户提示
@@ -15,17 +20,22 @@ export const SVG_URLS = {
 };
 
 export const DEFAULT_RISK_CONFIG = {
-  // 风控错误码
-  CODE_NEED_VERIFY: 'FoundRiskAndDoubleConfirm',
-  CODE_FORBIDDEN: 'FoundRiskAndTip',
-  CODE_INVALID_INPUT: 'verifyCodeInvalid',
-  BY_SMS: 'sms',
-  BY_EMAIL: 'email',
-  BY_MFA: 'ga',
-  URL_SETTINGS: '//account.console.aliyun.com/#/secure',
-  // 旧版主账号风控冷却/超时时间设置 (单位：秒)
-  COOLING_AFTER_SENT: 60,
-  COOLING_AFTER_SEND_FAIL: 10
+  bySms: 'sms',
+  byEmail: 'email',
+  byMfa: 'ga',
+  urlSetting: '//account.console.aliyun.com/#/secure',
+  coolingAfterSent: 60,
+  coolingAfterSentFail: 10,
+  dataPathVerifyType: 'data.verifyType',
+  dataPathVerifyDetail: 'data.verifyDetail',
+  dataPathCodeType: 'data.codeType',
+  dataPathVerifyUrl: 'data.VerifyURL',
+  dataPathValidators: 'data.Validators.Validator',
+  dataPathUserId: 'data.AliyunIdkp',
+  dataPathExtend: 'data.Extend',
+  dataPathNewCodeType: 'data.CodeType',
+  dataPathNewVerifyType: 'data.VerifyType',
+  dataPathNewVerifyDetail: 'data.VerifyDetail'
 };
 
 /**

@@ -13,7 +13,7 @@ import {
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 import {
   ESubMfaDeviceType,
-  DataGetU2FInfoToBind
+  DataGetU2fInfoToBind
 } from '@alicloud/console-fetcher-risk-data';
 import {
   useDialog
@@ -51,7 +51,7 @@ export default function U2fBind(): JSX.Element {
   const [stateGetU2fBindKeyLoading, setStateGetU2fBindKeyLoading] = useState<boolean>(true);
   const [stateShowU2fRetryButton, setStateShowU2fRetryButton] = useState<boolean>(false);
 
-  const getBindWebAuthnPublicKey = useCallback((infoData: DataGetU2FInfoToBind): PublicKeyCredentialCreationOptionsJSON => {
+  const getBindWebAuthnPublicKey = useCallback((infoData: DataGetU2fInfoToBind): PublicKeyCredentialCreationOptionsJSON => {
     return {
       timeout: U2F_TIME_OUT,
       attestation: 'direct',

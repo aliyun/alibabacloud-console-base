@@ -26,7 +26,6 @@ import {
   REG_MFA_CODE,
   ALIYUN_APP_VERSION,
   WINDVANE_ERROR_CODE,
-  DEFAULT_RISK_CONFIG,
   ALIYUN_APP_DOWNLOAD_URL
 } from '../../../../const';
 import {
@@ -60,6 +59,7 @@ const ScError = styled.div`
 
 export default function Content(): JSX.Element {
   const {
+    urlSetting,
     verifyDetail,
     convertedVerifyType
   } = useModelProps();
@@ -144,7 +144,7 @@ export default function Content(): JSX.Element {
           spm: `set-${convertedVerifyType}`,
           theme: ButtonTheme.TEXT_PRIMARY,
           label: intlVerifySetting(convertedVerifyType),
-          href: DEFAULT_RISK_CONFIG.URL_SETTINGS
+          href: urlSetting
         }} />
       </Flex>
     }, {

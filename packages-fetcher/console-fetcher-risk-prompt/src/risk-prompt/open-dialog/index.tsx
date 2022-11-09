@@ -7,6 +7,7 @@ import {
 import {
   TRiskInfo,
   IDialogData,
+  IRiskConfig,
   IRiskPromptResolveData
 } from '../../types';
 import {
@@ -32,7 +33,7 @@ import {
   generateSubAccountMfaSubmitButtonFn
 } from './dialog-button';
 
-export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskPromptResolveData> {
+export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Required<IRiskConfig>): Promise<IRiskPromptResolveData> {
   const {
     riskType, codeType, verifyType, verifyDetail, convertedVerifyType
   } = riskInfo;
@@ -88,7 +89,10 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
       codeType,
       verifyDetail,
       verifyType,
-      convertedVerifyType
+      convertedVerifyType,
+      urlSetting: riskConfig.urlSetting,
+      coolingAfterSent: riskConfig.coolingAfterSent,
+      coolingAfterSentFail: riskConfig.coolingAfterSentFail
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');

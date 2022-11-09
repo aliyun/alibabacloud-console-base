@@ -10,15 +10,15 @@ import {
 } from '../../types';
 import {
   VERIFY_API,
+  TICKET_TYPE,
+  EAccountType,
   ESlsResultType
 } from '../../const';
 import {
   slsVerifyMpk
 } from '../../sls';
 import fetcher from '../../util/fetcher';
-import transferTokenVerifyResponseToData from '../_api_util/transfer-token-verify-response-to-data';
-
-import transferVerifyMpkParamsToPayload from './transfer-verify-mpk-params-to-payload';
+import transferTokenVerifyResponseToData from '../_util/transfer-token-verify-response-to-data';
 
 export default async function dataVerifyMpk(params: TParamsVerifyMpk): Promise<TDataTokenVerify> {
   const commonSlsParams = {
@@ -28,9 +28,16 @@ export default async function dataVerifyMpk(params: TParamsVerifyMpk): Promise<T
   };
 
   try {
-    const payload = transferVerifyMpkParamsToPayload(params);
-
-    const verifyMpkResponse = await fetcher.post<IResponseTokenVerify, IPayloadVerifyMpk>(VERIFY_API, payload);
+    const verifyMpkResponse = await fetcher.post<IResponseTokenVerify, IPayloadVerifyMpk>(VERIFY_API, {
+      Origin: 'console',
+      TicketType: TICKET_TYPE,
+      AccountType: EAccountType.MAIN,
+      Ext: params.ext,
+      AuthCode: params.authCode,
+      AccountId: params.accountId,
+      VerifyType: params.verifyType,
+      RiskRequestId: params.riskRequestId
+    });
 
     slsVerifyMpk({
       ...commonSlsParams,

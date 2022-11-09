@@ -3,13 +3,13 @@ import {
   TPayloadGetBindMfaInfo
 } from '../../types';
 import {
-  TICKET_TYPE,
-  ESubMfaDeviceType
+  ESubMfaDeviceType,
+  SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD
 } from '../../const';
 
 export default function transferGetMfaInfoToBindParamsToPayload(params: TParamsGetMfaInfoToBind): TPayloadGetBindMfaInfo {
   const commonPayload = {
-    TicketType: TICKET_TYPE,
+    ...SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD,
     AccountId: params.accountId
   };
 

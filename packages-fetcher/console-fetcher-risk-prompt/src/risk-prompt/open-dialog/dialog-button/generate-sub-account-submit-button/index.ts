@@ -34,8 +34,7 @@ export default function generateSubAccountMfaSubmitButtonFn({
       }) {
         lock(true);
         updateData({
-          errorMessage: '',
-          primaryButtonDisabled: true
+          errorMessage: ''
         });
 
         const {
@@ -60,11 +59,8 @@ export default function generateSubAccountMfaSubmitButtonFn({
               errorMessage: (error as Error).message || ''
             });
           }).finally(() => {
-            updateData({
-              primaryButtonDisabled: false
-            });
+            unlock();
           });
-          unlock();
 
           // 阻止弹窗关闭，使得只能通过主动调用 close 关闭弹窗
           return false;

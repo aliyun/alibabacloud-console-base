@@ -7,7 +7,7 @@ import React, {
 
 import {
   ESubMfaDeviceType,
-  ParamsBindVMfa
+  ParamsBindVmfa
 } from '@alicloud/console-fetcher-risk-data';
 import {
   useDialog
@@ -75,7 +75,7 @@ export default function VmfaBindForm(): JSX.Element {
   }, [updateData]);
 
   useEffect(() => {
-    const newBindMfaPayload: ParamsBindVMfa = {
+    const newBindMfaPayload: ParamsBindVmfa = {
       accountId,
       code1: stateCode1,
       code2: stateCode2,

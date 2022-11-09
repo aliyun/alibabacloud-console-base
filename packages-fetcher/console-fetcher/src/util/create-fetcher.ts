@@ -11,8 +11,9 @@ import {
 } from '../types';
 
 export default (config?: FetcherConfig, interceptorOptions: IConsoleFetcherInterceptorOptions = {}, newRiskOption?: TNewRiskOption): Fetcher => {
+  let configBody: FetcherConfig['body'] = config?.body;
   const newRisk = ((): boolean => {
-    // 这里是为了兼容老的第三个参数为 boolean 的情况
+    // 这里是为了兼容第三个参数为 boolean 的情况
     if (typeof newRiskOption === 'boolean') {
       return newRiskOption;
     }
@@ -23,7 +24,6 @@ export default (config?: FetcherConfig, interceptorOptions: IConsoleFetcherInter
 
     return false; // 默认是使用老版本的风控
   })();
-  let configBody: FetcherConfig['body'] = config?.body;
 
   if (newRisk && typeof config?.body !== 'string') {
     configBody = {

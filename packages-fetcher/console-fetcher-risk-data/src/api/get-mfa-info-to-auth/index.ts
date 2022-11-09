@@ -9,9 +9,9 @@ import {
   TResponseGetMfaInfoToAuth
 } from '../../types';
 import {
-  TICKET_TYPE,
   ESlsResultType,
-  GET_MFA_INFO_TO_AUTH_API
+  GET_MFA_INFO_TO_AUTH_API,
+  SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD
 } from '../../const';
 import {
   slsGetMfaInfoToAuth
@@ -23,7 +23,7 @@ import transferGetMfaInfoToAuthResponseToData from './transfer-get-mfa-info-to-a
 export default async function dataGetMfaInfoToAuth(params: TParamsGetMfaInfoToAuth): Promise<TDataGetMfaInfoToAuth> {
   try {
     const getAuthMfaInfoResponse = await fetcher.post<TResponseGetMfaInfoToAuth, IPayloadGetMfaInfoToAuth>(GET_MFA_INFO_TO_AUTH_API, {
-      TicketType: TICKET_TYPE,
+      ...SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD,
       AccountId: params.accountId
     });
 

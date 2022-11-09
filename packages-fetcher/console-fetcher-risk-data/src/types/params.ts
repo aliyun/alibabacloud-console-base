@@ -1,6 +1,6 @@
 import {
-  TOmitTicketType,
-  TUnCapitalizeKeys
+  TUnCapitalizeKeys,
+  TOmitConstantPayload
 } from './util';
 import {
   IPayloadBindU2F,
@@ -15,41 +15,41 @@ import {
   IPayloadVerifyMpk
 } from './payload';
 
-// 对外暴露的绑定 MFA 设备的 API dataBindMfa 的请求参数
-export type TParamsBindVMfa = TUnCapitalizeKeys<TOmitTicketType<IPayloadBindVmfa>>;
+// 对外提供的绑定 MFA 设备的 API dataBindMfa 的请求参数
+export type TParamsBindVmfa = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadBindVmfa>>;
 
-export type TParamsBindU2F = TUnCapitalizeKeys<TOmitTicketType<IPayloadBindU2F>>;
+export type TParamsBindU2F = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadBindU2F>>;
 
-export type TParamsBindMfa = TParamsBindVMfa | TParamsBindU2F;
+export type TParamsBindMfa = TParamsBindVmfa | TParamsBindU2F;
 
-// 对外暴露的获取绑定 MFA 设备所需数据的 API dataGetMfaInfoToBind 的请求参数
-export type TParamsGetVMfaInfoToBind = TUnCapitalizeKeys<TOmitTicketType<IPayloadGetVmfaInfoToBind>>;
+// 对外提供的获取绑定 MFA 设备所需数据的 API dataGetMfaInfoToBind 的请求参数
+export type TParamsGetVmfaInfoToBind = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadGetVmfaInfoToBind>>;
 
-export type TParamsGetU2FInfoToBind = TUnCapitalizeKeys<TOmitTicketType<IPayloadGetU2fInfoToBind>>;
+export type TParamsGetU2fInfoToBind = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadGetU2fInfoToBind>>;
 
-export type TParamsGetMfaInfoToBind = TParamsGetVMfaInfoToBind | TParamsGetU2FInfoToBind;
+export type TParamsGetMfaInfoToBind = TParamsGetVmfaInfoToBind | TParamsGetU2fInfoToBind;
 
-// 对外暴露的获取验证 MFA 设备所需数据的 API dataGetMfaInfoToAuth 的请求参数
-export type TParamsGetMfaInfoToAuth = TUnCapitalizeKeys<TOmitTicketType<IPayloadGetMfaInfoToAuth>>;
+// 对外提供的获取验证 MFA 设备所需数据的 API dataGetMfaInfoToAuth 的请求参数
+export type TParamsGetMfaInfoToAuth = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadGetMfaInfoToAuth>>;
 
-// 对外暴露的验证子用户风控结果的 API dataVerifySubAccount 的请求参数
-export type TParamsVerifySubAccountVMfa = TUnCapitalizeKeys<TOmitTicketType<IPayloadVerifySubAccountVmfa>>;
+// 对外提供的验证子用户风控结果的 API dataVerifySubAccount 的请求参数
+export type TParamsVerifySubAccountVmfa = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadVerifySubAccountVmfa>>;
 
-export type TParamsVerifySubAccountU2F = TUnCapitalizeKeys<TOmitTicketType<IPayloadVerifySubAccountU2F>>;
+export type TParamsVerifySubAccountU2F = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadVerifySubAccountU2F>>;
 
-export type TParamsVerifySubAccountMfa =TParamsVerifySubAccountVMfa | TParamsVerifySubAccountU2F;
+export type TParamsVerifySubAccountMfa = TParamsVerifySubAccountVmfa | TParamsVerifySubAccountU2F;
 
-// 对外暴露的跳过 MFA 绑定的 API dataSkipBindMfa 的请求参数
-export type TParamsSkipBindMfa = TUnCapitalizeKeys<TOmitTicketType<IPayloadSkipBindMfa>>;
+// 对外提供的跳过 MFA 绑定的 API dataSkipBindMfa 的请求参数
+export type TParamsSkipBindMfa = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadSkipBindMfa>>;
 
-// 对外暴露的发送验证码（MPK 或者 子用户）的 API dataSendCode 的请求参数
-export type TParamsSendCode = TUnCapitalizeKeys<IPayloadSendCode>;
+// 对外提供的发送验证码（MPK 或者 子用户）的 API dataSendCode 的请求参数
+export type TParamsSendCode = TUnCapitalizeKeys<Omit<IPayloadSendCode, 'TicketType' | 'Origin'>>;
 
-// 对外暴露的验证 MPK 用户风控结果的 API dataVerifyMpk 的请求参数
-export type TParamsVerifyMpk = TUnCapitalizeKeys<TOmitTicketType<IPayloadVerifyMpk>>;
+// 对外提供的验证 MPK 用户风控结果的 API dataVerifyMpk 的请求参数
+export type TParamsVerifyMpk = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadVerifyMpk>>;
 
 // 老版主账号风控发送验证码的接口 /risk/sendVerifyMessage.json 的请求参数
-export type IParamsSendCodeOld = {
+export interface IParamsSendCodeOld {
   codeType: string;
   verifyType: string;
 }

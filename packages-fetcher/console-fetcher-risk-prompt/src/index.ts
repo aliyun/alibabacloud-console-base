@@ -3,7 +3,10 @@ export {
   DEFAULT_DIALOG_SIZE,
   ERROR_RISK_FORBIDDEN,
   ERROR_RISK_INVALID,
-  ERROR_RISK_CANCELLED
+  ERROR_RISK_CANCELLED,
+  CODE_NEED_VERIFY,
+  CODE_FORBIDDEN,
+  CODE_INVALID_INPUT
 } from './const';
 export {
   convertMpkSetting,
@@ -11,7 +14,10 @@ export {
 } from './utils';
 export type {
   TRiskInfo as RiskInfo,
-  IRiskResponse as RiskResponse,
+  IRiskConfig as RiskConfig,
+  IRiskValidator as RiskValidator,
+  IMpkExtendSetting as MpkExtendSetting,
+  TRiskResponse as RiskResponse,
   IMpkRiskInfo as MpkRiskInfo,
   INewSubRiskInfo as NewSubRiskInfo,
   INewMainRiskInfo as NewMainRiskInfo,
