@@ -14,8 +14,8 @@ import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 import {
   ESubVerifyType,
   ESubMfaDeviceType,
-  DataGetU2FInfoToAuth,
-  DataGetU2FWebAuthnInfoToAuth
+  DataGetU2fInfoToAuth,
+  DataGetU2fWebAuthnInfoToAuth
 } from '@alicloud/console-fetcher-risk-data';
 import {
   useDialog
@@ -56,7 +56,7 @@ export default function U2fAuth(): JSX.Element {
   const [stateGetU2fAuthKeyLoading, setStateGetU2fAuthKeyLoading] = useState<boolean>(true);
   const [stateShowU2fRetryButton, setStateShowU2fRetryButton] = useState<boolean>(false);
 
-  const getAuthWebAuthnPublicKey = useCallback((mfaInfo: DataGetU2FInfoToAuth | DataGetU2FWebAuthnInfoToAuth): PublicKeyCredentialRequestOptionsJSON => {
+  const getAuthWebAuthnPublicKey = useCallback((mfaInfo: DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth): PublicKeyCredentialRequestOptionsJSON => {
     if (mfaInfo.u2FVersion === 'U2F_V2') {
       return {
         timeout: U2F_TIME_OUT,

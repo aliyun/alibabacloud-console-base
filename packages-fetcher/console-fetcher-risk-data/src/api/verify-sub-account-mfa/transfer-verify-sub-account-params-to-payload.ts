@@ -3,13 +3,13 @@ import {
   TPayloadVerifySubAccountMfa
 } from '../../types';
 import {
-  TICKET_TYPE
+  SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD
 } from '../../const';
 
 export default function transferVerifyParamsToPayload(params: TParamsVerifySubAccountMfa): TPayloadVerifySubAccountMfa {
   const commonPayload = {
+    ...SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD,
     Ext: params.ext,
-    TicketType: TICKET_TYPE,
     AccountId: params.accountId,
     VerifyType: params.verifyType
   };

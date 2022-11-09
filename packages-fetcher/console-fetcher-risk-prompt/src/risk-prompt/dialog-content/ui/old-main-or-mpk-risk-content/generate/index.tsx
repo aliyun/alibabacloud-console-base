@@ -15,9 +15,6 @@ import {
   IRiskPromptResolveData
 } from '../../../../../types';
 import {
-  DEFAULT_RISK_CONFIG
-} from '../../../../../const';
-import {
   useModelProps
 } from '../../../../../model';
 import intl from '../../../../../intl';
@@ -40,7 +37,9 @@ export default function Generate(): JSX.Element {
   const {
     codeType,
     accountId,
-    verifyType
+    verifyType,
+    coolingAfterSent,
+    coolingAfterSentFail
   } = useModelProps();
 
   const [stateCooling, setStateCooling] = useState<number>(0);
@@ -74,13 +73,13 @@ export default function Generate(): JSX.Element {
         });
       });
       
-      setStateCooling(Math.round(DEFAULT_RISK_CONFIG.COOLING_AFTER_SENT));
+      setStateCooling(Math.round(coolingAfterSent));
     } catch (err) {
       updateData({
         errorMessage: (err as Error).message
       });
 
-      setStateCooling(Math.round(DEFAULT_RISK_CONFIG.COOLING_AFTER_SEND_FAIL));
+      setStateCooling(Math.round(coolingAfterSentFail));
     } finally {
       setStateGenerating(false);
       unlock();

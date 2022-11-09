@@ -16,7 +16,7 @@ import {
   slsBindMfa
 } from '../../sls';
 import fetcher from '../../util/fetcher';
-import transferTokenVerifyResponseToData from '../_api_util/transfer-token-verify-response-to-data';
+import transferTokenVerifyResponseToData from '../_util/transfer-token-verify-response-to-data';
 
 import transferBindMfaParamsToPayload from './transfer-bind-mfa-prams-to-payload';
 

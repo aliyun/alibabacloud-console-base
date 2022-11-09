@@ -16,7 +16,7 @@ import {
   slsVerifySub
 } from '../../sls';
 import fetcher from '../../util/fetcher';
-import transferTokenVerifyResponseToData from '../_api_util/transfer-token-verify-response-to-data';
+import transferTokenVerifyResponseToData from '../_util/transfer-token-verify-response-to-data';
 
 import getSubVerifyMfaValue from './get-sub-verify-mfa-value';
 import transferVerifySubAccountParamsToPayload from './transfer-verify-sub-account-params-to-payload';
@@ -26,7 +26,6 @@ export default async function dataVerifySubAccountMfa(params: TParamsVerifySubAc
 
   try {
     const payload = transferVerifySubAccountParamsToPayload(params);
-
     const getBindMfaInfoResponse = await fetcher.post<IResponseTokenVerify, TPayloadVerifySubAccountMfa>(VERIFY_API, payload);
 
     slsVerifySub({

@@ -37,8 +37,6 @@ export default function generateChooseMfaNextButton(): DialogButtonProps<IRiskPr
 
       if (subAccountIdentityServiceParams?.paramsType === ESubAccountIdentityServiceType.GET_MFA_INFO_TO_BIND) {
         dataGetMfaInfoToBind(subAccountIdentityServiceParams.params).then(getMfaInfoBindData => {
-          unlock();
-
           updateData({
             dialogType: getMfaInfoBindData.deviceType === ESubMfaDeviceType.U2F ? EDialogType.SUB_RISK_U2F_BIND : EDialogType.SUB_RISK_VMFA_BIND,
             subAccountIdentityServiceData: {
@@ -47,10 +45,11 @@ export default function generateChooseMfaNextButton(): DialogButtonProps<IRiskPr
             }
           });
         }).catch(error => {
-          unlock();
           updateData({
             errorMessage: error?.message || ''
           });
+        }).finally(() => {
+          unlock();
         });
       }
 

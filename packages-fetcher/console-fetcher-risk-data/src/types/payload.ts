@@ -3,8 +3,10 @@ import {
   ESubMfaDeviceType
 } from '../const/enum';
 
-export interface IMfaTicketTypeAndAccountId {
+interface IIdentityServiceCommonPayload {
+  Origin: 'console'; // 控制台操作风控场景之可能为 console
   AccountId: string; // 用户 ID
+  AccountType: EAccountType; // 用户类型
   TicketType: string; // mini = 虚商 其他 = 公有云
 }
 
@@ -14,12 +16,12 @@ export interface IExt {
 }
 
 // 接口 /identity/getMfaInfoToBind 的 payload - VMFA 类型
-export interface IPayloadGetVmfaInfoToBind extends IMfaTicketTypeAndAccountId {
+export interface IPayloadGetVmfaInfoToBind extends IIdentityServiceCommonPayload {
   DeviceType: ESubMfaDeviceType.VMFA;
 }
 
 // 接口 /identity/getMfaInfoToBind 的 payload - U2F 类型
-export interface IPayloadGetU2fInfoToBind extends IMfaTicketTypeAndAccountId {
+export interface IPayloadGetU2fInfoToBind extends IIdentityServiceCommonPayload {
   DeviceType: ESubMfaDeviceType.U2F;
   U2FVersion: 'WebAuthn';
 }
@@ -28,14 +30,14 @@ export interface IPayloadGetU2fInfoToBind extends IMfaTicketTypeAndAccountId {
 export type TPayloadGetBindMfaInfo = IPayloadGetVmfaInfoToBind | IPayloadGetU2fInfoToBind;
 
 // 接口 /identity/bindMFA 的 payload - VMFA 类型
-export interface IPayloadBindVmfa extends IExt, IMfaTicketTypeAndAccountId {
+export interface IPayloadBindVmfa extends IExt, IIdentityServiceCommonPayload {
   DeviceType: ESubMfaDeviceType.VMFA;
   Code1: string;
   Code2: string;
 }
 
 // 接口 /identity/bindMFA 的 payload - U2F 类型
-export interface IPayloadBindU2F extends IExt, IMfaTicketTypeAndAccountId {
+export interface IPayloadBindU2F extends IExt, IIdentityServiceCommonPayload {
   DeviceType: ESubMfaDeviceType.U2F;
   U2FVersion: 'WebAuthn';
   ClientDataJSON: string;
@@ -46,9 +48,9 @@ export interface IPayloadBindU2F extends IExt, IMfaTicketTypeAndAccountId {
 export type TPayloadBindMfa = IPayloadBindVmfa | IPayloadBindU2F;
 
 // 接口 /identity/getMfaInfoToAuth 的 payload
-export interface IPayloadGetMfaInfoToAuth extends IMfaTicketTypeAndAccountId {}
+export interface IPayloadGetMfaInfoToAuth extends IIdentityServiceCommonPayload {}
 
-export interface IPayloadVerifyShared extends IExt, IMfaTicketTypeAndAccountId {
+export interface IPayloadVerifyShared extends IExt, IIdentityServiceCommonPayload {
   VerifyType: string;
 }
 
@@ -69,18 +71,16 @@ export interface IPayloadVerifySubAccountU2F extends IPayloadVerifyShared {
 export type TPayloadVerifySubAccountMfa = IPayloadVerifySubAccountVmfa | IPayloadVerifySubAccountU2F;
 
 // 接口 /identity/skip 的 payload
-export interface IPayloadSkipBindMfa extends IMfaTicketTypeAndAccountId, IExt {}
+export interface IPayloadSkipBindMfa extends IIdentityServiceCommonPayload, IExt {}
 
 // 接口 /identity/send 的 payload - 用于发送验证码
-export interface IPayloadSendCode extends IExt {
+export interface IPayloadSendCode extends IIdentityServiceCommonPayload, IExt {
   AccountId: string;
   VerifyType: string;
-  AccountType: EAccountType;
 }
 
 // 接口 /identity/verify 的 payload - 用于虚商
 export interface IPayloadVerifyMpk extends IPayloadVerifyShared {
   AuthCode: string; // 6位数字验证码
-  IdType: EAccountType;
   RiskRequestId: string;
 }

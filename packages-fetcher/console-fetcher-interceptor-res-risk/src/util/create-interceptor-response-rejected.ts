@@ -7,17 +7,16 @@ import {
   FetcherFnRequest,
   FetcherFnInterceptResponseRejected
 } from '@alicloud/fetcher';
-import fetcherRiskPrompt, {
+import riskPrompt, {
   convertMpkSetting,
-  type RiskResponse
+  CODE_FORBIDDEN,
+  CODE_INVALID_INPUT,
+  CODE_NEED_VERIFY
 } from '@alicloud/console-fetcher-risk-prompt';
 
 import {
   IFetcherInterceptorConfig
 } from '../types';
-import {
-  DEFAULT_RISK_CONFIG
-} from '../const';
 
 import riskForbidden from './risk/forbidden';
 import {
@@ -80,35 +79,31 @@ import {
  */
 export default function createInterceptorResponseRejected(o?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected {
   const riskConfig: IFetcherInterceptorConfig = {
-    ...DEFAULT_RISK_CONFIG,
+    codeForbidden: CODE_FORBIDDEN,
+    codeNeedVerify: CODE_NEED_VERIFY,
+    codeInvalidInput: CODE_INVALID_INPUT,
     ...o
   };
   
-  return async (err: FetcherError, fetcherConfig: FetcherConfig, response: FetcherResponse<Record<string, unknown>> | undefined, request: FetcherFnRequest): Promise<unknown> => {
+  return async (error: FetcherError, fetcherConfig: FetcherConfig, response: FetcherResponse<Record<string, unknown>> | undefined, request: FetcherFnRequest): Promise<unknown> => {
     const {
       code
-    } = err;
+    } = error;
+    const responseData = response?.data;
     
     switch (code) {
-      case riskConfig.CODE_FORBIDDEN:
+      case riskConfig.codeForbidden:
         await riskForbidden();
         
-        throw convertToRiskErrorForbidden(err);
-      case riskConfig.CODE_NEED_VERIFY: {
-        const riskResponse = ((): RiskResponse => {
-          if (typeof response?.data === 'object') {
-            if ('data' in response.data) {
-              return (response.data.data) as RiskResponse;
-            }
-          }
-
-          return {};
-        })();
-
+        throw convertToRiskErrorForbidden(error);
+      case riskConfig.codeNeedVerify: {
         const {
           isMpk,
           mpkIsDowngrade
-        } = convertMpkSetting(riskResponse.Extend);
+        } = convertMpkSetting({
+          riskConfig,
+          riskResponse: responseData
+        });
 
         const newRisk = ((): boolean | undefined => {
           if (fetcherConfig.body && typeof fetcherConfig.body === 'object') {
@@ -116,10 +111,11 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           }
         })();
 
-        const verifyResult = await fetcherRiskPrompt({
+        const verifyResult = await riskPrompt({
+          error,
           newRisk,
-          error: err,
-          riskResponse
+          riskConfig,
+          riskResponse: responseData
         });
 
         const requestResponse = await request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
@@ -141,7 +137,7 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
         return requestResponse;
       }
       default:
-        throw err;
+        throw error;
     }
   };
 }

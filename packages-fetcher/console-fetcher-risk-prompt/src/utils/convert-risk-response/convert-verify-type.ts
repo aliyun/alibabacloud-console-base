@@ -1,15 +1,25 @@
 import {
-  EVerifyType,
-  DEFAULT_RISK_CONFIG
+  IRiskConfig
+} from '../../types';
+import {
+  EVerifyType
 } from '../../const';
 
-export default function convertVerifyType(type0?: string): EVerifyType {
+interface IConvertVerifyTypeProps {
+  type0?: string;
+  riskConfig: Required<IRiskConfig>;
+}
+
+export default function convertVerifyType({
+  type0,
+  riskConfig
+}: IConvertVerifyTypeProps): EVerifyType {
   switch (type0) {
-    case DEFAULT_RISK_CONFIG.BY_SMS:
+    case riskConfig.bySms:
       return EVerifyType.SMS;
-    case DEFAULT_RISK_CONFIG.BY_EMAIL:
+    case riskConfig.byEmail:
       return EVerifyType.EMAIL;
-    case DEFAULT_RISK_CONFIG.BY_MFA: // MFA 既不需要 info
+    case riskConfig.byMfa: // MFA 既不需要 info
       return EVerifyType.MFA;
     default:
       return type0 ? EVerifyType.UNKNOWN : EVerifyType.NONE;

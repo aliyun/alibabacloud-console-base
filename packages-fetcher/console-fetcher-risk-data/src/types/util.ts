@@ -5,4 +5,4 @@ export type TUnCapitalizeKeys<T extends object> = {
   [P in keyof T as `${Uncapitalize<string & P>}`]: T[P]
 }
 
-export type TOmitTicketType<T extends { TicketType: string; }> = Omit<T, 'TicketType'>;
+export type TOmitConstantPayload<T extends { TicketType: string; }> = Omit<T, 'TicketType' | 'Origin' | 'AccountType'>;

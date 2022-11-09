@@ -1,52 +1,60 @@
+import _get from 'lodash/get';
+
 import {
   TNewRisk,
   TRiskInfo,
-  IRiskResponse
+  IRiskConfig,
+  TRiskResponse
 } from '../../types';
 import {
   ERiskType
 } from '../../const';
 
 import convertMpkSetting from './convert-mpk-setting';
-import getCommonRiskInfo from './get-common-risk-info';
 import getMergedUseNewRisk from './get-merged-use-new-risk';
+import getCommonRiskInfoFromDataPath from './get-common-risk-info-from-data-path';
 
 interface IConvertRiskResponseProps {
   newRisk?: TNewRisk;
-  riskResponse?: IRiskResponse;
+  riskConfig: Required<IRiskConfig>;
+  riskResponse?: TRiskResponse;
 }
 
 function convertRiskResponse({
   newRisk,
+  riskConfig,
   riskResponse
 }: IConvertRiskResponseProps): TRiskInfo {
+  const verifyUrl = _get(riskResponse, riskConfig.dataPathVerifyUrl, '') as string;
+  const accountId = _get(riskResponse, riskConfig.dataPathUserId, '') as string;
+
   const mergedUseNewRisk = getMergedUseNewRisk({
     newRisk,
+    riskConfig,
     riskResponse
   });
-  const commonRiskInfo = getCommonRiskInfo({
-    mergedUseNewRisk,
-    riskResponse
+  const commonRiskInfo = getCommonRiskInfoFromDataPath({
+    riskConfig,
+    riskResponse,
+    mergedUseNewRisk
   });
-
-  const {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    VerifyURL, Extend, AliyunIdkp
-  } = riskResponse ?? {};
 
   if (mergedUseNewRisk) {
     const {
       isMpk, mpkIsDowngrade, mpkUseIdentityService
-    } = convertMpkSetting(Extend);
+    } = convertMpkSetting({
+      riskConfig,
+      riskResponse
+    });
 
     if (isMpk) {
       if (mpkUseIdentityService) {
         return {
           ...commonRiskInfo,
           isMpk,
+          accountId,
           mpkIsDowngrade,
-          riskType: ERiskType.MPK,
-          accountId: AliyunIdkp ?? ''
+          riskType: ERiskType.MPK
         };
       }
 
@@ -57,19 +65,19 @@ function convertRiskResponse({
       };
     }
 
-    if (VerifyURL) {
+    if (verifyUrl) {
       return {
         ...commonRiskInfo,
-        riskType: ERiskType.NEW_MAIN,
-        accountId: AliyunIdkp ?? '',
-        verifyUrl: VerifyURL
+        accountId,
+        verifyUrl,
+        riskType: ERiskType.NEW_MAIN
       };
     }
 
     return {
       ...commonRiskInfo,
-      riskType: ERiskType.NEW_SUB,
-      accountId: AliyunIdkp ?? ''
+      accountId,
+      riskType: ERiskType.NEW_SUB
     };
   }
 

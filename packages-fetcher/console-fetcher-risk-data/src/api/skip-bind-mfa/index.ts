@@ -10,21 +10,22 @@ import {
 } from '../../types';
 import {
   ESlsResultType,
-  SKIP_BIND_MFA_API
+  SKIP_BIND_MFA_API,
+  SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD
 } from '../../const';
 import {
   slsSkipBindMfa
 } from '../../sls';
 import fetcher from '../../util/fetcher';
-import transferTokenVerifyResponseToData from '../_api_util/transfer-token-verify-response-to-data';
-
-import transferSkipBindMfaParamsToPayload from './transfer-skip-bind-mfa-params-to-payload';
+import transferTokenVerifyResponseToData from '../_util/transfer-token-verify-response-to-data';
 
 export default async function dataSkipBindMfa(params: TParamsSkipBindMfa): Promise<TDataTokenVerify> {
   try {
-    const payload = transferSkipBindMfaParamsToPayload(params);
-
-    const bindMfaResponse = await fetcher.post<IResponseTokenVerify, IPayloadSkipBindMfa>(SKIP_BIND_MFA_API, payload);
+    const bindMfaResponse = await fetcher.post<IResponseTokenVerify, IPayloadSkipBindMfa>(SKIP_BIND_MFA_API, {
+      ...SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD,
+      Ext: params.ext,
+      AccountId: params.accountId
+    });
 
     slsSkipBindMfa({
       slsResultType: ESlsResultType.SUCCESS

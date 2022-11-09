@@ -1,12 +1,14 @@
 import {
   TNewRisk,
   IPlainError,
-  IRiskResponse,
+  TRiskResponse,
+  IRiskConfig,
   IRiskPromptResolveData
 } from '../types';
 import {
   ERiskType,
-  EVerifyType
+  EVerifyType,
+  DEFAULT_RISK_CONFIG
 } from '../const';
 import intl from '../intl';
 import {
@@ -21,17 +23,24 @@ import riskInvalid from './risk-invalid';
 interface IFetcherRiskPromptProps {
   error?: IPlainError;
   newRisk?: TNewRisk;
-  riskResponse: IRiskResponse;
+  riskConfig?: IRiskConfig;
+  riskResponse?: TRiskResponse;
 }
 
 export default async function riskPrompt({
   error,
   newRisk,
-  riskResponse
+  riskResponse,
+  riskConfig
 }: IFetcherRiskPromptProps): Promise<IRiskPromptResolveData> {
+  const mergedRiskConfig = {
+    ...DEFAULT_RISK_CONFIG,
+    ...riskConfig
+  };
   const riskInfo = convertRiskResponse({
     newRisk,
-    riskResponse
+    riskResponse,
+    riskConfig: mergedRiskConfig
   });
   const subRisk = riskInfo.riskType === ERiskType.NEW_SUB;
 
@@ -39,6 +48,7 @@ export default async function riskPrompt({
     case EVerifyType.NONE:
       await riskInvalid({
         subRisk,
+        urlSetting: mergedRiskConfig.urlSetting,
         errorMessage: subRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
           method: riskInfo.verifyType
         }) : intl('message:invalid_unsupported_{method}!html!lines', {
@@ -50,6 +60,7 @@ export default async function riskPrompt({
     case EVerifyType.UNKNOWN:
       await riskInvalid({
         subRisk,
+        urlSetting: mergedRiskConfig.urlSetting,
         errorMessage: subRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
           method: riskInfo.verifyType
         }) : intl('message:invalid_unsupported_{method}!html!lines', {
@@ -63,6 +74,7 @@ export default async function riskPrompt({
       if (!subRisk && !riskInfo.verifyDetail) {
         await riskInvalid({
           subRisk,
+          urlSetting: mergedRiskConfig.urlSetting,
           errorMessage: intl('message:invalid_unknown!lines')
         });
         
@@ -74,7 +86,7 @@ export default async function riskPrompt({
       break;
   }
 
-  return openDialog(riskInfo).catch(err => {
+  return openDialog(riskInfo, mergedRiskConfig).catch(err => {
     throw err ?? convertToRiskErrorCancelled(err);
   });
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, {
   useCallback
 } from 'react';
@@ -18,18 +19,20 @@ export default function DemoDefault(): JSX.Element {
   const handleSubRiskBindPrompt = useCallback(async () => {
     const riskPromptResult = await fetcherRiskPrompt({
       riskResponse: {
-        Validators: {
-          Validator: [
-            {
-              VerifyDetail: 'false',
-              VerifyType: 'ga'
-            }
-          ]
-        },
-        CodeType: 'ims_login_update',
-        VerifyDetail: '137****2864',
-        VerifyType: 'sms',
-        AliyunIdkp: '1647******209939'
+        data: {
+          Validators: {
+            Validator: [
+              {
+                VerifyDetail: 'false',
+                VerifyType: 'ga'
+              }
+            ]
+          },
+          CodeType: 'ims_login_update',
+          VerifyDetail: '137****2864',
+          VerifyType: 'sms',
+          AliyunIdkp: '1647******209939'
+        }
       }
     });
 
@@ -39,18 +42,20 @@ export default function DemoDefault(): JSX.Element {
   const handleSubRiskAuthPrompt = useCallback(async () => {
     const riskPromptResult = await fetcherRiskPrompt({
       riskResponse: {
-        Validators: {
-          Validator: [
-            {
-              VerifyDetail: 'true',
-              VerifyType: 'ga'
-            }
-          ]
-        },
-        CodeType: 'ims_login_update',
-        VerifyDetail: 'true',
-        VerifyType: 'ga',
-        AliyunIdkp: '229108930911534134'
+        data: {
+          Validators: {
+            Validator: [
+              {
+                VerifyDetail: 'true',
+                VerifyType: 'ga'
+              }
+            ]
+          },
+          CodeType: 'ims_login_update',
+          VerifyDetail: 'true',
+          VerifyType: 'ga',
+          AliyunIdkp: '229108930911534134'
+        }
       }
     });
 
@@ -60,19 +65,21 @@ export default function DemoDefault(): JSX.Element {
   const handleNewMainRiskPrompt = useCallback(async () => {
     const riskPromptResult = await fetcherRiskPrompt({
       riskResponse: {
-        Validators: {
-          Validator: [
-            {
-              VerifyDetail: '137****2864',
-              VerifyType: 'sms'
-            }
-          ]
-        },
-        CodeType: 'ims_login_update',
-        VerifyURL: 'https://passport.aliyun.com/iv/remote/mini/request.htm?havana_iv_token=CN-SPLIT-AQgAENgEIg1oYXZhbmFfYXBwX2l2MgEBONbV54_FMEABShAR0qsNkCtY7wP7stMXL_-jTRtx4ZsgjY_PXGCDhbvl6mq05lM',
-        VerifyDetail: '137****2864',
-        VerifyType: 'sms',
-        AliyunIdkp: '1647******209939'
+        data: {
+          Validators: {
+            Validator: [
+              {
+                VerifyDetail: '137****2864',
+                VerifyType: 'sms'
+              }
+            ]
+          },
+          CodeType: 'ims_login_update',
+          VerifyURL: 'https://passport.aliyun.com/iv/remote/mini/request.htm?havana_iv_token=CN-SPLIT-AQgAENgEIg1oYXZhbmFfYXBwX2l2MgEBONbV54_FMEABShAR0qsNkCtY7wP7stMXL_-jTRtx4ZsgjY_PXGCDhbvl6mq05lM',
+          VerifyDetail: '137****2864',
+          VerifyType: 'sms',
+          AliyunIdkp: '1647******209939'
+        }
       }
     });
 
@@ -82,9 +89,11 @@ export default function DemoDefault(): JSX.Element {
   const handleOldMainRiskPrompt = useCallback(async () => {
     const riskPromptResult = await fetcherRiskPrompt({
       riskResponse: {
-        verifyDetail: '137****2864',
-        codeType: 'rg_authorization_add',
-        verifyType: 'sms'
+        data: {
+          verifyDetail: '137****2864',
+          codeType: 'rg_authorization_add',
+          verifyType: 'sms'
+        }
       }
     });
 

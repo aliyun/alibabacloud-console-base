@@ -1,17 +1,26 @@
+import _get from 'lodash/get';
+
 import {
   TNewRisk,
-  IRiskResponse
+  IRiskConfig,
+  TRiskResponse,
+  IRiskValidator
 } from '../../types';
 
 interface IGetMergedUseNewRiskProps {
   newRisk?: TNewRisk;
-  riskResponse?: IRiskResponse;
+  riskResponse?: TRiskResponse;
+  riskConfig: Pick<Required<IRiskConfig>, 'dataPathVerifyUrl' | 'dataPathValidators'>;
 }
 
 export default function getMergedUseNewRisk({
   newRisk,
+  riskConfig,
   riskResponse
 }: IGetMergedUseNewRiskProps): boolean {
+  const verifyUrl = _get(riskResponse, riskConfig.dataPathVerifyUrl, '') as string;
+  const validators = _get(riskResponse, riskConfig.dataPathValidators, []) as IRiskValidator[];
+
   if (newRisk !== undefined) {
     if (typeof newRisk === 'boolean') {
       return newRisk;
@@ -20,12 +29,7 @@ export default function getMergedUseNewRisk({
     return newRisk(riskResponse);
   }
 
-  const {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    VerifyURL, Validators
-  } = riskResponse ?? {};
-
-  if (VerifyURL || Validators) {
+  if (verifyUrl || validators.length) {
     return true;
   }
 

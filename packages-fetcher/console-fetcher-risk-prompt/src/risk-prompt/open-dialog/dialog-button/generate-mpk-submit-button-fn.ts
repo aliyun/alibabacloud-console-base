@@ -1,5 +1,4 @@
 import {
-  EAccountType,
   dataVerifyMpk
 } from '@alicloud/console-fetcher-risk-data';
 import {
@@ -34,8 +33,7 @@ export default function generateMpkSubmitButton({
       }) {
         lock(true);
         updateData({
-          errorMessage: '',
-          primaryButtonDisabled: true
+          errorMessage: ''
         });
   
         const {
@@ -50,7 +48,6 @@ export default function generateMpkSubmitButton({
           accountId,
           verifyType,
           riskRequestId,
-          idType: EAccountType.MAIN,
           ext: JSON.stringify({
             codeType
           })
@@ -67,12 +64,8 @@ export default function generateMpkSubmitButton({
             errorMessage: error?.message || ''
           });
         }).finally(() => {
-          updateData({
-            primaryButtonDisabled: false
-          });
+          unlock();
         });
-  
-        unlock();
   
         return false;
       }

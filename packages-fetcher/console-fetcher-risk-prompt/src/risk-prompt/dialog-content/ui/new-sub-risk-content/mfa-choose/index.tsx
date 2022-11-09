@@ -51,6 +51,9 @@ const ScDesc = styled.div`
 `;
 
 const ScItem = styled(Flex)<IScItemProps>`
+  margin-bottom: ${props => props.margin_bottom || 0}px;
+  padding-left: 16px;
+  height: 100px;
   overflow-y: hidden;
   cursor: ${props => {
     if (props.disabled) {
@@ -59,9 +62,6 @@ const ScItem = styled(Flex)<IScItemProps>`
 
     return 'pointer';
   }};
-  padding-left: 16px;
-  height: 100px;
-  margin-bottom: ${props => props.margin_bottom || 0}px;
   ${props => {
     if (props.disabled) {
       return mixinButtonSecondaryStateDisabled;
@@ -157,6 +157,7 @@ export default function MfaChoose(): JSX.Element {
     <ScItem {...{
       align: 'center',
       justify: 'space-between',
+      margin_bottom: 20,
       onClick: handleVmfaRadioClick
     }}>
       <div>
@@ -180,7 +181,6 @@ export default function MfaChoose(): JSX.Element {
       message: intl('message:u2f_browser_not_support')
     }} /> : null}
     <ScItem {...{
-      margin_bottom: 20,
       align: 'center',
       justify: 'space-between',
       disabled: !stateU2fSupported,

@@ -12,6 +12,9 @@ export interface IModelProps {
   verifyType: string;
   convertedVerifyType: EVerifyType;
   verifyDetail: string;
+  urlSetting: string;
+  coolingAfterSent: number;
+  coolingAfterSentFail: number;
 }
 
 export interface IModelProviderProps {
