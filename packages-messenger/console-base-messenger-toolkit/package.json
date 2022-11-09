@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-toolkit",
-  "version": "1.1.2",
+  "version": "1.1.6",
   "description": "ConsoleBase 信使 - Toolkit",
   "license": "MIT",
   "sideEffects": false,
@@ -32,7 +32,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-base": "^1.4.3",
+    "@alicloud/console-base-messenger-base": "^1.4.7",
     "@alicloud/console-base-types-settings-toolkit": "^1.4.4"
   },
   "scripts": {
@@ -46,5 +46,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
+  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
 }

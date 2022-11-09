@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-icon-product",
-  "version": "1.5.2",
+  "version": "1.5.6",
   "description": "ConsoleBase 组件 - 云产品图标",
   "license": "MIT",
   "sideEffects": false,
@@ -26,10 +26,10 @@
     "product"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.2",
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.6",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.9",
+    "@alicloud/demo-rc-elements": "^1.10.13",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
@@ -54,5 +54,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
+  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
 }

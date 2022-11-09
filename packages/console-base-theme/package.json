@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme",
-  "version": "1.8.4",
+  "version": "1.8.8",
   "description": "控制台主题 - 基于 css variable 和 styled-components",
   "license": "MIT",
   "sideEffects": false,
@@ -26,8 +26,8 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.9",
-    "@types/lodash": "^4.14.187",
+    "@alicloud/demo-rc-elements": "^1.10.13",
+    "@types/lodash": "^4.14.188",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "lodash": "^4.17.21",
@@ -39,8 +39,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme-color": "^1.5.2",
-    "@alicloud/mere-dom": "^1.6.5"
+    "@alicloud/console-base-theme-color": "^1.5.6",
+    "@alicloud/mere-dom": "^1.6.9"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -53,5 +53,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
+  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
 }

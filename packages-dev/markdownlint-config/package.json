@@ -1,0 +1,29 @@
+{
+  "name": "@alicloud/markdownlint-config",
+  "version": "1.0.0",
+  "description": "Shareable markdownlint configuration",
+  "license": "MIT",
+  "main": "index.yml",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-dev/markdownlint-config",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "markdownlint-cli2": "^0.5.1"
+  },
+  "peerDependencies": {
+    "markdownlint-cli2": ">=0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
