@@ -39,6 +39,7 @@
     "lint": "eslint packages*/**/src/ --ext js,ts,tsx",
     "lint:sc": "stylelint \"**/src/**/*.{js,jsx,ts,tsx}\"",
     "lint:md": "markdownlint-cli2 **/*.md #node_modules",
+    "lint:test": "markdownlint-cli2 ./README.md",
     "lerna:boot": "lerna bootstrap --hoist",
     "lerna:clean": "lerna clean --yes",
     "lerna:publish": "lerna publish",
