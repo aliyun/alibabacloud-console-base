@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-risk-prompt",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "ConsoleBase 新版风控弹窗",
   "license": "MIT",
   "sideEffects": false,
@@ -43,6 +43,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
+    "@alicloud/console-fetcher-risk-data": "~0.0.1",
     "@alicloud/console-base-conf-env": "^1.5.0",
     "@alicloud/console-base-data-risk": "~0.0.2",
     "@alicloud/console-base-intl-factory": "^1.5.0",
