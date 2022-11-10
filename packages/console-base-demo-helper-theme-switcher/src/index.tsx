@@ -30,12 +30,12 @@ export default function ThemeSwitcher(): JSX.Element {
     <H1>Theme Switcher</H1>
     <div>
       <InputSwitch {...{
-        label: '全局样式 ⛱',
+        label: '全局样式 ⛱️',
         value: stateNormalize,
         onChange: setStateNormalize
       }} />
       <InputSwitch {...{
-        label: 'Dark Side 🕋',
+        label: 'Dark Side 🥷',
         value: stateDark,
         onChange: setStateDark
       }} />

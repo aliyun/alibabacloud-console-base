@@ -4,8 +4,8 @@ import {
 } from 'styled-components';
 
 import {
-  mixinBorderTertiaryRight,
-  mixinBorderTertiaryBottom
+  mixinBorderPrimaryRight,
+  mixinBorderPrimaryBottom
 } from '@alicloud/console-base-theme';
 
 import {
@@ -14,8 +14,8 @@ import {
 
 const CSS_ARROW_BORDER = {
   [TooltipTheme.NORMAL]: css`
-  ${mixinBorderTertiaryRight}
-  ${mixinBorderTertiaryBottom}
+  ${mixinBorderPrimaryRight}
+  ${mixinBorderPrimaryBottom}
 `,
   [TooltipTheme.ACCENT]: null,
   [TooltipTheme.INVERSE]: null

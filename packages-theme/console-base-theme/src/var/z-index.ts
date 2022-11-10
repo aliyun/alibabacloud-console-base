@@ -15,6 +15,7 @@ export default {
   BACKDROP_NORMAL: 999, // 一般模态窗背投
   
   TOP_NAV: 999, // 全局顶栏
+  SIDE_PANEL: 99, // 全局侧边栏
   
   DIALOG_SLIDE: 200, // 侧拉窗
   BACKDROP_SLIDE: 100, // 侧拉窗背投
