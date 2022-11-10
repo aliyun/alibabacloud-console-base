@@ -25,7 +25,7 @@ export interface ICommonRiskInfo {
 // 解析后的旧版主账号风控参数
 export interface IOldMainRiskInfo extends ICommonRiskInfo {
   riskType: ERiskType.OLD_MAIN;
-  mpkIsDowngrade: boolean;
+  mpkIsDowngrade?: boolean;
 }
 
 // 解析后的虚商类型的风控参数

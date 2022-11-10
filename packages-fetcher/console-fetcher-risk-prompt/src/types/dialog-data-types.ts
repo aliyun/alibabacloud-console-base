@@ -48,7 +48,7 @@ export interface INewMainAccountRiskInfo {
 
 export interface IOldMainAccountOrMpkRiskInfo {
   isMpk: boolean;
-  mpkIsDowngrade: boolean;
+  mpkIsDowngrade?: boolean;
 }
 
 export interface IMainAccountData {
