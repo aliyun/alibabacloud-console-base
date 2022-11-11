@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme",
-  "version": "1.8.8",
+  "version": "1.9.0",
   "description": "控制台主题 - 基于 css variable 和 styled-components",
   "license": "MIT",
   "sideEffects": false,
@@ -19,10 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "theme"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
