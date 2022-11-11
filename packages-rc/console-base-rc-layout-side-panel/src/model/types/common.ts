@@ -6,7 +6,7 @@ import {
   ButtonProps
 } from '@alicloud/console-base-rc-button';
 
-export interface ISidePanelToolProps extends Omit<ButtonProps, 'label' | 'size' | 'theme' | 'iconLeft' | 'iconRight'> {
+export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' | 'theme' | 'iconLeft' | 'iconRight'> {
   key?: string | number;
   title: string;
   icon: string | ReactElement;

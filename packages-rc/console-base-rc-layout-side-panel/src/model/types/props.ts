@@ -1,5 +1,5 @@
 import {
-  ISidePanelToolProps
+  ISidePanelItemProps
 } from './common';
 
 export interface IModelProps {
@@ -8,10 +8,13 @@ export interface IModelProps {
    */
   collapsed?: boolean;
   /**
-   * 自定义工具
+   * 顶部工具
    */
-  tools?: ISidePanelToolProps[];
-  toolsSystem?: ISidePanelToolProps[];
+  itemsTop?: ISidePanelItemProps[];
+  /**
+   * 底部工具
+   */
+  itemsBottom?: ISidePanelItemProps[];
   /**
    * 是否展示推入按钮
    */

@@ -7,7 +7,7 @@ import {
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
-  useToolsSystem
+  useItemsBottom
 } from '../../model';
 import {
   Tool
@@ -17,11 +17,11 @@ const ScHr = styled(HrBase)`
   margin: 4px 8px;
 `;
 
-export default function PanelToolsSystem(): JSX.Element | null {
-  const itemsSystem = useToolsSystem();
+export default function PanelItemsBottom(): JSX.Element | null {
+  const items = useItemsBottom();
   
   return <Flex vertical>
-    {itemsSystem.length ? <ScHr /> : null}
-    {itemsSystem.map((v, i) => <Tool key={v.key || i} {...v} />)}
+    {items.length ? <ScHr /> : null}
+    {items.map((v, i) => <Tool key={v.key || i} {...v} />)}
   </Flex>;
 }

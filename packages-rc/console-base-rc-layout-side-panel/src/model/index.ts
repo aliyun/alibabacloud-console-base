@@ -7,5 +7,5 @@ export * from './hook';
 
 export type {
   IModelProps as ModelProps,
-  ISidePanelToolProps as SidePanelItemProps
+  ISidePanelItemProps as SidePanelItemProps
 } from './types';

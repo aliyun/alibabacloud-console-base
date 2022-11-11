@@ -11,8 +11,8 @@ import {
 } from '../rc';
 import {
   GlobalStyleOnBody,
-  PanelTools,
-  PanelToolsSystem,
+  PanelItemsTop,
+  PanelItemsBottom,
   PanelToggle
 } from '../rc-container';
 
@@ -31,8 +31,8 @@ export default function Ui(): JSX.Element {
   
   return <ScUi collapsed={collapsed}>
     <GlobalStyleOnBody />
-    <PanelTools />
-    <PanelToolsSystem />
+    <PanelItemsTop />
+    <PanelItemsBottom />
     <PanelToggle />
   </ScUi>;
 }

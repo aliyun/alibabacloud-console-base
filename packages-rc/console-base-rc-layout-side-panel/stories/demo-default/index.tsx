@@ -40,7 +40,7 @@ export default function DemoDefault(): JSX.Element {
   return <>
     {stateTopbar ? <LayoutTopBar /> : null}
     <LayoutSidePanel {...{
-      tools: [{
+      itemsTop: [{
         title: '测试 Icon 组件',
         icon: <Icon type="dingding" />,
         unread: true
@@ -58,7 +58,7 @@ export default function DemoDefault(): JSX.Element {
         title: '测试图片 URL',
         icon: 'https://img.alicdn.com/tfs/TB1JhtxuAT2gK0jSZFkXXcIQFXa-128-128.png'
       }],
-      toolsSystem: [{
+      itemsBottom: [{
         title: 'API Inspector',
         icon: <Icon type="toolkit-api" />,
         active: stateApiInspectorVisible,

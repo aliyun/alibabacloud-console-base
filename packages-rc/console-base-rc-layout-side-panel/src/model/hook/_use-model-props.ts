@@ -12,7 +12,7 @@ import {
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IModelProps, 'tools' | 'toolsSystem'>;
+type TModelProps = RequiredSelected<IModelProps, 'itemsTop' | 'itemsBottom'>;
 
 export default function useModelProps(): TModelProps {
   const {
@@ -21,15 +21,15 @@ export default function useModelProps(): TModelProps {
   
   return useMemo(() => {
     const {
-      tools = [],
-      toolsSystem = [],
+      itemsTop = [],
+      itemsBottom = [],
       ...rest
     } = props;
     
     return {
       ...rest,
-      tools,
-      toolsSystem
+      itemsTop,
+      itemsBottom
     };
   }, [props]);
 }
