@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-theme-sc-base",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "控制台主题的基础 styled-components，主要是为了避免 stylelint 顺序报错",
   "license": "MIT",
   "sideEffects": false,
