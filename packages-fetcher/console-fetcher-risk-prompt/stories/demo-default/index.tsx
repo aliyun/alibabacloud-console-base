@@ -75,7 +75,7 @@ export default function DemoDefault(): JSX.Element {
             ]
           },
           CodeType: 'ims_login_update',
-          VerifyURL: 'https://passport.aliyun.com/iv/remote/mini/request.htm?havana_iv_token=CN-SPLIT-AQgAENgEIg1oYXZhbmFfYXBwX2l2MgEBONbV54_FMEABShAR0qsNkCtY7wP7stMXL_-jTRtx4ZsgjY_PXGCDhbvl6mq05lM',
+          VerifyURL: 'https://passport.aliyun.com:4333/iv/remote/mini/request.htm?havana_iv_token=CN-SPLIT-AQgAENgEIg1oYXZhbmFfYXBwX2l2MgEBONbV54_FMEABShAR0qsNkCtY7wP7stMXL_-jTRtx4ZsgjY_PXGCDhbvl6mq05lM',
           VerifyDetail: '137****2864',
           VerifyType: 'sms',
           AliyunIdkp: '1647******209939'

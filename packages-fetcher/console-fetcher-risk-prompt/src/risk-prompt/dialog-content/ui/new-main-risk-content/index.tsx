@@ -114,7 +114,7 @@ export default function NewMainRiskContent(): JSX.Element {
 
   // VerifyUrl 不合法时需要上报埋点
   useEffect(() => {
-    if (REG_NEW_MAIN_VERIFY_URL.test(verifyUrl)) {
+    if (!REG_NEW_MAIN_VERIFY_URL.test(verifyUrl)) {
       slsInvalidVerifyUrl({
         verifyUrl
       });
