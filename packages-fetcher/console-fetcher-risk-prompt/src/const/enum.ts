@@ -43,8 +43,10 @@ export enum EIconType {
  */
 export enum ESlsTopic {
   U2F_ERROR = 'u2f_error', // 新版子账号风控 - u2f 报错埋点
-  RISK_STARTUP = 'risk_startup', // 展示正常风控弹窗，包括旧版主账号风控以及新版主子账号风控
-  RISK_INVALID = 'risk_invalid' // 无效的风控 code 的弹窗提示
+  RISK_STARTUP = 'risk_startup', // 风控弹窗 PV 埋点
+  RISK_INVALID = 'risk_invalid', // 无效的风控 code 的弹窗提示埋点
+  INVALID_VERIFY_URL = 'invalid_verify_url', // 不合法的新版主账号核身 URL 埋点
+  GET_VMFA_CODE_FROM_WINDVANE = 'get_vmfa_code_from_windvane' // 阿里云 APP 内通过 windvane 获取虚拟 MFA 验证码
 }
 
 /**

@@ -71,5 +71,6 @@ export default {
   'message:new_main_verify_error': 'セキュリティ検証サービスで不明なエラーが発生しました。再試行してください。',
   'message:sub_invalid_unsupported_{method}!html!lines': `システムは、検証メソッド <code>{method}</code> でエラーを検出しました。
   アカウントのセキュリティを保護するために、メインアカウントまたはRAM管理者に連絡して、RAMコンソールで確認方法を設定してください。`,
-  'message:update_app_tip_{url}!html': 'MFA 認証コードをクイック入力し、アプリをアップグレードしてください。<a href="{url}" target="_blank">今すぐアップグレード</a>。'
+  'message:update_app_tip_{url}!html': 'MFA 認証コードをクイック入力し、アプリをアップグレードしてください。<a href="{url}" target="_blank">今すぐアップグレード</a>。',
+  'message:invalid_unsupported_{method}!html': '確認方法 <code>{method}</code> が正しくありません。もう一度お試しください。'
 };

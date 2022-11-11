@@ -11,11 +11,17 @@ import {
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
+import {
+  getWindow
+} from '@alicloud/sandbox-escape';
 
 import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../../types';
+import {
+  REG_NEW_MAIN_VERIFY_URL
+} from '../../../../const';
 import {
   useModelProps
 } from '../../../../model';
@@ -24,6 +30,9 @@ import intl from '../../../../intl';
 import {
   isValidJson
 } from '../../../../utils';
+import {
+  slsInvalidVerifyUrl
+} from '../../../../sls';
 
 interface IJson {
   type?: string;
@@ -45,13 +54,14 @@ export default function NewMainRiskContent(): JSX.Element {
     close,
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
-
   const {
     verifyType
   } = useModelProps();
 
-  const showIframe = !!(newMainAccountRiskInfo?.verifyUrl || '');
-  
+  const verifyUrl = useMemo(() => {
+    return newMainAccountRiskInfo?.verifyUrl ?? '';
+  }, [newMainAccountRiskInfo?.verifyUrl]);
+
   const getValidateToken = useCallback((event: MessageEvent): void => {
     try {
       // 为了防止 JSON.parse 报错，需要先判断 decodeURIComponent(event.data) 是不是合法的 JSON 字符串
@@ -79,7 +89,7 @@ export default function NewMainRiskContent(): JSX.Element {
   }, [lock, close, updateData, verifyType]);
 
   const newMainRiskContent = useMemo((): JSX.Element => {
-    if (showIframe) {
+    if (verifyUrl) {
       return <>
         <iframe {...{
           style: {
@@ -91,7 +101,7 @@ export default function NewMainRiskContent(): JSX.Element {
             overflowY: 'auto'
           },
           title: intl('title:main'),
-          src: newMainAccountRiskInfo?.verifyUrl || ''
+          src: verifyUrl
         }} />
         <ScError>
           {errorMessage}
@@ -100,13 +110,25 @@ export default function NewMainRiskContent(): JSX.Element {
     }
   
     return <AltWrap content={errorMessage || intl('message:new_main_verify_error')} />;
-  }, [showIframe, errorMessage, newMainAccountRiskInfo?.verifyUrl]);
+  }, [errorMessage, verifyUrl]);
+
+  // VerifyUrl 不合法时需要上报埋点
+  useEffect(() => {
+    if (REG_NEW_MAIN_VERIFY_URL.test(verifyUrl)) {
+      slsInvalidVerifyUrl({
+        verifyUrl
+      });
+    }
+  }, [verifyUrl]);
 
   useEffect(() => {
-    window.addEventListener('message', getValidateToken);
+    // 保证在沙箱中也能正常监听到 Iframe 抛出的事件
+    const realWindow = getWindow();
+
+    realWindow.addEventListener('message', getValidateToken);
 
     return () => {
-      window.removeEventListener('message', getValidateToken);
+      realWindow.removeEventListener('message', getValidateToken);
     };
   }, [updateData, getValidateToken]);
 

@@ -10,6 +10,7 @@ import {
   EDialogType,
   EVerifyType
 } from '../../const';
+import intl from '../../intl';
 
 import {
   TAuthMfaDialogData
@@ -19,7 +20,7 @@ import getAuthMfaDialogData from './get-auth-mfa-dialog-data';
 export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRiskInfo): Promise<TAuthMfaDialogData> {
   try {
     const {
-      riskType, convertedVerifyType, verifyDetail
+      riskType, verifyType, convertedVerifyType, verifyDetail
     } = riskInfo;
   
     if (riskType === ERiskType.NEW_SUB) {
@@ -35,10 +36,13 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
   
         return authMfaDialogData;
       }
-  
+      
+      // 目前子账号风控只支持 MFA，不支持其他验证方式
       return {
         dialogType: EDialogType.ERROR,
-        errorMessage: '子账号风控只支持 MFA 类型'
+        errorMessage: intl('message:invalid_unsupported_{method}!html', {
+          method: verifyType
+        })
       };
     }
   

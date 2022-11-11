@@ -13,18 +13,25 @@ import {
   slsRiskInvalid
 } from '../../sls';
 
-interface IProps {
+interface IRiskInvalidProps {
   subRisk: boolean;
+  verifyType: string;
+  verifyDetail: string;
   errorMessage: string;
   urlSetting: string;
 }
 
 export default function riskInvalid({
   subRisk,
+  verifyType,
+  verifyDetail,
   errorMessage,
   urlSetting
-}: IProps): Promise<void> {
-  slsRiskInvalid();
+}: IRiskInvalidProps): Promise<void> {
+  slsRiskInvalid({
+    verifyType,
+    verifyDetail
+  });
   
   return open<void>({
     size: DEFAULT_DIALOG_SIZE,

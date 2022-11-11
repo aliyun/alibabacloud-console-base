@@ -42,38 +42,47 @@ export default async function riskPrompt({
     riskResponse,
     riskConfig: mergedRiskConfig
   });
-  const subRisk = riskInfo.riskType === ERiskType.NEW_SUB;
+  const {
+    riskType, verifyType, verifyDetail, convertedVerifyType
+  } = riskInfo;
+  const subRisk = riskType === ERiskType.NEW_SUB;
 
-  switch (riskInfo.convertedVerifyType) {
+  switch (convertedVerifyType) {
     case EVerifyType.NONE:
       await riskInvalid({
         subRisk,
+        verifyType,
+        verifyDetail,
         urlSetting: mergedRiskConfig.urlSetting,
         errorMessage: subRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
-          method: riskInfo.verifyType
+          method: verifyType
         }) : intl('message:invalid_unsupported_{method}!html!lines', {
-          method: riskInfo.verifyType
+          method: verifyType
         })
       });
 
-      throw convertToRiskErrorCancelled(error);
+      throw convertToRiskErrorInvalid(error);
     case EVerifyType.UNKNOWN:
       await riskInvalid({
         subRisk,
+        verifyType,
+        verifyDetail,
         urlSetting: mergedRiskConfig.urlSetting,
         errorMessage: subRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
-          method: riskInfo.verifyType
+          method: verifyType
         }) : intl('message:invalid_unsupported_{method}!html!lines', {
-          method: riskInfo.verifyType
+          method: verifyType
         })
       });
-      
+
       throw convertToRiskErrorInvalid(error);
     case EVerifyType.SMS:
     case EVerifyType.EMAIL:
-      if (!subRisk && !riskInfo.verifyDetail) {
+      if (!subRisk && !verifyDetail) {
         await riskInvalid({
           subRisk,
+          verifyType,
+          verifyDetail,
           urlSetting: mergedRiskConfig.urlSetting,
           errorMessage: intl('message:invalid_unknown!lines')
         });

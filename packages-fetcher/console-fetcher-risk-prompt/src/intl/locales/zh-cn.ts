@@ -71,5 +71,6 @@ export default {
   'message:new_main_verify_error': '安全验证服务发生未知错误，请重试。',
   'message:sub_invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
 为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`,
-  'message:update_app_tip_{url}!html': '阿里云 App 最新版提供了 MFA 验证码快速输入功能，请 <a href="{url}" target="_blank">升级 App</a>。'
+  'message:update_app_tip_{url}!html': '阿里云 App 最新版提供了 MFA 验证码快速输入功能，请 <a href="{url}" target="_blank">升级 App</a>。',
+  'message:invalid_unsupported_{method}!html': '系统检测到验证方式 <code>{method}</code> 有误，请重试。'
 };

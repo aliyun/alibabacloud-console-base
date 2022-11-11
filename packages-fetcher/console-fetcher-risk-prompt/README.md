@@ -17,11 +17,11 @@ tnpm i @alicloud/console-fetcher-risk-data @alicloud/console-fetcher-risk-prompt
 
 ```typescript
 type TRiskPrompt = (p: {
-  error?: IPlainError; // API 被风控时的错误。
-  newRisk?: TNewRisk; // 可以自定义是否使用新版风控。
-  riskConfig: IRiskConfig; // 风控配置
-  riskResponse?: IRiskResponse; // API 被风控时的返回
-}) => Promise<IRiskPromptResolveData>
+  error?: IPlainError; // API 被风控时的错误，可选。
+  newRisk?: TNewRisk; // 可以自定义是否使用新版风控，可选。
+  riskConfig: IRiskConfig; // 风控配置，可选。
+  riskResponse?: IRiskResponse; // API 被风控时的返回，必传。
+}) => Promise<IRiskPromptResolveData> // Promise Resolve 后的结果是风控验证参数
 ```
 
 ### riskPrompt 的参数
@@ -98,20 +98,24 @@ interface IMpkExtendSetting {
 
 // OneConsole 返回的新版风控的请求响应
 interface IRiskResponse {
-  // 新版风控会有以下字段
-  VerifyURL?: string; // 新版主账号的核身框 URL
-  CodeType?: string;
-  AliyunIdkp?: string;
-  VerifyType?: string;
-  VerifyDetail?: string;
-  Validators?: {
-    Validator?: IOriginalRiskValidator[];
-  };
-  Extend?: IMpkExtendSetting;
-  // 旧版本的主账号风控会有以下的字段（首字母小写）
-  codeType?: string;
-  verifyType?: string;
-  verifyDetail?: string;
+  code: string;
+  successResponse: boolean;
+  data: {
+    // 新版风控会有以下字段
+    VerifyURL?: string; // 新版主账号的核身框 URL
+    CodeType?: string;
+    AliyunIdkp?: string;
+    VerifyType?: string;
+    VerifyDetail?: string;
+    Validators?: {
+      Validator?: IOriginalRiskValidator[];
+    };
+    Extend?: IMpkExtendSetting;
+    // 旧版本的主账号风控会有以下的字段（首字母小写）
+    codeType?: string;
+    verifyType?: string;
+    verifyDetail?: string;
+  }
 }
 ```
 
@@ -147,7 +151,7 @@ const getUserInfoWithRisk = payload => {
   return dataGetUserInfo(payload)
     .then(response => {
       // 控制台是通过 response.data.code 来判断 API 是否请求成功的
-      if (response.data.code === CODE_NEED_VERIFY) {
+      if (response.code === CODE_NEED_VERIFY) {
         riskPrompt({
           riskResponse: response
         }).then(riskResult => {
