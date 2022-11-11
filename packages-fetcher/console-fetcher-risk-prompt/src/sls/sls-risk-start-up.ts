@@ -5,16 +5,12 @@ import {
   ERiskType
 } from '../const';
 
-interface ISlsProps {
+interface IPayloadSlsRiskStartUp {
   riskType: ERiskType;
 }
 
-export default function slsRiskStartUp({
-  riskType
-}: ISlsProps): void {
-  sls(ESlsTopic.RISK_STARTUP, {
-    riskType
-  }, {
+export default function slsRiskStartUp(payload: IPayloadSlsRiskStartUp): void {
+  sls(ESlsTopic.RISK_STARTUP, payload, {
     instant: true
   });
 }

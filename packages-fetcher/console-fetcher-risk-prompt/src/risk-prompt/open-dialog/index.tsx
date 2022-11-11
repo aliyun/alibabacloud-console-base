@@ -39,10 +39,6 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Requir
   } = riskInfo;
   const accountId = 'accountId' in riskInfo ? riskInfo.accountId : 'EMPTY_ACCOUNT_ID';
   const dialogData = await getPartialDialogDataBasedOnRiskInfo(riskInfo);
-
-  slsRiskStartUp({
-    riskType
-  });
   const generateButtonFnCommonProps = {
     accountId,
     verifyType
@@ -56,6 +52,10 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Requir
   });
   const generateOldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButtonFn({
     verifyType
+  });
+
+  slsRiskStartUp({
+    riskType
   });
 
   return open<IRiskPromptResolveData, IDialogData>({

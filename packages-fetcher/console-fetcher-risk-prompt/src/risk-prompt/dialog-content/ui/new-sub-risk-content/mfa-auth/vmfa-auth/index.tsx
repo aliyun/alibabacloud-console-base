@@ -18,16 +18,13 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IDialogData,
-  IWindvaneError
+  IDialogData
 } from '../../../../../../types';
 import {
   SVG_URLS,
-  EIconType,
-  ESubAccountIdentityServiceType,
   ALIYUN_APP_VERSION,
-  WINDVANE_ERROR_CODE,
-  ALIYUN_APP_DOWNLOAD_URL
+  EIconType,
+  ESubAccountIdentityServiceType
 } from '../../../../../../const';
 import {
   useModelProps
@@ -44,8 +41,8 @@ import Message from '../../_components/message';
 import VMfaInput from '../../_components/vmfa-input';
 
 const ScFormWrapper = styled.div`
-  padding: 12px 12px 12px 0;
   position: relative;
+  padding: 12px 12px 12px 0;
   overflow: hidden;
   ${mixinBgSecondary}
   ${mixinBorderSecondary}
@@ -53,8 +50,8 @@ const ScFormWrapper = styled.div`
 
 const ScImg = styled.img`
   position: absolute;
-  bottom: -16px;
   right: -16px;
+  bottom: -16px;
 `;
 
 export default function VmfaAuth(): JSX.Element {
@@ -103,24 +100,20 @@ export default function VmfaAuth(): JSX.Element {
 
   const windVaneGetVmfaApiAvailable = windVaneAvailable && !stateNoWindvaneHandler;
   const onShowVmfaButtonClick = useCallback(() => {
-    getVmfaCodeFromWindVane().then(vmfaCode => {
-      const trimmedCode = vmfaCode.trim();
-
-      if (trimmedCode) {
-        setStateInputEverChanged(true);
-        setStateVmfaCode(trimmedCode);
-      }
-    }).catch((error: IWindvaneError) => {
-      if (error.code === WINDVANE_ERROR_CODE.NO_HANDLER) {
-        setStateNoWindvaneHandler(true);
+    getVmfaCodeFromWindVane({
+      onFail(failMessage) {
         updateData({
-          errorMessage: intl('message:update_app_tip_{url}!html', {
-            url: ALIYUN_APP_DOWNLOAD_URL
-          })
+          errorMessage: failMessage
         });
+        setStateNoWindvaneHandler(true);
+      },
+      onSuccess(vmfaCode) {
+        setStateVmfaCode(vmfaCode);
+        setStateInputEverChanged(true);
+      },
+      onFinally() {
+        setStateInputFocused(false);
       }
-    }).finally(() => {
-      setStateInputFocused(false);
     });
   }, [updateData]);
 

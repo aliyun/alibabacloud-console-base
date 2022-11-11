@@ -18,15 +18,12 @@ import Flex from '@alicloud/console-base-rc-flex';
 
 import {
   IDialogData,
-  IWindvaneError,
   IRiskPromptResolveData
 } from '../../../../types';
 import {
   EVerifyType,
   REG_MFA_CODE,
-  ALIYUN_APP_VERSION,
-  WINDVANE_ERROR_CODE,
-  ALIYUN_APP_DOWNLOAD_URL
+  ALIYUN_APP_VERSION
 } from '../../../../const';
 import {
   useModelProps
@@ -100,32 +97,27 @@ export default function Content(): JSX.Element {
         theme: ButtonTheme.TEXT_PRIMARY,
         label: intl('op:view_security_code'),
         onClick: () => {
-          getVmfaCodeFromWindVane().then(vmfaCode => {
-            const trimmedCode = vmfaCode.trim();
-  
-            if (trimmedCode) {
-              setStateVmfaCode(trimmedCode);
+          getVmfaCodeFromWindVane({
+            onFail(failMessage) {
+              updateData({
+                errorMessage: failMessage
+              });
+              setStateWindvaneNoHandler(true);
+            },
+            onSuccess(vmfaCode) {
+              setStateVmfaCode(vmfaCode);
               updateData({
                 errorMessage: '', // 清空错误
                 primaryButtonDisabled: false,
                 mainOrMpkAccountData: {
-                  code: trimmedCode,
+                  code: vmfaCode,
                   requestId: mainOrMpkAccountData?.requestId || ''
                 }
               });
+            },
+            onFinally() {
+              setStateInputFocused(false);
             }
-          }).catch((error: IWindvaneError) => {
-            // 如果调用接口后，返回的错误 Code 的含义是没有对应处理模块，那么展示对应的提示，且隐藏【查看安全码】按钮
-            if (error.code === WINDVANE_ERROR_CODE.NO_HANDLER) {
-              setStateWindvaneNoHandler(true);
-              updateData({
-                errorMessage: intl('message:update_app_tip_{url}!html', {
-                  url: ALIYUN_APP_DOWNLOAD_URL
-                })
-              });
-            }
-          }).finally(() => {
-            setStateInputFocused(false);
           });
         }
       }} />;

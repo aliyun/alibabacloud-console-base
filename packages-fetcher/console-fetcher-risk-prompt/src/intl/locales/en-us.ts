@@ -71,5 +71,6 @@ To protect your account, set a verification method.`,
   'message:new_main_verify_error': 'Unknown error occurred in the security verification service. Please try again.',
   'message:sub_invalid_unsupported_{method}!html!lines': `Verification method <code>{method}</code> is not supported.
   To protect your account, use your Alibaba Cloud account or the RAM user that has administrative rights to log on to the RAM console and reset the verification method.`,
-  'message:update_app_tip_{url}!html': 'The latest Aliyun App provides MFA quick input functionality, <a href="{url}" target="_blank">Upgrade Now</a>.'
+  'message:update_app_tip_{url}!html': 'The latest Aliyun App provides MFA quick input functionality, <a href="{url}" target="_blank">Upgrade Now</a>.',
+  'message:invalid_unsupported_{method}!html': 'Verification method <code>{method}</code> is not supported, please try again.'
 };

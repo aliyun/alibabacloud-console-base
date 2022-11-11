@@ -4,6 +4,11 @@ import {
   ESlsTopic
 } from '../const';
 
-export default function slsRiskInvalid(): void {
-  sls(ESlsTopic.RISK_INVALID);
+interface IPayloadSlsRiskInvalid {
+  verifyType: string;
+  verifyDetail: string;
+}
+
+export default function slsRiskInvalid(payload: IPayloadSlsRiskInvalid): void {
+  sls(ESlsTopic.RISK_INVALID, payload);
 }

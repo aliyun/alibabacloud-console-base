@@ -71,5 +71,6 @@ export default {
   'message:new_main_verify_error': '安全驗證服務發生未知錯誤，請重試。',
   'message:sub_invalid_unsupported_{method}!html!lines': `系統檢測到驗證方式 <code>{method}</code> 有誤。
 為了保障您的賬戶安全，請先聯繫主賬號或 RAM 管理員在 RAM 控制台設置驗證方式。`,
-  'message:update_app_tip_{url}!html': '阿里雲 App 最新版提供了 MFA 驗證碼快速輸入功能，請 <a href="{url}" target="_blank">升級 App</a>。'
+  'message:update_app_tip_{url}!html': '阿里雲 App 最新版提供了 MFA 驗證碼快速輸入功能，請 <a href="{url}" target="_blank">升級 App</a>。',
+  'message:invalid_unsupported_{method}!html': '系統檢測到驗證方式 <code>{method}</code> 有誤，請重試。'
 };
