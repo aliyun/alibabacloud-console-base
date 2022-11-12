@@ -7,10 +7,11 @@ import {
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
+  useProps,
   useItemsBottom
 } from '../../model';
 import {
-  Tool
+  SidePanelItem
 } from '../../rc';
 
 const ScHr = styled(HrBase)`
@@ -18,10 +19,13 @@ const ScHr = styled(HrBase)`
 `;
 
 export default function PanelItemsBottom(): JSX.Element | null {
+  const {
+    children
+  } = useProps();
   const items = useItemsBottom();
   
   return <Flex vertical>
-    {items.length ? <ScHr /> : null}
-    {items.map((v, i) => <Tool key={v.key || i} {...v} />)}
+    {children || items.length ? <ScHr /> : null}
+    {children || items.map(v => <SidePanelItem {...v} />)}
   </Flex>;
 }

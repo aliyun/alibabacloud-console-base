@@ -3,8 +3,7 @@ import React, {
 } from 'react';
 
 import {
-  InputSwitch,
-  Table
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import Icon from '@alicloud/console-base-rc-icon';
@@ -15,25 +14,15 @@ import {
   SVG
 } from '../const';
 import {
-  FakeApiInspector
+  FakeApiInspector,
+  ContactTooltip,
+  ChildrenAsItemsBottom
 } from '../rc';
 import PkgInfo from '../pkg-info';
 
-interface IDemoAccountItem {
-  title: string;
-  description: string;
-}
-
-const dataSourceAccount: IDemoAccountItem[] = [{
-  title: '售后在线服务',
-  description: '在线实时沟通，快速解决您的问题'
-}, {
-  title: '聆听·建议反馈',
-  description: '阿里云不是完美的，我们渴望您的建议'
-}];
-
 export default function DemoDefault(): JSX.Element {
   const [stateTopbar, setStateTopbar] = useState(true);
+  const [stateChildrenAsItemsBottom, setStateChildrenAsItemsBottom] = useState(false);
   const [stateCollapsed, setStateCollapsed] = useState(false);
   const [stateApiInspectorVisible, setStateApiInspectorVisible] = useState(false);
   
@@ -41,10 +30,24 @@ export default function DemoDefault(): JSX.Element {
     {stateTopbar ? <LayoutTopBar /> : null}
     <LayoutSidePanel {...{
       itemsTop: [{
+        key: 'icon-rc-icon',
         title: '测试 Icon 组件',
         icon: <Icon type="dingding" />,
+        tooltip: <>
+          <h5>Ingrid Michaelson</h5>
+          <img {...{
+            src: 'https://s.hdnux.com/photos/50/11/50/10525228/3/1200x0.jpg',
+            alt: '',
+            style: {
+              width: 200,
+              height: 200
+            }
+          }} />
+        </>,
+        tooltipAlign: 'top',
         unread: true
       }, {
+        key: 'icon-rc-svg',
         title: '测试 SVG 组件',
         icon: <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
           <path d="m232.533 345.6 324.267 320c17.067 17.067 17.067 42.667 0 59.733l-117.333 115.2c-17.067 17.067-42.667 17.067-59.734 0l-324.266-320c-17.067-17.066-17.067-42.666 0-59.733L172.8 345.6c14.933-17.067 42.667-17.067 59.733 0z" fill="#185ABD" />
@@ -52,38 +55,35 @@ export default function DemoDefault(): JSX.Element {
         </svg>,
         unread: 12
       }, {
+        key: 'icon-string-svg',
         title: '测试 SVG 字符串',
         icon: SVG
       }, {
+        key: 'icon-string-image-url',
         title: '测试图片 URL',
         icon: 'https://img.alicdn.com/tfs/TB1JhtxuAT2gK0jSZFkXXcIQFXa-128-128.png'
       }],
       itemsBottom: [{
+        key: 'api-inspector',
         title: 'API Inspector',
         icon: <Icon type="toolkit-api" />,
         active: stateApiInspectorVisible,
         onActiveChange: setStateApiInspectorVisible
       }, {
+        key: 'micro-exp',
         title: '微试验',
         icon: <Icon type="toolkit-edu" />,
         tooltip: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       }, {
+        key: 'contact',
         title: '联系我们',
         icon: <Icon type="toolkit-contact" />,
-        tooltip: <Table<IDemoAccountItem> {...{
-          dataSource: dataSourceAccount,
-          columns: [{
-            title: '标题',
-            dataIndex: 'title'
-          }, {
-            title: '描述',
-            dataIndex: 'description'
-          }]
-        }} />
+        tooltip: <ContactTooltip />,
+        tooltipAlign: 'bottom'
       }],
       collapsed: stateCollapsed,
       onToggleCollapsed: setStateCollapsed
-    }} />
+    }}>{stateChildrenAsItemsBottom ? <ChildrenAsItemsBottom /> : null}</LayoutSidePanel>
     <ThemeSwitcher />
     <PkgInfo />
     <InputSwitch {...{
@@ -95,6 +95,11 @@ export default function DemoDefault(): JSX.Element {
       label: 'props.collapsed',
       value: stateCollapsed,
       onChange: setStateCollapsed
+    }} />
+    <InputSwitch {...{
+      label: '使用 Children',
+      value: stateChildrenAsItemsBottom,
+      onChange: setStateChildrenAsItemsBottom
     }} />
     <FakeApiInspector {...{
       visible: stateApiInspectorVisible,

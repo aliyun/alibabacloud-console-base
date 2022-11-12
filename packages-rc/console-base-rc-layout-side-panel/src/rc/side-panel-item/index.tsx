@@ -9,10 +9,10 @@ import {
 import {
   useTooltipVisible
 } from '../../hook';
-import ToolWrap from '../tool-wrap';
-import ToolButton from '../tool-button';
-import ToolUnread from '../tool-unread';
-import ToolTooltip from '../tool-tooltip';
+import SidePanelItemWrap from '../side-panel-item-wrap';
+import SidePanelItemButton from '../side-panel-item-button';
+import SidePanelItemUnread from '../side-panel-item-unread';
+import SidePanelItemSidePanelItemtip from '../side-panel-item-tooltip';
 
 import {
   getItemIcon
@@ -28,11 +28,22 @@ export default function SidePanelItem({
   icon,
   unread,
   tooltip,
+  tooltipAlign,
   onClick,
   onActiveChange,
+  onMouseEnter,
+  onMouseLeave,
   ...props
 }: IProps): JSX.Element {
   const [tooltipVisible, tooltipShow, tooltipHide] = useTooltipVisible();
+  const handleMouseEnter = useCallback((e: MouseEvent<HTMLElement>) => {
+    tooltipShow();
+    onMouseEnter?.(e);
+  }, [tooltipShow, onMouseEnter]);
+  const handleMouseLeave = useCallback((e: MouseEvent<HTMLElement>) => {
+    tooltipHide();
+    onMouseLeave?.(e);
+  }, [tooltipHide, onMouseLeave]);
   const handleClick = useCallback((e: MouseEvent<HTMLElement>) => {
     onClick?.(e);
     onActiveChange?.(!active);
@@ -40,23 +51,24 @@ export default function SidePanelItem({
   
   const tooltipContent = tooltip || title;
   
-  return <ToolWrap {...{
+  return <SidePanelItemWrap {...{
     className,
     style,
-    onMouseEnter: tooltipShow,
-    onMouseLeave: tooltipHide
+    onMouseLeave: handleMouseLeave
   }}>
-    <ToolButton {...{
+    <SidePanelItemButton {...{
       ...props,
       active,
       title,
       label: getItemIcon(icon) || title,
+      onMouseEnter: handleMouseEnter,
       onClick: handleClick
     }} />
-    <ToolUnread unread={unread} />
-    {tooltipContent ? <ToolTooltip {...{
+    <SidePanelItemUnread unread={unread} />
+    {tooltipContent ? <SidePanelItemSidePanelItemtip {...{
       visible: tooltipVisible,
+      align: tooltipAlign,
       content: tooltipContent
     }} /> : null}
-  </ToolWrap>;
+  </SidePanelItemWrap>;
 }

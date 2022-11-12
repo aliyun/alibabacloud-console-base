@@ -1,5 +1,5 @@
 export { default as Aside } from './aside';
-export { default as Tool } from './tool';
-export { default as ToolWrap } from './tool-wrap';
-export { default as ToolButton } from './tool-button';
-export { default as ToolTooltip } from './tool-tooltip';
+export { default as SidePanelItem } from './side-panel-item';
+export { default as SidePanelItemWrap } from './side-panel-item-wrap';
+export { default as SidePanelItemButton } from './side-panel-item-button';
+export { default as SidePanelItemTooltip } from './side-panel-item-tooltip';

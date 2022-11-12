@@ -11,9 +11,9 @@ import {
   useHandleToggleCollapsed
 } from '../../model';
 import {
-  ToolWrap,
-  ToolButton,
-  ToolTooltip
+  SidePanelItemWrap,
+  SidePanelItemButton,
+  SidePanelItemTooltip
 } from '../../rc';
 import {
   useTooltipVisible
@@ -24,7 +24,7 @@ interface IScProps {
   collapsed: boolean;
 }
 
-const ScPanelToggle = styled(ToolWrap)<IScProps>`
+const ScPanelToggle = styled(SidePanelItemWrap)<IScProps>`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -41,7 +41,7 @@ const ScPanelToggle = styled(ToolWrap)<IScProps>`
     `;
   }}
 `;
-const ScPanelToggleButton = styled(ToolButton)<IScProps>`
+const ScPanelToggleButton = styled(SidePanelItemButton)<IScProps>`
   ${props => (props.collapsed && !props.hovered ? css`
     padding-left: 4px;;
     text-align: left;
@@ -57,9 +57,7 @@ export default function PanelToggle(): JSX.Element {
   
   return <ScPanelToggle {...{
     hovered: tooltipVisible,
-    collapsed,
-    onMouseEnter: tooltipShow,
-    onMouseLeave: tooltipHide
+    collapsed
   }}>
     <ScPanelToggleButton {...{
       hovered: tooltipVisible,
@@ -67,9 +65,11 @@ export default function PanelToggle(): JSX.Element {
       active: collapsed,
       title,
       label: <Icon type="angle-right" rotate={collapsed ? 180 : undefined} />,
+      onMouseEnter: tooltipShow,
+      onMouseLeave: tooltipHide,
       onClick: handleToggleCollapsed
     }} />
-    <ToolTooltip {...{
+    <SidePanelItemTooltip {...{
       visible: tooltipVisible,
       content: title
     }} />

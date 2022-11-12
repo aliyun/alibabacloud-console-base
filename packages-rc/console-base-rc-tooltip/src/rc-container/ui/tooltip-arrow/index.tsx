@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  ARROW_SIZE
+  ARROW_SQUARE_BORDER
 } from '../../../const';
 import {
   getTooltipArrowCssColor,
@@ -12,7 +12,8 @@ import {
 import {
   TooltipPlacement,
   TooltipTheme,
-  useProps
+  useProps,
+  useTooltipArrowStyleOffset
 } from '../../../model';
 
 interface IScProps {
@@ -24,8 +25,8 @@ const ScTooltipArrow = styled.span<IScProps>`
   position: absolute;
   box-sizing: border-box;
   background-color: inherit;
-  width: ${ARROW_SIZE}px;
-  height: ${ARROW_SIZE}px;
+  width: ${ARROW_SQUARE_BORDER}px;
+  height: ${ARROW_SQUARE_BORDER}px;
   transition: all ease-in-out 250ms;
   ${props => getTooltipArrowCssPosition(props.placement)}
   ${props => getTooltipArrowCssRotate(props.placement)}
@@ -38,9 +39,11 @@ export default function TooltipArrow(): JSX.Element | null {
     theme,
     placement
   }] = useProps();
+  const tooltipArrowStyleOffset = useTooltipArrowStyleOffset();
   
   return arrow ? <ScTooltipArrow {...{
     theme,
-    placement
+    placement,
+    style: tooltipArrowStyleOffset
   }} /> : null;
 }
