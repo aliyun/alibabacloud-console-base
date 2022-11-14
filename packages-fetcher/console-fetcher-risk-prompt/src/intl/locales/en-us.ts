@@ -19,7 +19,7 @@ export default {
   'message:invalid_unknown!lines': `No verification method has been set.
 To protect your account, set a verification method.`,
   'message:invalid_unsupported_{method}!html!lines': `Verification method <code>{method}</code> is not supported.
-To protect your account, set a verification method.`,
+To protect your account, set a verification method correctly.`,
   'message:forbidden': 'The operation failed due to a severe security risk. Please submit a ticket.',
   'message:code_required': 'Please input validation code.',
   'message:code_send_error': 'Validation code send failed, try again later.',

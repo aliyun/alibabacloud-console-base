@@ -1,9 +1,6 @@
 import {
-  TNewRisk,
-  IPlainError,
-  TRiskResponse,
-  IRiskConfig,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  IRiskPromptProps
 } from '../types';
 import {
   ERiskType,
@@ -20,19 +17,13 @@ import {
 import openDialog from './open-dialog';
 import riskInvalid from './risk-invalid';
 
-interface IFetcherRiskPromptProps {
-  error?: IPlainError;
-  newRisk?: TNewRisk;
-  riskConfig?: IRiskConfig;
-  riskResponse?: TRiskResponse;
-}
-
-export default async function riskPrompt({
+export default async function riskPrompt<T = Record<string, unknown>>({
   error,
   newRisk,
+  riskConfig,
   riskResponse,
-  riskConfig
-}: IFetcherRiskPromptProps): Promise<IRiskPromptResolveData> {
+  riskParametersGetter
+}: IRiskPromptProps<T>): Promise<IRiskPromptResolveData> {
   const mergedRiskConfig = {
     ...DEFAULT_RISK_CONFIG,
     ...riskConfig
@@ -40,7 +31,8 @@ export default async function riskPrompt({
   const riskInfo = convertRiskResponse({
     newRisk,
     riskResponse,
-    riskConfig: mergedRiskConfig
+    riskConfig: mergedRiskConfig,
+    riskParametersGetter
   });
   const {
     riskType, verifyType, verifyDetail, convertedVerifyType
@@ -54,11 +46,7 @@ export default async function riskPrompt({
         verifyType,
         verifyDetail,
         urlSetting: mergedRiskConfig.urlSetting,
-        errorMessage: subRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
-          method: verifyType
-        }) : intl('message:invalid_unsupported_{method}!html!lines', {
-          method: verifyType
-        })
+        errorMessage: intl('message:invalid_unknown!lines')
       });
 
       throw convertToRiskErrorInvalid(error);
@@ -78,13 +66,17 @@ export default async function riskPrompt({
       throw convertToRiskErrorInvalid(error);
     case EVerifyType.SMS:
     case EVerifyType.EMAIL:
-      if (!subRisk && !verifyDetail) {
+      // 子账号风控赞不支持 sms & email
+      // 旧版主账号风控的 sms & email 场景，必须有 verifyType
+      if (subRisk || (riskType === ERiskType.OLD_MAIN && !verifyDetail)) {
         await riskInvalid({
           subRisk,
           verifyType,
           verifyDetail,
           urlSetting: mergedRiskConfig.urlSetting,
-          errorMessage: intl('message:invalid_unknown!lines')
+          errorMessage: intl('message:invalid_unsupported_{method}!html!lines', {
+            method: verifyType
+          })
         });
         
         throw convertToRiskErrorInvalid(error);

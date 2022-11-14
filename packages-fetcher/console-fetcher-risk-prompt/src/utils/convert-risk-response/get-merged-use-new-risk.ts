@@ -1,25 +1,24 @@
-import _get from 'lodash/get';
-
 import {
   TNewRisk,
-  IRiskConfig,
   TRiskResponse,
-  IRiskValidator
+  IRiskParameters
 } from '../../types';
 
-interface IGetMergedUseNewRiskProps {
-  newRisk?: TNewRisk;
-  riskResponse?: TRiskResponse;
-  riskConfig: Pick<Required<IRiskConfig>, 'dataPathVerifyUrl' | 'dataPathValidators'>;
+interface IGetMergedUseNewRiskProps<T> {
+  newRisk?: TNewRisk<T>;
+  riskResponse: TRiskResponse<T>;
+  riskParameters: IRiskParameters;
 }
 
-export default function getMergedUseNewRisk({
+export default function getMergedUseNewRisk<T>({
   newRisk,
-  riskConfig,
-  riskResponse
-}: IGetMergedUseNewRiskProps): boolean {
-  const verifyUrl = _get(riskResponse, riskConfig.dataPathVerifyUrl, '') as string;
-  const validators = _get(riskResponse, riskConfig.dataPathValidators, []) as IRiskValidator[];
+  riskResponse,
+  riskParameters
+}: IGetMergedUseNewRiskProps<T>): boolean {
+  const {
+    verifyUrl = '',
+    validators = []
+  } = riskParameters;
 
   if (newRisk !== undefined) {
     if (typeof newRisk === 'boolean') {

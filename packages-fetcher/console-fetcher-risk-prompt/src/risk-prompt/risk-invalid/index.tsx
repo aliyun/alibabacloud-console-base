@@ -16,7 +16,7 @@ import {
 interface IRiskInvalidProps {
   subRisk: boolean;
   verifyType: string;
-  verifyDetail: string;
+  verifyDetail: string | boolean;
   errorMessage: string;
   urlSetting: string;
 }

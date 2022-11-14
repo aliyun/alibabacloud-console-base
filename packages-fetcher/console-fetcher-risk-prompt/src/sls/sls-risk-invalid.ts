@@ -6,7 +6,7 @@ import {
 
 interface IPayloadSlsRiskInvalid {
   verifyType: string;
-  verifyDetail: string;
+  verifyDetail: string | boolean;
 }
 
 export default function slsRiskInvalid(payload: IPayloadSlsRiskInvalid): void {

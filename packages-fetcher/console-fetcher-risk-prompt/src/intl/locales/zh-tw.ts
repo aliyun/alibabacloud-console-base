@@ -19,7 +19,7 @@ export default {
   'message:invalid_unknown!lines': `系統沒有檢測到驗證方式。
 為了保障您的賬戶安全，請先設置驗證方式。`,
   'message:invalid_unsupported_{method}!html!lines': `系統檢測到驗證方式 <code>{method}</code> 有誤。
-為了保障您的賬戶安全，請先設置驗證方式。`,
+  為了保障您的賬戶安全，請先正確設置驗證方式。`,
   'message:forbidden': '檢測到存在嚴重安全風險，該操作無法執行，請聯系客服。',
   'message:code_required': '請輸入校驗碼。',
   'message:code_send_error': '校驗碼發送失敗，請稍後重試。',

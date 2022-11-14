@@ -19,7 +19,7 @@ export default {
   'message:invalid_unknown!lines': `系统没有检测到验证方式。
 为了保障您的账户安全，请先设置验证方式。`,
   'message:invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
-为了保障您的账户安全，请先设置验证方式。`,
+为了保障您的账户安全，请先正确设置验证方式。`,
   'message:forbidden': '检测到存在严重安全风险，该操作无法执行，请联系客服。',
   'message:code_required': '请输入校验码。',
   'message:code_send_error': '校验码发送失败，请稍后重试。',

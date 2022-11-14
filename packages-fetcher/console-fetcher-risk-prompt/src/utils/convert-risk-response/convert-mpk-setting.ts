@@ -9,8 +9,8 @@ import {
   DEFAULT_RISK_CONFIG
 } from '../../const';
 
-interface IConvertMpkSettingProps {
-  riskResponse?: TRiskResponse;
+interface IConvertMpkSettingProps<T> {
+  riskResponse?: TRiskResponse<T>;
   riskConfig: Pick<IRiskConfig, 'dataPathExtend'>;
 }
 
@@ -21,10 +21,10 @@ interface IConvertMpkSettingResult {
 }
 
 // 从初识的 Response 拿到的 Mpk 相关的设置，是字符串类型的 'true' / 'false'...
-export default function convertMpkSetting({
+export default function convertMpkSetting<T>({
   riskConfig,
   riskResponse
-}: IConvertMpkSettingProps): IConvertMpkSettingResult {
+}: IConvertMpkSettingProps<T>): IConvertMpkSettingResult {
   const dataPathMpkExtend = riskConfig.dataPathExtend ?? DEFAULT_RISK_CONFIG.dataPathExtend;
 
   const mpkSetting = _get(riskResponse, dataPathMpkExtend, {}) as IMpkExtendSetting;

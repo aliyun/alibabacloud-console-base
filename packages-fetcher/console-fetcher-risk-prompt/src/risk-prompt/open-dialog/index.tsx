@@ -39,6 +39,7 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Requir
   } = riskInfo;
   const accountId = 'accountId' in riskInfo ? riskInfo.accountId : 'EMPTY_ACCOUNT_ID';
   const dialogData = await getPartialDialogDataBasedOnRiskInfo(riskInfo);
+
   const generateButtonFnCommonProps = {
     accountId,
     verifyType
@@ -68,6 +69,7 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Requir
     },
     data: {
       dialogType: dialogData.dialogType,
+      errorMessage: dialogData.errorMessage,
       primaryButtonDisabled: dialogData.dialogType === EDialogType.OLD_MAIN_OR_MPK_RISK, // 只有在旧版主账号风控的时候，primaryButtonDisabled 的初始值才为 true
       newMainAccountRiskInfo: dialogData.newMainAccountRiskInfo,
       oldMainOrMpkRiskInfo: dialogData.oldMainOrMpkRiskInfo,

@@ -9,7 +9,18 @@ import {
   Button
 } from '@alicloud/demo-rc-elements';
 
-import fetcherRiskPrompt from '../../src';
+import riskPrompt, {
+  type RiskValidator,
+  type RiskParametersGetter
+} from '../../src';
+
+interface IRiskResponseData {
+  AccountId: string;
+  CodeType: string;
+  VerifyType: string;
+  VerifyDetail: boolean;
+  RiskValidators: RiskValidator[];
+}
 
 const ScButton = styled(Button)`
   margin: 0 8px;
@@ -17,7 +28,7 @@ const ScButton = styled(Button)`
 
 export default function DemoDefault(): JSX.Element {
   const handleSubRiskBindPrompt = useCallback(async () => {
-    const riskPromptResult = await fetcherRiskPrompt({
+    const riskPromptResult = await riskPrompt({
       riskResponse: {
         data: {
           Validators: {
@@ -40,21 +51,59 @@ export default function DemoDefault(): JSX.Element {
   }, []);
 
   const handleSubRiskAuthPrompt = useCallback(async () => {
-    const riskPromptResult = await fetcherRiskPrompt({
+    const riskParametersGetter: RiskParametersGetter<IRiskResponseData> = riskResponse => {
+      return {
+        accountId: riskResponse.AccountId,
+        validators: riskResponse.RiskValidators,
+        codeType: riskResponse.CodeType,
+        verifyType: riskResponse.VerifyType,
+        verifyDetail: riskResponse.VerifyDetail
+      };
+    };
+
+    const riskPromptResult = await riskPrompt<IRiskResponseData>({
+      riskResponse: {
+        RiskValidators: [
+          {
+            VerifyDetail: 'true',
+            VerifyType: 'ga'
+          }
+        ],
+        CodeType: 'ims_login_update',
+        VerifyDetail: true,
+        VerifyType: 'ga',
+        AccountId: '12345****000'
+      },
+      riskParametersGetter
+    });
+
+    console.log('sub_risk_auth_prompt_result', riskPromptResult);
+  }, []);
+
+  const handleSubRiskInvalidPrompt = useCallback(async () => {
+    const riskPromptResult = await riskPrompt({
+      newRisk: true,
       riskResponse: {
         data: {
+          Action: 'doubleConfirm',
+          Message: '000您的账户出现异常，详情请联系客服。',
+          Extend: {
+            scriptId: '12345'
+          },
           Validators: {
             Validator: [
               {
-                VerifyDetail: 'true',
-                VerifyType: 'ga'
+                VerifyDetail: '1234****000',
+                VerifyType: 'sms'
               }
             ]
           },
-          CodeType: 'ims_login_update',
-          VerifyDetail: 'true',
-          VerifyType: 'ga',
-          AliyunIdkp: '229108930911534134'
+          CodeType: 'ecs_instance_delete',
+          Tag: 'RR000',
+          VerifyDetail: '1234****0',
+          VerifyType: 'sms',
+          AliyunIdkp: '1234****0',
+          NoRisk: false
         }
       }
     });
@@ -63,22 +112,22 @@ export default function DemoDefault(): JSX.Element {
   }, []);
 
   const handleNewMainRiskPrompt = useCallback(async () => {
-    const riskPromptResult = await fetcherRiskPrompt({
+    const riskPromptResult = await riskPrompt({
       riskResponse: {
         data: {
           Validators: {
             Validator: [
               {
-                VerifyDetail: '137****2864',
+                VerifyDetail: '1234***0',
                 VerifyType: 'sms'
               }
             ]
           },
           CodeType: 'ims_login_update',
-          VerifyURL: 'https://passport.aliyun.com:4333/iv/remote/mini/request.htm?havana_iv_token=CN-SPLIT-AQgAENgEIg1oYXZhbmFfYXBwX2l2MgEBONbV54_FMEABShAR0qsNkCtY7wP7stMXL_-jTRtx4ZsgjY_PXGCDhbvl6mq05lM',
+          VerifyURL: 'https://passport.aliyun.com:4333/iv/remote/mini/request.htm?havana_iv_token=123456****0',
           VerifyDetail: '137****2864',
           VerifyType: 'sms',
-          AliyunIdkp: '1647******209939'
+          AliyunIdkp: '1234***0'
         }
       }
     });
@@ -87,10 +136,10 @@ export default function DemoDefault(): JSX.Element {
   }, []);
 
   const handleOldMainRiskPrompt = useCallback(async () => {
-    const riskPromptResult = await fetcherRiskPrompt({
+    const riskPromptResult = await riskPrompt({
       riskResponse: {
         data: {
-          verifyDetail: '137****2864',
+          verifyDetail: '1234****0',
           codeType: 'rg_authorization_add',
           verifyType: 'sms'
         }
@@ -104,6 +153,7 @@ export default function DemoDefault(): JSX.Element {
     <H1>风控弹窗 console-base-risk-prompt</H1>
     <ScButton onClick={handleSubRiskBindPrompt}>子账号风控弹窗 - 绑定 MFA</ScButton>
     <ScButton onClick={handleSubRiskAuthPrompt}>子账号风控弹窗 - 验证 MFA</ScButton>
+    <ScButton onClick={handleSubRiskInvalidPrompt}>子账号风控弹窗 - Invalid</ScButton>
     <ScButton onClick={handleNewMainRiskPrompt}>新版主账号风控弹窗</ScButton>
     <ScButton onClick={handleOldMainRiskPrompt}>旧版主账号风控弹窗</ScButton>
   </>;
