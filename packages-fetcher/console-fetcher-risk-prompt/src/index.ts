@@ -13,13 +13,12 @@ export {
   getMergedUseNewRisk
 } from './utils';
 export type {
-  TRiskInfo as RiskInfo,
   IRiskConfig as RiskConfig,
+  TRiskResponse as RiskResponse,
   IRiskValidator as RiskValidator,
   IMpkExtendSetting as MpkExtendSetting,
-  TRiskResponse as RiskResponse,
-  IMpkRiskInfo as MpkRiskInfo,
-  INewSubRiskInfo as NewSubRiskInfo,
-  INewMainRiskInfo as NewMainRiskInfo,
-  IOldMainRiskInfo as OldMainRiskInfo
+  IRiskParameters as RiskParameters,
+  TRiskParametersGetter as RiskParametersGetter,
+  IRiskPromptProps as RiskPromptProps,
+  IRiskPromptResolveData as RiskPromptResolveData
 } from './types';

@@ -13,6 +13,8 @@ import {
   ESubAccountIdentityServiceType
 } from '../const';
 
+export type TStringOrJsx = string | JSX.Element;
+
 export type TSubAccountIdentityServiceParams = {
   paramsType: ESubAccountIdentityServiceType.BIND_MFA;
   params: ParamsBindMfa;
@@ -58,7 +60,7 @@ export interface IMainAccountData {
 
 export interface IDialogData {
   dialogType: EDialogType;
-  errorMessage?: string;
+  errorMessage?: TStringOrJsx;
   primaryButtonDisabled: boolean;
   fromBindU2FtoAuthU2F?: boolean;
   mainOrMpkAccountData?: IMainAccountData;

@@ -1,5 +1,5 @@
 /**
- * 子账号验证接口 /identity/verify 的参数 VerifyType，一期只有 MFA
+ * 子账号验证接口 /identity/verify 的参数 VerifyType，一期只有 MFA，后续会增加短信 & 邮箱
  */
 export enum ESubVerifyType {
   MFA = 'mfa'

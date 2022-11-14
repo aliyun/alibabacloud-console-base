@@ -11,7 +11,7 @@ export interface IModelProps {
   accountId: string;
   verifyType: string;
   convertedVerifyType: EVerifyType;
-  verifyDetail: string;
+  verifyDetail: string | boolean;
   urlSetting: string;
   coolingAfterSent: number;
   coolingAfterSentFail: number;

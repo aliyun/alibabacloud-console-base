@@ -61,14 +61,14 @@ export const DEFAULT_RISK_CONFIG = {
   urlSetting: '//account.console.aliyun.com/#/secure',
   coolingAfterSent: 60,
   coolingAfterSentFail: 10,
-  dataPathVerifyType: 'data.verifyType',
-  dataPathVerifyDetail: 'data.verifyDetail',
-  dataPathCodeType: 'data.codeType',
+  dataPathOldVerifyType: 'data.verifyType',
+  dataPathOldVerifyDetail: 'data.verifyDetail',
+  dataPathOldCodeType: 'data.codeType',
   dataPathVerifyUrl: 'data.VerifyURL',
   dataPathValidators: 'data.Validators.Validator',
   dataPathUserId: 'data.AliyunIdkp',
   dataPathExtend: 'data.Extend',
-  dataPathNewCodeType: 'data.CodeType',
-  dataPathNewVerifyType: 'data.VerifyType',
-  dataPathNewVerifyDetail: 'data.VerifyDetail'
+  dataPathCodeType: 'data.CodeType',
+  dataPathVerifyType: 'data.VerifyType',
+  dataPathVerifyDetail: 'data.VerifyDetail'
 };

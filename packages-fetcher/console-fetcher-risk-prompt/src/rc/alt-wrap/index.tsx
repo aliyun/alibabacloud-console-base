@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const ScWrapper = styled.div`
-  margin-top: 36px;
+  margin-top: 24px;
 `;
 
 export default function AltWrap({

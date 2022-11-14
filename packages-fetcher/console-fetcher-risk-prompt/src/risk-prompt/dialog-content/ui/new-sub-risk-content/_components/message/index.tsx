@@ -25,6 +25,9 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
+  TStringOrJsx
+} from '../../../../../../types';
+import {
   EIconType,
   ALIYUN_APP_VERSION
 } from '../../../../../../const';
@@ -45,7 +48,7 @@ interface IErrorMessageDivProps {
 }
 
 interface IProps extends IErrorDivProps, IErrorMessageDivProps {
-  message?: string;
+  message?: TStringOrJsx;
   iconType: EIconType;
   showU2FRetryButton?: boolean;
   onU2FErrorRetryClick?: () => void;
@@ -53,13 +56,13 @@ interface IProps extends IErrorDivProps, IErrorMessageDivProps {
 
 const u2fRetryMessageWidthPercentage = ALIYUN_APP_VERSION ? 80 : 90;
 const CssDivCommon = css`
-  padding: 8px 12px;
   margin-bottom: 16px;
+  padding: 8px 12px;
 `;
 
 const CssDivTip = css`
-  margin-left: 4px;
   margin-bottom: 8px;
+  margin-left: 4px;
 `;
 
 const ScMessageDiv = styled.div<IErrorMessageDivProps>`

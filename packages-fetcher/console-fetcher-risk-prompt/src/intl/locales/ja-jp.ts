@@ -19,7 +19,7 @@ export default {
   'message:invalid_unknown!lines': `認証方法が見つかりませんでした。
 アカウントのセキュリティを保護するには、まず認証方法を設定します。`,
   'message:invalid_unsupported_{method}!html!lines': `確認方法 <code>{method}</code> が正しくありません。
-アカウントのセキュリティを保護するには、まず認証方法を設定します。`,
+  アカウントを保護するには、まず認証方法を正しく設定してください。`,
   'message:forbidden': '高いセキュリティリスクが検出されたため、操作を完了できません。サポートセンターに連絡してください。',
   'message:code_required': '確認コードを入力してください。',
   'message:code_send_error': '確認コードの送信に失敗しました。しばらくしてからもう一度試してください。',

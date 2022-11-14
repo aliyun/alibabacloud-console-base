@@ -7,10 +7,8 @@ import {
 } from '../../types';
 import {
   ERiskType,
-  EDialogType,
-  EVerifyType
+  EDialogType
 } from '../../const';
-import intl from '../../intl';
 
 import {
   TAuthMfaDialogData
@@ -20,30 +18,21 @@ import getAuthMfaDialogData from './get-auth-mfa-dialog-data';
 export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRiskInfo): Promise<TAuthMfaDialogData> {
   try {
     const {
-      riskType, verifyType, convertedVerifyType, verifyDetail
+      riskType, verifyDetail
     } = riskInfo;
   
     if (riskType === ERiskType.NEW_SUB) {
-      if (convertedVerifyType === EVerifyType.MFA) {
-        // verifyDetail === 'false' 代表没有绑定过 MFA
-        if (verifyDetail === 'false' || !verifyDetail) {
-          return {
-            dialogType: EDialogType.SUB_RISK_MFA_CHOOSE
-          };
-        }
-  
-        const authMfaDialogData = await getAuthMfaDialogData(riskInfo.accountId);
-  
-        return authMfaDialogData;
+      // 子账号风控场景的 sms / email 在调用 riskPrompt 时就被拦截了，这里一定是 MFA
+      // verifyDetail 类型为 string 时，'false' 表示没有绑定过 MFA，verifyDetail 类型为 boolean 时，false 表示没有绑定过 MFA
+      if (verifyDetail === 'false' || !verifyDetail) {
+        return {
+          dialogType: EDialogType.SUB_RISK_MFA_CHOOSE
+        };
       }
-      
-      // 目前子账号风控只支持 MFA，不支持其他验证方式
-      return {
-        dialogType: EDialogType.ERROR,
-        errorMessage: intl('message:invalid_unsupported_{method}!html', {
-          method: verifyType
-        })
-      };
+
+      const authMfaDialogData = await getAuthMfaDialogData(riskInfo.accountId);
+
+      return authMfaDialogData;
     }
   
     if (riskType === ERiskType.NEW_MAIN) {

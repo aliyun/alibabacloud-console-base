@@ -24,7 +24,7 @@ export default function DialogContentUi(): JSX.Element {
       errorMessage
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
-
+  
   switch (dialogType) {
     case EDialogType.NEW_MAIN_RISK:
       return <NewMainRiskContent />;
