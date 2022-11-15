@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-messenger-side-panel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ConsoleBase 信使的组件封装 - SidePanel",
   "license": "MIT",
   "sideEffects": false,
@@ -29,7 +29,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-side-panel": "^1.0.0"
+    "@alicloud/console-base-messenger-side-panel": "^1.0.1"
   },
   "scripts": {
     "start": "breezr start-storybook",

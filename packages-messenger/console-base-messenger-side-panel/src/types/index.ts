@@ -8,7 +8,7 @@ export interface IMessengerSidePanelPayloadItem {
    */
   key: string;
   /**
-   * 无痕埋点，默认和 key 相同
+   * 无痕埋点，默认用 key 的值，一般不需要
    */
   spm?: string;
   /**
@@ -27,16 +27,16 @@ export interface IMessengerSidePanelPayloadItem {
   title: string;
   titleActive?: string;
   /**
-   * 当需要复杂的 tooltip 时，可以用这个 prop
+   * 当需要复杂的 tooltip 时，可以设置 tooltip
    */
   tooltip?: string;
   tooltipActive?: string;
   /**
-   * Tooltip 只能用 string，如果想展示 HTML 可以用 `tooltipAsHtml: true`
+   * tooltip 只能用 string，如果想展示 HTML 可以用 `tooltipAsHtml: true`
    */
   tooltipAsHtml?: boolean;
   /**
-   * Tooltip 与按钮的上下对齐方式，默认为 middle
+   * tooltip 与按钮的上下对齐方式，默认为 middle
    */
   tooltipAlign?: 'top' | 'middle' | 'bottom';
   /**

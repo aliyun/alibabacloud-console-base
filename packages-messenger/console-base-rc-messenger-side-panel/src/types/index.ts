@@ -10,7 +10,7 @@ export interface IMessengerSidePanelPayloadItemWithEvents extends IMessengerSide
    */
   onClick?(): void;
   /**
-   * 按下回调
+   * active 变化时回调，表示按下或松开，需与 active 合起来使用
    */
   onActiveChange?(active: boolean): void;
 }
