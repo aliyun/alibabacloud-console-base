@@ -21,30 +21,26 @@ import {
 import PkgInfo from '../pkg-info';
 
 export default function DemoDefault(): JSX.Element {
-  const [stateTopbar, setStateTopbar] = useState(true);
+  const [stateTopBar, setStateTopBar] = useState(true);
   const [stateChildrenAsItemsBottom, setStateChildrenAsItemsBottom] = useState(false);
+  const [stateVisible, setStateVisible] = useState(false);
   const [stateCollapsed, setStateCollapsed] = useState(false);
   const [stateApiInspectorVisible, setStateApiInspectorVisible] = useState(false);
   
   return <>
-    {stateTopbar ? <LayoutTopBar /> : null}
+    {stateTopBar ? <LayoutTopBar /> : null}
     <LayoutSidePanel {...{
       itemsTop: [{
         key: 'icon-rc-icon',
         title: '测试 Icon 组件',
-        icon: <Icon type="dingding" />,
-        tooltip: <>
-          <h5>Ingrid Michaelson</h5>
-          <img {...{
-            src: 'https://s.hdnux.com/photos/50/11/50/10525228/3/1200x0.jpg',
-            alt: '',
-            style: {
-              width: 200,
-              height: 200
-            }
-          }} />
-        </>,
-        tooltipAlign: 'top',
+        icon: <Icon type="dingding" style={{
+          color: '#41a5ee'
+        }} />,
+        iconHovered: <Icon type="dingding" style={{
+          color: '#f66'
+        }} />,
+        tooltip: '你有 <strong>12345</strong> 条新消息',
+        tooltipAsHtml: true,
         unread: true
       }, {
         key: 'icon-rc-svg',
@@ -53,20 +49,47 @@ export default function DemoDefault(): JSX.Element {
           <path d="m232.533 345.6 324.267 320c17.067 17.067 17.067 42.667 0 59.733l-117.333 115.2c-17.067 17.067-42.667 17.067-59.734 0l-324.266-320c-17.067-17.066-17.067-42.666 0-59.733L172.8 345.6c14.933-17.067 42.667-17.067 59.733 0z" fill="#185ABD" />
           <path d="m968.533 315.733-529.066 524.8c-17.067 17.067-42.667 17.067-59.734 0L262.4 725.333c-17.067-17.066-17.067-42.666 0-59.733l529.067-524.8c17.066-17.067 42.666-17.067 59.733 0L968.533 256c17.067 17.067 17.067 42.667 0 59.733z" fill="#41A5EE" />
         </svg>,
-        unread: 12
+        unread: 9
       }, {
         key: 'icon-string-svg',
         title: '测试 SVG 字符串',
-        icon: SVG
+        icon: SVG,
+        unread: 1234,
+        tooltip: <>
+          <strong>Ingrid Michaelson</strong>
+          <img {...{
+            src: 'https://s.hdnux.com/photos/50/11/50/10525228/3/1200x0.jpg',
+            alt: '',
+            style: {
+              display: 'block',
+              margin: '2px 0',
+              width: 200,
+              height: 200
+            }
+          }} />
+        </>,
+        tooltipAlign: 'top'
       }, {
         key: 'icon-string-image-url',
         title: '测试图片 URL',
         icon: 'https://img.alicdn.com/tfs/TB1JhtxuAT2gK0jSZFkXXcIQFXa-128-128.png'
+      }, {
+        key: 'cloud',
+        title: '阿里雲',
+        icon: '云',
+        iconHovered: '雲',
+        href: '//www.aliyun.com'
+      }, {
+        key: 'cloud2',
+        title: '阿里雲',
+        icon: <Icon type="dingding" />,
+        href: '//www.aliyun.com'
       }],
       itemsBottom: [{
         key: 'api-inspector',
         title: 'API Inspector',
         icon: <Icon type="toolkit-api" />,
+        iconActive: <Icon type="toolkit-api" rotate={30} />,
         active: stateApiInspectorVisible,
         onActiveChange: setStateApiInspectorVisible
       }, {
@@ -81,15 +104,21 @@ export default function DemoDefault(): JSX.Element {
         tooltip: <ContactTooltip />,
         tooltipAlign: 'bottom'
       }],
+      visible: stateVisible,
       collapsed: stateCollapsed,
       onToggleCollapsed: setStateCollapsed
     }}>{stateChildrenAsItemsBottom ? <ChildrenAsItemsBottom /> : null}</LayoutSidePanel>
     <ThemeSwitcher />
     <PkgInfo />
     <InputSwitch {...{
-      label: '展示 Topbar',
-      value: stateTopbar,
-      onChange: setStateTopbar
+      label: '展示 TopBar',
+      value: stateTopBar,
+      onChange: setStateTopBar
+    }} />
+    <InputSwitch {...{
+      label: 'props.visible',
+      value: stateVisible,
+      onChange: setStateVisible
     }} />
     <InputSwitch {...{
       label: 'props.collapsed',

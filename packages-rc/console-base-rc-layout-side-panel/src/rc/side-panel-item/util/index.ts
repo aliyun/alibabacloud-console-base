@@ -1,1 +1,0 @@
-export { default as getItemIcon } from './get-item-icon';

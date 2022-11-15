@@ -29,13 +29,17 @@ const ScButton = styled(Button)`
   border-radius: ${SIZE_BUTTON}px;
   width: ${SIZE_BUTTON}px;
   height: ${SIZE_BUTTON}px;
-  font-size: ${SIZE_BUTTON_ICON}px;
+  line-height: ${SIZE_BUTTON}px;
   ${mixinTextSecondary}
-
+  
   ${props => (props.active ? css`
     ${mixinBgTertiary}
     ${mixinShadowSDown}
   ` : null)}
+
+  i {
+    font-size: ${SIZE_BUTTON_ICON}px;
+  }
   
   svg,
   img {
@@ -48,12 +52,17 @@ const ScButton = styled(Button)`
   &:hover {
     ${mixinBgTertiary}
   }
+  
+  a:link&,
+  a:visited& {
+    ${mixinTextSecondary}
+  }
 `;
 
 /**
  * 工具的按钮
  */
-export default function ToolButton({
+export default function SidePanelItemButton({
   title,
   ...props
 }: IProps): JSX.Element {

@@ -9,12 +9,15 @@ import {
 } from '../../../../src';
 
 export default function FaceChanger(): JSX.Element {
-  const [stateHappy, setStateHappy] = useState(false);
+  const [stateActive, setStateActive] = useState(false);
   
   return <SidePanelItem {...{
-    title: 'I am sad... now i am happy',
-    icon: <Icon type={stateHappy ? 'face-smile' : 'face-cry'} />,
-    onMouseEnter: () => setStateHappy(true),
-    onMouseLeave: () => setStateHappy(false)
+    title: 'I am sad... click me to make me happy',
+    titleActive: 'Now i am happy',
+    icon: <Icon type="face-cry" />,
+    iconHovered: <Icon type="face-smile" />,
+    iconActive: <Icon type="face-smile" />,
+    active: stateActive,
+    onActiveChange: setStateActive
   }} />;
 }

@@ -60,7 +60,7 @@ function getPlacement(align?: SidePanelItemProps['tooltipAlign']): TooltipPlacem
 /**
  * 工具按钮之外的部分（如果不是 tooltip 则期望它是 createPortal 出去的）
  */
-export default function ToolTooltip({
+export default function SidePanelItemTooltip({
   visible,
   align,
   content

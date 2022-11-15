@@ -4,7 +4,7 @@ import React, {
 
 import {
   SidePanelItemProps
-} from '../../../model';
+} from '../model';
 
 function isSvg(str: string): boolean {
   return /^\s*<svg/.test(str) && /<\/svg>\s*$/.test(str);
@@ -14,7 +14,7 @@ function isUrl(str: string): boolean {
   return /^(?:https?:)?\/\//.test(str);
 }
 
-export default function getItemIcon(icon: SidePanelItemProps['icon']): JSX.Element | string | null {
+export default function renderItemIcon(icon: SidePanelItemProps['icon']): JSX.Element | string | null {
   if (!icon) {
     return null;
   }

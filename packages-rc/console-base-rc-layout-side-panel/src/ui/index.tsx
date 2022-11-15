@@ -4,7 +4,7 @@ import styled, {
 } from 'styled-components';
 
 import {
-  useCollapsed
+  useCollapsed, useVisible
 } from '../model';
 import {
   Aside
@@ -26,13 +26,14 @@ const ScUi = styled(Aside)<IScProps>`
   ` : null)}
 `;
 
-export default function Ui(): JSX.Element {
+export default function Ui(): JSX.Element | null {
+  const visible = useVisible();
   const collapsed = useCollapsed();
   
-  return <ScUi collapsed={collapsed}>
+  return visible ? <ScUi collapsed={collapsed}>
     <GlobalStyleOnBody />
     <PanelItemsTop />
     <PanelItemsBottom />
     <PanelToggle />
-  </ScUi>;
+  </ScUi> : null;
 }

@@ -6,13 +6,13 @@ import {
   useItemsTop
 } from '../../model';
 import {
-  SidePanelItem
+  SidePanelItems
 } from '../../rc';
 
 export default function PanelItemsTop(): JSX.Element {
   const items = useItemsTop();
   
   return <Flex vertical flex>
-    {items.map(v => <SidePanelItem {...v} />)}
+    <SidePanelItems items={items} />
   </Flex>;
 }

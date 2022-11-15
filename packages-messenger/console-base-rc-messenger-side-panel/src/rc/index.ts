@@ -1,0 +1,1 @@
+export { default as MessengerSidePanelItem } from './messenger-side-panel-item';

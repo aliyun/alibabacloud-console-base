@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useState
+} from 'react';
 import styled, {
   css
 } from 'styled-components';
@@ -15,9 +17,6 @@ import {
   SidePanelItemButton,
   SidePanelItemTooltip
 } from '../../rc';
-import {
-  useTooltipVisible
-} from '../../hook';
 
 interface IScProps {
   hovered?: boolean;
@@ -49,28 +48,28 @@ const ScPanelToggleButton = styled(SidePanelItemButton)<IScProps>`
 `;
 
 export default function PanelToggle(): JSX.Element {
-  const [tooltipVisible, tooltipShow, tooltipHide] = useTooltipVisible();
+  const [stateHovered, setStateHovered] = useState(false);
   const collapsed = useCollapsed();
   const handleToggleCollapsed = useHandleToggleCollapsed();
   
   const title = intl(collapsed ? 'op:toggle_visible' : 'op:toggle_hidden');
   
   return <ScPanelToggle {...{
-    hovered: tooltipVisible,
+    hovered: stateHovered,
     collapsed
   }}>
     <ScPanelToggleButton {...{
-      hovered: tooltipVisible,
+      hovered: stateHovered,
       collapsed,
       active: collapsed,
       title,
       label: <Icon type="angle-right" rotate={collapsed ? 180 : undefined} />,
-      onMouseEnter: tooltipShow,
-      onMouseLeave: tooltipHide,
+      onMouseEnter: () => setStateHovered(true),
+      onMouseLeave: () => setStateHovered(false),
       onClick: handleToggleCollapsed
     }} />
     <SidePanelItemTooltip {...{
-      visible: tooltipVisible,
+      visible: stateHovered,
       content: title
     }} />
   </ScPanelToggle>;

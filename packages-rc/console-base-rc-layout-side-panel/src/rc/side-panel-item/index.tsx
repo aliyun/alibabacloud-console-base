@@ -1,5 +1,6 @@
 import React, {
   MouseEvent,
+  useState,
   useCallback
 } from 'react';
 
@@ -7,16 +8,13 @@ import {
   SidePanelItemProps
 } from '../../model';
 import {
-  useTooltipVisible
-} from '../../hook';
+  getValueByStatus,
+  renderItemIcon
+} from '../../util';
 import SidePanelItemWrap from '../side-panel-item-wrap';
 import SidePanelItemButton from '../side-panel-item-button';
 import SidePanelItemUnread from '../side-panel-item-unread';
-import SidePanelItemSidePanelItemtip from '../side-panel-item-tooltip';
-
-import {
-  getItemIcon
-} from './util';
+import SidePanelItemTooltip from '../side-panel-item-tooltip';
 
 interface IProps extends SidePanelItemProps {}
 
@@ -25,9 +23,15 @@ export default function SidePanelItem({
   style,
   active,
   title,
+  titleActive,
   icon,
+  iconHovered,
+  iconActive,
+  iconActiveHovered,
   unread,
   tooltip,
+  tooltipActive,
+  tooltipAsHtml,
   tooltipAlign,
   onClick,
   onActiveChange,
@@ -35,21 +39,34 @@ export default function SidePanelItem({
   onMouseLeave,
   ...props
 }: IProps): JSX.Element {
-  const [tooltipVisible, tooltipShow, tooltipHide] = useTooltipVisible();
+  const [stateHovered, setStateHovered] = useState(false);
   const handleMouseEnter = useCallback((e: MouseEvent<HTMLElement>) => {
-    tooltipShow();
+    setStateHovered(true);
     onMouseEnter?.(e);
-  }, [tooltipShow, onMouseEnter]);
+  }, [setStateHovered, onMouseEnter]);
   const handleMouseLeave = useCallback((e: MouseEvent<HTMLElement>) => {
-    tooltipHide();
+    setStateHovered(false);
     onMouseLeave?.(e);
-  }, [tooltipHide, onMouseLeave]);
+  }, [setStateHovered, onMouseLeave]);
   const handleClick = useCallback((e: MouseEvent<HTMLElement>) => {
     onClick?.(e);
     onActiveChange?.(!active);
   }, [active, onClick, onActiveChange]);
   
-  const tooltipContent = tooltip || title;
+  const finalTitle = getValueByStatus({
+    valueNormal: title,
+    valueActive: titleActive
+  }, stateHovered, active);
+  const finalIcon = getValueByStatus({
+    valueNormal: icon,
+    valueHovered: iconHovered,
+    valueActive: iconActive,
+    valueActiveHovered: iconActiveHovered
+  }, stateHovered, active);
+  const finalTooltip = getValueByStatus({
+    valueNormal: tooltip,
+    valueActive: tooltipActive
+  }, stateHovered, active);
   
   return <SidePanelItemWrap {...{
     className,
@@ -60,15 +77,17 @@ export default function SidePanelItem({
       ...props,
       active,
       title,
-      label: getItemIcon(icon) || title,
+      label: renderItemIcon(finalIcon) || title,
       onMouseEnter: handleMouseEnter,
       onClick: handleClick
     }} />
     <SidePanelItemUnread unread={unread} />
-    {tooltipContent ? <SidePanelItemSidePanelItemtip {...{
-      visible: tooltipVisible,
+    {finalTooltip || finalTitle ? <SidePanelItemTooltip {...{
+      visible: stateHovered,
       align: tooltipAlign,
-      content: tooltipContent
+      content: tooltipAsHtml && finalTooltip && typeof finalTooltip === 'string' ? <span dangerouslySetInnerHTML={{
+        __html: finalTooltip
+      }} /> : finalTooltip || finalTitle
     }} /> : null}
   </SidePanelItemWrap>;
 }

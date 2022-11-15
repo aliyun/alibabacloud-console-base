@@ -16,10 +16,10 @@ const ScUnreadBadgeDot = styled(BadgeBaseDot)`
 `;
 const ScUnreadBadgeNumber = styled(BadgeBaseNumber)`
   top: 4px;
-  right: 4px;
+  right: 2px;
 `;
 
-export default function ToolUnread({
+export default function SidePanelItemUnread({
   unread
 }: IProps): JSX.Element | null {
   if (!unread) {
@@ -30,5 +30,5 @@ export default function ToolUnread({
     return <ScUnreadBadgeDot />;
   }
   
-  return unread > 0 ? <ScUnreadBadgeNumber>{unread}</ScUnreadBadgeNumber> : null;
+  return unread > 0 ? <ScUnreadBadgeNumber>{unread < 100 ? unread : '99+'}</ScUnreadBadgeNumber> : null;
 }
