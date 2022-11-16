@@ -23,7 +23,7 @@ import PkgInfo from '../pkg-info';
 export default function DemoDefault(): JSX.Element {
   const [stateTopBar, setStateTopBar] = useState(true);
   const [stateChildrenAsItemsBottom, setStateChildrenAsItemsBottom] = useState(false);
-  const [stateVisible, setStateVisible] = useState(false);
+  const [stateVisible, setStateVisible] = useState(true);
   const [stateCollapsed, setStateCollapsed] = useState(false);
   const [stateApiInspectorVisible, setStateApiInspectorVisible] = useState(false);
   
@@ -80,10 +80,10 @@ export default function DemoDefault(): JSX.Element {
         iconHovered: '雲',
         href: '//www.aliyun.com'
       }, {
-        key: 'cloud2',
-        title: '阿里雲',
-        icon: <Icon type="dingding" />,
-        href: '//www.aliyun.com'
+        key: 'face',
+        title: 'Sad',
+        icon: <Icon type="face-cry" />,
+        iconHovered: <Icon type="face-smile" />
       }],
       itemsBottom: [{
         key: 'api-inspector',

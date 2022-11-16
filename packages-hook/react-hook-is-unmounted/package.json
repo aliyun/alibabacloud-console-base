@@ -7,7 +7,7 @@
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/react-hook-is-unmounted",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-hook/react-hook-is-unmounted",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -20,8 +20,6 @@
     "access": "public"
   },
   "keywords": [
-    "react",
-    "hook",
     "useIsUnmounted"
   ],
   "devDependencies": {
