@@ -7,6 +7,7 @@ import {
   SIZE
 } from '@alicloud/console-base-theme';
 import Tooltip, {
+  TooltipProps,
   TooltipPlacement
 } from '@alicloud/console-base-rc-tooltip';
 
@@ -14,10 +15,8 @@ import {
   SidePanelItemProps
 } from '../../model';
 
-interface IProps {
-  visible: boolean;
+interface IProps extends Omit<TooltipProps, 'placement' | 'arrowOffset'> {
   align?: SidePanelItemProps['tooltipAlign'];
-  content: JSX.Element | string;
 }
 
 const ScTooltip = styled(Tooltip)`
@@ -63,12 +62,14 @@ function getPlacement(align?: SidePanelItemProps['tooltipAlign']): TooltipPlacem
 export default function SidePanelItemTooltip({
   visible,
   align,
-  content
+  content,
+  ...props
 }: IProps): JSX.Element {
   return <ScTooltip {...{
     visible,
     placement: getPlacement(align),
     arrowOffset: SIZE.WIDTH_SIDE_PANEL * 0.5,
-    content
+    content,
+    ...props
   }} />;
 }

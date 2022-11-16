@@ -1,10 +1,12 @@
 import React, {
-  useState
+  useState,
+  useCallback
 } from 'react';
 import styled, {
   css
 } from 'styled-components';
 
+import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import intl from '../../intl';
@@ -51,12 +53,18 @@ export default function PanelToggle(): JSX.Element {
   const [stateHovered, setStateHovered] = useState(false);
   const collapsed = useCollapsed();
   const handleToggleCollapsed = useHandleToggleCollapsed();
+  const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
+    setStateHovered(true);
+  }, [setStateHovered]), useCallback(() => {
+    setStateHovered(false);
+  }, [setStateHovered]));
   
   const title = intl(collapsed ? 'op:toggle_visible' : 'op:toggle_hidden');
   
   return <ScPanelToggle {...{
     hovered: stateHovered,
-    collapsed
+    collapsed,
+    onMouseLeave: handleMouseLeave
   }}>
     <ScPanelToggleButton {...{
       hovered: stateHovered,
@@ -64,8 +72,7 @@ export default function PanelToggle(): JSX.Element {
       active: collapsed,
       title,
       label: <Icon type="angle-right" rotate={collapsed ? 180 : undefined} />,
-      onMouseEnter: () => setStateHovered(true),
-      onMouseLeave: () => setStateHovered(false),
+      onMouseEnter: handleMouseEnter,
       onClick: handleToggleCollapsed
     }} />
     <SidePanelItemTooltip {...{

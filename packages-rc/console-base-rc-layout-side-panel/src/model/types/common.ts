@@ -6,7 +6,7 @@ import {
   ButtonProps
 } from '@alicloud/console-base-rc-button';
 
-export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' | 'theme' | 'iconLeft' | 'iconRight'> {
+export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' | 'theme' | 'iconLeft' | 'iconRight' | 'onMouseEnter' | 'onMouseLeave'> {
   /**
    * 默认用于 tooltip，也是按钮 aria-label 属性
    */
@@ -54,6 +54,8 @@ export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' 
    * 徽标，数字展示数字，true 展示小红点
    */
   unread?: number | boolean;
+  onMouseEnter?(): void;
+  onMouseLeave?(): void;
   /**
    * 设置 active 使当前工具处于 active 状态，并使用此回调受控
    */

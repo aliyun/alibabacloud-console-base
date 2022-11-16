@@ -4,6 +4,8 @@ import React, {
   useCallback
 } from 'react';
 
+import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
+
 import {
   SidePanelItemProps
 } from '../../model';
@@ -40,14 +42,13 @@ export default function SidePanelItem({
   ...props
 }: IProps): JSX.Element {
   const [stateHovered, setStateHovered] = useState(false);
-  const handleMouseEnter = useCallback((e: MouseEvent<HTMLElement>) => {
+  const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
     setStateHovered(true);
-    onMouseEnter?.(e);
-  }, [setStateHovered, onMouseEnter]);
-  const handleMouseLeave = useCallback((e: MouseEvent<HTMLElement>) => {
+    onMouseEnter?.();
+  }, [setStateHovered, onMouseEnter]), useCallback(() => {
     setStateHovered(false);
-    onMouseLeave?.(e);
-  }, [setStateHovered, onMouseLeave]);
+    onMouseLeave?.();
+  }, [setStateHovered, onMouseLeave]));
   const handleClick = useCallback((e: MouseEvent<HTMLElement>) => {
     onClick?.(e);
     onActiveChange?.(!active);
@@ -87,7 +88,8 @@ export default function SidePanelItem({
       align: tooltipAlign,
       content: tooltipAsHtml && finalTooltip && typeof finalTooltip === 'string' ? <span dangerouslySetInnerHTML={{
         __html: finalTooltip
-      }} /> : finalTooltip || finalTitle
+      }} /> : finalTooltip || finalTitle,
+      onMouseEnter: handleMouseEnter
     }} /> : null}
   </SidePanelItemWrap>;
 }
