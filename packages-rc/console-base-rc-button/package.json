@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-button",
-  "version": "1.7.7",
+  "version": "1.7.8",
   "description": "ConsoleBase 组件 - 按钮",
   "license": "MIT",
   "sideEffects": false,
@@ -29,6 +29,7 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.10.13",
+    "@alicloud/ts-config": "^1.0.0",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",

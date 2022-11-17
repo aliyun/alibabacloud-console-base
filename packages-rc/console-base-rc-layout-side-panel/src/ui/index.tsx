@@ -6,15 +6,16 @@ import styled, {
 import {
   useCollapsed, useVisible
 } from '../model';
+
 import {
-  Aside
-} from '../rc';
+  Aside,
+  GlobalStyleOnBody
+} from './rc';
 import {
-  GlobalStyleOnBody,
   PanelItemsTop,
   PanelItemsBottom,
   PanelToggle
-} from '../rc-container';
+} from './rc-container';
 
 interface IScProps {
   collapsed: boolean;

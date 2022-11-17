@@ -45,7 +45,6 @@ export default function X(): JSX.Element | null {
     $mode: dialogMode,
     label: <Icon type="x" />,
     title: intl('op:close'),
-    'aria-label': intl('op:close'),
     theme: ButtonTheme.TEXT_TERTIARY,
     size: ButtonSize.NONE,
     disabled: locked !== EDialogLockState.NO,
