@@ -33,7 +33,7 @@
     "@alicloud/demo-rc-elements": "^1.10.13",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   },
   "peerDependencies": {
     "react": ">=16.8"
