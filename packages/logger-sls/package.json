@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/logger-sls",
-  "version": "1.11.6",
+  "version": "1.12.1",
   "description": "SLS logger factory",
   "license": "MIT",
   "sideEffects": false,
@@ -20,14 +20,13 @@
     "access": "public"
   },
   "keywords": [
-    "logger",
-    "factory",
-    "sls"
+    "createLoggerFactory"
   ],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.10.13",
+    "@alicloud/ts-config": "^1.0.0",
     "@types/lodash": "^4.14.189",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",

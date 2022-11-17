@@ -14,7 +14,7 @@ import {
 export default function createInterceptorRequest(): FetcherFnInterceptRequest<FetcherConfig> {
   return (fetcherConfig: FetcherConfig): FetcherInterceptRequestReturn => {
     if (!getProxyFetcher()) {
-      return; // 将继续正常的请求流程
+      return; // 将继续正常请求流程
     }
     
     let result: Promise<unknown>;
@@ -23,7 +23,7 @@ export default function createInterceptorRequest(): FetcherFnInterceptRequest<Fe
       result = fetcherRequest(fetcherConfig);
     } catch (err) { // 抛错表明 message 的 payload 中含有无法序列化的数据
       // TODO log
-      return; // 将继续正常的请求流程
+      return; // 将继续正常请求流程
     }
     
     throw createFetcherErrorSkipNetwork(result, fetcherConfig);

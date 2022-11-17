@@ -27,7 +27,7 @@ import {
   createApiWithProduct
 } from '../util';
 
-export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> => {
+export default function factory<C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> {
   const {
     slsConfig,
     armsConfig
@@ -73,4 +73,4 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
     createCallInnerApiWithProduct,
     createCallContainerApiWithProduct
   };
-};
+}
