@@ -33,6 +33,7 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.10.13",
     "@alicloud/fetcher-demo-helpers": "^1.4.7",
+    "@alicloud/ts-config": "^1.1.0",
     "@types/lodash": "^4.14.189",
     "@types/qs": "^6.9.7",
     "@types/react": "^17.0.48",

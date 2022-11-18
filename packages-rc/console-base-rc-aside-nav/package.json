@@ -20,8 +20,6 @@
     "access": "public"
   },
   "keywords": [
-    "console-base",
-    "rc",
     "AsideNav"
   ],
   "devDependencies": {
