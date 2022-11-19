@@ -35,7 +35,7 @@ export default function DialogContent({
   const handlePage = useCallback((page: number) => updateData({
     page
   }), [updateData]);
-  const queueItem: IErrorQueueItem = queue[data.page - 1];
+  const queueItem: IErrorQueueItem = queue[data.page - 1]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
   
   return <AltWrap {...{
     type: 'error',

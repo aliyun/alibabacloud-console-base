@@ -31,7 +31,7 @@ export default function createInterceptorRequest({
       const {
         id,
         check
-      } = others[i];
+      } = others[i]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
       const checkResult = check(fetcherConfig);
       
       if (checkResult === true) {

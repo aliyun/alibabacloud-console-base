@@ -87,8 +87,8 @@ export default function convertRiskInfo(responseData: unknown, riskConfig: IFetc
 
       // validators 表示用户可以选择的核身方式，一期只有 mfa，后续会加入 sms 以及 email
       if (validators.length > 0) {
-        newSubRiskType0 = validators[0].VerifyType;
-        newSubRiskDetail = validators[0].VerifyDetail || '';
+        newSubRiskType0 = validators[0]!.VerifyType; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+        newSubRiskDetail = validators[0]!.VerifyDetail || ''; // eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
 
       return {

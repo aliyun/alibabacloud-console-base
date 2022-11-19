@@ -5,7 +5,7 @@ import {
   stringify
 } from 'json5';
 
-function replacer(k: string, val: unknown): unknown {
+function replacer(_k: string, val: unknown): unknown {
   if (typeof val === 'function') {
     return `✨ ${val.toString().replace(/\n\s*/g, ' ')}`;
   }

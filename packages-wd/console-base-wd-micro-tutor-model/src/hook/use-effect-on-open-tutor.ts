@@ -23,7 +23,7 @@ export default function useEffectOnOpenTutor(): void {
     }
     
     if (id.includes('~')) {
-      const [productId, tutorId] = id.split('~');
+      const [productId, tutorId] = id.split('~') as [string, string];
       
       handleTutorOpen(productId, tutorId, step);
       

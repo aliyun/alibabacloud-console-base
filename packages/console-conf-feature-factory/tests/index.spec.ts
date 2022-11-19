@@ -256,8 +256,11 @@ describe(pkgInfo.name, () => {
         attrNotExist: 'attrNotExist'
       })).toBe(true);
       expect(confFeatureWithGray(EFeature.WITH_CUSTOM_ATTRIBUTES, {
-        list: 'list'
+        list: 'huck'
       })).toBe(true);
+      expect(confFeatureWithGray(EFeature.WITH_CUSTOM_ATTRIBUTES, {
+        list: 'list'
+      })).toBe(false);
     });
   });
   

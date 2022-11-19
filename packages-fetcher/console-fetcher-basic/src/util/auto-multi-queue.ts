@@ -199,7 +199,7 @@ export default class AutoMultiQueue {
     
     // 还是单个的请求，调用独立 api
     if (actions.length === 1) {
-      this._api(product, actions[0].action, actions[0].params, options).then(result => {
+      this._api(product, actions[0]!.action, actions[0]!.params, options).then(result => { // eslint-disable-line @typescript-eslint/no-non-null-assertion
         resolveAll(result, 0);
       }, (err: Error) => {
         rejectAll(err, 0);
@@ -221,8 +221,8 @@ export default class AutoMultiQueue {
             options: {
               method: 'POST',
               body: { // 努力还原一下出错的 body（中的重要部分）
-                action: actions[i].action,
-                params: actions[i].params,
+                action: actions[i]!.action, // eslint-disable-line @typescript-eslint/no-non-null-assertion
+                params: actions[i]!.params, // eslint-disable-line @typescript-eslint/no-non-null-assertion
                 region
               }
             },

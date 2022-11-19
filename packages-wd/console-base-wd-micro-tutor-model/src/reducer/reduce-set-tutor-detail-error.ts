@@ -18,6 +18,9 @@ export default function reduceSetTutorDetailError(state: IModelState, {
   } = state;
   
   return update(state, {
+    // FIXME
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     dwlTutorDetailMapping: {
       [key]: {
         $set: update(dwlTutorDetailMapping[key] || createDataWithLoading(null), {

@@ -22,7 +22,7 @@ export default function getDialogProps(queue: IErrorQueueItem[], content: JSX.El
     buttons: (data: IErrorDialogData) => {
       const {
         button
-      } = queue[data.page - 1];
+      } = queue[data.page - 1]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
       const buttons = [];
       
       if (button) {

@@ -138,7 +138,7 @@ export function RadioGroup<T = string>({
     value,
     onChange,
     defaultStateValue: value ?? defaultValue,
-    getValueOnChange(checked: boolean, itemValue: T): T {
+    getValueOnChange(_checked: boolean, itemValue: T): T {
       return itemValue;
     },
     isChecked(itemValue: T, currentValue: T): boolean {

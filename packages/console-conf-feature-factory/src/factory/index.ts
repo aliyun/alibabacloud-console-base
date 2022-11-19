@@ -60,7 +60,7 @@ export default function factory<K extends string = string>(
 ): IFnConfFeature<K> {
   return (key: K, arg?: string | Record<string, string>): boolean => {
     const featureConf: IFeatureItem | undefined = featureMapping[key];
-    const grayValue: boolean = grayMapping[key] === undefined ? true : grayMapping[key];
+    const grayValue: boolean = grayMapping[key] ?? true;
     
     // 灰度为 false 则必然为 false（此 if 以后灰度可以认为一直是 true）
     if (!grayValue) {
@@ -87,7 +87,8 @@ export default function factory<K extends string = string>(
     }
     
     for (let i = 0; i < checkItems.length; i++) {
-      if (!mixedBlackWhitelistChecker(checkItems[i].value, checkItems[i].mixedList)) { // 有一个是 false 就返回 false
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      if (!mixedBlackWhitelistChecker(checkItems[i]!.value, checkItems[i]!.mixedList)) { // 有一个是 false 就返回 false
         return false;
       }
     }

@@ -28,7 +28,7 @@ function fixOneOpenStatus(shity: IShittyOpenStatus): IOpenStatus {
 
 export default function fixOpenStatus(o: Record<string, IShittyOpenStatus> = {}): Record<string, IOpenStatus> {
   return Object.keys(o || {}).reduce((result: Record<string, IOpenStatus>, v: string) => {
-    result[v] = fixOneOpenStatus(o[v]);
+    result[v] = fixOneOpenStatus(o[v]!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
     
     return result;
   }, {});
