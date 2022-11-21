@@ -37,7 +37,7 @@ const PROJECT = '2373906';
 const HASH = 'qpoep7hwn3';
 // const BASE64 = 'data:application/x-font-woff2;charset=utf-8;base64,...';
 
-const fontFamily = injectIconFont(PROJECT, HASH); // BASE64 是为了加载性能考量的，如果过于庞大可以不写，这里仅仅是为了演示，为了保证这份代码的可运行，不写
+const fontFamily = injectIconFont(PROJECT, HASH);
 
 function getCode(props: IPropsIcon): string {
   const code = EIconType[props.type];

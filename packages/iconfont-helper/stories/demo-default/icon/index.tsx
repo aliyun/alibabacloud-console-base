@@ -9,7 +9,7 @@ import {
 } from '../../../src';
 
 enum EIconType {
-  alibaba = 'e68a'
+  alibaba = 'e714' // eslint-disable-line @typescript-eslint/naming-convention
 }
 
 type TIconType = keyof typeof EIconType;
@@ -18,10 +18,12 @@ interface IPropsIcon extends HTMLAttributes<HTMLSpanElement> {
   type: TIconType;
 }
 
-const PROJECT = '2373906';
-const HASH = 'qpoep7hwn3';
+const PROJECT = '3784563';
+const HASH = '916esc4w7i';
 
-const fontFamily = injectIconFont(PROJECT, HASH);
+const fontFamily = injectIconFont(PROJECT, HASH, {
+  pathExtra: '/a'
+});
 
 function getCode(props: IPropsIcon): string {
   const code = EIconType[props.type];

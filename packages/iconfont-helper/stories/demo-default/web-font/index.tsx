@@ -12,5 +12,5 @@ const ScWebFont = styled.span`
 `;
 
 export default function WebFont(): JSX.Element {
-  return <ScWebFont>孔子曰：中午不睡，下午崩溃!孟子曰：孔子说的对!</ScWebFont>;
+  return <ScWebFont>孔子曰：中午不睡，下午崩溃！孟子曰：孔子说的对！</ScWebFont>;
 }
