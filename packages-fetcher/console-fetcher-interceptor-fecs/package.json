@@ -39,7 +39,7 @@
   "dependencies": {
     "@alicloud/console-base-conf-env": "^1.6.6",
     "@alicloud/console-one-config": "^1.4.6",
-    "@alicloud/cookie": "^1.4.6",
+    "@alicloud/cookie": "^1.5.0",
     "@alicloud/fetcher": "^1.7.6",
     "@alicloud/fetcher-fetch": "^1.6.6"
   },
