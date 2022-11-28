@@ -1,12 +1,17 @@
-export interface ICookieSetOptions {
+export interface ICookieOptions {
   domain?: string;
   path?: string;
-  days?: number;
+  /**
+   * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
+   * 
+   * ❗️NOTE：轻易不要设置，请看 README
+   */
+  sameSite?: 'None' | 'Lax' | 'Strict';
+  secure?: boolean;
 }
 
-export interface ICookieDeleteOptions {
-  domain?: string;
-  path?: string;
-  // samesite: 'none'; TODO
-  // secure?: boolean;
+export interface ICookieSetOptions extends ICookieOptions {
+  days?: number; // expires 简化版
 }
+
+export interface ICookieDeleteOptions extends ICookieOptions {}
