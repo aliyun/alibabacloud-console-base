@@ -1,3 +1,7 @@
+import React from 'react';
+
+import Icon from '@alicloud/console-base-rc-icon';
+
 import {
   ModelPropsButton,
   ModelPropsButtonDropdownItem,
@@ -18,9 +22,7 @@ export default function buildMenuLanguage(lang?: ModelPropsLanguage | null): Mod
   
   return {
     key: 'lang',
-    label: currentLang ? currentLang.nameShort || currentLang.name : {
-      icon: 'lang'
-    },
+    label: currentLang ? currentLang.nameShort || currentLang.name : <Icon type="lang" />,
     dropdown: {
       items: items.reduce((result: ModelPropsButtonDropdownItem[], {
         id,

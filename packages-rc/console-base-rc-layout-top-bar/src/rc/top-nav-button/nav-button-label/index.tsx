@@ -1,13 +1,10 @@
-import React, {
-  isValidElement
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import {
   mixinTextEmphasis,
   mixinBgBrand
 } from '@alicloud/console-base-theme';
-import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   ModelPropsButton
@@ -15,11 +12,9 @@ import {
 
 interface IProps {
   label: ModelPropsButton['label'];
+  count?: number;
+  countAsDot?: boolean;
 }
-
-const ScButtonIcon = styled(Icon)`
-  font-size: 16px;
-`;
 
 const ScIndicatorDot = styled.span`
   position: absolute;
@@ -46,48 +41,12 @@ const ScIndicatorNumber = styled.strong`
  * 让 button.label 可以纯配置化
  */
 export default function NavButtonLabel({
-  label
+  label = '?',
+  count = 0,
+  countAsDot
 }: IProps): JSX.Element {
-  if (isValidElement(label)) {
-    return label;
-  }
-  
-  if (typeof label === 'string') {
-    return <>{label}</>;
-  }
-  
-  if (label) {
-    const {
-      icon,
-      iconRotate,
-      html,
-      text,
-      count = 0,
-      countAsDot
-    } = label;
-    let jsxLabel: JSX.Element;
-    
-    if (icon) {
-      jsxLabel = <ScButtonIcon type={icon} rotate={iconRotate} />;
-    } else if (html) {
-      jsxLabel = <span dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-        __html: html
-      }} />;
-    } else {
-      jsxLabel = <>{text}</>;
-    }
-    
-    if (html) {
-      return <span dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-        __html: html
-      }} />;
-    }
-    
-    return count > 0 ? <>
-      {jsxLabel}
-      {countAsDot ? <ScIndicatorDot /> : <ScIndicatorNumber>{count > 99 ? '99+' : count}</ScIndicatorNumber>}
-    </> : jsxLabel;
-  }
-  
-  return <>?</>;
+  return count > 0 ? <>
+    {label}
+    {countAsDot ? <ScIndicatorDot /> : <ScIndicatorNumber>{count > 99 ? '99+' : count}</ScIndicatorNumber>}
+  </> : <>{label}</>;
 }

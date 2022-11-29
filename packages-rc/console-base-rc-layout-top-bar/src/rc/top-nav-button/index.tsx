@@ -50,6 +50,8 @@ function wrapWithBeacon(jsx: JSX.Element, beacon?: BeaconProps): JSX.Element {
 export default function TopNavButton({
   label,
   labelHover,
+  count,
+  countAsDot,
   responsive = true,
   force,
   dropdown = {},
@@ -84,7 +86,11 @@ export default function TopNavButton({
   }
   
   const jsxButton = <NavButton {...{
-    label: <NavButtonLabel label={stateHovered && labelHover ? labelHover : label} />,
+    label: <NavButtonLabel {...{
+      label: stateHovered && labelHover ? labelHover : label,
+      count,
+      countAsDot
+    }} />,
     responsive,
     ...buttonProps,
     onMouseEnter: handleMouseEnter,

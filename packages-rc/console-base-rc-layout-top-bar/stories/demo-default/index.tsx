@@ -16,6 +16,7 @@ import {
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
+import Icon from '@alicloud/console-base-rc-icon';
 
 import TopNav from '../../src';
 import PkgInfo from '../pkg-info';
@@ -93,11 +94,10 @@ export default function DemoDefault(): JSX.Element {
         href: '/b-a'
       }, {
         key: 'menu-news',
-        label: {
-          icon: 'notice',
-          count: 123,
-          countAsDot: true
-        },
+        label: <Icon type="notice" />,
+        labelHover: <Icon type="notice" rotate={45} />,
+        count: 123,
+        countAsDot: true,
         dropdown: {
           header: '站内消息',
           headerBg: true,
@@ -113,19 +113,13 @@ export default function DemoDefault(): JSX.Element {
         }
       }, {
         key: 'menu-cart',
-        label: {
-          icon: 'cart',
-          count: 123
-        },
+        label: <Icon type="cart" />,
+        count: 123,
         href: '/cart'
       }, {
         key: 'menu-theme',
-        label: {
-          icon: 'lights-on'
-        },
-        labelHover: {
-          icon: 'lights-off'
-        },
+        label: <Icon type="lights-on" />,
+        labelHover: <Icon type="lights-off" />,
         beacon: {
           tip: 'You DONT know how I hate widget... 🤧'
         },

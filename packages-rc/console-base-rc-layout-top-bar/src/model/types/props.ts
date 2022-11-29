@@ -8,23 +8,11 @@ import {
   ButtonProps
 } from '@alicloud/console-base-rc-button';
 import {
-  IconType
-} from '@alicloud/console-base-rc-icon';
-import {
   DropdownProps
 } from '@alicloud/console-base-rc-dropdown';
 import {
   BeaconProps
 } from '@alicloud/console-base-rc-beacon';
-
-interface IModelPropsButtonLabel {
-  icon?: IconType;
-  iconRotate?: number;
-  html?: string;
-  text?: string | ReactElement;
-  count?: number; // 展示个数
-  countAsDot?: boolean; // 个数展示为小红点或数字
-}
 
 export interface IModelPropsButtonDropdownItem extends Partial<ButtonProps> {
   key?: string;
@@ -37,8 +25,10 @@ export interface IModelPropsButtonDropdown extends Omit<DropdownProps, 'trigger'
 
 export interface IModelPropsButton extends Omit<Partial<ButtonProps>, 'label'> {
   key?: string;
-  label?: string | ReactElement | IModelPropsButtonLabel;
-  labelHover?: string | ReactElement | IModelPropsButtonLabel;
+  label?: string | ReactElement;
+  labelHover?: string | ReactElement;
+  count?: number; // 展示个数
+  countAsDot?: boolean; // 个数展示为小红点或数字
   responsive?: boolean; // 是否对宽度做自适应
   force?: boolean; // 没有行动点（href、onXx）、也没有 dropdown 的情况下，默认不会展示，如果要展示，设置为 force
   dropdown?: IModelPropsButtonDropdown;

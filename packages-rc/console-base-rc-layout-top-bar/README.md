@@ -38,20 +38,16 @@
     href: '/b-a'
   }, {
     key: 'news',
-    label: {
-      icon: 'notice',
-      count: 123,
-      countAsDot: true
-    },
+    label: <Icon type="notice" />,
+    count: 123,
+    countAsDot: true,
     dropdown: {
       header: '站内消息'
     }
   }, {
     key: 'cart',
-    label: {
-      icon: 'cart',
-      count: 123
-    },
+    label: <Icon type="cart" />,
+    count: 123
     href: '/cart'
   }],
   language: {

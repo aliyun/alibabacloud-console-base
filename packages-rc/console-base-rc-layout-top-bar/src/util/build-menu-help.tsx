@@ -1,3 +1,7 @@
+import React from 'react';
+
+import Icon from '@alicloud/console-base-rc-icon';
+
 import {
   ModelPropsButton,
   ModelPropsHelp
@@ -24,9 +28,7 @@ export default function buildMenuHelp(help?: string | ModelPropsHelp): ModelProp
   
   return {
     key: 'help',
-    label: {
-      icon: 'help-circle'
-    },
+    label: <Icon type="help-circle" />,
     href,
     title
   };

@@ -46,6 +46,10 @@ const ScNavButton = styled(Button)<IProps>`
     }
   }
   
+  i {
+    font-size: 16px;
+  }
+  
   img {
     display: inline;
     max-width: 160px;
