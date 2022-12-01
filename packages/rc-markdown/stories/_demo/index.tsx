@@ -24,8 +24,6 @@ import Markdown, {
   compileIntoHtml
 } from '../../src';
 
-interface IProps extends Omit<MarkdownProps, 'allowDangerousHtml' | 'plugins'> {}
-
 const directiveOptions: MarkdownExtensionDirectiveHtmlOptions = {
   /**
    * 支持 :abbr
@@ -54,8 +52,8 @@ const directiveOptions: MarkdownExtensionDirectiveHtmlOptions = {
 
 export default function Demo({
   source,
-  ...props
-}: IProps): JSX.Element {
+  options
+}: MarkdownProps): JSX.Element {
   const [stateSource, setStateSource] = useState<string>(source);
   const [stateHtmlSource, setStateHtmlSource] = useState<boolean>(false);
   const [stateApplyStyle, setStateApplyStyle] = useState<boolean>(true);
@@ -68,14 +66,14 @@ export default function Demo({
       gfm: stateGfmEnabled,
       directive: stateDirectiveEnabled ? directiveOptions : undefined
     },
-    ...props
+    ...options
   };
   
   const jsxMarkdown = stateHtmlSource ? <CodeViewer {...{
     type: 'html'
   }}>{compileIntoHtml(stateSource, compileOptions)}</CodeViewer> : <Markdown {...{
     source: stateSource,
-    ...compileOptions
+    options: compileOptions
   }} />;
   
   return <>

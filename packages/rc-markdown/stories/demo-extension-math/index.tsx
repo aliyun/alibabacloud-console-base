@@ -20,6 +20,8 @@ const extraExtensions: MarkdownExtension[] = [{
 export default function DemoExtensionMath(): JSX.Element {
   return <Demo {...{
     source: MATH,
-    extraExtensions
+    options: {
+      extraExtensions
+    }
   }} />;
 }

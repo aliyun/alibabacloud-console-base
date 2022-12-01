@@ -1,4 +1,7 @@
 import {
+  HTMLAttributes
+} from 'react';
+import {
   Extension,
   HtmlExtension
 } from 'micromark-util-types';
@@ -38,6 +41,7 @@ export interface IMarkdownCompileOptions {
   processHtml?(html: string): string;
 }
 
-export interface IPropsMarkdown extends IMarkdownCompileOptions {
+export interface IMarkdownProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   source: string;
+  options?: IMarkdownCompileOptions;
 }

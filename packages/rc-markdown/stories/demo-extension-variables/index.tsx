@@ -24,6 +24,8 @@ const extraExtensions: MarkdownExtension[] = [{
 export default function DemoExtensionVariables(): JSX.Element {
   return <Demo {...{
     source: VARIABLES,
-    extraExtensions
+    options: {
+      extraExtensions
+    }
   }} />;
 }

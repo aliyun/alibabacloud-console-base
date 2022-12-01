@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-markdown",
-  "version": "2.3.6",
+  "version": "2.4.0",
   "description": "ConsoleBase 组件 - Markdown 渲染（带通用样式）",
   "license": "MIT",
   "sideEffects": false,
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme-sc-base": "^1.5.9",
-    "@alicloud/rc-markdown": "^2.3.6"
+    "@alicloud/rc-markdown": "^2.4.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

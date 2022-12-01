@@ -25,7 +25,7 @@ export type {
 } from 'micromark-extension-directive/lib/html';
 
 export type {
-  IPropsMarkdown as MarkdownProps,
+  IMarkdownProps as MarkdownProps,
   IMarkdownCompileOptions as MarkdownCompileOptions,
   IMarkdownExtension as MarkdownExtension,
   IMarkdownPlugins as MarkdownPlugins

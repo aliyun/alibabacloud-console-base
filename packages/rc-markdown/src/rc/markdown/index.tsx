@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  IPropsMarkdown
+  IMarkdownProps
 } from '../../types';
 import {
   compileIntoHtml
@@ -9,14 +9,15 @@ import {
 
 export default function Markdown({
   source,
-  ...options
-}: IPropsMarkdown): JSX.Element | null {
+  options,
+  ...props
+}: IMarkdownProps): JSX.Element | null {
   if (!source) {
     return null;
   }
   
   // eslint-disable-next-line react/no-danger
-  return <div dangerouslySetInnerHTML={{
+  return <div {...props} dangerouslySetInnerHTML={{
     __html: compileIntoHtml(source, options)
   }} />;
 }
