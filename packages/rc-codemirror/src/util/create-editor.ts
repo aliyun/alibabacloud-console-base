@@ -6,6 +6,7 @@ import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/markdown/markdown';
+import 'codemirror/mode/yaml/yaml';
 import 'codemirror/addon/display/autorefresh'; // https://codemirror.net/doc/manual.html#addon_autorefresh
 import 'codemirror/addon/display/fullscreen';
 import 'codemirror/addon/selection/active-line';

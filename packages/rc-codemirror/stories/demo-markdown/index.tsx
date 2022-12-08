@@ -4,7 +4,7 @@ import React, {
 
 import CodeMirror from '../../src';
 
-const MARKDOWN = `## Headings
+const TEXT = `## Headings
 
 \`\`\`markdown
 # Heading level 1
@@ -122,7 +122,7 @@ React.render(<Markdown source="# Your markdown here" />, document.getElementById
 \`\`\``;
 
 export default function DemoHtml(): JSX.Element {
-  const [stateValue, setStateValue] = useState<string>(MARKDOWN);
+  const [stateValue, setStateValue] = useState<string>(TEXT);
   
   return <CodeMirror {...{
     conf: {

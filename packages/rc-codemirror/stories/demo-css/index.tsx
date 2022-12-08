@@ -4,7 +4,7 @@ import React, {
 
 import CodeMirror from '../../src';
 
-const CSS = `#tag-selector {
+const TEXT = `#tag-selector {
   position: absolute;
   top: 0;
   left: 0;
@@ -16,7 +16,7 @@ const CSS = `#tag-selector {
 }`;
 
 export default function DemoCss(): JSX.Element {
-  const [stateValue, setStateValue] = useState<string>(CSS);
+  const [stateValue, setStateValue] = useState<string>(TEXT);
   
   return <CodeMirror {...{
     conf: {

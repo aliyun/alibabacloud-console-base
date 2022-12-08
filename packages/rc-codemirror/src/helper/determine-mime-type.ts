@@ -17,6 +17,9 @@ export default function determineMimeType(type: string): string | undefined {
     case 'md':
     case 'markdown':
       return 'text/markdown';
+    case 'yaml':
+    case 'yml':
+      return 'text/yaml';
     default:
       break;
   }

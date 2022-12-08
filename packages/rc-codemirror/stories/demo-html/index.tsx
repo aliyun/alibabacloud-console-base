@@ -4,7 +4,7 @@ import React, {
 
 import CodeMirror from '../../src';
 
-const HTML = `<!DOCTYPE html>
+const TEXT = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -52,7 +52,7 @@ const HTML = `<!DOCTYPE html>
 </html>`;
 
 export default function DemoHtml(): JSX.Element {
-  const [stateValue, setStateValue] = useState<string>(HTML);
+  const [stateValue, setStateValue] = useState<string>(TEXT);
 
   return <CodeMirror {...{
     conf: {
