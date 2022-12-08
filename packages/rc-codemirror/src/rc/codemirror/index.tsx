@@ -3,7 +3,8 @@ import React, {
   useRef,
   useState,
   useCallback,
-  useEffect
+  useEffect,
+  forwardRef
 } from 'react';
 import {
   Editor,
@@ -11,6 +12,7 @@ import {
 } from 'codemirror';
 
 import {
+  TCodeMirrorRef,
   IFnConvertValue,
   IPropsCodeMirror
 } from '../../types';
@@ -41,7 +43,7 @@ function usePrevious<T = string>(value: T): T | null {
 /**
  * CodeMirror
  */
-export default function CodeMirror({
+function CodeMirror({
   conf,
   convertValueToDisplay,
   convertValueFromDisplay,
@@ -50,7 +52,7 @@ export default function CodeMirror({
   value = '',
   onChange,
   ...props
-}: IPropsCodeMirror): JSX.Element {
+}: IPropsCodeMirror, ref: TCodeMirrorRef): JSX.Element {
   const [stateEditorDom, setStateEditorDom] = useState<HTMLDivElement | null>(null);
   const [stateEditor, setStateEditor] = useState<Editor | null>(null);
   const [stateDisplayValue, setStateDisplayValue] = useState<string>(convertValue(value, convertValueToDisplay));
@@ -104,9 +106,13 @@ export default function CodeMirror({
     return () => setStateEditor(null);
   }, [setStateEditor]);
   
-  return <Wrapper ref={setStateEditorDom} {...{
-    ...props,
-    linesMin,
-    linesMax
-  }} />;
+  return <div ref={ref}>
+    <Wrapper ref={setStateEditorDom} {...{
+      ...props,
+      linesMin,
+      linesMax
+    }} />
+  </div>;
 }
+
+export default forwardRef(CodeMirror);

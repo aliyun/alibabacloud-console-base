@@ -1,10 +1,13 @@
 import {
+  ForwardedRef,
   HTMLAttributes
 } from 'react';
 import {
   EditorConfiguration,
   EditorEventMap
 } from 'codemirror';
+
+export type TCodeMirrorRef = ForwardedRef<HTMLDivElement>;
 
 /*
  * CodeMirror 并没有 auto-resize 的配置，只能通过 CSS 来搞 https://codemirror.net/demo/resize.html
