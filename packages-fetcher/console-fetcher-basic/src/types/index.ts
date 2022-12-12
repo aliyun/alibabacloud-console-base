@@ -58,21 +58,56 @@ export interface IConsoleApiBodyMulti {
   content?: string;
 }
 
-export interface IConsoleApiMultiError {
-  Code: string;
-  Title?: string;
-  Message: string;
-  RequestId: string;
-  HttpStatusCode: string; // e.g. 404
-  BizCode: string | null;
-}
-
-export type TConsoleApiMultiResult = Record<string, unknown>;
-
 export interface IConsoleApiMultiAction {
   action: string;
   params?: unknown;
   customRequestKey?: string;
+}
+
+// TODO 引 biz 中的类型 BizJson
+export interface IConsoleApiMultiResult<T = void> {
+  code: string | number;
+  data?: T;
+  title?: string;
+  message?: string;
+  requestId: string;
+  // accessDeniedDetail?: object;
+  // httpStatusCode: string;
+  // success: boolean;
+  // withFailRequest: boolean; // 一般为 false
+}
+
+export type TConsoleApiMultiResult = Record<string, IConsoleApiMultiResult<unknown>>;
+
+/**
+ * V2 并发 API 调用的返回做了一些优化，返回的数据更接近于单调结果，但若直接调用，仍然有如下问题：
+ *
+ * 1. 你需要知道什么时候该合并，并手动拼接参数
+ * 2. 不论内部成功与否，外层都是成功的，即 code === '200'
+ * 3. 因为 2 的关系，你需要手动剥开第一层的 data，找到单个请求成功与否（通常这一层很多人都不做）
+ * 
+ * 此接口不会主动 export 出去，不期望被手动调用
+ */
+export interface IFnConsoleApiMulti {
+  (product: string, actions: IConsoleApiMultiAction[], options?: IConsoleApiOptions): Promise<TConsoleApiMultiResult>;
+}
+
+export type TConsoleApiMultiResultLegacy = Record<string, unknown>;
+
+/**
+ * 并发 API 调用的返回，嗯... 是这样的：
+ *
+ * 1. 不论内部成功与否，外层都是成功的，即 code === '200'
+ * 2. 返回的 data 是一个对象（因此无法指定明确的类型），如果不指定 `customRequestKey` 则为数字，0 起步
+ * 3. 如果某个接口调用成功，则它在 data 中对应的值是对应单独接口的 data（有 RequestId，和最外层的不一样）
+ * 4. 如果某个接口调用失败，则它一定是业务失败，在 data 中对应的位置是一个大写开头属性的对象 IConsoleApiMultiError...
+ * 5. 那末... 怎么判断是错误与否呢...因为理论上成功的 data 也是可以有 Code 等的，针对蠢设计只能用蠢逻辑.. 判断 Code 是否为字符串存在
+ *
+ * 所以，不建议直接手动调用 multi，因为那样的话，你需要人肉组装接口参数，人肉判断成功失败...
+ * 好在 console-fetcher-basic 这里封装了自动 multi 的逻辑，你可以在任何时候直接调用单个的 OpenAPI，或者放心使用 Promise.all 而不必担心性能问题。
+ */
+export interface IFnConsoleApiMultiLegacy {
+  (product: string, actions: IConsoleApiMultiAction[], options?: IConsoleApiOptions): Promise<TConsoleApiMultiResultLegacy>;
 }
 
 /**
@@ -91,22 +126,6 @@ export interface IFnConsoleApiWithProduct {
   <T, P>(action: string, params: P, options?: IConsoleApiOptions): Promise<T>;
 }
 
-/**
- * 并发 API 调用的返回，嗯... 是这样的：
- * 
- * 1. 不论内部成功与否，外层都是成功的，即 code === '200'
- * 2. 返回的 data 是一个对象（因此无法指定明确的类型），如果不指定 `customRequestKey` 则为数字，0 起步
- * 3. 如果某个接口调用成功，则它在 data 中对应的值是对应单独接口的 data（有 RequestId，和最外层的不一样）
- * 4. 如果某个接口调用失败，则它一定是业务失败，在 data 中对应的位置是一个大写开头属性的对象 IConsoleApiMultiError...
- * 5. 那末... 怎么判断是错误与否呢...因为理论上成功的 data 也是可以有 Code 等的，针对蠢设计只能用蠢逻辑.. 判断 Code 是否为字符串存在
- * 
- * 所以，不建议直接手动调用 multi，因为那样的话，你需要人肉组装接口参数，人肉判断成功失败...
- * 好在 console-fetcher-basic 这里封装了自动 multi 的逻辑，你可以在任何时候直接调用单个的 OpenAPI，或者放心使用 Promise.all 而不必担心性能问题。
- */
-export interface IFnConsoleApiMulti {
-  (product: string, actions: IConsoleApiMultiAction[], options?: IConsoleApiOptions): Promise<TConsoleApiMultiResult>;
-}
-
 export interface IFnCreateCallApiWithProduct {
   (product: string): IFnConsoleApiWithProduct;
   (product: string, _defaultPrams: undefined, defaultOptions?: IConsoleApiOptions): IFnConsoleApiWithProduct;
@@ -117,7 +136,10 @@ export interface IConsoleApis {
   callOpenApi: IFnConsoleApi;
   callInnerApi: IFnConsoleApi;
   callContainerApi: IFnConsoleApi;
-  callMultiOpenApi: IFnConsoleApiMulti;
+  /**
+   * @deprecated 请直接调用 callOpenApi
+   */
+  callMultiOpenApi: IFnConsoleApiMultiLegacy;
   createCallOpenApiWithProduct: IFnCreateCallApiWithProduct;
   createCallInnerApiWithProduct: IFnCreateCallApiWithProduct;
   createCallContainerApiWithProduct: IFnCreateCallApiWithProduct;
