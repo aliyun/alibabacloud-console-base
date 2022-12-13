@@ -216,20 +216,24 @@ export default class AutoMultiQueue {
           resolveAll(v.data, i);
         }
         
+        const body: Record<string, unknown> = { // 努力还原一下出错的 body（中的重要部分）
+          product,
+          action: actions[i]!.action, // eslint-disable-line @typescript-eslint/no-non-null-assertion
+          params: actions[i]!.params // eslint-disable-line @typescript-eslint/no-non-null-assertion
+        };
+        
+        if (region) {
+          body.region = region;
+        }
+        
         rejectAll(createFetcherError({
           url: '(auto multi api)',
-          options: {
-            method: 'POST',
-            body: { // 努力还原一下出错的 body（中的重要部分）
-              product,
-              action: actions[i]!.action, // eslint-disable-line @typescript-eslint/no-non-null-assertion
-              params: actions[i]!.params, // eslint-disable-line @typescript-eslint/no-non-null-assertion
-              region
-            }
-          }
+          method: 'POST',
+          body
         }, ERROR_BIZ, v.message, {
           code: String(v.code),
           title: v.title,
+          requestId: v.requestId,
           responseData: v
         }), i);
       });
