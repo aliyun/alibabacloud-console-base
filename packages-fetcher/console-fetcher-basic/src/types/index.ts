@@ -137,7 +137,14 @@ export interface IConsoleApis {
   callInnerApi: IFnConsoleApi;
   callContainerApi: IFnConsoleApi;
   /**
-   * @deprecated 请直接调用 callOpenApi
+   * 不推荐使用，请使用 callOpenApi，会在运行期自动合并成 multi 并拆分数据和错误。调用它的问题在于
+   *
+   * 1. 你需要拼接调用参数
+   * 2. 你需要自己从里边解数据
+   * 3. 错误信息丢失
+   * 4. 无法处理并行在不同 bundle 下的接口
+   * 
+   * @deprecated
    */
   callMultiOpenApi: IFnConsoleApiMultiLegacy;
   createCallOpenApiWithProduct: IFnCreateCallApiWithProduct;

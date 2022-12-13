@@ -47,24 +47,9 @@ export default function factory<C extends IConsoleFetcherConfig = IConsoleFetche
     interceptSls(fetcher, slsConfig);
   }
   
-  const callMultiOpenApiNew = createApi(fetcher, ETypeApi.OPEN_MULTI);
-  const callOpenApi0 = createApi(fetcher, ETypeApi.OPEN);
-  const callOpenApi = createApiAutoMulti(callOpenApi0, callMultiOpenApiNew);
+  const callOpenApi = createApiAutoMulti(createApi(fetcher, ETypeApi.OPEN), createApi(fetcher, ETypeApi.OPEN_MULTI));
   const callInnerApi = createApi(fetcher, ETypeApi.INNER);
   const callContainerApi = createApi(fetcher, ETypeApi.CONTAINER);
-  /**
-   * 问题在于
-   *
-   * 1. 你需要拼接调用参数
-   * 2. 你需要自己从里边解数据
-   * 3. 错误信息丢失
-   * 4. 无法处理并行在不同 bundle 下的接口
-   * 
-   * TODO 这个名字继续保留 callMultiOpenApi 将在不久的将来彻底抹除
-   *
-   * @deprecated 不要调用，请用 callOpenApi，会在运行期自动合并成 multi 并拆分数据和错误
-   */
-  const callMultiOpenApi = createApi(fetcher, ETypeApi.OPEN_MULTI_LEGACY);
   
   const createCallOpenApiWithProduct = function<D>(product: string, defaultParams?: D, defaultOptions?: IConsoleApiOptions): IFnConsoleApiWithProduct {
     return createApiWithProduct<D>(callOpenApi, product, defaultParams, defaultOptions);
@@ -81,7 +66,10 @@ export default function factory<C extends IConsoleFetcherConfig = IConsoleFetche
     callOpenApi,
     callInnerApi,
     callContainerApi,
-    callMultiOpenApi,
+    /**
+     * @deprecated
+     */
+    callMultiOpenApi: createApi(fetcher, ETypeApi.OPEN_MULTI_LEGACY),
     createCallOpenApiWithProduct,
     createCallInnerApiWithProduct,
     createCallContainerApiWithProduct
