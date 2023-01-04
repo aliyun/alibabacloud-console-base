@@ -42,7 +42,7 @@
   "dependencies": {
     "@alicloud/rc-codemirror": "^1.4.2",
     "@alicloud/react-hook-controllable-value": "^1.2.2",
-    "json5": "^2.2.2",
+    "json5": "^2.2.3",
     "lodash": "^4.17.21"
   },
   "scripts": {
