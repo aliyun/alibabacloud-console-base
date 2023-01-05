@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/logger-sls",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "description": "SLS logger factory",
   "license": "MIT",
   "sideEffects": false,
@@ -25,16 +25,16 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.13",
-    "@alicloud/ts-config": "^1.1.0",
+    "@alicloud/demo-rc-elements": "^1.10.14",
+    "@alicloud/ts-config": "^1.1.1",
     "@types/lodash": "^4.14.191",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "@alicloud/fetcher-fetch": "^1.6.6",
-    "@alicloud/ua": "^1.4.6",
+    "@alicloud/fetcher-fetch": "^1.6.7",
+    "@alicloud/ua": "^1.4.7",
     "lodash": "^4.17.21"
   },
   "scripts": {

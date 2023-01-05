@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-demo-helper-error-prompt",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "ConsoleBase Demo Helper for Error Prompt",
   "license": "MIT",
   "sideEffects": false,
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/ts-config": "^1.1.0",
+    "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
@@ -40,9 +40,9 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-intl-factory": "^1.6.6",
-    "@alicloud/console-base-rc-dialog": "^1.9.9",
-    "@alicloud/demo-rc-elements": "^1.10.13"
+    "@alicloud/console-base-intl-factory": "^1.6.7",
+    "@alicloud/console-base-rc-dialog": "^1.9.10",
+    "@alicloud/demo-rc-elements": "^1.10.14"
   },
   "scripts": {
     "start": "breezr start-storybook",

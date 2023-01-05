@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/demo-rc-elements",
-  "version": "1.10.13",
+  "version": "1.10.14",
   "description": "仅用于 demo 的组件，为了好看和方便，切不可用于生产",
   "license": "MIT",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/ts-config": "^1.1.0",
+    "@alicloud/ts-config": "^1.1.1",
     "@types/lodash": "^4.14.191",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
@@ -40,8 +40,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/rc-codemirror": "^1.4.2",
-    "@alicloud/react-hook-controllable-value": "^1.2.2",
+    "@alicloud/rc-codemirror": "^1.4.3",
+    "@alicloud/react-hook-controllable-value": "^1.2.3",
     "json5": "^2.2.3",
     "lodash": "^4.17.21"
   },

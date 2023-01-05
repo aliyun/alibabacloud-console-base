@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/typescript-missing-helpers",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Supplements to TypeScript type helpers",
   "license": "MIT",
   "sideEffects": false,
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/ts-config": "^1.1.0",
+    "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
     "typescript": "^4.9.4"

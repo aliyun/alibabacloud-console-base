@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-icon-product",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "description": "ConsoleBase 组件 - 云产品图标",
   "license": "MIT",
   "sideEffects": false,
@@ -26,11 +26,11 @@
     "product"
   ],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.6",
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.7",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.13",
-    "@alicloud/ts-config": "^1.1.0",
+    "@alicloud/demo-rc-elements": "^1.10.14",
+    "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
@@ -42,7 +42,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/iconfont-helper": "^1.4.0"
+    "@alicloud/iconfont-helper": "^1.4.1"
   },
   "scripts": {
     "start": "breezr start-storybook",

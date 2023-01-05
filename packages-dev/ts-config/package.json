@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/ts-config",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Shareable tsconfig",
   "license": "MIT",
   "main": "index.json",
