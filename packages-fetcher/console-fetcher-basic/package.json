@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@alicloud/console-fetcher-interceptor-arms": "^1.4.6",
-    "@alicloud/console-fetcher-interceptor-fecs": "^1.4.6",
+    "@alicloud/console-fetcher-interceptor-fecs": "^1.4.7",
     "@alicloud/console-fetcher-interceptor-req-security": "^1.4.6",
     "@alicloud/console-fetcher-interceptor-res-biz": "^1.4.6",
     "@alicloud/console-fetcher-interceptor-res-error-message": "^1.4.6",
