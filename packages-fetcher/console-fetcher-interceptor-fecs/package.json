@@ -41,7 +41,7 @@
     "@alicloud/console-one-config": "^1.4.7",
     "@alicloud/cookie": "^1.5.1",
     "@alicloud/fetcher": "^1.7.7",
-    "@alicloud/fetcher-fetch": "^1.6.8",
+    "@alicloud/fetcher-fetch": "^1.6.9",
     "@alicloud/sandbox-escape": "^1.1.7"
   },
   "scripts": {

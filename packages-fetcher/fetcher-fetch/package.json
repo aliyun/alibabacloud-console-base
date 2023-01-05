@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/fetcher-fetch",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "description": "@alicloud/fetcher 的底层 fetch 实现，可独立使用",
   "license": "MIT",
   "sideEffects": false,
@@ -35,7 +35,8 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "unfetch": "^4.2.0"
+    "unfetch": "^4.2.0",
+    "@alicloud/sandbox-escape": "^1.1.7"
   },
   "scripts": {
     "start": "breezr start-storybook",
