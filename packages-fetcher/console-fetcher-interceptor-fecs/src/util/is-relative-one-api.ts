@@ -2,12 +2,9 @@ import {
   FetcherConfig
 } from '@alicloud/fetcher';
 
-const ONE_APIS = [ // 这里有点弱冗余
-  '/data/api.json',
-  '/data/innerApi.json',
-  '/data/call.json',
-  '/data/multiApi.json',
-  '/data/v2/multiApi.json'
+const REGS_ONE_API = [
+  /^\/data\/(?:api|call)\.json/,
+  /^\/data\/(?:(?:v2\/)?multi|inner)Api\.json/
 ];
 
 /**
@@ -17,5 +14,5 @@ export default function isRelativeOneApi({
   url = '',
   urlBase
 }: FetcherConfig): boolean {
-  return !urlBase && ONE_APIS.includes(url);
+  return !urlBase && REGS_ONE_API.some(v => v.test(url));
 }
