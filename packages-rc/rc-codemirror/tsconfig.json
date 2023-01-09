@@ -1,0 +1,9 @@
+{
+  "extends": "@alicloud/ts-config/index.json",
+  "compilerOptions": {
+    "allowJs": true
+  },
+  "include": [
+    "src"
+  ]
+}
