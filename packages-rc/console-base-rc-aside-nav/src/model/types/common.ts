@@ -19,6 +19,10 @@ export interface INavItemProps extends INavItemPropsBase {
    * 默认展开子项目，非受控，序列中的第一个带子项的将自动展开，覆盖顶级 props 指定的行为
    */
   subItemsUnfolded?: boolean;
+  /**
+   * 菜单搜索关键字
+   */
+  keywords?: string[];
 }
 
 export interface INavItemInFooterProps extends INavItemPropsBase {}

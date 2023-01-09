@@ -35,7 +35,7 @@ export default function Provider({
     
     dispatch(action);
   }, [isUnmounted, dispatch]);
-  
+
   return <Context.Provider value={{
     props,
     state,

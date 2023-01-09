@@ -22,11 +22,13 @@ export default function useModelProps(): TModelProps {
   return useMemo(() => {
     const {
       subItemsUnfolded = true,
+      minItemsForSearch = 10,
       ...rest
     } = props;
     
     return {
       subItemsUnfolded,
+      minItemsForSearch,
       ...rest
     };
   }, [props]);

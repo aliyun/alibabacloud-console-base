@@ -45,4 +45,10 @@ export interface IModelProps {
    * 是否展示推入按钮
    */
   onToggleCollapsed?(collapsed: boolean): void;
+  /**
+   * 是否展示搜索框
+   * 当 <= 0 时永远不搜索
+   * 当 >= 1 时，菜单总数 >= minItemsForSearch 时展示搜索，否则不展示，默认 10
+   */
+  minItemsForSearch?: number;
 }

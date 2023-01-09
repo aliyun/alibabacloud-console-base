@@ -1,3 +1,5 @@
 export enum EAction {
-  SET_COLLAPSED
+  SET_COLLAPSED,
+  SET_FILTERING,
+  SET_FILTER_TEXT
 }

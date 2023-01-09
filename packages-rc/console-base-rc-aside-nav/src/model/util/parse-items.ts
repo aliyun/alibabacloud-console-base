@@ -12,6 +12,10 @@ import isItemInteractive from './is-item-interactive';
 import hasSelectedSubItem from './has-selected-sub-item';
 
 export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded): TParsedItemOrDivider[] {
+  if (!items.length) {
+    return [];
+  }
+
   const itemsParsed: TParsedItemOrDivider[] = [];
   let lastIsDivider = true; // 用于 '-' 掐头
   let firstSub = true;

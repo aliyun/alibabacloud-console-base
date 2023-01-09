@@ -19,6 +19,7 @@ import {
 import {
   useProps
 } from '../../../model';
+import NavFilter from '../../nav-filter';
 
 const cssCommon = css`
   padding: 0 ${SPACING_SIDE}px;
@@ -34,6 +35,9 @@ const ScHeader = styled.header`
 `;
 
 const ScTitle = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
   padding: 0 ${SPACING_SIDE}px;
   ${cssCommon}
   ${mixinTypoEllipsis}
@@ -63,6 +67,8 @@ export default function UiHeader(): JSX.Element {
       theme: ButtonTheme.TEXT_TERTIARY,
       textAlign: upperTitle ? 'left' : 'center',
       href: upperHref
-    }} /> : <ScTitle title={typeof title === 'string' ? title : undefined}>{title}</ScTitle>}
+    }} /> : <ScTitle title={typeof title === 'string' ? title : undefined}>
+      <NavFilter />
+    </ScTitle>}
   </ScHeader>;
 }
