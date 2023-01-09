@@ -1,1 +1,0 @@
-export { default as determineMimeType } from './determine-mime-type';

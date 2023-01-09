@@ -1,1 +1,0 @@
-export { default as compileIntoHtml } from './compile-into-html';
