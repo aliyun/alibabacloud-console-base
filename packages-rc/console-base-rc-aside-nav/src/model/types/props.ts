@@ -47,8 +47,8 @@ export interface IModelProps {
   onToggleCollapsed?(collapsed: boolean): void;
   /**
    * 是否展示搜索框
-   * 当 <= 0 时永远不搜索
-   * 当 >= 1 时，菜单总数 >= minItemsForSearch 时展示搜索，否则不展示，默认 10
+   * 当 minItemsForSearch <= 0 时：永远不搜索
+   * 当 minItemsForSearch >= 1 时：菜单总数 >= minItemsForSearch 时展示搜索，否则不展示，默认 10
    */
   minItemsForSearch?: number;
 }
