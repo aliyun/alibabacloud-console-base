@@ -6,12 +6,13 @@ import {
   TParsedItemOrDivider
 } from '../types';
 import {
-  parseItems
+  parseItems,
+  filterNavItems
 } from '../util';
 
 import useModelProps from './_use-model-props';
-import useFilterItems from './use-filter-items';
 import useFiltering from './use-filtering';
+import useFilterText from './use-filter-text';
 
 export default function useItems(): TParsedItemOrDivider[] {
   const {
@@ -20,9 +21,11 @@ export default function useItems(): TParsedItemOrDivider[] {
   } = useModelProps();
 
   const filtering = useFiltering();
-  const filterItems = useFilterItems();
+  const filterText = useFilterText();
 
   return useMemo(() => {
-    return parseItems(!filtering ? items : filterItems, subItemsUnfolded);
-  }, [items, subItemsUnfolded, filtering, filterItems]);
+    const filter = filterNavItems(items, filterText);
+
+    return parseItems(!filtering ? items : filter, subItemsUnfolded);
+  }, [items, subItemsUnfolded, filtering, filterText]);
 }

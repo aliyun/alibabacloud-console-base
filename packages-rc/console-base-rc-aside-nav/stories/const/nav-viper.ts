@@ -17,7 +17,7 @@ const NAV: AsideNavProps = {
     key: 'product',
     label: '产品管理',
     href: '#/product'
-  }, '-', {
+  }, '-', /* {
     key: 'dev',
     label: '控制台开发',
     subItems: [{
@@ -39,7 +39,7 @@ const NAV: AsideNavProps = {
       href: '#/scene'
     }],
     subItemsUnfolded: true
-  }, '-', {
+  }, '-',*/ {
     key: 'api',
     label: 'API 管理',
     subItems: [{
@@ -76,7 +76,7 @@ const NAV: AsideNavProps = {
       }]
     }],
     subItemsUnfolded: true
-  }, '-', {
+  }/* '-', {
     key: 'util',
     label: '实用工具',
     subItems: [{
@@ -223,7 +223,7 @@ const NAV: AsideNavProps = {
         href: '#/stability/inspection'
       }]
     }]
-  }],
+  }*/],
   itemsInFooter: [{
     key: 'hello',
     label: '你好呀',

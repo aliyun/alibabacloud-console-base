@@ -3,7 +3,7 @@ import {
   INavItemProps
 } from '../types';
 
-function filterItem(o: INavItemProps, value: string): INavItemProps {
+function filterNavItem(o: INavItemProps, value: string): INavItemProps {
   const item = {
     ...o,
     subItems: o.subItems?.reduce((result: INavItemProps[], v) => {
@@ -12,7 +12,7 @@ function filterItem(o: INavItemProps, value: string): INavItemProps {
       }
 
       if (v.subItems?.length) {
-        const o2 = filterItem(v, value);
+        const o2 = filterNavItem(v, value);
 
         if (o2.subItems?.length) {
           result.push(o2);
@@ -30,7 +30,7 @@ function filterItem(o: INavItemProps, value: string): INavItemProps {
   return item;
 }
 
-export default function filterItems(items: TNavItem[], value: string): TNavItem[] {
+export default function filterNavItems(items: TNavItem[], value: string): TNavItem[] {
   if (!value) {
     return [];
   }
@@ -42,8 +42,15 @@ export default function filterItems(items: TNavItem[], value: string): TNavItem[
       return;
     }
 
+    // TODO 匹配父菜单
+    if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
+      itemsParsed.push(v);
+
+      return itemsParsed;
+    }
+
     if (v.subItems) {
-      const o = filterItem(v, value);
+      const o = filterNavItem(v, value);
 
       // TODO 不符合条件的不加入
       if (o.subItems?.length) {
@@ -51,10 +58,6 @@ export default function filterItems(items: TNavItem[], value: string): TNavItem[
           ...o
         });
       }
-    }
-
-    if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
-      itemsParsed.push(v);
     }
   });
 

@@ -4,6 +4,7 @@ export { default as useFiltering } from './use-filtering';
 export { default as useItems } from './use-items';
 export { default as useFilterItems } from './use-filter-items';
 export { default as useItemsInFooter } from './use-items-in-footer';
+export { default as useIsFilter } from './use-is-filter';
 // handlers
 export { default as useHandleToggleCollapsed } from './use-handle-toggle-collapsed';
 // 处理参数搜索

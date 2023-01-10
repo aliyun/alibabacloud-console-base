@@ -6,6 +6,7 @@ import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   useProps,
+  useIsFilter,
   useFiltering,
   useHandleFilterTextChange,
   useHandleFilteringChange
@@ -25,6 +26,7 @@ export default function NavFilter(): JSX.Element {
     title
   } = useProps();
   const filtering = useFiltering();
+  const isFilter = useIsFilter();
 
   const handleFilteringChange = useHandleFilteringChange();
   const handleFilterTextChange = useHandleFilterTextChange();
@@ -38,9 +40,9 @@ export default function NavFilter(): JSX.Element {
     onChange: handleFilterTextChange
   }} /> : <ScDiv>
     <span>{title}</span>
-    <ScIcon {...{
+    {isFilter ? <ScIcon {...{
       type: 'search',
       onClick: () => handleFilteringChange(true)
-    }} />
+    }} /> : null}
   </ScDiv>;
 }
