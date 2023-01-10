@@ -8,7 +8,7 @@
     "@alicloud/eslint-config": "^1.13.1",
     "@alicloud/stylelint-config": "^1.2.3",
     "@alicloud/markdownlint-config": "^1.0.1",
-    "@commitlint/cli": "^17.4.0",
+    "@commitlint/cli": "^17.4.1",
     "@commitlint/config-conventional": "^17.4.0",
     "eslint": "^8.31.0",
     "husky": "^8.0.3",
