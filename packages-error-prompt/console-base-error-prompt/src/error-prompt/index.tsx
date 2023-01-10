@@ -18,7 +18,9 @@ import {
   pushSoloQueue,
   resolveSolo
 } from '../util';
-import DialogContent from '../rc/dialog-content';
+import {
+  DialogContent
+} from '../rc';
 
 const queue = getSoloQueue(); // 永远指向一个对象
 

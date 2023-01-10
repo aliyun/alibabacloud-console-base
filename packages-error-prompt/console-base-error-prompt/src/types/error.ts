@@ -71,12 +71,3 @@ export interface IErrorPlain {
 }
 
 export interface IError extends Error, Omit<IErrorPlain, 'name' | 'message' | 'stack'> {}
-
-/**
- * 展示用的 k-v 对
- */
-export interface IErrorDetailKv {
-  k0: string;
-  k: string;
-  v: unknown;
-}

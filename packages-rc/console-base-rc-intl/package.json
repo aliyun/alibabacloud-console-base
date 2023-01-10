@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-intl",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "ConsoleBase 组件 - 带样式的国际化文案展示",
   "license": "MIT",
   "sideEffects": false,
@@ -19,11 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "rc",
-    "intl"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.7",
     "@alicloud/console-toolkit-cli": "^1.2.30",
@@ -41,7 +37,8 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.9.1"
+    "@alicloud/console-base-theme": "^1.9.1",
+    "@alicloud/console-base-rc-html-trusted": "^1.0.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

@@ -4,60 +4,18 @@ import _snakeCase from 'lodash/snakeCase';
 
 import {
   IErrorPlain,
-  IErrorDetailKv,
-  IErrorDetailsAuth
+  IErrorDetailKv, IErrorInfoDisplayOptions
 } from '../types';
-import {
-  DETAILED_MODE
-} from '../const';
 import intl from '../intl';
 
 import parseParams from './parse-params';
-
-function intlAuthUserType(detailsAuth: IErrorDetailsAuth): string | undefined {
-  switch (detailsAuth.userType) {
-    case 'SubUser':
-      return intl('attr:auth_user_type:ram');
-    case 'AssumedRoleUser':
-      return intl('attr:auth_user_type:sts');
-    default:
-      return detailsAuth.userType;
-  }
-}
-
-function intlAuthType(detailsAuth: IErrorDetailsAuth): string | undefined {
-  switch (detailsAuth.type) {
-    case 'ExplicitDeny':
-      return intl('attr:auth_type:explicit');
-    case 'ImplicitDeny':
-      return intl('attr:auth_type:implicit');
-    default:
-      return detailsAuth.type;
-  }
-}
-
-function createAuthUser(detailsAuth: IErrorDetailsAuth): Record<string, string | undefined> | undefined {
-  const {
-    userType,
-    userName,
-    userId
-  } = detailsAuth;
-  
-  if (!userType && !userName && !userId) {
-    return;
-  }
-  
-  return {
-    [intl('attr:auth_user_type')]: intlAuthUserType(detailsAuth),
-    [intl('attr:auth_user_name')]: userName,
-    [intl('attr:auth_user_id')]: userId
-  };
-}
+import intlAuthType from './intl-auth-type';
+import getAuthUserDisplayInfo from './get-auth-user-display-info';
 
 /**
  * 把错误对象转成 `{k0, k, v}` 对象数组，保证某些字段的顺序
  */
-export default function convertErrorDetailKvList(error: IErrorPlain, detailedMode = DETAILED_MODE): IErrorDetailKv[] {
+export default function convertErrorKvList(error: IErrorPlain, options: IErrorInfoDisplayOptions): IErrorDetailKv[] {
   const kvList: IErrorDetailKv[] = [];
   
   function pushInfo(v: unknown, k0: string, k: string): void {
@@ -74,6 +32,7 @@ export default function convertErrorDetailKvList(error: IErrorPlain, detailedMod
   
   const {
     code,
+    message,
     requestId,
     name,
     stack,
@@ -82,17 +41,22 @@ export default function convertErrorDetailKvList(error: IErrorPlain, detailedMod
   } = error;
   
   pushInfo(code, 'code', intl('attr:code'));
+  
+  if (options.messageShouldShow) {
+    pushInfo(message, 'message', intl('attr:message'));
+  }
+  
   pushInfo(requestId, 'requestId', intl('attr:request_id'));
   
   if (detailsAuth) {
     pushInfo(detailsAuth.action, 'auth.action', intl('attr:auth_action'));
     pushInfo(detailsAuth.resource, 'auth.resource', intl('attr:auth_resource'));
-    pushInfo(createAuthUser(detailsAuth), 'auth.user', intl('attr:auth_user'));
+    pushInfo(getAuthUserDisplayInfo(detailsAuth), 'auth.user', intl('attr:auth_user'));
     pushInfo(detailsAuth.policyType, 'auth.policy_type', intl('attr:auth_policy_type'));
     pushInfo(intlAuthType(detailsAuth), 'auth.type', intl('attr:auth_type'));
   }
   
-  if (detailedMode) {
+  if (options.detailedMode) {
     // 对 details.params 和 details.body 有良好的展示
     _forEach(details, (v, k) => {
       pushInfo(k === 'params' || k === 'body' ? parseParams(v) : v, `detail.${k}`, _snakeCase(k).toUpperCase());

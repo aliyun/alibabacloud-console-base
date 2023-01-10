@@ -6,10 +6,10 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  mixinTextTertiary,
   mixinTypoLineWrap
 } from '@alicloud/console-base-theme';
 import CopyIt from '@alicloud/console-base-rc-copy-it';
+import HtmlTrusted from '@alicloud/console-base-rc-html-trusted';
 
 import {
   IErrorDetailKv
@@ -21,22 +21,15 @@ import {
 
 interface IProps {
   items: IErrorDetailKv[];
-  folded: boolean;
 }
 
-interface IPropsScDetails {
-  folded: boolean;
-}
-
-const ScKvList = styled.ul<IPropsScDetails>`
-  margin: 8px 0 0 0;
+const ScKvList = styled.ul`
+  margin: 0;
   padding: 0;
-  max-height: ${props => (props.folded ? '0' : '400px')};
+  line-height: 1.5;
   overflow: auto;
   list-style: none;
   font-size: 0.95em;
-  transition: all 0.3s ease-out;
-  ${mixinTextTertiary}
 `;
 
 const ScKv = styled.li`
@@ -56,10 +49,9 @@ const ScV = styled.div`
 `;
 
 export default function KvList({
-  items,
-  folded
+  items
 }: IProps): JSX.Element | null {
-  return <ScKvList folded={folded}>
+  return <ScKvList>
     {items.map(({
       k0,
       k,
@@ -67,12 +59,25 @@ export default function KvList({
     }): JSX.Element => {
       let displayValue: string | null | JSX.Element;
       
-      if (_isString(v) && k0 === 'requestId') {
-        displayValue = <CopyIt text={v} />;
-      } else if (_isString(v) || isValidElement(v as JSX.Element)) {
-        displayValue = v as string | JSX.Element;
+      if (isValidElement(v)) {
+        displayValue = v as JSX.Element;
       } else if (_isPlainObject(v)) {
         displayValue = renderObject(v as Record<string, unknown>);
+      } else if (_isString(v)) {
+        switch (k0) {
+          case 'requestId':
+            displayValue = <CopyIt text={v} />;
+            
+            break;
+          case 'message':
+            displayValue = <HtmlTrusted text={v} />;
+            
+            break;
+          default:
+            displayValue = v;
+            
+            break;
+        }
       } else {
         displayValue = toDisplayValue(v);
       }

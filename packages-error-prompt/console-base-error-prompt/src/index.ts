@@ -1,5 +1,5 @@
 export { default } from './error-prompt';
-export { default as ErrorPrompt } from './rc/error-prompt';
+export { ErrorPrompt } from './rc';
 
 export * from './helper';
 

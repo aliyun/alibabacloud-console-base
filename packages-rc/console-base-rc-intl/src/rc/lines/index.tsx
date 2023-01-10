@@ -5,29 +5,40 @@ import {
   ETypeLine
 } from '../../enum';
 import {
-  IPropsLines
+  ILinesProps
 } from '../../types';
-import makeHtmlProps from '../../util/make-html-props';
 
 export default function Lines({
   type,
   items,
   html
-}: IPropsLines): JSX.Element {
+}: ILinesProps): JSX.Element {
   switch (type) {
     case ETypeLine.OL:
       return <ol>
-        {items.map((v, i) => (html ? <li key={i} {...makeHtmlProps(v)} /> : <li key={i}>{v}</li>))}
+        {items.map((v, i) => (html ? <li key={i} {...{
+          dangerouslySetInnerHTML: {
+            __html: v
+          }
+        }} /> : <li key={i}>{v}</li>))}
       </ol>;
     case ETypeLine.UL:
       return <ul>
-        {items.map((v, i) => (html ? <li key={i} {...makeHtmlProps(v)} /> : <li key={i}>{v}</li>))}
+        {items.map((v, i) => (html ? <li key={i} {...{
+          dangerouslySetInnerHTML: {
+            __html: v
+          }
+        }} /> : <li key={i}>{v}</li>))}
       </ul>;
     case ETypeLine.HR:
       return <hr />;
     default:
       return <>
-        {items.map((v, i) => (html ? <p key={i} {...makeHtmlProps(v)} /> : <p key={i}>{v}</p>))}
+        {items.map((v, i) => (html ? <p key={i} {...{
+          dangerouslySetInnerHTML: {
+            __html: v
+          }
+        }} /> : <p key={i}>{v}</p>))}
       </>;
   }
 }
