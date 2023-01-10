@@ -11,16 +11,18 @@ function filterNavItem(o: INavItemProps, value: string): INavItemProps {
         return result;
       }
 
+      if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
+        result.push(v);
+
+        return result;
+      }
+
       if (v.subItems?.length) {
         const o2 = filterNavItem(v, value);
 
         if (o2.subItems?.length) {
           result.push(o2);
         }
-      }
-
-      if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
-        result.push(v);
       }
 
       return result;
@@ -42,8 +44,6 @@ export default function filterNavItems(items: TNavItem[], value: string): TNavIt
       return;
     }
 
-    itemsParsed.push('-');
-
     // TODO 匹配父菜单
     if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
       itemsParsed.push(v);
@@ -63,5 +63,9 @@ export default function filterNavItems(items: TNavItem[], value: string): TNavIt
     }
   });
 
-  return itemsParsed;
+  return itemsParsed.reduce((result: TNavItem[], item) => {
+    result.push(item, '-');
+
+    return result;
+  }, []);
 }
