@@ -8,5 +8,5 @@ export interface IDataErrorDiagnose {
   name: string;
   product: string;
   answers: IErrorDiagnoseAnswer[];
-  errorSample: IErrorDiagnoseSample;
+  sample: IErrorDiagnoseSample;
 }
