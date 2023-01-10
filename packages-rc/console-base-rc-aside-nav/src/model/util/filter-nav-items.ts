@@ -42,6 +42,8 @@ export default function filterNavItems(items: TNavItem[], value: string): TNavIt
       return;
     }
 
+    itemsParsed.push('-');
+
     // TODO 匹配父菜单
     if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
       itemsParsed.push(v);
