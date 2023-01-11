@@ -13,7 +13,6 @@ export default function useHandleFiltering(): (e: boolean) => void {
   return useCallback(e => {
     dispatchSetFiltering(e);
 
-    // TODO 在失去焦点的时候，进行 filterText 清空
     if (!e) {
       dispatchSetFilterText('');
     }
