@@ -4,9 +4,6 @@ import {
 
 import useModelProps from './_use-model-props';
 
-/**
- * 是否搜索
- */
 export default function useMinItemsForSearch(): boolean {
   const {
     items,

@@ -45,6 +45,7 @@ export default function filterItems(items: TNavItem[], value: string): TNavItem[
   const filters: TNavItem[] = [];
 
   items.forEach(v => {
+    // 过滤掉 label 为 JSX 的情况
     if (!v || v === '-' || isValidElement(v.label)) {
       return;
     }
