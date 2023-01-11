@@ -3,7 +3,7 @@ import {
 } from '../types';
 
 // 平铺目录树
-export default function tilingNavItems(items: TNavItem[]): TNavItem[] {
+export default function tilingItems(items: TNavItem[]): TNavItem[] {
   return items.reduce((arr: TNavItem[], v) => {
     if (!v || v === '-') {
       return arr;
@@ -17,6 +17,6 @@ export default function tilingNavItems(items: TNavItem[]): TNavItem[] {
       }]);
     }
 
-    return arr.concat([v], tilingNavItems(v.subItems));
+    return arr.concat([v], tilingItems(v.subItems));
   }, []);
 }

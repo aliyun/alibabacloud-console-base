@@ -4,7 +4,7 @@ import {
 } from 'react';
 
 import {
-  tilingNavItems
+  tilingItems
 } from '../util';
 
 import useModelProps from './_use-model-props';
@@ -17,7 +17,7 @@ export default function useIsFilter(): boolean {
     items,
     minItemsForSearch = 10
   } = useModelProps();
-  const navLength = tilingNavItems(items).length;
+  const navLength = tilingItems(items).length;
 
   return useMemo(() => {
     if (minItemsForSearch <= 0) {

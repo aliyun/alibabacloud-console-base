@@ -6,12 +6,11 @@ import {
   TParsedItemOrDivider
 } from '../types';
 import {
-  parseItems,
-  filterNavItems
+  parseItems
 } from '../util';
 
 import useModelProps from './_use-model-props';
-import useFilterText from './use-filter-text';
+import useFilterItems from './use-filter-items';
 import useIsShowFilteringItems from './use-is-show-filtering-items';
 
 export default function useItems(): TParsedItemOrDivider[] {
@@ -19,12 +18,10 @@ export default function useItems(): TParsedItemOrDivider[] {
     items,
     subItemsUnfolded
   } = useModelProps();
-  const filterText = useFilterText();
+  const filterItems = useFilterItems();
   const isShowFilteringItems = useIsShowFilteringItems();
 
   return useMemo(() => {
-    const filter = filterNavItems(items, filterText);
-
-    return parseItems(!isShowFilteringItems ? items : filter, subItemsUnfolded);
-  }, [items, subItemsUnfolded, filterText, isShowFilteringItems]);
+    return parseItems(!isShowFilteringItems ? items : filterItems, subItemsUnfolded);
+  }, [items, filterItems, subItemsUnfolded, isShowFilteringItems]);
 }

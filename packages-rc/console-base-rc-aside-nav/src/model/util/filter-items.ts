@@ -32,12 +32,12 @@ function filterNavItem(o: INavItemProps, value: string): INavItemProps {
   return item;
 }
 
-export default function filterNavItems(items: TNavItem[], value: string): TNavItem[] {
+export default function filterItems(items: TNavItem[], value: string): TNavItem[] {
   if (!value) {
     return [];
   }
 
-  const itemsParsed: TNavItem[] = [];
+  const filter: TNavItem[] = [];
 
   items.forEach(v => {
     if (!v || v === '-') {
@@ -46,9 +46,9 @@ export default function filterNavItems(items: TNavItem[], value: string): TNavIt
 
     // TODO 匹配父菜单
     if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
-      itemsParsed.push(v);
+      filter.push(v);
 
-      return itemsParsed;
+      return filter;
     }
 
     if (v.subItems) {
@@ -56,14 +56,14 @@ export default function filterNavItems(items: TNavItem[], value: string): TNavIt
 
       // TODO 不符合条件的不加入
       if (o.subItems?.length) {
-        itemsParsed.push({
+        filter.push({
           ...o
         });
       }
     }
   });
 
-  return itemsParsed.reduce((result: TNavItem[], item) => {
+  return filter.reduce((result: TNavItem[], item) => {
     result.push(item, '-');
 
     return result;
