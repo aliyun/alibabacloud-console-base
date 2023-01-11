@@ -30,7 +30,8 @@ function filterNavItem(o: INavItemProps, value: string): INavItemProps {
       }
 
       return result;
-    }, [])
+    }, []),
+    subItemsUnfolded: true
   };
 
   return item;
@@ -49,7 +50,10 @@ export default function filterItems(items: TNavItem[], value: string): TNavItem[
     }
 
     if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
-      filters.push(v);
+      filters.push({
+        ...v,
+        subItemsUnfolded: true
+      });
 
       return filters;
     }

@@ -47,6 +47,7 @@ function renderItemOrDividerList(list: TParsedItemOrDivider[]): JSX.Element[] {
 
 function NavItemWithSub(props: IParsedItem): JSX.Element {
   const [stateUnfolded, setStateUnfolded] = useState(props.subItemsUnfolded);
+  // TODO 这块应该是在 filterItems 处进行感知的，但是由于上面使用了 useState，导致 filterItems 中修改完 subItemsUnfolded 后，不起作用
   const showFilteringItems = useShowFilteringItems();
   const handleToggleUnfolded = useCallback(() => setStateUnfolded(!stateUnfolded), [stateUnfolded, setStateUnfolded]);
 
