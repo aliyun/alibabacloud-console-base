@@ -11,7 +11,7 @@ import {
 
 import useModelProps from './_use-model-props';
 import useFilterItems from './use-filter-items';
-import useShowFilteringItems from './use-show-filtering-items';
+import useSubItemsShow from './use-sub-items-show';
 
 export default function useItems(): TParsedItemOrDivider[] {
   const {
@@ -19,9 +19,9 @@ export default function useItems(): TParsedItemOrDivider[] {
     subItemsUnfolded
   } = useModelProps();
   const filterItems = useFilterItems();
-  const showFilteringItems = useShowFilteringItems();
+  const subItemsShow = useSubItemsShow();
 
   return useMemo(() => {
-    return parseItems(!showFilteringItems ? items : filterItems, subItemsUnfolded);
-  }, [items, filterItems, subItemsUnfolded, showFilteringItems]);
+    return parseItems(!subItemsShow ? items : filterItems, subItemsUnfolded);
+  }, [items, filterItems, subItemsUnfolded, subItemsShow]);
 }

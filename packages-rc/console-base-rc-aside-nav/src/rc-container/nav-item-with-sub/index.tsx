@@ -12,7 +12,7 @@ import {
   IParsedItem,
   TParsedItemOrDivider,
   hasSelectedSubItem,
-  useShowFilteringItems
+  useSubItemsShow
 } from '../../model';
 import {
   NavItemIconRight,
@@ -48,18 +48,18 @@ function renderItemOrDividerList(list: TParsedItemOrDivider[]): JSX.Element[] {
 function NavItemWithSub(props: IParsedItem): JSX.Element {
   const [stateUnfolded, setStateUnfolded] = useState(props.subItemsUnfolded);
   // TODO 这块应该是在 filterItems 处进行感知的，但是由于上面使用了 useState，导致 filterItems 中修改完 subItemsUnfolded: true 后，不起作用
-  const showFilteringItems = useShowFilteringItems();
+  const subItemsShow = useSubItemsShow();
   const handleToggleUnfolded = useCallback(() => setStateUnfolded(!stateUnfolded), [stateUnfolded, setStateUnfolded]);
 
   return <>
     <ScNavItemParent {...{
       ...props,
       semiSelected: !props.selected && !stateUnfolded && hasSelectedSubItem(props),
-      iconRight: <NavItemIconRight type="angle-right" rotate={stateUnfolded || showFilteringItems ? 90 : 0} />,
+      iconRight: <NavItemIconRight type="angle-right" rotate={stateUnfolded || subItemsShow ? 90 : 0} />,
       onClick: handleToggleUnfolded
     }} />
     <div style={{
-      display: stateUnfolded || showFilteringItems ? 'block' : 'none'
+      display: stateUnfolded || subItemsShow ? 'block' : 'none'
     }}>
       {renderItemOrDividerList(props.subItems)}
     </div>
