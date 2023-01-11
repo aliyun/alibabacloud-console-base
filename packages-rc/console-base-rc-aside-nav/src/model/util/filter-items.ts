@@ -1,4 +1,8 @@
 import {
+  isValidElement
+} from 'react';
+
+import {
   TNavItem,
   INavItemProps
 } from '../types';
@@ -7,7 +11,7 @@ function filterNavItem(o: INavItemProps, value: string): INavItemProps {
   const item = {
     ...o,
     subItems: o.subItems?.reduce((result: INavItemProps[], v) => {
-      if (!v || v === '-') {
+      if (!v || v === '-' || isValidElement(v.label)) {
         return result;
       }
 
@@ -37,33 +41,32 @@ export default function filterItems(items: TNavItem[], value: string): TNavItem[
     return [];
   }
 
-  const filter: TNavItem[] = [];
+  const filters: TNavItem[] = [];
 
   items.forEach(v => {
-    if (!v || v === '-') {
+    if (!v || v === '-' || isValidElement(v.label)) {
       return;
     }
 
-    // TODO 匹配父菜单
     if ((v.label as string).indexOf(value) !== -1 || (v.keywords && v.keywords.indexOf(value) !== -1)) {
-      filter.push(v);
+      filters.push(v);
 
-      return filter;
+      return filters;
     }
 
     if (v.subItems) {
       const o = filterNavItem(v, value);
 
-      // TODO 不符合条件的不加入
       if (o.subItems?.length) {
-        filter.push({
+        filters.push({
           ...o
         });
       }
     }
   });
 
-  return filter.reduce((result: TNavItem[], item) => {
+  // 给过滤出来的每个 item 加 -
+  return filters.reduce((result: TNavItem[], item) => {
     result.push(item, '-');
 
     return result;

@@ -3,8 +3,8 @@ export { default as useCollapsed } from './use-collapsed';
 export { default as useItems } from './use-items';
 export { default as useItemsInFooter } from './use-items-in-footer';
 export { default as useFiltering } from './use-filtering';
-export { default as useIsFilter } from './use-is-filter';
-export { default as useIsShowFilteringItems } from './use-is-show-filtering-items';
+export { default as useMinItemsForSearch } from './use-min-items-for-search';
+export { default as useShowFilteringItems } from './use-show-filtering-items';
 // handlers
 export { default as useHandleToggleCollapsed } from './use-handle-toggle-collapsed';
 export { default as useHandleFiltering } from './use-handle-filtering';

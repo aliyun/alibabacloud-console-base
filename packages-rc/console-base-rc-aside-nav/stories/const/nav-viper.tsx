@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   AsideNavProps
 } from '../../src';
@@ -7,7 +9,7 @@ const NAV: AsideNavProps = {
   subItemsUnfolded: false,
   items: [{
     key: 'dashboard',
-    label: '概览',
+    label: <div>概览</div>,
     href: '#/dashboard'
   }, {
     key: 'app',
@@ -27,7 +29,7 @@ const NAV: AsideNavProps = {
       mark: 'new'
     }, '-', {
       key: 'ros',
-      label: 'ROS 模板',
+      label: <div>ROS 模板</div>,
       href: '#/ros'
     }, {
       key: 'medusa',
