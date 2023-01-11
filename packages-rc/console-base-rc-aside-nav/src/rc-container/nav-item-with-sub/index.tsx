@@ -12,7 +12,7 @@ import {
   IParsedItem,
   TParsedItemOrDivider,
   hasSelectedSubItem,
-  useFiltering
+  useIsShowFilteringItems
 } from '../../model';
 import {
   NavItemIconRight,
@@ -47,18 +47,18 @@ function renderItemOrDividerList(list: TParsedItemOrDivider[]): JSX.Element[] {
 
 function NavItemWithSub(props: IParsedItem): JSX.Element {
   const [stateUnfolded, setStateUnfolded] = useState(props.subItemsUnfolded);
-  const filtering = useFiltering();
+  const isShowFilteringItems = useIsShowFilteringItems();
   const handleToggleUnfolded = useCallback(() => setStateUnfolded(!stateUnfolded), [stateUnfolded, setStateUnfolded]);
 
   return <>
     <ScNavItemParent {...{
       ...props,
       semiSelected: !props.selected && !stateUnfolded && hasSelectedSubItem(props),
-      iconRight: <NavItemIconRight type="angle-right" rotate={stateUnfolded || filtering ? 90 : 0} />,
+      iconRight: <NavItemIconRight type="angle-right" rotate={stateUnfolded || isShowFilteringItems ? 90 : 0} />,
       onClick: handleToggleUnfolded
     }} />
     <div style={{
-      display: stateUnfolded || filtering ? 'block' : 'none'
+      display: stateUnfolded || isShowFilteringItems ? 'block' : 'none'
     }}>
       {renderItemOrDividerList(props.subItems)}
     </div>

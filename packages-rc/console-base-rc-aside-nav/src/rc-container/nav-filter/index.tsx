@@ -9,7 +9,8 @@ import {
   useIsFilter,
   useFiltering,
   useHandleFilterTextChange,
-  useHandleFilteringChange
+  useHandleFiltering,
+  useHandleKeydownEsc
 } from '../../model';
 
 const ScDiv = styled.div`
@@ -28,21 +29,23 @@ export default function NavFilter(): JSX.Element {
   const filtering = useFiltering();
   const isFilter = useIsFilter();
 
-  const handleFilteringChange = useHandleFilteringChange();
+  const handleFiltering = useHandleFiltering();
   const handleFilterTextChange = useHandleFilterTextChange();
+  const handleKeydownEsc = useHandleKeydownEsc();
 
   return filtering ? <Input {...{
     focused: true,
     innerRight: <ScIcon {...{
-      type: 'search'
+      type: 'x',
+      onClick: () => handleFiltering(false)
     }} />,
-    onFocusedChange: handleFilteringChange,
-    onChange: handleFilterTextChange
+    onChange: handleFilterTextChange,
+    onKeyDown: handleKeydownEsc
   }} /> : <ScDiv>
     <span>{title}</span>
     {isFilter ? <ScIcon {...{
       type: 'search',
-      onClick: () => handleFilteringChange(true)
+      onClick: () => handleFiltering(true)
     }} /> : null}
   </ScDiv>;
 }

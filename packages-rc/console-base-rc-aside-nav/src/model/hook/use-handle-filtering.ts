@@ -5,7 +5,8 @@ import {
 import useDispatchSetFiltering from './use-dispatch-set-filtering';
 import useDispatchSetFilterText from './use-dispatch-set-filter-text';
 
-export default function useHandleFilteringChange(): (e: boolean) => void {
+// 处理搜索是否打开， true 开发，false 关闭
+export default function useHandleFiltering(): (e: boolean) => void {
   const dispatchSetFiltering = useDispatchSetFiltering();
   const dispatchSetFilterText = useDispatchSetFilterText();
 
