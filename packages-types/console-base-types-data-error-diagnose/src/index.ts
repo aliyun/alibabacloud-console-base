@@ -6,7 +6,8 @@ export type {
   IParamsErrorDiagnose as ParamsErrorDiagnose
 } from './params';
 export type {
-  IDataErrorDiagnose as DataErrorDiagnose
+  IDataErrorDiagnose as DataErrorDiagnose,
+  IDataErrorDiagnoseAnswerFeedback as DataErrorDiagnoseAnswerFeedback
 } from './data';
 export {
   IApiDataErrorDiagnose as ApiDataErrorDiagnose
