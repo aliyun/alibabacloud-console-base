@@ -44,6 +44,6 @@ export interface IApiDataErrorDiagnoseAnswerFeedbackDislike {
 /**
  * 对诊断信息中方案的进行「踩」取消操作
  */
-export interface IApiDataErrorDiagnoseAnswerFeedbackDisikeCancel {
+export interface IApiDataErrorDiagnoseAnswerFeedbackDislikeCancel {
   (answerId: string): Promise<IDataErrorDiagnoseAnswerFeedback>;
 }

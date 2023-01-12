@@ -10,5 +10,10 @@ export type {
   IDataErrorDiagnoseAnswerFeedback as DataErrorDiagnoseAnswerFeedback
 } from './data';
 export {
-  IApiDataErrorDiagnose as ApiDataErrorDiagnose
+  IApiDataErrorDiagnose as ApiDataErrorDiagnose,
+  IApiDataErrorDiagnoseAnswerFeedback as ApiDataErrorDiagnoseAnswerFeedback,
+  IApiDataErrorDiagnoseAnswerFeedbackLike as ApiDataErrorDiagnoseAnswerFeedbackLike,
+  IApiDataErrorDiagnoseAnswerFeedbackLikeCancel as ApiDataErrorDiagnoseAnswerFeedbackLikeCancel,
+  IApiDataErrorDiagnoseAnswerFeedbackDislike as ApiDataErrorDiagnoseAnswerFeedbackDislike,
+  IApiDataErrorDiagnoseAnswerFeedbackDislikeCancel as ApiDataErrorDiagnoseAnswerFeedbackDislikeCancel
 } from './api';
