@@ -19,7 +19,7 @@ import {
 import open from './open';
 
 /**
- * 系统 window.alert 的替代
+ * 系统 `window.alert` 的替代
  *
  * ```typescript
  * alert('some message').then(...);

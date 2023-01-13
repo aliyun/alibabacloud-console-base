@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-types-data-error-diagnose",
-  "version": "0.4.4",
-  "description": "ConsoleBase 类型 - 错误自助诊断数据层类型",
+  "name": "@alicloud/console-base-rc-input-textarea",
+  "version": "1.0.0",
+  "description": "ConsoleBase 组件 - InputTextarea",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-data-error-diagnose",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-rc/console-base-rc-input-textarea",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -21,12 +21,24 @@
   },
   "keywords": [],
   "devDependencies": {
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.7",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
+    "@alicloud/demo-rc-elements": "^1.11.0",
     "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
+    "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
+    "styled-components": "^5.3.6",
     "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "styled-components": ">=5"
+  },
+  "dependencies": {
+    "@alicloud/console-base-theme": "^1.9.1",
+    "@alicloud/react-hook-controllable-value": "^1.2.3"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -39,5 +51,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
+  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
 }

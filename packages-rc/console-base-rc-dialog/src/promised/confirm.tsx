@@ -19,7 +19,7 @@ import {
 import open from './open';
 
 /**
- * 系统 window.confirm 的替代
+ * 系统 `window.confirm` 的替代
  *
  * ```
  * import {
