@@ -1,4 +1,4 @@
-export interface IParamsErrorDiagnose {
+export interface IParamsErrorDiagnosis {
   requestId: string;
   code: string;
   product: string;

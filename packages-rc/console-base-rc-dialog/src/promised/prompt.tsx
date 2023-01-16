@@ -37,6 +37,7 @@ export default function prompt(props: IDialogPropsPrompt<IDataPrompt> = {}, extr
     content: <PromptContent {...{
       message,
       placeholder,
+      minLength,
       maxLength,
       softTrim,
       asTextarea

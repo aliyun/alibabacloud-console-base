@@ -44,7 +44,6 @@ const ScTextareaBase = styled.textarea`
 `;
 
 const ScTextarea = styled(ScTextareaBase)`
-  margin: 8px 0;
   padding: 8px;
   box-sizing: border-box;
   width: 100%;

@@ -3,6 +3,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
+import {
+  mixinTextTertiary
+} from '@alicloud/console-base-theme';
 import Input from '@alicloud/console-base-rc-input';
 import InputTextarea from '@alicloud/console-base-rc-input-textarea';
 
@@ -14,7 +17,7 @@ import {
   useDialog
 } from '../../model';
 
-interface IProps extends Omit<IPromptOptions, 'minLength'> {}
+interface IProps extends IPromptOptions {}
 
 const ScPromptContent = styled.div`
   padding-top: 24px;
@@ -22,13 +25,31 @@ const ScPromptContent = styled.div`
 const ScMessage = styled.div`
   margin-bottom: 8px;
 `;
+const ScLimitHint = styled.div`
+  font-size: 0.9em;
+  text-align: right;
+  ${mixinTextTertiary}
+`;
+
+function getLimitHint(minLength = 0, maxLength = 0): string {
+  if (minLength <= 0 && maxLength <= 0) {
+    return '';
+  }
+  
+  if (maxLength > 0) {
+    return `${minLength} - ${maxLength}`;
+  }
+  
+  return `≥ ${minLength}`;
+}
 
 /**
  * prompt dialog 的内容
  */
 export default function PromptContent({
   message,
-  maxLength = 1024,
+  minLength,
+  maxLength,
   placeholder,
   softTrim = true,
   asTextarea
@@ -39,6 +60,8 @@ export default function PromptContent({
   const handleChange = useCallback(value => updateData({
     value
   }), [updateData]);
+  
+  const limitHint = getLimitHint(minLength, maxLength);
   
   return <ScPromptContent>
     {message ? <ScMessage>{message}</ScMessage> : null}
@@ -54,5 +77,6 @@ export default function PromptContent({
       softTrim,
       onChange: handleChange
     }} />}
+    {limitHint ? <ScLimitHint>{limitHint}</ScLimitHint> : null}
   </ScPromptContent>;
 }

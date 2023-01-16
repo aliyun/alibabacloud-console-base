@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-types-data-error-diagnose",
-  "version": "0.4.4",
+  "name": "@alicloud/console-base-types-data-error-diagnosis",
+  "version": "1.0.0",
   "description": "ConsoleBase 类型 - 错误自助诊断数据层类型",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-data-error-diagnose",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-data-error-diagnosis",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
