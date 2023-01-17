@@ -9,7 +9,7 @@ export type {
   IDataErrorDiagnosis as DataErrorDiagnosis,
   IDataErrorDiagnosisSolutionFeedback as DataErrorDiagnosisSolutionFeedback
 } from './data';
-export {
+export type {
   IApiDataErrorDiagnosis as ApiDataErrorDiagnosis,
   IApiDataErrorDiagnosisSolutionFeedback as ApiDataErrorDiagnosisSolutionFeedback,
   IApiDataErrorDiagnosisSolutionFeedbackLike as ApiDataErrorDiagnosisSolutionFeedbackLike,

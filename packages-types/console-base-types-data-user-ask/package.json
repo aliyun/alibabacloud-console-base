@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-types-data-error-diagnosis",
-  "version": "1.0.1",
-  "description": "ConsoleBase 类型 - 错误诊断",
+  "name": "@alicloud/console-base-types-data-user-ask",
+  "version": "0.1.0",
+  "description": "ConsoleBase 类型 - 用户问（钉钉客联）",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-data-error-diagnosis",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-data-user-ask",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
