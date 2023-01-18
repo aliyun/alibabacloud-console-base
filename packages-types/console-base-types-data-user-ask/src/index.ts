@@ -3,7 +3,7 @@ export type {
 } from './common';
 export type {
   IDataUserAskCheckResult as DataUserAskCheckResult,
-  IDataUserAskSession as DataUserAskSessionCreateResult
+  IDataUserAskSession as DataUserAskSession
 } from './data';
 export type {
   IApiDataUserAskCheck as ApiDataUserAskCheck,
