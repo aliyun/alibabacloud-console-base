@@ -45,6 +45,7 @@ export default function DialogContent({
   const {
     title,
     error,
+    message,
     messageExtra,
     detailedMode = DETAILED_MODE
   } = queue[data.page - 1]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
@@ -53,7 +54,7 @@ export default function DialogContent({
     type: 'error',
     title,
     content: <>
-      <MessageTrusted message={error.message || error.code || 'n / a'} />
+      <MessageTrusted message={message || error.message || error.code || 'n / a'} />
       <MessageTrusted message={messageExtra} />
       <ScErrorInfo {...{
         foldable: true,

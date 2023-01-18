@@ -1,12 +1,14 @@
 import {
-  IDataUserAskCheckResult, IDataUserAskSessionCreateResult
+  IDataUserAskCheckResult,
+  IDataUserAskSessionCreateResult
 } from './data';
 
 /**
  * 条件检查以及获取一些前置数据
  */
 export interface IApiDataUserAskCheck {
-  (productId: string): Promise<IDataUserAskCheckResult>;
+  (productId: string): Promise<IDataUserAskCheckResult>
+  ;
 }
 
 /**
