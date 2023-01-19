@@ -5,7 +5,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import useControllableValue from '@alicloud/react-hook-controllable-value';
+import {
+  useControllable
+} from '@alicloud/react-hook-controllable';
 
 import {
   TInputNumberRef,
@@ -41,7 +43,7 @@ function InputNumber({
   onChange,
   ...props
 }: IInputNumberProps, ref: TInputNumberRef): JSX.Element {
-  const [controllableValue, controllableOnChange] = useControllableValue<number>(0, value, defaultValue, onChange);
+  const [controllableValue, controllableOnChange] = useControllable<number>(0, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     controllableOnChange(string2number(e.target.value));
   }, [controllableOnChange]);

@@ -19,11 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "react",
-    "rc",
-    "demo-only"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
@@ -41,7 +37,7 @@
   },
   "dependencies": {
     "@alicloud/rc-codemirror": "^1.4.3",
-    "@alicloud/react-hook-controllable-value": "^1.2.3",
+    "@alicloud/react-hook-controllable": "^1.0.1",
     "json5": "^2.2.3",
     "lodash": "^4.17.21"
   },

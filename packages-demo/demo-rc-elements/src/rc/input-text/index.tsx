@@ -8,8 +8,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  useControllableValueSoftTrim
-} from '@alicloud/react-hook-controllable-value';
+  useControllableSoftTrim
+} from '@alicloud/react-hook-controllable';
 
 import {
   TInputTextRef,
@@ -41,7 +41,7 @@ function InputText({
   onChange,
   ...props
 }: IInputTextProps, ref: TInputTextRef): JSX.Element {
-  const [controllableValue, controllableOnChange] = useControllableValueSoftTrim(true, value, defaultValue, onChange);
+  const [controllableValue, controllableOnChange] = useControllableSoftTrim(true, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     controllableOnChange(e.target.value);
   }, [controllableOnChange]);

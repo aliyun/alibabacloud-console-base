@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Icon from '@alicloud/console-base-rc-icon';
 import {
-  useControllableValueSoftTrim
-} from '@alicloud/react-hook-controllable-value';
+  useControllableSoftTrim
+} from '@alicloud/react-hook-controllable';
+import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   ModelProps
@@ -21,7 +21,7 @@ export default function SearchInput({
   onChange,
   ...props
 }: ModelProps): JSX.Element {
-  const [controllableValue, controllableOnChange] = useControllableValueSoftTrim(true, value, defaultValue, onChange);
+  const [controllableValue, controllableOnChange] = useControllableSoftTrim(true, value, defaultValue, onChange);
   
   return <Input {...{
     hasClear: true,

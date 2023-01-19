@@ -4,7 +4,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import useControllableValue from '@alicloud/react-hook-controllable-value';
+import {
+  useControllable
+} from '@alicloud/react-hook-controllable';
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
@@ -36,7 +38,7 @@ export default function ErrorInfo({
   onFoldedChange,
   ...props
 }: IErrorInfoProps): JSX.Element | null {
-  const [controllableFolded, setControllableFolded] = useControllableValue<boolean>(false, folded, defaultFolded, onFoldedChange);
+  const [controllableFolded, setControllableFolded] = useControllable<boolean>(false, folded, defaultFolded, onFoldedChange);
   const handleToggleFolded = useCallback(() => setControllableFolded(!controllableFolded), [controllableFolded, setControllableFolded]);
   const kvList: IErrorDetailKv[] = useMemo(() => convertErrorKvList(error, {
     detailedMode,

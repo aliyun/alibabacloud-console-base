@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import useControllableValue from '@alicloud/react-hook-controllable-value';
+import {
+  useControllable
+} from '@alicloud/react-hook-controllable';
 
 import {
   IPropsRating
@@ -36,7 +38,7 @@ export default function Rating({
   onChange,
   ...props
 }: IPropsRating): JSX.Element {
-  const [controllableValue] = useControllableValue<number>(0, value, defaultValue, onChange); // TODO setControllableValue 还没有用起来，也就是这个组件暂时只有展示功能，没有设置功能
+  const [controllableValue] = useControllable<number>(0, value, defaultValue, onChange); // TODO setControllableValue 还没有用起来，也就是这个组件暂时只有展示功能，没有设置功能
   
   return <ScRating role="group" {...props}>
     <RatingUnderlay />

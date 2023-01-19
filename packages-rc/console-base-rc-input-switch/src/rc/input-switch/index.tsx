@@ -10,7 +10,9 @@ import {
 import {
   ButtonBase
 } from '@alicloud/console-base-theme-sc-base';
-import useControllableValue from '@alicloud/react-hook-controllable-value';
+import {
+  useControllable
+} from '@alicloud/react-hook-controllable';
 
 import {
   IPropsInputSwitch
@@ -71,7 +73,7 @@ export default function InputSwitch({
   onChange,
   ...props
 }: IPropsInputSwitch): JSX.Element {
-  const [controllableValue, setControllableValue] = useControllableValue(false, value, defaultValue, onChange);
+  const [controllableValue, setControllableValue] = useControllable(false, value, defaultValue, onChange);
   const handleClick = useCallback(() => setControllableValue(!controllableValue), [controllableValue, setControllableValue]);
   
   return <ScInputSwitchWrap {...props}>

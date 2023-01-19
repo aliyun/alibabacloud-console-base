@@ -17,8 +17,8 @@ import {
   mixinInputBorderFocus
 } from '@alicloud/console-base-theme';
 import {
-  useControllableValueSoftTrim
-} from '@alicloud/react-hook-controllable-value';
+  useControllableSoftTrim
+} from '@alicloud/react-hook-controllable';
 
 import {
   IInputTextareaProps
@@ -58,7 +58,7 @@ export default function InputTextarea({
   onChange,
   ...props
 }: IInputTextareaProps): JSX.Element {
-  const [controllableValue, controllableOnChange] = useControllableValueSoftTrim(softTrim, value, defaultValue, onChange);
+  const [controllableValue, controllableOnChange] = useControllableSoftTrim(softTrim, value, defaultValue, onChange);
   const handleChange = useCallback((e: ChangeEvent<HTMLTextAreaElement>) => {
     controllableOnChange(e.target.value);
   }, [controllableOnChange]);

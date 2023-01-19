@@ -4,7 +4,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import useControllableValue from '@alicloud/react-hook-controllable-value';
+import {
+  useControllable
+} from '@alicloud/react-hook-controllable';
 
 import {
   TInputSwitchRef,
@@ -77,7 +79,7 @@ function InputSwitch({
   onChange,
   ...props
 }: IInputSwitchProps, ref: TInputSwitchRef): JSX.Element {
-  const [controllableValue, controllableOnChange] = useControllableValue<boolean>(false, value, defaultValue, onChange);
+  const [controllableValue, controllableOnChange] = useControllable<boolean>(false, value, defaultValue, onChange);
   const handleClick = useCallback(() => controllableOnChange(!controllableValue), [controllableValue, controllableOnChange]);
   
   return <ScInputSwitch>

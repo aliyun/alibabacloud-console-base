@@ -50,7 +50,7 @@ export interface IPropsTheDrop {
   dropContainer?: 'inside' | 'body';
 }
 
-export interface IModelProps extends IPropsTheDrop, HTMLAttributes<HTMLDivElement> {
+export interface IModelProps extends IPropsTheDrop, Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'defaultValue' | 'onChange'> {
   trigger: string | JSX.Element;
   block?: boolean; // 默认为 inline-block
   disabled?: boolean;
