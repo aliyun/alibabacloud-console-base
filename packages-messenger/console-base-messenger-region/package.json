@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger-region",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "ConsoleBase 信使 - Region",
   "license": "MIT",
   "sideEffects": false,
@@ -33,7 +33,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-base": "^1.4.8"
+    "@alicloud/console-base-messenger-base": "^1.4.9"
   },
   "scripts": {
     "start": "breezr start-storybook",

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-messenger-api-inspector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ConsoleBase 信使的组件封装 - ApiInspector",
   "license": "MIT",
   "sideEffects": false,
@@ -29,7 +29,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "@alicloud/console-base-messenger-api-inspector": "^1.0.1"
+    "@alicloud/console-base-messenger-api-inspector": "^1.0.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
