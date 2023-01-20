@@ -7,6 +7,10 @@ import {
  */
 export interface IDataUserDialogue {
   /**
+   * url 对应的问题分类 ID
+   */
+  categoryId: string;
+  /**
    * 对话 URL
    */
   url: string;
