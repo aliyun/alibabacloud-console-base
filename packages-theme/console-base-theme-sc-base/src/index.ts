@@ -7,3 +7,5 @@ export {
 export { default as ButtonBase } from './button';
 export { default as InputBase } from './input';
 export { default as ArticleBase } from './article';
+export { default as IframeBase } from './iframe';
+export { default as IframeBaseFull } from './iframe-full';

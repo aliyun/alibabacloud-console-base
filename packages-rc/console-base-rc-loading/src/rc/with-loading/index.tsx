@@ -4,8 +4,9 @@ import React, {
 } from 'react';
 
 import {
-  ELoadingStatus
-} from '../../enum';
+  LoadingStatus
+} from '@alicloud/console-base-helper-loading';
+
 import {
   IPropsWithLoading
 } from '../../types';
@@ -36,7 +37,7 @@ export default function WithLoading<T>({
       message: messageEmpty
     }} />;
   }, [messageEmpty]);
-  const handleRenderError = useCallback((err: Error | undefined): JSX.Element => {
+  const handleRenderError = useCallback((err: Error | null | undefined): JSX.Element => {
     if (renderError) { // 自定义 renderError 必须传入 error 对象
       return renderError(err, handleRenderErrorDefault);
     }
@@ -56,11 +57,11 @@ export default function WithLoading<T>({
   }, [data, isEmpty, renderLoaded, renderEmpty, handleRenderEmptyDefault]);
   
   switch (loading) {
-    case ELoadingStatus.IDLE:
+    case LoadingStatus.IDLE:
       return null;
-    case ELoadingStatus.ERROR:
+    case LoadingStatus.ERROR:
       return handleRenderError(error);
-    case ELoadingStatus.SUCCESS:
+    case LoadingStatus.SUCCESS:
       return handleRenderSuccess();
     default:
       return <Loading {...{

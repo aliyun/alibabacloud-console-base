@@ -4,12 +4,13 @@ import React, {
 } from 'react';
 
 import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
+import {
+  LoadingStatus,
+  DataWithLoading,
+  createDataWithLoading
+} from '@alicloud/console-base-helper-loading';
 
 import {
-  ELoadingStatus
-} from '../../enum';
-import {
-  IDataWithLoading,
   IPropsWithPromise
 } from '../../types';
 import WithLoading from '../with-loading';
@@ -19,7 +20,7 @@ export default function WithPromise<T>({
   ...props
 }: IPropsWithPromise<T>): JSX.Element | null {
   const isUnmounted = useIsUnmounted();
-  const [stateDwl, setStateDwl] = useState<IDataWithLoading<T | null> | null>(null);
+  const [stateDwl, setStateDwl] = useState<DataWithLoading<T> | null>(null);
   
   useEffect(() => {
     if (!promise) {
@@ -27,28 +28,22 @@ export default function WithPromise<T>({
       
       return;
     }
-    
-    setStateDwl({
-      loading: ELoadingStatus.LOADING,
-      data: null
-    });
+  
+    setStateDwl(createDataWithLoading<T>(null, LoadingStatus.LOADING));
     
     promise.then(result => {
       if (isUnmounted()) {
         return;
       }
       
-      setStateDwl({
-        loading: ELoadingStatus.SUCCESS,
-        data: result
-      });
+      setStateDwl(createDataWithLoading<T>(result, LoadingStatus.SUCCESS));
     }).catch(err => {
       if (isUnmounted()) {
         return;
       }
       
       setStateDwl({
-        loading: ELoadingStatus.ERROR,
+        loading: LoadingStatus.ERROR,
         data: null,
         error: err
       });

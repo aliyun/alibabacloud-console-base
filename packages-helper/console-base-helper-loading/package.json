@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-types-data-user-ask",
-  "version": "0.2.2",
-  "description": "ConsoleBase 类型 - 用户问（钉钉客联）",
+  "name": "@alicloud/console-base-helper-loading",
+  "version": "1.0.0",
+  "description": "ConsoleBase 组件 - Loading 辅助",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-data-user-ask",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-rc/console-base-helper-loading",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -38,6 +38,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
+  }
 }

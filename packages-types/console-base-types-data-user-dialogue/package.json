@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-base-rc-input",
-  "version": "1.6.8",
-  "description": "ConsoleBase 组件 - Input",
+  "name": "@alicloud/console-base-types-data-user-dialogue",
+  "version": "0.1.0",
+  "description": "ConsoleBase 类型 - 用户对话（钉钉客联）",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/es/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-rc/console-base-rc-input",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-types-data-user-dialogue",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -19,33 +19,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "rc",
-    "input"
-  ],
+  "keywords": [],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.8",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.11.1",
     "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
-    "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
-    "styled-components": "^5.3.6",
     "typescript": "^4.9.4"
-  },
-  "peerDependencies": {
-    "react": ">=16.8",
-    "styled-components": ">=5"
-  },
-  "dependencies": {
-    "@alicloud/console-base-rc-icon": "^1.9.9",
-    "@alicloud/console-base-theme": "^1.9.2",
-    "@alicloud/console-base-theme-sc-base": "^1.6.0",
-    "@alicloud/react-hook-controllable": "^1.0.2",
-    "immutability-helper": "^3.1.1"
   },
   "scripts": {
     "start": "breezr start-storybook",
@@ -58,5 +39,5 @@
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
-  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
+  "gitHead": "949d95efffd058fa53f6b9a29958a9190c21003d"
 }
