@@ -3,9 +3,9 @@ import {
 } from './common';
 
 /**
- * 对话对象
+ * 初始化对象
  */
-export interface IDataUserDialogue {
+export interface IDataUserDialogueInit {
   /**
    * url 对应的问题分类 ID
    */
@@ -15,17 +15,16 @@ export interface IDataUserDialogue {
    */
   url: string;
   /**
-   * 当前用户排队序号
+   * 当前用户排队序号，若大于 0 则 url 必为空
    */
   queueNumber: number;
-}
-
-/**
- * 检查用户问服务状态
- */
-export interface IDataUserDialogueCheck extends IDataUserDialogue {
   /**
    * 产品问题分类
    */
   categories: IUserDialogueCategory[];
 }
+
+/**
+ * 对话对象
+ */
+export interface IDataUserDialogue extends Omit<IDataUserDialogueInit, 'categories'> {}

@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-types-data-user-dialogue",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ConsoleBase 类型 - 用户对话（钉钉客联）",
   "license": "MIT",
   "sideEffects": false,

@@ -2,11 +2,11 @@ export type {
   IUserDialogueCategory as UserDialogueCategory
 } from './common';
 export type {
-  IDataUserDialogueCheck as DataUserDialogueCheck,
+  IDataUserDialogueInit as DataUserDialogueInit,
   IDataUserDialogue as DataUserDialogue
 } from './data';
 export type {
-  IApiDataUserDialogueCheck as ApiDataUserDialogueCheck,
+  IApiDataUserDialogueInit as ApiDataUserDialogueInit,
   IApiDataUserDialogueUnread as ApiDataUserDialogueUnread,
   IApiDataUserDialogue as ApiDataUserDialogue,
   IApiDataUserDialogueCancelQueue as ApiDataUserDialogueCancelQueue

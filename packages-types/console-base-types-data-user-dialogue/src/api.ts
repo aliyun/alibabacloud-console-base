@@ -1,13 +1,13 @@
 import {
-  IDataUserDialogueCheck,
+  IDataUserDialogueInit,
   IDataUserDialogue
 } from './data';
 
 /**
- * 条件检查以及获取一些前置数据
+ * 初始化 - 条件检查以及获取一些前置数据
  */
-export interface IApiDataUserDialogueCheck {
-  (productId: string): Promise<IDataUserDialogueCheck>;
+export interface IApiDataUserDialogueInit {
+  (productId: string): Promise<IDataUserDialogueInit>;
 }
 
 /**
