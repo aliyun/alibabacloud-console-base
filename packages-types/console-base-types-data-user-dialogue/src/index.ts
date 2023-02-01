@@ -1,13 +1,18 @@
+export {
+  EDialogueErrorCode as DialogueErrorCode
+} from './enum';
+
 export type {
-  IUserDialogueCategory as UserDialogueCategory
+  IDialogueCategory as DialogueCategory
 } from './common';
 export type {
-  IDataUserDialogueInit as DataUserDialogueInit,
-  IDataUserDialogue as DataUserDialogue
+  IDataDialogueInit as DataDialogueInit,
+  IDataDialogue as DataDialogue
 } from './data';
 export type {
-  IApiDataUserDialogueInit as ApiDataUserDialogueInit,
-  IApiDataUserDialogueUnread as ApiDataUserDialogueUnread,
-  IApiDataUserDialogue as ApiDataUserDialogue,
-  IApiDataUserDialogueCancelQueue as ApiDataUserDialogueCancelQueue
+  IApiDataDialogueInit as ApiDataDialogueInit,
+  IApiDataDialogueUnread as ApiDataDialogueUnread,
+  IApiDataDialogueStart as ApiDataDialogueStart,
+  IApiDataDialogue as ApiDataDialogue,
+  IApiDataDialogueCancel as ApiDataDialogueCancel
 } from './api';

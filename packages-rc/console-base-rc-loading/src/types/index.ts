@@ -11,7 +11,7 @@ interface IWithLoadingBase<T> {
   messageError?: string | JSX.Element;
   messageErrorRetry?: string | JSX.Element;
   messageEmpty?: string | JSX.Element;
-  retry?(): void;
+  retry?(times: number): void;
   isEmpty?(data: T): boolean;
   renderError?(err: Error | null | undefined, renderErrorDefault: () => JSX.Element): JSX.Element; // 如果 messageXx 等无法满足的情况，可以用它
   renderEmpty?(renderEmptyDefault: () => JSX.Element): JSX.Element; // 如果 messageXx 等无法满足的情况，可以用它
@@ -26,7 +26,7 @@ export interface IPropsLoading extends HTMLAttributes<HTMLDivElement> {
   inline?: boolean;
   status?: TStatus;
   align?: TAlign;
-  retry?(): void;
+  retry?(times: number): void;
 }
 
 export interface IPropsWithLoading<T> extends Partial<DataWithLoading<T>>, IWithLoadingBase<T> {}

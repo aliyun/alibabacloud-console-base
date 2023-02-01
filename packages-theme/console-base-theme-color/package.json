@@ -29,7 +29,7 @@
     "polished": "^4.2.2",
     "react": "^17.0.2",
     "styled-components": "^5.3.6",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "breezr start-storybook",

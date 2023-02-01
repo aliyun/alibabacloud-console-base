@@ -28,7 +28,7 @@
     "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   },
   "dependencies": {
     "@alicloud/sandbox-escape": "^1.1.7"

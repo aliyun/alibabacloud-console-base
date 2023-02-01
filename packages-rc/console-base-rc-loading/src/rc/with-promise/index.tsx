@@ -28,7 +28,7 @@ export default function WithPromise<T>({
       
       return;
     }
-  
+    
     setStateDwl(createDataWithLoading<T>(null, LoadingStatus.LOADING));
     
     promise.then(result => {
