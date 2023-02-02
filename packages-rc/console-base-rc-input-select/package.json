@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-input-select",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "ConsoleBase 组件 - InputSelect",
   "license": "MIT",
   "sideEffects": false,

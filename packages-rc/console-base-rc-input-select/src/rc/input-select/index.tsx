@@ -25,6 +25,7 @@ const ScPlaceholder = styled.span`
 `;
 
 export default function InputSelect<T = string>({
+  disabled,
   dataSource = [],
   placeholder = intl('phrase:placeholder'),
   value,
@@ -40,10 +41,12 @@ export default function InputSelect<T = string>({
   const label = dataSource.find(v => v.value === controllableValue)?.label ?? controllableValue;
   
   return <Dropdown {...{
+    disabled,
     ...props,
     block: true,
     width: '100%',
     trigger: <Button {...{
+      disabled,
       block: true,
       theme: ButtonTheme.SECONDARY_ALT,
       iconRight: 'angle-down',

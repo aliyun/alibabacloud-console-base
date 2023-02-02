@@ -9,6 +9,7 @@ export interface ISelectItem<T = string> {
 }
 
 export interface IInputSelectProps<T = string> extends Omit<HTMLAttributes<HTMLDivElement>, 'value' | 'defaultValue' | 'onChange'> {
+  disabled?: boolean;
   dataSource: ISelectItem<T>[];
   placeholder?: string;
   value?: T;
