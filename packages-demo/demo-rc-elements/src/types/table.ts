@@ -14,7 +14,7 @@ export interface ITableColumnWithDataIndex<T> extends ITableColumnBase {
 }
 
 export interface ITableColumnWithRenderCell<T> extends ITableColumnBase {
-  renderCell(o: T, index: number): JSX.Element | string | null | undefined;
+  renderCell(o: T, valueIndex: number): JSX.Element | string | null | undefined;
 }
 
 export type TTableColumnProps<T> = ITableColumnWithDataIndex<T> | ITableColumnWithRenderCell<T>;

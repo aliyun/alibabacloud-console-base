@@ -6,9 +6,9 @@ import {
   TTableColumnProps
 } from '../types';
 
-export default function renderTableCell<T>(o: T, index: number, columnProps: TTableColumnProps<T>): JSX.Element | string | null | undefined {
+export default function renderTableCell<T>(o: T, valueIndex: number, columnProps: TTableColumnProps<T>): JSX.Element | string | null | undefined {
   if ('renderCell' in columnProps) {
-    return columnProps.renderCell(o, index);
+    return columnProps.renderCell(o, valueIndex);
   }
   
   if ('dataIndex' in columnProps) {

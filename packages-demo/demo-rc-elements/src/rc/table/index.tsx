@@ -37,9 +37,9 @@ export default function Table<T>({
       </tr>
     </thead>
     <tbody>
-      {dataSource.map((o, i) => <tr key={getTableRowKey(o, i, primaryKey)}>
-        {firstColumnIndex ? <td align="right">{i + 1}</td> : null}
-        {columns.map((v, ii) => <td key={getTableColumnKey(v, ii)} align={v.align}>{renderTableCell(o, ii, v)}</td>)}
+      {dataSource.map((o, valueIndex) => <tr key={getTableRowKey(o, valueIndex, primaryKey)}>
+        {firstColumnIndex ? <td align="right">{valueIndex + 1}</td> : null}
+        {columns.map((v, columnIndex) => <td key={getTableColumnKey(v, columnIndex)} align={v.align}>{renderTableCell(o, valueIndex, v)}</td>)}
       </tr>)}
     </tbody>
   </ScTable>;

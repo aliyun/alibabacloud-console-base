@@ -30,7 +30,7 @@
     "@alicloud/console-base-messenger": "^1.16.9",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.11.2",
+    "@alicloud/demo-rc-elements": "^1.11.3",
     "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
