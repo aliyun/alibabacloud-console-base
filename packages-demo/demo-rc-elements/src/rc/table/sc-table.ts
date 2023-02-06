@@ -43,18 +43,24 @@ export default styled.table`
     text-align: left;
     color: inherit;
     
+    &[align=right] {
+      text-align: right;
+    }
+    
+    &[align=center] {
+      text-align: center;
+    }
+    
     .theme-dark & {
       border-color: ${COLOR_TABLE_DARK.BDC};
     }
     
     &:first-child {
       border-left-width: 0;
-      text-align: left;
     }
     
     &:last-child {
       border-right-width: 0;
-      text-align: left;
     }
   }
   
