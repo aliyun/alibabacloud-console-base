@@ -77,7 +77,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'app' = 'e603', // 应用（单个）
   'app-mobile' = 'e61b', // 手机应用（下载）
   'dingding' = 'e881', // 钉钉
-  'dingding-line' = 'e683', // 钉钉（线性图标）
+  'user-dialogue' = 'e670', // 在线技术咨询（钉钉客联）
   'drag' = 'e6e1', // 拖拽
   'empty' = 'e655', // 空
   'face-cry' = 'e7f8', // 哭脸
