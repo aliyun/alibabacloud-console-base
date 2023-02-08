@@ -15,7 +15,7 @@ import {
 import {
   TStringOrJsx,
   TDialogData,
-  TDialogAltIconType
+  TDialogAltIconType, IPromptOptions
 } from './common';
 
 /**
@@ -114,9 +114,7 @@ export interface IDialogPropsConfirm extends Omit<TDialogPropsForAlts<boolean>, 
   content: TStringOrJsx;
 }
 
-export interface IDialogPropsPrompt<D = TDialogData> extends TDialogPropsForAlts<string, D> {
-  title?: TStringOrJsx;
-}
+export interface IDialogPropsPrompt<D = TDialogData> extends TDialogPropsForAlts<string, D>, IPromptOptions {}
 
 export interface IDialogIndirectPromise<T = void, D = TDialogData> {
   renderUpdate(changedProps: Partial<IDialogProps<T, D>>): void;

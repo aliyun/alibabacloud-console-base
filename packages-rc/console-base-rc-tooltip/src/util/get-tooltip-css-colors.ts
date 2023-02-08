@@ -7,7 +7,7 @@ import {
   mixinBgPrimary,
   mixinBgAccent,
   mixinBgInverse,
-  mixinBorderTertiary,
+  mixinBorderSecondary,
   mixinTextSecondary,
   mixinTextWhite,
   mixinTextInverse
@@ -20,7 +20,7 @@ import {
 const CSS_COLORS_TOOLTIP = {
   [TooltipTheme.NORMAL]: css`
   ${mixinBgPrimary}
-  ${mixinBorderTertiary}
+  ${mixinBorderSecondary}
   ${mixinTextSecondary}
 `,
   [TooltipTheme.ACCENT]: css`
@@ -34,6 +34,6 @@ const CSS_COLORS_TOOLTIP = {
 `
 };
 
-export default function getTooltipCssColors(theme: TooltipTheme): FlattenSimpleInterpolation | null {
-  return CSS_COLORS_TOOLTIP[theme] || null;
+export default function getTooltipCssColors(theme: TooltipTheme): FlattenSimpleInterpolation {
+  return CSS_COLORS_TOOLTIP[theme];
 }

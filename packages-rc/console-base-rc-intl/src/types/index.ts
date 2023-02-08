@@ -7,13 +7,13 @@ export interface ILineGroup {
   items: string[];
 }
 
-export interface IPropsIntl {
+export interface IIntlProps {
   text: string;
   lines?: boolean;
   html?: boolean;
 }
 
-export interface IPropsLines {
+export interface ILinesProps {
   type: ETypeLine;
   items: string[];
   html?: boolean;

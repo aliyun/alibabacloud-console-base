@@ -26,7 +26,7 @@ export default function getCheckItems(featureConf: IFeatureItem, arg?: string | 
   }
   
   function pushItemByCustom(value: string, k: string): void {
-    const mixedList = convertCustomAttr(customAttrs[k]);
+    const mixedList = convertCustomAttr(customAttrs[k]!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
     
     if (mixedList) {
       pushItem(value, mixedList);

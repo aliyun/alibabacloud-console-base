@@ -109,7 +109,7 @@ export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItem
   });
   
   // '-' 去尾
-  if (itemsParsed[itemsParsed.length - 1].divider) {
+  if (itemsParsed[itemsParsed.length - 1]!.divider) { // eslint-disable-line @typescript-eslint/no-non-null-assertion
     itemsParsed.pop();
   }
   

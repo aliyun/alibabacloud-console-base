@@ -13,7 +13,7 @@ export default function normalizeProductId(possibleId: string): string {
   let productId = possibleId.toLowerCase().replace(/^pre-/, '');
   
   // 剔除后缀
-  [productId] = productId.split('-');
+  [productId] = productId.split('-') as [string];
   productId = productId.replace(/4\w+/, ''); // 4xx 后缀
   productId = productId.replace(/next$/, ''); // 升级 1
   

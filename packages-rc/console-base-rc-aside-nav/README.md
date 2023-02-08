@@ -1,4 +1,4 @@
-# @alicloud/console-base-rc-aside-menu
+# @alicloud/console-base-rc-aside-nav
 
 ## TODO
 
@@ -9,9 +9,9 @@
 ## Usage
 
 ```typescript
-import AsideMenu from '@alicloud/console-rc-aside-menu';
+import AsideNav from '@alicloud/console-rc-aside-nav';
 
-<AsideMenu {...{
+<AsideNav {...{
   title,
   items
 }} />

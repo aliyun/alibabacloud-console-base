@@ -8,6 +8,11 @@ import {
 
 export type TIconType = keyof typeof EIconType; // export in case that anyone wants type casting
 
+export interface IScPropsIcon {
+  $type: TIconType;
+  $rotate?: number;
+}
+
 export interface IPropsIconPure {
   type: TIconType;
   rotate?: number;

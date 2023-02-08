@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/markdownlint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shareable markdownlint configuration",
   "license": "MIT",
   "main": "index.yml",
@@ -18,7 +18,7 @@
   },
   "keywords": [],
   "devDependencies": {
-    "markdownlint-cli2": "^0.5.1"
+    "markdownlint-cli2": "^0.6.0"
   },
   "peerDependencies": {
     "markdownlint-cli2": ">=0"

@@ -13,6 +13,10 @@ export interface IPropsCustom {
   theme?: ETooltipTheme;
   placement?: ETooltipPlacement;
   arrow?: boolean;
+  /**
+   * 可在非居中 placement 的时候对箭头进行位置调整
+   */
+  arrowOffset?: number;
   visible?: boolean;
   defaultVisible?: boolean;
   /**

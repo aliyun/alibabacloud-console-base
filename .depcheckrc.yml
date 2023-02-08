@@ -1,0 +1,10 @@
+ignores: [
+  "@storybook/*",
+  "@commitlint/*",
+  "@alicloud/*-config",
+  "markdownlint-cli2",
+  "ts-node"
+]
+ignorePatterns: [
+  "build"
+]

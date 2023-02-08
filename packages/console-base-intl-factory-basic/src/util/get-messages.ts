@@ -23,8 +23,8 @@ export default function getMessages<T>(messagesMap: TIntlMessagesMap<T>, locale:
     
     return result;
   }, {});
-  const messages: T = theMessageMap[_kebabCase(locale)];
-  const messagesDefault: T = theMessageMap[_kebabCase(localeDefault)];
+  const messages: T = theMessageMap[_kebabCase(locale)]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  const messagesDefault: T = theMessageMap[_kebabCase(localeDefault)]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
   
   return messages && messages === messagesDefault ? messages : {
     ...messagesDefault,

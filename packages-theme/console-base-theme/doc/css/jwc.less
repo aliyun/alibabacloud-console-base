@@ -1,0 +1,142 @@
+html { // inline style on <html> when theme is light
+  --color-text: hsl(222, 22%, 5%);
+  --color-background: hsl(0, 0%, 100%);
+  --color-blurred-background: hsla(0, 0%, 100%, 0.85);
+  --color-primary: hsl(245, 100%, 60%);
+  --color-secondary: hsl(333, 100%, 45%);
+  --color-tertiary: hsl(255, 85%, 30%);
+  --color-decorative: hsl(200, 75%, 65%);
+  --color-muted: hsl(210, 55%, 92%);
+  --color-muted-background: hsla(210, 55%, 92%, 0.85);
+  --color-info: hsl(245, 100%, 60%);
+  --color-success: hsl(160, 100%, 40%);
+  --color-success-background: hsla(160, 100%, 40%, 0.1);
+  --color-error: hsl(340, 95%, 50%);
+  --color-error-background: hsla(340, 95%, 43%, 0.1);
+  --color-alert: hsl(37, 100%, 50%);
+  --color-alert-background: hsla(52, 100%, 50%, 0.25);
+  --color-venn-0: hsl(190, 100%, 65%);
+  --color-venn-1: hsl(340, 100%, 65%);
+  --color-gray-100: hsl(225, 25%, 95%);
+  --color-gray-200: hsl(225, 16%, 90%);
+  --color-gray-300: hsl(225, 8%, 80%);
+  --color-gray-400: hsl(225, 8%, 70%);
+  --color-gray-500: hsl(225, 7%, 60%);
+  --color-gray-600: hsl(225, 15%, 50%);
+  --color-gray-700: hsl(225, 12%, 40%);
+  --color-gray-900: hsl(225, 25%, 20%);
+  --color-gray-1000: hsl(225, 15%, 15%);
+  --color-subtle-background: hsl(225, 25%, 95%);
+  --color-subtle-floating: hsl(0, 0%, 100%);
+  --color-homepage-light: hsl(204, 67%, 85%);
+  --color-homepage-dark: hsl(202, 71%, 90%);
+  --color-homepage-bg: hsl(204, 67%, 85%);
+  --syntax-bg: hsl(225, 25%, 97%);
+  --syntax-highlight: hsl(225, 25%, 93%);
+  --syntax-txt: #2a2a2a;
+  --syntax-comment: #467790;
+  --syntax-prop: #da0079;
+  --syntax-bool: #bf00b8;
+  --syntax-val: #78909c;
+  --syntax-str: #651fff;
+  --syntax-name: #a0f;
+  --syntax-del: rgb(255, 85, 85);
+  --syntax-regex: #3600d6;
+  --syntax-fn: #3d5afe;
+  --prefers-dark: false;
+  --scrollbar-width: 0px;
+}
+
+html { // inline style on <html> when theme is dark
+  --color-text: hsl(0, 0%, 100%);
+  --color-background: hsl(210, 30%, 8%);
+  --color-blurred-background: hsla(210, 30%, 8%, 0.85);
+  --color-primary: hsl(333, 100%, 52%);
+  --color-secondary: hsl(230, 100%, 67%);
+  --color-tertiary: hsl(53, 100%, 50%);
+  --color-decorative: hsl(200, 50%, 60%);
+  --color-muted: hsl(210, 38%, 15%);
+  --color-muted-background: hsla(210, 38%, 15%, 0.85);
+  --color-info: hsl(230, 100%, 67%);
+  --color-success: hsl(160, 100%, 40%);
+  --color-success-background: hsla(160, 100%, 40%, 0.1);
+  --color-error: hsl(340, 95%, 60%);
+  --color-error-background: hsla(340, 95%, 43%, 0.1);
+  --color-alert: hsl(30, 100%, 50%);
+  --color-alert-background: hsla(38, 100%, 50%, 0.1);
+  --color-venn-0: hsl(250, 100%, 50%);
+  --color-venn-1: hsl(175, 100%, 50%);
+  --color-gray-100: hsl(210, 15%, 20%);
+  --color-gray-200: hsl(210, 15%, 25%);
+  --color-gray-300: hsl(210, 10%, 40%);
+  --color-gray-400: hsl(210, 9%, 45%);
+  --color-gray-500: hsl(210, 8%, 50%);
+  --color-gray-600: hsl(210, 12%, 55%);
+  --color-gray-700: hsl(210, 14%, 66%);
+  --color-gray-900: hsl(210, 25%, 88%);
+  --color-gray-1000: hsl(210, 25%, 96%);
+  --color-subtle-background: hsl(210, 30%, 8%);
+  --color-subtle-floating: hsl(210, 22%, 15%);
+  --color-homepage-light: hsla(200, 100%, 85%, 0);
+  --color-homepage-dark: hsla(200, 100%, 85%, 0.1);
+  --color-homepage-bg: hsl(210, 30%, 8%);
+  --syntax-bg: hsl(210, 30%, 12%);
+  --syntax-highlight: hsl(210, 30%, 18%);
+  --syntax-txt: #fff;
+  --syntax-comment: #6c8998;
+  --syntax-prop: #ff39a8;
+  --syntax-bool: #ffd600;
+  --syntax-val: #61747d;
+  --syntax-str: rgb(155, 109, 255);
+  --syntax-name: #c653ff;
+  --syntax-del: #f55;
+  --syntax-regex: #ffd700;
+  --syntax-fn: rgb(0, 190, 255);
+  --prefers-dark: true;
+  --scrollbar-width: 0px;
+}
+
+:root { // inline style
+  --font-weight-bold: 500;
+  --font-weight-medium: 400;
+  --font-weight-light: 300;
+  --font-family: 'Wotfard', Futura, -apple-system, sans-serif;
+  --font-family-mono: 'League Mono', 'Fira Mono', monospace;
+  --reach-dialog: 1;
+}
+
+:root {
+  --reach-tabs: 1;
+}
+
+html { // tag selector
+  --color-text: hsl(222, 22%, 5%);
+  --color-background: hsl(0, 0%, 100%);
+  --color-blurred-background: hsla(0, 0%, 100%, 0.85);
+  --color-primary: hsl(245, 100%, 60%);
+  --color-secondary: hsl(333, 100%, 45%);
+  --color-tertiary: hsl(255, 85%, 30%);
+  --color-decorative: hsl(200, 75%, 65%);
+  --color-muted: hsl(210, 55%, 92%);
+  --color-info: hsl(245, 100%, 60%);
+  --color-success: hsl(160, 100%, 40%);
+  --color-success-background: hsla(160, 100%, 40%, 0.1);
+  --color-error: hsl(340, 95%, 50%);
+  --color-error-background: hsla(340, 95%, 43%, 0.1);
+  --color-alert: hsl(37, 100%, 50%);
+  --color-alert-background: hsla(52, 100%, 50%, 0.25);
+  --color-subtle-background: hsl(225, 25%, 95%);
+  --color-subtle-floating: hsl(0, 0%, 100%);
+  --color-homepage-light: hsl(204, 67%, 85%);
+  --color-homepage-dark: hsl(202, 71%, 90%);
+  --color-homepage-bg: hsl(204, 67%, 85%);
+  --color-gray-100: hsl(225, 25%, 95%);
+  --color-gray-200: hsl(225, 16%, 90%);
+  --color-gray-300: hsl(225, 8%, 80%);
+  --color-gray-400: hsl(225, 8%, 70%);
+  --color-gray-500: hsl(225, 7%, 60%);
+  --color-gray-600: hsl(225, 15%, 50%);
+  --color-gray-700: hsl(225, 12%, 40%);
+  --color-gray-900: hsl(225, 25%, 20%);
+  --color-gray-1000: hsl(225, 15%, 15%);
+}

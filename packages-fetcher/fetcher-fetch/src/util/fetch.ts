@@ -1,6 +1,10 @@
 import unfetch from 'unfetch';
 
 import {
+  getWindow
+} from '@alicloud/sandbox-escape';
+
+import {
   IFetchOptions
 } from '../types';
 import {
@@ -38,7 +42,8 @@ export default function(url: string, {
   timeout = 0,
   ...fetchOptions
 }: IFetchOptions = {}): Promise<Response> {
-  const fetch = window.fetch || unfetch as unknown as WindowOrWorkerGlobalScope['fetch'];
+  // 使用 iframe about:blank 做 sandbox 的时候会有这种情况，需要用顶层 fetch，否则 referrer 会是空
+  const fetch = getWindow().fetch || unfetch as unknown as WindowOrWorkerGlobalScope['fetch']; // eslint-disable-line @typescript-eslint/no-unnecessary-condition
   const promise = fetch(url, fetchOptions as RequestInit).catch(err => {
     // https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
     // https://javascript.info/fetch-abort

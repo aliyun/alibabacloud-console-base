@@ -13,11 +13,12 @@ import ButtonIconWrapper from '../../rc/button-icon-wrapper';
 export default function ButtonIconLeft(): JSX.Element | null {
   const {
     loading,
-    iconLeft,
     iconSpacing,
+    iconLeft,
+    iconLeftRotate,
     classNameForIconLeft
   } = usePropsCustom();
-  const jsxIcon = loading ? <Icon type="loading" /> : renderIcon(iconLeft);
+  const jsxIcon = loading ? <Icon type="loading" /> : renderIcon(iconLeft, iconLeftRotate);
   
   return jsxIcon ? <ButtonIconWrapper {...{
     className: classNameForIconLeft,

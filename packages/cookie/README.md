@@ -49,3 +49,272 @@ function deleteCookie(name: string, extra: {
   path?: string;
 } = {}): void;
 ```
+
+## SameSite + Secure 以及 HTTPS 和 Iframe 的影响
+
+以下条件下：
+
+* 协议
+  + `http://`
+  + `https://`
+* iframe
+  + 无
+  + 不跨域
+  + 跨子域
+  + 跨全域
+
+SameSite 和 Secure 各值：
+
+* SameSite
+  + undefined
+  + Lax
+  + Strict
+  + None
+* Secure
+  + true
+  + false
+
+在各个浏览器：
+
+* 浏览器
+  + Firefox
+  + Chrome
+  + Safari
+
+下对 set cookie 的影响。
+
+### 测试脚本
+
+注意，在 Iframe 下，需通过浏览器的 Console 切换到对应的 Iframe 上下文。
+
+```javascript
+(() => {
+  function setCookie(name, value, {
+    path = '/',
+    sameSite,
+    secure
+  } = {}) {
+    const parts = [
+      `${name}=${encodeURIComponent(value)}`,
+      // `domain=${domain}`,
+      `path=${path}`
+    ];
+    
+    if (sameSite !== undefined) {
+      parts.push(`sameSite=${sameSite}`);
+    }
+    
+    if (secure !== undefined) {
+      parts.push(`secure=${secure}`);
+    }
+    
+    document.cookie = parts.join('; ');
+  }
+  
+  function getCookie(name) {
+    return document.cookie.split(/\s*;\s*/).reduce((result, v) => {
+      const [cookieName, cookieValue] = v.split('=');
+      
+      try {
+        result[cookieName] = decodeURIComponent(cookieValue);
+      } catch (err) {
+      }
+      
+      return result;
+    }, {})[name];
+  }
+  
+  const TIME = Date.now();
+  
+  const ITEMS = [undefined, 'Lax', 'Strict', 'None'].reduce((result, sameSite) => {
+    [undefined, true, false].forEach(secure => {
+      const name = `TEST_SameSite_${sameSite}__Secure_${secure}`;
+      const value = `${sameSite}_${secure}_${TIME}`;
+      
+      setCookie(name, value, {
+        sameSite,
+        secure
+      });
+      
+      const valueGet = getCookie(name);
+      
+      result.push({
+        name,
+        value,
+        valueGet,
+        sameSite,
+        secure,
+        result: valueGet === value ? '✅' : '❌'
+      });
+    });
+    
+    return result;
+  }, []);
+  
+  console.table(ITEMS, ['sameSite', 'secure', 'result']);
+})();
+```
+
+### HTTP 非 Iframe
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ✅      | ✅      |
+| `undefined`  | `true`      | ❌       | ❌      | ❌      |
+| `undefined`  | `false`     | ❌       | ❌      | ❌      |
+| Lax          | `undefined` | ✅       | ✅      | ✅      |
+| Lax          | `true`      | ❌       | ❌      | ❌      |
+| Lax          | `false`     | ❌       | ❌      | ❌      |
+| Strict       | `undefined` | ✅       | ✅      | ✅      |
+| Strict       | `true`      | ❌       | ❌      | ❌      |
+| Strict       | `false`     | ❌       | ❌      | ❌      |
+| None         | `undefined` | ❌       | ❌      | ✅      |
+| None         | `true`      | ❌       | ❌      | ❌      |
+| None         | `false`     | ❌       | ❌      | ❌      |
+
+### HTTP Iframe 不跨域
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ✅      | ✅      |
+| `undefined`  | `true`      | ❌       | ❌      | ❌      |
+| `undefined`  | `false`     | ❌       | ❌      | ❌      |
+| Lax          | `undefined` | ✅       | ✅      | ✅      |
+| Lax          | `true`      | ❌       | ❌      | ❌      |
+| Lax          | `false`     | ❌       | ❌      | ❌      |
+| Strict       | `undefined` | ✅       | ✅      | ✅      |
+| Strict       | `true`      | ❌       | ❌      | ❌      |
+| Strict       | `false`     | ❌       | ❌      | ❌      |
+| None         | `undefined` | ❌       | ❌      | ✅      |
+| None         | `true`      | ❌       | ❌      | ❌      |
+| None         | `false`     | ❌       | ❌      | ❌      |
+
+### HTTP（Iframe 跨子域）
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ✅      | ✅      |
+| `undefined`  | `true`      | ❌       | ❌      | ❌      |
+| `undefined`  | `false`     | ❌       | ❌      | ❌      |
+| Lax          | `undefined` | ✅       | ✅      | ✅      |
+| Lax          | `true`      | ❌       | ❌      | ❌      |
+| Lax          | `false`     | ❌       | ❌      | ❌      |
+| Strict       | `undefined` | ✅       | ✅      | ✅      |
+| Strict       | `true`      | ❌       | ❌      | ❌      |
+| Strict       | `false`     | ❌       | ❌      | ❌      |
+| None         | `undefined` | ❌       | ❌      | ✅      |
+| None         | `true`      | ❌       | ❌      | ❌      |
+| None         | `false`     | ❌       | ❌      | ❌      |
+
+### HTTP（Iframe 跨全域）
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ❌       | ❌      | ❌      |
+| `undefined`  | `true`      | ❌       | ❌      | ❌      |
+| `undefined`  | `false`     | ❌       | ❌      | ❌      |
+| Lax          | `undefined` | ❌       | ❌      | ❌      |
+| Lax          | `true`      | ❌       | ❌      | ❌      |
+| Lax          | `false`     | ❌       | ❌      | ❌      |
+| Strict       | `undefined` | ❌       | ❌      | ❌      |
+| Strict       | `true`      | ❌       | ❌      | ❌      |
+| Strict       | `false`     | ❌       | ❌      | ❌      |
+| None         | `undefined` | ❌       | ❌      | ❌      |
+| None         | `true`      | ❌       | ❌      | ❌      |
+| None         | `false`     | ❌       | ❌      | ❌      |
+
+### HTTPS 非 Iframe
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ✅      | ✅      |
+| `undefined`  | `true`      | ✅       | ✅      | ✅      |
+| `undefined`  | `false`     | ✅       | ✅      | ✅      |
+| Lax          | `undefined` | ✅       | ✅      | ✅      |
+| Lax          | `true`      | ✅       | ✅      | ✅      |
+| Lax          | `false`     | ✅       | ✅      | ✅      |
+| Strict       | `undefined` | ✅       | ✅      | ✅      |
+| Strict       | `true`      | ✅       | ✅      | ✅      |
+| Strict       | `false`     | ✅       | ✅      | ✅      |
+| None         | `undefined` | ❌       | ❌      | ✅      |
+| None         | `true`      | ✅       | ✅      | ✅      |
+| None         | `false`     | ✅       | ✅      | ✅      |
+
+### HTTPS 在 Iframe 下（不跨域）
+
+`a.com` 页面通过 Iframe 内嵌 `a.com` 页面，在内层 `a.com` 页面上进行测试。
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ✅      | ✅      |
+| `undefined`  | `true`      | ✅       | ✅      | ✅      |
+| `undefined`  | `false`     | ✅       | ✅      | ✅      |
+| Lax          | `undefined` | ✅       | ✅      | ✅      |
+| Lax          | `true`      | ✅       | ✅      | ✅      |
+| Lax          | `false`     | ✅       | ✅      | ✅      |
+| Strict       | `undefined` | ✅       | ✅      | ✅      |
+| Strict       | `true`      | ✅       | ✅      | ✅      |
+| Strict       | `false`     | ✅       | ✅      | ✅      |
+| None         | `undefined` | ❌       | ❌      | ✅      |
+| None         | `true`      | ✅       | ✅      | ✅      |
+| None         | `false`     | ✅       | ✅      | ✅      |
+
+### HTTPS 在 Iframe 下（跨子域）
+
+`xx.a.com` 页面通过 Iframe 内嵌 `yy.a.com` 页面，在 `yy.a.com` 页面上进行测试。
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ❌      | ✅      |
+| `undefined`  | `true`      | ✅       | ❌      | ✅      |
+| `undefined`  | `false`     | ✅       | ❌      | ✅      |
+| Lax          | `undefined` | ❌       | ❌      | ✅      |
+| Lax          | `true`      | ❌       | ❌      | ✅      |
+| Lax          | `false`     | ❌       | ❌      | ✅      |
+| Strict       | `undefined` | ❌       | ❌      | ✅      |
+| Strict       | `true`      | ❌       | ❌      | ✅      |
+| Strict       | `false`     | ❌       | ❌      | ✅      |
+| None         | `undefined` | ❌       | ❌      | ✅      |
+| None         | `true`      | ✅       | ✅      | ✅      |
+| None         | `false`     | ✅       | ✅      | ✅      |
+
+### HTTPS 在 Iframe 下（跨全域）
+
+`a.com` 页面通过 Iframe 内嵌 `b.com` 页面，在 `b.com` 页面上进行测试。
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ❌      | ❌      |
+| `undefined`  | `true`      | ✅       | ❌      | ❌      |
+| `undefined`  | `false`     | ✅       | ❌      | ❌      |
+| Lax          | `undefined` | ❌       | ❌      | ❌      |
+| Lax          | `true`      | ❌       | ❌      | ❌      |
+| Lax          | `false`     | ❌       | ❌      | ❌      |
+| Strict       | `undefined` | ❌       | ❌      | ❌      |
+| Strict       | `true`      | ❌       | ❌      | ❌      |
+| Strict       | `false`     | ❌       | ❌      | ❌      |
+| None         | `undefined` | ❌       | ❌      | ❌      |
+| None         | `true`      | ✅       | ✅      | ❌      |
+| None         | `false`     | ✅       | ✅      | ❌      |
+
+## 总结
+
+HTTP 下，非 Iframe、Iframe 不跨域、Iframe 跨子域（跨全域都不行）成功的测试用例：
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| `undefined`  | `undefined` | ✅       | ✅      | ✅      |
+| Lax          | `undefined` | ✅       | ✅      | ✅      |
+| Strict       | `undefined` | ✅       | ✅      | ✅      |
+
+HTTPS 下，非 Iframe、Iframe 不跨域、Iframe 跨子域、Iframe 跨全域（Safari 都不行）成功的测试用例：
+
+| SameSite     | Secure      | Firefox | Chrome | Safari |
+|--------------|-------------|---------|--------|--------|
+| None         | `true`      | ✅       | ✅      | ✅      |
+| None         | `false`     | ✅       | ✅      | ✅      |
+
+默认逻辑：
+
+1. 若 HTTP，则 `SameSite` 和 `secure` 不设置
+2. 若 HTTPS，则 `sameSite=None; secure=true`（前提是使用者不设置 `sameSite` 和 `secure`）

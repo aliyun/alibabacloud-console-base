@@ -1,2 +1,1 @@
-export { default as removeSecParamsFromBody } from './remove-sec-params-from-body';
-export { default as shouldIgnoreError } from './should-ignore-error';
+export { default as buildSlsInfo } from './build-sls-info';

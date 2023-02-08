@@ -13,12 +13,12 @@ import {
   EIconType
 } from '../enum';
 import {
-  IPropsIconPure,
+  IScPropsIcon,
   IPropsIcon
 } from '../types';
 
-function getCode(props: IPropsIconPure): string {
-  const code = EIconType[props.type];
+function getCode(props: IScPropsIcon): string {
+  const code = EIconType[props.$type];
   
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   return code ? `\\${code}` : '';
@@ -43,21 +43,21 @@ const cssLoading = css`
   animation: ${kfRotate} 1s linear infinite;
 `;
 
-const cssRotate = css<IPropsIconPure>`
+const cssRotate = css<IScPropsIcon>`
   ${props => {
-    if (props.type === 'loading') {
+    if (props.$type === 'loading') {
       return cssLoading;
     }
     
-    if (typeof props.rotate === 'number' && props.rotate > 0) {
+    if (typeof props.$rotate === 'number' && props.$rotate > 0) {
       return css`
-        transform: rotate(${props.rotate}deg);
+        transform: rotate(${props.$rotate}deg);
       `;
     }
   }}
 `;
 
-const ScIcon = styled(IconBase)<IPropsIconPure>`
+const ScIcon = styled(IconBase)<IScPropsIcon>`
   font-family: ${fontFamily} !important;
   
   &:before {
@@ -69,6 +69,14 @@ const ScIcon = styled(IconBase)<IPropsIconPure>`
 /**
  * ConsoleBase 项目自用的图标组件
  */
-export default function Icon(props: IPropsIcon): JSX.Element {
-  return <ScIcon {...props} />;
+export default function Icon({
+  type,
+  rotate,
+  ...props
+}: IPropsIcon): JSX.Element {
+  return <ScIcon {...{
+    $type: type,
+    $rotate: rotate,
+    ...props
+  }} />;
 }

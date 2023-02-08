@@ -8,12 +8,14 @@ import {
   mixinTypoElementsInline,
   mixinTypoElementsList
 } from '@alicloud/console-base-theme';
+import HtmlTrusted from '@alicloud/console-base-rc-html-trusted';
 
 import {
-  IPropsIntl
+  IIntlProps
 } from '../types';
-import makeHtmlProps from '../util/make-html-props';
-import parseLines from '../util/parse-lines';
+import {
+  parseLines
+} from '../util';
 
 import Lines from './lines';
 
@@ -44,13 +46,8 @@ const cssBlockElements = css`
   }
 `;
 
-const ScSpan = styled.span`
-  ${mixinTypoElementsInline}
-`;
-
 const ScDiv = styled.div`
   line-height: 1.6;
-  
   ${mixinTypoElementsInline}
   ${mixinTypoElementsList}
   ${cssBlockElements}
@@ -60,9 +57,9 @@ export default function Intl({
   text,
   html,
   lines
-}: IPropsIntl): JSX.Element {
+}: IIntlProps): JSX.Element {
   if (!lines) {
-    return html ? <ScSpan {...makeHtmlProps(text)} /> : <ScSpan>{text}</ScSpan>;
+    return html ? <HtmlTrusted text={text} /> : <span>{text}</span>;
   }
   
   return <ScDiv>

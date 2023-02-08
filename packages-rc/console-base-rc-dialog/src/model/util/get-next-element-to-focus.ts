@@ -17,7 +17,7 @@ export default function getNextElementToFocus(domDialog: HTMLDivElement, domDial
     focusableElements = findFocusable(domDialogContent, true);
     
     if (focusableElements.length) {
-      return focusableElements[0];
+      return focusableElements[0]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
     }
     
     // 如果内容区没有可 focus 的元素，再获取整体的
@@ -44,5 +44,5 @@ export default function getNextElementToFocus(domDialog: HTMLDivElement, domDial
     index = 0;
   }
   
-  return focusableElements[index];
+  return focusableElements[index]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 }

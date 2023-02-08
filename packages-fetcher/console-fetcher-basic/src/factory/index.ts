@@ -27,7 +27,7 @@ import {
   createApiWithProduct
 } from '../util';
 
-export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> => {
+export default function factory<C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?: C, interceptorOptions: IConsoleFetcherInterceptorOptions = {}): IConsoleFetcher<C> {
   const {
     slsConfig,
     armsConfig
@@ -47,9 +47,7 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
     interceptSls(fetcher, slsConfig);
   }
   
-  const callMultiOpenApi = createApi(fetcher, ETypeApi.OPEN_MULTI);
-  const callOpenApi0 = createApi(fetcher, ETypeApi.OPEN);
-  const callOpenApi = createApiAutoMulti(callOpenApi0, callMultiOpenApi);
+  const callOpenApi = createApiAutoMulti(createApi(fetcher, ETypeApi.OPEN), createApi(fetcher, ETypeApi.OPEN_MULTI));
   const callInnerApi = createApi(fetcher, ETypeApi.INNER);
   const callContainerApi = createApi(fetcher, ETypeApi.CONTAINER);
   
@@ -68,9 +66,12 @@ export default <C extends IConsoleFetcherConfig = IConsoleFetcherConfig>(config?
     callOpenApi,
     callInnerApi,
     callContainerApi,
-    callMultiOpenApi,
+    /**
+     * @deprecated
+     */
+    callMultiOpenApi: createApi(fetcher, ETypeApi.OPEN_MULTI_LEGACY),
     createCallOpenApiWithProduct,
     createCallInnerApiWithProduct,
     createCallContainerApiWithProduct
   };
-};
+}

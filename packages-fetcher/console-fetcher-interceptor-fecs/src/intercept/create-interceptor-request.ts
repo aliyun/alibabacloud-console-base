@@ -1,3 +1,6 @@
+import {
+  getWindow
+} from '@alicloud/sandbox-escape';
 import ONE_CONF from '@alicloud/console-one-config';
 import CONF_ENV from '@alicloud/console-base-conf-env';
 import {
@@ -15,7 +18,7 @@ import {
 
 // FECS 仅支持 .aliyun.com 或其对应日常
 const FECS_COMPATIBLE: boolean = (() => {
-  const arr1 = location.hostname.split('.');
+  const arr1 = getWindow().location.hostname.split('.');
   const arr2 = CONF_ENV.FECS_HOST.split('.');
   
   return arr1[arr1.length - 2] === arr2[arr2.length - 2] && arr1[arr1.length - 1] === arr2[arr2.length - 1];

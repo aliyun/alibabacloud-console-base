@@ -6,8 +6,8 @@ import {
 
 function btoaPolyfill(b: string): string {
   return b.replace(REG_BTOA, ccc => {
-    const padLen = [0, 2, 1][ccc.length % 3];
-    const ord = (ccc.charCodeAt(0) << 16) | ((ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8) | ((ccc.length > 2 ? ccc.charCodeAt(2) : 0));
+    const padLen = [0, 2, 1][ccc.length % 3]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+    const ord = (ccc.charCodeAt(0) << 16) | ((ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8) | (ccc.length > 2 ? ccc.charCodeAt(2) : 0);
     
     return [
       CHARS.charAt(ord >>> 18),

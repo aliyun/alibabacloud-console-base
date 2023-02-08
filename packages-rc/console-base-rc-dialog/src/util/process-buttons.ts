@@ -52,7 +52,7 @@ export default function processButtons<R = void, D = TDialogData>(buttons: TDial
   
   // 对于多于 2 个按钮的，第一个自动为 primary
   if (!hasPrimary && buttonAttr.length > 1) {
-    buttonAttr[0].primary = true;
+    buttonAttr[0]!.primary = true; // eslint-disable-line @typescript-eslint/no-non-null-assertion
   }
   
   if (locked !== EDialogLockState.NO) {

@@ -18,7 +18,7 @@ export default function getConsoleBaseVersions(): [string[], string[]] {
   const consoleBaseVersions = [];
   
   for (let i = 0; i < allScripts.length; i++) {
-    const scriptSrc = allScripts[i].src;
+    const scriptSrc = allScripts[i]!.src; // eslint-disable-line @typescript-eslint/no-non-null-assertion
     
     if (REG_LOADER_OLD.test(scriptSrc)) {
       loaderVersions.push(RegExp.$1);

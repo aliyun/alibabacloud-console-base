@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+  useState,
+  useCallback
+} from 'react';
 import styled, {
   css
 } from 'styled-components';
@@ -70,6 +73,13 @@ export default function Loading({
   retry,
   ...props
 }: IPropsLoading): JSX.Element {
+  const [timesOfRetry, setStateTimesOfRetry] = useState(0);
+  const handleRetry = useCallback(() => {
+    const times = timesOfRetry + 1;
+    
+    retry?.(times);
+    setStateTimesOfRetry(times);
+  }, [retry, timesOfRetry, setStateTimesOfRetry]);
   let jsxIcon: JSX.Element;
   let jsxMessage: string | JSX.Element;
   
@@ -84,7 +94,7 @@ export default function Loading({
       jsxMessage = message ?? intl(retry ? 'message:failed_retry' : 'message:failed');
       
       if (retry) {
-        jsxMessage = <ScButtonRetry onClick={retry}>{jsxMessage}</ScButtonRetry>;
+        jsxMessage = <ScButtonRetry onClick={handleRetry}>{jsxMessage}</ScButtonRetry>;
       }
       
       break;

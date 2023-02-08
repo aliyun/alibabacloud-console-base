@@ -1,0 +1,59 @@
+{
+  "name": "@alicloud/console-base-demo-helper-error-prompt",
+  "version": "1.4.9",
+  "description": "ConsoleBase Demo Helper for Error Prompt",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "build/cjs/index.js",
+  "module": "build/es/index.js",
+  "types": "build/types/index.d.ts",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages/console-base-demo-helper-error-prompt",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "console-base",
+    "demo",
+    "helper",
+    "error-prompt"
+  ],
+  "devDependencies": {
+    "@alicloud/console-toolkit-cli": "^1.2.30",
+    "@alicloud/console-toolkit-preset-component": "^1.2.61",
+    "@alicloud/ts-config": "^1.1.1",
+    "@types/react": "^17.0.48",
+    "@types/styled-components": "^5.1.26",
+    "react": "^17.0.2",
+    "styled-components": "^5.3.6",
+    "typescript": "^4.9.5"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "styled-components": ">=5"
+  },
+  "dependencies": {
+    "@alicloud/console-base-intl-factory": "^1.6.8",
+    "@alicloud/console-base-rc-dialog": "^1.10.2",
+    "@alicloud/demo-rc-elements": "^1.11.1"
+  },
+  "scripts": {
+    "start": "breezr start-storybook",
+    "test": "breezr test:unit",
+    "build:esm": "breezr build --engine babel --es-module",
+    "build:cjs": "breezr build --engine babel",
+    "build:bundle": "breezr build --engine webpack",
+    "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
+    "clean": "rm -rf build",
+    "prepublishOnly": "yarn clean && yarn build"
+  },
+  "gitHead": "e3daf0b177915f37e8beae4ecee204d8c62f9507"
+}

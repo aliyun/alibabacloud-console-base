@@ -13,8 +13,10 @@ import {
   TParsedItemOrDivider,
   hasSelectedSubItem
 } from '../../model';
-import NavItemIconRight from '../../rc/nav-item-icon-right';
-import NavDivider from '../../rc/nav-divider';
+import {
+  NavItemIconRight,
+  NavDivider
+} from '../../rc';
 import NavItem from '../nav-item';
 
 interface IScProps {

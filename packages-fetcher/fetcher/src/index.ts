@@ -12,14 +12,6 @@ export {
   ERROR_RESPONSE_STATUS,
   ERROR_RESPONSE_PARSE
 } from './const';
-export { // 这些也当 helper
-  createFetcherError,
-  buildUrl,
-  canHaveBody,
-  isCors,
-  mergeConfig,
-  extractProtocolHost
-} from './util';
 export * from './helper';
 
 export {

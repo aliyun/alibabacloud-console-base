@@ -1,10 +1,8 @@
-import React, {
-  useState
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import {
-  PropsNCode
+  ComponentTesting
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
@@ -54,24 +52,24 @@ function processProps(props: DropdownProps, o0: Record<string, unknown>): void {
   props.trigger = o0.triggerAsJsx ? <ScTriggerJsx>{trigger}</ScTriggerJsx> : trigger;
 }
 
+function renderer(props: DropdownProps): JSX.Element {
+  return <div>
+    This text is to make the dropdown not stick to the left of the window. → <Dropdown {...{
+      ...props
+    }} />
+  </div>;
+}
+
 export default function DemoDefault(): JSX.Element {
-  const [stateProps, setStateProps] = useState<DropdownProps>(dropdownProps);
-  
   return <>
     <ThemeSwitcher />
     <PkgInfo />
-    <div>
-      This text is to make the dropdown not stick to the left of the window. → <Dropdown {...{
-        ...stateProps
-      }} />
-    </div>
-    <PropsNCode<DropdownProps> {...{
+    <ComponentTesting<DropdownProps> {...{
       componentName: 'Dropdown',
-      componentPropsName: 'DropdownProps',
       componentPackageName: '@alicloud/console-base-rc-dropdown',
       defaultProps: DEFAULT_PROPS,
       processProps,
-      onChange: setStateProps
+      renderer
     }} />
   </>;
 }

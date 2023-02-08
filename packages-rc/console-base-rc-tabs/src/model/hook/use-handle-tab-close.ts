@@ -43,9 +43,9 @@ export default function useHandleTabClose(): (tab: IModelPropsTab) => void {
       if (visibleTabs.length === 1) { // 关闭仅剩的可见 tab
         nextActiveTab = null;
       } else if (activeIndex === visibleTabs.length - 1) { // 关闭最右
-        nextActiveTab = visibleTabs[activeIndex - 1];
+        nextActiveTab = visibleTabs[activeIndex - 1]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
       } else {
-        nextActiveTab = visibleTabs[activeIndex + 1];
+        nextActiveTab = visibleTabs[activeIndex + 1]!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
     } else if (closeIndex < activeIndex) {
       nextActiveTab = activeTab;

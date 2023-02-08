@@ -11,7 +11,7 @@ import useDispatchRndDragStop from './use-dispatch-rnd-drag-stop';
 export default function useHandleRndDragStop(): RndDragCallback {
   const dispatchRndDragStop = useDispatchRndDragStop();
   
-  return useCallback((e, data: DraggableData) => dispatchRndDragStop({
+  return useCallback((_e, data: DraggableData) => dispatchRndDragStop({
     x: data.x,
     y: data.y,
     w: data.node.offsetWidth,

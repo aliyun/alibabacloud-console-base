@@ -6,7 +6,7 @@ import Icon, {
   IconType
 } from '@alicloud/console-base-rc-icon';
 
-export default function renderIcon(icon?: ' ' | IconType | JSX.Element): JSX.Element | string | null {
+export default function renderIcon(icon?: ' ' | IconType | JSX.Element, rotate?: number): JSX.Element | string | null {
   if (!icon) {
     return null;
   }
@@ -19,5 +19,5 @@ export default function renderIcon(icon?: ' ' | IconType | JSX.Element): JSX.Ele
     return icon;
   }
   
-  return <Icon type={icon as IconType} />;
+  return <Icon type={icon as IconType} rotate={rotate} />;
 }

@@ -11,3 +11,4 @@ reject:
 - 'stylelint' # 14 不行
 - 'stylelint-config-standard'
 - 'stylelint-order'
+- 'unfetch' # 5.0 输出的是 .mjs 对构建有要求...

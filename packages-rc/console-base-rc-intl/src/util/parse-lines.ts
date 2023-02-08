@@ -11,7 +11,7 @@ import createLineGroup from './create-line-group';
 export default function parseLines(arr: string[]): ILineGroup[] {
   const results: ILineGroup[] = [];
   let lastIndex = 0;
-  let lastType = determineLineType(arr[0]);
+  let lastType = determineLineType(arr[0]!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
   
   arr.forEach((v, i) => {
     const typeOfV = determineLineType(v);

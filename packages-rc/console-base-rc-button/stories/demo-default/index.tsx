@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   H2,
-  PropsNCode
+  ComponentTesting
 } from '@alicloud/demo-rc-elements';
 
 import Button, {
@@ -22,6 +22,7 @@ const ScButtonThemes = styled(Button)`
 
 const DEFAULT_PROPS = {
   '/component': 'span',
+  spm: 'spm',
   label: 'button label',
   '/title': true,
   '/href': '//www.aliyun.com',
@@ -39,27 +40,25 @@ const DEFAULT_PROPS = {
   '/noShadow': true,
   '/block': true,
   '/active': true,
-  '/spm': 'spm',
   '/classNameForIconLeft': 'J_IconLeft',
   '/classNameForIconRight': 'J_IconRight'
 };
 
+function renderer(props: ButtonProps): JSX.Element {
+  return <Button {...props} />;
+}
+
 export default function DemoDefault(): JSX.Element {
-  const [stateProps, setStateProps] = useState<ButtonProps>({
-    spm: ''
-  });
   const [stateDom, setStateDom] = useState<HTMLElement | null>(null);
   
   return <>
     <ThemeSwitcher />
     <PkgInfo />
-    <Button {...stateProps} />
-    <PropsNCode<ButtonProps> {...{
+    <ComponentTesting<ButtonProps> {...{
       componentName: 'Button',
-      componentPropsName: 'ButtonProps',
       componentPackageName: '@alicloud/console-base-rc-button',
       defaultProps: DEFAULT_PROPS,
-      onChange: setStateProps
+      renderer
     }} />
     <H2>Ref Works Right</H2>
     <Button {...{

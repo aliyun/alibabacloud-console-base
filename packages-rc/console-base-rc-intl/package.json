@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-intl",
-  "version": "1.4.6",
+  "version": "1.4.9",
   "description": "ConsoleBase 组件 - 带样式的国际化文案展示",
   "license": "MIT",
   "sideEffects": false,
@@ -19,28 +19,26 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "rc",
-    "intl"
-  ],
+  "keywords": [],
   "devDependencies": {
-    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.6",
+    "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.8",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.10.13",
+    "@alicloud/demo-rc-elements": "^1.11.1",
+    "@alicloud/ts-config": "^1.1.1",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
     "styled-components": "^5.3.6",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
     "react": ">=16.8",
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-theme": "^1.8.8"
+    "@alicloud/console-base-rc-html-trusted": "^1.0.2",
+    "@alicloud/console-base-theme": "^1.9.2"
   },
   "scripts": {
     "start": "breezr start-storybook",

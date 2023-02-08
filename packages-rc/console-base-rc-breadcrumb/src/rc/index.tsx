@@ -15,8 +15,6 @@ import Item from './item';
 
 const ScBreadcrumb = styled.div`
   line-height: 1.5;
-  overflow: hidden;
-  white-space: nowrap;
 `;
 
 const ScSeparator = styled.span`

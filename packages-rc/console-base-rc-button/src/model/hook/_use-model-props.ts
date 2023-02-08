@@ -3,44 +3,19 @@ import {
 } from 'react';
 
 import {
+  EButtonTheme
+} from '../enum';
+import {
   IPropsCustom,
   IPropsDom
 } from '../types';
 import {
-  EButtonTheme
-} from '../enum';
+  getButtonTitle,
+  getButtonHrefTarget,
+  getButtonAriaLabel
+} from '../util';
 
 import useModelContext from './_use-model-context';
-
-function getHrefTarget(href: string, target?: string): string | undefined {
-  if (target) {
-    return target;
-  }
-  
-  try {
-    const {
-      host
-    } = new URL(href, window.location.href);
-    
-    return host === window.location.host ? undefined : '_blank';
-  } catch (err) {
-    return undefined;
-  }
-}
-
-function getTitle(title?: string | boolean, label?: unknown): string | undefined {
-  if (!title) {
-    return;
-  }
-  
-  if (typeof title === 'string') {
-    return title;
-  }
-  
-  if (typeof label === 'string') { // title === true
-    return label;
-  }
-}
 
 export default function useModelProps(): [IPropsCustom, IPropsDom] {
   const {
@@ -49,12 +24,16 @@ export default function useModelProps(): [IPropsCustom, IPropsDom] {
   
   return useMemo((): [IPropsCustom, IPropsDom] => {
     const {
+      children,
       component,
       label,
       title,
       loading,
+      iconSpacing,
       iconLeft,
+      iconLeftRotate,
       iconRight,
+      iconRightRotate,
       theme = EButtonTheme.TERTIARY,
       size,
       textAlign,
@@ -63,7 +42,6 @@ export default function useModelProps(): [IPropsCustom, IPropsDom] {
       noShadow,
       block,
       active,
-      iconSpacing,
       spm,
       classNameForIconLeft,
       classNameForIconRight,
@@ -71,11 +49,14 @@ export default function useModelProps(): [IPropsCustom, IPropsDom] {
     } = props;
     const propsCustom: IPropsCustom = {
       component,
-      label,
+      label: label || children as IPropsCustom['label'],
       title,
       loading,
+      iconSpacing,
       iconLeft,
+      iconLeftRotate,
       iconRight,
+      iconRightRotate,
       theme,
       size,
       textAlign,
@@ -84,14 +65,15 @@ export default function useModelProps(): [IPropsCustom, IPropsDom] {
       noShadow,
       block,
       active,
-      iconSpacing,
       classNameForIconLeft,
       classNameForIconRight
     };
     const propsDom: IPropsDom = {
       ...rest,
-      title: getTitle(title, label)
+      title: getButtonTitle(propsCustom.title, propsCustom.label)
     };
+    
+    propsDom['aria-label'] = getButtonAriaLabel(propsDom['aria-label'], propsDom.title, propsCustom.label);
     
     // loading 或 disabled 状态下不能有点击和链接
     if (propsDom.disabled || loading) {
@@ -103,7 +85,7 @@ export default function useModelProps(): [IPropsCustom, IPropsDom] {
     }
     
     if (propsDom.href) { // 保证有 href 且非 disabled 状态下一定是 a，以及外链默认 target blank
-      propsDom.target = getHrefTarget(propsDom.href, propsDom.target);
+      propsDom.target = getButtonHrefTarget(propsDom.href, propsDom.target);
       propsCustom.component = 'a';
     }
     
