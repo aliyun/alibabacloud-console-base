@@ -3,29 +3,40 @@ import _isPlainObject from 'lodash/isPlainObject';
 import _isError from 'lodash/isError';
 import _isEmpty from 'lodash/isEmpty';
 
-/**
- * Error 身上的 name、message、stack 用 _forEach 遍历不到
- */
-function convertError(err: Error): Record<string, unknown> {
-  const plainError: Record<string, unknown> = {
-    name: err.name,
-    message: err.message,
-    stack: err.stack
-  };
-  
-  _forEach(err, (v, k) => {
-    plainError[k] = v;
-  });
-  
-  return plainError;
+import {
+  convertErrorToPlain
+} from '../util';
+
+interface IFnIgnore {
+  (path: string, key: string, value: unknown): boolean;
+}
+
+interface IFlattenOptions {
+  depth?: number;
+  /**
+   * 可忽略部分属性（注意这里的 path 和 prefix 没有关系）
+   */
+  ignore?: string[] | IFnIgnore;
 }
 
 function normalizeObject<T extends object>(o: T): Record<string, unknown> {
-  if (_isError(o)) {
-    return convertError(o);
+  return _isError(o) ? convertErrorToPlain(o) : o as Record<string, unknown>;
+}
+
+function shouldIgnore(ignore: IFlattenOptions['ignore'], path: string, key: string, value: unknown): boolean {
+  if (!ignore) {
+    return false;
   }
   
-  return o as Record<string, unknown>;
+  if (typeof ignore === 'function') {
+    return ignore(path, key, value);
+  }
+  
+  if (Array.isArray(ignore)) {
+    return ignore.includes(path);
+  }
+  
+  return false;
 }
 
 /**
@@ -34,26 +45,32 @@ function normalizeObject<T extends object>(o: T): Record<string, unknown> {
  * ```
  * {
  *   "error.name": "..",
- *   "error.name": "..",
+ *   "error.message": "..",
  *   "error.stack": ".."
  * }
  * ```
  */
-export default function flattenObject<T extends object>(o: T, path?: string, depth = 3): Record<string, unknown> {
+export default function flattenObject<T extends object>(o: T, prefix?: string, {
+  depth = 3,
+  ignore
+}: IFlattenOptions = {}): Record<string, unknown> {
   const result: Record<string, unknown> = {};
-
-  function generateKey(parentPaths: string[], k: string): string {
-    const key = [...parentPaths, k].join('.');
-    
-    return path ? `${path}.${key}` : key;
-  }
-
+  
   function loop(currentObj: Record<string, unknown>, parentPaths: string[]): void {
     const depthFull = depth > 0 && parentPaths.length + 1 >= depth;
     
     _forEach(currentObj, (v: unknown, k: string) => {
+      const key = [...parentPaths, k].join('.');
+      const prefixedKey = prefix ? `${prefix}.${key}` : key;
+      
+      // 可以忽略不重要的信息
+      if (ignore && shouldIgnore(ignore, key, k, v)) {
+        return;
+      }
+      
+      // 深度满了，或者不是对象，或者空对象（或数组），则不继续 loop
       if (depthFull || !_isPlainObject(v) || _isEmpty(v)) {
-        result[generateKey(parentPaths, k)] = v;
+        result[prefixedKey] = v;
         
         return;
       }

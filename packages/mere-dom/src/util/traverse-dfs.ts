@@ -11,7 +11,7 @@ export default function traverseDfs(parentNode: Element, callback: (nd: Element)
     
     if (node && callback(node) !== true && node.children.length) {
       for (let i = node.children.length - 1; i >= 0; i--) {
-        stack.push(node.children[i]);
+        stack.push(node.children[i]!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
     }
   }

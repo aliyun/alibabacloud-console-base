@@ -4,7 +4,7 @@ import normalizeProductId from './normalize-product-id';
  * 从 hostname 中提取产品 ID
  */
 function getFromHostname(hostname: string): string {
-  const [productId] = hostname.split('.');
+  const [productId] = hostname.split('.') as [string];
   
   return normalizeProductId(productId);
 }

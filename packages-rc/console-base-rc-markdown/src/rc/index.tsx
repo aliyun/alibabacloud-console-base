@@ -13,14 +13,15 @@ import {
  */
 export default function Markdown({
   source,
-  ...options
+  options,
+  ...props
 }: MarkdownProps): JSX.Element | null {
   if (!source) {
     return null;
   }
   
   // eslint-disable-next-line react/no-danger
-  return <ArticleBase dangerouslySetInnerHTML={{
+  return <ArticleBase {...props} dangerouslySetInnerHTML={{
     __html: compileIntoHtml(source, options)
   }} />;
 }

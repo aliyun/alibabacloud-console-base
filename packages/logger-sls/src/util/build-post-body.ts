@@ -42,7 +42,7 @@ function convertLogInfo(info: ILogInfo): Record<string, string> {
    * 
    * 详情 https://aone.alibaba-inc.com/issue/34492769
    */
-  o.TOPIC = o.__topic__;
+  o.TOPIC = o.__topic__!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
   
   return o;
 }
@@ -55,14 +55,14 @@ function convertLogInfo(info: ILogInfo): Record<string, string> {
  * 但是，POST 的时候 __source__ 不会被默认填充成 IP，IP 在 __tag__:__client_ip__（GET 方式也有）
  */
 export default function buildPostBody(infoList: ILogInfo[]): ILogPostBody {
-  let __topic__ = TOPIC_MERGED;
+  let topic = TOPIC_MERGED;
   
   if (infoList.length === 1) {
-    __topic__ = infoList[0].__topic__;
+    topic = infoList[0]!.__topic__; // eslint-disable-line @typescript-eslint/no-non-null-assertion
   }
   
   return {
-    __topic__,
+    __topic__: topic,
     __logs__: infoList.map(convertLogInfo)
   };
 }

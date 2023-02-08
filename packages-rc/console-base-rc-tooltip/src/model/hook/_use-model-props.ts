@@ -1,5 +1,4 @@
 import {
-  CSSProperties,
   useMemo
 } from 'react';
 
@@ -7,10 +6,6 @@ import {
   RequiredSelected
 } from '@alicloud/typescript-missing-helpers';
 
-import {
-  ACTION_OFFSET_FROM_RIGHT,
-  ACTION_SIZE
-} from '../../const';
 import {
   ETooltipPlacement,
   ETooltipTheme
@@ -38,6 +33,7 @@ export default function useModelProps(): [IModelPropsSafe, IPropsDom] {
       theme = ETooltipTheme.NORMAL,
       placement = ETooltipPlacement.TOP,
       arrow = true,
+      arrowOffset,
       visible,
       defaultVisible = false,
       closable,
@@ -59,18 +55,6 @@ export default function useModelProps(): [IModelPropsSafe, IPropsDom] {
         autoCloseSeconds = n; // 保证正整数
       }
     }
-  
-    const finalStyle: CSSProperties = {
-      ...propsDom.style
-    };
-  
-    if (closable || onConfig) {
-      const n = closable && onConfig ? 2 : 1;
-      
-      finalStyle.paddingRight = ACTION_OFFSET_FROM_RIGHT * 2 + ACTION_SIZE * n;
-    }
-    
-    propsDom.style = finalStyle;
     
     return [{
       title,
@@ -78,6 +62,7 @@ export default function useModelProps(): [IModelPropsSafe, IPropsDom] {
       theme,
       placement,
       arrow,
+      arrowOffset,
       visible,
       defaultVisible,
       closable,

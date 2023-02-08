@@ -20,8 +20,6 @@ import {
   AUTO_MULTI_DELAY
 } from '../const';
 
-import getAutoMultiError from './get-auto-multi-error';
-
 interface IFnResolve {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (value: any): void;
@@ -50,7 +48,7 @@ function composeHash(action: string, params?: unknown): string {
 }
 
 /**
- * OpenAPI 合并器，product + region 共用一个
+ * OpenAPI 合并器，product + region 相同时将自动合并并行调用的 callOpenApi 以提升性能，降低使用复杂度
  */
 export default class AutoMultiQueue {
   private _product: string;
@@ -66,7 +64,7 @@ export default class AutoMultiQueue {
   private _handleCall = (): void => this._call();
   
   /**
-   * 一个 product + region 对象，因为合并只能以 product 为第一维度。
+   * 一个 product + region 对象，合并只能以 product 为第一维度
    */
   constructor(product: string, region: string | undefined, api: IFnConsoleApi, apiMulti: IFnConsoleApiMulti) {
     this._product = product;
@@ -104,7 +102,7 @@ export default class AutoMultiQueue {
     // 通过 action 和 params 生成 hash，将作为返回值的 key
     const hash = composeHash(action, params);
     const multiItem = this._tempStorage[hash];
-    
+  
     if (multiItem) {
       return multiItem;
     }
@@ -199,7 +197,7 @@ export default class AutoMultiQueue {
     
     // 还是单个的请求，调用独立 api
     if (actions.length === 1) {
-      this._api(product, actions[0].action, actions[0].params, options).then(result => {
+      this._api(product, actions[0]!.action, actions[0]!.params, options).then(result => { // eslint-disable-line @typescript-eslint/no-non-null-assertion
         resolveAll(result, 0);
       }, (err: Error) => {
         rejectAll(err, 0);
@@ -211,29 +209,33 @@ export default class AutoMultiQueue {
     // 执行合并请求
     this._apiMulti(product, actions, options).then((o: TConsoleApiMultiResult) => {
       // 返回的数据是一个混合着成功与失败的数据集合，进行遍历，把它对应到原初的单个调用的 Promise 上
-      _forEach(o, (v: any, k) => { // eslint-disable-line @typescript-eslint/no-explicit-any
-        const errInMulti = getAutoMultiError(v);
+      _forEach(o, (v, k) => { // eslint-disable-line @typescript-eslint/no-explicit-any
         const i = Number(k);
         
-        if (errInMulti) {
-          rejectAll(createFetcherError({
-            url: '(auto multi api)',
-            options: {
-              method: 'POST',
-              body: { // 努力还原一下出错的 body（中的重要部分）
-                action: actions[i].action,
-                params: actions[i].params,
-                region
-              }
-            },
-            responseJson: errInMulti
-          }, ERROR_BIZ, errInMulti.Message, {
-            code: errInMulti.Code,
-            title: errInMulti.Title
-          }), i);
-        } else {
-          resolveAll(v, i);
+        if (v.code === '200' || v.code === 200) {
+          resolveAll(v.data, i);
         }
+        
+        const body: Record<string, unknown> = { // 努力还原一下出错的 body（中的重要部分）
+          product,
+          action: actions[i]!.action, // eslint-disable-line @typescript-eslint/no-non-null-assertion
+          params: actions[i]!.params // eslint-disable-line @typescript-eslint/no-non-null-assertion
+        };
+        
+        if (region) {
+          body.region = region;
+        }
+        
+        rejectAll(createFetcherError({
+          url: '(auto multi api)',
+          method: 'POST',
+          body
+        }, ERROR_BIZ, v.message, {
+          code: String(v.code),
+          title: v.title,
+          requestId: v.requestId,
+          responseData: v
+        }), i);
       });
     }, rejectAll);
   }

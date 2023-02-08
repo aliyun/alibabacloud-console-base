@@ -13,9 +13,10 @@ export const URLS = {
   INVALID_NOT_JSON: `//${location.host}` // not json
 };
 
-export const SLS_CONFIG = { // 用 console-base 的 dev store 来做 SLS 上报的相关测试
-  project: 'console-base',
-  endpoint: 'log-global.aliyuncs.com',
-  logstore: 'dev',
-  topicError: 'test_api_error'
+export const SLS_CONFIG = {
+  slsOptions: { // 用 console-base 的 dev store 来做 SLS 上报的相关测试
+    project: 'console-base',
+    endpoint: 'log-global.aliyuncs.com',
+    logstore: 'dev'
+  }
 };

@@ -1,0 +1,1 @@
+export { default as IconBase } from './icon-base';

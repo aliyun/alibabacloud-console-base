@@ -10,11 +10,12 @@ import ButtonIconWrapper from '../../rc/button-icon-wrapper';
 
 export default function ButtonIconRight(): JSX.Element | null {
   const {
-    iconRight,
     iconSpacing,
+    iconRight,
+    iconRightRotate,
     classNameForIconRight
   } = usePropsCustom();
-  const jsxIcon = renderIcon(iconRight);
+  const jsxIcon = renderIcon(iconRight, iconRightRotate);
   
   return jsxIcon ? <ButtonIconWrapper {...{
     className: classNameForIconRight,

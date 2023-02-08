@@ -18,7 +18,7 @@ export default function find<E extends Element = HTMLElement>(selector: TSelecto
       const elements = parent.querySelectorAll<E>(selector);
       
       for (let i = 0; i < elements.length; i++) {
-        arr.push(elements[i]);
+        arr.push(elements[i]!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
       }
     } catch (err) {
       // do nothing

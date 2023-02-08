@@ -1,16 +1,15 @@
 import React from 'react';
-import {
-  text,
-  boolean
-} from '@storybook/addon-knobs';
 
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
+import {
+  H2
+} from '@alicloud/demo-rc-elements';
 
 import Intl from '../../src';
 import PkgInfo from '../pkg-info';
 
-export default function DemoDefault(): JSX.Element {
-  const textValue = text('text', `国际化应该有它标准的样式输出。
+const TEXT_SIMPLE_WITH_HTML = '文案中允许的 inline 元素：<code>em</code>、<code>strong</code>、<code>small</code>、<code>code</code>、<code>kbd</code>';
+const TEXT_HTML_LINES = `国际化应该有它标准的样式输出。
 inline 元素：
 * 利用 <em>em</em> 着重标注
 * 利用 <strong>strong</strong> 加粗标重
@@ -27,22 +26,31 @@ block 元素：p、ul、ol、hr（用三个短横线，效果如下）
 有序列表 OL 用 数字加 <code>.</code> 开头：
 1. 有序列表
 2. 有序列表
-过于复杂的 HTML 文案，从设计上就应该杜绝。`) // 这里应该是 knob 的一个 bug（或 feature）它转义了...
-      .replace(/&gt;/gi, '>')
-      .replace(/&lt;/gi, '<')
-      .replace(/&quot;/gi, '"')
-      .replace(/&#39;/gi, "'")
-      .replace(/&amp;/gi, '&');
-  const html = boolean('html', true);
-  const lines = boolean('lines', true);
-  
+过于复杂的 HTML 文案，从设计上就应该杜绝。`;
+
+export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <PkgInfo />
+    <H2>单行纯文本</H2>
     <Intl {...{
-      text: textValue,
-      html,
-      lines
+      text: TEXT_SIMPLE_WITH_HTML
+    }} />
+    <H2>单行 HTML</H2>
+    <Intl {...{
+      text: TEXT_SIMPLE_WITH_HTML,
+      html: true
+    }} />
+    <H2>多行纯文本</H2>
+    <Intl {...{
+      text: TEXT_HTML_LINES,
+      lines: true
+    }} />
+    <H2>多行 HTML</H2>
+    <Intl {...{
+      text: TEXT_HTML_LINES,
+      html: true,
+      lines: true
     }} />
   </>;
 }

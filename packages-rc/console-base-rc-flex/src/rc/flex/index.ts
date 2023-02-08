@@ -3,24 +3,23 @@ import styled, {
 } from 'styled-components';
 
 import {
-  IProps
+  IPropsFlex
 } from '../../types';
-
-const cssVertical = css`
-  flex-direction: column;
-`;
-
-const cssWrap = css`
-  flex-wrap: wrap;
-`;
 
 /**
  * 一个简单的 flex 布局容器
  */
-export default styled.div<IProps>`
+export default styled.div<IPropsFlex>`
   display: flex;
-  ${props => (props.vertical ? cssVertical : null)}
-  ${props => (props.wrapping ? cssWrap : null)}
+  ${props => (props.flex ? css`
+    flex: 1;
+  ` : null)}
+  ${props => (props.vertical ? css`
+    flex-direction: column;
+  ` : null)}
+  ${props => (props.wrapping ? css`
+    flex-wrap: wrap;
+  ` : null)}
   ${props => (props.align ? css`
     align-items: ${props.align};
   ` : null)}

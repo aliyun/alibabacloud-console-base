@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 /* global describe, it, expect */
 
 import pkgInfo from '../package.json';
@@ -67,7 +70,74 @@ describe(pkgInfo.name, () => {
       }
     });
   });
-
+  
+  it('depth 4 in option', () => {
+    expect(flattenObject({
+      a: {
+        b: {
+          c: {
+            d: {
+              e: 'ABCDE'
+            }
+          }
+        }
+      }
+    }, '', {
+      depth: 4
+    })).toEqual({
+      'a.b.c.d': {
+        e: 'ABCDE'
+      }
+    });
+  });
+  
+  it('can ignore', () => {
+    const o = {
+      method: 'POST',
+      url: 'URL',
+      body: {
+        collina: 'COLLINA',
+        umid: 'UMID',
+        token: 'TOKEN',
+        a: 'a',
+        b: 'b'
+      },
+      params: {
+        A: 'A',
+        B: 'B'
+      }
+    };
+    
+    expect(flattenObject(o, 'config', {
+      depth: 4,
+      ignore: [
+        'body.collina',
+        'body.umid',
+        'body.token'
+      ]
+    })).toEqual({
+      'config.method': 'POST',
+      'config.url': 'URL',
+      'config.body.a': 'a',
+      'config.body.b': 'b',
+      'config.params.A': 'A',
+      'config.params.B': 'B'
+    });
+    expect(flattenObject(o, 'config', {
+      depth: 4,
+      ignore: (_path, _key, value: unknown) => value === 'COLLINA'
+    })).toEqual({
+      'config.method': 'POST',
+      'config.url': 'URL',
+      'config.body.umid': 'UMID',
+      'config.body.token': 'TOKEN',
+      'config.body.a': 'a',
+      'config.body.b': 'b',
+      'config.params.A': 'A',
+      'config.params.B': 'B'
+    });
+  });
+  
   it('can flatten error instance', () => {
     const err = new Error('SomeMessage');
     

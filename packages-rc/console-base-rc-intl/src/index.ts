@@ -1,5 +1,5 @@
 export { default } from './rc';
 
 export type {
-  IPropsIntl as IntlProps
+  IIntlProps as IntlProps
 } from './types';

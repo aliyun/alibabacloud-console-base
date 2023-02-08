@@ -2,7 +2,7 @@
  * 数值展示组件，对数值进行格式化展示 1234 -> 1,234
  */
 export default function formatNumberFallback(n: number, precision = 0): string {
-  let [wholePart, fractionPart = ''] = `${n}`.split('.');
+  let [wholePart, fractionPart = ''] = `${n}`.split('.') as [string, string | undefined];
   
   wholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // 整数部分加逗号
   

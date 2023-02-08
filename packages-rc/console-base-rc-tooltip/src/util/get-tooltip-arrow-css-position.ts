@@ -4,69 +4,133 @@ import {
 } from 'styled-components';
 
 import {
-  ARROW_SIZE
+  ARROW_SQUARE_BORDER
 } from '../const';
 import {
   TooltipPlacement
 } from '../model';
 
-const ARROW_OFFSET = -ARROW_SIZE / 2;
+const POSITION_ADJUSTMENT = -ARROW_SQUARE_BORDER / 2;
 
 const CSS_ARROW_POSITION = {
+  /**
+   * +-------------------------+
+   * |                         |
+   * +------------▼------------+
+   */
   [TooltipPlacement.TOP]: css`
-  bottom: ${ARROW_OFFSET}px;
+  bottom: ${POSITION_ADJUSTMENT}px;
   left: 50%;
-  margin-left: ${ARROW_OFFSET}px;
+  margin-left: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +-------------------------+
+   * |                         |
+   * +--▼-——-------------------+
+   */
   [TooltipPlacement.TOP_LEFT]: css`
-  bottom: ${ARROW_OFFSET}px;
-  left: 8px;
+  bottom: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +-------------------------+
+   * |                         |
+   * +---——-----------------▼--+
+   */
   [TooltipPlacement.TOP_RIGHT]: css`
-  right: 8px;
-  bottom: ${ARROW_OFFSET}px;
+  bottom: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +------------▲------------+
+   * |                         |
+   * +---——--------------------+
+   */
   [TooltipPlacement.BOTTOM]: css`
-  top: ${ARROW_OFFSET}px;
+  top: ${POSITION_ADJUSTMENT}px;
   left: 50%;
-  margin-left: ${ARROW_OFFSET}px;
+  margin-left: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +-▲-----------------------+
+   * |                         |
+   * +---——--------------------+
+   */
   [TooltipPlacement.BOTTOM_LEFT]: css`
-  top: ${ARROW_OFFSET}px;
-  left: 8px;
+  top: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +-----------------------▲-+
+   * |                         |
+   * +---——--------------------+
+   */
   [TooltipPlacement.BOTTOM_RIGHT]: css`
-  top: ${ARROW_OFFSET}px;
-  right: 8px;
+  top: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +-------------------------+
+   * |                         |
+   * |                         |▶︎
+   * |                         |
+   * +---——--------------------+
+   */
   [TooltipPlacement.LEFT]: css`
   top: 50%;
-  right: ${ARROW_OFFSET}px;
-  margin-top: ${ARROW_OFFSET}px;
+  right: ${POSITION_ADJUSTMENT}px;
+  margin-top: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +-------------------------+
+   * |                         |▶
+   * |                         |
+   * |                         |
+   * +---——--------------------+
+   */
   [TooltipPlacement.LEFT_TOP]: css`
-  top: 8px;
-  right: ${ARROW_OFFSET}px;
+  right: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   * +-------------------------+
+   * |                         |
+   * |                         |
+   * |                         |▶
+   * +---——--------------------+
+   */
   [TooltipPlacement.LEFT_BOTTOM]: css`
-  right: ${ARROW_OFFSET}px;
-  bottom: 8px;
+  right: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   *  +-------------------------+
+   *  |                         |
+   * ◀︎|                         |
+   *  |                         |
+   *  +---——--------------------+
+   */
   [TooltipPlacement.RIGHT]: css`
   top: 50%;
-  left: ${ARROW_OFFSET}px;
-  margin-top: ${ARROW_OFFSET}px;
+  left: ${POSITION_ADJUSTMENT}px;
+  margin-top: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   *  +-------------------------+
+   * ◀|                         |
+   *  |                         |
+   *  |                         |
+   *  +---——--------------------+
+   */
   [TooltipPlacement.RIGHT_TOP]: css`
-  top: 8px;
-  left: ${ARROW_OFFSET}px;
+  left: ${POSITION_ADJUSTMENT}px;
 `,
+  /**
+   *  +-------------------------+
+   *  |                         |
+   *  |                         |
+   * ◀|                         |
+   *  +---——--------------------+
+   */
   [TooltipPlacement.RIGHT_BOTTOM]: css`
-  bottom: 8px;
-  left: ${ARROW_OFFSET}px;
+  left: ${POSITION_ADJUSTMENT}px;
 `
 };
 
-export default function getTooltipArrowCssPosition(placement: TooltipPlacement): FlattenSimpleInterpolation | null {
-  return CSS_ARROW_POSITION[placement] || null;
+export default function getTooltipArrowCssPosition(placement: TooltipPlacement): FlattenSimpleInterpolation {
+  return CSS_ARROW_POSITION[placement];
 }

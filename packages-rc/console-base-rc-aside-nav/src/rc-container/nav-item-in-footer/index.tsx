@@ -11,7 +11,9 @@ import {
 import {
   IParsedItemInFooter
 } from '../../model';
-import NavButton from '../../rc/nav-button';
+import {
+  NavButton
+} from '../../rc';
 
 const ScNavItemInFooter = styled(NavButton)`
   height: ${HEIGHT_MENU_ITEM_IN_FOOTER}px;

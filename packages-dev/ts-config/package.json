@@ -1,0 +1,23 @@
+{
+  "name": "@alicloud/ts-config",
+  "version": "1.1.1",
+  "description": "Shareable tsconfig",
+  "license": "MIT",
+  "main": "index.json",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-dev/ts-config",
+  "author": {
+    "name": "Jianchun Wang",
+    "email": "justnewbee@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliyun/alibabacloud-console-base.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

@@ -73,7 +73,6 @@ export default function FooterButton({
   }, [onClick, result, dispatchCloseWithValue, dialog, dispatchLock, dispatchUnlock]);
   
   return <ScButton {...{
-    'aria-label': buttonProps['aria-label'] || (typeof buttonProps.label === 'string' ? buttonProps.label : undefined),
     ...buttonProps as ButtonProps, // spm 参数一定存在，由上游保证
     theme: primary ? ButtonTheme.PRIMARY : ButtonTheme.SECONDARY,
     onClick: handleClick

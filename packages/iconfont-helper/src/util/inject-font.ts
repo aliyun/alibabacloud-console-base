@@ -1,10 +1,14 @@
-interface IIE8Style {
+import {
+  IInjectIconFontOptions
+} from '../types';
+
+interface IIe8Style {
   styleSheet: {
     cssText: string;
   };
 }
 
-export default function injectFont(fontFamily: string, dataUrl?: string): string {
+export default function injectFont(fontFamily: string, options: IInjectIconFontOptions = {}): string {
   if (typeof document === 'undefined') { // for SSR
     return fontFamily;
   }
@@ -15,12 +19,12 @@ export default function injectFont(fontFamily: string, dataUrl?: string): string
     return fontFamily;
   }
   
-  const iconfontUrl = `//at.alicdn.com/t/${fontFamily}`;
+  const iconfontUrl = `//at.alicdn.com/t${options.pathExtra || ''}/${fontFamily}`;
   const fontFace = `@font-face {
   font-family: ${fontFamily};
   src: url(${iconfontUrl}.eot);
   src: url(${iconfontUrl}.eot#iefix) format('embedded-opentype'),
-    url(${dataUrl || `${iconfontUrl}.woff2`}) format('woff2'),
+    url(${options.base64Data || `${iconfontUrl}.woff2`}) format('woff2'),
     url(${iconfontUrl}.woff) format('woff'),
     url(${iconfontUrl}.ttf) format('truetype');
 }`;
@@ -32,8 +36,9 @@ export default function injectFont(fontFamily: string, dataUrl?: string): string
   style.id = fontFamily;
   head.appendChild(style);
   
-  if ((style as unknown as IIE8Style).styleSheet) { // This is required for IE8 and below
-    (style as unknown as IIE8Style).styleSheet.cssText = fontFace;
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if ((style as unknown as IIe8Style).styleSheet) { // This is required for IE8 and below
+    (style as unknown as IIe8Style).styleSheet.cssText = fontFace;
   } else {
     style.appendChild(document.createTextNode(fontFace));
   }

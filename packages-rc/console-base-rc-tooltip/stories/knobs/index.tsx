@@ -4,6 +4,7 @@ import {
 } from 'react';
 import {
   text,
+  number,
   boolean,
   optionsKnob
 } from '@storybook/addon-knobs';
@@ -63,6 +64,7 @@ export default function Knobs({
     inUse: boolean('启用 props.placement', true)
   });
   const arrow = boolean('props.arrow', true);
+  const arrowOffset = number('props.arrowOffset', 0);
   const closable = boolean('props.closable', true);
   const autoClose = boolean('props.autoClose', false);
   const autoCloseKey = text('props.autoCloseKey', 'AUTO_CLOSE_KEY_1');
@@ -75,6 +77,7 @@ export default function Knobs({
     theme,
     placement,
     arrow,
+    arrowOffset: arrowOffset > 0 ? arrowOffset : undefined,
     closable,
     autoClose,
     autoCloseKey,
@@ -86,6 +89,7 @@ export default function Knobs({
     theme,
     placement,
     arrow,
+    arrowOffset,
     closable,
     autoClose,
     autoCloseKey,

@@ -6,21 +6,16 @@ import React, {
 import {
   H1,
   Button,
-  PreJson
+  PreJson,
+  Hr
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import Dialog, {
   DialogProps,
-  DialogPropsAlert,
-  DialogPropsConfirm,
-  DialogPropsPrompt,
   open,
   slide,
-  slideUp,
-  alert,
-  confirm,
-  prompt
+  slideUp
 } from '../../src';
 import PkgInfo from '../pkg-info';
 import Knobs from '../knobs';
@@ -50,41 +45,7 @@ export default function DemoDefault(): JSX.Element {
     <Button {...{
       onClick: () => slideUp(stateProps).then(console.info)
     }}>slideUp</Button>
-    <H1>原生 <code>alert</code>、<code>confirm</code>、<code>prompt</code> 的替代方法</H1>
-    <Button {...{
-      onClick: () => alert(stateProps as DialogPropsAlert).then(console.info)
-    }}>alert</Button>
-    <Button {...{
-      onClick: () => alert(stateProps as DialogPropsAlert, {
-        type: 'info'
-      }).then(console.info)
-    }}>alert - info</Button>
-    <Button {...{
-      onClick: () => alert(stateProps as DialogPropsAlert, {
-        type: 'success'
-      }).then(console.info)
-    }}>alert - success</Button>
-    <Button {...{
-      onClick: () => alert(stateProps as DialogPropsAlert, {
-        type: 'error'
-      }).then(console.info)
-    }}>alert - error</Button>
-    <Button {...{
-      onClick: () => confirm(stateProps as unknown as DialogPropsConfirm).then(console.info)
-    }}>confirm</Button>
-    <Button {...{
-      onClick: () => confirm(stateProps as unknown as DialogPropsConfirm, {
-        type: 'alert'
-      }).then(console.info)
-    }}>confirm - alert</Button>
-    <Button {...{
-      onClick: () => confirm(stateProps as unknown as DialogPropsConfirm, {
-        type: 'error'
-      }).then(console.info)
-    }}>confirm - error</Button>
-    <Button {...{
-      onClick: () => prompt(stateProps as unknown as DialogPropsPrompt<any>).then(console.info)
-    }}>prompt</Button>
+    <Hr />
     <PreJson o={stateProps} />
     {stateYes ? <Dialog {...{
       ...stateProps,

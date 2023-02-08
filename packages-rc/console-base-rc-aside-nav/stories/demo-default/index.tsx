@@ -25,7 +25,7 @@ const ScSite = styled.div`
   height: 100vh;
 `;
 
-const ScAide = styled.aside<IScAside>`
+const ScAside = styled.aside<IScAside>`
   position: relative;
   width: ${props => (props.collapsed ? 0 : 220)}px;
   transition: all linear 200ms;
@@ -49,7 +49,7 @@ export default function DemoDefault(): JSX.Element {
   const navProps = NAV[stateNavKey];
   
   return <ScSite>
-    <ScAide collapsed={stateCollapsed}>
+    <ScAside collapsed={stateCollapsed}>
       <AsideNav {...{
         ...navProps,
         upperTitle: stateUpperTitle,
@@ -57,7 +57,7 @@ export default function DemoDefault(): JSX.Element {
         collapsed: stateCollapsed,
         onToggleCollapsed: setStateCollapsed
       }} />
-    </ScAide>
+    </ScAside>
     <ScSiteMain>
       <ThemeSwitcher />
       <PkgInfo />

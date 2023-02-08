@@ -11,14 +11,14 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  getTooltipCssColors,
-  getTooltipCssMargin
+  getTooltipCssColors
 } from '../../util';
 import {
   TooltipPlacement,
   TooltipTheme,
   useProps,
-  useVisible
+  useVisible,
+  useTooltipStyle
 } from '../../model';
 
 import TooltipTitle from './tooltip-title';
@@ -45,7 +45,6 @@ const ScTooltip = styled.div<IPropsScTooltip>`
   transition: all ease-in-out 250ms;
   ${mixinShadowLDown}
   ${mixinBorderRadiusXs}
-  ${props => getTooltipCssMargin(props.placement, props.arrow)}
   ${props => getTooltipCssColors(props.theme)}
   
   &.enter,
@@ -62,6 +61,7 @@ export default function Tooltip(): JSX.Element {
     arrow
   }, propsDom] = useProps();
   const visible = useVisible();
+  const tooltipStyle = useTooltipStyle();
   
   return <CSSTransition {...{
     in: visible,
@@ -75,7 +75,8 @@ export default function Tooltip(): JSX.Element {
       arrow,
       placement,
       theme,
-      ...propsDom
+      ...propsDom,
+      style: tooltipStyle
     }}>
       <TooltipTitle />
       <TooltipContent />

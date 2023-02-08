@@ -6,7 +6,8 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  P
+  P,
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
@@ -110,6 +111,11 @@ export default function DemoNoTrigger(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <PkgInfo />
+    <InputSwitch {...{
+      label: 'props.visible',
+      value: stateVisible,
+      onChange: setStateVisible
+    }} />
     <P>目前没有配合 trigger 的功能，只能使用者定位</P>
     <Knobs onChange={setStateTooltipProps} />
     <ScFakeTriggerWrapper {...{
