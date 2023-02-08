@@ -1,5 +1,5 @@
 import {
-  IParamsErrorDiagnosis
+  IParamsErrorDiagnosisProbe
 } from './params';
 import {
   IDataErrorDiagnosis,
@@ -7,10 +7,17 @@ import {
 } from './data';
 
 /**
- * 获取诊断信息
+ * 预查诊断信息
+ */
+export interface IApiDataErrorDiagnosisProbe {
+  (params: IParamsErrorDiagnosisProbe): Promise<string>;
+}
+
+/**
+ * 获取诊断信息，根据预查得到的 Key 获取
  */
 export interface IApiDataErrorDiagnosis {
-  (params: IParamsErrorDiagnosis): Promise<IDataErrorDiagnosis>;
+  (contentKey: string): Promise<IDataErrorDiagnosis>;
 }
 
 /**

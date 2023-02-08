@@ -29,7 +29,7 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.11.3",
-    "@alicloud/ts-config": "^1.1.1",
+    "@alicloud/ts-config": "^1.1.2",
     "@types/react": "^17.0.48",
     "@types/react-dom": "^17.0.17",
     "@types/react-transition-group": "^4.4.5",
