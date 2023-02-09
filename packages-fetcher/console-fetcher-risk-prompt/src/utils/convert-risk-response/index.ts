@@ -16,7 +16,7 @@ import getCommonRiskInfoFromDataPath from './get-common-risk-info';
 
 interface IConvertRiskResponseProps<T> {
   newRisk?: TNewRisk<T>;
-  riskConfig: Required<IRiskConfig>;
+  riskConfig?: IRiskConfig;
   riskResponse: TRiskResponse<T>;
   riskParametersGetter?: TRiskParametersGetter<T>;
 }

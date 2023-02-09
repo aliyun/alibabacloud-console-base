@@ -1,17 +1,13 @@
-import _get from 'lodash/get';
-
 import {
   IRiskConfig,
   TRiskResponse,
   IMpkExtendSetting
 } from '../../types';
-import {
-  DEFAULT_RISK_CONFIG
-} from '../../const';
+import getRiskValueViaConfig from '../get-risk-value-via-config';
 
 interface IConvertMpkSettingProps<T> {
   riskResponse?: TRiskResponse<T>;
-  riskConfig: Pick<IRiskConfig, 'dataPathExtend'>;
+  riskConfig?: IRiskConfig;
 }
 
 interface IConvertMpkSettingResult {
@@ -25,9 +21,12 @@ export default function convertMpkSetting<T>({
   riskConfig,
   riskResponse
 }: IConvertMpkSettingProps<T>): IConvertMpkSettingResult {
-  const dataPathMpkExtend = riskConfig.dataPathExtend ?? DEFAULT_RISK_CONFIG.dataPathExtend;
-
-  const mpkSetting = _get(riskResponse, dataPathMpkExtend, {}) as IMpkExtendSetting;
+  const mpkSetting = getRiskValueViaConfig({
+    riskConfig,
+    riskResponse,
+    riskConfigKey: 'dataPathExtend',
+    defaultValue: {} as IMpkExtendSetting
+  });
 
   const {
     isMpk: isMpk0,

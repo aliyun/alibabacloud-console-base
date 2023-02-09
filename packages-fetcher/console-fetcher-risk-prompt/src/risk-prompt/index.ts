@@ -24,20 +24,17 @@ export default async function riskPrompt<T = Record<string, unknown>>({
   riskResponse,
   riskParametersGetter
 }: IRiskPromptProps<T>): Promise<IRiskPromptResolveData> {
-  const mergedRiskConfig = {
-    ...DEFAULT_RISK_CONFIG,
-    ...riskConfig
-  };
   const riskInfo = convertRiskResponse({
     newRisk,
+    riskConfig,
     riskResponse,
-    riskConfig: mergedRiskConfig,
     riskParametersGetter
   });
   const {
     riskType, verifyType, verifyDetail, convertedVerifyType
   } = riskInfo;
   const subRisk = riskType === ERiskType.NEW_SUB;
+  const urlSetting = riskConfig?.urlSetting || DEFAULT_RISK_CONFIG.urlSetting;
 
   switch (convertedVerifyType) {
     case EVerifyType.NONE:
@@ -45,7 +42,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
         subRisk,
         verifyType,
         verifyDetail,
-        urlSetting: mergedRiskConfig.urlSetting,
+        urlSetting,
         errorMessage: intl('message:invalid_unknown!lines')
       });
 
@@ -55,7 +52,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
         subRisk,
         verifyType,
         verifyDetail,
-        urlSetting: mergedRiskConfig.urlSetting,
+        urlSetting,
         errorMessage: subRisk ? intl('message:sub_invalid_unsupported_{method}!html!lines', {
           method: verifyType
         }) : intl('message:invalid_unsupported_{method}!html!lines', {
@@ -73,7 +70,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
           subRisk,
           verifyType,
           verifyDetail,
-          urlSetting: mergedRiskConfig.urlSetting,
+          urlSetting,
           errorMessage: intl('message:invalid_unsupported_{method}!html!lines', {
             method: verifyType
           })
@@ -87,7 +84,11 @@ export default async function riskPrompt<T = Record<string, unknown>>({
       break;
   }
 
-  return openDialog(riskInfo, mergedRiskConfig).catch(err => {
+  return openDialog(riskInfo, {
+    urlSetting,
+    coolingAfterSent: riskConfig?.coolingAfterSent || DEFAULT_RISK_CONFIG.coolingAfterSent,
+    coolingAfterSentFail: riskConfig?.coolingAfterSentFail || DEFAULT_RISK_CONFIG.coolingAfterSentFail
+  }).catch(err => {
     throw err ?? convertToRiskErrorCancelled(err);
   });
 }
