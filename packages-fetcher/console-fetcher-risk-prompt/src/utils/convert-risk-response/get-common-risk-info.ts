@@ -1,16 +1,15 @@
-import _get from 'lodash/get';
-
 import {
   IRiskConfig,
   TRiskResponse,
   ICommonRiskInfo,
   IRiskParameters
 } from '../../types';
+import getRiskValueViaConfig from '../get-risk-value-via-config';
 
 import convertVerifyType from './convert-verify-type';
 
 interface IGetRiskInfoProps<T> {
-  riskConfig: Required<IRiskConfig>;
+  riskConfig?: IRiskConfig;
   mergedUseNewRisk: boolean;
   riskResponse: TRiskResponse<T>;
   riskParameters: IRiskParameters;
@@ -22,9 +21,24 @@ export default function getCommonRiskInfo<T>({
   mergedUseNewRisk,
   riskParameters
 }: IGetRiskInfoProps<T>): ICommonRiskInfo {
-  const oldCodeType = _get(riskResponse, riskConfig.dataPathOldCodeType, '') as string;
-  const oldVerifyType = _get(riskResponse, riskConfig.dataPathOldVerifyType, '') as string;
-  const oldVerifyDetail = _get(riskResponse, riskConfig.dataPathOldVerifyDetail, '') as string;
+  const oldCodeType = getRiskValueViaConfig({
+    riskConfig,
+    riskResponse,
+    riskConfigKey: 'dataPathOldCodeType',
+    defaultValue: ''
+  });
+  const oldVerifyType = getRiskValueViaConfig({
+    riskConfig,
+    riskResponse,
+    riskConfigKey: 'dataPathOldVerifyType',
+    defaultValue: ''
+  });
+  const oldVerifyDetail = getRiskValueViaConfig({
+    riskConfig,
+    riskResponse,
+    riskConfigKey: 'dataPathOldVerifyDetail',
+    defaultValue: ''
+  });
   const {
     codeType,
     validators = [],

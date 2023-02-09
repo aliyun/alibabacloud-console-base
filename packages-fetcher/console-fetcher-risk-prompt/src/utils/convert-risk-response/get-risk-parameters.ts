@@ -1,5 +1,3 @@
-import _get from 'lodash/get';
-
 import {
   IRiskConfig,
   TRiskResponse,
@@ -7,9 +5,10 @@ import {
   IRiskParameters,
   TRiskParametersGetter
 } from '../../types';
+import getRiskValueViaConfig from '../get-risk-value-via-config';
 
 interface IGetRiskParametersProps<T> {
-  riskConfig: Required<IRiskConfig>;
+  riskConfig?: IRiskConfig;
   riskResponse: TRiskResponse<T>;
   riskParametersGetter?: TRiskParametersGetter<T>;
 }
@@ -21,20 +20,43 @@ export default function getRiskParameters<T>({
   riskParametersGetter
 }: IGetRiskParametersProps<T>): IRiskParameters {
   const newRiskParametersFromDataPath = ((): IRiskParameters => {
-    const accountId = _get(riskResponse, riskConfig.dataPathUserId, '') as string;
-    const verifyUrl = _get(riskResponse, riskConfig.dataPathVerifyUrl, '') as string;
-    const codeType = _get(riskResponse, riskConfig.dataPathCodeType, '') as string;
-    const verifyType = _get(riskResponse, riskConfig.dataPathVerifyType, '') as string;
-    const verifyDetail = _get(riskResponse, riskConfig.dataPathVerifyDetail, '') as string;
-    const validators = _get(riskResponse, riskConfig.dataPathValidators, []) as IRiskValidator[];
-
     return {
-      accountId,
-      verifyUrl,
-      validators,
-      codeType,
-      verifyType,
-      verifyDetail
+      accountId: getRiskValueViaConfig({
+        riskConfig,
+        riskResponse,
+        riskConfigKey: 'dataPathUserId',
+        defaultValue: ''
+      }),
+      verifyUrl: getRiskValueViaConfig({
+        riskConfig,
+        riskResponse,
+        riskConfigKey: 'dataPathVerifyUrl',
+        defaultValue: ''
+      }),
+      validators: getRiskValueViaConfig({
+        riskConfig,
+        riskResponse,
+        riskConfigKey: 'dataPathValidators',
+        defaultValue: [] as IRiskValidator[]
+      }),
+      codeType: getRiskValueViaConfig({
+        riskConfig,
+        riskResponse,
+        riskConfigKey: 'dataPathCodeType',
+        defaultValue: ''
+      }),
+      verifyType: getRiskValueViaConfig({
+        riskConfig,
+        riskResponse,
+        riskConfigKey: 'dataPathVerifyType',
+        defaultValue: ''
+      }),
+      verifyDetail: getRiskValueViaConfig({
+        riskConfig,
+        riskResponse,
+        riskConfigKey: 'dataPathVerifyDetail',
+        defaultValue: ''
+      })
     };
   })();
 

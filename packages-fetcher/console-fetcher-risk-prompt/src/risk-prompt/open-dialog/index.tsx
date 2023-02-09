@@ -33,7 +33,7 @@ import {
   generateSubAccountMfaSubmitButtonFn
 } from './dialog-button';
 
-export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Required<IRiskConfig>): Promise<IRiskPromptResolveData> {
+export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Pick<Required<IRiskConfig>, 'urlSetting' | 'coolingAfterSent' | 'coolingAfterSentFail'>): Promise<IRiskPromptResolveData> {
   const {
     riskType, codeType, verifyType, verifyDetail, convertedVerifyType
   } = riskInfo;
