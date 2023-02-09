@@ -42,7 +42,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'toolkit-contact-listen' = 'e8ce', // 联系我们 - 聆听
   'toolkit-qr' = 'e640', // QR
   'toolkit-survey' = 'e606', // 问卷
-  'toolkit-edu' = 'e66d', // 实验室
   'toolkit-version-new' = 'e62e', // 尝试新版
   'toolkit-version-old' = 'e72f', // 返回旧版
   // 收藏、评分
@@ -71,6 +70,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'thumb-up' = 'e601', // 大拇指朝上
   'thumb-down' = 'e88d', // 大拇指朝下
   // 其他
+  'lab' = 'e671', // 实验室
   'uv' = 'e6bf',
   'time' = 'e729',
   'apps' = 'e60e', // 应用（负数）

@@ -1,7 +1,7 @@
 export { default } from './rc';
 
 export {
-  EIconType
+  EIconType as IconType
 } from './enum';
 
 export type {

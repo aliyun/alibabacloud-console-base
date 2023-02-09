@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-icon-product",
-  "version": "1.5.8",
+  "version": "1.6.0",
   "description": "ConsoleBase 组件 - 云产品图标",
   "license": "MIT",
   "sideEffects": false,
@@ -19,12 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "rc",
-    "icon",
-    "product"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.8",
     "@alicloud/console-toolkit-cli": "^1.2.30",
