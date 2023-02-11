@@ -24,6 +24,7 @@ export {
 } from './choice-group';
 
 /* display */
+export { default as HtmlText } from './html-text';
 export { default as RainbowText } from './rainbow-text';
 export { default as PreJson } from './pre-json';
 export { default as PrePromise } from './pre-promise';
