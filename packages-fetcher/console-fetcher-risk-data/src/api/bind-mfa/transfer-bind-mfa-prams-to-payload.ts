@@ -3,7 +3,7 @@ import {
   TPayloadBindMfa
 } from '../../types';
 import {
-  ESubMfaDeviceType,
+  ESubVerificationDeviceType,
   SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD
 } from '../../const';
 
@@ -14,10 +14,10 @@ export default function transferBindMfaParamsToPayload(params: TParamsBindMfa): 
     AccountId: params.accountId
   };
 
-  if (params.deviceType === ESubMfaDeviceType.U2F) {
+  if (params.deviceType === ESubVerificationDeviceType.U2F) {
     return {
       ...commonPayload,
-      DeviceType: ESubMfaDeviceType.U2F,
+      DeviceType: ESubVerificationDeviceType.U2F,
       U2FVersion: params.u2FVersion,
       ClientDataJSON: params.clientDataJSON,
       AttestationObject: params.attestationObject
@@ -26,7 +26,7 @@ export default function transferBindMfaParamsToPayload(params: TParamsBindMfa): 
 
   return {
     ...commonPayload,
-    DeviceType: ESubMfaDeviceType.VMFA,
+    DeviceType: ESubVerificationDeviceType.VMFA,
     Code1: params.code1,
     Code2: params.code2
   };

@@ -3,7 +3,7 @@ import {
   TPayloadGetBindMfaInfo
 } from '../../types';
 import {
-  ESubMfaDeviceType,
+  ESubVerificationDeviceType,
   SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD
 } from '../../const';
 
@@ -13,16 +13,16 @@ export default function transferGetMfaInfoToBindParamsToPayload(params: TParamsG
     AccountId: params.accountId
   };
 
-  if (params.deviceType === ESubMfaDeviceType.U2F) {
+  if (params.deviceType === ESubVerificationDeviceType.U2F) {
     return {
       ...commonPayload,
       U2FVersion: 'WebAuthn',
-      DeviceType: ESubMfaDeviceType.U2F
+      DeviceType: ESubVerificationDeviceType.U2F
     };
   }
 
   return {
     ...commonPayload,
-    DeviceType: ESubMfaDeviceType.VMFA
+    DeviceType: ESubVerificationDeviceType.VMFA
   };
 }

@@ -3,7 +3,7 @@ import sls from '@alicloud/console-base-log-sls';
 import {
   ESlsTopic,
   ERiskType
-} from '../const';
+} from '../enum';
 
 interface IPayloadSlsRiskStartUp {
   riskType: ERiskType;

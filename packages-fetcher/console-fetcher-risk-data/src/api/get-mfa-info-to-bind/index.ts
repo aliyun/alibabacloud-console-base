@@ -13,7 +13,7 @@ import {
   GET_MFA_INFO_TO_BIND_API
 } from '../../const';
 import {
-  slsGetMfaInfoToBind
+  slsGetBindMfaInfo
 } from '../../sls';
 import fetcher from '../../util/fetcher';
 
@@ -26,7 +26,7 @@ export default async function dataGetMfaInfoToBind(params: TParamsGetMfaInfoToBi
 
     const getBindMfaInfoResponse = await fetcher.post<IResponseGetMfaInfoToBind, TPayloadGetBindMfaInfo>(GET_MFA_INFO_TO_BIND_API, payload);
 
-    slsGetMfaInfoToBind({
+    slsGetBindMfaInfo({
       value: params.deviceType,
       slsResultType: ESlsResultType.SUCCESS
     });
@@ -39,7 +39,7 @@ export default async function dataGetMfaInfoToBind(params: TParamsGetMfaInfoToBi
       requestId
     } = error as FetcherError;
 
-    slsGetMfaInfoToBind({
+    slsGetBindMfaInfo({
       requestId,
       errorCode: code,
       value: params.deviceType,

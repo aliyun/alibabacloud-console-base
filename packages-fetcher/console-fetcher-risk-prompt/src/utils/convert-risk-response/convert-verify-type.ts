@@ -2,7 +2,9 @@ import {
   IRiskConfig
 } from '../../types';
 import {
-  EVerifyType,
+  EVerifyType
+} from '../../enum';
+import {
   DEFAULT_RISK_CONFIG
 } from '../../const';
 
@@ -20,7 +22,7 @@ export default function convertVerifyType({
       return EVerifyType.SMS;
     case riskConfig?.byEmail || DEFAULT_RISK_CONFIG.byEmail:
       return EVerifyType.EMAIL;
-    case riskConfig?.byMfa || DEFAULT_RISK_CONFIG.byMfa: // MFA 既不需要 info
+    case riskConfig?.byMfa || DEFAULT_RISK_CONFIG.byMfa:
       return EVerifyType.MFA;
     default:
       return type0 ? EVerifyType.UNKNOWN : EVerifyType.NONE;

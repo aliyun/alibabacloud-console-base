@@ -3,9 +3,9 @@ import type {
 } from '@alicloud/fetcher';
 
 import {
-  TParamsVerifySubAccountMfa,
+  TParamsVerifySubAccount,
   TDataTokenVerify,
-  TPayloadVerifySubAccountMfa,
+  TPayloadVerifySubAccount,
   IResponseTokenVerify
 } from '../../types';
 import {
@@ -18,18 +18,15 @@ import {
 import fetcher from '../../util/fetcher';
 import transferTokenVerifyResponseToData from '../_util/transfer-token-verify-response-to-data';
 
-import getSubVerifyMfaValue from './get-sub-verify-mfa-value';
 import transferVerifySubAccountParamsToPayload from './transfer-verify-sub-account-params-to-payload';
 
-export default async function dataVerifySubAccountMfa(params: TParamsVerifySubAccountMfa): Promise<TDataTokenVerify> {
-  const subVerifyMfaValue = getSubVerifyMfaValue(params);
-
+export default async function dataVerifySubAccountMfa(params: TParamsVerifySubAccount): Promise<TDataTokenVerify> {
   try {
     const payload = transferVerifySubAccountParamsToPayload(params);
-    const getBindMfaInfoResponse = await fetcher.post<IResponseTokenVerify, TPayloadVerifySubAccountMfa>(VERIFY_API, payload);
+    const getBindMfaInfoResponse = await fetcher.post<IResponseTokenVerify, TPayloadVerifySubAccount>(VERIFY_API, payload);
 
     slsVerifySub({
-      ...subVerifyMfaValue,
+      value: params.verifyType,
       type: params.verifyType,
       slsResultType: ESlsResultType.SUCCESS
     });
@@ -43,9 +40,9 @@ export default async function dataVerifySubAccountMfa(params: TParamsVerifySubAc
     } = error as FetcherError;
 
     slsVerifySub({
-      ...subVerifyMfaValue,
       requestId,
       errorCode: code,
+      value: params.verifyType,
       type: params.verifyType,
       slsResultType: ESlsResultType.FAIL,
       errorMessage: message || 'FALLBACK_VERIFY_SUB_ACCOUNT_ERROR'

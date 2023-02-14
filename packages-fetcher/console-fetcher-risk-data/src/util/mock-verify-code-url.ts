@@ -24,6 +24,10 @@ export default function fetcherInterceptorMockVerifyCodeUrl(config: IDemoConfig)
       return {
         url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-get-mfa-info-to-auth'
       };
+    case '/identity/getMfaInfoToAuthV2':
+      return {
+        url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-get-mfa-info-to-auth-v2'
+      };
     case '/identity/bindMFA':
       return {
         url: 'https://oneapi.alibaba-inc.com/mock/boshit/risk-bind-mfa'

@@ -2,10 +2,10 @@ import sls from '@alicloud/console-base-log-sls';
 
 import {
   ESlsTopic
-} from '../const';
+} from '../enum';
 
 interface IPayloadSlsInvalidVerifyUrl {
-  verifyUrl: string;
+  verifyUrl?: string;
 }
 
 export default function slsRiskInvalidVerifyUrl(payload: IPayloadSlsInvalidVerifyUrl): void {

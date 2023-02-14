@@ -10,8 +10,8 @@ import React, {
 import styled from 'styled-components';
 
 import {
-  mixinTextPrimary,
-  SIZE
+  SIZE,
+  mixinTextPrimary
 } from '@alicloud/console-base-theme';
 
 const ScLabel = styled.label`

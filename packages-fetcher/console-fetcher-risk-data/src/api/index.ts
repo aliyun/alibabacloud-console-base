@@ -6,3 +6,4 @@ export { default as dataSkipBindMfa } from './skip-bind-mfa';
 export { default as dataVerifySubAccountMfa } from './verify-sub-account-mfa';
 export { default as dataGetMfaInfoToAuth } from './get-mfa-info-to-auth';
 export { default as dataGetMfaInfoToBind } from './get-mfa-info-to-bind';
+export { default as dataGetVerificationInfoToAuth } from './get-verification-info-to-auth';

@@ -8,10 +8,15 @@ import {
   TRiskInfo,
   IDialogData,
   IRiskConfig,
+  ICommonRiskInfo,
   IRiskPromptResolveData
 } from '../../types';
 import {
-  EDialogType,
+  ERiskType,
+  EDialogType
+} from '../../enum';
+import {
+  DEFAULT_RISK_CONFIG,
   DEFAULT_DIALOG_SIZE
 } from '../../const';
 import intl from '../../intl';
@@ -25,61 +30,56 @@ import {
 import DialogContent from '../dialog-content';
 
 import {
-  generateMpkSubmitButtonFn,
-  generateSkipBindMfaButton,
-  generateChooseMfaNextButton,
-  generateBindMfaPreviousStepButton,
-  generateOldMainOrDowngradeMpkSubmitButtonFn,
-  generateSubAccountMfaSubmitButtonFn
+  generateMpkSubmitButton,
+  generateSubSubmitButton,
+  generateSubBindMfaButton,
+  generateOldMainOrDowngradeMpkSubmitButton
 } from './dialog-button';
 
-export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Pick<Required<IRiskConfig>, 'urlSetting' | 'coolingAfterSent' | 'coolingAfterSentFail'>): Promise<IRiskPromptResolveData> {
+export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRiskConfig): Promise<IRiskPromptResolveData> {
   const {
-    riskType, codeType, verifyType, verifyDetail, convertedVerifyType
+    riskType, codeType
   } = riskInfo;
-  const accountId = 'accountId' in riskInfo ? riskInfo.accountId : 'EMPTY_ACCOUNT_ID';
-  const dialogData = await getPartialDialogDataBasedOnRiskInfo(riskInfo);
-
-  const generateButtonFnCommonProps = {
-    accountId,
-    verifyType
-  };
-  const generateSubAccountSubmitButton = generateSubAccountMfaSubmitButtonFn({
-    verifyType
-  });
-  const generateMpkSubmitButton = generateMpkSubmitButtonFn({
-    ...generateButtonFnCommonProps,
-    codeType
-  });
-  const generateOldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButtonFn({
-    verifyType
-  });
 
   slsRiskStartUp({
     riskType
   });
+  const {
+    urlSetting, coolingAfterSent, coolingAfterSentFail
+  } = DEFAULT_RISK_CONFIG;
+  const accountId = 'accountId' in riskInfo ? riskInfo.accountId : 'EMPTY_ACCOUNT_ID';
+  const dialogData = await getPartialDialogDataBasedOnRiskInfo(riskInfo);
+
+  const oldMainOrMpkVerifyInfo = ((): Omit<ICommonRiskInfo, 'codeType'> | undefined => {
+    if (riskType === ERiskType.MPK || riskType === ERiskType.OLD_MAIN) {
+      return {
+        verifyType: riskInfo.verifyType,
+        verifyDetail: riskInfo.verifyDetail,
+        convertedVerifyType: riskInfo.convertedVerifyType
+      };
+    }
+  })();
 
   return open<IRiskPromptResolveData, IDialogData>({
     title: (data: IDialogData) => {
       const {
-        dialogType
+        dialogType, subBindMfaStep, subVerificationDeviceType
       } = data;
 
-      return intlVerifyDialogTitle(dialogType);
+      return intlVerifyDialogTitle({
+        dialogType,
+        subBindMfaStep,
+        subVerificationDeviceType
+      });
     },
     data: {
-      dialogType: dialogData.dialogType,
-      errorMessage: dialogData.errorMessage,
-      primaryButtonDisabled: dialogData.dialogType === EDialogType.OLD_MAIN_OR_MPK_RISK, // 只有在旧版主账号风控的时候，primaryButtonDisabled 的初始值才为 true
-      newMainAccountRiskInfo: dialogData.newMainAccountRiskInfo,
-      oldMainOrMpkRiskInfo: dialogData.oldMainOrMpkRiskInfo,
-      subAccountIdentityServiceData: dialogData.subAccountIdentityServiceData
+      ...dialogData,
+      primaryButtonDisabled: dialogData.dialogType === EDialogType.OLD_MAIN_OR_MPK_RISK
     },
     size: (data: IDialogData) => {
       switch (data.dialogType) {
-        // 这三种情况需要适配移动端
-        case EDialogType.SUB_RISK_VMFA_AUTH:
-        case EDialogType.SUB_RISK_U2F_AUTH:
+        // 适配移动端
+        case EDialogType.SUB_RISK_VERIFICATION_AUTH:
         case EDialogType.OLD_MAIN_OR_MPK_RISK:
           return DEFAULT_DIALOG_SIZE;
         default:
@@ -87,46 +87,37 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Pick<R
       }
     },
     content: <DialogContent {...{
-      accountId,
       codeType,
-      verifyDetail,
-      verifyType,
-      convertedVerifyType,
-      urlSetting: riskConfig.urlSetting,
-      coolingAfterSent: riskConfig.coolingAfterSent,
-      coolingAfterSentFail: riskConfig.coolingAfterSentFail
+      accountId,
+      oldMainOrMpkVerifyInfo,
+      urlSetting: riskConfig?.urlSetting || urlSetting,
+      coolingAfterSent: riskConfig?.coolingAfterSent || coolingAfterSent,
+      coolingAfterSentFail: riskConfig?.coolingAfterSentFail || coolingAfterSentFail
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');
       const primaryButtonDisabled = data.primaryButtonDisabled || false;
+      const subRiskBindMfaInVerificationAuth = data.dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH && data.subVerificationDeviceType === 'bind_mfa';
+
+      if (subRiskBindMfaInVerificationAuth || data.dialogType === EDialogType.SUB_RISK_MFA_BIND) {
+        const bindMfaButtons = generateSubBindMfaButton({
+          codeType,
+          accountId,
+          primaryButtonDisabled,
+          subBindMfaStep: data.subBindMfaStep
+        });
+
+        return [...bindMfaButtons, buttonCancel];
+      }
 
       switch (data.dialogType) {
         case EDialogType.ERROR: {
           return [buttonCancel];
         }
-        case EDialogType.SUB_RISK_MFA_CHOOSE: {
-          const skipBindMfaButton = generateSkipBindMfaButton({
-            ...generateButtonFnCommonProps,
-            codeType
+        case EDialogType.SUB_RISK_VERIFICATION_AUTH: {
+          const verifyMfaPrimaryButton = generateSubSubmitButton({
+            primaryButtonDisabled
           });
-          const chooseMfaNextButton = generateChooseMfaNextButton();
-          const chooseMfaPrimaryButton = {
-            ...chooseMfaNextButton,
-            disable: primaryButtonDisabled
-          };
-
-          return [chooseMfaPrimaryButton, skipBindMfaButton, buttonCancel];
-        }
-        case EDialogType.SUB_RISK_U2F_BIND:
-        case EDialogType.SUB_RISK_VMFA_BIND: {
-          const bindMfaPrimaryButton = generateSubAccountSubmitButton('bind', primaryButtonDisabled);
-          const bindMfaPreviousStepButton = generateBindMfaPreviousStepButton();
-
-          return [bindMfaPreviousStepButton, bindMfaPrimaryButton, buttonCancel];
-        }
-        case EDialogType.SUB_RISK_U2F_AUTH:
-        case EDialogType.SUB_RISK_VMFA_AUTH: {
-          const verifyMfaPrimaryButton = generateSubAccountSubmitButton('verify', primaryButtonDisabled);
           
           return [verifyMfaPrimaryButton, buttonCancel];
         }
@@ -142,14 +133,23 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig: Pick<R
         default: {
           const isMpk = data.oldMainOrMpkRiskInfo?.isMpk ?? false;
           const mpkIsDowngrade = data.oldMainOrMpkRiskInfo?.mpkIsDowngrade ?? true;
+          const verifyType = data.oldMainOrMpkRiskInfo?.verifyType || '';
 
           if (isMpk && !mpkIsDowngrade) {
-            const mpkSubmitButton = generateMpkSubmitButton(primaryButtonDisabled);
+            const mpkSubmitButton = generateMpkSubmitButton({
+              codeType,
+              accountId,
+              verifyType,
+              primaryButtonDisabled
+            });
 
             return [mpkSubmitButton, buttonCancel];
           }
 
-          const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton(primaryButtonDisabled);
+          const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton({
+            verifyType,
+            primaryButtonDisabled
+          });
 
           return [oldMainOrDowngradeMpkSubmitButton, buttonCancel];
         }

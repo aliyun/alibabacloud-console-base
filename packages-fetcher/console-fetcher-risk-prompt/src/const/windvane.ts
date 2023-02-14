@@ -1,3 +1,7 @@
+import {
+  IWindowWithWindvane
+} from '../types';
+
 /**
  * 封装的 WindVane 错误名称
  */
@@ -14,3 +18,13 @@ export const WINDVANE_ERROR_CODE = {
   NO_HANDLER: 'HY_NO_HANDLER',
   USER_CANCELLED: 'HY_USER_CANCELLED'
 };
+
+/**
+ * WindVane 相关的 API 参考地址 http://h5.alibaba-inc.com/api/WindVane-API.html
+ */
+export const WINDVANE = (window as unknown as IWindowWithWindvane).lib?.windvane;
+
+/**
+ * 当前环境是否支持 WindVane
+ */
+export const WINDVANE_AVAILABLE = WINDVANE?.isAvailable ?? false;

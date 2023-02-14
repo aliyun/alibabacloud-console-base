@@ -1,5 +1,5 @@
 import {
-  ESubMfaDeviceType
+  ESubVerificationDeviceType
 } from '../const/enum';
 
 export interface IResponseTargetUserPrincipalName {
@@ -8,7 +8,7 @@ export interface IResponseTargetUserPrincipalName {
 
 // 接口 /identity/getMfaInfoToBind 的原始响应（无论是 VMFA 还是 U2F，下面这些字段都会存在。。。只是可能为 null）
 export interface IResponseGetMfaInfoToBind extends IResponseTargetUserPrincipalName {
-  DeviceType: ESubMfaDeviceType; // MFA 设备类型 - U2F / VMFA
+  DeviceType: ESubVerificationDeviceType; // MFA 设备类型 - U2F / VMFA
   // VMFA
   QRCodeUri: string | null; // 选择的类型是 U2F 时为 null
   TargetMfaDeviceSecret: string | null; // 选择的类型是 U2F 时为 null
@@ -24,12 +24,12 @@ export interface IResponseGetMfaInfoToBind extends IResponseTargetUserPrincipalN
 
 // 接口 /identity/getMfaInfoToAuth 的响应 - 虚拟 MFA
 export interface IResponseGetVmfaInfoToAuth extends IResponseTargetUserPrincipalName {
-  DeviceType: ESubMfaDeviceType.VMFA;
+  DeviceType: ESubVerificationDeviceType.VMFA;
 }
 
 // 接口 /identity/getMfaInfoToAuth 的响应 - U2F 设备（老版本）
 export interface IResponseGetU2fInfoToAuth extends IResponseTargetUserPrincipalName {
-  DeviceType: ESubMfaDeviceType.U2F; // 需要验证的 MFA 类型（VMFA / U2F）
+  DeviceType: ESubVerificationDeviceType.U2F; // 需要验证的 MFA 类型（VMFA / U2F）
   U2FVersion: 'U2F_V2'; // U2F_V2 表示使用老的 U2F 接口绑定的密钥
   U2FAppId: string; // U2F 要使用的应用 ID，当设备为 U2F 时必需
   U2FChallenge: string; // U2F 要使用的 challenge 信息，当设备为 U2F 时必需
@@ -38,7 +38,7 @@ export interface IResponseGetU2fInfoToAuth extends IResponseTargetUserPrincipalN
 
 // 接口 /identity/getMfaInfoToAuth 的响应 - U2F 设备 (WebAuthentication)
 export interface IResponseGetU2fWebAuthnInfoToAuth extends IResponseTargetUserPrincipalName {
-  DeviceType: ESubMfaDeviceType.U2F;
+  DeviceType: ESubVerificationDeviceType.U2F;
   U2FVersion: 'WebAuthn'; // WebAuthn 表示使用 WebAuthn API 绑定的密钥
   RpId: string;
   U2FChallenge: string;
@@ -55,4 +55,37 @@ export interface IResponseTokenVerify {
 // 接口 /identity/send 返回的 data 的首字母是小写
 export interface IResponseSendCode {
   requestId: string;
+}
+
+// 接口 /identity/getMfaInfoToAuthV2
+export interface IGetVerificationInfoToAuthValidators {
+  U2F?: string;
+  VMFA?: string;
+  SMS?: string;
+  EMAIL?: string;
+}
+
+export interface IResponseSmsValidator {
+  PhoneNumber?: string;
+}
+
+export interface IResponseEmailValidator {
+  EmailAddress: string;
+}
+
+export interface IResponseU2fValidator {
+  RpId: string;
+  CredentialId: string;
+  U2FAppId: string;
+  U2FChallenge: string;
+  U2FKeyHandle: string;
+  U2FVersion: 'WebAuthn' | 'U2F_V2';
+}
+
+export type TResponseVmfaValidator = Record<string, never>;
+
+export interface IResponseGetVerificationInfoToAuth {
+  DeviceType: ESubVerificationDeviceType; // 首选的安全验证验证方式
+  TargetUserPrincipalName: string;
+  Validators: IGetVerificationInfoToAuthValidators | null;
 }

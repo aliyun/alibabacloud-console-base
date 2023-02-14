@@ -10,6 +10,7 @@ import {
 
 interface ISlsSendCodeProps extends ISlsCommonProps {
   verifyType: string;
+  verifyDetail?: string;
 }
 
 export default function slsSendCode(slsProps: ISlsSendCodeProps): void {

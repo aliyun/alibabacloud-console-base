@@ -65,8 +65,12 @@ export default function DemoDefault(): JSX.Element {
       riskResponse: {
         RiskValidators: [
           {
-            VerifyDetail: 'true',
+            VerifyDetail: 'false',
             VerifyType: 'ga'
+          },
+          {
+            VerifyDetail: 'zzzzzz',
+            VerifyType: 'sms'
           }
         ],
         CodeType: 'ims_login_update',
@@ -94,7 +98,7 @@ export default function DemoDefault(): JSX.Element {
             Validator: [
               {
                 VerifyDetail: '1234****000',
-                VerifyType: 'sms'
+                VerifyType: 'mmm'
               }
             ]
           },

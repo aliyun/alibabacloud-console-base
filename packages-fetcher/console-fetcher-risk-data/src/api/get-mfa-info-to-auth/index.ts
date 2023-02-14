@@ -14,7 +14,7 @@ import {
   SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD
 } from '../../const';
 import {
-  slsGetMfaInfoToAuth
+  slsGetAuthMfaInfo
 } from '../../sls';
 import fetcher from '../../util/fetcher';
 
@@ -27,7 +27,7 @@ export default async function dataGetMfaInfoToAuth(params: TParamsGetMfaInfoToAu
       AccountId: params.accountId
     });
 
-    slsGetMfaInfoToAuth({
+    slsGetAuthMfaInfo({
       value: getAuthMfaInfoResponse.DeviceType,
       slsResultType: ESlsResultType.SUCCESS
     });
@@ -40,7 +40,7 @@ export default async function dataGetMfaInfoToAuth(params: TParamsGetMfaInfoToAu
       requestId
     } = error as FetcherError;
 
-    slsGetMfaInfoToAuth({
+    slsGetAuthMfaInfo({
       requestId,
       errorCode: code,
       slsResultType: ESlsResultType.FAIL,

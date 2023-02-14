@@ -20,7 +20,9 @@ export const SVG_URLS = {
   U2F_CLICK: 'https://img.alicdn.com/imgextra/i3/O1CN01ryyaVx1OZLXnuN6Mn_!!6000000001719-55-tps-86-86.svg',
   U2F_ICON: 'https://img.alicdn.com/imgextra/i3/O1CN01F386u021hNVTPjltB_!!6000000007016-55-tps-123-123.svg',
   VMFA_ICON_GREY: 'https://img.alicdn.com/imgextra/i1/O1CN01JabR2128pLi0tVEDE_!!6000000007981-55-tps-123-123.svg',
-  VMFA_ICON_WHITE: 'https://img.alicdn.com/imgextra/i1/O1CN01RoiIfD1wtg3vK02Fk_!!6000000006366-55-tps-123-123.svg'
+  VMFA_ICON_WHITE: 'https://img.alicdn.com/imgextra/i1/O1CN01RoiIfD1wtg3vK02Fk_!!6000000006366-55-tps-123-123.svg',
+  SMS_ICON: 'https://img.alicdn.com/imgextra/i2/O1CN01irH5yy1PVVwy245h9_!!6000000001846-55-tps-200-200.svg',
+  EMAIL_ICON: 'https://img.alicdn.com/imgextra/i2/O1CN01SwEEUW1gfS0jJpC06_!!6000000004169-55-tps-200-200.svg'
 };
 
 /**
@@ -72,3 +74,7 @@ export const DEFAULT_RISK_CONFIG = {
   dataPathVerifyType: 'data.VerifyType',
   dataPathVerifyDetail: 'data.VerifyDetail'
 };
+
+export const MAIN_ACCOUNT_URL_SETTING = '//account.console.aliyun.com/#/secure';
+
+export const MOBILE_SCREE_SIZE = 720;
