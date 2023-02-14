@@ -3,18 +3,16 @@ import type {
 } from 'react';
 
 import {
-  EVerifyType
-} from '../../const';
+  ICommonRiskInfo
+} from '../../types';
 
 export interface IModelProps {
   codeType: string;
   accountId: string;
-  verifyType: string;
-  convertedVerifyType: EVerifyType;
-  verifyDetail: string | boolean;
   urlSetting: string;
   coolingAfterSent: number;
   coolingAfterSentFail: number;
+  oldMainOrMpkVerifyInfo?: Omit<ICommonRiskInfo, 'codeType'>;
 }
 
 export interface IModelProviderProps {

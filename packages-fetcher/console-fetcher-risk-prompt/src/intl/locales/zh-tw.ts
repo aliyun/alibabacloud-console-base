@@ -46,12 +46,14 @@ export default {
   'attr:mfa_choose_u2f': 'U2F 安全密鑰',
   'attr:mfa_show_secret': '顯示密鑰',
   'attr:mfa_hide_secret': '隱藏密鑰',
-  'title:main': '安全驗證',
+  'title:default': '安全驗證',
+  'title:sub:mfa:bind': '绑定 MFA 设备',
   'title:sub_vmfa_bind': '綁定虛擬 MFA 設備',
   'title:sub_u2f_bind': '綁定 U2F 安全密鑰',
   'title:sub_vmfa_auth': '驗證虛擬 MFA 設備',
   'title:sub_u2f_auth': '驗證 U2F 安全密鑰',
-  'title:sub_default': '安全驗證',
+  'title:sms_auth': '验证手机',
+  'title:email_auth': '验证邮箱',
   'message:incorrect_mfa_bind': '安全驗證失敗，請重試。',
   'message:incorrect_u2f_auth': '驗證 U2F 安全密鑰失敗，請重新獲取 U2F 安全密鑰信息，並提交驗證。',
   'message:u2f_get_key_fail': '獲取 U2F 安全密鑰失敗，請重試。',
@@ -72,5 +74,6 @@ export default {
   'message:sub_invalid_unsupported_{method}!html!lines': `系統檢測到驗證方式 <code>{method}</code> 有誤。
 為了保障您的賬戶安全，請先聯繫主賬號或 RAM 管理員在 RAM 控制台設置驗證方式。`,
   'message:update_app_tip_{url}!html': '阿里雲 App 最新版提供了 MFA 驗證碼快速輸入功能，請 <a href="{url}" target="_blank">升級 App</a>。',
-  'message:invalid_unsupported_{method}!html': '系統檢測到驗證方式 <code>{method}</code> 有誤，請重試。'
+  'message:invalid_unsupported_{method}!html': '系統檢測到驗證方式 <code>{method}</code> 有誤，請重試。',
+  'message:invalid:sub:validator': '验证方式错误，请重试。'
 };

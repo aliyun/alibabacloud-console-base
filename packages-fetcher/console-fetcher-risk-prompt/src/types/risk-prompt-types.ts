@@ -1,7 +1,7 @@
 import {
   ERiskType,
   EVerifyType
-} from '../const';
+} from '../enum';
 
 export interface IRiskError extends Error {
   name: string;
@@ -42,9 +42,11 @@ export interface INewMainRiskInfo extends ICommonRiskInfo {
 }
 
 // 解析后的新版子账号风控参数
-export interface INewSubRiskInfo extends ICommonRiskInfo {
+export interface INewSubRiskInfo {
   riskType: ERiskType.NEW_SUB;
+  codeType: string;
   accountId: string; // 子账号 ID
+  subRiskValidators: Omit<ICommonRiskInfo, 'codeType'>[];
 }
 
 export type TRiskInfo = IOldMainRiskInfo | INewMainRiskInfo | INewSubRiskInfo | IMpkRiskInfo;

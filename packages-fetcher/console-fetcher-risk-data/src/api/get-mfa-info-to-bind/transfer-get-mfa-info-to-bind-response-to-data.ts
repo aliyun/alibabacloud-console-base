@@ -3,13 +3,13 @@ import {
   IResponseGetMfaInfoToBind
 } from '../../types';
 import {
-  ESubMfaDeviceType
+  ESubVerificationDeviceType
 } from '../../const';
 
 export default function transferGetMfaInfoToBindResponseToData(response: IResponseGetMfaInfoToBind): TDataGetMfaInfoToBind {
-  if (response.DeviceType === ESubMfaDeviceType.U2F || response.U2FChallenge) {
+  if (response.DeviceType === ESubVerificationDeviceType.U2F || response.U2FChallenge) {
     return {
-      deviceType: ESubMfaDeviceType.U2F,
+      deviceType: ESubVerificationDeviceType.U2F,
       rpId: response.RpId || '',
       pubKeyCreAlg: response.PubKeyCreAlg || '-7', // -7 表示 SHA-256
       pubKeyCreType: response.PubKeyCreType || 'public-key',
@@ -22,7 +22,7 @@ export default function transferGetMfaInfoToBindResponseToData(response: IRespon
   }
 
   return {
-    deviceType: ESubMfaDeviceType.VMFA,
+    deviceType: ESubVerificationDeviceType.VMFA,
     qrCodeUri: response.QRCodeUri || '',
     targetMfaDeviceSecret: response.TargetMfaDeviceSecret || '',
     targetUserPrincipalName: response.TargetUserPrincipalName

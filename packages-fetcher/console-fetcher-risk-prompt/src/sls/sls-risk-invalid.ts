@@ -2,11 +2,11 @@ import sls from '@alicloud/console-base-log-sls';
 
 import {
   ESlsTopic
-} from '../const';
+} from '../enum';
 
 interface IPayloadSlsRiskInvalid {
-  verifyType: string;
-  verifyDetail: string | boolean;
+  verifyType?: string;
+  verifyDetail?: string | boolean;
 }
 
 export default function slsRiskInvalid(payload: IPayloadSlsRiskInvalid): void {

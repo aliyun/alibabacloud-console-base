@@ -6,11 +6,13 @@ export enum ESubVerifyType {
 }
 
 /**
- * 新版子账号风控 MFA 设备类型 - 虚拟 MFA / U2F
+ * 新版子账号风控 MFA 设备类型 - 虚拟 MFA / U2F / SMS / EMAIL
  */
-export enum ESubMfaDeviceType {
+export enum ESubVerificationDeviceType {
   VMFA = 'VMFA',
-  U2F = 'U2F'
+  U2F = 'U2F',
+  SMS = 'SMS',
+  EMAIL = 'EMAIL'
 }
 
 /**
@@ -31,7 +33,8 @@ export enum ESlsTopic {
   SUB_GET_BIND_MFA_INFO = 'sub_get_bind_mfa_info', // 新版子账号风控 - 获取绑定 MFA 设备信息
   SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过绑定 MFA 
   MPK_VERIFY = 'mpk_verify', // 新版风控的轻量级虚商场景 - 验证验证码接口
-  MPK_SEND_CODE = 'mpk_send_code' // 新版风控的轻量级虚商场景 - 发送验证码
+  MPK_SEND_CODE = 'mpk_send_code', // 新版风控的轻量级虚商场景 - 发送验证码
+  SUB_GET_AUTH_VERIFICATION_INFO = 'sub_get_auth_verification_info' // 新版子账号风控 - 获取验证 MFA、手机、邮箱的信息
 }
 
 /**

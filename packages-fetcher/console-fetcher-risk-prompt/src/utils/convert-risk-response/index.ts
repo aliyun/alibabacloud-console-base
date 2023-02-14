@@ -3,16 +3,19 @@ import {
   TRiskInfo,
   IRiskConfig,
   TRiskResponse,
+  ICommonRiskInfo,
   TRiskParametersGetter
 } from '../../types';
 import {
-  ERiskType
-} from '../../const';
+  ERiskType,
+  EVerifyType
+} from '../../enum';
+import getRiskValueViaConfig from '../get-risk-value-via-config';
 
+import convertVerifyType from './convert-verify-type';
 import convertMpkSetting from './convert-mpk-setting';
 import getRiskParameters from './get-risk-parameters';
 import getMergedUseNewRisk from './get-merged-use-new-risk';
-import getCommonRiskInfoFromDataPath from './get-common-risk-info';
 
 interface IConvertRiskResponseProps<T> {
   newRisk?: TNewRisk<T>;
@@ -33,19 +36,17 @@ function convertRiskResponse<T>({
     riskParametersGetter
   });
   const {
-    accountId,
-    verifyUrl
+    accountId, verifyUrl, codeType,
+    validators = [], verifyType = '', verifyDetail = ''
   } = riskParameters;
+  const convertedVerifyType = convertVerifyType({
+    riskConfig,
+    type0: verifyType
+  });
 
   const mergedUseNewRisk = getMergedUseNewRisk({
     newRisk,
     riskResponse,
-    riskParameters
-  });
-  const commonRiskInfo = getCommonRiskInfoFromDataPath({
-    riskConfig,
-    riskResponse,
-    mergedUseNewRisk,
     riskParameters
   });
 
@@ -60,41 +61,88 @@ function convertRiskResponse<T>({
     if (isMpk) {
       if (mpkUseIdentityService) {
         return {
-          ...commonRiskInfo,
           isMpk,
+          codeType,
           accountId,
+          verifyType,
+          verifyDetail,
           mpkIsDowngrade,
+          convertedVerifyType,
           riskType: ERiskType.MPK
         };
       }
 
       return {
-        ...commonRiskInfo,
-        riskType: ERiskType.OLD_MAIN,
-        mpkIsDowngrade: true
+        codeType,
+        verifyType,
+        verifyDetail,
+        convertedVerifyType,
+        mpkIsDowngrade: true,
+        riskType: ERiskType.OLD_MAIN
       };
     }
 
     if (verifyUrl) {
       return {
-        ...commonRiskInfo,
         accountId,
         verifyUrl,
+        codeType,
+        verifyType,
+        verifyDetail,
+        convertedVerifyType,
         riskType: ERiskType.NEW_MAIN
       };
     }
 
+    const subRiskValidators = ((): Omit<ICommonRiskInfo, 'codeType'>[] => {
+      // 过滤掉不合法的风控方式
+      return validators.map(o => ({
+        verifyType: o.VerifyType,
+        verifyDetail: o.VerifyDetail,
+        convertedVerifyType: convertVerifyType({
+          riskConfig,
+          type0: o.VerifyType
+        })
+      })).filter(o => ![EVerifyType.NONE, EVerifyType.UNKNOWN].includes(o.convertedVerifyType));
+    })();
+
     return {
-      ...commonRiskInfo,
+      codeType,
       accountId,
+      subRiskValidators,
       riskType: ERiskType.NEW_SUB
     };
   }
 
+  const oldCodeType = getRiskValueViaConfig({
+    riskConfig,
+    riskResponse,
+    riskConfigKey: 'dataPathOldCodeType',
+    defaultValue: ''
+  });
+  const oldVerifyType = getRiskValueViaConfig({
+    riskConfig,
+    riskResponse,
+    riskConfigKey: 'dataPathOldVerifyType',
+    defaultValue: ''
+  });
+  const oldVerifyDetail = getRiskValueViaConfig({
+    riskConfig,
+    riskResponse,
+    riskConfigKey: 'dataPathOldVerifyDetail',
+    defaultValue: ''
+  });
+
   return {
-    ...commonRiskInfo,
-    riskType: ERiskType.OLD_MAIN,
-    mpkIsDowngrade: false
+    mpkIsDowngrade: false,
+    codeType: oldCodeType,
+    verifyType: oldVerifyType,
+    verifyDetail: oldVerifyDetail,
+    convertedVerifyType: convertVerifyType({
+      riskConfig,
+      type0: oldVerifyType
+    }),
+    riskType: ERiskType.OLD_MAIN
   };
 }
 

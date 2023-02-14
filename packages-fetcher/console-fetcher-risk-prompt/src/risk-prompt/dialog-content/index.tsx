@@ -3,11 +3,10 @@ import React from 'react';
 import Provider, {
   ModelProps
 } from '../../model';
+import DialogContentUi from '../../rc-container/dialog-content-ui';
 
-import Ui from './ui';
-
-export default function DialogContentUi(props: ModelProps): JSX.Element {
+export default function DialogContent(props: ModelProps): JSX.Element {
   return <Provider props={props}>
-    <Ui />
+    <DialogContentUi />
   </Provider>;
 }

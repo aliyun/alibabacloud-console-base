@@ -16,7 +16,7 @@ const ScButton = styled(Button)`
   padding: 0;
 `;
 
-export default function XIcon({
+export default function Xicon({
   onClick,
   ...props
 }: IProps): JSX.Element {

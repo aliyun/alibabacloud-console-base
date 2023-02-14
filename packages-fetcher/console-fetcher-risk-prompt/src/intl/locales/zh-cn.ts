@@ -46,12 +46,14 @@ export default {
   'attr:mfa_choose_u2f': 'U2F 安全密钥',
   'attr:mfa_show_secret': '显示密钥',
   'attr:mfa_hide_secret': '隐藏密钥',
-  'title:main': '安全验证',
-  'title:sub_vmfa_bind': '绑定虚拟 MFA 设备',
-  'title:sub_u2f_bind': '绑定 U2F 安全密钥',
-  'title:sub_vmfa_auth': '验证虚拟 MFA 设备',
-  'title:sub_u2f_auth': '验证 U2F 安全密钥',
-  'title:sub_default': '安全验证',
+  'title:default': '安全验证',
+  'title:sub:mfa:bind': '绑定 MFA 设备',
+  'title:sub_vmfa_bind': '虚拟 MFA 设备绑定',
+  'title:sub_u2f_bind': 'U2F 安全密钥绑定',
+  'title:sub_vmfa_auth': '虚拟 MFA 验证',
+  'title:sub_u2f_auth': 'U2F 安全密钥验证',
+  'title:sms_auth': '手机验证',
+  'title:email_auth': '邮箱验证',
   'message:incorrect_mfa_bind': '安全验证失败，请重试。',
   'message:incorrect_u2f_auth': '验证 U2F 安全密钥失败，请重新获取 U2F 安全密钥信息，并提交验证。',
   'message:u2f_get_key_fail': '获取 U2F 安全密钥失败，请重试。',
@@ -72,5 +74,6 @@ export default {
   'message:sub_invalid_unsupported_{method}!html!lines': `系统检测到验证方式 <code>{method}</code> 有误。
 为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`,
   'message:update_app_tip_{url}!html': '阿里云 App 最新版提供了 MFA 验证码快速输入功能，请 <a href="{url}" target="_blank">升级 App</a>。',
-  'message:invalid_unsupported_{method}!html': '系统检测到验证方式 <code>{method}</code> 有误，请重试。'
+  'message:invalid_unsupported_{method}!html': '系统检测到验证方式 <code>{method}</code> 有误，请重试。',
+  'message:invalid:sub:validator': '验证方式错误，请重试。'
 };

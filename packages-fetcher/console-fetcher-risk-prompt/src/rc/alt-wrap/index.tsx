@@ -5,8 +5,12 @@ import {
   AltWrap as AltWrap0
 } from '@alicloud/console-base-rc-dialog';
 
+import {
+  TStringOrJsx
+} from '../../types';
+
 interface IProps {
-  content?: string | JSX.Element;
+  content?: TStringOrJsx;
 }
 
 const ScWrapper = styled.div`

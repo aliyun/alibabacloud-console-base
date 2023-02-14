@@ -4,14 +4,14 @@ import {
   TDataGetMfaInfoToAuth
 } from '../../types';
 import {
-  ESubMfaDeviceType
+  ESubVerificationDeviceType
 } from '../../const/enum';
 
 export default function transferGetMfaInfoToAuthResponseToData(response: TResponseGetMfaInfoToAuth): TUnCapitalizeKeys<TDataGetMfaInfoToAuth> {
-  if (response.DeviceType === ESubMfaDeviceType.U2F) {
+  if (response.DeviceType === ESubVerificationDeviceType.U2F) {
     if (response.U2FVersion === 'WebAuthn') {
       return {
-        deviceType: ESubMfaDeviceType.U2F,
+        deviceType: ESubVerificationDeviceType.U2F,
         rpId: response.RpId,
         u2FVersion: response.U2FVersion,
         u2FChallenge: response.U2FChallenge,
@@ -21,7 +21,7 @@ export default function transferGetMfaInfoToAuthResponseToData(response: TRespon
     }
 
     return {
-      deviceType: ESubMfaDeviceType.U2F,
+      deviceType: ESubVerificationDeviceType.U2F,
       u2FAppId: response.U2FAppId,
       u2FVersion: response.U2FVersion,
       u2FChallenge: response.U2FChallenge,
@@ -31,7 +31,7 @@ export default function transferGetMfaInfoToAuthResponseToData(response: TRespon
   }
 
   return {
-    deviceType: ESubMfaDeviceType.VMFA,
+    deviceType: ESubVerificationDeviceType.VMFA,
     targetUserPrincipalName: response.TargetUserPrincipalName
   };
 }

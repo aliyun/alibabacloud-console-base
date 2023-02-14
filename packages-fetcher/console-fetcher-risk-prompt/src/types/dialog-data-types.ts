@@ -1,55 +1,60 @@
 import type {
   ParamsBindMfa,
-  ParamsGetMfaInfoToAuth,
   ParamsGetMfaInfoToBind,
-  ParamsVerifySubAccountMfa,
+  ParamsVerifySubAccount,
   DataTokenVerify,
-  DataGetMfaInfoToAuth,
-  DataGetMfaInfoToBind
+  DataGetMfaInfoToBind,
+  DataVerificationValidator
+} from '@alicloud/console-fetcher-risk-data';
+import {
+  ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
   EDialogType,
-  ESubAccountIdentityServiceType
-} from '../const';
+  ESubBindMfaStep,
+  ESubIdentityServiceType
+} from '../enum';
 
 export type TStringOrJsx = string | JSX.Element;
+export type TBindMfa = 'bind_mfa';
 
-export type TSubAccountIdentityServiceParams = {
-  paramsType: ESubAccountIdentityServiceType.BIND_MFA;
-  params: ParamsBindMfa;
-} | {
-  paramsType: ESubAccountIdentityServiceType.GET_MFA_INFO_TO_AUTH;
-  params: ParamsGetMfaInfoToAuth;
-} | {
-  paramsType: ESubAccountIdentityServiceType.GET_MFA_INFO_TO_BIND;
+export type TSubIdentityServiceParams = {
+  paramsType: ESubIdentityServiceType.GET_MFA_INFO_TO_BIND;
   params: ParamsGetMfaInfoToBind;
 } | {
-  paramsType: ESubAccountIdentityServiceType.VERIFY_SUB_ACCOUNT_MFA;
-  params: ParamsVerifySubAccountMfa;
-};
+  paramsType: ESubIdentityServiceType.VERIFY_SUB_ACCOUNT;
+  params: ParamsVerifySubAccount[];
+}
 
-export type TSubAccountIdentityServiceData = {
-  dataType: ESubAccountIdentityServiceType.BIND_MFA;
-  data: DataTokenVerify;
-} | {
-  dataType: ESubAccountIdentityServiceType.GET_MFA_INFO_TO_AUTH;
-  data: DataGetMfaInfoToAuth;
-} | {
-  dataType: ESubAccountIdentityServiceType.GET_MFA_INFO_TO_BIND;
+// 在 ESubVerificationDeviceType（U2F/VMFA/EMAIL/SMS）的基础上增加 choose_mfa_to_bind
+export type TGetVerificationInfoToAuthData = DataVerificationValidator | {
+  deviceType: TBindMfa;
+}
+
+export type TSubIdentityServiceData = {
+  dataType: ESubIdentityServiceType.GET_MFA_INFO_TO_BIND;
   data: DataGetMfaInfoToBind;
 } | {
-  dataType: ESubAccountIdentityServiceType.VERIFY_SUB_ACCOUNT_MFA;
+  dataType: ESubIdentityServiceType.VERIFY_SUB_ACCOUNT;
   data: DataTokenVerify;
+} | {
+  dataType: ESubIdentityServiceType.GET_VERIFICATION_INFO_TO_AUTH;
+  data: {
+    targetUserPrincipalName: string;
+    verificationOrBindValidators: TGetVerificationInfoToAuthData[];
+  };
 }
 
 export interface INewMainAccountRiskInfo {
   verifyUrl: string;
+  verifyType: string;
   hasCancelButton?: boolean;
 }
 
 export interface IOldMainAccountOrMpkRiskInfo {
   isMpk: boolean;
+  verifyType: string;
   mpkIsDowngrade?: boolean;
 }
 
@@ -60,12 +65,17 @@ export interface IMainAccountData {
 
 export interface IDialogData {
   dialogType: EDialogType;
-  errorMessage?: TStringOrJsx;
   primaryButtonDisabled: boolean;
   fromBindU2FtoAuthU2F?: boolean;
+  subInvalidValidators?: boolean;
+  apiErrorMessage?: string;
+  subU2fAuthApiErrorMessage?: string;
   mainOrMpkAccountData?: IMainAccountData;
   newMainAccountRiskInfo?: INewMainAccountRiskInfo;
   oldMainOrMpkRiskInfo?: IOldMainAccountOrMpkRiskInfo;
-  subAccountIdentityServiceData?: TSubAccountIdentityServiceData;
-  subAccountIdentityServiceParams?: TSubAccountIdentityServiceParams;
+  subBindMfaStep?: ESubBindMfaStep;
+  subBindMfaParams?: ParamsBindMfa;
+  subVerificationDeviceType?: ESubVerificationDeviceType | TBindMfa;
+  subIdentityServiceData?: TSubIdentityServiceData;
+  subIdentityServiceParams?: TSubIdentityServiceParams;
 }

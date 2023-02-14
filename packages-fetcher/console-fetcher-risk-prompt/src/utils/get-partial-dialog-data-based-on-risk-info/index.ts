@@ -1,44 +1,98 @@
 import type {
   FetcherError
 } from '@alicloud/fetcher';
+import {
+  dataGetVerificationInfoToAuth
+} from '@alicloud/console-fetcher-risk-data';
 
 import {
-  TRiskInfo
+  IDialogData,
+  TRiskInfo,
+  TGetVerificationInfoToAuthData
 } from '../../types';
 import {
   ERiskType,
-  EDialogType
-} from '../../const';
+  EDialogType,
+  EVerifyType,
+  ESubIdentityServiceType,
+  ESubBindMfaStep
+} from '../../enum';
 
-import {
-  TAuthMfaDialogData
-} from './_type';
-import getAuthMfaDialogData from './get-auth-mfa-dialog-data';
+const isMfaBounded = (verifyDetail: string | boolean): boolean => {
+  if (typeof verifyDetail === 'boolean') {
+    return verifyDetail;
+  }
 
-export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRiskInfo): Promise<TAuthMfaDialogData> {
+  if (typeof verifyDetail === 'string') {
+    return verifyDetail === 'true';
+  }
+
+  // 默认是已绑定
+  return true;
+};
+
+export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRiskInfo): Promise<Omit<IDialogData, 'primaryButtonDisabled'>> {
   try {
     const {
-      riskType, verifyDetail
+      riskType
     } = riskInfo;
-  
+
     if (riskType === ERiskType.NEW_SUB) {
-      // 子账号风控场景的 sms / email 在调用 riskPrompt 时就被拦截了，这里一定是 MFA
-      // verifyDetail 类型为 string 时，'false' 表示没有绑定过 MFA，verifyDetail 类型为 boolean 时，false 表示没有绑定过 MFA
-      if (verifyDetail === 'false' || !verifyDetail) {
+      const {
+        accountId,
+        subRiskValidators
+      } = riskInfo;
+      const validatorsIncludesMfaToBind = subRiskValidators.find(o => o.convertedVerifyType === EVerifyType.MFA && !isMfaBounded(o.verifyDetail));
+
+      if (subRiskValidators.length === 1 && validatorsIncludesMfaToBind) {
         return {
-          dialogType: EDialogType.SUB_RISK_MFA_CHOOSE
+          dialogType: EDialogType.SUB_RISK_MFA_BIND,
+          subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE
         };
       }
 
-      const authMfaDialogData = await getAuthMfaDialogData(riskInfo.accountId);
+      const verificationValidators = await dataGetVerificationInfoToAuth({
+        accountId
+      });
+      const targetUserPrincipalName = ((): string => {
+        if (!verificationValidators.length) {
+          return '';
+        }
 
-      return authMfaDialogData;
+        return verificationValidators[0].targetUserPrincipalName;
+      })();
+      const verificationOrBindValidators = ((): TGetVerificationInfoToAuthData[] => {
+        const validators: TGetVerificationInfoToAuthData[] = [...verificationValidators];
+
+        // 将绑定 MFA 也融入场景中
+        if (validatorsIncludesMfaToBind) {
+          validators.push({
+            deviceType: 'bind_mfa'
+          });
+        }
+
+        return validators;
+      })();
+      
+      return {
+        dialogType: EDialogType.SUB_RISK_VERIFICATION_AUTH,
+        subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE,
+        subVerificationDeviceType: verificationValidators[0].deviceType,
+        subIdentityServiceData: {
+          dataType: ESubIdentityServiceType.GET_VERIFICATION_INFO_TO_AUTH,
+          data: {
+            targetUserPrincipalName,
+            verificationOrBindValidators
+          }
+        }
+      };
     }
-  
+
     if (riskType === ERiskType.NEW_MAIN) {
       return {
         dialogType: EDialogType.NEW_MAIN_RISK,
         newMainAccountRiskInfo: {
+          verifyType: riskInfo.verifyType,
           verifyUrl: riskInfo.verifyUrl
         }
       };
@@ -49,22 +103,24 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
         dialogType: EDialogType.OLD_MAIN_OR_MPK_RISK,
         oldMainOrMpkRiskInfo: {
           isMpk: false,
+          verifyType: riskInfo.verifyType,
           mpkIsDowngrade: riskInfo.mpkIsDowngrade
         }
       };
     }
-  
+
     return {
       dialogType: EDialogType.OLD_MAIN_OR_MPK_RISK,
       oldMainOrMpkRiskInfo: {
         isMpk: riskInfo.isMpk,
+        verifyType: riskInfo.verifyType,
         mpkIsDowngrade: riskInfo.mpkIsDowngrade
       }
     };
   } catch (error) {
     return {
       dialogType: EDialogType.ERROR,
-      errorMessage: (error as FetcherError).message
+      apiErrorMessage: (error as FetcherError).message
     };
   }
 }

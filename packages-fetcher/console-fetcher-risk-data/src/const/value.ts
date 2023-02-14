@@ -22,3 +22,4 @@ export const SEND_CODE_API = '/identity/send';
 export const SKIP_BIND_MFA_API = '/identity/skip';
 export const GET_MFA_INFO_TO_AUTH_API = '/identity/getMfaInfoToAuth';
 export const GET_MFA_INFO_TO_BIND_API = '/identity/getMfaInfoToBind';
+export const GET_VERIFICATION_INFO_TO_AUTH = '/identity/getMfaInfoToAuthV2';

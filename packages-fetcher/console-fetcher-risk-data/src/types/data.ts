@@ -1,12 +1,14 @@
 import {
-  ESubMfaDeviceType
+  ESubVerificationDeviceType
 } from '../const';
 
 import {
   IResponseTokenVerify,
   IResponseGetU2fInfoToAuth,
   IResponseGetVmfaInfoToAuth,
-  IResponseGetU2fWebAuthnInfoToAuth
+  IResponseGetU2fWebAuthnInfoToAuth,
+  IResponseEmailValidator,
+  IResponseSmsValidator
 } from './response';
 import {
   TUnCapitalizeKeys
@@ -17,7 +19,7 @@ interface IDataTargetUserPrincipalName {
 }
 
 export interface IDataGetU2fInfoToBind extends IDataTargetUserPrincipalName {
-  deviceType: ESubMfaDeviceType.U2F;
+  deviceType: ESubVerificationDeviceType.U2F;
   rpId: string; // 选择的类型是 U2F 时不为 null
   pubKeyCreType: string; // 用于 WebAuthn，public-key
   pubKeyCreAlg: string; // 用于 WebAuthn，-7 表示 SHA-256
@@ -28,7 +30,7 @@ export interface IDataGetU2fInfoToBind extends IDataTargetUserPrincipalName {
 }
 
 export interface IDataGetVmfaInfoToBind extends IDataTargetUserPrincipalName {
-  deviceType: ESubMfaDeviceType.VMFA;
+  deviceType: ESubVerificationDeviceType.VMFA;
   qrCodeUri: string;
   targetMfaDeviceSecret: string;
 }
@@ -44,3 +46,16 @@ export type TDataGetU2fInfoToAuth = TUnCapitalizeKeys<IResponseGetU2fInfoToAuth>
 export type TDataGetU2fWebAuthnInfoToAuth = TUnCapitalizeKeys<IResponseGetU2fWebAuthnInfoToAuth>;
 
 export type TDataGetMfaInfoToAuth = TDataGetVmfaInfoToAuth | TDataGetU2fInfoToAuth | TDataGetU2fWebAuthnInfoToAuth;
+
+// /identity/getMfaInfoToAuthV2
+export type TDataGetSmsInfoToAuth = TUnCapitalizeKeys<IResponseSmsValidator> & {
+  deviceType: ESubVerificationDeviceType.SMS;
+  targetUserPrincipalName: string;
+}
+export type TDataGetEmailInfoToAuth = TUnCapitalizeKeys<IResponseEmailValidator> & {
+  deviceType: ESubVerificationDeviceType.EMAIL;
+  targetUserPrincipalName: string;
+}
+export type TDataVerificationValidator = TDataGetSmsInfoToAuth | TDataGetEmailInfoToAuth | TDataGetVmfaInfoToAuth | TDataGetU2fInfoToAuth | TDataGetU2fWebAuthnInfoToAuth;
+
+export type TDataGetVerificationInfoToAuth = TDataVerificationValidator[];

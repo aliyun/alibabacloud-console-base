@@ -14,19 +14,19 @@ import {
 } from '../../sls';
 
 interface IRiskInvalidProps {
-  subRisk: boolean;
-  verifyType: string;
-  verifyDetail: string | boolean;
+  subRisk?: boolean;
+  verifyType?: string;
+  verifyDetail?: string | boolean;
   errorMessage: string;
   urlSetting: string;
 }
 
 export default function riskInvalid({
-  subRisk,
   verifyType,
   verifyDetail,
   errorMessage,
-  urlSetting
+  urlSetting,
+  subRisk = false
 }: IRiskInvalidProps): Promise<void> {
   slsRiskInvalid({
     verifyType,
@@ -35,9 +35,9 @@ export default function riskInvalid({
   
   return open<void>({
     size: DEFAULT_DIALOG_SIZE,
-    title: subRisk ? intl('title:sub_default') : intl('op:risk_invalid'),
+    title: subRisk ? intl('title:default') : intl('op:risk_invalid'),
     content: <AltWrap content={errorMessage} />,
-    buttons: !subRisk ? [{
+    buttons: urlSetting ? [{
       label: intl('op:risk_invalid_go'),
       spm: 'add',
       href: urlSetting
