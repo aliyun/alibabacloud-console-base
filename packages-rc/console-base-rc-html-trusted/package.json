@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-html-trusted",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ConsoleBase 组件 - 受信任文本展示为带标准样式的 HTML",
   "license": "MIT",
   "sideEffects": false,

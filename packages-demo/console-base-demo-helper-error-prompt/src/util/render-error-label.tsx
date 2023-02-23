@@ -7,6 +7,11 @@ import {
   TErrorArg
 } from '../types';
 
+interface IError extends Error {
+  code?: string;
+  title?: string;
+}
+
 interface IPropsScErrorTag {
   type: string;
 }
@@ -48,40 +53,40 @@ export default function renderErrorLabel(error: TErrorArg): JSX.Element {
   if (error === null) {
     return <>
       <ScErrorTag type="N" />
-      null
+      NULL
     </>;
   }
-
+  
   if (error === undefined) {
     return <>
       <ScErrorTag type="U" />
-      undefined
+      UNDEFINED
     </>;
   }
-
+  
   if (typeof error === 'string') {
     return <>
       <ScErrorTag type="S" />
       {error}
     </>;
   }
-
+  
   if (isValidElement(error)) {
     return <>
       <ScErrorTag type="X" />
       JSX
     </>;
   }
-
+  
   if (error instanceof Error) {
     return <>
       <ScErrorTag type="E" />
-      {error.message}
+      {(error as IError).title || error.message}
     </>;
   }
-
+  
   return <>
     <ScErrorTag type="O" />
-    {error.message || error.toString()}
+    {error.title || error.message || error.toString()}
   </>;
 }

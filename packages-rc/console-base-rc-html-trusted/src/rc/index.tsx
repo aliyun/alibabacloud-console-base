@@ -9,7 +9,7 @@ import {
   IHtmlTrustedProps
 } from '../types';
 
-const ScSpan = styled.span`
+const ScDiv = styled.div`
   ${mixinTypoElementsInline}
 `;
 
@@ -21,7 +21,7 @@ export default function Intl({
   }
   
   if (/</.test(text)) {
-    return <ScSpan dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+    return <ScDiv dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
       __html: text
     }} />;
   }

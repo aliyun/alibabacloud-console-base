@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-demo-helper-error-prompt",
-  "version": "1.4.10",
+  "version": "1.4.11",
   "description": "ConsoleBase Demo Helper for Error Prompt",
   "license": "MIT",
   "sideEffects": false,
@@ -19,12 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "demo",
-    "helper",
-    "error-prompt"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
