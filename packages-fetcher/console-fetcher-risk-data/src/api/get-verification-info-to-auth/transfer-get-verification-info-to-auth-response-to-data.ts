@@ -56,13 +56,13 @@ export default function transferGetVerificationInfoToAuthResponseToData(response
       const responseSmsValidator = JSON.parse(Validators.SMS) as IResponseSmsValidator;
 
       const phoneNumber = ((): string => {
-        const phoneNumberWithoutAreaCode = responseSmsValidator.PhoneNumber?.split('-')[1];
+        const phoneNumberWithoutAreaCode = responseSmsValidator.PhoneNumber.split('-')[1];
 
         if (phoneNumberWithoutAreaCode) {
           return phoneNumberWithoutAreaCode;
         }
 
-        return responseSmsValidator.PhoneNumber ?? '';
+        return responseSmsValidator.PhoneNumber;
       })();
   
       validators.push({

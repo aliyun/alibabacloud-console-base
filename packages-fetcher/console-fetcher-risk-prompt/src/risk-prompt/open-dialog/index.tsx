@@ -3,6 +3,9 @@ import React from 'react';
 import {
   open
 } from '@alicloud/console-base-rc-dialog';
+import {
+  ESubVerificationDeviceType
+} from '@alicloud/console-fetcher-risk-data';
 
 import {
   TRiskInfo,
@@ -25,6 +28,7 @@ import {
 } from '../../sls';
 import {
   intlVerifyDialogTitle,
+  getOldMainOrMpkAccountRiskInfo,
   getPartialDialogDataBasedOnRiskInfo
 } from '../../utils';
 import DialogContent from '../dialog-content';
@@ -74,7 +78,14 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
     },
     data: {
       ...dialogData,
-      primaryButtonDisabled: dialogData.dialogType === EDialogType.OLD_MAIN_OR_MPK_RISK
+      // 用户未输入验证码之前，按钮置灰
+      primaryButtonDisabledObject: {
+        [ESubVerificationDeviceType.EMAIL]: true,
+        [ESubVerificationDeviceType.SMS]: true,
+        [ESubVerificationDeviceType.VMFA]: true,
+        [ESubVerificationDeviceType.U2F]: true,
+        main_account: true
+      }
     },
     size: (data: IDialogData) => {
       switch (data.dialogType) {
@@ -96,14 +107,12 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');
-      const primaryButtonDisabled = data.primaryButtonDisabled || false;
       const subRiskBindMfaInVerificationAuth = data.dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH && data.subVerificationDeviceType === 'bind_mfa';
 
       if (subRiskBindMfaInVerificationAuth || data.dialogType === EDialogType.SUB_RISK_MFA_BIND) {
         const bindMfaButtons = generateSubBindMfaButton({
           codeType,
           accountId,
-          primaryButtonDisabled,
           subBindMfaStep: data.subBindMfaStep
         });
 
@@ -115,6 +124,14 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
           return [buttonCancel];
         }
         case EDialogType.SUB_RISK_VERIFICATION_AUTH: {
+          const primaryButtonDisabled = ((): boolean => {
+            if (!data.subVerificationDeviceType || data.subVerificationDeviceType === 'bind_mfa') {
+              return false;
+            }
+
+            return data.primaryButtonDisabledObject[data.subVerificationDeviceType];
+          })();
+
           const verifyMfaPrimaryButton = generateSubSubmitButton({
             primaryButtonDisabled
           });
@@ -122,7 +139,13 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
           return [verifyMfaPrimaryButton, buttonCancel];
         }
         case EDialogType.NEW_MAIN_RISK: {
-          const showCancelButton = data.newMainAccountRiskInfo?.hasCancelButton || false;
+          const showCancelButton = ((): boolean => {
+            if (data.mainAccountRiskInfo?.type === 'new_main') {
+              return data.mainAccountRiskInfo.riskInfo.hasCancelButton ?? false;
+            }
+
+            return false;
+          })();
 
           if (showCancelButton) {
             return [buttonCancel];
@@ -131,16 +154,16 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
           return [];
         }
         default: {
-          const isMpk = data.oldMainOrMpkRiskInfo?.isMpk ?? false;
-          const mpkIsDowngrade = data.oldMainOrMpkRiskInfo?.mpkIsDowngrade ?? true;
-          const verifyType = data.oldMainOrMpkRiskInfo?.verifyType || '';
+          const {
+            isMpk, mpkIsDowngrade, verifyType
+          } = getOldMainOrMpkAccountRiskInfo(data.mainAccountRiskInfo);
 
           if (isMpk && !mpkIsDowngrade) {
             const mpkSubmitButton = generateMpkSubmitButton({
               codeType,
               accountId,
               verifyType,
-              primaryButtonDisabled
+              primaryButtonDisabled: data.primaryButtonDisabledObject.main_account
             });
 
             return [mpkSubmitButton, buttonCancel];
@@ -148,7 +171,7 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
 
           const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton({
             verifyType,
-            primaryButtonDisabled
+            primaryButtonDisabled: data.primaryButtonDisabledObject.main_account
           });
 
           return [oldMainOrDowngradeMpkSubmitButton, buttonCancel];

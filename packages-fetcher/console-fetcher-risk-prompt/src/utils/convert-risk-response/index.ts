@@ -10,12 +10,12 @@ import {
   ERiskType,
   EVerifyType
 } from '../../enum';
-import getRiskValueViaConfig from '../get-risk-value-via-config';
 
 import convertVerifyType from './convert-verify-type';
 import convertMpkSetting from './convert-mpk-setting';
 import getRiskParameters from './get-risk-parameters';
 import getMergedUseNewRisk from './get-merged-use-new-risk';
+import getRiskValueViaConfig from './get-risk-value-via-config';
 
 interface IConvertRiskResponseProps<T> {
   newRisk?: TNewRisk<T>;

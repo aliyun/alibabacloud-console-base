@@ -43,35 +43,30 @@ export default function VmfaBindForm(): JSX.Element {
     code1: '',
     code2: ''
   });
-  const [stateInput1InError, setStateInput1InError] = useState<boolean>(false);
-  const [stateInput2InError, setStateInput2InError] = useState<boolean>(false);
 
   const handleCode1InputChange = useCallback((payload: IHandleInputChangeProps) => {
     const {
-      verifyCode, inputInError
+      verifyCode
     } = payload;
 
     setStateBindVmfaCode(prev => ({
       code1: verifyCode,
       code2: prev.code2
     }));
-    setStateInput1InError(inputInError);
   }, []);
 
   const handleCode2InputChange = useCallback((payload: IHandleInputChangeProps) => {
     const {
-      verifyCode, inputInError
+      verifyCode
     } = payload;
 
     setStateBindVmfaCode(prev => ({
       code1: prev.code1,
       code2: verifyCode
     }));
-    setStateInput2InError(inputInError);
   }, []);
 
   useEffect(() => {
-    const primaryButtonDisabled = stateInput1InError || stateInput2InError;
     const newBindMfaPayload: ParamsBindVmfa = {
       accountId,
       code1: stateBindVmfaCode.code1,
@@ -83,10 +78,9 @@ export default function VmfaBindForm(): JSX.Element {
     };
 
     updateData({
-      primaryButtonDisabled,
       subBindMfaParams: newBindMfaPayload
     });
-  }, [accountId, codeType, stateBindVmfaCode, stateInput1InError, stateInput2InError, updateData]);
+  }, [accountId, codeType, stateBindVmfaCode, updateData]);
   
   return <>
     <Form {...{

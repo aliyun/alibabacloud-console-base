@@ -8,11 +8,8 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  TSubIdentityServiceData
+  TSubGetVerificationToAuthData
 } from '../../types';
-import {
-  ESubIdentityServiceType
-} from '../../enum';
 import intl from '../../intl';
 import U2fAuth from '../u2f-auth-or-bind';
 
@@ -20,12 +17,12 @@ import MfaBind from './mfa-bind';
 import VmfaAuth from './vmfa-auth';
 import SmsOrEmailAuth from './sms-or-email-auth';
 
-export default function getSubAuthValidatorsTabs(subIdentityServiceData?: TSubIdentityServiceData): TabProps[] {
-  if (subIdentityServiceData?.dataType !== ESubIdentityServiceType.GET_VERIFICATION_INFO_TO_AUTH) {
+export default function getSubAuthValidatorsTabs(subGetVerificationToAuthData?: TSubGetVerificationToAuthData): TabProps[] {
+  if (!subGetVerificationToAuthData) {
     return [];
   }
 
-  const tabsViaDataMapping = subIdentityServiceData.data.verificationOrBindValidators.map<TabProps | null>(o => {
+  const tabsViaDataMapping = subGetVerificationToAuthData.verificationOrBindValidators.map<TabProps | null>(o => {
     const getTabPropWithDefaultValue = (props: Omit<TabProps, 'key' | 'closable'>): TabProps => ({
       ...props,
       closable: false,

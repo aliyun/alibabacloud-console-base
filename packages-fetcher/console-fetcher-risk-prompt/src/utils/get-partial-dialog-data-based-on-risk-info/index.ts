@@ -14,7 +14,6 @@ import {
   ERiskType,
   EDialogType,
   EVerifyType,
-  ESubIdentityServiceType,
   ESubBindMfaStep
 } from '../../enum';
 
@@ -31,7 +30,7 @@ const isMfaBounded = (verifyDetail: string | boolean): boolean => {
   return true;
 };
 
-export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRiskInfo): Promise<Omit<IDialogData, 'primaryButtonDisabled'>> {
+export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRiskInfo): Promise<Omit<IDialogData, 'primaryButtonDisabledObject'>> {
   try {
     const {
       riskType
@@ -78,12 +77,9 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
         dialogType: EDialogType.SUB_RISK_VERIFICATION_AUTH,
         subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE,
         subVerificationDeviceType: verificationValidators[0].deviceType,
-        subIdentityServiceData: {
-          dataType: ESubIdentityServiceType.GET_VERIFICATION_INFO_TO_AUTH,
-          data: {
-            targetUserPrincipalName,
-            verificationOrBindValidators
-          }
+        subGetVerificationToAuthData: {
+          targetUserPrincipalName,
+          verificationOrBindValidators
         }
       };
     }
@@ -91,9 +87,12 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
     if (riskType === ERiskType.NEW_MAIN) {
       return {
         dialogType: EDialogType.NEW_MAIN_RISK,
-        newMainAccountRiskInfo: {
-          verifyType: riskInfo.verifyType,
-          verifyUrl: riskInfo.verifyUrl
+        mainAccountRiskInfo: {
+          type: 'new_main',
+          riskInfo: {
+            verifyType: riskInfo.verifyType,
+            verifyUrl: riskInfo.verifyUrl
+          }
         }
       };
     }
@@ -101,20 +100,27 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
     if (riskType === ERiskType.OLD_MAIN) {
       return {
         dialogType: EDialogType.OLD_MAIN_OR_MPK_RISK,
-        oldMainOrMpkRiskInfo: {
-          isMpk: false,
-          verifyType: riskInfo.verifyType,
-          mpkIsDowngrade: riskInfo.mpkIsDowngrade
+        mainAccountRiskInfo: {
+          type: 'old_main_or_mpk',
+          riskInfo: {
+            isMpk: false,
+            verifyType: riskInfo.verifyType,
+            mpkIsDowngrade: riskInfo.mpkIsDowngrade
+          }
         }
       };
     }
 
+    // 默认情况是旧版主账号风控
     return {
       dialogType: EDialogType.OLD_MAIN_OR_MPK_RISK,
-      oldMainOrMpkRiskInfo: {
-        isMpk: riskInfo.isMpk,
-        verifyType: riskInfo.verifyType,
-        mpkIsDowngrade: riskInfo.mpkIsDowngrade
+      mainAccountRiskInfo: {
+        type: 'old_main_or_mpk',
+        riskInfo: {
+          isMpk: riskInfo.isMpk,
+          verifyType: riskInfo.verifyType,
+          mpkIsDowngrade: riskInfo.mpkIsDowngrade
+        }
       }
     };
   } catch (error) {

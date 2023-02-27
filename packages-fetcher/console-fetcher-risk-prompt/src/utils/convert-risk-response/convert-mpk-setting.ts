@@ -3,7 +3,8 @@ import {
   TRiskResponse,
   IMpkExtendSetting
 } from '../../types';
-import getRiskValueViaConfig from '../get-risk-value-via-config';
+
+import getRiskValueViaConfig from './get-risk-value-via-config';
 
 interface IConvertMpkSettingProps<T> {
   riskResponse?: TRiskResponse<T>;

@@ -20,8 +20,7 @@ export default function generatePreviousStepButton(): DialogButtonProps<IRiskPro
     }) {
       updateData({
         apiErrorMessage: '',
-        subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE,
-        primaryButtonDisabled: false
+        subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE
       });
       
       // return false 阻止弹窗关闭

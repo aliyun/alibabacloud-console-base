@@ -43,28 +43,20 @@ export default function VmfaAuth(): JSX.Element {
     data: {
       apiErrorMessage,
       subIdentityServiceParams,
-      subIdentityServiceData
+      subGetVerificationToAuthData
     },
     updateData
   } = useDialog<void, IDialogData>();
   
-  const userPrincipalName = ((): string => {
-    if (subIdentityServiceData?.dataType === ESubIdentityServiceType.GET_VERIFICATION_INFO_TO_AUTH) {
-      return subIdentityServiceData.data.targetUserPrincipalName;
-    }
-
-    return '';
-  })();
-
+  const userPrincipalName = subGetVerificationToAuthData?.targetUserPrincipalName || '';
   const handleInputChange = useCallback((payload: IHandleInputChangeProps) => {
     const {
-      verifyCode, inputInError
+      verifyCode
     } = payload;
 
     // 输入验证码的时候，清空错误
     updateData({
       apiErrorMessage: '',
-      primaryButtonDisabled: inputInError,
       subIdentityServiceParams: {
         paramsType: ESubIdentityServiceType.VERIFY_SUB_ACCOUNT,
         params: getUpdateSubVerificationParams({
@@ -102,7 +94,8 @@ export default function VmfaAuth(): JSX.Element {
           content: <VerifyCodeInput {...{
             type: 'vmfa_auth',
             handleInputChange,
-            inputWidth: WINDVANE_AVAILABLE ? '60%' : 180
+            inputWidth: WINDVANE_AVAILABLE ? '60%' : 180,
+            currentPrimaryButtonType: ESubVerificationDeviceType.VMFA
           }} />
         }]
       }} />

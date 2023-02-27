@@ -19,7 +19,8 @@ import {
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TRiskTypeOfPrimaryButton
 } from '../../types';
 import {
   EIconType,
@@ -77,7 +78,7 @@ export default function AuthFormExceptSubMfa({
 
   const handleInputChange = useCallback((payload: IHandleInputChangeProps): void => {
     const {
-      verifyCode, inputInError
+      verifyCode
     } = payload;
     const trimmedValue = verifyCode.trim();
     const getUpdateData = (): Partial<IDialogData> => {
@@ -120,10 +121,7 @@ export default function AuthFormExceptSubMfa({
       };
     };
 
-    updateData({
-      primaryButtonDisabled: inputInError,
-      ...getUpdateData()
-    });
+    updateData(getUpdateData());
   }, [props, accountId, codeType, stateVerifyUniqId, subIdentityServiceParams, updateData]);
 
   const subAuthFormWrapperProps = useMemo((): TSubAuthFormWrapperProps => {
@@ -189,6 +187,18 @@ export default function AuthFormExceptSubMfa({
 
     return props.convertedVerifyDetail === EVerifyType.MFA ? 'vmfa_auth' : 'sms_or_email_auth';
   }, [props]);
+
+  const currentPrimaryButtonType = useMemo((): TRiskTypeOfPrimaryButton => {
+    if (props.apiType === 'old_main_send_code') {
+      return 'main_account';
+    }
+
+    if (props.accountType === EAccountType.MAIN) {
+      return 'main_account';
+    }
+
+    return props.verifyType;
+  }, [props]);
   
   return <>
     {apiErrorMessage && <Message {...{
@@ -213,6 +223,7 @@ export default function AuthFormExceptSubMfa({
           content: <VerifyCodeInput {...{
             generateProps,
             handleInputChange,
+            currentPrimaryButtonType,
             showErrorMessage: true,
             type: verifyCodeInputType
           }} />

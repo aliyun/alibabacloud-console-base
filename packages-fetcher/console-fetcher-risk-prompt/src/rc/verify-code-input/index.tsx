@@ -22,7 +22,8 @@ import Flex from '@alicloud/console-base-rc-flex';
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TRiskTypeOfPrimaryButton
 } from '../../types';
 import {
   WINDVANE_AVAILABLE
@@ -44,7 +45,6 @@ interface IInputProps {
 
 interface IHandleInputChangeProps {
   verifyCode: string;
-  inputInError: boolean;
 }
 
 type TVerifyCodeInputType = 'vmfa_auth' | 'vmfa_bind' | 'sms_or_email_auth';
@@ -54,6 +54,7 @@ interface IVerifyCodeInputProps extends InputProps {
   inputWidth?: number | string;
   showApiErrorBehindInput?: boolean;
   generateProps?: IGenerateCodeButtonProps;
+  currentPrimaryButtonType?: TRiskTypeOfPrimaryButton;
   handleInputChange?(p: IHandleInputChangeProps): void;
 }
 
@@ -89,33 +90,43 @@ export default function VerifyCodeInput({
   type,
   inputWidth,
   generateProps,
+  currentPrimaryButtonType,
   handleInputChange,
   ...inputProps
 }: IVerifyCodeInputProps): JSX.Element {
   const {
-    updateData
+    updateData,
+    data: {
+      primaryButtonDisabledObject
+    }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
   const [stateVerifyCode, setStateVerifyCode] = useState<string>('');
   const [stateInputFocused, setStateInputFocused] = useState<boolean>(false);
+  const [stateErrorMessage, setStateErrorMessage] = useState<string>(intl('message:vmfa_input_empty_tip'));
   const [stateNoWindVaneHandler, setStateNoWindVaneHandler] = useState<boolean>(false);
-  const [stateInputEverChanged, setStateInputEverChanged] = useState<boolean>(false);
-
-  const inputErrorMessage = useMemo(() => {
-    return getInputError(stateVerifyCode, stateInputEverChanged);
-  }, [stateVerifyCode, stateInputEverChanged]);
 
   const onChange = useCallback((verifyCode: string) => {
-    setStateInputEverChanged(true);
+    const inputErrorMessage = getInputError(verifyCode);
+
+    setStateErrorMessage(inputErrorMessage);
     setStateVerifyCode(verifyCode);
+
+    if (currentPrimaryButtonType) {
+      updateData({
+        primaryButtonDisabledObject: {
+          ...primaryButtonDisabledObject,
+          [currentPrimaryButtonType]: Boolean(inputErrorMessage)
+        }
+      });
+    }
 
     if (handleInputChange) {
       handleInputChange({
-        verifyCode,
-        inputInError: Boolean(getInputError(verifyCode, stateInputEverChanged))
+        verifyCode
       });
     }
-  }, [stateInputEverChanged, handleInputChange]);
+  }, [currentPrimaryButtonType, primaryButtonDisabledObject, handleInputChange, updateData]);
 
   const inputInnerRight = useMemo(() => {
     return <XIcon onClick={() => {
@@ -136,12 +147,10 @@ export default function VerifyCodeInput({
       },
       onSuccess(vmfaCode) {
         setStateVerifyCode(vmfaCode);
-        setStateInputEverChanged(true);
 
         if (handleInputChange) {
           handleInputChange({
-            verifyCode: vmfaCode,
-            inputInError: false
+            verifyCode: vmfaCode
           });
         }
       },
@@ -174,13 +183,13 @@ export default function VerifyCodeInput({
         onChange,
         inputInnerRight,
         'data-input-width': inputWidth,
-        'data-is-error': Boolean(inputErrorMessage),
+        'data-is-error': Boolean(stateErrorMessage),
         value: stateVerifyCode,
         focused: stateInputFocused
       }} />
       {operation}
     </Flex>
-    {inputErrorMessage && <ScError>{inputErrorMessage}</ScError>}
+    {stateErrorMessage && <ScError>{stateErrorMessage}</ScError>}
   </ScWrapper>;
 }
 export type {

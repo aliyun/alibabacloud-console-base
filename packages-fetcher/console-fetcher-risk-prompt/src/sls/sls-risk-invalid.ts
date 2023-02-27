@@ -5,8 +5,7 @@ import {
 } from '../enum';
 
 interface IPayloadSlsRiskInvalid {
-  verifyType?: string;
-  verifyDetail?: string | boolean;
+  stringifiedRiskResponse: string;
 }
 
 export default function slsRiskInvalid(payload: IPayloadSlsRiskInvalid): void {

@@ -66,7 +66,7 @@ export interface IGetVerificationInfoToAuthValidators {
 }
 
 export interface IResponseSmsValidator {
-  PhoneNumber?: string;
+  PhoneNumber: string;
 }
 
 export interface IResponseEmailValidator {

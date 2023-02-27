@@ -15,9 +15,6 @@ import {
   IRiskPromptResolveData
 } from '../../../types';
 import {
-  ESubIdentityServiceType
-} from '../../../enum';
-import {
   useModelProps
 } from '../../../model';
 import {
@@ -34,7 +31,7 @@ export default function SmsOrEmailAuth({
 }: IProps): JSX.Element {
   const {
     data: {
-      subIdentityServiceData
+      subGetVerificationToAuthData
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
@@ -43,8 +40,8 @@ export default function SmsOrEmailAuth({
   } = useModelProps();
 
   const verifyDetail = useMemo((): string => {
-    if (subIdentityServiceData?.dataType === ESubIdentityServiceType.GET_VERIFICATION_INFO_TO_AUTH) {
-      const foundVerificationItem = subIdentityServiceData.data.verificationOrBindValidators.find(o => o.deviceType === deviceType);
+    if (subGetVerificationToAuthData) {
+      const foundVerificationItem = subGetVerificationToAuthData.verificationOrBindValidators.find(o => o.deviceType === deviceType);
 
       if (foundVerificationItem?.deviceType === ESubVerificationDeviceType.SMS) {
         return foundVerificationItem.phoneNumber;
@@ -58,7 +55,7 @@ export default function SmsOrEmailAuth({
     }
 
     return '';
-  }, [deviceType, subIdentityServiceData]);
+  }, [deviceType, subGetVerificationToAuthData]);
 
   return <AuthFormExceptSubMfa {...{
     verifyDetail,

@@ -6,7 +6,6 @@ import {
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
 import {
-  mixinBgSecondary,
   mixinBorderSecondary
 } from '@alicloud/console-base-theme';
 
@@ -27,7 +26,6 @@ const ScFormWrapper = styled.div`
   position: relative;
   padding: 12px 12px 12px 0;
   overflow: hidden;
-  ${mixinBgSecondary}
   ${mixinBorderSecondary}
 `;
 
