@@ -16,17 +16,11 @@ import {
 } from '../../../../enum';
 import intl from '../../../../intl';
 
-interface IProps {
-  primaryButtonDisabled: boolean;
-}
-
-export default function generateChooseMfaTypeButton({
-  primaryButtonDisabled
-}: IProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> { // eslint-disable-line @typescript-eslint/no-explicit-any
+export default function generateChooseMfaTypeButton(): DialogButtonProps<IRiskPromptResolveData, IDialogData> { // eslint-disable-line @typescript-eslint/no-explicit-any
   return {
     label: intl('op:confirm'),
     primary: false,
-    disabled: primaryButtonDisabled,
+    disabled: false,
     onClick({
       lock,
       unlock,
@@ -46,10 +40,7 @@ export default function generateChooseMfaTypeButton({
         dataGetMfaInfoToBind(subIdentityServiceParams.params).then(getMfaInfoBindData => {
           updateData({
             subBindMfaStep: getMfaInfoBindData.deviceType === ESubVerificationDeviceType.U2F ? ESubBindMfaStep.BIND_U2F : ESubBindMfaStep.BIND_VMFA,
-            subIdentityServiceData: {
-              dataType: ESubIdentityServiceType.GET_MFA_INFO_TO_BIND,
-              data: Object.assign({}, getMfaInfoBindData)
-            }
+            subGetMfaInfoToBindData: Object.assign({}, getMfaInfoBindData)
           });
         }).catch(error => {
           updateData({

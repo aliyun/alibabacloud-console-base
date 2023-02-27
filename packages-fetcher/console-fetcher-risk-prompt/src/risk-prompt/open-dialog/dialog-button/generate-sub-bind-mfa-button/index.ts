@@ -19,20 +19,16 @@ interface IProps {
   codeType: string;
   accountId: string;
   subBindMfaStep?: ESubBindMfaStep;
-  primaryButtonDisabled: boolean;
 }
 
 export default function generateSubBindMfaButton({
   codeType,
   accountId,
-  subBindMfaStep,
-  primaryButtonDisabled
+  subBindMfaStep
 }: IProps): DialogButtonProps<IRiskPromptResolveData, IDialogData>[] {
   switch (subBindMfaStep) {
     case ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE: {
-      const chooseMfaTypeButton = generateChooseMfaTypeButton({
-        primaryButtonDisabled
-      });
+      const chooseMfaTypeButton = generateChooseMfaTypeButton();
       const skipBindMfaButton = generateSkipBindMfaButton({
         codeType,
         accountId
@@ -43,9 +39,7 @@ export default function generateSubBindMfaButton({
     case ESubBindMfaStep.BIND_U2F:
     case ESubBindMfaStep.BIND_VMFA: {
       const previousStepButton = generatePreviousStepButton();
-      const bindMfaButton = generateBindMfaButton({
-        primaryButtonDisabled
-      });
+      const bindMfaButton = generateBindMfaButton();
 
       return [previousStepButton, bindMfaButton];
     }

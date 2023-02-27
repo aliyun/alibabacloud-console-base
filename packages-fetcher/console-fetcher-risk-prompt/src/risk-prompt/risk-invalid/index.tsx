@@ -15,22 +15,19 @@ import {
 
 interface IRiskInvalidProps {
   subRisk?: boolean;
-  verifyType?: string;
-  verifyDetail?: string | boolean;
   errorMessage: string;
   urlSetting: string;
+  stringifiedRiskResponse: string;
 }
 
 export default function riskInvalid({
-  verifyType,
-  verifyDetail,
-  errorMessage,
   urlSetting,
-  subRisk = false
+  errorMessage,
+  subRisk = false,
+  stringifiedRiskResponse
 }: IRiskInvalidProps): Promise<void> {
   slsRiskInvalid({
-    verifyType,
-    verifyDetail
+    stringifiedRiskResponse
   });
   
   return open<void>({

@@ -3,11 +3,7 @@ import {
 } from '../const';
 import intl from '../intl';
 
-export default function getInputError(inputCode: string, inputEverChanged: boolean): string {
-  if (!inputEverChanged) {
-    return '';
-  }
-  
+export default function getInputError(inputCode: string): string {
   if (inputCode === '') {
     return intl('message:vmfa_input_empty_tip');
   }

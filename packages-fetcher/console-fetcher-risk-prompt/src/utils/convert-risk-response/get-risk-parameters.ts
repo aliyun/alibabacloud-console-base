@@ -5,7 +5,8 @@ import {
   IRiskParameters,
   TRiskParametersGetter
 } from '../../types';
-import getRiskValueViaConfig from '../get-risk-value-via-config';
+
+import getRiskValueViaConfig from './get-risk-value-via-config';
 
 interface IGetRiskParametersProps<T> {
   riskConfig?: IRiskConfig;

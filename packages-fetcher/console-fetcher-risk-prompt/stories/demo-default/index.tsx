@@ -8,6 +8,7 @@ import {
   H1,
   Button
 } from '@alicloud/demo-rc-elements';
+import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import riskPrompt, {
   type RiskValidator,
@@ -155,6 +156,7 @@ export default function DemoDefault(): JSX.Element {
 
   return <>
     <H1>风控弹窗 console-base-risk-prompt</H1>
+    <ThemeSwitcher />
     <ScButton onClick={handleSubRiskBindPrompt}>子账号风控弹窗 - 绑定 MFA</ScButton>
     <ScButton onClick={handleSubRiskAuthPrompt}>子账号风控弹窗 - 验证 MFA</ScButton>
     <ScButton onClick={handleSubRiskInvalidPrompt}>子账号风控弹窗 - Invalid</ScButton>

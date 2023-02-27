@@ -7,9 +7,9 @@ export enum EDialogType {
 }
 
 export enum ESubBindMfaStep {
-  CHOOSE_BIND_MFA_TYPE,
-  BIND_VMFA,
-  BIND_U2F
+  CHOOSE_BIND_MFA_TYPE = 'choose_bind_mfa_type',
+  BIND_VMFA = 'bind_vmfa',
+  BIND_U2F = 'bind_u2f'
 }
 
 export enum ESubIdentityServiceType {

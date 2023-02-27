@@ -7,7 +7,7 @@ export default {
   'op:cancel': 'Cancel',
   'op:risk_forbidden': 'Operation Abort',
   'op:risk_invalid_go': 'Complete the Settings in New Window',
-  'op:risk_invalid': 'Set',
+  'op:risk_invalid': 'Set Verification',
   'op:verify_by_phone': 'Phone Verification',
   'op:verify_by_email': 'Email Verification',
   'op:verify_by_mfa': 'MFA Verification',

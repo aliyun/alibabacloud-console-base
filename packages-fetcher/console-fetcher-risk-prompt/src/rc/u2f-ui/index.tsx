@@ -7,7 +7,6 @@ import {
   SIZE,
   mixinTextPrimary,
   mixinTextSecondary,
-  mixinBgSecondary,
   mixinBorderSecondary
 } from '@alicloud/console-base-theme';
 import Flex from '@alicloud/console-base-rc-flex';
@@ -48,16 +47,15 @@ const ScFlex = styled(Flex)`
 `;
 
 const ScU2fWrapper = styled.div`
-  padding: 16px;
   position: relative;
+  padding: 16px;
   overflow: hidden;
   ${mixinBorderSecondary}
-  ${mixinBgSecondary}
 `;
 
 const ScU2fTitle = styled.div`
-  font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
   margin-bottom: 16px;
+  font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
   ${mixinTextPrimary}
 `;
 
@@ -69,13 +67,13 @@ const ScU2fDesc = styled.div`
 // 由于图片需要从 CDN 加载。为了防止屏幕抖动，先用空父元素的 padding 撑起来
 const ScSvgImgWrapper = styled.div`
   position: relative;
-  height: 0;
   padding-top: 100px;
   width: 100px;
+  height: 0;
 
   @media (max-width: ${MOBILE_SCREE_SIZE}px) {
-    width: 80px;
     padding-top: 80px;
+    width: 80px;
   }
 `;
 

@@ -25,7 +25,8 @@ import {
 import AltWrap from '../../rc/alt-wrap';
 import intl from '../../intl';
 import {
-  isValidJson
+  isValidJson,
+  getNewMainAccountRiskInfo
 } from '../../utils';
 import {
   slsInvalidVerifyUrl
@@ -45,7 +46,7 @@ export default function NewMainRiskContent(): JSX.Element {
   const {
     data: {
       apiErrorMessage,
-      newMainAccountRiskInfo
+      mainAccountRiskInfo
     },
     lock,
     close,
@@ -54,7 +55,7 @@ export default function NewMainRiskContent(): JSX.Element {
 
   const {
     verifyType, verifyUrl
-  } = newMainAccountRiskInfo ?? {};
+  } = getNewMainAccountRiskInfo(mainAccountRiskInfo);
 
   const getValidateToken = useCallback((event: MessageEvent): void => {
     try {
@@ -69,7 +70,7 @@ export default function NewMainRiskContent(): JSX.Element {
         lock(true);
 
         const verifyParams = {
-          verifyType: verifyType ?? 'EMPTY_MAIN_RISK_VERIFY_TYPE',
+          verifyType,
           verifyCode: ivToken
         };
 

@@ -17,7 +17,8 @@ import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 import {
-  ESubVerificationDeviceType
+  ESubVerificationDeviceType,
+  type DataGetMfaInfoToBind
 } from '@alicloud/console-fetcher-risk-data';
 import {
   useDialog
@@ -25,12 +26,8 @@ import {
 
 import {
   IDialogData,
-  IRiskPromptResolveData,
-  TSubIdentityServiceData
+  IRiskPromptResolveData
 } from '../../../../../types';
-import {
-  ESubIdentityServiceType
-} from '../../../../../enum';
 import intl from '../../../../../intl';
 
 interface IManualProps {
@@ -72,8 +69,8 @@ const ScHeading = styled.div`
 `;
 
 const ScManualContentWrap = styled.div`
-  box-sizing: border-box;
   padding: 16px;
+  box-sizing: border-box;
   ${mixinBgWhite}
 `;
 
@@ -98,19 +95,13 @@ const ScManualContentDiv = styled.div<IManualProps>`
   }}
 `;
 
-function getVmfaBindInfo(o?: TSubIdentityServiceData): IVmfaInfo {
-  if (o && o.dataType === ESubIdentityServiceType.GET_MFA_INFO_TO_BIND) {
-    const {
-      data
-    } = o;
-
-    if (data.deviceType === ESubVerificationDeviceType.VMFA) {
-      return {
-        qrCodeUri: data.qrCodeUri || '',
-        targetMfaDeviceSecret: data.targetMfaDeviceSecret || '',
-        targetUserPrincipalName: data.targetUserPrincipalName || ''
-      };
-    }
+function getVmfaBindInfo(o?: DataGetMfaInfoToBind): IVmfaInfo {
+  if (o?.deviceType === ESubVerificationDeviceType.VMFA) {
+    return {
+      qrCodeUri: o.qrCodeUri || '',
+      targetMfaDeviceSecret: o.targetMfaDeviceSecret || '',
+      targetUserPrincipalName: o.targetUserPrincipalName || ''
+    };
   }
 
   return {
@@ -123,7 +114,7 @@ function getVmfaBindInfo(o?: TSubIdentityServiceData): IVmfaInfo {
 export default function VmfaBindInfo(): JSX.Element {
   const {
     data: {
-      subIdentityServiceData
+      subGetMfaInfoToBindData
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
@@ -133,7 +124,7 @@ export default function VmfaBindInfo(): JSX.Element {
     qrCodeUri,
     targetMfaDeviceSecret,
     targetUserPrincipalName
-  } = getVmfaBindInfo(subIdentityServiceData);
+  } = getVmfaBindInfo(subGetMfaInfoToBindData);
 
   return <Flex align="center">
     <ScQrCodeDiv>

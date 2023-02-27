@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
-import Tabs from '@alicloud/console-base-rc-tabs';
 import {
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
+import Tabs from '@alicloud/console-base-rc-tabs';
 
 import {
   IDialogData,
@@ -20,7 +20,7 @@ import getSubAuthValidatorsTabs from './get-sub-auh-validators-tabs';
 
 const ScWrapper = styled.div`
   & nav {
-    padding-left: 0px;
+    padding-left: 0;
   }
 `;
 
@@ -28,18 +28,14 @@ export default function NewSubRiskUi(): JSX.Element {
   const {
     data: {
       subVerificationDeviceType,
-      subIdentityServiceData
+      subGetVerificationToAuthData
     },
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
-  const tabs = getSubAuthValidatorsTabs(subIdentityServiceData);
+  const tabs = getSubAuthValidatorsTabs(subGetVerificationToAuthData);
   
   if (!tabs.length) {
-    updateData({
-      subInvalidValidators: true
-    });
-
     return <AltWrap content={intl('message:invalid_unknown!lines')} />;
   }
 

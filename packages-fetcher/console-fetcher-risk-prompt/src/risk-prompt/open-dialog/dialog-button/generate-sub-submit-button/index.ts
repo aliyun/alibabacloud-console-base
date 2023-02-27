@@ -86,6 +86,9 @@ export default function generateSubAccountSubmitButton({
             unlock();
           });
         }
+
+        // return undefined 不会阻止弹窗关闭
+        return;
       }
 
       unlock();

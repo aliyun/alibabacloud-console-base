@@ -23,6 +23,7 @@ import AuthFormExceptSubMfa, {
   type TAuthFormProps
 } from '../../rc/auth-form-except-sub-mfa';
 import {
+  getOldMainOrMpkAccountRiskInfo,
   convertToMpkVerificationDeviceType
 } from '../../utils';
 
@@ -33,18 +34,21 @@ export default function OldMainOrMpkRiskContent(): JSX.Element {
 
   const {
     data: {
-      oldMainOrMpkRiskInfo
+      mainAccountRiskInfo
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
+  const {
+    isMpk, mpkIsDowngrade, verifyType
+  } = getOldMainOrMpkAccountRiskInfo(mainAccountRiskInfo);
 
   const authFormProps = useMemo((): TAuthFormProps => {
-    if (oldMainOrMpkRiskInfo?.isMpk && !oldMainOrMpkRiskInfo.mpkIsDowngrade) {
+    if (isMpk && !mpkIsDowngrade) {
       return {
         apiType: 'identity_send_code',
         accountType: EAccountType.MAIN,
         urlSetting: MAIN_ACCOUNT_URL_SETTING,
         verifyDetail: oldMainOrMpkVerifyInfo?.verifyDetail,
-        verifyType: convertToMpkVerificationDeviceType(oldMainOrMpkRiskInfo.verifyType)
+        verifyType: convertToMpkVerificationDeviceType(verifyType)
       };
     }
 
@@ -54,7 +58,7 @@ export default function OldMainOrMpkRiskContent(): JSX.Element {
       convertedVerifyDetail: oldMainOrMpkVerifyInfo?.convertedVerifyType,
       verifyType: oldMainOrMpkVerifyInfo?.verifyType ?? 'ga'
     };
-  }, [oldMainOrMpkRiskInfo, oldMainOrMpkVerifyInfo]);
+  }, [isMpk, mpkIsDowngrade, verifyType, oldMainOrMpkVerifyInfo]);
 
   return <AuthFormExceptSubMfa {...authFormProps} />;
 }

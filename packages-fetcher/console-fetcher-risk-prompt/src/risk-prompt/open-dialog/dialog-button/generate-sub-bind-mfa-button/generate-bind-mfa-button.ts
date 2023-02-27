@@ -11,17 +11,11 @@ import {
 } from '../../../../types';
 import intl from '../../../../intl';
 
-interface IGenerateSubAccountMfaSubmitButtonProps {
-  primaryButtonDisabled: boolean;
-}
-
-export default function generateBindMfaButton({
-  primaryButtonDisabled
-}: IGenerateSubAccountMfaSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
+export default function generateBindMfaButton(): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
     label: intl('op:confirm'),
     primary: true,
-    disabled: primaryButtonDisabled,
+    disabled: false,
     onClick({
       data,
       lock,
@@ -54,6 +48,8 @@ export default function generateBindMfaButton({
         }).finally(() => {
           unlock();
         });
+
+        return;
       }
 
       unlock();

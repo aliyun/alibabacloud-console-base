@@ -11,7 +11,6 @@ import {
 
 import {
   ESubVerificationDeviceType,
-  DataGetU2fInfoToBind,
   DataGetU2fInfoToAuth,
   DataGetU2fWebAuthnInfoToAuth
 } from '@alicloud/console-fetcher-risk-data';
@@ -22,7 +21,7 @@ import {
 import {
   IDialogData,
   IRiskPromptResolveData,
-  TSubIdentityServiceData
+  TSubGetVerificationToAuthData
 } from '../../types';
 import {
   ESubIdentityServiceType
@@ -44,19 +43,9 @@ interface IProps {
   type: TU2fType;
 }
 
-function getBindU2fData(subIdentityServiceData?: TSubIdentityServiceData): DataGetU2fInfoToBind | null {
-  if (subIdentityServiceData?.dataType === ESubIdentityServiceType.GET_MFA_INFO_TO_BIND) {
-    if (subIdentityServiceData.data.deviceType !== ESubVerificationDeviceType.VMFA) {
-      return subIdentityServiceData.data;
-    }
-  }
-
-  return null;
-}
-
-function getAuthU2fData(subIdentityServiceData?: TSubIdentityServiceData): DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth | null {
-  if (subIdentityServiceData?.dataType === ESubIdentityServiceType.GET_VERIFICATION_INFO_TO_AUTH) {
-    const foundU2fData = subIdentityServiceData.data.verificationOrBindValidators.find(o => o.deviceType === ESubVerificationDeviceType.U2F);
+function getAuthU2fData(subGetVerificationToAuthData?: TSubGetVerificationToAuthData): DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth | null {
+  if (subGetVerificationToAuthData) {
+    const foundU2fData = subGetVerificationToAuthData.verificationOrBindValidators.find(o => o.deviceType === ESubVerificationDeviceType.U2F);
 
     if (!foundU2fData) {
       return null;
@@ -77,9 +66,11 @@ export default function U2fAuthOrBindUi({
   } = useModelProps();
   const {
     data: {
+      primaryButtonDisabledObject,
       subIdentityServiceParams,
       fromBindU2FtoAuthU2F,
-      subIdentityServiceData
+      subGetMfaInfoToBindData,
+      subGetVerificationToAuthData
     },
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
@@ -100,18 +91,15 @@ export default function U2fAuthOrBindUi({
 
       // U2F 绑定场景
       if (type === 'u2f_bind') {
-        const getU2fInfoToBindData = getBindU2fData(subIdentityServiceData);
-
-        if (!getU2fInfoToBindData) {
+        if (!subGetMfaInfoToBindData || subGetMfaInfoToBindData.deviceType === ESubVerificationDeviceType.VMFA) {
           return setStateU2fErrorMessage(intl('message:get_u2f_key_params_error'));
         }
 
-        const registerWebAuthnPublicKey = getAuthWebAuthnBindPublicKey(getU2fInfoToBindData);
+        const registerWebAuthnPublicKey = getAuthWebAuthnBindPublicKey(subGetMfaInfoToBindData);
         const bindU2fCredential = await startRegistration(registerWebAuthnPublicKey);
 
         setStateGetU2fKeyLoading(false);
         updateData({
-          primaryButtonDisabled: false,
           subBindMfaParams: {
             accountId,
             u2FVersion: 'WebAuthn',
@@ -125,7 +113,7 @@ export default function U2fAuthOrBindUi({
         });
       } else {
         // U2F 验证场景
-        const getU2fInfoToAuthData = getAuthU2fData(subIdentityServiceData);
+        const getU2fInfoToAuthData = getAuthU2fData(subGetVerificationToAuthData);
 
         if (!getU2fInfoToAuthData) {
           return setStateU2fErrorMessage(intl('message:get_u2f_key_params_error'));
@@ -137,7 +125,10 @@ export default function U2fAuthOrBindUi({
 
         setStateGetU2fKeyLoading(false);
         updateData({
-          primaryButtonDisabled: false,
+          primaryButtonDisabledObject: {
+            ...primaryButtonDisabledObject,
+            [ESubVerificationDeviceType.U2F]: false
+          },
           subIdentityServiceParams: {
             paramsType: ESubIdentityServiceType.VERIFY_SUB_ACCOUNT,
             params: getUpdateSubVerificationParams({
@@ -162,7 +153,7 @@ export default function U2fAuthOrBindUi({
 
       setStateU2fErrorMessage(intl('message:u2f_operation_fail_or_timeout'));
     }
-  }, [type, accountId, codeType, subIdentityServiceData, subIdentityServiceParams, updateData]);
+  }, [type, accountId, codeType, subGetMfaInfoToBindData, primaryButtonDisabledObject, subGetVerificationToAuthData, subIdentityServiceParams, updateData]);
 
   const handleRetryClick = useCallback(() => {
     // 清空 API 错误
@@ -179,13 +170,6 @@ export default function U2fAuthOrBindUi({
     // 重新获取 U2F 安全密钥
     fetchU2fBindOrAuthData();
   }, [updateData, fetchU2fBindOrAuthData]);
-
-  useEffect(() => {
-    // 初始需要置灰提交按钮
-    updateData({
-      primaryButtonDisabled: true
-    });
-  }, [updateData]);
 
   useEffect(() => {
     // 如果用户是在绑定 U2F 后，请求被风控的接口出错，从而跳到了 U2F 验证的场景，那么顶部会有错误信息以及重试按钮，需要点击重试按钮后才会去获取 U2F 验证密钥。

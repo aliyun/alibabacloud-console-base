@@ -18,8 +18,8 @@ export default function generateOldMainOrDowngradeMpkSubmitButton({
   primaryButtonDisabled
 }: IGenerateOldMainOrDowngradeMpkSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
-    disabled: primaryButtonDisabled,
     label: intl('op:confirm'),
+    disabled: primaryButtonDisabled,
     onClick({
       data,
       updateData,

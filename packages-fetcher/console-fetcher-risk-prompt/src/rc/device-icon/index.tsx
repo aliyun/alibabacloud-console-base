@@ -69,7 +69,7 @@ export default function DeviceIcon({
       case ESubVerificationDeviceType.U2F:
         return SVG_URLS.U2F_ICON;
       default:
-        return SVG_URLS.VMFA_ICON_WHITE;
+        return SVG_URLS.VMFA_ICON_GREY;
     }
   })();
 
