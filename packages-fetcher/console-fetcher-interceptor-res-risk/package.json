@@ -53,7 +53,7 @@
     "@alicloud/console-base-rc-copy-it": "^1.4.8",
     "@alicloud/console-base-rc-dialog": "^1.10.2",
     "@alicloud/console-base-rc-flex": "^1.4.10",
-    "@alicloud/console-base-rc-icon": "^1.10.0",
+    "@alicloud/console-base-rc-icon": "^1.10.1",
     "@alicloud/console-base-rc-input": "^1.6.8",
     "@alicloud/console-base-theme": "^1.9.2",
     "@alicloud/fetcher": "^1.7.8",

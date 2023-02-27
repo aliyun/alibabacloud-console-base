@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-icon": "^1.10.0",
+    "@alicloud/console-base-rc-icon": "^1.10.1",
     "@alicloud/console-base-theme": "^1.9.2",
     "@alicloud/react-hook-controllable": "^1.0.2"
   },
