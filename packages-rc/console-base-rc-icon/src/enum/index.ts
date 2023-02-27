@@ -69,7 +69,7 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'share' = 'e8d5', // 分享
   'thumb-up' = 'e601', // 大拇指朝上
   'thumb-down' = 'e88d', // 大拇指朝下
-  // 其他
+  // 其他 TODO 将业务 Icon 和组件 Icon 分开
   'lab' = 'e671', // 实验室
   'uv' = 'e6bf',
   'time' = 'e729',
@@ -92,5 +92,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'region' = 'e65b', // 地域
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
-  'resource-group' = 'e634' // 资源组
+  'resource-group' = 'e634', // 资源组
+  'self-svc-hall' = 'e62f' // 自助服务大厅
 }

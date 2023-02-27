@@ -24,8 +24,8 @@ function getCode(props: IScPropsIcon): string {
   return code ? `\\${code}` : '';
 }
 
-// https://at.alicdn.com/t/font_1256165_2hj04sj9pki.css
-const fontFamily = injectIconFont('1256165', '2hj04sj9pki', {
+// https://at.alicdn.com/t/font_1256165_9hw9qoha0h5.css
+const fontFamily = injectIconFont('1256165', '9hw9qoha0h5', {
   pathExtra: '/a'
 });
 
