@@ -93,5 +93,5 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
   'resource-group' = 'e634', // 资源组
-  'self-svc-hall' = 'e62f' // 自助服务大厅
+  'self-service-center' = 'e62f' // 自助服务大厅
 }
