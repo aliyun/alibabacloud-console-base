@@ -6,7 +6,6 @@
 
 export { default as onSetProductId } from './misc/on-set-product-id';
 export { default as onFetcherRequest } from './misc/on-fetcher-request';
-export { default as onToggleTopNav } from './misc/on-toggle-top-nav';
 export { default as onArmsError } from './misc/on-arms-error';
 export { default as onLaunchWidget } from './misc/on-launch-widget';
 

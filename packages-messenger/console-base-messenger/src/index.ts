@@ -3,6 +3,10 @@ export {
   onReady
 } from '@alicloud/console-base-messenger-base';
 
+export {
+  toggleVisible as toggleTopNav,
+  onToggleVisible as onToggleTopNav
+} from '@alicloud/console-base-messenger-top-nav';
 export * from '@alicloud/console-base-messenger-region';
 export * from '@alicloud/console-base-messenger-resource-group';
 export * from '@alicloud/console-base-messenger-toolkit';
