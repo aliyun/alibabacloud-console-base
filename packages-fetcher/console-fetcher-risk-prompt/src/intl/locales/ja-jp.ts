@@ -47,13 +47,13 @@ export default {
   'attr:mfa_show_secret': 'キーを表示',
   'attr:mfa_hide_secret': '隠しキー',
   'title:default': '安全性の検証',
-  'title:sub:mfa:bind': '绑定 MFA 设备',
+  'title:sub:mfa:bind': 'MFA デバイスをバインドする',
   'title:sub_vmfa_bind': '仮想MFAデバイスをバインドする',
   'title:sub_u2f_bind': 'U2Fセキュリティキーをバインドする',
   'title:sub_vmfa_auth': '仮想MFAデバイスを確認するe',
   'title:sub_u2f_auth': 'U2Fセキュリティキーを確認する',
-  'title:sms_auth': '验证手机',
-  'title:email_auth': '验证邮箱',
+  'title:sms_auth': '電話を確認する',
+  'title:email_auth': 'Eメールを確認します',
   'message:incorrect_mfa_bind': 'セキュリティ検証に失敗しました。もう一度やり直してください。',
   'message:incorrect_u2f_auth': 'U2Fセキュリティキーの確認に失敗しました。U2Fセキュリティキー情報を再度取得して、確認のために送信してください。',
   'message:get_u2f_key_params_error': 'U2Fセキュリティキーを取得するためのパラメータが間違っています。',
@@ -75,5 +75,7 @@ export default {
   アカウントのセキュリティを保護するために、メインアカウントまたはRAM管理者に連絡して、RAMコンソールで確認方法を設定してください。`,
   'message:update_app_tip_{url}!html': 'MFA 認証コードをクイック入力し、アプリをアップグレードしてください。<a href="{url}" target="_blank">今すぐアップグレード</a>。',
   'message:invalid_unsupported_{method}!html': '確認方法 <code>{method}</code> が正しくありません。もう一度お試しください。',
-  'message:invalid:sub:validator': '验证方式错误，请重试。'
+  'message:invalid:sub:validator': '確認方法のエラーです。もう一度お試しください。',
+  'message:send:code:success': '確認コードは正常に送信され、5 分以内に有効になります。',
+  'message:multi:validators': 'セキュリティ検証を完了するための検証方法を選択してください。'
 };

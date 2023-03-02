@@ -12,7 +12,7 @@ export function getNewMainAccountRiskInfo(mainAccountRiskInfo?: TMainAccountRisk
 
   return {
     verifyUrl: '',
-    verifyType: 'EMPTY_MAIN_RISK_VERIFY_TYPE'
+    verifyType: ''
   };
 }
 

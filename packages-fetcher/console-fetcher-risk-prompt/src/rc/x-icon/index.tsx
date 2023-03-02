@@ -12,10 +12,13 @@ interface IProps extends ButtonProps {
 }
 
 const ScButton = styled(Button)`
-  cursor: pointer;
   padding: 0;
+  cursor: pointer;
 `;
 
+/**
+ * 位于输入框 InnerRight 的 X 按钮，用户清空内容
+ */
 export default function Xicon({
   onClick,
   ...props

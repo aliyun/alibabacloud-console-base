@@ -88,8 +88,8 @@ export default function VmfaBindForm(): JSX.Element {
         label: intl('attr:vmfa_bind_code1'),
         labelTextAlign: 'center',
         content: <VerifyCodeInput {...{
-          type: 'vmfa_bind',
           inputWidth: '90%',
+          verifyCodeInputType: 'vmfa_bind',
           handleInputChange: handleCode1InputChange
         }} />
         
@@ -97,8 +97,8 @@ export default function VmfaBindForm(): JSX.Element {
         label: intl('attr:vmfa_bind_code2'),
         labelTextAlign: 'center',
         content: <VerifyCodeInput {...{
-          type: 'vmfa_bind',
           inputWidth: '90%',
+          verifyCodeInputType: 'vmfa_bind',
           handleInputChange: handleCode2InputChange
         }} />
       }]

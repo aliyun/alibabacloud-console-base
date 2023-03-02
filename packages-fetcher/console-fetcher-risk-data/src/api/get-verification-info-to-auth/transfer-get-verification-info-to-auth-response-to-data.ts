@@ -54,19 +54,11 @@ export default function transferGetVerificationInfoToAuthResponseToData(response
   
     if (Validators.SMS) {
       const responseSmsValidator = JSON.parse(Validators.SMS) as IResponseSmsValidator;
+      const [areaCode, phoneNumber] = responseSmsValidator.PhoneNumber.split('-');
 
-      const phoneNumber = ((): string => {
-        const phoneNumberWithoutAreaCode = responseSmsValidator.PhoneNumber.split('-')[1];
-
-        if (phoneNumberWithoutAreaCode) {
-          return phoneNumberWithoutAreaCode;
-        }
-
-        return responseSmsValidator.PhoneNumber;
-      })();
-  
       validators.push({
-        phoneNumber,
+        areaCode,
+        phoneNumber: phoneNumber || responseSmsValidator.PhoneNumber,
         deviceType: ESubVerificationDeviceType.SMS,
         targetUserPrincipalName: TargetUserPrincipalName
       });

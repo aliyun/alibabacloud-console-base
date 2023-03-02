@@ -21,7 +21,7 @@ export default function DialogContentUi(): JSX.Element {
   const {
     data: {
       dialogType,
-      apiErrorMessage
+      errorMessageObject
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
@@ -31,7 +31,7 @@ export default function DialogContentUi(): JSX.Element {
     case EDialogType.OLD_MAIN_OR_MPK_RISK:
       return <OldMainOrMpkRiskContent />;
     case EDialogType.ERROR:
-      return <AltWrap content={apiErrorMessage} />;
+      return <AltWrap content={errorMessageObject.riskPromptError} />;
     case EDialogType.SUB_RISK_MFA_BIND:
       return <MfaBind />;
     default:

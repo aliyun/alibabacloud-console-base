@@ -1,11 +1,9 @@
 export * from './api';
 export {
   EAccountType,
-  ESubVerifyType,
   ESubVerificationDeviceType
 } from './const';
 export type {
-  IResponseSendCode as DataSendCode,
   TDataTokenVerify as DataTokenVerify,
   IDataGetU2fInfoToBind as DataGetU2fInfoToBind,
   IDataGetVmfaInfoToBind as DataGetVmfaInfoToBind,
@@ -15,6 +13,9 @@ export type {
   TDataGetU2fWebAuthnInfoToAuth as DataGetU2fWebAuthnInfoToAuth,
   TDataGetMfaInfoToAuth as DataGetMfaInfoToAuth,
   TDataVerificationValidator as DataVerificationValidator,
+  TDataGetSmsInfoToAuth as DataGetSmsInfoToAuth,
+  TDataGetEmailInfoToAuth as DataGetEmailInfoToAuth,
+  TDataGetVerificationInfoToAuth as DataGetVerificationInfoToAuth,
   TParamsBindVmfa as ParamsBindVmfa,
   TParamsBindU2F as ParamsBindU2f,
   TParamsBindMfa as ParamsBindMfa,
@@ -28,7 +29,6 @@ export type {
   TParamsVerifySubAccount as ParamsVerifySubAccount,
   TParamsSkipBindMfa as ParamsSkipBindMfa,
   TParamsSendCode as ParamsSendCode,
-  IParamsSendCodeOld as ParamsSendCodeOld,
   TParamsVerifyMpk as ParamsVerifyMpk,
   TParamsGetVerificationInfoToAuth as ParamsGetVerificationInfoToAuth
 } from './types';

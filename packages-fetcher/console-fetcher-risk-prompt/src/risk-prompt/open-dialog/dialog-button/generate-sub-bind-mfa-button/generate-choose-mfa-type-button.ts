@@ -11,8 +11,7 @@ import {
   IRiskPromptResolveData
 } from '../../../../types';
 import {
-  ESubBindMfaStep,
-  ESubIdentityServiceType
+  ESubBindMfaStep
 } from '../../../../enum';
 import intl from '../../../../intl';
 
@@ -27,28 +26,35 @@ export default function generateChooseMfaTypeButton(): DialogButtonProps<IRiskPr
       data,
       updateData
     }) {
-      lock(true);
-      updateData({
-        apiErrorMessage: ''
-      });
-
       const {
-        subIdentityServiceParams
+        errorMessageObject,
+        subGetMfaInfoToBindParams
       } = data;
+      const updateErrorMessage = (errorMessage: string): void => {
+        updateData({
+          errorMessageObject: {
+            ...errorMessageObject,
+            bindMfa: errorMessage
+          }
+        });
+      };
 
-      if (subIdentityServiceParams?.paramsType === ESubIdentityServiceType.GET_MFA_INFO_TO_BIND) {
-        dataGetMfaInfoToBind(subIdentityServiceParams.params).then(getMfaInfoBindData => {
+      lock(true);
+      updateErrorMessage('');
+
+      if (subGetMfaInfoToBindParams) {
+        dataGetMfaInfoToBind(subGetMfaInfoToBindParams).then(getMfaInfoBindData => {
           updateData({
             subBindMfaStep: getMfaInfoBindData.deviceType === ESubVerificationDeviceType.U2F ? ESubBindMfaStep.BIND_U2F : ESubBindMfaStep.BIND_VMFA,
             subGetMfaInfoToBindData: Object.assign({}, getMfaInfoBindData)
           });
         }).catch(error => {
-          updateData({
-            apiErrorMessage: error?.message || ''
-          });
+          updateErrorMessage((error as Error).message);
         }).finally(() => {
           unlock();
         });
+      } else {
+        unlock();
       }
 
       return false; // return false 阻止弹窗关闭

@@ -15,38 +15,42 @@ import {
   IRiskPromptResolveData
 } from '../../../types';
 import {
-  useModelProps
+  useAccountId
 } from '../../../model';
 import {
   getSubVerificationSettingUrl
 } from '../../../utils';
-import AuthFormExceptSubMfa from '../../../rc/auth-form-except-sub-mfa';
+import AuthFormExceptSubMfa from '../../auth-form-except-sub-mfa';
 
 interface IProps {
-  deviceType: ESubVerificationDeviceType.SMS | ESubVerificationDeviceType.EMAIL;
+  deviceType: ESubVerificationDeviceType.SMS | ESubVerificationDeviceType.EMAIL | ESubVerificationDeviceType.VMFA;
 }
 
-export default function SmsOrEmailAuth({
+export default function SubAccountAuth({
   deviceType
 }: IProps): JSX.Element {
+  const accountId = useAccountId();
   const {
     data: {
       subGetVerificationToAuthData
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
-  const {
-    accountId
-  } = useModelProps();
-
   const verifyDetail = useMemo((): string => {
     if (subGetVerificationToAuthData) {
+      // MFA 类型的详情为用户名
+      if (deviceType === ESubVerificationDeviceType.VMFA) {
+        return subGetVerificationToAuthData.targetUserPrincipalName;
+      }
+      
       const foundVerificationItem = subGetVerificationToAuthData.verificationOrBindValidators.find(o => o.deviceType === deviceType);
 
+      // SMS 类型的详情为手机号，手机号前面要加区号（目前只有）
       if (foundVerificationItem?.deviceType === ESubVerificationDeviceType.SMS) {
-        return foundVerificationItem.phoneNumber;
+        return foundVerificationItem.areaCode ? `${foundVerificationItem.areaCode}-${foundVerificationItem.phoneNumber}` : foundVerificationItem.phoneNumber;
       }
 
+      // EMAIl 类型的详情为邮箱地址
       if (foundVerificationItem?.deviceType === ESubVerificationDeviceType.EMAIL) {
         return foundVerificationItem.emailAddress;
       }
@@ -60,7 +64,7 @@ export default function SmsOrEmailAuth({
   return <AuthFormExceptSubMfa {...{
     verifyDetail,
     verifyType: deviceType,
-    apiType: 'identity_send_code',
+    formType: 'mpk_or_sub_identity',
     accountType: EAccountType.SUB,
     urlSetting: getSubVerificationSettingUrl(accountId)
   }} />;

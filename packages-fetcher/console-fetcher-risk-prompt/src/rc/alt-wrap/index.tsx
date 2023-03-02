@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useEffect
+} from 'react';
 import styled from 'styled-components';
 
 import {
@@ -6,11 +8,15 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  TStringOrJsx
-} from '../../types';
+  useAccountId
+} from '../../model';
+import {
+  slsRiskPromptError
+} from '../../sls';
 
 interface IProps {
-  content?: TStringOrJsx;
+  content?: string;
+  accountId?: string;
 }
 
 const ScWrapper = styled.div`
@@ -20,6 +26,15 @@ const ScWrapper = styled.div`
 export default function AltWrap({
   content
 }: IProps): JSX.Element {
+  const accountId = useAccountId();
+
+  useEffect(() => {
+    slsRiskPromptError({
+      accountId,
+      errorMessage: content
+    });
+  }, [accountId, content]);
+
   return <ScWrapper>
     <AltWrap0 {...{
       content,

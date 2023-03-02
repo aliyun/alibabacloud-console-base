@@ -25,12 +25,17 @@ export default function generateSkipBindMfaButton({
     label: intl('op:skip'),
     primary: false,
     onClick({
+      data,
       lock,
       unlock,
       close,
       updateData
     }) {
       lock(true);
+
+      const {
+        errorMessageObject
+      } = data;
 
       const skipBindMfaParams: ParamsSkipBindMfa = {
         accountId,
@@ -42,14 +47,17 @@ export default function generateSkipBindMfaButton({
       dataSkipBindMfa(skipBindMfaParams).then(skipBindMfaData => {
         const ivToken = skipBindMfaData.ivToken || 'EMPTY_IV_TOKEN';
         const params = {
-          verifyType: 'ga',
+          verifyType: 'ga' as const,
           verifyCode: ivToken
         };
 
         close(params);
       }).catch(error => {
         updateData({
-          apiErrorMessage: (error as Error).message || ''
+          errorMessageObject: {
+            ...errorMessageObject,
+            bindMfa: (error as Error).message
+          }
         });
       }).finally(() => {
         unlock();

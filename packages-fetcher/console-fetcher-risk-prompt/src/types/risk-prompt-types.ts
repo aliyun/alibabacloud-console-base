@@ -1,6 +1,6 @@
 import {
   ERiskType,
-  EVerifyType
+  EConvertedVerifyType
 } from '../enum';
 
 export interface IRiskError extends Error {
@@ -8,6 +8,7 @@ export interface IRiskError extends Error {
   code: string;
 }
 
+// MPK 配置项
 export interface IMpkExtendSetting {
   isMpk?: string | boolean; // 是否是虚商
   useOldVersion?: string | boolean; // 对于虚商类型的账号，是否使用 /risk/sendVerifyMessage.json 来发送验证码（降级情况）
@@ -16,8 +17,9 @@ export interface IMpkExtendSetting {
 export interface ICommonRiskInfo {
   codeType: string;
   verifyDetail: string | boolean;
+  // 接口被风控时，解析出来的风控方式为 ga、sms、email
   verifyType: string;
-  convertedVerifyType: EVerifyType;
+  convertedVerifyType: EConvertedVerifyType;
 }
 
 // 解析后的旧版主账号风控参数

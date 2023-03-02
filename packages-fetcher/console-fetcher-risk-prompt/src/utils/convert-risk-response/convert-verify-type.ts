@@ -1,30 +1,25 @@
 import {
-  IRiskConfig
-} from '../../types';
-import {
-  EVerifyType
+  EConvertedVerifyType
 } from '../../enum';
 import {
-  DEFAULT_RISK_CONFIG
+  BUILT_IN_RISK_CONFIG
 } from '../../const';
 
-interface IConvertVerifyTypeProps {
-  type0?: string;
-  riskConfig?: IRiskConfig;
-}
+export default function convertVerifyType(type0: string): EConvertedVerifyType {
+  const {
+    bySms,
+    byEmail,
+    byMfa
+  } = BUILT_IN_RISK_CONFIG;
 
-export default function convertVerifyType({
-  type0,
-  riskConfig
-}: IConvertVerifyTypeProps): EVerifyType {
   switch (type0) {
-    case riskConfig?.bySms || DEFAULT_RISK_CONFIG.bySms:
-      return EVerifyType.SMS;
-    case riskConfig?.byEmail || DEFAULT_RISK_CONFIG.byEmail:
-      return EVerifyType.EMAIL;
-    case riskConfig?.byMfa || DEFAULT_RISK_CONFIG.byMfa:
-      return EVerifyType.MFA;
+    case bySms:
+      return EConvertedVerifyType.SMS;
+    case byEmail:
+      return EConvertedVerifyType.EMAIL;
+    case byMfa:
+      return EConvertedVerifyType.MFA;
     default:
-      return type0 ? EVerifyType.UNKNOWN : EVerifyType.NONE;
+      return type0 ? EConvertedVerifyType.UNKNOWN : EConvertedVerifyType.NONE;
   }
 }

@@ -45,7 +45,7 @@ const ScError = styled.div`
 export default function NewMainRiskContent(): JSX.Element {
   const {
     data: {
-      apiErrorMessage,
+      errorMessageObject,
       mainAccountRiskInfo
     },
     lock,
@@ -78,7 +78,9 @@ export default function NewMainRiskContent(): JSX.Element {
       }
     } catch (error) {
       updateData({
-        apiErrorMessage: (error as Error).message || ''
+        errorMessageObject: {
+          mainAccount: (error as Error).message
+        }
       });
     }
   }, [lock, close, updateData, verifyType]);
@@ -98,12 +100,12 @@ export default function NewMainRiskContent(): JSX.Element {
           title: intl('title:default'),
           src: verifyUrl
         }} />
-        <ScError>{apiErrorMessage}</ScError>
+        {errorMessageObject.mainAccount}<ScError>{errorMessageObject.mainAccount}</ScError>
       </>;
     }
   
-    return <AltWrap content={apiErrorMessage || intl('message:new_main_verify_error')} />;
-  }, [apiErrorMessage, verifyUrl]);
+    return <AltWrap content={errorMessageObject.mainAccount || intl('message:new_main_verify_error')} />;
+  }, [errorMessageObject.mainAccount, verifyUrl]);
 
   // VerifyUrl 不合法时需要上报埋点
   useEffect(() => {

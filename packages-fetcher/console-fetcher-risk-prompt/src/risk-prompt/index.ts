@@ -4,13 +4,14 @@ import {
 } from '../types';
 import {
   ERiskType,
-  EVerifyType
+  EConvertedVerifyType
 } from '../enum';
 import {
-  DEFAULT_RISK_CONFIG
+  BUILT_IN_RISK_CONFIG
 } from '../const';
 import intl from '../intl';
 import {
+  getAccountIdFromRiskInfo,
   safeJsonStringify,
   convertRiskResponse,
   convertToRiskErrorInvalid,
@@ -35,13 +36,15 @@ export default async function riskPrompt<T = Record<string, unknown>>({
     riskParametersGetter
   });
 
+  const accountId = getAccountIdFromRiskInfo(riskInfo);
   const stringifiedRiskResponse = safeJsonStringify(riskResponse);
 
   if (riskInfo.riskType === ERiskType.NEW_SUB && !riskInfo.subRiskValidators.length) {
     await riskInvalid({
-      subRisk: true,
+      accountId,
       stringifiedRiskResponse,
-      urlSetting: getSubVerificationSettingUrl(riskInfo.accountId),
+      subRisk: true,
+      urlSetting: getSubVerificationSettingUrl(accountId),
       errorMessage: intl('message:invalid_unknown!lines')
     });
 
@@ -50,36 +53,41 @@ export default async function riskPrompt<T = Record<string, unknown>>({
 
   if (riskInfo.riskType !== ERiskType.NEW_SUB) {
     const {
+      urlSetting
+    } = BUILT_IN_RISK_CONFIG;
+    const {
       verifyType, verifyDetail, convertedVerifyType
     } = riskInfo;
-    const mainAccountUrlSetting = riskConfig?.urlSetting || DEFAULT_RISK_CONFIG.urlSetting;
   
     switch (convertedVerifyType) {
-      case EVerifyType.NONE:
+      case EConvertedVerifyType.NONE:
         await riskInvalid({
+          accountId,
+          urlSetting,
           stringifiedRiskResponse,
-          urlSetting: mainAccountUrlSetting,
           errorMessage: intl('message:invalid_unknown!lines')
         });
 
         throw convertToRiskErrorInvalid(error);
-      case EVerifyType.UNKNOWN:
+      case EConvertedVerifyType.UNKNOWN:
         await riskInvalid({
+          accountId,
+          urlSetting,
           stringifiedRiskResponse,
-          urlSetting: mainAccountUrlSetting,
           errorMessage: intl('message:invalid_unsupported_{method}!html!lines', {
             method: verifyType
           })
         });
 
         throw convertToRiskErrorInvalid(error);
-      case EVerifyType.SMS:
-      case EVerifyType.EMAIL:
+      case EConvertedVerifyType.SMS:
+      case EConvertedVerifyType.EMAIL:
       // 旧版主账号风控的 sms & email 场景，必须有 verifyDetail
         if (riskInfo.riskType === ERiskType.OLD_MAIN && !verifyDetail) {
           await riskInvalid({
+            accountId,
+            urlSetting,
             stringifiedRiskResponse,
-            urlSetting: mainAccountUrlSetting,
             errorMessage: intl('message:invalid_unsupported_{method}!html!lines', {
               method: verifyType
             })
@@ -94,7 +102,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
     }
   }
 
-  return openDialog(riskInfo, riskConfig).catch(err => {
+  return openDialog(riskInfo).catch(err => {
     throw err ?? convertToRiskErrorCancelled(err);
   });
 }

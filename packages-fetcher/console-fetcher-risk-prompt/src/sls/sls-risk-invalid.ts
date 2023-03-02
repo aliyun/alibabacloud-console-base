@@ -5,6 +5,7 @@ import {
 } from '../enum';
 
 interface IPayloadSlsRiskInvalid {
+  accountId: string;
   stringifiedRiskResponse: string;
 }
 

@@ -9,9 +9,6 @@ import {
 export interface IModelProps {
   codeType: string;
   accountId: string;
-  urlSetting: string;
-  coolingAfterSent: number;
-  coolingAfterSentFail: number;
   oldMainOrMpkVerifyInfo?: Omit<ICommonRiskInfo, 'codeType'>;
 }
 

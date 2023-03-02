@@ -8,7 +8,7 @@ import {
 } from '../../types';
 import {
   ERiskType,
-  EVerifyType
+  EConvertedVerifyType
 } from '../../enum';
 
 import convertVerifyType from './convert-verify-type';
@@ -39,10 +39,7 @@ function convertRiskResponse<T>({
     accountId, verifyUrl, codeType,
     validators = [], verifyType = '', verifyDetail = ''
   } = riskParameters;
-  const convertedVerifyType = convertVerifyType({
-    riskConfig,
-    type0: verifyType
-  });
+  const convertedVerifyType = convertVerifyType(verifyType);
 
   const mergedUseNewRisk = getMergedUseNewRisk({
     newRisk,
@@ -99,11 +96,8 @@ function convertRiskResponse<T>({
       return validators.map(o => ({
         verifyType: o.VerifyType,
         verifyDetail: o.VerifyDetail,
-        convertedVerifyType: convertVerifyType({
-          riskConfig,
-          type0: o.VerifyType
-        })
-      })).filter(o => ![EVerifyType.NONE, EVerifyType.UNKNOWN].includes(o.convertedVerifyType));
+        convertedVerifyType: convertVerifyType(o.VerifyType)
+      })).filter(o => ![EConvertedVerifyType.NONE, EConvertedVerifyType.UNKNOWN].includes(o.convertedVerifyType));
     })();
 
     return {
@@ -138,10 +132,7 @@ function convertRiskResponse<T>({
     codeType: oldCodeType,
     verifyType: oldVerifyType,
     verifyDetail: oldVerifyDetail,
-    convertedVerifyType: convertVerifyType({
-      riskConfig,
-      type0: oldVerifyType
-    }),
+    convertedVerifyType: convertVerifyType(oldVerifyType),
     riskType: ERiskType.OLD_MAIN
   };
 }

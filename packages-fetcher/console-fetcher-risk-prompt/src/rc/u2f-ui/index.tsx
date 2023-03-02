@@ -97,8 +97,7 @@ export default function U2fUi({
 }: IProps): JSX.Element {
   const {
     data: {
-      apiErrorMessage,
-      subU2fAuthApiErrorMessage
+      errorMessageObject
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
@@ -121,14 +120,12 @@ export default function U2fUi({
       return u2fErrorMessage;
     }
 
-    if (type === 'u2f_auth' && subU2fAuthApiErrorMessage) {
-      return subU2fAuthApiErrorMessage;
-    }
+    const apiErrorMessage = type === 'u2f_auth' ? errorMessageObject[ESubVerificationDeviceType.U2F] : errorMessageObject.bindMfa;
 
-    if (type === 'u2f_bind' && apiErrorMessage) {
+    if (apiErrorMessage) {
       return apiErrorMessage;
     }
-  }, [type, u2fErrorMessage, apiErrorMessage, subU2fAuthApiErrorMessage]);
+  }, [type, u2fErrorMessage, errorMessageObject]);
 
   const topMessage = useMemo((): JSX.Element | null => {
     if (u2fOrApiErrorMessage) {

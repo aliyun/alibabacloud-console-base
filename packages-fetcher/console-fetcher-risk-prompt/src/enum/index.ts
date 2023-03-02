@@ -6,23 +6,21 @@ export enum EDialogType {
   SUB_RISK_VERIFICATION_AUTH = 'sub_risk_verification_auth'
 }
 
+/**
+ * 绑定 MFA 设备 UI 的形态
+ * 1. 选择要绑定的 MFA 设备类型（虚拟 MFA 或者 U2F）
+ * 2. 绑定虚拟 MFA 或者绑定 U2F
+ */
 export enum ESubBindMfaStep {
   CHOOSE_BIND_MFA_TYPE,
   BIND_VMFA,
   BIND_U2F
 }
 
-export enum ESubIdentityServiceType {
-  BIND_MFA = 'bind_mfa',
-  GET_MFA_INFO_TO_BIND = 'get_mfa_info_to_bind',
-  GET_VERIFICATION_INFO_TO_AUTH = 'get_verification_info_to_auth',
-  VERIFY_SUB_ACCOUNT = 'verify_sub_account'
-}
-
 /**
  * 这里内部使用的二次验证类型，跟数据解耦
  */
-export enum EVerifyType {
+export enum EConvertedVerifyType {
   SMS = 'sms',
   EMAIL = 'email',
   MFA = 'mfa',
@@ -32,7 +30,7 @@ export enum EVerifyType {
 }
 
 /**
- * U2F Message 的 Icon
+ * U2f Message 的 Icon
  */
 export enum EIconType {
   ERROR = 'alert-circle',
@@ -48,17 +46,9 @@ export enum ESlsTopic {
   U2F_ERROR = 'u2f_error', // 新版子账号风控 - u2f 报错埋点
   RISK_STARTUP = 'risk_startup', // 风控弹窗 PV 埋点
   RISK_INVALID = 'risk_invalid', // 无效的风控 code 的弹窗提示埋点
+  RISK_PROMPT_ERROR = 'risk_prompt_error', // riskPrompt 弹窗弹出错误信息时的埋点
   INVALID_VERIFY_URL = 'invalid_verify_url', // 不合法的新版主账号核身 URL 埋点
   GET_VMFA_CODE_FROM_WINDVANE = 'get_vmfa_code_from_windvane' // 阿里云 APP 内通过 windvane 获取虚拟 MFA 验证码
-}
-
-/**
- * 子账号风控类型，用于埋点上传
- */
-export enum ESlsSubRiskType {
-  AUTH_MFA = 'auth_mfa',
-  BIND_MFA = 'bind_mfa',
-  SKIP_BIND_MFA = 'skip_bind_mfa'
 }
 
 /**

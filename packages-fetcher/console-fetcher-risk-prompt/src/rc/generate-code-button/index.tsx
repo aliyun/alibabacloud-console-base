@@ -1,6 +1,5 @@
 import React, {
-  useState,
-  useEffect
+  useState
 } from 'react';
 
 import {
@@ -12,36 +11,48 @@ import Button, {
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TTypeOfErrorMessage
 } from '../../types';
 import {
-  useModelProps
-} from '../../model';
+  BUILT_IN_RISK_CONFIG
+} from '../../const';
+import {
+  useCountDown
+} from '../../hook';
 import intl from '../../intl';
 
-export interface IGenerateCodeButtonProps {
+interface IGenerateCodeButtonProps {
   verifyType: string;
+  typeOfErrorMessage?: TTypeOfErrorMessage;
   sendVerifyCode: () => void;
 }
+
+const {
+  coolingAfterSent, coolingAfterSentFail
+} = BUILT_IN_RISK_CONFIG;
 
 /**
  * 生成验证码按钮，有冷却时间
  */
 export default function GenerateCodeButton({
   verifyType,
+  typeOfErrorMessage,
   sendVerifyCode
 }: IGenerateCodeButtonProps): JSX.Element {
   const {
+    data: {
+      errorMessageObject
+    },
     updateData,
     lock,
     unlock
   } = useDialog<IRiskPromptResolveData, IDialogData>();
   const {
-    coolingAfterSent,
-    coolingAfterSentFail
-  } = useModelProps();
-
-  const [stateCooling, setStateCooling] = useState<number>(0);
+    countDown,
+    setCountDown
+  } = useCountDown();
+  
   const [stateGenerating, setStateGenerating] = useState<boolean>(false);
   
   const handleClick = async (): Promise<void> => {
@@ -51,41 +62,36 @@ export default function GenerateCodeButton({
     try {
       await sendVerifyCode();
       
-      setStateCooling(Math.round(coolingAfterSent));
+      setCountDown(Math.round(coolingAfterSent));
     } catch (err) {
-      updateData({
-        apiErrorMessage: (err as Error).message
-      });
+      if (typeOfErrorMessage) {
+        updateData({
+          errorMessageObject: {
+            ...errorMessageObject,
+            [typeOfErrorMessage]: (err as Error).message
+          }
+        });
+      }
 
-      setStateCooling(Math.round(coolingAfterSentFail));
+      setCountDown(Math.round(coolingAfterSentFail));
     } finally {
       setStateGenerating(false);
       unlock();
     }
   };
-
-  useEffect((): () => void => {
-    let timer: number | undefined;
-    
-    if (stateCooling > 0) {
-      timer = window.setTimeout(() => setStateCooling(stateCooling - 1), 1000);
-    }
-    
-    return () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-  }, [stateCooling]);
   
   return <Button {...{
     spm: `get-code-${verifyType}`,
-    label: stateCooling > 0 ? intl('op:resend_after_{n}s', {
-      n: stateCooling
+    label: countDown > 0 ? intl('op:resend_after_{n}s', {
+      n: countDown
     }) : intl('op:send_code'),
     theme: ButtonTheme.SECONDARY,
     loading: stateGenerating,
-    disabled: stateCooling > 0,
+    disabled: countDown > 0,
     onClick: handleClick
   }} />;
 }
+
+export type {
+  IGenerateCodeButtonProps
+};

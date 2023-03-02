@@ -16,10 +16,18 @@ export default function generatePreviousStepButton(): DialogButtonProps<IRiskPro
     label: intl('op:previous_step'),
     primary: false,
     onClick({
+      data,
       updateData
     }) {
+      const {
+        errorMessageObject
+      } = data;
+
       updateData({
-        apiErrorMessage: '',
+        errorMessageObject: {
+          ...errorMessageObject,
+          bindMfa: ''
+        },
         subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE
       });
       

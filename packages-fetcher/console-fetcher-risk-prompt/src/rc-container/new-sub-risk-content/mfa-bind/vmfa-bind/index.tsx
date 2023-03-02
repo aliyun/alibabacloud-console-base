@@ -42,23 +42,24 @@ const ScWrapper = styled.div<IProps>`
 `;
 
 const ScDiv = styled.div`
-  font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
   margin-bottom: 10px;
+  font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
   ${mixinTextPrimary}
 `;
 
 export default function VmfaBind(): JSX.Element {
   const {
     data: {
-      apiErrorMessage
+      errorMessageObject
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
   return <>
-    {apiErrorMessage && <Message {...{
+    <Message {...{
       iconType: EIconType.ERROR,
-      message: apiErrorMessage
-    }} />}
+      message: errorMessageObject.bindMfa,
+      visible: Boolean(errorMessageObject.bindMfa)
+    }} />
     <ScWrapper>
       <ScDiv>{intl('message:vmfa_bind_step1')}</ScDiv>
       <VMfaBindInfo />
