@@ -2,30 +2,15 @@ import type {
   ParamsVerifySubAccount
 } from '@alicloud/console-fetcher-risk-data';
 
-import {
-  TSubIdentityServiceParams
-} from '../types';
-import {
-  ESubIdentityServiceType
-} from '../enum';
-
 interface IProps {
   paramsToUpdate: ParamsVerifySubAccount;
-  currentSubIdentityServiceParams?: TSubIdentityServiceParams;
+  currentSubVerificationParams?: ParamsVerifySubAccount[];
 }
 
 export default function getUpdateSubVerificationParams({
   paramsToUpdate,
-  currentSubIdentityServiceParams
+  currentSubVerificationParams = []
 }: IProps): ParamsVerifySubAccount[] {
-  const currentSubVerificationParams = ((): ParamsVerifySubAccount[] => {
-    if (currentSubIdentityServiceParams?.paramsType === ESubIdentityServiceType.VERIFY_SUB_ACCOUNT) {
-      return [...currentSubIdentityServiceParams.params];
-    }
-
-    return [];
-  })();
-
   if (!currentSubVerificationParams.length) {
     return [paramsToUpdate];
   }

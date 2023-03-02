@@ -10,17 +10,22 @@ import type {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  U2F_TIME_OUT,
-  WEBAUTHN_KEY_TYPE
+  BUILT_IN_RISK_CONFIG
 } from '../../const';
 
+const {
+  u2fTimeOut,
+  webAuthnKeyType
+} = BUILT_IN_RISK_CONFIG;
+
+// 获取绑定 U2F 的 WebAuthn 信息
 export function getAuthWebAuthnAuthPublicKey(u2fInfo: DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth): PublicKeyCredentialRequestOptionsJSON {
   if (u2fInfo.u2FVersion === 'U2F_V2') {
     return {
-      timeout: U2F_TIME_OUT,
+      timeout: u2fTimeOut,
       challenge: u2fInfo.u2FChallenge,
       allowCredentials: [{
-        type: WEBAUTHN_KEY_TYPE,
+        type: webAuthnKeyType,
         id: u2fInfo.u2FKeyHandle,
         transports: ['usb']
       }],
@@ -31,10 +36,10 @@ export function getAuthWebAuthnAuthPublicKey(u2fInfo: DataGetU2fInfoToAuth | Dat
   }
 
   return {
-    timeout: U2F_TIME_OUT,
+    timeout: u2fTimeOut,
     challenge: u2fInfo.u2FChallenge,
     allowCredentials: [{
-      type: WEBAUTHN_KEY_TYPE,
+      type: webAuthnKeyType,
       id: u2fInfo.credentialId,
       transports: ['usb']
     }],
@@ -42,9 +47,10 @@ export function getAuthWebAuthnAuthPublicKey(u2fInfo: DataGetU2fInfoToAuth | Dat
   };
 }
 
+// 获取验证 U2F 的 WebAuthn 信息
 export function getAuthWebAuthnBindPublicKey(u2fInfo: DataGetU2fInfoToBind): PublicKeyCredentialCreationOptionsJSON {
   return {
-    timeout: U2F_TIME_OUT,
+    timeout: u2fTimeOut,
     attestation: 'direct',
     excludeCredentials: [],
     challenge: u2fInfo.u2FChallenge,

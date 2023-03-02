@@ -16,7 +16,10 @@ import {
 import intl from '../../intl';
 import AltWrap from '../../rc/alt-wrap';
 
-import getSubAuthValidatorsTabs from './get-sub-auh-validators-tabs';
+import {
+  getSubAuthValidatorsTabs,
+  getSubAuthValidatorsContent
+} from './get-sub-auth-validators-props';
 
 const ScWrapper = styled.div`
   & nav {
@@ -27,30 +30,37 @@ const ScWrapper = styled.div`
 export default function NewSubRiskUi(): JSX.Element {
   const {
     data: {
-      subVerificationDeviceType,
+      currentSubVerificationDeviceType,
       subGetVerificationToAuthData
     },
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
+  const {
+    verificationOrBindValidators
+  } = subGetVerificationToAuthData ?? {};
 
-  const tabs = getSubAuthValidatorsTabs(subGetVerificationToAuthData);
-  
-  if (!tabs.length) {
+  if (!verificationOrBindValidators?.length) {
     return <AltWrap content={intl('message:invalid_unknown!lines')} />;
   }
+
+  if (verificationOrBindValidators.length === 1) {
+    return getSubAuthValidatorsContent(verificationOrBindValidators[0]);
+  }
+
+  const tabs = getSubAuthValidatorsTabs(subGetVerificationToAuthData);
 
   return <ScWrapper>
     <Tabs {...{
       tabs,
-      activeKey: subVerificationDeviceType,
+      activeKey: currentSubVerificationDeviceType,
       onChange: tabKey => {
-        if (tabKey === 'bind_mfa') {
+        if (tabKey === 'bindMfa') {
           updateData({
-            subVerificationDeviceType: 'bind_mfa'
+            currentSubVerificationDeviceType: 'bindMfa'
           });
         } else {
           updateData({
-            subVerificationDeviceType: tabKey as ESubVerificationDeviceType
+            currentSubVerificationDeviceType: tabKey as ESubVerificationDeviceType
           });
         }
       }

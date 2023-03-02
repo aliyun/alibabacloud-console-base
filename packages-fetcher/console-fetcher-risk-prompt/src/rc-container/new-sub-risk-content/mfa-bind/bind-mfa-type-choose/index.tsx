@@ -29,8 +29,7 @@ import {
   IRiskPromptResolveData
 } from '../../../../types';
 import {
-  EIconType,
-  ESubIdentityServiceType
+  EIconType
 } from '../../../../enum';
 import {
   SVG_URLS
@@ -43,8 +42,8 @@ import Radio from '../../../../rc/radio';
 import Message from '../../../../rc/message';
 
 interface IScItemProps extends FlexProps {
-  margin_bottom?: number;
-  disabled?: boolean;
+  ['data-margin-bottom']?: number;
+  ['data-disabled']?: boolean;
 }
 
 const ScDesc = styled.div`
@@ -52,19 +51,19 @@ const ScDesc = styled.div`
 `;
 
 const ScItem = styled(Flex)<IScItemProps>`
-  margin-bottom: ${props => props.margin_bottom || 0}px;
+  margin-bottom: ${props => props['data-margin-bottom'] || 0}px;
   padding-left: 16px;
   height: 100px;
   overflow-y: hidden;
   cursor: ${props => {
-    if (props.disabled) {
+    if (props['data-disabled']) {
       return 'not-allowed';
     }
 
     return 'pointer';
   }};
   ${props => {
-    if (props.disabled) {
+    if (props['data-disabled']) {
       return mixinButtonSecondaryStateDisabled;
     }
 
@@ -73,7 +72,7 @@ const ScItem = styled(Flex)<IScItemProps>`
   
   &:hover {
     ${props => {
-    if (props.disabled) {
+    if (props['data-disabled']) {
       return '';
     }
 
@@ -88,7 +87,7 @@ export default function BindMfaTypeChoose(): JSX.Element {
   const {
     data: {
       // 调用 GetMfaInfoToBind 接口的报错信息
-      apiErrorMessage
+      errorMessageObject
     },
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
@@ -100,12 +99,9 @@ export default function BindMfaTypeChoose(): JSX.Element {
     if (stateRadioChecked !== 'VMFA') {
       setStateRadioChecked('VMFA');
       updateData({
-        subIdentityServiceParams: {
-          paramsType: ESubIdentityServiceType.GET_MFA_INFO_TO_BIND,
-          params: {
-            accountId,
-            deviceType: ESubVerificationDeviceType.VMFA
-          }
+        subGetMfaInfoToBindParams: {
+          accountId,
+          deviceType: ESubVerificationDeviceType.VMFA
         }
       });
     }
@@ -115,48 +111,42 @@ export default function BindMfaTypeChoose(): JSX.Element {
     if (stateU2fSupported && stateRadioChecked !== 'U2F') {
       setStateRadioChecked('U2F');
       updateData({
-        subIdentityServiceParams: {
-          paramsType: ESubIdentityServiceType.GET_MFA_INFO_TO_BIND,
-          params: {
-            accountId,
-            u2FVersion: 'WebAuthn',
-            deviceType: ESubVerificationDeviceType.U2F
-          }
+        subGetMfaInfoToBindParams: {
+          accountId,
+          u2FVersion: 'WebAuthn',
+          deviceType: ESubVerificationDeviceType.U2F
         }
       });
     }
   }, [accountId, stateRadioChecked, stateU2fSupported, updateData]);
 
   useEffect(() => {
-    const supportWebAuhtn = browserSupportsWebauthn();
+    const supportWebAuthn = browserSupportsWebauthn();
 
     if (isUnmounted()) {
       return;
     }
 
-    setStateU2fSupported(supportWebAuhtn);
+    setStateU2fSupported(supportWebAuthn);
     // 由于默认的 MFA 设备类型是 VMFA，因此默认的 getBindMfaInfoParams 也是 VMFA 类型的
     updateData({
-      subIdentityServiceParams: {
-        paramsType: ESubIdentityServiceType.GET_MFA_INFO_TO_BIND,
-        params: {
-          accountId,
-          deviceType: ESubVerificationDeviceType.VMFA
-        }
+      subGetMfaInfoToBindParams: {
+        accountId,
+        deviceType: ESubVerificationDeviceType.VMFA
       }
     });
   }, [accountId, isUnmounted, updateData]);
 
   return <>
     <Message {...{
-      iconType: apiErrorMessage ? EIconType.ERROR : EIconType.WARNING,
-      message: apiErrorMessage || intl('message:mfa_choose_tip')
+      iconType: errorMessageObject.bindMfa ? EIconType.ERROR : EIconType.WARNING,
+      message: errorMessageObject.bindMfa || intl('message:mfa_choose_tip')
     }} />
     <ScItem {...{
       align: 'center',
       justify: 'space-between',
-      margin_bottom: 20,
-      onClick: handleVmfaRadioClick
+      onClick: handleVmfaRadioClick,
+      'data-margin-bottom': 20
     }}>
       <div>
         <Radio {...{
@@ -171,18 +161,18 @@ export default function BindMfaTypeChoose(): JSX.Element {
         alt: ''
       }} />
     </ScItem>
-    {!stateU2fSupported ? <Message {...{
+    {!stateU2fSupported && <Message {...{
       widthPercentage: 100,
       noBackground: true,
       isSmallICon: true,
       iconType: EIconType.ERROR,
       message: intl('message:u2f_browser_not_support')
-    }} /> : null}
+    }} />}
     <ScItem {...{
       align: 'center',
       justify: 'space-between',
-      disabled: !stateU2fSupported,
-      onClick: handleU2fRadioClick
+      onClick: handleU2fRadioClick,
+      'data-disabled': !stateU2fSupported
     }}>
       <div>
         <Radio {...{

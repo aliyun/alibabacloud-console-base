@@ -23,14 +23,22 @@ export default function generateBindMfaButton(): DialogButtonProps<IRiskPromptRe
       updateData,
       close
     }) {
-      lock(true);
-      updateData({
-        apiErrorMessage: ''
-      });
-
       const {
-        subBindMfaParams
+        subBindMfaParams,
+        errorMessageObject
       } = data;
+
+      const updateErrorMessage = (errorMessage: string): void => {
+        updateData({
+          errorMessageObject: {
+            ...errorMessageObject,
+            bindMfa: errorMessage
+          }
+        });
+      };
+
+      lock(true);
+      updateErrorMessage('');
 
       if (subBindMfaParams) {
         dataBindMfa(subBindMfaParams).then(bindMfaIvToken => {
@@ -42,9 +50,7 @@ export default function generateBindMfaButton(): DialogButtonProps<IRiskPromptRe
             verifyCode: ivToken
           });
         }).catch(error => {
-          updateData({
-            apiErrorMessage: (error as Error).message || ''
-          });
+          updateErrorMessage((error as Error).message);
         }).finally(() => {
           unlock();
         });
@@ -53,9 +59,7 @@ export default function generateBindMfaButton(): DialogButtonProps<IRiskPromptRe
       }
 
       unlock();
-      updateData({
-        apiErrorMessage: intl('message:invalid:sub:validator')
-      });
+      updateErrorMessage(intl('message:invalid:sub:validator'));
 
       // 阻止弹窗关闭，使得只能通过主动调用 close 关闭弹窗
       return false;

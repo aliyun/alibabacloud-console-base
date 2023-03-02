@@ -1,5 +1,10 @@
 export interface IPlainError extends Error {}
 
+/**
+ * riskPrompt Resolve 之后对外输出的 verifyType 类型，该值会作为重新请求被风控接口的参数
+ */
+export type TResolveVerifyType = 'ga' | 'sms' | 'email' | '';
+
 export interface IRiskPromptResolveData {
   verifyCode: string;
   verifyType: string;
@@ -23,13 +28,6 @@ export interface IRiskConfig {
   dataPathOldCodeType?: string; // 如何从原始数据中获取旧版主账号风控码
   dataPathOldVerifyType?: string; // 如何从原始返回中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
   dataPathOldVerifyDetail?: string; // 如何从原始返回中获取旧版主账号风控详细信息（邮箱或手机）
-  // 其他配置
-  bySms?: string; // 通过短信验证的 verifyType，默认为 sms
-  byMfa?: string; // 通过邮箱验证的 verifyType，默认为 ga
-  byEmail?: string; // 通过 MFA 设备验证的 verifyType，默认为 email
-  urlSetting?: string; // 设置用户风控验证方式地址
-  coolingAfterSent?: number; // 发送验证码成功后的冷却时间（秒）
-  coolingAfterSentFail?: number; // 发送验证码失败后的冷却时间（秒）
 }
 
 export interface IRiskValidator {

@@ -1,3 +1,7 @@
+import {
+  ESubVerificationDeviceType
+} from '@alicloud/console-fetcher-risk-data';
+
 /**
  * 风控错误码
  */
@@ -29,16 +33,6 @@ export const SVG_URLS = {
  * 阿里云 APP 下载链接
  */
 export const ALIYUN_APP_DOWNLOAD_URL = 'https://download.app.aliyun.com/app/aliyunapp/download/home?ulinks_fallback=aliyun%3A%2F%2Fforward%2Fapp%3Ftarget_%3D%2Fram%2Fhome%26pluginId_%3D9';
-
-/**
-  * U2F 的超时时间
-  */
-export const U2F_TIME_OUT = 180000;
- 
-/**
-  * Web Authentication API 默认的 KEY TYPE
-  */
-export const WEBAUTHN_KEY_TYPE = 'public-key';
  
 /**
  * 阿里云 APP 的版本
@@ -53,16 +47,21 @@ export const ALIYUN_APP_VERSION = ((): string => {
  
 export const DEFAULT_DIALOG_SIZE = ALIYUN_APP_VERSION ? 'xs' : 'm'; // 移动端阿里云 app 内的风控弹窗尺寸较小
 
-/**
- * 默认的风控配置
- */
-export const DEFAULT_RISK_CONFIG = {
+// 内置的风控配置
+export const BUILT_IN_RISK_CONFIG = {
   bySms: 'sms',
   byEmail: 'email',
   byMfa: 'ga',
   urlSetting: '//account.console.aliyun.com/#/secure',
   coolingAfterSent: 60,
-  coolingAfterSentFail: 10,
+  coolingAfterSentFail: 5,
+  u2fTimeOut: 180000,
+  webAuthnKeyType: 'public-key' as const
+};
+
+// 默认的风控配置
+export const DEFAULT_RISK_CONFIG = {
+  // 从 riskResponse 中如何解析风控信息
   dataPathOldVerifyType: 'data.verifyType',
   dataPathOldVerifyDetail: 'data.verifyDetail',
   dataPathOldCodeType: 'data.codeType',
@@ -75,6 +74,22 @@ export const DEFAULT_RISK_CONFIG = {
   dataPathVerifyDetail: 'data.VerifyDetail'
 };
 
-export const MAIN_ACCOUNT_URL_SETTING = '//account.console.aliyun.com/#/secure';
-
 export const MOBILE_SCREE_SIZE = 720;
+
+export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {
+  mainAccount: true,
+  [ESubVerificationDeviceType.EMAIL]: true,
+  [ESubVerificationDeviceType.SMS]: true,
+  [ESubVerificationDeviceType.VMFA]: true,
+  [ESubVerificationDeviceType.U2F]: true
+};
+
+export const DEFAULT_API_ERROR_MESSAGE_OBJECT = {
+  bindMfa: '',
+  mainAccount: '',
+  riskPromptError: '',
+  [ESubVerificationDeviceType.EMAIL]: '',
+  [ESubVerificationDeviceType.SMS]: '',
+  [ESubVerificationDeviceType.VMFA]: '',
+  [ESubVerificationDeviceType.U2F]: ''
+};

@@ -7,6 +7,9 @@ import {
   IRiskPromptResolveData
 } from '../../../types';
 import intl from '../../../intl';
+import {
+  handleRiskPromptDialogSubmit
+} from '../../../utils';
 
 interface IGenerateOldMainOrDowngradeMpkSubmitButtonProps {
   verifyType: string;
@@ -20,29 +23,12 @@ export default function generateOldMainOrDowngradeMpkSubmitButton({
   return {
     label: intl('op:confirm'),
     disabled: primaryButtonDisabled,
-    onClick({
-      data,
-      updateData,
-      lock,
-      close
-    }) {
-      lock(true);
-      updateData({
-        apiErrorMessage: ''
-      });
-
-      const {
-        mainOrMpkAccountData
-      } = data;
-      const requestId = mainOrMpkAccountData?.requestId || 'EMPTY_OLD_MAIN_REQUEST_ID';
-
-      const params = {
-        requestId,
+    onClick(contentContext) {
+      handleRiskPromptDialogSubmit({
         verifyType,
-        verifyCode: mainOrMpkAccountData?.code || 'EMPTY_OLD_MAIN_CODE'
-      };
-      
-      close(params);
+        contentContext,
+        dialogSubmitType: 'old_main_or_downgrade_mpk'
+      });
 
       return false;
     }

@@ -12,7 +12,8 @@ import {
 import {
   ESubVerificationDeviceType,
   DataGetU2fInfoToAuth,
-  DataGetU2fWebAuthnInfoToAuth
+  DataGetU2fWebAuthnInfoToAuth,
+  type ParamsVerifySubAccount
 } from '@alicloud/console-fetcher-risk-data';
 import {
   useDialog
@@ -21,11 +22,9 @@ import {
 import {
   IDialogData,
   IRiskPromptResolveData,
+  TPrimaryButtonDisabledObject,
   TSubGetVerificationToAuthData
 } from '../../types';
-import {
-  ESubIdentityServiceType
-} from '../../enum';
 import {
   useModelProps
 } from '../../model';
@@ -66,8 +65,9 @@ export default function U2fAuthOrBindUi({
   } = useModelProps();
   const {
     data: {
+      errorMessageObject,
       primaryButtonDisabledObject,
-      subIdentityServiceParams,
+      subVerificationParams,
       fromBindU2FtoAuthU2F,
       subGetMfaInfoToBindData,
       subGetVerificationToAuthData
@@ -78,6 +78,67 @@ export default function U2fAuthOrBindUi({
   const [stateU2fErrorMessage, setStateU2fErrorMessage] = useState<string>('');
   const [stateGetU2fKeyLoading, setStateGetU2fKeyLoading] = useState<boolean>(true);
   const [stateShowU2fRetryButton, setStateShowU2fRetryButton] = useState<boolean>(false);
+  // 页面加载会通过 useEffect 触发一次 fetchU2fBindOrAuthData。在获取到 U2F 安全密钥之后，会更新 primaryButtonDisabledObject & subVerificationParams。
+  // 由于更新 primaryButtonDisabledObject & subVerificationParams 依赖于两者未更新前的值。为了避免 fetchU2fBindOrAuthData 的 depth 一直变化，将两者转化为 state，并且采用 function 的写法更新 state
+  const [stateSubVerificationParams, setStateSubVerificationParams] = useState<ParamsVerifySubAccount[] | undefined>(subVerificationParams);
+  const [statePrimaryButtonDisabledObject, setStatePrimaryButtonDisabledObject] = useState<TPrimaryButtonDisabledObject>(primaryButtonDisabledObject);
+
+  const fetchU2fBindData = useCallback(async () => {
+    if (!subGetMfaInfoToBindData || subGetMfaInfoToBindData.deviceType === ESubVerificationDeviceType.VMFA) {
+      return setStateU2fErrorMessage(intl('message:get_u2f_key_params_error'));
+    }
+
+    const registerWebAuthnPublicKey = getAuthWebAuthnBindPublicKey(subGetMfaInfoToBindData);
+    const bindU2fCredential = await startRegistration(registerWebAuthnPublicKey);
+
+    setStateGetU2fKeyLoading(false);
+    updateData({
+      subBindMfaParams: {
+        accountId,
+        u2FVersion: 'WebAuthn',
+        deviceType: ESubVerificationDeviceType.U2F,
+        attestationObject: bindU2fCredential.response.attestationObject,
+        clientDataJSON: bindU2fCredential.response.clientDataJSON,
+        ext: JSON.stringify({
+          codeType
+        })
+      }
+    });
+  }, [accountId, codeType, subGetMfaInfoToBindData, updateData]);
+
+  const fetchU2fAuthData = useCallback(async () => {
+    const getU2fInfoToAuthData = getAuthU2fData(subGetVerificationToAuthData);
+
+    if (!getU2fInfoToAuthData) {
+      return setStateU2fErrorMessage(intl('message:get_u2f_key_params_error'));
+    }
+
+    const authWebAuthnPublicKey = getAuthWebAuthnAuthPublicKey(getU2fInfoToAuthData);
+
+    const authU2fCredential = await startAuthentication(authWebAuthnPublicKey);
+
+    setStateGetU2fKeyLoading(false);
+    setStatePrimaryButtonDisabledObject(prev => ({
+      ...prev,
+      [ESubVerificationDeviceType.U2F]: false
+    }));
+    setStateSubVerificationParams(prev => {
+      return getUpdateSubVerificationParams({
+        currentSubVerificationParams: prev,
+        paramsToUpdate: {
+          accountId,
+          verifyType: ESubVerificationDeviceType.U2F,
+          signature: authU2fCredential.response.signature,
+          credentialId: authU2fCredential.id,
+          clientDataJSON: authU2fCredential.response.clientDataJSON,
+          authenticatorData: authU2fCredential.response.authenticatorData,
+          ext: JSON.stringify({
+            codeType
+          })
+        }
+      });
+    });
+  }, [accountId, codeType, subGetVerificationToAuthData]);
 
   const fetchU2fBindOrAuthData = useCallback(async () => {
     try {
@@ -91,74 +152,26 @@ export default function U2fAuthOrBindUi({
 
       // U2F 绑定场景
       if (type === 'u2f_bind') {
-        if (!subGetMfaInfoToBindData || subGetMfaInfoToBindData.deviceType === ESubVerificationDeviceType.VMFA) {
-          return setStateU2fErrorMessage(intl('message:get_u2f_key_params_error'));
-        }
-
-        const registerWebAuthnPublicKey = getAuthWebAuthnBindPublicKey(subGetMfaInfoToBindData);
-        const bindU2fCredential = await startRegistration(registerWebAuthnPublicKey);
-
-        setStateGetU2fKeyLoading(false);
-        updateData({
-          subBindMfaParams: {
-            accountId,
-            u2FVersion: 'WebAuthn',
-            deviceType: ESubVerificationDeviceType.U2F,
-            attestationObject: bindU2fCredential.response.attestationObject,
-            clientDataJSON: bindU2fCredential.response.clientDataJSON,
-            ext: JSON.stringify({
-              codeType
-            })
-          }
-        });
+        await fetchU2fBindData();
       } else {
-        // U2F 验证场景
-        const getU2fInfoToAuthData = getAuthU2fData(subGetVerificationToAuthData);
-
-        if (!getU2fInfoToAuthData) {
-          return setStateU2fErrorMessage(intl('message:get_u2f_key_params_error'));
-        }
-
-        const authWebAuthnPublicKey = getAuthWebAuthnAuthPublicKey(getU2fInfoToAuthData);
-
-        const authU2fCredential = await startAuthentication(authWebAuthnPublicKey);
-
-        setStateGetU2fKeyLoading(false);
-        updateData({
-          primaryButtonDisabledObject: {
-            ...primaryButtonDisabledObject,
-            [ESubVerificationDeviceType.U2F]: false
-          },
-          subIdentityServiceParams: {
-            paramsType: ESubIdentityServiceType.VERIFY_SUB_ACCOUNT,
-            params: getUpdateSubVerificationParams({
-              currentSubIdentityServiceParams: subIdentityServiceParams,
-              paramsToUpdate: {
-                accountId,
-                verifyType: ESubVerificationDeviceType.U2F,
-                signature: authU2fCredential.response.signature,
-                credentialId: authU2fCredential.id,
-                clientDataJSON: authU2fCredential.response.clientDataJSON,
-                authenticatorData: authU2fCredential.response.authenticatorData,
-                ext: JSON.stringify({
-                  codeType
-                })
-              }
-            })
-          }
-        });
+        await fetchU2fAuthData();
       }
     } catch (error) {
       setStateShowU2fRetryButton(true);
 
       setStateU2fErrorMessage(intl('message:u2f_operation_fail_or_timeout'));
     }
-  }, [type, accountId, codeType, subGetMfaInfoToBindData, primaryButtonDisabledObject, subGetVerificationToAuthData, subIdentityServiceParams, updateData]);
+  }, [type, fetchU2fAuthData, fetchU2fBindData]);
 
   const handleRetryClick = useCallback(() => {
+    const typeOfErrorMessage = type === 'u2f_auth' ? 'bindMfa' : ESubVerificationDeviceType.U2F;
+    
     // 清空 API 错误
     updateData({
-      apiErrorMessage: ''
+      errorMessageObject: {
+        ...errorMessageObject,
+        [typeOfErrorMessage]: ''
+      }
     });
     setStateU2fErrorMessage('');
 
@@ -169,7 +182,7 @@ export default function U2fAuthOrBindUi({
 
     // 重新获取 U2F 安全密钥
     fetchU2fBindOrAuthData();
-  }, [updateData, fetchU2fBindOrAuthData]);
+  }, [type, errorMessageObject, updateData, fetchU2fBindOrAuthData]);
 
   useEffect(() => {
     // 如果用户是在绑定 U2F 后，请求被风控的接口出错，从而跳到了 U2F 验证的场景，那么顶部会有错误信息以及重试按钮，需要点击重试按钮后才会去获取 U2F 验证密钥。
@@ -179,6 +192,13 @@ export default function U2fAuthOrBindUi({
 
     fetchU2fBindOrAuthData();
   }, [type, fromBindU2FtoAuthU2F, fetchU2fBindOrAuthData]);
+
+  useEffect(() => {
+    updateData({
+      subVerificationParams: stateSubVerificationParams,
+      primaryButtonDisabledObject: statePrimaryButtonDisabledObject
+    });
+  }, [stateSubVerificationParams, statePrimaryButtonDisabledObject, updateData]);
 
   return <U2fUi {...{
     type,

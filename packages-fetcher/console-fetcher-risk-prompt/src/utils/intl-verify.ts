@@ -3,7 +3,7 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  EVerifyType,
+  EConvertedVerifyType,
   EDialogType,
   ESubBindMfaStep
 } from '../enum';
@@ -12,15 +12,15 @@ import intl from '../intl';
 interface IIntlVerifyDialogTitleProps {
   dialogType?: EDialogType;
   subBindMfaStep?: ESubBindMfaStep;
-  subVerificationDeviceType?: ESubVerificationDeviceType | 'bind_mfa';
+  currentSubVerificationDeviceType?: ESubVerificationDeviceType | 'bindMfa';
 }
 
-export function intlVerifyTitle(type?: EVerifyType | ESubVerificationDeviceType): string {
+export function intlVerifyTitle(type?: EConvertedVerifyType | ESubVerificationDeviceType): string {
   switch (type) {
-    case EVerifyType.SMS:
+    case EConvertedVerifyType.SMS:
     case ESubVerificationDeviceType.SMS:
       return intl('op:verify_by_phone');
-    case EVerifyType.EMAIL:
+    case EConvertedVerifyType.EMAIL:
     case ESubVerificationDeviceType.EMAIL:
       return intl('op:verify_by_email');
     default: // MFA
@@ -28,12 +28,12 @@ export function intlVerifyTitle(type?: EVerifyType | ESubVerificationDeviceType)
   }
 }
 
-export function intlVerifyLabel(type?: EVerifyType | ESubVerificationDeviceType): string {
+export function intlVerifyLabel(type?: EConvertedVerifyType | ESubVerificationDeviceType): string {
   switch (type) {
-    case EVerifyType.SMS:
+    case EConvertedVerifyType.SMS:
     case ESubVerificationDeviceType.SMS:
       return intl('attr:phone');
-    case EVerifyType.EMAIL:
+    case EConvertedVerifyType.EMAIL:
     case ESubVerificationDeviceType.EMAIL:
       return intl('attr:email');
     default: // MFA
@@ -41,12 +41,12 @@ export function intlVerifyLabel(type?: EVerifyType | ESubVerificationDeviceType)
   }
 }
 
-export function intlVerifySetting(type?: EVerifyType | ESubVerificationDeviceType): string {
+export function intlVerifySetting(type?: EConvertedVerifyType | ESubVerificationDeviceType): string {
   switch (type) {
-    case EVerifyType.SMS:
+    case EConvertedVerifyType.SMS:
     case ESubVerificationDeviceType.SMS:
       return intl('op:change_phone');
-    case EVerifyType.EMAIL:
+    case EConvertedVerifyType.EMAIL:
     case ESubVerificationDeviceType.EMAIL:
       return intl('op:change_email');
     default: // MFA
@@ -57,7 +57,7 @@ export function intlVerifySetting(type?: EVerifyType | ESubVerificationDeviceTyp
 export function intlVerifyDialogTitle({
   dialogType,
   subBindMfaStep,
-  subVerificationDeviceType
+  currentSubVerificationDeviceType
 }: IIntlVerifyDialogTitleProps): string {
   if (dialogType === EDialogType.SUB_RISK_MFA_BIND) {
     switch (subBindMfaStep) {
@@ -71,7 +71,7 @@ export function intlVerifyDialogTitle({
   }
 
   if (dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH) {
-    switch (subVerificationDeviceType) {
+    switch (currentSubVerificationDeviceType) {
       case ESubVerificationDeviceType.VMFA:
         return intl('title:sub_vmfa_auth');
       case ESubVerificationDeviceType.U2F:

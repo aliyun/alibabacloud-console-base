@@ -3,7 +3,12 @@ import {
   type ParamsVerifySubAccount
 } from '@alicloud/console-fetcher-risk-data';
 
-export function convertToResolveDataVerifyType(verifySubAccountParams?: ParamsVerifySubAccount): 'ga' | 'sms' | 'email' | '' {
+import {
+  TResolveVerifyType
+} from '../types';
+
+// 将 ESubVerificationDeviceType 转化为 TResolveVerifyType
+export function convertToResolveDataVerifyType(verifySubAccountParams?: ParamsVerifySubAccount): TResolveVerifyType {
   switch (verifySubAccountParams?.verifyType) {
     case ESubVerificationDeviceType.EMAIL:
       return 'email';
@@ -17,6 +22,7 @@ export function convertToResolveDataVerifyType(verifySubAccountParams?: ParamsVe
   }
 }
 
+// 将 TResolveVerifyType 转化为 ESubVerificationDeviceType
 export function convertToMpkVerificationDeviceType(verifyType: string): ESubVerificationDeviceType.EMAIL | ESubVerificationDeviceType.SMS | ESubVerificationDeviceType.VMFA {
   switch (verifyType) {
     case 'email':

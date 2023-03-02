@@ -1,34 +1,24 @@
 import type {
   FetcherError
 } from '@alicloud/fetcher';
-import {
-  dataGetVerificationInfoToAuth
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
   IDialogData,
   TRiskInfo,
   TGetVerificationInfoToAuthData
-} from '../../types';
+} from '../../../types';
 import {
   ERiskType,
   EDialogType,
-  EVerifyType,
-  ESubBindMfaStep
-} from '../../enum';
+  ESubBindMfaStep,
+  EConvertedVerifyType
+} from '../../../enum';
+import {
+  DEFAULT_API_ERROR_MESSAGE_OBJECT
+} from '../../../const';
 
-const isMfaBounded = (verifyDetail: string | boolean): boolean => {
-  if (typeof verifyDetail === 'boolean') {
-    return verifyDetail;
-  }
-
-  if (typeof verifyDetail === 'string') {
-    return verifyDetail === 'true';
-  }
-
-  // 默认是已绑定
-  return true;
-};
+import getMfaBoundStatus from './get-mfa-bound-status';
+import getVerificationValidators from './get-verification-validators';
 
 export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRiskInfo): Promise<Omit<IDialogData, 'primaryButtonDisabledObject'>> {
   try {
@@ -41,32 +31,32 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
         accountId,
         subRiskValidators
       } = riskInfo;
-      const validatorsIncludesMfaToBind = subRiskValidators.find(o => o.convertedVerifyType === EVerifyType.MFA && !isMfaBounded(o.verifyDetail));
+      const validatorsIncludesMfaToBind = subRiskValidators.find(o => o.convertedVerifyType === EConvertedVerifyType.MFA && !getMfaBoundStatus(o.verifyDetail));
 
+      // 如果子账号的验证项只有 MFA，且 MFA 未绑定，那么风控弹窗只有用户绑定的 UI
       if (subRiskValidators.length === 1 && validatorsIncludesMfaToBind) {
         return {
           dialogType: EDialogType.SUB_RISK_MFA_BIND,
-          subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE
+          // 第一步是选择要绑定的 MFA 设备
+          subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE,
+          errorMessageObject: DEFAULT_API_ERROR_MESSAGE_OBJECT
         };
       }
 
-      const verificationValidators = await dataGetVerificationInfoToAuth({
-        accountId
+      const {
+        verificationValidators,
+        targetUserPrincipalName
+      } = await getVerificationValidators({
+        accountId,
+        subRiskValidators
       });
-      const targetUserPrincipalName = ((): string => {
-        if (!verificationValidators.length) {
-          return '';
-        }
-
-        return verificationValidators[0].targetUserPrincipalName;
-      })();
       const verificationOrBindValidators = ((): TGetVerificationInfoToAuthData[] => {
         const validators: TGetVerificationInfoToAuthData[] = [...verificationValidators];
 
         // 将绑定 MFA 也融入场景中
         if (validatorsIncludesMfaToBind) {
           validators.push({
-            deviceType: 'bind_mfa'
+            deviceType: 'bindMfa'
           });
         }
 
@@ -76,11 +66,12 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
       return {
         dialogType: EDialogType.SUB_RISK_VERIFICATION_AUTH,
         subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE,
-        subVerificationDeviceType: verificationValidators[0].deviceType,
+        currentSubVerificationDeviceType: verificationValidators[0].deviceType,
         subGetVerificationToAuthData: {
           targetUserPrincipalName,
           verificationOrBindValidators
-        }
+        },
+        errorMessageObject: DEFAULT_API_ERROR_MESSAGE_OBJECT
       };
     }
 
@@ -93,7 +84,8 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
             verifyType: riskInfo.verifyType,
             verifyUrl: riskInfo.verifyUrl
           }
-        }
+        },
+        errorMessageObject: DEFAULT_API_ERROR_MESSAGE_OBJECT
       };
     }
   
@@ -107,7 +99,8 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
             verifyType: riskInfo.verifyType,
             mpkIsDowngrade: riskInfo.mpkIsDowngrade
           }
-        }
+        },
+        errorMessageObject: DEFAULT_API_ERROR_MESSAGE_OBJECT
       };
     }
 
@@ -121,12 +114,16 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
           verifyType: riskInfo.verifyType,
           mpkIsDowngrade: riskInfo.mpkIsDowngrade
         }
-      }
+      },
+      errorMessageObject: DEFAULT_API_ERROR_MESSAGE_OBJECT
     };
   } catch (error) {
     return {
       dialogType: EDialogType.ERROR,
-      apiErrorMessage: (error as FetcherError).message
+      errorMessageObject: {
+        ...DEFAULT_API_ERROR_MESSAGE_OBJECT,
+        riskPromptError: (error as FetcherError).message
+      }
     };
   }
 }

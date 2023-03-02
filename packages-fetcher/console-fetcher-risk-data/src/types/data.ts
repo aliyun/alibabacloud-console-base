@@ -49,6 +49,7 @@ export type TDataGetMfaInfoToAuth = TDataGetVmfaInfoToAuth | TDataGetU2fInfoToAu
 
 // /identity/getMfaInfoToAuthV2
 export type TDataGetSmsInfoToAuth = TUnCapitalizeKeys<IResponseSmsValidator> & {
+  areaCode: string | number;
   deviceType: ESubVerificationDeviceType.SMS;
   targetUserPrincipalName: string;
 }

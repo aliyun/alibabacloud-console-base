@@ -3,14 +3,10 @@ import React from 'react';
 import {
   open
 } from '@alicloud/console-base-rc-dialog';
-import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
   TRiskInfo,
   IDialogData,
-  IRiskConfig,
   ICommonRiskInfo,
   IRiskPromptResolveData
 } from '../../types';
@@ -19,17 +15,17 @@ import {
   EDialogType
 } from '../../enum';
 import {
-  DEFAULT_RISK_CONFIG,
-  DEFAULT_DIALOG_SIZE
+  DEFAULT_DIALOG_SIZE,
+  DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT
 } from '../../const';
+import DialogTitle from '../../rc/dialog-title';
 import intl from '../../intl';
 import {
   slsRiskStartUp
 } from '../../sls';
 import {
-  intlVerifyDialogTitle,
-  getOldMainOrMpkAccountRiskInfo,
-  getPartialDialogDataBasedOnRiskInfo
+  getAccountIdFromRiskInfo,
+  getOldMainOrMpkAccountRiskInfo
 } from '../../utils';
 import DialogContent from '../dialog-content';
 
@@ -39,8 +35,9 @@ import {
   generateSubBindMfaButton,
   generateOldMainOrDowngradeMpkSubmitButton
 } from './dialog-button';
+import getPartialDialogDataBasedOnRiskInfo from './get-partial-dialog-data-based-on-risk-info';
 
-export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRiskConfig): Promise<IRiskPromptResolveData> {
+export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskPromptResolveData> {
   const {
     riskType, codeType
   } = riskInfo;
@@ -48,10 +45,7 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
   slsRiskStartUp({
     riskType
   });
-  const {
-    urlSetting, coolingAfterSent, coolingAfterSentFail
-  } = DEFAULT_RISK_CONFIG;
-  const accountId = 'accountId' in riskInfo ? riskInfo.accountId : 'EMPTY_ACCOUNT_ID';
+  const accountId = getAccountIdFromRiskInfo(riskInfo);
   const dialogData = await getPartialDialogDataBasedOnRiskInfo(riskInfo);
 
   const oldMainOrMpkVerifyInfo = ((): Omit<ICommonRiskInfo, 'codeType'> | undefined => {
@@ -66,26 +60,12 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
 
   return open<IRiskPromptResolveData, IDialogData>({
     title: (data: IDialogData) => {
-      const {
-        dialogType, subBindMfaStep, subVerificationDeviceType
-      } = data;
-
-      return intlVerifyDialogTitle({
-        dialogType,
-        subBindMfaStep,
-        subVerificationDeviceType
-      });
+      return <DialogTitle dialogData={data} />;
     },
     data: {
-      ...dialogData,
       // 用户未输入验证码之前，按钮置灰
-      primaryButtonDisabledObject: {
-        [ESubVerificationDeviceType.EMAIL]: true,
-        [ESubVerificationDeviceType.SMS]: true,
-        [ESubVerificationDeviceType.VMFA]: true,
-        [ESubVerificationDeviceType.U2F]: true,
-        main_account: true
-      }
+      primaryButtonDisabledObject: DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT,
+      ...dialogData
     },
     size: (data: IDialogData) => {
       switch (data.dialogType) {
@@ -100,14 +80,11 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
     content: <DialogContent {...{
       codeType,
       accountId,
-      oldMainOrMpkVerifyInfo,
-      urlSetting: riskConfig?.urlSetting || urlSetting,
-      coolingAfterSent: riskConfig?.coolingAfterSent || coolingAfterSent,
-      coolingAfterSentFail: riskConfig?.coolingAfterSentFail || coolingAfterSentFail
+      oldMainOrMpkVerifyInfo
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');
-      const subRiskBindMfaInVerificationAuth = data.dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH && data.subVerificationDeviceType === 'bind_mfa';
+      const subRiskBindMfaInVerificationAuth = data.dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH && data.currentSubVerificationDeviceType === 'bindMfa';
 
       if (subRiskBindMfaInVerificationAuth || data.dialogType === EDialogType.SUB_RISK_MFA_BIND) {
         const bindMfaButtons = generateSubBindMfaButton({
@@ -125,11 +102,11 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
         }
         case EDialogType.SUB_RISK_VERIFICATION_AUTH: {
           const primaryButtonDisabled = ((): boolean => {
-            if (!data.subVerificationDeviceType || data.subVerificationDeviceType === 'bind_mfa') {
+            if (!data.currentSubVerificationDeviceType || data.currentSubVerificationDeviceType === 'bindMfa') {
               return false;
             }
 
-            return data.primaryButtonDisabledObject[data.subVerificationDeviceType];
+            return data.primaryButtonDisabledObject[data.currentSubVerificationDeviceType];
           })();
 
           const verifyMfaPrimaryButton = generateSubSubmitButton({
@@ -163,7 +140,7 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
               codeType,
               accountId,
               verifyType,
-              primaryButtonDisabled: data.primaryButtonDisabledObject.main_account
+              primaryButtonDisabled: data.primaryButtonDisabledObject.mainAccount
             });
 
             return [mpkSubmitButton, buttonCancel];
@@ -171,7 +148,7 @@ export default async function openDialog(riskInfo: TRiskInfo, riskConfig?: IRisk
 
           const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton({
             verifyType,
-            primaryButtonDisabled: data.primaryButtonDisabledObject.main_account
+            primaryButtonDisabled: data.primaryButtonDisabledObject.mainAccount
           });
 
           return [oldMainOrDowngradeMpkSubmitButton, buttonCancel];

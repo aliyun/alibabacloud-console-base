@@ -1,11 +1,4 @@
 /**
- * 子账号验证接口 /identity/verify 的参数 VerifyType，一期只有 MFA，后续会增加短信 & 邮箱
- */
-export enum ESubVerifyType {
-  MFA = 'mfa'
-}
-
-/**
  * 新版子账号风控 MFA 设备类型 - 虚拟 MFA / U2F / SMS / EMAIL
  */
 export enum ESubVerificationDeviceType {

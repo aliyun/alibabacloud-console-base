@@ -21,8 +21,8 @@ const ScLabel = styled.label`
 
 const ScSpan = styled.span`
   margin-left: 4px;
-  font-weight: 500;
   font-size: ${SIZE.FONT_SIZE_SUB_TITLE}px;
+  font-weight: 500;
   ${mixinTextPrimary}
 `;
 
@@ -46,7 +46,9 @@ export default function Radio({
       setStateChecked(currentChecked);
     }
 
-    onChange && onChange(currentChecked, e);
+    if (onChange) {
+      onChange(currentChecked, e);
+    }
   }, [checked, onChange]);
 
   const checkedAttr = useMemo((): boolean => {
@@ -54,15 +56,15 @@ export default function Radio({
     return checked ?? stateChecked;
   }, [checked, stateChecked]);
 
-  return <ScLabel>
-    <input {...{
-      type: 'radio',
-      disabled,
-      checked: checkedAttr,
-      onChange: handleChange
-    }} />
-    {label ? <ScSpan>
-      {label}
-    </ScSpan> : null}
-  </ScLabel>;
+  return (
+    <ScLabel>
+      <input {...{
+        type: 'radio',
+        disabled,
+        checked: checkedAttr,
+        onChange: handleChange
+      }} />
+      {label && <ScSpan>{label}</ScSpan>}
+    </ScLabel>
+  );
 }

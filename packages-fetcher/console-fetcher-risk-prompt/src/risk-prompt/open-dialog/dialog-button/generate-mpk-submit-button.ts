@@ -1,7 +1,4 @@
 import {
-  dataVerifyMpk
-} from '@alicloud/console-fetcher-risk-data';
-import {
   DialogButtonProps
 } from '@alicloud/console-base-rc-dialog';
 
@@ -10,6 +7,9 @@ import {
   IRiskPromptResolveData
 } from '../../../types';
 import intl from '../../../intl';
+import {
+  handleRiskPromptDialogSubmit
+} from '../../../utils';
 
 interface IGenerateMpkSubmitButtonProps {
   codeType: string;
@@ -27,47 +27,13 @@ export default function generateMpkSubmitButton({
   return {
     disabled: primaryButtonDisabled,
     label: intl('op:confirm'),
-    onClick({
-      data,
-      updateData,
-      lock,
-      unlock,
-      close
-    }) {
-      lock(true);
-      updateData({
-        apiErrorMessage: ''
-      });
-
-      const {
-        mainOrMpkAccountData
-      } = data;
-
-      const authCode = mainOrMpkAccountData?.code || 'EMPTY_MPK_AUTH_CODE';
-      const riskRequestId = mainOrMpkAccountData?.requestId || 'EMPTY_MPK_REQUEST_ID';
-      
-      dataVerifyMpk({
-        authCode,
+    onClick(contentContext) {
+      handleRiskPromptDialogSubmit({
+        codeType,
         accountId,
         verifyType,
-        riskRequestId,
-        ext: JSON.stringify({
-          codeType
-        })
-      }).then(verifyMpkData => {
-        const ivToken = verifyMpkData.ivToken || 'EMPTY_MPK_IV_TOKEN';
-        const params = {
-          verifyType,
-          verifyCode: ivToken
-        };
-
-        close(params);
-      }).catch(error => {
-        updateData({
-          apiErrorMessage: error?.message || ''
-        });
-      }).finally(() => {
-        unlock();
+        contentContext,
+        dialogSubmitType: 'new_mpk'
       });
 
       return false;

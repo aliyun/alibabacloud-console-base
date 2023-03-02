@@ -75,5 +75,7 @@ export default {
 为了保障您的账户安全，请先联系主账号或 RAM 管理员在 RAM 控制台设置验证方式。`,
   'message:update_app_tip_{url}!html': '阿里云 App 最新版提供了 MFA 验证码快速输入功能，请 <a href="{url}" target="_blank">升级 App</a>。',
   'message:invalid_unsupported_{method}!html': '系统检测到验证方式 <code>{method}</code> 有误，请重试。',
-  'message:invalid:sub:validator': '验证方式错误，请重试。'
+  'message:invalid:sub:validator': '验证方式错误，请重试。',
+  'message:send:code:success': '验证码发送成功，5 分钟内有效。',
+  'message:multi:validators': '请任选一种验证方式完成安全验证。'
 };

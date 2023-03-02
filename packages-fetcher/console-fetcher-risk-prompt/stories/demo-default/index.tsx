@@ -1,12 +1,15 @@
 /* eslint-disable no-console */
 import React, {
+  useState,
   useCallback
 } from 'react';
 import styled from 'styled-components';
 
 import {
   H1,
-  Button
+  Button,
+  RadioGroup,
+  CheckboxGroup
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
@@ -28,6 +31,9 @@ const ScButton = styled(Button)`
 `;
 
 export default function DemoDefault(): JSX.Element {
+  const [stateMfaBound, setStateMfaBound] = useState<string>('false');
+  const [stateSubValidators, setStateSubValidators] = useState<string[]>(['ga']);
+
   const handleSubRiskBindPrompt = useCallback(async () => {
     const riskPromptResult = await riskPrompt({
       riskResponse: {
@@ -62,18 +68,30 @@ export default function DemoDefault(): JSX.Element {
       };
     };
 
+    const riskValidators = stateSubValidators.map(o => {
+      if (o === 'ga') {
+        return {
+          VerifyDetail: stateMfaBound,
+          VerifyType: 'ga'
+        };
+      }
+
+      if (o === 'sms') {
+        return {
+          VerifyDetail: '86-13100000',
+          VerifyType: 'sms'
+        };
+      }
+
+      return {
+        VerifyDetail: 'zzz@a.com',
+        VerifyType: 'email'
+      };
+    });
+
     const riskPromptResult = await riskPrompt<IRiskResponseData>({
       riskResponse: {
-        RiskValidators: [
-          {
-            VerifyDetail: 'false',
-            VerifyType: 'ga'
-          },
-          {
-            VerifyDetail: 'zzzzzz',
-            VerifyType: 'sms'
-          }
-        ],
+        RiskValidators: riskValidators,
         CodeType: 'ims_login_update',
         VerifyDetail: true,
         VerifyType: 'ga',
@@ -83,7 +101,7 @@ export default function DemoDefault(): JSX.Element {
     });
 
     console.log('sub_risk_auth_prompt_result', riskPromptResult);
-  }, []);
+  }, [stateMfaBound, stateSubValidators]);
 
   const handleSubRiskInvalidPrompt = useCallback(async () => {
     const riskPromptResult = await riskPrompt({
@@ -144,9 +162,9 @@ export default function DemoDefault(): JSX.Element {
     const riskPromptResult = await riskPrompt({
       riskResponse: {
         data: {
-          verifyDetail: '1234****0',
+          // verifyDetail: '1234****0',
           codeType: 'rg_authorization_add',
-          verifyType: 'sms'
+          verifyType: 'ga'
         }
       }
     });
@@ -157,7 +175,38 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <H1>风控弹窗 console-base-risk-prompt</H1>
     <ThemeSwitcher />
+    <CheckboxGroup {...{
+      label: '子账号风控方式选择',
+      items: [{
+        label: 'ga',
+        value: 'ga'
+      }, {
+        label: 'sms',
+        value: 'sms'
+      }, {
+        label: 'email',
+        value: 'email'
+      }],
+      onChange: o => {
+        setStateSubValidators(o);
+      }
+    }} />
+    <RadioGroup<string> {...{
+      label: 'MFA 绑定状态选择',
+      defaultValue: 'false',
+      items: [{
+        value: 'true',
+        label: 'true'
+      }, {
+        value: 'false',
+        label: 'false'
+      }],
+      onChange: o => {
+        setStateMfaBound(o);
+      }
+    }} />
     <ScButton onClick={handleSubRiskBindPrompt}>子账号风控弹窗 - 绑定 MFA</ScButton>
+    <ScButton onClick={handleSubRiskAuthPrompt}>子账号风控弹窗 - 验证 MFA</ScButton>
     <ScButton onClick={handleSubRiskAuthPrompt}>子账号风控弹窗 - 验证 MFA</ScButton>
     <ScButton onClick={handleSubRiskInvalidPrompt}>子账号风控弹窗 - Invalid</ScButton>
     <ScButton onClick={handleNewMainRiskPrompt}>新版主账号风控弹窗</ScButton>
