@@ -28,11 +28,23 @@ export default function WithLoading<T>(props: IWithLoadingProps<T>): JSX.Element
     renderError,
     retry
   } = props;
-  const handleRenderErrorDefault = useCallback((): JSX.Element => <Loading {...{
-    status: 'error',
-    message: retry ? messageErrorRetry : messageError,
-    retry
-  }} />, [messageError, messageErrorRetry, retry]);
+  const handleRenderErrorDefault = useCallback((): JSX.Element => {
+    let message;
+    
+    if (retry) {
+      message = messageErrorRetry;
+    } else if (typeof messageError === 'function') {
+      message = messageError(error);
+    } else {
+      message = messageError;
+    }
+    
+    return <Loading {...{
+      status: 'error',
+      message,
+      retry
+    }} />;
+  }, [error, messageError, messageErrorRetry, retry]);
   const handleRenderEmptyDefault = useCallback((): JSX.Element => {
     return <Loading {...{
       status: 'empty',

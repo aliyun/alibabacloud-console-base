@@ -21,7 +21,7 @@ interface IRenderErrorFn {
 interface IWithLoadingBase<T> {
   messageLoading?: string | JSX.Element;
   messageEmpty?: string | JSX.Element;
-  messageError?: string | JSX.Element;
+  messageError?: string | JSX.Element | ((error?: Error | null) => string | JSX.Element);
   messageErrorRetry?: string | JSX.Element;
   isEmpty?(data: T): boolean;
   renderEmpty?: IRenderEmptyFn | ReactElement;

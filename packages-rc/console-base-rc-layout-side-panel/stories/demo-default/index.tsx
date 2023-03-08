@@ -1,6 +1,9 @@
 import React, {
   useState
 } from 'react';
+import {
+  createGlobalStyle
+} from 'styled-components';
 
 import {
   InputSwitch
@@ -20,6 +23,17 @@ import {
 } from '../rc';
 import PkgInfo from '../pkg-info';
 
+const GlobalStyleForTest = createGlobalStyle`
+  i.test {
+    font-style: normal;
+    color: #009;
+    
+    &:before {
+      content: '㉿';
+    }
+  }
+`;
+
 export default function DemoDefault(): JSX.Element {
   const [stateTopBar, setStateTopBar] = useState(true);
   const [stateChildrenAsItemsBottom, setStateChildrenAsItemsBottom] = useState(false);
@@ -28,6 +42,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateApiInspectorVisible, setStateApiInspectorVisible] = useState(false);
   
   return <>
+    <GlobalStyleForTest />
     {stateTopBar ? <LayoutTopBar /> : null}
     <LayoutSidePanel {...{
       itemsTop: [{
@@ -74,6 +89,12 @@ export default function DemoDefault(): JSX.Element {
         title: '测试图片 URL',
         icon: 'https://img.alicdn.com/tfs/TB1JhtxuAT2gK0jSZFkXXcIQFXa-128-128.png'
       }, {
+        key: 'icon-with-class',
+        title: '测试 className 图标',
+        icon: {
+          className: 'test'
+        }
+      }, {
         key: 'cloud',
         title: '阿里雲',
         icon: '云',
@@ -95,7 +116,7 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'micro-exp',
         title: '微试验',
-        icon: <Icon type="toolkit-edu" />,
+        icon: <Icon type="loading" />,
         tooltip: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       }, {
         key: 'contact',

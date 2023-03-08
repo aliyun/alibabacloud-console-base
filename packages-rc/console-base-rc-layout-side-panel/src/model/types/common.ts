@@ -6,6 +6,10 @@ import {
   ButtonProps
 } from '@alicloud/console-base-rc-button';
 
+type TIcon = string | ReactElement | {
+  className: string;
+};
+
 export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' | 'theme' | 'iconLeft' | 'iconRight' | 'onMouseEnter' | 'onMouseLeave'> {
   /**
    * 默认用于 tooltip，也是按钮 aria-label 属性
@@ -16,24 +20,24 @@ export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' 
    */
   titleActive?: string;
   /**
-   * 图标，如果是组件则直接用，当它是字符串的时候，会智能判断
+   * 图标（请尽可能用正方形），如果是组件则直接用，当它是字符串的时候，会智能判断
    * 1. 如果是 svg 则渲染成 svg
-   * 2. 如果是 URL，则认为是图片（请用 png）
-   * 对 svg 和 img 这里都有大小约束，请尽可能用正方形
+   * 2. 如果是 URL，则认为是图片（建议用 svg 或 png）
+   * 3. 虽不甚建议，但可以对象 `{ className }`，将渲染一个 `i.class` 元素，要求应用有相应 class 的图标静态样式
    */
-  icon: string | ReactElement;
+  icon: TIcon;
   /**
    * 鼠标 hover 时的图标，不填则 fallback 到 icon
    */
-  iconHovered?: string | ReactElement;
+  iconHovered?: TIcon;
   /**
    * 按下状态的图标，不填则 fallback 到 icon
    */
-  iconActive?: string | ReactElement;
+  iconActive?: TIcon;
   /**
    * 按下状态时 hover 的图标，不填则 fallback 到 iconActive
    */
-  iconActiveHovered?: string | ReactElement;
+  iconActiveHovered?: TIcon;
   /**
    * 当需要复杂的 tooltip 时，可以用这个 prop 
    */

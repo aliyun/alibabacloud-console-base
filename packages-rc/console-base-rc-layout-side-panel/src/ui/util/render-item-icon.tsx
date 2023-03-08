@@ -23,16 +23,24 @@ export default function renderItemIcon(icon: SidePanelItemProps['icon']): JSX.El
     return icon;
   }
   
-  if (isSvg(icon)) {
-    // eslint-disable-next-line react/no-danger
-    return <span dangerouslySetInnerHTML={{
-      __html: icon
-    }} />;
+  if (typeof icon === 'string') {
+    if (isSvg(icon)) {
+      // eslint-disable-next-line react/no-danger
+      return <span dangerouslySetInnerHTML={{
+        __html: icon
+      }} />;
+    }
+  
+    if (isUrl(icon)) {
+      return <img src={icon} alt="" />;
+    }
+  
+    return icon;
   }
   
-  if (isUrl(icon)) {
-    return <img src={icon} alt="" />;
+  if (icon.className) {
+    return <i className={icon.className} />;
   }
   
-  return icon;
+  return null;
 }

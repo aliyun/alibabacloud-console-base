@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-with-loading",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ConsoleBase 组件 - 对异步数据的渲染",
   "license": "MIT",
   "sideEffects": false,
