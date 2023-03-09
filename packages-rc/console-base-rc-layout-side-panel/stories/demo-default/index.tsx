@@ -99,6 +99,7 @@ export default function DemoDefault(): JSX.Element {
         title: '阿里雲',
         icon: '云',
         iconHovered: '雲',
+        mark: 'new',
         href: '//www.aliyun.com'
       }, {
         key: 'face',

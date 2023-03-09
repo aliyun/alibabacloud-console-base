@@ -15,7 +15,7 @@ import {
 } from '../../util';
 import SidePanelItemWrap from '../side-panel-item-wrap';
 import SidePanelItemButton from '../side-panel-item-button';
-import SidePanelItemUnread from '../side-panel-item-unread';
+import SidePanelItemBadge from '../side-panel-item-badge';
 import SidePanelItemTooltip from '../side-panel-item-tooltip';
 
 interface IProps extends SidePanelItemProps {}
@@ -33,6 +33,7 @@ export default function SidePanelItem({
   iconActive,
   iconActiveHovered,
   unread,
+  mark,
   tooltip,
   tooltipActive,
   tooltipAsHtml,
@@ -85,7 +86,7 @@ export default function SidePanelItem({
       onMouseEnter: handleMouseEnter,
       onClick: handleClick
     }} />
-    <SidePanelItemUnread unread={unread} />
+    <SidePanelItemBadge unread={unread} mark={mark} />
     {finalTooltip || finalTitle ? <SidePanelItemTooltip {...{
       visible: stateHovered,
       align: tooltipAlign,

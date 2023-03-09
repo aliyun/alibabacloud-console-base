@@ -55,9 +55,13 @@ export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' 
    */
   tooltipAlign?: 'top' | 'middle' | 'bottom';
   /**
-   * 徽标，数字展示数字，true 展示小红点
+   * 右上角徽标，数字展示数字，true 展示小红点
    */
   unread?: number | boolean;
+  /**
+   * 右上角 NEW 或 HOT，优先级低于 unread
+   */
+  mark?: 'new' | 'hot';
   onMouseEnter?(): void;
   onMouseLeave?(): void;
   /**
