@@ -21,7 +21,7 @@ export default function Table<T>({
   return <ScTable {...props}>
     <colgroup>
       {firstColumnIndex ? <col style={{
-        width: 64
+        width: 48
       }} /> : null}
       {columns.map((v, i) => <col {...{
         key: getTableColumnKey(v, i),
