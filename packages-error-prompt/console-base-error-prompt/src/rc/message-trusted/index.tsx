@@ -20,6 +20,7 @@ const ScErrorMessage = styled.div`
   
   p {
     margin: 8px 0;
+    font-size: inherit;
     
     &:last-child {
       margin-bottom: 0;
