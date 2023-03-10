@@ -12,7 +12,8 @@ import {
 } from '../../types';
 import {
   ERiskType,
-  EDialogType
+  EDialogType,
+  ESceneKey
 } from '../../enum';
 import {
   DEFAULT_DIALOG_SIZE,
@@ -84,7 +85,7 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');
-      const subRiskBindMfaInVerificationAuth = data.dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH && data.currentSubVerificationDeviceType === 'bindMfa';
+      const subRiskBindMfaInVerificationAuth = data.dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH && data.currentSubVerificationDeviceType === ESceneKey.BIND_MFA;
 
       if (subRiskBindMfaInVerificationAuth || data.dialogType === EDialogType.SUB_RISK_MFA_BIND) {
         const bindMfaButtons = generateSubBindMfaButton({
@@ -102,11 +103,11 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
         }
         case EDialogType.SUB_RISK_VERIFICATION_AUTH: {
           const primaryButtonDisabled = ((): boolean => {
-            if (!data.currentSubVerificationDeviceType || data.currentSubVerificationDeviceType === 'bindMfa') {
+            if (!data.currentSubVerificationDeviceType || data.currentSubVerificationDeviceType === ESceneKey.BIND_MFA) {
               return false;
             }
 
-            return data.primaryButtonDisabledObject[data.currentSubVerificationDeviceType];
+            return Boolean(data.primaryButtonDisabledObject[data.currentSubVerificationDeviceType]);
           })();
 
           const verifyMfaPrimaryButton = generateSubSubmitButton({
@@ -140,7 +141,7 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
               codeType,
               accountId,
               verifyType,
-              primaryButtonDisabled: data.primaryButtonDisabledObject.mainAccount
+              primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
             });
 
             return [mpkSubmitButton, buttonCancel];
@@ -148,7 +149,7 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
 
           const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton({
             verifyType,
-            primaryButtonDisabled: data.primaryButtonDisabledObject.mainAccount
+            primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
           });
 
           return [oldMainOrDowngradeMpkSubmitButton, buttonCancel];

@@ -7,7 +7,7 @@ import {
 
 import {
   ICommonRiskInfo,
-  TGetVerificationInfoToAuthData
+  TVerificationOrBindValidator
 } from '../../../types';
 import {
   EConvertedVerifyType
@@ -22,7 +22,7 @@ interface IProps {
 
 interface IGetVerificationValidatorsResult {
   targetUserPrincipalName: string;
-  verificationValidators: TGetVerificationInfoToAuthData[];
+  verificationValidators: TVerificationOrBindValidator[];
 }
 
 export default async function getVerificationValidators({
@@ -51,13 +51,13 @@ export default async function getVerificationValidators({
     };
   }
 
-  const verificationValidators = subRiskValidators.map<TGetVerificationInfoToAuthData | null>(o => {
+  const verificationValidators = subRiskValidators.map<TVerificationOrBindValidator | null>(o => {
     if (o.convertedVerifyType === EConvertedVerifyType.SMS) {
       const [areaCode, phoneNumber] = String(o.verifyDetail).split('-');
 
       return {
         areaCode,
-        phoneNumber,
+        phoneNumber: phoneNumber || '',
         targetUserPrincipalName: '',
         deviceType: ESubVerificationDeviceType.SMS
       } as DataGetSmsInfoToAuth;
@@ -65,7 +65,7 @@ export default async function getVerificationValidators({
 
     if (o.convertedVerifyType === EConvertedVerifyType.EMAIL) {
       return {
-        emailAddress: o.verifyDetail,
+        emailAddress: String(o.verifyDetail),
         targetUserPrincipalName: '',
         deviceType: ESubVerificationDeviceType.EMAIL
       } as DataGetEmailInfoToAuth;
@@ -76,6 +76,6 @@ export default async function getVerificationValidators({
 
   return {
     targetUserPrincipalName: '',
-    verificationValidators: verificationValidators.filter(o => Boolean(o)) as TGetVerificationInfoToAuthData[]
+    verificationValidators: verificationValidators.filter(o => Boolean(o)) as TVerificationOrBindValidator[]
   };
 }

@@ -1,5 +1,10 @@
 import ENV from '@alicloud/console-base-conf-env';
 
+/**
+ * 
+ * @param accountId 子账号 ID
+ * @returns RAM 详情页地址。用于设置 RAM 用户安全手机/邮箱
+ */
 export default function getSubVerificationSettingUrl(accountId: string): string {
   if (!accountId) {
     return '';

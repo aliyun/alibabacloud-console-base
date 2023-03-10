@@ -20,6 +20,9 @@ import {
   IRiskPromptResolveData
 } from '../../types';
 import {
+  ESceneKey
+} from '../../enum';
+import {
   REG_NEW_MAIN_VERIFY_URL
 } from '../../const';
 import AltWrap from '../../rc/alt-wrap';
@@ -79,11 +82,13 @@ export default function NewMainRiskContent(): JSX.Element {
     } catch (error) {
       updateData({
         errorMessageObject: {
-          mainAccount: (error as Error).message
+          [ESceneKey.MAIN_ACCOUNT]: (error as Error).message
         }
       });
     }
   }, [lock, close, updateData, verifyType]);
+
+  const newMainErrorMessage = errorMessageObject[ESceneKey.MAIN_ACCOUNT];
 
   const newMainRiskContent = useMemo((): JSX.Element => {
     if (verifyUrl) {
@@ -100,12 +105,12 @@ export default function NewMainRiskContent(): JSX.Element {
           title: intl('title:default'),
           src: verifyUrl
         }} />
-        {errorMessageObject.mainAccount}<ScError>{errorMessageObject.mainAccount}</ScError>
+        {newMainErrorMessage && <ScError>{newMainErrorMessage}</ScError>}
       </>;
     }
   
-    return <AltWrap content={errorMessageObject.mainAccount || intl('message:new_main_verify_error')} />;
-  }, [errorMessageObject.mainAccount, verifyUrl]);
+    return <AltWrap content={newMainErrorMessage || intl('message:new_main_verify_error')} />;
+  }, [newMainErrorMessage, verifyUrl]);
 
   // VerifyUrl 不合法时需要上报埋点
   useEffect(() => {

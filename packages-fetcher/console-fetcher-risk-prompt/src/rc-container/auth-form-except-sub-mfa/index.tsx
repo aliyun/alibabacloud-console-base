@@ -1,197 +1,88 @@
-import React, {
-  useMemo,
-  useState,
-  useCallback
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
+import {
+  ESubVerificationDeviceType
+} from '@alicloud/console-fetcher-risk-data';
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
 import Flex from '@alicloud/console-base-rc-flex';
-import {
-  EAccountType,
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
+  TAuthFormProps,
   IDialogData,
   IRiskPromptResolveData
 } from '../../types';
 import {
-  EIconType
+  EIconType,
+  ERiskType
 } from '../../enum';
+import {
+  BUILT_IN_RISK_CONFIG
+} from '../../const';
 import {
   useModelProps
 } from '../../model';
-import intl from '../../intl';
 import {
-  useCountDown
-} from '../../hook';
+  useAuthFormGenerateProps,
+  useAuthFormHandleInputChange
+} from '../../hooks';
+import intl from '../../intl';
 import Form from '../../rc/form';
 import Message from '../../rc/message';
 import SubAuthFormWrapper from '../../rc/sub-auth-form-wrapper';
-import VerifyCodeInput, {
-  type IHandleInputChangeProps
-} from '../../rc/verify-code-input';
-import type {
-  IGenerateCodeButtonProps
-} from '../../rc/generate-code-button';
+import VerifyCodeInput from '../../rc/verify-code-input';
 import {
-  getUpdateSubVerificationParams
+  intlVerifySetting,
+  getSubVerificationSettingUrl
 } from '../../utils';
 
 import {
-  TAuthFormProps
-} from './type';
-import dataSendVerifyCode from './send-verify-code';
-import {
-  getCurrentPrimaryButtonType,
-  getDialogSubmitType,
   getInputWidth,
-  getVerifyCodeInputType,
   getVerifyLabel,
-  getVerifySettingLabel,
-  getVerifySettingUrl,
-  getSubAuthFormWrapperProps
+  getVerifyCodeInputType,
+  getSubAuthFormWrapperProps,
+  getCurrentKeyOfErrorMessageObject
 } from './get-auth-form-attrs';
+import getFormVerifyDetail from './get-form-verify-detail';
 
 const ScInfo = styled.strong`
   margin-right: 12px;
 `;
 
-// 发送验证码成功后的成功提示的持续时间（秒）
-const SEND_CODE_SUCCESS_TIP_DURATION = 3;
-
-export default function VerifyRiskForm(props: TAuthFormProps): JSX.Element {
-  const [stateVerifyUniqId, setStateVerifyUniqId] = useState<string>('');
+export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Element {
   const {
-    codeType,
+    riskType, verifyType, verifyDetail
+  } = authFormProps;
+  const showVerifySettingUrlChangeButton = !(verifyDetail === ERiskType.NEW_SUB && verifyType === ESubVerificationDeviceType.VMFA);
+
+  const {
     accountId
   } = useModelProps();
   const {
     data: {
-      errorMessageObject,
-      subVerificationParams
-    },
-    updateData
+      errorMessageObject
+    }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
-  const currentPrimaryButtonType = getCurrentPrimaryButtonType(props);
-  const errorMessageOfCurrentType = errorMessageObject[currentPrimaryButtonType];
+  const currentKeyOfErrorMessageObject = getCurrentKeyOfErrorMessageObject(authFormProps);
+  const errorMessageOfCurrentType = errorMessageObject[currentKeyOfErrorMessageObject];
 
   const {
-    countDown,
-    setCountDown
-  } = useCountDown();
-  const showSendCodeSuccessTip = countDown > 0;
+    verifyUniqId,
+    generateProps,
+    showSendCodeSuccessTip
+  } = useAuthFormGenerateProps(authFormProps);
 
-  const getUpdateDataOnInputChange = useCallback((code: string): Partial<IDialogData> => {
-    const typeOfErrorMessage = getCurrentPrimaryButtonType(props);
-    // 清空对应风控方式的 error
-    const updatedAiErrorMessageObject = {
-      errorMessageObject: {
-        ...errorMessageObject,
-        [typeOfErrorMessage]: ''
-      }
-    };
-
-    // OneConsole 旧版主账号类型
-    if (props.formType === 'old_main') {
-      return {
-        ...updatedAiErrorMessageObject,
-        mainOrMpkAccountData: {
-          code,
-          requestId: stateVerifyUniqId
-        }
-      };
-    }
-
-    // MPK 类型账号
-    if (props.accountType === EAccountType.MAIN) {
-      return {
-        ...updatedAiErrorMessageObject,
-        mainOrMpkAccountData: {
-          code,
-          requestId: stateVerifyUniqId
-        }
-      };
-    }
-  
-    // 手机或邮箱方式的子账号风控
-    if ([ESubVerificationDeviceType.EMAIL, ESubVerificationDeviceType.SMS].includes(props.verifyType)) {
-      return {
-        ...updatedAiErrorMessageObject,
-        subVerificationParams: getUpdateSubVerificationParams({
-          currentSubVerificationParams: subVerificationParams,
-          paramsToUpdate: {
-            accountId,
-            authCode: code,
-            verifyType: props.verifyType,
-            verifyUniqId: stateVerifyUniqId,
-            ext: JSON.stringify({
-              codeType
-            })
-          }
-        })
-      };
-    }
-
-    // Vmfa 类型的子账号风控
-    return {
-      ...updatedAiErrorMessageObject,
-      subVerificationParams: getUpdateSubVerificationParams({
-        currentSubVerificationParams: subVerificationParams,
-        paramsToUpdate: {
-          accountId,
-          authCode: code,
-          verifyType: ESubVerificationDeviceType.VMFA,
-          ext: JSON.stringify({
-            codeType
-          })
-        }
-      })
-    };
-  }, [props, accountId, codeType, stateVerifyUniqId, subVerificationParams, errorMessageObject]);
-
-  const handleInputChange = useCallback((payload: IHandleInputChangeProps): void => {
-    const {
-      verifyCode
-    } = payload;
-    const trimmedValue = verifyCode.trim();
-    const dataToUpdate = getUpdateDataOnInputChange(trimmedValue);
-
-    updateData(dataToUpdate);
-  }, [updateData, getUpdateDataOnInputChange]);
-
-  const generateProps = useMemo<IGenerateCodeButtonProps>(() => {
-    const sendVerifyCode = (): Promise<void> => {
-      return dataSendVerifyCode({
-        ...props,
-        accountId,
-        codeType
-      }).then(requestId => {
-        // 验证码发送成功时需要清空错误
-        updateData({
-          errorMessageObject: {
-            ...errorMessageObject,
-            [currentPrimaryButtonType]: ''
-          }
-        });
-        setCountDown(SEND_CODE_SUCCESS_TIP_DURATION);
-        setStateVerifyUniqId(requestId);
-      });
-    };
-    
-    return {
-      verifyType: props.verifyType || '',
-      sendVerifyCode
-    };
-  }, [props, codeType, accountId, errorMessageObject, currentPrimaryButtonType, updateData, setCountDown]);
-  
-  const showVerifySettingUrlChangeButton = !(props.formType === 'mpk_or_sub_identity' && props.verifyType === ESubVerificationDeviceType.VMFA);
+  const {
+    handleInputChange
+  } = useAuthFormHandleInputChange({
+    verifyUniqId,
+    authFormProps
+  });
 
   return <>
     <Message {...{
@@ -204,21 +95,18 @@ export default function VerifyRiskForm(props: TAuthFormProps): JSX.Element {
       iconType: EIconType.SUCCESS,
       message: intl('message:send:code:success')
     }} />
-    <SubAuthFormWrapper {...getSubAuthFormWrapperProps(props)}>
+    <SubAuthFormWrapper {...getSubAuthFormWrapperProps(authFormProps)}>
       <Form {...{
         items: [{
-          label: getVerifyLabel(props),
+          label: getVerifyLabel(authFormProps),
           labelTextAlign: 'center',
           content: <Flex align="center">
-            {props.verifyDetail && <ScInfo>{props.verifyDetail}</ScInfo>}
+            <ScInfo>{getFormVerifyDetail(authFormProps)}</ScInfo>
             {showVerifySettingUrlChangeButton && <Button {...{
-              spm: `set-${props.verifyType}`,
+              spm: `set-${authFormProps.verifyType}`,
               theme: ButtonTheme.TEXT_PRIMARY,
-              label: getVerifySettingLabel(props),
-              href: getVerifySettingUrl({
-                accountId,
-                authFormProps: props
-              })
+              label: riskType === ERiskType.OLD_MAIN ? intlVerifySetting(authFormProps.convertedVerifyType) : intlVerifySetting(authFormProps.verifyType),
+              href: [ERiskType.MPK, ERiskType.OLD_MAIN].includes(riskType) ? BUILT_IN_RISK_CONFIG.urlSetting : getSubVerificationSettingUrl(accountId)
             }} />}
           </Flex>
         }, {
@@ -227,16 +115,14 @@ export default function VerifyRiskForm(props: TAuthFormProps): JSX.Element {
           content: <VerifyCodeInput {...{
             generateProps,
             handleInputChange,
-            currentPrimaryButtonType,
             showErrorMessage: true,
-            inputWidth: getInputWidth(props),
-            dialogSubmitType: getDialogSubmitType(props),
-            verifyCodeInputType: getVerifyCodeInputType(props)
+            dialogSubmitType: riskType,
+            inputWidth: getInputWidth(authFormProps),
+            verifyCodeInputType: getVerifyCodeInputType(authFormProps),
+            keyOfAuthErrorMessageObject: currentKeyOfErrorMessageObject
           }} />
         }]
       }} />
     </SubAuthFormWrapper>
   </>;
 }
-
-export * from './type';

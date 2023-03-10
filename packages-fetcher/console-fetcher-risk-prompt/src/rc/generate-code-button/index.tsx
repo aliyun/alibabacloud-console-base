@@ -12,19 +12,19 @@ import Button, {
 import {
   IDialogData,
   IRiskPromptResolveData,
-  TTypeOfErrorMessage
+  TKeyofErrorMessageObject
 } from '../../types';
 import {
   BUILT_IN_RISK_CONFIG
 } from '../../const';
 import {
   useCountDown
-} from '../../hook';
+} from '../../hooks';
 import intl from '../../intl';
 
 interface IGenerateCodeButtonProps {
   verifyType: string;
-  typeOfErrorMessage?: TTypeOfErrorMessage;
+  keyOfErrorMessageObject?: TKeyofErrorMessageObject;
   sendVerifyCode: () => void;
 }
 
@@ -37,7 +37,7 @@ const {
  */
 export default function GenerateCodeButton({
   verifyType,
-  typeOfErrorMessage,
+  keyOfErrorMessageObject,
   sendVerifyCode
 }: IGenerateCodeButtonProps): JSX.Element {
   const {
@@ -64,11 +64,11 @@ export default function GenerateCodeButton({
       
       setCountDown(Math.round(coolingAfterSent));
     } catch (err) {
-      if (typeOfErrorMessage) {
+      if (keyOfErrorMessageObject) {
         updateData({
           errorMessageObject: {
             ...errorMessageObject,
-            [typeOfErrorMessage]: (err as Error).message
+            [keyOfErrorMessageObject]: (err as Error).message
           }
         });
       }

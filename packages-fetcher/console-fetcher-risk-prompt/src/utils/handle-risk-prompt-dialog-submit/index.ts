@@ -11,8 +11,12 @@ import type {
 import {
   IDialogData,
   IRiskPromptResolveData,
-  TTypeOfErrorMessage
+  TKeyofErrorMessageObject
 } from '../../types';
+import {
+  ESceneKey,
+  ERiskType
+} from '../../enum';
 import intl from '../../intl';
 
 import subBindOrVerifyValidators from './sub-bind-mfa-or-verify-validators';
@@ -21,18 +25,18 @@ type TContentContext = Omit<ReturnType<typeof useDialog<IRiskPromptResolveData, 
 
 interface IOldMainProps {
   verifyType: string;
-  dialogSubmitType: 'old_main_or_downgrade_mpk';
+  dialogSubmitType: ERiskType.OLD_MAIN;
 }
 
 interface INewMpkProps {
   codeType: string;
   accountId: string;
   verifyType: string;
-  dialogSubmitType: 'new_mpk';
+  dialogSubmitType: ERiskType.MPK;
 }
 
 interface INewSubProps {
-  dialogSubmitType: 'new_sub';
+  dialogSubmitType: ERiskType.NEW_SUB;
 }
 
 type TBasicProps = IOldMainProps | INewMpkProps | INewSubProps;
@@ -50,32 +54,35 @@ export default async function handleRiskPromptDialogSubmit({
   const {
     errorMessageObject,
     mainOrMpkAccountData,
-    subVerificationParams,
+    subVerificationParamArray,
     currentSubVerificationDeviceType
   } = data;
 
   const updateErrorMessageBasedOnVerifyType = (errorMessage: string): void => {
-    const typeOfErrorMessage = ((): TTypeOfErrorMessage => {
-      if (props.dialogSubmitType === 'new_sub' && currentSubVerificationDeviceType) {
+    const keyOfErrorMessageObject = ((): TKeyofErrorMessageObject => {
+      if (props.dialogSubmitType === ERiskType.NEW_SUB && currentSubVerificationDeviceType) {
         return currentSubVerificationDeviceType;
       }
 
-      return 'mainAccount';
+      return ESceneKey.MAIN_ACCOUNT;
     })();
 
     updateData({
       errorMessageObject: {
         ...errorMessageObject,
-        [typeOfErrorMessage]: errorMessage
+        [keyOfErrorMessageObject]: errorMessage
       }
     });
   };
 
   lock(true);
+  updateData({
+    dialogBlocked: true
+  });
   updateErrorMessageBasedOnVerifyType('');
 
   try {
-    if (props.dialogSubmitType === 'new_mpk') {
+    if (props.dialogSubmitType === ERiskType.MPK) {
       const {
         accountId, verifyType, codeType
       } = props;
@@ -101,7 +108,7 @@ export default async function handleRiskPromptDialogSubmit({
       return;
     }
 
-    if (props.dialogSubmitType === 'old_main_or_downgrade_mpk') {
+    if (props.dialogSubmitType === ERiskType.OLD_MAIN) {
       const {
         verifyType
       } = props;
@@ -119,7 +126,7 @@ export default async function handleRiskPromptDialogSubmit({
     }
   
     const riskPromptResolveData = await subBindOrVerifyValidators({
-      subVerificationParams,
+      subVerificationParamArray,
       currentSubVerificationDeviceType,
       onParamsVerifySuccess: () => {
         updateErrorMessageBasedOnVerifyType('');
@@ -134,6 +141,9 @@ export default async function handleRiskPromptDialogSubmit({
   } catch (error) {
     updateErrorMessageBasedOnVerifyType((error as FetcherError).message);
   } finally {
+    updateData({
+      dialogBlocked: false
+    });
     unlock();
   }
 }

@@ -8,22 +8,25 @@ import {
   IRiskPromptResolveData
 } from '../../types';
 import {
+  ESceneKey
+} from '../../enum';
+import {
   convertToResolveDataVerifyType
 } from '../convert-verify-type';
 
 interface IProps {
-  subVerificationParams?: ParamsVerifySubAccount[];
-  currentSubVerificationDeviceType?: ESubVerificationDeviceType | 'bindMfa';
+  subVerificationParamArray?: ParamsVerifySubAccount[];
+  currentSubVerificationDeviceType?: ESubVerificationDeviceType | ESceneKey.BIND_MFA;
   onParamsVerifySuccess: () => void;
 }
 
 export default async function subBindOrVerifyValidators({
-  subVerificationParams,
+  subVerificationParamArray,
   currentSubVerificationDeviceType,
   onParamsVerifySuccess
 }: IProps): Promise<IRiskPromptResolveData | null> {
-  if (subVerificationParams) {
-    const currentVerifiCationParams = subVerificationParams.find(o => o.verifyType === currentSubVerificationDeviceType);
+  if (subVerificationParamArray) {
+    const currentVerifiCationParams = subVerificationParamArray.find(o => o.verifyType === currentSubVerificationDeviceType);
 
     if (currentVerifiCationParams) {
       onParamsVerifySuccess();

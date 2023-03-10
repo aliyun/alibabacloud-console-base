@@ -5,14 +5,17 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  TGetVerificationInfoToAuthData
+  TVerificationOrBindValidator
 } from '../../../types';
+import {
+  ESceneKey
+} from '../../../enum';
 import U2fAuth from '../../u2f-auth-or-bind';
 import MfaBind from '../mfa-bind';
 import SubAccountAuth from '../sub-account-auth';
 
-export default function getSubAuthValidatorsContent(data: TGetVerificationInfoToAuthData): JSX.Element {
-  if (data.deviceType === 'bindMfa') {
+export default function getSubAuthValidatorsContent(data: TVerificationOrBindValidator): JSX.Element {
+  if (data.deviceType === ESceneKey.BIND_MFA) {
     return <MfaBind />;
   }
 

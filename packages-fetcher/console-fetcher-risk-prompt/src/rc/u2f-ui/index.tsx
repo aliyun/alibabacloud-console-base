@@ -22,7 +22,8 @@ import {
   IRiskPromptResolveData
 } from '../../types';
 import {
-  EIconType
+  EIconType,
+  ESceneKey
 } from '../../enum';
 import {
   SVG_URLS,
@@ -120,7 +121,7 @@ export default function U2fUi({
       return u2fErrorMessage;
     }
 
-    const apiErrorMessage = type === 'u2f_auth' ? errorMessageObject[ESubVerificationDeviceType.U2F] : errorMessageObject.bindMfa;
+    const apiErrorMessage = type === 'u2f_auth' ? errorMessageObject[ESubVerificationDeviceType.U2F] : errorMessageObject[ESceneKey.BIND_MFA];
 
     if (apiErrorMessage) {
       return apiErrorMessage;

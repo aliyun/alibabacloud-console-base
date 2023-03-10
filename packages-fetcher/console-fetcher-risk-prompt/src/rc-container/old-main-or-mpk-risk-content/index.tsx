@@ -5,11 +5,12 @@ import React, {
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
-import {
-  EAccountType
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
+  ERiskType
+} from '../../enum';
+import {
+  TAuthFormProps,
   IDialogData,
   IRiskPromptResolveData
 } from '../../types';
@@ -20,9 +21,7 @@ import {
   getOldMainOrMpkAccountRiskInfo,
   convertToMpkVerificationDeviceType
 } from '../../utils';
-import AuthFormExceptSubMfa, {
-  type TAuthFormProps
-} from '../auth-form-except-sub-mfa';
+import AuthFormExceptSubMfa from '../auth-form-except-sub-mfa';
 
 export default function OldMainOrMpkRiskContent(): JSX.Element {
   const {
@@ -41,15 +40,14 @@ export default function OldMainOrMpkRiskContent(): JSX.Element {
   const authFormProps = useMemo((): TAuthFormProps => {
     if (isMpk && !mpkIsDowngrade) {
       return {
-        formType: 'mpk_or_sub_identity',
-        accountType: EAccountType.MAIN,
+        riskType: ERiskType.MPK,
         verifyDetail: oldMainOrMpkVerifyInfo?.verifyDetail,
         verifyType: convertToMpkVerificationDeviceType(verifyType)
       };
     }
 
     return {
-      formType: 'old_main',
+      riskType: ERiskType.OLD_MAIN,
       verifyDetail: oldMainOrMpkVerifyInfo?.verifyDetail,
       convertedVerifyType: oldMainOrMpkVerifyInfo?.convertedVerifyType,
       verifyType: oldMainOrMpkVerifyInfo?.verifyType ?? 'ga'
