@@ -26,6 +26,9 @@ import {
   TSubGetVerificationToAuthData
 } from '../../types';
 import {
+  ESceneKey
+} from '../../enum';
+import {
   useModelProps
 } from '../../model';
 import U2fUi, {
@@ -44,7 +47,7 @@ interface IProps {
 
 function getAuthU2fData(subGetVerificationToAuthData?: TSubGetVerificationToAuthData): DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth | null {
   if (subGetVerificationToAuthData) {
-    const foundU2fData = subGetVerificationToAuthData.verificationOrBindValidators.find(o => o.deviceType === ESubVerificationDeviceType.U2F);
+    const foundU2fData = subGetVerificationToAuthData.verificationOrBindValidatorArray.find(o => o.deviceType === ESubVerificationDeviceType.U2F);
 
     if (!foundU2fData) {
       return null;
@@ -67,7 +70,7 @@ export default function U2fAuthOrBindUi({
     data: {
       errorMessageObject,
       primaryButtonDisabledObject,
-      subVerificationParams,
+      subVerificationParamArray,
       fromBindU2FtoAuthU2F,
       subGetMfaInfoToBindData,
       subGetVerificationToAuthData
@@ -78,9 +81,10 @@ export default function U2fAuthOrBindUi({
   const [stateU2fErrorMessage, setStateU2fErrorMessage] = useState<string>('');
   const [stateGetU2fKeyLoading, setStateGetU2fKeyLoading] = useState<boolean>(true);
   const [stateShowU2fRetryButton, setStateShowU2fRetryButton] = useState<boolean>(false);
-  // 页面加载会通过 useEffect 触发一次 fetchU2fBindOrAuthData。在获取到 U2F 安全密钥之后，会更新 primaryButtonDisabledObject & subVerificationParams。
-  // 由于更新 primaryButtonDisabledObject & subVerificationParams 依赖于两者未更新前的值。为了避免 fetchU2fBindOrAuthData 的 depth 一直变化，将两者转化为 state，并且采用 function 的写法更新 state
-  const [stateSubVerificationParams, setStateSubVerificationParams] = useState<ParamsVerifySubAccount[] | undefined>(subVerificationParams);
+  
+  // 页面加载会通过 useEffect 触发一次 fetchU2fBindOrAuthData。在获取到 U2F 安全密钥之后，会更新 primaryButtonDisabledObject & subVerificationParamArray。
+  // 由于更新 primaryButtonDisabledObject & subVerificationParamArray 依赖于两者未更新前的值。为了避免 fetchU2fBindOrAuthData 的 depth 一直变化，将两者转化为 state，并且采用 function 的写法更新 state
+  const [stateSubVerificationParams, setStateSubVerificationParams] = useState<ParamsVerifySubAccount[] | undefined>(subVerificationParamArray);
   const [statePrimaryButtonDisabledObject, setStatePrimaryButtonDisabledObject] = useState<TPrimaryButtonDisabledObject>(primaryButtonDisabledObject);
 
   const fetchU2fBindData = useCallback(async () => {
@@ -164,13 +168,13 @@ export default function U2fAuthOrBindUi({
   }, [type, fetchU2fAuthData, fetchU2fBindData]);
 
   const handleRetryClick = useCallback(() => {
-    const typeOfErrorMessage = type === 'u2f_auth' ? 'bindMfa' : ESubVerificationDeviceType.U2F;
+    const keyOfErrorMessageObject = type === 'u2f_auth' ? ESceneKey.BIND_MFA : ESubVerificationDeviceType.U2F;
     
     // 清空 API 错误
     updateData({
       errorMessageObject: {
         ...errorMessageObject,
-        [typeOfErrorMessage]: ''
+        [keyOfErrorMessageObject]: ''
       }
     });
     setStateU2fErrorMessage('');
@@ -195,7 +199,7 @@ export default function U2fAuthOrBindUi({
 
   useEffect(() => {
     updateData({
-      subVerificationParams: stateSubVerificationParams,
+      subVerificationParamArray: stateSubVerificationParams,
       primaryButtonDisabledObject: statePrimaryButtonDisabledObject
     });
   }, [stateSubVerificationParams, statePrimaryButtonDisabledObject, updateData]);

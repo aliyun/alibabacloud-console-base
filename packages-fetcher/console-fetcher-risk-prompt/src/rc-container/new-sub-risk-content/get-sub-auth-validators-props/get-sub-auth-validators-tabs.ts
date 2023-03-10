@@ -14,7 +14,7 @@ export default function getSubAuthValidatorsTabs(subGetVerificationToAuthData?: 
     return [];
   }
 
-  const tabsViaDataMapping = subGetVerificationToAuthData.verificationOrBindValidators.map<TabProps>(o => {
+  const tabsViaDataMapping = subGetVerificationToAuthData.verificationOrBindValidatorArray.map<TabProps>(o => {
     return {
       closable: false,
       key: o.deviceType,

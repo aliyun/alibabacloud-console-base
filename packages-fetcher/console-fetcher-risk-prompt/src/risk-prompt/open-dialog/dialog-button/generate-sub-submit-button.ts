@@ -6,6 +6,9 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../types';
+import {
+  ERiskType
+} from '../../../enum';
 import intl from '../../../intl';
 import {
   handleRiskPromptDialogSubmit
@@ -25,7 +28,7 @@ export default function generateSubAccountSubmitButton({
     onClick(contentContext) {
       handleRiskPromptDialogSubmit({
         contentContext,
-        dialogSubmitType: 'new_sub'
+        dialogSubmitType: ERiskType.NEW_SUB
       });
 
       // 阻止弹窗关闭，使得只能通过主动调用 close 关闭弹窗

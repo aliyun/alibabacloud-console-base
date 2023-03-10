@@ -3,16 +3,17 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  EConvertedVerifyType,
   EDialogType,
-  ESubBindMfaStep
+  ESceneKey,
+  ESubBindMfaStep,
+  EConvertedVerifyType
 } from '../enum';
 import intl from '../intl';
 
 interface IIntlVerifyDialogTitleProps {
   dialogType?: EDialogType;
   subBindMfaStep?: ESubBindMfaStep;
-  currentSubVerificationDeviceType?: ESubVerificationDeviceType | 'bindMfa';
+  currentSubVerificationDeviceType?: ESubVerificationDeviceType | ESceneKey.BIND_MFA;
 }
 
 export function intlVerifyTitle(type?: EConvertedVerifyType | ESubVerificationDeviceType): string {

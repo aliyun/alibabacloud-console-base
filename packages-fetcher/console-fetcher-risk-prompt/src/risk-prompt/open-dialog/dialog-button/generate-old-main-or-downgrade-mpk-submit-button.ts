@@ -6,6 +6,9 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../types';
+import {
+  ERiskType
+} from '../../../enum';
 import intl from '../../../intl';
 import {
   handleRiskPromptDialogSubmit
@@ -13,7 +16,7 @@ import {
 
 interface IGenerateOldMainOrDowngradeMpkSubmitButtonProps {
   verifyType: string;
-  primaryButtonDisabled: boolean;
+  primaryButtonDisabled?: boolean;
 }
 
 export default function generateOldMainOrDowngradeMpkSubmitButton({
@@ -22,12 +25,12 @@ export default function generateOldMainOrDowngradeMpkSubmitButton({
 }: IGenerateOldMainOrDowngradeMpkSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
     label: intl('op:confirm'),
-    disabled: primaryButtonDisabled,
+    disabled: Boolean(primaryButtonDisabled),
     onClick(contentContext) {
       handleRiskPromptDialogSubmit({
         verifyType,
         contentContext,
-        dialogSubmitType: 'old_main_or_downgrade_mpk'
+        dialogSubmitType: ERiskType.OLD_MAIN
       });
 
       return false;

@@ -2,6 +2,10 @@ import {
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
 
+import {
+  ESceneKey
+} from '../enum';
+
 /**
  * 风控错误码
  */
@@ -77,7 +81,7 @@ export const DEFAULT_RISK_CONFIG = {
 export const MOBILE_SCREE_SIZE = 720;
 
 export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {
-  mainAccount: true,
+  [ESceneKey.MAIN_ACCOUNT]: true,
   [ESubVerificationDeviceType.EMAIL]: true,
   [ESubVerificationDeviceType.SMS]: true,
   [ESubVerificationDeviceType.VMFA]: true,
@@ -85,9 +89,9 @@ export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {
 };
 
 export const DEFAULT_API_ERROR_MESSAGE_OBJECT = {
-  bindMfa: '',
-  mainAccount: '',
-  riskPromptError: '',
+  [ESceneKey.BIND_MFA]: '',
+  [ESceneKey.MAIN_ACCOUNT]: '',
+  [ESceneKey.RISK_PROMPT_ERROR]: '',
   [ESubVerificationDeviceType.EMAIL]: '',
   [ESubVerificationDeviceType.SMS]: '',
   [ESubVerificationDeviceType.VMFA]: '',

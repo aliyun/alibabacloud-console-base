@@ -16,7 +16,7 @@ const ScDiv = styled.div`
   &.enter-active,
   &.exit-active {
     position: absolute;
-    top: 44px;
+    top: 12px;
     opacity: 0.4;
     width: 100%;
   }
@@ -30,8 +30,8 @@ export default function Message({
     in: visible,
     unmountOnExit: true,
     timeout: {
-      enter: 40,
-      exit: 40
+      enter: 30,
+      exit: 30
     }
   }}>
     <ScDiv>

@@ -78,7 +78,7 @@ export default function DemoDefault(): JSX.Element {
 
       if (o === 'sms') {
         return {
-          VerifyDetail: '86-13100000',
+          VerifyDetail: '86-13100000000',
           VerifyType: 'sms'
         };
       }
@@ -206,8 +206,7 @@ export default function DemoDefault(): JSX.Element {
       }
     }} />
     <ScButton onClick={handleSubRiskBindPrompt}>子账号风控弹窗 - 绑定 MFA</ScButton>
-    <ScButton onClick={handleSubRiskAuthPrompt}>子账号风控弹窗 - 验证 MFA</ScButton>
-    <ScButton onClick={handleSubRiskAuthPrompt}>子账号风控弹窗 - 验证 MFA</ScButton>
+    <ScButton onClick={handleSubRiskAuthPrompt}>子账号风控弹窗 - 验证 MFA（可通过配置项配置）</ScButton>
     <ScButton onClick={handleSubRiskInvalidPrompt}>子账号风控弹窗 - Invalid</ScButton>
     <ScButton onClick={handleNewMainRiskPrompt}>新版主账号风控弹窗</ScButton>
     <ScButton onClick={handleOldMainRiskPrompt}>旧版主账号风控弹窗</ScButton>

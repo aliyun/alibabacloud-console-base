@@ -60,3 +60,12 @@ export enum ERiskType {
   NEW_MAIN = 'new_main', // 新版主账号风控
   NEW_SUB = 'new_sub' // 新版子账号风控
 }
+
+/**
+ * primaryButtonDisableObject 或者 errorMessageObject 的 KEY
+ */
+export enum ESceneKey {
+  BIND_MFA = 'bind_mfa',
+  MAIN_ACCOUNT = 'main_account',
+  RISK_PROMPT_ERROR = 'risk_prompt_error'
+}

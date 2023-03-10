@@ -7,6 +7,7 @@ import {
   IRiskPromptResolveData
 } from '../../../../types';
 import {
+  ESceneKey,
   ESubBindMfaStep
 } from '../../../../enum';
 import intl from '../../../../intl';
@@ -26,7 +27,7 @@ export default function generatePreviousStepButton(): DialogButtonProps<IRiskPro
       updateData({
         errorMessageObject: {
           ...errorMessageObject,
-          bindMfa: ''
+          [ESceneKey.BIND_MFA]: ''
         },
         subBindMfaStep: ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE
       });

@@ -29,6 +29,11 @@ const ScFormWrapper = styled.div`
   ${mixinBorderSecondary}
 `;
 
+/**
+ * 
+ * @param props 
+ * @returns 
+ */
 export default function SubAuthFormWrapper(props: TPropsWithChildren<TSubAuthFormWrapperProps>): JSX.Element {
   const {
     accountType, children

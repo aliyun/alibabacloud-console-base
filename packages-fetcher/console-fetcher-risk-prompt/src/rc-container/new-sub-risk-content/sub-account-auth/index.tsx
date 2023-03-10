@@ -6,7 +6,6 @@ import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
 import {
-  EAccountType,
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
 
@@ -14,6 +13,9 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../types';
+import {
+  ERiskType
+} from '../../../enum';
 import {
   useAccountId
 } from '../../../model';
@@ -43,11 +45,11 @@ export default function SubAccountAuth({
         return subGetVerificationToAuthData.targetUserPrincipalName;
       }
       
-      const foundVerificationItem = subGetVerificationToAuthData.verificationOrBindValidators.find(o => o.deviceType === deviceType);
+      const foundVerificationItem = subGetVerificationToAuthData.verificationOrBindValidatorArray.find(o => o.deviceType === deviceType);
 
       // SMS 类型的详情为手机号，手机号前面要加区号（目前只有）
       if (foundVerificationItem?.deviceType === ESubVerificationDeviceType.SMS) {
-        return foundVerificationItem.areaCode ? `${foundVerificationItem.areaCode}-${foundVerificationItem.phoneNumber}` : foundVerificationItem.phoneNumber;
+        return foundVerificationItem.phoneNumber;
       }
 
       // EMAIl 类型的详情为邮箱地址
@@ -63,9 +65,8 @@ export default function SubAccountAuth({
 
   return <AuthFormExceptSubMfa {...{
     verifyDetail,
+    riskType: ERiskType.NEW_SUB,
     verifyType: deviceType,
-    formType: 'mpk_or_sub_identity',
-    accountType: EAccountType.SUB,
     urlSetting: getSubVerificationSettingUrl(accountId)
   }} />;
 }

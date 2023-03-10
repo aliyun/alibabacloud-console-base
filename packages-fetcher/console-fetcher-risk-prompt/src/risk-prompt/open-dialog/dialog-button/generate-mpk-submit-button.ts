@@ -6,6 +6,9 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../types';
+import {
+  ERiskType
+} from '../../../enum';
 import intl from '../../../intl';
 import {
   handleRiskPromptDialogSubmit
@@ -15,7 +18,7 @@ interface IGenerateMpkSubmitButtonProps {
   codeType: string;
   accountId: string;
   verifyType: string;
-  primaryButtonDisabled: boolean;
+  primaryButtonDisabled?: boolean;
 }
 
 export default function generateMpkSubmitButton({
@@ -25,15 +28,15 @@ export default function generateMpkSubmitButton({
   primaryButtonDisabled
 }: IGenerateMpkSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
-    disabled: primaryButtonDisabled,
     label: intl('op:confirm'),
+    disabled: Boolean(primaryButtonDisabled),
     onClick(contentContext) {
       handleRiskPromptDialogSubmit({
         codeType,
         accountId,
         verifyType,
         contentContext,
-        dialogSubmitType: 'new_mpk'
+        dialogSubmitType: ERiskType.MPK
       });
 
       return false;

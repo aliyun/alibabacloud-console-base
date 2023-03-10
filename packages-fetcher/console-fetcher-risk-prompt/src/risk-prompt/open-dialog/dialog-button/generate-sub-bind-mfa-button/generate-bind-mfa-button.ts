@@ -9,6 +9,9 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../../types';
+import {
+  ESceneKey
+} from '../../../../enum';
 import intl from '../../../../intl';
 
 export default function generateBindMfaButton(): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
@@ -32,7 +35,7 @@ export default function generateBindMfaButton(): DialogButtonProps<IRiskPromptRe
         updateData({
           errorMessageObject: {
             ...errorMessageObject,
-            bindMfa: errorMessage
+            [ESceneKey.BIND_MFA]: errorMessage
           }
         });
       };

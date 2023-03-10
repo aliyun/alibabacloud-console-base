@@ -9,7 +9,8 @@ import {
   IRiskPromptResolveData
 } from '../../types';
 import {
-  EDialogType
+  EDialogType,
+  ESceneKey
 } from '../../enum';
 import AltWrap from '../../rc/alt-wrap';
 import NewSubRiskContent from '../new-sub-risk-content';
@@ -31,7 +32,7 @@ export default function DialogContentUi(): JSX.Element {
     case EDialogType.OLD_MAIN_OR_MPK_RISK:
       return <OldMainOrMpkRiskContent />;
     case EDialogType.ERROR:
-      return <AltWrap content={errorMessageObject.riskPromptError} />;
+      return <AltWrap content={errorMessageObject[ESceneKey.RISK_PROMPT_ERROR]} />;
     case EDialogType.SUB_RISK_MFA_BIND:
       return <MfaBind />;
     default:

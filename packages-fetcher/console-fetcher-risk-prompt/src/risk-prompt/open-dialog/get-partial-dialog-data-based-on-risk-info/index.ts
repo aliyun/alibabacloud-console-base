@@ -5,10 +5,11 @@ import type {
 import {
   IDialogData,
   TRiskInfo,
-  TGetVerificationInfoToAuthData
+  TVerificationOrBindValidator
 } from '../../../types';
 import {
   ERiskType,
+  ESceneKey,
   EDialogType,
   ESubBindMfaStep,
   EConvertedVerifyType
@@ -50,13 +51,13 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
         accountId,
         subRiskValidators
       });
-      const verificationOrBindValidators = ((): TGetVerificationInfoToAuthData[] => {
-        const validators: TGetVerificationInfoToAuthData[] = [...verificationValidators];
+      const verificationOrBindValidatorArray = ((): TVerificationOrBindValidator[] => {
+        const validators: TVerificationOrBindValidator[] = [...verificationValidators];
 
         // 将绑定 MFA 也融入场景中
         if (validatorsIncludesMfaToBind) {
           validators.push({
-            deviceType: 'bindMfa'
+            deviceType: ESceneKey.BIND_MFA
           });
         }
 
@@ -69,7 +70,7 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
         currentSubVerificationDeviceType: verificationValidators[0].deviceType,
         subGetVerificationToAuthData: {
           targetUserPrincipalName,
-          verificationOrBindValidators
+          verificationOrBindValidatorArray
         },
         errorMessageObject: DEFAULT_API_ERROR_MESSAGE_OBJECT
       };
@@ -122,7 +123,7 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
       dialogType: EDialogType.ERROR,
       errorMessageObject: {
         ...DEFAULT_API_ERROR_MESSAGE_OBJECT,
-        riskPromptError: (error as FetcherError).message
+        [ESceneKey.RISK_PROMPT_ERROR]: (error as FetcherError).message
       }
     };
   }

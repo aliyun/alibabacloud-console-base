@@ -16,7 +16,6 @@ import {
 import Flex, {
   FlexProps
 } from '@alicloud/console-base-rc-flex';
-import useIsUnmounted from '@alicloud/react-hook-is-unmounted';
 import {
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
@@ -29,7 +28,8 @@ import {
   IRiskPromptResolveData
 } from '../../../../types';
 import {
-  EIconType
+  EIconType,
+  ESceneKey
 } from '../../../../enum';
 import {
   SVG_URLS
@@ -82,7 +82,6 @@ const ScItem = styled(Flex)<IScItemProps>`
 `;
 
 export default function BindMfaTypeChoose(): JSX.Element {
-  const isUnmounted = useIsUnmounted();
   const accountId = useAccountId();
   const {
     data: {
@@ -123,10 +122,6 @@ export default function BindMfaTypeChoose(): JSX.Element {
   useEffect(() => {
     const supportWebAuthn = browserSupportsWebauthn();
 
-    if (isUnmounted()) {
-      return;
-    }
-
     setStateU2fSupported(supportWebAuthn);
     // 由于默认的 MFA 设备类型是 VMFA，因此默认的 getBindMfaInfoParams 也是 VMFA 类型的
     updateData({
@@ -135,12 +130,12 @@ export default function BindMfaTypeChoose(): JSX.Element {
         deviceType: ESubVerificationDeviceType.VMFA
       }
     });
-  }, [accountId, isUnmounted, updateData]);
+  }, [accountId, updateData]);
 
   return <>
     <Message {...{
-      iconType: errorMessageObject.bindMfa ? EIconType.ERROR : EIconType.WARNING,
-      message: errorMessageObject.bindMfa || intl('message:mfa_choose_tip')
+      iconType: errorMessageObject[ESceneKey.BIND_MFA] ? EIconType.ERROR : EIconType.WARNING,
+      message: errorMessageObject[ESceneKey.BIND_MFA] || intl('message:mfa_choose_tip')
     }} />
     <ScItem {...{
       align: 'center',

@@ -1,3 +1,4 @@
+import _throttle from 'lodash/throttle';
 import React, {
   useCallback,
   useMemo,
@@ -20,12 +21,18 @@ import Input, {
   InputProps
 } from '@alicloud/console-base-rc-input';
 import Flex from '@alicloud/console-base-rc-flex';
+import {
+  ESubVerificationDeviceType
+} from '@alicloud/console-fetcher-risk-data';
 
 import {
   IDialogData,
-  IRiskPromptResolveData,
-  TTypeOfPrimaryButton
+  IRiskPromptResolveData
 } from '../../types';
+import {
+  ESceneKey,
+  ERiskType
+} from '../../enum';
 import {
   WINDVANE_AVAILABLE
 } from '../../const';
@@ -54,15 +61,14 @@ interface IHandleInputChangeProps {
 }
 
 type TVerifyCodeInputType = 'vmfa_auth' | 'vmfa_bind' | 'sms_or_email_auth';
-type TDialogSubmitType = 'old_main_or_downgrade_mpk' | 'new_mpk' | 'new_sub';
 
 interface IVerifyCodeInputProps extends InputProps {
   verifyCodeInputType: TVerifyCodeInputType;
   inputWidth?: number | string;
-  dialogSubmitType?: TDialogSubmitType;
+  dialogSubmitType?: ERiskType.MPK | ERiskType.NEW_SUB | ERiskType.OLD_MAIN;
   showApiErrorBehindInput?: boolean;
-  generateProps?: Omit<IGenerateCodeButtonProps, 'typeOfErrorMessage'>;
-  currentPrimaryButtonType?: TTypeOfPrimaryButton;
+  generateProps?: Omit<IGenerateCodeButtonProps, 'keyOfErrorMessageObject'>;
+  keyOfAuthErrorMessageObject?: ESubVerificationDeviceType | ESceneKey.MAIN_ACCOUNT;
   handleInputChange?(p: IHandleInputChangeProps): void;
 }
 
@@ -94,12 +100,15 @@ const ScInput = styled(Input)<IInputProps>`
   ${props => (props['data-is-error'] ? mixinBorderError : null)};
 `;
 
+// 通过回车触发提交风控验证需要做节流
+const throttledHandleRiskPromptDialogSubmit = _throttle(handleRiskPromptDialogSubmit, 1000);
+
 export default function VerifyCodeInput({
   inputWidth,
   generateProps,
   dialogSubmitType,
   verifyCodeInputType,
-  currentPrimaryButtonType,
+  keyOfAuthErrorMessageObject,
   handleInputChange,
   ...inputProps
 }: IVerifyCodeInputProps): JSX.Element {
@@ -111,6 +120,7 @@ export default function VerifyCodeInput({
   const {
     updateData,
     data: {
+      dialogBlocked,
       mainAccountRiskInfo,
       errorMessageObject,
       primaryButtonDisabledObject
@@ -122,20 +132,20 @@ export default function VerifyCodeInput({
   const [stateErrorMessage, setStateErrorMessage] = useState<string>(intl('message:vmfa_input_empty_tip'));
   const [stateNoWindVaneHandler, setStateNoWindVaneHandler] = useState<boolean>(false);
 
-  const typeOfErrorMessage = useMemo(() => {
-    return verifyCodeInputType === 'vmfa_bind' ? 'bindMfa' : currentPrimaryButtonType;
-  }, [verifyCodeInputType, currentPrimaryButtonType]);
+  const keyOfErrorMessageObject = useMemo(() => {
+    return verifyCodeInputType === 'vmfa_bind' ? ESceneKey.BIND_MFA : keyOfAuthErrorMessageObject;
+  }, [verifyCodeInputType, keyOfAuthErrorMessageObject]);
 
   const updateErrorMessage = useCallback((errorMessage: string) => {
-    if (typeOfErrorMessage) {
+    if (keyOfErrorMessageObject) {
       updateData({
         errorMessageObject: {
           ...errorMessageObject,
-          [typeOfErrorMessage]: errorMessage
+          [keyOfErrorMessageObject]: errorMessage
         }
       });
     }
-  }, [errorMessageObject, typeOfErrorMessage, updateData]);
+  }, [errorMessageObject, keyOfErrorMessageObject, updateData]);
 
   const onChange = useCallback((verifyCode: string) => {
     const inputErrorMessage = getInputError(verifyCode);
@@ -143,11 +153,11 @@ export default function VerifyCodeInput({
     setStateErrorMessage(inputErrorMessage);
     setStateVerifyCode(verifyCode);
 
-    if (currentPrimaryButtonType) {
+    if (keyOfErrorMessageObject) {
       updateData({
         primaryButtonDisabledObject: {
           ...primaryButtonDisabledObject,
-          [currentPrimaryButtonType]: Boolean(inputErrorMessage)
+          [keyOfErrorMessageObject]: Boolean(inputErrorMessage)
         }
       });
     }
@@ -157,7 +167,7 @@ export default function VerifyCodeInput({
         verifyCode
       });
     }
-  }, [currentPrimaryButtonType, primaryButtonDisabledObject, handleInputChange, updateData]);
+  }, [keyOfErrorMessageObject, primaryButtonDisabledObject, handleInputChange, updateData]);
 
   const innerRight = useMemo(() => {
     return <XIcon onClick={() => {
@@ -171,13 +181,16 @@ export default function VerifyCodeInput({
       // 避免 Input 输入验证码之后按回车，触发 innerRight 的清空效果
       event.preventDefault();
 
-      // 当 !PrimaryButtonDisabled 时，主账号、子账号的 MFA、手机、邮箱验证可以通过回车键触发
-      if (verifyCodeInputType !== 'vmfa_bind' && currentPrimaryButtonType && !primaryButtonDisabledObject[currentPrimaryButtonType]) {
+      // 当前按钮是否非 disabled 状态
+      const currentPrimaryButtonNotDisabled = keyOfAuthErrorMessageObject && !primaryButtonDisabledObject[keyOfAuthErrorMessageObject];
+
+      // 允许通过回车键触发 dialogSubmit 的条件：当前输入框为验证 VMFA、手机、邮箱的输入框 & 当前 dialog 非 block 状态 & 当前按钮非 disabled 状态
+      if (verifyCodeInputType !== 'vmfa_bind' && !dialogBlocked && currentPrimaryButtonNotDisabled) {
         const oldMainOrMpkVerifyType = getOldMainOrMpkAccountRiskInfo(mainAccountRiskInfo).verifyType;
 
         switch (dialogSubmitType) {
-          case 'new_mpk':
-            handleRiskPromptDialogSubmit({
+          case ERiskType.MPK:
+            throttledHandleRiskPromptDialogSubmit({
               accountId,
               codeType,
               contentContext,
@@ -186,15 +199,15 @@ export default function VerifyCodeInput({
             });
 
             return;
-          case 'new_sub':
-            handleRiskPromptDialogSubmit({
+          case ERiskType.NEW_SUB:
+            throttledHandleRiskPromptDialogSubmit({
               contentContext,
               dialogSubmitType
             });
 
             return;
-          case 'old_main_or_downgrade_mpk':
-            handleRiskPromptDialogSubmit({
+          case ERiskType.OLD_MAIN:
+            throttledHandleRiskPromptDialogSubmit({
               contentContext,
               dialogSubmitType,
               verifyType: oldMainOrMpkVerifyType
@@ -231,7 +244,7 @@ export default function VerifyCodeInput({
 
   const operation = useMemo((): JSX.Element | null => {
     if (verifyCodeInputType === 'sms_or_email_auth' && generateProps) {
-      return <Generate {...generateProps} typeOfErrorMessage={typeOfErrorMessage} />;
+      return <Generate {...generateProps} keyOfErrorMessageObject={keyOfErrorMessageObject} />;
     }
 
     if (verifyCodeInputType === 'vmfa_auth' && WINDVANE_AVAILABLE && !stateNoWindVaneHandler) {
@@ -243,7 +256,7 @@ export default function VerifyCodeInput({
     }
 
     return null;
-  }, [verifyCodeInputType, generateProps, typeOfErrorMessage, stateNoWindVaneHandler, handleGetVmfaCodeFromWindVane]);
+  }, [verifyCodeInputType, generateProps, keyOfErrorMessageObject, stateNoWindVaneHandler, handleGetVmfaCodeFromWindVane]);
 
   return <ScWrapper>
     <Flex align="center">
@@ -263,7 +276,6 @@ export default function VerifyCodeInput({
   </ScWrapper>;
 }
 export type {
-  TDialogSubmitType,
   TVerifyCodeInputType,
   IHandleInputChangeProps
 };

@@ -16,7 +16,8 @@ import {
   IRiskPromptResolveData
 } from '../../../../types';
 import {
-  EIconType
+  EIconType,
+  ESceneKey
 } from '../../../../enum';
 import intl from '../../../../intl';
 import Message from '../../../../rc/message';
@@ -57,8 +58,8 @@ export default function VmfaBind(): JSX.Element {
   return <>
     <Message {...{
       iconType: EIconType.ERROR,
-      message: errorMessageObject.bindMfa,
-      visible: Boolean(errorMessageObject.bindMfa)
+      message: errorMessageObject[ESceneKey.BIND_MFA],
+      visible: Boolean(errorMessageObject[ESceneKey.BIND_MFA])
     }} />
     <ScWrapper>
       <ScDiv>{intl('message:vmfa_bind_step1')}</ScDiv>

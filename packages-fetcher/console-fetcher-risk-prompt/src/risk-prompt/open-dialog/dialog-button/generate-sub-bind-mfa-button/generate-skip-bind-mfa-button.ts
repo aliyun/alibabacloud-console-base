@@ -10,6 +10,9 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../../types';
+import {
+  ESceneKey
+} from '../../../../enum';
 import intl from '../../../../intl';
 
 interface IGenerateSkipBindMfaButtonProps {
@@ -56,7 +59,7 @@ export default function generateSkipBindMfaButton({
         updateData({
           errorMessageObject: {
             ...errorMessageObject,
-            bindMfa: (error as Error).message
+            [ESceneKey.BIND_MFA]: (error as Error).message
           }
         });
       }).finally(() => {

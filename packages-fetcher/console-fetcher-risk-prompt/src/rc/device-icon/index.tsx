@@ -25,16 +25,19 @@ interface IScProps {
 const CssMfa = css`
   right: -16px;
   bottom: -16px;
+  z-index: -1;
 `;
 
 const CssSms = css`
-  right: -8px;
+  right: -16px;
   bottom: -4px;
+  z-index: -1;
 `;
 
 const CssEmail = css`
-  right: 4px;
+  right: -2px;
   bottom: -8px;
+  z-index: -1;
 `;
 
 function getDeviceStyle(props: IScProps): FlattenSimpleInterpolation {
@@ -57,6 +60,9 @@ const ScImg = styled.img<IScProps>`
   }
 `;
 
+/**
+ * 风控弹窗右下角的图标
+ */
 export default function DeviceIcon({
   deviceType
 }: IProps): JSX.Element | null {
