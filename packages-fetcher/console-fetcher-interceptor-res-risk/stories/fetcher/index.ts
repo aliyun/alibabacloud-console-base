@@ -9,10 +9,10 @@ import intercept from '../../src';
 
 const fetcher1 = createFetcher({
   body: {
-    riskVersion: '2.0'
+    riskVersion: '1.0'
   },
   params: {
-    riskVersion: '2.0'
+    riskVersion: '1.0'
   }
 });
 

@@ -1,66 +1,50 @@
-import {
-  useDialog
-} from '@alicloud/console-base-rc-dialog';
-import {
-  dataVerifyMpk
-} from '@alicloud/console-fetcher-risk-data';
 import type {
   FetcherError
 } from '@alicloud/fetcher';
 
 import {
-  IDialogData,
-  IRiskPromptResolveData,
-  TKeyofErrorMessageObject
+  TKeyofErrorMessageObject,
+  THandleRiskPromptDialogSubmitProps
 } from '../../types';
 import {
   ESceneKey,
   ERiskType
 } from '../../enum';
+import {
+  CODE_INVALID_INPUT
+} from '../../const';
 import intl from '../../intl';
 
-import subBindOrVerifyValidators from './sub-bind-mfa-or-verify-validators';
+import getRiskPromptVerifyResult from './get-risk-prompt-verify-result';
 
-type TContentContext = Omit<ReturnType<typeof useDialog<IRiskPromptResolveData, IDialogData>>, 'forceUpdate'>;
-
-interface IOldMainProps {
-  verifyType: string;
-  dialogSubmitType: ERiskType.OLD_MAIN;
-}
-
-interface INewMpkProps {
-  codeType: string;
-  accountId: string;
-  verifyType: string;
-  dialogSubmitType: ERiskType.MPK;
-}
-
-interface INewSubProps {
-  dialogSubmitType: ERiskType.NEW_SUB;
-}
-
-type TBasicProps = IOldMainProps | INewMpkProps | INewSubProps;
-type TProps = TBasicProps & {
-  contentContext: TContentContext;
-}
-
+/**
+ * 风控弹窗点击确定按钮，或者验证码输入后按回车触发的风控验证函数。
+ * dialogSubmitType：旧版主账号风控、MPK 账号风控、子账号验证（MFA/SMS/EMAIL）、子账号绑定 MFA、子账号跳过绑定 MFA 五种情形
+ */
 export default async function handleRiskPromptDialogSubmit({
   contentContext,
-  ...props
-}: TProps): Promise<void> {
+  reRequestWithVerifyResult,
+  ...verifyProps
+}: THandleRiskPromptDialogSubmitProps): Promise<void> {
   const {
     data, updateData, lock, unlock, close
   } = contentContext;
   const {
+    dialogSubmitType
+  } = verifyProps;
+  const {
     errorMessageObject,
-    mainOrMpkAccountData,
-    subVerificationParamArray,
     currentSubVerificationDeviceType
   } = data;
 
-  const updateErrorMessageBasedOnVerifyType = (errorMessage: string): void => {
+  // 基于当前风控弹窗的账号类型以及风控验证类型，来更新错误信息
+  const updateErrorMessage = (errorMessage: string): void => {
     const keyOfErrorMessageObject = ((): TKeyofErrorMessageObject => {
-      if (props.dialogSubmitType === ERiskType.NEW_SUB && currentSubVerificationDeviceType) {
+      if (['bind_mfa', 'skip_bind_mfa'].includes(dialogSubmitType)) {
+        return ESceneKey.BIND_MFA;
+      }
+
+      if (dialogSubmitType === ERiskType.NEW_SUB && currentSubVerificationDeviceType) {
         return currentSubVerificationDeviceType;
       }
 
@@ -75,72 +59,57 @@ export default async function handleRiskPromptDialogSubmit({
     });
   };
 
+  // 锁定 dialog
   lock(true);
   updateData({
     dialogBlocked: true
   });
-  updateErrorMessageBasedOnVerifyType('');
+  updateErrorMessage('');
 
-  try {
-    if (props.dialogSubmitType === ERiskType.MPK) {
-      const {
-        accountId, verifyType, codeType
-      } = props;
-      const {
-        code, requestId
-      } = mainOrMpkAccountData ?? {};
-        
-      const verifyMpkData = await dataVerifyMpk({
-        accountId,
-        verifyType,
-        authCode: code || 'EMPTY_MPK_AUTH_CODE',
-        riskRequestId: requestId || 'EMPTY_MPK_REQUEST_ID',
-        ext: JSON.stringify({
-          codeType
-        })
-      });
+  const riskPromptVerifyResult = await getRiskPromptVerifyResult({
+    dialogData: data,
+    verifyProps,
+    updateErrorMessage
+  });
 
-      close({
-        verifyType,
-        verifyCode: verifyMpkData.ivToken || 'EMPTY_MPK_IV_TOKEN'
-      });
-  
-      return;
-    }
+  if (riskPromptVerifyResult) {
+    // 如果 riskPrompt 的参数中，有重新请求被风控接口的函数 reRequestWithVerifyResult
+    if (reRequestWithVerifyResult) {
+      try {
+        const reRequestResponse = await reRequestWithVerifyResult(riskPromptVerifyResult);
 
-    if (props.dialogSubmitType === ERiskType.OLD_MAIN) {
-      const {
-        verifyType
-      } = props;
-      const {
-        code, requestId
-      } = mainOrMpkAccountData ?? {};
+        // 如果有 reRequestWithVerifyResult，那么弹窗 close 时对外输出的数据中会包含重新请求被风控接口的响应 reRequestResponse
+        close({
+          ...riskPromptVerifyResult,
+          reRequestResponse
+        });
+      } catch (error) {
+        const {
+          code
+        } = error as FetcherError;
 
-      close({
-        verifyType,
-        requestId: requestId || 'EMPTY_OLD_MAIN_REQUEST_ID',
-        verifyCode: code || 'EMPTY_OLD_MAIN_CODE'
-      });
+        // 如果报错是 verifyCodeInvalid，提示验证码错误，并且不关闭弹窗
+        if (code === CODE_INVALID_INPUT) {
+          updateErrorMessage(intl('message:code_incorrect'));
+        } else {
+          // 如果重新请求后触发了正常的报错，那么抛出 error，并关闭弹窗
+          close(error as Error, true);
 
-      return;
-    }
-  
-    const riskPromptResolveData = await subBindOrVerifyValidators({
-      subVerificationParamArray,
-      currentSubVerificationDeviceType,
-      onParamsVerifySuccess: () => {
-        updateErrorMessageBasedOnVerifyType('');
+          throw error;
+        }
+      } finally {
+        updateData({
+          dialogBlocked: false
+        });
+        unlock();
       }
-    });
 
-    if (riskPromptResolveData) {
-      close(riskPromptResolveData);
-    } else {
-      updateErrorMessageBasedOnVerifyType(intl('message:invalid:sub:validator'));
+      return;
     }
-  } catch (error) {
-    updateErrorMessageBasedOnVerifyType((error as FetcherError).message);
-  } finally {
+
+    // 如果 riskPrompt 的参数不带 reRequestWithVerifyResult，那么 close 函数的参数只有 riskPromptVerifyResult
+    close(riskPromptVerifyResult);
+  } else {
     updateData({
       dialogBlocked: false
     });

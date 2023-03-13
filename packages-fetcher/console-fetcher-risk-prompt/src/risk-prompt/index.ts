@@ -27,7 +27,8 @@ export default async function riskPrompt<T = Record<string, unknown>>({
   newRisk,
   riskConfig,
   riskResponse,
-  riskParametersGetter
+  riskParametersGetter,
+  reRequestWithVerifyResult
 }: IRiskPromptProps<T>): Promise<IRiskPromptResolveData> {
   const riskInfo = convertRiskResponse({
     newRisk,
@@ -102,7 +103,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
     }
   }
 
-  return openDialog(riskInfo).catch(err => {
+  return openDialog(riskInfo, reRequestWithVerifyResult).catch(err => {
     throw err ?? convertToRiskErrorCancelled(err);
   });
 }

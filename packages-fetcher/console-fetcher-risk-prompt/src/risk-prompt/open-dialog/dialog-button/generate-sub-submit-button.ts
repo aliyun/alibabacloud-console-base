@@ -4,7 +4,8 @@ import {
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TReRequestWithVerifyResult
 } from '../../../types';
 import {
   ERiskType
@@ -16,10 +17,12 @@ import {
 
 interface IGenerateSubAccountMfaSubmitButtonProps {
   primaryButtonDisabled: boolean;
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default function generateSubAccountSubmitButton({
-  primaryButtonDisabled
+  primaryButtonDisabled,
+  reRequestWithVerifyResult
 }: IGenerateSubAccountMfaSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
     label: intl('op:confirm'),
@@ -28,6 +31,7 @@ export default function generateSubAccountSubmitButton({
     onClick(contentContext) {
       handleRiskPromptDialogSubmit({
         contentContext,
+        reRequestWithVerifyResult,
         dialogSubmitType: ERiskType.NEW_SUB
       });
 

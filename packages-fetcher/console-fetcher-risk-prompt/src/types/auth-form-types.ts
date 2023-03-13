@@ -24,11 +24,11 @@ export interface ISubAuthFormProps {
   verifyType: ESubVerificationDeviceType.EMAIL | ESubVerificationDeviceType.SMS | ESubVerificationDeviceType.VMFA;
 }
 
-export interface IOldMainProps {
+export interface IOldMainAuthFormProps {
   riskType: ERiskType.OLD_MAIN;
   verifyType: string;
   verifyDetail?: string | boolean;
   convertedVerifyType?: EConvertedVerifyType;
 }
-export type TSendVerifyCodeProps = TSendVerifyCodeCommonType<IMpkAuthFormProps> | TSendVerifyCodeCommonType<ISubAuthFormProps> | TSendVerifyCodeCommonType<IOldMainProps>;
-export type TAuthFormProps = IMpkAuthFormProps | ISubAuthFormProps | IOldMainProps;
+export type TSendVerifyCodeProps = TSendVerifyCodeCommonType<IMpkAuthFormProps> | TSendVerifyCodeCommonType<ISubAuthFormProps> | TSendVerifyCodeCommonType<IOldMainAuthFormProps>;
+export type TAuthFormProps = IMpkAuthFormProps | ISubAuthFormProps | IOldMainAuthFormProps;

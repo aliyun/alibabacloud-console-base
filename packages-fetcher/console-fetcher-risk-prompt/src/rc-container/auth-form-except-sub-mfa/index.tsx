@@ -54,11 +54,17 @@ const ScInfo = styled.strong`
   margin-right: 12px;
 `;
 
+// 手机/邮箱/VMFA 修改链接不 shrink
+const ScSettingButton = styled(Button)`
+  flex-shrink: 0;
+`;
+
 export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Element {
   const {
-    riskType, verifyType, verifyDetail
+    riskType, verifyType
   } = authFormProps;
-  const showVerifySettingUrlChangeButton = !(verifyDetail === ERiskType.NEW_SUB && verifyType === ESubVerificationDeviceType.VMFA);
+  // VMFA 类型的子账号风控不展示解绑设备链接
+  const showVerifySettingUrlChangeButton = !(riskType === ERiskType.NEW_SUB && verifyType === ESubVerificationDeviceType.VMFA);
 
   const {
     accountId
@@ -102,7 +108,7 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
           labelTextAlign: 'center',
           content: <Flex align="center">
             <ScInfo>{getFormVerifyDetail(authFormProps)}</ScInfo>
-            {showVerifySettingUrlChangeButton && <Button {...{
+            {showVerifySettingUrlChangeButton && <ScSettingButton {...{
               spm: `set-${authFormProps.verifyType}`,
               theme: ButtonTheme.TEXT_PRIMARY,
               label: riskType === ERiskType.OLD_MAIN ? intlVerifySetting(authFormProps.convertedVerifyType) : intlVerifySetting(authFormProps.verifyType),

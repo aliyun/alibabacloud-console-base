@@ -11,7 +11,8 @@ import riskPrompt, {
   convertMpkSetting,
   CODE_FORBIDDEN,
   CODE_INVALID_INPUT,
-  CODE_NEED_VERIFY
+  CODE_NEED_VERIFY,
+  type RiskPromptResolveData
 } from '@alicloud/console-fetcher-risk-prompt';
 
 import {
@@ -24,7 +25,7 @@ import {
 } from './error';
 
 /**
- * 根据业务错误 code 为基础的 fetcher 添加风控流程（老版本主账号风控）
+ * TODO：重新描述新版风控流程
  * 
  * --------------------------------------------------------------------
  *            +-------------------+
@@ -105,6 +106,28 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           riskResponse: responseData
         });
 
+        // 带上风控参数重新请求被风控的接口
+        const reRequestWithVerifyResult = async (verifyResult: RiskPromptResolveData): Promise<unknown> => {
+          const reRequestResponse = await request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
+            body: {
+              ...verifyResult,
+              ...isMpk && mpkIsDowngrade ? {
+                riskVersion: '1.0'
+              } : {} // 轻量级虚商的降级联路需要指定 riskVersion: '1.0' 来覆盖 riskVersion: '2.0'
+            }
+          } : {
+            params: {
+              ...verifyResult,
+              ...isMpk && mpkIsDowngrade ? {
+                riskVersion: '1.0'
+              } : {}
+            }
+          }));
+  
+          return reRequestResponse;
+        };
+
+        // 对于 OneConsole 控制台风控而言，如果请求参数中带有 riskVersion：2.0，那么说明是新版风控
         const newRisk = ((): boolean | undefined => {
           if (fetcherConfig.body && typeof fetcherConfig.body === 'object') {
             return fetcherConfig.body.riskVersion === '2.0';
@@ -115,26 +138,11 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
           error,
           newRisk,
           riskConfig,
+          reRequestWithVerifyResult,
           riskResponse: responseData
         });
 
-        const requestResponse = await request<unknown>(mergeConfig(fetcherConfig, canHaveBody(fetcherConfig) ? {
-          body: {
-            ...verifyResult,
-            ...isMpk && mpkIsDowngrade ? {
-              riskVersion: '1.0'
-            } : {} // 轻量级虚商的降级联路需要指定 riskVersion: '1.0' 来覆盖 riskVersion: '2.0'
-          }
-        } : {
-          params: {
-            ...verifyResult,
-            ...isMpk && mpkIsDowngrade ? {
-              riskVersion: '1.0'
-            } : {}
-          }
-        }));
-
-        return requestResponse;
+        return verifyResult.reRequestResponse;
       }
       default:
         throw error;

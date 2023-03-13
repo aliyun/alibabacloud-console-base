@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-risk-prompt",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "ConsoleBase 新版风控弹窗",
   "license": "MIT",
   "sideEffects": false,

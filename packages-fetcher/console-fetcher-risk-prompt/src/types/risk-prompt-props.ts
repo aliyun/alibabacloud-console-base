@@ -5,10 +5,15 @@ export interface IPlainError extends Error {}
  */
 export type TResolveVerifyType = 'ga' | 'sms' | 'email' | '';
 
-export interface IRiskPromptResolveData {
+export interface IRiskPromptVerifyResult {
   verifyCode: string;
   verifyType: string;
   requestId?: string;
+}
+
+export interface IRiskPromptResolveData extends IRiskPromptVerifyResult {
+  // 如果参数中有 reRequestWithVerifyResult，那么获取到 verifyResult 后会重新请求被风控的接口获取 reRequestResponse，并在作为 close 函数参数
+  reRequestResponse?: unknown;
 }
 
 export type TRiskResponse<T = Record<string, unknown>> = T;
@@ -45,11 +50,13 @@ export interface IRiskParameters {
 }
 
 export type TRiskParametersGetter<T = Record<string, unknown>> = (riskResponse: TRiskResponse<T>) => IRiskParameters;
+export type TReRequestWithVerifyResult = (verifyResult: IRiskPromptVerifyResult) => Promise<unknown>;
 
 export interface IRiskPromptProps<T> {
-  error?: IPlainError; // 自定义 API 被风控的原始错误，用于保留业务错误信息，可选
+  riskResponse: TRiskResponse<T>; // API 被风控时的返回，必需 
+  error?: IPlainError;
   newRisk?: TNewRisk<T>; // 是否使用新版风控，可选
   riskConfig?: IRiskConfig; // 风控配置，可选
   riskParametersGetter?: TRiskParametersGetter<T>; // 怎样从 riskResponse 中解析出新版风控场景下，riskPrompt 所需的参数
-  riskResponse: TRiskResponse<T>; // API 被风控时的返回，必需  
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult; // 重新请求被风控接口的函数
 }

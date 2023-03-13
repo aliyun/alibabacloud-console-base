@@ -77,7 +77,6 @@ const ScWrapper = styled.div`
 `;
 
 const ScError = styled.div`
-  margin-top: 8px;
   word-break: break-word;
   ${mixinTextError}
 `;
@@ -114,7 +113,8 @@ export default function VerifyCodeInput({
 }: IVerifyCodeInputProps): JSX.Element {
   const {
     codeType,
-    accountId
+    accountId,
+    reRequestWithVerifyResult
   } = useModelProps();
   const contentContext = useDialog<IRiskPromptResolveData, IDialogData>();
   const {
@@ -195,6 +195,7 @@ export default function VerifyCodeInput({
               codeType,
               contentContext,
               dialogSubmitType,
+              reRequestWithVerifyResult,
               verifyType: oldMainOrMpkVerifyType
             });
 
@@ -202,7 +203,8 @@ export default function VerifyCodeInput({
           case ERiskType.NEW_SUB:
             throttledHandleRiskPromptDialogSubmit({
               contentContext,
-              dialogSubmitType
+              dialogSubmitType,
+              reRequestWithVerifyResult
             });
 
             return;
@@ -210,6 +212,7 @@ export default function VerifyCodeInput({
             throttledHandleRiskPromptDialogSubmit({
               contentContext,
               dialogSubmitType,
+              reRequestWithVerifyResult,
               verifyType: oldMainOrMpkVerifyType
             });
 
