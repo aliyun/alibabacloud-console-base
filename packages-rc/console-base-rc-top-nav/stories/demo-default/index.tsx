@@ -58,9 +58,7 @@ export default function DemoDefault(): JSX.Element {
         active: stateActive,
         onActiveChange: handleActiveChange // 只有含 onXx 或 href 才可以展示
       },
-      logo: {
-        href: '/'
-      },
+      // logo,
       logoExtra: <ScHome {...{
         spm: 'console-home',
         label: 'Home',

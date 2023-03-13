@@ -15,7 +15,11 @@ const ScCustomL = styled(ScCustom)`
   
   /* stylelint-disable selector-max-universal */
   > * {
-    margin-left: 12px;
+    margin-right: 12px;
+    
+    &:last-child {
+      margin-right: 0;
+    }
   }
 `;
 const ScCustomR = styled(ScCustom)`
