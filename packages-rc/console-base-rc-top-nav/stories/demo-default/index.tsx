@@ -61,6 +61,12 @@ export default function DemoDefault(): JSX.Element {
       logo: {
         href: '/'
       },
+      logoExtra: <ScHome {...{
+        spm: 'console-home',
+        label: 'Home',
+        iconLeft: 'home',
+        theme: ButtonTheme.TERTIARY_ALT
+      }} />,
       menus: [{
         key: 'menu-useless',
         // force: true
@@ -182,12 +188,6 @@ export default function DemoDefault(): JSX.Element {
         }
       },
       customLeft: <>
-        <ScHome {...{
-          spm: 'console-home',
-          label: 'Home',
-          iconLeft: 'home',
-          theme: ButtonTheme.TERTIARY_ALT
-        }} />
         <div style={{
           color: 'red'
         }}>L1</div>

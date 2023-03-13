@@ -9,38 +9,30 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
+  PADDING_LOGO
+} from '../../../const';
+import {
   IconAliyun
 } from '../../../rc';
 import {
   useProps
 } from '../../../model';
 
-const FONT_SIZE = 18;
-
 const ScLogo = styled(Button)`
-  position: relative;
-  padding: 0 12px;
+  padding: 0 ${PADDING_LOGO}px;
   height: ${SIZE.HEIGHT_TOP_NAV}px;
   line-height: ${SIZE.HEIGHT_TOP_NAV}px;
-  font-size: ${FONT_SIZE}px;
+  font-size: 18px;
   font-weight: 600;
   
-  &:after {
-    content: '';
-    position: absolute;
-    top: ${(SIZE.HEIGHT_TOP_NAV - FONT_SIZE) / 2}px;
-    right: 0;
-    background-color: #ddd;
-    width: 1px;
-    height: ${FONT_SIZE}px;
+  img,
+  svg {
+    max-height: 50%;
+    vertical-align: middle;
   }
   
   .theme-dark & {
     color: #e6e6e6;
-    
-    &:after {
-      background-color: #666;
-    }
   }
 `;
 
@@ -55,6 +47,7 @@ export default function Logo(): JSX.Element | null {
     force: true,
     theme: ButtonTheme.TEXT_BRAND_PRIMARY,
     ...logo,
+    cursor: logo.onClick || logo.href ? 'pointer' : 'default',
     label: logo.label || <IconAliyun />
   }} /> : null;
 }

@@ -19,6 +19,7 @@ import {
 
 import Dock from './dock';
 import Logo from './logo';
+import LogoExtra from './logo-extra';
 import Menus from './menus';
 import Custom from './custom';
 
@@ -63,6 +64,7 @@ export default function Ui(): JSX.Element {
     <Flex align="center">
       <Dock />
       <Logo />
+      <LogoExtra />
     </Flex>
     <Custom />
     <Menus />

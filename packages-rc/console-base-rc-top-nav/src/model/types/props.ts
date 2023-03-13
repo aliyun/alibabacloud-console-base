@@ -81,6 +81,10 @@ export interface IModelProps extends HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
   dock?: IModelPropsDock | null; // 程序坞
   logo?: IModelPropsLogo | null;
+  /**
+   * 贴近 logo 的较固定的部分，与 logo 之间会有一条小竖线分隔，当没有 logo 的时候，它也不会有
+   */
+  logoExtra?: JSX.Element | null;
   menus?: (IModelPropsButton | null)[] | null;
   help?: string | IModelPropsHelp; // 帮助文档配置，menu 的特化配置
   language?: IModelPropsLanguage | null; // 语言，menu 的特化配置
