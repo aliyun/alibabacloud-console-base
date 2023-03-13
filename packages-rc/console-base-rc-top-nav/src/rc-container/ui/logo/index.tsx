@@ -23,6 +23,7 @@ const ScLogo = styled(Button)`
   height: ${SIZE.HEIGHT_TOP_NAV}px;
   line-height: ${SIZE.HEIGHT_TOP_NAV}px;
   font-size: ${FONT_SIZE}px;
+  font-weight: 600;
   
   &:after {
     content: '';
