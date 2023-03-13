@@ -4,7 +4,8 @@ import {
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TReRequestWithVerifyResult
 } from '../../../types';
 import {
   ERiskType
@@ -19,13 +20,15 @@ interface IGenerateMpkSubmitButtonProps {
   accountId: string;
   verifyType: string;
   primaryButtonDisabled?: boolean;
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default function generateMpkSubmitButton({
   codeType,
   accountId,
   verifyType,
-  primaryButtonDisabled
+  primaryButtonDisabled,
+  reRequestWithVerifyResult
 }: IGenerateMpkSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
     label: intl('op:confirm'),
@@ -36,9 +39,11 @@ export default function generateMpkSubmitButton({
         accountId,
         verifyType,
         contentContext,
+        reRequestWithVerifyResult,
         dialogSubmitType: ERiskType.MPK
       });
 
+      // return false 用于阻止风控弹窗关闭，使得风控弹窗只能通过 close 函数关闭
       return false;
     }
   };

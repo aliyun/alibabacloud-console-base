@@ -5,14 +5,15 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  TRiskInfo,
-  IDialogData,
   ICommonRiskInfo,
-  IRiskPromptResolveData
+  IDialogData,
+  IRiskPromptResolveData,
+  TRiskInfo,
+  TReRequestWithVerifyResult
 } from '../../types';
 import {
-  ERiskType,
   EDialogType,
+  ERiskType,
   ESceneKey
 } from '../../enum';
 import {
@@ -38,7 +39,7 @@ import {
 } from './dialog-button';
 import getPartialDialogDataBasedOnRiskInfo from './get-partial-dialog-data-based-on-risk-info';
 
-export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskPromptResolveData> {
+export default async function openDialog(riskInfo: TRiskInfo, reRequestWithVerifyResult?: TReRequestWithVerifyResult): Promise<IRiskPromptResolveData> {
   const {
     riskType, codeType
   } = riskInfo;
@@ -81,7 +82,8 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
     content: <DialogContent {...{
       codeType,
       accountId,
-      oldMainOrMpkVerifyInfo
+      oldMainOrMpkVerifyInfo,
+      reRequestWithVerifyResult
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');
@@ -91,7 +93,8 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
         const bindMfaButtons = generateSubBindMfaButton({
           codeType,
           accountId,
-          subBindMfaStep: data.subBindMfaStep
+          subBindMfaStep: data.subBindMfaStep,
+          reRequestWithVerifyResult
         });
 
         return [...bindMfaButtons, buttonCancel];
@@ -111,7 +114,8 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
           })();
 
           const verifyMfaPrimaryButton = generateSubSubmitButton({
-            primaryButtonDisabled
+            primaryButtonDisabled,
+            reRequestWithVerifyResult
           });
           
           return [verifyMfaPrimaryButton, buttonCancel];
@@ -141,6 +145,7 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
               codeType,
               accountId,
               verifyType,
+              reRequestWithVerifyResult,
               primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
             });
 
@@ -149,6 +154,7 @@ export default async function openDialog(riskInfo: TRiskInfo): Promise<IRiskProm
 
           const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton({
             verifyType,
+            reRequestWithVerifyResult,
             primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
           });
 

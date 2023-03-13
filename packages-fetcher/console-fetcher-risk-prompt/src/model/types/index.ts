@@ -3,13 +3,15 @@ import type {
 } from 'react';
 
 import {
-  ICommonRiskInfo
+  ICommonRiskInfo,
+  TReRequestWithVerifyResult
 } from '../../types';
 
 export interface IModelProps {
   codeType: string;
   accountId: string;
   oldMainOrMpkVerifyInfo?: Omit<ICommonRiskInfo, 'codeType'>;
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export interface IModelProviderProps {

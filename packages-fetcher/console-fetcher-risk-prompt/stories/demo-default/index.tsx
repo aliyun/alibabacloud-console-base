@@ -162,7 +162,7 @@ export default function DemoDefault(): JSX.Element {
     const riskPromptResult = await riskPrompt({
       riskResponse: {
         data: {
-          // verifyDetail: '1234****0',
+          verifyDetail: '1234****0',
           codeType: 'rg_authorization_add',
           verifyType: 'ga'
         }

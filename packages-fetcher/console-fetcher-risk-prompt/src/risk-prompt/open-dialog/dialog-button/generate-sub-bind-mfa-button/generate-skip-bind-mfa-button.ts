@@ -1,71 +1,41 @@
 import {
   DialogButtonProps
 } from '@alicloud/console-base-rc-dialog';
-import {
-  dataSkipBindMfa,
-  ParamsSkipBindMfa
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TReRequestWithVerifyResult
 } from '../../../../types';
-import {
-  ESceneKey
-} from '../../../../enum';
 import intl from '../../../../intl';
+import {
+  handleRiskPromptDialogSubmit
+} from '../../../../utils';
 
 interface IGenerateSkipBindMfaButtonProps {
   codeType: string;
   accountId: string;
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default function generateSkipBindMfaButton({
   codeType,
-  accountId
+  accountId,
+  reRequestWithVerifyResult
 }: IGenerateSkipBindMfaButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
     label: intl('op:skip'),
     primary: false,
-    onClick({
-      data,
-      lock,
-      unlock,
-      close,
-      updateData
-    }) {
-      lock(true);
-
-      const {
-        errorMessageObject
-      } = data;
-
-      const skipBindMfaParams: ParamsSkipBindMfa = {
+    onClick(contentContext) {
+      handleRiskPromptDialogSubmit({
         accountId,
-        ext: JSON.stringify({
-          codeType
-        })
-      };
-
-      dataSkipBindMfa(skipBindMfaParams).then(skipBindMfaData => {
-        const ivToken = skipBindMfaData.ivToken || 'EMPTY_IV_TOKEN';
-        const params = {
-          verifyType: 'ga' as const,
-          verifyCode: ivToken
-        };
-
-        close(params);
-      }).catch(error => {
-        updateData({
-          errorMessageObject: {
-            ...errorMessageObject,
-            [ESceneKey.BIND_MFA]: (error as Error).message
-          }
-        });
-      }).finally(() => {
-        unlock();
+        codeType,
+        contentContext,
+        reRequestWithVerifyResult,
+        dialogSubmitType: 'skip_bind_mfa'
       });
 
+      // return false 用于阻止风控弹窗关闭，使得风控弹窗只能通过 close 函数关闭
       return false;
     }
   };

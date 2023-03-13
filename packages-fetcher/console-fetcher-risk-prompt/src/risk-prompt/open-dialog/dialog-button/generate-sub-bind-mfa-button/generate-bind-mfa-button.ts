@@ -1,68 +1,34 @@
 import {
   DialogButtonProps
 } from '@alicloud/console-base-rc-dialog';
-import {
-  dataBindMfa
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TReRequestWithVerifyResult
 } from '../../../../types';
-import {
-  ESceneKey
-} from '../../../../enum';
 import intl from '../../../../intl';
+import {
+  handleRiskPromptDialogSubmit
+} from '../../../../utils';
 
-export default function generateBindMfaButton(): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
+interface IGenerateBindMfaButtonProps {
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult;
+}
+
+export default function generateBindMfaButton({
+  reRequestWithVerifyResult
+}: IGenerateBindMfaButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
     label: intl('op:confirm'),
     primary: true,
     disabled: false,
-    onClick({
-      data,
-      lock,
-      unlock,
-      updateData,
-      close
-    }) {
-      const {
-        subBindMfaParams,
-        errorMessageObject
-      } = data;
-
-      const updateErrorMessage = (errorMessage: string): void => {
-        updateData({
-          errorMessageObject: {
-            ...errorMessageObject,
-            [ESceneKey.BIND_MFA]: errorMessage
-          }
-        });
-      };
-
-      lock(true);
-      updateErrorMessage('');
-
-      if (subBindMfaParams) {
-        dataBindMfa(subBindMfaParams).then(bindMfaIvToken => {
-          const ivToken = bindMfaIvToken.ivToken || 'EMPTY_IV_TOKEN';
-
-          // 绑定 MFA 一定为 ga
-          close({
-            verifyType: 'ga',
-            verifyCode: ivToken
-          });
-        }).catch(error => {
-          updateErrorMessage((error as Error).message);
-        }).finally(() => {
-          unlock();
-        });
-
-        return;
-      }
-
-      unlock();
-      updateErrorMessage(intl('message:invalid:sub:validator'));
+    onClick(contentContext) {
+      handleRiskPromptDialogSubmit({
+        contentContext,
+        reRequestWithVerifyResult,
+        dialogSubmitType: 'bind_mfa'
+      });
 
       // 阻止弹窗关闭，使得只能通过主动调用 close 关闭弹窗
       return false;

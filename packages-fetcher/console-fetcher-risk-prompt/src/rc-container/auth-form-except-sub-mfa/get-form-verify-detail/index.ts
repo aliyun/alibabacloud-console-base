@@ -6,7 +6,8 @@ import {
   TAuthFormProps
 } from '../../../types';
 import {
-  ERiskType
+  ERiskType,
+  EConvertedVerifyType
 } from '../../../enum';
 
 import {
@@ -26,21 +27,28 @@ export default function getFormVerifyDetail(props: TAuthFormProps): string {
     riskType, verifyType, verifyDetail
   } = props;
 
-  const stringifiedVerifyDetail = String(verifyDetail) || DEFAULT_VERIFY_DETAIL;
+  const safeStringifiedVerifyDetail = ((): string => {
+    // 旧版主账号风控验证类型为 MFA 时，verifyDetail 为空字符串而不是 '-'
+    if (riskType === ERiskType.OLD_MAIN && props.convertedVerifyType === EConvertedVerifyType.MFA) {
+      return '';
+    }
+
+    return String(verifyDetail) || DEFAULT_VERIFY_DETAIL;
+  })();
 
   try {
-    if (stringifiedVerifyDetail !== DEFAULT_VERIFY_DETAIL && riskType === ERiskType.NEW_SUB) {
+    if (safeStringifiedVerifyDetail !== DEFAULT_VERIFY_DETAIL && riskType === ERiskType.NEW_SUB) {
       if (verifyType === ESubVerificationDeviceType.SMS) {
-        return getFuzzyPhoneNumber(stringifiedVerifyDetail);
+        return getFuzzyPhoneNumber(safeStringifiedVerifyDetail);
       }
 
       if (verifyType === ESubVerificationDeviceType.EMAIL) {
-        return getFuzzyEmailAddress(stringifiedVerifyDetail);
+        return getFuzzyEmailAddress(safeStringifiedVerifyDetail);
       }
     }
 
-    return stringifiedVerifyDetail;
+    return safeStringifiedVerifyDetail;
   } catch (error) {
-    return stringifiedVerifyDetail;
+    return safeStringifiedVerifyDetail;
   }
 }

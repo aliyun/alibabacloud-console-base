@@ -5,31 +5,32 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  IRiskPromptResolveData
-} from '../../types';
+  IRiskPromptVerifyResult
+} from '../../../types';
 import {
   ESceneKey
-} from '../../enum';
+} from '../../../enum';
+import intl from '../../../intl';
 import {
   convertToResolveDataVerifyType
-} from '../convert-verify-type';
+} from '../../convert-verify-type';
 
 interface IProps {
   subVerificationParamArray?: ParamsVerifySubAccount[];
   currentSubVerificationDeviceType?: ESubVerificationDeviceType | ESceneKey.BIND_MFA;
-  onParamsVerifySuccess: () => void;
+  updateErrorMessage: (errorMessage: string) => void;
 }
 
 export default async function subBindOrVerifyValidators({
   subVerificationParamArray,
   currentSubVerificationDeviceType,
-  onParamsVerifySuccess
-}: IProps): Promise<IRiskPromptResolveData | null> {
+  updateErrorMessage
+}: IProps): Promise<IRiskPromptVerifyResult | null> {
   if (subVerificationParamArray) {
     const currentVerifiCationParams = subVerificationParamArray.find(o => o.verifyType === currentSubVerificationDeviceType);
 
     if (currentVerifiCationParams) {
-      onParamsVerifySuccess();
+      updateErrorMessage('');
 
       const response = await dataVerifySubAccountMfa(currentVerifiCationParams);
 
@@ -40,6 +41,8 @@ export default async function subBindOrVerifyValidators({
       };
     }
   }
+
+  updateErrorMessage(intl('message:invalid:sub:validator'));
 
   return null;
 }

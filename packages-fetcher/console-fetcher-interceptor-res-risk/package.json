@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-interceptor-res-risk",
-  "version": "2.0.2-beta.0",
+  "version": "2.0.2-beta.1",
   "description": "@alicloud/console-fetcher 响应拦截 - 风控处理",
   "license": "MIT",
   "sideEffects": false,
@@ -44,7 +44,7 @@
     "@alicloud/console-base-log-sls": "^1.6.8",
     "@alicloud/console-base-rc-dialog": "^1.10.2",
     "@alicloud/fetcher": "^1.7.8",
-    "@alicloud/console-fetcher-risk-prompt": "^1.0.0-alpha.0"
+    "@alicloud/console-fetcher-risk-prompt": "^1.0.0-alpha.2"
   },
   "scripts": {
     "start": "breezr start-storybook",

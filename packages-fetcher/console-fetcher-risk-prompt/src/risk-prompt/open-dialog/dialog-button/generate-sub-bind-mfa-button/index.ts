@@ -4,7 +4,8 @@ import {
 
 import {
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TReRequestWithVerifyResult
 } from '../../../../types';
 import {
   ESubBindMfaStep
@@ -19,19 +20,22 @@ interface IProps {
   codeType: string;
   accountId: string;
   subBindMfaStep?: ESubBindMfaStep;
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default function generateSubBindMfaButton({
   codeType,
   accountId,
-  subBindMfaStep
+  subBindMfaStep,
+  reRequestWithVerifyResult
 }: IProps): DialogButtonProps<IRiskPromptResolveData, IDialogData>[] {
   switch (subBindMfaStep) {
     case ESubBindMfaStep.CHOOSE_BIND_MFA_TYPE: {
       const chooseMfaTypeButton = generateChooseMfaTypeButton();
       const skipBindMfaButton = generateSkipBindMfaButton({
         codeType,
-        accountId
+        accountId,
+        reRequestWithVerifyResult
       });
 
       return [chooseMfaTypeButton, skipBindMfaButton];
@@ -39,7 +43,9 @@ export default function generateSubBindMfaButton({
     case ESubBindMfaStep.BIND_U2F:
     case ESubBindMfaStep.BIND_VMFA: {
       const previousStepButton = generatePreviousStepButton();
-      const bindMfaButton = generateBindMfaButton();
+      const bindMfaButton = generateBindMfaButton({
+        reRequestWithVerifyResult
+      });
 
       return [previousStepButton, bindMfaButton];
     }
