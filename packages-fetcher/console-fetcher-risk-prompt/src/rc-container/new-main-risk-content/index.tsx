@@ -5,6 +5,9 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
+import type {
+  FetcherError
+} from '@alicloud/fetcher';
 import {
   mixinTextError
 } from '@alicloud/console-base-theme';
@@ -20,11 +23,17 @@ import {
   IRiskPromptResolveData
 } from '../../types';
 import {
-  ESceneKey
+  ESceneKey,
+  ESlsResultType
 } from '../../enum';
 import {
+  CODE_RISK_ERROR_ARRAY,
+  CODE_IDENTITY_INTERNAL_ERROR,
   REG_NEW_MAIN_VERIFY_URL
 } from '../../const';
+import {
+  useModelProps
+} from '../../model';
 import AltWrap from '../../rc/alt-wrap';
 import intl from '../../intl';
 import {
@@ -32,6 +41,7 @@ import {
   getNewMainAccountRiskInfo
 } from '../../utils';
 import {
+  slsNewMainRisk,
   slsInvalidVerifyUrl
 } from '../../sls';
 
@@ -46,21 +56,26 @@ const ScError = styled.div`
 `;
 
 export default function NewMainRiskContent(): JSX.Element {
+  const contentContext = useDialog<IRiskPromptResolveData, IDialogData>();
   const {
     data: {
       errorMessageObject,
       mainAccountRiskInfo
     },
     lock,
+    unlock,
     close,
     updateData
-  } = useDialog<IRiskPromptResolveData, IDialogData>();
+  } = contentContext;
+  const {
+    reRequestWithVerifyResult
+  } = useModelProps();
 
   const {
     verifyType, verifyUrl
   } = getNewMainAccountRiskInfo(mainAccountRiskInfo);
 
-  const getValidateToken = useCallback((event: MessageEvent): void => {
+  const getIvToken = useCallback((event: MessageEvent): string | undefined => {
     try {
       // 为了防止 JSON.parse 报错，需要先判断 decodeURIComponent(event.data) 是不是合法的 JSON 字符串
       const json: IJson = isValidJson(decodeURIComponent(event.data)) ? JSON.parse(decodeURIComponent(event.data)) : event.data;
@@ -70,14 +85,7 @@ export default function NewMainRiskContent(): JSX.Element {
       } = json;
 
       if (type === 'iframevalid' && ivToken) {
-        lock(true);
-
-        const verifyParams = {
-          verifyType,
-          verifyCode: ivToken
-        };
-
-        close(verifyParams);
+        return ivToken;
       }
     } catch (error) {
       updateData({
@@ -86,7 +94,69 @@ export default function NewMainRiskContent(): JSX.Element {
         }
       });
     }
-  }, [lock, close, updateData, verifyType]);
+  }, [updateData]);
+
+  const getValidateToken = useCallback(async (event: MessageEvent): Promise<void> => {
+    const ivToken = getIvToken(event);
+
+    if (ivToken) {
+      lock(true);
+
+      const verifyResult = {
+        verifyType,
+        verifyCode: ivToken
+      };
+
+      try {
+        if (reRequestWithVerifyResult) {
+          const reRequestResponse = await reRequestWithVerifyResult(verifyResult);
+
+          slsNewMainRisk({
+            verifyUrl,
+            type: verifyType,
+            slsResultType: ESlsResultType.SUCCESS
+          });
+
+          close({
+            ...verifyResult,
+            reRequestResponse
+          });
+
+          return;
+        }
+
+        close(verifyResult);
+      } catch (error) {
+        const {
+          code, message
+        } = error as FetcherError;
+
+        if (code && [...CODE_RISK_ERROR_ARRAY, CODE_IDENTITY_INTERNAL_ERROR].includes(code)) {
+          slsNewMainRisk({
+            verifyUrl,
+            type: verifyType,
+            errorCode: code,
+            errorMessage: message,
+            slsResultType: ESlsResultType.FAIL
+          });
+        }
+
+        if (code && CODE_RISK_ERROR_ARRAY.includes(code)) {
+          updateData({
+            errorMessageObject: {
+              [ESceneKey.MAIN_ACCOUNT]: intl('message:code_incorrect')
+            }
+          });
+        } else {
+          close(error as FetcherError, true);
+
+          throw error;
+        }
+      } finally {
+        unlock();
+      }
+    }
+  }, [lock, unlock, close, updateData, reRequestWithVerifyResult, getIvToken, verifyType, verifyUrl]);
 
   const newMainErrorMessage = errorMessageObject[ESceneKey.MAIN_ACCOUNT];
 

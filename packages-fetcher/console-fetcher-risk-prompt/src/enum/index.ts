@@ -43,6 +43,10 @@ export enum EIconType {
  * 埋点 Topic 列表
  */
 export enum ESlsTopic {
+  MPK_RISK = 'mpk_risk', // 轻量级虚商风控
+  OLD_MAIN_RISK = 'old_main_risk', // 旧版主账号风控
+  NEW_MAIN_RISK = 'new_main_risk', // 新版主账号风控
+  SUB_RISK = 'sub_risk', // 新版子账号风控
   U2F_ERROR = 'u2f_error', // 新版子账号风控 - u2f 报错埋点
   RISK_STARTUP = 'risk_startup', // 风控弹窗 PV 埋点
   RISK_INVALID = 'risk_invalid', // 无效的风控 code 的弹窗提示埋点
@@ -68,4 +72,9 @@ export enum ESceneKey {
   BIND_MFA = 'bind_mfa',
   MAIN_ACCOUNT = 'main_account',
   RISK_PROMPT_ERROR = 'risk_prompt_error'
+}
+
+export enum ESlsResultType {
+  FAIL = 'fail',
+  SUCCESS = 'success'
 }

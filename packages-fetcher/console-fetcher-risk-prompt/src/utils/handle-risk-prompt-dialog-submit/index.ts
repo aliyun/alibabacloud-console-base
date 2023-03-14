@@ -8,13 +8,16 @@ import {
 } from '../../types';
 import {
   ESceneKey,
-  ERiskType
+  ERiskType,
+  ESlsResultType
 } from '../../enum';
 import {
-  CODE_INVALID_INPUT
+  CODE_RISK_ERROR_ARRAY,
+  CODE_IDENTITY_INTERNAL_ERROR
 } from '../../const';
 import intl from '../../intl';
 
+import slsRisk from './sls-risk';
 import getRiskPromptVerifyResult from './get-risk-prompt-verify-result';
 
 /**
@@ -24,18 +27,20 @@ import getRiskPromptVerifyResult from './get-risk-prompt-verify-result';
 export default async function handleRiskPromptDialogSubmit({
   contentContext,
   reRequestWithVerifyResult,
-  ...verifyProps
+  ...dialogSubmitProps
 }: THandleRiskPromptDialogSubmitProps): Promise<void> {
   const {
     data, updateData, lock, unlock, close
   } = contentContext;
   const {
     dialogSubmitType
-  } = verifyProps;
+  } = dialogSubmitProps;
   const {
     errorMessageObject,
+    oldMainOrMpkData,
     currentSubVerificationDeviceType
   } = data;
+  const isMpkDowngradeInOldMainRisk = oldMainOrMpkData?.isMpkDowngrade;
 
   // 基于当前风控弹窗的账号类型以及风控验证类型，来更新错误信息
   const updateErrorMessage = (errorMessage: string): void => {
@@ -68,7 +73,7 @@ export default async function handleRiskPromptDialogSubmit({
 
   const riskPromptVerifyResult = await getRiskPromptVerifyResult({
     dialogData: data,
-    verifyProps,
+    dialogSubmitProps,
     updateErrorMessage
   });
 
@@ -78,6 +83,13 @@ export default async function handleRiskPromptDialogSubmit({
       try {
         const reRequestResponse = await reRequestWithVerifyResult(riskPromptVerifyResult);
 
+        slsRisk({
+          dialogSubmitProps,
+          isMpkDowngradeInOldMainRisk,
+          currentSubVerificationDeviceType,
+          slsResultType: ESlsResultType.SUCCESS
+        });
+
         // 如果有 reRequestWithVerifyResult，那么弹窗 close 时对外输出的数据中会包含重新请求被风控接口的响应 reRequestResponse
         close({
           ...riskPromptVerifyResult,
@@ -85,16 +97,27 @@ export default async function handleRiskPromptDialogSubmit({
         });
       } catch (error) {
         const {
-          code
+          code, message
         } = error as FetcherError;
 
+        if (code && [...CODE_RISK_ERROR_ARRAY, CODE_IDENTITY_INTERNAL_ERROR].includes(code)) {
+          slsRisk({
+            dialogSubmitProps,
+            isMpkDowngradeInOldMainRisk,
+            currentSubVerificationDeviceType,
+            errorCode: code,
+            errorMessage: message,
+            slsResultType: ESlsResultType.FAIL
+          });
+        }
+  
         // 如果报错是 verifyCodeInvalid，提示验证码错误，并且不关闭弹窗
-        if (code === CODE_INVALID_INPUT) {
+        if (code && CODE_RISK_ERROR_ARRAY.includes(code)) {
           updateErrorMessage(intl('message:code_incorrect'));
         } else {
           // 如果重新请求后触发了正常的报错，那么抛出 error，并关闭弹窗
           close(error as Error, true);
-
+  
           throw error;
         }
       } finally {

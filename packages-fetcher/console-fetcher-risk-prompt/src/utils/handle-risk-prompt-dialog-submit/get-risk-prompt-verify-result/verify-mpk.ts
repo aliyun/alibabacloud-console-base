@@ -3,7 +3,7 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  IMainAccountData,
+  IMainOrMpkData,
   IRiskPromptVerifyResult
 } from '../../../types';
 
@@ -11,19 +11,19 @@ interface IProps {
   accountId: string;
   codeType: string;
   verifyType: string;
-  mainOrMpkAccountData?: IMainAccountData;
+  oldMainOrMpkData?: IMainOrMpkData;
 }
 
 export default async function verifyMpk({
   accountId,
   codeType,
   verifyType,
-  mainOrMpkAccountData
+  oldMainOrMpkData
 }: IProps): Promise<IRiskPromptVerifyResult> {
   const {
     code,
     requestId
-  } = mainOrMpkAccountData ?? {};
+  } = oldMainOrMpkData ?? {};
 
   const verifyMpkData = await dataVerifyMpk({
     accountId,

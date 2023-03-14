@@ -59,9 +59,10 @@ export type TMainAccountRiskInfo = {
   riskInfo: IOldMainAccountOrMpkRiskInfo;
 }
 
-export interface IMainAccountData {
+export interface IMainOrMpkData {
   code: string;
   requestId: string;
+  isMpkDowngrade: boolean;
 }
 
 export interface IDialogData {
@@ -78,7 +79,7 @@ export interface IDialogData {
   subBindMfaStep?: ESubBindMfaStep;
   // 子账号绑定 MFA 的参数
   subBindMfaParams?: ParamsBindMfa;
-  mainOrMpkAccountData?: IMainAccountData;
+  oldMainOrMpkData?: IMainOrMpkData;
   // 子账号风控方式可能为多选，因此需要用数组方式来存储多种风控方式时的风控验证参数
   subVerificationParamArray?: ParamsVerifySubAccount[];
   subGetMfaInfoToBindData?: DataGetMfaInfoToBind;

@@ -34,10 +34,10 @@ const SEND_CODE_SUCCESS_TIP_DURATION = 3;
 interface IHookResult {
   verifyUniqId: string;
   showSendCodeSuccessTip: boolean;
-  generateProps: IGenerateCodeButtonProps;
+  generateCodeButtonProps: IGenerateCodeButtonProps;
 }
 
-export default function useAuthFormGenerateProps(authFormProps: TAuthFormProps): IHookResult {
+export default function useGenerateCodeButtonProps(authFormProps: TAuthFormProps): IHookResult {
   const [stateVerifyUniqId, setStateVerifyUniqId] = useState<string>('');
   const {
     codeType,
@@ -57,7 +57,7 @@ export default function useAuthFormGenerateProps(authFormProps: TAuthFormProps):
   } = useCountDown();
   const showSendCodeSuccessTip = countDown > 0;
 
-  const generateProps = useMemo<IGenerateCodeButtonProps>(() => {
+  const generateCodeButtonProps = useMemo<IGenerateCodeButtonProps>(() => {
     const sendVerifyCode = (): Promise<void> => {
       return dataSendVerifyCode({
         ...authFormProps,
@@ -83,7 +83,7 @@ export default function useAuthFormGenerateProps(authFormProps: TAuthFormProps):
   }, [authFormProps, codeType, accountId, errorMessageObject, currentKeyOfErrorMessageObject, updateData, setCountDown]);
 
   return {
-    generateProps,
+    generateCodeButtonProps,
     showSendCodeSuccessTip,
     verifyUniqId: stateVerifyUniqId
   };

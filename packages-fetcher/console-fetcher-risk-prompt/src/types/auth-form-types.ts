@@ -26,6 +26,7 @@ export interface ISubAuthFormProps {
 
 export interface IOldMainAuthFormProps {
   riskType: ERiskType.OLD_MAIN;
+  isMpkDowngrade: boolean;
   verifyType: string;
   verifyDetail?: string | boolean;
   convertedVerifyType?: EConvertedVerifyType;

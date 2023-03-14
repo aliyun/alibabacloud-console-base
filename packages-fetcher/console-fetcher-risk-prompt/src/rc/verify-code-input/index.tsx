@@ -67,7 +67,7 @@ interface IVerifyCodeInputProps extends InputProps {
   inputWidth?: number | string;
   dialogSubmitType?: ERiskType.MPK | ERiskType.NEW_SUB | ERiskType.OLD_MAIN;
   showApiErrorBehindInput?: boolean;
-  generateProps?: Omit<IGenerateCodeButtonProps, 'keyOfErrorMessageObject'>;
+  generateCodeButtonProps?: Omit<IGenerateCodeButtonProps, 'keyOfErrorMessageObject'>;
   keyOfAuthErrorMessageObject?: ESubVerificationDeviceType | ESceneKey.MAIN_ACCOUNT;
   handleInputChange?(p: IHandleInputChangeProps): void;
 }
@@ -104,9 +104,9 @@ const throttledHandleRiskPromptDialogSubmit = _throttle(handleRiskPromptDialogSu
 
 export default function VerifyCodeInput({
   inputWidth,
-  generateProps,
   dialogSubmitType,
   verifyCodeInputType,
+  generateCodeButtonProps,
   keyOfAuthErrorMessageObject,
   handleInputChange,
   ...inputProps
@@ -246,8 +246,8 @@ export default function VerifyCodeInput({
   }, [handleInputChange, updateErrorMessage]);
 
   const operation = useMemo((): JSX.Element | null => {
-    if (verifyCodeInputType === 'sms_or_email_auth' && generateProps) {
-      return <Generate {...generateProps} keyOfErrorMessageObject={keyOfErrorMessageObject} />;
+    if (verifyCodeInputType === 'sms_or_email_auth' && generateCodeButtonProps) {
+      return <Generate {...generateCodeButtonProps} keyOfErrorMessageObject={keyOfErrorMessageObject} />;
     }
 
     if (verifyCodeInputType === 'vmfa_auth' && WINDVANE_AVAILABLE && !stateNoWindVaneHandler) {
@@ -259,7 +259,7 @@ export default function VerifyCodeInput({
     }
 
     return null;
-  }, [verifyCodeInputType, generateProps, keyOfErrorMessageObject, stateNoWindVaneHandler, handleGetVmfaCodeFromWindVane]);
+  }, [verifyCodeInputType, generateCodeButtonProps, keyOfErrorMessageObject, stateNoWindVaneHandler, handleGetVmfaCodeFromWindVane]);
 
   return <ScWrapper>
     <Flex align="center">

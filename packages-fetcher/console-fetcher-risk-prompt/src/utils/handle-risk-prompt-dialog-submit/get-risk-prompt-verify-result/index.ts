@@ -18,7 +18,7 @@ import verifySubValidators from './verify-sub-validators';
 
 interface IProps {
   dialogData: IDialogData;
-  verifyProps: TDialogSubmitProps;
+  dialogSubmitProps: TDialogSubmitProps;
   updateErrorMessage: (errorMessage: string) => void;
 }
 
@@ -28,35 +28,37 @@ interface IProps {
  */
 export default async function getRiskPromptVerifyResult({
   dialogData,
-  verifyProps,
+  dialogSubmitProps,
   updateErrorMessage
 }: IProps): Promise<IRiskPromptVerifyResult | null> {
   try {
     const {
       dialogSubmitType
-    } = verifyProps;
+    } = dialogSubmitProps;
     const {
       currentSubVerificationDeviceType,
-      mainOrMpkAccountData,
+      oldMainOrMpkData,
       subBindMfaParams,
       subVerificationParamArray
     } = dialogData;
   
     switch (dialogSubmitType) {
+      // MPK 类型账号风控验证
       case ERiskType.MPK: {
         const {
           accountId, codeType, verifyType
-        } = verifyProps;
+        } = dialogSubmitProps;
   
         const mpkVerifyResult = await verifyMpk({
           accountId,
           codeType,
           verifyType,
-          mainOrMpkAccountData
+          oldMainOrMpkData
         });
   
         return mpkVerifyResult;
       }
+      // 子账号风控验证
       case ERiskType.NEW_SUB: {
         const subValidatorsVerifyResult = await verifySubValidators({
           subVerificationParamArray,
@@ -66,6 +68,22 @@ export default async function getRiskPromptVerifyResult({
   
         return subValidatorsVerifyResult;
       }
+      // 旧版主账号或 MPK 降级
+      case ERiskType.OLD_MAIN: {
+        const {
+          verifyType
+        } = dialogSubmitProps;
+        const {
+          code, requestId
+        } = oldMainOrMpkData ?? {};
+  
+        return {
+          verifyType,
+          verifyCode: code || '',
+          requestId: requestId || ''
+        };
+      }
+      // 子账号风控绑定 MFA
       case 'bind_mfa': {
         const bindMfaVerifyResult = await bindSubMfa({
           subBindMfaParams,
@@ -74,10 +92,11 @@ export default async function getRiskPromptVerifyResult({
   
         return bindMfaVerifyResult;
       }
+      // 子账号跳过 MFA 绑定
       case 'skip_bind_mfa': {
         const {
           accountId, codeType
-        } = verifyProps;
+        } = dialogSubmitProps;
   
         const skipBindMfaVerifyResult = await skipBindSubMfa({
           accountId,
@@ -87,18 +106,7 @@ export default async function getRiskPromptVerifyResult({
         return skipBindMfaVerifyResult;
       }
       default: {
-        const {
-          verifyType
-        } = verifyProps;
-        const {
-          code, requestId
-        } = mainOrMpkAccountData ?? {};
-  
-        return {
-          verifyType,
-          verifyCode: code || '',
-          requestId: requestId || ''
-        };
+        return null;
       }
     }
   } catch (error) {
