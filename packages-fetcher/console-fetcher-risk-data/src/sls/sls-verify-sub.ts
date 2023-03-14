@@ -1,8 +1,7 @@
 import sls from '@alicloud/console-base-log-sls';
 
 import {
-  ESlsTopic,
-  ESubVerificationDeviceType
+  ESlsTopic
 } from '../const';
 
 import {
@@ -11,7 +10,7 @@ import {
 
 interface ISlsAuthMfaProps extends ISlsCommonProps {
   type: string; // 子账号验证类型
-  value?: string | ESubVerificationDeviceType; // 验证详情
+  value?: string; // 验证详情
 }
 
 export default function slsVerifySub(slsProps: ISlsAuthMfaProps): void {

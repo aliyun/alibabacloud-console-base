@@ -35,6 +35,7 @@ export default async function dataSendCode(params: TParamsSendCode): Promise<IRe
     });
 
     slsSendCode({
+      accountType,
       verifyType,
       verifyDetail,
       slsResultType: ESlsResultType.SUCCESS
@@ -49,6 +50,7 @@ export default async function dataSendCode(params: TParamsSendCode): Promise<IRe
     } = error as FetcherError;
 
     slsSendCode({
+      accountType,
       requestId,
       verifyType,
       verifyDetail,

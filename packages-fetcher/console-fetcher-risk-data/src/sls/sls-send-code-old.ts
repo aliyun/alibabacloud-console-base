@@ -14,5 +14,5 @@ interface ISlsSendCodeOldProps extends ISlsCommonProps {
 }
 
 export default function slsSendCodeOld(slsProps: ISlsSendCodeOldProps): void {
-  sls(ESlsTopic.SUB_VERIFY, slsProps);
+  sls(ESlsTopic.SEND_CODE_OLD, slsProps);
 }

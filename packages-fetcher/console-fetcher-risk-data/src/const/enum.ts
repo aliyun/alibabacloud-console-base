@@ -26,7 +26,8 @@ export enum ESlsTopic {
   SUB_GET_BIND_MFA_INFO = 'sub_get_bind_mfa_info', // 新版子账号风控 - 获取绑定 MFA 设备信息
   SKIP_BIND_MFA = 'skip_bind_mfa', // 新版子账号风控 - 跳过绑定 MFA 
   MPK_VERIFY = 'mpk_verify', // 新版风控的轻量级虚商场景 - 验证验证码接口
-  MPK_SEND_CODE = 'mpk_send_code', // 新版风控的轻量级虚商场景 - 发送验证码
+  SEND_CODE = 'send_code', // 新版 MPK 账号以及子账号的手机/邮箱验证码发送接口，Identity 服务提供
+  SEND_CODE_OLD = 'send_code_old', // 旧版主账号风控发送验证码的接口，走的是 OneConsole 的 /risk/sendVerifyMessage.json 接口
   SUB_GET_AUTH_VERIFICATION_INFO = 'sub_get_auth_verification_info' // 新版子账号风控 - 获取验证 MFA、手机、邮箱的信息
 }
 
