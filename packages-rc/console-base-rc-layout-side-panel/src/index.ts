@@ -1,7 +1,5 @@
 export { default } from './with-model';
-export {
-  SidePanelItem // 供使用 children 的情况
-} from './ui/rc';
+export { default as SidePanelItem } from './ui/rc-container/panel-item'; // 供使用 children 的情况
 
 export type {
   ModelProps as SidePanelProps,

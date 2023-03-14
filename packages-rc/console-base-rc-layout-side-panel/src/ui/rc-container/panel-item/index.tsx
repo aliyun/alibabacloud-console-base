@@ -5,18 +5,22 @@ import React, {
 } from 'react';
 
 import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
+import HtmlTrusted from '@alicloud/console-base-rc-html-trusted';
 
 import {
-  SidePanelItemProps
+  SidePanelItemProps,
+  useCollapsed
 } from '../../../model';
 import {
   getValueByStatus,
   renderItemIcon
 } from '../../util';
-import SidePanelItemWrap from '../side-panel-item-wrap';
-import SidePanelItemButton from '../side-panel-item-button';
-import SidePanelItemBadge from '../side-panel-item-badge';
-import SidePanelItemTooltip from '../side-panel-item-tooltip';
+import {
+  SidePanelItemWrap,
+  SidePanelItemButton,
+  SidePanelItemBadge,
+  SidePanelItemTooltip
+} from '../../rc';
 
 interface IProps extends SidePanelItemProps {}
 
@@ -38,20 +42,22 @@ export default function SidePanelItem({
   tooltipActive,
   tooltipAsHtml,
   tooltipAlign,
+  tooltipDefaultVisible = false,
   onClick,
   onActiveChange,
   onMouseEnter,
   onMouseLeave,
   ...props
 }: IProps): JSX.Element {
-  const [stateHovered, setStateHovered] = useState(false);
+  const collapsed = useCollapsed();
+  const [stateTooltipVisible, setStateTooltipVisible] = useState(tooltipDefaultVisible);
   const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
-    setStateHovered(true);
+    setStateTooltipVisible(true);
     onMouseEnter?.();
-  }, [setStateHovered, onMouseEnter]), useCallback(() => {
-    setStateHovered(false);
+  }, [setStateTooltipVisible, onMouseEnter]), useCallback(() => {
+    setStateTooltipVisible(false);
     onMouseLeave?.();
-  }, [setStateHovered, onMouseLeave]));
+  }, [setStateTooltipVisible, onMouseLeave]));
   const handleClick = useCallback((e: MouseEvent<HTMLElement>) => {
     onClick?.(e);
     onActiveChange?.(!active);
@@ -60,17 +66,17 @@ export default function SidePanelItem({
   const finalTitle = getValueByStatus({
     valueNormal: title,
     valueActive: titleActive
-  }, stateHovered, active);
+  }, stateTooltipVisible, active);
   const finalIcon = getValueByStatus({
     valueNormal: icon,
     valueHovered: iconHovered,
     valueActive: iconActive,
     valueActiveHovered: iconActiveHovered
-  }, stateHovered, active);
+  }, stateTooltipVisible, active);
   const finalTooltip = getValueByStatus({
     valueNormal: tooltip,
     valueActive: tooltipActive
-  }, stateHovered, active);
+  }, stateTooltipVisible, active);
   
   return <SidePanelItemWrap {...{
     id,
@@ -88,11 +94,9 @@ export default function SidePanelItem({
     }} />
     <SidePanelItemBadge unread={unread} mark={mark} />
     {finalTooltip || finalTitle ? <SidePanelItemTooltip {...{
-      visible: stateHovered,
+      visible: stateTooltipVisible && !collapsed,
       align: tooltipAlign,
-      content: tooltipAsHtml && finalTooltip && typeof finalTooltip === 'string' ? <span dangerouslySetInnerHTML={{
-        __html: finalTooltip
-      }} /> : finalTooltip || finalTitle,
+      content: tooltipAsHtml && finalTooltip && typeof finalTooltip === 'string' ? <HtmlTrusted text={finalTooltip} /> : finalTooltip || finalTitle,
       onMouseEnter: handleMouseEnter
     }} /> : null}
   </SidePanelItemWrap>;

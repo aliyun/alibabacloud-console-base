@@ -55,6 +55,10 @@ export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' 
    */
   tooltipAlign?: 'top' | 'middle' | 'bottom';
   /**
+   * Tooltip 默认是否展示，注意避免竞争，并注意降噪
+   */
+  tooltipDefaultVisible?: boolean;
+  /**
    * 右上角徽标，数字展示数字，true 展示小红点
    */
   unread?: number | boolean;

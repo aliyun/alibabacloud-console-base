@@ -54,7 +54,7 @@ export default function DemoDefault(): JSX.Element {
         iconHovered: <Icon type="dingding" style={{
           color: '#f66'
         }} />,
-        tooltip: '你有 <strong>12345</strong> 条新消息',
+        tooltip: '你有 <strong>12345</strong> 条 <em>新</em> 消息，其中 <code>99.99%</code> 为垃圾消息。',
         tooltipAsHtml: true,
         unread: true
       }, {
@@ -83,7 +83,8 @@ export default function DemoDefault(): JSX.Element {
             }
           }} />
         </>,
-        tooltipAlign: 'top'
+        tooltipAlign: 'top',
+        tooltipDefaultVisible: true
       }, {
         key: 'icon-string-image-url',
         title: '测试图片 URL',
