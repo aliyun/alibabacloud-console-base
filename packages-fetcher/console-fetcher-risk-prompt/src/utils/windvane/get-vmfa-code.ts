@@ -2,6 +2,9 @@ import {
   IWindvaneError
 } from '../../types';
 import {
+  ESlsResultType
+} from '../../enum';
+import {
   WINDVANE_ERROR_CODE,
   ALIYUN_APP_DOWNLOAD_URL
 } from '../../const';
@@ -41,13 +44,13 @@ export default function getVmfaCodeFromWindVane({
     }
 
     slsGetVmfaCodeFromWindVane({
-      slsResultType: 'success'
+      slsResultType: ESlsResultType.SUCCESS
     });
   }).catch((error: IWindvaneError) => {
     slsGetVmfaCodeFromWindVane({
       errorCode: error.code,
       errorMessage: error.message,
-      slsResultType: 'failure'
+      slsResultType: ESlsResultType.FAIL
     });
 
     if (error.code === WINDVANE_ERROR_CODE.NO_HANDLER) {

@@ -56,7 +56,8 @@ export default function useAuthFormHandleInputChange({
     },
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
-  const currentKeyOfErrorMessageObject = authFormProps.riskType === ERiskType.NEW_SUB ? authFormProps.verifyType : ESceneKey.MAIN_ACCOUNT;
+  const isMpkDowngrade = riskType === ERiskType.OLD_MAIN && authFormProps.isMpkDowngrade;
+  const currentKeyOfErrorMessageObject = riskType === ERiskType.NEW_SUB ? verifyType : ESceneKey.MAIN_ACCOUNT;
 
   const getUpdateDataOnInputChange = useCallback((code: string): Partial<IDialogData> => {
     // 清空对应风控方式的 error
@@ -67,23 +68,13 @@ export default function useAuthFormHandleInputChange({
       }
     };
 
-    // OneConsole 旧版主账号类型
-    if (riskType === ERiskType.OLD_MAIN) {
+    // OneConsole 旧版主账号类型或者 MPK 类型账号
+    if (riskType === ERiskType.MPK || riskType === ERiskType.OLD_MAIN) {
       return {
         ...updatedAiErrorMessageObject,
-        mainOrMpkAccountData: {
+        oldMainOrMpkData: {
           code,
-          requestId: verifyUniqId
-        }
-      };
-    }
-
-    // MPK 类型账号
-    if (riskType === ERiskType.MPK) {
-      return {
-        ...updatedAiErrorMessageObject,
-        mainOrMpkAccountData: {
-          code,
+          isMpkDowngrade,
           requestId: verifyUniqId
         }
       };
@@ -123,7 +114,7 @@ export default function useAuthFormHandleInputChange({
         }
       })
     };
-  }, [accountId, codeType, verifyType, riskType, verifyUniqId, subVerificationParamArray, errorMessageObject, currentKeyOfErrorMessageObject]);
+  }, [accountId, codeType, verifyType, riskType, isMpkDowngrade, subVerificationParamArray, errorMessageObject, currentKeyOfErrorMessageObject, verifyUniqId]);
 
   const handleInputChange = useCallback((payload: IHandleInputChangeProps): void => {
     const {

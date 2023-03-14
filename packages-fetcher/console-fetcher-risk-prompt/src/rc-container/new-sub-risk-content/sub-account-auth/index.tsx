@@ -22,7 +22,7 @@ import {
 import {
   getSubVerificationSettingUrl
 } from '../../../utils';
-import AuthFormExceptSubMfa from '../../auth-form-except-sub-mfa';
+import VerifyRiskForm from '../../verify-risk-form';
 
 interface IProps {
   deviceType: ESubVerificationDeviceType.SMS | ESubVerificationDeviceType.EMAIL | ESubVerificationDeviceType.VMFA;
@@ -63,7 +63,7 @@ export default function SubAccountAuth({
     return '';
   }, [deviceType, subGetVerificationToAuthData]);
 
-  return <AuthFormExceptSubMfa {...{
+  return <VerifyRiskForm {...{
     verifyDetail,
     riskType: ERiskType.NEW_SUB,
     verifyType: deviceType,

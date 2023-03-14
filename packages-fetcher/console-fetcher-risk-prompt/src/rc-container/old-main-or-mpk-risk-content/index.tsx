@@ -21,7 +21,7 @@ import {
   getOldMainOrMpkAccountRiskInfo,
   convertToMpkVerificationDeviceType
 } from '../../utils';
-import AuthFormExceptSubMfa from '../auth-form-except-sub-mfa';
+import VerifyRiskForm from '../verify-risk-form';
 
 export default function OldMainOrMpkRiskContent(): JSX.Element {
   const {
@@ -38,6 +38,7 @@ export default function OldMainOrMpkRiskContent(): JSX.Element {
   } = getOldMainOrMpkAccountRiskInfo(mainAccountRiskInfo);
 
   const authFormProps = useMemo((): TAuthFormProps => {
+    // MPK
     if (isMpk && !mpkIsDowngrade) {
       return {
         riskType: ERiskType.MPK,
@@ -46,13 +47,15 @@ export default function OldMainOrMpkRiskContent(): JSX.Element {
       };
     }
 
+    // 旧版主账号风控或者降级后的 MPK
     return {
       riskType: ERiskType.OLD_MAIN,
+      isMpkDowngrade: isMpk,
       verifyDetail: oldMainOrMpkVerifyInfo?.verifyDetail,
       convertedVerifyType: oldMainOrMpkVerifyInfo?.convertedVerifyType,
       verifyType: oldMainOrMpkVerifyInfo?.verifyType ?? 'ga'
     };
   }, [isMpk, mpkIsDowngrade, verifyType, oldMainOrMpkVerifyInfo]);
 
-  return <AuthFormExceptSubMfa {...authFormProps} />;
+  return <VerifyRiskForm {...authFormProps} />;
 }

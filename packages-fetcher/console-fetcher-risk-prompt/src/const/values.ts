@@ -11,7 +11,15 @@ import {
  */
 export const CODE_NEED_VERIFY = 'FoundRiskAndDoubleConfirm';
 export const CODE_FORBIDDEN = 'FoundRiskAndTip';
+// 重新请求被风控的接口时，核验二次核身参数失败的错误码
 export const CODE_INVALID_INPUT = 'verifyCodeInvalid';
+export const CODE_IDENTITY_TOKEN_VALIDATE_FAILED = 'TokenValidateFailed';
+export const CODE_IDENTITY_INVALID_PARAMETERS = 'InvalidParameter.IvTokenVerifyRequest.idType';
+// 默认的兜底系统错误
+export const CODE_IDENTITY_INTERNAL_ERROR = 'InternalError';
+
+// 风控验证错误的错误码
+export const CODE_RISK_ERROR_ARRAY = [CODE_INVALID_INPUT, CODE_IDENTITY_TOKEN_VALIDATE_FAILED, CODE_IDENTITY_INVALID_PARAMETERS];
 
 /**
  * 处理过了的风控错误，业务 UI 层无需再对其进行报错视图，忽略即可（但对于数据层来说还是一种错误）
@@ -32,6 +40,8 @@ export const SVG_URLS = {
   SMS_ICON: 'https://img.alicdn.com/imgextra/i4/O1CN01eDJihn27u6JHloMYw_!!6000000007856-55-tps-200-200.svg',
   EMAIL_ICON: 'https://img.alicdn.com/imgextra/i4/O1CN01qgcbb21CvXSHlELOg_!!6000000000143-55-tps-200-200.svg'
 };
+
+export const MOBILE_SCREE_SIZE = 720;
 
 /**
  * 阿里云 APP 下载链接
@@ -56,11 +66,12 @@ export const BUILT_IN_RISK_CONFIG = {
   bySms: 'sms',
   byEmail: 'email',
   byMfa: 'ga',
-  urlSetting: '//account.console.aliyun.com/#/secure',
   coolingAfterSent: 60,
   coolingAfterSentFail: 5,
   u2fTimeOut: 180000,
-  webAuthnKeyType: 'public-key' as const
+  webAuthnKeyType: 'public-key' as const,
+  // 阿里云 APP 设置主账号手机/邮箱的地址与 PC 端不一样
+  urlSetting: ALIYUN_APP_VERSION ? '//m.console.aliyun.com/app-basic-business/account-setting?navigationBar=false' : '//account.console.aliyun.com/#/secure'
 };
 
 // 默认的风控配置
@@ -77,8 +88,6 @@ export const DEFAULT_RISK_CONFIG = {
   dataPathVerifyType: 'data.VerifyType',
   dataPathVerifyDetail: 'data.VerifyDetail'
 };
-
-export const MOBILE_SCREE_SIZE = 720;
 
 export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {
   [ESceneKey.MAIN_ACCOUNT]: true,
