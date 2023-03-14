@@ -1,7 +1,8 @@
 import sls from '@alicloud/console-base-log-sls';
 
 import {
-  ESlsTopic
+  ESlsTopic,
+  EAccountType
 } from '../const';
 
 import {
@@ -11,8 +12,9 @@ import {
 interface ISlsSendCodeProps extends ISlsCommonProps {
   verifyType: string;
   verifyDetail?: string;
+  accountType: EAccountType;
 }
 
 export default function slsSendCode(slsProps: ISlsSendCodeProps): void {
-  sls(ESlsTopic.SUB_VERIFY, slsProps);
+  sls(ESlsTopic.SEND_CODE, slsProps);
 }
