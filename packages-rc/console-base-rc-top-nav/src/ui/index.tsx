@@ -18,6 +18,9 @@ import {
 } from '../model';
 
 import {
+  DATA_ATTR_KEY
+} from './const';
+import {
   GlobalStyleForFixed,
   Dock,
   Logo,
@@ -27,7 +30,7 @@ import {
 } from './rc-container';
 
 interface IScPropsTopNav {
-  fixed: 0 | 1;
+  $fixed?: boolean;
 }
 
 const ScTopNaV = styled(Flex)<IScPropsTopNav>`
@@ -36,14 +39,14 @@ const ScTopNaV = styled(Flex)<IScPropsTopNav>`
   ${mixinTypoFontBase}
   ${mixinBgPrimary}
   
-  ${props => (props.fixed ? css`
+  ${props => (props.$fixed ? css`
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     z-index: ${Z_INDEX.TOP_NAV};
   ` : null)}
-  ${props => (props.fixed ? mixinShadowMDown : mixinShadowM)}
+  ${props => (props.$fixed ? mixinShadowMDown : mixinShadowM)}
   
   .theme-dark & {
     box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.16), 0 4px 8px 0 rgba(0, 0, 0, 0.32);
@@ -60,11 +63,12 @@ export default function Ui(): JSX.Element {
   return <>
     <GlobalStyleForFixed />
     <ScTopNaV {...{
-      'data-spm': 'top-nav',
+      $fixed: fixed,
       id,
-      align: 'center',
       className: `${className || ''} J_fixed_right_will_be_pushed_left`.trim(), // 注意：和 micro-browser 有耦合，可以忍
-      fixed: fixed ? 1 : 0
+      align: 'center',
+      'data-spm': 'top-nav',
+      [DATA_ATTR_KEY]: ''
     }}>
       <Flex align="center">
         <Dock />

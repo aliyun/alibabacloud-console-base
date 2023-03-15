@@ -4,14 +4,20 @@ import styled from 'styled-components';
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
+  DATA_ATTR_KEY_CUSTOM_L,
+  DATA_ATTR_KEY_CUSTOM_R
+} from '../../const';
+import {
   useProps
 } from '../../../model';
 
 const ScCustom = styled(Flex)`
   flex: 1;
+  height: 100%;
 `;
-const ScCustomL = styled(ScCustom)`
+const ScCustomL = styled(Flex)`
   margin-right: 12px;
+  height: 100%;
   
   /* stylelint-disable selector-max-universal */
   > * {
@@ -22,9 +28,16 @@ const ScCustomL = styled(ScCustom)`
     }
   }
 `;
-const ScCustomR = styled(ScCustom)`
+const ScCustomR = styled(Flex)`
+  margin-right: 12px;
+  height: 100%;
+  
   > * {
-    margin-right: 12px;
+    margin-left: 12px;
+    
+    &:first-child {
+      margin-left: 0;
+    }
   }
 `;
 
@@ -41,16 +54,18 @@ export default function Custom(): JSX.Element {
     customRightClassName
   } = useProps();
   
-  return <ScCustom align="center">
+  return <ScCustom align="center" justify="space-between">
     <ScCustomL {...{
       className: customLeftClassName,
       align: 'center',
-      justify: 'flex-start'
+      justify: 'flex-start',
+      [DATA_ATTR_KEY_CUSTOM_L]: ''
     }}>{customLeft}</ScCustomL>
     <ScCustomR {...{
       className: customRightClassName,
       align: 'center',
-      justify: 'flex-end'
+      justify: 'flex-end',
+      [DATA_ATTR_KEY_CUSTOM_R]: ''
     }}>{customRight}</ScCustomR>
   </ScCustom>;
 }

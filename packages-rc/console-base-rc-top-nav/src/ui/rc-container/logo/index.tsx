@@ -12,6 +12,7 @@ import {
   useProps
 } from '../../../model';
 import {
+  DATA_ATTR_KEY_LOGO,
   PADDING_LOGO
 } from '../../const';
 import {
@@ -47,7 +48,8 @@ export default function Logo(): JSX.Element | null {
     force: true,
     theme: ButtonTheme.TEXT_BRAND_PRIMARY,
     ...logo,
+    label: logo.label || <IconAliyun />,
     cursor: logo.onClick || logo.href ? 'pointer' : 'default',
-    label: logo.label || <IconAliyun />
+    [DATA_ATTR_KEY_LOGO]: ''
   }} /> : null;
 }
