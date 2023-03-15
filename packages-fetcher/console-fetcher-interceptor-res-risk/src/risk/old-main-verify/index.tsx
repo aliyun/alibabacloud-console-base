@@ -16,21 +16,21 @@ import {
   IFetcherInterceptorConfig,
   IOldMainRiskInfo,
   IDialogDataOldMainAccountRisk
-} from '../../../types';
+} from '../../types';
 import {
   ESlsResultType
-} from '../../../enum';
+} from '../../enum';
 import {
   DEFAUT_DIALOG_SIZE
-} from '../../../const';
-import intl from '../../../intl';
-import {
-  intlVerifyTitle
-} from '../../intl-verify';
+} from '../../const';
+import intl from '../../intl';
 import {
   slsOldMainRisk
-} from '../../../sls';
-import Content from '../../../container/old-main-or-mpk-verify-content';
+} from '../../sls';
+import {
+  intlVerifyTitle
+} from '../../util';
+import Content from '../../container/old-main-or-mpk-verify-content';
 
 interface IParams {
   request: FetcherFnRequest;

@@ -23,3 +23,8 @@ export const SVG_URLS = {
  * 阿里云 APP 下载链接
  */
 export const ALIYUN_APP_DOWNLOAD_URL = 'https://download.app.aliyun.com/app/aliyunapp/download/home?ulinks_fallback=aliyun%3A%2F%2Fforward%2Fapp%3Ftarget_%3D%2Fram%2Fhome%26pluginId_%3D9';
+
+/**
+ * 阿里云 APP 手机邮箱设置页面
+ */
+export const ALIYUN_APP_URL_SETTING = 'https://m.console.aliyun.com/app-basic-business/account-setting?navigationBar=false';

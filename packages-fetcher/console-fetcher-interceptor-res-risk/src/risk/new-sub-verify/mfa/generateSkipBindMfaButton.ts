@@ -12,18 +12,18 @@ import {
   IDialogDataNewSubAccountRisk,
   ITokenVerifyData,
   IPayloadSkipBindMfa
-} from '../../../../types';
+} from '../../../types';
 import {
   TICKET_TYPE
-} from '../../../../const';
+} from '../../../const';
 import {
   ESlsResultType
-} from '../../../../enum';
-import intl from '../../../../intl';
+} from '../../../enum';
+import intl from '../../../intl';
 import {
   slsSkipBindMfa,
   slsSubRisk
-} from '../../../../sls';
+} from '../../../sls';
 
 import {
   IParams

@@ -7,11 +7,11 @@ import {
 
 import {
   slsRiskInvalid
-} from '../../../sls';
+} from '../../sls';
 import {
   DEFAUT_DIALOG_SIZE
-} from '../../../const';
-import intl from '../../../intl';
+} from '../../const';
+import intl from '../../intl';
 
 interface IProps {
   newSubRisk: boolean;

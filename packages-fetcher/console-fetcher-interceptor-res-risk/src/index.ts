@@ -1,6 +1,7 @@
-import {
-  intercept
-} from './util';
+import type {
+  IFetcherInterceptorConfig
+} from './types';
+import intercept from './intercept';
 
 export default intercept;
 export {
@@ -11,4 +12,4 @@ export {
 
 export type {
   IFetcherInterceptorConfig as FetcherInterceptorConfig
-} from './types';
+};

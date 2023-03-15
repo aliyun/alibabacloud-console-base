@@ -6,7 +6,7 @@ import {
 import {
   IFetcherInterceptorConfig,
   ISubAccountRiskInfo
-} from '../../../../types';
+} from '../../../types';
 
 export interface IParams {
   request: FetcherFnRequest;

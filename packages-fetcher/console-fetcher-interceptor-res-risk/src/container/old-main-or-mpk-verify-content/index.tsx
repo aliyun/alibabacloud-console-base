@@ -23,8 +23,9 @@ import {
 } from '../../types';
 import {
   ALIYUN_APP_VERSION,
-  WINDVANE_ERROR_CODE,
-  ALIYUN_APP_DOWNLOAD_URL
+  ALIYUN_APP_URL_SETTING,
+  ALIYUN_APP_DOWNLOAD_URL,
+  WINDVANE_ERROR_CODE
 } from '../../const';
 import {
   EVerifyType
@@ -131,12 +132,13 @@ export default function Content(): JSX.Element {
       label: intlVerifyLabel(type),
       content: <Flex align="center">
         {detail ? <ScInfo>{detail}</ScInfo> : null}
-        <Button {...{
+        {/* 当风控类型为 MFA 且位于阿里云 APP 时，不展示 UrlSetting */}
+        {ALIYUN_APP_VERSION && type === EVerifyType.MFA ? null : <Button {...{
           spm: `set-${type}`,
           theme: ButtonTheme.TEXT_PRIMARY,
           label: intlVerifySetting(type),
-          href: URL_SETTINGS
-        }} />
+          href: ALIYUN_APP_VERSION ? ALIYUN_APP_URL_SETTING : URL_SETTINGS
+        }} />}
       </Flex>
     }, {
       labelWidth,

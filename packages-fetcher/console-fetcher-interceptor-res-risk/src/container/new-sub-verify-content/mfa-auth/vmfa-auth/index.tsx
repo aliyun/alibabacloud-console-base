@@ -78,7 +78,10 @@ export default function VmfaAuth(): JSX.Element {
   const handleInputChange = useCallback(code => {
     setStateInputEverChanged(true);
     setStateVmfaCode(code);
-  }, []);
+    updateData({
+      errorMessage: ''
+    });
+  }, [updateData]);
 
   const inputInnerRight = useMemo(() => {
     return <XIcon onClick={() => {

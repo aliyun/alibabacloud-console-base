@@ -12,9 +12,9 @@ import {
   IFetcherInterceptorConfig,
   IMainAccountRiskInfo,
   IDialogDataNewMainAccountRisk
-} from '../../../types';
-import intl from '../../../intl';
-import Content from '../../../container/new-main-verify-content';
+} from '../../types';
+import intl from '../../intl';
+import Content from '../../container/new-main-verify-content';
 
 interface IParams {
   request: FetcherFnRequest;

@@ -19,22 +19,23 @@ import {
   DEFAULT_RISK_CONFIG
 } from '../const';
 import intl from '../intl';
-
-import riskForbidden from './risk/forbidden';
-import riskInvalid from './risk/invalid';
-import riskOldMainVerify from './risk/old-main-verify';
-import riskMpkVerify from './risk/mpk-verify';
-import riskNewMainVerify from './risk/new-main-verify';
-import riskNewSubVerifyMfa from './risk/new-sub-verify/mfa';
-import convertRiskInfo from './convert-risk-info';
-import {
-  convertToRiskErrorForbidden,
-  convertToRiskErrorInvalid,
-  convertToRiskErrorCancelled
-} from './error';
 import {
   slsRiskStartUp
 } from '../sls';
+import {
+  riskForbidden,
+  riskInvalid,
+  riskMpkVerify,
+  riskNewMainVerify,
+  riskNewSubVerifyMfa,
+  riskOldMainVerify
+} from '../risk';
+import {
+  convertRiskInfo,
+  convertToRiskErrorForbidden,
+  convertToRiskErrorInvalid,
+  convertToRiskErrorCancelled
+} from '../util';
 
 /**
  * 根据业务错误 code 为基础的 fetcher 添加风控流程（老版本主账号风控）

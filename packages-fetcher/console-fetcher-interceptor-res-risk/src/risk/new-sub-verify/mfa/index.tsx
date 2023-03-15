@@ -8,23 +8,25 @@ import {
 import {
   IDialogDataNewSubAccountRisk,
   IGetBindMfaInfoResponse
-} from '../../../../types';
+} from '../../../types';
 import {
   EStep,
   ESlsResultType,
   ESubMfaDeviceType
-} from '../../../../enum';
+} from '../../../enum';
 import {
   DEFAUT_DIALOG_SIZE,
   WEBAUTHN_KEY_TYPE
-} from '../../../../const';
-import intl from '../../../../intl';
-import Content from '../../../../container/new-sub-verify-content';
-import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
-import getAuthMfaInfo from '../../../get-auth-mfa-info';
+} from '../../../const';
+import intl from '../../../intl';
+import Content from '../../../container/new-sub-verify-content';
 import {
   slsSubRiskGetMfaInfo
-} from '../../../../sls';
+} from '../../../sls';
+import {
+  getAuthMfaInfo,
+  generateAuthMfaInfoFailDialog
+} from '../../../util';
 
 import {
   IParams,

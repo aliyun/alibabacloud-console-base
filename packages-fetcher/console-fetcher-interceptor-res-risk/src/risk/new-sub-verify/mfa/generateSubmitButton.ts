@@ -14,20 +14,22 @@ import {
   TBindMfaPayload,
   TPayloadVerifyMfa,
   ISubAccountRiskInfo
-} from '../../../../types';
+} from '../../../types';
 import {
   EStep,
   ESlsResultType
-} from '../../../../enum';
-import intl from '../../../../intl';
+} from '../../../enum';
+import intl from '../../../intl';
 import {
   slsSubRisk,
   slsSubRiskAuthMfa,
   slsSubRiskBindMfa,
   slsSubRiskGetMfaInfo
-} from '../../../../sls';
-import generateAuthMfaInfoFailDialog from '../../../generate-auth-mfa-info-fail-dialog';
-import getAuthMfaInfo from '../../../get-auth-mfa-info';
+} from '../../../sls';
+import {
+  getAuthMfaInfo,
+  generateAuthMfaInfoFailDialog
+} from '../../../util';
 
 import {
   ESubmitType,

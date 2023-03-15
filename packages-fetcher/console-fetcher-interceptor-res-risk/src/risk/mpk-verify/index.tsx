@@ -20,23 +20,23 @@ import {
   IMpkRisk,
   IMpkRiskInfo,
   IPayloadVerifyMpk
-} from '../../../types';
+} from '../../types';
 import {
   EAccountType,
   ESlsResultType
-} from '../../../enum';
+} from '../../enum';
 import {
   TICKET_TYPE
-} from '../../../const';
-import intl from '../../../intl';
-import {
-  intlVerifyTitle
-} from '../../intl-verify';
+} from '../../const';
+import intl from '../../intl';
 import {
   slsVerifyMpk,
   slsMpkRisk
-} from '../../../sls';
-import Content from '../../../container/old-main-or-mpk-verify-content';
+} from '../../sls';
+import Content from '../../container/old-main-or-mpk-verify-content';
+import {
+  intlVerifyTitle
+} from '../../util';
 
 interface IParams {
   request: FetcherFnRequest;

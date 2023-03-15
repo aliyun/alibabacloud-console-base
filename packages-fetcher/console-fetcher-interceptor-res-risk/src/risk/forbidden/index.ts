@@ -4,11 +4,11 @@ import {
 
 import {
   slsRiskForbidden
-} from '../../../sls';
+} from '../../sls';
 import {
   DEFAUT_DIALOG_SIZE
-} from '../../../const';
-import intl from '../../../intl';
+} from '../../const';
+import intl from '../../intl';
 
 /**
  * 风控 - 操作中止
