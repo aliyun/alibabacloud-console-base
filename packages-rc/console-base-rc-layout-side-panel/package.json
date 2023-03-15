@@ -41,7 +41,7 @@
     "@alicloud/console-base-intl-factory-basic": "^1.6.8",
     "@alicloud/console-base-rc-button": "^1.7.10",
     "@alicloud/console-base-rc-flex": "^1.4.10",
-    "@alicloud/console-base-rc-html-trusted": "^1.0.3",
+    "@alicloud/console-base-rc-html-trusted": "^1.0.4",
     "@alicloud/console-base-rc-icon": "^1.10.3",
     "@alicloud/console-base-rc-marks": "^1.7.8",
     "@alicloud/console-base-rc-tooltip": "^1.1.11",
