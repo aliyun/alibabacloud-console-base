@@ -3,7 +3,7 @@ import React from 'react';
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
-  DATA_ATTR_KEY_MENU
+  DATA_KEY_J_MENU
 } from '../../const';
 import {
   useMenuItems
@@ -17,7 +17,7 @@ export default function Menus(): JSX.Element {
   
   return <Flex as="nav" {...{
     align: 'center',
-    [DATA_ATTR_KEY_MENU]: ''
+    [DATA_KEY_J_MENU]: ''
   }}>
     {menuItems.map(({
       key,

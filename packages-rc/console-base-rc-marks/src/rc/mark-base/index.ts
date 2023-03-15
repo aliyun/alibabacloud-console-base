@@ -4,9 +4,12 @@ import {
   mixinBorderTransparent
 } from '@alicloud/console-base-theme';
 
+/**
+ * 可扩展用
+ */
 export default styled.span`
   display: inline-block;
-  padding: 0 1px;
+  padding: 0 2px;
   line-height: 1.2;
   cursor: default;
   font-family: Arial, sans-serif;

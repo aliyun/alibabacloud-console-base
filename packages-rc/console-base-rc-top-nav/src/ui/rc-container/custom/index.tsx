@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
-  DATA_ATTR_KEY_CUSTOM_L,
-  DATA_ATTR_KEY_CUSTOM_R
+  DATA_KEY_J_CUSTOM_L,
+  DATA_KEY_J_CUSTOM_R
 } from '../../const';
 import {
   useProps
@@ -59,13 +59,13 @@ export default function Custom(): JSX.Element {
       className: customLeftClassName,
       align: 'center',
       justify: 'flex-start',
-      [DATA_ATTR_KEY_CUSTOM_L]: ''
+      [DATA_KEY_J_CUSTOM_L]: ''
     }}>{customLeft}</ScCustomL>
     <ScCustomR {...{
       className: customRightClassName,
       align: 'center',
       justify: 'flex-end',
-      [DATA_ATTR_KEY_CUSTOM_R]: ''
+      [DATA_KEY_J_CUSTOM_R]: ''
     }}>{customRight}</ScCustomR>
   </ScCustom>;
 }

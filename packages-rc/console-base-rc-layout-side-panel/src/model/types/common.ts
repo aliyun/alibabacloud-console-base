@@ -65,7 +65,7 @@ export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' 
   /**
    * 右上角 NEW 或 HOT，优先级低于 unread
    */
-  mark?: 'new' | 'hot';
+  mark?: 'NEW' | 'HOT';
   onMouseEnter?(): void;
   onMouseLeave?(): void;
   /**

@@ -14,7 +14,7 @@ import {
   useHandleDockMouseLeave
 } from '../../model';
 import {
-  DATA_ATTR_KEY_DOCK
+  DATA_KEY_J_DOCK
 } from '../const';
 import {
   hasNoActionPoint
@@ -40,7 +40,7 @@ export default function useDock(): ButtonProps | null {
       onMouseEnter: handleDockMouseEnter,
       onMouseLeave: handleDockMouseLeave,
       onClick: handleDockClick,
-      [DATA_ATTR_KEY_DOCK]: ''
+      [DATA_KEY_J_DOCK]: ''
     };
     
     delete buttonProps.onActiveChange;

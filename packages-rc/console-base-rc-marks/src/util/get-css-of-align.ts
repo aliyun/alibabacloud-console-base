@@ -14,6 +14,6 @@ export default function getCssOfAlign(align?: string): FlattenSimpleInterpolatio
         margin-left: 4px;
       `;
     default:
-      return null; // 默认 center center
+      return null; // 默认居中
   }
 }

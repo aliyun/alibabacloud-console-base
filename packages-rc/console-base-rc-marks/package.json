@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-marks",
-  "version": "1.7.8",
+  "version": "1.8.2",
   "description": "ConsoleBase 组件 - NEW、ALPHA、BETA 等小标签",
   "license": "MIT",
   "sideEffects": false,
@@ -20,9 +20,7 @@
     "access": "public"
   },
   "keywords": [
-    "console-base",
-    "rc",
-    "marks",
+    "mark",
     "new",
     "hot",
     "alpha",

@@ -12,7 +12,7 @@ import {
   useProps
 } from '../../../model';
 import {
-  DATA_ATTR_KEY_LOGO,
+  DATA_KEY_J_LOGO,
   PADDING_LOGO
 } from '../../const';
 import {
@@ -50,6 +50,6 @@ export default function Logo(): JSX.Element | null {
     ...logo,
     label: logo.label || <IconAliyun />,
     cursor: logo.onClick || logo.href ? 'pointer' : 'default',
-    [DATA_ATTR_KEY_LOGO]: ''
+    [DATA_KEY_J_LOGO]: ''
   }} /> : null;
 }

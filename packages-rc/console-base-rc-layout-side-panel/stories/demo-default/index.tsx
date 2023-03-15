@@ -10,7 +10,7 @@ import {
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import Icon from '@alicloud/console-base-rc-icon';
-import LayoutTopBar from '@alicloud/console-base-rc-layout-top-bar';
+import TopNav from '@alicloud/console-base-rc-top-nav';
 
 import LayoutSidePanel from '../../src';
 import {
@@ -43,7 +43,7 @@ export default function DemoDefault(): JSX.Element {
   
   return <>
     <GlobalStyleForTest />
-    {stateTopBar ? <LayoutTopBar /> : null}
+    {stateTopBar ? <TopNav /> : null}
     <LayoutSidePanel {...{
       itemsTop: [{
         key: 'icon-rc-icon',
@@ -100,7 +100,7 @@ export default function DemoDefault(): JSX.Element {
         title: '阿里雲',
         icon: '云',
         iconHovered: '雲',
-        mark: 'new',
+        mark: 'NEW',
         href: '//www.aliyun.com'
       }, {
         key: 'face',

@@ -8,6 +8,9 @@ import {
 } from '../model';
 
 import {
+  DATA_KEY_J
+} from './const';
+import {
   Aside,
   GlobalStyleOnBody
 } from './rc';
@@ -31,7 +34,10 @@ export default function Ui(): JSX.Element | null {
   const visible = useVisible();
   const collapsed = useCollapsed();
   
-  return visible ? <ScUi collapsed={collapsed}>
+  return visible ? <ScUi {...{
+    collapsed,
+    [DATA_KEY_J]: ''
+  }}>
     <GlobalStyleOnBody />
     <PanelItemsTop />
     <PanelItemsBottom />

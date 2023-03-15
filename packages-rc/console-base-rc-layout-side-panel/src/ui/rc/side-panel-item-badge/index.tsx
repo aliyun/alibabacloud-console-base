@@ -5,10 +5,7 @@ import {
   BadgeBaseDot,
   BadgeBaseNumber
 } from '@alicloud/console-base-theme-sc-base';
-import {
-  New,
-  Hot
-} from '@alicloud/console-base-rc-marks';
+import Mark from '@alicloud/console-base-rc-marks';
 
 import {
   SidePanelItemProps
@@ -24,17 +21,11 @@ const ScUnreadNumber = styled(BadgeBaseNumber)`
   top: 4px;
   right: 2px;
 `;
-const ScNew = styled(New)`
+const ScMark = styled(Mark)`
   position: absolute;
   top: 4px;
   right: 0;
-  transform: scale(0.8);
-`;
-const ScHot = styled(Hot)`
-  position: absolute;
-  top: 4px;
-  right: 0;
-  transform: scale(0.8);
+  transform: scale(0.75);
 `;
 
 /**
@@ -52,12 +43,8 @@ export default function SidePanelItemBadge({
     return <ScUnreadNumber>{unread < 100 ? unread : '99+'}</ScUnreadNumber>;
   }
   
-  if (mark === 'new') {
-    return <ScNew hollow />;
-  }
-  
-  if (mark === 'hot') {
-    return <ScHot hollow />;
+  if (mark === 'NEW' || mark === 'HOT') {
+    return <ScMark type={mark} borderRadius />;
   }
   
   return null;

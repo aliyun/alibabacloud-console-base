@@ -18,7 +18,7 @@ import {
 } from '../model';
 
 import {
-  DATA_ATTR_KEY
+  DATA_KEY_J
 } from './const';
 import {
   GlobalStyleForFixed,
@@ -68,7 +68,7 @@ export default function Ui(): JSX.Element {
       className: `${className || ''} J_fixed_right_will_be_pushed_left`.trim(), // 注意：和 micro-browser 有耦合，可以忍
       align: 'center',
       'data-spm': 'top-nav',
-      [DATA_ATTR_KEY]: ''
+      [DATA_KEY_J]: ''
     }}>
       <Flex align="center">
         <Dock />
