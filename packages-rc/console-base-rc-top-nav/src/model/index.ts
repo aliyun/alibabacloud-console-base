@@ -1,6 +1,7 @@
 export { default } from './provider';
 
 export * from './hook';
+export * from './helper';
 
 export type {
   IModelProps as ModelProps,
