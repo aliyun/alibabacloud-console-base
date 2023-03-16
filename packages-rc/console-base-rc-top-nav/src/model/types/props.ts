@@ -18,8 +18,8 @@ import {
 } from '@alicloud/console-base-rc-beacon';
 
 interface IModelPropsButtonLabel {
-  icon?: IconType;
-  iconRotate?: number;
+  // TODO 废弃 IconType 耦合太大
+  icon?: IconType | ReactElement;
   html?: string;
   text?: string | ReactElement;
   count?: number; // 展示个数

@@ -17,8 +17,10 @@ interface IProps {
   label: ModelPropsButton['label'];
 }
 
-const ScButtonIcon = styled(Icon)`
-  font-size: 16px;
+const ScIconWrap = styled.span`
+  i {
+    font-size: 16px;
+  }
 `;
 
 const ScIndicatorDot = styled.span`
@@ -59,7 +61,6 @@ export default function NavButtonLabel({
   if (label) {
     const {
       icon,
-      iconRotate,
       html,
       text,
       count = 0,
@@ -68,7 +69,7 @@ export default function NavButtonLabel({
     let jsxLabel: JSX.Element;
     
     if (icon) {
-      jsxLabel = <ScButtonIcon type={icon} rotate={iconRotate} />;
+      jsxLabel = <ScIconWrap>{isValidElement(icon) ? icon : <Icon type={icon} />}</ScIconWrap>;
     } else if (html) {
       jsxLabel = <span dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
         __html: html

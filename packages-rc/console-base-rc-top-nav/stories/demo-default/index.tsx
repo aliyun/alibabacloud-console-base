@@ -16,6 +16,7 @@ import {
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
+import Icon from '@alicloud/console-base-rc-icon';
 
 import TopNav from '../../src';
 import PkgInfo from '../pkg-info';
@@ -118,7 +119,7 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'menu-cart',
         label: {
-          icon: 'cart',
+          icon: <Icon type="cart" />,
           count: 123
         },
         href: '/cart'
