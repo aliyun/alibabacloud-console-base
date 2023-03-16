@@ -6,14 +6,16 @@ import React, {
 
 import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
 import HtmlTrusted from '@alicloud/console-base-rc-html-trusted';
+import {
+  renderEasyIcon
+} from '@alicloud/console-base-rc-easy-icon';
 
 import {
   SidePanelItemProps,
   useCollapsed
 } from '../../../model';
 import {
-  getValueByStatus,
-  renderItemIcon
+  getValueByStatus
 } from '../../util';
 import {
   SidePanelItemWrap,
@@ -88,7 +90,7 @@ export default function SidePanelItem({
       ...props,
       active,
       title,
-      label: renderItemIcon(finalIcon) || title,
+      label: renderEasyIcon(finalIcon) || title,
       onMouseEnter: handleMouseEnter,
       onClick: handleClick
     }} />

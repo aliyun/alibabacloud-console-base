@@ -1,9 +1,6 @@
 import React, {
   useState
 } from 'react';
-import {
-  createGlobalStyle
-} from 'styled-components';
 
 import {
   InputSwitch
@@ -11,6 +8,8 @@ import {
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import Icon from '@alicloud/console-base-rc-icon';
 import TopNav from '@alicloud/console-base-rc-top-nav';
+
+import './index.less';
 
 import LayoutSidePanel from '../../src';
 import {
@@ -23,17 +22,6 @@ import {
 } from '../rc';
 import PkgInfo from '../pkg-info';
 
-const GlobalStyleForTest = createGlobalStyle`
-  i.test {
-    font-style: normal;
-    color: #009;
-    
-    &:before {
-      content: '㉿';
-    }
-  }
-`;
-
 export default function DemoDefault(): JSX.Element {
   const [stateTopBar, setStateTopBar] = useState(true);
   const [stateChildrenAsItemsBottom, setStateChildrenAsItemsBottom] = useState(false);
@@ -42,7 +30,6 @@ export default function DemoDefault(): JSX.Element {
   const [stateApiInspectorVisible, setStateApiInspectorVisible] = useState(false);
   
   return <>
-    <GlobalStyleForTest />
     {stateTopBar ? <TopNav /> : null}
     <LayoutSidePanel {...{
       itemsTop: [{
@@ -93,7 +80,7 @@ export default function DemoDefault(): JSX.Element {
         key: 'icon-with-class',
         title: '测试 className 图标',
         icon: {
-          className: 'test'
+          className: 'test-icon-class'
         }
       }, {
         key: 'cloud',
