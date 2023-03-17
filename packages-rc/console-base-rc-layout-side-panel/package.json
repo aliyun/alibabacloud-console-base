@@ -22,7 +22,7 @@
   "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.8",
-    "@alicloud/console-base-rc-top-nav": "^1.15.4",
+    "@alicloud/console-base-rc-top-nav": "^1.15.5",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.11.6",
