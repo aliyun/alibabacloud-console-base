@@ -8,13 +8,13 @@ export {
 
 export type {
   ModelProps as TopNavProps,
-  ModelPropsButton as TopNavButtonProps,
-  ModelPropsButtonDropdown as TopNavButtonDropdownProps,
-  ModelPropsButtonDropdownItem as TopNavButtonDropdownItemProps,
-  ModelPropsDock as TopNavDockProps,
-  ModelPropsLogo as TopNavLogoProps,
-  ModelPropsHelp as TopNavHelpProps,
-  ModelPropsLanguage as TopNavLanguageProps,
-  ModelPropsLanguageItem as TopNavLanguageItemProps,
-  ModelPropsAccount as TopNavAccountProps
+  TopNavButtonProps,
+  TopNavButtonDropdownProps,
+  TopNavButtonDropdownItemProps,
+  TopNavDockProps,
+  TopNavLogoProps,
+  TopNavHelpProps,
+  TopNavLanguageProps,
+  TopNavLanguageItemProps,
+  TopNavAccountProps
 } from './model';

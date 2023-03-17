@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 
 import {
-  ModelPropsButton,
+  TopNavButtonProps,
   useProps
 } from '../../model';
 import {
@@ -14,7 +14,7 @@ import {
   AccountDisplay
 } from '../rc';
 
-export default function useMenuItemAccount(): ModelPropsButton | null {
+export default function useMenuItemAccount(): TopNavButtonProps | null {
   const {
     account
   } = useProps();

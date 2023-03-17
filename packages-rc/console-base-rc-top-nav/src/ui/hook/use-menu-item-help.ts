@@ -3,11 +3,11 @@ import {
 } from 'react';
 
 import {
-  ModelPropsButton,
+  TopNavButtonProps,
   useProps
 } from '../../model';
 
-export default function useMenuItemHelp(): ModelPropsButton | null {
+export default function useMenuItemHelp(): TopNavButtonProps | null {
   const {
     help
   } = useProps();

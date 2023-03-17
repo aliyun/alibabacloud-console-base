@@ -3,13 +3,16 @@ import React from 'react';
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
+import {
+  useDropdown
+} from '@alicloud/console-base-rc-dropdown';
 
 import {
-  ModelPropsButtonDropdownItem
+  TopNavButtonDropdownItemProps
 } from '../../../../model';
 
 interface IProps {
-  items: ModelPropsButtonDropdownItem[];
+  items: TopNavButtonDropdownItemProps[];
 }
 
 /**
@@ -18,19 +21,24 @@ interface IProps {
 export default function NavButtonItems({
   items
 }: IProps): JSX.Element {
+  const {
+    hideDrop
+  } = useDropdown();
+  
   return <>
     {items.map(({
       key,
-      label,
-      href,
-      onClick
-    }: ModelPropsButtonDropdownItem): JSX.Element => <Button {...{
+      onClick,
+      ...props
+    }: TopNavButtonDropdownItemProps): JSX.Element => <Button {...{
       key,
+      ...props,
       spm: key as string,
       theme: ButtonTheme.MENU,
-      label,
-      href,
-      onClick
+      onClick(e) {
+        onClick?.(e);
+        hideDrop();
+      }
     }} />)}
   </>;
 }

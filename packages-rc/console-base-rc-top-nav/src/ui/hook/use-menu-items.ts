@@ -3,7 +3,7 @@ import {
 } from 'react';
 
 import {
-  ModelPropsButton,
+  TopNavButtonProps,
   useProps,
   useHandleMenuDropdownVisibleChange
 } from '../../model';
@@ -12,7 +12,7 @@ import useMenuItemAccount from './use-menu-item-account';
 import useMenuItemLanguage from './use-menu-item-language';
 import useMenuItemHelp from './use-menu-item-help';
 
-export default function useMenuItems(): ModelPropsButton[] {
+export default function useMenuItems(): TopNavButtonProps[] {
   const {
     menus
   } = useProps();
@@ -21,12 +21,12 @@ export default function useMenuItems(): ModelPropsButton[] {
   const account = useMenuItemAccount();
   const handleMenuDropdownVisibleChange = useHandleMenuDropdownVisibleChange();
   
-  return useMemo((): ModelPropsButton[] => [
+  return useMemo((): TopNavButtonProps[] => [
     ...menus || [],
     help,
     language,
     account
-  ].reduce((result: ModelPropsButton[], v) => {
+  ].reduce((result: TopNavButtonProps[], v) => {
     if (!v) {
       return result;
     }

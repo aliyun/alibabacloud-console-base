@@ -3,12 +3,12 @@ import {
 } from 'react';
 
 import {
-  ModelPropsButton,
-  ModelPropsButtonDropdownItem,
+  TopNavButtonProps,
+  TopNavButtonDropdownItemProps,
   useProps
 } from '../../model';
 
-export default function useMenuItemLanguage(): ModelPropsButton | null {
+export default function useMenuItemLanguage(): TopNavButtonProps | null {
   const {
     language
   } = useProps();
@@ -31,7 +31,7 @@ export default function useMenuItemLanguage(): ModelPropsButton | null {
         icon: 'lang'
       },
       dropdown: {
-        items: items.reduce((result: ModelPropsButtonDropdownItem[], {
+        items: items.reduce((result: TopNavButtonDropdownItemProps[], {
           id,
           name
         }) => {

@@ -10,11 +10,11 @@ import {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
-  ModelPropsButton
+  TopNavButtonProps
 } from '../../../../model';
 
 interface IProps {
-  label: ModelPropsButton['label'];
+  label: TopNavButtonProps['label'];
 }
 
 const ScIconWrap = styled.span`
