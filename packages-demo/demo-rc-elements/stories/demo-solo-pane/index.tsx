@@ -5,7 +5,5 @@ import {
 } from '../../src';
 
 export default function DemoSoloPane(): JSX.Element {
-  return <SoloPane demo={<div>demo</div>}>
-    fuck
-  </SoloPane>;
+  return <SoloPane demo={<div>demo</div>}>demo 调试区</SoloPane>;
 }
