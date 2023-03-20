@@ -20,7 +20,9 @@ export default function DemoFormControl(): JSX.Element {
     <InputText placeholder="InputText" />
     <InputText placeholder="InputText - disabled" disabled />
     <InputText placeholder="InputText - block" block />
-    <Button>一个 Button</Button>
+    <Button>真 Button</Button>
+    <Button href="#hello">链接 Button（相对 URL）</Button>
+    <Button href="//www.aliyun.com">链接 Button（绝对 URL）</Button>
     <Button disabled>一个 disabled Button</Button>
     <InputTextarea placeholder="InputTextarea" />
     <InputSwitch label="label as a prop" />

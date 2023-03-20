@@ -133,12 +133,12 @@ export const CSS_FORM_CONTROL_BASE = css`
   color: ${COLOR_FORM_CONTROL.FGC};
   transition: all 0.3s ease-in-out;
   ${CSS_FONT_FAMILY}
-
+  
   .theme-dark & {
     border-color: ${COLOR_FORM_CONTROL_DARK.BDC};
     color: ${COLOR_FORM_CONTROL_DARK.FGC};
   }
-
+  
   &:hover {
     border-color: ${COLOR_FORM_CONTROL.BDC_HOVER};
     
@@ -146,7 +146,7 @@ export const CSS_FORM_CONTROL_BASE = css`
       border-color: ${COLOR_FORM_CONTROL_DARK.BDC_HOVER};
     }
   }
-
+  
   &:focus {
     border-color: ${COLOR_FORM_CONTROL.BDC_FOCUS};
     outline: none;

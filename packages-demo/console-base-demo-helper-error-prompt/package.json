@@ -37,7 +37,7 @@
   "dependencies": {
     "@alicloud/console-base-intl-factory": "^1.6.8",
     "@alicloud/console-base-rc-dialog": "^1.10.2",
-    "@alicloud/demo-rc-elements": "^1.11.7"
+    "@alicloud/demo-rc-elements": "^1.11.8"
   },
   "scripts": {
     "start": "breezr start-storybook",
