@@ -11,6 +11,7 @@ import pkgInfo from '../package.json';
 import DemoDefault from './demo-default';
 import DemoFormControl from './demo-form-control';
 import DemoContainer from './demo-container';
+import DemoSoloPane from './demo-solo-pane';
 import DemoTable from './demo-table';
 import DemoExtended from './demo-extended';
 import DemoCodeViewer from './demo-code-viewer';
@@ -23,6 +24,7 @@ storiesOf(pkgInfo.name, module)
     .add('default', () => <DemoDefault />)
     .add('form-control', () => <DemoFormControl />)
     .add('container', () => <DemoContainer />)
+    .add('solo-pane', () => <DemoSoloPane />)
     .add('table', () => <DemoTable />)
     .add('extended', () => <DemoExtended />)
     .add('code-viewer', () => <DemoCodeViewer />)

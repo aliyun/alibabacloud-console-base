@@ -45,6 +45,7 @@ export { default as Alert } from './alert';
 export { default as Table } from './table';
 export { default as Flex } from './flex';
 export { default as Flex100HBF } from './flex-100hbf';
+export { default as SoloPane } from './solo-pane';
 
 /* placeholders */
 export { default as LongArticle } from './long-article';
