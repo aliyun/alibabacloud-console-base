@@ -1,11 +1,6 @@
 export { default as MinimalNormalize } from './minimal-normalize';
 /* block elements */
-export {
-  H1,
-  H2,
-  H3,
-  H4
-} from './h1234';
+export * from './h1234';
 export { default as P } from './p';
 export { default as Blockquote } from './blockquote';
 export { default as List } from './list';

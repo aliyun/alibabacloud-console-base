@@ -29,7 +29,7 @@
     "@alicloud/console-base-theme-sc-base": "^1.6.1",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.11.8",
+    "@alicloud/demo-rc-elements": "^1.11.9",
     "@alicloud/ts-config": "^1.1.2",
     "@types/react": "^17.0.48",
     "micromark-extension-math": "^2.0.2",
