@@ -30,7 +30,7 @@ function getDefaultTarget(href: string): '_blank' | undefined {
   }
 }
 
-interface IProps extends HTMLAttributes<HTMLElement> {
+interface IProps extends HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   href?: string;
   target?: string;
@@ -44,5 +44,9 @@ export default function Button({
 }: IProps): JSX.Element {
   const resolvedHref = disabled ? undefined : href;
   
-  return resolvedHref ? <ScButtonA {...props} href={resolvedHref} target={target ?? getDefaultTarget(resolvedHref)} /> : <ScButton {...props} disabled={disabled} />;
+  return resolvedHref ? <ScButtonA {...{
+    ...props as HTMLAttributes<HTMLAnchorElement>,
+    href: resolvedHref,
+    target: target ?? getDefaultTarget(resolvedHref)
+  }} /> : <ScButton {...props} disabled={disabled} />;
 }

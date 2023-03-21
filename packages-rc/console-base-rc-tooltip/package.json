@@ -28,7 +28,7 @@
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.8",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.11.10",
+    "@alicloud/demo-rc-elements": "^1.11.11",
     "@alicloud/ts-config": "^1.1.2",
     "@types/react": "^17.0.48",
     "@types/react-transition-group": "^4.4.5",
