@@ -25,7 +25,7 @@
     "@alicloud/console-base-rc-top-nav": "^1.15.5",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.11.11",
+    "@alicloud/demo-rc-elements": "^1.11.12",
     "@alicloud/ts-config": "^1.1.2",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",

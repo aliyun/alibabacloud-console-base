@@ -1,5 +1,5 @@
 import React, {
-  HTMLAttributes
+  ButtonHTMLAttributes
 } from 'react';
 import styled from 'styled-components';
 
@@ -30,8 +30,7 @@ function getDefaultTarget(href: string): '_blank' | undefined {
   }
 }
 
-interface IProps extends HTMLAttributes<HTMLButtonElement> {
-  disabled?: boolean;
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   target?: string;
 }
@@ -45,7 +44,7 @@ export default function Button({
   const resolvedHref = disabled ? undefined : href;
   
   return resolvedHref ? <ScButtonA {...{
-    ...props as HTMLAttributes<HTMLAnchorElement>,
+    ...props as ButtonHTMLAttributes<HTMLAnchorElement>,
     href: resolvedHref,
     target: target ?? getDefaultTarget(resolvedHref)
   }} /> : <ScButton {...props} disabled={disabled} />;
