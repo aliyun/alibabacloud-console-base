@@ -41,6 +41,7 @@ const ScRight = styled.div`
   bottom: 0;
   z-index: 200;
   border: 12px solid rgb(109, 90, 207, 0.8);
+  box-sizing: border-box;
   background-clip: content-box;
   overflow: auto;
   transition: all linear 200ms;

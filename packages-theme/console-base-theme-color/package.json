@@ -22,7 +22,7 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.11.13",
+    "@alicloud/demo-rc-elements": "^1.11.14",
     "@alicloud/ts-config": "^1.1.2",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",

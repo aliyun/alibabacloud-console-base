@@ -25,6 +25,10 @@ export interface IFactoryOptions {
    */
   apiVersion?: string;
   /**
+   * 当希望同一个模块的日志使用统一的前缀，又不想每次调用的时候写，可以用这个
+   */
+  topicPrefix?: string;
+  /**
    * 生产出的日志方法的整体采样率，可在调用时由方法参数覆盖，范围为 (0, 1]，默认 1
    */
   sampling?: number;
@@ -32,10 +36,6 @@ export interface IFactoryOptions {
    * 生产出的日志方法的整体延时，可在调用时由方法参数覆盖，单位 ms
    */
   delay?: number;
-  /**
-   * 当希望同一个模块的日志使用统一的前缀，又不想每次调用的时候写，可以用这个
-   */
-  topicPrefix?: string;
   /**
    * 默认参数，避免每次都要传，可以是静态数据或产生动态数据的方法，这些参数可以覆盖自动记录的参数，
    * 但会被日志方法的第二个参数 `params` 中对应的字段覆盖
@@ -53,6 +53,10 @@ export interface IFactoryOptions {
  * sls 快捷方法额外参数
  */
 export interface ILogOptionsQuick {
+  /**
+   * 覆盖 IFactoryOptions 的 topicPrefix 设置，仅针对当前日志
+   */
+  topicPrefix?: string;
   /**
    * 覆盖 IFactoryOptions 的 sampling 设置，仅针对当前日志
    */
