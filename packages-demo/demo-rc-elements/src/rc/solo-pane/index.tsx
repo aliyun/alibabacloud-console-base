@@ -1,3 +1,4 @@
+import _map from 'lodash/map';
 import React, {
   HTMLAttributes,
   useState
@@ -9,9 +10,24 @@ import {
 } from '../choice-group';
 import Hr from '../hr';
 
-const DATA_SOURCE_WIDTH = [240, 320, 400, 480, 560, 720].map(value => ({
-  label: `${value}px`,
-  value
+type TSize = 'xs' | 's' | 'm' | 'l' | 'xl';
+
+interface IProps extends HTMLAttributes<HTMLDivElement> {
+  size?: TSize;
+  demo: JSX.Element;
+}
+
+const SIZE_MAPPING: Record<TSize, number> = {
+  xs: 240,
+  s: 320,
+  m: 480,
+  l: 560,
+  xl: 720
+};
+
+const DATA_SOURCE_SIZE = _map(SIZE_MAPPING, (v, k) => ({
+  value: k as TSize,
+  label: `${k} - ${v}`
 }));
 
 const ScAdjustWidth = styled.div`
@@ -24,7 +40,7 @@ const ScRight = styled.div`
   right: 0;
   bottom: 0;
   z-index: 200;
-  border: 8px solid rgba(128, 0, 255, 0.6);
+  border: 12px solid rgb(109, 90, 207, 0.8);
   background-clip: content-box;
   overflow: auto;
   transition: all linear 200ms;
@@ -35,37 +51,35 @@ const ScRight = styled.div`
   }
 `;
 
-interface IProps extends HTMLAttributes<HTMLDivElement> {
-  demo: JSX.Element;
-}
-
 /**
  * 专门用于测试微内容（文档、教程、实验室、搜索等）的容器，左边是测试辅助内容，右边是待测试组件
  */
 export default function SoloPane({
   children,
+  size = 'm',
   demo
 }: IProps): JSX.Element {
-  const [stateWidth, setStateWidth] = useState<number>(480);
+  const [stateSize, setStateSize] = useState<TSize>(size);
+  const width = SIZE_MAPPING[stateSize] || SIZE_MAPPING.m;
   
   return <div {...{
     style: {
-      paddingRight: stateWidth
+      paddingRight: width
     }
   }}>
     <ScAdjustWidth>
-      <RadioGroup<number> {...{
+      <RadioGroup<TSize> {...{
         label: '宽度',
-        items: DATA_SOURCE_WIDTH,
-        value: stateWidth,
-        onChange: setStateWidth
+        items: DATA_SOURCE_SIZE,
+        value: stateSize,
+        onChange: setStateSize
       }} />
       <Hr />
       {children}
     </ScAdjustWidth>
     <ScRight {...{
       style: {
-        width: stateWidth
+        width
       }
     }}>
       {demo}

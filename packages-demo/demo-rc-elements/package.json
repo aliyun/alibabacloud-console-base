@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/demo-rc-elements",
-  "version": "1.11.12",
+  "version": "1.11.13",
   "description": "仅用于 demo 的组件，为了好看和方便，切不可用于生产",
   "license": "MIT",
   "sideEffects": false,
