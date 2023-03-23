@@ -38,6 +38,7 @@ export default styled.article`
   h3,
   h4,
   h5,
+  h6,
   blockquote,
   fieldset,
   figure {
@@ -58,13 +59,23 @@ export default styled.article`
   h2,
   h3,
   h4,
-  h5 {
+  h5,
+  h6 {
+    margin: 2em 0 0.75em 0;
     font-weight: 600;
     ${mixinTextPrimary}
+  
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   
   h1 {
     font-size: 1.75em;
+    
+    &:first-child {
+      margin-top: 0;
+    }
   }
   
   h2 {
@@ -72,10 +83,18 @@ export default styled.article`
   }
   
   h3 {
-    font-size: 1.2em;
+    font-size: 1.35em;
   }
   
   h4 {
+    font-size: 1.2em;
+  }
+  
+  h5 {
+    font-size: 1.1em;
+  }
+  
+  h6 {
     font-size: 1em;
   }
   
@@ -189,11 +208,6 @@ export default styled.article`
   
   p,
   section,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
   pre,
   table,
   blockquote,
