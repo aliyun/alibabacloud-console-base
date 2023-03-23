@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@alicloud/console-base-theme": "^1.9.2",
-    "@alicloud/console-base-theme-sc-base": "^1.6.2",
+    "@alicloud/console-base-theme-sc-base": "^1.6.3",
     "@alicloud/mere-dom": "^1.6.10",
     "@alicloud/react-hook-is-unmounted": "^1.3.3",
     "@alicloud/typescript-missing-helpers": "^1.3.3",

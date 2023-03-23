@@ -61,7 +61,7 @@ export default styled.article`
   h4,
   h5,
   h6 {
-    margin: 2em 0 0.75em 0;
+    margin: 1.6em 0 0.6em 0;
     font-weight: 600;
     ${mixinTextPrimary}
   
