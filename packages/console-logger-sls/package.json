@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-logger-sls",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "SLS logger factory for console",
   "license": "MIT",
   "sideEffects": false,
@@ -27,17 +27,17 @@
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
-    "@alicloud/demo-rc-elements": "^1.11.15",
-    "@alicloud/ts-config": "^1.1.2",
+    "@alicloud/demo-rc-elements": "^1.11.16",
+    "@alicloud/ts-config": "^1.1.3",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@alicloud/console-base-conf-account": "^1.5.8",
-    "@alicloud/console-base-conf-env": "^1.6.8",
-    "@alicloud/console-base-conf-locale": "^1.8.8",
-    "@alicloud/logger-sls": "^1.13.1"
+    "@alicloud/console-base-conf-account": "^1.5.9",
+    "@alicloud/console-base-conf-env": "^1.6.9",
+    "@alicloud/console-base-conf-locale": "^1.8.9",
+    "@alicloud/logger-sls": "^1.13.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
