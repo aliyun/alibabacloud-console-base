@@ -1,5 +1,7 @@
-import _isString from 'lodash/isString';
-import _isPlainObject from 'lodash/isPlainObject';
+import {
+  isString as _isString,
+  isPlainObject as _isPlainObject
+} from 'lodash-es';
 import React, {
   isValidElement
 } from 'react';

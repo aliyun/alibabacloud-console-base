@@ -31,14 +31,14 @@
     "@alicloud/demo-rc-elements": "^1.11.15",
     "@alicloud/fetcher-demo-helpers": "^1.4.9",
     "@alicloud/ts-config": "^1.1.2",
-    "@types/lodash": "^4.14.191",
+    "@types/lodash-es": "^4.17.7",
     "@types/react": "^17.0.48",
     "react": "^17.0.2",
     "typescript": "^4.9.5"
   },
   "dependencies": {
     "@alicloud/fetcher": "^1.7.8",
-    "lodash": "^4.17.21"
+    "lodash-es": "^4.17.21"
   },
   "scripts": {
     "start": "breezr start-storybook",

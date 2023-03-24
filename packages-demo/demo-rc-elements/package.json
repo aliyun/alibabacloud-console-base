@@ -24,7 +24,7 @@
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/ts-config": "^1.1.2",
-    "@types/lodash": "^4.14.191",
+    "@types/lodash-es": "^4.17.7",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
@@ -39,7 +39,7 @@
     "@alicloud/rc-codemirror": "^1.4.4",
     "@alicloud/react-hook-controllable": "^1.0.2",
     "json5": "^2.2.3",
-    "lodash": "^4.17.21"
+    "lodash-es": "^4.17.21"
   },
   "scripts": {
     "start": "breezr start-storybook",

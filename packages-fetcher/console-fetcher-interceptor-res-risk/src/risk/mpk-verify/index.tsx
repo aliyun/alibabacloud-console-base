@@ -1,6 +1,8 @@
+import {
+  omit as _omit,
+  pick as _pick
+} from 'lodash-es';
 import React from 'react';
-import _omit from 'lodash/omit';
-import _pick from 'lodash/pick';
 
 import {
   FetcherError,

@@ -1,4 +1,6 @@
-import _map from 'lodash/map';
+import {
+  map as _map
+} from 'lodash-es';
 import React, {
   HTMLAttributes,
   useState

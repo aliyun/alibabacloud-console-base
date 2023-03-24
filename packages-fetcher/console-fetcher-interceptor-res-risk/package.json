@@ -33,7 +33,7 @@
     "@alicloud/fetcher-demo-helpers": "^1.4.9",
     "@alicloud/ts-config": "^1.1.2",
     "@simplewebauthn/typescript-types": "^4.0.0",
-    "@types/lodash": "^4.14.191",
+    "@types/lodash-es": "^4.17.7",
     "@types/qrcode.react": "^1.0.2",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
@@ -61,7 +61,7 @@
     "@alicloud/sandbox-escape": "^1.1.7",
     "@simplewebauthn/browser": "^4.1.0",
     "compare-versions": "^5.0.3",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "qrcode.react": "^3.1.0"
   },
   "scripts": {

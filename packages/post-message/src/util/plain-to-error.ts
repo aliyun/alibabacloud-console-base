@@ -1,5 +1,7 @@
-import _isPlainObject from 'lodash/isPlainObject';
-import _forEach from 'lodash/forEach';
+import {
+  isPlainObject as _isPlainObject,
+  forEach as _forEach
+} from 'lodash-es';
 
 export default function plainToError(o: Record<string, unknown>): Error {
   if (!_isPlainObject(o)) {

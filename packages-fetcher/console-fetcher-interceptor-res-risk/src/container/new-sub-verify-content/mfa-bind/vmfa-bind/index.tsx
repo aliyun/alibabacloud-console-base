@@ -22,8 +22,8 @@ import {
 import intl from '../../../../intl';
 import Message from '../../_components/message';
 
-import VMfaBindInfo from './vmfa-bind-info';
-import VMfaBindForm from './vmfa-bind-form';
+import VmfaBindInfo from './vmfa-bind-info';
+import VmfaBindForm from './vmfa-bind-form';
 
 interface IProps {
   hasTopMargin?: boolean;
@@ -44,7 +44,7 @@ const ScDiv = styled.div`
   ${mixinTextPrimary}
 `;
 
-export default function VMfaBind(): JSX.Element {
+export default function VmfaBind(): JSX.Element {
   const {
     data: {
       errorMessage
@@ -58,11 +58,11 @@ export default function VMfaBind(): JSX.Element {
     }} /> : null}
     <ScWrapper>
       <ScDiv>{intl('message:vmfa_bind_step1')}</ScDiv>
-      <VMfaBindInfo />
+      <VmfaBindInfo />
     </ScWrapper>
     <ScWrapper hasTopMargin>
       <ScDiv>{intl('message:vmfa_bind_step2')}</ScDiv>
-      <VMfaBindForm />
+      <VmfaBindForm />
     </ScWrapper>
   </>;
 }

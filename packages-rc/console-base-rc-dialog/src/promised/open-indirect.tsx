@@ -1,4 +1,6 @@
-import _noop from 'lodash/noop';
+import {
+  noop as _noop
+} from 'lodash-es';
 import React from 'react';
 import {
   render,
@@ -97,7 +99,7 @@ export default function openIndirect<T = void, D = TDialogData>(contentOrProps?:
      * Dialog 被关闭是会执行到此回调，这里会将 Promise 进行 resolve 或 reject，同时做一系列的清理动作
      */
     close = (result?: T | Error, rejected?: boolean) => {
-      if (!holder || !holder.parentElement) {
+      if (!holder?.parentElement) {
         return;
       }
       

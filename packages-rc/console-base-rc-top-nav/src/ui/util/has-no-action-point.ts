@@ -1,5 +1,7 @@
-import _some from 'lodash/some';
-import _isFunction from 'lodash/isFunction';
+import {
+  isFunction as _isFunction,
+  some as _some
+} from 'lodash-es';
 
 import {
   ButtonProps

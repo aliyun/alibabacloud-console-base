@@ -27,7 +27,7 @@ import {
   getInputError
 } from '../../../../../util';
 
-export default function VMfaBindForm(): JSX.Element {
+export default function VmfaBindForm(): JSX.Element {
   const {
     data: {
       subRiskInfo: {

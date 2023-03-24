@@ -1,5 +1,7 @@
-import _get from 'lodash/get';
-import _isUndefined from 'lodash/isUndefined';
+import {
+  isUndefined as _isUndefined,
+  get as _get
+} from 'lodash-es';
 
 import {
   FetcherConfig

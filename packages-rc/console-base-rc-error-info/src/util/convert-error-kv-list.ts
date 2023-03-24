@@ -1,6 +1,8 @@
-import _forEach from 'lodash/forEach';
-import _isFunction from 'lodash/isFunction';
-import _snakeCase from 'lodash/snakeCase';
+import {
+  isFunction as _isFunction,
+  forEach as _forEach,
+  snakeCase as _snakeCase
+} from 'lodash-es';
 
 import {
   IErrorPlain,

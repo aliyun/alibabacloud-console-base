@@ -26,7 +26,7 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.11.15",
     "@alicloud/ts-config": "^1.1.2",
-    "@types/lodash": "^4.14.191",
+    "@types/lodash-es": "^4.17.7",
     "@types/qs": "^6.9.7",
     "@types/react": "^17.0.48",
     "@types/styled-components": "^5.1.26",
@@ -46,7 +46,7 @@
     "@alicloud/console-base-rc-icon": "^1.10.3",
     "@alicloud/console-base-theme": "^1.9.2",
     "@alicloud/react-hook-controllable": "^1.0.2",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "qs": "^6.11.1"
   },
   "scripts": {

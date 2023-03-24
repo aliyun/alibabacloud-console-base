@@ -1,4 +1,6 @@
-import _get from 'lodash/get';
+import {
+  get as _get
+} from 'lodash-es';
 import React, {
   useState
 } from 'react';
@@ -78,7 +80,7 @@ const ScManualContentDiv = styled.div<IManualProps>`
   `)}
 `;
 
-export default function VMfaBindInfo(): JSX.Element {
+export default function VmfaBindInfo(): JSX.Element {
   const {
     data: {
       getBindMfaInfoData

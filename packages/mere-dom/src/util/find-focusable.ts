@@ -1,4 +1,6 @@
-import _filter from 'lodash/filter';
+import {
+  filter as _filter
+} from 'lodash-es';
 
 import isFocusable from './is-focusable';
 import isInputControl from './is-input-control';
