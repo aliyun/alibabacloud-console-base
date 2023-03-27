@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  SIZE
+  SIZE,
+  mixinTextBrand,
+  mixinBorderTertiaryRight,
+  mixinBorderTertiaryLeft
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonTheme
@@ -15,16 +18,20 @@ import {
   DATA_KEY_J_LOGO,
   PADDING_LOGO
 } from '../../const';
-import {
-  IconAliyun
-} from '../../rc';
 
-const ScLogo = styled(Button)`
+interface IScProps {
+  $bordered?: boolean;
+}
+
+const ScLogo = styled(Button)<IScProps>`
   padding: 0 ${PADDING_LOGO}px;
   height: ${SIZE.HEIGHT_TOP_NAV}px;
   line-height: ${SIZE.HEIGHT_TOP_NAV}px;
   font-size: 18px;
   font-weight: 600;
+  ${mixinTextBrand}
+  ${props => (props.$bordered ? mixinBorderTertiaryRight : null)}
+  ${props => (props.$bordered ? mixinBorderTertiaryLeft : null)}
   
   img,
   svg {
@@ -39,17 +46,25 @@ const ScLogo = styled(Button)`
 
 export default function Logo(): JSX.Element | null {
   const {
-    logo = {}
+    logo
   } = useProps();
   
-  return logo ? <ScLogo {...{
+  if (logo === null) {
+    return null;
+  }
+  
+  const {
+    bordered,
+    ...logoProps
+  } = logo || {};
+  
+  return <ScLogo {...{
+    ...logoProps,
+    $bordered: bordered,
     spm: 'logo',
-    responsive: false,
-    force: true,
-    theme: ButtonTheme.TEXT_BRAND_PRIMARY,
-    ...logo,
-    label: logo.label || <IconAliyun />,
-    cursor: logo.onClick || logo.href ? 'pointer' : 'default',
+    theme: ButtonTheme.NONE,
+    label: logoProps.label || 'Logo',
+    cursor: logoProps.onClick || logoProps.href ? 'pointer' : 'default',
     [DATA_KEY_J_LOGO]: ''
-  }} /> : null;
+  }} />;
 }

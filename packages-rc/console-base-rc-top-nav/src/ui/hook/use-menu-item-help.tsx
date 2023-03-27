@@ -1,6 +1,8 @@
-import {
+import React, {
   useMemo
 } from 'react';
+
+import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   TopNavButtonProps,
@@ -34,7 +36,7 @@ export default function useMenuItemHelp(): TopNavButtonProps | null {
     return {
       key: 'help',
       label: {
-        icon: 'help-circle'
+        icon: <Icon type="help-circle" />
       },
       href,
       title

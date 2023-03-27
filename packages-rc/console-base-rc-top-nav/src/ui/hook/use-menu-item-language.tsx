@@ -1,6 +1,8 @@
-import {
+import React, {
   useMemo
 } from 'react';
+
+import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   TopNavButtonProps,
@@ -27,9 +29,7 @@ export default function useMenuItemLanguage(): TopNavButtonProps | null {
   
     return {
       key: 'lang',
-      label: currentLang ? currentLang.nameShort || currentLang.name : {
-        icon: 'lang'
-      },
+      label: currentLang ? currentLang.nameShort || currentLang.name : <Icon type="lang" />,
       dropdown: {
         items: items.reduce((result: TopNavButtonDropdownItemProps[], {
           id,
@@ -38,7 +38,7 @@ export default function useMenuItemLanguage(): TopNavButtonProps | null {
           if (id === current) { // 忽略当前语言
             return result;
           }
-        
+          
           result.push({
             key: id,
             label: name,
@@ -46,7 +46,7 @@ export default function useMenuItemLanguage(): TopNavButtonProps | null {
               onChange?.(id);
             }
           });
-        
+          
           return result;
         }, [])
       }

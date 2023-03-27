@@ -7,7 +7,6 @@ import {
   mixinTextEmphasis,
   mixinBgBrand
 } from '@alicloud/console-base-theme';
-import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   TopNavButtonProps
@@ -69,7 +68,7 @@ export default function NavButtonLabel({
     let jsxLabel: JSX.Element;
     
     if (icon) {
-      jsxLabel = <ScIconWrap>{isValidElement(icon) ? icon : <Icon type={icon} />}</ScIconWrap>;
+      jsxLabel = <ScIconWrap>{icon}</ScIconWrap>;
     } else if (html) {
       jsxLabel = <span dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
         __html: html

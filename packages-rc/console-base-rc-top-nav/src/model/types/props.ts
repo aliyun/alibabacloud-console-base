@@ -16,10 +16,6 @@ export interface IModelProps extends HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
   dock?: ITopNavDockProps | null; // 程序坞
   logo?: ITopNavLogoProps | null;
-  /**
-   * 贴近 logo 的较固定的部分，与 logo 之间会有一条小竖线分隔，当没有 logo 的时候，它也不会有
-   */
-  logoExtra?: JSX.Element | null;
   menus?: (ITopNavButtonProps | null)[] | null;
   help?: string | ITopNavHelpProps; // 帮助文档配置，menu 的特化配置
   language?: ITopNavLanguageProps | null; // 语言，menu 的特化配置

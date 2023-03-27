@@ -24,7 +24,6 @@ import {
   GlobalStyleForFixed,
   Dock,
   Logo,
-  LogoExtra,
   Menus,
   Custom
 } from './rc-container';
@@ -73,7 +72,6 @@ export default function Ui(): JSX.Element {
       <Flex align="center">
         <Dock />
         <Logo />
-        <LogoExtra />
       </Flex>
       <Custom />
       <Menus />

@@ -6,9 +6,6 @@ import {
   ButtonProps
 } from '@alicloud/console-base-rc-button';
 import {
-  IconType
-} from '@alicloud/console-base-rc-icon';
-import {
   DropdownProps
 } from '@alicloud/console-base-rc-dropdown';
 import {
@@ -16,7 +13,7 @@ import {
 } from '@alicloud/console-base-rc-beacon';
 
 interface ITopNavButtonPropsLabel {
-  icon?: IconType | ReactElement; // TODO 废弃 IconType 耦合太大
+  icon?: ReactElement;
   html?: string;
   text?: string | ReactElement;
   count?: number; // 展示个数
@@ -42,10 +39,16 @@ export interface ITopNavButtonProps extends Omit<Partial<ButtonProps>, 'label'> 
   beacon?: BeaconProps;
 }
 
-export interface ITopNavLogoProps extends ButtonProps {}
-
-export interface ITopNavDockProps extends Partial<ButtonProps> {
+export interface ITopNavDockProps {
+  active?: boolean;
   onActiveChange?(active: boolean): void;
+}
+
+export interface ITopNavLogoProps extends Omit<ButtonProps, 'theme' | 'size'> {
+  /**
+   * 将在 logo 按钮两侧添加边框
+   */
+  bordered?: boolean;
 }
 
 export interface ITopNavHelpProps {

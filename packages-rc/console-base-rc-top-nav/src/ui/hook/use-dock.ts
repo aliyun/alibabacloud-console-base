@@ -16,9 +16,6 @@ import {
 import {
   DATA_KEY_J_DOCK
 } from '../const';
-import {
-  hasNoActionPoint
-} from '../util';
 
 export default function useDock(): ButtonProps | null {
   const {
@@ -30,7 +27,7 @@ export default function useDock(): ButtonProps | null {
   const handleDockMouseLeave = useHandleDockMouseLeave();
   
   return useMemo((): ButtonProps | null => {
-    if (hasNoActionPoint(dock)) {
+    if (!dock?.onActiveChange) {
       return null;
     }
     

@@ -16,7 +16,7 @@ const ScCustom = styled(Flex)`
   height: 100%;
 `;
 const ScCustomL = styled(Flex)`
-  margin-right: 12px;
+  margin: 0 12px;
   height: 100%;
   
   /* stylelint-disable selector-max-universal */

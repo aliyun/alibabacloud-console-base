@@ -59,13 +59,10 @@ export default function DemoDefault(): JSX.Element {
         active: stateActive,
         onActiveChange: handleActiveChange // 只有含 onXx 或 href 才可以展示
       },
-      // logo,
-      logoExtra: <ScHome {...{
-        spm: 'console-home',
-        label: 'Home',
-        iconLeft: 'home',
-        theme: ButtonTheme.TERTIARY_ALT
-      }} />,
+      logo: {
+        bordered: true,
+        label: <Icon type="logo-aliyun-word-cn" />
+      },
       menus: [{
         key: 'menu-useless',
         // force: true
@@ -99,7 +96,7 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'menu-news',
         label: {
-          icon: 'notice',
+          icon: <Icon type="notice" />,
           count: 123,
           countAsDot: true
         },
@@ -126,10 +123,10 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'menu-theme',
         label: {
-          icon: 'lights-on'
+          icon: <Icon type="lights-on" />
         },
         labelHover: {
-          icon: 'lights-off'
+          icon: <Icon type="lights-off" />
         },
         beacon: {
           tip: 'You DONT know how I hate widget... 🤧'
@@ -187,6 +184,13 @@ export default function DemoDefault(): JSX.Element {
         }
       },
       customLeft: <>
+        <ScHome {...{
+          spm: 'console-home',
+          label: 'Home',
+          iconLeft: 'home',
+          iconSpacing: 'small',
+          theme: ButtonTheme.TERTIARY_ALT
+        }} />
         <div style={{
           color: 'red'
         }}>L1</div>

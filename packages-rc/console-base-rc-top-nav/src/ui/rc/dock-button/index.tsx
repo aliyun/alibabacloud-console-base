@@ -4,10 +4,7 @@ import styled, {
 } from 'styled-components';
 
 import {
-  SIZE,
-  mixinBgBrand,
-  mixinTextWhite,
-  mixinTopNavButtonDarkFix
+  SIZE
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonProps,
@@ -29,33 +26,9 @@ const ScDockButton = styled(Button)`
   position: relative;
   width: ${SIZE.HEIGHT_TOP_NAV}px;
   height: ${SIZE.HEIGHT_TOP_NAV}px;
-  ${mixinBgBrand}
-  ${mixinTextWhite}
   
-  span {
-    display: block;
-    position: absolute;
-    left: ${STRIPE_LEFT}px;
-    background: #fff;
-    width: ${STRIPE_WIDTH}px;
-    height: ${STRIPE_HEIGHT}px;
-    transition: all 0.3s ease-out;
-    
-    &:first-child {
-      top: ${STRIPE_TOP1}px;
-      transform: rotate(0);
-      transform-origin: left center;
-    }
-    
-    &:nth-child(2) {
-      top: ${STRIPE_TOP2}px;
-    }
-    
-    &:nth-child(3) {
-      top: ${STRIPE_TOP3}px;
-      transform: rotate(0);
-      transform-origin: left center;
-    }
+  .theme-dark & {
+    background-color: rgba(255, 255, 255, 0.08);
   }
   
   /* stylelint-disable order/order */
@@ -76,9 +49,35 @@ const ScDockButton = styled(Button)`
       transform: rotate(-45deg);
     }
   ` : null)}
+`;
+const ScDockStripe = styled.span`
+  display: block;
+  position: absolute;
+  left: ${STRIPE_LEFT}px;
+  background-color: #555;
+  width: ${STRIPE_WIDTH}px;
+  height: ${STRIPE_HEIGHT}px;
+  transition: all 0.3s ease-out;
   
-  /* stylelint-disable declaration-empty-line-before */
-  ${mixinTopNavButtonDarkFix}
+  .theme-dark & {
+    background-color: #fff;
+  }
+  
+  &:first-child {
+    top: ${STRIPE_TOP1}px;
+    transform: rotate(0);
+    transform-origin: left center;
+  }
+  
+  &:nth-child(2) {
+    top: ${STRIPE_TOP2}px;
+  }
+  
+  &:nth-child(3) {
+    top: ${STRIPE_TOP3}px;
+    transform: rotate(0);
+    transform-origin: left center;
+  }
 `;
 
 /**
@@ -90,12 +89,12 @@ const ScDockButton = styled(Button)`
  */
 export default function DockButton(props: ButtonProps): JSX.Element {
   return <ScDockButton {...{
-    spm: 'dock',
     ...props,
+    spm: 'dock',
     label: <>
-      <span />
-      <span />
-      <span />
+      <ScDockStripe />
+      <ScDockStripe />
+      <ScDockStripe />
     </>,
     size: ButtonSize.NONE,
     theme: ButtonTheme.NONE,
