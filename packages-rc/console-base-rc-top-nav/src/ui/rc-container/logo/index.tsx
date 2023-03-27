@@ -33,7 +33,7 @@ const ScLogo = styled(Button)<IScProps>`
   
   img,
   svg {
-    max-height: 36%;
+    max-height: 48%;
     vertical-align: middle;
   }
   
