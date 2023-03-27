@@ -4,7 +4,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  SIZE
+  SIZE,
+  mixinBorderTertiaryRight
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonProps,
@@ -26,6 +27,7 @@ const ScDockButton = styled(Button)`
   position: relative;
   width: ${SIZE.HEIGHT_TOP_NAV}px;
   height: ${SIZE.HEIGHT_TOP_NAV}px;
+  ${mixinBorderTertiaryRight}
   
   .theme-dark & {
     background-color: rgba(255, 255, 255, 0.08);
@@ -58,6 +60,7 @@ const ScDockStripe = styled.span`
   width: ${STRIPE_WIDTH}px;
   height: ${STRIPE_HEIGHT}px;
   transition: all 0.3s ease-out;
+  ${mixinBorderTertiaryRight}
   
   .theme-dark & {
     background-color: #fff;

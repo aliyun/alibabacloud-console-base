@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import {
   SIZE,
   mixinTextBrand,
-  mixinBorderTertiaryRight,
-  mixinBorderTertiaryLeft
+  mixinBorderTertiaryRight
 } from '@alicloud/console-base-theme';
 import Button, {
   ButtonTheme
@@ -31,11 +30,10 @@ const ScLogo = styled(Button)<IScProps>`
   font-weight: 600;
   ${mixinTextBrand}
   ${props => (props.$bordered ? mixinBorderTertiaryRight : null)}
-  ${props => (props.$bordered ? mixinBorderTertiaryLeft : null)}
   
   img,
   svg {
-    max-height: 50%;
+    max-height: 36%;
     vertical-align: middle;
   }
   

@@ -38,7 +38,7 @@
     "@alicloud/console-base-intl-factory": "^1.6.9",
     "@alicloud/console-base-rc-icon": "^1.10.5",
     "@alicloud/console-base-rc-tooltip": "^1.1.12",
-    "@alicloud/console-base-rc-top-nav": "^1.16.1",
+    "@alicloud/console-base-rc-top-nav": "^1.16.2",
     "@alicloud/console-base-theme": "^1.9.3",
     "@alicloud/demo-rc-elements": "^1.11.16"
   },
