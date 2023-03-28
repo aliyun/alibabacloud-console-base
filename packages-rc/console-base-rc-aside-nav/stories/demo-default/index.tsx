@@ -55,7 +55,7 @@ export default function DemoDefault(): JSX.Element {
         upperTitle: stateUpperTitle,
         upperHref: stateUpperLevel ? '#/back-to-upper-level' : undefined,
         collapsed: stateCollapsed,
-        onToggleCollapsed: setStateCollapsed
+        onCollapsedChange: setStateCollapsed
       }} />
     </ScAside>
     <ScSiteMain>

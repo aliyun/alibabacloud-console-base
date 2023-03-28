@@ -2,19 +2,22 @@ import {
   useCallback
 } from 'react';
 
+import useModelProps from './_use-model-props';
 import useCollapsed from './use-collapsed';
 import useDispatchSetCollapsed from './use-dispatch-set-collapsed';
-import useModelProps from './_use-model-props';
 
-export default function useHandleToggleCollapsed(): () => void {
+export default function useHandleCollapsedChange(): () => void {
   const {
-    onCollapsedChange
+    asideNavProps
   } = useModelProps();
   const collapsed = useCollapsed();
   const dispatchSetCollapsed = useDispatchSetCollapsed();
+  const onCollapsedChange = asideNavProps?.onCollapsedChange;
   
   return useCallback(() => {
-    dispatchSetCollapsed(!collapsed);
-    onCollapsedChange?.(!collapsed);
+    const nextCollapsed = !collapsed;
+    
+    dispatchSetCollapsed(nextCollapsed);
+    onCollapsedChange?.(nextCollapsed);
   }, [collapsed, dispatchSetCollapsed, onCollapsedChange]);
 }

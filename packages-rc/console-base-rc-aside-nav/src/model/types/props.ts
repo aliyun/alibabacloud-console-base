@@ -21,7 +21,7 @@ export interface IModelProps {
    */
   upperHref?: string;
   /**
-   * 通过 onToggleCollapsed 实现受控
+   * 通过 onCollapsedChange 实现受控
    */
   collapsed?: boolean;
   /**
@@ -42,7 +42,7 @@ export interface IModelProps {
    */
   itemsInFooter?: (INavItemInFooterProps | null)[];
   /**
-   * 是否展示推入按钮
+   * 将决定是否展示推入按钮
    */
-  onToggleCollapsed?(collapsed: boolean): void;
+  onCollapsedChange?(collapsed: boolean): void;
 }
