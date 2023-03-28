@@ -1,5 +1,10 @@
 import {
+  MouseEvent
+} from 'react';
+
+import {
   TNavItem,
+  INavItemProps,
   INavItemInFooterProps,
   TSubItemsUnfolded
 } from './common';
@@ -45,4 +50,8 @@ export interface IModelProps {
    * 将决定是否展示推入按钮
    */
   onCollapsedChange?(collapsed: boolean): void;
+  /**
+   * 点击回调，以便在 react-router 下使用
+   */
+  onItemClick?(item: INavItemProps, e: MouseEvent): void;
 }
