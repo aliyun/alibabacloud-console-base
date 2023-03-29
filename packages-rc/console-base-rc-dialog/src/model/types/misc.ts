@@ -5,8 +5,8 @@ export interface IDialogStackItem {
   domDialog: HTMLDivElement | null;
   domDialogContent: HTMLDivElement | null;
   dispatchSetZIndex(zIndex: number): void;
-  dispatchCloseOnEsc(): boolean | void;
-  dispatchCloseOnExternal(): void;
+  handleCloseOnEsc(): boolean | void;
+  handleCloseOnExternal(): void;
 }
 
 export interface IStack {

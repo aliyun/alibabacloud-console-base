@@ -14,5 +14,5 @@ export default function handleKeydownEsc(e: KeyboardEvent): void {
     return;
   }
   
-  topmost.dispatchCloseOnEsc();
+  topmost.handleCloseOnEsc();
 }

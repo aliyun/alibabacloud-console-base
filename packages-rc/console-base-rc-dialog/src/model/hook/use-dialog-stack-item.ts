@@ -18,9 +18,9 @@ export default function useDialogStackItem(): IDialogStackItem {
     domDialog,
     domDialogContent
   } = useModelState();
-  const dispatchSetZIndex = useDispatchSetZIndex();
-  const dispatchCloseOnEsc = useHandleCloseOnEsc();
-  const dispatchCloseOnExternal = useHandleCloseOnExternal();
+  const dispatchSetZIndex = useDispatchSetZIndex(); // eslint-disable-line @typescript-eslint/naming-convention
+  const handleCloseOnEsc = useHandleCloseOnEsc();
+  const handleCloseOnExternal = useHandleCloseOnExternal();
   
   return {
     backdrop,
@@ -29,7 +29,7 @@ export default function useDialogStackItem(): IDialogStackItem {
     domDialog,
     domDialogContent,
     dispatchSetZIndex,
-    dispatchCloseOnEsc,
-    dispatchCloseOnExternal
+    handleCloseOnEsc,
+    handleCloseOnExternal
   };
 }
