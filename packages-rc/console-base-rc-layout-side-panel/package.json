@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-layout-side-panel",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "ConsoleBase 组件 - 框架布局 - 侧边栏",
   "license": "MIT",
   "sideEffects": false,
@@ -48,7 +48,7 @@
     "@alicloud/console-base-rc-tooltip": "^1.1.12",
     "@alicloud/console-base-theme": "^1.9.3",
     "@alicloud/console-base-theme-sc-base": "^1.6.4",
-    "@alicloud/mere-dom": "^1.6.11",
+    "@alicloud/mere-dom": "^1.7.0",
     "@alicloud/react-hook-is-unmounted": "^1.3.4",
     "@alicloud/react-hook-mouse-enter-leave": "^1.0.3",
     "@alicloud/typescript-missing-helpers": "^1.3.4",
