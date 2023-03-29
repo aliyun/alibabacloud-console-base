@@ -21,8 +21,6 @@ import Icon from '@alicloud/console-base-rc-icon';
 import TopNav from '../../src';
 import PkgInfo from '../pkg-info';
 
-import Logo from './logo';
-
 const ScHome = styled(Button)`
   ${mixinTopNavButtonDarkFix}
 `;
@@ -62,7 +60,10 @@ export default function DemoDefault(): JSX.Element {
         onActiveChange: handleActiveChange // 只有含 onXx 或 href 才可以展示
       },
       logo: {
-        label: <Logo />,
+        label: <>
+          <Icon type="logo-aliyun" />&nbsp;<Icon type="logo-aliyun-word-cn" />
+        </>,
+        href: '/',
         bordered: true
       },
       menus: [{

@@ -31,6 +31,13 @@ const ScLogo = styled(Button)<IScProps>`
   ${mixinTextBrand}
   ${props => (props.$bordered ? mixinBorderTertiaryRight : null)}
   
+  &:link,
+  &:visited,
+  &:hover {
+    text-decoration: none;
+    color: ${mixinTextBrand};
+  }
+  
   img,
   svg {
     max-height: 48%;
