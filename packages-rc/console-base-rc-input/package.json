@@ -44,7 +44,7 @@
     "@alicloud/console-base-rc-icon": "^1.10.5",
     "@alicloud/console-base-theme": "^1.9.3",
     "@alicloud/console-base-theme-sc-base": "^1.6.4",
-    "@alicloud/react-hook-controllable": "^1.0.3",
+    "@alicloud/react-hook-controllable": "^1.1.0",
     "immutability-helper": "^3.1.1"
   },
   "scripts": {
