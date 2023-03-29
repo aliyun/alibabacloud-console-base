@@ -22,11 +22,11 @@ export default function useControllableSoftTrim(softTrim = true, value?: string,
   const [controllableValue, setControllableValue] = useControllable('', value, defaultValue, onChange);
   const [stateValue, setStateValue] = useState(controllableValue);
   
-  const handleSoftTrimChange = useCallback((valueNew: string) => {
+  const handleSoftTrimChange = useCallback((valueNew: string, ...args: unknown[]) => {
     setStateValue(valueNew);
     
     if (!isEqualAfterTrim(controllableValue, valueNew)) {
-      setControllableValue(safeTrim(valueNew));
+      setControllableValue(safeTrim(valueNew), ...args);
     }
   }, [controllableValue, setControllableValue]);
   
