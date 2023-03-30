@@ -1,5 +1,5 @@
-export interface IOnChange<T> {
-  (value: T, ...args: unknown[]): void;
+export interface IOnChange<T, A extends Array<unknown> = []> {
+  (value: T, ...args: A): void; // args 允许透传额外参数
 }
 
-export type THookReturn<T> = [T, IOnChange<T>];
+export type THookReturn<T, A extends Array<unknown> = []> = [T, IOnChange<T, A>];

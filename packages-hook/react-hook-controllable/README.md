@@ -5,14 +5,14 @@
 ```typescript
 import {
   useControllable,
-  useControllableWithDefault,
-  useControllableSoftTrim
+  useControllableSoftTrim,
+  useControllableUnprotected
 } from '@alicloud/react-hook-controllable';
 ```
 
-* `useControllable` 受控组件 hook，适用任何类型，得到的值有可能是 `undefined`
-* `useControllableWithDefault` 受控组件 hook，适用任何类型，一般不会得到 `undefined` 值
+* `useControllable` 受控组件 hook，适用任何类型，一般不会得到 `undefined` 值
 * `useControllableSoftTrim` 受控且软 trim 组件 hook，仅针对 `string` 类型
+* `useControllableSoftTrim` 受控组件 hook，适用任何类型，得到的值有可能是 `undefined`
 
 ## Why
 
@@ -23,9 +23,9 @@ import {
 * `props.defaulXx`
 * `props.onXxChange`
 
-Hook `useControllableWithDefault` 可以把这些变数进行优雅整合，避免写可受控组件的场景下遇到的不可受控（比如 `props` 变化未反应到界面的问题）和代码冗余问题。
+Hook `useControllable` 可以把这些变数进行优雅整合，避免写可受控组件的场景下遇到的不可受控（比如 `props` 变化未反应到界面的问题）和代码冗余问题。
 
-注意：Hook `useControllableWithDefault` 跟需要受控的值在 props 中的名称无关，也可以实现 `visible` 的受控：
+注意：Hook `useControllable` 跟需要受控的值在 props 中的名称无关，也可以实现 `visible` 的受控：
 
 * `state.visible`
 * `props.visible`
@@ -34,35 +34,42 @@ Hook `useControllableWithDefault` 可以把这些变数进行优雅整合，避�
 
 另外，对于字符串类型的输入，在输入的时候直接 `trim` 是非常不好的体验，因为那会让用户输入不了任何形式的空白字符，所以这里提供了 `useControllableSoftTrim` 来解决此类问题。
 
-## 利用 `useControllableWithDefault` 实现一个「可受控」组件
+## 利用 `useControllable` 实现一个「可受控」Input 组件
 
 ```typescript tsx
-import React from 'react';
+import React, {
+  InputHTMLAttributes,
+  ChangeEvent,
+  useCallback
+} from 'react';
 
-import useControllableWithDefault from '@alicloud/react-hook-controllable';
+import {
+  useControllable
+} from '@alicloud/react-hook-controllable';
 
-interface IPropsMyInput {
-  // other props maybe
-  value?: ValueType;
-  defaultValue?: ValueType;
-  onChange?(value: ValueType): void;
+interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange'> {
+  value?: string;
+  defaultValue?: string;
+  onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
 }
 
-const FINAL_DEFAULT: ValueType = xx;
-
-export default function MyInput({
+function Input({
   value,
   defaultValue,
   onChange,
   ...props
-}: IPropsMyInput) {
-  const [controllableValue, setControllableValue] = useControllableWithDefault<ValueType>(FINAL_DEFAULT, value, defaultValue, onChange);
+}: IInputProps): JSX.Element {
+  const [controllableValue, setControllableValue] = useControllable('FINAL_DEFAULT', value, defaultValue, onChange);
+  const handleOnChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setControllableValue(e.target.value, e);
+  }, [setControllableValue]);
   
-  return <OriginalInput {...{
+  return <input {...{
     ...props,
+    type: 'text',
     value: controllableValue,
-    onChange: setControllableValue
-  }} />
+    onChange: handleOnChange
+  }} />;
 }
 ```
 
@@ -70,31 +77,40 @@ export default function MyInput({
 
 ```typescript tsx
 import React, {
-  HTMLAttributes
+  InputHTMLAttributes,
+  ChangeEvent,
+  useCallback
 } from 'react';
 
 import {
   useControllableSoftTrim
 } from '@alicloud/react-hook-controllable';
 
-interface IPropsMyInput extends HTMLAttributes<HTMLInputElement> {
+interface IInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onChange'> {
   trim?: boolean;
+  value?: string;
+  defaultValue?: string;
+  onChange?(value: string, e: ChangeEvent<HTMLInputElement>): void;
 }
 
-export default function MyInput({
+function Input({
   trim,
   value,
   defaultValue,
   onChange,
   ...props
-}: IPropsMyInput) {
+}: IInputProps): JSX.Element {
   const [controllableValue, setControllableValue] = useControllableSoftTrim(trim, value, defaultValue, onChange);
+  const handleOnChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setControllableValue(e.target.value, e);
+  }, [setControllableValue]);
   
   return <input {...{
     ...props,
+    type: 'text',
     value: controllableValue,
-    onChange: setControllableValue
-  }} />
+    onChange: handleOnChange
+  }} />;
 }
 ```
 
