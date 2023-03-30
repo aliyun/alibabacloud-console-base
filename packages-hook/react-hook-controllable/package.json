@@ -19,11 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "useControllable",
-    "useControllableWithDefault",
-    "useControllableSoftTrim"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
