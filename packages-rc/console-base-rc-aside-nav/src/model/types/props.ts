@@ -47,6 +47,10 @@ export interface IModelProps {
    */
   itemsInFooter?: (INavItemInFooterProps | null)[];
   /**
+   * 没什么用暂时..
+   */
+  onHoveredChange?(hovered: boolean): void;
+  /**
    * 将决定是否展示推入按钮
    */
   onCollapsedChange?(collapsed: boolean): void;

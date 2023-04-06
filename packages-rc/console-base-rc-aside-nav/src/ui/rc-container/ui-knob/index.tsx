@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import {
   mixinTextSecondary,
   mixinTextTertiary,
+  mixinBgPrimary,
   mixinBorderPrimaryColor,
-  mixinShadowM,
-  mixinShadowL
+  mixinShadowMRight
 } from '@alicloud/console-base-theme';
 import {
   ButtonBase
@@ -14,37 +14,44 @@ import {
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
+  useProps,
+  useHovered,
   useCollapsed,
   useHandleToggleCollapsed
 } from '../../../model';
 
-const ScUiKnob = styled(ButtonBase)`
+interface IScProps {
+  $hovered: boolean;
+}
+
+const ScUiKnob = styled(ButtonBase)<IScProps>`
   position: absolute;
   top: 50%;
   right: -16px;
-  z-index: 100;
   border: 1px solid transparent;
   border-left: 0;
   width: 16px;
   height: 34px;
   transform: translateY(-50%);
   ${mixinTextTertiary}
+  ${mixinBgPrimary}
   ${mixinBorderPrimaryColor}
-  ${mixinShadowM}
-  
-  &:hover {
-    ${mixinTextSecondary}
-    ${mixinShadowL}
-  }
+  ${props => (props.$hovered ? mixinTextSecondary : null)}
+  ${props => (props.$hovered ? mixinShadowMRight : null)}
 `;
 
-export default function UiKnob(): JSX.Element {
+export default function UiKnob(): JSX.Element | null {
+  const {
+    onCollapsedChange
+  } = useProps();
+  const hovered = useHovered();
   const collapsed = useCollapsed();
   const handleToggleCollapsed = useHandleToggleCollapsed();
   
-  return <ScUiKnob {...{
+  return onCollapsedChange ? <ScUiKnob {...{
+    $hovered: hovered,
     onClick: handleToggleCollapsed
   }}>
     <Icon type="angle-left" rotate={collapsed ? 180 : 0} />
-  </ScUiKnob>;
+  </ScUiKnob> : null;
 }

@@ -5,14 +5,10 @@ import {
   useContent
 } from '../../../model';
 
-interface IScAsideProps {
-  $collapsed?: boolean;
-}
-
-const ScContent = styled.aside<IScAsideProps>`
+const ScContent = styled.div`
   flex: 1;
   order: 1;
-  padding: 16px;
+  padding: 16px 20px;
   box-sizing: border-box;
   height: 100%;
   overflow-y: auto;
