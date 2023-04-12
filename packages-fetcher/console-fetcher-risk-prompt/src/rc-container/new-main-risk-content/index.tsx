@@ -28,7 +28,6 @@ import {
 } from '../../enum';
 import {
   CODE_RISK_ERROR_ARRAY,
-  CODE_IDENTITY_INTERNAL_ERROR,
   REG_NEW_MAIN_VERIFY_URL
 } from '../../const';
 import {
@@ -38,7 +37,8 @@ import AltWrap from '../../rc/alt-wrap';
 import intl from '../../intl';
 import {
   isValidJson,
-  getNewMainAccountRiskInfo
+  getNewMainAccountRiskInfo,
+  getRiskSlsErrorCommonPayload
 } from '../../utils';
 import {
   slsNewMainRisk,
@@ -128,18 +128,14 @@ export default function NewMainRiskContent(): JSX.Element {
         close(verifyResult);
       } catch (error) {
         const {
-          code, message
+          code
         } = error as FetcherError;
 
-        if (code && [...CODE_RISK_ERROR_ARRAY, CODE_IDENTITY_INTERNAL_ERROR].includes(code)) {
-          slsNewMainRisk({
-            verifyUrl,
-            type: verifyType,
-            errorCode: code,
-            errorMessage: message,
-            slsResultType: ESlsResultType.FAIL
-          });
-        }
+        slsNewMainRisk({
+          verifyUrl,
+          type: verifyType,
+          ...getRiskSlsErrorCommonPayload(error as FetcherError)
+        });
 
         if (code && CODE_RISK_ERROR_ARRAY.includes(code)) {
           updateData({

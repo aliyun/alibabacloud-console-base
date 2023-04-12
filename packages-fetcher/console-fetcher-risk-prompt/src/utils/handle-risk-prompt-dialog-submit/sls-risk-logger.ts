@@ -8,7 +8,8 @@ import {
 } from '../../types';
 import {
   ERiskType,
-  ESceneKey
+  ESceneKey,
+  EBindSceneDialogSubmitType
 } from '../../enum';
 import {
   slsMpkRisk,
@@ -23,7 +24,7 @@ interface ISlsRiskProps extends ISlsCommonPayload {
 }
 
 // 风控埋点
-export default function slsRisk({
+export default function slsRiskLogger({
   dialogSubmitProps,
   isMpkDowngradeInOldMainRisk,
   currentSubVerificationDeviceType,
@@ -71,8 +72,8 @@ export default function slsRisk({
         type: currentSubVerificationDeviceType ?? ''
       });
     }
-    case 'bind_mfa':
-    case 'skip_bind_mfa': {
+    case EBindSceneDialogSubmitType.BIND_MFA:
+    case EBindSceneDialogSubmitType.SKIP_BIND_MFA: {
       return slsSubRisk({
         ...slsProps,
         type: dialogSubmitType
