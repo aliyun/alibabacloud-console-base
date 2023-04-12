@@ -1,20 +1,9 @@
 export enum EDialogType {
-  ERROR = 'error', // 风控弹窗流程中可能会存在调用接口失败等情况，这时的弹窗是错误信息提示弹窗
+  // 风控弹窗流程中可能会存在调用接口失败等情况，这时的弹窗是错误信息提示弹窗
+  ERROR = 'error',
   NEW_MAIN_RISK = 'new_risk_main',
   OLD_MAIN_OR_MPK_RISK = 'old_main_or_mpk_risk',
-  SUB_RISK_MFA_BIND = 'sub_risk_mfa_bind',
   SUB_RISK_VERIFICATION_AUTH = 'sub_risk_verification_auth'
-}
-
-/**
- * 绑定 MFA 设备 UI 的形态
- * 1. 选择要绑定的 MFA 设备类型（虚拟 MFA 或者 U2F）
- * 2. 绑定虚拟 MFA 或者绑定 U2F
- */
-export enum ESubBindMfaStep {
-  CHOOSE_BIND_MFA_TYPE,
-  BIND_VMFA,
-  BIND_U2F
 }
 
 /**
@@ -69,7 +58,6 @@ export enum ERiskType {
  * primaryButtonDisableObject 或者 errorMessageObject 的 Key
  */
 export enum ESceneKey {
-  BIND_MFA = 'bind_mfa',
   MAIN_ACCOUNT = 'main_account',
   RISK_PROMPT_ERROR = 'risk_prompt_error'
 }
@@ -79,9 +67,4 @@ export enum ESlsResultType {
   SUCCESS = 'success',
   // 在风控流程中，拿到 verifyCode 后会将其作为参数重新被风控的接口。即使 verifyCode 校验通过，接口也可能会报业务错误。api_error 用于区分业务错误
   API_ERROR = 'api_error'
-}
-
-export enum EBindSceneDialogSubmitType {
-  BIND_MFA = 'bind_mfa',
-  SKIP_BIND_MFA = 'skip_bind_mfa'
 }

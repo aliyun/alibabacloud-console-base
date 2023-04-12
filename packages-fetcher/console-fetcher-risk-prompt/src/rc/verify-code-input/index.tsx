@@ -1,4 +1,6 @@
-import _throttle from 'lodash/throttle';
+import {
+  throttle as _throttle
+} from 'lodash-es';
 import React, {
   useCallback,
   useMemo,
@@ -60,7 +62,7 @@ interface IHandleInputChangeProps {
   verifyCode: string;
 }
 
-type TVerifyCodeInputType = 'vmfa_auth' | 'vmfa_bind' | 'sms_or_email_auth';
+type TVerifyCodeInputType = 'vmfa_auth' | 'sms_or_email_auth';
 
 interface IVerifyCodeInputProps extends InputProps {
   verifyCodeInputType: TVerifyCodeInputType;
@@ -132,20 +134,16 @@ export default function VerifyCodeInput({
   const [stateErrorMessage, setStateErrorMessage] = useState<string>(intl('message:vmfa_input_empty_tip'));
   const [stateNoWindVaneHandler, setStateNoWindVaneHandler] = useState<boolean>(false);
 
-  const keyOfErrorMessageObject = useMemo(() => {
-    return verifyCodeInputType === 'vmfa_bind' ? ESceneKey.BIND_MFA : keyOfAuthErrorMessageObject;
-  }, [verifyCodeInputType, keyOfAuthErrorMessageObject]);
-
   const updateErrorMessage = useCallback((errorMessage: string) => {
-    if (keyOfErrorMessageObject) {
+    if (keyOfAuthErrorMessageObject) {
       updateData({
         errorMessageObject: {
           ...errorMessageObject,
-          [keyOfErrorMessageObject]: errorMessage
+          [keyOfAuthErrorMessageObject]: errorMessage
         }
       });
     }
-  }, [errorMessageObject, keyOfErrorMessageObject, updateData]);
+  }, [errorMessageObject, keyOfAuthErrorMessageObject, updateData]);
 
   const onChange = useCallback((verifyCode: string) => {
     const inputErrorMessage = getInputError(verifyCode);
@@ -153,11 +151,11 @@ export default function VerifyCodeInput({
     setStateErrorMessage(inputErrorMessage);
     setStateVerifyCode(verifyCode);
 
-    if (keyOfErrorMessageObject) {
+    if (keyOfAuthErrorMessageObject) {
       updateData({
         primaryButtonDisabledObject: {
           ...primaryButtonDisabledObject,
-          [keyOfErrorMessageObject]: Boolean(inputErrorMessage)
+          [keyOfAuthErrorMessageObject]: Boolean(inputErrorMessage)
         }
       });
     }
@@ -167,7 +165,7 @@ export default function VerifyCodeInput({
         verifyCode
       });
     }
-  }, [keyOfErrorMessageObject, primaryButtonDisabledObject, handleInputChange, updateData]);
+  }, [keyOfAuthErrorMessageObject, primaryButtonDisabledObject, handleInputChange, updateData]);
 
   const innerRight = useMemo(() => {
     return <XIcon onClick={() => {
@@ -185,7 +183,7 @@ export default function VerifyCodeInput({
       const currentPrimaryButtonNotDisabled = keyOfAuthErrorMessageObject && !primaryButtonDisabledObject[keyOfAuthErrorMessageObject];
 
       // 允许通过回车键触发 dialogSubmit 的条件：当前输入框为验证 VMFA、手机、邮箱的输入框 & 当前 dialog 非 block 状态 & 当前按钮非 disabled 状态
-      if (verifyCodeInputType !== 'vmfa_bind' && !dialogBlocked && currentPrimaryButtonNotDisabled) {
+      if (currentPrimaryButtonNotDisabled && !dialogBlocked) {
         const oldMainOrMpkVerifyType = getOldMainOrMpkAccountRiskInfo(mainAccountRiskInfo).verifyType;
 
         switch (dialogSubmitType) {
@@ -247,7 +245,7 @@ export default function VerifyCodeInput({
 
   const operation = useMemo((): JSX.Element | null => {
     if (verifyCodeInputType === 'sms_or_email_auth' && generateCodeButtonProps) {
-      return <Generate {...generateCodeButtonProps} keyOfErrorMessageObject={keyOfErrorMessageObject} />;
+      return <Generate {...generateCodeButtonProps} keyOfErrorMessageObject={keyOfAuthErrorMessageObject} />;
     }
 
     if (verifyCodeInputType === 'vmfa_auth' && WINDVANE_AVAILABLE && !stateNoWindVaneHandler) {
@@ -259,7 +257,7 @@ export default function VerifyCodeInput({
     }
 
     return null;
-  }, [verifyCodeInputType, generateCodeButtonProps, keyOfErrorMessageObject, stateNoWindVaneHandler, handleGetVmfaCodeFromWindVane]);
+  }, [verifyCodeInputType, generateCodeButtonProps, keyOfAuthErrorMessageObject, stateNoWindVaneHandler, handleGetVmfaCodeFromWindVane]);
 
   return <ScWrapper>
     <Flex align="center">

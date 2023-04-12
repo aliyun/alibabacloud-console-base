@@ -56,6 +56,7 @@ function convertRiskResponse<T>({
     });
 
     if (isMpk) {
+      // 非降级的 MPK 账号风控验证
       if (mpkUseIdentityService) {
         return {
           isMpk,
@@ -69,6 +70,7 @@ function convertRiskResponse<T>({
         };
       }
 
+      // 降级到旧版主账号风控的 MPK 账号风控验证
       return {
         codeType,
         verifyType,
@@ -79,6 +81,7 @@ function convertRiskResponse<T>({
       };
     }
 
+    // 新版主账号风控验证
     if (verifyUrl) {
       return {
         accountId,
@@ -100,6 +103,7 @@ function convertRiskResponse<T>({
       })).filter(o => ![EConvertedVerifyType.NONE, EConvertedVerifyType.UNKNOWN].includes(o.convertedVerifyType));
     })();
 
+    // 新版主账号风控验证，Validators 可能包括手机、邮箱、MFA 设备
     return {
       codeType,
       accountId,
@@ -127,6 +131,7 @@ function convertRiskResponse<T>({
     defaultValue: ''
   });
 
+  // 旧版主账号风控
   return {
     mpkIsDowngrade: false,
     codeType: oldCodeType,

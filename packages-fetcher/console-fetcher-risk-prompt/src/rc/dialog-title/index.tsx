@@ -50,11 +50,10 @@ export default function DialogTitle({
 
   const {
     dialogType,
-    subBindMfaStep,
     subGetVerificationToAuthData,
     currentSubVerificationDeviceType
   } = dialogData;
-  const subValidatorsLength = subGetVerificationToAuthData?.verificationOrBindValidatorArray.length ?? 0;
+  const subValidatorsLength = subGetVerificationToAuthData?.subValidators.length ?? 0;
 
   // 如果子账号风控方式 > 1，那么需要展示 ToolTip 提示请任选一种方式完成安全验证
   if (subValidatorsLength > 1) {
@@ -79,7 +78,6 @@ export default function DialogTitle({
   return <>
     {intlVerifyDialogTitle({
       dialogType,
-      subBindMfaStep,
       currentSubVerificationDeviceType
     })}
   </>;

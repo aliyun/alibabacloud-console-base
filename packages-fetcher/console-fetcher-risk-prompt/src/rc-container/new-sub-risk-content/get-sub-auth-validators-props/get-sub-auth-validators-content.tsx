@@ -1,26 +1,16 @@
 import * as React from 'react';
 
 import {
-  ESubVerificationDeviceType
+  ESubVerificationDeviceType,
+  type DataVerificationValidator
 } from '@alicloud/console-fetcher-risk-data';
 
-import {
-  TVerificationOrBindValidator
-} from '../../../types';
-import {
-  ESceneKey
-} from '../../../enum';
-import U2fAuth from '../../u2f-auth-or-bind';
-import MfaBind from '../mfa-bind';
+import U2fAuth from '../../u2f-auth';
 import SubAccountAuth from '../sub-account-auth';
 
-export default function getSubAuthValidatorsContent(data: TVerificationOrBindValidator): JSX.Element {
-  if (data.deviceType === ESceneKey.BIND_MFA) {
-    return <MfaBind />;
-  }
-
+export default function getSubAuthValidatorsContent(data: DataVerificationValidator): JSX.Element {
   if (data.deviceType === ESubVerificationDeviceType.U2F) {
-    return <U2fAuth type="u2f_auth" />;
+    return <U2fAuth />;
   }
 
   return <SubAccountAuth deviceType={data.deviceType} />;

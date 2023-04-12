@@ -7,9 +7,6 @@ import {
 import {
   IRiskPromptVerifyResult
 } from '../../../types';
-import {
-  ESceneKey
-} from '../../../enum';
 import intl from '../../../intl';
 import {
   convertToResolveDataVerifyType
@@ -17,11 +14,11 @@ import {
 
 interface IProps {
   subVerificationParamArray?: ParamsVerifySubAccount[];
-  currentSubVerificationDeviceType?: ESubVerificationDeviceType | ESceneKey.BIND_MFA;
+  currentSubVerificationDeviceType?: ESubVerificationDeviceType;
   updateErrorMessage: (errorMessage: string) => void;
 }
 
-export default async function subBindOrVerifyValidators({
+export default async function verifySubValidators({
   subVerificationParamArray,
   currentSubVerificationDeviceType,
   updateErrorMessage

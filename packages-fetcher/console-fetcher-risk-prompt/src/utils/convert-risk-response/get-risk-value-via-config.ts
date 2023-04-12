@@ -1,6 +1,8 @@
-import _get from 'lodash/get';
-import _isNil from 'lodash/isNil';
-import _isEmpty from 'lodash/isEmpty';
+import {
+  get as _get,
+  isNil as _isNil,
+  isEmpty as _isEmpty
+} from 'lodash-es';
 
 import {
   IRiskConfig

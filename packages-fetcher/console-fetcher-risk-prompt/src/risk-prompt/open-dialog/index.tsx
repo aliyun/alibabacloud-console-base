@@ -34,7 +34,6 @@ import DialogContent from '../dialog-content';
 import {
   generateMpkSubmitButton,
   generateSubSubmitButton,
-  generateSubBindMfaButton,
   generateOldMainOrDowngradeMpkSubmitButton
 } from './dialog-button';
 import getPartialDialogDataBasedOnRiskInfo from './get-partial-dialog-data-based-on-risk-info';
@@ -87,26 +86,16 @@ export default async function openDialog(riskInfo: TRiskInfo, reRequestWithVerif
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');
-      const subRiskBindMfaInVerificationAuth = data.dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH && data.currentSubVerificationDeviceType === ESceneKey.BIND_MFA;
-
-      if (subRiskBindMfaInVerificationAuth || data.dialogType === EDialogType.SUB_RISK_MFA_BIND) {
-        const bindMfaButtons = generateSubBindMfaButton({
-          codeType,
-          accountId,
-          subBindMfaStep: data.subBindMfaStep,
-          reRequestWithVerifyResult
-        });
-
-        return [...bindMfaButtons, buttonCancel];
-      }
 
       switch (data.dialogType) {
+        // 错误时的弹窗
         case EDialogType.ERROR: {
           return [buttonCancel];
         }
+        // 子账号风控验证
         case EDialogType.SUB_RISK_VERIFICATION_AUTH: {
           const primaryButtonDisabled = ((): boolean => {
-            if (!data.currentSubVerificationDeviceType || data.currentSubVerificationDeviceType === ESceneKey.BIND_MFA) {
+            if (!data.currentSubVerificationDeviceType) {
               return false;
             }
 
@@ -120,6 +109,7 @@ export default async function openDialog(riskInfo: TRiskInfo, reRequestWithVerif
           
           return [verifyMfaPrimaryButton, buttonCancel];
         }
+        // 新版主账号风控验证
         case EDialogType.NEW_MAIN_RISK: {
           const showCancelButton = ((): boolean => {
             if (data.mainAccountRiskInfo?.type === 'new_main') {
@@ -135,6 +125,7 @@ export default async function openDialog(riskInfo: TRiskInfo, reRequestWithVerif
 
           return [];
         }
+        // 旧版主账号或者 MPK 账号验证
         default: {
           const {
             isMpk, mpkIsDowngrade, verifyType

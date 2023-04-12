@@ -9,8 +9,7 @@ import {
 import {
   ESceneKey,
   ERiskType,
-  ESlsResultType,
-  EBindSceneDialogSubmitType
+  ESlsResultType
 } from '../../enum';
 import {
   CODE_RISK_ERROR_ARRAY
@@ -46,10 +45,6 @@ export default async function handleRiskPromptDialogSubmit({
   // 基于当前风控弹窗的账号类型以及风控验证类型，来更新错误信息
   const updateErrorMessage = (errorMessage: string): void => {
     const keyOfErrorMessageObject = ((): TKeyofErrorMessageObject => {
-      if (dialogSubmitType === EBindSceneDialogSubmitType.BIND_MFA || dialogSubmitType === EBindSceneDialogSubmitType.SKIP_BIND_MFA) {
-        return ESceneKey.BIND_MFA;
-      }
-
       if (dialogSubmitType === ERiskType.NEW_SUB && currentSubVerificationDeviceType) {
         return currentSubVerificationDeviceType;
       }

@@ -17,7 +17,7 @@ const {
 } = BUILT_IN_RISK_CONFIG;
 
 // 获取绑定 U2F 的 WebAuthn 信息
-export function getAuthWebAuthnAuthPublicKey(u2fInfo: DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth): PublicKeyCredentialRequestOptionsJSON {
+export default function getAuthWebAuthnAuthPublicKey(u2fInfo: DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth): PublicKeyCredentialRequestOptionsJSON {
   if (u2fInfo.u2FVersion === 'U2F_V2') {
     return {
       timeout: u2fTimeOut,

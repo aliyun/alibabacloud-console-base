@@ -1,19 +1,12 @@
 import {
-  ESubVerificationDeviceType
+  ESubVerificationDeviceType,
+  type DataVerificationValidator
 } from '@alicloud/console-fetcher-risk-data';
 
-import {
-  TVerificationOrBindValidator
-} from '../../../types';
-import {
-  ESceneKey
-} from '../../../enum';
 import intl from '../../../intl';
 
-export default function getSubAuthValidatorsTabs(data: TVerificationOrBindValidator): string {
+export default function getSubAuthValidatorsTabs(data: DataVerificationValidator): string {
   switch (data.deviceType) {
-    case ESceneKey.BIND_MFA:
-      return intl('title:sub:mfa:bind');
     case ESubVerificationDeviceType.SMS:
       return intl('title:sms_auth');
     case ESubVerificationDeviceType.EMAIL:

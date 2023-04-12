@@ -98,7 +98,6 @@ export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {
 };
 
 export const DEFAULT_API_ERROR_MESSAGE_OBJECT = {
-  [ESceneKey.BIND_MFA]: '',
   [ESceneKey.MAIN_ACCOUNT]: '',
   [ESceneKey.RISK_PROMPT_ERROR]: '',
   [ESubVerificationDeviceType.EMAIL]: '',
