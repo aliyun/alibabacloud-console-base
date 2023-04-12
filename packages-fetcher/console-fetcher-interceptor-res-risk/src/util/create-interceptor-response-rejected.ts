@@ -112,8 +112,9 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
             body: {
               ...verifyResult,
               ...isMpk && mpkIsDowngrade ? {
+                // 轻量级虚商的降级联路需要指定 riskVersion: '1.0' 来覆盖 riskVersion: '2.0'
                 riskVersion: '1.0'
-              } : {} // 轻量级虚商的降级联路需要指定 riskVersion: '1.0' 来覆盖 riskVersion: '2.0'
+              } : {}
             }
           } : {
             params: {
