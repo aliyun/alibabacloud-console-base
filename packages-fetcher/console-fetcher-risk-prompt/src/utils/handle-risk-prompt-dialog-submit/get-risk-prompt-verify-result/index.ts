@@ -8,12 +8,9 @@ import {
   TDialogSubmitProps
 } from '../../../types';
 import {
-  ERiskType,
-  EBindSceneDialogSubmitType
+  ERiskType
 } from '../../../enum';
 
-import bindSubMfa from './bind-sub-mfa';
-import skipBindSubMfa from './skip-bind-sub-mfa';
 import verifyMpk from './verify-mpk';
 import verifySubValidators from './verify-sub-validators';
 
@@ -37,10 +34,9 @@ export default async function getRiskPromptVerifyResult({
       dialogSubmitType
     } = dialogSubmitProps;
     const {
-      currentSubVerificationDeviceType,
       oldMainOrMpkData,
-      subBindMfaParams,
-      subVerificationParamArray
+      subVerificationParamArray,
+      currentSubVerificationDeviceType
     } = dialogData;
   
     switch (dialogSubmitType) {
@@ -83,28 +79,6 @@ export default async function getRiskPromptVerifyResult({
           verifyCode: code || '',
           requestId: requestId || ''
         };
-      }
-      // 子账号风控绑定 MFA
-      case EBindSceneDialogSubmitType.BIND_MFA: {
-        const bindMfaVerifyResult = await bindSubMfa({
-          subBindMfaParams,
-          updateErrorMessage
-        });
-  
-        return bindMfaVerifyResult;
-      }
-      // 子账号跳过 MFA 绑定
-      case EBindSceneDialogSubmitType.SKIP_BIND_MFA: {
-        const {
-          accountId, codeType
-        } = dialogSubmitProps;
-  
-        const skipBindMfaVerifyResult = await skipBindSubMfa({
-          accountId,
-          codeType
-        });
-  
-        return skipBindMfaVerifyResult;
       }
       default: {
         return null;

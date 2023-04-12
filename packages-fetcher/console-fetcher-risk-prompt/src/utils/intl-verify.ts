@@ -4,16 +4,13 @@ import {
 
 import {
   EDialogType,
-  ESceneKey,
-  ESubBindMfaStep,
   EConvertedVerifyType
 } from '../enum';
 import intl from '../intl';
 
 interface IIntlVerifyDialogTitleProps {
   dialogType?: EDialogType;
-  subBindMfaStep?: ESubBindMfaStep;
-  currentSubVerificationDeviceType?: ESubVerificationDeviceType | ESceneKey.BIND_MFA;
+  currentSubVerificationDeviceType?: ESubVerificationDeviceType;
 }
 
 export function intlVerifyTitle(type?: EConvertedVerifyType | ESubVerificationDeviceType): string {
@@ -57,20 +54,8 @@ export function intlVerifySetting(type?: EConvertedVerifyType | ESubVerification
 
 export function intlVerifyDialogTitle({
   dialogType,
-  subBindMfaStep,
   currentSubVerificationDeviceType
 }: IIntlVerifyDialogTitleProps): string {
-  if (dialogType === EDialogType.SUB_RISK_MFA_BIND) {
-    switch (subBindMfaStep) {
-      case ESubBindMfaStep.BIND_U2F:
-        return intl('title:sub_u2f_bind');
-      case ESubBindMfaStep.BIND_VMFA:
-        return intl('title:sub_vmfa_bind');
-      default:
-        return intl('title:default');
-    }
-  }
-
   if (dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH) {
     switch (currentSubVerificationDeviceType) {
       case ESubVerificationDeviceType.VMFA:

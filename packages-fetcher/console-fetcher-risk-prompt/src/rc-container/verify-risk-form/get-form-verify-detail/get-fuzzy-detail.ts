@@ -1,4 +1,6 @@
-import _repeat from 'lodash/repeat';
+import {
+  repeat as _repeat
+} from 'lodash-es';
 
 // 对手机号码做部分信息隐藏
 export function getFuzzyPhoneNumber(phoneNumber: string): string {

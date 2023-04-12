@@ -22,8 +22,7 @@ import {
   IRiskPromptResolveData
 } from '../../types';
 import {
-  EIconType,
-  ESceneKey
+  EIconType
 } from '../../enum';
 import {
   SVG_URLS,
@@ -33,10 +32,7 @@ import intl from '../../intl';
 import U2FMessage from '../message';
 import DeviceIcon from '../device-icon';
 
-type TU2fType = 'u2f_auth' | 'u2f_bind';
-
 interface IProps {
-  type: TU2fType;
   u2fErrorMessage?: string;
   u2fKeyFetching: boolean;
   showU2FRetryButton?: boolean;
@@ -90,7 +86,6 @@ const SvgImg = styled.img`
 `;
 
 export default function U2fUi({
-  type,
   u2fErrorMessage,
   u2fKeyFetching,
   showU2FRetryButton,
@@ -106,13 +101,13 @@ export default function U2fUi({
     if (u2fKeyFetching) {
       return <U2FMessage {...{
         iconType: EIconType.NOTICE,
-        message: intl('message:u2f_bind_get_key')
+        message: intl('message:u2f_get_key')
       }} />;
     }
 
     return <U2FMessage {...{
       iconType: EIconType.SUCCESS,
-      message: intl('message:u2f_bind_get_key_success')
+      message: intl('message:u2f_get_key_success')
     }} />;
   }, [u2fKeyFetching]);
 
@@ -121,12 +116,12 @@ export default function U2fUi({
       return u2fErrorMessage;
     }
 
-    const apiErrorMessage = type === 'u2f_auth' ? errorMessageObject[ESubVerificationDeviceType.U2F] : errorMessageObject[ESceneKey.BIND_MFA];
+    const apiErrorMessage = errorMessageObject[ESubVerificationDeviceType.U2F];
 
     if (apiErrorMessage) {
       return apiErrorMessage;
     }
-  }, [type, u2fErrorMessage, errorMessageObject]);
+  }, [u2fErrorMessage, errorMessageObject]);
 
   const topMessage = useMemo((): JSX.Element | null => {
     if (u2fOrApiErrorMessage) {
@@ -145,7 +140,7 @@ export default function U2fUi({
     {topMessage}
     <ScU2fWrapper>
       <ScU2fTitle>
-        {type === 'u2f_auth' ? intl('attr:u2f_auth_title') : intl('attr:u2f_bind_title')}
+        {intl('attr:u2f_auth_title')}
       </ScU2fTitle>
       <Flex align="center">
         <ScSvgImgWrapper>
@@ -169,7 +164,3 @@ export default function U2fUi({
     </ScU2fWrapper>
   </>;
 }
-
-export type {
-  TU2fType
-};

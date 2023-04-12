@@ -1,8 +1,5 @@
 import type {
-  ParamsBindMfa,
-  ParamsGetMfaInfoToBind,
   ParamsVerifySubAccount,
-  DataGetMfaInfoToBind,
   DataVerificationValidator
 } from '@alicloud/console-fetcher-risk-data';
 import {
@@ -11,8 +8,7 @@ import {
 
 import {
   ESceneKey,
-  EDialogType,
-  ESubBindMfaStep
+  EDialogType
 } from '../enum';
 
 export type TStringOrJsx = string | JSX.Element;
@@ -27,14 +23,9 @@ export type TErrorMessageObject = {
   [Key in TKeyofErrorMessageObject]?: string
 }
 
-// 在 ESubVerificationDeviceType（U2F/VMFA/EMAIL/SMS）的基础上增加 bind_mfa
-export type TVerificationOrBindValidator = DataVerificationValidator | {
-  deviceType: ESceneKey.BIND_MFA;
-}
-
 export type TSubGetVerificationToAuthData = {
   targetUserPrincipalName: string;
-  verificationOrBindValidatorArray: TVerificationOrBindValidator[];
+  subValidators: DataVerificationValidator[];
 };
 
 // 新版主账号风控的风控信息
@@ -72,19 +63,12 @@ export interface IDialogData {
   // 用于定义每种风控方式对应的 errorMessage 以及 PrimaryButton 的 Disabled 状态
   errorMessageObject: TErrorMessageObject;
   primaryButtonDisabledObject: TPrimaryButtonDisabledObject;
-  fromBindU2FtoAuthU2F?: boolean;
   // 主账号风控信息，类型为旧版、新版或者 MPK
   mainAccountRiskInfo?: TMainAccountRiskInfo;
-  // 子账号绑定 MFA 的步骤流程
-  subBindMfaStep?: ESubBindMfaStep;
-  // 子账号绑定 MFA 的参数
-  subBindMfaParams?: ParamsBindMfa;
   oldMainOrMpkData?: IMainOrMpkData;
   // 子账号风控方式可能为多选，因此需要用数组方式来存储多种风控方式时的风控验证参数
   subVerificationParamArray?: ParamsVerifySubAccount[];
-  subGetMfaInfoToBindData?: DataGetMfaInfoToBind;
-  subGetMfaInfoToBindParams?: ParamsGetMfaInfoToBind;
   subGetVerificationToAuthData?: TSubGetVerificationToAuthData;
   // 当子账号风控有多种风控方式可供选择时，currentSubVerificationDeviceType 用于定义用户当前选择的风控方式
-  currentSubVerificationDeviceType?: ESubVerificationDeviceType | ESceneKey.BIND_MFA;
+  currentSubVerificationDeviceType?: ESubVerificationDeviceType;
 }

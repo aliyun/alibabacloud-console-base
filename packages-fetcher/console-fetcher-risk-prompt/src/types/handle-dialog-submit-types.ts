@@ -3,8 +3,7 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  ERiskType,
-  EBindSceneDialogSubmitType
+  ERiskType
 } from '../enum';
 
 import {
@@ -33,17 +32,7 @@ export interface ISubAuthSubmitProps {
   dialogSubmitType: ERiskType.NEW_SUB;
 }
 
-export interface ISubBindSubmitMfaProps {
-  dialogSubmitType: EBindSceneDialogSubmitType.BIND_MFA;
-}
-
-export interface ISubSkipBindSubmitMfaProps {
-  codeType: string;
-  accountId: string;
-  dialogSubmitType: EBindSceneDialogSubmitType.SKIP_BIND_MFA;
-}
-
-export type TDialogSubmitProps = IOldMainSubmitProps | INewMpkSubmitProps | ISubAuthSubmitProps | ISubBindSubmitMfaProps | ISubSkipBindSubmitMfaProps;
+export type TDialogSubmitProps = IOldMainSubmitProps | INewMpkSubmitProps | ISubAuthSubmitProps;
 export type THandleRiskPromptDialogSubmitProps = TDialogSubmitProps & {
   contentContext: TContentContext;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;

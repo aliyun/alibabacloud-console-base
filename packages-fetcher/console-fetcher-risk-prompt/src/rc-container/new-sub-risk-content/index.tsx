@@ -13,9 +13,6 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../types';
-import {
-  ESceneKey
-} from '../../enum';
 import intl from '../../intl';
 import AltWrap from '../../rc/alt-wrap';
 
@@ -39,15 +36,15 @@ export default function NewSubRiskUi(): JSX.Element {
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
   const {
-    verificationOrBindValidatorArray
+    subValidators
   } = subGetVerificationToAuthData ?? {};
 
-  if (!verificationOrBindValidatorArray?.length) {
+  if (!subValidators?.length) {
     return <AltWrap content={intl('message:invalid_unknown!lines')} />;
   }
 
-  if (verificationOrBindValidatorArray.length === 1) {
-    return getSubAuthValidatorsContent(verificationOrBindValidatorArray[0]);
+  if (subValidators.length === 1) {
+    return getSubAuthValidatorsContent(subValidators[0]);
   }
 
   const tabs = getSubAuthValidatorsTabs(subGetVerificationToAuthData);
@@ -57,15 +54,9 @@ export default function NewSubRiskUi(): JSX.Element {
       tabs,
       activeKey: currentSubVerificationDeviceType,
       onChange: tabKey => {
-        if (tabKey === ESceneKey.BIND_MFA) {
-          updateData({
-            currentSubVerificationDeviceType: ESceneKey.BIND_MFA
-          });
-        } else {
-          updateData({
-            currentSubVerificationDeviceType: tabKey as ESubVerificationDeviceType
-          });
-        }
+        updateData({
+          currentSubVerificationDeviceType: tabKey as ESubVerificationDeviceType
+        });
       }
     }} />
   </ScWrapper>;

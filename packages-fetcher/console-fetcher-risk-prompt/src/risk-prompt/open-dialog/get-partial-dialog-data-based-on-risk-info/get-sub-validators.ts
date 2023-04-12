@@ -1,13 +1,13 @@
 import {
+  dataGetVerificationInfoToAuth,
+  ESubVerificationDeviceType,
   type DataGetSmsInfoToAuth,
   type DataGetEmailInfoToAuth,
-  dataGetVerificationInfoToAuth,
-  ESubVerificationDeviceType
+  type DataVerificationValidator
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  ICommonRiskInfo,
-  TVerificationOrBindValidator
+  ICommonRiskInfo
 } from '../../../types';
 import {
   EConvertedVerifyType
@@ -22,10 +22,10 @@ interface IProps {
 
 interface IGetVerificationValidatorsResult {
   targetUserPrincipalName: string;
-  verificationValidators: TVerificationOrBindValidator[];
+  subValidators: DataVerificationValidator[];
 }
 
-export default async function getVerificationValidators({
+export default async function getSubValidators({
   accountId,
   subRiskValidators
 }: IProps): Promise<IGetVerificationValidatorsResult> {
@@ -47,11 +47,12 @@ export default async function getVerificationValidators({
 
     return {
       targetUserPrincipalName,
-      verificationValidators: response
+      subValidators: response
     };
   }
 
-  const verificationValidators = subRiskValidators.map<TVerificationOrBindValidator | null>(o => {
+  // 如果 Validators 不存在 MFA，手机风控信息和邮箱风控信息都可以直接从 Validators 获取
+  const verificationValidators = subRiskValidators.map<DataVerificationValidator | null>(o => {
     if (o.convertedVerifyType === EConvertedVerifyType.SMS) {
       const [areaCode, phoneNumber] = String(o.verifyDetail).split('-');
 
@@ -73,9 +74,13 @@ export default async function getVerificationValidators({
 
     return null;
   });
+  
+  const nonNullFilter = (o: DataVerificationValidator | null): o is DataVerificationValidator => {
+    return Boolean(o);
+  };
 
   return {
     targetUserPrincipalName: '',
-    verificationValidators: verificationValidators.filter(o => Boolean(o)) as TVerificationOrBindValidator[]
+    subValidators: verificationValidators.filter(nonNullFilter)
   };
 }

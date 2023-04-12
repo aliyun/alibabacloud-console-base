@@ -7,9 +7,7 @@ import {
   TDialogSubmitProps
 } from '../../types';
 import {
-  ERiskType,
-  ESceneKey,
-  EBindSceneDialogSubmitType
+  ERiskType
 } from '../../enum';
 import {
   slsMpkRisk,
@@ -20,7 +18,7 @@ import {
 interface ISlsRiskProps extends ISlsCommonPayload {
   dialogSubmitProps: TDialogSubmitProps;
   isMpkDowngradeInOldMainRisk?: boolean;
-  currentSubVerificationDeviceType?: ESubVerificationDeviceType | ESceneKey.BIND_MFA;
+  currentSubVerificationDeviceType?: ESubVerificationDeviceType;
 }
 
 // 风控埋点
@@ -70,13 +68,6 @@ export default function slsRiskLogger({
       return slsSubRisk({
         ...slsProps,
         type: currentSubVerificationDeviceType ?? ''
-      });
-    }
-    case EBindSceneDialogSubmitType.BIND_MFA:
-    case EBindSceneDialogSubmitType.SKIP_BIND_MFA: {
-      return slsSubRisk({
-        ...slsProps,
-        type: dialogSubmitType
       });
     }
     default:
