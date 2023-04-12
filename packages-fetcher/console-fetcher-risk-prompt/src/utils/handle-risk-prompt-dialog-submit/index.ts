@@ -9,15 +9,16 @@ import {
 import {
   ESceneKey,
   ERiskType,
-  ESlsResultType
+  ESlsResultType,
+  EBindSceneDialogSubmitType
 } from '../../enum';
 import {
-  CODE_RISK_ERROR_ARRAY,
-  CODE_IDENTITY_INTERNAL_ERROR
+  CODE_RISK_ERROR_ARRAY
 } from '../../const';
 import intl from '../../intl';
+import getRiskSlsErrorCommonPayload from '../get-risk-sls-error-common-payload';
 
-import slsRisk from './sls-risk';
+import slsRiskLogger from './sls-risk-logger';
 import getRiskPromptVerifyResult from './get-risk-prompt-verify-result';
 
 /**
@@ -45,7 +46,7 @@ export default async function handleRiskPromptDialogSubmit({
   // 基于当前风控弹窗的账号类型以及风控验证类型，来更新错误信息
   const updateErrorMessage = (errorMessage: string): void => {
     const keyOfErrorMessageObject = ((): TKeyofErrorMessageObject => {
-      if (['bind_mfa', 'skip_bind_mfa'].includes(dialogSubmitType)) {
+      if (dialogSubmitType === EBindSceneDialogSubmitType.BIND_MFA || dialogSubmitType === EBindSceneDialogSubmitType.SKIP_BIND_MFA) {
         return ESceneKey.BIND_MFA;
       }
 
@@ -83,7 +84,7 @@ export default async function handleRiskPromptDialogSubmit({
       try {
         const reRequestResponse = await reRequestWithVerifyResult(riskPromptVerifyResult);
 
-        slsRisk({
+        slsRiskLogger({
           dialogSubmitProps,
           isMpkDowngradeInOldMainRisk,
           currentSubVerificationDeviceType,
@@ -97,21 +98,19 @@ export default async function handleRiskPromptDialogSubmit({
         });
       } catch (error) {
         const {
-          code, message
+          code
         } = error as FetcherError;
 
-        if (code && [...CODE_RISK_ERROR_ARRAY, CODE_IDENTITY_INTERNAL_ERROR].includes(code)) {
-          slsRisk({
-            dialogSubmitProps,
-            isMpkDowngradeInOldMainRisk,
-            currentSubVerificationDeviceType,
-            errorCode: code,
-            errorMessage: message,
-            slsResultType: ESlsResultType.FAIL
-          });
-        }
+        const slsPayload = {
+          dialogSubmitProps,
+          isMpkDowngradeInOldMainRisk,
+          currentSubVerificationDeviceType,
+          ...getRiskSlsErrorCommonPayload(error as FetcherError)
+        };
+
+        slsRiskLogger(slsPayload);
   
-        // 如果报错是 verifyCodeInvalid，提示验证码错误，并且不关闭弹窗
+        // 如果报错是风控验证错误，那么提示用户验证码错误，且不关闭风控弹窗
         if (code && CODE_RISK_ERROR_ARRAY.includes(code)) {
           updateErrorMessage(intl('message:code_incorrect'));
         } else {

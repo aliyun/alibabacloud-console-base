@@ -3,7 +3,8 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  ERiskType
+  ERiskType,
+  EBindSceneDialogSubmitType
 } from '../enum';
 
 import {
@@ -33,13 +34,13 @@ export interface ISubAuthSubmitProps {
 }
 
 export interface ISubBindSubmitMfaProps {
-  dialogSubmitType: 'bind_mfa';
+  dialogSubmitType: EBindSceneDialogSubmitType.BIND_MFA;
 }
 
 export interface ISubSkipBindSubmitMfaProps {
   codeType: string;
   accountId: string;
-  dialogSubmitType: 'skip_bind_mfa';
+  dialogSubmitType: EBindSceneDialogSubmitType.SKIP_BIND_MFA;
 }
 
 export type TDialogSubmitProps = IOldMainSubmitProps | INewMpkSubmitProps | ISubAuthSubmitProps | ISubBindSubmitMfaProps | ISubSkipBindSubmitMfaProps;

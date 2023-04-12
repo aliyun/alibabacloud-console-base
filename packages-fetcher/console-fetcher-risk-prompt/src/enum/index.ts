@@ -66,7 +66,7 @@ export enum ERiskType {
 }
 
 /**
- * primaryButtonDisableObject 或者 errorMessageObject 的 KEY
+ * primaryButtonDisableObject 或者 errorMessageObject 的 Key
  */
 export enum ESceneKey {
   BIND_MFA = 'bind_mfa',
@@ -76,5 +76,12 @@ export enum ESceneKey {
 
 export enum ESlsResultType {
   FAIL = 'fail',
-  SUCCESS = 'success'
+  SUCCESS = 'success',
+  // 在风控流程中，拿到 verifyCode 后会将其作为参数重新被风控的接口。即使 verifyCode 校验通过，接口也可能会报业务错误。api_error 用于区分业务错误
+  API_ERROR = 'api_error'
+}
+
+export enum EBindSceneDialogSubmitType {
+  BIND_MFA = 'bind_mfa',
+  SKIP_BIND_MFA = 'skip_bind_mfa'
 }

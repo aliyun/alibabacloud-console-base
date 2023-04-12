@@ -8,7 +8,8 @@ import {
   TDialogSubmitProps
 } from '../../../types';
 import {
-  ERiskType
+  ERiskType,
+  EBindSceneDialogSubmitType
 } from '../../../enum';
 
 import bindSubMfa from './bind-sub-mfa';
@@ -84,7 +85,7 @@ export default async function getRiskPromptVerifyResult({
         };
       }
       // 子账号风控绑定 MFA
-      case 'bind_mfa': {
+      case EBindSceneDialogSubmitType.BIND_MFA: {
         const bindMfaVerifyResult = await bindSubMfa({
           subBindMfaParams,
           updateErrorMessage
@@ -93,7 +94,7 @@ export default async function getRiskPromptVerifyResult({
         return bindMfaVerifyResult;
       }
       // 子账号跳过 MFA 绑定
-      case 'skip_bind_mfa': {
+      case EBindSceneDialogSubmitType.SKIP_BIND_MFA: {
         const {
           accountId, codeType
         } = dialogSubmitProps;

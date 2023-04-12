@@ -7,6 +7,9 @@ import {
   IRiskPromptResolveData,
   TReRequestWithVerifyResult
 } from '../../../../types';
+import {
+  EBindSceneDialogSubmitType
+} from '../../../../enum';
 import intl from '../../../../intl';
 import {
   handleRiskPromptDialogSubmit
@@ -32,7 +35,7 @@ export default function generateSkipBindMfaButton({
         codeType,
         contentContext,
         reRequestWithVerifyResult,
-        dialogSubmitType: 'skip_bind_mfa'
+        dialogSubmitType: EBindSceneDialogSubmitType.SKIP_BIND_MFA
       });
 
       // return false 用于阻止风控弹窗关闭，使得风控弹窗只能通过 close 函数关闭
