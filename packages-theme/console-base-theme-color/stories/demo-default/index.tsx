@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {
+  useState
+} from 'react';
 import styled from 'styled-components';
 import {
   readableColor
 } from 'polished';
 
 import {
-  H1
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 
 import {
@@ -20,8 +22,9 @@ interface IProps {
 
 const ScColors = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
+  font-size: 12px;
 `;
 const ScColor = styled.div`
   padding: 8px;
@@ -40,10 +43,14 @@ function Colors({
 }
 
 export default function DemoDefault(): JSX.Element {
+  const [stateDark, setStateDark] = useState(false);
+  
   return <>
-    <H1>Light</H1>
-    <Colors colors={COLOR_LIGHT} />
-    <H1>Dark</H1>
-    <Colors colors={COLOR_DARK} />
+    <InputSwitch {...{
+      label: 'dark',
+      value: stateDark,
+      onChange: setStateDark
+    }} />
+    <Colors colors={stateDark ? COLOR_DARK : COLOR_LIGHT} />
   </>;
 }

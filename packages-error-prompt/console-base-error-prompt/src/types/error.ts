@@ -14,8 +14,9 @@ export interface IFetcherErrorMimicAuthDetails {
   AuthPrincipalType?: 'SubUser' | 'AssumedRoleUser';
   AuthPrincipalDisplayName?: string;
   AuthPrincipalOwnerId?: string;
-  PolicyType?: string; // 不需要国际化
   NoPermissionType?: 'ExplicitDeny' | 'ImplicitDeny';
+  PolicyType?: string; // 不需要国际化
+  EncodedDiagnosticMessage?: string; // 可用于「权限诊断」的 request 参数
 }
 
 /**
@@ -50,8 +51,9 @@ export interface IErrorDetailsAuth {
   userType?: IFetcherErrorMimicAuthDetails['AuthPrincipalType'];
   userName?: string;
   userId?: string;
-  policyType?: string;
   type?: IFetcherErrorMimicAuthDetails['NoPermissionType'];
+  policyType?: string;
+  diagnosisInfo?: string;
 }
 
 /**

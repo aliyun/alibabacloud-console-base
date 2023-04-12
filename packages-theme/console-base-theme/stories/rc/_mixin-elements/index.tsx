@@ -1,6 +1,8 @@
-import _map from 'lodash/map';
-import _reduce from 'lodash/reduce';
-import _kebabCase from 'lodash/kebabCase';
+import {
+  map as _map,
+  reduce as _reduce,
+  kebabCase as _kebabCase
+} from 'lodash-es';
 import React, {
   useMemo
 } from 'react';
@@ -32,7 +34,7 @@ export default function MixinElements({
   extra
 }: IProps): JSX.Element {
   const THE_MIXIN_MAP = useMemo(() => _reduce(WHOLE, (result: Record<string, FlattenSimpleInterpolation>, v: unknown, k: string) => {
-    if (reg.test(k) && (!regNot || !regNot.test(k))) {
+    if (reg.test(k) && !regNot?.test(k)) {
       result[_kebabCase(RegExp.$1)] = v as FlattenSimpleInterpolation;
     }
     

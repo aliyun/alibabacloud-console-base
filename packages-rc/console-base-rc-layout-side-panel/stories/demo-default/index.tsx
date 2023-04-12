@@ -7,7 +7,9 @@ import {
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import Icon from '@alicloud/console-base-rc-icon';
-import LayoutTopBar from '@alicloud/console-base-rc-layout-top-bar';
+import TopNav from '@alicloud/console-base-rc-top-nav';
+
+import './index.less';
 
 import LayoutSidePanel from '../../src';
 import {
@@ -28,7 +30,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateApiInspectorVisible, setStateApiInspectorVisible] = useState(false);
   
   return <>
-    {stateTopBar ? <LayoutTopBar /> : null}
+    {stateTopBar ? <TopNav /> : null}
     <LayoutSidePanel {...{
       itemsTop: [{
         key: 'icon-rc-icon',
@@ -39,7 +41,7 @@ export default function DemoDefault(): JSX.Element {
         iconHovered: <Icon type="dingding" style={{
           color: '#f66'
         }} />,
-        tooltip: '你有 <strong>12345</strong> 条新消息',
+        tooltip: '你有 <strong>12345</strong> 条 <em>新</em> 消息，其中 <code>99.99%</code> 为垃圾消息。',
         tooltipAsHtml: true,
         unread: true
       }, {
@@ -68,16 +70,24 @@ export default function DemoDefault(): JSX.Element {
             }
           }} />
         </>,
-        tooltipAlign: 'top'
+        tooltipAlign: 'top',
+        tooltipDefaultVisible: true
       }, {
         key: 'icon-string-image-url',
         title: '测试图片 URL',
         icon: 'https://img.alicdn.com/tfs/TB1JhtxuAT2gK0jSZFkXXcIQFXa-128-128.png'
       }, {
+        key: 'icon-with-class',
+        title: '测试 className 图标',
+        icon: {
+          className: 'test-icon-class'
+        }
+      }, {
         key: 'cloud',
         title: '阿里雲',
         icon: '云',
         iconHovered: '雲',
+        mark: 'NEW',
         href: '//www.aliyun.com'
       }, {
         key: 'face',
@@ -95,7 +105,7 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'micro-exp',
         title: '微试验',
-        icon: <Icon type="toolkit-edu" />,
+        icon: <Icon type="loading" />,
         tooltip: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
       }, {
         key: 'contact',

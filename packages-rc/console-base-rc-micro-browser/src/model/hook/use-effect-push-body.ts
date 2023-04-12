@@ -3,11 +3,14 @@ import {
 } from 'react';
 
 import {
+  triggerWindowResize
+} from '@alicloud/mere-dom';
+
+import {
   EMicroBrowserMode
 } from '../enum';
 import {
-  createStylePushBody,
-  fireWindowResize
+  createStylePushBody
 } from '../util';
 
 import useModelProps from './_use-model-props';
@@ -31,11 +34,11 @@ export default function useEffectPushBody(): void {
     
     const style: HTMLStyleElement = createStylePushBody(w);
     
-    fireWindowResize();
+    triggerWindowResize();
     
     return () => {
       style.parentNode?.removeChild(style);
-      fireWindowResize();
+      triggerWindowResize();
     };
   }, [mode, visible, w]);
 }

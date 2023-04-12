@@ -35,11 +35,39 @@ export default function createErrors(): TErrorArg[] {
   '',
   {},
   new Error(),
+  new Error('Plain Error'),
   // 无 code
   '字符串 as Error', <H3>JSX as Error</H3>, {
     message: 'Message 里有 HTML，请 <a href="//www.aliyun.com" target="_blank">登录</a> 或者 <em>不登录</em>，一切 <code>都随你...</code>。'
   },
-  new Error('Plain Error'),
+  createError({
+    title: '放 P 的 Message',
+    message: '当前账号未被授予该操作所需的 RAM 权限，请联系主账号或权限管理员授权。<p>授权方法请参见：<a target="_blank" href="//home.console.aliyun.com">Kubernetes 集群访问控制授权概述</a></p>',
+    details: {
+      extra1: 'this is some extra info',
+      extra0: 0,
+      extra2: {
+        a: 'xx1',
+        b: 'xx2'
+      },
+      url: 'any url',
+      extra3: false
+    }
+  }),
+  createError({
+    title: '放 UL/OL 的 Message',
+    message: '当前账号未被授予该操作所需的 RAM 权限，请联系主账号或权限管理员授权。问题如下：<ul><li>问题 1</li><li>问题 2</li></ul><ol><li>问题 1</li><li>问题 2</li></ol>',
+    details: {
+      extra1: 'this is some extra info',
+      extra0: 0,
+      extra2: {
+        a: 'xx1',
+        b: 'xx2'
+      },
+      url: 'any url',
+      extra3: false
+    }
+  }),
   createError({
     message: '无 code，有详情'
   }, true),

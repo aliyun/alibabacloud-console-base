@@ -1,4 +1,6 @@
-import _isEmpty from 'lodash/isEmpty';
+import {
+  isEmpty as _isEmpty
+} from 'lodash-es';
 import React, {
   useState,
   useMemo

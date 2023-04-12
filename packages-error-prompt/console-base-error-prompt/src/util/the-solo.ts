@@ -1,4 +1,6 @@
-import _isEqual from 'lodash/isEqual';
+import {
+  isEqual as _isEqual
+} from 'lodash-es';
 
 import {
   IErrorQueueItem,

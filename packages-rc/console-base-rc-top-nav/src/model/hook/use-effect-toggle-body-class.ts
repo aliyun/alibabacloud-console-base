@@ -4,7 +4,7 @@ import {
 
 import {
   toggleBodyClass
-} from '../../util';
+} from '../util';
 
 import useModelProps from './_use-model-props';
 

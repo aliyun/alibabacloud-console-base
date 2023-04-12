@@ -1,5 +1,10 @@
 import {
+  MouseEvent
+} from 'react';
+
+import {
   TNavItem,
+  INavItemProps,
   INavItemInFooterProps,
   TSubItemsUnfolded
 } from './common';
@@ -21,7 +26,7 @@ export interface IModelProps {
    */
   upperHref?: string;
   /**
-   * 通过 onToggleCollapsed 实现受控
+   * 通过 onCollapsedChange 实现受控
    */
   collapsed?: boolean;
   /**
@@ -42,7 +47,15 @@ export interface IModelProps {
    */
   itemsInFooter?: (INavItemInFooterProps | null)[];
   /**
-   * 是否展示推入按钮
+   * 没什么用暂时..
    */
-  onToggleCollapsed?(collapsed: boolean): void;
+  onHoveredChange?(hovered: boolean): void;
+  /**
+   * 将决定是否展示推入按钮
+   */
+  onCollapsedChange?(collapsed: boolean): void;
+  /**
+   * 点击回调，以便在 react-router 下使用
+   */
+  onItemClick?(item: INavItemProps, e: MouseEvent): void;
 }

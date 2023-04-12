@@ -1,6 +1,8 @@
-import _isString from 'lodash/isString';
-import _isPlainObject from 'lodash/isPlainObject';
-import _isEmpty from 'lodash/isEmpty';
+import {
+  isString as _isString,
+  isPlainObject as _isPlainObject,
+  isEmpty as _isEmpty
+} from 'lodash-es';
 import qs from 'qs';
 
 const DEFAULT_IGNORED_KEYS = [

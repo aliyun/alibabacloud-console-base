@@ -1,5 +1,7 @@
-import _isError from 'lodash/isError';
-import _forEach from 'lodash/forEach';
+import {
+  isError as _isError,
+  forEach as _forEach
+} from 'lodash-es';
 
 /**
  * postMessage 不支持传 Error 对象

@@ -1,3 +1,4 @@
+export { default } from './mark-by-type'; // 需传入类型
 export { default as MarkBase } from './mark-base'; // 供需要自定义的地方使用
 export { default as New } from './type-new';
 export { default as Hot } from './type-hot';

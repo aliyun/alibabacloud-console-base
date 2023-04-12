@@ -1,6 +1,8 @@
-import _isPlainObject from 'lodash/isPlainObject';
-import _isEqual from 'lodash/isEqual';
-import _isArray from 'lodash/isArray';
+import {
+  isPlainObject as _isPlainObject,
+  isArray as _isArray,
+  isEqual as _isEqual
+} from 'lodash-es';
 import React, {
   useState,
   useCallback,

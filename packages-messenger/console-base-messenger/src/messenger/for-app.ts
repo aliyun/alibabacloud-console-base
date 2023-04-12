@@ -2,6 +2,10 @@ import {
   onReady
 } from '@alicloud/console-base-messenger-base';
 import {
+  toggleVisible,
+  onToggleVisible
+} from '@alicloud/console-base-messenger-top-nav';
+import {
   setRegionGroups,
   setRegionId,
   setRegionResourceCount,
@@ -51,6 +55,9 @@ export default {
   ...appBroadcast,
   ...appSubscribe,
   onReady,
+  // top-nav
+  toggleTopNav: toggleVisible,
+  onToggleTopNav: onToggleVisible,
   // region
   setRegionGroups,
   setRegionId,

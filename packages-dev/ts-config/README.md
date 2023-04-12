@@ -14,7 +14,7 @@ In your `tsconfig.json`:
 
 ```json
 {
-  "extends": "@alicloud/ts-config",
+  "extends": "@alicloud/ts-config/index.json",
   "include": [
     "./src"
   ]

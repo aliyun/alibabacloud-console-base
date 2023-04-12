@@ -16,7 +16,8 @@ export default function createErrorRamForbiddenWithAuthDetails(): Error | Record
         AuthPrincipalType: 'SubUser',
         AuthPrincipalOwnerId: '1xxxxx',
         AuthPrincipalDisplayName: '2xxxxxxxxxxxxx',
-        PolicyType: 'ResourceGroupLevelIdentityBassdPolicy'
+        PolicyType: 'ResourceGroupLevelIdentityBassdPolicy',
+        EncodedDiagnosticMessage: 'AQEAAAAAY+gzDZERjkzMkNELTcwQzctNURDNi1BRDILTAOODA5MjBCQzMXRQ=='
       }
     }
   });

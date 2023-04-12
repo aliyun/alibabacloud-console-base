@@ -20,6 +20,7 @@ export default function getErrorDetailsAuth(err?: IFetcherErrorMimic): IErrorDet
     userType: accessDeniedDetail.AuthPrincipalType,
     userName: accessDeniedDetail.AuthPrincipalDisplayName,
     userId: accessDeniedDetail.AuthPrincipalOwnerId,
-    policyType: accessDeniedDetail.PolicyType
+    policyType: accessDeniedDetail.PolicyType,
+    diagnosisInfo: accessDeniedDetail.EncodedDiagnosticMessage
   };
 }

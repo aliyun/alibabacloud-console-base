@@ -32,7 +32,7 @@ export const H1 = styled.h1`
   
   &:before {
     content: 'H1';
-    background-color: #0cf;
+    background-color: #f00;
   }
 `;
 
@@ -43,7 +43,7 @@ export const H2 = styled.h2`
   
   &:before {
     content: 'H2';
-    background-color: #c0f;
+    background-color: #ff7f00;
   }
 `;
 
@@ -54,17 +54,42 @@ export const H3 = styled.h3`
   
   &:before {
     content: 'H3';
-    background-color: #777;
+    background-color: #ff0;
+    color: #333;
   }
 `;
 
 export const H4 = styled.h4`
   line-height: 2.4;
-  font-size: 14px;
+  font-size: 12px;
   ${cssHeading}
   
   &:before {
     content: 'H4';
-    background-color: #777;
+    background-color: #0f0;
+    color: #333;
+  }
+`;
+
+export const H5 = styled.h5`
+  line-height: 2.4;
+  font-size: 12px;
+  ${cssHeading}
+  
+  &:before {
+    content: 'H5';
+    background-color: #0ff;
+    color: #333;
+  }
+`;
+
+export const H6 = styled.h6`
+  line-height: 2.4;
+  font-size: 12px;
+  ${cssHeading}
+  
+  &:before {
+    content: 'H6';
+    background-color: #00f;
   }
 `;

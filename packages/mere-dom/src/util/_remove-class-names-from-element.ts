@@ -1,4 +1,6 @@
-import _without from 'lodash/without';
+import {
+  without as _without
+} from 'lodash-es';
 
 import getClassNames from './_get-class-names';
 

@@ -16,6 +16,7 @@ import {
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
+import Icon from '@alicloud/console-base-rc-icon';
 
 import TopNav from '../../src';
 import PkgInfo from '../pkg-info';
@@ -59,7 +60,11 @@ export default function DemoDefault(): JSX.Element {
         onActiveChange: handleActiveChange // 只有含 onXx 或 href 才可以展示
       },
       logo: {
-        href: '/'
+        label: <>
+          <Icon type="logo-aliyun" />&nbsp;<Icon type="logo-aliyun-word-cn" />
+        </>,
+        href: '/',
+        bordered: true
       },
       menus: [{
         key: 'menu-useless',
@@ -94,7 +99,7 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'menu-news',
         label: {
-          icon: 'notice',
+          icon: <Icon type="notice" />,
           count: 123,
           countAsDot: true
         },
@@ -114,17 +119,17 @@ export default function DemoDefault(): JSX.Element {
       }, {
         key: 'menu-cart',
         label: {
-          icon: 'cart',
+          icon: <Icon type="cart" />,
           count: 123
         },
         href: '/cart'
       }, {
         key: 'menu-theme',
         label: {
-          icon: 'lights-on'
+          icon: <Icon type="lights-on" />
         },
         labelHover: {
-          icon: 'lights-off'
+          icon: <Icon type="lights-off" />
         },
         beacon: {
           tip: 'You DONT know how I hate widget... 🤧'
@@ -186,6 +191,7 @@ export default function DemoDefault(): JSX.Element {
           spm: 'console-home',
           label: 'Home',
           iconLeft: 'home',
+          iconSpacing: 'small',
           theme: ButtonTheme.TERTIARY_ALT
         }} />
         <div style={{

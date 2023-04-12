@@ -1,4 +1,6 @@
-import _isUndefined from 'lodash/isUndefined';
+import {
+  isUndefined as _isUndefined
+} from 'lodash-es';
 
 const EOF = 1;
 

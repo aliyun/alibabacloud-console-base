@@ -24,7 +24,7 @@ function getOnceKey(topic: string, once?: true | string): string | undefined {
 }
 
 /**
- * 创建 SLS 日志方法，一般直接用于项目。
+ * 创建 SLS 日志方法，一般直接用于项目
  * 
  * 参考：Web Tracking <https://help.aliyun.com/document_detail/31752.html>
  */
@@ -34,9 +34,9 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
     endpoint,
     logstore,
     apiVersion,
+    topicPrefix: factoryTopicPrefix,
     sampling: factorySampling,
     delay: factoryDelay,
-    topicPrefix,
     defaultParams,
     onBeforeSend
   } = factoryOptions;
@@ -71,6 +71,7 @@ export default function createLogger(factoryOptions: IFactoryOptions): IFnLog {
   
   function sls<I = void>(topic: string, info?: I, {
     group = 'LOG',
+    topicPrefix = factoryTopicPrefix,
     sampling = factorySampling,
     delay = factoryDelay,
     once,

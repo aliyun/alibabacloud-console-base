@@ -1,5 +1,7 @@
-import _kebabCase from 'lodash/kebabCase';
-import _reduce from 'lodash/reduce';
+import {
+  kebabCase as _kebabCase,
+  reduce as _reduce
+} from 'lodash-es';
 
 import {
   TIntlMessagesMap

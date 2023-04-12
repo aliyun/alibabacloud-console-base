@@ -1,4 +1,6 @@
-import _some from 'lodash/some';
+import {
+  some as _some
+} from 'lodash-es';
 
 /**
  * 判断是否有 Fusion 的其他 Overlay 正打开着

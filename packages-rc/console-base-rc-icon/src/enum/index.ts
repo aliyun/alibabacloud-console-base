@@ -42,7 +42,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'toolkit-contact-listen' = 'e8ce', // 联系我们 - 聆听
   'toolkit-qr' = 'e640', // QR
   'toolkit-survey' = 'e606', // 问卷
-  'toolkit-edu' = 'e66d', // 实验室
   'toolkit-version-new' = 'e62e', // 尝试新版
   'toolkit-version-old' = 'e72f', // 返回旧版
   // 收藏、评分
@@ -70,13 +69,15 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'share' = 'e8d5', // 分享
   'thumb-up' = 'e601', // 大拇指朝上
   'thumb-down' = 'e88d', // 大拇指朝下
-  // 其他
+  // 其他 TODO 将业务 Icon 和组件 Icon 分开
+  'lab' = 'e671', // 实验室
   'uv' = 'e6bf',
   'time' = 'e729',
   'apps' = 'e60e', // 应用（负数）
   'app' = 'e603', // 应用（单个）
   'app-mobile' = 'e61b', // 手机应用（下载）
   'dingding' = 'e881', // 钉钉
+  'user-dialogue' = 'e670', // 在线技术咨询（钉钉客联）
   'drag' = 'e6e1', // 拖拽
   'empty' = 'e655', // 空
   'face-cry' = 'e7f8', // 哭脸
@@ -91,5 +92,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'region' = 'e65b', // 地域
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端
-  'resource-group' = 'e634' // 资源组
+  'resource-group' = 'e634', // 资源组
+  'self-service-center' = 'e62f' // 自助服务大厅
 }

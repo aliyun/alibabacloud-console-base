@@ -1,4 +1,6 @@
-import _forEach from 'lodash/forEach';
+import {
+  forEach as _forEach
+} from 'lodash-es';
 
 import normalizeHeaderKey from './normalize-header-key';
 

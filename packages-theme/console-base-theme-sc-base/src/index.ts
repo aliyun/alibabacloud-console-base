@@ -1,5 +1,5 @@
 export * from './font';
-export { default as HrBase } from './hr';
+export { default as HrBase, HrV as HrBaseV } from './hr';
 export {
   BadgeBaseDot,
   BadgeBaseNumber

@@ -12,6 +12,7 @@ import {
 import ScTable from './sc-table';
 
 export default function Table<T>({
+  firstColumnIndex = true,
   dataSource = [],
   primaryKey,
   columns,
@@ -19,6 +20,9 @@ export default function Table<T>({
 }: ITableProps<T>): JSX.Element {
   return <ScTable {...props}>
     <colgroup>
+      {firstColumnIndex ? <col style={{
+        width: 48
+      }} /> : null}
       {columns.map((v, i) => <col {...{
         key: getTableColumnKey(v, i),
         style: v.width ? {
@@ -28,12 +32,14 @@ export default function Table<T>({
     </colgroup>
     <thead>
       <tr>
-        {columns.map((v, i) => <th key={getTableColumnKey(v, i)}>{v.title}</th>)}
+        {firstColumnIndex ? <th align="right">#</th> : null}
+        {columns.map((v, i) => <th key={getTableColumnKey(v, i)} align={v.align}>{v.title}</th>)}
       </tr>
     </thead>
     <tbody>
-      {dataSource.map((o, i) => <tr key={getTableRowKey(o, i, primaryKey)}>
-        {columns.map((v, ii) => <td key={getTableColumnKey(v, ii)}>{renderTableCell(o, ii, v)}</td>)}
+      {dataSource.map((o, valueIndex) => <tr key={getTableRowKey(o, valueIndex, primaryKey)}>
+        {firstColumnIndex ? <td align="right">{valueIndex + 1}</td> : null}
+        {columns.map((v, columnIndex) => <td key={getTableColumnKey(v, columnIndex)} align={v.align}>{renderTableCell(o, valueIndex, v)}</td>)}
       </tr>)}
     </tbody>
   </ScTable>;

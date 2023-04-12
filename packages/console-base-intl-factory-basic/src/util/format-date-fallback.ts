@@ -1,4 +1,6 @@
-import _forEach from 'lodash/forEach';
+import {
+  forEach as _forEach
+} from 'lodash-es';
 
 /**
  * 当 Intl.DateTimeFormat 失败时的兜底方法

@@ -1,4 +1,6 @@
-import _uniq from 'lodash/uniq';
+import {
+  uniq as _uniq
+} from 'lodash-es';
 
 import getClassNames from './_get-class-names';
 

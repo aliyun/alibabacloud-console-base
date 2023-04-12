@@ -1,0 +1,6 @@
+{
+  "extends": "@alicloud/ts-config/index.json",
+  "include": [
+    "src"
+  ]
+}

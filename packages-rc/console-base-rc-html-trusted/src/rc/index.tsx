@@ -9,11 +9,11 @@ import {
   IHtmlTrustedProps
 } from '../types';
 
-const ScSpan = styled.span`
+const ScHtmlTrusted = styled.span`
   ${mixinTypoElementsInline}
 `;
 
-export default function Intl({
+export default function HtmlTrusted({
   text
 }: IHtmlTrustedProps): JSX.Element | null {
   if (!text) {
@@ -21,7 +21,7 @@ export default function Intl({
   }
   
   if (/</.test(text)) {
-    return <ScSpan dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+    return <ScHtmlTrusted dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
       __html: text
     }} />;
   }

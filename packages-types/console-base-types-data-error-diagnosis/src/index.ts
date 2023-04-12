@@ -3,13 +3,14 @@ export type {
   IErrorDiagnosisSample as ErrorDiagnosisSample
 } from './common';
 export type {
-  IParamsErrorDiagnosis as ParamsErrorDiagnosis
+  IParamsErrorDiagnosisProbe as ParamsErrorDiagnosisProbe
 } from './params';
 export type {
   IDataErrorDiagnosis as DataErrorDiagnosis,
   IDataErrorDiagnosisSolutionFeedback as DataErrorDiagnosisSolutionFeedback
 } from './data';
 export type {
+  IApiDataErrorDiagnosisProbe as ApiDataErrorDiagnosisProbe,
   IApiDataErrorDiagnosis as ApiDataErrorDiagnosis,
   IApiDataErrorDiagnosisSolutionFeedback as ApiDataErrorDiagnosisSolutionFeedback,
   IApiDataErrorDiagnosisSolutionFeedbackLike as ApiDataErrorDiagnosisSolutionFeedbackLike,

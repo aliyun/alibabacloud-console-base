@@ -3,6 +3,10 @@ import {
 } from 'react';
 
 import {
+  triggerWindowResize
+} from '@alicloud/mere-dom';
+
+import {
   toggleBodyClass
 } from '../util';
 
@@ -17,7 +21,11 @@ export default function useEffectToggleBodyClass(): void {
     }
     
     toggleBodyClass();
+    triggerWindowResize();
     
-    return () => toggleBodyClass(false);
+    return () => {
+      toggleBodyClass(false);
+      triggerWindowResize();
+    };
   }, [collapsed]);
 }

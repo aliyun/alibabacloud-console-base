@@ -1,6 +1,8 @@
-import _clone from 'lodash/clone';
-import _isEmpty from 'lodash/isEmpty';
-import _forEach from 'lodash/forEach';
+import {
+  isEmpty as _isEmpty,
+  forEach as _forEach,
+  clone as _clone
+} from 'lodash-es';
 
 import {
   createFetcherError
