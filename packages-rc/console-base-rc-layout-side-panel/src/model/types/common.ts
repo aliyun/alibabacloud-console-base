@@ -5,6 +5,9 @@ import {
 import {
   ButtonProps
 } from '@alicloud/console-base-rc-button';
+import {
+  EasyIconValue
+} from '@alicloud/console-base-rc-easy-icon';
 
 export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' | 'theme' | 'iconLeft' | 'iconRight' | 'onMouseEnter' | 'onMouseLeave'> {
   /**
@@ -16,24 +19,21 @@ export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' 
    */
   titleActive?: string;
   /**
-   * 图标，如果是组件则直接用，当它是字符串的时候，会智能判断
-   * 1. 如果是 svg 则渲染成 svg
-   * 2. 如果是 URL，则认为是图片（请用 png）
-   * 对 svg 和 img 这里都有大小约束，请尽可能用正方形
+   * 图标（请尽可能用正方形），如果是组件则直接用，当它是字符串的时候，会智能判断
    */
-  icon: string | ReactElement;
+  icon: EasyIconValue;
   /**
    * 鼠标 hover 时的图标，不填则 fallback 到 icon
    */
-  iconHovered?: string | ReactElement;
+  iconHovered?: EasyIconValue;
   /**
    * 按下状态的图标，不填则 fallback 到 icon
    */
-  iconActive?: string | ReactElement;
+  iconActive?: EasyIconValue;
   /**
    * 按下状态时 hover 的图标，不填则 fallback 到 iconActive
    */
-  iconActiveHovered?: string | ReactElement;
+  iconActiveHovered?: EasyIconValue;
   /**
    * 当需要复杂的 tooltip 时，可以用这个 prop 
    */
@@ -51,9 +51,17 @@ export interface ISidePanelItemProps extends Omit<ButtonProps, 'label' | 'size' 
    */
   tooltipAlign?: 'top' | 'middle' | 'bottom';
   /**
-   * 徽标，数字展示数字，true 展示小红点
+   * Tooltip 默认是否展示，注意避免竞争，并注意降噪
+   */
+  tooltipDefaultVisible?: boolean;
+  /**
+   * 右上角徽标，数字展示数字，true 展示小红点
    */
   unread?: number | boolean;
+  /**
+   * 右上角 NEW 或 HOT，优先级低于 unread
+   */
+  mark?: 'NEW' | 'HOT';
   onMouseEnter?(): void;
   onMouseLeave?(): void;
   /**

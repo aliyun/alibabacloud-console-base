@@ -17,8 +17,8 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  EMarkType
-} from '../enum';
+  TMarkType
+} from '../types';
 
 const CSS_NEW_HOLLOW = css`
   background-color: rgba(255, 255, 255, 0.05);
@@ -56,22 +56,22 @@ const CSS_UPDATE_FILLED = css`
 `;
 
 const MAP_HOLLOW = {
-  [EMarkType.NEW]: CSS_NEW_HOLLOW,
-  [EMarkType.HOT]: CSS_HOT_HOLLOW,
-  [EMarkType.PUBLIC_BETA]: CSS_PUBLIC_BETA_HOLLOW,
-  [EMarkType.BETA]: CSS_BETA_HOLLOW,
-  [EMarkType.ALPHA]: CSS_ALPHA_HOLLOW,
-  [EMarkType.UPDATE]: CSS_UPDATE_HOLLOW
+  NEW: CSS_NEW_HOLLOW,
+  HOT: CSS_HOT_HOLLOW,
+  PUBLIC_BETA: CSS_PUBLIC_BETA_HOLLOW,
+  BETA: CSS_BETA_HOLLOW,
+  ALPHA: CSS_ALPHA_HOLLOW,
+  UPDATE: CSS_UPDATE_HOLLOW
 };
 const MAP_FILLED = {
-  [EMarkType.NEW]: CSS_NEW_FILLED,
-  [EMarkType.HOT]: CSS_HOT_FILLED,
-  [EMarkType.PUBLIC_BETA]: CSS_PUBLIC_BETA_FILLED,
-  [EMarkType.BETA]: CSS_BETA_FILLED,
-  [EMarkType.ALPHA]: CSS_ALPHA_FILLED,
-  [EMarkType.UPDATE]: CSS_UPDATE_FILLED
+  NEW: CSS_NEW_FILLED,
+  HOT: CSS_HOT_FILLED,
+  PUBLIC_BETA: CSS_PUBLIC_BETA_FILLED,
+  BETA: CSS_BETA_FILLED,
+  ALPHA: CSS_ALPHA_FILLED,
+  UPDATE: CSS_UPDATE_FILLED
 };
 
-export default function getCssOfType(type: EMarkType, hollow?: boolean): FlattenSimpleInterpolation | null {
-  return (hollow ? MAP_HOLLOW[type] : MAP_FILLED[type]) || null;
+export default function getCssOfType(type: TMarkType, hollow?: boolean): FlattenSimpleInterpolation {
+  return hollow ? MAP_HOLLOW[type] : MAP_FILLED[type];
 }

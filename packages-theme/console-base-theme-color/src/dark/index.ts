@@ -13,9 +13,9 @@ const INVERSE_BG = '#fff';
 // const BRAND = '#ff6a00';
 // const BRAND_HOVER = '#ff6a00';
 // const BRAND_ACTIVE = '#e50';
-// const ACCENT = '#0064c8';
-// const ACCENT_HOVER = '#0064c8';
-// const ACCENT_ACTIVE = '#0050a0';
+const ACCENT = '#0070cc';
+const ACCENT_HOVER = '#0070cc';
+const ACCENT_ACTIVE = '#0064c8';
 // const EMPHASIS = '#ff6a00';
 // const DANGER = '#c80000';
 // const CODE = '#f25c7f';
@@ -34,7 +34,7 @@ const GRAY_DISABLED_BG = '#161b22';
 const GRAY_SECONDARY_FADE_BG = 'rgba(255,255,255,0.08)';
 const GRAY_TERTIARY_FADE_BG = 'rgba(255,255,255,0.1)';
 const HELP = '#777';
-// const INFO = '#0064c8';
+const INFO = '#0070cc'; // 稍稍提亮一些
 // const SUCCESS = '#1e8e3e';
 // const WARNING = '#ffc440';
 // const ERROR = '#d93026';
@@ -60,9 +60,9 @@ const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   // BRAND,
   // BRAND_HOVER,
   // BRAND_ACTIVE,
-  // ACCENT,
-  // ACCENT_HOVER,
-  // ACCENT_ACTIVE,
+  ACCENT,
+  ACCENT_HOVER,
+  ACCENT_ACTIVE,
   // DANGER,
   // EMPHASIS,
   // CODE,
@@ -81,7 +81,7 @@ const COLOR_ESSENTIAL_OVERRIDE: Partial<IColorEssential> = {
   GRAY_SECONDARY_FADE_BG,
   GRAY_TERTIARY_FADE_BG,
   HELP,
-  // INFO,
+  INFO,
   // SUCCESS,
   // WARNING,
   // ERROR,

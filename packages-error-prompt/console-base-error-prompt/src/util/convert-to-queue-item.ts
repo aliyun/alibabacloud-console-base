@@ -1,4 +1,6 @@
-import _noop from 'lodash/noop';
+import {
+  noop as _noop
+} from 'lodash-es';
 
 import {
   TErrorPromptArg,

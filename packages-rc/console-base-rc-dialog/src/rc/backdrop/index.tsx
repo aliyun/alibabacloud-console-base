@@ -9,6 +9,10 @@ import {
   mixinBgBackdrop
 } from '@alicloud/console-base-theme';
 
+import {
+  handleBackdropClick
+} from '../../model';
+
 interface IProps {
   zIndex: number;
 }
@@ -24,7 +28,18 @@ const ScBackdrop = styled.div`
   ${mixinBgBackdrop}
 `;
 
-function getBackdropGateWay(): HTMLDivElement {
+export default function Backdrop({
+  zIndex
+}: IProps): JSX.Element {
+  return <ScBackdrop {...{
+    style: {
+      zIndex
+    },
+    onClick: handleBackdropClick
+  }} />;
+}
+
+export function getBackdropGateWay(): HTMLDivElement {
   if (!backdropGateway) {
     backdropGateway = document.createElement('div');
     backdropGateway.setAttribute('data-dialog-backdrop-overlay', ''); // 仅仅只是给个标注，没有任何意义
@@ -32,16 +47,6 @@ function getBackdropGateWay(): HTMLDivElement {
   }
   
   return backdropGateway;
-}
-
-export default function Backdrop({
-  zIndex
-}: IProps): JSX.Element {
-  return <ScBackdrop {...{
-    style: {
-      zIndex
-    }
-  }} />;
 }
 
 export function showBackdrop(zIndex: number): void {

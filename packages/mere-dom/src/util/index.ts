@@ -36,3 +36,5 @@ export { default as selectText } from './select-text';
 export { default as traverseDfs } from './traverse-dfs';
 
 export { default as loadAssets } from './load-assets';
+
+export { default as triggerWindowResize } from './trigger-window-resize';

@@ -1,9 +1,15 @@
 ignores: [
+  "eslint-*",
+  "@typescript-eslint/*",
+  "@babel/eslint-parser",
+  "stylelint",
+  "stylelint-*",
   "@storybook/*",
   "@commitlint/*",
-  "@alicloud/*-config",
   "markdownlint-cli2",
-  "ts-node"
+  "@alicloud/*-config",
+  "ts-node",
+  "lerna"
 ]
 ignorePatterns: [
   "build"

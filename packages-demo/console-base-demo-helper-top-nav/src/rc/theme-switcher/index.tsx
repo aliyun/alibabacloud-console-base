@@ -17,6 +17,7 @@ import {
 import {
   TopNavButton
 } from '@alicloud/console-base-rc-top-nav';
+import Icon from '@alicloud/console-base-rc-icon';
 
 import intl from '../../intl';
 import TopNavRightItem from '../top-nav-right-item';
@@ -43,7 +44,7 @@ export default function ThemeSwitcher(): JSX.Element {
       label: <TopNavButton {...{
         spm: 'theme-switcher',
         label: {
-          icon: stateOn ? 'lights-off' : 'lights-on'
+          icon: <Icon type={stateOn ? 'lights-off' : 'lights-on'} />
         },
         onClick: handleToggle
       }} />,

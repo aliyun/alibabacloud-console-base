@@ -1,6 +1,8 @@
 /* eslint-disable react/no-array-index-key */
-import _without from 'lodash/without';
-import _isEqual from 'lodash/isEqual';
+import {
+  without as _without,
+  isEqual as _isEqual
+} from 'lodash-es';
 import React, {
   ChangeEvent,
   useState,

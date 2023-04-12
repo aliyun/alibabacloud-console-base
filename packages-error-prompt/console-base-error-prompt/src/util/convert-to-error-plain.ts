@@ -1,4 +1,6 @@
-import _isString from 'lodash/isString';
+import {
+  isString as _isString
+} from 'lodash-es';
 import {
   isValidElement
 } from 'react';

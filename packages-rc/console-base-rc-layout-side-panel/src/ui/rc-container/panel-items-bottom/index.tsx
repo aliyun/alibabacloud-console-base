@@ -10,9 +10,7 @@ import {
   useChildren,
   useItemsBottom
 } from '../../../model';
-import {
-  SidePanelItems
-} from '../../rc';
+import PanelItems from '../panel-items';
 
 const ScHr = styled(HrBase)`
   margin: 4px 8px;
@@ -24,6 +22,6 @@ export default function PanelItemsBottom(): JSX.Element | null {
   
   return <Flex vertical>
     {children || items.length ? <ScHr /> : null}
-    {children || <SidePanelItems items={items} />}
+    {children || <PanelItems items={items} />}
   </Flex>;
 }

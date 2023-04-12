@@ -7,7 +7,6 @@ import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import {
   MarkProps,
-  MarkBase,
   New,
   Hot,
   PublicBeta,
@@ -47,9 +46,6 @@ export default function DemoDefault(): JSX.Element {
     <div>Beta<Beta {...stateProps} />Beta</div>
     <div>Alpha<Alpha {...stateProps} />Alpha</div>
     <div>Update<Update {...stateProps} />Update</div>
-  
-    <MarkBase>Help</MarkBase>
-    
     <ScNew />
   </>;
 }

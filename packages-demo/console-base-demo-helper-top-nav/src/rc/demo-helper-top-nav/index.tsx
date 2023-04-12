@@ -20,7 +20,7 @@ import TopNavRightItem from '../top-nav-right-item';
 makeBodyTransition(); // 为 body 加上 padding transition 效果，不放 effect 里
 
 export default function DemoHelperTopNav({
-  logo = 'FAKE',
+  logo = 'DEMO!',
   pkgInfo,
   rightItems,
   children,

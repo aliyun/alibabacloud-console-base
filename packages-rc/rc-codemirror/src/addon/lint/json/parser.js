@@ -1,8 +1,10 @@
 /* eslint-disable prefer-destructuring, max-depth, complexity */
-import _isUndefined from 'lodash/isUndefined';
-import _isFinite from 'lodash/isFinite';
-import _isFunction from 'lodash/isFunction';
-import _isArray from 'lodash/isArray';
+import {
+  isUndefined as _isUndefined,
+  isFinite as _isFinite,
+  isFunction as _isFunction,
+  isArray as _isArray
+} from 'lodash-es';
 
 import lexer from './lexer';
 

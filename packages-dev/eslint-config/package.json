@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/eslint-config",
-  "version": "1.13.2",
+  "version": "1.13.3",
   "description": "Shareable eslint configuration based on eslint-config-ali",
   "license": "MIT",
   "main": "index.js",
@@ -21,15 +21,15 @@
     "config"
   ],
   "devDependencies": {
-    "eslint": "^8.33.0"
+    "eslint": "^8.36.0"
   },
   "peerDependencies": {
     "eslint": ">=7"
   },
   "dependencies": {
-    "@babel/eslint-parser": "^7.19.1",
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
+    "@babel/eslint-parser": "^7.21.3",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
     "eslint-config-ali": "^14.0.2",
     "eslint-import-resolver-typescript": "^3.5.3",
     "eslint-plugin-import": "^2.27.5",

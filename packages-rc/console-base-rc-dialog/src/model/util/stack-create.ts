@@ -1,5 +1,7 @@
-import _map from 'lodash/map';
-import _forEach from 'lodash/forEach';
+import {
+  forEach as _forEach,
+  map as _map
+} from 'lodash-es';
 
 import {
   IStack,

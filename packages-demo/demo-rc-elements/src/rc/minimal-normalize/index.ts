@@ -22,7 +22,7 @@ export default createGlobalStyle`
   }
   
   a:link {
-    color: #369;
+    color: #e1444c;
     
     &:hover {
       text-decoration: underline;
@@ -30,6 +30,6 @@ export default createGlobalStyle`
   }
   
   a:visited {
-    color: #b8860b;
+    color: #640588;
   }
 `;

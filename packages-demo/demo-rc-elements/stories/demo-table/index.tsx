@@ -18,6 +18,12 @@ const columns: TableColumnProps<IData>[] = [{
 }, {
   title: '名称',
   dataIndex: 'name'
+}, {
+  title: '操作',
+  align: 'right',
+  renderCell(): JSX.Element {
+    return <span>操作 Placeholder</span>;
+  }
 }];
 
 const dataSource: IData[] = [{

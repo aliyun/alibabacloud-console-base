@@ -1,10 +1,9 @@
 import React, {
-  useState,
-  useCallback
+  useState
 } from 'react';
 
 import {
-  Button
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
@@ -25,12 +24,15 @@ const propsNull: TopNavProps = {
 
 export default function DemoEmpty(): JSX.Element {
   const [stateNullProps, setStateNullProps] = useState<boolean>(false);
-  const handleToggleNullProps = useCallback(() => setStateNullProps(!stateNullProps), [stateNullProps, setStateNullProps]);
   
   return <>
     <ThemeSwitcher />
     <PkgInfo />
     {stateNullProps ? <TopNav {...propsNull} /> : <TopNav />}
-    <Button onClick={handleToggleNullProps}>null props</Button>
+    <InputSwitch {...{
+      label: 'null props',
+      value: stateNullProps,
+      onChange: setStateNullProps
+    }} />
   </>;
 }

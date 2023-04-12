@@ -1,5 +1,7 @@
-import _isNil from 'lodash/isNil';
-import _map from 'lodash/map';
+import {
+  isNil as _isNil,
+  map as _map
+} from 'lodash-es';
 import {
   isValidElement
 } from 'react';

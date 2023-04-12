@@ -1,11 +1,6 @@
 export { default as MinimalNormalize } from './minimal-normalize';
 /* block elements */
-export {
-  H1,
-  H2,
-  H3,
-  H4
-} from './h1234';
+export * from './h1234';
 export { default as P } from './p';
 export { default as Blockquote } from './blockquote';
 export { default as List } from './list';
@@ -24,6 +19,7 @@ export {
 } from './choice-group';
 
 /* display */
+export { default as HtmlText } from './html-text';
 export { default as RainbowText } from './rainbow-text';
 export { default as PreJson } from './pre-json';
 export { default as PrePromise } from './pre-promise';
@@ -44,6 +40,7 @@ export { default as Alert } from './alert';
 export { default as Table } from './table';
 export { default as Flex } from './flex';
 export { default as Flex100HBF } from './flex-100hbf';
+export { default as SoloPane } from './solo-pane';
 
 /* placeholders */
 export { default as LongArticle } from './long-article';

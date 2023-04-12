@@ -5,23 +5,24 @@
     "packages*/*"
   ],
   "devDependencies": {
-    "@alicloud/eslint-config": "^1.13.2",
-    "@alicloud/stylelint-config": "^1.2.3",
-    "@alicloud/markdownlint-config": "^1.0.1",
-    "@commitlint/cli": "^17.4.2",
-    "@commitlint/config-conventional": "^17.4.2",
-    "eslint": "^8.33.0",
+    "@alicloud/eslint-config": "^1.13.3",
+    "@alicloud/stylelint-config": "^1.2.4",
+    "@alicloud/markdownlint-config": "^1.0.2",
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
+    "eslint": "^8.37.0",
     "husky": "^8.0.3",
-    "lerna": "^6.4.1",
-    "lint-staged": "^13.1.0",
+    "lerna": "^6.6.1",
+    "lint-staged": "^13.2.0",
     "markdownlint-cli2": "^0.6.0",
-    "npm-check-updates": "^16.6.3",
+    "npm-check-updates": "^16.8.2",
     "stylelint": "^13.13.1",
     "ts-node": "^10.9.1"
   },
-  "resolutions": {
-    "@types/react": "^17.0.48",
-    "@types/react-dom": "^17.0.17"
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint",
+    "*.{js,ts,tsx,css}": "stylelint",
+    "*.md": "markdownlint-cli2"
   },
   "scripts": {
     "prepare": "husky install",
@@ -48,10 +49,5 @@
     "ncu:full": "npm run ncu && npm run ncu:packages",
     "depcheck:main": "depcheck",
     "depcheck:packages": "lerna exec --no-bail -- depcheck"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": "eslint",
-    "*.{js,ts,tsx,css}": "stylelint",
-    "*.md": "markdownlint-cli2"
   }
 }

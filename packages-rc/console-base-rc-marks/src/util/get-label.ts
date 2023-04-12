@@ -1,21 +1,21 @@
 import {
-  EMarkType
-} from '../enum';
+  TMarkType
+} from '../types';
 import intl from '../intl';
 
-export default function getLabel(type: EMarkType): string {
+export default function getLabel(type: TMarkType): string {
   switch (type) {
-    case EMarkType.NEW:
+    case 'NEW':
       return intl('label:new');
-    case EMarkType.HOT:
+    case 'HOT':
       return intl('label:hot');
-    case EMarkType.UPDATE:
+    case 'UPDATE':
       return intl('label:update');
-    case EMarkType.ALPHA:
+    case 'ALPHA':
       return intl('label:alpha');
-    case EMarkType.BETA:
+    case 'BETA':
       return intl('label:beta');
-    case EMarkType.PUBLIC_BETA:
+    case 'PUBLIC_BETA':
       return intl('label:public_beta');
     default:
       return '?';

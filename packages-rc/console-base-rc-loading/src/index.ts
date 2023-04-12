@@ -1,5 +1,11 @@
 export { default } from './rc/loading';
+/**
+ * @deprecated use @alicloud/console-base-rc-with-loading instead
+ */
 export { default as WithLoading } from './rc/with-loading';
+/**
+ * @deprecated use @alicloud/console-base-rc-with-loading instead
+ */
 export { default as WithPromise } from './rc/with-promise';
 
 export type {

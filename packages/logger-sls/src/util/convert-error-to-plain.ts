@@ -1,4 +1,6 @@
-import _forEach from 'lodash/forEach';
+import {
+  forEach as _forEach
+} from 'lodash-es';
 
 /**
  * Error 身上的 name、message、stack 用 _forEach 遍历不到
