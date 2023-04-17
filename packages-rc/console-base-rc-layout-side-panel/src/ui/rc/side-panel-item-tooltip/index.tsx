@@ -12,6 +12,9 @@ import Tooltip, {
 } from '@alicloud/console-base-rc-tooltip';
 
 import {
+  SIZE_BUTTON_WRAP_HEIGHT
+} from '../../const';
+import {
   SidePanelItemProps
 } from '../../../model';
 
@@ -34,7 +37,7 @@ const ScTooltip = styled(Tooltip)`
         `;
       default:
         return css`
-          bottom: ${SIZE.WIDTH_SIDE_PANEL * 0.5}px;
+          bottom: ${SIZE_BUTTON_WRAP_HEIGHT * 0.5}px;
           transform: translateY(50%);
         `;
     }
@@ -68,7 +71,7 @@ export default function SidePanelItemTooltip({
   return <ScTooltip {...{
     visible,
     placement: getPlacement(align),
-    arrowOffset: SIZE.WIDTH_SIDE_PANEL * 0.5,
+    arrowOffset: SIZE_BUTTON_WRAP_HEIGHT * 0.5,
     content,
     ...props
   }} />;

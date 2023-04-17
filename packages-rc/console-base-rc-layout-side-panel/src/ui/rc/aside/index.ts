@@ -7,6 +7,10 @@ import {
   mixinShadowSLeft
 } from '@alicloud/console-base-theme';
 
+import {
+  SIZE_BUTTON_WRAP_HEIGHT
+} from '../../const';
+
 export default styled.aside`
   display: flex;
   flex-direction: column;
@@ -15,7 +19,7 @@ export default styled.aside`
   right: 0;
   bottom: 0;
   z-index: ${Z_INDEX.SIDE_PANEL};
-  padding: 12px 0 ${SIZE.WIDTH_SIDE_PANEL}px 0;
+  padding: 8px 0 ${SIZE_BUTTON_WRAP_HEIGHT}px 0;
   width: ${SIZE.WIDTH_SIDE_PANEL}px;
   transition: all ease-in-out 250ms;
   ${mixinBgPrimary}

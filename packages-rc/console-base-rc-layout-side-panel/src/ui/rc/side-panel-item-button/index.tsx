@@ -5,7 +5,8 @@ import styled, {
 
 import {
   mixinTextSecondary,
-  mixinBgTertiary,
+  mixinBgSecondaryFade,
+  mixinBgTertiaryFade,
   mixinShadowSDown
 } from '@alicloud/console-base-theme';
 import Button, {
@@ -17,21 +18,20 @@ import {
   ISidePanelItemButtonProps
 } from '../../types';
 import {
-  SPACING,
   SIZE_BUTTON,
   SIZE_BUTTON_ICON
 } from '../../const';
 
 const ScButton = styled(Button)`
-  margin: ${SPACING}px;
   border-radius: ${SIZE_BUTTON}px;
   width: ${SIZE_BUTTON}px;
   height: ${SIZE_BUTTON}px;
   line-height: ${SIZE_BUTTON}px;
+  ${mixinBgSecondaryFade}
   ${mixinTextSecondary}
   
   ${props => (props.active ? css`
-    ${mixinBgTertiary}
+    ${mixinBgTertiaryFade}
     ${mixinShadowSDown}
   ` : null)}
   
@@ -48,7 +48,7 @@ const ScButton = styled(Button)`
   }
   
   &:hover {
-    ${mixinBgTertiary}
+    ${mixinBgTertiaryFade}
   }
   
   a:link&,
