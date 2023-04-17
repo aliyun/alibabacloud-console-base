@@ -11,7 +11,7 @@ const ScSpan = styled.span`
   ${CSS_INLINE_ELEMENTS_INSIDE}
 `;
 
-interface IProps extends HTMLAttributes<HTMLSpanElement> {
+interface IProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'children'> {
   text: string;
 }
 

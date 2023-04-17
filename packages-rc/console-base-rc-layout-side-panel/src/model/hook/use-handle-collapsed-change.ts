@@ -6,15 +6,15 @@ import useCollapsed from './use-collapsed';
 import useDispatchSetCollapsed from './use-dispatch-set-collapsed';
 import useModelProps from './_use-model-props';
 
-export default function useHandleToggleCollapsed(): () => void {
+export default function useHandleCollapsedChange(): () => void {
   const {
-    onToggleCollapsed
+    onCollapsedChange
   } = useModelProps();
-  const collapsed = useCollapsed();
+  const collapsed = !useCollapsed(); // 取反一下
   const dispatchSetCollapsed = useDispatchSetCollapsed();
   
   return useCallback(() => {
-    dispatchSetCollapsed(!collapsed);
-    onToggleCollapsed?.(!collapsed);
-  }, [collapsed, dispatchSetCollapsed, onToggleCollapsed]);
+    dispatchSetCollapsed(collapsed);
+    onCollapsedChange?.(collapsed);
+  }, [collapsed, dispatchSetCollapsed, onCollapsedChange]);
 }

@@ -15,7 +15,7 @@ import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   useCollapsed,
-  useHandleToggleCollapsed
+  useHandleCollapsedChange
 } from '../../../model';
 import intl from '../../intl';
 import {
@@ -29,7 +29,7 @@ interface IScProps {
   collapsed: boolean;
 }
 
-const ScPanelToggle = styled(SidePanelItemWrap)<IScProps>`
+const ScCollapseToggle = styled(SidePanelItemWrap)<IScProps>`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -46,7 +46,7 @@ const ScPanelToggle = styled(SidePanelItemWrap)<IScProps>`
     `;
   }}
 `;
-const ScPanelToggleButton = styled(SidePanelItemButton)<IScProps>`
+const ScCollapseToggleButton = styled(SidePanelItemButton)<IScProps>`
   ${props => (props.active ? css`
     ${mixinBgAccent}
     ${mixinTextWhite}
@@ -65,7 +65,7 @@ const ScPanelToggleButton = styled(SidePanelItemButton)<IScProps>`
 export default function PanelToggle(): JSX.Element {
   const [stateHovered, setStateHovered] = useState(false);
   const collapsed = useCollapsed();
-  const handleToggleCollapsed = useHandleToggleCollapsed();
+  const handleToggleCollapsed = useHandleCollapsedChange();
   const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
     setStateHovered(true);
   }, [setStateHovered]), useCallback(() => {
@@ -74,12 +74,12 @@ export default function PanelToggle(): JSX.Element {
   
   const title = intl(collapsed ? 'op:toggle_visible' : 'op:toggle_hidden');
   
-  return <ScPanelToggle {...{
+  return <ScCollapseToggle {...{
     hovered: stateHovered,
     collapsed,
     onMouseLeave: handleMouseLeave
   }}>
-    <ScPanelToggleButton {...{
+    <ScCollapseToggleButton {...{
       hovered: stateHovered,
       collapsed,
       active: collapsed,
@@ -92,5 +92,5 @@ export default function PanelToggle(): JSX.Element {
       visible: stateHovered,
       content: title
     }} />
-  </ScPanelToggle>;
+  </ScCollapseToggle>;
 }

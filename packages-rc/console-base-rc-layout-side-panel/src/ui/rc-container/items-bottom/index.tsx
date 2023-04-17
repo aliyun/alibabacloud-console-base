@@ -8,20 +8,24 @@ import Flex from '@alicloud/console-base-rc-flex';
 
 import {
   useChildren,
-  useItemsBottom
+  useItemsBottom, useQuickTop
 } from '../../../model';
-import PanelItems from '../panel-items';
+import Items from '../items';
+
+import QuickTop from './quick-top';
 
 const ScHr = styled(HrBase)`
   margin: 4px 8px;
 `;
 
-export default function PanelItemsBottom(): JSX.Element | null {
+export default function ItemsBottom(): JSX.Element | null {
+  const quickTop = useQuickTop();
   const children = useChildren();
   const items = useItemsBottom();
   
   return <Flex vertical>
+    {quickTop.container && quickTop.visible ? <QuickTop /> : null}
     {children || items.length ? <ScHr /> : null}
-    {children || <PanelItems items={items} />}
+    {children || <Items items={items} />}
   </Flex>;
 }

@@ -78,7 +78,7 @@ export default function SoloPane({
         onChange: setStateSize
       }} />
       <Hr />
-      {children}
+      <>{children}</>
     </ScAdjustWidth>
     <ScRight {...{
       style: {

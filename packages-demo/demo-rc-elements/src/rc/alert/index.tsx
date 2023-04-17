@@ -84,6 +84,6 @@ export default function Alert({
 }: IAlertProps): JSX.Element {
   return <ScAlert {...props} className={[className, `alert-${type}`].join(' ')}>
     {title ? <header>{title}</header> : null}
-    {children}
+    <>{children}</>
   </ScAlert>;
 }

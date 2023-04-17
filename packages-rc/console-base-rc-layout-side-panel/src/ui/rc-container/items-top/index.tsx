@@ -5,12 +5,12 @@ import Flex from '@alicloud/console-base-rc-flex';
 import {
   useItemsTop
 } from '../../../model';
-import PanelItems from '../panel-items';
+import Items from '../items';
 
-export default function PanelItemsTop(): JSX.Element {
+export default function ItemsTop(): JSX.Element {
   const items = useItemsTop();
   
   return <Flex vertical flex>
-    <PanelItems items={items} />
+    <Items items={items} />
   </Flex>;
 }

@@ -1,3 +1,3 @@
-export { default as PanelItemsTop } from './panel-items-top';
-export { default as PanelItemsBottom } from './panel-items-bottom';
-export { default as PanelToggle } from './panel-toggle';
+export { default as ItemsTop } from './items-top';
+export { default as ItemsBottom } from './items-bottom';
+export { default as CollapseToggle } from './collapse-toggle';

@@ -17,7 +17,7 @@ export interface IModelProps {
    */
   visible?: boolean;
   /**
-   * 通过 onToggleCollapsed 实现受控
+   * 通过 onCollapsedChange 实现受控
    */
   collapsed?: boolean;
   /**
@@ -29,7 +29,15 @@ export interface IModelProps {
    */
   itemsBottom?: ISidePanelItemPropsWithKey[];
   /**
+   * 给一个 DOM 节点，组件会监测它的滚动情况，并判断是否展示快速置顶按钮
+   */
+  quickTopContainer?: Window | HTMLElement | null;
+  /**
+   * QuickTop 显隐变化时的回调，可用于日志
+   */
+  onQuickTopVisibleChange?(visible: boolean): void;
+  /**
    * 是否展示推入按钮
    */
-  onToggleCollapsed?(collapsed: boolean): void;
+  onCollapsedChange?(collapsed: boolean): void;
 }

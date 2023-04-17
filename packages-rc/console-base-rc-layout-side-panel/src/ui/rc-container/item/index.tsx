@@ -26,7 +26,7 @@ import {
 
 interface IProps extends SidePanelItemProps {}
 
-export default function SidePanelItem({
+export default function Item({
   // id style className 在外层
   id,
   className,

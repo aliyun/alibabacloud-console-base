@@ -4,7 +4,8 @@ import styled, {
 } from 'styled-components';
 
 import {
-  useCollapsed, useVisible
+  useVisible,
+  useCollapsed
 } from '../model';
 
 import {
@@ -15,9 +16,9 @@ import {
   GlobalStyleOnBody
 } from './rc';
 import {
-  PanelItemsTop,
-  PanelItemsBottom,
-  PanelToggle
+  ItemsTop,
+  ItemsBottom,
+  CollapseToggle
 } from './rc-container';
 
 interface IScProps {
@@ -39,8 +40,8 @@ export default function Ui(): JSX.Element | null {
     [DATA_KEY_J]: ''
   }}>
     <GlobalStyleOnBody />
-    <PanelItemsTop />
-    <PanelItemsBottom />
-    <PanelToggle />
+    <ItemsTop />
+    <ItemsBottom />
+    <CollapseToggle />
   </ScUi> : null;
 }

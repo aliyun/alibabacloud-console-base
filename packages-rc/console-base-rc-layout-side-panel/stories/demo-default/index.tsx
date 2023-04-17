@@ -1,15 +1,21 @@
 import React, {
-  useState
+  useState,
+  useMemo
 } from 'react';
+import styled, {
+  createGlobalStyle
+} from 'styled-components';
 
 import {
-  InputSwitch
+  ChoiceItem,
+  H2,
+  InputSwitch,
+  RadioGroup,
+  LongArticle
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import Icon from '@alicloud/console-base-rc-icon';
 import TopNav from '@alicloud/console-base-rc-top-nav';
-
-import './index.less';
 
 import LayoutSidePanel from '../../src';
 import {
@@ -22,16 +28,78 @@ import {
 } from '../rc';
 import PkgInfo from '../pkg-info';
 
+const GlobalStyleTestIconClass = createGlobalStyle`
+  i.test-icon-class {
+    font-style: normal;
+    
+    &:before {
+      content: '🧠';
+    }
+  }
+`;
+
+const ScDiv = styled.div`
+  border: 4px solid #090;
+  max-height: 600px;
+  overflow: auto;
+`;
+
+enum EQuickTopContainer {
+  WINDOW,
+  BODY,
+  LONG_ARTICLE,
+  NULL,
+  UNDEFINED
+}
+
+const DATA_SOURCE_QUICK_TOP_CONTAINER: ChoiceItem<EQuickTopContainer>[] = [{
+  label: 'window',
+  value: EQuickTopContainer.WINDOW
+}, {
+  label: 'body (might not work)',
+  value: EQuickTopContainer.BODY
+}, {
+  label: 'div',
+  value: EQuickTopContainer.LONG_ARTICLE
+}, {
+  label: 'null',
+  value: EQuickTopContainer.NULL
+}, {
+  label: 'undefined',
+  value: EQuickTopContainer.UNDEFINED
+}];
+
 export default function DemoDefault(): JSX.Element {
   const [stateTopBar, setStateTopBar] = useState(true);
   const [stateChildrenAsItemsBottom, setStateChildrenAsItemsBottom] = useState(false);
   const [stateVisible, setStateVisible] = useState(true);
   const [stateCollapsed, setStateCollapsed] = useState(false);
   const [stateApiInspectorVisible, setStateApiInspectorVisible] = useState(false);
+  const [stateDom, setStateDom] = useState<HTMLElement | null>(null);
+  const [stateQuickTopContainer, setStateQuickTopContainer] = useState<EQuickTopContainer>(EQuickTopContainer.WINDOW);
+  
+  const quickTopContainer: Window | HTMLElement | null | undefined = useMemo(() => {
+    switch (stateQuickTopContainer) {
+      case EQuickTopContainer.WINDOW:
+        return window;
+      case EQuickTopContainer.BODY:
+        return document.body;
+      case EQuickTopContainer.LONG_ARTICLE:
+        return stateDom;
+      case EQuickTopContainer.NULL:
+        return null;
+      case EQuickTopContainer.UNDEFINED:
+        break;
+      default:
+        break;
+    }
+  }, [stateDom, stateQuickTopContainer]);
   
   return <>
     {stateTopBar ? <TopNav /> : null}
+    <GlobalStyleTestIconClass />
     <LayoutSidePanel {...{
+      quickTopContainer,
       itemsTop: [{
         key: 'icon-rc-icon',
         title: '测试 Icon 组件',
@@ -59,9 +127,7 @@ export default function DemoDefault(): JSX.Element {
         unread: 1234,
         tooltip: <>
           <strong>Ingrid Michaelson</strong>
-          <img {...{
-            src: 'https://s.hdnux.com/photos/50/11/50/10525228/3/1200x0.jpg',
-            alt: '',
+          <img alt="" src="https://s.hdnux.com/photos/50/11/50/10525228/3/1200x0.jpg" {...{
             style: {
               display: 'block',
               margin: '2px 0',
@@ -116,10 +182,11 @@ export default function DemoDefault(): JSX.Element {
       }],
       visible: stateVisible,
       collapsed: stateCollapsed,
-      onToggleCollapsed: setStateCollapsed
+      onCollapsedChange: setStateCollapsed
     }}>{stateChildrenAsItemsBottom ? <ChildrenAsItemsBottom /> : null}</LayoutSidePanel>
     <ThemeSwitcher />
     <PkgInfo />
+    <H2>调试</H2>
     <InputSwitch {...{
       label: '展示 TopBar',
       value: stateTopBar,
@@ -144,5 +211,15 @@ export default function DemoDefault(): JSX.Element {
       visible: stateApiInspectorVisible,
       onVisibleChange: setStateApiInspectorVisible
     }} />
+    <H2>QuickTop</H2>
+    <RadioGroup<EQuickTopContainer> {...{
+      items: DATA_SOURCE_QUICK_TOP_CONTAINER,
+      value: stateQuickTopContainer,
+      onChange: setStateQuickTopContainer
+    }} />
+    <H2>LongArticle</H2>
+    <ScDiv ref={setStateDom}>
+      <LongArticle />
+    </ScDiv>
   </>;
 }

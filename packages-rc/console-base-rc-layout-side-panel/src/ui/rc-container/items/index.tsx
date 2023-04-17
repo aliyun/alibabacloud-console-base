@@ -6,13 +6,13 @@ import {
 import {
   DATA_KEY_SIDE_PANEL_ITEM
 } from '../../const';
-import PanelItem from '../panel-item';
+import PanelItem from '../item';
 
 interface IProps {
   items: SidePanelItemPropsWithKey[];
 }
 
-export default function PanelItems({
+export default function Items({
   items
 }: IProps): JSX.Element {
   return <>
