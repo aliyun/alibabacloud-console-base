@@ -1,4 +1,7 @@
-export type TQuickTopContainer = Window | HTMLElement | null;
+/**
+ * 设置快速置顶容器，当为 string 的时候，可以是 'window' 或者选择器（需调用者保证全局唯一）
+ */
+export type TMessengerSidePanelQuickTopContainer = string | Window | HTMLElement | null;
 
 /**
  * 在 messenger 里需要保持依赖的干净程度，不能依赖 JSX，且不可以有无法序列化的方法等，

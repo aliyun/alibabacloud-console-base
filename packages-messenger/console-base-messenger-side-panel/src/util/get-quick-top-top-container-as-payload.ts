@@ -1,5 +1,5 @@
 import {
-  TQuickTopContainer
+  TMessengerSidePanelQuickTopContainer
 } from '../types';
 import {
   DATA_KEY_QUICK_TOP
@@ -7,7 +7,7 @@ import {
 
 let index = 0;
 
-export default function getQuickTopTopContainerAsPayload(container: TQuickTopContainer): string | null {
+export default function getQuickTopTopContainerAsPayload(container: TMessengerSidePanelQuickTopContainer): string | null {
   if (!container) {
     return null;
   }
