@@ -12,6 +12,10 @@ export default function getQuickTopTopContainerAsPayload(container: TMessengerSi
     return null;
   }
   
+  if (typeof container === 'string') {
+    return container;
+  }
+  
   if (container === window || container === document.documentElement || container === document.body) { // body 的滚动性有问题，回退到 window
     return 'window';
   }
