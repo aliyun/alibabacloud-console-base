@@ -1,13 +1,8 @@
 import {
-  MouseEvent
-} from 'react';
-
-import {
   ECheckFilterResult
 } from '../enum';
 import {
-  INavItemProps,
-  IParsedItem,
+  IParsedItem, TNavItem,
   TParsedItemOrDivider,
   TSubItemsUnfolded
 } from '../types';
@@ -22,19 +17,30 @@ import checkAgainstFilterValue from './check-against-filter-value';
 interface IParseOptions {
   subItemsUnfolded: TSubItemsUnfolded;
   filterValue: string;
-  onItemClick(item: INavItemProps, e: MouseEvent): void;
+  // onItemClick(item: INavItemProps, e: MouseEvent): void;
   parentCheckResult?: ECheckFilterResult;
+  indexes: number[];
   indent?: number;
 }
 
-export default function parseItem(o: INavItemProps, options: IParseOptions): IParsedItem | null {
+export default function parseItem(o: TNavItem, options: IParseOptions): TParsedItemOrDivider | null {
+  if (!o) {
+    return null;
+  }
+  
   const {
     subItemsUnfolded,
     filterValue,
-    onItemClick,
+    // onItemClick,
     parentCheckResult,
+    indexes,
     indent = 0
   } = options;
+  
+  if (o === '-') {
+    return createDividerItem(indexes, indent);
+  }
+  
   // 如果父级命中过滤，则子项全部命中
   const checkResult = parentCheckResult === ECheckFilterResult.YES ? ECheckFilterResult.YES : checkAgainstFilterValue(o, filterValue);
   
@@ -45,28 +51,21 @@ export default function parseItem(o: INavItemProps, options: IParseOptions): IPa
   const itemParsed: IParsedItem = {
     ...o,
     key: getItemKey(o),
+    props: o,
     divider: undefined,
     mark: getItemMark(o),
     indent,
     subItems: o.subItems?.reduce((result: TParsedItemOrDivider[], v, i) => {
-      if (!v) {
-        return result;
-      }
+      const o2 = parseItem(v, {
+        subItemsUnfolded,
+        filterValue,
+        parentCheckResult: checkResult,
+        indexes: [...indexes, i],
+        indent: indent + 1
+      });
       
-      if (v === '-') {
-        result.push(createDividerItem(i, indent + 1));
-      } else {
-        const o2 = parseItem(v, {
-          subItemsUnfolded,
-          filterValue,
-          onItemClick,
-          parentCheckResult: checkResult,
-          indent: indent + 1
-        });
-        
-        if (o2) {
-          result.push(o2);
-        }
+      if (o2) {
+        result.push(o2);
       }
       
       return result;
@@ -103,16 +102,6 @@ export default function parseItem(o: INavItemProps, options: IParseOptions): IPa
   if (!itemParsed.subItemsUnfolded && itemParsed.subItems.length) {
     itemParsed.subItemsUnfolded = hasSelectedSubItem(itemParsed);
   }
-  
-  // 填充 onClick
-  const {
-    onClick
-  } = itemParsed;
-  
-  itemParsed.onClick = e => {
-    onItemClick(o, e);
-    onClick?.(e);
-  };
   
   return itemParsed;
 }

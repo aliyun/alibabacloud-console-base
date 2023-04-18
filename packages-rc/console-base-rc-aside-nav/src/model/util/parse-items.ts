@@ -9,42 +9,65 @@ import {
   TParsedItemOrDivider
 } from '../types';
 
-import createDividerItem from './create-divider-item';
 import parseItem from './parse-item';
+import isItemInteractive from './is-item-interactive';
 
-export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded, filterValue: string, onItemClick: (item: INavItemProps, e: MouseEvent) => void): TParsedItemOrDivider[] {
-  const itemsParsed: TParsedItemOrDivider[] = [];
+function cleanup(list: TParsedItemOrDivider[], onItemClick: (item: INavItemProps, e: MouseEvent) => void): TParsedItemOrDivider[] {
   let lastIsDivider = true; // 用于 '-' 掐头
   
-  // 对 divider 进行去重和掐头去尾
-  items.forEach((v, i) => {
-    if (!v) {
-      return;
-    }
-    
-    if (v === '-') {
+  const list2 = list.reduce((result: TParsedItemOrDivider[], v) => {
+    if (v.divider) {
       if (!lastIsDivider) {
         lastIsDivider = true;
-        itemsParsed.push(createDividerItem(i, 0));
+        result.push(v);
       }
     } else {
-      const o = parseItem(v, {
-        subItemsUnfolded,
-        filterValue,
-        onItemClick
-      });
+      v.subItems = cleanup(v.subItems, onItemClick);
       
-      if (o) {
+      // 没有子项且没有操作的，忽略
+      if (v.subItems.length || isItemInteractive(v)) {
+        const {
+          onClick
+        } = v;
+        
+        v.onClick = e => { // 填充 onClick
+          onItemClick(v.props, e);
+          onClick?.(e);
+        };
+  
         lastIsDivider = false;
-        itemsParsed.push(o);
+        result.push(v);
       }
     }
-  });
+    
+    return result;
+  }, []);
   
   // '-' 去尾
-  if (itemsParsed.length && itemsParsed[itemsParsed.length - 1]?.divider) {
-    itemsParsed.pop();
+  if (list2.length && list2[list2.length - 1]?.divider) {
+    list2.pop();
   }
   
-  return itemsParsed;
+  return list2;
+}
+
+export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded, filterValue: string, onItemClick: (item: INavItemProps, e: MouseEvent) => void): TParsedItemOrDivider[] {
+  // 第一次遍历转换，会出现重复和头尾的分割线
+  const itemsParsed: TParsedItemOrDivider[] = items.reduce((result: TParsedItemOrDivider[], v, i) => {
+    const o = parseItem(v, {
+      subItemsUnfolded,
+      filterValue,
+      // onItemClick,
+      indexes: [i]
+    });
+    
+    if (o) {
+      result.push(o);
+    }
+    
+    return result;
+  }, []);
+  
+  // 第二次遍历，对 divider 进行去重和掐头去尾
+  return cleanup(itemsParsed, onItemClick);
 }

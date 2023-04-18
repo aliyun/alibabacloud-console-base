@@ -2,9 +2,9 @@ import {
   IParsedDivider
 } from '../types';
 
-export default function createDividerItem(index: number, indent: number): IParsedDivider {
+export default function createDividerItem(indexes: number[], indent: number): IParsedDivider {
   return {
-    key: `divider-${index}`,
+    key: `divider-${indexes.join('-')}`,
     divider: true,
     indent
   };

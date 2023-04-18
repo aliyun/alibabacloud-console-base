@@ -37,6 +37,8 @@ export interface IParsedDivider {
 }
 
 export interface IParsedItem extends Omit<INavItemProps, 'subItems'> {
+  // 记一份原数据
+  props: INavItemProps;
   divider: undefined;
   indent: number;
   subItems: (IParsedItem | IParsedDivider)[];
