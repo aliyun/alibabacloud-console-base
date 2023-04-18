@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import {
   BadgeBaseDot,
@@ -11,20 +13,39 @@ import {
   SidePanelItemProps
 } from '../../../model';
 
-interface IProps extends Pick<SidePanelItemProps, 'unread' | 'mark'> {}
+interface IProps extends Pick<SidePanelItemProps, 'unread' | 'mark'> {
+  alignLeft?: boolean;
+}
 
-const ScUnreadDot = styled(BadgeBaseDot)`
+interface IScProps {
+  $alignLeft?: boolean;
+}
+
+const ScUnreadDot = styled(BadgeBaseDot)<IScProps>`
   top: 8px;
-  right: 8px;
+  ${props => (props.$alignLeft ? css`
+    left: 8px;
+  ` : css`
+    right: 8px;
+  `)}
 `;
-const ScUnreadNumber = styled(BadgeBaseNumber)`
+const ScUnreadNumber = styled(BadgeBaseNumber)<IScProps>`
   top: 4px;
-  right: 2px;
+  ${props => (props.$alignLeft ? css`
+    left: 2px;
+    right: auto;
+  ` : css`
+    right: 2px;
+  `)}
 `;
-const ScMark = styled(Mark)`
+const ScMark = styled(Mark)<IScProps>`
   position: absolute;
   top: 4px;
-  right: 0;
+  ${props => (props.$alignLeft ? css`
+    left: 0;
+  ` : css`
+    right: 0;
+  `)}
   transform: scale(0.75);
 `;
 
@@ -33,18 +54,19 @@ const ScMark = styled(Mark)`
  */
 export default function SidePanelItemBadge({
   unread,
-  mark
+  mark,
+  alignLeft = true
 }: IProps): JSX.Element | null {
   if (unread) {
     if (unread === true) {
-      return <ScUnreadDot />;
+      return <ScUnreadDot $alignLeft={alignLeft} />;
     }
     
-    return <ScUnreadNumber>{unread < 100 ? unread : '99+'}</ScUnreadNumber>;
+    return <ScUnreadNumber $alignLeft={alignLeft}>{unread < 100 ? unread : '99+'}</ScUnreadNumber>;
   }
   
   if (mark === 'NEW' || mark === 'HOT') {
-    return <ScMark type={mark} borderRadius />;
+    return <ScMark $alignLeft={alignLeft} type={mark} borderRadius />;
   }
   
   return null;

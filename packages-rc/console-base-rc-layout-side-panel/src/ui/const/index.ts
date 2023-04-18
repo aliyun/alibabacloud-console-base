@@ -3,7 +3,7 @@ import {
 } from '@alicloud/console-base-theme';
 
 export const SPACING_X = 10; // 圆形按钮与条状 Panel 的水平间隙
-export const SPACING_Y = 5;
+export const SPACING_Y = 6;
 export const SIZE_BUTTON = SIZE.WIDTH_SIDE_PANEL - SPACING_X * 2;
 export const SIZE_BUTTON_ICON = SIZE_BUTTON * 0.5;
 export const SIZE_BUTTON_WRAP_WIDTH = SIZE.WIDTH_SIDE_PANEL;

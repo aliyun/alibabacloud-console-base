@@ -14,13 +14,18 @@ import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
+  SPACING_Y
+} from '../../const';
+import intl from '../../intl';
+import {
   useCollapsed,
+  useItemsTop,
   useHandleCollapsedChange
 } from '../../../model';
-import intl from '../../intl';
 import {
   SidePanelItemWrap,
   SidePanelItemButton,
+  SidePanelItemBadge,
   SidePanelItemTooltip
 } from '../../rc';
 
@@ -32,7 +37,7 @@ interface IScProps {
 const ScCollapseToggle = styled(SidePanelItemWrap)<IScProps>`
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: ${SPACING_Y}px;
   
   ${props => {
     if (!props.collapsed) {
@@ -65,6 +70,7 @@ const ScCollapseToggleButton = styled(SidePanelItemButton)<IScProps>`
 export default function PanelToggle(): JSX.Element {
   const [stateHovered, setStateHovered] = useState(false);
   const collapsed = useCollapsed();
+  const unread = useItemsTop().some(v => v.unread);
   const handleToggleCollapsed = useHandleCollapsedChange();
   const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
     setStateHovered(true);
@@ -88,6 +94,7 @@ export default function PanelToggle(): JSX.Element {
       onMouseEnter: handleMouseEnter,
       onClick: handleToggleCollapsed
     }} />
+    {collapsed && unread ? <SidePanelItemBadge unread alignLeft={!stateHovered} /> : null}
     <SidePanelItemTooltip {...{
       visible: stateHovered,
       content: title

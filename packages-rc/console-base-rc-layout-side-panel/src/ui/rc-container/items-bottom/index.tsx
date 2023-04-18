@@ -7,6 +7,9 @@ import {
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
+  SPACING_Y
+} from '../../const';
+import {
   useChildren,
   useItemsBottom, useQuickTop
 } from '../../../model';
@@ -15,7 +18,7 @@ import Items from '../items';
 import QuickTop from './quick-top';
 
 const ScHr = styled(HrBase)`
-  margin: 4px 8px;
+  margin: ${SPACING_Y}px 4px;
 `;
 
 export default function ItemsBottom(): JSX.Element | null {

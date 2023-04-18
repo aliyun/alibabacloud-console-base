@@ -8,7 +8,7 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  SIZE_BUTTON_WRAP_HEIGHT
+  SIZE_BUTTON_WRAP_HEIGHT, SPACING_Y
 } from '../../const';
 
 export default styled.aside`
@@ -19,7 +19,7 @@ export default styled.aside`
   right: 0;
   bottom: 0;
   z-index: ${Z_INDEX.SIDE_PANEL};
-  padding: 8px 0 ${SIZE_BUTTON_WRAP_HEIGHT}px 0;
+  padding: ${SPACING_Y * 1.5}px 0 ${SIZE_BUTTON_WRAP_HEIGHT + SPACING_Y}px 0;
   width: ${SIZE.WIDTH_SIDE_PANEL}px;
   transition: all ease-in-out 250ms;
   ${mixinBgPrimary}

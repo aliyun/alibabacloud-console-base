@@ -11,18 +11,14 @@ export default function onSidePanelQuickTopSetContainer(fn: (container: Window |
   return subscribeByApp<string | null>(MESSAGE_TYPE_SIDE_PANEL__QUICK_TOP_SET_CONTAINER, payload => {
     if (!payload) {
       fn(null);
-      
-      return;
-    }
-    
-    if (payload === 'window') {
+    } else if (payload === 'window') {
       fn(window);
-    }
-    
-    try {
-      fn(document.querySelector<HTMLElement>(payload));
-    } catch (err) {
-      // ignore
+    } else {
+      try {
+        fn(document.querySelector<HTMLElement>(payload));
+      } catch (err) {
+        // ignore
+      }
     }
   });
 }
