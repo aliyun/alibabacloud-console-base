@@ -34,7 +34,6 @@ export interface IModelProps {
    * 
    * - true 全部展开（默认）
    * - false 都不展开
-   * - 'fist' 仅展开第一个带子项的
    * - 'first-level' 展开所有第一级（不展开第二级）
    */
   subItemsUnfolded?: TSubItemsUnfolded;
@@ -47,15 +46,29 @@ export interface IModelProps {
    */
   itemsInFooter?: (INavItemInFooterProps | null)[];
   /**
-   * 没什么用暂时..
+   * 是否展示搜索框
+   * 当 minItemsForFilter <= 0 时：永远不搜索
+   * 当 minItemsForFilter >= 1 时：菜单总数 >= minItemsForFilter 时展示搜索，否则不展示，默认 10
    */
-  onHoveredChange?(hovered: boolean): void;
+  minItemsForFilter?: number;
+  /**
+   * 点击回调，以便在 react-router 下使用
+   */
+  onItemClick?(item: INavItemProps, e: MouseEvent): void;
   /**
    * 将决定是否展示推入按钮
    */
   onCollapsedChange?(collapsed: boolean): void;
   /**
-   * 点击回调，以便在 react-router 下使用
+   * 鼠标移入移出回调，可用于记录日志
    */
-  onItemClick?(item: INavItemProps, e: MouseEvent): void;
+  onHoveredChange?(hovered: boolean): void;
+  /**
+   * 过滤值变化，可用于记录日志
+   */
+  onFilterValueChange?(value: string): void;
+  /**
+   * 过滤可见性变化，可用于记录日志
+   */
+  onFilterVisibleChange?(visible: boolean): void;
 }

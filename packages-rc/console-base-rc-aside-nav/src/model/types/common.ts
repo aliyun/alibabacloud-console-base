@@ -4,7 +4,7 @@ import {
 
 export type TNavItemMark = 'external' | 'new' | 'beta-public' | 'beta' | 'alpha';
 
-export type TSubItemsUnfolded = boolean | 'fist' | 'first-level';
+export type TSubItemsUnfolded = boolean | 'first-level';
 
 export interface INavItemPropsBase extends Omit<ButtonProps, 'iconLeft' | 'iconRight'> {
   key: string;
@@ -19,6 +19,10 @@ export interface INavItemProps extends INavItemPropsBase {
    * 默认展开子项目，非受控，序列中的第一个带子项的将自动展开，覆盖顶级 props 指定的行为
    */
   subItemsUnfolded?: boolean;
+  /**
+   * 搜索关键字，可提高命中率
+   */
+  keywords?: string[];
 }
 
 export interface INavItemInFooterProps extends INavItemPropsBase {}
