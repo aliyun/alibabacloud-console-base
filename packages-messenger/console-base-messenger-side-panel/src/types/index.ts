@@ -5,7 +5,7 @@ export type TMessengerSidePanelQuickTopContainer = string | Window | HTMLElement
 
 /**
  * 在 messenger 里需要保持依赖的干净程度，不能依赖 JSX，且不可以有无法序列化的方法等，
- * 这部分定义与 @alicloud/console-base-rc-layout-side-panel 的 SidePanelItemProps 有一定的冗余，属于合理冗余
+ * 这部分定义与 @alicloud/console-base-rc-side-panel 的 SidePanelItemProps 有一定的冗余，属于合理冗余
  */
 export interface IMessengerSidePanelPayloadItem {
   /**

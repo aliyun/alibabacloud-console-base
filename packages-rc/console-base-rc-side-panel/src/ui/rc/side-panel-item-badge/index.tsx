@@ -55,7 +55,7 @@ const ScMark = styled(Mark)<IScProps>`
 export default function SidePanelItemBadge({
   unread,
   mark,
-  alignLeft = true
+  alignLeft
 }: IProps): JSX.Element | null {
   if (unread) {
     if (unread === true) {
