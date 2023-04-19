@@ -40,7 +40,7 @@
     "@alicloud/console-base-intl-factory-basic": "^1.6.9",
     "@alicloud/console-base-rc-button": "^1.7.11",
     "@alicloud/console-base-rc-icon": "^1.10.5",
-    "@alicloud/console-base-rc-input": "^1.7.1",
+    "@alicloud/console-base-rc-input": "^1.7.2",
     "@alicloud/console-base-rc-marks": "^1.8.3",
     "@alicloud/console-base-theme": "^1.9.3",
     "@alicloud/console-base-theme-sc-base": "^1.6.4",

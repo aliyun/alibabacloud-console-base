@@ -5,6 +5,6 @@ export type {
   ModelProps as InputProps
 } from './model';
 
-export {
+export type {
   ISearchInputProps as SearchInputProps
 } from './types';
