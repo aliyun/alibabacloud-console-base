@@ -18,7 +18,7 @@ import {
 
 import {
   IPropsScInput
-} from '../model';
+} from '../../model';
 
 const cssNormal = css<IPropsScInput>`
   ${mixinInputBg}

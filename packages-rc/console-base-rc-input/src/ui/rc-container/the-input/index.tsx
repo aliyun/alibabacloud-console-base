@@ -7,7 +7,7 @@ import {
 import {
   ScInputWrapper,
   ScInputReal
-} from '../../../sc';
+} from '../../sc';
 
 export default function TheInput(): JSX.Element {
   const propsForInputElement = usePropsForInputElement();

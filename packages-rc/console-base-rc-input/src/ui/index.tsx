@@ -6,15 +6,17 @@ import {
   useFocused,
   useHandleMouseEnter,
   useHandleMouseLeave
-} from '../../model';
+} from '../model';
+
 import {
   ScInput
-} from '../../sc';
-
-import InnerLeft from './inner-left';
-import TheInput from './the-input';
-import InnerRight from './inner-right';
-import InnerRightStatus from './inner-right-status';
+} from './sc';
+import {
+  TheInput,
+  InnerLeft,
+  InnerRight,
+  InnerRightStatus
+} from './rc-container';
 
 export default function Ui(): JSX.Element {
   const {

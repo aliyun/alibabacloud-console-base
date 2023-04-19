@@ -6,7 +6,7 @@ import {
 } from '../../../model';
 import {
   ScInputInnerLeft
-} from '../../../sc';
+} from '../../sc';
 
 export default function InnerLeft(): JSX.Element | null {
   const {

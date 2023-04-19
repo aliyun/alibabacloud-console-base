@@ -17,7 +17,7 @@ import Knobs from '../knobs';
 
 function onChange(value: string): void {
   // eslint-disable-next-line no-console
-  console.info(value);
+  console.info('demo onChange', value);
 }
 
 export default function DemoDefault(): JSX.Element {

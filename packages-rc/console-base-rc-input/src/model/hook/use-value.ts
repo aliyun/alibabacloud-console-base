@@ -7,8 +7,14 @@ export default function useValue(): string {
     defaultValue
   } = useModelProps();
   const {
-    value: valueInState
+    value: valueInState,
+    composing
   } = useModelState();
+  
+  // 输入法正在输入，仅取 state 中的值
+  if (composing) {
+    return valueInState || '';
+  }
   
   return value ?? valueInState ?? defaultValue ?? '';
 }

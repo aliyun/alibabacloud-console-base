@@ -1,33 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {
-  useControllableSoftTrim
-} from '@alicloud/react-hook-controllable';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   ModelProps
 } from '../model';
-import Input from '../rc-container';
+import Input from '../with-model';
 
 const ScIcon = styled(Icon)`
-  font-size: 14px;
+  font-size: 13px;
 `;
 
-export default function SearchInput({
-  value,
-  defaultValue,
-  onChange,
-  ...props
-}: ModelProps): JSX.Element {
-  const [controllableValue, controllableOnChange] = useControllableSoftTrim(true, value, defaultValue, onChange);
-  
+interface IProps extends Omit<ModelProps, 'innerLeft'> {}
+
+export default function SearchInput(props: IProps): JSX.Element {
   return <Input {...{
     hasClear: true,
     ...props,
-    value: controllableValue,
-    onChange: controllableOnChange,
     innerLeft: <ScIcon type="search" />
   }} />;
 }

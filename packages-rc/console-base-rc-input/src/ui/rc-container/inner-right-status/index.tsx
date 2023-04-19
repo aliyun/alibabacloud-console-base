@@ -15,7 +15,7 @@ import {
 import {
   ScInputInnerRight,
   ScInputClearButton
-} from '../../../sc';
+} from '../../sc';
 
 const ScIconSuccess = styled(Icon)`
   ${mixinTextSuccess}

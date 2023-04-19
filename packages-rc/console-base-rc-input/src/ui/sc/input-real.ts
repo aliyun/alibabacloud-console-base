@@ -12,11 +12,11 @@ import {
 } from '@alicloud/console-base-theme-sc-base';
 
 import {
+  IPropsScInput
+} from '../../model';
+import {
   INNER_HEIGHT_PX
 } from '../const';
-import {
-  IPropsScInput
-} from '../model';
 
 export default styled(InputBase)<IPropsScInput>`
   padding: 0 ${SIZE.PADDING_X_FORM_CONTROL_M - 2}px;

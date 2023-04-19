@@ -26,7 +26,6 @@ const ScHeader = styled.header`
   justify-content: space-between;
   padding: 0 ${SPACING_SIDE}px;
   height: ${HEIGHT_HEADER}px;
-  line-height: ${HEIGHT_HEADER}px;
   font-size: 14px;
   font-weight: 600;
   ${mixinTextPrimary}

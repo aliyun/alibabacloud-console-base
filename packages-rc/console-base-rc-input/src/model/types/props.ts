@@ -1,4 +1,5 @@
 import {
+  ReactNode,
   InputHTMLAttributes,
   MouseEvent,
   ChangeEvent
@@ -27,11 +28,20 @@ export interface IPropsLook {
   hasClear?: boolean;
 }
 
-export interface IModelProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onMouseEnter' | 'onMouseLeave' | 'defaultValue' | 'onChange'>, IPropsLook {
+export interface IPropsScInput extends IPropsLook {
+  disabled?: boolean;
+  hovered?: boolean;
+}
+
+export interface IModelProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'defaultValue' | 'onMouseEnter' | 'onMouseLeave' | 'onChange'>, IPropsLook {
   value?: string;
   defaultValue?: string;
   innerLeft?: string | JSX.Element;
   innerRight?: string | JSX.Element;
+  /**
+   * 是否执行软 trim，默认开启
+   */
+  trim?: boolean;
   onMouseEnter?(e: MouseEvent): void;
   onMouseLeave?(e: MouseEvent): void;
   onChange?(value: string, e?: ChangeEvent<HTMLInputElement>): void;
@@ -45,7 +55,6 @@ export interface IModelProps extends Omit<InputHTMLAttributes<HTMLInputElement>,
   onHoveredChange?(hovered: boolean): void;
 }
 
-export interface IPropsScInput extends IPropsLook {
-  disabled?: boolean;
-  hovered?: boolean;
+export interface IModelProviderProps extends IModelProps {
+  children?: ReactNode;
 }

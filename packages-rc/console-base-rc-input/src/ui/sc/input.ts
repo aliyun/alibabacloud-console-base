@@ -6,7 +6,7 @@ import {
 
 import {
   IPropsScInput
-} from '../model';
+} from '../../model';
 import {
   getStyledBorder,
   getStyledShadow
