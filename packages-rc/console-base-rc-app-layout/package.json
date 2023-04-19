@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-app-layout",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ConsoleBase 组件 - AppLayout",
   "license": "MIT",
   "sideEffects": false,
