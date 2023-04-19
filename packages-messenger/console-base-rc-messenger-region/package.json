@@ -37,7 +37,7 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-log-sls": "^1.6.9",
+    "@alicloud/console-base-log-sls": "^1.6.10",
     "@alicloud/console-base-messenger-region": "^1.1.9"
   },
   "scripts": {

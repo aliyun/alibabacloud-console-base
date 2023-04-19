@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-one-config",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "description": "OneConsole Config 对象解析与封装",
   "license": "MIT",
   "sideEffects": false,
@@ -19,10 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "OneConsole",
-    "config"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",

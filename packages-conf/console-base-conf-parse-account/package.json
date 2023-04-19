@@ -34,7 +34,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@alicloud/console-one-config": "^1.4.9",
+    "@alicloud/console-one-config": "^1.5.0",
     "@alicloud/cookie": "^1.5.3"
   },
   "scripts": {
