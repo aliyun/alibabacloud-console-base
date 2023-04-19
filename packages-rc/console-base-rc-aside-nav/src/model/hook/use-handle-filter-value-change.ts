@@ -5,7 +5,7 @@ import {
 import useModelProps from './_use-model-props';
 import useDispatchSetFilterValue from './use-dispatch-set-filter-value';
 
-export default function useHandleFilterTextChange(): (value: string) => void {
+export default function useHandleFilterValueChange(): (value: string) => void {
   const {
     onFilterValueChange
   } = useModelProps();

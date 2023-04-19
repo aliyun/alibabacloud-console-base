@@ -2,7 +2,8 @@ export enum EAction {
   SET_HOVERED,
   SET_COLLAPSED,
   SET_FILTER_VALUE,
-  SET_FILTER_VISIBLE
+  SET_FILTER_VISIBLE,
+  SET_FILTER_FOCUSED
 }
 
 export enum ECheckFilterResult {

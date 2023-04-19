@@ -6,5 +6,6 @@ export const DEFAULT_CONTEXT_STATE: IModelState = {
   hovered: false,
   collapsed: false,
   filterValue: '',
-  filterVisible: false
+  filterVisible: false,
+  filterFocused: false
 };

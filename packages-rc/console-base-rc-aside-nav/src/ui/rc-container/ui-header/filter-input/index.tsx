@@ -6,21 +6,14 @@ import {
 
 import intl from '../../../intl';
 import {
-  useFilterValue,
-  useHandleFilterValueChange,
-  useHandleFilterKeydownForEsc
+  useFilterInputProps
 } from '../../../../model';
 
 export default function FilterInput(): JSX.Element {
-  const filterValue = useFilterValue();
-  const handleFilterValueChange = useHandleFilterValueChange();
-  const handleFilterKeydownForEsc = useHandleFilterKeydownForEsc();
+  const filterInputProps = useFilterInputProps();
   
   return <SearchInput {...{
-    block: true,
-    value: filterValue,
-    placeholder: intl('ph:esc_to_cancel'),
-    onKeyDown: handleFilterKeydownForEsc,
-    onChange: handleFilterValueChange
+    ...filterInputProps,
+    placeholder: intl('ph:esc_to_cancel')
   }} />;
 }

@@ -1,4 +1,5 @@
 import {
+  ReactNode,
   MouseEvent
 } from 'react';
 
@@ -71,4 +72,8 @@ export interface IModelProps {
    * 过滤可见性变化，可用于记录日志
    */
   onFilterVisibleChange?(visible: boolean): void;
+}
+
+export interface IModelProviderProps extends IModelProps {
+  children: ReactNode;
 }

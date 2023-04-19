@@ -3,4 +3,5 @@ export interface IModelState {
   collapsed: boolean;
   filterValue: string;
   filterVisible: boolean;
+  filterFocused: boolean;
 }

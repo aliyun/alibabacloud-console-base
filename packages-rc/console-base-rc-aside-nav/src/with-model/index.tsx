@@ -6,7 +6,7 @@ import Model, {
 import Ui from '../ui';
 
 export default function WithModel(props: ModelProps): JSX.Element {
-  return <Model props={props}>
+  return <Model {...props}>
     <Ui />
   </Model>;
 }
