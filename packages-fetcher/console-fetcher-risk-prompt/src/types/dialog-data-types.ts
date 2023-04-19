@@ -13,7 +13,7 @@ import {
 
 export type TStringOrJsx = string | JSX.Element;
 
-// 子账号风控弹窗，用户可以在不同的风控方式（包括绑定 MFA）来回切换，因此每种风控方式都有对应的错误信息以及 PrimaryButtonDisabled 状态
+// 子账号风控弹窗，用户可以在不同的风控方式之间来回切换，因此每种风控方式都有对应的错误信息以及 PrimaryButtonDisabled 状态
 export type TTypeOfPrimaryButton = ESubVerificationDeviceType | ESceneKey.MAIN_ACCOUNT;
 export type TPrimaryButtonDisabledObject = {
   [Key in TTypeOfPrimaryButton]?: boolean

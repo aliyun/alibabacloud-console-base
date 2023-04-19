@@ -31,6 +31,6 @@ export default function getRiskSlsErrorCommonPayload(error: FetcherError): ISlsC
   return {
     errorCode: code,
     errorMessage: message,
-    slsResultType: ESlsResultType.API_ERROR
+    slsResultType: ESlsResultType.BIZ_API_ERROR
   };
 }

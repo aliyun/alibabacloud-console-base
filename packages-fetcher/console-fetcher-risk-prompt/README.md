@@ -13,9 +13,20 @@ tnpm i @alicloud/console-fetcher-risk-data @alicloud/console-fetcher-risk-prompt
 
 `@alicloud/console-fetcher-risk-prompt` 对外的默认导出 `riskPrompt`  是一个 Promise 化的异步函数，它接受 API 被风控的响应作为参数 `riskResponse` ，调用 `riskPrompt` 会弹出风控验证弹窗。
 
-`riskPrompt` 的签名如下所示：
+`riskPrompt` 的完整签名如下所示：
 
 ```typescript
+// riskPrompt Resolve 出来的风控验证参数
+interface IRiskPromptVerifyResult {
+  verifyCode: string;
+  verifyType: string;
+  requestId?: string;
+}
+// 如果调用 riskPrompt 时传入 reRequestWithVerifyResult（指定如何请求被风控的接口），那么在风控验证完成后会自动调用 reRequestWithVerifyResult，调用成功后 riskPrompt 的值会增加 reRequestResponse 表示接口响应。如果调用失败，会抛出错误
+interface IRiskPromptResolveData extends IRiskPromptVerifyResult {
+  // 如果参数中有 reRequestWithVerifyResult，那么获取到 verifyResult 后会重新请求被风控的接口获取 reRequestResponse，并在作为 close 函数参数
+  reRequestResponse?: unknown;
+}
 type TRiskResponse<T = Record<string, unknown>> = T;
 type TNewRisk<T = Record<string, unknown>> = boolean | ((riskResponse: TRiskResponse<T>) => boolean);
 interface IRiskParameters {
@@ -23,25 +34,38 @@ interface IRiskParameters {
   codeType: string; // 风控码
   verifyType: string; // 风控验证方式
   verifyDetail?: string | boolean; // 风控验证详情
-  validators?: IRiskValidator[]; // 子账号风控的风控验证方式及详情集合数组，目前只包括 MFA，后续会增加手机 & 邮箱
-  verifyUrl?: string; // 新版主账号风控的核身弹窗 URL
+  validators?: IRiskValidator[]; // 子账号风控的风控验证方式及详情集合数组
 }
 type TRiskParametersGetter<T = Record<string, unknown>> = (riskResponse: TRiskResponse<T>) => IRiskParameters;
+
+interface IRiskConfig {
+  dataPathVerifyUrl?: string; // 如何从原始返回中获取新版主账号风控的会员核身 URL 
+  dataPathValidators?: string; // 如何从原始返回中获取新版子账号风控信息
+  dataPathUserId?: string; // 如何从原始返回中中获取账号 ID
+  dataPathExtend?: string; // 如何从原始返回中获取扩展信息，比如虚商相关的配置信息
+  dataPathCodeType?: string; // 如何从原始返回中新版风控的风控码
+  dataPathVerifyType?: string; // 如何从原始返回中新版主账号风控的风控类型
+  dataPathVerifyDetail?: string; // 如何从原始返回中获取新版主账号风控详细信息（邮箱或手机）
+  //基于 Xconsole 控制台才可能传的参数
+  dataPathOldCodeType?: string; // 如何从原始数据中获取旧版主账号风控码
+  dataPathOldVerifyType?: string; // 如何从原始返回中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
+  dataPathOldVerifyDetail?: string; // 如何从原始返回中获取旧版主账号风控详细信息（邮箱或手机）
+}
 
 interface IRiskPromptProps<T> {
   riskResponse: TRiskResponse<T>; // API 被风控时的返回，必需  
   riskConfig?: IRiskConfig; // 风控配置，可选
   newRisk?: TNewRisk; // 是否使用新版风控，可选
-  riskParametersGetter?: TRiskParametersGetter // 也可以自定一个 getter，从 riskResponse 中获取 riskPrompt 所需的参数
+  riskParametersGetter?: TRiskParametersGetter // 也可以自定义 getter，从 riskResponse 中获取 riskPrompt 所需的参数
   error?: IPlainError; // 自定义 API 被风控的原始错误，用于保留业务错误信息，可选 
 }
-
+// riskPrompt 的定义
 type TRiskPrompt<T = Record<string, unknown>> = (props: IRiskPromptProps<T>) => Promise<IRiskPromptResolveData> // 返回风控验证参数
 ```
 
 ### riskPrompt 的参数
 
-- `riskResponse`: API 被风控时的返回，是一个对象，调用 `riskPrompt` 时可以通过泛型 `T` 来指定 riskResponse 的类型。对于 Xconsole 控制台而言，传入的 riskResponse 如下：
+- `riskResponse`: **必需参数** API 被风控时的返回，是一个对象，调用 `riskPrompt` 时可以通过泛型 `T` 来指定 riskResponse 的类型。 OneConsole 类型控制台的风控响应如下：
 
 ```typescript
 interface IOriginalRiskValidator {
@@ -53,7 +77,6 @@ interface IMpkExtendSetting {
   isMpk: string; // 是否是虚商
   useOldVersion: string; // 对于虚商类型的账号，是否使用 /risk/sendVerifyMessage.json 来发送验证码（降级情况）
 }
-
 // OneConsole 返回的新版风控的请求响应
 interface IRiskResponse {
   code: string;
@@ -98,26 +121,13 @@ interface IRiskConfig {
   dataPathOldCodeType?: string; // 如何从原始数据中获取旧版主账号风控码
   dataPathOldVerifyType?: string; // 如何从原始返回中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
   dataPathOldVerifyDetail?: string; // 如何从原始返回中获取旧版主账号风控详细信息（邮箱或手机）
-  // 其他配置
-  bySms?: string; // 通过短信验证的 verifyType，默认为 sms
-  byMfa?: string; // 通过邮箱验证的 verifyType，默认为 ga
-  byEmail?: string; // 通过 MFA 设备验证的 verifyType，默认为 email
-  urlSetting?: string; // 设置用户风控验证方式地址
-  coolingAfterSent?: number; // 发送验证码成功后的冷却时间（秒）
-  coolingAfterSentFail?: number; // 发送验证码失败后的冷却时间（秒）
 }
 ```
 
-这些字段都是可选的，`riskPrompt` 会有兜底处理，兜底的对象如下。兜底值是根据基于 OneConsole 的控制台被风控时的返回得到的。
+这些字段都是**可选**的，`riskPrompt` 会有兜底处理，兜底的对象如下。兜底值是根据基于 OneConsole 的控制台被风控时的返回得到的。
 
 ```typescript
 const DEFAULT_RISK_CONFIG = {
-  bySms: 'sms',
-  byEmail: 'email',
-  byMfa: 'ga',
-  urlSetting: '//account.console.aliyun.com/#/secure',
-  coolingAfterSent: 60,
-  coolingAfterSentFail: 10,
   dataPathVerifyType: 'data.verifyType',
   dataPathVerifyDetail: 'data.verifyDetail',
   dataPathCodeType: 'data.codeType',
@@ -140,7 +150,7 @@ const DEFAULT_RISK_CONFIG = {
 风控流程报错或者用户取消风控时，错误会被抛出。其中用户取消风控的错误码为 `FetcherErrorRiskCancelled`。
 
 ```typescript
-interface IRiskPromptResolveData {
+interface IRiskPromptVerifyResult {
   verifyCode: string;
   verifyType: string;
   requestId?: string;

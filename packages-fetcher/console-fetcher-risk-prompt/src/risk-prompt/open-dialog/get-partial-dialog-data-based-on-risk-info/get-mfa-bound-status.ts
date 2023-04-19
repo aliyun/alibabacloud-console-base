@@ -7,6 +7,6 @@ export default function getMfaBoundStatus(verifyDetail?: string | boolean): bool
     return verifyDetail === 'true';
   }
 
-  // 默认是已绑定
+  // 兜底值是已绑定
   return true;
 }

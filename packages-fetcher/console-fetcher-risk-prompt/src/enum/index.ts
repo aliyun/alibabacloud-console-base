@@ -65,6 +65,9 @@ export enum ESceneKey {
 export enum ESlsResultType {
   FAIL = 'fail',
   SUCCESS = 'success',
-  // 在风控流程中，拿到 verifyCode 后会将其作为参数重新被风控的接口。即使 verifyCode 校验通过，接口也可能会报业务错误。api_error 用于区分业务错误
-  API_ERROR = 'api_error'
+  // 自建网关型控制台直接调用 @alicloud/console-fetcher-risk-prompt 且没有传入 reRequestWithVerifyResult 时，当风控验证完成后，会把风控验证参数（verifyCode/verifyType 等）resolve 出去。
+  // 调用方接受到风控验证参数后，需要主动把风控验证参数放进重新调用被风控的请求的参数中，而风控验证是否通过被调用方所知晓。
+  RISK_PROMPT_RESOLVE = 'risk_prompt_resolve',
+  // 在风控流程中，拿到 verifyCode 后会将其作为参数重新被风控的接口。即使 verifyCode 校验通过，接口也可能会报业务错误。biz_api_error 用于区分业务错误
+  BIZ_API_ERROR = 'biz_api_error'
 }

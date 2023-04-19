@@ -107,25 +107,32 @@ export default function NewMainRiskContent(): JSX.Element {
         verifyCode: ivToken
       };
 
-      try {
-        if (reRequestWithVerifyResult) {
-          const reRequestResponse = await reRequestWithVerifyResult(verifyResult);
-
-          slsNewMainRisk({
-            verifyUrl,
-            type: verifyType,
-            slsResultType: ESlsResultType.SUCCESS
-          });
-
-          close({
-            ...verifyResult,
-            reRequestResponse
-          });
-
-          return;
-        }
-
+      if (!reRequestWithVerifyResult) {
         close(verifyResult);
+
+        slsNewMainRisk({
+          verifyUrl,
+          type: verifyType,
+          slsResultType: ESlsResultType.RISK_PROMPT_RESOLVE
+        });
+        
+        return;
+      }
+
+      // riskPrompt 的参数中包含 reRequestWithVerifyResult
+      try {
+        const reRequestResponse = await reRequestWithVerifyResult(verifyResult);
+
+        slsNewMainRisk({
+          verifyUrl,
+          type: verifyType,
+          slsResultType: ESlsResultType.SUCCESS
+        });
+
+        close({
+          ...verifyResult,
+          reRequestResponse
+        });
       } catch (error) {
         const {
           code

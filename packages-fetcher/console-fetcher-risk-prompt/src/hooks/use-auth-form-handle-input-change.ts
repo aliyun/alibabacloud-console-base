@@ -42,10 +42,6 @@ export default function useAuthFormHandleInputChange({
   verifyUniqId
 }: IHookProps): IHookResult {
   const {
-    riskType, verifyType
-  } = authFormProps;
-
-  const {
     codeType,
     accountId
   } = useModelProps();
@@ -56,6 +52,10 @@ export default function useAuthFormHandleInputChange({
     },
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
+
+  const {
+    riskType, verifyType
+  } = authFormProps;
   const isMpkDowngrade = riskType === ERiskType.OLD_MAIN && authFormProps.isMpkDowngrade;
   const currentKeyOfErrorMessageObject = riskType === ERiskType.NEW_SUB ? verifyType : ESceneKey.MAIN_ACCOUNT;
 

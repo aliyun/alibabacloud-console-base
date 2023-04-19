@@ -96,12 +96,3 @@ export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {
   [ESubVerificationDeviceType.VMFA]: true,
   [ESubVerificationDeviceType.U2F]: true
 };
-
-export const DEFAULT_API_ERROR_MESSAGE_OBJECT = {
-  [ESceneKey.MAIN_ACCOUNT]: '',
-  [ESceneKey.RISK_PROMPT_ERROR]: '',
-  [ESubVerificationDeviceType.EMAIL]: '',
-  [ESubVerificationDeviceType.SMS]: '',
-  [ESubVerificationDeviceType.VMFA]: '',
-  [ESubVerificationDeviceType.U2F]: ''
-};
