@@ -16,6 +16,7 @@ export default async function sendVerifyCode(props: TSendVerifyCodeProps): Promi
     riskType, accountId, codeType, verifyType, verifyDetail
   } = props;
 
+  // 旧版主账号风控手机、邮箱验证码发送接口
   if (riskType === ERiskType.OLD_MAIN) {
     const sendCodeData = await dataSendCodeOld({
       codeType,
@@ -25,6 +26,7 @@ export default async function sendVerifyCode(props: TSendVerifyCodeProps): Promi
     return sendCodeData.requestId;
   }
 
+  // 子账号风控/MPK 账号手机、邮箱验证码发送接口
   const identitySendCodeData = await dataSendCode({
     accountId,
     verifyType,

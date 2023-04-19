@@ -56,7 +56,6 @@ export default function useGenerateCodeButtonProps(authFormProps: TAuthFormProps
     setCountDown
   } = useCountDown();
   const showSendCodeSuccessTip = countDown > 0;
-
   const generateCodeButtonProps = useMemo<IGenerateCodeButtonProps>(() => {
     const sendVerifyCode = (): Promise<void> => {
       return dataSendVerifyCode({

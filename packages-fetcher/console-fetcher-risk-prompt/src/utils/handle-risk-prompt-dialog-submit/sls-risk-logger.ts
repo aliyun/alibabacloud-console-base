@@ -46,30 +46,23 @@ export default function slsRiskLogger({
       });
     }
 
+    // 旧版主账号风控埋点
     return slsOldMainRisk({
       ...slsProps,
       type: verifyType
     });
   }
 
-  switch (dialogSubmitType) {
-    case ERiskType.MPK: {
-      const {
-        verifyType
-      } = dialogSubmitProps;
-
-      return slsMpkRisk({
-        ...slsProps,
-        type: verifyType,
-        mpkIsDowngrade: false
-      });
-    }
-    case ERiskType.NEW_SUB: {
-      return slsSubRisk({
-        ...slsProps,
-        type: currentSubVerificationDeviceType ?? ''
-      });
-    }
-    default:
+  if (dialogSubmitType === ERiskType.MPK) {
+    return slsMpkRisk({
+      ...slsProps,
+      type: dialogSubmitProps.verifyType,
+      mpkIsDowngrade: false
+    });
   }
+
+  return slsSubRisk({
+    ...slsProps,
+    type: currentSubVerificationDeviceType ?? ''
+  });
 }

@@ -245,9 +245,11 @@ export default function VerifyCodeInput({
 
   const operation = useMemo((): JSX.Element | null => {
     if (verifyCodeInputType === 'sms_or_email_auth' && generateCodeButtonProps) {
+      // 手机、验证验证码发送按钮
       return <Generate {...generateCodeButtonProps} keyOfErrorMessageObject={keyOfAuthErrorMessageObject} />;
     }
 
+    // 阿里云 APP 中虚拟 MFA 验证时，可以通过 WindVane 接口唤起 APP 提供的 VMFA 填充页面
     if (verifyCodeInputType === 'vmfa_auth' && WINDVANE_AVAILABLE && !stateNoWindVaneHandler) {
       return <Button {...{
         theme: ButtonTheme.BRAND_PRIMARY,

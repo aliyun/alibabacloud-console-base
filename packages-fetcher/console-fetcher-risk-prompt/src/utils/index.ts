@@ -4,7 +4,6 @@ export * from './json-utils';
 export * from './convert-risk-error';
 export * from './convert-risk-response';
 export * from './convert-verify-type';
-export * from './get-u2f-webauthn-public-key';
 export * from './get-specific-main-account-risk-info';
 
 export { default as getInputError } from './get-input-error';

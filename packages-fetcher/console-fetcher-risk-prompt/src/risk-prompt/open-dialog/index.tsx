@@ -64,9 +64,9 @@ export default async function openDialog(riskInfo: TRiskInfo, reRequestWithVerif
       return <DialogTitle dialogData={data} />;
     },
     data: {
+      ...dialogData,
       // 用户未输入验证码之前，按钮置灰
-      primaryButtonDisabledObject: DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT,
-      ...dialogData
+      primaryButtonDisabledObject: DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT
     },
     size: (data: IDialogData) => {
       switch (data.dialogType) {

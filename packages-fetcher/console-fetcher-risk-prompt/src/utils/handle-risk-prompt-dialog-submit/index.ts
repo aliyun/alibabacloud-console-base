@@ -74,58 +74,64 @@ export default async function handleRiskPromptDialogSubmit({
   });
 
   if (riskPromptVerifyResult) {
-    // 如果 riskPrompt 的参数中，有重新请求被风控接口的函数 reRequestWithVerifyResult
-    if (reRequestWithVerifyResult) {
-      try {
-        const reRequestResponse = await reRequestWithVerifyResult(riskPromptVerifyResult);
+    const slsRiskLoggerCommonPayload = {
+      dialogSubmitProps,
+      isMpkDowngradeInOldMainRisk,
+      currentSubVerificationDeviceType
+    };
 
-        slsRiskLogger({
-          dialogSubmitProps,
-          isMpkDowngradeInOldMainRisk,
-          currentSubVerificationDeviceType,
-          slsResultType: ESlsResultType.SUCCESS
-        });
+    if (!reRequestWithVerifyResult) {
+      slsRiskLogger({
+        ...slsRiskLoggerCommonPayload,
+        slsResultType: ESlsResultType.RISK_PROMPT_RESOLVE
+      });
 
-        // 如果有 reRequestWithVerifyResult，那么弹窗 close 时对外输出的数据中会包含重新请求被风控接口的响应 reRequestResponse
-        close({
-          ...riskPromptVerifyResult,
-          reRequestResponse
-        });
-      } catch (error) {
-        const {
-          code
-        } = error as FetcherError;
-
-        const slsPayload = {
-          dialogSubmitProps,
-          isMpkDowngradeInOldMainRisk,
-          currentSubVerificationDeviceType,
-          ...getRiskSlsErrorCommonPayload(error as FetcherError)
-        };
-
-        slsRiskLogger(slsPayload);
-  
-        // 如果报错是风控验证错误，那么提示用户验证码错误，且不关闭风控弹窗
-        if (code && CODE_RISK_ERROR_ARRAY.includes(code)) {
-          updateErrorMessage(intl('message:code_incorrect'));
-        } else {
-          // 如果重新请求后触发了正常的报错，那么抛出 error，并关闭弹窗
-          close(error as Error, true);
-  
-          throw error;
-        }
-      } finally {
-        updateData({
-          dialogBlocked: false
-        });
-        unlock();
-      }
+      // 如果 riskPrompt 的参数不带 reRequestWithVerifyResult，那么 close 函数的参数只有 riskPromptVerifyResult
+      close(riskPromptVerifyResult);
 
       return;
     }
 
-    // 如果 riskPrompt 的参数不带 reRequestWithVerifyResult，那么 close 函数的参数只有 riskPromptVerifyResult
-    close(riskPromptVerifyResult);
+    // 如果 riskPrompt 的参数中，有重新请求被风控接口的函数 reRequestWithVerifyResult
+    try {
+      const reRequestResponse = await reRequestWithVerifyResult(riskPromptVerifyResult);
+
+      slsRiskLogger({
+        ...slsRiskLoggerCommonPayload,
+        slsResultType: ESlsResultType.SUCCESS
+      });
+
+      // 如果有 reRequestWithVerifyResult，那么弹窗 close 时对外输出的数据中会包含重新请求被风控接口的响应 reRequestResponse
+      close({
+        ...riskPromptVerifyResult,
+        reRequestResponse
+      });
+    } catch (error) {
+      const {
+        code
+      } = error as FetcherError;
+      const riskSlsErrorCommonPayload = getRiskSlsErrorCommonPayload(error as FetcherError);
+
+      slsRiskLogger({
+        ...slsRiskLoggerCommonPayload,
+        ...riskSlsErrorCommonPayload
+      });
+
+      // 如果报错是风控验证错误，那么提示用户验证码错误，且不关闭风控弹窗
+      if (code && CODE_RISK_ERROR_ARRAY.includes(code)) {
+        updateErrorMessage(intl('message:code_incorrect'));
+      } else {
+        // 如果重新请求后触发了正常的报错，那么抛出 error，并关闭弹窗
+        close(error as Error, true);
+
+        throw error;
+      }
+    } finally {
+      updateData({
+        dialogBlocked: false
+      });
+      unlock();
+    }
   } else {
     updateData({
       dialogBlocked: false
