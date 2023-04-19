@@ -18,8 +18,8 @@ import Context from '../context';
 import Lifecycle from '../lifecycle';
 
 export default function Provider({
-  props,
-  children
+  children,
+  ...props
 }: IModelProviderProps): JSX.Element {
   const isUnmounted = useIsUnmounted();
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);

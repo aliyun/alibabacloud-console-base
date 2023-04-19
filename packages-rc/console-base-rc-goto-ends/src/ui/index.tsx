@@ -3,10 +3,12 @@ import styled from 'styled-components';
 
 import {
   useOffsets
-} from '../../model';
+} from '../model';
 
-import GoTop from './go-top';
-import GoBottom from './go-bottom';
+import {
+  GoTop,
+  GoBottom
+} from './rc-container';
 
 const ScGoTopBottom = styled.div`
   position: absolute;

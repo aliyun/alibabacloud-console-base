@@ -6,7 +6,9 @@ import {
   useVisibleBottom,
   useHandleGotoBottom
 } from '../../../model';
-import GoButton from '../../../rc/go-button';
+import {
+  GoButton
+} from '../../rc';
 
 export default function GoBottom(): JSX.Element | null {
   const goBottomVisible = useVisibleBottom();

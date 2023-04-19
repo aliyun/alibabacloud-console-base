@@ -17,8 +17,7 @@ export interface IModelPropsInProvider extends Omit<IModelProps, 'container'> {
   container: HTMLElement;
 }
 
-export interface IModelProviderProps {
-  props: IModelPropsInProvider;
+export interface IModelProviderProps extends IModelPropsInProvider {
   children: ReactNode;
 }
 

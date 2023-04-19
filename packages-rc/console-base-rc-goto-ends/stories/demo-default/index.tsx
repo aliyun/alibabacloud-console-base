@@ -44,7 +44,7 @@ export default function DemoDefault(): JSX.Element {
     <PkgInfo />
     <ScHolder>
       <ScContainer ref={setStateContainer}>
-        <ScEditor contentEditable ref={setStateContainerInner}>
+        <ScEditor ref={setStateContainerInner}>
           <LongArticle />
         </ScEditor>
       </ScContainer>

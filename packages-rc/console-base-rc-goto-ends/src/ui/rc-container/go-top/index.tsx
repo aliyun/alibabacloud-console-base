@@ -6,7 +6,9 @@ import {
   useVisibleTop,
   useHandleGotoTop
 } from '../../../model';
-import GoButton from '../../../rc/go-button';
+import {
+  GoButton
+} from '../../rc';
 
 export default function GoTop(): JSX.Element | null {
   const goTopVisible = useVisibleTop();
