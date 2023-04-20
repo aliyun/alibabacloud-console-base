@@ -5,7 +5,7 @@ import {
 import {
   INavItemProps,
   TNavItem,
-  TSubItemsUnfolded,
+  TUnfoldMode,
   TParsedItemOrDivider
 } from '../types';
 
@@ -51,11 +51,11 @@ function cleanup(list: TParsedItemOrDivider[], onItemClick: (item: INavItemProps
   return list2;
 }
 
-export default function parseItems(items: TNavItem[], subItemsUnfolded: TSubItemsUnfolded, filterValue: string, onItemClick: (item: INavItemProps, e: MouseEvent) => void): TParsedItemOrDivider[] {
+export default function parseItems(items: TNavItem[], defaultUnfolded: TUnfoldMode, filterValue: string, onItemClick: (item: INavItemProps, e: MouseEvent) => void): TParsedItemOrDivider[] {
   // 第一次遍历转换，会出现重复和头尾的分割线
   const itemsParsed: TParsedItemOrDivider[] = items.reduce((result: TParsedItemOrDivider[], v, i) => {
     const o = parseItem(v, {
-      subItemsUnfolded,
+      defaultUnfolded,
       filterValue,
       // onItemClick,
       indexes: [i]

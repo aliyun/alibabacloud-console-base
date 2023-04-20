@@ -45,7 +45,7 @@ function renderItemOrDividerList(list: TParsedItemOrDivider[]): JSX.Element[] {
 }
 
 function NavItemWithSub(props: IParsedItem): JSX.Element {
-  const [stateUnfolded, setStateUnfolded] = useState(props.subItemsUnfolded);
+  const [stateUnfolded, setStateUnfolded] = useState(props.defaultUnfolded);
   const handleToggleUnfolded = useCallback(() => setStateUnfolded(!stateUnfolded), [stateUnfolded, setStateUnfolded]);
   
   return <>

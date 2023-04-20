@@ -4,7 +4,7 @@ import {
 import {
   IParsedItem, TNavItem,
   TParsedItemOrDivider,
-  TSubItemsUnfolded
+  TUnfoldMode
 } from '../types';
 
 import getItemKey from './get-item-key';
@@ -15,7 +15,7 @@ import hasSelectedSubItem from './has-selected-sub-item';
 import checkAgainstFilterValue from './check-against-filter-value';
 
 interface IParseOptions {
-  subItemsUnfolded: TSubItemsUnfolded;
+  defaultUnfolded: TUnfoldMode;
   filterValue: string;
   // onItemClick(item: INavItemProps, e: MouseEvent): void;
   parentCheckResult?: ECheckFilterResult;
@@ -29,7 +29,7 @@ export default function parseItem(o: TNavItem, options: IParseOptions): TParsedI
   }
   
   const {
-    subItemsUnfolded,
+    defaultUnfolded,
     filterValue,
     // onItemClick,
     parentCheckResult,
@@ -57,7 +57,7 @@ export default function parseItem(o: TNavItem, options: IParseOptions): TParsedI
     indent,
     subItems: o.subItems?.reduce((result: TParsedItemOrDivider[], v, i) => {
       const o2 = parseItem(v, {
-        subItemsUnfolded,
+        defaultUnfolded,
         filterValue,
         parentCheckResult: checkResult,
         indexes: [...indexes, i],
@@ -75,19 +75,19 @@ export default function parseItem(o: TNavItem, options: IParseOptions): TParsedI
   // 有子菜单项，判断需子菜单的展开行为
   if (itemParsed.subItems.length) {
     if (filterValue) {
-      itemParsed.subItemsUnfolded = true;
+      itemParsed.defaultUnfolded = true;
     } else {
-      switch (subItemsUnfolded) {
+      switch (defaultUnfolded) {
         case true:
-          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? true;
+          itemParsed.defaultUnfolded = itemParsed.defaultUnfolded ?? true;
           
           break;
         case false:
-          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? false;
+          itemParsed.defaultUnfolded = itemParsed.defaultUnfolded ?? false;
           
           break;
         case 'first-level':
-          itemParsed.subItemsUnfolded = itemParsed.subItemsUnfolded ?? indent < 1;
+          itemParsed.defaultUnfolded = itemParsed.defaultUnfolded ?? indent < 1;
           
           break;
         default:
@@ -99,8 +99,8 @@ export default function parseItem(o: TNavItem, options: IParseOptions): TParsedI
   }
   
   // 本身未展开，但其下有选中的菜单，则默认打开该菜单（保证选中的默认可见）
-  if (!itemParsed.subItemsUnfolded && itemParsed.subItems.length) {
-    itemParsed.subItemsUnfolded = hasSelectedSubItem(itemParsed);
+  if (!itemParsed.defaultUnfolded && itemParsed.subItems.length) {
+    itemParsed.defaultUnfolded = hasSelectedSubItem(itemParsed);
   }
   
   return itemParsed;

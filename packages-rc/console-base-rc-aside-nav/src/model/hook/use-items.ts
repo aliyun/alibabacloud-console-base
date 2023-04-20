@@ -16,10 +16,10 @@ import useFilterValue from './use-filter-value';
 export default function useItems(): TParsedItemOrDivider[] {
   const {
     items,
-    subItemsUnfolded
+    defaultUnfolded
   } = useModelProps();
   const filterValue = useFilterValue();
   const handleItemClick = useHandleItemClick();
   
-  return useMemo(() => parseItems(items, subItemsUnfolded, filterValue, handleItemClick), [items, subItemsUnfolded, filterValue, handleItemClick]);
+  return useMemo(() => parseItems(items, defaultUnfolded, filterValue, handleItemClick), [items, defaultUnfolded, filterValue, handleItemClick]);
 }

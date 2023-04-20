@@ -7,7 +7,7 @@ import {
   TNavItem,
   INavItemProps,
   INavItemInFooterProps,
-  TSubItemsUnfolded
+  TUnfoldMode
 } from './common';
 
 export interface IModelProps {
@@ -31,14 +31,6 @@ export interface IModelProps {
    */
   collapsed?: boolean;
   /**
-   * 菜单子项展开方式
-   * 
-   * - true 全部展开（默认）
-   * - false 都不展开
-   * - 'first-level' 展开所有第一级（不展开第二级）
-   */
-  subItemsUnfolded?: TSubItemsUnfolded;
-  /**
    * 菜单配置
    */
   items: TNavItem[];
@@ -46,6 +38,14 @@ export interface IModelProps {
    * 菜单底部内容，只适合静态链接
    */
   itemsInFooter?: (INavItemInFooterProps | null)[];
+  /**
+   * 菜单子项展开模式
+   *
+   * - true 全部展开（默认）
+   * - false 都不展开
+   * - 'first-level' 展开所有第一级（不展开第二级）
+   */
+  defaultUnfolded?: TUnfoldMode;
   /**
    * 是否展示搜索框
    * 当 minItemsForFilter <= 0 时：永远不搜索
