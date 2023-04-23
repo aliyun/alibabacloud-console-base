@@ -1,5 +1,6 @@
 import {
-  ReactElement
+  ReactElement,
+  AriaAttributes
 } from 'react';
 
 import {
@@ -20,7 +21,7 @@ interface ITopNavButtonPropsLabel {
   countAsDot?: boolean; // 个数展示为小红点或数字
 }
 
-export interface ITopNavButtonDropdownItemProps extends Partial<ButtonProps> {
+export interface ITopNavButtonDropdownItemProps extends ButtonProps {
   key?: string;
   inFooter?: boolean;
 }
@@ -29,7 +30,7 @@ export interface ITopNavButtonDropdownProps extends Omit<DropdownProps, 'trigger
   items?: ITopNavButtonDropdownItemProps[];
 }
 
-export interface ITopNavButtonProps extends Omit<Partial<ButtonProps>, 'label'> {
+export interface ITopNavButtonProps extends Omit<ButtonProps, 'label'> {
   key?: string;
   label?: string | ReactElement | ITopNavButtonPropsLabel;
   labelHover?: string | ReactElement | ITopNavButtonPropsLabel;
@@ -39,7 +40,7 @@ export interface ITopNavButtonProps extends Omit<Partial<ButtonProps>, 'label'> 
   beacon?: BeaconProps;
 }
 
-export interface ITopNavDockProps {
+export interface ITopNavDockProps extends AriaAttributes {
   active?: boolean;
   onActiveChange?(active: boolean): void;
 }

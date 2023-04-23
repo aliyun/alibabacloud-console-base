@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   H2,
+  InputSwitch,
   ComponentTesting
 } from '@alicloud/demo-rc-elements';
 
@@ -50,6 +51,7 @@ function renderer(props: ButtonProps): JSX.Element {
 
 export default function DemoDefault(): JSX.Element {
   const [stateDom, setStateDom] = useState<HTMLElement | null>(null);
+  const [stateDisabled, setStateDisabled] = useState(false);
   
   return <>
     <ThemeSwitcher />
@@ -71,13 +73,19 @@ export default function DemoDefault(): JSX.Element {
       }
     }} />
     <H2>All Themes</H2>
-    {Object.entries(ButtonTheme).map(([k, v]) => {
-      return <ScButtonThemes {...{
-        key: k,
-        theme: v,
-        label: v
-      }} />;
-    })}
+    <div>
+      <InputSwitch {...{
+        label: 'props.disabled',
+        value: stateDisabled,
+        onChange: setStateDisabled
+      }} />
+    </div>
+    {Object.entries(ButtonTheme).map(([k, v]) => <ScButtonThemes {...{
+      key: k,
+      theme: v,
+      label: v,
+      disabled: stateDisabled
+    }} />)}
     <H2>垂直对齐 IconLeft</H2>
     <Button {...{
       iconLeft: ' ',

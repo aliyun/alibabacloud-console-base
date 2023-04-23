@@ -9,6 +9,8 @@ import useHovered from './use-hovered';
 import useFocused from './use-focused';
 import useHandleFocusIn from './use-handle-focus-in';
 import useHandleFocusOut from './use-handle-focus-out';
+import useHandleCompositionStart from './use-handle-composition-start';
+import useHandleCompositionEnd from './use-handle-composition-end';
 import useHandleChange from './use-handle-change';
 
 export default function usePropsForInputElement(): InputHTMLAttributes<HTMLInputElement> {
@@ -19,6 +21,8 @@ export default function usePropsForInputElement(): InputHTMLAttributes<HTMLInput
   const handleFocusIn = useHandleFocusIn();
   const handleFocusOut = useHandleFocusOut();
   const handleChange = useHandleChange();
+  const handleCompositionStart = useHandleCompositionStart();
+  const handleCompositionEnd = useHandleCompositionEnd();
   
   return useMemo(() => {
     const {
@@ -54,7 +58,9 @@ export default function usePropsForInputElement(): InputHTMLAttributes<HTMLInput
       focused,
       onFocus: handleFocusIn,
       onBlur: handleFocusOut,
+      onCompositionStart: handleCompositionStart,
+      onCompositionEnd: handleCompositionEnd,
       onChange: handleChange
     };
-  }, [props, value, hovered, focused, handleFocusIn, handleFocusOut, handleChange]);
+  }, [props, value, hovered, focused, handleFocusIn, handleFocusOut, handleCompositionStart, handleCompositionEnd, handleChange]);
 }

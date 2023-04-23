@@ -4,7 +4,7 @@ import {
 
 const NAV: AsideNavProps = {
   title: '专有网络 VPC',
-  subItemsUnfolded: 'first-level',
+  defaultUnfolded: 'first-level',
   items: [{
     key: 'vpc',
     label: '专有网络',
@@ -177,7 +177,7 @@ const NAV: AsideNavProps = {
   }, '-', {
     key: 'commend',
     label: '常用服务推荐',
-    subItemsUnfolded: false,
+    defaultUnfolded: false,
     subItems: [{
       key: 'slb',
       label: '负载均衡 CLB',

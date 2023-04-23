@@ -13,7 +13,7 @@ export type TModelAction = {
   type: EAction.SET_VALUE;
   payload: string;
 } | {
-  type: EAction.SET_HOVERED | EAction.SET_FOCUSED;
+  type: EAction.SET_HOVERED | EAction.SET_FOCUSED | EAction.SET_COMPOSING;
   payload: boolean;
 };
 

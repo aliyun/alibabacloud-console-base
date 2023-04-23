@@ -1,3 +1,4 @@
+import ONE_CONF from '@alicloud/console-one-config';
 import {
   FactoryOptions,
   chooseStoreByEnv
@@ -14,6 +15,7 @@ export default function getSlsOptions(): FactoryOptions {
       daily: 'daily',
       pre: 'pre'
     }),
-    defaultParams: getSlsDefaultParams
+    defaultParams: getSlsDefaultParams,
+    onBeforeSend: () => !ONE_CONF.PRIVATE_CLOUD // 专有云下不发送
   };
 }

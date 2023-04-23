@@ -1,6 +1,7 @@
 upgrade: true
 dep: dev,prod
 format: group
+timeout: 120000
 reject:
 - '@types/react'
 - '@types/react-dom'

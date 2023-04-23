@@ -56,6 +56,7 @@ export default function DemoDefault(): JSX.Element {
     <PkgInfo />
     {stateRemoved ? null : <TopNav {...{
       dock: {
+        'aria-label': stateActive ? '收起' : '展开',
         active: stateActive,
         onActiveChange: handleActiveChange // 只有含 onXx 或 href 才可以展示
       },

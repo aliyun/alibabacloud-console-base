@@ -8,30 +8,31 @@ import fixRegions from './fix-regions';
 import fixOpenStatus from './fix-open-status';
 import fixApiResult from './fix-api-result';
 
-function fillByShitty(ONE_CONF: IConsoleOneConfig, shittyConf: IShittyConsoleOneConfig): void {
-  ONE_CONF.ONE = shittyConf.portalType === 'one';
-  ONE_CONF.ENV = shittyConf.fEnv || ONE_CONF.ENV;
-  ONE_CONF.CHANNEL = shittyConf.CHANNEL || ONE_CONF.CHANNEL;
-  ONE_CONF.LANG = shittyConf.LANG || ONE_CONF.LANG;
-  ONE_CONF.LOCALE = shittyConf.LOCALE || ONE_CONF.LOCALE;
-  ONE_CONF.SEC_TOKEN = shittyConf.SEC_TOKEN || ONE_CONF.SEC_TOKEN;
-  ONE_CONF.ACCOUNT = {
-    ID: shittyConf.CURRENT_PK || ONE_CONF.ACCOUNT.ID,
-    ID_MAIN: shittyConf.MAIN_ACCOUNT_PK || ONE_CONF.ACCOUNT.ID_MAIN,
-    TYPE: shittyConf.ACCOUNT_TYPE || ONE_CONF.ACCOUNT.TYPE,
-    CERTIFIED: shittyConf.IS_CERTIFIED === 'true'
+function fillByShitty(o: IConsoleOneConfig, conf0: IShittyConsoleOneConfig): void {
+  o.ONE = conf0.portalType === 'one';
+  o.PRIVATE_CLOUD = conf0.IS_PRIVATE_CLOUD === 'true';
+  o.ENV = conf0.fEnv || o.ENV;
+  o.CHANNEL = conf0.CHANNEL || o.CHANNEL;
+  o.LANG = conf0.LANG || o.LANG;
+  o.LOCALE = conf0.LOCALE || o.LOCALE;
+  o.SEC_TOKEN = conf0.SEC_TOKEN || o.SEC_TOKEN;
+  o.ACCOUNT = {
+    ID: conf0.CURRENT_PK || o.ACCOUNT.ID,
+    ID_MAIN: conf0.MAIN_ACCOUNT_PK || o.ACCOUNT.ID_MAIN,
+    TYPE: conf0.ACCOUNT_TYPE || o.ACCOUNT.TYPE,
+    CERTIFIED: conf0.IS_CERTIFIED === 'true'
   };
-  ONE_CONF.APP_ID = shittyConf.APP_ID || '';
-  ONE_CONF.REGIONS = fixRegions(shittyConf.REGIONS);
-  ONE_CONF.OPEN_STATUS = fixOpenStatus(shittyConf.OPEN_STATUS);
-  ONE_CONF.LINK = shittyConf.CHANNEL_LINKS || ONE_CONF.LINK;
-  ONE_CONF.FEATURE_SWITCH = shittyConf.CHANNEL_FEATURE_STATUS || ONE_CONF.FEATURE_SWITCH;
-  ONE_CONF.FEATURE_GRAY = shittyConf.FEATURE_STATUS || ONE_CONF.FEATURE_GRAY;
-  ONE_CONF.API_RESULT = fixApiResult(shittyConf.STATIC_API);
-  ONE_CONF.RULE_CONFIG = shittyConf.RULE_CONFIG || ONE_CONF.RULE_CONFIG;
-  ONE_CONF.LABELS = shittyConf.LABELS || ONE_CONF.LABELS;
-  ONE_CONF.USER_PREFERENCE = shittyConf.USER_PREFERENCE || ONE_CONF.USER_PREFERENCE;
-  ONE_CONF.NEW_VERSION = shittyConf.NEW_VERSION === 'true';
+  o.APP_ID = conf0.APP_ID || '';
+  o.REGIONS = fixRegions(conf0.REGIONS);
+  o.OPEN_STATUS = fixOpenStatus(conf0.OPEN_STATUS);
+  o.LINK = conf0.CHANNEL_LINKS || o.LINK;
+  o.FEATURE_SWITCH = conf0.CHANNEL_FEATURE_STATUS || o.FEATURE_SWITCH;
+  o.FEATURE_GRAY = conf0.FEATURE_STATUS || o.FEATURE_GRAY;
+  o.API_RESULT = fixApiResult(conf0.STATIC_API);
+  o.RULE_CONFIG = conf0.RULE_CONFIG || o.RULE_CONFIG;
+  o.LABELS = conf0.LABELS || o.LABELS;
+  o.USER_PREFERENCE = conf0.USER_PREFERENCE || o.USER_PREFERENCE;
+  o.NEW_VERSION = conf0.NEW_VERSION === 'true';
 }
 
 /**
@@ -40,6 +41,7 @@ function fillByShitty(ONE_CONF: IConsoleOneConfig, shittyConf: IShittyConsoleOne
 export default function parseOneConf(): IConsoleOneConfig {
   const ONE_CONF: IConsoleOneConfig = {
     ONE: false,
+    PRIVATE_CLOUD: false,
     ENV: 'prod',
     CHANNEL: 'OFFICIAL',
     LANG: 'zh',

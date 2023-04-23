@@ -4,8 +4,8 @@ import {
 
 const NAV: AsideNavProps = {
   title: 'Viper',
-  subItemsUnfolded: false,
-  items: [{
+  defaultUnfolded: false,
+  items: [null, '-', {
     key: 'dashboard',
     label: '概览',
     href: '#/dashboard'
@@ -20,7 +20,7 @@ const NAV: AsideNavProps = {
   }, '-', {
     key: 'dev',
     label: '控制台开发',
-    subItems: [{
+    subItems: [null, '-', {
       key: 'tutor',
       label: '微教程',
       href: '#/tutor',
@@ -30,15 +30,19 @@ const NAV: AsideNavProps = {
       label: 'ROS 模板',
       href: '#/ros'
     }, {
-      key: 'medusa',
-      label: '美杜莎发布',
-      href: '#/medusa'
-    }, {
       key: 'scene',
       label: '场景模板',
       href: '#/scene'
+    }, '-', {
+      key: 'medusa',
+      label: '美杜莎发布',
+      href: '#/medusa'
     }],
-    subItemsUnfolded: true
+    defaultUnfolded: true
+  }, '-', {
+    key: 'will-not-show',
+    label: '不会展示，因为底下没有可用菜单项',
+    subItems: [null, '-', null, '-', null]
   }, '-', {
     key: 'api',
     label: 'API 管理',
@@ -75,7 +79,7 @@ const NAV: AsideNavProps = {
         href: '#/apis/oneserver'
       }]
     }],
-    subItemsUnfolded: true
+    defaultUnfolded: true
   }, '-', {
     key: 'util',
     label: '实用工具',
@@ -121,7 +125,7 @@ const NAV: AsideNavProps = {
         href: '#/dashboard/search'
       }]
     }],
-    subItemsUnfolded: true
+    defaultUnfolded: true
   }, '-', {
     key: 'private',
     label: '专有云开发',

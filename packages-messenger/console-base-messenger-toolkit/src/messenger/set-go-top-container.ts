@@ -12,6 +12,7 @@ import {
 const ATTR_NAME = 'data-console-base-toolkit-go-top';
 let index = 0;
 
+// 一点冗余代码
 function getContainerSelector(container: Window | HTMLElement | null): string {
   if (!container) {
     return '';

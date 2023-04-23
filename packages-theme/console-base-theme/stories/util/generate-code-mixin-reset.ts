@@ -59,6 +59,10 @@ export const mixinButtonReset = css\`
     text-decoration: none;
   }
   
+  &:focus-visible {
+    outline: 2px dashed \${COLOR.BORDER_ACCENT_HOVER};
+  }
+  
   &[disabled] {
     cursor: not-allowed;
   }

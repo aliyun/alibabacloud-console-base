@@ -1,5 +1,4 @@
 import {
-  ReactNode,
   ButtonHTMLAttributes,
   HTMLAttributeAnchorTarget
 } from 'react';
@@ -95,8 +94,3 @@ export interface IPropsCustom {
 }
 
 export interface IModelProps extends Omit<IPropsDom, 'title'>, IPropsCustom {}
-
-export interface IPropsProvider {
-  props: IModelProps;
-  children: ReactNode;
-}
