@@ -1,7 +1,7 @@
 import {
   EButtonTheme,
   IModelProps
-} from '../model';
+} from '../../model';
 
 const THEMES_TEXT_ALIGN_LEFT: EButtonTheme[] = [
   EButtonTheme.MENU

@@ -2,7 +2,7 @@ import {
   IModelProps,
   EButtonTheme,
   EButtonSize
-} from '../model';
+} from '../../model';
 
 const THEMES_NEED_BORDER: EButtonTheme[] = [
   EButtonTheme.DANGER,

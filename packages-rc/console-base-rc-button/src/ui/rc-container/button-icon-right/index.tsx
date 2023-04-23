@@ -2,11 +2,13 @@ import React from 'react';
 
 import {
   usePropsCustom
-} from '../../model';
+} from '../../../model';
 import {
   renderIcon
 } from '../../util';
-import ButtonIconWrapper from '../../rc/button-icon-wrapper';
+import {
+  ButtonIconWrapper
+} from '../../rc';
 
 export default function ButtonIconRight(): JSX.Element | null {
   const {

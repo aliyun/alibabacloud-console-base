@@ -40,7 +40,7 @@
     "@alicloud/console-base-intl-factory-basic": "^1.6.9",
     "@alicloud/console-base-rc-button": "^1.7.11",
     "@alicloud/console-base-rc-dropdown": "^1.6.9",
-    "@alicloud/console-base-theme": "^1.9.3",
+    "@alicloud/console-base-theme": "^1.9.4",
     "@alicloud/react-hook-controllable": "^1.2.0"
   },
   "scripts": {

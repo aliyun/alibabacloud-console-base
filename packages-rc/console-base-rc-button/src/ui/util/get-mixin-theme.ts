@@ -72,7 +72,7 @@ import {
 import {
   EButtonTheme,
   IModelProps
-} from '../model';
+} from '../../model';
 
 const MAPPING_DISABLED: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.NONE]: null,

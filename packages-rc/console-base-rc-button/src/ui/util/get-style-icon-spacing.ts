@@ -1,6 +1,6 @@
 import {
   TIconSpacing
-} from '../model';
+} from '../../model';
 
 export default function getStyleIconSpacing(iconSpacing?: TIconSpacing): number {
   switch (iconSpacing) {

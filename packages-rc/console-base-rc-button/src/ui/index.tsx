@@ -15,7 +15,8 @@ import {
   IModelProps,
   usePropsCustom,
   usePropsDom
-} from '../../model';
+} from '../model';
+
 import {
   isBlock,
   isBorderless,
@@ -23,9 +24,11 @@ import {
   getMixinTheme,
   getMixinSize,
   getMixinShadow
-} from '../../util';
-import ButtonIconLeft from '../button-icon-left';
-import ButtonIconRight from '../button-icon-right';
+} from './util';
+import {
+  ButtonIconLeft,
+  ButtonIconRight
+} from './rc-container';
 
 // 当有 iconLeft iconRight loading 时对内容的包裹
 const ScInner = styled.span`

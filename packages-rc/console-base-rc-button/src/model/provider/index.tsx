@@ -1,14 +1,14 @@
 import React from 'react';
 
 import {
-  IPropsProvider
+  IModelProviderProps
 } from '../types';
 import Context from '../context';
 
 export default function Provider({
-  props,
-  children
-}: IPropsProvider): JSX.Element {
+  children,
+  ...props
+}: IModelProviderProps): JSX.Element {
   return <Context.Provider value={{
     props
   }}>

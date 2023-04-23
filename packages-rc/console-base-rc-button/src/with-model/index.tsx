@@ -6,11 +6,10 @@ import React, {
 import Model, {
   IModelProps
 } from '../model';
-
-import Ui from './ui';
+import Ui from '../ui';
 
 function WithProvider(props: IModelProps, ref: Ref<HTMLDivElement>): JSX.Element {
-  return <Model props={props}>
+  return <Model {...props}>
     <Ui ref={ref} />
   </Model>;
 }

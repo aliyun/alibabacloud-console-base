@@ -9,7 +9,7 @@ import {
 import {
   EButtonTheme,
   IModelProps
-} from '../model';
+} from '../../model';
 
 const THEMES_NEED_SHADOW: EButtonTheme[] = [
   EButtonTheme.DANGER,

@@ -4,11 +4,13 @@ import Icon from '@alicloud/console-base-rc-icon';
 
 import {
   usePropsCustom
-} from '../../model';
+} from '../../../model';
 import {
   renderIcon
 } from '../../util';
-import ButtonIconWrapper from '../../rc/button-icon-wrapper';
+import {
+  ButtonIconWrapper
+} from '../../rc';
 
 export default function ButtonIconLeft(): JSX.Element | null {
   const {

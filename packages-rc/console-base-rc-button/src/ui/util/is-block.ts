@@ -1,7 +1,7 @@
 import {
   EButtonTheme,
   IModelProps
-} from '../model';
+} from '../../model';
 
 const THEMES_BLOCK: EButtonTheme[] = [
   EButtonTheme.MENU

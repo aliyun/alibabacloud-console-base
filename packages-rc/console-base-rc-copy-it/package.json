@@ -47,7 +47,7 @@
     "@alicloud/console-base-intl-factory-basic": "^1.6.9",
     "@alicloud/console-base-rc-button": "^1.7.11",
     "@alicloud/console-base-rc-icon": "^1.10.5",
-    "@alicloud/console-base-theme": "^1.9.3",
+    "@alicloud/console-base-theme": "^1.9.4",
     "@alicloud/copy-text": "^1.5.9",
     "react-transition-group": "^4.4.5"
   },

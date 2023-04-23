@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {
   IModelProps
-} from '../../model';
+} from '../../../model';
 import {
   getStyleIconSpacing
 } from '../../util';

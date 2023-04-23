@@ -14,7 +14,7 @@ import {
   EButtonSize,
   EButtonTheme,
   IModelProps
-} from '../model';
+} from '../../model';
 
 const MAPPING: Record<EButtonSize, FlattenSimpleInterpolation | null> = {
   [EButtonSize.NONE]: null,
