@@ -60,8 +60,7 @@ export const mixinButtonReset = css\`
   }
   
   &:focus-visible {
-    outline: 1px dashed \${COLOR.BORDER_ACCENT_HOVER};
-    outline-offset: 1px;
+    outline: 2px dashed \${COLOR.BORDER_ACCENT_HOVER};
   }
   
   &[disabled] {
