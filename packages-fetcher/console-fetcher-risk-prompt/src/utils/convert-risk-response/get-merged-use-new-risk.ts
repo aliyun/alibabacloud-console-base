@@ -25,9 +25,17 @@ export default function getMergedUseNewRisk<T>({
       return newRisk;
     }
 
-    return newRisk(riskResponse);
+    if (typeof newRisk === 'function') {
+      const newRiskFnResult = newRisk(riskResponse);
+
+      // newRisk 为函数时，只有在 newRisk 执行结果为 boolean 时才使用返回值，否则还是走到默认的判断逻辑
+      if (typeof newRiskFnResult === 'boolean') {
+        return newRiskFnResult;
+      }
+    }
   }
 
+  // 从 riskResponse 解析是否是新版风控的默认逻辑
   if (verifyUrl || validators.length) {
     return true;
   }
