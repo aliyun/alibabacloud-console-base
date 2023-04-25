@@ -6,9 +6,12 @@ import {
   mixinTextSecondary
 } from '@alicloud/console-base-theme';
 
-import Rnd from '../rnd';
-import Toolbar from '../toolbar';
-import Content from '../content';
+import {
+  Rnd,
+  Toolbar,
+  Content,
+  SmoothMoving
+} from './rc-container';
 
 const ScUi = styled.div`
   display: flex;
@@ -27,12 +30,15 @@ const ScContent = styled.div`
  * Rnd 的 style.display 强奸成 inline-block，所以内部需要再包一层
  */
 export default function Ui(): JSX.Element {
-  return <Rnd>
-    <ScUi>
-      <Toolbar />
-      <ScContent>
-        <Content />
-      </ScContent>
-    </ScUi>
-  </Rnd>;
+  return <>
+    <Rnd>
+      <ScUi>
+        <Toolbar />
+        <ScContent>
+          <Content />
+        </ScContent>
+      </ScUi>
+    </Rnd>
+    <SmoothMoving />
+  </>;
 }

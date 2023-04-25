@@ -6,13 +6,10 @@ import {
 import Provider, {
   IModelProps
 } from '../model';
-
-import Ui from './ui';
-import SmoothMoving from './smooth-moving';
+import Ui from '../ui';
 
 export default function WithProvider(props: IModelProps): JSX.Element {
-  return createPortal(<Provider props={props}>
+  return createPortal(<Provider {...props}>
     <Ui />
-    <SmoothMoving />
   </Provider>, document.body);
 }

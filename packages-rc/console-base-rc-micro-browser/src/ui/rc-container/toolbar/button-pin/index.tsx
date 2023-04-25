@@ -9,8 +9,10 @@ import {
   useMode,
   useHandlePin,
   useStickRightActive
-} from '../../../model';
-import ControlButton from '../../../rc/control-button';
+} from '../../../../model';
+import {
+  ControlButton
+} from '../../../rc';
 
 export default function ButtonPin(): JSX.Element | null {
   const {

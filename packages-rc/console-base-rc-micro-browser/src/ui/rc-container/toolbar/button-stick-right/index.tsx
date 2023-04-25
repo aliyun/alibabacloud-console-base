@@ -2,12 +2,14 @@ import React from 'react';
 
 import Icon from '@alicloud/console-base-rc-icon';
 
-import intl from '../../../intl';
 import {
   useHandleStickRight,
   useStickRightActive
-} from '../../../model';
-import ControlButton from '../../../rc/control-button';
+} from '../../../../model';
+import intl from '../../../intl';
+import {
+  ControlButton
+} from '../../../rc';
 
 export default function ButtonStickRight(): JSX.Element {
   const active = useStickRightActive();

@@ -1,4 +1,4 @@
-export { default } from './rc-container';
+export { default } from './with-model';
 
 export {
   EMicroBrowserMode as MicroBrowserMode

@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import intl from '../../../intl';
 import {
   useProps,
   useHandleMinimize
-} from '../../../model';
-import ControlButton from '../../../rc/control-button';
+} from '../../../../model';
+import intl from '../../../intl';
+import {
+  ControlButton
+} from '../../../rc';
 
 // iconfont 效果不好
 const ScIconMinimize = styled.i`

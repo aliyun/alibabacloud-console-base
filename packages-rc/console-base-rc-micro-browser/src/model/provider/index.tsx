@@ -16,8 +16,8 @@ import Context from '../context';
 import Lifecycle from '../lifecycle';
 
 export default function Provider({
-  props,
-  children
+  children,
+  ...props
 }: IModelProviderPros): JSX.Element {
   const [state, dispatch] = useReducer<IModelReducer>(reducer, DEFAULT_CONTEXT_STATE);
   

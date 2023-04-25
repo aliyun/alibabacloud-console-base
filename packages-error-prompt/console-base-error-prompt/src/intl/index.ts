@@ -9,5 +9,5 @@ export default intlFactory<typeof localesZhCN>({
   'en-US': localesEnUS,
   'zh-CN': localesZhCN,
   'zh-TW': localesZhTW,
-  'ja-jP': localesJaJP
+  'ja-JP': localesJaJP
 });

@@ -5,7 +5,7 @@ import {
 
 import {
   useMoving
-} from '../../model';
+} from '../../../model';
 
 const StyleForSmoothMoving = createGlobalStyle`
   iframe {

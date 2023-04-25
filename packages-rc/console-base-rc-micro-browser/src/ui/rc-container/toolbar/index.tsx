@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  useRndDragHandleClass,
+  useHandleDragBarDoubleClick
+} from '../../../model';
+import {
   BGC_TOOLBAR,
   HEIGHT_DRAG_BAR
 } from '../../const';
-import {
-  useRndDragHandleClass,
-  useHandleDragBarDoubleClick
-} from '../../model';
 
 import ButtonMinimize from './button-minimize';
 import ButtonPin from './button-pin';
