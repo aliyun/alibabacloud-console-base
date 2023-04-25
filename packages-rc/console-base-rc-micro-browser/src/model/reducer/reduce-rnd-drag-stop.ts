@@ -9,7 +9,7 @@ export default function reduceRndDragStop(state: IModelState, payload: IPayloadD
   return update(state, {
     $merge: {
       dragging: false,
-      right: state.viewportW - (payload.x + payload.w),
+      right: Math.max(state.viewportW - (payload.x + payload.w), 0),
       bottom: state.viewportH - (payload.y + payload.h)
     }
   });

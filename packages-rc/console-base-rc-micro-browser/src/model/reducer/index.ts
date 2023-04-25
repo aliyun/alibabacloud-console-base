@@ -7,7 +7,6 @@ import {
 } from '../enum';
 
 import reduceSetMode from './reduce-set-mode';
-import reduceSetWindowScrollbarWidth from './reduce-set-window-scrollbar-width';
 import reduceRndDragStart from './reduce-rnd-drag-start';
 import reduceRndDragStop from './reduce-rnd-drag-stop';
 import reduceRndResizeStart from './reduce-rnd-resize-start';
@@ -19,8 +18,6 @@ export default function reducer(state: IModelState, action: TModelAction): IMode
   switch (action.type) {
     case EAction.SET_MODE:
       return reduceSetMode(state, action.payload);
-    case EAction.SET_WINDOW_SCROLLBAR_WIDTH:
-      return reduceSetWindowScrollbarWidth(state, action.payload);
     case EAction.RND_DRAG_START:
       return reduceRndDragStart(state);
     case EAction.RND_DRAG_STOP:

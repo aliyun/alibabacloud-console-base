@@ -11,7 +11,7 @@ export default function createStylePushBody(right: number): HTMLStyleElement {
   const style = document.createElement('style');
   
   style.textContent = `body {
-  padding-right: ${right}px;
+  padding-right: ${right}px !important;
 }
 div[view-framework] .viewFramework-body,
 div.show-panel div.slide-panels,

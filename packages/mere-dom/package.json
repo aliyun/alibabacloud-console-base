@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/mere-dom",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Very tiny DOM utils",
   "license": "MIT",
   "sideEffects": false,
@@ -19,9 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "dom"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",

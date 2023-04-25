@@ -23,9 +23,6 @@ export type TModelAction = {
 } | {
   type: EAction.RND_RESIZE;
   payload: IPayloadResize;
-} | {
-  type: EAction.SET_WINDOW_SCROLLBAR_WIDTH;
-  payload: number;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;

@@ -7,7 +7,6 @@ export enum EMicroBrowserMode {
 
 export enum EAction {
   SET_MODE,
-  SET_WINDOW_SCROLLBAR_WIDTH,
   REFRESH_WINDOW_SIZE,
   RND_RESIZE_START,
   RND_RESIZE,

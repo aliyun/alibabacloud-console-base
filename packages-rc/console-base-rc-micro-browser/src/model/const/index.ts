@@ -42,7 +42,6 @@ export const DEFAULT_CONTEXT_STATE: IModelState = {
   ...DEFAULT_SIZE_AND_POSITION,
   viewportW: viewport.width,
   viewportH: viewport.height,
-  windowScrollbarWidth: 0,
   resizing: -1,
   dragging: false
 };

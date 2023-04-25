@@ -13,8 +13,7 @@ import useRndRectW from './use-rnd-rect-w';
 export default function useRndRectX(): number {
   const {
     right,
-    viewportW,
-    windowScrollbarWidth
+    viewportW
   } = useModelState();
   const mode = useMode();
   const w = useRndRectW();
@@ -25,7 +24,7 @@ export default function useRndRectX(): number {
       return affixRect?.left ?? viewportW;
     case EMicroBrowserMode.TO_THE_RIGHT:
     case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
-      return (viewportW > w ? viewportW - w : 0) - windowScrollbarWidth;
+      return viewportW > w ? viewportW - w : 0;
     default:
       return Math.max(viewportW - right - w, 0);
   }
