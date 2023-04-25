@@ -26,7 +26,7 @@
     "@alicloud/ts-config": "^1.1.3",
     "@types/react": "^17.0.58",
     "react": "^17.0.2",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "@alicloud/console-conf-feature-factory": "^1.4.9",

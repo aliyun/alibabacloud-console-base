@@ -49,12 +49,12 @@ const ScIndicatorNumber = styled.strong`
 export default function NavButtonLabel({
   label
 }: IProps): JSX.Element {
-  if (isValidElement(label)) {
-    return label;
-  }
-  
   if (typeof label === 'string') {
     return <>{label}</>;
+  }
+  
+  if (isValidElement(label)) {
+    return label;
   }
   
   if (label) {

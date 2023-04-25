@@ -19,6 +19,9 @@
     "stylelint": "^13.13.1",
     "ts-node": "^10.9.1"
   },
+  "resolutions": {
+    "fork-ts-checker-webpack-plugin": "^6.5.3"
+  },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint",
     "*.{js,ts,tsx,css}": "stylelint",

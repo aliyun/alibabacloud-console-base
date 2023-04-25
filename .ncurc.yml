@@ -13,4 +13,3 @@ reject:
 - 'stylelint-config-standard'
 - 'stylelint-order'
 - 'unfetch' # 5.0 输出的是 .mjs 对构建有要求...
-- 'typescript' # 5.0.2 在 WebStorm 的时候 react 类型无法解析
