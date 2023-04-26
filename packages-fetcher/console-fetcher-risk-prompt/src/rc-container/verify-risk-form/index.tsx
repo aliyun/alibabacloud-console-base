@@ -130,6 +130,7 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
           content: <Flex align="center">
             <ScInfo>{getFormVerifyDetail(authFormProps)}</ScInfo>
             {getShowVerifySettingUrlChangeButton() && <ScSettingButton {...{
+              target: '_blank',
               spm: `set-${authFormProps.verifyType}`,
               theme: ButtonTheme.TEXT_PRIMARY,
               label: riskType === ERiskType.OLD_MAIN ? intlVerifySetting(authFormProps.convertedVerifyType) : intlVerifySetting(authFormProps.verifyType),
