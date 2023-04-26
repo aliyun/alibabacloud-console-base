@@ -99,8 +99,7 @@ function Ui(_props: unknown, ref: Ref<HTMLDivElement>): JSX.Element {
   } = usePropsDom();
   const jsxLabel = label || children; // label prior to children
   
-  return <ScButton {...{
-    ref,
+  return <ScButton ref={ref} {...{
     as: component,
     theme,
     size,

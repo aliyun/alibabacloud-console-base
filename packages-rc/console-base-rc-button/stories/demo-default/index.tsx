@@ -6,13 +6,13 @@ import styled from 'styled-components';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   H2,
-  InputSwitch,
-  ComponentTesting
+  ComponentTesting,
+  InputSwitch
 } from '@alicloud/demo-rc-elements';
 
 import Button, {
-  ButtonSize,
   ButtonTheme,
+  ButtonSize,
   ButtonProps
 } from '../../src';
 import PkgInfo from '../pkg-info';
@@ -56,6 +56,7 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <PkgInfo />
+    <Button theme={ButtonTheme.BRAND_PRIMARY}>FUCK</Button>
     <ComponentTesting<ButtonProps> {...{
       componentName: 'Button',
       componentPackageName: '@alicloud/console-base-rc-button',

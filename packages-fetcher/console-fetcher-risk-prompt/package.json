@@ -45,7 +45,7 @@
     "@alicloud/console-base-conf-env": "^1.6.9",
     "@alicloud/console-base-intl-factory": "^1.6.9",
     "@alicloud/console-base-log-sls": "^1.6.10",
-    "@alicloud/console-base-rc-button": "^1.8.0",
+    "@alicloud/console-base-rc-button": "^1.8.1",
     "@alicloud/console-base-rc-dialog": "^1.10.4",
     "@alicloud/console-base-rc-flex": "^1.4.11",
     "@alicloud/console-base-rc-icon": "^1.10.5",

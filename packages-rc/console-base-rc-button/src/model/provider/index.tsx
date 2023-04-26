@@ -6,8 +6,8 @@ import {
 import Context from '../context';
 
 export default function Provider({
-  children,
-  ...props
+  props,
+  children
 }: IModelProviderProps): JSX.Element {
   return <Context.Provider value={{
     props

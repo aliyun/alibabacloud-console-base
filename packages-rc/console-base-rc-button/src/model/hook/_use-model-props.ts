@@ -47,6 +47,7 @@ export default function useModelProps(): [IPropsCustom, IPropsDom] {
       classNameForIconRight,
       ...rest
     } = props;
+    
     const propsCustom: IPropsCustom = {
       component,
       label: label || children as IPropsCustom['label'],
