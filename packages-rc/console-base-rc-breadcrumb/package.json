@@ -41,7 +41,7 @@
     "styled-components": ">=5"
   },
   "dependencies": {
-    "@alicloud/console-base-rc-button": "^1.8.1",
+    "@alicloud/console-base-rc-button": "^1.8.2",
     "@alicloud/console-base-theme": "^1.9.5"
   },
   "scripts": {
