@@ -1,23 +1,31 @@
+import type {
+  TRiskTypeConfig
+} from '../../types';
 import {
   EConvertedVerifyType
 } from '../../enum';
-import {
-  BUILT_IN_RISK_CONFIG
-} from '../../const';
 
-export default function convertVerifyType(type0: string): EConvertedVerifyType {
+interface IProps {
+  type0: string;
+  riskTypeConfig: TRiskTypeConfig;
+}
+
+export default function convertVerifyType({
+  type0,
+  riskTypeConfig
+}: IProps): EConvertedVerifyType {
   const {
-    bySms,
-    byEmail,
-    byMfa
-  } = BUILT_IN_RISK_CONFIG;
+    BY_SMS,
+    BY_EMAIL,
+    BY_MFA
+  } = riskTypeConfig;
 
   switch (type0) {
-    case bySms:
+    case BY_SMS:
       return EConvertedVerifyType.SMS;
-    case byEmail:
+    case BY_EMAIL:
       return EConvertedVerifyType.EMAIL;
-    case byMfa:
+    case BY_MFA:
       return EConvertedVerifyType.MFA;
     default:
       return type0 ? EConvertedVerifyType.UNKNOWN : EConvertedVerifyType.NONE;

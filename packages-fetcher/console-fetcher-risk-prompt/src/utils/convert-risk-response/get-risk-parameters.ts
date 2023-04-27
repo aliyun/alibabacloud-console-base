@@ -25,37 +25,37 @@ export default function getRiskParameters<T>({
       accountId: getRiskValueViaConfig({
         riskConfig,
         riskResponse,
-        riskConfigKey: 'dataPathUserId',
+        riskConfigKey: 'DATA_PATH_USER_ID',
         defaultValue: ''
       }),
       verifyUrl: getRiskValueViaConfig({
         riskConfig,
         riskResponse,
-        riskConfigKey: 'dataPathVerifyUrl',
+        riskConfigKey: 'DATA_PATH_VERIFY_URL',
         defaultValue: ''
       }),
       validators: getRiskValueViaConfig({
         riskConfig,
         riskResponse,
-        riskConfigKey: 'dataPathValidators',
+        riskConfigKey: 'DATA_PATH_VALIDATORS',
         defaultValue: [] as IRiskValidator[]
       }),
       codeType: getRiskValueViaConfig({
         riskConfig,
         riskResponse,
-        riskConfigKey: 'dataPathCodeType',
+        riskConfigKey: 'DATA_PATH_NEW_VERIFY_CODE_TYPE',
         defaultValue: ''
       }),
       verifyType: getRiskValueViaConfig({
         riskConfig,
         riskResponse,
-        riskConfigKey: 'dataPathVerifyType',
+        riskConfigKey: 'DATA_PATH_NEW_VERIFY_TYPE',
         defaultValue: ''
       }),
       verifyDetail: getRiskValueViaConfig({
         riskConfig,
         riskResponse,
-        riskConfigKey: 'dataPathVerifyDetail',
+        riskConfigKey: 'DATA_PATH_NEW_VERIFY_DETAIL',
         defaultValue: ''
       })
     };

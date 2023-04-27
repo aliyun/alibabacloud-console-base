@@ -20,20 +20,38 @@ export type TRiskResponse<T = Record<string, unknown>> = T;
 
 export type TNewRisk<T = Record<string, unknown>> = boolean | ((riskResponse: TRiskResponse<T>) => boolean);
 
-// 风控配置类型定义
-export interface IRiskConfig {
-  dataPathVerifyUrl?: string; // 如何从原始返回中获取新版主账号风控的会员核身 URL 
-  dataPathValidators?: string; // 如何从原始返回中获取新版子账号风控信息
-  dataPathUserId?: string; // 如何从原始返回中中获取账号 ID
-  dataPathExtend?: string; // 如何从原始返回中获取扩展信息，比如虚商相关的配置信息
-  dataPathCodeType?: string; // 如何从原始返回中新版风控的风控码
-  dataPathVerifyType?: string; // 如何从原始返回中新版主账号风控的风控类型
-  dataPathVerifyDetail?: string; // 如何从原始返回中获取新版主账号风控详细信息（邮箱或手机）
-  // 基于 Xconsole 控制台才可能传的参数
-  dataPathOldCodeType?: string; // 如何从原始数据中获取旧版主账号风控码
-  dataPathOldVerifyType?: string; // 如何从原始返回中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
-  dataPathOldVerifyDetail?: string; // 如何从原始返回中获取旧版主账号风控详细信息（邮箱或手机）
+export type TRequestMethod = 'POST' | 'GET';
+
+// 兼容分包前的 console-fetcher-interceptor-res-risk 的配置
+export interface IExtraRiskConfig {
+  BY_SMS?: string; // 通过短信验证的方法，默认 sms
+  BY_EMAIL?: string; // 通过邮箱验证的方法，默认 email
+  BY_MFA?: string; // 通过 MFA 设备验证，默认 ga
+  URL_SETTINGS?: string; // 旧版主账号风控验证方式设置地址
+  URL_SEND_CODE?: string; // 旧版主账号风控验证码发送接口地址，默认 /risk/sendVerifyMessage.json
+  REQUEST_METHOD?: TRequestMethod; // 默认 POST，影响旧版主账号发送验证码接口
 }
+
+export type TOldMainRiskExtraConfig = Pick<Required<IExtraRiskConfig>, 'URL_SEND_CODE' | 'URL_SETTINGS' | 'REQUEST_METHOD'>;
+export type TRiskTypeConfig = Pick<Required<IExtraRiskConfig>, 'BY_SMS' | 'BY_EMAIL' | 'BY_MFA'>;
+
+// 解析风控响应的方式
+export interface IRiskDataPathConfig {
+  DATA_PATH_VERIFY_URL?: string; // 如何从风控响应中获取新版主账号风控的会员核身 URL 
+  DATA_PATH_VALIDATORS?: string; // 如何从风控响应中获取新版子账号风控信息
+  DATA_PATH_USER_ID?: string; // 如何从风控响应中中获取账号 ID
+  DATA_PATH_NEW_EXTEND?: string; // 如何从风控响应中获取扩展信息，比如虚商相关的配置信息
+  DATA_PATH_NEW_VERIFY_CODE_TYPE?: string; // 如何从风控响应中新版风控的风控码
+  DATA_PATH_NEW_VERIFY_TYPE?: string; // 如何从风控响应中新版主账号风控的风控类型
+  DATA_PATH_NEW_VERIFY_DETAIL?: string; // 如何从风控响应中获取新版主账号风控详细信息（邮箱或手机）
+  // OneConsole 控制台才可能传的参数
+  DATA_PATH_VERIFY_CODE_TYPE?: string; // 如何从原始数据中获取旧版主账号风控码
+  DATA_PATH_VERIFY_TYPE?: string; // 如何从风控响应中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
+  DATA_PATH_VERIFY_DETAIL?: string; // 如何从风控响应中获取旧版主账号风控详细信息（邮箱或手机）
+}
+
+// 风控配置类型定义
+export interface IRiskConfig extends IRiskDataPathConfig, IExtraRiskConfig {}
 
 export interface IRiskValidator {
   VerifyDetail: string;

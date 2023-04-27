@@ -38,19 +38,30 @@ interface IRiskParameters {
 }
 type TRiskParametersGetter<T = Record<string, unknown>> = (riskResponse: TRiskResponse<T>) => IRiskParameters;
 
-interface IRiskConfig {
-  dataPathVerifyUrl?: string; // 如何从原始返回中获取新版主账号风控的会员核身 URL 
-  dataPathValidators?: string; // 如何从原始返回中获取新版子账号风控信息
-  dataPathUserId?: string; // 如何从原始返回中中获取账号 ID
-  dataPathExtend?: string; // 如何从原始返回中获取扩展信息，比如虚商相关的配置信息
-  dataPathCodeType?: string; // 如何从原始返回中新版风控的风控码
-  dataPathVerifyType?: string; // 如何从原始返回中新版主账号风控的风控类型
-  dataPathVerifyDetail?: string; // 如何从原始返回中获取新版主账号风控详细信息（邮箱或手机）
-  //基于 Xconsole 控制台才可能传的参数
-  dataPathOldCodeType?: string; // 如何从原始数据中获取旧版主账号风控码
-  dataPathOldVerifyType?: string; // 如何从原始返回中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
-  dataPathOldVerifyDetail?: string; // 如何从原始返回中获取旧版主账号风控详细信息（邮箱或手机）
+interface IExtraRiskConfig {
+  BY_SMS?: string; // 通过短信验证的方法，默认 sms
+  BY_EMAIL?: string; // 通过邮箱验证的方法，默认 email
+  BY_MFA?: string; // 通过 MFA 设备验证，默认 ga
+  URL_SEND_CODE?: string; // 旧版主账号风控验证码发送接口地址，默认 /risk/sendVerifyMessage.json
+  URL_SETTINGS?: string; // 旧版主账号风控验证方式设置地址
+  REQUEST_METHOD?: TRequestMethod; // 默认 POST，影响旧版主账号发送验证码接口
 }
+
+interface IRiskDataPathConfig {
+  DATA_PATH_VERIFY_URL?: string; // 如何从风控响应中获取新版主账号风控的会员核身 URL 
+  DATA_PATH_VALIDATORS?: string; // 如何从风控响应中获取新版子账号风控信息
+  DATA_PATH_USER_ID?: string; // 如何从风控响应中中获取账号 ID
+  DATA_PATH_NEW_EXTEND?: string; // 如何从风控响应中获取扩展信息，比如虚商相关的配置信息
+  DATA_PATH_NEW_VERIFY_CODE_TYPE?: string; // 如何从风控响应中新版风控的风控码
+  DATA_PATH_NEW_VERIFY_TYPE?: string; // 如何从风控响应中新版主账号风控的风控类型
+  DATA_PATH_NEW_VERIFY_DETAIL?: string; // 如何从风控响应中获取新版主账号风控详细信息（邮箱或手机）
+  // OneConsole 控制台才可能传的参数
+  DATA_PATH_VERIFY_CODE_TYPE?: string; // 如何从原始数据中获取旧版主账号风控码
+  DATA_PATH_VERIFY_TYPE?: string; // 如何从风控响应中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
+  DATA_PATH_VERIFY_DETAIL?: string; // 如何从风控响应中获取旧版主账号风控详细信息（邮箱或手机）
+}
+
+interface IRiskConfig extends IRiskDataPathConfig, IExtraRiskConfig {}
 
 interface IRiskPromptProps<T> {
   riskResponse: TRiskResponse<T>; // API 被风控时的返回，必需  
@@ -108,36 +119,32 @@ interface IRiskResponse {
 
 - `riskConfig`：风控配置。其类型定义如下。
 
-```typescript
-interface IRiskConfig {
-  dataPathVerifyUrl?: string; // 如何从原始返回中获取新版主账号风控的会员核身 URL 
-  dataPathValidators?: string; // 如何从原始返回中获取新版子账号风控信息
-  dataPathUserId?: string; // 如何从原始返回中中获取账号 ID
-  dataPathExtend?: string; // 如何从原始返回中获取扩展信息，比如虚商相关的配置信息
-  dataPathCodeType?: string; // 如何从原始返回中新版风控的风控码
-  dataPathVerifyType?: string; // 如何从原始返回中新版主账号风控的风控类型
-  dataPathVerifyDetail?: string; // 如何从原始返回中获取新版主账号风控详细信息（邮箱或手机）
-  // 基于 Xconsole 控制台才可能传的参数
-  dataPathOldCodeType?: string; // 如何从原始数据中获取旧版主账号风控码
-  dataPathOldVerifyType?: string; // 如何从原始返回中获取旧版主账号的风控类型（邮箱、手机或者 MFA）
-  dataPathOldVerifyDetail?: string; // 如何从原始返回中获取旧版主账号风控详细信息（邮箱或手机）
-}
-```
-
 这些字段都是**可选**的，`riskPrompt` 会有兜底处理，兜底的对象如下。兜底值是根据基于 OneConsole 的控制台被风控时的返回得到的。
 
 ```typescript
+const DEFAULT_EXTRA_RISK_CONFIG = {
+  BY_SMS: 'sms',
+  BY_EMAIL: 'email',
+  BY_MFA: 'ga',
+  REQUEST_METHOD: 'POST' as const,
+  // 旧版主账号的验证码发送地址，默认是 /risk/sendVerifyMessage.json，业务方可以传入覆盖
+  URL_SEND_CODE: '/risk/sendVerifyMessage.json',
+  // 阿里云 APP 设置主账号手机/邮箱的地址与 PC 端不一样
+  URL_SETTINGS: ALIYUN_APP_VERSION ? '//m.console.aliyun.com/app-basic-business/account-setting?navigationBar=false' : '//account.console.aliyun.com/#/secure'
+};
+
 const DEFAULT_RISK_CONFIG = {
-  dataPathVerifyType: 'data.verifyType',
-  dataPathVerifyDetail: 'data.verifyDetail',
-  dataPathCodeType: 'data.codeType',
-  dataPathNewVerifyUrl: 'data.VerifyURL',
-  dataPathNewValidators: 'data.Validators.Validator',
-  dataPathNewAccountId: 'data.AliyunIdkp',
-  dataPathNewExtend: 'data.Extend',
-  dataPathNewCodeType: 'data.CodeType',
-  dataPathNewVerifyType: 'data.VerifyType',
-  dataPathNewVerifyDetail: 'data.VerifyDetail'
+  // 从 riskResponse 中如何解析风控信息
+  DATA_PATH_VERIFY_TYPE: 'data.verifyType',
+  DATA_PATH_VERIFY_DETAIL: 'data.verifyDetail',
+  DATA_PATH_VERIFY_CODE_TYPE: 'data.codeType',
+  DATA_PATH_VERIFY_URL: 'data.VerifyURL',
+  DATA_PATH_VALIDATORS: 'data.Validators.Validator',
+  DATA_PATH_USER_ID: 'data.AliyunIdkp',
+  DATA_PATH_NEW_EXTEND: 'data.Extend',
+  DATA_PATH_NEW_VERIFY_CODE_TYPE: 'data.CodeType',
+  DATA_PATH_NEW_VERIFY_TYPE: 'data.VerifyType',
+  DATA_PATH_NEW_VERIFY_DETAIL: 'data.VerifyDetail'
 };
 ```
 

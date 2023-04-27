@@ -7,6 +7,10 @@ import {
   EConvertedVerifyType
 } from '../enum';
 
+import {
+  TRequestMethod
+} from './risk-prompt-props';
+
 type TSendVerifyCodeCommonType<T> = T & {
   codeType: string;
   accountId: string;
@@ -26,6 +30,8 @@ export interface ISubAuthFormProps {
 
 export interface IOldMainAuthFormProps {
   riskType: ERiskType.OLD_MAIN;
+  sendCodeUrl: string;
+  sendCodeMethod: TRequestMethod;
   isMpkDowngrade: boolean;
   verifyType: string;
   verifyDetail?: string | boolean;
