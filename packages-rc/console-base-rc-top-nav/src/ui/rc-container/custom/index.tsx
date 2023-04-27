@@ -23,6 +23,7 @@ const ScCustomL = styled(Flex)`
   > * {
     margin-right: 12px;
     
+    &:empty,
     &:last-child {
       margin-right: 0;
     }
@@ -35,6 +36,7 @@ const ScCustomR = styled(Flex)`
   > * {
     margin-left: 12px;
     
+    &:empty,
     &:first-child {
       margin-left: 0;
     }

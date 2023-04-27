@@ -5,6 +5,7 @@ export * from './helper';
 
 export type {
   IModelProps as ModelProps,
+  ITopNavButtonPropsLabel as TopNavButtonPropsLabel,
   ITopNavButtonProps as TopNavButtonProps,
   ITopNavButtonDropdownProps as TopNavButtonDropdownProps,
   ITopNavButtonDropdownItemProps as TopNavButtonDropdownItemProps,

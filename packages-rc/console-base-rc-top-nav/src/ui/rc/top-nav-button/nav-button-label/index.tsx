@@ -9,7 +9,7 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  TopNavButtonProps
+  TopNavButtonProps, TopNavButtonPropsLabel
 } from '../../../../model';
 
 interface IProps {
@@ -64,7 +64,7 @@ export default function NavButtonLabel({
       text,
       count = 0,
       countAsDot
-    } = label;
+    } = label as TopNavButtonPropsLabel; // FIXME TS5 isValidElement 没法 narrow 掉 ReactElement
     let jsxLabel: JSX.Element;
     
     if (icon) {

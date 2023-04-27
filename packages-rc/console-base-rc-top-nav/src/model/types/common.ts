@@ -13,7 +13,7 @@ import {
   BeaconProps
 } from '@alicloud/console-base-rc-beacon';
 
-interface ITopNavButtonPropsLabel {
+export interface ITopNavButtonPropsLabel {
   icon?: ReactElement;
   html?: string;
   text?: string | ReactElement;
