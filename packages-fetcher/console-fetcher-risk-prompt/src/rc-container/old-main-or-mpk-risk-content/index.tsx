@@ -25,6 +25,8 @@ import VerifyRiskForm from '../verify-risk-form';
 
 export default function OldMainOrMpkRiskContent(): JSX.Element {
   const {
+    oldMainSendCodeUrl,
+    oldMainSendCodeMethod,
     oldMainOrMpkVerifyInfo
   } = useModelProps();
 
@@ -51,11 +53,13 @@ export default function OldMainOrMpkRiskContent(): JSX.Element {
     return {
       riskType: ERiskType.OLD_MAIN,
       isMpkDowngrade: isMpk,
+      sendCodeMethod: oldMainSendCodeMethod,
+      sendCodeUrl: oldMainSendCodeUrl,
       verifyDetail: oldMainOrMpkVerifyInfo?.verifyDetail,
       convertedVerifyType: oldMainOrMpkVerifyInfo?.convertedVerifyType,
       verifyType: oldMainOrMpkVerifyInfo?.verifyType ?? 'ga'
     };
-  }, [isMpk, mpkIsDowngrade, verifyType, oldMainOrMpkVerifyInfo]);
+  }, [isMpk, mpkIsDowngrade, verifyType, oldMainOrMpkVerifyInfo, oldMainSendCodeMethod, oldMainSendCodeUrl]);
 
   return <VerifyRiskForm {...authFormProps} />;
 }

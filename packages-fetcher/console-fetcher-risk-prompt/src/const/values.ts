@@ -63,30 +63,36 @@ export const DEFAULT_DIALOG_SIZE = ALIYUN_APP_VERSION ? 'xs' : 'm'; // 移动端
 
 // 内置的风控配置
 export const BUILT_IN_RISK_CONFIG = {
-  bySms: 'sms',
-  byEmail: 'email',
-  byMfa: 'ga',
   coolingAfterSent: 60,
   coolingAfterSentFail: 5,
   u2fTimeOut: 180000,
-  webAuthnKeyType: 'public-key' as const,
+  webAuthnKeyType: 'public-key' as const
+};
+
+export const DEFAULT_EXTRA_RISK_CONFIG = {
+  BY_SMS: 'sms',
+  BY_EMAIL: 'email',
+  BY_MFA: 'ga',
+  REQUEST_METHOD: 'POST' as const,
+  // 旧版主账号的验证码发送地址，默认是 /risk/sendVerifyMessage.json，业务方可以传入覆盖
+  URL_SEND_CODE: '/risk/sendVerifyMessage.json',
   // 阿里云 APP 设置主账号手机/邮箱的地址与 PC 端不一样
-  urlSetting: ALIYUN_APP_VERSION ? '//m.console.aliyun.com/app-basic-business/account-setting?navigationBar=false' : '//account.console.aliyun.com/#/secure'
+  URL_SETTINGS: ALIYUN_APP_VERSION ? '//m.console.aliyun.com/app-basic-business/account-setting?navigationBar=false' : '//account.console.aliyun.com/#/secure'
 };
 
 // 默认的风控配置
 export const DEFAULT_RISK_CONFIG = {
   // 从 riskResponse 中如何解析风控信息
-  dataPathOldVerifyType: 'data.verifyType',
-  dataPathOldVerifyDetail: 'data.verifyDetail',
-  dataPathOldCodeType: 'data.codeType',
-  dataPathVerifyUrl: 'data.VerifyURL',
-  dataPathValidators: 'data.Validators.Validator',
-  dataPathUserId: 'data.AliyunIdkp',
-  dataPathExtend: 'data.Extend',
-  dataPathCodeType: 'data.CodeType',
-  dataPathVerifyType: 'data.VerifyType',
-  dataPathVerifyDetail: 'data.VerifyDetail'
+  DATA_PATH_VERIFY_TYPE: 'data.verifyType',
+  DATA_PATH_VERIFY_DETAIL: 'data.verifyDetail',
+  DATA_PATH_VERIFY_CODE_TYPE: 'data.codeType',
+  DATA_PATH_VERIFY_URL: 'data.VerifyURL',
+  DATA_PATH_VALIDATORS: 'data.Validators.Validator',
+  DATA_PATH_USER_ID: 'data.AliyunIdkp',
+  DATA_PATH_NEW_EXTEND: 'data.Extend',
+  DATA_PATH_NEW_VERIFY_CODE_TYPE: 'data.CodeType',
+  DATA_PATH_NEW_VERIFY_TYPE: 'data.VerifyType',
+  DATA_PATH_NEW_VERIFY_DETAIL: 'data.VerifyDetail'
 };
 
 export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {

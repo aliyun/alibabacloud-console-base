@@ -24,7 +24,7 @@ import {
 } from '../../enum';
 import {
   ALIYUN_APP_VERSION,
-  BUILT_IN_RISK_CONFIG
+  DEFAULT_EXTRA_RISK_CONFIG
 } from '../../const';
 import {
   useModelProps
@@ -79,7 +79,7 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
 
     if (ALIYUN_APP_VERSION) {
       // 阿里云 APP 中的 MFA 验证不展示修改 MFA 的链接
-      if (verifyType === EConvertedVerifyType.MFA || verifyType === BUILT_IN_RISK_CONFIG.byMfa) {
+      if (verifyType === EConvertedVerifyType.MFA || verifyType === DEFAULT_EXTRA_RISK_CONFIG.BY_MFA) {
         return false;
       }
     }
@@ -88,7 +88,8 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
   };
 
   const {
-    accountId
+    accountId,
+    oldMainAccountUrlSetting
   } = useModelProps();
   const {
     data: {
@@ -134,7 +135,7 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
               spm: `set-${authFormProps.verifyType}`,
               theme: ButtonTheme.TEXT_PRIMARY,
               label: riskType === ERiskType.OLD_MAIN ? intlVerifySetting(authFormProps.convertedVerifyType) : intlVerifySetting(authFormProps.verifyType),
-              href: [ERiskType.MPK, ERiskType.OLD_MAIN].includes(riskType) ? BUILT_IN_RISK_CONFIG.urlSetting : getSubVerificationSettingUrl(accountId)
+              href: [ERiskType.MPK, ERiskType.OLD_MAIN].includes(riskType) ? oldMainAccountUrlSetting : getSubVerificationSettingUrl(accountId)
             }} />}
           </Flex>
         }, {

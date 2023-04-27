@@ -20,7 +20,9 @@ export default async function sendVerifyCode(props: TSendVerifyCodeProps): Promi
   if (riskType === ERiskType.OLD_MAIN) {
     const sendCodeData = await dataSendCodeOld({
       codeType,
-      verifyType
+      verifyType,
+      sendCodeMethod: props.sendCodeMethod,
+      sendCodeUrl: props.sendCodeUrl
     });
   
     return sendCodeData.requestId;

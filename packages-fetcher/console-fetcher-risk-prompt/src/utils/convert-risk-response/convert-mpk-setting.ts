@@ -25,7 +25,7 @@ export default function convertMpkSetting<T>({
   const mpkSetting = getRiskValueViaConfig({
     riskConfig,
     riskResponse,
-    riskConfigKey: 'dataPathExtend',
+    riskConfigKey: 'DATA_PATH_NEW_EXTEND',
     defaultValue: {} as IMpkExtendSetting
   });
 

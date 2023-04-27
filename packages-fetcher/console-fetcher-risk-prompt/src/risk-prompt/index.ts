@@ -1,13 +1,14 @@
 import {
   IRiskPromptResolveData,
-  IRiskPromptProps
+  IRiskPromptProps,
+  TOldMainRiskExtraConfig
 } from '../types';
 import {
   ERiskType,
   EConvertedVerifyType
 } from '../enum';
 import {
-  BUILT_IN_RISK_CONFIG
+  DEFAULT_EXTRA_RISK_CONFIG
 } from '../const';
 import intl from '../intl';
 import {
@@ -39,6 +40,11 @@ export default async function riskPrompt<T = Record<string, unknown>>({
 
   const accountId = getAccountIdFromRiskInfo(riskInfo);
   const stringifiedRiskResponse = safeJsonStringify(riskResponse);
+  const oldMainRiskExtraConfig: TOldMainRiskExtraConfig = {
+    URL_SEND_CODE: riskConfig?.URL_SEND_CODE ?? DEFAULT_EXTRA_RISK_CONFIG.URL_SEND_CODE,
+    URL_SETTINGS: riskConfig?.URL_SETTINGS ?? DEFAULT_EXTRA_RISK_CONFIG.URL_SETTINGS,
+    REQUEST_METHOD: riskConfig?.REQUEST_METHOD ?? DEFAULT_EXTRA_RISK_CONFIG.REQUEST_METHOD
+  };
 
   if (riskInfo.riskType === ERiskType.NEW_SUB && !riskInfo.subRiskValidators.length) {
     await riskInvalid({
@@ -54,9 +60,6 @@ export default async function riskPrompt<T = Record<string, unknown>>({
 
   if (riskInfo.riskType !== ERiskType.NEW_SUB) {
     const {
-      urlSetting
-    } = BUILT_IN_RISK_CONFIG;
-    const {
       verifyType, verifyDetail, convertedVerifyType
     } = riskInfo;
   
@@ -64,7 +67,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
       case EConvertedVerifyType.NONE:
         await riskInvalid({
           accountId,
-          urlSetting,
+          urlSetting: oldMainRiskExtraConfig.URL_SETTINGS,
           stringifiedRiskResponse,
           errorMessage: intl('message:invalid_unknown!lines')
         });
@@ -73,7 +76,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
       case EConvertedVerifyType.UNKNOWN:
         await riskInvalid({
           accountId,
-          urlSetting,
+          urlSetting: oldMainRiskExtraConfig.URL_SETTINGS,
           stringifiedRiskResponse,
           errorMessage: intl('message:invalid_unsupported_{method}!html!lines', {
             method: verifyType
@@ -87,7 +90,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
         if (riskInfo.riskType === ERiskType.OLD_MAIN && !verifyDetail) {
           await riskInvalid({
             accountId,
-            urlSetting,
+            urlSetting: oldMainRiskExtraConfig.URL_SETTINGS,
             stringifiedRiskResponse,
             errorMessage: intl('message:invalid_unsupported_{method}!html!lines', {
               method: verifyType
@@ -103,7 +106,11 @@ export default async function riskPrompt<T = Record<string, unknown>>({
     }
   }
 
-  return openDialog(riskInfo, reRequestWithVerifyResult).catch(err => {
+  return openDialog({
+    riskInfo,
+    oldMainRiskExtraConfig,
+    reRequestWithVerifyResult
+  }).catch(err => {
     throw err ?? convertToRiskErrorCancelled(err);
   });
 }

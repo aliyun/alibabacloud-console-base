@@ -4,19 +4,34 @@ import fetcher, {
 
 import {
   IParamsSendCodeOld,
+  IParamsSendCodeOldWithConfig,
   IResponseSendCode
 } from '../../types';
 import {
-  ESlsResultType,
-  SEND_CODE_OLD_API
+  ESlsResultType
 } from '../../const';
 import {
   slsSendCodeOld
 } from '../../sls';
 
-export default async function dataSendCodeOld(params: IParamsSendCodeOld): Promise<IResponseSendCode> {
+export default async function dataSendCodeOld(params: IParamsSendCodeOldWithConfig): Promise<IResponseSendCode> {
+  const {
+    sendCodeUrl,
+    sendCodeMethod,
+    ...sendCodeParams
+  } = params;
+
   try {
-    const sendCodeOldResponse = await fetcher.post<IResponseSendCode, IParamsSendCodeOld>(SEND_CODE_OLD_API, params);
+    let sendCodeOldResponse: IResponseSendCode = {
+      requestId: ''
+    };
+
+    // 支持业务方自定义自定义请求参数以及发送验证码的 URL
+    if (sendCodeMethod === 'GET') {
+      sendCodeOldResponse = await fetcher.get<IResponseSendCode, IParamsSendCodeOld>(sendCodeUrl, sendCodeParams);
+    } else {
+      sendCodeOldResponse = await fetcher.post<IResponseSendCode, IParamsSendCodeOld>(sendCodeUrl, sendCodeParams);
+    }
 
     slsSendCodeOld({
       ...params,
