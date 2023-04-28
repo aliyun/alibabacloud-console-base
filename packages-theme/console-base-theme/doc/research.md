@@ -11,7 +11,6 @@
 
 * [Github](https://github.com/)
 * [JetBrains Product Documentation](https://www.jetbrains.com/help)
-* [精品 Mac 软件下载](https://www.macwk.com)
 * [Josh W Comeau'Blog](https://www.joshwcomeau.com)
 * [Can I Use](https://caniuse.com)
 * [Theme UI](https://theme-ui.com/home)
@@ -73,38 +72,11 @@
 * 其他
   + 比较简单，主要是文本的前景/背景色的变换（跟它的「帮助文档」定位有关）
 
-### 精品 Mac 软件下载
-
-#### 文件
-
-* [CSS Variables 快照](css/macwk.less)
-* [源的 CSS 文件](https://cdn.macwk.com/client/app.f82db30.css)
-
-#### 切主题
-
-1. 为 `<body>` 添加主题 class - `light`、`fugu`、`huyan`、`haitian`、`dark`、`black`
-2. 主题 class 定义了全局的颜色
-3. 主题 class 定义组件的颜色
-
-#### 特点
-
-* 支持无刷新切主题：是
-* 支持 IE11：否
-* 变量数
-  + 少，且几乎通篇没有被用到...感觉要么是构建吃掉了，要么就没用
-* 命名偏好
-  + 既有视觉命名又有语义命名
-  + namespace 前缀 - 无
-  + 功能前缀 - 无
-* 其他
-  + 看起来很简单
-
 ### Josh W Comeau'Blog
 
 #### 文件
 
 * [CSS Variables 快照](css/jwc.less)
-* [源的 CSS 文件](https://www.joshwcomeau.com/_next/static/css/e0f181e590633b6e485d.css)
 
 #### 切主题
 
