@@ -25,14 +25,14 @@ export const CSS_INLINE_ELEMENTS_INSIDE = css`
   
   kbd {
     display: inline-block;
-    padding: 3px 5px;
-    border: 1px solid #ccc;
-    border-bottom-color: #999;
+    margin: 0 0.1em;
+    padding: 0.1em 0.6em;
+    border: 1px solid #c4cdd7;
     border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #999;
-    background-color: #f3f3f3;
-    line-height: 10px;
-    font-size: 11px;
+    box-shadow: 0 1px 0 rgba(12, 13, 14, 0.2), 0 0 0 2px #fff inset;
+    background-color: #e9ecee;
+    font: 600 11px/1.4 Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    white-space: nowrap;
     color: #333;
   }
 `;

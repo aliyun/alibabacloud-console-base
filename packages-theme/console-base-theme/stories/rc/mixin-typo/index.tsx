@@ -34,11 +34,11 @@ export default function MixinTypo(): JSX.Element {
     <MixinElement mixin={mixinTypoFontFamilyBaseJa}>FontFamilyBaseJa</MixinElement>
     <MixinElement mixin={mixinTypoFontFamilyMono}>FontFamilyMono</MixinElement>
     <H1>Inline Elements</H1>
-    <MixinElement mixin={mixinTypoStrong} as="strong">Strong</MixinElement>
-    <MixinElement mixin={mixinTypoEm} as="em">Em</MixinElement>
-    <MixinElement mixin={mixinTypoSmall} as="small">Small</MixinElement>
-    <MixinElement mixin={mixinTypoCode} as="code">Code</MixinElement>
-    <MixinElement mixin={mixinTypoKbd} as="kbd">Kbd</MixinElement>
+    <MixinElement mixin={mixinTypoStrong} as="strong">strong</MixinElement>
+    <MixinElement mixin={mixinTypoEm} as="em">em</MixinElement>
+    <MixinElement mixin={mixinTypoSmall} as="small">small</MixinElement>
+    <MixinElement mixin={mixinTypoCode} as="code">code</MixinElement>
+    <MixinElement mixin={mixinTypoKbd} as="kbd">kbd</MixinElement>
     <H1>Others</H1>
     <MixinElement mixin={mixinTypoBlockquote} as="blockquote">Blockquote</MixinElement>
     <MixinElement mixin={mixinTypoElementsInline}>Some inline elements like <strong>strong</strong> <em>em</em> <small>small</small> <code>code</code> <kbd>kbd</kbd> will have style.</MixinElement>

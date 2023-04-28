@@ -23,11 +23,11 @@ import {
   mixinLinkPrimary
 } from './link';
 import {
-  mixinBgSecondary,
-  mixinBgSecondaryFade
+  mixinBgSecondaryFade,
+  mixinBgTertiary
 } from './bg';
 import {
-  mixinBorderTertiary,
+  mixinBorderPrimary,
   mixinBorderTertiaryColor
 } from './border';
 
@@ -83,14 +83,16 @@ export const mixinTypoCode = css`
 
 export const mixinTypoKbd = css`
   display: inline-block;
-  padding: 2px 4px;
+  margin: 0 0.1em;
+  padding: 0.1em 0.6em;
   border-radius: 3px;
-  box-shadow: inset 0 -1px 0 ${COLOR.SHADOW};
-  box-shadow: inset 0 -1px 0 var(--cb-color-shadow, ${COLOR.SHADOW});
-  line-height: 1.2;
+  box-shadow: 0 1px 0 ${COLOR.SHADOW}, 0 0 0 2px ${COLOR.TEXT_INVERSE} inset;
+  box-shadow: 0 1px 0 var(--cb-color-shadow, ${COLOR.SHADOW}), 0 0 0 2px var(--cb-color-text-inverse, ${COLOR.TEXT_INVERSE}) inset;
+  font: 600 12px/1.4 Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  white-space: nowrap;
   ${mixinTextSecondary}
-  ${mixinBgSecondary}
-  ${mixinBorderTertiary}
+  ${mixinBgTertiary}
+  ${mixinBorderPrimary}
 `;
 
 export const mixinTypoBlockquote = css`
