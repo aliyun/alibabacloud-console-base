@@ -80,9 +80,9 @@ import {
  */
 export default function createInterceptorResponseRejected(o?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected {
   const riskConfig: IFetcherInterceptorConfig = {
-    codeForbidden: CODE_FORBIDDEN,
-    codeNeedVerify: CODE_NEED_VERIFY,
-    codeInvalidInput: CODE_INVALID_INPUT,
+    CODE_FORBIDDEN,
+    CODE_NEED_VERIFY,
+    CODE_INVALID_INPUT,
     ...o
   };
   
@@ -93,11 +93,11 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
     const responseData = response?.data;
     
     switch (code) {
-      case riskConfig.codeForbidden:
+      case riskConfig.CODE_FORBIDDEN:
         await riskForbidden();
         
         throw convertToRiskErrorForbidden(error);
-      case riskConfig.codeNeedVerify: {
+      case riskConfig.CODE_NEED_VERIFY: {
         const {
           isMpk,
           mpkIsDowngrade

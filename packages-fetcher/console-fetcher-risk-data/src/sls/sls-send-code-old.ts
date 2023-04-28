@@ -10,6 +10,8 @@ import {
 
 interface ISlsSendCodeOldProps extends ISlsCommonProps {
   codeType: string;
+  sendCodeMethod: string;
+  sendCodeUrl: string;
   verifyType: string;
 }
 

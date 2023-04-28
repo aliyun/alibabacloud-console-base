@@ -47,8 +47,13 @@ export type TParamsSendCode = TUnCapitalizeKeys<Omit<IPayloadSendCode, 'TicketTy
 // 对外提供的验证 MPK 用户风控结果的 API dataVerifyMpk 的请求参数
 export type TParamsVerifyMpk = TUnCapitalizeKeys<TOmitConstantPayload<IPayloadVerifyMpk>>;
 
-// 老版主账号风控发送验证码的接口 /risk/sendVerifyMessage.json 的请求参数
+// 老版主账号风控发送验证码的接口的请求参数
 export interface IParamsSendCodeOld {
   codeType: string;
   verifyType: string;
+}
+
+export interface IParamsSendCodeOldWithConfig extends IParamsSendCodeOld {
+  sendCodeUrl: string;
+  sendCodeMethod: 'POST' | 'GET';
 }

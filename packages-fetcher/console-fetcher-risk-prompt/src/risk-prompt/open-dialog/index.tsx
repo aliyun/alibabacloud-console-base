@@ -9,6 +9,7 @@ import {
   IDialogData,
   IRiskPromptResolveData,
   TRiskInfo,
+  TOldMainRiskExtraConfig,
   TReRequestWithVerifyResult
 } from '../../types';
 import {
@@ -38,7 +39,21 @@ import {
 } from './dialog-button';
 import getPartialDialogDataBasedOnRiskInfo from './get-partial-dialog-data-based-on-risk-info';
 
-export default async function openDialog(riskInfo: TRiskInfo, reRequestWithVerifyResult?: TReRequestWithVerifyResult): Promise<IRiskPromptResolveData> {
+interface IOpenDialogProps {
+  riskInfo: TRiskInfo;
+  oldMainRiskExtraConfig: TOldMainRiskExtraConfig;
+  reRequestWithVerifyResult?: TReRequestWithVerifyResult;
+}
+
+export default async function openDialog({
+  riskInfo,
+  reRequestWithVerifyResult,
+  oldMainRiskExtraConfig: {
+    URL_SETTINGS,
+    URL_SEND_CODE,
+    REQUEST_METHOD
+  }
+}: IOpenDialogProps): Promise<IRiskPromptResolveData> {
   const {
     riskType, codeType
   } = riskInfo;
@@ -82,7 +97,10 @@ export default async function openDialog(riskInfo: TRiskInfo, reRequestWithVerif
       codeType,
       accountId,
       oldMainOrMpkVerifyInfo,
-      reRequestWithVerifyResult
+      reRequestWithVerifyResult,
+      oldMainAccountUrlSetting: URL_SETTINGS,
+      oldMainSendCodeUrl: URL_SEND_CODE,
+      oldMainSendCodeMethod: REQUEST_METHOD
     }} />,
     buttons: (data: IDialogData) => {
       const buttonCancel = intl('op:cancel');

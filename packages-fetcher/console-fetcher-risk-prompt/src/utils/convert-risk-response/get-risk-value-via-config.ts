@@ -5,15 +5,15 @@ import {
 } from 'lodash-es';
 
 import {
-  IRiskConfig
+  IRiskDataPathConfig
 } from '../../types';
 import {
   DEFAULT_RISK_CONFIG
 } from '../../const';
 
 interface IProps<T, R> {
-  riskConfig?: IRiskConfig;
-  riskConfigKey: keyof IRiskConfig;
+  riskConfig?: IRiskDataPathConfig;
+  riskConfigKey: keyof IRiskDataPathConfig;
   riskResponse: R;
   defaultValue: T;
 }

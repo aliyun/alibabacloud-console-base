@@ -4,12 +4,16 @@ import {
   IRiskConfig,
   TRiskResponse,
   ICommonRiskInfo,
+  TRiskTypeConfig,
   TRiskParametersGetter
 } from '../../types';
 import {
   ERiskType,
   EConvertedVerifyType
 } from '../../enum';
+import {
+  DEFAULT_EXTRA_RISK_CONFIG
+} from '../../const';
 
 import convertVerifyType from './convert-verify-type';
 import convertMpkSetting from './convert-mpk-setting';
@@ -30,6 +34,12 @@ function convertRiskResponse<T>({
   riskResponse,
   riskParametersGetter // 支持调用方传入 getter 函数来从 riskResponse 取出 riskPrompt 所需的新版风控函数
 }: IConvertRiskResponseProps<T>): TRiskInfo {
+  const riskTypeConfig: TRiskTypeConfig = {
+    BY_SMS: riskConfig?.BY_SMS ?? DEFAULT_EXTRA_RISK_CONFIG.BY_SMS,
+    BY_EMAIL: riskConfig?.BY_EMAIL ?? DEFAULT_EXTRA_RISK_CONFIG.BY_EMAIL,
+    BY_MFA: riskConfig?.BY_MFA ?? DEFAULT_EXTRA_RISK_CONFIG.BY_MFA
+  };
+
   const riskParameters = getRiskParameters({
     riskConfig,
     riskResponse,
@@ -39,7 +49,10 @@ function convertRiskResponse<T>({
     accountId, verifyUrl, codeType,
     validators = [], verifyType = '', verifyDetail = ''
   } = riskParameters;
-  const convertedVerifyType = convertVerifyType(verifyType);
+  const convertedVerifyType = convertVerifyType({
+    type0: verifyType,
+    riskTypeConfig
+  });
 
   const mergedUseNewRisk = getMergedUseNewRisk({
     newRisk,
@@ -99,7 +112,10 @@ function convertRiskResponse<T>({
       return validators.map(o => ({
         verifyType: o.VerifyType,
         verifyDetail: o.VerifyDetail,
-        convertedVerifyType: convertVerifyType(o.VerifyType)
+        convertedVerifyType: convertVerifyType({
+          type0: o.VerifyType,
+          riskTypeConfig
+        })
       })).filter(o => ![EConvertedVerifyType.NONE, EConvertedVerifyType.UNKNOWN].includes(o.convertedVerifyType));
     })();
 
@@ -115,19 +131,19 @@ function convertRiskResponse<T>({
   const oldCodeType = getRiskValueViaConfig({
     riskConfig,
     riskResponse,
-    riskConfigKey: 'dataPathOldCodeType',
+    riskConfigKey: 'DATA_PATH_VERIFY_CODE_TYPE',
     defaultValue: ''
   });
   const oldVerifyType = getRiskValueViaConfig({
     riskConfig,
     riskResponse,
-    riskConfigKey: 'dataPathOldVerifyType',
+    riskConfigKey: 'DATA_PATH_VERIFY_TYPE',
     defaultValue: ''
   });
   const oldVerifyDetail = getRiskValueViaConfig({
     riskConfig,
     riskResponse,
-    riskConfigKey: 'dataPathOldVerifyDetail',
+    riskConfigKey: 'DATA_PATH_VERIFY_DETAIL',
     defaultValue: ''
   });
 
@@ -137,7 +153,10 @@ function convertRiskResponse<T>({
     codeType: oldCodeType,
     verifyType: oldVerifyType,
     verifyDetail: oldVerifyDetail,
-    convertedVerifyType: convertVerifyType(oldVerifyType),
+    convertedVerifyType: convertVerifyType({
+      type0: oldVerifyType,
+      riskTypeConfig
+    }),
     riskType: ERiskType.OLD_MAIN
   };
 }

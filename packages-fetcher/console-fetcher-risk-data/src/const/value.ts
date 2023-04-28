@@ -15,7 +15,6 @@ export const SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD = {
   AccountType: EAccountType.SUB
 };
 
-export const SEND_CODE_OLD_API = '/risk/sendVerifyMessage.json';
 export const VERIFY_API = '/identity/verify';
 export const BIND_MFA_API = '/identity/bindMFA';
 export const SEND_CODE_API = '/identity/send';
