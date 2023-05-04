@@ -22,8 +22,7 @@ export default function reduceRndResize(state: IModelState, payload: IPayloadRes
           bottom: state.viewportH - (payload.y + payload.h)
         }
       });
-    case EMicroBrowserMode.TO_THE_RIGHT:
-    case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
+    case EMicroBrowserMode.PINNED:
       return update(state, {
         $merge: {
           resizing,

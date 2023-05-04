@@ -11,7 +11,6 @@ import {
 } from '../../const';
 
 import ButtonMinimize from './button-minimize';
-import ButtonPin from './button-pin';
 import ButtonStickRight from './button-stick-right';
 import ButtonX from './button-x';
 
@@ -45,7 +44,6 @@ export default function Toolbar(): JSX.Element {
     }} />
     <ScControls>
       <ButtonMinimize />
-      <ButtonPin />
       <ButtonStickRight />
       <ButtonX />
     </ScControls>

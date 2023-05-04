@@ -6,12 +6,12 @@ import {
   EMicroBrowserMode
 } from '../enum';
 
-import useHandleModeChange from './use-handle-mode-change';
 import useStickRightActive from './use-stick-right-active';
+import useHandleModeChange from './use-handle-mode-change';
 
 export default function useHandleStickRight(): () => void {
-  const handleModeChange = useHandleModeChange();
   const active = useStickRightActive();
+  const handleModeChange = useHandleModeChange();
   
-  return useCallback(() => handleModeChange(active ? EMicroBrowserMode.FREE : EMicroBrowserMode.TO_THE_RIGHT), [active, handleModeChange]);
+  return useCallback(() => handleModeChange(active ? EMicroBrowserMode.FREE : EMicroBrowserMode.PINNED), [active, handleModeChange]);
 }

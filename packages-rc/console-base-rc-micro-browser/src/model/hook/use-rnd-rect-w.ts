@@ -36,8 +36,7 @@ export default function useRndRectW(): number {
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
       return makeNumberInRange(affixRect?.width ?? WIDTH_DEFAULT_MINIMIZED, widthRange);
-    case EMicroBrowserMode.TO_THE_RIGHT:
-    case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
+    case EMicroBrowserMode.PINNED:
       return makeNumberInRange(getLegalNumber(WIDTH_DEFAULT_PINNED, widthPinned, widthDefaultPinned), widthRange);
     default:
       return makeNumberInRange(getLegalNumber(WIDTH_DEFAULT, width, widthDefault), widthRange);

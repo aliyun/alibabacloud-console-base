@@ -29,10 +29,9 @@ export default function useRndSizeWidthRange(): [number, number] {
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
       return [0, viewportW];
-    case EMicroBrowserMode.TO_THE_RIGHT:
-    case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
-      return numberRange(getLegalNumber(WIDTH_MIN_PINNED, widthMinPinned), getLegalNumber(viewportW, widthMaxPinned));
+    case EMicroBrowserMode.PINNED:
+      return numberRange(getLegalNumber(WIDTH_MIN_PINNED, widthMinPinned), getLegalNumber(viewportW - 200, widthMaxPinned));
     default:
-      return numberRange(getLegalNumber(WIDTH_MIN, widthMin), getLegalNumber(viewportW, widthMax));
+      return numberRange(getLegalNumber(WIDTH_MIN, widthMin), getLegalNumber(viewportW - 200, widthMax));
   }
 }

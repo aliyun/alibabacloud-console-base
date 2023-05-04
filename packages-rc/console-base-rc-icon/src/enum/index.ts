@@ -88,7 +88,6 @@ export enum EIconType { // 注意这里的 key 用于组件的对外 props，不
   'lights-off' = 'e665', // 主题 - 暗
   'menu-all' = 'e6e3', // 菜单（九宫格）
   'notice' = 'e887', // 通知（铃铛）
-  'pin' = 'e79e', // 固定
   'region' = 'e65b', // 地域
   'stick-right' = 'e657', // 面板 - 固定到右侧
   'terminal' = 'e866', // 终端

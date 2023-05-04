@@ -28,7 +28,7 @@ export default function useEffectPushBody(): void {
   const w = useRndRectW();
   
   useEffect(() => {
-    if (!visible || mode !== EMicroBrowserMode.TO_THE_RIGHT_PINNED) {
+    if (!visible || mode !== EMicroBrowserMode.PINNED) {
       return;
     }
     

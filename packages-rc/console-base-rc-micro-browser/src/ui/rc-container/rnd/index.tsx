@@ -53,7 +53,7 @@ const ScRnd = styled(Rnd as any)<IScProps>`
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.21);
   background-color: #fff;
   ${props => (props.$moving ? null : css`
-    transition: all 0.3s ease-in;
+    transition: all 250ms ease-in;
   `)}
   ${props => (props.$visible ? null : css`
     opacity: 0;

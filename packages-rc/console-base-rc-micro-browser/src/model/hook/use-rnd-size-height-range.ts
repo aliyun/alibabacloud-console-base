@@ -27,8 +27,7 @@ export default function useRndSizeHeightRange(): [number, number] {
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
       return [0, viewportH];
-    case EMicroBrowserMode.TO_THE_RIGHT:
-    case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
+    case EMicroBrowserMode.PINNED:
       return [viewportH, viewportH];
     default:
       return numberRange(getLegalNumber(HEIGHT_MIN, heightMin) + HEIGHT_TOOL_BAR, getLegalNumber(viewportH, heightMax));

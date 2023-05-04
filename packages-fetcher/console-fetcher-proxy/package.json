@@ -39,7 +39,7 @@
   "dependencies": {
     "@alicloud/console-base-global": "^1.4.8",
     "@alicloud/console-base-messenger": "^1.17.1",
-    "@alicloud/console-fetcher": "^1.9.3"
+    "@alicloud/console-fetcher": "^1.10.1"
   },
   "scripts": {
     "start": "breezr start-storybook",

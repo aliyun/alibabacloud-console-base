@@ -4,15 +4,23 @@ import styled, {
 } from 'styled-components';
 
 import {
+  SIZE,
+  Z_INDEX,
+  mixinBgPrimary,
+  mixinShadowLLeft
+} from '@alicloud/console-base-theme';
+
+import {
   useVisible,
   useCollapsed
 } from '../model';
 
 import {
+  SIZE_BUTTON_WRAP_HEIGHT,
+  SPACING_Y,
   DATA_KEY_J
 } from './const';
 import {
-  Aside,
   GlobalStyleOnBody
 } from './rc';
 import {
@@ -22,26 +30,44 @@ import {
 } from './rc-container';
 
 interface IScProps {
-  collapsed: boolean;
+  $collapsed: boolean;
 }
 
-const ScUi = styled(Aside)<IScProps>`
-  ${props => (props.collapsed ? css`
+const ScAside = styled.aside<IScProps>`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: ${Z_INDEX.SIDE_PANEL};
+  padding: ${SPACING_Y * 1.5}px 0 ${SIZE_BUTTON_WRAP_HEIGHT + SPACING_Y}px 0;
+  width: ${SIZE.WIDTH_SIDE_PANEL}px;
+  transition: all ease-in-out 250ms;
+  ${mixinBgPrimary}
+  
+  ${props => (props.$collapsed ? css`
     transform: translateX(100%);
-  ` : null)}
+  ` : mixinShadowLLeft)}
+  
+  /* stylelint-disable selector-class-pattern */
+  .hasTopbar & {
+    top: ${SIZE.HEIGHT_TOP_NAV}px;
+  }
 `;
 
 export default function Ui(): JSX.Element | null {
   const visible = useVisible();
   const collapsed = useCollapsed();
   
-  return visible ? <ScUi {...{
-    collapsed,
+  return visible ? <ScAside {...{
+    $collapsed: collapsed,
+    className: 'J_fixed_right_will_be_pushed_left',
     [DATA_KEY_J]: ''
   }}>
     <GlobalStyleOnBody />
     <ItemsTop />
     <ItemsBottom />
     <CollapseToggle />
-  </ScUi> : null;
+  </ScAside> : null;
 }

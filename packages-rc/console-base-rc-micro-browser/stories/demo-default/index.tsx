@@ -8,6 +8,7 @@ import update from 'immutability-helper';
 import {
   ChoiceItem,
   H1,
+  H2,
   Button,
   InputSwitch,
   RadioGroup,
@@ -18,18 +19,19 @@ import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   TabProps
 } from '@alicloud/console-base-rc-tabs';
+import TopNav from '@alicloud/console-base-rc-top-nav';
+import SidePanel from '@alicloud/console-base-rc-side-panel';
 
 import MicroBrowser, {
   MicroBrowserMode,
   MicroBrowserTabsItemProps
 } from '../../src';
 import PkgInfo from '../pkg-info';
-import LoadConsoleBase from '../load-console-base';
 
 const ScMinimizedTray = styled.div`
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 64px;
+  bottom: 16px;
   border: 8px solid rgba(99, 0, 126, 0.33);
   border-radius: 50%;
   box-sizing: border-box;
@@ -117,6 +119,8 @@ export default function DemoDefault(): JSX.Element {
       onModeChange: setStateMode,
       onClose: () => setStateVisible(false)
     }} />
+    <TopNav />
+    <SidePanel />
     <H1>props</H1>
     <RadioGroup<MicroBrowserMode> {...{
       label: 'props.mode',
@@ -134,10 +138,11 @@ export default function DemoDefault(): JSX.Element {
       value: stateMinimizable,
       onChange: setStateMinimizable
     }} />
+    <H2>添加 Tab</H2>
     <div>
-      <LoadConsoleBase />
       <Button onClick={handleAdd}>ADD</Button>
     </div>
+    <H2>以下内容仅用来撑高</H2>
     <LongArticle />
     <ScMinimizedTray id="the-minimize-to-node-for-demo" />
   </>;

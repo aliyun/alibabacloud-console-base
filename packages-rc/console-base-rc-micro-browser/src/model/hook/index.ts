@@ -18,7 +18,6 @@ export { default as useTabsProps } from './use-tabs-props';
 // handlers
 export { default as useHandleMinimize } from './use-handle-minimize';
 export { default as useHandleStickRight } from './use-handle-stick-right';
-export { default as useHandlePin } from './use-handle-pin';
 export { default as useHandleRndDragStart } from './use-handle-rnd-drag-start';
 export { default as useHandleRndDragStop } from './use-handle-rnd-drag-stop';
 export { default as useHandleRndResizeStart } from './use-handle-rnd-resize-start';

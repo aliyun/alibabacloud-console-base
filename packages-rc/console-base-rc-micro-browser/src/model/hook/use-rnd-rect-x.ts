@@ -22,8 +22,7 @@ export default function useRndRectX(): number {
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
       return affixRect?.left ?? viewportW;
-    case EMicroBrowserMode.TO_THE_RIGHT:
-    case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
+    case EMicroBrowserMode.PINNED:
       return viewportW > w ? viewportW - w : 0;
     default:
       return Math.max(viewportW - right - w, 0);

@@ -1,3 +1,7 @@
+import {
+  SIZE
+} from '@alicloud/console-base-theme';
+
 /**
  * PIN 模式下，需要对其他内容进行左推
  *
@@ -12,6 +16,9 @@ export default function createStylePushBody(right: number): HTMLStyleElement {
   
   style.textContent = `body {
   padding-right: ${right}px !important;
+}
+body.with-side-panel {
+  padding-right: ${right + SIZE.WIDTH_SIDE_PANEL}px !important;
 }
 div[view-framework] .viewFramework-body,
 div.show-panel div.slide-panels,

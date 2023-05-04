@@ -16,11 +16,10 @@ export default function useHandleDragBarDoubleClick(): () => void {
   return useCallback(() => {
     switch (mode) {
       case EMicroBrowserMode.FREE:
-        handleModeChange(EMicroBrowserMode.TO_THE_RIGHT);
+        handleModeChange(EMicroBrowserMode.PINNED);
         
         break;
-      case EMicroBrowserMode.TO_THE_RIGHT:
-      case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
+      case EMicroBrowserMode.PINNED:
         handleModeChange(EMicroBrowserMode.FREE);
         
         break;

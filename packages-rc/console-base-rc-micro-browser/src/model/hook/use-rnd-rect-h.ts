@@ -34,8 +34,7 @@ export default function useRndRectH(): number {
   switch (mode) {
     case EMicroBrowserMode.MINIMIZED:
       return makeNumberInRange(affixRect?.height ?? HEIGHT_DEFAULT_MINIMIZED, heightRange);
-    case EMicroBrowserMode.TO_THE_RIGHT:
-    case EMicroBrowserMode.TO_THE_RIGHT_PINNED:
+    case EMicroBrowserMode.PINNED:
       return viewportH;
     default:
       return makeNumberInRange(getLegalNumber(HEIGHT_DEFAULT, height, heightDefault), heightRange);

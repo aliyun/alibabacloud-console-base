@@ -12,7 +12,7 @@ import {
 
 import useModelContext from './_use-model-context';
 
-type TModelProps = RequiredSelected<IModelProps, 'visible' | 'minimizable' | 'pinnable'>;
+type TModelProps = RequiredSelected<IModelProps, 'visible' | 'minimizable'>;
 
 export default function useModelProps(): TModelProps {
   const {
@@ -22,14 +22,12 @@ export default function useModelProps(): TModelProps {
   return useMemo((): TModelProps => {
     const {
       visible = true,
-      minimizable = false, // 暂时还不好用..
-      pinnable = true
+      minimizable = false // 暂时还不好用..
     } = props;
     
     return {
       visible,
       minimizable,
-      pinnable,
       ...props
     };
   }, [props]);

@@ -12,10 +12,9 @@ import useMode from './use-mode';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function useZIndex(): number {
   const {
-    visible,
     zIndex
   } = useModelProps();
   const mode = useMode();
   
-  return !visible || mode === EMicroBrowserMode.MINIMIZED ? 0 : zIndex ?? Z_INDEX.MICRO_BROWSER;
+  return mode === EMicroBrowserMode.MINIMIZED ? 0 : zIndex ?? Z_INDEX.MICRO_BROWSER;
 }
