@@ -2,98 +2,86 @@ import {
   isUndefined as _isUndefined
 } from 'lodash-es';
 
-const EOF = 1;
+import {
+  IHash,
+  IHashLoc,
+  IParseError
+} from '../types';
+import {
+  EOF,
+  LEXER_RULES,
+  LEXER_CONDITIONS
+} from '../const';
 
-const RULES = [
-  /^\s+/,
-  /^(-?([0-9]|[1-9][0-9]+))(\.[0-9]+)?([eE][-+]?[0-9]+)?\b/,
-  /^"(?:\\[\\"bfnrt\/]|\\u[a-fA-F0-9]{4}|[^\\\0-\x09\x0a-\x1f"])*"/, // eslint-disable-line
-  /^{/,
-  /^}/,
-  /^\[/,
-  /^]/,
-  /^,/,
-  /^:/,
-  /^true\b/,
-  /^false\b/,
-  /^null\b/,
-  /^$/,
-  /^./
-];
-const CONDITIONS = {
-  INITIAL: {
-    rules: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-    inclusive: true
-  }
-};
+import performAction from './perform-action';
 
-function performAction(yy, yy2, avoidingNameCollisions) {
-  switch (avoidingNameCollisions) {
-    case 0:// skip whitespace
-      break;
-    case 1:
-      return 6;
-    case 2:
-      yy2.yytext = yy2.yytext.substr(1, yy2.yyleng - 2);
-      
-      return 4;
-    case 3:
-      return 17;
-    case 4:
-      return 18;
-    case 5:
-      return 23;
-    case 6:
-      return 24;
-    case 7:
-      return 22;
-    case 8:
-      return 21;
-    case 9:
-      return 10;
-    case 10:
-      return 11;
-    case 11:
-      return 8;
-    case 12:
-      return 14;
-    case 13:
-      return 'INVALID';
-    default:
-      break;
-  }
+interface ILexerOptions {
+  flex?: boolean;
 }
 
-const lexer = {
-  options: {},
-  parseError(str, hash) {
-    if (this.yy.parseError) {
-      this.yy.parseError(str, hash);
+interface IYy {
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  lexer?: Lexer;
+  parseError?: IParseError;
+}
+
+export default class Lexer {
+  options: ILexerOptions = {};
+  
+  _input = '';
+  
+  done = false;
+  
+  match = '';
+  
+  matched = '';
+  
+  conditionStack: string[] = ['INITIAL'];
+  
+  yy?: IYy;
+  
+  yylineno = 0;
+  
+  yyleng = 0;
+  
+  yytext = '';
+  
+  yylloc: IHashLoc = {
+    firstLine: 1,
+    firstColumn: 0,
+    lastLine: 1,
+    lastColumn: 0
+  };
+  
+  // constructor() {}
+  
+  parseError(message: string, hash: IHash): void {
+    if (this.yy?.parseError) {
+      this.yy.parseError(message, hash);
     } else {
-      throw new Error(str);
+      throw new Error(message);
     }
-  },
-  setInput(input) {
+  }
+  
+  setInput(input: string): void {
     this._input = input;
-    this._more = false;
     this.done = false;
-    this.yylineno = 0;
-    this.yyleng = 0;
-    this.yytext = '';
     this.matched = '';
     this.match = '';
     this.conditionStack = ['INITIAL'];
+    this.yylineno = 0;
+    this.yyleng = 0;
+    this.yytext = '';
     this.yylloc = {
       firstLine: 1,
       firstColumn: 0,
       lastLine: 1,
       lastColumn: 0
     };
-    
-    return this;
-  },
-  input() {
-    const ch = this._input[0];
+  }
+  
+  input(): string {
+    const ch = this._input[0] || '';
     
     this.yytext += ch;
     this.yyleng += 1;
@@ -108,21 +96,19 @@ const lexer = {
     this._input = this._input.slice(1);
     
     return ch;
-  },
-  more() {
-    this._more = true;
-    
-    return this;
-  },
-  less(n) {
+  }
+  
+  less(n: number): void {
     this._input = this.match.slice(n) + this._input;
-  },
-  pastInput() {
+  }
+  
+  pastInput(): string {
     const past = this.matched.substr(0, this.matched.length - this.match.length);
     
     return (past.length > 20 ? '...' : '') + past.substr(-20).replace(/\n/g, '');
-  },
-  upcomingInput() {
+  }
+  
+  upcomingInput(): string {
     let next = this.match;
     
     if (next.length < 20) {
@@ -130,14 +116,16 @@ const lexer = {
     }
     
     return (next.substr(0, 20) + (next.length > 20 ? '...' : '')).replace(/\n/g, '');
-  },
-  showPosition() {
+  }
+  
+  showPosition(): string {
     const pre = this.pastInput();
     const c = new Array(pre.length + 1).join('-');
     
     return `${pre + this.upcomingInput()}\n${c}^`;
-  },
-  next() {
+  }
+  
+  next(): number | 'INVALID' | undefined {
     if (this.done) {
       return EOF;
     }
@@ -149,18 +137,16 @@ const lexer = {
     let token;
     let match;
     let tempMatch;
-    let index;
+    let index: number;
     let lines;
     
-    if (!this._more) {
-      this.yytext = '';
-      this.match = '';
-    }
+    this.yytext = '';
+    this.match = '';
     
     const rules = this._currentRules();
     
     for (let i = 0; i < rules.length; i++) {
-      tempMatch = this._input.match(RULES[rules[i]]);
+      tempMatch = this._input.match(LEXER_RULES[rules[i]!]!);
       
       if (tempMatch && (!match || tempMatch[0].length > match[0].length)) {
         match = tempMatch;
@@ -183,16 +169,15 @@ const lexer = {
         firstLine: this.yylloc.lastLine,
         lastLine: this.yylineno + 1,
         firstColumn: this.yylloc.lastColumn,
-        lastColumn: lines ? lines[lines.length - 1].length - 1 : this.yylloc.lastColumn + match[0].length
+        lastColumn: lines ? lines[lines.length - 1]!.length - 1 : this.yylloc.lastColumn! + match[0].length
       };
       this.yytext += match[0];
       this.match += match[0];
       this.yyleng = this.yytext.length;
-      this._more = false;
       this._input = this._input.slice(match[0].length);
       this.matched += match[0];
       
-      token = performAction(this.yy, this, rules[index], this.conditionStack[this.conditionStack.length - 1]);
+      token = performAction(this.yy, this, rules[index!]); // , this.conditionStack[this.conditionStack.length - 1]
       
       if (this.done && this._input) {
         this.done = false;
@@ -214,15 +199,15 @@ const lexer = {
       token: null,
       line: this.yylineno
     });
-  },
-  lex() {
+  }
+  
+  lex(): number | 'INVALID' | undefined {
     const r = this.next();
     
     return _isUndefined(r) ? this.lex() : r;
-  },
-  _currentRules() {
-    return CONDITIONS[this.conditionStack[this.conditionStack.length - 1]].rules;
   }
-};
-
-export default lexer;
+  
+  _currentRules(): number[] {
+    return LEXER_CONDITIONS[this.conditionStack[this.conditionStack.length - 1]!]?.rules || [];
+  }
+}

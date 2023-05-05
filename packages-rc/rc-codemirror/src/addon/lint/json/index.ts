@@ -3,7 +3,9 @@ import {
   Annotation
 } from 'codemirror/addon/lint/lint';
 
-import parser from './parser';
+import {
+  parser
+} from './util';
 
 interface IHash {
   loc: {
@@ -29,8 +31,8 @@ codeMirror.registerHelper('lint', 'json', (text: string): Annotation[] => {
     } = hash;
     
     found.push({
-      from: codeMirror.Pos(loc.firstLine - 1, loc.firstColumn), // eslint-disable-line new-cap
-      to: codeMirror.Pos(loc.lastLine - 1, loc.lastColumn), // eslint-disable-line new-cap
+      from: codeMirror.Pos(loc.firstLine - 1, loc.firstColumn),
+      to: codeMirror.Pos(loc.lastLine - 1, loc.lastColumn),
       message
     });
   };

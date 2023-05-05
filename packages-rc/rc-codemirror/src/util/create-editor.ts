@@ -23,6 +23,9 @@ import 'codemirror/addon/search/searchcursor';
 import 'codemirror/addon/search/jump-to-line';
 import 'codemirror/addon/search/matchesonscrollbar';
 import 'codemirror/addon/lint/lint';
+// import 'codemirror/addon/lint/css-lint'; // Error: window.CSSLint not defined, CodeMirror CSS linting cannot run.
+// import 'codemirror/addon/lint/json-lint'; // Error: window.jsonlint not defined, CodeMirror JSON linting cannot run.
+// import 'codemirror/addon/lint/html-lint'; // Cannot find module 'htmlhint'
 
 import '../addon/lint/json'; // 官方的 JSON Lint 有问题 https://github.com/scniro/react-codemirror2/issues/21
 
