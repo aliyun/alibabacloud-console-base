@@ -69,7 +69,7 @@ export type TDialogButton<T = void, D = TDialogData> = TStringOrJsx | IDialogBut
 /**
  * Dialog props 定义
  */
-export interface IDialogProps<T = void, D = TDialogData> extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface IDialogProps<T = void, D = TDialogData> extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {
   /* --- 内容 --- */
   title?: TDynamicByData<TStringOrJsx, D>;
   titleExtra?: TDynamicByData<TStringOrJsx, D>;
