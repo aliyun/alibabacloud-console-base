@@ -24,6 +24,11 @@ export const HEIGHT_DEFAULT_MINIMIZED = 40;
 export const HEIGHT_MIN = 400;
 
 /**
+ * body 上的 class，表示 MicroBrowser 以 PIN 模式打开
+ */
+export const BODY_CLASS_WITH_MICRO_BROWSER = 'with-micro-browser';
+
+/**
  * RND 钩子
  */
 export const CLASS_J_RND_HANDLE = 'J_console_base_rc_one_modal_rnd_handle';

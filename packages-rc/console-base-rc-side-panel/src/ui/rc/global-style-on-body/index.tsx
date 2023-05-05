@@ -18,6 +18,10 @@ const GlobalStyle = createGlobalStyle`
     padding-right: ${SIZE.WIDTH_SIDE_PANEL}px;
     transition: padding-right ease-in-out 250ms;
     
+    &.with-micro-browser {
+      transition: none;
+    }
+    
     .viewFramework-body {
       right: ${SIZE.WIDTH_SIDE_PANEL}px;
       left: 0;

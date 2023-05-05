@@ -71,7 +71,8 @@ export default function renderErrorLabel(error: TErrorArg): JSX.Element {
     </>;
   }
   
-  if (isValidElement(error)) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (isValidElement<any>(error)) { // TODO TS5 isValidElement 问题 https://github.com/microsoft/TypeScript/issues/53178
     return <>
       <ScErrorTag type="X" />
       JSX

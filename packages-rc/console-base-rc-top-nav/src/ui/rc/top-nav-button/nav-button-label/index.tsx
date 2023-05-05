@@ -9,7 +9,7 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  TopNavButtonProps, TopNavButtonPropsLabel
+  TopNavButtonProps
 } from '../../../../model';
 
 interface IProps {
@@ -53,7 +53,8 @@ export default function NavButtonLabel({
     return <>{label}</>;
   }
   
-  if (isValidElement(label)) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (isValidElement<any>(label)) { // TODO TS5 isValidElement 问题 https://github.com/microsoft/TypeScript/issues/53178
     return label;
   }
   
@@ -64,7 +65,7 @@ export default function NavButtonLabel({
       text,
       count = 0,
       countAsDot
-    } = label as TopNavButtonPropsLabel; // FIXME TS5 isValidElement 没法 narrow 掉 ReactElement
+    } = label;
     let jsxLabel: JSX.Element;
     
     if (icon) {

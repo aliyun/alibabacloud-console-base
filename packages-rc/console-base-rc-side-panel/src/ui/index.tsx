@@ -43,9 +43,8 @@ const ScAside = styled.aside<IScProps>`
   z-index: ${Z_INDEX.SIDE_PANEL};
   padding: ${SPACING_Y * 1.5}px 0 ${SIZE_BUTTON_WRAP_HEIGHT + SPACING_Y}px 0;
   width: ${SIZE.WIDTH_SIDE_PANEL}px;
-  transition: all ease-in-out 250ms;
+  transition: transform ease-in-out 250ms;
   ${mixinBgPrimary}
-  
   ${props => (props.$collapsed ? css`
     transform: translateX(100%);
   ` : mixinShadowLLeft)}
