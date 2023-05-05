@@ -12,4 +12,5 @@ stories/
 
 breezr.config.ts
 tsconfig.json
+tsconfig-*.json
 doc/
