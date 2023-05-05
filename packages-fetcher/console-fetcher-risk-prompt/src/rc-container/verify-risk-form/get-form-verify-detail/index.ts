@@ -3,12 +3,12 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  TAuthFormProps
-} from '../../../types';
-import {
   ERiskType,
   EConvertedVerifyType
 } from '../../../enum';
+import {
+  TAuthFormProps
+} from '../../../types';
 
 import {
   getFuzzyEmailAddress,

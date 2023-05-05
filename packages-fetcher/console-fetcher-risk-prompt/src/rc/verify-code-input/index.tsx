@@ -28,13 +28,13 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  IDialogData,
-  IRiskPromptResolveData
-} from '../../types';
-import {
   ESceneKey,
   ERiskType
 } from '../../enum';
+import {
+  IDialogData,
+  IRiskPromptResolveData
+} from '../../types';
 import {
   WINDVANE_AVAILABLE
 } from '../../const';
@@ -51,7 +51,7 @@ import {
   handleRiskPromptDialogSubmit,
   getOldMainOrMpkAccountRiskInfo,
   getVmfaCodeFromWindVane
-} from '../../utils';
+} from '../../util';
 
 interface IInputProps {
   'data-input-width'?: number | string;

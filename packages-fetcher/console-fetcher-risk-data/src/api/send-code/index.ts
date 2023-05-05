@@ -21,7 +21,7 @@ export default async function dataSendCode(params: TParamsSendCode): Promise<IRe
   const {
     ext, accountId, accountType, verifyType, verifyDetail
   } = params;
-
+  
   try {
     // sendCodeResponse 对象中的首字母已是小写，因此不需要进行转化
     const sendCodeResponse = await fetcher.post<IResponseSendCode, IPayloadSendCode>(SEND_CODE_API, {
@@ -33,14 +33,14 @@ export default async function dataSendCode(params: TParamsSendCode): Promise<IRe
       VerifyType: verifyType,
       VerifyDetail: verifyDetail
     });
-
+    
     slsSendCode({
       accountType,
       verifyType,
       verifyDetail,
       slsResultType: ESlsResultType.SUCCESS
     });
-
+    
     return sendCodeResponse;
   } catch (error) {
     const {
@@ -48,7 +48,7 @@ export default async function dataSendCode(params: TParamsSendCode): Promise<IRe
       message,
       requestId
     } = error as FetcherError;
-
+    
     slsSendCode({
       accountType,
       requestId,
@@ -58,7 +58,7 @@ export default async function dataSendCode(params: TParamsSendCode): Promise<IRe
       slsResultType: ESlsResultType.FAIL,
       errorMessage: message || 'FALLBACK_SEND_CODE_ERROR'
     });
-
+    
     throw error;
   }
 }

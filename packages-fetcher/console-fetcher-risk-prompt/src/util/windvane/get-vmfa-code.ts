@@ -1,9 +1,9 @@
 import {
-  IWindvaneError
-} from '../../types';
-import {
   ESlsResultType
 } from '../../enum';
+import {
+  IWindvaneError
+} from '../../types';
 import {
   WINDVANE_ERROR_CODE,
   ALIYUN_APP_DOWNLOAD_URL

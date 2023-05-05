@@ -5,6 +5,11 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  EDialogType,
+  ERiskType,
+  ESceneKey
+} from '../../enum';
+import {
   ICommonRiskInfo,
   IDialogData,
   IRiskPromptResolveData,
@@ -12,11 +17,6 @@ import {
   TOldMainRiskExtraConfig,
   TReRequestWithVerifyResult
 } from '../../types';
-import {
-  EDialogType,
-  ERiskType,
-  ESceneKey
-} from '../../enum';
 import {
   DEFAULT_DIALOG_SIZE,
   DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT
@@ -29,7 +29,7 @@ import {
 import {
   getAccountIdFromRiskInfo,
   getOldMainOrMpkAccountRiskInfo
-} from '../../utils';
+} from '../../util';
 import DialogContent from '../dialog-content';
 
 import {

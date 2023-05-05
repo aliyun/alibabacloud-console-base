@@ -6,7 +6,7 @@ interface IDemoConfig {
 
 /**
  * 这个拦截器用于模拟本地开发中获取验证码
- * 如果引入 @alicloud/fetcher-demo-helpers 中的 fetcherDemoInterceptorMockVerifyCodeUrl 函数的话，还需要在这个包里面饮入 storybook 作为 dependency...不值得
+ * 如果引入 @alicloud/fetcher-demo-helpers 中的 fetcherDemoInterceptorMockVerifyCodeUrl 函数的话，还需要在这个包里面引入 storybook 作为 dependency...不值得
  * 
  * 使用 `fetcher.interceptRequest(fetcherInterceptorMockVerifyCodeUrl)`
  */

@@ -3,13 +3,13 @@ import type {
 } from '@alicloud/fetcher';
 
 import {
+  ERiskType
+} from '../../../enum';
+import {
   IDialogData,
   IRiskPromptVerifyResult,
   TDialogSubmitProps
 } from '../../../types';
-import {
-  ERiskType
-} from '../../../enum';
 
 import verifyMpk from './verify-mpk';
 import verifySubValidators from './verify-sub-validators';

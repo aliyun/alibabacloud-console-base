@@ -19,13 +19,13 @@ import {
 } from '@alicloud/sandbox-escape';
 
 import {
-  IDialogData,
-  IRiskPromptResolveData
-} from '../../types';
-import {
   ESceneKey,
   ESlsResultType
 } from '../../enum';
+import {
+  IDialogData,
+  IRiskPromptResolveData
+} from '../../types';
 import {
   CODE_RISK_ERROR_ARRAY,
   REG_NEW_MAIN_VERIFY_URL
@@ -39,7 +39,7 @@ import {
   isValidJson,
   getNewMainAccountRiskInfo,
   getRiskSlsErrorCommonPayload
-} from '../../utils';
+} from '../../util';
 import {
   slsNewMainRisk,
   slsInvalidVerifyUrl

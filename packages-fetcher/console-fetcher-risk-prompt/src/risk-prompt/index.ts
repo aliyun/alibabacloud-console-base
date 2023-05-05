@@ -1,12 +1,12 @@
 import {
+  ERiskType,
+  EConvertedVerifyType
+} from '../enum';
+import {
   IRiskPromptResolveData,
   IRiskPromptProps,
   TOldMainRiskExtraConfig
 } from '../types';
-import {
-  ERiskType,
-  EConvertedVerifyType
-} from '../enum';
 import {
   DEFAULT_EXTRA_RISK_CONFIG
 } from '../const';
@@ -18,7 +18,7 @@ import {
   convertToRiskErrorInvalid,
   convertToRiskErrorCancelled,
   getSubVerificationSettingUrl
-} from '../utils';
+} from '../util';
 
 import riskInvalid from './risk-invalid';
 import openDialog from './open-dialog';

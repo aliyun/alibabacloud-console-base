@@ -7,11 +7,11 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  ICommonRiskInfo
-} from '../../../types';
-import {
   EConvertedVerifyType
 } from '../../../enum';
+import {
+  ICommonRiskInfo
+} from '../../../types';
 
 import getMfaBoundStatus from './get-mfa-bound-status';
 
@@ -42,7 +42,7 @@ export default async function getSubValidators({
         return '';
       }
 
-      return response[0].targetUserPrincipalName;
+      return response[0]!.targetUserPrincipalName;
     })();
 
     return {

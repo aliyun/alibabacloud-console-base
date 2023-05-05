@@ -20,24 +20,22 @@ export default async function dataSendCodeOld(params: IParamsSendCodeOldWithConf
     sendCodeMethod,
     ...sendCodeParams
   } = params;
-
+  
   try {
-    let sendCodeOldResponse: IResponseSendCode = {
-      requestId: ''
-    };
-
+    let sendCodeOldResponse: IResponseSendCode;
+    
     // 支持业务方自定义自定义请求参数以及发送验证码的 URL
     if (sendCodeMethod === 'GET') {
       sendCodeOldResponse = await fetcher.get<IResponseSendCode, IParamsSendCodeOld>(sendCodeUrl, sendCodeParams);
     } else {
       sendCodeOldResponse = await fetcher.post<IResponseSendCode, IParamsSendCodeOld>(sendCodeUrl, sendCodeParams);
     }
-
+    
     slsSendCodeOld({
       ...params,
       slsResultType: ESlsResultType.SUCCESS
     });
-
+    
     return sendCodeOldResponse;
   } catch (error) {
     const {
@@ -45,7 +43,7 @@ export default async function dataSendCodeOld(params: IParamsSendCodeOldWithConf
       message,
       requestId
     } = error as FetcherError;
-
+    
     slsSendCodeOld({
       ...params,
       requestId,
@@ -53,7 +51,7 @@ export default async function dataSendCodeOld(params: IParamsSendCodeOldWithConf
       slsResultType: ESlsResultType.FAIL,
       errorMessage: message || 'FALLBACK_SEND_CODE_OLD_ERROR'
     });
-
+    
     throw error;
   }
 }

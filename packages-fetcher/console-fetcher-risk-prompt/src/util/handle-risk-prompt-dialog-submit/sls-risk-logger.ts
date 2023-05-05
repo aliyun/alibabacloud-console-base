@@ -3,12 +3,12 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
+  ERiskType
+} from '../../enum';
+import {
   ISlsCommonPayload,
   TDialogSubmitProps
 } from '../../types';
-import {
-  ERiskType
-} from '../../enum';
 import {
   slsMpkRisk,
   slsOldMainRisk,

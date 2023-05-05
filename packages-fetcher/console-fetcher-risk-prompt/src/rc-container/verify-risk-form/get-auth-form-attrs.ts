@@ -4,13 +4,13 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  TAuthFormProps
-} from '../../types';
-import {
   ERiskType,
   ESceneKey,
   EConvertedVerifyType
 } from '../../enum';
+import {
+  TAuthFormProps
+} from '../../types';
 import {
   WINDVANE_AVAILABLE
 } from '../../const';
@@ -23,7 +23,7 @@ import type {
 } from '../../rc/sub-auth-form-wrapper';
 import {
   intlVerifyLabel
-} from '../../utils';
+} from '../../util';
 
 // 获取表单项信息说明的 Label
 export function getVerifyLabel(props: TAuthFormProps): string {

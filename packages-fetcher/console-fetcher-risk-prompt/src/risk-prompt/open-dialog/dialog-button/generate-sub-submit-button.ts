@@ -3,17 +3,17 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  ERiskType
+} from '../../../enum';
+import {
   IDialogData,
   IRiskPromptResolveData,
   TReRequestWithVerifyResult
 } from '../../../types';
-import {
-  ERiskType
-} from '../../../enum';
 import intl from '../../../intl';
 import {
   handleRiskPromptDialogSubmit
-} from '../../../utils';
+} from '../../../util';
 
 interface IGenerateSubAccountMfaSubmitButtonProps {
   primaryButtonDisabled: boolean;

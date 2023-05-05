@@ -10,18 +10,18 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
+  ERiskType
+} from '../../../enum';
+import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../../types';
-import {
-  ERiskType
-} from '../../../enum';
 import {
   useAccountId
 } from '../../../model';
 import {
   getSubVerificationSettingUrl
-} from '../../../utils';
+} from '../../../util';
 import VerifyRiskForm from '../../verify-risk-form';
 
 interface IProps {

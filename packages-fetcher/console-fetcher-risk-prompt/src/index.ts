@@ -11,7 +11,7 @@ export {
 export {
   convertMpkSetting,
   getMergedUseNewRisk
-} from './utils';
+} from './util';
 export type {
   IRiskConfig as RiskConfig,
   TRiskResponse as RiskResponse,

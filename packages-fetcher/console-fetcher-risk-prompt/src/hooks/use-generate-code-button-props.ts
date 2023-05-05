@@ -8,14 +8,14 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  ERiskType,
+  ESceneKey
+} from '../enum';
+import {
   TAuthFormProps,
   IDialogData,
   IRiskPromptResolveData
 } from '../types';
-import {
-  ERiskType,
-  ESceneKey
-} from '../enum';
 import {
   useModelProps
 } from '../model';
@@ -24,7 +24,7 @@ import type {
 } from '../rc/generate-code-button';
 import {
   dataSendVerifyCode
-} from '../utils';
+} from '../util';
 
 import useCountDown from './use-count-down';
 

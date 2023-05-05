@@ -1,4 +1,8 @@
 import {
+  ERiskType,
+  EConvertedVerifyType
+} from '../../enum';
+import {
   TNewRisk,
   TRiskInfo,
   IRiskConfig,
@@ -7,10 +11,6 @@ import {
   TRiskTypeConfig,
   TRiskParametersGetter
 } from '../../types';
-import {
-  ERiskType,
-  EConvertedVerifyType
-} from '../../enum';
 import {
   DEFAULT_EXTRA_RISK_CONFIG
 } from '../../const';

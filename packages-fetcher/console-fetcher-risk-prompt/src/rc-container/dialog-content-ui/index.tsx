@@ -5,13 +5,13 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  IDialogData,
-  IRiskPromptResolveData
-} from '../../types';
-import {
   EDialogType,
   ESceneKey
 } from '../../enum';
+import {
+  IDialogData,
+  IRiskPromptResolveData
+} from '../../types';
 import AltWrap from '../../rc/alt-wrap';
 import NewSubRiskContent from '../new-sub-risk-content';
 import NewMainRiskContent from '../new-main-risk-content';

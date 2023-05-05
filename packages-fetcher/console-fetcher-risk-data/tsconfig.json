@@ -1,23 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "es2015",
-      "es2017"
-    ],
-    "strict": true,
-    "allowJs": false,
-    "resolveJsonModule": true,
-    "jsx": "react",
-    "declaration": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "outDir": "lib"
-  },
+  "extends": "@alicloud/ts-config/index.json",
   "include": [
     "src"
   ]

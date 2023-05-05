@@ -1,11 +1,11 @@
 import sls from '@alicloud/console-base-log-sls';
 
 import {
-  ISlsCommonPayload
-} from '../../types';
-import {
   ESlsTopic
 } from '../../enum';
+import {
+  ISlsCommonPayload
+} from '../../types';
 
 interface IProps extends ISlsCommonPayload {
   type: string;

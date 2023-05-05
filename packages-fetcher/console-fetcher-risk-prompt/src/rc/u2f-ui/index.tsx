@@ -18,12 +18,12 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
+  EIconType
+} from '../../enum';
+import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../types';
-import {
-  EIconType
-} from '../../enum';
 import {
   SVG_URLS,
   MOBILE_SCREE_SIZE

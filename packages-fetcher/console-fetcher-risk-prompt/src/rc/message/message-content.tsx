@@ -25,11 +25,11 @@ import Button, {
 } from '@alicloud/console-base-rc-button';
 
 import {
-  TStringOrJsx
-} from '../../types';
-import {
   EIconType
 } from '../../enum';
+import {
+  TStringOrJsx
+} from '../../types';
 import {
   MOBILE_SCREE_SIZE
 } from '../../const';

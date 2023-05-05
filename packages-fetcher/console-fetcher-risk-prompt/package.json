@@ -19,16 +19,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "risk prompt",
-    "promise"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.9",
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.11.17",
+    "@alicloud/ts-config": "^1.1.3",
     "@simplewebauthn/typescript-types": "^4.0.0",
     "@types/lodash-es": "^4.17.7",
     "@types/react": "^17.0.28",
@@ -71,6 +68,5 @@
     "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "gitHead": ""
+  }
 }

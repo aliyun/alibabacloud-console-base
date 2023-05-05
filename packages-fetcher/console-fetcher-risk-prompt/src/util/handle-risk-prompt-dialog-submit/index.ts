@@ -3,14 +3,14 @@ import type {
 } from '@alicloud/fetcher';
 
 import {
-  TKeyofErrorMessageObject,
-  THandleRiskPromptDialogSubmitProps
-} from '../../types';
-import {
   ESceneKey,
   ERiskType,
   ESlsResultType
 } from '../../enum';
+import {
+  TKeyofErrorMessageObject,
+  THandleRiskPromptDialogSubmitProps
+} from '../../types';
 import {
   CODE_RISK_ERROR_ARRAY
 } from '../../const';

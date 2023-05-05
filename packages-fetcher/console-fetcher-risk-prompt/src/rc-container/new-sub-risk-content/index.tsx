@@ -44,7 +44,7 @@ export default function NewSubRiskUi(): JSX.Element {
   }
 
   if (subValidators.length === 1) {
-    return getSubAuthValidatorsContent(subValidators[0]);
+    return getSubAuthValidatorsContent(subValidators[0]!);
   }
 
   const tabs = getSubAuthValidatorsTabs(subGetVerificationToAuthData);

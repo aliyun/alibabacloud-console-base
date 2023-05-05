@@ -1,9 +1,9 @@
-import type {
-  TRiskTypeConfig
-} from '../../types';
 import {
   EConvertedVerifyType
 } from '../../enum';
+import type {
+  TRiskTypeConfig
+} from '../../types';
 
 interface IProps {
   type0: string;

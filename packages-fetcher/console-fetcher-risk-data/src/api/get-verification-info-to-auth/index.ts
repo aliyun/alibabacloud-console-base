@@ -26,30 +26,30 @@ export default async function getVerificationInfoToAuth(params: TParamsGetVerifi
       ...SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD,
       AccountId: params.accountId
     });
-
+    
     const parsedData = transferGetVerificationInfoToAuthResponseToData(verificationInfoResponse);
     const deviceList = parsedData.map(o => o.deviceType);
     
     slsGetVerificationInfo({
       deviceCount: deviceList.length,
       deviceList: deviceList.join(','),
-      firstChoiceDevice: deviceList[0] || '',
+      firstChoiceDevice: deviceList[0],
       slsResultType: ESlsResultType.SUCCESS
     });
-
+    
     return parsedData;
   } catch (error) {
     const {
       code, message, requestId
     } = error as FetcherError;
-
+    
     slsGetVerificationInfo({
       requestId,
       errorCode: code,
       errorMessage: message,
       slsResultType: ESlsResultType.FAIL
     });
-
+    
     throw error;
   }
 }

@@ -3,11 +3,11 @@ import type {
 } from '@alicloud/fetcher';
 
 import {
-  ISlsCommonPayload
-} from '../types';
-import {
   ESlsResultType
 } from '../enum';
+import {
+  ISlsCommonPayload
+} from '../types';
 import {
   CODE_RISK_ERROR_ARRAY,
   CODE_IDENTITY_INTERNAL_ERROR

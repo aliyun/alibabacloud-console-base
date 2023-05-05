@@ -20,7 +20,7 @@ import {
 import {
   getOldMainOrMpkAccountRiskInfo,
   convertToMpkVerificationDeviceType
-} from '../../utils';
+} from '../../util';
 import VerifyRiskForm from '../verify-risk-form';
 
 export default function OldMainOrMpkRiskContent(): JSX.Element {

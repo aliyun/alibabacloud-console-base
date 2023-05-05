@@ -13,24 +13,24 @@ export default function transferGetVerificationInfoToAuthResponseToData(response
   const {
     Validators, DeviceType, TargetUserPrincipalName
   } = response;
-
+  
   const validators: TDataGetVerificationInfoToAuth = [];
-
+  
   if (!Validators) {
     return [];
   }
-
+  
   if (Validators.VMFA) {
     validators.push({
       targetUserPrincipalName: TargetUserPrincipalName,
       deviceType: ESubVerificationDeviceType.VMFA
     });
   }
-
+  
   try {
     if (Validators.U2F) {
       const responseU2fValidator = JSON.parse(Validators.U2F) as IResponseU2fValidator;
-  
+      
       if (responseU2fValidator.U2FVersion === 'U2F_V2') {
         validators.push({
           u2FVersion: 'U2F_V2',
@@ -51,22 +51,22 @@ export default function transferGetVerificationInfoToAuthResponseToData(response
         });
       }
     }
-  
+    
     if (Validators.SMS) {
       const responseSmsValidator = JSON.parse(Validators.SMS) as IResponseSmsValidator;
       const [areaCode, phoneNumber] = responseSmsValidator.PhoneNumber.split('-');
-
+      
       validators.push({
-        areaCode,
+        areaCode: areaCode || '',
         phoneNumber: phoneNumber || responseSmsValidator.PhoneNumber,
         deviceType: ESubVerificationDeviceType.SMS,
         targetUserPrincipalName: TargetUserPrincipalName
       });
     }
-  
+    
     if (Validators.EMAIL) {
       const responseEmailValidator = JSON.parse(Validators.EMAIL) as IResponseEmailValidator;
-        
+      
       validators.push({
         deviceType: ESubVerificationDeviceType.EMAIL,
         targetUserPrincipalName: TargetUserPrincipalName,
@@ -76,13 +76,15 @@ export default function transferGetVerificationInfoToAuthResponseToData(response
   } catch (error) {
     // Catch JSON.parse Error
   }
-
+  
   // 保持设备验证首选项在前
   const firstChoiceDeviceIndex = validators.findIndex(o => o.deviceType === DeviceType);
-
+  
   if (firstChoiceDeviceIndex > 0) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     [validators[firstChoiceDeviceIndex], validators[0]] = [validators[0], validators[firstChoiceDeviceIndex]];
   }
-
+  
   return validators;
 }

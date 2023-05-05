@@ -13,15 +13,15 @@ import Button, {
 import Flex from '@alicloud/console-base-rc-flex';
 
 import {
-  TAuthFormProps,
-  IDialogData,
-  IRiskPromptResolveData
-} from '../../types';
-import {
   EIconType,
   ERiskType,
   EConvertedVerifyType
 } from '../../enum';
+import {
+  TAuthFormProps,
+  IDialogData,
+  IRiskPromptResolveData
+} from '../../types';
 import {
   ALIYUN_APP_VERSION,
   DEFAULT_EXTRA_RISK_CONFIG
@@ -41,7 +41,7 @@ import VerifyCodeInput from '../../rc/verify-code-input';
 import {
   intlVerifySetting,
   getSubVerificationSettingUrl
-} from '../../utils';
+} from '../../util';
 
 import {
   getInputWidth,

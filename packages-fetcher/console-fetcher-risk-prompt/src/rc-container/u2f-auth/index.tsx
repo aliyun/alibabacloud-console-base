@@ -28,7 +28,7 @@ import U2fUi from '../../rc/u2f-ui';
 import intl from '../../intl';
 import {
   getUpdateSubVerificationParams
-} from '../../utils';
+} from '../../util';
 
 import getAuthU2fData from './get-auth-u2f-data';
 import getAuthWebAuthnAuthPublicKey from './get-u2f-webauthn-public-key';

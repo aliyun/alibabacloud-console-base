@@ -10,23 +10,23 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
+  ERiskType,
+  ESceneKey
+} from '../enum';
+import {
   TAuthFormProps,
   IDialogData,
   IRiskPromptResolveData
 } from '../types';
 import {
-  ERiskType,
-  ESceneKey
-} from '../enum';
+  getUpdateSubVerificationParams
+} from '../util';
 import {
   useModelProps
 } from '../model';
 import type {
   IHandleInputChangeProps
 } from '../rc/verify-code-input';
-import {
-  getUpdateSubVerificationParams
-} from '../utils';
 
 interface IHookProps {
   verifyUniqId: string;

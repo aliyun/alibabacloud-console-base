@@ -15,7 +15,7 @@ import {
 import intl from '../../intl';
 import {
   intlVerifyDialogTitle
-} from '../../utils';
+} from '../../util';
 
 interface IProps {
   dialogData: IDialogData;
