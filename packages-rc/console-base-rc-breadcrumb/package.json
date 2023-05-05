@@ -5,7 +5,7 @@
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
-  "module": "build/es/index.js",
+  "module": "build/esm/index.js",
   "types": "build/types/index.d.ts",
   "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-rc/console-base-rc-breadcrumb",
   "author": {
@@ -19,11 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "console-base",
-    "rc",
-    "breadcrumb"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.9",
     "@alicloud/console-toolkit-cli": "^1.2.30",
@@ -50,8 +46,8 @@
     "build:esm": "breezr build --engine babel --es-module",
     "build:cjs": "breezr build --engine babel",
     "build:bundle": "breezr build --engine webpack",
-    "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
-    "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
+    "build:types": "tsc -p tsconfig-declaration.json --rootDir src --outDir build/types --declaration --emitDeclarationOnly",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:types",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   },
