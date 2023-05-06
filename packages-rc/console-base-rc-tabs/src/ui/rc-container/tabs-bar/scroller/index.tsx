@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  useProps
+} from '../../../../model';
+import {
   HEIGHT_TAB
 } from '../../../const';
-import {
-  useProps
-} from '../../../model';
 
 import ScrollerButton from './scroller-button';
 
@@ -21,11 +21,10 @@ const ScScroller = styled.div`
 // 左滚右滚按钮条
 export default function Scroller(): JSX.Element {
   const {
-    theme,
     classNameForTabScroller
   } = useProps();
   
-  return <ScScroller theme={theme} className={classNameForTabScroller}>
+  return <ScScroller className={classNameForTabScroller}>
     <ScrollerButton prev />
     <ScrollerButton />
   </ScScroller>;

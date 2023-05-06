@@ -2,10 +2,6 @@ import {
   useEffect
 } from 'react';
 
-import {
-  WIDTH_SCROLLER_BUTTON
-} from '../../const';
-
 import useModelState from './_use-model-state';
 import useVisibleTabs from './use-visible-tabs';
 import useActiveTab from './use-active-tab';
@@ -19,7 +15,7 @@ export default function useEffectAdjustNavWidth(): void {
   const {
     width,
     domUi,
-    domNav
+    domTabList
   } = useModelState();
   const visibleTabs = useVisibleTabs();
   const activeTab = useActiveTab();
@@ -27,21 +23,21 @@ export default function useEffectAdjustNavWidth(): void {
   const dispatchSetNavOffsetMax = useDispatchSetNavOffsetMax();
   
   useEffect(() => {
-    if (!domUi || !domNav) {
+    if (!domUi || !domTabList) {
       return;
     }
     
     const widthOfTabs = width > 0 ? width : domUi.offsetWidth;
-    const widthOfNav = domNav.offsetWidth;
+    const widthOfNav = domTabList.offsetWidth;
     
     const activeIndex = activeTab ? visibleTabs.indexOf(activeTab) : -1;
     let activeOffset = 0;
     
     for (let i = 0; i < activeIndex; i++) {
-      activeOffset -= (domNav.children[i] as HTMLElement).offsetWidth;
+      activeOffset -= (domTabList.children[i] as HTMLElement).offsetWidth;
     }
     
-    dispatchSetNavOffsetMax(Math.min(widthOfTabs - widthOfNav - WIDTH_SCROLLER_BUTTON * 2, 0));
+    dispatchSetNavOffsetMax(Math.min(widthOfTabs - widthOfNav - 48, 0)); // FIXME 48 硬了
     dispatchSetNavOffset(activeOffset);
-  }, [width, visibleTabs, activeTab, domUi, domNav, dispatchSetNavOffset, dispatchSetNavOffsetMax]);
+  }, [width, visibleTabs, activeTab, domUi, domTabList, dispatchSetNavOffset, dispatchSetNavOffsetMax]);
 }

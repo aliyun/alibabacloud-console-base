@@ -1,5 +1,5 @@
 import {
-  ETabsTheme
+  ETabsVariant
 } from '../enum';
 
 import {
@@ -16,7 +16,7 @@ export interface IModelProps {
   noContent?: boolean;
   activeKey?: string;
   defaultActiveKey?: string;
-  theme?: ETabsTheme;
+  variant?: ETabsVariant;
   classNameForTabBar?: string; // 为了让外部可以有个钩子
   classNameForTabItem?: string; // 为了让外部可以有个钩子
   classNameForTabScroller?: string; // 为了让外部可以有个钩子

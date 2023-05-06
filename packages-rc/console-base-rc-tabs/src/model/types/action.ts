@@ -7,8 +7,11 @@ import {
 } from '../enum';
 
 export type TModelAction = {
-  type: EAction.SET_DOM_UI | EAction.SET_DOM_NAV;
+  type: EAction.SET_DOM_UI;
   payload: HTMLDivElement | null;
+} | {
+  type: EAction.SET_DOM_TAB_LIST;
+  payload: HTMLUListElement | null;
 } | {
   type: EAction.SET_ACTIVE_TAB_KEY;
   payload: string;

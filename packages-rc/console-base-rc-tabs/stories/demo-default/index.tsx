@@ -18,7 +18,7 @@ import {
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import Tabs, {
-  TabsTheme,
+  TabsVariant,
   TabsProps,
   TabProps
 } from '../../src';
@@ -66,7 +66,7 @@ function generateTabForAdd(): TabProps {
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
   const [stateNoContent, setStateNoContent] = useState<boolean>(false);
-  const [stateTheme, setStateTheme] = useState<TabsTheme | undefined>();
+  const [stateTheme, setStateTheme] = useState<TabsVariant | undefined>();
   const [stateActiveTab, setStateActiveTab] = useState<string>('hbr');
   
   const handleAdd = useCallback(() => setStateTabs(update(stateTabs, {
@@ -79,7 +79,7 @@ export default function DemoDefault(): JSX.Element {
   
   const tabsProps: TabsProps = {
     tabs: stateTabs,
-    theme: stateTheme,
+    variant: stateTheme,
     noContent: stateNoContent,
     activeKey: stateActiveTab,
     onTabClose: handleTabClose,
@@ -102,14 +102,14 @@ export default function DemoDefault(): JSX.Element {
       value: stateNoContent,
       onChange: setStateNoContent
     }} />
-    <RadioGroup<TabsTheme> {...{
+    <RadioGroup<TabsVariant> {...{
       label: 'props.theme',
       items: [{
         label: 'plain',
-        value: TabsTheme.PLAIN
+        value: TabsVariant.PLAIN
       }, {
         label: 'inverse',
-        value: TabsTheme.INVERSE
+        value: TabsVariant.INVERSE
       }],
       value: stateTheme,
       onChange: setStateTheme

@@ -9,15 +9,15 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  HEIGHT_TAB,
-  TAB_TOP_SPACE
-} from '../../../../const';
-import {
-  TabsTheme,
+  TabsVariant,
   ModelPropsTab,
   useProps,
   useActiveTab
-} from '../../../../model';
+} from '../../../../../model';
+import {
+  HEIGHT_TAB,
+  TAB_TOP_SPACE
+} from '../../../../const';
 
 import TabButton from './tab-button';
 import TabX from './tab-x';
@@ -27,14 +27,13 @@ interface IProps {
 }
 
 interface IScProps {
-  tabsTheme: TabsTheme; // 用 theme 会有奇怪的问题，可能跟 sc 本身的 theme 冲突了
-  'data-active'?: 1 | '';
-  'data-closable'?: 1 | '';
+  $variant?: TabsVariant; // 用 theme 会有奇怪的问题，可能跟 sc 本身的 theme 冲突了
+  $active?: boolean;
 }
 
 function getCssTabItemAfter(props: IScProps): FlattenSimpleInterpolation | null {
-  switch (props.tabsTheme) {
-    case TabsTheme.INVERSE:
+  switch (props.$variant) {
+    case TabsVariant.INVERSE:
       return css`
   top: 30%;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 100%);
@@ -44,15 +43,15 @@ function getCssTabItemAfter(props: IScProps): FlattenSimpleInterpolation | null 
     default:
       return css`
   bottom: 0;
-  left: ${props['data-active'] ? 0 : '50%'};
-  width: ${props['data-active'] ? '100%' : 0};
-  height: 2px;
+  left: ${props.$active ? 0 : '50%'};
+  width: ${props.$active ? '100%' : 0};
+  height: 1px;
   ${mixinBgAccent}
 `;
   }
 }
 
-const ScTabItem = styled.div<IScProps>`
+const ScTabItem = styled.li<IScProps>`
   display: inline-block;
   position: relative;
   margin-top: ${TAB_TOP_SPACE}px;
@@ -69,7 +68,7 @@ const ScTabItem = styled.div<IScProps>`
   
   &:last-child {
     &:after {
-      display: ${props => (props.theme === TabsTheme.INVERSE ? 'none' : 'block')};
+      display: ${props => (props.$variant === TabsVariant.INVERSE ? 'none' : 'block')};
     }
   }
 `;
@@ -78,15 +77,15 @@ export default function NavItem({
   tab
 }: IProps): JSX.Element {
   const {
-    theme,
+    variant,
     classNameForTabItem
   } = useProps();
   const active = useActiveTab() === tab;
   
   return <ScTabItem {...{
-    tabsTheme: theme,
-    className: classNameForTabItem,
-    'data-active': active ? 1 : ''
+    $variant: variant,
+    $active: active,
+    className: classNameForTabItem
   }}>
     <TabButton tab={tab} />
     <TabX tab={tab} />

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import {
   useProps
-} from '../../model';
+} from '../../../model';
 
-import ContentItem from './content-item';
+import TabPanel from './tab-panel';
 
 // 需要 overflow，否则会被内容撑到很大
 const ScTabsContents = styled.div`
@@ -19,7 +19,7 @@ export default function TabsContents(): JSX.Element {
   } = useProps();
   
   return <ScTabsContents>
-    {tabs.map((v, i) => <ContentItem {...{
+    {tabs.map((v, i) => <TabPanel {...{
       key: v.key || i,
       tab: v
     }} />)}

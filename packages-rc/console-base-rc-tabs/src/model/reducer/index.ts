@@ -7,7 +7,7 @@ import {
 } from '../types';
 
 import reduceSetDomUi from './reduce-set-dom-ui';
-import reduceSetDomNav from './reduce-set-dom-nav';
+import reduceSetDomTabList from './reduce-set-dom-tab-list';
 import reduceSetActiveTabKey from './reduce-set-active-tab-key';
 import reduceSetWidth from './reduce-set-width';
 import reduceSetNavOffset from './reduce-set-nav-offset';
@@ -17,8 +17,8 @@ export default function reducer(state: IModelState, action: TModelAction): IMode
   switch (action.type) {
     case EAction.SET_DOM_UI:
       return reduceSetDomUi(state, action.payload);
-    case EAction.SET_DOM_NAV:
-      return reduceSetDomNav(state, action.payload);
+    case EAction.SET_DOM_TAB_LIST:
+      return reduceSetDomTabList(state, action.payload);
     case EAction.SET_ACTIVE_TAB_KEY:
       return reduceSetActiveTabKey(state, action.payload);
     case EAction.SET_WIDTH:

@@ -2,7 +2,7 @@ export { default as useProps } from './_use-model-props';
 
 // ref
 export { default as useRefUi } from './use-dispatch-set-dom-ui';
-export { default as useRefNav } from './use-dispatch-set-dom-nav';
+export { default as useRefTabList } from './use-dispatch-set-dom-tab-list';
 
 // value and state
 export { default as useVisibleTabs } from './use-visible-tabs';

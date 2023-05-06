@@ -1,6 +1,6 @@
 export interface IModelState {
   domUi: HTMLDivElement | null;
-  domNav: HTMLDivElement | null;
+  domTabList: HTMLUListElement | null;
   activeKey: string;
   width: number;
   navOffset: number; // >= navOffsetMax

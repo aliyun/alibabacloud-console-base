@@ -8,27 +8,31 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
+  TabsVariant,
+  useProps,
+  useStateNavOffsetMax
+} from '../../../model';
+import {
   HEIGHT_TAB_BAR,
   BGC_TAB_BAR
 } from '../../const';
-import {
-  TabsTheme,
-  useProps,
-  useStateNavOffsetMax
-} from '../../model';
 
-import Nav from './nav';
+import TabList from './tab-list';
 import Scroller from './scroller';
 
-const ScTabsBar = styled.div`
+interface IScProps {
+  $variant?: TabsVariant;
+}
+
+const ScTabsBar = styled.div<IScProps>`
   display: flex;
   align-items: flex-end;
   position: relative;
   width: 100%;
   height: ${HEIGHT_TAB_BAR}px;
   ${props => {
-    switch (props.theme) {
-      case TabsTheme.INVERSE:
+    switch (props.$variant) {
+      case TabsVariant.INVERSE:
         return css`
           background-color: ${BGC_TAB_BAR};
         `;
@@ -45,14 +49,14 @@ const ScTabsBarNavWrapper = styled.div`
 
 export default function TabsBar(): JSX.Element {
   const {
-    theme,
+    variant,
     classNameForTabBar
   } = useProps();
   const navOffsetMax = useStateNavOffsetMax();
   
-  return <ScTabsBar theme={theme} className={classNameForTabBar}>
+  return <ScTabsBar $variant={variant} className={classNameForTabBar}>
     <ScTabsBarNavWrapper>
-      <Nav />
+      <TabList />
     </ScTabsBarNavWrapper>
     {navOffsetMax < 0 ? <Scroller /> : null}
   </ScTabsBar>;

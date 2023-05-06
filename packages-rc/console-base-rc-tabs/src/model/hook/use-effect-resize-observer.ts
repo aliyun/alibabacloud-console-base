@@ -7,7 +7,7 @@ import useModelState from './_use-model-state';
 import useDispatchSetWidth from './use-dispatch-set-width';
 
 /**
- * 在 full 的时候，容易因宽度变化导致 UI 发生错乱，监听大小变化，必要的时候强行改 theme
+ * 在 full 的时候，容易因宽度变化导致 UI 发生错乱，监听大小变化，必要的时候强行改
  */
 export default function useEffectResizeObserver(): void {
   const {

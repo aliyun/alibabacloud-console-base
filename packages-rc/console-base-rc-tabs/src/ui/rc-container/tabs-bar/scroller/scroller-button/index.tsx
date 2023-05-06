@@ -7,8 +7,10 @@ import {
   useStateNavOffsetMax,
   useHandleScrollLeft,
   useHandleScrollRight
-} from '../../../../model';
-import ControlButton from '../../../../rc/control-button';
+} from '../../../../../model';
+import {
+  ControlButton
+} from '../../../../rc';
 
 interface IProps {
   prev?: boolean;

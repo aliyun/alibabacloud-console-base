@@ -1,6 +1,6 @@
 import {
   TabContentPadding
-} from '../model';
+} from '../../model';
 
 export default function getContentPadding(contentPadding: TabContentPadding): string {
   switch (contentPadding) {

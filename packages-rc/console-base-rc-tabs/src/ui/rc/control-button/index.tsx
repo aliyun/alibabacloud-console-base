@@ -50,9 +50,9 @@ const ScButton = styled(Button)<IProps>`
 
 export default function ControlButton(props: IProps): JSX.Element {
   return <ScButton {...{
+    ...props,
     theme: ButtonTheme.NONE,
     size: ButtonSize.NONE,
-    cursor: 'default',
-    ...props
+    cursor: 'default'
   }} />;
 }

@@ -3,7 +3,7 @@ export { default } from './provider';
 export * from './hook';
 
 export {
-  ETabsTheme as TabsTheme
+  ETabsVariant as TabsVariant
 } from './enum';
 
 export type {

@@ -1,7 +1,7 @@
-export { default } from './rc-container';
+export { default } from './with-model';
 
 export {
-  TabsTheme
+  TabsVariant
 } from './model';
 
 export type {

@@ -4,9 +4,12 @@ import styled from 'styled-components';
 import {
   useProps,
   useRefUi
-} from '../../model';
-import TabsBar from '../tabs-bar';
-import TabsContents from '../tabs-contents';
+} from '../model';
+
+import {
+  TabsBar,
+  TabsContent
+} from './rc-container';
 
 interface IScPropsNoContent {
   noContent?: boolean;
@@ -27,6 +30,6 @@ export default function Ui(): JSX.Element {
   
   return <ScUi ref={refUi} noContent={noContent}>
     <TabsBar />
-    {noContent ? null : <TabsContents />}
+    {noContent ? null : <TabsContent />}
   </ScUi>;
 }
