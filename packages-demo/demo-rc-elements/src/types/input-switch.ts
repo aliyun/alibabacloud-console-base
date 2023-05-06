@@ -3,11 +3,12 @@ import {
   ButtonHTMLAttributes
 } from 'react';
 
+import {
+  IControllableValue
+} from './common';
+
 export type TInputSwitchRef = ForwardedRef<HTMLButtonElement>;
 
-export interface IInputSwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'value' | 'defaultValue' | 'aria-checked' | 'role' | 'onClick' | 'onChange'> {
+export interface IInputSwitchProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof IControllableValue | 'children' | 'aria-checked' | 'role' | 'onClick'>, IControllableValue<boolean> {
   label?: string | JSX.Element;
-  value?: boolean;
-  defaultValue?: boolean;
-  onChange?(value: boolean): void;
 }

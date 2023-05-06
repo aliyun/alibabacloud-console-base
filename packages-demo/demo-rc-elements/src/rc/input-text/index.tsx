@@ -20,14 +20,14 @@ import {
 } from '../../const';
 
 interface IScInput {
-  block: 0 | 1;
+  $block?: boolean;
 }
 
 const ScInputText = styled.input<IScInput>`
   min-width: 240px;
   max-width: 100%;
   ${CSS_FORM_CONTROL_INPUT_BASE}
-  ${props => (props.block ? css`
+  ${props => (props.$block ? css`
     margin: 1px 0 1px 0;
     display: block;
     width: 100%;
@@ -47,9 +47,9 @@ function InputText({
   }, [controllableOnChange]);
   
   return <ScInputText {...{
+    $block: block,
     ...props,
     value: controllableValue,
-    block: block ? 1 : 0,
     type: 'text',
     ref,
     onChange: handleChange

@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import {
   RadioGroup
 } from '../choice-group';
+import InputColor from '../input-color';
 import Hr from '../hr';
 
 type TSize = 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -63,6 +64,7 @@ export default function SoloPane({
   demo
 }: IProps): JSX.Element {
   const [stateSize, setStateSize] = useState<TSize>(size);
+  const [stateBg, setStateBg] = useState<string>('#ffffff');
   const width = SIZE_MAPPING[stateSize] || SIZE_MAPPING.m;
   
   return <div {...{
@@ -77,12 +79,17 @@ export default function SoloPane({
         value: stateSize,
         onChange: setStateSize
       }} />
+      背景色 <InputColor {...{
+        value: stateBg,
+        onChange: setStateBg
+      }} />
       <Hr />
       <>{children}</>
     </ScAdjustWidth>
     <ScRight {...{
       style: {
-        width
+        width,
+        backgroundColor: stateBg
       }
     }}>
       {demo}

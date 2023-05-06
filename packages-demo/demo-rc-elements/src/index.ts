@@ -17,6 +17,9 @@ export type {
   // input-number
   TInputNumberRef as InputNumberRef,
   IInputNumberProps as InputNumberProps,
+  // input-color
+  TInputColorRef as InputColorRef,
+  IInputColorProps as InputColorProps,
   // input-switch
   TInputSwitchRef as InputSwitchRef,
   IInputSwitchProps as InputSwitchProps,

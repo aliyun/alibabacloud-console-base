@@ -5,6 +5,7 @@ import {
   InputText,
   InputNumber,
   InputTextarea,
+  InputColor,
   InputSwitch,
   CheckboxGroup,
   RadioGroup,
@@ -25,6 +26,7 @@ export default function DemoFormControl(): JSX.Element {
     <Button href="//www.aliyun.com">链接 Button（绝对 URL）</Button>
     <Button disabled>一个 disabled Button</Button>
     <InputTextarea placeholder="InputTextarea" />
+    <InputColor />
     <InputSwitch label="label as a prop" />
     <InputSwitch label="disabled" disabled />
     <CheckboxGroup<number> {...{

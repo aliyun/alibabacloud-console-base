@@ -3,12 +3,10 @@ import {
   InputHTMLAttributes
 } from 'react';
 
-interface IPropsFix {
-  value?: number;
-  defaultValue?: number;
-  onChange?(value: number): void;
-}
+import {
+  IControllableValue
+} from './common';
 
 export type TInputNumberRef = ForwardedRef<HTMLInputElement>;
 
-export interface IInputNumberProps extends Omit<InputHTMLAttributes<HTMLInputElement>, keyof IPropsFix | 'children' | 'type'>, IPropsFix {}
+export interface IInputNumberProps extends Omit<InputHTMLAttributes<HTMLInputElement>, keyof IControllableValue | 'children' | 'type'>, IControllableValue<number> {}

@@ -9,6 +9,7 @@ import {
 export * from './input-text';
 export * from './input-number';
 export * from './input-switch';
+export * from './input-color';
 export * from './table';
 export * from './alert';
 export * from './package-info';

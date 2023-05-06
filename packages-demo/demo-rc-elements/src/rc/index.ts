@@ -11,6 +11,7 @@ export { default as Button } from './button';
 export { default as InputText } from './input-text';
 export { default as InputNumber } from './input-number';
 export { default as InputTextarea } from './input-textarea';
+export { default as InputColor } from './input-color';
 export { default as InputSwitch } from './input-switch';
 export { default as InputJsonObject } from './input-json-object';
 export {
