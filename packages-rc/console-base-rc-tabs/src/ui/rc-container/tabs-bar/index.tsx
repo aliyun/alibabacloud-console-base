@@ -13,7 +13,7 @@ import {
   useStateNavOffsetMax
 } from '../../../model';
 import {
-  HEIGHT_TAB_BAR,
+  HEIGHT_TAB,
   BGC_TAB_BAR
 } from '../../const';
 
@@ -29,7 +29,7 @@ const ScTabsBar = styled.div<IScProps>`
   align-items: flex-end;
   position: relative;
   width: 100%;
-  height: ${HEIGHT_TAB_BAR}px;
+  height: ${HEIGHT_TAB}px;
   ${props => {
     switch (props.$variant) {
       case TabsVariant.BROWSER:

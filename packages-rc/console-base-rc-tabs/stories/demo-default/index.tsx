@@ -34,7 +34,7 @@ const TABS: TabProps[] = [{
   key: 'hbr',
   title: 'HBR 100%',
   content: <Flex100HBF />,
-  closable: true
+  closable: false // 将不可被关闭
 }, {
   key: 'long-title',
   title: '标题很长长长长长长长长长长长长长长长长长长长长长长长长长长长',

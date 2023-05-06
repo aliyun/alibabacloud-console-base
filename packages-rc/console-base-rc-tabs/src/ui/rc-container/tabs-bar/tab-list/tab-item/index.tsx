@@ -15,8 +15,7 @@ import {
   useActiveTab
 } from '../../../../../model';
 import {
-  HEIGHT_TAB,
-  TAB_TOP_SPACE
+  HEIGHT_TAB
 } from '../../../../const';
 
 import TabButton from './tab-button';
@@ -54,7 +53,6 @@ function getCssTabItemAfter(props: IScProps): FlattenSimpleInterpolation | null 
 const ScTabItem = styled.li<IScProps>`
   display: inline-block;
   position: relative;
-  margin-top: ${TAB_TOP_SPACE}px;
   padding-top: 2px;
   max-width: 100%;
   line-height: ${HEIGHT_TAB}px;
