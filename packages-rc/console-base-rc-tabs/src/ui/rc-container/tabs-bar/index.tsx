@@ -32,7 +32,7 @@ const ScTabsBar = styled.div<IScProps>`
   height: ${HEIGHT_TAB_BAR}px;
   ${props => {
     switch (props.$variant) {
-      case TabsVariant.INVERSE:
+      case TabsVariant.BROWSER:
         return css`
           background-color: ${BGC_TAB_BAR};
         `;

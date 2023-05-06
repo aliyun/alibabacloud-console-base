@@ -9,5 +9,5 @@ export enum EAction {
 
 export enum ETabsVariant {
   PLAIN = 'plain',
-  INVERSE = 'inverse'
+  BROWSER = 'browser'
 }

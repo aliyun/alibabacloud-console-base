@@ -1,10 +1,13 @@
 import React, {
   useCallback
 } from 'react';
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import {
-  mixinTypoEllipsis
+  mixinTypoEllipsis,
+  mixinTextAccent
 } from '@alicloud/console-base-theme';
 import {
   ButtonBase
@@ -21,10 +24,13 @@ import {
   HEIGHT_TAB,
   MAX_WIDTH_TAB,
   MIN_WIDTH_TAB,
-  CSS_TAB_BUTTON_THEME_INVERSE_ACTIVE,
-  CSS_TAB_BUTTON_THEME_INVERSE_NORMAL,
-  CSS_TAB_BUTTON_THEME_PLAIN_NORMAL,
-  CSS_TAB_BUTTON_THEME_PLAIN_ACTIVE
+  BGC_TAB_ACTIVE,
+  BGC_TAB_ACTIVE_DARK,
+  BGC_TAB_IDLE,
+  FGC_TAB_ACTIVE,
+  FGC_TAB_ACTIVE_DARK,
+  FGC_TAB_IDLE,
+  FGC_TAB_IDLE_HOVER
 } from '../../../../../const';
 
 interface IProps {
@@ -37,6 +43,33 @@ interface IScProps {
   $closable?: boolean;
 }
 
+const CSS_TAB_BUTTON_VARIANT_PLAIN_NORMAL = css`
+  &:hover {
+    ${mixinTextAccent}
+  }
+`;
+
+const CSS_TAB_BUTTON_VARIANT_PLAIN_ACTIVE = mixinTextAccent;
+
+const CSS_TAB_BUTTON_VARIANT_INVERSE_NORMAL = css`
+  background-color: ${BGC_TAB_IDLE};
+  color: ${FGC_TAB_IDLE};
+  
+  &:hover {
+    color: ${FGC_TAB_IDLE_HOVER};
+  }
+`;
+
+const CSS_TAB_BUTTON_VARIANT_INVERSE_ACTIVE = css`
+  background-color: ${BGC_TAB_ACTIVE};
+  color: ${FGC_TAB_ACTIVE};
+  
+  .theme-dark && {
+    background-color: ${BGC_TAB_ACTIVE_DARK};
+    color: ${FGC_TAB_ACTIVE_DARK};
+  }
+`;
+
 const ScTabButton = styled(ButtonBase)<IScProps>`
   padding: 0 ${props => (props.$closable ? 28 : 8)}px 0 8px;
   border: 0;
@@ -48,10 +81,10 @@ const ScTabButton = styled(ButtonBase)<IScProps>`
   
   ${props => {
     switch (props.$variant) {
-      case TabsVariant.INVERSE:
-        return props.$active ? CSS_TAB_BUTTON_THEME_INVERSE_ACTIVE : CSS_TAB_BUTTON_THEME_INVERSE_NORMAL;
+      case TabsVariant.BROWSER:
+        return props.$active ? CSS_TAB_BUTTON_VARIANT_INVERSE_ACTIVE : CSS_TAB_BUTTON_VARIANT_INVERSE_NORMAL;
       default:
-        return props.$active ? CSS_TAB_BUTTON_THEME_PLAIN_ACTIVE : CSS_TAB_BUTTON_THEME_PLAIN_NORMAL;
+        return props.$active ? CSS_TAB_BUTTON_VARIANT_PLAIN_ACTIVE : CSS_TAB_BUTTON_VARIANT_PLAIN_NORMAL;
     }
   }}
 `;

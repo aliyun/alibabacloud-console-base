@@ -12,7 +12,7 @@ import TabItem from './tab-item';
 const ScTabList = styled.ul`
   display: inline-block;
   margin: 0 !important;
-  padding: 0 0 0 16px !important;
+  padding: 0 !important;
   list-style: none !important;
   white-space: nowrap;
   transition: transform 0.3s ease-in;

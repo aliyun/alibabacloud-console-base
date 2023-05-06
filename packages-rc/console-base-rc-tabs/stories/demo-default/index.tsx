@@ -66,7 +66,7 @@ function generateTabForAdd(): TabProps {
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
   const [stateNoContent, setStateNoContent] = useState<boolean>(false);
-  const [stateTheme, setStateTheme] = useState<TabsVariant | undefined>();
+  const [stateVariant, setStateVariant] = useState<TabsVariant | undefined>();
   const [stateActiveTab, setStateActiveTab] = useState<string>('hbr');
   
   const handleAdd = useCallback(() => setStateTabs(update(stateTabs, {
@@ -79,7 +79,7 @@ export default function DemoDefault(): JSX.Element {
   
   const tabsProps: TabsProps = {
     tabs: stateTabs,
-    variant: stateTheme,
+    variant: stateVariant,
     noContent: stateNoContent,
     activeKey: stateActiveTab,
     onTabClose: handleTabClose,
@@ -103,16 +103,16 @@ export default function DemoDefault(): JSX.Element {
       onChange: setStateNoContent
     }} />
     <RadioGroup<TabsVariant> {...{
-      label: 'props.theme',
+      label: 'props.variant',
       items: [{
         label: 'plain',
         value: TabsVariant.PLAIN
       }, {
-        label: 'inverse',
-        value: TabsVariant.INVERSE
+        label: 'browser',
+        value: TabsVariant.BROWSER
       }],
-      value: stateTheme,
-      onChange: setStateTheme
+      value: stateVariant,
+      onChange: setStateVariant
     }} />
     <PreJson o={tabsProps} />
   </SoloPane>;

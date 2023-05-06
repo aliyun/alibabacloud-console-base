@@ -12,7 +12,7 @@ import {
 
 import {
   IItemResolved,
-  IPropsKeyValue
+  IKeyValueProps
 } from '../../types';
 import {
   convertItems
@@ -55,11 +55,14 @@ const ScKeyValueItemV = styled.div<IPropsScKeyValueItemV>`
  */
 export default function KeyValue({
   o,
+  classNameForItem = 'the-kv',
+  classNameForKey = 'the-kv-key',
+  classNameForValue = 'the-kv-value',
   horizontal,
   ignoreEmpty,
   wrapValue,
   ...props
-}: IPropsKeyValue): JSX.Element | null {
+}: IKeyValueProps): JSX.Element | null {
   const items: IItemResolved[] = convertItems(o, ignoreEmpty);
   
   if (!items.length) {
@@ -73,10 +76,11 @@ export default function KeyValue({
       v
     }, i) => <ScKeyValueItem {...{
       key: key || i,
+      className: classNameForItem,
       horizontal
     }}>
-      <ScKeyValueItemK>{k}</ScKeyValueItemK>
-      <ScKeyValueItemV wrapValue={wrapValue}>{v}</ScKeyValueItemV>
+      <ScKeyValueItemK className={classNameForKey}>{k}</ScKeyValueItemK>
+      <ScKeyValueItemV className={classNameForValue} wrapValue={wrapValue}>{v}</ScKeyValueItemV>
     </ScKeyValueItem>)}
   </ScKeyValue>;
 }

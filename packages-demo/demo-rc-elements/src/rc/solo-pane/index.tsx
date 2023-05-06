@@ -64,6 +64,7 @@ export default function SoloPane({
   demo
 }: IProps): JSX.Element {
   const [stateSize, setStateSize] = useState<TSize>(size);
+  const [stateBd, setStateBd] = useState<string>('#6d5acfcc');
   const [stateBg, setStateBg] = useState<string>('#ffffff');
   const width = SIZE_MAPPING[stateSize] || SIZE_MAPPING.m;
   
@@ -79,16 +80,25 @@ export default function SoloPane({
         value: stateSize,
         onChange: setStateSize
       }} />
-      背景色 <InputColor {...{
-        value: stateBg,
-        onChange: setStateBg
-      }} />
+      <div>
+        边框色 <InputColor {...{
+          value: stateBd,
+          onChange: setStateBd
+        }} />
+      </div>
+      <div>
+        背景色 <InputColor {...{
+          value: stateBg,
+          onChange: setStateBg
+        }} />
+      </div>
       <Hr />
       <>{children}</>
     </ScAdjustWidth>
     <ScRight {...{
       style: {
         width,
+        borderColor: stateBd,
         backgroundColor: stateBg
       }
     }}>

@@ -33,7 +33,7 @@ interface IScProps {
 
 function getCssTabItemAfter(props: IScProps): FlattenSimpleInterpolation | null {
   switch (props.$variant) {
-    case TabsVariant.INVERSE:
+    case TabsVariant.BROWSER:
       return css`
   top: 30%;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 100%);
@@ -68,7 +68,7 @@ const ScTabItem = styled.li<IScProps>`
   
   &:last-child {
     &:after {
-      display: ${props => (props.$variant === TabsVariant.INVERSE ? 'none' : 'block')};
+      display: ${props => (props.$variant === TabsVariant.BROWSER ? 'none' : 'block')};
     }
   }
 `;

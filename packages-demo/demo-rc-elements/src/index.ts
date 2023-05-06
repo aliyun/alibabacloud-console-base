@@ -18,6 +18,9 @@ export type {
   TInputNumberRef as InputNumberRef,
   IInputNumberProps as InputNumberProps,
   // input-color
+  TInputRangeRef as InputRangeRef,
+  IInputRangeProps as InputRangeProps,
+  // input-color
   TInputColorRef as InputColorRef,
   IInputColorProps as InputColorProps,
   // input-switch
