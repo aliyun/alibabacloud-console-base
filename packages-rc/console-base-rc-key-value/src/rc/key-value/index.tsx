@@ -66,17 +66,17 @@ export default function KeyValue({
     return null;
   }
   
-  return <ScKeyValue horizontal={horizontal} {...props}>
+  return <ScKeyValue className="rc-key-value" horizontal={horizontal} {...props}>
     {items.map(({
       key,
       k,
       v
-    }, i) => <ScKeyValueItem {...{
+    }, i) => <ScKeyValueItem className="rc-key-value-item" {...{
       key: key || i,
       horizontal
     }}>
-      <ScKeyValueItemK>{k}</ScKeyValueItemK>
-      <ScKeyValueItemV wrapValue={wrapValue}>{v}</ScKeyValueItemV>
+      <ScKeyValueItemK className="rc-key-value-key">{k}</ScKeyValueItemK>
+      <ScKeyValueItemV className="rc-key-value-value" wrapValue={wrapValue}>{v}</ScKeyValueItemV>
     </ScKeyValueItem>)}
   </ScKeyValue>;
 }
