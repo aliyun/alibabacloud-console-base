@@ -1,10 +1,8 @@
 import React from 'react';
-import styled, {
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
 import {
-  mixinBorderTertiaryBottom
+  mixinBorderSecondaryBottom
 } from '@alicloud/console-base-theme';
 
 import {
@@ -13,33 +11,32 @@ import {
   useStateNavOffsetMax
 } from '../../../model';
 import {
-  HEIGHT_TAB,
-  BGC_TAB_BAR
+  TAB_HEIGHT
 } from '../../const';
 
 import TabList from './tab-list';
-import Scroller from './scroller';
+import TabScrollButtons from './tab-scroll-buttons';
 
 interface IScProps {
   $variant?: TabsVariant;
 }
 
+// ${props => {
+//     switch (props.$variant) {
+//       case TabsVariant.BROWSER:
+//         return css`
+//           background-color: ${BGC_TAB_BAR};
+// `;
+//       default:
+//         return mixinBorderSecondaryBottom;
+//     }
+//   }}
 const ScTabsBar = styled.div<IScProps>`
   display: flex;
   align-items: flex-end;
   position: relative;
-  width: 100%;
-  height: ${HEIGHT_TAB}px;
-  ${props => {
-    switch (props.$variant) {
-      case TabsVariant.BROWSER:
-        return css`
-          background-color: ${BGC_TAB_BAR};
-        `;
-      default:
-        return mixinBorderTertiaryBottom;
-    }
-  }}
+  height: ${TAB_HEIGHT}px;
+  ${mixinBorderSecondaryBottom}
 `;
 
 const ScTabsBarNavWrapper = styled.div`
@@ -58,6 +55,6 @@ export default function TabsBar(): JSX.Element {
     <ScTabsBarNavWrapper>
       <TabList />
     </ScTabsBarNavWrapper>
-    {navOffsetMax < 0 ? <Scroller /> : null}
+    {navOffsetMax < 0 ? <TabScrollButtons /> : null}
   </ScTabsBar>;
 }

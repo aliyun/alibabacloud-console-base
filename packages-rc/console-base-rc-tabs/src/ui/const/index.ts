@@ -1,8 +1,14 @@
+export const TAB_HEIGHT = 34;
+export const TAB_MIN_WIDTH = 60;
+export const TAB_PADDING = 12; // 横向 padding
+export const TAB_X_SIZE = 18;
+export const TAB_X_SIZE_FONT = 10;
+export const TAB_SCROLL_BUTTON_WIDTH = 24;
+export const TAB_SCROLL_BUTTON_FONT_SIZE = 12;
+
 export const WIDTH_SCROLLER_BUTTON = 24;
-export const HEIGHT_TAB = 32;
-export const MIN_WIDTH_TAB = 60;
+
 export const MAX_WIDTH_TAB = 200;
-export const SIZE_CONTROL_BUTTON = 18;
 
 export const BGC_TAB_BAR = '#333';
 export const BGC_TAB_IDLE = 'transparent';

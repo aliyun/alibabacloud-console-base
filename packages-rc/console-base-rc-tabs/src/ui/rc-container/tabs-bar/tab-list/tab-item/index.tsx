@@ -15,7 +15,7 @@ import {
   useActiveTab
 } from '../../../../../model';
 import {
-  HEIGHT_TAB
+  TAB_HEIGHT
 } from '../../../../const';
 
 import TabButton from './tab-button';
@@ -26,19 +26,14 @@ interface IProps {
 }
 
 interface IScProps {
-  $variant?: TabsVariant; // 用 theme 会有奇怪的问题，可能跟 sc 本身的 theme 冲突了
+  $variant?: TabsVariant;
   $active?: boolean;
 }
 
 function getCssTabItemAfter(props: IScProps): FlattenSimpleInterpolation | null {
   switch (props.$variant) {
     case TabsVariant.BROWSER:
-      return css`
-  top: 30%;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 100%);
-  width: 1px;
-  height: 40%;
-`;
+      return null;
     default:
       return css`
   bottom: 0;
@@ -53,9 +48,8 @@ function getCssTabItemAfter(props: IScProps): FlattenSimpleInterpolation | null 
 const ScTabItem = styled.li<IScProps>`
   display: inline-block;
   position: relative;
-  padding-top: 2px;
   max-width: 100%;
-  line-height: ${HEIGHT_TAB}px;
+  line-height: ${TAB_HEIGHT}px;
   
   &:after {
     content: '';

@@ -29,7 +29,6 @@ export default function useEffectAdjustNavWidth(): void {
     
     const widthOfTabs = width > 0 ? width : domUi.offsetWidth;
     const widthOfNav = domTabList.offsetWidth;
-    
     const activeIndex = activeTab ? visibleTabs.indexOf(activeTab) : -1;
     let activeOffset = 0;
     
@@ -37,7 +36,7 @@ export default function useEffectAdjustNavWidth(): void {
       activeOffset -= (domTabList.children[i] as HTMLElement).offsetWidth;
     }
     
-    dispatchSetNavOffsetMax(Math.min(widthOfTabs - widthOfNav - 48, 0)); // FIXME 48 硬了
+    dispatchSetNavOffsetMax(Math.min(widthOfTabs - widthOfNav - 48, 0)); // FIXME 48 硬了，等于 TAB_SCROLL_BUTTON_WIDTH * 2
     dispatchSetNavOffset(activeOffset);
   }, [width, visibleTabs, activeTab, domUi, domTabList, dispatchSetNavOffset, dispatchSetNavOffsetMax]);
 }

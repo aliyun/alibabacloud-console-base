@@ -37,8 +37,8 @@ export default styled.table`
   
   th,
   td {
-    padding: 6px 12px;
-    border: 1px solid ${COLOR_TABLE.BDC};
+    padding: 8px 12px;
+    border-bottom: 1px solid ${COLOR_TABLE.BDC};
     font-size: 0.95em;
     text-align: left;
     color: inherit;
@@ -53,14 +53,6 @@ export default styled.table`
     
     .theme-dark & {
       border-color: ${COLOR_TABLE_DARK.BDC};
-    }
-    
-    &:first-child {
-      border-left-width: 0;
-    }
-    
-    &:last-child {
-      border-right-width: 0;
     }
   }
   

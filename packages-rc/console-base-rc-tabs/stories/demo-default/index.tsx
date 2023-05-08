@@ -66,7 +66,7 @@ function generateTabForAdd(): TabProps {
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<TabProps[]>(TABS);
   const [stateNoContent, setStateNoContent] = useState<boolean>(false);
-  const [stateVariant, setStateVariant] = useState<TabsVariant | undefined>();
+  const [stateVariant, setStateVariant] = useState<TabsVariant | undefined>(TabsVariant.BROWSER);
   const [stateActiveTab, setStateActiveTab] = useState<string>('hbr');
   
   const handleAdd = useCallback(() => setStateTabs(update(stateTabs, {

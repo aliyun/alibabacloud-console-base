@@ -64,8 +64,8 @@ export default function SoloPane({
   demo
 }: IProps): JSX.Element {
   const [stateSize, setStateSize] = useState<TSize>(size);
-  const [stateBd, setStateBd] = useState<string>('#6d5acfcc');
-  const [stateBg, setStateBg] = useState<string>('#ffffff');
+  const [stateBd, setStateBd] = useState<string>('#6d5acf66');
+  const [stateBg, setStateBg] = useState<string>('#ffcc0000');
   const width = SIZE_MAPPING[stateSize] || SIZE_MAPPING.m;
   
   return <div {...{
