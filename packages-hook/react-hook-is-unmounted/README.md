@@ -30,7 +30,7 @@ export default function SomeRc(): JSX.Element {
   const [stateDataSome, setStateDataSome] = useState<IDataSome | null>(null);
   const [stateErrorSome, setStateErrorSome] = useState<Error | null>(null);
   const [stateDataOther, setStateDataOther] = useState<IDataOther | null>(null);
-  const [stateErrorOther, setStateErrorOther] = useState<Error | null>(null); 
+  const [stateErrorOther, setStateErrorOther] = useState<Error | null>(null);
   
   // use in effect directly
   useEffect(() => {

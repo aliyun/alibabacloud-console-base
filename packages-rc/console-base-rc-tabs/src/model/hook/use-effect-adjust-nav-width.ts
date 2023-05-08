@@ -15,7 +15,8 @@ export default function useEffectAdjustNavWidth(): void {
   const {
     width,
     domUi,
-    domTabList
+    domTabList,
+    domExtra
   } = useModelState();
   const visibleTabs = useVisibleTabs();
   const activeTab = useActiveTab();
@@ -27,8 +28,9 @@ export default function useEffectAdjustNavWidth(): void {
       return;
     }
     
-    const widthOfTabs = width > 0 ? width : domUi.offsetWidth;
-    const widthOfNav = domTabList.offsetWidth;
+    const widthOfUi = width > 0 ? width : domUi.offsetWidth;
+    const widthOfTabList = domTabList.offsetWidth;
+    const widthOfExtra = domExtra?.offsetWidth || 0;
     const activeIndex = activeTab ? visibleTabs.indexOf(activeTab) : -1;
     let activeOffset = 0;
     
@@ -36,7 +38,7 @@ export default function useEffectAdjustNavWidth(): void {
       activeOffset -= (domTabList.children[i] as HTMLElement).offsetWidth;
     }
     
-    dispatchSetNavOffsetMax(Math.min(widthOfTabs - widthOfNav - 40, 0)); // FIXME 40 硬了，等于 TAB_SCROLL_BUTTON_WIDTH * 2
+    dispatchSetNavOffsetMax(Math.min(widthOfUi - widthOfTabList - widthOfExtra - 40, 0)); // FIXME 40 硬了，等于 TAB_SCROLL_BUTTON_WIDTH * 2
     dispatchSetNavOffset(activeOffset);
-  }, [width, visibleTabs, activeTab, domUi, domTabList, dispatchSetNavOffset, dispatchSetNavOffsetMax]);
+  }, [width, visibleTabs, activeTab, domUi, domTabList, domExtra, dispatchSetNavOffset, dispatchSetNavOffsetMax]);
 }

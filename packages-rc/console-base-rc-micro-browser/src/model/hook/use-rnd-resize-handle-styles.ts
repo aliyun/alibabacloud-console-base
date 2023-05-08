@@ -2,7 +2,7 @@ import {
   HandleStyles
 } from 'react-rnd';
 
-import useStickRightActive from './use-stick-right-active';
+import usePinned from './use-pinned';
 
 const resizeHandleStyleHidden = {
   display: 'none'
@@ -19,7 +19,7 @@ const onlyLeft: HandleStyles = {
 };
 
 export default function useRndResizeHandleStyles(): HandleStyles | undefined {
-  if (useStickRightActive()) {
+  if (usePinned()) {
     return onlyLeft;
   }
 }

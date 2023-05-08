@@ -13,16 +13,15 @@ export { default as useRndResizeHandleStyles } from './use-rnd-resize-handle-sty
 export { default as useRndDraggingDisabled } from './use-rnd-dragging-disabled';
 export { default as useRndSizeWidthRange } from './use-rnd-size-width-range';
 export { default as useRndSizeHeightRange } from './use-rnd-size-height-range';
-export { default as useStickRightActive } from './use-stick-right-active';
-export { default as useTabsProps } from './use-tabs-props';
+export { default as usePinned } from './use-pinned';
 
 // handlers
 export { default as useHandleMinimize } from './use-handle-minimize';
-export { default as useHandleStickRight } from './use-handle-stick-right';
+export { default as useHandleTogglePinned } from './use-handle-toggle-pinned';
+export { default as useHandleTogglePined } from './use-handle-toggle-pinned';
 export { default as useHandleRndDragStart } from './use-handle-rnd-drag-start';
 export { default as useHandleRndDrag } from './use-handle-rnd-drag';
 export { default as useHandleRndDragStop } from './use-handle-rnd-drag-stop';
 export { default as useHandleRndResizeStart } from './use-handle-rnd-resize-start';
 export { default as useHandleRndResize } from './use-handle-rnd-resize';
 export { default as useHandleRndResizeStop } from './use-handle-rnd-resize-stop';
-export { default as useHandleDragBarDoubleClick } from './use-handle-drag-bar-double-click';

@@ -12,8 +12,7 @@ import {
   Button,
   InputSwitch,
   RadioGroup,
-  LongArticle,
-  Flex100HBF
+  LongArticle
 } from '@alicloud/demo-rc-elements';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
@@ -58,14 +57,10 @@ const ScMinimizedTray = styled.div`
 const TAB_ITEMS: MicroBrowserTabsItemProps[] = [{
   key: 'default-1',
   title: '哥特之皇 Lacrimosa',
-  content: <LongArticle />
-}, {
-  key: 'default-2',
-  title: 'Flex 上中下',
-  content: <Flex100HBF />,
+  content: <LongArticle />,
   closable: true
 }, {
-  key: 'default-3',
+  key: 'default-2',
   title: '测试用例长长长长长长长长长长长长长长长长长长长长长长长长长长长',
   content: <>123123123</>,
   closable: true

@@ -8,8 +8,7 @@ import {
 
 import {
   Rnd,
-  Toolbar,
-  Content,
+  BrowserTabs,
   SmoothMoving
 } from './rc-container';
 
@@ -33,9 +32,8 @@ export default function Ui(): JSX.Element {
   return <>
     <Rnd>
       <ScUi>
-        <Toolbar />
         <ScContent>
-          <Content />
+          <BrowserTabs />
         </ScContent>
       </ScUi>
     </Rnd>

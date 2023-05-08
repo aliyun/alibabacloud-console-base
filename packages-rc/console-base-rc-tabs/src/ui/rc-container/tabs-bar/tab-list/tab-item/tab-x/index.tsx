@@ -48,14 +48,14 @@ const ScTabX = styled(Button)`
 
 export default function TabX({
   tab
-}: IProps): JSX.Element | null {
+}: IProps): JSX.Element {
   const {
     classNameForTabX
   } = useProps();
   const handleTabClose = useHandleTabClose();
   const handleClick = useCallback(() => handleTabClose(tab), [tab, handleTabClose]);
   
-  return tab.closable ? <ScTabX {...{
+  return <ScTabX {...{
     spm: 'x',
     className: classNameForTabX,
     title: intl('op:close'),
@@ -64,5 +64,5 @@ export default function TabX({
     size: ButtonSize.NONE,
     cursor: 'default',
     onClick: handleClick
-  }} /> : null;
+  }} />;
 }

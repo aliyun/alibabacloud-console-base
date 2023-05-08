@@ -33,7 +33,7 @@ interface IScProps {
 }
 
 const ScTabButton = styled(ButtonBase)<IScProps>`
-  padding: 0 ${props => (props.$closable ? TAB_X_SIZE + TAB_PADDING : TAB_PADDING)}px 0 ${TAB_PADDING}px;
+  padding: 0 ${props => (props.$closable && props.$active ? TAB_X_SIZE + TAB_PADDING : TAB_PADDING)}px 0 ${TAB_PADDING}px;
   border: 0;
   width: 100%;
   height: 100%;

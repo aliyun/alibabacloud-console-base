@@ -4,11 +4,9 @@ import styled from 'styled-components';
 import {
   useProps,
   useHandleMinimize
-} from '../../../../model';
-import intl from '../../../intl';
-import {
-  ControlButton
-} from '../../../rc';
+} from '../../../../../model';
+import intl from '../../../../intl';
+import ExtraButton from '../extra-button';
 
 // iconfont 效果不好
 const ScIconMinimize = styled.i`
@@ -26,8 +24,8 @@ export default function ButtonMinimize(): JSX.Element | null {
   } = useProps();
   const onMinimize = useHandleMinimize();
   
-  return minimizable ? <ControlButton {...{
-    spm: 'min',
+  return minimizable ? <ExtraButton {...{
+    spm: 'minimize',
     label: <ScIconMinimize />,
     title: intl('op:minimize'),
     onClick: onMinimize

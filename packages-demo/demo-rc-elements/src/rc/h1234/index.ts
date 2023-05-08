@@ -33,6 +33,10 @@ export const H1 = styled.h1`
   &:before {
     content: 'H1';
     background-color: #f00;
+    
+    .theme-dark & {
+      background-color: #d00;
+    }
   }
 `;
 
@@ -43,7 +47,11 @@ export const H2 = styled.h2`
   
   &:before {
     content: 'H2';
-    background-color: #ff7f00;
+    background-color: #f70;
+    
+    .theme-dark & {
+      background-color: #d50;
+    }
   }
 `;
 
@@ -56,6 +64,10 @@ export const H3 = styled.h3`
     content: 'H3';
     background-color: #ff0;
     color: #333;
+    
+    .theme-dark & {
+      background-color: #dd0;
+    }
   }
 `;
 
@@ -68,6 +80,10 @@ export const H4 = styled.h4`
     content: 'H4';
     background-color: #0f0;
     color: #333;
+    
+    .theme-dark & {
+      background-color: #0d0;
+    }
   }
 `;
 
@@ -80,6 +96,10 @@ export const H5 = styled.h5`
     content: 'H5';
     background-color: #0ff;
     color: #333;
+    
+    .theme-dark & {
+      background-color: #0dd;
+    }
   }
 `;
 

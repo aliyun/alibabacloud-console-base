@@ -4,7 +4,7 @@ import {
 import update from 'immutability-helper';
 
 import {
-  IModelPropsTab
+  ITabItem
 } from '../types';
 
 import useModelProps from './_use-model-props';
@@ -12,7 +12,7 @@ import useVisibleTabs from './use-visible-tabs';
 import useActiveTab from './use-active-tab';
 import useHandleTabActivate from './use-handle-tab-activate';
 
-export default function useHandleTabClose(): (tab: IModelPropsTab) => void {
+export default function useHandleTabClose(): (tab: ITabItem) => void {
   const {
     tabs,
     onTabClose
@@ -21,9 +21,9 @@ export default function useHandleTabClose(): (tab: IModelPropsTab) => void {
   const activeTab = useActiveTab();
   const handleTabActivate = useHandleTabActivate();
   
-  return useCallback((tab: IModelPropsTab): void => {
+  return useCallback((tab: ITabItem): void => {
     const activeIndex = activeTab ? visibleTabs.indexOf(activeTab) : -1;
-    let nextActiveTab: IModelPropsTab | null = activeTab;
+    let nextActiveTab: ITabItem | null = activeTab;
     
     if (tab === activeTab) { // 关闭当前选中 tab，需要指定下一个选中 tab
       if (visibleTabs.length === 1) { // 关闭仅剩的可见 tab

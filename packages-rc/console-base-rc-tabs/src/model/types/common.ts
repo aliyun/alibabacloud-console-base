@@ -7,7 +7,7 @@
  */
 export type TContentPadding = 'none' | 'top' | 'around';
 
-export interface IModelPropsTab {
+export interface ITabItem {
   key: string;
   title: string | JSX.Element;
   content?: string | JSX.Element | null;

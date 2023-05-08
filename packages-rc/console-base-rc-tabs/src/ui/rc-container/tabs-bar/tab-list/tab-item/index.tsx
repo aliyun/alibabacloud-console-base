@@ -133,6 +133,6 @@ export default function NavItem({
     className: classNameForTabItem
   }}>
     <TabButton tab={tab} />
-    <TabX tab={tab} />
+    {active && tab.closable ? <TabX tab={tab} /> : null}
   </ScTabItem>;
 }

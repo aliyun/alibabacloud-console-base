@@ -9,5 +9,5 @@ export {
 export type {
   TContentPadding as TabContentPadding,
   IModelProps as ModelProps,
-  IModelPropsTab as ModelPropsTab
+  ITabItem as ModelPropsTab
 } from './types';

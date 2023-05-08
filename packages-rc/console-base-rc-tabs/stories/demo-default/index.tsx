@@ -79,6 +79,7 @@ export default function DemoDefault(): JSX.Element {
   
   const tabsProps: TabsProps = {
     tabs: stateTabs,
+    extra: <div>Extra</div>,
     variant: stateVariant,
     noContent: stateNoContent,
     activeKey: stateActiveTab,

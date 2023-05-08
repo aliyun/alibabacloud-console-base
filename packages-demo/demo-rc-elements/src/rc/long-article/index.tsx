@@ -60,10 +60,10 @@ const MUSIC_URL = 'https://music.163.com/song/media/outer/url?id=1352879122.mp3'
  */
 export default function LongArticle(): JSX.Element {
   return <ScLongArticle>
+    <h1>Ich Verlasse Heut&#39; Dein Herz</h1>
     <audio controls src={MUSIC_URL}>
       <track kind="captions" src={MUSIC_URL} />
     </audio>
-    <h1>Ich Verlasse Heut&#39; Dein Herz</h1>
     <h2>歌手：Lacrimosa</h2>
     <h2>专辑：Elodia</h2>
     <h2>作词：Tilo Wolff</h2>
