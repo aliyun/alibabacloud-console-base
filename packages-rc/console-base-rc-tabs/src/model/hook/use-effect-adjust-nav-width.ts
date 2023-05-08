@@ -36,7 +36,7 @@ export default function useEffectAdjustNavWidth(): void {
       activeOffset -= (domTabList.children[i] as HTMLElement).offsetWidth;
     }
     
-    dispatchSetNavOffsetMax(Math.min(widthOfTabs - widthOfNav - 48, 0)); // FIXME 48 硬了，等于 TAB_SCROLL_BUTTON_WIDTH * 2
+    dispatchSetNavOffsetMax(Math.min(widthOfTabs - widthOfNav - 40, 0)); // FIXME 40 硬了，等于 TAB_SCROLL_BUTTON_WIDTH * 2
     dispatchSetNavOffset(activeOffset);
   }, [width, visibleTabs, activeTab, domUi, domTabList, dispatchSetNavOffset, dispatchSetNavOffsetMax]);
 }

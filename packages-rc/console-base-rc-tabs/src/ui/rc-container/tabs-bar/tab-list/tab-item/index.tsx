@@ -1,11 +1,17 @@
 import React from 'react';
 import styled, {
-  FlattenSimpleInterpolation,
   css
 } from 'styled-components';
 
 import {
-  mixinBgAccent
+  mixinBgPrimary,
+  mixinBgSecondary,
+  mixinBgAccent,
+  mixinTextPrimary,
+  mixinTextSecondary,
+  mixinTextAccent,
+  mixinBorderSecondaryRight,
+  mixinBorderSecondaryBottom
 } from '@alicloud/console-base-theme';
 
 import {
@@ -15,7 +21,8 @@ import {
   useActiveTab
 } from '../../../../../model';
 import {
-  TAB_HEIGHT
+  TAB_MAX_WIDTH,
+  TAB_HEIGHT, TAB_MIN_WIDTH
 } from '../../../../const';
 
 import TabButton from './tab-button';
@@ -30,39 +37,85 @@ interface IScProps {
   $active?: boolean;
 }
 
-function getCssTabItemAfter(props: IScProps): FlattenSimpleInterpolation | null {
-  switch (props.$variant) {
-    case TabsVariant.BROWSER:
-      return null;
-    default:
-      return css`
-  bottom: 0;
-  left: ${props.$active ? 0 : '50%'};
-  width: ${props.$active ? '100%' : 0};
-  height: 1px;
-  ${mixinBgAccent}
-`;
-  }
-}
-
-const ScTabItem = styled.li<IScProps>`
+const cssCommon = css`
   display: inline-block;
   position: relative;
-  max-width: 100%;
+  min-width: ${TAB_MIN_WIDTH}px;
+  max-width: ${TAB_MAX_WIDTH}px;
   line-height: ${TAB_HEIGHT}px;
   
   &:after {
     content: '';
     position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
     transition: all linear 200ms;
-    ${getCssTabItemAfter}
+  }
+`;
+
+const cssPlain = css`
+  &:hover {
+    ${mixinTextAccent}
   }
   
-  &:last-child {
-    &:after {
-      display: ${props => (props.$variant === TabsVariant.BROWSER ? 'none' : 'block')};
-    }
+  &:after {
+    ${mixinBgAccent}
   }
+`;
+const cssPlainActive = css`
+  ${mixinTextAccent}
+  
+  &:after {
+    left: 0;
+    width: 100%;
+  }
+`;
+const cssBrowser = css`
+  ${mixinBgSecondary}
+  ${mixinTextSecondary}
+  ${mixinBorderSecondaryRight}
+  
+  &:after {
+    left: 0;
+    width: 100%;
+    ${mixinBorderSecondaryBottom}
+  }
+`;
+const cssBrowserActive = css`
+  ${mixinBgPrimary}
+  ${mixinTextPrimary}
+  
+  &:after {
+    left: 50%;
+    width: 0;
+  }
+`;
+
+const ScTabItem = styled.li<IScProps>`
+  ${cssCommon}
+  
+  ${props => {
+    switch (props.$variant) {
+      case TabsVariant.BROWSER:
+        return cssBrowser;
+      default:
+        return cssPlain;
+    }
+  }}
+  ${props => {
+    if (!props.$active) {
+      return null;
+    }
+    
+    switch (props.$variant) {
+      case TabsVariant.BROWSER:
+        return cssBrowserActive;
+      default:
+        return cssPlainActive;
+    }
+  }}
 `;
 
 export default function NavItem({

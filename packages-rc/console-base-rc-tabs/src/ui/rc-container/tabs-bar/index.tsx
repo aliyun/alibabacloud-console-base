@@ -31,12 +31,23 @@ interface IScProps {
 //         return mixinBorderSecondaryBottom;
 //     }
 //   }}
+// 用 after 代替 border-bottom 以保证内部 button 的 after 元素（表示 active）可以覆盖在上边，而不是看起来有两根线
 const ScTabsBar = styled.div<IScProps>`
   display: flex;
   align-items: flex-end;
   position: relative;
   height: ${TAB_HEIGHT}px;
-  ${mixinBorderSecondaryBottom}
+  
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    height: 1px;
+    ${mixinBorderSecondaryBottom}
+  }
 `;
 
 const ScTabsBarNavWrapper = styled.div`
