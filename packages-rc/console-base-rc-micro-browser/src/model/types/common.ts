@@ -3,17 +3,6 @@ import {
   TabProps
 } from '@alicloud/console-base-rc-tabs';
 
-import {
-  EMicroBrowserMode
-} from '../enum';
-
-interface IPayloadRndDragResize {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-}
-
 /**
  * props 中跟 RND 大小有关的配置
  */
@@ -89,9 +78,4 @@ export interface ITabsItemProps extends TabProps {}
 
 export interface ITabsProps extends Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller'> {}
 
-export interface IPayloadDrag extends IPayloadRndDragResize {}
-
-export interface IPayloadResize extends IPayloadRndDragResize {
-  mode: EMicroBrowserMode; // 当前所处模式
-  stopped?: boolean;
-}
+export type TDraggingResizing = -1 | 0 | 1;

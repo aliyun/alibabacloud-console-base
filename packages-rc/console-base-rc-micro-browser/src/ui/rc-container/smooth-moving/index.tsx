@@ -4,7 +4,8 @@ import {
 } from 'styled-components';
 
 import {
-  useMoving
+  useDragging,
+  useResizing
 } from '../../../model';
 
 const StyleForSmoothMoving = createGlobalStyle`
@@ -24,5 +25,8 @@ const StyleForSmoothMoving = createGlobalStyle`
  * 2. 让 iframe 鼠标穿透，以免经常无法拖动
  */
 export default function SmoothMoving(): JSX.Element | null {
-  return useMoving() ? <StyleForSmoothMoving /> : null;
+  const dragging = useDragging();
+  const resizing = useResizing();
+  
+  return dragging >= 0 || resizing >= 0 ? <StyleForSmoothMoving /> : null;
 }

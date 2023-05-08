@@ -15,6 +15,7 @@ import Button, {
 
 import {
   ModelPropsTab,
+  useProps,
   useHandleTabClose
 } from '../../../../../../model';
 import {
@@ -48,11 +49,15 @@ const ScTabX = styled(Button)`
 export default function TabX({
   tab
 }: IProps): JSX.Element | null {
+  const {
+    classNameForTabX
+  } = useProps();
   const handleTabClose = useHandleTabClose();
   const handleClick = useCallback(() => handleTabClose(tab), [tab, handleTabClose]);
   
   return tab.closable ? <ScTabX {...{
     spm: 'x',
+    className: classNameForTabX,
     title: intl('op:close'),
     label: <Icon type="x" />,
     theme: ButtonTheme.NONE,

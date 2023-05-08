@@ -62,7 +62,8 @@ const TAB_ITEMS: MicroBrowserTabsItemProps[] = [{
 }, {
   key: 'default-2',
   title: 'Flex 上中下',
-  content: <Flex100HBF />
+  content: <Flex100HBF />,
+  closable: true
 }, {
   key: 'default-3',
   title: '测试用例长长长长长长长长长长长长长长长长长长长长长长长长长长长',
@@ -75,6 +76,8 @@ const MODE_CHOICES: ChoiceItem<MicroBrowserMode>[] = Object.keys(MicroBrowserMod
   value: MicroBrowserMode[k as keyof typeof MicroBrowserMode]
 }));
 
+let addIndex = 1;
+
 export default function DemoDefault(): JSX.Element {
   const [stateTabs, setStateTabs] = useState<MicroBrowserTabsItemProps[]>(TAB_ITEMS);
   const [stateMode, setStateMode] = useState<MicroBrowserMode | undefined>(undefined);
@@ -83,7 +86,7 @@ export default function DemoDefault(): JSX.Element {
   
   const handleTabClose = useCallback((_tab: TabProps, toTabs: TabProps[]) => setStateTabs(toTabs), [setStateTabs]);
   const handleAdd = useCallback(() => {
-    const key = new Date().toISOString();
+    const key = `ADD-${addIndex++}`;
     
     setStateTabs(update(stateTabs, {
       $push: [{

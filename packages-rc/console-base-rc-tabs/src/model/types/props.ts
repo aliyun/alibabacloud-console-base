@@ -19,6 +19,7 @@ export interface IModelProps {
   variant?: ETabsVariant;
   classNameForTabBar?: string; // 为了让外部可以有个钩子
   classNameForTabItem?: string; // 为了让外部可以有个钩子
+  classNameForTabX?: string; // 为了让外部可以有个钩子
   classNameForTabScroller?: string; // 为了让外部可以有个钩子
   onChange?(key: string): void;
   onTabClose?(tab: IModelPropsTab, toTabs: IModelPropsTab[], fromTabs: IModelPropsTab[]): void;

@@ -4,12 +4,12 @@ import {
 } from 'react';
 
 import {
-  ETooltipPlacement
-} from '../enum';
-import {
   ARROW_OFFSET,
   ARROW_TRIANGLE_BASE
 } from '../../const';
+import {
+  ETooltipPlacement
+} from '../enum';
 
 import useModelProps from './_use-model-props';
 

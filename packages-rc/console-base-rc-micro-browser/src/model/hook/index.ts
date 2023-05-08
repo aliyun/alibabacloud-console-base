@@ -1,7 +1,8 @@
 export { default as useProps } from './_use-model-props';
 
 export { default as useMode } from './use-mode';
-export { default as useMoving } from './use-moving';
+export { default as useDragging } from './use-dragging';
+export { default as useResizing } from './use-resizing';
 export { default as useZIndex } from './use-z-index';
 export { default as useRndRectX } from './use-rnd-rect-x';
 export { default as useRndRectY } from './use-rnd-rect-y';
@@ -19,6 +20,7 @@ export { default as useTabsProps } from './use-tabs-props';
 export { default as useHandleMinimize } from './use-handle-minimize';
 export { default as useHandleStickRight } from './use-handle-stick-right';
 export { default as useHandleRndDragStart } from './use-handle-rnd-drag-start';
+export { default as useHandleRndDrag } from './use-handle-rnd-drag';
 export { default as useHandleRndDragStop } from './use-handle-rnd-drag-stop';
 export { default as useHandleRndResizeStart } from './use-handle-rnd-resize-start';
 export { default as useHandleRndResize } from './use-handle-rnd-resize';

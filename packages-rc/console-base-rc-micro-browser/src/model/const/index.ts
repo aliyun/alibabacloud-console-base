@@ -31,8 +31,15 @@ export const BODY_CLASS_WITH_MICRO_BROWSER = 'with-micro-browser';
 /**
  * RND 钩子
  */
-export const CLASS_J_RND_HANDLE = 'J_console_base_rc_one_modal_rnd_handle';
-export const CLASS_J_RND_CANCEL = 'J_console_base_rc_one_modal_rnd_cancel';
+export const CLASS_J_RND_HANDLE = 'J_micro_browser_rnd_handle';
+/**
+ * 位于 CLASS_J_RND_HANDLE 内部，不希望拖拽结束触发其 click
+ */
+export const CLASS_J_RND_PREVENT_CLICK = 'J_micro_browser_rnd_prevent_click';
+/**
+ * 位于 CLASS_J_RND_HANDLE 内部，不希望触发拖拽
+ */
+export const CLASS_J_RND_CANCEL = 'J_micro_browser_rnd_cancel';
 
 export const DEFAULT_SIZE_AND_POSITION: ISizeAndPosition = {
   width: -1,
@@ -48,5 +55,5 @@ export const DEFAULT_CONTEXT_STATE: IModelState = {
   viewportW: viewport.width,
   viewportH: viewport.height,
   resizing: -1,
-  dragging: false
+  dragging: -1
 };

@@ -4,10 +4,11 @@ import {
 
 import {
   TabsProps,
-  TabsTheme
+  TabsVariant
 } from '@alicloud/console-base-rc-tabs';
 
 import {
+  CLASS_J_RND_PREVENT_CLICK,
   CLASS_J_RND_CANCEL
 } from '../const';
 
@@ -22,10 +23,11 @@ export default function useTabsProps(): TabsProps {
   
   return useMemo((): TabsProps => ({
     ...tabs,
-    theme: TabsTheme.INVERSE,
+    variant: TabsVariant.BROWSER,
     contentPadding: 'none',
     classNameForTabBar: dragHandleClass,
-    classNameForTabItem: CLASS_J_RND_CANCEL,
+    classNameForTabItem: CLASS_J_RND_PREVENT_CLICK,
+    classNameForTabX: CLASS_J_RND_CANCEL,
     classNameForTabScroller: CLASS_J_RND_CANCEL
   }), [tabs, dragHandleClass]);
 }

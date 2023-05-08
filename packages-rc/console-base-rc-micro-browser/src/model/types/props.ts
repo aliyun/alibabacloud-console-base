@@ -20,4 +20,10 @@ export interface IModelProps extends ISizeConfig {
   // 回调
   onModeChange?(mode: EMicroBrowserMode): void;
   onClose?(): void;
+  onDragStart?(): void;
+  onDrag?(): void;
+  onDragEnd?(): void;
+  onResizeStart?(): void;
+  onResize?(): void;
+  onResizeEnd?(): void;
 }

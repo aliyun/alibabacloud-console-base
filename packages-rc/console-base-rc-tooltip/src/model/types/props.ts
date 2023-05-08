@@ -45,6 +45,6 @@ export interface IPropsCustom {
   onClose?(): void;
 }
 
-export interface IPropsDom extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {}
+export interface IPropsDom extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'> {}
 
 export interface IModelProps extends IPropsCustom, IPropsDom {}
