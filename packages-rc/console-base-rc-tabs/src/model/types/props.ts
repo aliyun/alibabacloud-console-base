@@ -27,10 +27,12 @@ export interface IModelProps {
   noContent?: boolean;
   activeKey?: string;
   defaultActiveKey?: string;
-  classNameForTabBar?: string; // 为了让外部可以有个钩子
-  classNameForTabItem?: string; // 为了让外部可以有个钩子
-  classNameForTabX?: string; // 为了让外部可以有个钩子
-  classNameForTabScroller?: string; // 为了让外部可以有个钩子
+  // 以下 classNameForXx 是为了让外部有样式钩子
+  classNameForTabBar?: string;
+  classNameForTabItem?: string;
+  classNameForTabX?: string;
+  classNameForTabScroller?: string;
+  classNameForTabExtra?: string;
   onChange?(key: string): void;
   onTabClose?(tab: ITabItem, toTabs: ITabItem[], fromTabs: ITabItem[]): void;
   onTabBarDoubleClick?(): void;

@@ -5,13 +5,11 @@ import styled, {
 
 import {
   mixinBgPrimary,
-  mixinBgSecondary,
   mixinBgAccent,
   mixinTextPrimary,
   mixinTextSecondary,
   mixinTextAccent,
-  mixinBorderSecondaryRight,
-  mixinBorderSecondaryBottom
+  mixinBorderSecondaryRight
 } from '@alicloud/console-base-theme';
 
 import {
@@ -43,6 +41,13 @@ const cssCommon = css`
   min-width: ${TAB_MIN_WIDTH}px;
   max-width: ${TAB_MAX_WIDTH}px;
   line-height: ${TAB_HEIGHT}px;
+  transition: all 200ms ease-in-out;
+`;
+
+const cssPlain = css`
+  &:hover {
+    ${mixinTextAccent}
+  }
   
   &:after {
     content: '';
@@ -52,15 +57,6 @@ const cssCommon = css`
     width: 0;
     height: 1px;
     transition: all linear 200ms;
-  }
-`;
-
-const cssPlain = css`
-  &:hover {
-    ${mixinTextAccent}
-  }
-  
-  &:after {
     ${mixinBgAccent}
   }
 `;
@@ -73,24 +69,13 @@ const cssPlainActive = css`
   }
 `;
 const cssBrowser = css`
-  ${mixinBgSecondary}
   ${mixinTextSecondary}
   ${mixinBorderSecondaryRight}
-  
-  &:after {
-    left: 0;
-    width: 100%;
-    ${mixinBorderSecondaryBottom}
-  }
 `;
 const cssBrowserActive = css`
+  z-index: 10;
   ${mixinBgPrimary}
   ${mixinTextPrimary}
-  
-  &:after {
-    left: 50%;
-    width: 0;
-  }
 `;
 
 const ScTabItem = styled.li<IScProps>`
@@ -133,6 +118,6 @@ export default function NavItem({
     className: classNameForTabItem
   }}>
     <TabButton tab={tab} />
-    {active && tab.closable ? <TabX tab={tab} /> : null}
+    <TabX tab={tab} />
   </ScTabItem>;
 }

@@ -59,11 +59,6 @@ const TAB_ITEMS: MicroBrowserTabsItemProps[] = [{
   title: '哥特之皇 Lacrimosa',
   content: <LongArticle />,
   closable: true
-}, {
-  key: 'default-2',
-  title: '测试用例长长长长长长长长长长长长长长长长长长长长长长长长长长长',
-  content: <>123123123</>,
-  closable: true
 }];
 
 const MODE_CHOICES: ChoiceItem<MicroBrowserMode>[] = Object.keys(MicroBrowserMode).map((k): ChoiceItem<MicroBrowserMode> => ({

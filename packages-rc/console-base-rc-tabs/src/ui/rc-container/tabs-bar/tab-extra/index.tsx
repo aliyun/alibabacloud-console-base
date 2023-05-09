@@ -11,15 +11,15 @@ import {
 const ScTabExtra = styled(Flex)`
   display: flex;
   align-items: center;
-  padding: 0 4px;
   height: 100%;
 `;
 
 export default function TabExtra(): JSX.Element | null {
   const {
-    extra
+    extra,
+    classNameForTabExtra
   } = useProps();
   const refExtra = useRefExtra();
   
-  return extra ? <ScTabExtra ref={refExtra}>{extra}</ScTabExtra> : null;
+  return extra ? <ScTabExtra className={classNameForTabExtra} ref={refExtra}>{extra}</ScTabExtra> : null;
 }

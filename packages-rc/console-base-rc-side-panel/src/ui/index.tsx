@@ -45,8 +45,16 @@ const ScAside = styled.aside<IScProps>`
   width: ${SIZE.WIDTH_SIDE_PANEL}px;
   transition: transform ease-in-out 250ms;
   ${mixinBgPrimary}
+  ${mixinShadowLLeft}
+  
+  .theme-dark & {
+    box-shadow: inset 1px 0 0 0 rgba(255, 255, 255, 0.1), -4px 0 8px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  /* stylelint-disable order/order */
   ${props => (props.$collapsed ? css`
     transform: translateX(100%);
+    box-shadow: none !important;
   ` : mixinShadowLLeft)}
   
   /* stylelint-disable selector-class-pattern */

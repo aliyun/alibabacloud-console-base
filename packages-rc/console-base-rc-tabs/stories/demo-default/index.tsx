@@ -2,6 +2,7 @@ import React, {
   useState,
   useCallback
 } from 'react';
+import styled from 'styled-components';
 import update from 'immutability-helper';
 
 import {
@@ -23,6 +24,11 @@ import Tabs, {
   TabProps
 } from '../../src';
 import PkgInfo from '../pkg-info';
+
+const ScExtra = styled.div`
+  background-color: #f00;
+  color: #fff;
+`;
 
 const TABS: TabProps[] = [{
   key: 'long-article',
@@ -79,7 +85,7 @@ export default function DemoDefault(): JSX.Element {
   
   const tabsProps: TabsProps = {
     tabs: stateTabs,
-    extra: <div>Extra</div>,
+    extra: <ScExtra>Extra</ScExtra>,
     variant: stateVariant,
     noContent: stateNoContent,
     activeKey: stateActiveTab,

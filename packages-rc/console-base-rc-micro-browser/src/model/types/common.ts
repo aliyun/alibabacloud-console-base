@@ -76,6 +76,6 @@ export interface ISizeAndPosition {
 
 export interface ITabsItemProps extends TabProps {}
 
-export interface ITabsProps extends Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller'> {}
+export interface ITabsProps extends Omit<TabsProps, 'classNameForTabBar' | 'classNameForTabItem' | 'classNameForTabScroller' | 'classNameForTabExtra' | 'extra'> {}
 
 export type TDraggingResizing = -1 | 0 | 1;

@@ -24,12 +24,12 @@ export default function Content(): JSX.Element {
   return <Tabs {...{
     ...tabs,
     variant: TabsVariant.BROWSER,
+    extra: <Extra />,
     contentPadding: 'none',
     classNameForTabBar: rndDraggingDisabled ? '' : CLASS_J_RND_HANDLE,
     classNameForTabItem: CLASS_J_RND_PREVENT_CLICK,
     classNameForTabX: CLASS_J_RND_CANCEL,
     classNameForTabScroller: CLASS_J_RND_CANCEL,
-    extra: <Extra />,
     onTabBarDoubleClick: handleTogglePinned
   }} />;
 }

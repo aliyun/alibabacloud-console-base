@@ -14,7 +14,6 @@ import {
   TabsVariant,
   ModelPropsTab,
   useProps,
-  useActiveTab,
   useHandleTabActivate
 } from '../../../../../../model';
 import {
@@ -28,12 +27,11 @@ interface IProps {
 
 interface IScProps {
   $variant?: TabsVariant;
-  $active?: boolean;
   $closable?: boolean;
 }
 
 const ScTabButton = styled(ButtonBase)<IScProps>`
-  padding: 0 ${props => (props.$closable && props.$active ? TAB_X_SIZE + TAB_PADDING : TAB_PADDING)}px 0 ${TAB_PADDING}px;
+  padding: 0 ${props => (props.$closable ? TAB_X_SIZE + TAB_PADDING : TAB_PADDING)}px 0 ${TAB_PADDING}px;
   border: 0;
   width: 100%;
   height: 100%;
@@ -46,14 +44,12 @@ export default function TabButton({
   const {
     variant
   } = useProps();
-  const activeTab = useActiveTab();
   const handleTabActivate = useHandleTabActivate();
   const handleTabClick = useCallback(() => handleTabActivate(tab), [tab, handleTabActivate]);
   
   return <ScTabButton {...{
     $variant: variant,
     $closable: tab.closable,
-    $active: activeTab === tab,
     block: true,
     title: typeof tab.title === 'string' ? tab.title : undefined,
     onClick: handleTabClick

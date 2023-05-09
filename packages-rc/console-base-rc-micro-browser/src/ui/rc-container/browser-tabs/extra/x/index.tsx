@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Icon from '@alicloud/console-base-rc-icon';
-
 import {
   useProps
 } from '../../../../../model';
@@ -15,7 +13,7 @@ export default function ButtonX(): JSX.Element {
   
   return <ExtraButton {...{
     spm: 'close',
-    label: <Icon type="x" />,
+    icon: 'x',
     title: intl('op:close'),
     onClick: onClose
   }} />;

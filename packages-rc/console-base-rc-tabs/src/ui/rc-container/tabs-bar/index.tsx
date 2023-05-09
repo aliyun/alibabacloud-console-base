@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
+  mixinBgSecondary,
   mixinBorderSecondaryBottom
 } from '@alicloud/console-base-theme';
 
@@ -30,6 +31,7 @@ const ScTabsBar = styled.div<IScProps>`
   align-items: center;
   position: relative;
   height: ${TAB_HEIGHT}px;
+  ${props => (props.$variant === TabsVariant.BROWSER ? mixinBgSecondary : null)}
   
   &:after {
     content: '';
@@ -37,14 +39,15 @@ const ScTabsBar = styled.div<IScProps>`
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: -1;
+    z-index: 0;
     height: 1px;
     ${mixinBorderSecondaryBottom}
   }
 `;
 
-const ScTabsBarNavWrapper = styled.div`
+const ScTabListWrapper = styled.div`
   flex: 1;
+  z-index: 1;
   overflow: hidden;
 `;
 
@@ -60,13 +63,13 @@ export default function TabsBar(): JSX.Element {
   return <ScTabsBar {...{
     $variant: variant
   }}>
-    <ScTabsBarNavWrapper {...{
-      ref: refTabBar,
+    <ScTabListWrapper {...{
+      ref: refTabBar, // 在 handleTabBarDoubleClick 判断是否为其本身（而非）内部元素的双击
       className: classNameForTabBar,
       onDoubleClick: handleTabBarDoubleClick
     }}>
       <TabList />
-    </ScTabsBarNavWrapper>
+    </ScTabListWrapper>
     {navOffsetMax < 0 ? <TabScrollButtons /> : null}
     <TabExtra />
   </ScTabsBar>;

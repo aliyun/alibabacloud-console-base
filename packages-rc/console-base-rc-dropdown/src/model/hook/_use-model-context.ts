@@ -8,5 +8,5 @@ import {
 import Context from '../context';
 
 export default function useModelContext(): IModelContext {
-  return useContext(Context)!;
+  return useContext(Context)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 }
