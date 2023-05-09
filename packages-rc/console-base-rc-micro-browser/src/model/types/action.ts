@@ -12,8 +12,6 @@ import {
 } from './common';
 
 export type TModelAction = {
-  type: EAction.REFRESH_WINDOW_SIZE | EAction.RESET;
-} | {
   type: EAction.SET_MODE;
   payload: EMicroBrowserMode;
 } | {
@@ -22,6 +20,8 @@ export type TModelAction = {
 } | {
   type: EAction.SET_SIZE_WIDTH | EAction.SET_SIZE_HEIGHT | EAction.SET_SIZE_WIDTH_PINNED | EAction.SET_POSITION_RIGHT | EAction.SET_POSITION_BOTTOM;
   payload: number;
+} | {
+  type: EAction.REFRESH_WINDOW_SIZE | EAction.RESET;
 };
 
 export type TModelDispatch = Dispatch<TModelAction>;

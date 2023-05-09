@@ -85,6 +85,7 @@ const ScRnd = styled(Rnd as any)<IScProps>`
   
   ${`.${CLASS_J_RND_HANDLE}`} {
     cursor: move;
+    user-select: none;
   }
   
   ${`.${CLASS_J_RND_PREVENT_CLICK_AFTER_DRAG}`} {

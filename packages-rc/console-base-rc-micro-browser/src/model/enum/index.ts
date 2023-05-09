@@ -5,7 +5,6 @@ export enum EMicroBrowserMode {
 }
 
 export enum EAction {
-  REFRESH_WINDOW_SIZE,
   SET_MODE,
   SET_DRAGGING,
   SET_RESIZING,
@@ -14,5 +13,6 @@ export enum EAction {
   SET_SIZE_WIDTH_PINNED,
   SET_POSITION_RIGHT,
   SET_POSITION_BOTTOM,
+  REFRESH_WINDOW_SIZE,
   RESET
 }
