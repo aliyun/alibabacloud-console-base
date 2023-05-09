@@ -9,7 +9,7 @@ import {
 import useMode from './use-mode';
 import useHandleModeChange from './use-handle-mode-change';
 
-export default function useHandleMinimize(): () => void {
+export default function useHandleToggleMinimized(): () => void {
   const mode = useMode();
   const handleModeChange = useHandleModeChange();
   

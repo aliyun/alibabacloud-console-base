@@ -2,7 +2,11 @@ import {
   HandleStyles
 } from 'react-rnd';
 
-import usePinned from './use-pinned';
+import {
+  EMicroBrowserMode
+} from '../enum';
+
+import useMode from './use-mode';
 
 const resizeHandleStyleHidden = {
   display: 'none'
@@ -19,7 +23,7 @@ const onlyLeft: HandleStyles = {
 };
 
 export default function useRndResizeHandleStyles(): HandleStyles | undefined {
-  if (usePinned()) {
+  if (useMode() === EMicroBrowserMode.PINNED) {
     return onlyLeft;
   }
 }

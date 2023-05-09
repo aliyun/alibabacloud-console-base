@@ -16,9 +16,9 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  EMicroBrowserMode,
+  MicroBrowserMode,
   CLASS_J_RND_HANDLE,
-  CLASS_J_RND_PREVENT_CLICK,
+  CLASS_J_RND_PREVENT_CLICK_AFTER_DRAG,
   CLASS_J_RND_CANCEL,
   useMode,
   useDragging,
@@ -46,7 +46,7 @@ interface IProps {
 }
 
 interface IScProps {
-  $mode: EMicroBrowserMode;
+  $mode: MicroBrowserMode;
   $dragging: boolean;
   $resizing: boolean;
   $visible: boolean;
@@ -68,9 +68,9 @@ const ScRnd = styled(Rnd as any)<IScProps>`
   
   ${props => {
     switch (props.$mode) {
-      case EMicroBrowserMode.FREE:
+      case MicroBrowserMode.FREE:
         return mixinBorderSecondary;
-      case EMicroBrowserMode.PINNED:
+      case MicroBrowserMode.PINNED:
         return mixinBorderSecondaryLeft;
       default:
         return null;
@@ -87,7 +87,7 @@ const ScRnd = styled(Rnd as any)<IScProps>`
     cursor: move;
   }
   
-  ${`.${CLASS_J_RND_PREVENT_CLICK}`} {
+  ${`.${CLASS_J_RND_PREVENT_CLICK_AFTER_DRAG}`} {
     ${props => (props.$dragging > 0 ? css`
       pointer-events: none;
     ` : null)}
@@ -133,7 +133,7 @@ export default function TheRnd({
       $mode: mode,
       $dragging: dragging,
       $resizing: resizing,
-      $visible: visible && mode !== EMicroBrowserMode.MINIMIZED,
+      $visible: visible && mode !== MicroBrowserMode.MINIMIZED,
       bounds: 'window',
       size: {
         width: w,

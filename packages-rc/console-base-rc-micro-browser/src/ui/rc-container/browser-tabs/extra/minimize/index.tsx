@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   useProps,
-  useHandleMinimize
+  useHandleToggleMinimized
 } from '../../../../../model';
 import intl from '../../../../intl';
 import ExtraButton from '../extra-button';
@@ -11,12 +11,12 @@ export default function ButtonMinimize(): JSX.Element | null {
   const {
     minimizable
   } = useProps();
-  const onMinimize = useHandleMinimize();
+  const handleToggleMinimized = useHandleToggleMinimized();
   
   return minimizable ? <ExtraButton {...{
     spm: 'minimize',
     icon: 'minimize',
     title: intl('op:minimize'),
-    onClick: onMinimize
+    onClick: handleToggleMinimized
   }} /> : null;
 }

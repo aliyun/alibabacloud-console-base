@@ -1,7 +1,7 @@
 export { default } from './with-model';
 
 export {
-  EMicroBrowserMode as MicroBrowserMode
+  MicroBrowserMode
 } from './model';
 
 export type {

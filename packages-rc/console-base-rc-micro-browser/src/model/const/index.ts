@@ -33,9 +33,9 @@ export const BODY_CLASS_WITH_MICRO_BROWSER = 'with-micro-browser';
  */
 export const CLASS_J_RND_HANDLE = 'J_micro_browser_rnd_handle';
 /**
- * 位于 CLASS_J_RND_HANDLE 内部，不希望拖拽结束触发其 click
+ * 位于 CLASS_J_RND_HANDLE 内部，产生真正拖拽时，不希望结束后触发其 Click 或 DoubleClick 事件
  */
-export const CLASS_J_RND_PREVENT_CLICK = 'J_micro_browser_rnd_prevent_click';
+export const CLASS_J_RND_PREVENT_CLICK_AFTER_DRAG = 'J_micro_browser_rnd_prevent_click_after_drag';
 /**
  * 位于 CLASS_J_RND_HANDLE 内部，不希望触发拖拽
  */

@@ -6,12 +6,12 @@ import {
   EMicroBrowserMode
 } from '../enum';
 
-import usePinned from './use-pinned';
+import useMode from './use-mode';
 import useHandleModeChange from './use-handle-mode-change';
 
 export default function useHandleTogglePinned(): () => void {
-  const active = usePinned();
+  const mode = useMode();
   const handleModeChange = useHandleModeChange();
   
-  return useCallback(() => handleModeChange(active ? EMicroBrowserMode.FREE : EMicroBrowserMode.PINNED), [active, handleModeChange]);
+  return useCallback(() => handleModeChange(mode === EMicroBrowserMode.PINNED ? EMicroBrowserMode.FREE : EMicroBrowserMode.PINNED), [mode, handleModeChange]);
 }
