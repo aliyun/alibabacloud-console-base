@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/react-hook-mouse-hover",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Hook - 延时 MouseEnter 和 MouseLeave",
   "license": "MIT",
   "sideEffects": false,
