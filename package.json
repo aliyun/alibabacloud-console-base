@@ -15,7 +15,7 @@
     "lerna": "^6.6.2",
     "lint-staged": "^13.2.2",
     "markdownlint-cli2": "^0.7.1",
-    "npm-check-updates": "^16.10.10",
+    "npm-check-updates": "^16.10.12",
     "stylelint": "^13.13.1",
     "ts-node": "^10.9.1"
   },
