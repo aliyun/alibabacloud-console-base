@@ -17,9 +17,7 @@ import {
 import {
   useRefDrop,
   useDropVisible,
-  useDropStyle,
-  useHandleDropExit,
-  useHandleDropExitDone
+  useDropStyle
 } from '../../../model';
 
 import Header from './header';
@@ -54,8 +52,6 @@ export default function TheDrop(): JSX.Element {
   const refDrop = useRefDrop();
   const dropVisible = useDropVisible();
   const dropStyle = useDropStyle();
-  const handleDropExit = useHandleDropExit();
-  const handleDropExitDone = useHandleDropExitDone();
   
   return <CSSTransition {...{
     in: dropVisible,
@@ -63,9 +59,7 @@ export default function TheDrop(): JSX.Element {
     timeout: {
       enter: 10,
       exit: 300
-    },
-    onExit: handleDropExit,
-    onExited: handleDropExitDone
+    }
   }}>
     <ScDrop style={dropStyle} ref={refDrop}>
       <Header />

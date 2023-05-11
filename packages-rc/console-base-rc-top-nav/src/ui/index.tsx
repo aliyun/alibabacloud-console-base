@@ -56,7 +56,8 @@ export default function Ui(): JSX.Element {
   const {
     id,
     className,
-    fixed
+    fixed,
+    dock
   } = useProps();
   
   return <>
@@ -70,7 +71,7 @@ export default function Ui(): JSX.Element {
       [DATA_KEY_J]: ''
     }}>
       <Flex align="center">
-        <Dock />
+        {dock?.onActiveChange ? <Dock /> : null}
         <Logo />
       </Flex>
       <Custom />

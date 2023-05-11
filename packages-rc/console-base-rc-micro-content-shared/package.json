@@ -40,7 +40,7 @@
     "@alicloud/console-base-rc-goto-ends": "^1.0.0",
     "@alicloud/console-base-intl-factory-basic": "^1.6.9",
     "@alicloud/console-base-rc-button": "^1.8.2",
-    "@alicloud/console-base-theme": "^1.9.6",
+    "@alicloud/console-base-theme": "^1.9.7",
     "@alicloud/console-base-theme-sc-base": "^1.6.4",
     "@alicloud/dom-event-hijacker": "^2.3.9"
   },

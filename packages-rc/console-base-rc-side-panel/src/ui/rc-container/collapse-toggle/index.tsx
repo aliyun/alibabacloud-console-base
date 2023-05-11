@@ -10,7 +10,7 @@ import {
   mixinBgAccent,
   mixinTextWhite
 } from '@alicloud/console-base-theme';
-import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
+import useMouseHover from '@alicloud/react-hook-mouse-hover';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
@@ -72,11 +72,14 @@ export default function PanelToggle(): JSX.Element {
   const collapsed = useCollapsed();
   const unread = useItemsTop().some(v => v.unread);
   const handleToggleCollapsed = useHandleCollapsedChange();
-  const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
-    setStateHovered(true);
-  }, [setStateHovered]), useCallback(() => {
-    setStateHovered(false);
-  }, [setStateHovered]));
+  const [handleMouseEnter, handleMouseLeave] = useMouseHover({
+    onEnter: useCallback(() => {
+      setStateHovered(true);
+    }, [setStateHovered]),
+    onLeave: useCallback(() => {
+      setStateHovered(false);
+    }, [setStateHovered])
+  });
   
   const title = intl(collapsed ? 'op:toggle_visible' : 'op:toggle_hidden');
   

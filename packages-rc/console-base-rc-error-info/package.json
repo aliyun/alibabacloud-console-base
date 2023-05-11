@@ -44,7 +44,7 @@
     "@alicloud/console-base-rc-copy-it": "^1.4.9",
     "@alicloud/console-base-rc-html-trusted": "^1.0.5",
     "@alicloud/console-base-rc-icon": "^1.10.6",
-    "@alicloud/console-base-theme": "^1.9.6",
+    "@alicloud/console-base-theme": "^1.9.7",
     "@alicloud/react-hook-controllable": "^1.2.0",
     "lodash-es": "^4.17.21",
     "qs": "^6.11.1"

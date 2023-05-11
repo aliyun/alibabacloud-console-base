@@ -16,7 +16,7 @@ In your `tsconfig.json`:
 {
   "extends": "@alicloud/ts-config/index.json",
   "include": [
-    "./src"
+    "src"
   ]
 }
 ```

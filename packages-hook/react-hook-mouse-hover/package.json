@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/react-hook-mouse-enter-leave",
-  "version": "1.0.3",
+  "name": "@alicloud/react-hook-mouse-hover",
+  "version": "1.0.1",
   "description": "React Hook - 延时 MouseEnter 和 MouseLeave",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
-  "module": "build/es/index.js",
+  "module": "build/esm/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-hook/react-hook-mouse-enter-leave",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-hook/react-hook-mouse-hover",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"
@@ -19,21 +19,23 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "useMouseEnterLeave"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-toolkit-cli": "^1.2.30",
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
+    "@alicloud/demo-rc-elements": "^1.12.2",
     "@alicloud/ts-config": "^1.1.3",
     "@types/react": "^17.0.58",
+    "@types/styled-components": "^5.1.26",
     "react": "^17.0.2",
+    "styled-components": "^5.3.10",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
     "react": ">=16.8"
   },
   "dependencies": {
+    "@alicloud/react-hook-controllable": "^1.2.0",
     "@alicloud/react-hook-is-unmounted": "^1.3.4"
   },
   "scripts": {
@@ -42,8 +44,8 @@
     "build:esm": "breezr build --engine babel --es-module",
     "build:cjs": "breezr build --engine babel",
     "build:bundle": "breezr build --engine webpack",
-    "build:typings": "tsc --outDir build/types --declaration --emitDeclarationOnly",
-    "build": "yarn build:esm && yarn build:cjs && yarn build:typings",
+    "build:types": "tsc -p tsconfig-declaration.json --rootDir src --outDir build/types --declaration --emitDeclarationOnly",
+    "build": "yarn build:esm && yarn build:cjs && yarn build:types",
     "clean": "rm -rf build",
     "prepublishOnly": "yarn clean && yarn build"
   }

@@ -3,7 +3,7 @@ import React, {
   useCallback
 } from 'react';
 
-import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
+import useMouseHover from '@alicloud/react-hook-mouse-hover';
 import Icon from '@alicloud/console-base-rc-icon';
 
 import {
@@ -19,11 +19,14 @@ import {
 export default function QuickTop(): JSX.Element {
   const handleGoTop = useHandleGoTop();
   const [stateHovered, setStateHovered] = useState(false);
-  const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
-    setStateHovered(true);
-  }, [setStateHovered]), useCallback(() => {
-    setStateHovered(false);
-  }, [setStateHovered]));
+  const [handleMouseEnter, handleMouseLeave] = useMouseHover({
+    onEnter: useCallback(() => {
+      setStateHovered(true);
+    }, [setStateHovered]),
+    onLeave: useCallback(() => {
+      setStateHovered(false);
+    }, [setStateHovered])
+  });
   
   const title = intl('op:back_to_top');
   

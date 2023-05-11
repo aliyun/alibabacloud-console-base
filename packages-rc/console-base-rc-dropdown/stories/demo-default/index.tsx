@@ -25,7 +25,7 @@ const dropdownProps: DropdownProps = {
 };
 
 const DEFAULT_PROPS: Record<string, unknown> = {
-  '/triggerAsJsx': true,
+  triggerAsJsx: true,
   ...dropdownProps,
   '/align': 'right', // 'left' | 'right'
   '/width': 300, // number | string

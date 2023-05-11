@@ -5,7 +5,7 @@ import {
 import useModelProps from './_use-model-props';
 import useDispatchSetDockActive from './use-dispatch-set-dock-active';
 
-export default function useHandleDockActiveChange(): (yes: boolean) => void {
+export default function useHandleDockActiveChange(): (active: boolean) => void {
   const {
     dock
   } = useModelProps();
@@ -14,12 +14,8 @@ export default function useHandleDockActiveChange(): (yes: boolean) => void {
     onActiveChange
   } = dock || {};
   
-  return useCallback((yes: boolean) => {
-    if (!onActiveChange) {
-      return;
-    }
-    
-    dispatchSetDockActive(yes);
-    onActiveChange(yes);
+  return useCallback((active: boolean) => {
+    dispatchSetDockActive(active);
+    onActiveChange?.(active);
   }, [dispatchSetDockActive, onActiveChange]);
 }

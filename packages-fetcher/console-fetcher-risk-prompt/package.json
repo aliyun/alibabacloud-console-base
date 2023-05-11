@@ -49,7 +49,7 @@
     "@alicloud/console-base-rc-input": "^1.7.2",
     "@alicloud/console-base-rc-tabs": "^1.8.10",
     "@alicloud/console-base-rc-tooltip": "^1.1.12",
-    "@alicloud/console-base-theme": "^1.9.6",
+    "@alicloud/console-base-theme": "^1.9.7",
     "@alicloud/console-fetcher-risk-data": "^1.0.1",
     "@alicloud/fetcher": "^1.7.9",
     "@alicloud/sandbox-escape": "^1.1.8",

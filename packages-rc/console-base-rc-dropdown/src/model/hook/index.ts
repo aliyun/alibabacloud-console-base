@@ -3,9 +3,10 @@ export { default as useRefDropdown } from './use-dispatch-set-dom-dropdown';
 export { default as useRefDrop } from './use-dispatch-set-dom-drop';
 export { default as useDropVisible } from './use-drop-visible';
 export { default as useDropStyle } from './use-drop-style';
-export { default as useHandleDropExit } from './use-handle-drop-exit';
-export { default as useHandleDropExitDone } from './use-handle-drop-exit-done';
-export { default as useHandleDropdownMouseEnter } from './use-handle-dropdown-mouse-enter';
-export { default as useHandleDropdownMouseLeave } from './use-handle-dropdown-mouse-leave';
+
+export { default as useHandleToggleVisible } from './use-handle-toggle-visible';
+export { default as useHandleToggleVisibleTrue } from './use-handle-toggle-visible-true';
+export { default as useHandleToggleVisibleFalse } from './use-handle-toggle-visible-false';
+
 // for content only
 export { default as useDropdown } from './use-dropdown';

@@ -19,7 +19,6 @@ export default function useHandleHideWhenDisabled(): () => void {
   return useCallback((): void => {
     if (disabled && visible) {
       dispatchSetVisible(false);
-      
       onVisibleChange?.(false);
     }
   }, [onVisibleChange, disabled, visible, dispatchSetVisible]);

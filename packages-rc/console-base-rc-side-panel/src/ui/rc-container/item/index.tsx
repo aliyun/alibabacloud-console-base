@@ -4,7 +4,7 @@ import React, {
   useCallback
 } from 'react';
 
-import useMouseEnterLeave from '@alicloud/react-hook-mouse-enter-leave';
+import useMouseHover from '@alicloud/react-hook-mouse-hover';
 import HtmlTrusted from '@alicloud/console-base-rc-html-trusted';
 import {
   renderEasyIcon
@@ -53,13 +53,16 @@ export default function Item({
 }: IProps): JSX.Element {
   const collapsed = useCollapsed();
   const [stateTooltipVisible, setStateTooltipVisible] = useState(tooltipDefaultVisible);
-  const [handleMouseEnter, handleMouseLeave] = useMouseEnterLeave(useCallback(() => {
-    setStateTooltipVisible(true);
-    onMouseEnter?.();
-  }, [setStateTooltipVisible, onMouseEnter]), useCallback(() => {
-    setStateTooltipVisible(false);
-    onMouseLeave?.();
-  }, [setStateTooltipVisible, onMouseLeave]));
+  const [handleMouseEnter, handleMouseLeave] = useMouseHover({
+    onEnter: useCallback(() => {
+      setStateTooltipVisible(true);
+      onMouseEnter?.();
+    }, [setStateTooltipVisible, onMouseEnter]),
+    onLeave: useCallback(() => {
+      setStateTooltipVisible(false);
+      onMouseLeave?.();
+    }, [setStateTooltipVisible, onMouseLeave])
+  });
   const handleClick = useCallback((e: MouseEvent<HTMLElement>) => {
     onClick?.(e);
     onActiveChange?.(!active);
