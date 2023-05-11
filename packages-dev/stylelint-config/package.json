@@ -16,10 +16,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "stylelint",
-    "config"
-  ],
+  "keywords": [],
   "devDependencies": {
     "stylelint": "^13.13.1"
   },

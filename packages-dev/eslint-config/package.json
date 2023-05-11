@@ -16,10 +16,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "eslint",
-    "config"
-  ],
+  "keywords": [],
   "devDependencies": {
     "eslint": "^8.40.0"
   },

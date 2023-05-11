@@ -10,7 +10,7 @@ export default extendConfiguration({
   output: {
     baseDir: 'build',
     dirs: {
-      es: 'es',
+      es: 'esm',
       cjs: 'cjs',
       umd: 'umd'
     }

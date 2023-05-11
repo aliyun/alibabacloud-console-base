@@ -19,11 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "react",
-    "markdown",
-    "micromark"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.9",
     "@alicloud/console-base-theme-sc-base": "^1.6.4",

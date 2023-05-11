@@ -19,13 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "mark",
-    "new",
-    "hot",
-    "alpha",
-    "beta"
-  ],
+  "keywords": [],
   "devDependencies": {
     "@alicloud/console-base-demo-helper-theme-switcher": "^1.1.9",
     "@alicloud/console-toolkit-cli": "^1.2.30",
