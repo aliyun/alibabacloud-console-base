@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 export enum EIconType {
   _ = 'e600', // 兜底阿里云图标【-】
+  acmp = 'e6d3', // 多云成本运营
   acms = 'e636', // 应用配置管理
   actiontrail = 'e710', // 操作审计
   adam = 'e79f', // 数据库和应用迁移
@@ -23,15 +24,19 @@ export enum EIconType {
   baas = 'e885', // 区块链服务
   bastion = 'e73f', // 堡垒机（安全管理）
   batchcompute = 'e7b2', // 批量计算
+  bccluster = 'e6d2', // 智能计算灵骏
   beebot = 'e7e0', // 云小蜜
   bpstudio = 'e68b', // 云架构设计工具 CADT
+  brainindustrial = 'e792',
   cas = 'e744', // SSL 证书（应用安全）
   cassandra = 'e926', // 云数据库 Cassandra 版
   cbn = 'e8a5', // 云企业网
   ccc = 'e823', // 云呼叫中心
+  cciot = 'e603', // 云连接器 CcIot
   ccs = 'e7d9', // 云客服
   cddc = 'e674', // 云数据库专属集群
   cdn = 'e738', // CDN
+  cdt = 'e6d1', // 云数据传输
   cfw = 'e7a9', // 云防火墙
   clickhouse = 'e67f', // 云数据库 ClickHouse
   cloudap = 'e7d7', // 云 AP
@@ -42,7 +47,7 @@ export enum EIconType {
   companyreg = 'e91f', // 企业工商注册服务
   computenest = 'e61d', // 计算巢服务
   config = 'e92f', // 配置审计
-  cos = 'e702', // 容器服务，viper 上的名字是 cos，但 fecs 返回的结果却是 cs..
+  cos = 'e702', // 容器服务
   cps = 'e71d', // 移动推送
   cr = 'e84a', // 容器镜像服务
   csas = 'e685', // 云安全访问服务
@@ -50,6 +55,7 @@ export enum EIconType {
   csk = 'e702', // 容器服务 Kubernetes 版
   cts = 'e891', // 内容安全（业务安全）
   cvc = 'e661', // 云视频会议
+  databot = 'e6be', // 智能数据助理
   datahub = 'e759',
   datai = 'e754', // 数据集成
   dataphin = 'e860', // 智能数据构建与管理
@@ -91,6 +97,7 @@ export enum EIconType {
   elasticsearch = 'e80f', // 阿里云 Elasticsearch
   emas = 'e607', // 移动研发平台
   emapreduce = 'e778', // E-MapReduce
+  energyexpert = 'e8ff', // 能耗宝
   ens = 'e83a', // 边缘节点服务 ENS
   entconsole = 'e639', // 资源管理
   ess = 'e609', // 弹性伸缩
@@ -103,8 +110,10 @@ export enum EIconType {
   ga = 'e633', // 全球加速
   gameshield = 'e746', // 游戏盾
   gds = 'e902', // 图数据库 GDB
-  gpdb = 'e62a', // 分析型数据库 PostgreSQL版
+  gpdb = 'e6c3', // 云原生数据仓库 AnalyticDB PostgreSQL 版
+  idrsservice = 'e6bd', // 智能双录质检
   igraph = 'e925', // 图计算服务 - Graph Compute Service
+  imp = 'e6c1', // 低代码音视频工厂
   governance = 'e6b2', // 云治理中心
   grafana = 'ebb0', // Grafana 服务
   gts = 'e637', // 全局事务服务
@@ -168,6 +177,7 @@ export enum EIconType {
   opensearch = 'e72b', // 开放搜索
   oss = 'e774', // 对象存储 OSS
   ots = 'e642', // 表格存储
+  outboundbot = 'e6bc', // 智能外呼机器人
   pai = 'e8c8', // 机器学习 PAI
   pcdn = 'e794', // PCDN
   petadata = 'e73b', // 云数据库 HybridDB for MySQL
@@ -204,6 +214,7 @@ export enum EIconType {
   flowbag = 'e613', // 共享流量包
   stream = 'e72c', // 实时计算
   swas = 'e7b4', // 轻量应用服务器
+  tair = 'e676', // 云原生内存数据库 Tair
   trademark = 'e8c1', // 商标服务
   tsdb = 'e785', // 时序时空数据库 TSDB
   uis = 'e919', // 极致互联网服务

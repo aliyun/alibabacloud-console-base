@@ -114,14 +114,14 @@ export default function DemoDefault(): JSX.Element {
     return v.toUpperCase().includes(keyword) || PRODUCT_MAPPING[v]?.toUpperCase().includes(keyword);
   }) : typesAll;
   let countOk = 0;
-  let countNotProduct = 0; // 没图标的产品
-  let countNotDefined = 0; // 不存在的产品（在 viper 上有，但没有透出到控制台）
+  let countNoProduct = 0; // 不存在的产品（在 viper 上有，但没有透出到控制台）
+  let countNoIcon = 0; // 没图标的产品
   
   typesAll.forEach(v => {
     if (!PRODUCT_MAPPING[v]) {
-      countNotProduct += 1;
+      countNoProduct += 1;
     } else if (!IconType[v]) {
-      countNotDefined += 1;
+      countNoIcon += 1;
     } else {
       countOk += 1;
     }
@@ -135,7 +135,7 @@ export default function DemoDefault(): JSX.Element {
         placeholder: 'Filter by product code',
         onChange: setStateFilter
       }} />
-      <ScMessage>{typesAll.length} = 没图标的产品：<strong className="no-product">{countNotProduct}</strong> + 不存在的产品：<strong className="no-type">{countNotDefined}</strong> + 存在的产品：{countOk}</ScMessage>
+      <ScMessage>{typesAll.length} = OK：{countOk} + 不存在（<strong className="no-product">{countNoProduct}</strong>） + 没图标（<strong className="no-type">{countNoIcon}</strong>）</ScMessage>
     </div>
     <ScList>
       {filteredTypes.map(v => {
