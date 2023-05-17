@@ -18,32 +18,6 @@ import {
   PRODUCT_MAPPING
 } from './const';
 
-const ScMessage = styled.span`
-  strong {
-    &.no-product,
-    &.no-type {
-      &:after {
-        content: '!';
-        margin-left: 4px;
-        padding: 2px 6px;
-        color: #fff;
-      }
-    }
-    
-    &.no-product {
-      &:after {
-        background-color: #f00;
-      }
-    }
-    
-    &.no-type {
-      &:after {
-        background-color: #fc6;
-      }
-    }
-  }
-`;
-
 const ScList = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -61,6 +35,7 @@ const ScList = styled.ul`
     height: 72px;
     font-size: 11px;
     text-align: center;
+    color: #666;
     
     i {
       font-size: 32px;
@@ -71,27 +46,15 @@ const ScList = styled.ul`
       background-color: #eee;
     }
     
-    &.no-product,
-    &.no-type {
-      &:after {
-        content: '!';
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 2px 6px;
-        color: #fff;
-      }
-    }
-    
     &.no-product {
-      &:after {
-        background-color: #f00;
+      i {
+        color: #fcc;
       }
     }
     
     &.no-type {
-      &:after {
-        background-color: #fc6;
+      i {
+        color: #ddd;
       }
     }
   }
@@ -135,7 +98,7 @@ export default function DemoDefault(): JSX.Element {
         placeholder: 'Filter by product code',
         onChange: setStateFilter
       }} />
-      <ScMessage>{typesAll.length} = OK：{countOk} + 不存在（<strong className="no-product">{countNoProduct}</strong>） + 没图标（<strong className="no-type">{countNoIcon}</strong>）</ScMessage>
+      <div>{typesAll.length} = OK（{countOk}） + 不存在（{countNoProduct}） + 没图标（{countNoIcon}）</div>
     </div>
     <ScList>
       {filteredTypes.map(v => {
