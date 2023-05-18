@@ -1,0 +1,15 @@
+# hidden
+
+.*
+
+# src / test / demo
+
+src/
+tests/
+stories/
+
+# config
+
+breezr.config.ts
+tsconfig.json
+tsconfig-*.json

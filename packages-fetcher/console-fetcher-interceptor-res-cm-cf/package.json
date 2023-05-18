@@ -1,13 +1,13 @@
 {
-  "name": "@alicloud/console-fetcher-interceptor-res-risk",
+  "name": "@alicloud/console-fetcher-interceptor-cm-cf",
   "version": "1.6.1",
-  "description": "@alicloud/console-fetcher 响应拦截 - 风控",
+  "description": "@alicloud/console-fetcher 响应拦截 - CM/CF",
   "license": "MIT",
   "sideEffects": false,
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
   "types": "build/types/index.d.ts",
-  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-fetcher/console-fetcher-interceptor-res-risk",
+  "homepage": "https://github.com/aliyun/alibabacloud-console-base/tree/master/packages-fetcher/console-fetcher-interceptor-cm-cf",
   "author": {
     "name": "Jianchun Wang",
     "email": "justnewbee@gmail.com"

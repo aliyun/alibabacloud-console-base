@@ -6,4 +6,4 @@ export const ALIYUN_APP_VERSION = ((): string => {
   return '';
 })();
 
-export const DEFAUT_DIALOG_SIZE = ALIYUN_APP_VERSION ? 'xs' : 'm'; // 移动端阿里云 app 内的风控弹窗尺寸较小
+export const DEFAULT_DIALOG_SIZE = ALIYUN_APP_VERSION ? 'xs' : 'm'; // 移动端阿里云 app 内的风控弹窗尺寸较小
