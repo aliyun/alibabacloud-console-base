@@ -30,7 +30,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "qs": "^6.11.1"
+    "qs": "^6.11.2"
   },
   "scripts": {
     "start": "breezr start-storybook",
