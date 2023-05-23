@@ -16,7 +16,9 @@ import {
   AltWrap
 } from '../rc';
 
-import open from './open';
+import {
+  open
+} from './open';
 
 /**
  * 系统 `window.confirm` 的替代
@@ -24,7 +26,7 @@ import open from './open';
  * ```
  * import {
  *   confirm
- * } from '@alicloud/console-base-rc-dialog';
+ * } from '@alicloud/console-base-rc-dialog-promise';
  *
  * confirm(...).then(yes => {
  *   ...

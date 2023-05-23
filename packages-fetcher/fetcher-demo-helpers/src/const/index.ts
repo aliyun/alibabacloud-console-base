@@ -9,6 +9,7 @@ export const URLS = {
   FAIL: `${MOCK_PREFIX}/fail`,
   FAIL_CUSTOM: `${MOCK_PREFIX}/fail-custom`,
   TIMEOUT: `${MOCK_PREFIX}/timeout`,
+  SAFEGUARD_CM_REQUIRED: `${MOCK_PREFIX}/safeguard/cm-required`,
   INVALID: '//non-existed-site', // invalid
   INVALID_NOT_JSON: `//${location.host}` // not json
 };

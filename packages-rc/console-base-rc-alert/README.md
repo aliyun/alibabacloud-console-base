@@ -7,5 +7,9 @@
 ```typescript
 import Alert from '@alicloud/console-base-rc-alert';
 
-<Alert />
+<Alert {...} />
 ```
+
+## Demo
+
+[CodeSandbox](https://codesandbox.io/s/console-base-rc-alert-7u2n5t)

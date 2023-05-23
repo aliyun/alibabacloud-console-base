@@ -6,7 +6,8 @@ export { default as Blockquote } from './blockquote';
 export { default as List } from './list';
 export { default as Hr } from './hr';
 
-/* form controls */
+/* form & form controls */
+export { default as Form } from './form';
 export { default as Button } from './button';
 export { default as InputText } from './input-text';
 export { default as InputNumber } from './input-number';

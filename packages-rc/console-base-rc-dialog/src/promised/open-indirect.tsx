@@ -7,16 +7,16 @@ import {
   unmountComponentAtNode
 } from 'react-dom';
 
+import Dialog, {
+  DialogProps
+} from '@alicloud/console-base-rc-dialog-core';
+
 import {
-  IDialogProps,
-  IDialogIndirectPromise,
-  TStringOrJsx,
-  TDialogData
+  IDialogIndirectPromise
 } from '../types';
 import {
   buildPropsForPromise
 } from '../util';
-import WithProvider from '../rc-container';
 
 /**
  * 所有 Promise 化的 dialog 的基础。
@@ -67,18 +67,18 @@ import WithProvider from '../rc-container';
  * return somePromise;
  * ```
  */
-export default function openIndirect<T = void, D = TDialogData>(contentOrProps?: TStringOrJsx | IDialogProps<T, D>): IDialogIndirectPromise<T, D> {
-  let dialogProps: IDialogProps<T, D> | null = buildPropsForPromise<T, D>(contentOrProps);
+export default function openIndirect<T = void, D extends object = Record<string, unknown>>(contentOrProps?: string | JSX.Element | DialogProps<T, D>): IDialogIndirectPromise<T, D> {
+  let dialogProps: DialogProps<T, D> | null = buildPropsForPromise<T, D>(contentOrProps);
   let holder: HTMLDivElement | null = document.createElement('div'); // 只是一个 gateway 真实的 Dialog 并不会被渲染到它里边
   let close: ((result?: T, rejected?: boolean) => void) | null = _noop;
   
   document.body.appendChild(holder!);
   
-  function renderDialog(props: IDialogProps<T, D>): void {
-    render(<WithProvider {...props} />, holder);
+  function renderDialog(props: DialogProps<T, D>): void {
+    render(<Dialog {...props} />, holder);
   }
   
-  function renderUpdate(updatedProps: Partial<IDialogProps<T, D>>): void {
+  function renderUpdate(updatedProps: Partial<DialogProps<T, D>>): void {
     if (!updatedProps || !dialogProps) {
       return;
     }

@@ -2,14 +2,14 @@ import {
   useEffect
 } from 'react';
 
-import useProps from './use-props';
+import useModelProps from './_use-model-props';
 import useHandleClose from './use-handle-close';
 import useVisible from './use-visible';
 
 export default function useEffectAutoClose(): void {
-  const [{
+  const {
     autoClose
-  }] = useProps();
+  } = useModelProps();
   const visible = useVisible();
   const handleClose = useHandleClose();
   

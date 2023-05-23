@@ -18,14 +18,13 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  TStringOrJsx,
   TDialogAltIconType
 } from '../../types';
 
 interface IProps {
   type?: TDialogAltIconType;
-  title?: TStringOrJsx;
-  content?: TStringOrJsx;
+  title?: string | JSX.Element;
+  content?: string | JSX.Element;
 }
 
 function getIconType(type?: TDialogAltIconType): IconType {

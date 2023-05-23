@@ -6,6 +6,9 @@ import styled from 'styled-components';
 import {
   mixinTextTertiary
 } from '@alicloud/console-base-theme';
+import {
+  useDialog
+} from '@alicloud/console-base-rc-dialog-core';
 import Input from '@alicloud/console-base-rc-input';
 import InputTextarea from '@alicloud/console-base-rc-input-textarea';
 
@@ -13,9 +16,6 @@ import {
   IDataPrompt,
   IPromptOptions
 } from '../../types';
-import {
-  useDialog
-} from '../../model';
 
 interface IProps extends IPromptOptions {}
 

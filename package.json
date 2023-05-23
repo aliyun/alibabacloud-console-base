@@ -10,7 +10,7 @@
     "@alicloud/markdownlint-config": "^1.0.3",
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "husky": "^8.0.3",
     "lerna": "^6.6.2",
     "lint-staged": "^13.2.2",

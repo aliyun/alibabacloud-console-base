@@ -6,7 +6,9 @@ import styled from 'styled-components';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 import {
   Hr,
+  Form,
   InputText,
+  InputTextarea,
   InputSwitch,
   RadioGroup
 } from '@alicloud/demo-rc-elements';
@@ -25,6 +27,7 @@ export default function DemoDefault(): JSX.Element {
   const [stateMessage, setStateMessage] = useState<string>('This is alert message which shall end with a punctuation mark.');
   const [stateTheme, setStateTheme] = useState<AlertTheme | undefined>();
   const [stateVisible, setStateVisible] = useState<boolean>(true);
+  const [stateDense, setStateDense] = useState<boolean>(false);
   const [stateToast, setStateToast] = useState<boolean>(false);
   const [stateAutoClose, setStateAutoClose] = useState<boolean>(false);
   const [stateClosable, setStateClosable] = useState<boolean>(false);
@@ -32,62 +35,79 @@ export default function DemoDefault(): JSX.Element {
   return <>
     <ThemeSwitcher />
     <PkgInfo />
-    <div>
-      title = <InputText {...{
-        value: stateTitle,
-        onChange: setStateTitle
-      }} />
-      message = <InputText {...{
-        value: stateMessage,
-        onChange: setStateMessage
-      }} />
-    </div>
-    <InputSwitch {...{
-      label: 'props.visible',
-      value: stateVisible,
-      onChange: setStateVisible
-    }} />
-    <InputSwitch {...{
-      label: 'props.toast',
-      value: stateToast,
-      onChange: setStateToast
-    }} />
-    <InputSwitch {...{
-      label: 'props.autoClose',
-      value: stateAutoClose,
-      onChange: setStateAutoClose
-    }} />
-    <InputSwitch {...{
-      label: 'props.closable',
-      value: stateClosable,
-      onChange: setStateClosable
-    }} />
-    <RadioGroup<AlertTheme | undefined> {...{
-      label: 'props.theme',
+    <Form {...{
+      dense: true,
       items: [{
-        value: undefined,
-        label: '(not set)'
+        label: 'props.title',
+        content: <InputText {...{
+          value: stateTitle,
+          onChange: setStateTitle
+        }} />
       }, {
-        value: AlertTheme.HELP,
-        label: 'HELP'
+        label: 'props.message',
+        content: <InputTextarea {...{
+          value: stateMessage,
+          onChange: setStateMessage
+        }} />
       }, {
-        value: AlertTheme.INFO,
-        label: 'INFO'
+        label: 'props.visible',
+        content: <InputSwitch {...{
+          value: stateVisible,
+          onChange: setStateVisible
+        }} />
       }, {
-        value: AlertTheme.SUCCESS,
-        label: 'SUCCESS'
+        label: 'props.toast',
+        content: <InputSwitch {...{
+          value: stateToast,
+          onChange: setStateToast
+        }} />
       }, {
-        value: AlertTheme.WARNING,
-        label: 'WARNING'
+        label: 'props.dense',
+        content: <InputSwitch {...{
+          value: stateDense,
+          onChange: setStateDense
+        }} />
       }, {
-        value: AlertTheme.ERROR,
-        label: 'ERROR'
+        label: 'props.autoClose',
+        content: <InputSwitch {...{
+          value: stateAutoClose,
+          onChange: setStateAutoClose
+        }} />
       }, {
-        value: AlertTheme.LOADING,
-        label: 'LOADING'
-      }],
-      value: stateTheme,
-      onChange: setStateTheme
+        label: 'props.closable',
+        content: <InputSwitch {...{
+          value: stateClosable,
+          onChange: setStateClosable
+        }} />
+      }, {
+        label: 'props.theme',
+        content: <RadioGroup<AlertTheme | undefined> {...{
+          items: [{
+            value: undefined,
+            label: '(not set)'
+          }, {
+            value: AlertTheme.HELP,
+            label: 'HELP'
+          }, {
+            value: AlertTheme.INFO,
+            label: 'INFO'
+          }, {
+            value: AlertTheme.SUCCESS,
+            label: 'SUCCESS'
+          }, {
+            value: AlertTheme.WARNING,
+            label: 'WARNING'
+          }, {
+            value: AlertTheme.ERROR,
+            label: 'ERROR'
+          }, {
+            value: AlertTheme.LOADING,
+            label: 'LOADING'
+          }],
+          value: stateTheme,
+          onChange: setStateTheme
+        }} />
+      }]
     }} />
     <Hr />
     <ScAlert {...{
@@ -96,6 +116,7 @@ export default function DemoDefault(): JSX.Element {
       theme: stateTheme,
       visible: stateVisible,
       toast: stateToast,
+      dense: stateDense,
       closable: stateClosable,
       autoClose: stateAutoClose,
       onVisibleChange: setStateVisible

@@ -2,13 +2,13 @@ import {
   useCallback
 } from 'react';
 
-import useProps from './use-props';
 import useDispatchSetVisible from './use-dispatch-set-visible';
+import useModelProps from './_use-model-props';
 
 export default function useHandleClose(): () => void {
-  const [{
+  const {
     onVisibleChange
-  }] = useProps();
+  } = useModelProps();
   const dispatchSetVisible = useDispatchSetVisible();
   
   return useCallback(() => {

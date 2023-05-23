@@ -13,6 +13,10 @@ export interface IPropsCustom {
   message?: string | JSX.Element;
   theme?: EAlertTheme;
   toast?: boolean;
+  /**
+   * 紧凑型，减小上下 padding
+   */
+  dense?: boolean;
   visible?: boolean;
   closable?: boolean;
   /**

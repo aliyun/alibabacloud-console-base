@@ -17,7 +17,9 @@ import {
   PromptContent
 } from '../rc';
 
-import open from './open';
+import {
+  open
+} from './open';
 
 /**
  * 系统 `window.prompt` 的替代

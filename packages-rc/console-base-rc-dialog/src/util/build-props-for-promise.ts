@@ -3,15 +3,13 @@ import {
 } from 'react';
 
 import {
-  IDialogProps,
-  TDialogData,
-  TStringOrJsx
-} from '../types';
+  DialogProps
+} from '@alicloud/console-base-rc-dialog-core';
 
 /**
  * 为了使用上的便利性，你可以仅传入内容（string 或 JSX.Element），这个方法是判断并返回 `{ content }` 对象
  */
-function fromContentOrProps<R = void, D = TDialogData>(contentOrProps?: TStringOrJsx | IDialogProps<R, D>): IDialogProps<R, D> {
+function fromContentOrProps<R = void, D extends object = Record<string, unknown>>(contentOrProps?: string | JSX.Element | DialogProps<R, D>): DialogProps<R, D> {
   if (!contentOrProps) {
     return {};
   }
@@ -22,17 +20,17 @@ function fromContentOrProps<R = void, D = TDialogData>(contentOrProps?: TStringO
     };
   }
   
-  return contentOrProps as IDialogProps<R, D>; // isValidElement cannot guard
+  return contentOrProps as DialogProps<R, D>; // isValidElement cannot guard
 }
 
 /**
  * promise dialog 需要的 props
  */
-export default function buildPropsForPromise<R = void, D = TDialogData>(
-    contentOrProps?: TStringOrJsx | IDialogProps<R, D>,
-    fixedProps?: IDialogProps<R, D>,
-    defaultProps?: IDialogProps<R, D>
-): IDialogProps<R, D> {
+export default function buildPropsForPromise<R = void, D extends object = Record<string, unknown>>(
+    contentOrProps?: string | JSX.Element | DialogProps<R, D>,
+    fixedProps?: DialogProps<R, D>,
+    defaultProps?: DialogProps<R, D>
+): DialogProps<R, D> {
   const props = fromContentOrProps<R, D>(contentOrProps);
   
   return {

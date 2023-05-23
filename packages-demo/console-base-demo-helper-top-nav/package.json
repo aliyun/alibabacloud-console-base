@@ -40,7 +40,7 @@
     "@alicloud/console-base-rc-tooltip": "^1.1.12",
     "@alicloud/console-base-rc-top-nav": "^1.17.0",
     "@alicloud/console-base-theme": "^1.9.7",
-    "@alicloud/demo-rc-elements": "^1.12.2"
+    "@alicloud/demo-rc-elements": "^1.13.0"
   },
   "scripts": {
     "start": "breezr start-storybook",

@@ -16,7 +16,9 @@ import {
   AltWrap
 } from '../rc';
 
-import open from './open';
+import {
+  open
+} from './open';
 
 /**
  * 系统 `window.alert` 的替代

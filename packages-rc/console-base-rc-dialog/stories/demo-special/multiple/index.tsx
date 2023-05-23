@@ -10,17 +10,25 @@ import {
 
 import Dialog from '../../../src';
 
-const Sc1 = styled.div`
-  background-color: #f00;
+const ScContentBase = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+`;
+
+const Sc1 = styled(ScContentBase)`
+  background-color: #c00;
   height: 600px;
 `;
-const Sc2 = styled.div`
-  background-color: #0f0;
-  height: 400px;
+const Sc2 = styled(ScContentBase)`
+  background-color: #0c0;
+  height: 500px;
 `;
-const Sc3 = styled.div`
-  background-color: #00f;
-  height: 200px;
+const Sc3 = styled(ScContentBase)`
+  background-color: #00c;
+  height: 400px;
 `;
 
 export default function Multiple(): JSX.Element {
@@ -54,22 +62,19 @@ export default function Multiple(): JSX.Element {
     }}>open 1 + 2 + 3</Button>
     
     {yes1 ? <Dialog {...{
+      title: '111',
       content: <Sc1>1111</Sc1>,
-      onClose() {
-        setYes1(false);
-      }
+      onClose: () => setYes1(false)
     }} /> : null}
     {yes2 ? <Dialog {...{
+      title: '222',
       content: <Sc2>2222</Sc2>,
-      onClose() {
-        setYes2(false);
-      }
+      onClose: () => setYes2(false)
     }} /> : null}
     {yes3 ? <Dialog {...{
+      title: '333',
       content: <Sc3>3333</Sc3>,
-      onClose() {
-        setYes3(false);
-      }
+      onClose: () => setYes3(false)
     }} /> : null}
   </>;
 }

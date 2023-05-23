@@ -9,6 +9,7 @@ import {
 import pkgInfo from '../package.json';
 
 import DemoDefault from './demo-default';
+import DemoForm from './demo-form';
 import DemoFormControl from './demo-form-control';
 import DemoContainer from './demo-container';
 import DemoSoloPane from './demo-solo-pane';
@@ -22,6 +23,7 @@ import DemoComponentTesting from './demo-component-testing';
 storiesOf(pkgInfo.name, module)
     .addDecorator(withKnobs)
     .add('default', () => <DemoDefault />)
+    .add('form', () => <DemoForm />)
     .add('form-control', () => <DemoFormControl />)
     .add('container', () => <DemoContainer />)
     .add('solo-pane', () => <DemoSoloPane />)
