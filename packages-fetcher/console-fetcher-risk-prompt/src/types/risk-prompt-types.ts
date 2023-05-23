@@ -1,11 +1,13 @@
 import {
   ERiskType,
+  EUnexpectedErrorType,
   EConvertedVerifyType
 } from '../enum';
 
-export interface IRiskError extends Error {
+export interface IRiskPromptError extends Error {
   name: string;
   code: string;
+  unexpectedErrorType?: string;
 }
 
 // MPK 配置项
@@ -52,3 +54,11 @@ export interface INewSubRiskInfo {
 }
 
 export type TRiskInfo = IOldMainRiskInfo | INewMainRiskInfo | INewSubRiskInfo | IMpkRiskInfo;
+
+export interface IRiskCanceledErrorProps {
+  // errorCode / errorName / errorMessage
+  unexpectedError?: string;
+  unexpectedErrorType?: EUnexpectedErrorType;
+}
+
+export type TSetRiskCanceledErrorProps = (props: IRiskCanceledErrorProps) => void;

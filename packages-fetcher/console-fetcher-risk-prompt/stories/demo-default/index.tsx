@@ -11,6 +11,12 @@ import {
   RadioGroup,
   CheckboxGroup
 } from '@alicloud/demo-rc-elements';
+import {
+  fetcherRiskData
+} from '@alicloud/console-fetcher-risk-data';
+import {
+  fetcherDemoInterceptorMockVerifyCodeUrl
+} from '@alicloud/fetcher-demo-helpers';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import riskPrompt, {
@@ -29,6 +35,10 @@ interface IRiskResponseData {
 const ScButton = styled(Button)`
   margin: 0 8px;
 `;
+
+fetcherRiskData.sealInterceptors(false, false);
+fetcherRiskData.interceptRequest(fetcherDemoInterceptorMockVerifyCodeUrl);
+fetcherRiskData.sealInterceptors(true, true);
 
 export default function DemoDefault(): JSX.Element {
   const [stateMfaBound, setStateMfaBound] = useState<string>('false');
@@ -164,7 +174,7 @@ export default function DemoDefault(): JSX.Element {
         data: {
           verifyDetail: '1234****0',
           codeType: 'rg_authorization_add',
-          verifyType: 'ga'
+          verifyType: 'sms'
         }
       }
     });

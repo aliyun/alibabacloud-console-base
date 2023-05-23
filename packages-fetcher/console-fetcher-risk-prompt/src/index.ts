@@ -9,6 +9,10 @@ export {
   CODE_INVALID_INPUT
 } from './const';
 export {
+  EUnexpectedErrorType
+} from './enum';
+export {
+  isUnexpectedError,
   convertMpkSetting,
   getMergedUseNewRisk
 } from './util';
@@ -20,5 +24,6 @@ export type {
   IRiskParameters as RiskParameters,
   TRiskParametersGetter as RiskParametersGetter,
   IRiskPromptProps as RiskPromptProps,
-  IRiskPromptResolveData as RiskPromptResolveData
+  IRiskPromptResolveData as RiskPromptResolveData,
+  IRiskPromptError as RiskPromptError
 } from './types';

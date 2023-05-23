@@ -8,7 +8,8 @@ import {
 import {
   IDialogData,
   IRiskPromptResolveData,
-  TReRequestWithVerifyResult
+  TReRequestWithVerifyResult,
+  TSetRiskCanceledErrorProps
 } from '../../../types';
 import intl from '../../../intl';
 import {
@@ -20,6 +21,7 @@ interface IGenerateMpkSubmitButtonProps {
   accountId: string;
   verifyType: string;
   primaryButtonDisabled?: boolean;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
@@ -28,6 +30,7 @@ export default function generateMpkSubmitButton({
   accountId,
   verifyType,
   primaryButtonDisabled,
+  setRiskCanceledErrorProps,
   reRequestWithVerifyResult
 }: IGenerateMpkSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
@@ -39,6 +42,7 @@ export default function generateMpkSubmitButton({
         accountId,
         verifyType,
         contentContext,
+        setRiskCanceledErrorProps,
         reRequestWithVerifyResult,
         dialogSubmitType: ERiskType.MPK
       });

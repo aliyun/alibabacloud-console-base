@@ -1,4 +1,4 @@
-import type {
+import {
   FetcherError
 } from '@alicloud/fetcher';
 
@@ -26,6 +26,7 @@ import getRiskPromptVerifyResult from './get-risk-prompt-verify-result';
  */
 export default async function handleRiskPromptDialogSubmit({
   contentContext,
+  setRiskCanceledErrorProps,
   reRequestWithVerifyResult,
   ...dialogSubmitProps
 }: THandleRiskPromptDialogSubmitProps): Promise<void> {
@@ -70,7 +71,8 @@ export default async function handleRiskPromptDialogSubmit({
   const riskPromptVerifyResult = await getRiskPromptVerifyResult({
     dialogData: data,
     dialogSubmitProps,
-    updateErrorMessage
+    updateErrorMessage,
+    setRiskCanceledErrorProps
   });
 
   if (riskPromptVerifyResult) {

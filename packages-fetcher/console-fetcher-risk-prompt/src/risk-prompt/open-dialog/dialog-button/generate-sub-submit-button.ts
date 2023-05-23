@@ -8,7 +8,8 @@ import {
 import {
   IDialogData,
   IRiskPromptResolveData,
-  TReRequestWithVerifyResult
+  TReRequestWithVerifyResult,
+  TSetRiskCanceledErrorProps
 } from '../../../types';
 import intl from '../../../intl';
 import {
@@ -17,11 +18,13 @@ import {
 
 interface IGenerateSubAccountMfaSubmitButtonProps {
   primaryButtonDisabled: boolean;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default function generateSubAccountSubmitButton({
   primaryButtonDisabled,
+  setRiskCanceledErrorProps,
   reRequestWithVerifyResult
 }: IGenerateSubAccountMfaSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
@@ -31,6 +34,7 @@ export default function generateSubAccountSubmitButton({
     onClick(contentContext) {
       handleRiskPromptDialogSubmit({
         contentContext,
+        setRiskCanceledErrorProps,
         reRequestWithVerifyResult,
         dialogSubmitType: ERiskType.NEW_SUB
       });

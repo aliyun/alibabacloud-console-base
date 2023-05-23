@@ -40,7 +40,7 @@ export default function OldMainOrMpkRiskContent(): JSX.Element {
   } = getOldMainOrMpkAccountRiskInfo(mainAccountRiskInfo);
 
   const authFormProps = useMemo((): TAuthFormProps => {
-    // MPK
+    // MPK 未降级链路，走 Identity 服务
     if (isMpk && !mpkIsDowngrade) {
       return {
         riskType: ERiskType.MPK,

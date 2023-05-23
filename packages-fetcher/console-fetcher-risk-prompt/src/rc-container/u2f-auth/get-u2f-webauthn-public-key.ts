@@ -1,8 +1,8 @@
-import type {
+import {
   PublicKeyCredentialRequestOptionsJSON
 } from '@simplewebauthn/typescript-types';
 
-import type {
+import {
   DataGetU2fInfoToAuth,
   DataGetU2fWebAuthnInfoToAuth
 } from '@alicloud/console-fetcher-risk-data';

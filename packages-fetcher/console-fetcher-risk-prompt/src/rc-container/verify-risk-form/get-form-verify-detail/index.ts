@@ -28,8 +28,11 @@ export default function getFormVerifyDetail(props: TAuthFormProps): string {
   } = props;
 
   const safeStringifiedVerifyDetail = ((): string => {
-    // 旧版主账号风控验证类型为 MFA 时，verifyDetail 为空字符串而不是 '-'
-    if (riskType === ERiskType.OLD_MAIN && props.convertedVerifyType === EConvertedVerifyType.MFA) {
+    const isOldMainVmfaVerify = riskType === ERiskType.OLD_MAIN && props.convertedVerifyType === EConvertedVerifyType.MFA;
+    const isMpkVmfaVerify = riskType === ERiskType.MPK && props.verifyType === ESubVerificationDeviceType.VMFA;
+
+    // 旧版主账号/Mpk 风控验证类型为 Vmfa 时，verifyDetail 为空字符串而不是 '-'
+    if (isOldMainVmfaVerify || isMpkVmfaVerify) {
       return '';
     }
 

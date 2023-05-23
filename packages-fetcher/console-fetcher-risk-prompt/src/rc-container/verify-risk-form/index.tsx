@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useMemo
+} from 'react';
 import styled from 'styled-components';
 
 import {
@@ -70,8 +72,9 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
   const {
     riskType, verifyType
   } = authFormProps;
-  // VMFA 类型的子账号风控不展示解绑设备链接
-  const getShowVerifySettingUrlChangeButton = (): boolean => {
+
+  // 是否展示修改手机/邮箱链接，以及虚拟 MFA 设备的解绑链接
+  const showVerifySettingUrlChangeButton = useMemo((): boolean => {
     // 子账号虚拟 MFA 验证不展示修改 MFA 的链接
     if (riskType === ERiskType.NEW_SUB && verifyType === ESubVerificationDeviceType.VMFA) {
       return false;
@@ -85,7 +88,7 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
     }
 
     return true;
-  };
+  }, [riskType, verifyType]);
 
   const {
     accountId,
@@ -130,7 +133,7 @@ export default function VerifyRiskForm(authFormProps: TAuthFormProps): JSX.Eleme
           labelTextAlign: 'center',
           content: <Flex align="center">
             <ScInfo>{getFormVerifyDetail(authFormProps)}</ScInfo>
-            {getShowVerifySettingUrlChangeButton() && <ScSettingButton {...{
+            {showVerifySettingUrlChangeButton && <ScSettingButton {...{
               target: '_blank',
               spm: `set-${authFormProps.verifyType}`,
               theme: ButtonTheme.TEXT_PRIMARY,

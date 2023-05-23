@@ -7,15 +7,17 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
+  EUnexpectedErrorType
+} from '../../enum';
+import {
   DEFAULT_DIALOG_SIZE
 } from '../../const';
 import intl from '../../intl';
 import {
-  slsRiskInvalid
+  slsRiskTerminatedWithUnexpectedError
 } from '../../sls';
 
 interface IRiskInvalidProps {
-  accountId: string;
   subRisk?: boolean;
   errorMessage: string;
   urlSetting: string;
@@ -27,15 +29,14 @@ const ScWrapper = styled.div`
 `;
 
 export default function riskInvalid({
-  accountId,
   urlSetting,
   errorMessage,
   subRisk = false,
   stringifiedRiskResponse
 }: IRiskInvalidProps): Promise<void> {
-  slsRiskInvalid({
-    accountId,
-    stringifiedRiskResponse
+  slsRiskTerminatedWithUnexpectedError({
+    value: stringifiedRiskResponse,
+    type: EUnexpectedErrorType.RISK_INVALID
   });
   
   return open<void>({

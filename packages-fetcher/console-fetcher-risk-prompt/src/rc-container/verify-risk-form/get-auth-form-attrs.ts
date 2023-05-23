@@ -15,10 +15,10 @@ import {
   WINDVANE_AVAILABLE
 } from '../../const';
 import intl from '../../intl';
-import type {
+import {
   TVerifyCodeInputType
 } from '../../rc/verify-code-input';
-import type {
+import {
   TSubAuthFormWrapperProps
 } from '../../rc/sub-auth-form-wrapper';
 import {

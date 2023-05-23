@@ -1,4 +1,9 @@
 import {
+  ERROR_TIMEOUT,
+  ERROR_NETWORK,
+  ERROR_RESPONSE_STATUS
+} from '@alicloud/fetcher';
+import {
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
 
@@ -41,7 +46,7 @@ export const SVG_URLS = {
   EMAIL_ICON: 'https://img.alicdn.com/imgextra/i4/O1CN01qgcbb21CvXSHlELOg_!!6000000000143-55-tps-200-200.svg'
 };
 
-export const MOBILE_SCREE_SIZE = 720;
+export const MOBILE_SCREEN_SIZE = 720;
 
 /**
  * 阿里云 APP 下载链接
@@ -102,3 +107,35 @@ export const DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT = {
   [ESubVerificationDeviceType.VMFA]: true,
   [ESubVerificationDeviceType.U2F]: true
 };
+
+// 登录态失效错误属于预期内的错误
+export const COMMON_EXPECTED_ERROR = [
+  'ConsoleNeedLogin',
+  'PostonlyOrTokenError',
+  // Identity 服务的登录失效错误码
+  'LoginInvalid'
+];
+
+// Identity 服务预期内正常业务逻辑错误
+export const IDENTITY_EXPECTED_ERROR = [
+  ...COMMON_EXPECTED_ERROR,
+  'UserNotBindMfa',
+  'MFASecurityCodeError',
+  CODE_IDENTITY_TOKEN_VALIDATE_FAILED
+];
+
+// 发送验证码接口预期内的业务逻辑错误，即发送验证码评率过高被限流
+export const SEND_VERIFY_CODE_EXPECTED_ERROR = [
+  ...COMMON_EXPECTED_ERROR,
+  'TimeIntervalError',
+  'LimitExceeded.SendVerificationCodePerminute',
+  'LimitExceeded.SendVerificationCodePermoment',
+  'LimitExceeded.SendVerificationCodePerday'
+];
+
+// 网络错误不属于非预期外的错误
+export const NETWORK_ERROR = [
+  ERROR_TIMEOUT,
+  ERROR_NETWORK,
+  ERROR_RESPONSE_STATUS
+];

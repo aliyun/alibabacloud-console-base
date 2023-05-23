@@ -38,11 +38,11 @@ export default async function getSubValidators({
     });
 
     const targetUserPrincipalName = ((): string => {
-      if (!response.length) {
+      if (!response.length || !response[0]) {
         return '';
       }
 
-      return response[0]!.targetUserPrincipalName;
+      return response[0].targetUserPrincipalName;
     })();
 
     return {

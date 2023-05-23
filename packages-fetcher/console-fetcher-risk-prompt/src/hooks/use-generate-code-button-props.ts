@@ -14,22 +14,23 @@ import {
 import {
   TAuthFormProps,
   IDialogData,
-  IRiskPromptResolveData
+  IRiskPromptResolveData,
+  TKeyofErrorMessageObject
 } from '../types';
 import {
   useModelProps
 } from '../model';
-import type {
-  IGenerateCodeButtonProps
-} from '../rc/generate-code-button';
 import {
   dataSendVerifyCode
 } from '../util';
 
 import useCountDown from './use-count-down';
 
-// 发送验证码成功后的成功提示的持续时间（秒）
-const SEND_CODE_SUCCESS_TIP_DURATION = 3;
+interface IGenerateCodeButtonProps {
+  verifyType: string;
+  keyOfErrorMessageObject?: TKeyofErrorMessageObject;
+  sendVerifyCode: () => void;
+}
 
 interface IHookResult {
   verifyUniqId: string;
@@ -37,11 +38,15 @@ interface IHookResult {
   generateCodeButtonProps: IGenerateCodeButtonProps;
 }
 
+// 发送验证码成功后的成功提示的持续时间（秒）
+const SEND_CODE_SUCCESS_TIP_DURATION = 3;
+
 export default function useGenerateCodeButtonProps(authFormProps: TAuthFormProps): IHookResult {
   const [stateVerifyUniqId, setStateVerifyUniqId] = useState<string>('');
   const {
     codeType,
-    accountId
+    accountId,
+    setRiskCanceledErrorProps
   } = useModelProps();
   const {
     data: {
@@ -61,7 +66,8 @@ export default function useGenerateCodeButtonProps(authFormProps: TAuthFormProps
       return dataSendVerifyCode({
         ...authFormProps,
         accountId,
-        codeType
+        codeType,
+        setRiskCanceledErrorProps
       }).then(requestId => {
         // 验证码发送成功后需要清空错误
         updateData({
@@ -79,7 +85,7 @@ export default function useGenerateCodeButtonProps(authFormProps: TAuthFormProps
       verifyType: authFormProps.verifyType || '',
       sendVerifyCode
     };
-  }, [authFormProps, codeType, accountId, errorMessageObject, currentKeyOfErrorMessageObject, updateData, setCountDown]);
+  }, [authFormProps, codeType, accountId, errorMessageObject, currentKeyOfErrorMessageObject, updateData, setCountDown, setRiskCanceledErrorProps]);
 
   return {
     generateCodeButtonProps,
@@ -87,3 +93,7 @@ export default function useGenerateCodeButtonProps(authFormProps: TAuthFormProps
     verifyUniqId: stateVerifyUniqId
   };
 }
+
+export type {
+  IGenerateCodeButtonProps
+};

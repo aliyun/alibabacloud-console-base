@@ -1,4 +1,4 @@
-import type {
+import {
   FetcherError
 } from '@alicloud/fetcher';
 

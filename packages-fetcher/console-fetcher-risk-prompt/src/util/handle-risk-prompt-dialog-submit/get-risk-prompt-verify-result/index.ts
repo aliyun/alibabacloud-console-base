@@ -1,15 +1,22 @@
-import type {
+import {
   FetcherError
 } from '@alicloud/fetcher';
 
 import {
-  ERiskType
-} from '../../../enum';
-import {
   IDialogData,
   IRiskPromptVerifyResult,
-  TDialogSubmitProps
+  TDialogSubmitProps,
+  TSetRiskCanceledErrorProps
 } from '../../../types';
+import {
+  ERiskType,
+  EUnexpectedErrorType
+} from '../../../enum';
+import {
+  NETWORK_ERROR,
+  COMMON_EXPECTED_ERROR,
+  IDENTITY_EXPECTED_ERROR
+} from '../../../const';
 
 import verifyMpk from './verify-mpk';
 import verifySubValidators from './verify-sub-validators';
@@ -18,6 +25,7 @@ interface IProps {
   dialogData: IDialogData;
   dialogSubmitProps: TDialogSubmitProps;
   updateErrorMessage: (errorMessage: string) => void;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
 }
 
 /**
@@ -27,7 +35,8 @@ interface IProps {
 export default async function getRiskPromptVerifyResult({
   dialogData,
   dialogSubmitProps,
-  updateErrorMessage
+  updateErrorMessage,
+  setRiskCanceledErrorProps
 }: IProps): Promise<IRiskPromptVerifyResult | null> {
   try {
     const {
@@ -85,7 +94,23 @@ export default async function getRiskPromptVerifyResult({
       }
     }
   } catch (error) {
-    updateErrorMessage((error as FetcherError).message);
+    const {
+      code = '', name = '', message
+    } = error as FetcherError;
+    const errorCodeIsUnexpected = !COMMON_EXPECTED_ERROR.includes(code) && !IDENTITY_EXPECTED_ERROR.includes(code);
+    // 网络错误/超时/响应状态错误时，Fetcher 设置的是 name
+    const errorNameIsUnexpected = !NETWORK_ERROR.includes(name);
+
+    if (errorCodeIsUnexpected || errorNameIsUnexpected) {
+      const unexpectedErrorType = dialogSubmitProps.dialogSubmitType === ERiskType.MPK ? EUnexpectedErrorType.MPK_RISK_VERIFY_FAILED : EUnexpectedErrorType.SUB_RISK_VERIFY_FAILED;
+
+      setRiskCanceledErrorProps({
+        unexpectedErrorType,
+        unexpectedError: code || name
+      });
+    }
+
+    updateErrorMessage(message);
 
     return null;
   }

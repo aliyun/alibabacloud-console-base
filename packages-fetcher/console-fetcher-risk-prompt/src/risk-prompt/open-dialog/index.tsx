@@ -15,6 +15,7 @@ import {
   IRiskPromptResolveData,
   TRiskInfo,
   TOldMainRiskExtraConfig,
+  TSetRiskCanceledErrorProps,
   TReRequestWithVerifyResult
 } from '../../types';
 import {
@@ -42,17 +43,19 @@ import getPartialDialogDataBasedOnRiskInfo from './get-partial-dialog-data-based
 interface IOpenDialogProps {
   riskInfo: TRiskInfo;
   oldMainRiskExtraConfig: TOldMainRiskExtraConfig;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default async function openDialog({
   riskInfo,
-  reRequestWithVerifyResult,
   oldMainRiskExtraConfig: {
     URL_SETTINGS,
     URL_SEND_CODE,
     REQUEST_METHOD
-  }
+  },
+  setRiskCanceledErrorProps,
+  reRequestWithVerifyResult
 }: IOpenDialogProps): Promise<IRiskPromptResolveData> {
   const {
     riskType, codeType
@@ -97,6 +100,7 @@ export default async function openDialog({
       codeType,
       accountId,
       oldMainOrMpkVerifyInfo,
+      setRiskCanceledErrorProps,
       reRequestWithVerifyResult,
       oldMainAccountUrlSetting: URL_SETTINGS,
       oldMainSendCodeUrl: URL_SEND_CODE,
@@ -122,7 +126,8 @@ export default async function openDialog({
 
           const verifyMfaPrimaryButton = generateSubSubmitButton({
             primaryButtonDisabled,
-            reRequestWithVerifyResult
+            reRequestWithVerifyResult,
+            setRiskCanceledErrorProps
           });
           
           return [verifyMfaPrimaryButton, buttonCancel];
@@ -154,6 +159,7 @@ export default async function openDialog({
               codeType,
               accountId,
               verifyType,
+              setRiskCanceledErrorProps,
               reRequestWithVerifyResult,
               primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
             });
@@ -164,6 +170,7 @@ export default async function openDialog({
           const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton({
             verifyType,
             reRequestWithVerifyResult,
+            setRiskCanceledErrorProps,
             primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
           });
 

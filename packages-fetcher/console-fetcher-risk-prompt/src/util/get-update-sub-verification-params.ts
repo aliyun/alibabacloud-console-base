@@ -1,4 +1,4 @@
-import type {
+import {
   ParamsVerifySubAccount
 } from '@alicloud/console-fetcher-risk-data';
 

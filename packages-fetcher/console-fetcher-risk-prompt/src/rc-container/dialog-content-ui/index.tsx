@@ -5,14 +5,13 @@ import {
 } from '@alicloud/console-base-rc-dialog';
 
 import {
-  EDialogType,
-  ESceneKey
+  EDialogType
 } from '../../enum';
 import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../types';
-import AltWrap from '../../rc/alt-wrap';
+import RiskPromptError from '../risk-prompt-error';
 import NewSubRiskContent from '../new-sub-risk-content';
 import NewMainRiskContent from '../new-main-risk-content';
 import OldMainOrMpkRiskContent from '../old-main-or-mpk-risk-content';
@@ -20,8 +19,7 @@ import OldMainOrMpkRiskContent from '../old-main-or-mpk-risk-content';
 export default function DialogContentUi(): JSX.Element {
   const {
     data: {
-      dialogType,
-      errorMessageObject
+      dialogType
     }
   } = useDialog<IRiskPromptResolveData, IDialogData>();
 
@@ -31,7 +29,7 @@ export default function DialogContentUi(): JSX.Element {
     case EDialogType.OLD_MAIN_OR_MPK_RISK:
       return <OldMainOrMpkRiskContent />;
     case EDialogType.ERROR:
-      return <AltWrap content={errorMessageObject[ESceneKey.RISK_PROMPT_ERROR]} />;
+      return <RiskPromptError />;
     default:
       return <NewSubRiskContent />;
   }

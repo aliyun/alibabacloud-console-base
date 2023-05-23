@@ -1,8 +1,6 @@
-import type {
-  ParamsVerifySubAccount,
-  DataVerificationValidator
-} from '@alicloud/console-fetcher-risk-data';
 import {
+  ParamsVerifySubAccount,
+  DataVerificationValidator,
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
 

@@ -10,7 +10,7 @@ import {
 
 import {
   SVG_URLS,
-  MOBILE_SCREE_SIZE,
+  MOBILE_SCREEN_SIZE,
   ALIYUN_APP_VERSION
 } from '../../const';
 
@@ -55,7 +55,7 @@ const ScImg = styled.img<IScProps>`
   position: absolute;
   ${getDeviceStyle}
 
-  @media (max-width: ${MOBILE_SCREE_SIZE}px) {
+  @media (max-width: ${MOBILE_SCREEN_SIZE}px) {
     display: none;
   }
 `;

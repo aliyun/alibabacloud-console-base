@@ -31,7 +31,7 @@ import {
   TStringOrJsx
 } from '../../types';
 import {
-  MOBILE_SCREE_SIZE
+  MOBILE_SCREEN_SIZE
 } from '../../const';
 import intl from '../../intl';
 
@@ -67,7 +67,7 @@ const CssDivTip = css`
 const ScMessageDiv = styled.div`
   width: 90%;
 
-  @media (max-width: ${MOBILE_SCREE_SIZE}px) {
+  @media (max-width: ${MOBILE_SCREEN_SIZE}px) {
     width: 80%;
   }
 `;

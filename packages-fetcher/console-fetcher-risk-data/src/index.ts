@@ -1,5 +1,8 @@
 export * from './api';
 export {
+  default as fetcherRiskData
+} from './util/fetcher';
+export {
   EAccountType,
   ESubVerificationDeviceType
 } from './const';

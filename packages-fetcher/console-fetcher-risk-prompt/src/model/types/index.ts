@@ -1,10 +1,11 @@
-import type {
+import {
   ReactNode
 } from 'react';
 
 import {
   TRequestMethod,
   ICommonRiskInfo,
+  TSetRiskCanceledErrorProps,
   TReRequestWithVerifyResult
 } from '../../types';
 
@@ -15,6 +16,7 @@ export interface IModelProps {
   oldMainSendCodeUrl: string;
   oldMainSendCodeMethod: TRequestMethod;
   oldMainOrMpkVerifyInfo?: Omit<ICommonRiskInfo, 'codeType'>;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 

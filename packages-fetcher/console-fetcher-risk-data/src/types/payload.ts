@@ -87,7 +87,7 @@ export interface IPayloadSendCode extends IIdentityServiceCommonPayload, IExt {
 export interface IPayloadVerifyMpk extends IPayloadVerifyShared {
   AuthCode: string; // 6位数字验证码
   VerifyType: string;
-  RiskRequestId: string;
+  VerifyUniqId: string; // identity/send 接口返回的 requestId
 }
 
 // 接口 /identity/getMfaInfoToAuthV2 的 payload
