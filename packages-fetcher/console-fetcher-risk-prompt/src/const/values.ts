@@ -133,7 +133,7 @@ export const SEND_VERIFY_CODE_EXPECTED_ERROR = [
   'LimitExceeded.SendVerificationCodePerday'
 ];
 
-// 网络错误不属于非预期外的错误
+// 网络错误
 export const NETWORK_ERROR = [
   ERROR_TIMEOUT,
   ERROR_NETWORK,

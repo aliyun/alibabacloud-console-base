@@ -97,11 +97,10 @@ export default async function getRiskPromptVerifyResult({
     const {
       code = '', name = '', message
     } = error as FetcherError;
-    const errorCodeIsUnexpected = !COMMON_EXPECTED_ERROR.includes(code) && !IDENTITY_EXPECTED_ERROR.includes(code);
-    // 网络错误/超时/响应状态错误时，Fetcher 设置的是 name
-    const errorNameIsUnexpected = !NETWORK_ERROR.includes(name);
+    const isExpectedError = COMMON_EXPECTED_ERROR.includes(code) || IDENTITY_EXPECTED_ERROR.includes(code);
 
-    if (errorCodeIsUnexpected || errorNameIsUnexpected) {
+    // 判断错误是否是非预期错误，需要排除网络错误
+    if (!isExpectedError && !NETWORK_ERROR.includes(name)) {
       const unexpectedErrorType = dialogSubmitProps.dialogSubmitType === ERiskType.MPK ? EUnexpectedErrorType.MPK_RISK_VERIFY_FAILED : EUnexpectedErrorType.SUB_RISK_VERIFY_FAILED;
 
       setRiskCanceledErrorProps({

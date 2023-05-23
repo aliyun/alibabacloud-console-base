@@ -63,7 +63,8 @@ export default async function sendVerifyCode({
       code = '', name = ''
     } = error as FetcherError;
 
-    if (!SEND_VERIFY_CODE_EXPECTED_ERROR.includes(code) || !NETWORK_ERROR.includes(name)) {
+    // 判断错误是否是预期内错误，需要排除网络错误
+    if (!SEND_VERIFY_CODE_EXPECTED_ERROR.includes(code) && !NETWORK_ERROR.includes(name)) {
       const unexpectedErrorType = ((): EUnexpectedErrorType => {
         if (props.riskType === ERiskType.MPK) {
           return EUnexpectedErrorType.MPK_SEND_VERIFY_CODE_ERROR;
