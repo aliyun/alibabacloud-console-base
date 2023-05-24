@@ -116,11 +116,13 @@ export default async function riskPrompt<T = Record<string, unknown>>({
   const riskCanceledErrorProps: IRiskCanceledErrorProps = {};
   const setRiskCanceledErrorProps = (props: IRiskCanceledErrorProps): void => {
     const {
-      unexpectedError, unexpectedErrorType
+      unexpectedValue, unexpectedErrorCode, unexpectedErrorMessage, unexpectedErrorType
     } = props;
 
-    riskCanceledErrorProps.unexpectedError = unexpectedError;
+    riskCanceledErrorProps.unexpectedValue = unexpectedValue;
     riskCanceledErrorProps.unexpectedErrorType = unexpectedErrorType;
+    riskCanceledErrorProps.unexpectedErrorCode = unexpectedErrorCode;
+    riskCanceledErrorProps.unexpectedErrorMessage = unexpectedErrorMessage;
   };
 
   return openDialog({
@@ -131,11 +133,20 @@ export default async function riskPrompt<T = Record<string, unknown>>({
   }).catch(err => {
     // err 为 undefined 表示客户点击 X 或者取消按钮关闭弹窗
     if (_isUndefined(err)) {
-      if (riskCanceledErrorProps.unexpectedErrorType) {
+      const {
+        unexpectedValue, unexpectedErrorCode, unexpectedErrorMessage, unexpectedErrorType
+      } = riskCanceledErrorProps;
+
+      if (unexpectedErrorType) {
         slsRiskTerminatedWithUnexpectedError({
-          errorCode: riskCanceledErrorProps.unexpectedError,
-          type: riskCanceledErrorProps.unexpectedErrorType
+          value: unexpectedValue,
+          type: unexpectedErrorType,
+          errorCode: unexpectedErrorCode,
+          errorMessage: unexpectedErrorMessage
         });
+
+        // 非预期错误发生时，用户关闭风控弹窗
+        throw convertToRiskErrorCancelled(err, unexpectedErrorType);
       }
     }
 

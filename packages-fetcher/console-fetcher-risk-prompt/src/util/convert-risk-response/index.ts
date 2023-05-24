@@ -14,6 +14,9 @@ import {
 import {
   DEFAULT_EXTRA_RISK_CONFIG
 } from '../../const';
+import {
+  convertToMpkVerificationDeviceType
+} from '../convert-verify-type';
 
 import convertVerifyType from './convert-verify-type';
 import convertMpkSetting from './convert-mpk-setting';
@@ -49,6 +52,7 @@ function convertRiskResponse<T>({
     accountId, verifyUrl, codeType,
     validators = [], verifyType = '', verifyDetail = ''
   } = riskParameters;
+  // 从 RiskResponse 解析出的 verifyType 类型为 ga/sms/email
   const convertedVerifyType = convertVerifyType({
     type0: verifyType,
     riskTypeConfig
@@ -75,11 +79,12 @@ function convertRiskResponse<T>({
           isMpk,
           codeType,
           accountId,
-          verifyType,
           verifyDetail,
           mpkIsDowngrade,
           convertedVerifyType,
-          riskType: ERiskType.MPK
+          riskType: ERiskType.MPK,
+          // 非降级的 MPK 风控验证，需要将 ga/sms/email 转化为 Identity 服务所需的 VMFA/SMS/EMAIL
+          verifyType: convertToMpkVerificationDeviceType(verifyType)
         };
       }
 

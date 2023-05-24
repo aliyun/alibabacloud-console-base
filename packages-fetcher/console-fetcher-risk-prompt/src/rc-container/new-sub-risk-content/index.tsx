@@ -53,6 +53,11 @@ export default function NewSubRiskUi(): JSX.Element {
       unexpectedErrorType: EUnexpectedErrorType.SUB_INVALID_VALIDATORS
     });
 
+    // 没有解析出合法的子账号核身方式，需要隐藏确定按钮
+    updateData({
+      hideSubRiskSubmitButton: true
+    });
+
     return <AltWrap content={intl('message:invalid_unknown!lines')} />;
   }
 

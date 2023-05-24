@@ -33,7 +33,7 @@ export default function RiskPromptError(): JSX.Element {
 
   useEffect(() => {
     setRiskCanceledErrorProps({
-      unexpectedError: errorMessage,
+      unexpectedErrorMessage: errorMessage,
       unexpectedErrorType: EUnexpectedErrorType.RISK_PROMPT_ERROR
     });
   }, [setRiskCanceledErrorProps, errorMessage]);

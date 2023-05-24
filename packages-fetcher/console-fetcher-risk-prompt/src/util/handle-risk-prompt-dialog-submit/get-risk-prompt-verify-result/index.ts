@@ -105,7 +105,7 @@ export default async function getRiskPromptVerifyResult({
 
       setRiskCanceledErrorProps({
         unexpectedErrorType,
-        unexpectedError: code || name
+        unexpectedErrorCode: code || name
       });
     }
 

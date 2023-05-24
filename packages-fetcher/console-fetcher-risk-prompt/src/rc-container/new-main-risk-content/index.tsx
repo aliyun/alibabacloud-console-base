@@ -195,6 +195,7 @@ export default function NewMainRiskContent(): JSX.Element {
       });
 
       setRiskCanceledErrorProps({
+        unexpectedValue: verifyUrl,
         unexpectedErrorType: EUnexpectedErrorType.INVALID_VERIFY_URL
       });
     }

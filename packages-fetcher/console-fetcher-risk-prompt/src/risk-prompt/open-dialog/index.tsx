@@ -29,6 +29,7 @@ import {
 } from '../../sls';
 import {
   getAccountIdFromRiskInfo,
+  getSubVerificationSettingUrl,
   getOldMainOrMpkAccountRiskInfo
 } from '../../util';
 import DialogContent from '../dialog-content';
@@ -116,6 +117,20 @@ export default async function openDialog({
         }
         // 子账号风控验证
         case EDialogType.SUB_RISK_VERIFICATION_AUTH: {
+          // 没有解析到合法的子账号核身方式，隐藏确定按钮
+          if (data.hideSubRiskSubmitButton) {
+            // 如果子账号 ID 不为空，展示设置按钮
+            if (accountId) {
+              return [{
+                label: intl('op:risk_invalid_go'),
+                spm: 'add',
+                href: getSubVerificationSettingUrl(accountId)
+              }, buttonCancel];
+            }
+
+            return [buttonCancel];
+          }
+
           const primaryButtonDisabled = ((): boolean => {
             if (!data.currentSubVerificationDeviceType) {
               return false;

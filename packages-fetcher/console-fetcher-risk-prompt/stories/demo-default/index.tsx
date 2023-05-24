@@ -174,8 +174,33 @@ export default function DemoDefault(): JSX.Element {
         data: {
           verifyDetail: '1234****0',
           codeType: 'rg_authorization_add',
-          verifyType: 'sms'
+          verifyType: 'ga'
         }
+      }
+    });
+
+    console.log('new_main_prompt_result', riskPromptResult);
+  }, []);
+
+  const handleMpkRiskPrompt = useCallback(async () => {
+    const riskPromptResult = await riskPrompt({
+      riskResponse: {
+        Extend: {
+          isMpk: 'true',
+          useOldVersion: 'false'
+        },
+        Validators: {
+          Validator: [
+            {
+              VerifyDetail: '1234***0',
+              VerifyType: 'sms'
+            }
+          ]
+        },
+        CodeType: 'ims_login_update',
+        VerifyDetail: '137****2864',
+        VerifyType: 'sms',
+        AliyunIdkp: '1234***0'
       }
     });
 
@@ -220,5 +245,6 @@ export default function DemoDefault(): JSX.Element {
     <ScButton onClick={handleSubRiskInvalidPrompt}>子账号风控弹窗 - Invalid</ScButton>
     <ScButton onClick={handleNewMainRiskPrompt}>新版主账号风控弹窗</ScButton>
     <ScButton onClick={handleOldMainRiskPrompt}>旧版主账号风控弹窗</ScButton>
+    <ScButton onClick={handleMpkRiskPrompt}>MPK账号风控弹窗</ScButton>
   </>;
 }

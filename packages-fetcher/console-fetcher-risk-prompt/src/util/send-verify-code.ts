@@ -79,7 +79,7 @@ export default async function sendVerifyCode({
 
       setRiskCanceledErrorProps({
         unexpectedErrorType,
-        unexpectedError: code || name
+        unexpectedErrorCode: code || name
       });
     }
 

@@ -35,7 +35,8 @@ export interface IMpkRiskInfo extends Omit<IOldMainRiskInfo, 'riskType'> {
   riskType: ERiskType.MPK;
   isMpk: boolean;
   accountId: string;
-  mpkIsDowngrade: boolean; // 轻量级虚商是否降级
+  // MPK 是否降级为旧版主账号风控
+  mpkIsDowngrade: boolean;
 }
 
 // 解析后的新版主账号风控参数
@@ -53,11 +54,12 @@ export interface INewSubRiskInfo {
   subRiskValidators: Omit<ICommonRiskInfo, 'codeType'>[];
 }
 
-export type TRiskInfo = IOldMainRiskInfo | INewMainRiskInfo | INewSubRiskInfo | IMpkRiskInfo;
+export type TRiskInfo = IOldMainRiskInfo | IMpkRiskInfo | INewMainRiskInfo | INewSubRiskInfo;
 
 export interface IRiskCanceledErrorProps {
-  // errorCode / errorName / errorMessage
-  unexpectedError?: string;
+  unexpectedValue?: string;
+  unexpectedErrorCode?: string;
+  unexpectedErrorMessage?: string;
   unexpectedErrorType?: EUnexpectedErrorType;
 }
 

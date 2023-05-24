@@ -32,7 +32,7 @@ export function getVerifyLabel(props: TAuthFormProps): string {
   }
 
   // 子账号风控，Vmfa 类型时 Label 是用户名
-  if (props.verifyType === ESubVerificationDeviceType.VMFA) {
+  if (props.riskType === ERiskType.NEW_SUB && props.verifyType === ESubVerificationDeviceType.VMFA) {
     return intl('attr:vmfa_auth_userName');
   }
 

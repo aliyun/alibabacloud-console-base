@@ -47,7 +47,7 @@ export default function SubAccountAuth({
       
       const foundVerificationItem = subGetVerificationToAuthData.subValidators.find(o => o.deviceType === deviceType);
 
-      // SMS 类型的详情为手机号，手机号前面要加区号（目前只有）
+      // SMS 类型的详情为手机号，手机号前面要加区号
       if (foundVerificationItem?.deviceType === ESubVerificationDeviceType.SMS) {
         return foundVerificationItem.phoneNumber;
       }
