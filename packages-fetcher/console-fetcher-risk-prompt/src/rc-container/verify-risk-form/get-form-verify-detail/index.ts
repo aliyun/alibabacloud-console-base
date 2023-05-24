@@ -1,5 +1,6 @@
 import {
-  ESubVerificationDeviceType
+  ESubVerificationDeviceType,
+  getSplittedPhoneNumber
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
@@ -42,7 +43,13 @@ export default function getFormVerifyDetail(props: TAuthFormProps): string {
   try {
     if (safeStringifiedVerifyDetail !== DEFAULT_VERIFY_DETAIL && riskType === ERiskType.NEW_SUB) {
       if (verifyType === ESubVerificationDeviceType.SMS) {
-        return getFuzzyPhoneNumber(safeStringifiedVerifyDetail);
+        // 子账号手机风控的 VerifyDetail 是 ${areaCode}-${phoneNumber}
+        const {
+          areaCode,
+          phoneNumber
+        } = getSplittedPhoneNumber(safeStringifiedVerifyDetail);
+
+        return `${areaCode}-${getFuzzyPhoneNumber(phoneNumber)}`;
       }
 
       if (verifyType === ESubVerificationDeviceType.EMAIL) {

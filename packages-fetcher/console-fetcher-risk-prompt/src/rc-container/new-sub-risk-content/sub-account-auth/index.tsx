@@ -49,6 +49,10 @@ export default function SubAccountAuth({
 
       // SMS 类型的详情为手机号，手机号前面要加区号
       if (foundVerificationItem?.deviceType === ESubVerificationDeviceType.SMS) {
+        if (foundVerificationItem.areaCode) {
+          return `${foundVerificationItem.areaCode}-${foundVerificationItem.phoneNumber}`;
+        }
+          
         return foundVerificationItem.phoneNumber;
       }
 

@@ -49,7 +49,7 @@ export default async function sendVerifyCode({
     const identitySendCodeData = await dataSendCode({
       accountId,
       verifyType,
-      // 子账号发送验证码接口需要 verifyDetail（手机号码或者邮箱地址）
+      // 子账号发送验证码接口需要 verifyDetail（手机号码或者邮箱地址，手机号码需要带上区号）
       verifyDetail: String(verifyDetail),
       accountType: riskType === ERiskType.NEW_SUB ? EAccountType.SUB : EAccountType.MAIN,
       ext: JSON.stringify({
