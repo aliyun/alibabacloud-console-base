@@ -36,7 +36,7 @@ const ScAlert = styled.div<IScPropsAlert>`
   align-items: flex-start;
   position: relative;
   opacity: ${props => (props.$toast ? 0.85 : 1)};
-  padding: ${props => (props.$dense ? 4 : 12)}px 12px;
+  padding: ${props => (props.$dense ? '4px 8px' : '12px')};
   transition: all ease-in-out 250ms;
   ${mixinTextSecondary}
   ${props => (props.$toast ? null : mixinBorderRadiusXs)}

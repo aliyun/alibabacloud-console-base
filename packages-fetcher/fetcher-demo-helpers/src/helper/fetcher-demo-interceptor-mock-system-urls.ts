@@ -41,10 +41,14 @@ export default function fetcherDemoInterceptorMockSystemUrls(config: IDemoConfig
       return {
         url: `${MOCK_PREFIX}/risk-send-verify-code`
       };
-    // safeguard（内部版）
+    // Safeguard（内部版）
     case '/safeguard/order/create':
       return {
         url: `${MOCK_PREFIX}/safeguard/order/create`
+      };
+    case '/safeguard/order/get':
+      return {
+        url: `${MOCK_PREFIX}/safeguard/order/get`
       };
     default:
       return undefined;

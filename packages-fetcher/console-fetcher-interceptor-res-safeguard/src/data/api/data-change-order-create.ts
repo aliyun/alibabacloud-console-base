@@ -12,6 +12,6 @@ import {
   fixDataChangeOrder
 } from '../util';
 
-export default function createChangeOrder(params: IParamsChangeOrderCreate, url?: string): Promise<IDataChangeOrder> {
+export default function dataChangeOrderCreate(params: IParamsChangeOrderCreate, url?: string): Promise<IDataChangeOrder> {
   return fetcher.post<IData0ChangeOrder, IParamsChangeOrderCreate>(url || URL_SAFEGUARD_ORDER_CREATE, params).then(fixDataChangeOrder);
 }

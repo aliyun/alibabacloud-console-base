@@ -7,15 +7,13 @@ import {
 } from '@alicloud/console-base-helper-loading';
 
 import {
-  ERROR_CODE_CF_REQUIRED
-} from '../../../const';
-import {
   dataChangeOrderCreate
 } from '../../../data';
 
 import useOpDialog from './use-op-dialog';
+import useChangeType from './use-change-type';
 
-export default function useHandleCreateOrder(): () => void {
+export default function useHandleCreateChangeOrder(): () => void {
   const {
     data: {
       sourceError,
@@ -25,19 +23,19 @@ export default function useHandleCreateOrder(): () => void {
     },
     updateData
   } = useOpDialog();
+  const changeOrderType = useChangeType();
   
   return useCallback(() => {
     updateData({
-      loadingCreate: LoadingStatus.LOADING
+      loadingOfCreate: LoadingStatus.LOADING
     });
     
     const {
-      code,
       config
     } = sourceError;
     
     dataChangeOrderCreate({
-      type: code === ERROR_CODE_CF_REQUIRED ? 'cf' : 'cm',
+      type: changeOrderType,
       info: {
         url: config.url || '',
         urlBase: config.urlBase,
@@ -48,10 +46,10 @@ export default function useHandleCreateOrder(): () => void {
     }, urlOrderCreate).then(changeOrder => {
       updateData({
         changeOrder,
-        loadingCreate: LoadingStatus.SUCCESS
+        loadingOfCreate: LoadingStatus.SUCCESS
       });
     }, () => updateData({
-      loadingCreate: LoadingStatus.ERROR
+      loadingOfCreate: LoadingStatus.ERROR
     }));
-  }, [sourceError, urlOrderCreate, updateData]);
+  }, [updateData, sourceError, changeOrderType, urlOrderCreate]);
 }

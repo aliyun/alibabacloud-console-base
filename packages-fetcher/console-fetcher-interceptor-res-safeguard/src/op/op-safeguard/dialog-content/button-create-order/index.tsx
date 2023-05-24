@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {
   LoadingStatus
@@ -13,18 +14,23 @@ import {
   useHandleCreateOrder
 } from '../../hook';
 
+const ScButtonCreateOrder = styled(Button)`
+  padding: 2px;
+  line-height: initial;
+`;
+
 export default function ButtonCreateOrder(): JSX.Element {
   const {
     data: {
-      loadingCreate
+      loadingOfCreate
     }
   } = useOpDialog();
   const handleCreateOrder = useHandleCreateOrder();
   
-  return <Button {...{
-    label: intl('safeguard:op:create_order'),
-    theme: ButtonTheme.TEXT_SECONDARY,
-    loading: loadingCreate === LoadingStatus.LOADING,
+  return <ScButtonCreateOrder {...{
+    label: intl('change_order:op:create'),
+    theme: ButtonTheme.TEXT_PRIMARY,
+    loading: loadingOfCreate === LoadingStatus.LOADING,
     onClick: handleCreateOrder
   }} />;
 }

@@ -11,12 +11,17 @@ import {
 import {
   IDialogData
 } from '../types';
+import {
+  POLLING_TIMES
+} from '../const';
 
 export default function createDialogData(sourceError: FetcherError, interceptorConfig: IFetcherInterceptorConfig = {}): IDialogData {
   return {
     sourceError,
     interceptorConfig,
-    loadingCreate: LoadingStatus.IDLE,
-    changeOrder: null
+    loadingOfCreate: LoadingStatus.IDLE,
+    loadingOfGet: LoadingStatus.IDLE,
+    changeOrder: null,
+    pollingLeft: POLLING_TIMES
   };
 }

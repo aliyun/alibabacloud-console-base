@@ -32,7 +32,12 @@ export default function opSafeguard(error: FetcherError, interceptorConfig?: IFe
     undefinedAsReject: true,
     buttons: data => [{
       label: intl('safeguard:op:submit'),
-      disabled: data.changeOrder?.status !== ChangeOrderStatus.PASSED
+      disabled: data.changeOrder?.status !== ChangeOrderStatus.APPROVED,
+      result: data.changeOrder ? {
+        _orderId_: data.changeOrder.orderId,
+        _orderType_: data.changeOrder.type,
+        _orderCustomCode_: '' // TODO
+      } : undefined
     }, intl('safeguard:op:cancel')]
   });
 }

@@ -12,15 +12,25 @@ import {
   IFetcherInterceptorConfig
 } from '../../../types';
 
+export interface IErrorResponseData {
+  code: 'CM.Required' | 'CF.Required';
+  data: {
+    customCode: string; // 如果允许填入自定义变更单 ID，则需返回该值
+    reason: EBlockReason;
+  };
+}
+
 export interface IDialogResult {
-  orderId: string;
-  orderType: 'cm' | 'cf';
-  orderCustomCode: string;
+  _orderId_: string;
+  _orderType_: 'cm' | 'cf';
+  _orderCustomCode_: string;
 }
 
 export interface IDialogData {
   sourceError: FetcherError;
   interceptorConfig: IFetcherInterceptorConfig;
   changeOrder: DataChangeOrder | null;
-  loadingCreate: LoadingStatus;
+  loadingOfCreate: LoadingStatus;
+  loadingOfGet: LoadingStatus;
+  pollingLeft: number;
 }

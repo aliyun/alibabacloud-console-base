@@ -1,5 +1,9 @@
+import {
+  EChangeType
+} from '../enum';
+
 export interface IParamsChangeOrderCreate {
-  type: 'cm' | 'cf'; // 根据 code 判断
+  type: EChangeType;
   info: { // 变更信息
     url: string;
     urlBase?: string;
@@ -7,4 +11,10 @@ export interface IParamsChangeOrderCreate {
     params?: unknown;
     body?: unknown;
   };
+}
+
+export interface IParamsChangeOrder {
+  orderId: string;
+  orderType: EChangeType;
+  customCode?: string;
 }
