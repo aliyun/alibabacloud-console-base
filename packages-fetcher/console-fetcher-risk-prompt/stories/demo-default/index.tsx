@@ -15,7 +15,7 @@ import {
   fetcherRiskData
 } from '@alicloud/console-fetcher-risk-data';
 import {
-  fetcherDemoInterceptorMockVerifyCodeUrl
+  fetcherDemoInterceptorMockSystemUrls
 } from '@alicloud/fetcher-demo-helpers';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
@@ -37,7 +37,7 @@ const ScButton = styled(Button)`
 `;
 
 fetcherRiskData.sealInterceptors(false, false);
-fetcherRiskData.interceptRequest(fetcherDemoInterceptorMockVerifyCodeUrl);
+fetcherRiskData.interceptRequest(fetcherDemoInterceptorMockSystemUrls);
 fetcherRiskData.sealInterceptors(true, true);
 
 export default function DemoDefault(): JSX.Element {

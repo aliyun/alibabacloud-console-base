@@ -25,6 +25,10 @@ export default function fetcherDemoInterceptorMockSystemUrls(config: IDemoConfig
       return {
         url: `${MOCK_PREFIX}/risk-get-mfa-info-to-auth`
       };
+    case '/identity/getMfaInfoToAuthV2':
+      return {
+        url: `${MOCK_PREFIX}/risk-get-mfa-info-to-auth-v2`
+      };
     case '/identity/bindMFA':
       return {
         url: `${MOCK_PREFIX}/risk-bind-mfa`
