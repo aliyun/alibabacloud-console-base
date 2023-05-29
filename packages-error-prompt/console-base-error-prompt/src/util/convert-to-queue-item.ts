@@ -30,7 +30,7 @@ export default function convertToQueueItem(o?: TErrorPromptArg, extra?: IErrorPr
   }
   
   const error = convertToErrorPlain(o);
-  const predefinedExtra = getPredefinedExtra(error.code);
+  const predefinedExtra = getPredefinedExtra(error);
   let {
     title = error.title,
     message = error.message,
