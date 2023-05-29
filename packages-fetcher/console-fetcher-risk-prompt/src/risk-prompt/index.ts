@@ -39,6 +39,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
   riskParametersGetter,
   reRequestWithVerifyResult
 }: IRiskPromptProps<T>): Promise<IRiskPromptResolveData> {
+  // 对传入的风控响应 riskResponse 解析，得到是否是新版风控、账号类型、风控类型、核身手段等信息
   const riskInfo = convertRiskResponse({
     newRisk,
     riskConfig,
@@ -48,13 +49,19 @@ export default async function riskPrompt<T = Record<string, unknown>>({
 
   const accountId = getAccountIdFromRiskInfo(riskInfo);
   const stringifiedRiskResponse = safeJsonStringify(riskResponse);
+  // 旧版主账号风控配置，将业务方传入的配置与默认配置结合进行判断
   const oldMainRiskExtraConfig: TOldMainRiskExtraConfig = {
+    // 验证码发送接口
     URL_SEND_CODE: riskConfig?.URL_SEND_CODE ?? DEFAULT_EXTRA_RISK_CONFIG.URL_SEND_CODE,
+    // 手机、邮箱、MFA 设备修改链接
     URL_SETTINGS: riskConfig?.URL_SETTINGS ?? DEFAULT_EXTRA_RISK_CONFIG.URL_SETTINGS,
+    // 验证码发送 Http Method，默认是 Post
     REQUEST_METHOD: riskConfig?.REQUEST_METHOD ?? DEFAULT_EXTRA_RISK_CONFIG.REQUEST_METHOD
   };
 
+  // 子账号风控的核身方式参数不合法（子账号可以配置多种核身方式，因此 subRiskValidators 是数组）
   if (riskInfo.riskType === ERiskType.NEW_SUB && !riskInfo.subRiskValidators.length) {
+    // 弹窗展示错误信息
     await riskInvalid({
       stringifiedRiskResponse,
       subRisk: true,
@@ -62,15 +69,19 @@ export default async function riskPrompt<T = Record<string, unknown>>({
       errorMessage: intl('message:invalid_unknown!lines')
     });
 
+    // 用户关闭弹窗后抛出错误
     throw convertToRiskErrorInvalid(error);
   }
 
+  // 主账号或者 MPK 账号风控，核身方式为单选
   if (riskInfo.riskType !== ERiskType.NEW_SUB) {
     const {
       verifyType, verifyDetail, convertedVerifyType
     } = riskInfo;
   
+    // convertedVerifyType 是将 riskResponse 中的 verifyType 转化为 EConvertedVerifyType 的结果
     switch (convertedVerifyType) {
+      // 未检测到核身方式
       case EConvertedVerifyType.NONE:
         await riskInvalid({
           urlSetting: oldMainRiskExtraConfig.URL_SETTINGS,
@@ -79,6 +90,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
         });
 
         throw convertToRiskErrorInvalid(error);
+      // 未检测到合法的核身方式
       case EConvertedVerifyType.UNKNOWN:
         await riskInvalid({
           urlSetting: oldMainRiskExtraConfig.URL_SETTINGS,
@@ -114,6 +126,10 @@ export default async function riskPrompt<T = Record<string, unknown>>({
   // 因此，在客户关闭弹窗时，需要感知客户是否由于流程被非预期错误卡住，并在关闭弹窗时上报埋点，并且给 riskError 中增加 unexpectedErrorType 属性
   // 由此，可以及时通过埋点发现潜在风险，接入方也能根据关闭弹窗抛出的错误中，是否包含 unexpectedErrorType 字段，并自动走防御逻辑（例如降级）
   const riskCanceledErrorProps: IRiskCanceledErrorProps = {};
+
+  // 用于修改 riskCanceledErrorProps 对象属性的函数。该函数会传递到风控交互组件中。
+  // 当风控非预期错误发生时，会调用该函数对 riskCanceledErrorProps 属性进行修改。
+  // 风控弹窗被手动关闭时会读取 riskCanceledErrorProps 的属性确定是否发生了非预期错误。如果发生，会上报非预期错误埋点，并且对抛出的错误增加 unexpectedErrorType 属性，从而能被业务方感知
   const setRiskCanceledErrorProps = (props: IRiskCanceledErrorProps): void => {
     const {
       unexpectedValue, unexpectedErrorCode, unexpectedErrorMessage, unexpectedErrorType
@@ -137,6 +153,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
         unexpectedValue, unexpectedErrorCode, unexpectedErrorMessage, unexpectedErrorType
       } = riskCanceledErrorProps;
 
+      // 发生非预期错误
       if (unexpectedErrorType) {
         slsRiskTerminatedWithUnexpectedError({
           value: unexpectedValue,
@@ -145,7 +162,7 @@ export default async function riskPrompt<T = Record<string, unknown>>({
           errorMessage: unexpectedErrorMessage
         });
 
-        // 非预期错误发生时，用户关闭风控弹窗
+        // 对抛出的错误增加属性
         throw convertToRiskErrorCancelled(err, unexpectedErrorType);
       }
     }
