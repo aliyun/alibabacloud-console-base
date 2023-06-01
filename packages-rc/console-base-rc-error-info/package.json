@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-rc-error-info",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ConsoleBase 组件 - 错误信息展示",
   "license": "MIT",
   "sideEffects": false,

@@ -1,4 +1,5 @@
 import {
+  IErrorPlain,
   IErrorPromptExtra
 } from '../types';
 import intl from '../intl';
@@ -22,6 +23,7 @@ const LOGIN: IErrorPromptExtra = {
     onClick: reload
   }
 };
+
 /**
  * SecToken 失效，可能是在另一个浏览器 tab 中做了重新登录或切换账号操作
  */
@@ -33,6 +35,7 @@ const TOKEN_EXPIRED: IErrorPromptExtra = {
     onClick: reload
   }
 };
+
 /**
  * 接口不存在，有多个 code
  * 
@@ -54,30 +57,36 @@ const API_NOT_EXIST: IErrorPromptExtra = {
   message: intl('message:api_not_exist')
 };
 
-const PERMISSION_DENIED: IErrorPromptExtra = {
-  title: intl('title:permission_denied'),
-  message: intl('message:permission_denied')
-};
+function getExtraForAccessDenied(error: IErrorPlain): IErrorPromptExtra {
+  return {
+    title: intl('title:access_denied'),
+    message:
+      intl(error.detailsAuth?.type === 'ExplicitDeny' ? 'message:access_denied_1_explicit' : 'message:access_denied_1_implicit') +
+      intl(error.detailsAuth?.policyType === 'ControlPolicy' ? 'message:access_denied_2_control_policy' : 'message:access_denied_2_default')
+  };
+}
 
 // TODO code ApiUnknownEndpoint
 
 /**
- * 根据 code 提取预设的 extra 信息，用于统一不一致
+ * 根据 error 构造预设的 extra 信息，用于接管抹平不一致但是应一致
  */
-export default function getPredefinedExtra(code?: string): IErrorPromptExtra | undefined {
-  switch (code) {
-    case ERROR_CODE_LOGIN:
-      return LOGIN;
-    case ERROR_CODE_TOKEN_EXPIRED:
-      return TOKEN_EXPIRED;
-    case 'ApiNotExist':
-    case 'InvalidAction.NotFound':
-    case 'ApiDefineNotExist':
-      return API_NOT_EXIST;
-    case 'NoPermission':
-    case 'Forbidden.RAM':
-      return PERMISSION_DENIED;
-    default:
-      break;
+export default function getPredefinedExtra(error?: IErrorPlain): IErrorPromptExtra | undefined {
+  if (!error?.code) { return undefined; }
+
+  if (error.code === ERROR_CODE_LOGIN) {
+    return LOGIN;
+  }
+
+  if (error.code === ERROR_CODE_TOKEN_EXPIRED) {
+    return TOKEN_EXPIRED;
+  }
+
+  if (['ApiNotExist', 'InvalidAction.NotFound', 'ApiDefineNotExist'].includes(error.code)) {
+    return API_NOT_EXIST;
+  }
+
+  if (['NoPermission', 'Forbidden.RAM'].includes(error.code) || error.detailsAuth) {
+    return getExtraForAccessDenied(error);
   }
 }

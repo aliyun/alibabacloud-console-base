@@ -12,6 +12,7 @@ import intl from '../intl';
 
 import parseParams from './parse-params';
 import intlAuthType from './intl-auth-type';
+import intlAuthPolicyType from './intl-auth-policy-type';
 import getAuthUserDisplayInfo from './get-auth-user-display-info';
 
 /**
@@ -54,7 +55,7 @@ export default function convertErrorKvList(error: IErrorPlain, options: IErrorIn
     pushInfo(detailsAuth.action, 'auth.action', intl('attr:auth_action'));
     pushInfo(detailsAuth.resource, 'auth.resource', intl('attr:auth_resource'));
     pushInfo(getAuthUserDisplayInfo(detailsAuth), 'auth.user', intl('attr:auth_user'));
-    pushInfo(detailsAuth.policyType, 'auth.policy_type', intl('attr:auth_policy_type'));
+    pushInfo(intlAuthPolicyType(detailsAuth), 'auth.policy_type', intl('attr:auth_policy_type'));
     pushInfo(intlAuthType(detailsAuth), 'auth.type', intl('attr:auth_type'));
   }
   

@@ -26,14 +26,18 @@ export default function convertToErrorPlain(error: TErrorPromptArg): IErrorPlain
   if (_isString(error) || isValidElement(error)) {
     o.message = error as string;
   } else {
-    o.name = error.name || o.name;
-    o.requestId = error.requestId;
-    o.code = error.code;
-    o.title = error.title;
-    o.message = error.message;
-    o.stack = error.stack;
-    o.details = error.details || getErrorDetails(error as IFetcherErrorMimic);
-    o.detailsAuth = error.detailsAuth || getErrorDetailsAuth(error as IFetcherErrorMimic);
+    const {
+      name, requestId, code, title, message, stack, details, detailsAuth
+    } = error as IErrorPlain;
+
+    o.name = name || o.name;
+    o.requestId = requestId;
+    o.code = code;
+    o.title = title;
+    o.message = message;
+    o.stack = stack;
+    o.details = details || getErrorDetails(error as IFetcherErrorMimic);
+    o.detailsAuth = detailsAuth || getErrorDetailsAuth(error as IFetcherErrorMimic);
   }
   
   return o;
