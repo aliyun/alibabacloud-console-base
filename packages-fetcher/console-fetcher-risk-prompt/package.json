@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-risk-prompt",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ConsoleBase 新版风控弹窗",
   "license": "MIT",
   "sideEffects": false,
@@ -50,11 +50,7 @@
     "@alicloud/console-base-rc-tabs": "^1.8.10",
     "@alicloud/console-base-rc-tooltip": "^1.1.12",
     "@alicloud/console-base-theme": "^1.9.7",
-<<<<<<< HEAD
-    "@alicloud/console-fetcher-risk-data": "^1.1.1-alpha.1",
-=======
-    "@alicloud/console-fetcher-risk-data": "^1.0.2",
->>>>>>> a037b1476 (chore(console-fetcher-risk-prompt): v1.0.3)
+    "@alicloud/console-fetcher-risk-data": "^1.0.3",
     "@alicloud/fetcher": "^1.7.9",
     "@alicloud/fetcher-demo-helpers": "^1.4.10",
     "@alicloud/sandbox-escape": "^1.1.8",

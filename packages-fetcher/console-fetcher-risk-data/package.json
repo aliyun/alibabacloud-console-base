@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-fetcher-risk-data",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ConsoleBase 数据 - 新版风控 Identity 服务",
   "license": "MIT",
   "sideEffects": false,
