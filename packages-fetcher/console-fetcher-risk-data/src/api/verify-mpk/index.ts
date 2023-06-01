@@ -1,4 +1,4 @@
-import type {
+import {
   FetcherError
 } from '@alicloud/fetcher';
 
@@ -21,10 +21,14 @@ import fetcher from '../../util/fetcher';
 import transferTokenVerifyResponseToData from '../_util/transfer-token-verify-response-to-data';
 
 export default async function dataVerifyMpk(params: TParamsVerifyMpk): Promise<TDataTokenVerify> {
+  const {
+    accountId, authCode, ext, verifyType, verifyUniqId
+  } = params;
+
   const commonSlsParams = {
-    authCode: params.authCode,
-    verifyType: params.verifyType,
-    riskRequestId: params.riskRequestId
+    authCode,
+    verifyType,
+    verifyUniqId
   };
 
   try {
@@ -32,11 +36,11 @@ export default async function dataVerifyMpk(params: TParamsVerifyMpk): Promise<T
       Origin: 'console',
       TicketType: TICKET_TYPE,
       AccountType: EAccountType.MAIN,
-      Ext: params.ext,
-      AuthCode: params.authCode,
-      AccountId: params.accountId,
-      VerifyType: params.verifyType,
-      RiskRequestId: params.riskRequestId
+      Ext: ext,
+      AuthCode: authCode,
+      AccountId: accountId,
+      VerifyType: verifyType,
+      VerifyUniqId: verifyUniqId
     });
 
     slsVerifyMpk({

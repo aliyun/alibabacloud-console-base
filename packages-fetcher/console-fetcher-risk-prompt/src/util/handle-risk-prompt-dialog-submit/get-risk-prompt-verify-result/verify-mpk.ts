@@ -29,7 +29,7 @@ export default async function verifyMpk({
     accountId,
     verifyType,
     authCode: code || '',
-    riskRequestId: requestId || '',
+    verifyUniqId: requestId || '',
     ext: JSON.stringify({
       codeType
     })

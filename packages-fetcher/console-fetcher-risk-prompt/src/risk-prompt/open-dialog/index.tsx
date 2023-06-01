@@ -15,6 +15,7 @@ import {
   IRiskPromptResolveData,
   TRiskInfo,
   TOldMainRiskExtraConfig,
+  TSetRiskCanceledErrorProps,
   TReRequestWithVerifyResult
 } from '../../types';
 import {
@@ -28,6 +29,7 @@ import {
 } from '../../sls';
 import {
   getAccountIdFromRiskInfo,
+  getSubVerificationSettingUrl,
   getOldMainOrMpkAccountRiskInfo
 } from '../../util';
 import DialogContent from '../dialog-content';
@@ -42,17 +44,19 @@ import getPartialDialogDataBasedOnRiskInfo from './get-partial-dialog-data-based
 interface IOpenDialogProps {
   riskInfo: TRiskInfo;
   oldMainRiskExtraConfig: TOldMainRiskExtraConfig;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default async function openDialog({
   riskInfo,
-  reRequestWithVerifyResult,
   oldMainRiskExtraConfig: {
     URL_SETTINGS,
     URL_SEND_CODE,
     REQUEST_METHOD
-  }
+  },
+  setRiskCanceledErrorProps,
+  reRequestWithVerifyResult
 }: IOpenDialogProps): Promise<IRiskPromptResolveData> {
   const {
     riskType, codeType
@@ -97,6 +101,7 @@ export default async function openDialog({
       codeType,
       accountId,
       oldMainOrMpkVerifyInfo,
+      setRiskCanceledErrorProps,
       reRequestWithVerifyResult,
       oldMainAccountUrlSetting: URL_SETTINGS,
       oldMainSendCodeUrl: URL_SEND_CODE,
@@ -112,6 +117,20 @@ export default async function openDialog({
         }
         // 子账号风控验证
         case EDialogType.SUB_RISK_VERIFICATION_AUTH: {
+          // 没有解析到合法的子账号核身方式，隐藏确定按钮
+          if (data.hideSubRiskSubmitButton) {
+            // 如果子账号 ID 不为空，展示设置按钮
+            if (accountId) {
+              return [{
+                label: intl('op:risk_invalid_go'),
+                spm: 'add',
+                href: getSubVerificationSettingUrl(accountId)
+              }, buttonCancel];
+            }
+
+            return [buttonCancel];
+          }
+
           const primaryButtonDisabled = ((): boolean => {
             if (!data.currentSubVerificationDeviceType) {
               return false;
@@ -122,7 +141,8 @@ export default async function openDialog({
 
           const verifyMfaPrimaryButton = generateSubSubmitButton({
             primaryButtonDisabled,
-            reRequestWithVerifyResult
+            reRequestWithVerifyResult,
+            setRiskCanceledErrorProps
           });
           
           return [verifyMfaPrimaryButton, buttonCancel];
@@ -154,6 +174,7 @@ export default async function openDialog({
               codeType,
               accountId,
               verifyType,
+              setRiskCanceledErrorProps,
               reRequestWithVerifyResult,
               primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
             });
@@ -164,6 +185,7 @@ export default async function openDialog({
           const oldMainOrDowngradeMpkSubmitButton = generateOldMainOrDowngradeMpkSubmitButton({
             verifyType,
             reRequestWithVerifyResult,
+            setRiskCanceledErrorProps,
             primaryButtonDisabled: data.primaryButtonDisabledObject[ESceneKey.MAIN_ACCOUNT]
           });
 

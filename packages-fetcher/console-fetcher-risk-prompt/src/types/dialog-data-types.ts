@@ -1,8 +1,6 @@
-import type {
-  ParamsVerifySubAccount,
-  DataVerificationValidator
-} from '@alicloud/console-fetcher-risk-data';
 import {
+  ParamsVerifySubAccount,
+  DataVerificationValidator,
   ESubVerificationDeviceType
 } from '@alicloud/console-fetcher-risk-data';
 
@@ -60,6 +58,8 @@ export interface IDialogData {
   dialogType: EDialogType;
   // 在请求风控验证接口时，会通过 block 方法锁定 dialog 使其无法点击。此时应该也禁止通过回车键请求风控验证接口
   dialogBlocked?: boolean;
+  // 当无法从 GetMfaInfoToAuthV2 的响应中解析到正确的子账号验证方式时，会提示【系统没有检测到验证方式。】，此时需要隐藏确定按钮
+  hideSubRiskSubmitButton?: boolean;
   // 用于定义每种风控方式对应的 errorMessage 以及 PrimaryButton 的 Disabled 状态
   errorMessageObject: TErrorMessageObject;
   primaryButtonDisabledObject: TPrimaryButtonDisabledObject;

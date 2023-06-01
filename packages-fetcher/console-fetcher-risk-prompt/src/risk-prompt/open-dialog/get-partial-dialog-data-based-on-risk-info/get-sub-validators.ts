@@ -1,6 +1,7 @@
 import {
   dataGetVerificationInfoToAuth,
   ESubVerificationDeviceType,
+  getSplittedPhoneNumber,
   type DataGetSmsInfoToAuth,
   type DataGetEmailInfoToAuth,
   type DataVerificationValidator
@@ -38,11 +39,11 @@ export default async function getSubValidators({
     });
 
     const targetUserPrincipalName = ((): string => {
-      if (!response.length) {
+      if (!response.length || !response[0]) {
         return '';
       }
 
-      return response[0]!.targetUserPrincipalName;
+      return response[0].targetUserPrincipalName;
     })();
 
     return {
@@ -54,11 +55,13 @@ export default async function getSubValidators({
   // 如果 Validators 不存在 MFA，手机风控信息和邮箱风控信息都可以直接从 Validators 获取
   const verificationValidators = subRiskValidators.map<DataVerificationValidator | null>(o => {
     if (o.convertedVerifyType === EConvertedVerifyType.SMS) {
-      const [areaCode, phoneNumber] = String(o.verifyDetail).split('-');
+      const {
+        areaCode, phoneNumber
+      } = getSplittedPhoneNumber(o.verifyDetail);
 
       return {
         areaCode,
-        phoneNumber: phoneNumber || '',
+        phoneNumber,
         targetUserPrincipalName: '',
         deviceType: ESubVerificationDeviceType.SMS
       } as DataGetSmsInfoToAuth;

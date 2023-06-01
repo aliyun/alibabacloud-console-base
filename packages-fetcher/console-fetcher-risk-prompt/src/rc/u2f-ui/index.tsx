@@ -26,7 +26,7 @@ import {
 } from '../../types';
 import {
   SVG_URLS,
-  MOBILE_SCREE_SIZE
+  MOBILE_SCREEN_SIZE
 } from '../../const';
 import intl from '../../intl';
 import U2FMessage from '../message';
@@ -68,7 +68,7 @@ const ScSvgImgWrapper = styled.div`
   width: 100px;
   height: 0;
 
-  @media (max-width: ${MOBILE_SCREE_SIZE}px) {
+  @media (max-width: ${MOBILE_SCREEN_SIZE}px) {
     padding-top: 80px;
     width: 80px;
   }
@@ -80,7 +80,7 @@ const SvgImg = styled.img`
   left: 0;
   width: 100px;
 
-  @media (max-width: ${MOBILE_SCREE_SIZE}px) {
+  @media (max-width: ${MOBILE_SCREEN_SIZE}px) {
     width: 80px;
   }
 `;

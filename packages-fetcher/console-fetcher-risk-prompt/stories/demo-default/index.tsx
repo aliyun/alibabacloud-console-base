@@ -11,6 +11,12 @@ import {
   RadioGroup,
   CheckboxGroup
 } from '@alicloud/demo-rc-elements';
+import {
+  fetcherRiskData
+} from '@alicloud/console-fetcher-risk-data';
+import {
+  fetcherDemoInterceptorMockSystemUrls
+} from '@alicloud/fetcher-demo-helpers';
 import ThemeSwitcher from '@alicloud/console-base-demo-helper-theme-switcher';
 
 import riskPrompt, {
@@ -29,6 +35,10 @@ interface IRiskResponseData {
 const ScButton = styled(Button)`
   margin: 0 8px;
 `;
+
+fetcherRiskData.sealInterceptors(false, false);
+fetcherRiskData.interceptRequest(fetcherDemoInterceptorMockSystemUrls);
+fetcherRiskData.sealInterceptors(true, true);
 
 export default function DemoDefault(): JSX.Element {
   const [stateMfaBound, setStateMfaBound] = useState<string>('false');
@@ -172,6 +182,31 @@ export default function DemoDefault(): JSX.Element {
     console.log('new_main_prompt_result', riskPromptResult);
   }, []);
 
+  const handleMpkRiskPrompt = useCallback(async () => {
+    const riskPromptResult = await riskPrompt({
+      riskResponse: {
+        Extend: {
+          isMpk: 'true',
+          useOldVersion: 'false'
+        },
+        Validators: {
+          Validator: [
+            {
+              VerifyDetail: '1234***0',
+              VerifyType: 'sms'
+            }
+          ]
+        },
+        CodeType: 'ims_login_update',
+        VerifyDetail: '137****2864',
+        VerifyType: 'sms',
+        AliyunIdkp: '1234***0'
+      }
+    });
+
+    console.log('new_main_prompt_result', riskPromptResult);
+  }, []);
+
   return <>
     <H1>风控弹窗 console-base-risk-prompt</H1>
     <ThemeSwitcher />
@@ -210,5 +245,6 @@ export default function DemoDefault(): JSX.Element {
     <ScButton onClick={handleSubRiskInvalidPrompt}>子账号风控弹窗 - Invalid</ScButton>
     <ScButton onClick={handleNewMainRiskPrompt}>新版主账号风控弹窗</ScButton>
     <ScButton onClick={handleOldMainRiskPrompt}>旧版主账号风控弹窗</ScButton>
+    <ScButton onClick={handleMpkRiskPrompt}>MPK账号风控弹窗</ScButton>
   </>;
 }

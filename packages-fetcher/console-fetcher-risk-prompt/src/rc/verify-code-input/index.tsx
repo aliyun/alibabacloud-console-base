@@ -38,6 +38,9 @@ import {
 import {
   WINDVANE_AVAILABLE
 } from '../../const';
+import {
+  IHandleInputChangeProps
+} from '../../hooks';
 import intl from '../../intl';
 import {
   useModelProps
@@ -56,10 +59,6 @@ import {
 interface IInputProps {
   'data-input-width'?: number | string;
   'data-is-error'?: boolean;
-}
-
-interface IHandleInputChangeProps {
-  verifyCode: string;
 }
 
 type TVerifyCodeInputType = 'vmfa_auth' | 'sms_or_email_auth';
@@ -116,6 +115,7 @@ export default function VerifyCodeInput({
   const {
     codeType,
     accountId,
+    setRiskCanceledErrorProps,
     reRequestWithVerifyResult
   } = useModelProps();
   const contentContext = useDialog<IRiskPromptResolveData, IDialogData>();
@@ -185,33 +185,35 @@ export default function VerifyCodeInput({
       // 允许通过回车键触发 dialogSubmit 的条件：当前输入框为验证 VMFA、手机、邮箱的输入框 & 当前 dialog 非 block 状态 & 当前按钮非 disabled 状态
       if (currentPrimaryButtonNotDisabled && !dialogBlocked) {
         const oldMainOrMpkVerifyType = getOldMainOrMpkAccountRiskInfo(mainAccountRiskInfo).verifyType;
+        const handleRiskPromptDialogSubmitCommonProps = {
+          contentContext,
+          setRiskCanceledErrorProps,
+          reRequestWithVerifyResult
+        };
 
         switch (dialogSubmitType) {
           case ERiskType.MPK:
             throttledHandleRiskPromptDialogSubmit({
               accountId,
               codeType,
-              contentContext,
               dialogSubmitType,
-              reRequestWithVerifyResult,
-              verifyType: oldMainOrMpkVerifyType
+              verifyType: oldMainOrMpkVerifyType,
+              ...handleRiskPromptDialogSubmitCommonProps
             });
 
             return;
           case ERiskType.NEW_SUB:
             throttledHandleRiskPromptDialogSubmit({
-              contentContext,
               dialogSubmitType,
-              reRequestWithVerifyResult
+              ...handleRiskPromptDialogSubmitCommonProps
             });
 
             return;
           case ERiskType.OLD_MAIN:
             throttledHandleRiskPromptDialogSubmit({
-              contentContext,
               dialogSubmitType,
-              reRequestWithVerifyResult,
-              verifyType: oldMainOrMpkVerifyType
+              verifyType: oldMainOrMpkVerifyType,
+              ...handleRiskPromptDialogSubmitCommonProps
             });
 
             break;

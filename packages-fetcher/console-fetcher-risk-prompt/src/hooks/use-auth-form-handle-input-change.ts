@@ -24,10 +24,10 @@ import {
 import {
   useModelProps
 } from '../model';
-import type {
-  IHandleInputChangeProps
-} from '../rc/verify-code-input';
 
+interface IHandleInputChangeProps {
+  verifyCode: string;
+}
 interface IHookProps {
   verifyUniqId: string;
   authFormProps: TAuthFormProps;
@@ -130,3 +130,7 @@ export default function useAuthFormHandleInputChange({
     handleInputChange
   };
 }
+
+export type {
+  IHandleInputChangeProps
+};

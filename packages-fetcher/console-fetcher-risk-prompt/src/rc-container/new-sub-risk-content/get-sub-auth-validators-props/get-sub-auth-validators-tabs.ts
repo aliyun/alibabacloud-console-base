@@ -1,4 +1,4 @@
-import type {
+import {
   TabProps
 } from '@alicloud/console-base-rc-tabs';
 

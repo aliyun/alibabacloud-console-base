@@ -11,7 +11,7 @@ import {
   ISlsCommonProps
 } from './_sls_type';
 
-interface ISlsVerifyMpk extends ISlsCommonProps, Pick<TParamsVerifyMpk, 'riskRequestId' | 'authCode' | 'verifyType'> {}
+interface ISlsVerifyMpk extends ISlsCommonProps, Pick<TParamsVerifyMpk, 'verifyUniqId' | 'authCode' | 'verifyType'> {}
 
 export default function slsVerifyMpk(slsProps: ISlsVerifyMpk): void {
   sls(ESlsTopic.MPK_VERIFY, slsProps);

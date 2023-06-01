@@ -16,10 +16,12 @@ type TSendVerifyCodeCommonType<T> = T & {
   accountId: string;
 }
 
+export type TMpkVerifyType = ESubVerificationDeviceType.EMAIL | ESubVerificationDeviceType.SMS | ESubVerificationDeviceType.VMFA;
+
 export interface IMpkAuthFormProps {
   riskType: ERiskType.MPK;
   verifyDetail?: string | boolean;
-  verifyType: ESubVerificationDeviceType.EMAIL | ESubVerificationDeviceType.SMS | ESubVerificationDeviceType.VMFA;
+  verifyType: TMpkVerifyType;
 }
 
 export interface ISubAuthFormProps {

@@ -6,22 +6,6 @@ export interface IResponseTargetUserPrincipalName {
   TargetUserPrincipalName: string; // 用户名
 }
 
-// 接口 /identity/getMfaInfoToBind 的原始响应（无论是 VMFA 还是 U2F，下面这些字段都会存在。。。只是可能为 null）
-export interface IResponseGetMfaInfoToBind extends IResponseTargetUserPrincipalName {
-  DeviceType: ESubVerificationDeviceType; // MFA 设备类型 - U2F / VMFA
-  // VMFA
-  QRCodeUri: string | null; // 选择的类型是 U2F 时为 null
-  TargetMfaDeviceSecret: string | null; // 选择的类型是 U2F 时为 null
-  // U2F
-  RpId: string | null; // 选择的类型是 VMFA 时为 null
-  PubKeyCreType: string | null; // 选择的类型是 VMFA 时为 null，用于 WebAuthn，public-key
-  PubKeyCreAlg: string | null; // 选择的类型是 VMFA 时为 null，用于 WebAuthn，-7 表示 SHA-256
-  U2FAppId: string | null; // 只有在选择的类型是 U2F，且 U2FVersion 为 U2F_V2 的时候才不为 null（Deprecated）
-  U2FVersion: string | null; // 选择的类型是 VMFA 时为 null，可能的值是 WebAuthn / U2F_V2（Deprecated）
-  U2FChallenge: string | null; // 选择的类型是 VMFA 时为 null
-  UserIdEncrypted: string | null; // 选择的类型是 VMFA 时为 null
-}
-
 // 接口 /identity/getMfaInfoToAuth 的响应 - 虚拟 MFA
 export interface IResponseGetVmfaInfoToAuth extends IResponseTargetUserPrincipalName {
   DeviceType: ESubVerificationDeviceType.VMFA;

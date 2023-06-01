@@ -1,7 +1,7 @@
 import {
   EConvertedVerifyType
 } from '../../enum';
-import type {
+import {
   TRiskTypeConfig
 } from '../../types';
 

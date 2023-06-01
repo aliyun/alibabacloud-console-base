@@ -13,6 +13,9 @@ import {
   IRiskPromptResolveData,
   TReRequestWithVerifyResult
 } from './risk-prompt-props';
+import {
+  TSetRiskCanceledErrorProps
+} from './risk-prompt-types';
 
 export type TContentContext = Omit<ReturnType<typeof useDialog<IRiskPromptResolveData, IDialogData>>, 'forceUpdate'>;
 
@@ -35,5 +38,6 @@ export interface ISubAuthSubmitProps {
 export type TDialogSubmitProps = IOldMainSubmitProps | INewMpkSubmitProps | ISubAuthSubmitProps;
 export type THandleRiskPromptDialogSubmitProps = TDialogSubmitProps & {
   contentContext: TContentContext;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }

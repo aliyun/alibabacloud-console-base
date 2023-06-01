@@ -8,6 +8,7 @@ import {
 import {
   IDialogData,
   IRiskPromptResolveData,
+  TSetRiskCanceledErrorProps,
   TReRequestWithVerifyResult
 } from '../../../types';
 import intl from '../../../intl';
@@ -18,12 +19,14 @@ import {
 interface IGenerateOldMainOrDowngradeMpkSubmitButtonProps {
   verifyType: string;
   primaryButtonDisabled?: boolean;
+  setRiskCanceledErrorProps: TSetRiskCanceledErrorProps;
   reRequestWithVerifyResult?: TReRequestWithVerifyResult;
 }
 
 export default function generateOldMainOrDowngradeMpkSubmitButton({
   verifyType,
   primaryButtonDisabled,
+  setRiskCanceledErrorProps,
   reRequestWithVerifyResult
 }: IGenerateOldMainOrDowngradeMpkSubmitButtonProps): DialogButtonProps<IRiskPromptResolveData, IDialogData> {
   return {
@@ -33,6 +36,7 @@ export default function generateOldMainOrDowngradeMpkSubmitButton({
       handleRiskPromptDialogSubmit({
         verifyType,
         contentContext,
+        setRiskCanceledErrorProps,
         reRequestWithVerifyResult,
         dialogSubmitType: ERiskType.OLD_MAIN
       });

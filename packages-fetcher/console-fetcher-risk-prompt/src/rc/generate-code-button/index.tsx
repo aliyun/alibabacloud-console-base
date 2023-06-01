@@ -11,22 +11,16 @@ import Button, {
 
 import {
   IDialogData,
-  IRiskPromptResolveData,
-  TKeyofErrorMessageObject
+  IRiskPromptResolveData
 } from '../../types';
 import {
   BUILT_IN_RISK_CONFIG
 } from '../../const';
 import {
-  useCountDown
+  useCountDown,
+  IGenerateCodeButtonProps
 } from '../../hooks';
 import intl from '../../intl';
-
-interface IGenerateCodeButtonProps {
-  verifyType: string;
-  keyOfErrorMessageObject?: TKeyofErrorMessageObject;
-  sendVerifyCode: () => void;
-}
 
 const {
   coolingAfterSent, coolingAfterSentFail

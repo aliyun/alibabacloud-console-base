@@ -7,8 +7,6 @@ import interceptBiz, {
 } from '@alicloud/console-fetcher-interceptor-res-biz';
 import interceptErrorMessage from '@alicloud/console-fetcher-interceptor-res-error-message';
 
-import fetcherInterceptorMockVerifyCodeUrl from './mock-verify-code-url';
-
 const identityUrlBase = ((): string => {
   if (CONF_ENV.ENV_IS_DAILY) {
     return '//identity.aliyun.test';
@@ -18,7 +16,8 @@ const identityUrlBase = ((): string => {
     return '//pre-identity.aliyun.com';
   }
 
-  return '//identity.aliyun.com'; // 默认返回线上的域名
+  // 默认返回线上的域名
+  return '//identity.aliyun.com';
 })();
 
 const identityFetcher = createFetcher<FetcherConfigExtended>({
@@ -27,10 +26,6 @@ const identityFetcher = createFetcher<FetcherConfigExtended>({
     'Content-Type': 'application/json'
   }
 });
-
-if (CONF_ENV.ENV_IS_DEV) {
-  identityFetcher.interceptRequest(fetcherInterceptorMockVerifyCodeUrl);
-}
 
 interceptBiz(identityFetcher);
 interceptErrorMessage(identityFetcher);

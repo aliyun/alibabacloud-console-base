@@ -15,38 +15,6 @@ export interface IExt {
   Ext: string;
 }
 
-// 接口 /identity/getMfaInfoToBind 的 payload - VMFA 类型
-export interface IPayloadGetVmfaInfoToBind extends IIdentityServiceCommonPayload {
-  DeviceType: ESubVerificationDeviceType.VMFA;
-}
-
-// 接口 /identity/getMfaInfoToBind 的 payload - U2F 类型
-export interface IPayloadGetU2fInfoToBind extends IIdentityServiceCommonPayload {
-  DeviceType: ESubVerificationDeviceType.U2F;
-  U2FVersion: 'WebAuthn';
-}
-
-// 接口 /identity/getMfaInfoToBind 的 payload
-export type TPayloadGetBindMfaInfo = IPayloadGetVmfaInfoToBind | IPayloadGetU2fInfoToBind;
-
-// 接口 /identity/bindMFA 的 payload - VMFA 类型
-export interface IPayloadBindVmfa extends IExt, IIdentityServiceCommonPayload {
-  DeviceType: ESubVerificationDeviceType.VMFA;
-  Code1: string;
-  Code2: string;
-}
-
-// 接口 /identity/bindMFA 的 payload - U2F 类型
-export interface IPayloadBindU2F extends IExt, IIdentityServiceCommonPayload {
-  DeviceType: ESubVerificationDeviceType.U2F;
-  U2FVersion: 'WebAuthn';
-  ClientDataJSON: string;
-  AttestationObject: string;
-}
-
-// 接口 /identity/bindMFA 的 payload
-export type TPayloadBindMfa = IPayloadBindVmfa | IPayloadBindU2F;
-
 // 接口 /identity/getMfaInfoToAuth 的 payload
 export interface IPayloadGetMfaInfoToAuth extends IIdentityServiceCommonPayload {}
 
@@ -73,9 +41,6 @@ export interface IPayloadVerifySubAccountSmsOrEmail extends IPayloadVerifyShared
 // 接口 /identity/verify 的 payload
 export type TPayloadVerifySubAccount = IPayloadVerifySubAccountVmfa | IPayloadVerifySubAccountU2F | IPayloadVerifySubAccountSmsOrEmail;
 
-// 接口 /identity/skip 的 payload
-export interface IPayloadSkipBindMfa extends IIdentityServiceCommonPayload, IExt {}
-
 // 接口 /identity/send 的 payload - 用于发送验证码
 export interface IPayloadSendCode extends IIdentityServiceCommonPayload, IExt {
   AccountId: string;
@@ -87,7 +52,7 @@ export interface IPayloadSendCode extends IIdentityServiceCommonPayload, IExt {
 export interface IPayloadVerifyMpk extends IPayloadVerifyShared {
   AuthCode: string; // 6位数字验证码
   VerifyType: string;
-  RiskRequestId: string;
+  VerifyUniqId: string; // identity/send 接口返回的 requestId
 }
 
 // 接口 /identity/getMfaInfoToAuthV2 的 payload

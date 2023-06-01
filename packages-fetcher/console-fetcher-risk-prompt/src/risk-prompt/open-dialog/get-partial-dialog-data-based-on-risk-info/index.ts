@@ -1,4 +1,4 @@
-import type {
+import {
   FetcherError
 } from '@alicloud/fetcher';
 
@@ -50,7 +50,7 @@ export default async function getPartialDialogDataBasedOnRiskInfo(riskInfo: TRis
       
       return {
         dialogType: EDialogType.SUB_RISK_VERIFICATION_AUTH,
-        currentSubVerificationDeviceType: subValidators[0]!.deviceType,
+        currentSubVerificationDeviceType: subValidators[0]?.deviceType,
         subGetVerificationToAuthData: {
           targetUserPrincipalName,
           subValidators

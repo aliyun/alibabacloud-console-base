@@ -1,5 +1,6 @@
 import {
-  ESubVerificationDeviceType
+  ESubVerificationDeviceType,
+  getSplittedPhoneNumber
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
@@ -28,8 +29,11 @@ export default function getFormVerifyDetail(props: TAuthFormProps): string {
   } = props;
 
   const safeStringifiedVerifyDetail = ((): string => {
-    // 旧版主账号风控验证类型为 MFA 时，verifyDetail 为空字符串而不是 '-'
-    if (riskType === ERiskType.OLD_MAIN && props.convertedVerifyType === EConvertedVerifyType.MFA) {
+    const isOldMainVmfaVerify = riskType === ERiskType.OLD_MAIN && props.convertedVerifyType === EConvertedVerifyType.MFA;
+    const isMpkVmfaVerify = riskType === ERiskType.MPK && props.verifyType === ESubVerificationDeviceType.VMFA;
+
+    // 旧版主账号/Mpk 风控验证类型为 Vmfa 时，verifyDetail 为空字符串而不是 '-'
+    if (isOldMainVmfaVerify || isMpkVmfaVerify) {
       return '';
     }
 
@@ -39,7 +43,13 @@ export default function getFormVerifyDetail(props: TAuthFormProps): string {
   try {
     if (safeStringifiedVerifyDetail !== DEFAULT_VERIFY_DETAIL && riskType === ERiskType.NEW_SUB) {
       if (verifyType === ESubVerificationDeviceType.SMS) {
-        return getFuzzyPhoneNumber(safeStringifiedVerifyDetail);
+        // 子账号手机风控的 VerifyDetail 是 ${areaCode}-${phoneNumber}
+        const {
+          areaCode,
+          phoneNumber
+        } = getSplittedPhoneNumber(safeStringifiedVerifyDetail);
+
+        return `${areaCode}-${getFuzzyPhoneNumber(phoneNumber)}`;
       }
 
       if (verifyType === ESubVerificationDeviceType.EMAIL) {

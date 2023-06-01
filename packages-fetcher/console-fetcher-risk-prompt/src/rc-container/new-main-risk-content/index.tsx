@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 
-import type {
+import {
   FetcherError
 } from '@alicloud/fetcher';
 import {
@@ -20,7 +20,8 @@ import {
 
 import {
   ESceneKey,
-  ESlsResultType
+  ESlsResultType,
+  EUnexpectedErrorType
 } from '../../enum';
 import {
   IDialogData,
@@ -68,6 +69,7 @@ export default function NewMainRiskContent(): JSX.Element {
     updateData
   } = contentContext;
   const {
+    setRiskCanceledErrorProps,
     reRequestWithVerifyResult
   } = useModelProps();
 
@@ -191,8 +193,13 @@ export default function NewMainRiskContent(): JSX.Element {
       slsInvalidVerifyUrl({
         verifyUrl
       });
+
+      setRiskCanceledErrorProps({
+        unexpectedValue: verifyUrl,
+        unexpectedErrorType: EUnexpectedErrorType.INVALID_VERIFY_URL
+      });
     }
-  }, [verifyUrl]);
+  }, [verifyUrl, setRiskCanceledErrorProps]);
 
   useEffect(() => {
     // 保证在沙箱中也能正常监听到 Iframe 抛出的事件

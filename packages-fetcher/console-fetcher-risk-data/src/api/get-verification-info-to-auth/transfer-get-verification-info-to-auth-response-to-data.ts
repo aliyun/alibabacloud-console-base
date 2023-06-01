@@ -1,13 +1,16 @@
 import {
-  ESubVerificationDeviceType
-} from '../../const';
-import {
   IResponseEmailValidator,
   IResponseSmsValidator,
   IResponseU2fValidator,
   IResponseGetVerificationInfoToAuth,
   TDataGetVerificationInfoToAuth
 } from '../../types';
+import {
+  ESubVerificationDeviceType
+} from '../../const';
+import {
+  getSplittedPhoneNumber
+} from '../../util';
 
 export default function transferGetVerificationInfoToAuthResponseToData(response: IResponseGetVerificationInfoToAuth): TDataGetVerificationInfoToAuth {
   const {
@@ -54,11 +57,14 @@ export default function transferGetVerificationInfoToAuthResponseToData(response
     
     if (Validators.SMS) {
       const responseSmsValidator = JSON.parse(Validators.SMS) as IResponseSmsValidator;
-      const [areaCode, phoneNumber] = responseSmsValidator.PhoneNumber.split('-');
-      
+      const {
+        areaCode,
+        phoneNumber
+      } = getSplittedPhoneNumber(responseSmsValidator.PhoneNumber);
+
       validators.push({
-        areaCode: areaCode || '',
-        phoneNumber: phoneNumber || responseSmsValidator.PhoneNumber,
+        areaCode,
+        phoneNumber,
         deviceType: ESubVerificationDeviceType.SMS,
         targetUserPrincipalName: TargetUserPrincipalName
       });

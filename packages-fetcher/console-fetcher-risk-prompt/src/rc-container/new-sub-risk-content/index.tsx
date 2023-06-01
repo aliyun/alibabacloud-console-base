@@ -13,7 +13,13 @@ import {
   IDialogData,
   IRiskPromptResolveData
 } from '../../types';
+import {
+  EUnexpectedErrorType
+} from '../../enum';
 import intl from '../../intl';
+import {
+  useModelProps
+} from '../../model';
 import AltWrap from '../../rc/alt-wrap';
 
 import {
@@ -36,15 +42,27 @@ export default function NewSubRiskUi(): JSX.Element {
     updateData
   } = useDialog<IRiskPromptResolveData, IDialogData>();
   const {
-    subValidators
+    setRiskCanceledErrorProps
+  } = useModelProps();
+  const {
+    subValidators = []
   } = subGetVerificationToAuthData ?? {};
 
-  if (!subValidators?.length) {
+  if (!subValidators.length) {
+    setRiskCanceledErrorProps({
+      unexpectedErrorType: EUnexpectedErrorType.SUB_INVALID_VALIDATORS
+    });
+
+    // 没有解析出合法的子账号核身方式，需要隐藏确定按钮
+    updateData({
+      hideSubRiskSubmitButton: true
+    });
+
     return <AltWrap content={intl('message:invalid_unknown!lines')} />;
   }
 
-  if (subValidators.length === 1) {
-    return getSubAuthValidatorsContent(subValidators[0]!);
+  if (subValidators.length === 1 && subValidators[0]) {
+    return getSubAuthValidatorsContent(subValidators[0]);
   }
 
   const tabs = getSubAuthValidatorsTabs(subGetVerificationToAuthData);

@@ -41,7 +41,8 @@ export enum ESlsTopic {
   RISK_INVALID = 'risk_invalid', // 无效的风控 code 的弹窗提示埋点
   RISK_PROMPT_ERROR = 'risk_prompt_error', // riskPrompt 弹窗弹出错误信息时的埋点
   INVALID_VERIFY_URL = 'invalid_verify_url', // 不合法的新版主账号核身 URL 埋点
-  GET_VMFA_CODE_FROM_WINDVANE = 'get_vmfa_code_from_windvane' // 阿里云 APP 内通过 windvane 获取虚拟 MFA 验证码
+  GET_VMFA_CODE_FROM_WINDVANE = 'get_vmfa_code_from_windvane', // 阿里云 APP 内通过 windvane 获取虚拟 MFA 验证码
+  RISK_TERMINATED_WITH_UNEXPECTED_ERROR = 'risk_terminated_with_unexpected_error'
 }
 
 /**
@@ -70,4 +71,26 @@ export enum ESlsResultType {
   RISK_PROMPT_RESOLVE = 'risk_prompt_resolve',
   // 在风控流程中，拿到 verifyCode 后会将其作为参数重新被风控的接口。即使 verifyCode 校验通过，接口也可能会报业务错误。biz_api_error 用于区分业务错误
   BIZ_API_ERROR = 'biz_api_error'
+}
+
+// 客户关闭弹窗时非预期错误的类型枚举
+export enum EUnexpectedErrorType {
+  // 非法风控
+  RISK_INVALID = 'risk_invalid',
+  // riskPrompt 报错
+  RISK_PROMPT_ERROR = 'risk_prompt_error',
+  // 新版主账号风控 VerifyUrl 不合法
+  INVALID_VERIFY_URL = 'invalid_verify_url',
+  // 子账号风控 Validators 解析结果不合法
+  SUB_INVALID_VALIDATORS = 'sub_invalid_validators',
+  // 旧版主账号风控发送验证码报预期外的错误
+  OLD_MAIN_SEND_VERIFY_CODE_ERROR = 'old_main_send_code_error',
+  // MPK 账号风控发送验证码报预期外的错误
+  MPK_SEND_VERIFY_CODE_ERROR = 'mpk_send_code_error',
+  // 子账号风控发送验证码（手机或邮箱）报预期外的错误
+  SUB_SEND_VERIFY_CODE_ERROR = 'sub_send_code_error',
+  // MPK 账号调用 identity/verify 接口报预期外的错误
+  MPK_RISK_VERIFY_FAILED = 'mpk_risk_verify_failed',
+  // 子账号调用 identity/verify 接口报预期外的错误
+  SUB_RISK_VERIFY_FAILED = 'sub_risk_verify_failed'
 }

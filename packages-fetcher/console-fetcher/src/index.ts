@@ -3,6 +3,10 @@ import {
   ERROR_RISK_INVALID,
   ERROR_RISK_CANCELLED
 } from '@alicloud/console-fetcher-interceptor-res-risk';
+import {
+  isUnexpectedError,
+  EUnexpectedErrorType
+} from '@alicloud/console-fetcher-risk-prompt';
 
 import createFetcher from './util/create-fetcher';
 
@@ -15,10 +19,12 @@ export * from '@alicloud/console-fetcher-basic';
 export default fetcher;
 
 export {
+  EUnexpectedErrorType,
   ERROR_RISK_FORBIDDEN,
   ERROR_RISK_INVALID,
   ERROR_RISK_CANCELLED,
-  createFetcher
+  createFetcher,
+  isUnexpectedError
 };
 
 export type {

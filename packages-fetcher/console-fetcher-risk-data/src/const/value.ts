@@ -16,9 +16,6 @@ export const SUB_ACCOUNT_IDENTITY_SERVICE_COMMON_PAYLOAD = {
 };
 
 export const VERIFY_API = '/identity/verify';
-export const BIND_MFA_API = '/identity/bindMFA';
 export const SEND_CODE_API = '/identity/send';
-export const SKIP_BIND_MFA_API = '/identity/skip';
 export const GET_MFA_INFO_TO_AUTH_API = '/identity/getMfaInfoToAuth';
-export const GET_MFA_INFO_TO_BIND_API = '/identity/getMfaInfoToBind';
 export const GET_VERIFICATION_INFO_TO_AUTH = '/identity/getMfaInfoToAuthV2';

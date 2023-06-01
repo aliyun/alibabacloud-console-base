@@ -17,7 +17,7 @@ interface IConvertMpkSettingResult {
   mpkUseIdentityService: boolean;
 }
 
-// 从初识的 Response 拿到的 Mpk 相关的设置，是字符串类型的 'true' / 'false'...
+// 从初始的 Response 拿到的 Mpk 相关的设置，是字符串类型的 'true' / 'false'...
 export default function convertMpkSetting<T>({
   riskConfig,
   riskResponse

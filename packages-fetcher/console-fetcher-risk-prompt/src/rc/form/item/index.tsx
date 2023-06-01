@@ -7,7 +7,7 @@ import {
 } from '@alicloud/console-base-theme';
 
 import {
-  MOBILE_SCREE_SIZE
+  MOBILE_SCREEN_SIZE
 } from '../../../const';
 import {
   IFormItem
@@ -37,7 +37,7 @@ const ScLabel = styled.div<IScLabelProps>`
   text-align: ${props => props['data-label-text-align'] || 'center'};
   ${mixinTextSecondary}
     
-  @media (max-width: ${MOBILE_SCREE_SIZE}px) {
+  @media (max-width: ${MOBILE_SCREEN_SIZE}px) {
     width: ${props => props['data-label-mobile-width'] ?? '120px'};
   }
 `;
