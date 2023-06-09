@@ -86,7 +86,7 @@ export default function getPredefinedExtra(error?: IErrorPlain): IErrorPromptExt
     return API_NOT_EXIST;
   }
 
-  if (['NoPermission', 'Forbidden.RAM'].includes(error.code) || error.detailsAuth) {
+  if (['NoPermission', 'Forbidden.RAM'].includes(error.code) || error.detailsAuth?.diagnosisInfo) {
     return getExtraForAccessDenied(error);
   }
 }
