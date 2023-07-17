@@ -19,3 +19,17 @@ export default function getSlsOptions(): FactoryOptions {
     onBeforeSend: () => !ONE_CONF.PRIVATE_CLOUD // 专有云下不发送
   };
 }
+
+export function getSlsOptionsForRam(): FactoryOptions {
+  return {
+    project: 'aliyun-console-ram',
+    endpoint: 'cn-hangzhou.log.aliyuncs.com',
+    logstore: chooseStoreByEnv('prod', {
+      dev: 'dev',
+      daily: 'daily',
+      pre: 'pre'
+    }),
+    defaultParams: getSlsDefaultParams,
+    onBeforeSend: () => !ONE_CONF.PRIVATE_CLOUD
+  };
+}

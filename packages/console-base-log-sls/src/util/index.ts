@@ -1,1 +1,4 @@
-export { default as getSlsOptions } from './get-sls-options';
+export {
+  default as getSlsOptions,
+  getSlsOptionsForRam
+} from './get-sls-options';

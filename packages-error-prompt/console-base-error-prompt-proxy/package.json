@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt-proxy",
-  "version": "1.9.9",
+  "version": "1.9.10",
   "description": "ConsoleBase 错误弹窗器（集中代理）",
   "license": "MIT",
   "sideEffects": false,
