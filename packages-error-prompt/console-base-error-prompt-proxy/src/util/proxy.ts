@@ -11,6 +11,9 @@ import {
 import {
   getProxyErrorPrompt
 } from '@alicloud/console-base-global';
+import {
+  logToRamSls, SLS_TOPIC_FOR_RAM
+} from '@alicloud/console-base-log-sls';
 
 import pruneForMessage from './prune-for-message';
 
@@ -34,8 +37,23 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
   if (!errorInfo) {
     return;
   }
-  
-  try { // postMessage 可能抛错
+
+  // 仅上报 error-prompt-proxy 包触发的权限错误到 RAM 日志库
+  if (errorInfo.detailsAuth?.action || errorInfo.detailsAuth?.diagnosisInfo) {
+    logToRamSls(SLS_TOPIC_FOR_RAM, {
+      eventId: 'error-prompt-proxy.raise-prompt',
+      c1: errorInfo.code,
+      c2: errorInfo.detailsAuth.action,
+      c3: errorInfo.detailsAuth.resource,
+      c4: errorInfo.detailsAuth.type,
+      c5: errorInfo.detailsAuth.policyType,
+      c6: errorInfo.detailsAuth.diagnosisInfo?.length || 0
+    });
+  }
+
+  try {
+    // postMessage 可能抛错
+    // FIXME: promptError 返回 Promise 这里其实捕获不到什么
     return promptError<IMessengerPayload>({
       error: pruneForMessage<ErrorDetailedInfo>(errorInfo),
       extra: extra ? pruneForMessage<ErrorPromptExtra>(typeof extra === 'function' ? extra(errorInfo) || {} : extra) : undefined,
