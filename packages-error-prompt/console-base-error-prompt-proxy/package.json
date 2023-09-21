@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt-proxy",
-  "version": "1.9.10",
+  "version": "1.9.11",
   "description": "ConsoleBase 错误弹窗器（集中代理）",
   "license": "MIT",
   "sideEffects": false,
@@ -28,7 +28,7 @@
     "@alicloud/console-toolkit-preset-component": "^1.2.61",
     "@alicloud/demo-rc-elements": "^1.13.0",
     "@alicloud/ts-config": "^1.1.3",
-    "@types/react": "^17.0.58",
+    "@types/react": "^17.0.65",
     "react": "^17.0.2",
     "typescript": "^5.0.4"
   },
@@ -38,6 +38,7 @@
   "dependencies": {
     "@alicloud/console-base-error-prompt": "^1.11.6",
     "@alicloud/console-base-global": "^1.4.8",
+    "@alicloud/console-base-log-sls": "^1.6.11",
     "@alicloud/console-base-messenger-error-prompt": "^1.1.9"
   },
   "scripts": {
