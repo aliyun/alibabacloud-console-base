@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-error-prompt-proxy",
-  "version": "1.9.11",
+  "version": "1.9.11-alpha.0",
   "description": "ConsoleBase 错误弹窗器（集中代理）",
   "license": "MIT",
   "sideEffects": false,
@@ -36,7 +36,7 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@alicloud/console-base-error-prompt": "^1.11.6",
+    "@alicloud/console-base-error-prompt": "^1.11.8-alpha.0",
     "@alicloud/console-base-global": "^1.4.8",
     "@alicloud/console-base-log-sls": "^1.6.11",
     "@alicloud/console-base-messenger-error-prompt": "^1.1.9"

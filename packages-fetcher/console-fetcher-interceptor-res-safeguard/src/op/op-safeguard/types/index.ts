@@ -11,6 +11,9 @@ import {
 import {
   IFetcherInterceptorConfig
 } from '../../../types';
+import {
+  EBlockReason
+} from '../../../data/enum';
 
 export interface IErrorResponseData {
   code: 'CM.Required' | 'CF.Required';

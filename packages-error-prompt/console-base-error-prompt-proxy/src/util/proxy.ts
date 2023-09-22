@@ -40,6 +40,8 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
   };
 
   const callErrorPromptByProxy = (args?: ErrorDetailedInfo) => {
+    if (!args) { return; }
+
     try {
       // postMessage 可能抛错
       // FIXME: promptError 返回 Promise 这里其实捕获不到什么
@@ -86,11 +88,11 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
       logToRamSls(SLS_TOPIC_FOR_RAM, {
         eventId: 'error-prompt-proxy.raise-prompt',
         c1: errorInfo.code,
-        c2: errorInfo.detailsAuth.action,
-        c3: errorInfo.detailsAuth.resource,
-        c4: errorInfo.detailsAuth.type,
-        c5: errorInfo.detailsAuth.policyType,
-        c6: errorInfo.detailsAuth.diagnosisInfo?.length || 0
+        c2: errorInfo.detailsAuth?.action,
+        c3: errorInfo.detailsAuth?.resource,
+        c4: errorInfo.detailsAuth?.type,
+        c5: errorInfo.detailsAuth?.policyType,
+        c6: errorInfo.detailsAuth?.diagnosisInfo?.length || 0
       });
     }, 500);
 
