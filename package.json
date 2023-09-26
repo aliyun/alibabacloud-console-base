@@ -20,7 +20,7 @@
     "ts-node": "^10.9.1"
   },
   "resolutions": {
-    "fork-ts-checker-webpack-plugin": "^6.5.3"
+    "@types/react": "^17.0.58"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint",

@@ -77,7 +77,6 @@ import {
 const MAPPING_DISABLED: Record<EButtonTheme, FlattenSimpleInterpolation | null> = {
   [EButtonTheme.NONE]: null,
   [EButtonTheme.DANGER]: mixinButtonDangerStateDisabled,
-  [EButtonTheme.DANGER]: mixinButtonDangerStateDisabled,
   [EButtonTheme.MENU]: mixinButtonMenuStateDisabled,
   [EButtonTheme.PRIMARY]: mixinButtonPrimaryStateDisabled,
   [EButtonTheme.SECONDARY]: mixinButtonSecondaryStateDisabled,

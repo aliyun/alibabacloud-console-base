@@ -19,3 +19,5 @@ export * from './messenger/console-base-broadcast';
 export * from './messenger/console-base-subscribe';
 
 export { default as forApp } from './messenger/for-app';
+
+export * from './types';
