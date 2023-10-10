@@ -99,5 +99,9 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
     return;
   }
 
-  callErrorPromptByProxy(errorInfo);
+  if (getProxyErrorPrompt()) {
+    callErrorPromptByProxy(errorInfo);
+  } else {
+    callErrorPromptByNotProxy(errorInfo);
+  }
 }
