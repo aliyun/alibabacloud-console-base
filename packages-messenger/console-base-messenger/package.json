@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-messenger",
-  "version": "1.17.2-alpha.4",
+  "version": "1.17.2",
   "description": "ConsoleBase 信使 - 与控制台应用之间的交互",
   "license": "MIT",
   "sideEffects": false,
