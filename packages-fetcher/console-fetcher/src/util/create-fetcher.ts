@@ -27,7 +27,7 @@ export default (config?: FetcherConfig, interceptorOptions: IConsoleFetcherInter
 
   if (newRisk && typeof config?.body !== 'string') {
     configBody = {
-      riskVersion: '2.0', // 通过第三个参数来控制是否使用新版本的风控
+      riskVersion: '3.0', // 通过第三个参数来控制是否使用新版本的风控
       ...config?.body
     };
   }
