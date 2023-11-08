@@ -63,7 +63,7 @@ export interface IRiskParameters {
   codeType: string; // 风控码
   verifyType: string; // 风控验证方式
   verifyDetail?: string | boolean; // 风控验证详情
-  validators?: IRiskValidator[]; // 子账号风控的风控验证方式及详情集合数组，目前只包括 MFA，后续会增加手机 & 邮箱
+  validators?: (IRiskValidator | null)[]; // 子账号风控的风控验证方式及详情集合数组，异常情况会有 null，前端会做过滤处理
   verifyUrl?: string; // 新版主账号风控的核身弹窗 URL
 }
 

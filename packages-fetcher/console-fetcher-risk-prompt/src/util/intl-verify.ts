@@ -1,10 +1,7 @@
 import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
-
-import {
   EDialogType,
-  EConvertedVerifyType
+  EConvertedVerifyType,
+  ESubVerificationDeviceType
 } from '../enum';
 import intl from '../intl';
 
@@ -52,23 +49,27 @@ export function intlVerifySetting(type?: EConvertedVerifyType | ESubVerification
   }
 }
 
+export function intlVerifyDeviceType(deviceType?: ESubVerificationDeviceType | undefined): string {
+  switch (deviceType) {
+    case ESubVerificationDeviceType.VMFA:
+      return intl('title:sub_vmfa_auth');
+    case ESubVerificationDeviceType.U2F:
+      return intl('title:sub_u2f_auth');
+    case ESubVerificationDeviceType.SMS:
+      return intl('title:sms_auth');
+    case ESubVerificationDeviceType.EMAIL:
+      return intl('title:email_auth');
+    default:
+      return intl('title:default');
+  }
+}
+
 export function intlVerifyDialogTitle({
   dialogType,
   currentSubVerificationDeviceType
 }: IIntlVerifyDialogTitleProps): string {
   if (dialogType === EDialogType.SUB_RISK_VERIFICATION_AUTH) {
-    switch (currentSubVerificationDeviceType) {
-      case ESubVerificationDeviceType.VMFA:
-        return intl('title:sub_vmfa_auth');
-      case ESubVerificationDeviceType.U2F:
-        return intl('title:sub_u2f_auth');
-      case ESubVerificationDeviceType.SMS:
-        return intl('title:sms_auth');
-      case ESubVerificationDeviceType.EMAIL:
-        return intl('title:email_auth');
-      default:
-        return intl('title:default');
-    }
+    return intlVerifyDeviceType(currentSubVerificationDeviceType);
   }
 
   return intl('title:default');

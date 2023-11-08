@@ -8,7 +8,7 @@ export function safeJsonStringify<T = Record<string, unknown>>(object?: T, defau
 }
 
 // 是否是合法的 JSON 字符串
-export function isValidJson(jsonString: unknown): boolean {
+export function isValidJsonString(jsonString: unknown): boolean {
   if (typeof jsonString !== 'string') {
     return false;
   }

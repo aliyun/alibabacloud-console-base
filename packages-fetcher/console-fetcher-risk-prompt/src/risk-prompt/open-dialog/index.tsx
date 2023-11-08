@@ -22,12 +22,13 @@ import {
   DEFAULT_DIALOG_SIZE,
   DEFAULT_PRIMARY_BUTTON_DISABLE_OBJECT
 } from '../../const';
-import DialogTitle from '../../rc/dialog-title';
+import DialogTitleForMultipleValidators from '../../rc/dialog-title-for-multiple-validators';
 import intl from '../../intl';
 import {
   slsRiskStartUp
 } from '../../sls';
 import {
+  intlVerifyDialogTitle,
   getAccountIdFromRiskInfo,
   getSubVerificationSettingUrl,
   getOldMainOrMpkAccountRiskInfo
@@ -80,7 +81,16 @@ export default async function openDialog({
 
   return open<IRiskPromptResolveData, IDialogData>({
     title: (data: IDialogData) => {
-      return <DialogTitle dialogData={data} />;
+      const subValidatorsLength = data.subGetVerificationToAuthData?.subValidators.length ?? 0;
+
+      if (subValidatorsLength > 1) {
+        return <DialogTitleForMultipleValidators />;
+      }
+
+      return intlVerifyDialogTitle({
+        dialogType: data.dialogType,
+        currentSubVerificationDeviceType: data.currentSubVerificationDeviceType
+      });
     },
     data: {
       ...dialogData,

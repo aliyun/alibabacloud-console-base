@@ -62,5 +62,6 @@ export default {
   'message:invalid_unsupported_{method}!html': '確認方法 <code>{method}</code> が正しくありません。もう一度お試しください。',
   'message:invalid:sub:validator': '確認方法のエラーです。もう一度お試しください。',
   'message:send:code:success': '確認コードは正常に送信され、5 分以内に有効になります。',
-  'message:multi:validators': 'セキュリティ検証を完了するための検証方法を選択してください。'
+  'message:multi:validators': 'セキュリティ検証を完了するための検証方法を選択してください。',
+  'message:wait:iv:page:message': 'ユーザー認証方法を検出しています。お待ちください...'
 };

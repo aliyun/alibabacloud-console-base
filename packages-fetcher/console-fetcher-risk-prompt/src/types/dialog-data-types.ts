@@ -1,12 +1,12 @@
 import {
   ParamsVerifySubAccount,
-  DataVerificationValidator,
-  ESubVerificationDeviceType
+  DataVerificationValidator
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
   ESceneKey,
-  EDialogType
+  EDialogType,
+  ESubVerificationDeviceType
 } from '../enum';
 
 export type TStringOrJsx = string | JSX.Element;

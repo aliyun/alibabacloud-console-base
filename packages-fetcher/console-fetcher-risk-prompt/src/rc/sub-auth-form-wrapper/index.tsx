@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {
-  EAccountType,
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
-import {
   mixinBorderSecondary
 } from '@alicloud/console-base-theme';
 
+import {
+  EAccountType,
+  ESubVerificationDeviceType
+} from '../../enum';
 import DeviceIcon from '../device-icon';
 
 type TPropsWithChildren<T> = T & {

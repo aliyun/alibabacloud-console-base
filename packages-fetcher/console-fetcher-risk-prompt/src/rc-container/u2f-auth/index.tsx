@@ -9,7 +9,6 @@ import {
 } from '@simplewebauthn/browser';
 
 import {
-  ESubVerificationDeviceType,
   type ParamsVerifySubAccount
 } from '@alicloud/console-fetcher-risk-data';
 import {
@@ -21,6 +20,9 @@ import {
   IRiskPromptResolveData,
   TPrimaryButtonDisabledObject
 } from '../../types';
+import {
+  ESubVerificationDeviceType
+} from '../../enum';
 import {
   useModelProps
 } from '../../model';

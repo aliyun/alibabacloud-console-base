@@ -62,5 +62,6 @@ export default {
   'message:invalid_unsupported_{method}!html': '系統檢測到驗證方式 <code>{method}</code> 有誤，請重試。',
   'message:invalid:sub:validator': '驗證方式錯誤，請重試。',
   'message:send:code:success': '驗證碼發送成功，5 分鐘內有效。',
-  'message:multi:validators': '請任選一種驗證方式完成安全驗證。'
+  'message:multi:validators': '請任選一種驗證方式完成安全驗證。',
+  'message:wait:iv:page:message': '正在偵測使用者核身方式，請稍候...'
 };

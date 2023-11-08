@@ -6,8 +6,7 @@ import styled, {
 
 import {
   ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
-
+} from '../../enum';
 import {
   SVG_URLS,
   MOBILE_SCREEN_SIZE,

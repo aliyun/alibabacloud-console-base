@@ -1,12 +1,9 @@
 import {
-  EAccountType,
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
-
-import {
   ERiskType,
   ESceneKey,
-  EConvertedVerifyType
+  EConvertedVerifyType,
+  EAccountType,
+  ESubVerificationDeviceType
 } from '../../enum';
 import {
   TAuthFormProps

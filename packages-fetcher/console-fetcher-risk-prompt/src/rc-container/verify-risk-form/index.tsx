@@ -6,9 +6,6 @@ import styled from 'styled-components';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
-import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
 import Button, {
   ButtonTheme
 } from '@alicloud/console-base-rc-button';
@@ -17,7 +14,8 @@ import Flex from '@alicloud/console-base-rc-flex';
 import {
   EIconType,
   ERiskType,
-  EConvertedVerifyType
+  EConvertedVerifyType,
+  ESubVerificationDeviceType
 } from '../../enum';
 import {
   TAuthFormProps,

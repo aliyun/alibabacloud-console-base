@@ -9,6 +9,7 @@ import {
   TRiskResponse,
   ICommonRiskInfo,
   TRiskTypeConfig,
+  IRiskValidator,
   TRiskParametersGetter
 } from '../../types';
 import {
@@ -37,12 +38,6 @@ function convertRiskResponse<T>({
   riskResponse,
   riskParametersGetter // 支持调用方传入 getter 函数来从 riskResponse 取出 riskPrompt 所需的新版风控函数
 }: IConvertRiskResponseProps<T>): TRiskInfo {
-  const riskTypeConfig: TRiskTypeConfig = {
-    BY_SMS: riskConfig?.BY_SMS ?? DEFAULT_EXTRA_RISK_CONFIG.BY_SMS,
-    BY_EMAIL: riskConfig?.BY_EMAIL ?? DEFAULT_EXTRA_RISK_CONFIG.BY_EMAIL,
-    BY_MFA: riskConfig?.BY_MFA ?? DEFAULT_EXTRA_RISK_CONFIG.BY_MFA
-  };
-
   const riskParameters = getRiskParameters({
     riskConfig,
     riskResponse,
@@ -52,6 +47,12 @@ function convertRiskResponse<T>({
     accountId, verifyUrl, codeType,
     validators = [], verifyType = '', verifyDetail = ''
   } = riskParameters;
+
+  const riskTypeConfig: TRiskTypeConfig = {
+    BY_SMS: riskConfig?.BY_SMS ?? DEFAULT_EXTRA_RISK_CONFIG.BY_SMS,
+    BY_EMAIL: riskConfig?.BY_EMAIL ?? DEFAULT_EXTRA_RISK_CONFIG.BY_EMAIL,
+    BY_MFA: riskConfig?.BY_MFA ?? DEFAULT_EXTRA_RISK_CONFIG.BY_MFA
+  };
   // 从 RiskResponse 解析出的 verifyType 类型为 ga/sms/email
   const convertedVerifyType = convertVerifyType({
     type0: verifyType,
@@ -113,8 +114,14 @@ function convertRiskResponse<T>({
     }
 
     const subRiskValidators = ((): Omit<ICommonRiskInfo, 'codeType'>[] => {
+      const validatorFilter = (v: IRiskValidator | null): v is IRiskValidator => {
+        return !!v;
+      };
+      // 过滤掉 null
+      const filteredValidators = validators.filter(validatorFilter);
+
       // 过滤掉不合法的风控方式
-      return validators.map(o => ({
+      return filteredValidators.map(o => ({
         verifyType: o.VerifyType,
         verifyDetail: o.VerifyDetail,
         convertedVerifyType: convertVerifyType({
@@ -169,5 +176,6 @@ function convertRiskResponse<T>({
 export {
   convertMpkSetting,
   getMergedUseNewRisk,
-  convertRiskResponse
+  convertRiskResponse,
+  getRiskValueViaConfig
 };

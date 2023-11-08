@@ -10,19 +10,22 @@ import {
   IRiskPromptResolveData,
   IRiskPromptProps,
   IRiskCanceledErrorProps,
-  TOldMainRiskExtraConfig
+  TOldMainRiskExtraConfig,
+  IRiskResponseExtend
 } from '../types';
 import {
   DEFAULT_EXTRA_RISK_CONFIG
 } from '../const';
 import intl from '../intl';
 import {
+  convertMpkSetting,
   getAccountIdFromRiskInfo,
   safeJsonStringify,
   convertRiskResponse,
   convertToRiskErrorInvalid,
   convertToRiskErrorCancelled,
-  getSubVerificationSettingUrl
+  getSubVerificationSettingUrl,
+  getRiskValueViaConfig
 } from '../util';
 import {
   slsRiskTerminatedWithUnexpectedError
@@ -30,6 +33,7 @@ import {
 
 import riskInvalid from './risk-invalid';
 import openDialog from './open-dialog';
+import openIvPageDialog from './open-iv-page-dialog';
 
 export default async function riskPrompt<T = Record<string, unknown>>({
   error,
@@ -39,6 +43,38 @@ export default async function riskPrompt<T = Record<string, unknown>>({
   riskParametersGetter,
   reRequestWithVerifyResult
 }: IRiskPromptProps<T>): Promise<IRiskPromptResolveData> {
+  // 首先判断 consoleVersion 是不是 3.0。如果是，那么后续流程使用独立的核身页面
+  const {
+    accountType, consoleVersion
+  } = getRiskValueViaConfig({
+    riskResponse,
+    riskConfigKey: 'DATA_PATH_NEW_EXTEND',
+    defaultValue: {} as IRiskResponseExtend
+  });
+  // 是否是 MPK 账号风控
+  const {
+    isMpk
+  } = convertMpkSetting({
+    riskConfig,
+    riskResponse
+  });
+
+  const verifyUrl = getRiskValueViaConfig({
+    riskResponse,
+    riskConfigKey: 'DATA_PATH_VERIFY_URL',
+    defaultValue: ''
+  });
+
+  // 判断是否是 3.0，需要打开独立核身页面
+  if (consoleVersion === '3.0' && verifyUrl) {
+    return openIvPageDialog({
+      isMpk,
+      accountType,
+      ivPageUrl: verifyUrl,
+      reRequestWithVerifyResult
+    });
+  }
+
   // 对传入的风控响应 riskResponse 解析，得到是否是新版风控、账号类型、风控类型、核身手段等信息
   const riskInfo = convertRiskResponse({
     newRisk,

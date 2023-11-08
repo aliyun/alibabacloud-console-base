@@ -62,5 +62,6 @@ To protect your account, set a verification method correctly.`,
   'message:invalid_unsupported_{method}!html': 'Verification method <code>{method}</code> is not supported, please try again.',
   'message:invalid:sub:validator': 'Verification method is invalid, please try again.',
   'message:send:code:success': 'Verification code was sent successfully and is valid within 5 minutes.',
-  'message:multi:validators': 'Choose a verification method to complete the security verification.'
+  'message:multi:validators': 'Choose a verification method to complete the security verification.',
+  'message:wait:iv:page:message': 'Detecting user verification method, please wait...'
 };

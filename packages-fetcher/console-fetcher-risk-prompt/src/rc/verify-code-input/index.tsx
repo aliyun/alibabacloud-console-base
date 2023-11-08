@@ -23,13 +23,11 @@ import Input, {
   InputProps
 } from '@alicloud/console-base-rc-input';
 import Flex from '@alicloud/console-base-rc-flex';
-import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
   ESceneKey,
-  ERiskType
+  ERiskType,
+  ESubVerificationDeviceType
 } from '../../enum';
 import {
   IDialogData,

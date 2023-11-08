@@ -1,6 +1,5 @@
 import {
   dataGetVerificationInfoToAuth,
-  ESubVerificationDeviceType,
   getSplittedPhoneNumber,
   type DataGetSmsInfoToAuth,
   type DataGetEmailInfoToAuth,
@@ -8,7 +7,8 @@ import {
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
-  EConvertedVerifyType
+  EConvertedVerifyType,
+  ESubVerificationDeviceType
 } from '../../../enum';
 import {
   ICommonRiskInfo

@@ -1,8 +1,10 @@
 import {
-  ESubVerificationDeviceType,
   type DataVerificationValidator
 } from '@alicloud/console-fetcher-risk-data';
 
+import {
+  ESubVerificationDeviceType
+} from '../../../enum';
 import intl from '../../../intl';
 
 export default function getSubAuthValidatorsTabs(data: DataVerificationValidator): string {

@@ -37,7 +37,7 @@ import {
 import AltWrap from '../../rc/alt-wrap';
 import intl from '../../intl';
 import {
-  isValidJson,
+  isValidJsonString,
   getNewMainAccountRiskInfo,
   getRiskSlsErrorCommonPayload
 } from '../../util';
@@ -80,7 +80,7 @@ export default function NewMainRiskContent(): JSX.Element {
   const getIvToken = useCallback((event: MessageEvent): string | undefined => {
     try {
       // 为了防止 JSON.parse 报错，需要先判断 decodeURIComponent(event.data) 是不是合法的 JSON 字符串
-      const json: IJson = isValidJson(decodeURIComponent(event.data)) ? JSON.parse(decodeURIComponent(event.data)) : event.data;
+      const json: IJson = isValidJsonString(decodeURIComponent(event.data)) ? JSON.parse(decodeURIComponent(event.data)) : event.data;
       const {
         type,
         ivToken

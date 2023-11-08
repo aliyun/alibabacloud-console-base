@@ -20,7 +20,7 @@ export type {
   IRiskConfig as RiskConfig,
   TRiskResponse as RiskResponse,
   IRiskValidator as RiskValidator,
-  IMpkExtendSetting as MpkExtendSetting,
+  IRiskResponseExtend as MpkExtendSetting,
   IRiskParameters as RiskParameters,
   TRiskParametersGetter as RiskParametersGetter,
   IRiskPromptProps as RiskPromptProps,

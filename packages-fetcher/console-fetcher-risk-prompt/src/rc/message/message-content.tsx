@@ -13,7 +13,8 @@ import {
   mixinBgErrorTint,
   mixinBgInfoTint,
   mixinBgSuccessTint,
-  mixinBgWarningTint
+  mixinBgWarningTint,
+  mixinBorderSecondary
 } from '@alicloud/console-base-theme';
 import Icon from '@alicloud/console-base-rc-icon';
 import Flex, {
@@ -78,6 +79,13 @@ const ScNotice = styled(Flex)`
   ${mixinTextInfo}
 `;
 
+const ScLoading = styled(Flex)`
+  font-weight: 600;
+  ${CssDivCommon}
+  ${mixinTextPrimary}
+  ${mixinBorderSecondary}
+`;
+
 const ScError = styled(Flex)<IScErrorProps>`
   word-break: break-all;
   ${props => {
@@ -119,6 +127,8 @@ const ScIcon = styled(Icon)<IScIconProps>`
         return mixinTextSuccess;
       case EIconType.WARNING:
         return mixinTextWarning;
+      case EIconType.LOADING:
+        return mixinTextPrimary;
       default:
         return mixinTextInfo;
     }
@@ -167,7 +177,7 @@ export default function MessageContent({
     case EIconType.NOTICE:
       return <ScNotice align="center">
         <ScIcon {...{
-          type: EIconType.NOTICE,
+          type: EIconType.LOADING,
           'data-icon-type': EIconType.NOTICE
         }} />
         {message}
@@ -180,6 +190,14 @@ export default function MessageContent({
         }} />
         {message}
       </ScSuccess>;
+    case EIconType.LOADING:
+      return <ScLoading align="center">
+        <ScIcon {...{
+          type: EIconType.LOADING,
+          'data-icon-type': EIconType.LOADING
+        }} />
+        {message}
+      </ScLoading>;
     default:
       return <ScWarning align="center">
         <ScIcon {...{

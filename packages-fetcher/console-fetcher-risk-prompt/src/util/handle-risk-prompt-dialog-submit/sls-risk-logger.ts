@@ -1,9 +1,6 @@
 import {
+  ERiskType,
   ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
-
-import {
-  ERiskType
 } from '../../enum';
 import {
   ISlsCommonPayload,

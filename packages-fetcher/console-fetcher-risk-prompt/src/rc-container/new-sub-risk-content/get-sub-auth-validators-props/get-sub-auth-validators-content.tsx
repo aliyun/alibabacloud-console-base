@@ -1,10 +1,12 @@
 import * as React from 'react';
 
 import {
-  ESubVerificationDeviceType,
   type DataVerificationValidator
 } from '@alicloud/console-fetcher-risk-data';
 
+import {
+  ESubVerificationDeviceType
+} from '../../../enum';
 import U2fAuth from '../../u2f-auth';
 import SubAccountAuth from '../sub-account-auth';
 

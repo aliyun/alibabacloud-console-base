@@ -115,29 +115,26 @@ export default function DemoDefault(): JSX.Element {
 
   const handleSubRiskInvalidPrompt = useCallback(async () => {
     const riskPromptResult = await riskPrompt({
-      newRisk: true,
       riskResponse: {
-        data: {
-          Action: 'doubleConfirm',
-          Message: '000您的账户出现异常，详情请联系客服。',
-          Extend: {
-            scriptId: '12345'
-          },
-          Validators: {
-            Validator: [
-              {
-                VerifyDetail: '1234****000',
-                VerifyType: 'mmm'
-              }
-            ]
-          },
-          CodeType: 'ecs_instance_delete',
-          Tag: 'RR000',
-          VerifyDetail: '1234****0',
-          VerifyType: 'sms',
-          AliyunIdkp: '1234****0',
-          NoRisk: false
-        }
+        Action: 'doubleConfirm',
+        Message: '000您的账户出现异常，详情请联系客服。',
+        Extend: {
+          scriptId: '12133607'
+        },
+        Validators: {
+          Validator: [
+            {
+              VerifyType: 'ga',
+              VerifyDetail: 'true'
+            }
+          ]
+        },
+        CodeType: 'energyexpert_datareport_password_show',
+        Tag: 'RR000',
+        VerifyDetail: 'true',
+        VerifyType: 'ga',
+        AliyunIdkp: '226870982859590882',
+        NoRisk: 'false'
       }
     });
 
@@ -185,24 +182,39 @@ export default function DemoDefault(): JSX.Element {
   const handleMpkRiskPrompt = useCallback(async () => {
     const riskPromptResult = await riskPrompt({
       riskResponse: {
+        Action: 'doubleConfirm',
+        Message: '000您的账户出现异常，详情请联系客服。',
         Extend: {
-          isMpk: 'true',
-          useOldVersion: 'false'
-        },
-        Validators: {
-          Validator: [
-            {
-              VerifyDetail: '1234***0',
-              VerifyType: 'sms'
-            }
-          ]
+          consoleVersion: '3.0',
+          accountType: 'subidkp'
         },
         CodeType: 'ims_login_update',
-        VerifyDetail: '137****2864',
-        VerifyType: 'sms',
-        AliyunIdkp: '1234***0'
+        VerifyURL: 'https://pre-identity.aliyun.com/iv/request.htm?riskRequestId=IMQnxY9uGSUjOFe3rNdI*XWyipMlPg9K_B2Finf*fYIvigKUMx1vGWrCENllN_b92Ue1hHTUtHI2mhfmkVnIK6Tyr65nEWYPZOrOYXLbJL1ipEjfiLx9XOe_nzwQA1akI4ORPe9lb_2xnVr7GktTFi7S4PC*49315QQI4N6RUMlN93jKhObnX0c8wmMrUSwEwpmUbb*kzWvtGZi_JxaSw29TFbiJIpj*xE9tyFF5eMGdmQO7aDg_KzPnsIYC8p*Ie8qDjE7Ue7v*TNJzTic7kMeiABsDksQrTqKuZihvomZA0exAEtyp5dYgtO542OYzNp*d8oyJC_8phEg5yjx5E4POKC9ioMpA22f*Y5vx7KLPMbKjWNOV6L_JNa5tOut6',
+        Tag: 'RR000',
+        AliyunIdkp: '257551444573436718',
+        NoRisk: false
       }
     });
+    // const riskPromptResult = await riskPrompt({
+    //   riskResponse: {
+    //     Extend: {
+    //       isMpk: 'true',
+    //       useOldVersion: 'false'
+    //     },
+    //     Validators: {
+    //       Validator: [
+    //         {
+    //           VerifyDetail: '1234***0',
+    //           VerifyType: 'sms'
+    //         }
+    //       ]
+    //     },
+    //     CodeType: 'ims_login_update',
+    //     VerifyDetail: '137****2864',
+    //     VerifyType: 'sms',
+    //     AliyunIdkp: '1234***0'
+    //   }
+    // });
 
     console.log('new_main_prompt_result', riskPromptResult);
   }, []);

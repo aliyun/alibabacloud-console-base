@@ -3,13 +3,15 @@ import {
   ERROR_NETWORK,
   ERROR_RESPONSE_STATUS
 } from '@alicloud/fetcher';
-import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
-  ESceneKey
+  ESceneKey,
+  ESubVerificationDeviceType
 } from '../enum';
+
+import {
+  ALIYUN_APP_VERSION
+} from './ua';
 
 /**
  * 风控错误码
@@ -52,17 +54,6 @@ export const MOBILE_SCREEN_SIZE = 720;
  * 阿里云 APP 下载链接
  */
 export const ALIYUN_APP_DOWNLOAD_URL = 'https://download.app.aliyun.com/app/aliyunapp/download/home?ulinks_fallback=aliyun%3A%2F%2Fforward%2Fapp%3Ftarget_%3D%2Fram%2Fhome%26pluginId_%3D9';
- 
-/**
- * 阿里云 APP 的版本
- */
-export const ALIYUN_APP_VERSION = ((): string => {
-  if (/aliyun(?:app)?\/([\d.]+)/i.test(navigator.userAgent)) {
-    return RegExp.$1;
-  }
-   
-  return '';
-})();
  
 export const DEFAULT_DIALOG_SIZE = ALIYUN_APP_VERSION ? 'xs' : 'm'; // 移动端阿里云 app 内的风控弹窗尺寸较小
 

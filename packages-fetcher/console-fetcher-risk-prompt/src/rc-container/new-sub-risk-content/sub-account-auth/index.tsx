@@ -5,12 +5,10 @@ import React, {
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
-import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
-  ERiskType
+  ERiskType,
+  ESubVerificationDeviceType
 } from '../../../enum';
 import {
   IDialogData,

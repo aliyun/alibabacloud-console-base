@@ -1,5 +1,4 @@
 import {
-  ESubVerificationDeviceType,
   DataGetU2fInfoToAuth,
   DataGetU2fWebAuthnInfoToAuth
 } from '@alicloud/console-fetcher-risk-data';
@@ -7,6 +6,9 @@ import {
 import {
   TSubGetVerificationToAuthData
 } from '../../types';
+import {
+  ESubVerificationDeviceType
+} from '../../enum';
 
 export default function getAuthU2fData(subGetVerificationToAuthData?: TSubGetVerificationToAuthData): DataGetU2fInfoToAuth | DataGetU2fWebAuthnInfoToAuth | null {
   if (subGetVerificationToAuthData) {

@@ -1,5 +1,4 @@
 import {
-  EAccountType,
   dataSendCode,
   dataSendCodeOld
 } from '@alicloud/console-fetcher-risk-data';
@@ -13,6 +12,7 @@ import {
 } from '../types';
 import {
   ERiskType,
+  EAccountType,
   EUnexpectedErrorType
 } from '../enum';
 import {

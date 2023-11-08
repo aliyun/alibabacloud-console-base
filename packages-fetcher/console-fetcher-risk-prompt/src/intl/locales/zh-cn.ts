@@ -62,5 +62,6 @@ export default {
   'message:invalid_unsupported_{method}!html': '系统检测到验证方式 <code>{method}</code> 有误，请重试。',
   'message:invalid:sub:validator': '验证方式错误，请重试。',
   'message:send:code:success': '验证码发送成功，5 分钟内有效。',
-  'message:multi:validators': '请任选一种验证方式完成安全验证。'
+  'message:multi:validators': '请任选一种验证方式完成安全验证。',
+  'message:wait:iv:page:message': '正在检测用户核身方式，请稍候...'
 };

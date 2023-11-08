@@ -1,7 +1,7 @@
 import {
   IRiskConfig,
   TRiskResponse,
-  IMpkExtendSetting
+  IRiskResponseExtend
 } from '../../types';
 
 import getRiskValueViaConfig from './get-risk-value-via-config';
@@ -26,7 +26,7 @@ export default function convertMpkSetting<T>({
     riskConfig,
     riskResponse,
     riskConfigKey: 'DATA_PATH_NEW_EXTEND',
-    defaultValue: {} as IMpkExtendSetting
+    defaultValue: {} as IRiskResponseExtend
   });
 
   const {

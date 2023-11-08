@@ -1,3 +1,10 @@
+import {
+  EAccountType,
+  ESubVerificationDeviceType
+} from '@alicloud/console-fetcher-risk-data';
+
+export { EAccountType, ESubVerificationDeviceType };
+
 export enum EDialogType {
   // 风控弹窗流程中可能会存在调用接口失败等情况，这时的弹窗是错误信息提示弹窗
   ERROR = 'error',
@@ -23,9 +30,10 @@ export enum EConvertedVerifyType {
  */
 export enum EIconType {
   ERROR = 'alert-circle',
-  NOTICE = 'loading',
+  NOTICE = 'loading-notice',
   SUCCESS = 'success-circle-fill',
-  WARNING = 'alert-circle-fill'
+  WARNING = 'alert-circle-fill',
+  LOADING = 'loading'
 }
 
 /**
@@ -54,7 +62,6 @@ export enum ERiskType {
   NEW_MAIN = 'new_main', // 新版主账号风控
   NEW_SUB = 'new_sub' // 新版子账号风控
 }
-
 /**
  * primaryButtonDisableObject 或者 errorMessageObject 的 Key
  */
@@ -93,4 +100,12 @@ export enum EUnexpectedErrorType {
   MPK_RISK_VERIFY_FAILED = 'mpk_risk_verify_failed',
   // 子账号调用 identity/verify 接口报预期外的错误
   SUB_RISK_VERIFY_FAILED = 'sub_risk_verify_failed'
+}
+
+export enum EClientType {
+  PC = 'pc',
+  H5 = 'h5',
+  APP = 'app',
+  DINGTALK = 'dingTalk',
+  DINGTALK_PC = 'dingTalk-pc'
 }

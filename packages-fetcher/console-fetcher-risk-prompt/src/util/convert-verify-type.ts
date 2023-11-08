@@ -1,11 +1,13 @@
 import {
-  ESubVerificationDeviceType,
   type ParamsVerifySubAccount
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
   TResolveVerifyType
 } from '../types';
+import {
+  ESubVerificationDeviceType
+} from '../enum';
 
 // 将 ESubVerificationDeviceType 转化为 TResolveVerifyType
 export function convertToResolveDataVerifyType(verifySubAccountParams?: ParamsVerifySubAccount): TResolveVerifyType {

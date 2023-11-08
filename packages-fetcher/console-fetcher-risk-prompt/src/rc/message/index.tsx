@@ -13,6 +13,8 @@ interface IMessageProps extends IMessageContentProps {
 }
 
 const ScDiv = styled.div`
+  width: 100%;
+  
   &.enter-active,
   &.exit-active {
     position: absolute;

@@ -1,10 +1,7 @@
 import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
-
-import {
   ERiskType,
-  EConvertedVerifyType
+  EConvertedVerifyType,
+  ESubVerificationDeviceType
 } from '../enum';
 
 import {

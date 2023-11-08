@@ -13,12 +13,10 @@ import Flex from '@alicloud/console-base-rc-flex';
 import {
   useDialog
 } from '@alicloud/console-base-rc-dialog';
-import {
-  ESubVerificationDeviceType
-} from '@alicloud/console-fetcher-risk-data';
 
 import {
-  EIconType
+  EIconType,
+  ESubVerificationDeviceType
 } from '../../enum';
 import {
   IDialogData,

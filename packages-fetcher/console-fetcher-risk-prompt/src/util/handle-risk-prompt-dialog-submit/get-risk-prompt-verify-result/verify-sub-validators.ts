@@ -1,12 +1,14 @@
 import {
   dataVerifySubAccountMfa,
-  ESubVerificationDeviceType,
   type ParamsVerifySubAccount
 } from '@alicloud/console-fetcher-risk-data';
 
 import {
   IRiskPromptVerifyResult
 } from '../../../types';
+import {
+  ESubVerificationDeviceType
+} from '../../../enum';
 import intl from '../../../intl';
 import {
   convertToResolveDataVerifyType
