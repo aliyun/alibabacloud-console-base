@@ -29,7 +29,7 @@ interface IRiskResponseData {
   CodeType: string;
   VerifyType: string;
   VerifyDetail: boolean;
-  RiskValidators: RiskValidator[];
+  RiskValidators: (RiskValidator | null)[];
 }
 
 const ScButton = styled(Button)`
@@ -101,7 +101,8 @@ export default function DemoDefault(): JSX.Element {
 
     const riskPromptResult = await riskPrompt<IRiskResponseData>({
       riskResponse: {
-        RiskValidators: riskValidators,
+        // 测试 Validators 中存在异常的 null 的情况
+        RiskValidators: [...riskValidators, null],
         CodeType: 'ims_login_update',
         VerifyDetail: true,
         VerifyType: 'ga',

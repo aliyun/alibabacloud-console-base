@@ -38,7 +38,7 @@ export default function getRiskParameters<T>({
         riskConfig,
         riskResponse,
         riskConfigKey: 'DATA_PATH_VALIDATORS',
-        defaultValue: [] as IRiskValidator[]
+        defaultValue: [] as (IRiskValidator | null)[]
       }),
       codeType: getRiskValueViaConfig({
         riskConfig,
