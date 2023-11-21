@@ -7,6 +7,7 @@ import {
   TRiskInfo,
   IRiskConfig,
   TRiskResponse,
+  IRiskValidator,
   ICommonRiskInfo,
   TRiskTypeConfig,
   TRiskParametersGetter
@@ -113,8 +114,11 @@ function convertRiskResponse<T>({
     }
 
     const subRiskValidators = ((): Omit<ICommonRiskInfo, 'codeType'>[] => {
+      // 过滤掉 Validators 中异常的 null
+      const filteredValidators = validators.filter((v: IRiskValidator | null): v is IRiskValidator => !!v && typeof v === 'object');
+
       // 过滤掉不合法的风控方式
-      return validators.map(o => ({
+      return filteredValidators.map(o => ({
         verifyType: o.VerifyType,
         verifyDetail: o.VerifyDetail,
         convertedVerifyType: convertVerifyType({
