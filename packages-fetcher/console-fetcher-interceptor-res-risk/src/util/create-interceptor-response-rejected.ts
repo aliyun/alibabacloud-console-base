@@ -24,60 +24,6 @@ import {
   convertToRiskErrorForbidden
 } from './error';
 
-/**
- * TODO：重新描述新版风控流程
- * 
- * --------------------------------------------------------------------
- *            +-------------------+
- *            |  fetcher.request  |
- *            +---------+---------+
- *                      |
- *                  IF--˅---+
- *    +-------------Y  OK?  |
- *    |             +---N---+
- *    |                 |
- *    |               (err1)
- *    |                 |
- *    |         IF------˅------+      DIALOG-----------+     THROW=======================+ √ (test passed)
- *    |         |  forbidden?  Y ---> | risk/forbidden +---> || FetchErrorRiskForbidden ||
- *    |         +-------N------+      +----------------+     +===========================+ (can be ignored)
- *    |                 |
- *    |        IF-------˅--------+      THROW======+ √ (test passed)
- *    |        |  need verify?   N ---> ||  err1  ||
- *    |        +--------Y--------+      ===========+ (should be handled in the error model)
- *    |                 |
- *    |         DIALOG--˅--------+                  THROW=============================+ √ (test passed)
- *    |         |  risk/verify   +--- <CANCEL> ---> || FetchErrorRiskVerifyCancelled ||
- *    |         +-------+--------+                  +=================================+ (can be ignored)
- *    |                 |
- *    |   +-------------˅-----------+      +----------------+                    THROW=====================+ √ (test passed)
- *    |   |  verify setting right?  N ---> +  prompt about  +---> <dismiss> ---> || FetchErrorRiskInvalid ||
- *    |   +-------------Y-----------+      +----------------+                    +=========================+ (can be ignored)
- *    |                 |
- *    |        +--------˅--------+     +---------------------+ √ (test passed)
- *    |        |    input code   | <---+  warn code invalid  | <-------------+
- *    |        +--------+--------+     +---------------------+               |
- *    |                 |                                                    |
- *    |             <CONFIRM>                                                |
- *    |  verifyType + verifyCode + requestId                                 |
- *    |                 |                                                    |
- *    |         +-------˅-------+         IF------------Y-----------+        |
- *    |         |  fetch again  |   +---> |  code invalid / needed  Y -------+
- *    |         +-------+-------+   |     +-------------N-----------+
- *    |                 |         (err2)                |
- *    |             IF--˅---+       |        +----------˅-----------+
- *    |             +  OK?  N ------+        | risk/verify dismiss |
- *    |             +---Y---+                +----------+-----------+
- *    |                 |                               |
- *    |      +----------˅----------+            THROW===˅======+ √ (test passed)
- *    |      | risk/verify dismiss |            ||    err2    ||
- *    |      +----------+----------+            +==============+ (should be handled externally)
- *    |                 |
- *    |          +======˅======+ √ (test passed)
- *    +--------> || resolved! ||
- *               +=============+
- * --------------------------------------------------------------------
- */
 export default function createInterceptorResponseRejected(o?: IFetcherInterceptorConfig): FetcherFnInterceptResponseRejected {
   const riskConfig: IFetcherInterceptorConfig = {
     CODE_FORBIDDEN,
@@ -131,7 +77,12 @@ export default function createInterceptorResponseRejected(o?: IFetcherIntercepto
         // 对于 OneConsole 控制台风控而言，如果请求参数中带有 riskVersion：2.0，那么说明是新版风控
         const newRisk = ((): boolean | undefined => {
           if (fetcherConfig.body && typeof fetcherConfig.body === 'object') {
-            return fetcherConfig.body.riskVersion === '2.0';
+            const {
+              riskVersion
+            } = fetcherConfig.body;
+
+            // 2.0 & 3.0 都可视作新版风控
+            return ['2.0', '3.0'].some(v => riskVersion === v);
           }
         })();
 
