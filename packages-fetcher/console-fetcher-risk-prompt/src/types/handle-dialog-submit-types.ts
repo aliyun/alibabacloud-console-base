@@ -1,5 +1,5 @@
-import {
-  useDialog
+import type {
+  DialogContext
 } from '@alicloud/console-base-rc-dialog';
 
 import {
@@ -17,7 +17,7 @@ import {
   TSetRiskCanceledErrorProps
 } from './risk-prompt-types';
 
-export type TContentContext = Omit<ReturnType<typeof useDialog<IRiskPromptResolveData, IDialogData>>, 'forceUpdate'>;
+export type TContentContext = Omit<DialogContext<IRiskPromptResolveData, IDialogData>, 'forceUpdate'>;
 
 export interface IOldMainSubmitProps {
   verifyType: string;
