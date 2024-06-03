@@ -12,7 +12,9 @@ import {
   setRegions,
   toggleRegion,
   toggleRegionGlobal,
-  onRegionChange
+  onRegionChange,
+  setRegionProps,
+  mergeRegionProps
 } from '@alicloud/console-base-messenger-region';
 import {
   toggleResourceGroup,
@@ -66,6 +68,8 @@ export default {
   toggleRegion,
   toggleRegionGlobal,
   onRegionChange,
+  setRegionProps,
+  mergeRegionProps,
   // resource-group
   toggleResourceGroup,
   setResourceGroupId,
