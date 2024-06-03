@@ -1,6 +1,6 @@
 {
   "name": "@alicloud/console-base-log-sls",
-  "version": "1.6.11",
+  "version": "1.6.12",
   "description": "ConsoleBase Log SLS",
   "license": "MIT",
   "sideEffects": false,

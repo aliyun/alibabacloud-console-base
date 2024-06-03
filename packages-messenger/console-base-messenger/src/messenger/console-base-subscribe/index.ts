@@ -5,6 +5,7 @@
  * --------------------------------------------- */
 
 export { default as onSetProductId } from './misc/on-set-product-id';
+export { default as onSetResourceTypes } from './misc/on-set-resource-types';
 export { default as onFetcherRequest } from './misc/on-fetcher-request';
 export { default as onArmsError } from './misc/on-arms-error';
 export { default as onLaunchWidget } from './misc/on-launch-widget';

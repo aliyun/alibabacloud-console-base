@@ -5,14 +5,16 @@ import {
 
 import getConsoleBaseVersions from './get-console-base-versions';
 
-const [loaderVersions, consoleBaseVersions] = getConsoleBaseVersions();
+const [loaderVersions, consoleBaseVersions, consoleBaseV2Versions] = getConsoleBaseVersions();
 const versionOfLoader = loaderVersions.join('~') || 'NONE'; // 本地的时候可能是 NONE
 const versionOfConsoleBase = consoleBaseVersions.join('~') || 'NONE'; // 本地的时候可能是 NONE
+const versionOfConsoleBaseV2 = consoleBaseV2Versions.join('~') || 'NONE'; // 本地的时候可能是 NONE
 
 export default function getSlsDefaultParams(): Record<string, unknown> {
   return {
     product: getProductId() || CONF_PRODUCT_ID,
     versionOfLoader,
-    versionOfConsoleBase
+    versionOfConsoleBase,
+    versionOfConsoleBaseV2
   };
 }

@@ -13,3 +13,8 @@ export interface IPayloadLaunchWidget<P = void, E = void> {
 export interface IPayloadFastbuy {
   commodityCode: string;
 }
+
+export type TPayloadResourceTypes = {
+  service: string;
+  resourceTypeCode: string;
+}[];

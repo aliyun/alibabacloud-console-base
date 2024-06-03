@@ -11,6 +11,7 @@ export enum EMessageBroadcastByApp {
   LAUNCH_WIDGET = 'app_2_console_base:launch_widget',
   ARMS_ERROR = 'app_2_console_base:arms/error',
   SET_PRODUCT_ID = 'app_2_console_base:set_product_id',
+  SET_RESOURCE_TYPES = 'app_2_console_base:set_resource_types',
   /* ********************************************
    * 微文档
    ******************************************* */
