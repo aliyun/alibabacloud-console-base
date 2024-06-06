@@ -66,17 +66,24 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
 
   // 特殊处理：权限错误要求尽可能等待 ConsoleBase 加载完成后触发
   if (errorInfo.detailsAuth?.action || errorInfo.detailsAuth?.diagnosisInfo) {
-    const interval = setInterval(() => {
+    let timer: NodeJS.Timeout | undefined;
+
+    const callErrorPromptAfterLoaded = (): void => {
       const proxyLoaded = getProxyErrorPrompt();
 
       // 等待 Proxy 加载至多 3 秒（500 * 6）
       if (!proxyLoaded && countOfCheckConsoleBaseLoadingByErrorPromptProxy < 6) {
         countOfCheckConsoleBaseLoadingByErrorPromptProxy += 1;
 
+        timer = setTimeout(callErrorPromptAfterLoaded, 500);
+
         return;
       }
 
-      clearInterval(interval);
+      if (timer) {
+        clearTimeout(timer);
+        timer = undefined;
+      }
 
       if (proxyLoaded) {
         callErrorPromptByProxy(errorInfo);
@@ -94,10 +101,16 @@ export default async function proxy(o?: ErrorPromptArg, extra?: ErrorPromptExtra
         c5: errorInfo.detailsAuth?.policyType,
         c6: errorInfo.detailsAuth?.diagnosisInfo?.length || 0
       });
-    }, 500);
+    };
+
+    callErrorPromptAfterLoaded();
 
     return;
   }
 
-  callErrorPromptByProxy(errorInfo);
+  if (getProxyErrorPrompt()) {
+    callErrorPromptByProxy(errorInfo);
+  } else {
+    callErrorPromptByNotProxy(errorInfo);
+  }
 }
