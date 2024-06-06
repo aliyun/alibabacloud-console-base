@@ -88,6 +88,10 @@ export interface IFetcherConfig extends Omit<FetchOptions, 'method' | 'headers' 
    */
   bodySerializeOptions?: IStringifyOptions;
   /**
+   * 需要把 JSON 特定字段值视为 string 反序列化的键集合
+   */
+  responseJsonKeysForValueAsString?: string[];
+  /**
    * 调用时临时增加的请求拦截器，不至于影响到整个实例
    */
   additionalInterceptorsForRequest?: TArgsForInterceptRequest[]; // eslint-disable-line @typescript-eslint/no-use-before-define

@@ -8,6 +8,7 @@ import {
 } from '../const';
 
 import normalizeHeaderKey from './normalize-header-key';
+import normalizeResponseJsonValuesToString from './normalize-response-json-values-to-string';
 import createFetcherError from './create-fetcher-error';
 
 export default async function convertResponseFromFetch<T = void, C extends IFetcherConfig = IFetcherConfig>(response: Response, fetcherConfig: C): Promise<IFetcherResponse<T>> {
@@ -36,10 +37,18 @@ export default async function convertResponseFromFetch<T = void, C extends IFetc
   }
   
   try { // TODO 可能要一个非 JSON 的设置
+    let json: T = undefined;
+    if (fetcherConfig.responseJsonKeysForValueAsString?.length > 0) {
+      let text = await response.text();
+      text = normalizeResponseJsonValuesToString(text, fetcherConfig.responseJsonKeysForValueAsString);
+      json = JSON.parse(text);
+    } else {
+      json = await response.json() as T;
+    }
     return {
       url: response.url,
       headers,
-      data: await response.json() as T
+      data: json
     };
   } catch (err) { // 如果后端返回的不是 JSON，这里会报错「JSON.parse: unexpected character at line 1 column 1 of the JSON data」
     throw createFetcherError(fetcherConfig, ERROR_RESPONSE_PARSE, (err as Error | undefined)?.message);
