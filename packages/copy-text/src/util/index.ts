@@ -1,1 +1,0 @@
-export { default as createTextarea } from './create-textarea';

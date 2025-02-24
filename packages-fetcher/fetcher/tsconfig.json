@@ -1,9 +1,0 @@
-{
-  "extends": "@alicloud/ts-config/index.json",
-  "include": [
-    "src",
-    "stories",
-    "tests",
-    "breezr.config.ts"
-  ]
-}

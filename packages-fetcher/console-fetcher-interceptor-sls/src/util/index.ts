@@ -1,1 +1,0 @@
-export { default as buildSlsInfo } from './build-sls-info';
